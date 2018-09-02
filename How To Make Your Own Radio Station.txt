@@ -1,0 +1,24 @@
+How To Make Your Own Radio Station
+
+Must HAVE Winamp (Any Version)
+First, things First your speed has to be at least 256/64 kbps (which means Dial-up users, will have alot of latency, just dnt bother)
+Second, your going to have to have a domain, an updated one with the current i.p active. (Could be anything e.g. My sig)
+
+Now, Your gonna have to download the Shoutcast Files.
+
+Go to www.shoutcast.com to get the files.
+
+Ok After downloading these, installing Both of them in any order i dnt care. Go to START>PROGRAM FILES>SHOUTcast DNAS>EDIT SHOUTCAST DNS CONFIG.
+
+Ok your gonna have to Configure it:
+Go Down and where it says password: change (that means your gonna have to change it to whatever, make sure u remember)
+The Portbase: change it to whatever port you want it
+Maxusers: (lets be realistic here, dnt put in 10000, like NXS's radio station) your bandwidth has to be extremely good, if your cable, 50 user max is ok, ADSL should stay below 10 users, and T1 connections should do whatever tickles there fantasy.
+
+Open winamp, RIGHT CLICK>OPTIONS>PREFRENCES>DSP EFFECT> and choose the NULLSOFT SHOUTCAST.
+
+Go to OUTPUT, and then click on Connection, Through the ADDRESS, type your address which you have done through www.no-ip.com, PORT NUMBER, whatever u did in the EDIT.txt, and your password.
+
+Then go to Encoder, and choose your quality of your music. Go back to OUTPU>OUTPUT CONFIG> YELLOW PAGES. this is your advertisemant information. dow hatever you like there.
+
+Now Connect. to check that your Radio os on-line go to http://(your address that you added in the prefrence)

@@ -1,0 +1,21 @@
+NERO: how to verify the validity of the serial number you use through the nerocmd.exe command
+
+Nero will accept a serial number even if it is invalid, and will (randomly) occasionally burn you some bad CDs (while telling you that the burn was sucessful...)
+
+Therefore it makes sense to test the serial number right after installation (b4 burning anything). Under Dos prompt, go to Nero's directory, type the following:
+
+nerocmd --listdrives
+
+That is: nerocmd, then a space, then 2 dashes, then listdrives.
+
+If you see a message with "OK" in the end of it, then the serial you used is fine. Otherwise, locate another set of number and try again.
+
+It really works... ;)
+
+
+Here are some helpful hints in using DOS:
+
+1. Go to your AHEAD/NERO folder (wherever it is in your PC...) and Open it
+2. From: START>RUN Type: COMMAND -> click OK
+3. Type: nerocmd --listdrives [Enter key]
+4. Done!

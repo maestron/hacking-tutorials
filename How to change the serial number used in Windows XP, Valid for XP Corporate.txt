@@ -1,0 +1,38 @@
+Step 1
+
+Open Start/Run... and type the command:
+regedit and click "OK" (or press ENTER).
+
+Go to HKey_Local_Machine\Software\Microsoft\WindowsNT\Current Version\WPAEvents,
+on the right double click on "oobetimer" and change at least one digit of this value to deactivate windows.
+
+Click "OK" and close the Registry Editor.
+
+Step 2
+
+Open Start/Run... and type the command:
+%systemroot%\system32\oobe\msoobe.exe /a and click "OK" (or press ENTER).
+
+This will bring up the "Activate Windows" window.
+
+Check the option for "Yes, I want to telephone a customer service representative to activate Windows" and click "Next"
+
+
+Step 3
+
+Then click "Change Product Key" (don't enter any information on that screen)
+
+
+Step 4
+
+Type in the new key and click "Update"
+
+
+The activate Windows by phone window will reappear at this point, just close it by clicking the X in the upper right hand corner
+
+Step 5
+
+Reboot your system and Open Start/Run... and type the command:
+%systemroot%\system32\oobe\msoobe.exe /a and click "OK" (or press ENTER).
+
+If you see "Windows is already activated" then everything is OK.

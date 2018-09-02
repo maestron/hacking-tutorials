@@ -1,0 +1,16 @@
+Dual Boot After The Fact
+
+I want to run both Windows 2000 Pro and Windows 98 SE on my computer. When I bought a new hard drive, I installed Windows 2000 on it first. But my subsequent research seems to indicate that I should have installed Windows 98 SE first and then Windows 2000 on a separate partition. How do I remove Windows 2000 from the drive so I can partition it and then install Windows 98 SE first and reinstall Windows 2000?
+
+
+
+You don't have to remove Windows 2000. Start by installing Windows 98 SE in a different partition. When you're done, insert the Windows 2000 CD and reboot to start Windows 2000 setup. On the Welcome to Setup page, press R (for Repair). When you reach the Windows 2000 Repair Options page, press R again.
+
+You'll then be prompted to select a repair option. Press M for Manual. Then press the Up Arrow until Verify Windows 2000 system files is highlighted; press Enter to clear this selection. Press the Down Arrow to select Continue (perform selected tasks), and then press Enter.
+
+The system will ask whether you have an emergency repair disk. Press L, indicating it should Locate your existing installation. Once it does so, press Enter to complete the repairs. This will establish dual boot for you. (This procedure also works for Windows XP.)
+
+
+*NOTE:
+
+Don't know if this will also work for Linux. If anyone does try it, please let me know. 

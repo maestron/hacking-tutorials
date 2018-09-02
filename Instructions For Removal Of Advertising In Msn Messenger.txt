@@ -1,0 +1,31 @@
+Instructions For Removal Of Advertising In Msn Messenger
+
+If you downloaded MSN Messenger 6.2, you might want to remove the advertising that is placed at the bottom of the main messenger window.
+
+I will give you some details to do it manually. To edit the msnmsgr.exe file, you'll need a HEX editor. I found the freeware Hex Editor XVI32 perfectly suited for this task. There is no installation, just download the file, create a folder on your hard drive, unzip the XVI32.zip file there, and run the XVI32.exe file.
+
+Note: this is for the latest version of 6.2, 6.2.0137. You can check your version, by choosing Help > About MSN Messenger from the programs menu.
+
+When you have the HEX editor running, follow these steps:
+
+Make sure you are not running messenger. Right-click its icon in the system tray, and from the menu select Exit
+Now you'll need to locate the messenger executable msnmsgr.exe, it will normally be in \Program Files\MSN Messenger\
+Make a backup of the file. Right-click msnmsgr.exe and from the menu choose Copy. Now right-click on an empty area in the same folder, and select Paste from the menu. The backup will be named Copy of msnmsgr.exe. If you ever want to get back to the original file, simply delete msnmsgr.exe, and then rename Copy of msnmsgr.exe to msnmsgr.exe
+From the menu in XVI32, choose File > Open, locate msnmsgr.exe, and open it
+From the menu, select Address > Goto, select hexadecimal, and enter E5E61, press OK
+The value selected will be 74, simply type EB to replace it (so 74 becomes EB)
+When done select File > Save from the menu, and exit XVI32
+Reopen Messenger 6.2, now without the ads!
+Also, you might want to get rid of the annoying tabs shown at the left side of your contact list. There is an option for that, but some people might not find it easy to locate:
+
+In MSN Messenger, select Options... from the Tools menu
+Select the Privacy tab
+Check the box before This is a shared computer so don't display my tabs
+Pressing OK and doing a sign-out and sign-in will remove the tabs forever!
+You'll now have a much cleaner version of Messenger, which (to my personal taste) is a lot more userfriendly.
+This method (in contrast to other suggested schemes) does not only remove the ad, but also removes its designated space, so the Messenger window will be smaller.
+
+Note that by altering the msnmsgr.exe file you're violating the Microsoft EULA. I decline all responsibility for your actions!
+This site is not affiliated in any way with the Microsoft Corporation. All registered trademarks are the property of their respective owners.
+
+Updated for version 6.2.0137 at 17/06/2004. 

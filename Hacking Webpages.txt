@@ -1,0 +1,89 @@
+
+Chapter 4: Hacking Webpages
+
+Getting the Password File Through FTP
+
+Ok well one of the easiest ways of getting superuser access is through
+anonymous ftp access into a webpage. First you need learn a little about
+the password file...
+
+root:User:d7Bdg:1n2HG2:1127:20:Superuser
+TomJones:p5Y(h0tiC:1229:20:Tom Jones,:/usr/people/tomjones:/bin/csh
+BBob:EUyd5XAAtv2dA:1129:20:Billy Bob:/usr/people/bbob:/bin/csh
+
+This is an example of a regular encrypted password file. The Superuser is
+the part that gives you root. That's the main part of the file.
+
+root:x:0:1:Superuser:/:
+ftp:x:202:102:Anonymous ftp:/u1/ftp:
+ftpadmin:x:203:102:ftp Administrator:/u1/ftp
+
+This is another example of a password file, only this one has one little
+difference, it's shadowed. Shadowed password files don't let you view or
+copy the actual encrypted password.  This causes problems for the password
+cracker and dictionary maker(both explained later in the text). Below is
+another example of a shadowed password file:
+
+root:x:0:1:0000-Admin(0000):/:/usr/bin/csh
+daemon:x:1:1:0000-Admin(0000):/:
+bin:x:2:2:0000-Admin(0000):/usr/bin:
+sys:x:3:3:0000-Admin(0000):/:
+adm:x:4:4:0000-Admin(0000):/var/adm:
+lp:x:71:8:0000-lp(0000):/usr/spool/lp:
+smtp:x:0:0:mail daemon user:/:
+uucp:x:5:5:0000-uucp(0000):/usr/lib/uucp:
+nuucp:x:9:9:0000-uucp(0000):/var/spool/uucppublic:/usr/lib/uucp/uucico
+listen:x:37:4:Network Admin:/usr/net/nls:
+nobody:x:60001:60001:uid no body:/:
+noaccess:x:60002:60002:uid no access:/:
+webmastr:x:53:53:WWW Admin:/export/home/webmastr:/usr/bin/csh
+pin4geo:x:55:55:PinPaper Admin:/export/home/webmastr/new/gregY/test/pin4geo:/bin/false
+ftp:x:54:54:Anonymous FTP:/export/home/anon_ftp:/bin/false
+
+Shadowed password files have an "x" in the place of a password or sometimes
+they are disguised as an * as well.
+
+Now that you know a little more about what the actual password file looks
+like you should be able to identify a normal encrypted pw from a shadowed
+pw file. We can now go on to talk about how to crack it.
+
+Cracking a password file isn't as complicated as it would seem, although the
+files vary from system to system. 1.The first step that you would take is
+to download or copy the file. 2. The second step is to find a password
+cracker and a dictionary maker. Although it's nearly impossible to find a
+good cracker there are a few ok ones out there. I recomend that you look
+for Cracker Jack, John the Ripper, Brute Force Cracker, or Jack the Ripper.
+Now for a dictionary maker or a dictionary file...  When you start a
+cracking prog you will be asked to find the the password file. That's where
+a dictionary maker comes in. You can download one from nearly every hacker
+page on the net.  A dictionary maker finds all the possible letter
+combinations with the alphabet that you choose(ASCII, caps, lowercase, and
+numeric letters may also be added) .  We will be releasing our pasword file
+to the public soon, it will be called, Psychotic Candy, "The Perfect Drug."
+As far as we know it will be one of the largest in circulation. 3. You then start up the cracker and follow the directions that it gives
+you.
+
+
+The PHF Technique
+
+Well I wasn't sure if I should include this section due to the fact that
+everybody already knows it and most servers have already found out about
+the bug and fixed it. But since I have been asked questions about the phf
+I decided to include it.
+
+The phf technique is by far the easiest way of getting a password file
+(although it doesn't work 95% of the time). But to do the phf all you do
+is open a browser and type in the following link:
+
+http://webpage_goes_here/cgi-bin/phf?Qalias=x%0a/bin/cat%20/etc/passwd 
+
+You replace the webpage_goes_here with the domain. So if you were trying to
+get the pw file for www.webpage.com you would type:
+
+http://www.webpage.com/cgi-bin/phf?Qalias=x%0a/bin/cat%20/etc/passwd
+
+and that's it! You just sit back and copy the file(if it works).
+
+The best way to get root is with an exploit. Exploits are explained in the
+next chapter.
+

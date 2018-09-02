@@ -1,0 +1,173 @@
+Services You Can Disable 
+
+There are quite a few services you can disable from starting automatically. 
+This would be to speed up your boot time and free resources. 
+They are only suggestions so I suggestion you read the description of each one when you run Services 
+and that you turn them off one at a time. 
+
+Some possibilities are: 
+Alerter 
+Application Management 
+Clipbook 
+Fast UserSwitching 
+Human Interface Devices 
+Indexing Service 
+Messenger 
+Net Logon 
+NetMeeting 
+QOS RSVP 
+Remote Desktop Help Session Manager 
+Remote Registry 
+Routing & Remote Access 
+SSDP Discovery Service 
+Universal Plug and Play Device Host 
+Web Client 
+
+
+-------------------------------------------------------------------------------- 
+
+Cleaning the Prefetch Directory 
+
+WindowsXP has a new feature called Prefetch. This keeps a shortcut to recently used programs. 
+However it can fill up with old and obsolete programs. 
+
+To clean this periodically go to: 
+
+Star / Run / Prefetch 
+Press Ctrl-A to highlight all the shorcuts 
+Delete them 
+
+-------------------------------------------------------------------------------- 
+
+Not Displaying Logon, Logoff, Startup and Shutdown Status Messages 
+
+To turn these off: 
+
+Start Regedit 
+Go to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system 
+If it is not already there, create a DWORD value named DisableStatusMessages 
+Give it a value of 1 
+
+-------------------------------------------------------------------------------- 
+Clearing the Page File on Shutdown 
+
+Click on the Start button 
+Go to the Control Panel 
+Administrative Tools 
+Local Security Policy 
+Local Policies 
+Click on Security Options 
+Right hand menu - right click on "Shutdown: Clear Virtual Memory Pagefile" 
+Select "Enable" 
+Reboot 
+
+For regedit users..... 
+If you want to clear the page file on each shutdown: 
+
+Start Regedit 
+Go to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\ClearPageFileAtShutdown 
+Set the value to 1 
+
+-------------------------------------------------------------------------------- 
+
+No GUI Boot 
+
+If you don't need to see the XP boot logo, 
+
+Run MSCONFIG 
+Click on the BOOT.INI tab 
+Check the box for /NOGUIBOOT 
+
+--------------------------------------------------------------------------------- 
+Speeding the Startup of Some CD Burner Programs 
+
+If you use program other than the native WindowsXP CD Burner software, 
+you might be able to increase the speed that it loads. 
+
+Go to Control Panel / Administrative Tools / Services 
+Double-click on IMAPI CD-Burning COM Service 
+For the Startup Type, select Disabled 
+Click on the OK button and then close the Services window 
+If you dont You should notice 
+
+-------------------------------------------------------------------------------- 
+
+Getting Rid of Unread Email Messages 
+
+To remove the Unread Email message by user's login names: 
+
+Start Regedit 
+For a single user: Go to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\UnreadMail 
+For all users: Go to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\UnreadMail 
+Create a DWORD key called MessageExpiryDays 
+Give it a value of 0 
+
+------------------------------------------------------------------------------ 
+
+Decreasing Boot Time 
+
+Microsoft has made available a program to analyze and decrease the time it takes to boot to WindowsXP 
+The program is called BootVis 
+
+Uncompress the file. 
+Run BOOTVIS.EXE 
+For a starting point, run Trace / Next Boot + Driver Delays 
+This will reboot your computer and provide a benchmark 
+After the reboot, BootVis will take a minute or two to show graphs of your system startup. 
+Note how much time it takes for your system to load (click on the red vertical line) 
+Then run Trace / Optimize System 
+Re-Run the Next Boot + Drive Delays 
+Note how much the time has decreased 
+Mine went from approximately 33 to 25 seconds. 
+
+-------------------------------------------------------------------------------- 
+Increasing Graphics Performance 
+
+By default, WindowsXP turns on a lot of shadows, fades, slides etc to menu items. 
+Most simply slow down their display. 
+
+To turn these off selectively: 
+
+Right click on the My Computer icon 
+Select Properties 
+Click on the Advanced tab 
+Under Performance, click on the Settings button 
+To turn them all of, select Adjust for best performance 
+My preference is to leave them all off except for Show shadows under mouse pointer and Show window contents while dragging 
+
+--------------------------------------------------------------------------- 
+
+Increasing System Performance 
+
+If you have 512 megs or more of memory, you can increase system performance 
+by having the core system kept in memory. 
+
+Start Regedit 
+Go to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\DisablePagingExecutive 
+Set the value to be 1 
+Reboot the computer 
+
+--------------------------------------------------------------------------- 
+
+Increasing File System Caching 
+
+To increase the amount of memory Windows will locked for I/O operations: 
+
+Start Regedit 
+Go to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management 
+Edit the key IoPageLockLimit 
+
+----------------------------------------------------------------------------- 
+
+Resolving Inability to Add or Remove Programs 
+
+If a particular user cannot add or remove programs, there might be a simple registry edit neeed. 
+
+Go to HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Uninstall 
+Change the DWORD NoAddRemovePrograms to 0 disable it 
+
+4096 - 32megs of memory or less 
+8192 - 32+ megs of memory 
+16384 - 64+ megs of memory 
+32768 - 128+ megs of memory 
+65536 - 256+ megs of memory 

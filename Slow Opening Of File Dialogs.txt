@@ -1,0 +1,8 @@
+Slow Opening Of File Dialogs
+
+Slow Opening of File Dialogs
+
+
+An intermittent slowdown opening file dialogs or Windows Explorer listings is often caused by a mapped network drive. You can select Map Network Drive from Windows Explorer's Tools menu to make a drive or a folder on a remote PC appear as a simple drive letter on your computer. This will let you access that drive or folder as if it were a local drive. After a restart, Windows reestablishes the connection when it's needed—for example, when you open the drop-down box that displays a tree containing My Computer and all drives below it. This initial connection can sometimes be slow the first time in a session. If the remote PC is not accessible, each attempt to display the folder tree may be slowed. Most likely the reason that some of your file-open dialogs are slow and some aren't lies in their initial display mode.
+
+If the inconvenience of this slowdown outweighs the convenience of having a mapped network drive, simply click on Tools in Windows Explorer's menu and select Disconnect Network Drive. Select the drive to disconnect and click on OK.

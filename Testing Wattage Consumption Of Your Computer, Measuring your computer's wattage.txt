@@ -1,0 +1,83 @@
+Testing Wattage Consumption Of Your Computer
+
+Measuring your computer's wattage is a good way of knowing if you are overloading your UPS, or if you have too many things plugged in to the same circuit. This article will show you how you can test wattage of your equipment using a multi meter and a few wires.
+
+Visit
+
+
+
+http://www.iceteks.com/articles.php?act=view&article=pcwattage&p=1&
+
+--------------------------------------------------------------------------------------------------------------
+
+Testing Wattage consumption of your computer equipment
+Making sure you’re not overloading your UPS or misc power source
+
+Did you ever wonder how many watts your equipment is using? Whether it is a PC with monitor, or a whole UD cluster setup with 100's of machines this article will let you know how to easily find out. Or perhaps you just want to know how much power you would need to build one of those clusters. You can estimate yourself since some appliances such as monitors show the rating on the back but some other things such as computer power supplies don't. And just because it's a 300W power supply does not mean it uses 300W of power. It all depends on how much of that power the components are using. Watts are usually the best measurement to know because it does not change. But volts and amps do. If you plug in a vacuum cleaner in an 80volt power source it will be using way more amps then if you plug it in a 120V power source.
+
+Watts is equal to volts times amps. So basically the higher the voltage, the fewer amps being drawed. Amps are also the actual current and what decides on the power of the circuit. What I mean by that is, if there's not enough amps, you can't run much, even if the voltage is high. A static shock can have millions of volts passing through you but yet it's not enough to power a light bulb, because there are very little amps. Amps also cause wires to heat up, the more amps, the bigger wires you need since if they are too small they will melt. This explains why power cords for large equipment are thicker, while a small lamp is just a cheap cord that you can cut with a pair of scissors, since one uses more amps but same voltage, and this results in more watts as well. Because of this heat though, there is power loss, so this is why when power is delivered to far distances, it is sent in high voltages, so they can use smaller cabling (cheaper) and there's less loss of energy from heat. So it's more efficient. But just because of what I said about the static electricity, don't think you can go climb one of those poles and get a shock that tickles.
+
+Enough theory, let's get started.
+
+First this is what you will need:
+
+# A multi meter: One that can measure AC amps and AC voltages and should have a high enough rating. These can be purchased at a Radio Shack or similar store for about $100 and are very useful around the house.
+# Crocodile wires or other wires easy to manipulate and plug.
+# An old power cord with both ends open to connect the crocodile clips to it easily. (or equivalent, basically any thing that can easly be plugged and unplugged from the socket)
+# Calculator (everyone has at least one around the house)
+# Safety common sense (this can be hard to find in some households)
+
+Like mentioned earlier, Watts = Volts X Amps. So we need to know how much volts we are giving to the equipment, we know it's near 120 because that's the normal house voltage. But we want to be more exact, so set your meter to measure volts AC and
+
+put both ends in a socket that is on the same circuit as the equipment. For safety purposes, try to find a socket that is easy to access and has plenty of room to move quickly in case something happens. But if you have everything set correctly and don't short it out somehow, you're safe. Just make sure it's set to Volts AC and if your meter has different ranges, set the right range so you don't overload it. But most good meters will auto sense the range for you.
+
+
+
+Because my plug has too many wires near it at the PC, for this picture I'm measuring a different circuit but if your house is wired like mine there should only be 2 main circuits (two separate AC phases) so they should both be near anyway. I get the same reading here and in my room.
+
+The voltage tends to move a bit. In my case it was around 119 and 121 so let's just say 120.
+
+page 2:
+
+
+Testing Wattage consumption of your computer equipment
+Making sure you’re not overloading your UPS or misc power source
+
+Measuring amps is a bit trickier especially with mains power since you don't just shove it anywhere, but you have to break the circuit and put the amp meter in it, and be safe. So the easiest way to do this is by wiring the circuit yourself with the crocodile clips.
+
+So turn off and unplug the device you want to test, in this case a monitor. Connect everything like shown in this picture. The arrows indicate the flow of electricity to make it easier to follow the circuit with all these wires all over. Note that this flow of electricity changes 60 times a second (50 times in some regions, the UK I believe) so this is why AC is different than DC.
+
+
+
+So the white wire is plugged into the mains, and the black is the plug for the monitor. Completely ignore the ground for testing, DO NOT PLUG ANYTHING TO IT! In a permanent setup you would want to ground it, but for testing purposes it's ok to have it ungrounded for a bit, just be careful and if you feel safer ground a crocodile clip and connected to the grounding pin, but be careful since there's more chance of a wire slipping and shorting out. In the picture it's hard to see but the two wires connect to the two pins of the plug, so think of the two pins as the + and - of a device that needs power and the two wires as the + and - of a power source, since this is what it is, but with AC so the + and - order does not matter, but make sure the two wires don't contact each other since that's a short and you can blow the meter.
+
+On the amp meter, the terminals used are the unfused 10A max and the COM. The fuse in the meter has a max of 500mA so it's best not to take a chance at blowing it, when we're measuring this much amps, and chances are you won't measure anything more then 10Amps. Never measure an entire power strip, but each item individually, to make sure of this.
+
+When setting up the wires, make extra sure to unplug the cable that is feeding the power (the white one in this case) Once completed let part of the circuit broken like in thes picture below, plug in the cable then take both wires (the red crocodile clip and black meter cable in this case) and tick them together quickly just to be sure you won't cause some kind of short. Again, this is only to make sure you did not mess anything up such as badly setting the meter, or if some wires are touching somewhere that should not. Then hook them up together solidly and turn on the device you are measuring and you will get a reading. Lot of equipment have transformers and stuff which use up a bit of amps even when turned off, so this is why you will sometimes get a reading even when it's turned off. If you calculate all the devices in your house like this, you may be using a few amps from items just sitting there turned off!
+
+The following pic shows the circuit unplugged and ready to go.
+
+
+
+Take note of the reading and repeat this process for each item. So when done you should have something like this:
+
+House voltage: 120V
+PC full load: 1.2A
+PC without fans, lights and UD: 0.8A
+Monitor: 0.5A
+
+Once you have all the readings, just do Volts times Amps. So...
+
+120V X 1.2A = 144W
+120V X 0.8A = 96W
+120V X 0.5A = 63W
+
+Since the first 2 readings are the same device you can decide on if you just want the average, or the most widely used. In my case I put the most widely used, since it's very rare that I turn off UD (0.2Amps) or the lights. Sometimes I may turn off a set of fans but those don't make a big difference. So I'll stick with 144W.
+
+So now we simply add 144 + 63 which gives us 207 Watts. So now I know that my PC and monitor which are plugged into my UPS use up about 207Watts.
+
+Also note that this is only the base of the concept and because this is AC and not DC, it get's more complicated. Amps are sometimes not in sync with the volts and unless you are using a RMS (root means square) meter, you may get inaccurate results. Some meters don't even tell you if they are RMS or not, so I'm not even sure if the one I used is or not but according to what some say these readings seem about right for the equipment used. Basically, try to not go too near your UPSes max wattage and you should be safe. Some UPSes also don't even tell you how many watts it can handle, but rather VA (volt amps) which are slightly different.
+
+	Danger: The activities in this tutorial were done since I knew what I was doing and was using proper safety measures to avoid accidents. Please realize that this activity, especially with amp readings over 1 can be fatal! Be extremely careful, especially not to close any open circuits with your body as it will make the amps go through you, and possibly kill you! If you have any heart problems, this is even a bigger risk to take and should most likely be done by someone else.
+
+Disclaimer: IceTeks, or myself may not be held responsible for any damage done during the proceeding of this article. This is for informational purposes only and should only be performed by someone who knows what they are doing!

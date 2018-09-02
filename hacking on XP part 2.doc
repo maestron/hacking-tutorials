@@ -1,0 +1,45 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}{\f2\fswiss\fcharset0 Arial;}}
+{\colortbl ;\red0\green0\blue255;\red255\green0\blue0;}
+\viewkind4\uc1\pard\sb100\sa100\b\f0\fs28 How to Telnet with Windows XP\b0\fs24\par
+The queen of hacker commands is telnet. To get Windows help for\line telnet, in the cmd.exe window give the command:\par
+C:\\>telnet /?\par
+Here's what you will get:\par
+telnet [-a][-e escape char][-f log file][-l user][-t term][host\line [port]]\line -a Attempt automatic logon. Same as -l option except uses\line the currently logged on user's name.\line -e Escape character to enter telnet client prompt.\line -f File name for client side logging\line -l Specifies the user name to log in with on the remote system.\line Requires that the remote system support the TELNET ENVIRON\line option.\line -t Specifies terminal type.\line Supported term types are vt100, vt52, ansi and vtnt only.\line host Specifies the hostname or IP address of the remote computer\line to connect to.\par
+port Specifies a port number or service name.\par
+****************\line\cf1 Newbie note: what is a port on a computer? A computer port is sort of like a seaport. It's where things can go in and/or out of a computer. Some ports are easy to understand, like keyboard, monitor, printer and modem. Other ports are virtual, meaning that they are created by software. When that modem port of yours (or LAN or ISDN or DSL) is connected to the Internet, your computer has the ability to open or close any of over 65,000 different virtual ports, and has the ability to connect to any of these on another computer - if it is running that port, and if a firewall doesn?t block it.\cf0\line ****************\line ****************\line\cf1 Newbie note: How do you address a computer over the Internet? There are two ways: by number or by name. \cf0\line ****************\par
+The simplest use of telnet is to log into a remote computer. Give the\line command:\par
+C:/>telnet targetcomputer.com (substituting the name of the computer you want to telnet into for targetcomputer.com)\par
+If this computer is set up to let people log into accounts, you may\line get the message:\par
+login:\par
+Type your user name here, making sure to be exact. You can't swap between lower case and capital letters. For example, user name Guest is not the same as guest.\par
+****************\line\cf1 Newbie note: Lots of people email me asking how to learn what their user name and password are. Stop laughing, darn it, they really do. If you don't know your user name and password, that means whoever runs that computer didn't give you an account and doesn't want you to log on.\cf0\line ****************\par
+Then comes the message:\par
+Password:\par
+Again, be exact in typing in your password.\par
+What if this doesn't work?\par
+Every day people write to me complaining they can't telnet. That is\line usually because they try to telnet into a computer, or a port on a\line computer that is set up to refuse telnet connections. Here's what it\line might look like when a computer refuses a telnet connection:\par
+C:\\ >telnet 10.0.0.3\line Connecting To 10.0.0.3...Could not open connection to the host, on port 23. A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.\par
+Or you might see:\par
+C:\\ >telnet techbroker.com\line Connecting To techbroker.com...Could not open connection to the host, on port 23.\line No connection could be made because the target machine actively\line refused it.\par
+If you just give the telnet command without giving a port number, it\line will automatically try to connect on port 23, which sometimes runs a\line telnet server.\par
+**************\line\cf1 Newbie note: your Windows computer has a telnet client program,\line meaning it will let you telnet out of it. However you have to install\line a telnet server before anyone can telnet into port 23 on your\line computer.\cf0\line *************\par
+If telnet failed to connect, possibly the computer you were trying to\line telnet into was down or just plain no longer in existence. Maybe the\line people who run that computer don't want you to telnet into it.\par
+\b\fs28 How to Telnet into a Shell Account\b0\fs24\par
+Even though you can't telnet into an account inside some computer, often you can get some information back or get that computer to do something interesting for you. Yes, you can get a telnet connection to succeed -without doing anything illegal --against almost any computer, even if you don't have permission to log in. There are many legal things you can do to many randomly chosen computers with telnet. For example:\par
+C:/telnet freeshell.org 22\par
+SSH-1.99-OpenSSH_3.4p1\par
+That tells us the target computer is running an SSH server, which enables encrypted connections between computers. If you want to SSH into an account there, you can get a shell account for free at\line\cf1\ul <http://freeshell.org/>\cf0\ulnone  . You can get a free SSH client program from\line\cf1\ul <http://winfiles.com/>\cf0\ulnone  .\par
+One reason most hackers have shell accounts on Internet servers is because you can meet the real hackers there. When you've logged in, give the command w or who. That gives a list of user names. You can talk to other users with tht talk command. Another fun thing, if your shell account allows it, is to give the command\par
+ps -auxww\par
+It might tell you what commands and processes other users are running. Ask other users what they are doing and they might teach you something. Just be careful not to be a pest!\par
+***************\line\cf2\f1 You can get punched in the nose warning: Your online provider might kick you off for making telnet probes of other computers. The solution is to get a local online provider and make friends with the people who run it, and convince them you are just doing harmless, legal explorations.\cf0\f0\line *************\par
+Sometimes a port is running an interesting program, but a firewall won't let you in. For example, 10.0.0.3, a computer on my local area network, runs an email sending program, (sendmail working together with Postfix, and using Kmail to compose emails). I can use it from an account inside 10.0.0.3 to send emails with headers that hide from where I send things.\par
+If I try to telnet to this email program from outside this computer,\line here's what happens:\par
+C:\\>telnet 10.0.0.3 25\line Connecting To 10.0.0.3...Could not open connection to the host, on\line port 25.\line No connection could be made because the target machine actively\line refused it.\par
+However, if I log into an account on 10.0.0.3 and then telnet from\line inside to port 25, here's what I get:\par
+Last login: Fri Oct 18 13:56:58 2002 from 10.0.0.1\line Have a lot of fun...\line cmeinel@test-box:~> telnet localhost 25\line Trying ::1...\line telnet: connect to address ::1: Connection refused\line Trying 127.0.0.1... [Carolyn's note: 127.0.0.1 is the numerical\line address meaning localhost, the same computer you are logged into]\line Connected to localhost.\line Escape character is '^]'.\line 220 test-box.local ESMTP Postfix\par
+The reason I keep this port 25 hidden behind a firewall is to keep\line people from using it to try to break in or to forge email. Now the\line ubergeniuses reading this will start to make fun of me because no\line Internet address that begins with 10. is reachable from the Internet.\line However, sometimes I place this "test-box" computer online with a\line static Internet address, meaning whenever it is on the Internet, it\line always has the same numerical address. I'm not going to tell you what its Internet address is because I don't want anyone messing with it. I just want to mess with other people's computers with it, muhahaha. That's also why I always keep my Internet address from showing up in the headers of my emails.\par
+***************\line\cf1 Newbie note: What is all this about headers? It's stuff at the\line beginning of an email that may - or may not - tell you a lot about\line where it came from and when. To see full headers, in Outlook click\line view -> full headers. In Eudora, click the "Blah blah blah" icon.\cf0\line ****************\par
+\pard\f2\fs20\par
+}
+ 

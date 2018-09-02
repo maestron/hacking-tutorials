@@ -1,0 +1,42 @@
+Delete An "undeletable" File
+
+Open a Command Prompt window and leave it open.
+Close all open programs.
+Click Start, Run and enter TASKMGR.EXE
+Go to the Processes tab and End Process on Explorer.exe.
+Leave Task Manager open.
+Go back to the Command Prompt window and change to the directory the AVI (or other undeletable file) is located in.
+At the command prompt type DEL <filename> where <filename> is the file you wish to delete.
+Go back to Task Manager, click File, New Task and enter EXPLORER.EXE to restart the GUI shell.
+Close Task Manager.
+
+
+Or you can try this
+
+Open Notepad.exe
+
+Click File>Save As..>
+
+locate the folder where ur undeletable file is
+
+Choose 'All files' from the file type box
+
+click once on the file u wanna delete so its name appears in the 'filename' box
+
+put a " at the start and end of the filename
+(the filename should have the extension of the undeletable file so it will overwrite it)
+
+click save,
+
+It should ask u to overwrite the existing file, choose yes and u can delete it as normal
+
+
+Here's a manual way of doing it. I'll take this off once you put into your first post zain.
+
+1. Start
+2. Run
+3. Type: command
+4. To move into a directory type: cd c:\*** (The stars stand for your folder)
+5. If you cannot access the folder because it has spaces for example Program Files or Kazaa Lite folder you have to do the following. instead of typing in the full folder name only take the first 6 letters then put a ~ and then 1 without spaces. Example: cd c:\progra~1\kazaal~1
+6. Once your in the folder the non-deletable file it in type in dir - a list will come up with everything inside.
+7. Now to delete the file type in del ***.bmp, txt, jpg, avi, etc... And if the file name has spaces you would use the special 1st 6 letters followed by a ~ and a 1 rule. Example: if your file name was bad file.bmp you would type once in the specific folder thorugh command, del badfil~1.bmp and your file should be gone. Make sure to type in the correct extension.

@@ -1,0 +1,31 @@
+First of all you need to know where your Linux OS is installed to. that is what drive it is currently living on. Bear in mind that Linux formats the drive as HFS rather than Fat/Fat32 or NTFS. ( These are the file systems used by various Operating Systems).
+
+So HFS Partitions are not seen by windows, so its hidden.
+
+To remove the partitions of Linux in WindowsXP go to your 'Control panel' > Admistrative Tools > Computer Managment
+
+Open 'Disk Management' and you will see your Linux drives recognised as 'Unknown Partition' plus the status of the drive. Bearing in mind you know what partition and disk you installed to it will be easier to recognise as the drive/partition where you had installed it to.
+
+Once you have identifed the drives, 'right-Click' on the drive/partiton and select 'Delete Logical Drive'
+
+Once you have followed this through, you will now have free space.
+
+This next part is very important. Once you have formatted the drive, re format it as your required file system type. either Fat32 or NTFS. Now the important part is coming up !
+
+Fixing your Master Boot Record to make Windows Bootable again.
+
+Have a Windows Boot disk with all the basic DOS Commands loaded on to the disk. A standard Windows 98/Me Boot Disk will work too.
+
+Type in the DOS command :
+
+e.g, from your C:\
+
+fdisk /mbr
+
+Or use your Windows XP run the recovery console, pick which xp install you would like to boot in to (usually you will pick #1)
+
+then type: fixmbr. Answer Y to the dialoge.
+
+Your master boot record will now be restored and Windows XP will be bootable once again. Your System will be restored with your original boot loader that you got with Windows XP.
+
+	

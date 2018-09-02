@@ -1,0 +1,37 @@
+Installing Iis On Windows Xp Pro
+
+If you are running Windows XP Professional on your computer you can install Microsoft's web server, Internet Information Server 5.1 (IIS) for free from the Windows XP Pro installation CD and configure it to run on your system by following the instructions below: -
+
+1. Place the Windows XP Professional CD-Rom into your CD-Rom Drive.
+
+2. Open 'Add/Remove Windows Components' found in 'Add/Remove Programs' in the 'Control Panel'.
+
+3. Place a tick in the check box for 'Internet Information Services (IIS)' leaving all the default installation settings intact.
+
+4. Once IIS is installed on your machine you can view your home page in a web browser by typing 'http://localhost' (you can substitute 'localhost' for the name of your computer) into the address bar of your web browser. If you have not placed your web site into the default directory you should now be looking at the IIS documentation.
+
+5. If you are not sure of the name of your computer right-click on the 'My Computer' icon on your desktop, select 'Properties' from the shortcut menu, and click on the 'Computer Name' tab.
+
+6. Your default web directory to place your web site in is 'C:\Inetpub\wwwroot', but if you don't want to over write the IIS documentation found in this directory you can set up your own virtual directory through the 'Internet Information Services' console.
+
+7. The 'Internet Information Services' console can be found in the 'Administration Tools' in the 'Control Panel' under 'Performance and Maintenance', if you do not have the control panel in Classic View.
+
+
+8. Double-click on the 'Internet Information Services' icon.
+
+
+8. Once the 'Internet Information Services' console is open you will see any IIS web services you have running on your machine including the SMTP server and FTP server, if you chose to install them with IIS.
+
+9. To add a new virtual directory right click on 'Default Web Site' and select 'New', followed by 'Virtual Directory', from the drop down list.
+
+
+
+7. Next you will see the 'Virtual Directory Creation Wizard' from the first screen click the 'next' button.
+
+9. You will then be asked to type in an 'Alias' by which you will access the virtual directory from your web browser (this is the name you will type into your web browser after 'localhost' to view any web pages you place in the directory).
+
+10. Next you will see a 'Browse...' button, click on this to select the directory your web site pages are in on your computer, after which click on the 'next' button to continue.
+
+11. On the final part of the wizard you will see a series of boxes, if you are not worried about security then select them all, if you are and want to run ASP scripts then check the first two, followed by the 'next' button.
+
+12. Once the virtual directory is created you can view the web pages in the folder by typing 'http://localhost/aliasName' (where 'aliasName' is, place the alias you called the virtual directory) into the address bar of your web browser (you can substitute 'localhost' for the name of your computer if you wish).

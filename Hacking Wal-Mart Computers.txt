@@ -1,0 +1,93 @@
+			HACKING THE WAL-MART ARMORGUARD    by:BenH(DaRkNeSs)
+			COMPUTER PROTECTION SYSTEM.
+
+	***NOTE***
+	To use this, you must have a system disk (i.e. a disk that has been
+formatted using [format a: /s]) in 3.5" format under Windows 95, because that
+is what they sell all of their computers with.
+
+	***NOTE***
+	In this file, instructions to be input into the computer are surrounded
+by [ and ].  Keys are surrounded by < and >.  So if I say "hit [<CTRL>-<F1>] I
+mean to hold down the control button and hit F1.
+
+	The armorguard is a program that prevents you from writing to the
+directories, changing the attributes of files, and deleting files.  It 
+basically prevents you from doing anything cool.
+
+	The first thing to do is to go into Wal-Mart.  Now, go to the 
+computer section and turn off the screen saver.  Shut down as many apps as
+you can with the [<CTRL>-<ALT>-<DEL>] and then choosing a program and 
+hitting enter.  You cannot simply do this to the ArmorGuard program.  
+
+	The next thing to do is to go to the DOS PROMPT.  Most Wal-Marts
+take the mouse ball out of all of the display mice to make it harder to 
+control the system.  If you are adept at putting your finger inside the mouse
+and controlling it that way, fine.  Otherwise, just hit [<CTRL>-<ALT>-<ESC>].
+This activates the start menu.  Select "Programs", hit enter, then go down to 
+near the bottom of the "Programs" menu and select "MS-DOS PROMPT".  Hit enter.
+
+	Now you are in a DOS window and in the C:\Windows directory.  Hit
+[cd..] and then hit [fdisk /mbr], which restores the master boot record, 
+preventing the password prompt from coming up when you reset the computer.
+
+	Now just hit [<CTRL>-<ALT>-<DEL>] twice (once gets you to task manager,
+twice reboots) and wait.  When you see
+
+Starting Windows 95...
+	
+	on the screen, hit [<F8>] really fast just once, then choose "Verify
+each step" (or something to that effect), usually choice number 4.  It will 
+give you an A: prompt and say "Please give the path of your command interpreter, 
+i.e. C:\WINDOWS\COMMAND.COM".  At this point, put the system disk you have 
+made in the drive and hit [A:\COMMAND.COM].  Say "Yes" to everything except
+the following:
+
+	Log this bootup? (Bootlog.txt)? (y/n)
+	C:\armguard.exe? (y/n)
+		(***OR ANYTHING ELSE STARTING WITH "C:\ARM", LIKE "C:\ARMOR",
+			for instance.)
+
+	If you have done this right, ARMGUARD SHOULDN'T COME UP AT ALL.  If
+it does, hit "command prompt only" instead of "Verify each step" and then
+specify C:\AUTOEXEC.BAT and C:\CONFIG.SYS if it asks for the configuration
+and the startup file.  (IN THE OPPOSITE ORDER.  CONFIG.SYS IS THE CONFIG FILE,
+AUTOEXEC.BAT IS THE STARTUP FILE.)  Then immediately hit [<F4>] and it will
+give you step-by-step confirmation for each item.  See above for the ones
+to say no to.  Then you want to hit 
+
+[C:\WINDOWS\COMMAND\EDIT.COM C:\WINDOWS\WIN.INI]
+
+and the DOS edit program will come up.  Choose "Search" and hit "Find" and 
+then tell it to find ARM and make sure it's NOT on match whole word only.
+Delete any line with ARM in it that looks like a part of ArmorGuard.  This 
+should prevent it from coming up on Windows.
+
+*******IF NONE OF THIS WORKS, YOU HAVE TO TAKE THE READ-ONLY AND ARCHIVE
+ATTRIBUTES OFF OF THE WIN.INI, SYSTEM.INI, AUTOEXEC.BAT, AND CONFIG.SYS FILES
+BY HITTING [ATTRIB -A -R (c:\WHATEVERFILE.YOUWANTTODOTHISTO)]
+
+*******I'D ALSO RECOMMEND EDITING THE AUTOEXEC.BAT FILE TO PREVENT ARMGUARD
+FROM EVER COMING UP AGAIN.
+
+	****************THINGS TO DO AFTER HACKING ARMORGUARD***********
+
+Hmmm....
+USE YOUR IMAGINATION!
+
+Think of this:  Hit "shut down in MS-DOS mode" or start up in MS-DOS mode,
+put your boot disk in drive a: and hit the following commands
+
+[A:]
+[FORMAT C:]
+
+and then confirm this.  You have just started the permanent erasing of 
+EVERYTHING on the hard drive.  You can also do some other cool stuff with 
+it too, just basically IF YOU WOULD DO IT TO SOMEONE YOU HATE, DO IT TO
+WAL-MART.  Personally, I'd think that INSTEAD OF ERASING THE HARD DRIVE, I'D
+WRITE A VIRUS AND PUT IT ON THE COMPUTER.  THAT WOULD REALLY BE MORE FUN. 
+JUST STORE IT ON A FLOPPY AND COPY IT.  
+
+				HAVE FUN, DON'T GET CAUGHT.
+				SINCERELY, 
+				DaRkNeSs

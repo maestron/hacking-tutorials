@@ -1,0 +1,11 @@
+So one of your friends, “not you of course”, has managed to nuke Internet Explorer and they are unsure how they did it. You’ve eliminated the possibility of viruses and adware, so this just leaves you and a broken IE. Before you begin to even consider running a repair install of the OS, let’s try to do a repair on IE instead.
+
+THE REPAIR PROCESS
+
+Start the Registry Editor by typing regedit from the Run box. Go to HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft \ Active Setup \ Installed Components \ {89820200-ECBD-11cf-8B85-00AA005B4383} and then right-click the “IsInstalled value.” Click Modify. From there, you will change the value from 1 to 0. All right, go ahead and close the editor and reinstall IE from this location. /http://www.microsoft.com/windows/ie/default.mspx
+
+IF SOMETHING GOES WRONG
+
+If messing with the registry and something goes horribly wrong, you can use “Last Known Good Configuration (F8 Safe Mode)” or a Restore Point to get back to where you were before, with your settings. Then you can try again, this time taking care to watch the portion of the registry you are changing. Most people who have troubles with this end up changing the wrong registry key.
+
+Hope this tut helps some members.

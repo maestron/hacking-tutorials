@@ -1,0 +1,56 @@
+What Should I Do With Image Files?
+
+What Should I Do With Image Files?
+
+A Tutorial by pr0wn3r:
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. What's a image file?
+(>) A image file is a CD/DVD, but instead of insert it into your CD/DVD-Rom, you open it from inside your Hard Disk. So, it's a file that replaces a normal CD/DVD. Inside the image are the CD/DVD files like if it were a CD/DVD.
+
+2. What are the image files extensions?
+(>) There's many extensions, but the most common are:
+(>) iSO (Generic image file)
+(>) BiN/CUE (Generic BiN image file)
+(>) NRG (An image created using Nero Burning ROM)
+(>) iMG/CCD/SUB (An image created using CloneCD)
+(>) MDF (An image created using MagicISO Maker)
+
+There are many other images, but these are the most common.
+
+3. How to open a image file?
+(>) The most common way to open image files, is to use a virtual CD/DVD-Rom. It's like a normal CD/DVD-Rom, only that you mount the images directly from your computer, installing a simple program.
+
+4. What program should i use to create images files?
+(>) Usually a CD/DVD Burning software has that option, but personally i use UltraISO. It allow me to create an ISO, BiN/CUE, NRG and iMG/CCD/SUB image file.
+
+5. What program should i use to mount the images?
+(>) Daemon-Tools is the most powerful one to use, and the most simple too.
+
+6. How to burn a image file?
+(>) Some image files must be burned using a certain software in order to work fine, but usually a common CD/DVD burning software works fine. I use Nero Burning ROM to burn my images.
+
+7. How to work with Daemon-Tools?
+(>) 1. Install the software into your Hard Drive. After installing reboot (or not) your PC.
+(>) 2. After 1. , open Daemon-Tools. It will appear in your startup bar.
+(>) 3. Right click on it, go to Virtual CD/DVD-ROM » Set number of devices » 2 Drives. If you want to use more drives you can set it on. I personally use 2. It's your decision.
+(>) 4. Right click on it, go to Virtual CD/DVD-ROM » Device x: [X:](....). Here you will mount your image. Just choose the image to open it (x means Device 1 or 2, etc.)([X:] the letter of your device).
+(>) 5. Done, now your image is working like a CD.
+
+8. How to burn with Nero Burning ROM?
+(>) 1. Install Nero Burning ROM.
+(>) 2. Open it, choose what is the storage type you gonna use to burn the image, or is a CD or a DVD.
+(>) 3. Go to Copy and Backup » Burn Image to Disc.
+(>) 4. Choose the image you want to burn.
+(>) 5. Done, let it burn baby!
+
+FiNAL NOTES:
+(>) If you want to burn a BiN with Nero Burning ROM, you will have to have the CUE file. When you are going to open the image, if it's BiN, you open the CUE file. If you don't have the CUE and you don't want to download it, it's simple:
+1. Open Daemon-Tools.
+2. Mount your BiN file.
+3. Open Nero Burning ROM.
+4. Open it, choose what is the storage type you gonna use to burn the image, or is a CD or a DVD.
+5. Go to Data » Make Data CD.
+6. Now open the image you mounted through your virtual drive. Select all files, and drag the files into Nero Burning ROM window that is opened.
+7. Done, let it burn.
+

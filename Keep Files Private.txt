@@ -1,0 +1,7 @@
+Keep Files Private
+
+If you want to encrypt the contents of an individual file or directory, Windows XP Pro will do the trick, provided you enable NTFS on your hard drive. To encrypt a file, right-click on it to bring up the Properties window. Click on the Advanced button, then in the Advanced Attributes dialog box click on Encrypt contents to secure data. This will encrypt the file (using either DES, which employs a 56-bit key on each 64-bit block of data, or 3DES, which uses a 56-bit key three times on each 64-bit block of data), and it will provide a certificate just for you. This certificate is key; if you reinstall Windows or otherwise lose your user account, your access to the encrypted files will be gone, too. You need to export your certificates to back them up: For detailed instructions, search on export certificate in Windows Help.
+
+Windows XP does not require you to enter your password when you open the encrypted file. Once you log on to a session, encrypted files are available for you—and anyone who walks up to your system—to view.
+
+Windows XP Home doesn't support this method. Both XP Home and XP Pro, however, let you create password-protected compressed files. To do this, right-click on the desired file and choose Send To | Compressed (zipped) Folder. Open the resulting folder and select Add a Password from the File menu; delete the original file. Note that this encryption is relatively weak. It should dissuade casual users but won't put up much of a fight against someone determined to hack it apart.

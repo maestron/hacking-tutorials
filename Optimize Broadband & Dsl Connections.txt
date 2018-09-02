@@ -1,0 +1,36 @@
+These settings allow you to boost the speed of your broadband Internet connection when using a Cable Modem or DSL Router with Windows 2000 and Windows XP.
+
+Open your registry and find the key below.
+
+Create the following DWORD values, as most of these values will not already exist you will need to create them by clicking on 'Edit -> New -> DWORD Value' and then set the value as shown below.
+
+DefaultTTL = "80" hex (or 128 decimal)
+Specifies the default time to live (TTL) for TCP/IP packets. The default is 32.
+
+EnablePMTUBHDetect = "0"
+Specifies whether the stack will attempt to detect Maximum Transmission Unit (MTU) routers that do not send back ICMP fragmentation-needed messages. The default is 0.
+
+EnablePMTUDiscovery = "1"
+Specifies whether the TCP/IP stack will attempt to perform path MTU discovery as specified in RFC 1191. The default is 1.
+
+GlobalMaxTcpWindowSize = "7FFF" hex (or 32767 decimal)
+Specifies the system maximum receive window size advertised by the TCP/IP stack.
+
+TcpMaxDupAcks = "2"
+Determines the number of duplicate ACKs that must be received for the same sequence number of sent data before "fast retransmit" is triggered.
+
+SackOpts = "1"
+Enables support for selective acknowledgements as documented by Request for Comment (RFC) 2018. Default is 0.
+
+Tcp1323Opts = "1"
+Controls RFC 1323 time stamps and window scaling options. Possible values are: "0" = disable RFC 1323 options, "1" = window scale enabled only, "2" = time stamps enabled only and "3" = both options enabled.
+
+TcpWindowSize = "7FFF" hex (or 32767 decimal)
+Specifies the receive window size advertised by the TCP/IP stack. If you have a latent network you can try increasing the value to 93440, 186880, or 372300.
+
+Exit your registry and restart Windows for the changes to take effect.
+
+If you don’t want to edit the registry, here's a little TCP utility that is ideal...
+
+
+http://www.broadbandreports.com/front/doctorping.zip

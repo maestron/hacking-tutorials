@@ -1,0 +1,11 @@
+Mozilla Firefox, Speed it up!
+
+Speed up Mozilla FireFox
+
+--------------------------------------------------------------------------------
+
+1. Type "about :config" in the adress field.
+2. Set the value of network.http.pipelining to "true".
+3. Set the value of network.http.pipelining.maxrequests to "100".
+4. Set the value of network.http.proxy.pipelining to "true"
+5. Set the value of nglayout.initialpaint.delay to "0" (not availible in newer versions) 

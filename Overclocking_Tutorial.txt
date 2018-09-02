@@ -1,0 +1,154 @@
+Overclocking_Tutorial
+
+Overclocking takes on 3 forms:
+First, is the casual overclocking, easy, and anyone can do it.
+Second, is the right way to overclock, taking into account, everything.
+Third, if you want serious power, your gonna need to be savy to what does what.
+
+The casual overclocker gains about 5% increase, and really doesn't see any benefit from this, whilst it makes you feel good, no serious damage can be made, by upping the FSB a little, or changing your multiplier, only thing is, you want more.
+
+The correct way to overclock, is to start looking at your system, check the motherboard specs, PSU, amount of harddrives, CD ROMS etc. (high end systems, including the lastest graphic cards will need serious power).
+
+Lets take a base system like my old system setup:
+
+AMD XP1700+ ( Thoroughbred JIUHB DLT3C )
+Core Voltage = 1.50v
+Maximum Die Temp = 90c
+FSB = 266Mhz
+(factory unlocked)
+
+Jetway K266B KT266 chipset
+DDR + SDR RAM (not together)
+No onboard RAID
+
+DDR RAM = Dane Elec PC2700 DDR (333Mhz)
+Not registered
+
+2 Hard drvies
+1 CD Writer & 1 DVD ROM drive
+
+2 LAN cards
+
+1 PCI soundcard
+(onboard sound turned off).
+
+Now, lets look at what they can do:
+The Thoroughbred is still the top processor for overclocking, Thunderbirds are just not upto it, even though they are capable of some really decent speeds, same as the Palamino, not to mention the Barton's (these are not what they have been made up to be).
+(for the purpose of space, I'll not go into unlocking your CPU)
+
+As you can see, my Thoroughbred has a core voltage of 1.5v, and as my motherboard is capable of giving my processor anything upto 1.85v, there is score for more there.
+The FSB on my motherboard is capable of a max of 200Mhz (this is the magic number).
+Die temps to a max of 90c is good (never been near it, yet!).
+
+Now, to work out your Mhz on your system, or to check your multiplier or FSB, there is a little calculation you'll need to remember, and it's easy:
+
+Your Mhz is worked out by your multiplier timed your FSB.
+example:
+
+CODE
+133x10 = 1.33Ghz
+
+
+Of course you can devide your Mhz with your known FSB to give you your multiplier etc.
+
+Now for easy, I have the results of my previous unlocking tests handy, so I'll use them, and not the current speeds etc.
+
+Standard Multiplier = 11.0
+Overclocked Multiplier = 12.0
+
+Standard Voltage = 1.50v
+Overclocked Voltage = 1.52v
+
+Standard FSB = 133Mhz
+Overclocked FSB = 136Mhz
+
+Standard Speed = 1467Mhz
+Overclocked Speed = 1630Mhz
+
+Standard Temps = CPU = 37c SYSTEM = 32c (idle) CPU = 44c SYSTEM = 36c (under load)
+Overclocked Temps = CPU = 34c SYSTEM = 29c (idle) CPU 40c SYSTEM 34c (under load)
+
+As you can see, the system is cooler when overclocked, this is due to having the correct cooling setup, and temps for it when it was standard, was standard cooling setup.
+
+Basically, all I have done, is raised the FSB by 3mhz, the voltage by 0.02v and the multiplier by 1.0, this has given me a 163Mhz increase without over strssing my system, but, here is where it gets teadious:
+
+To achieve this, it took me about a week, and this is how I did it:
+I started by lowering the multiplier to 5.0, from there I raised the FSB to its max (at the time, have latest BIOS update for mobo, allowing 200Mhz FSB), 166Mhz, this is the correct way of overclocking.
+From there, I started to raise the multiplier one by one, getting it back upto the standard multiplier or higher, checking the stability of the system each time.
+(currently I am way passed the 136Mhz FSB, as I am running PC2700 DDR).
+
+One thing to look at though, overclocking using the FSB WILL (unless your system allows you to specify it) mess with your PCI & RAM speeds.
+Even raising it by 3Mhz can make your PCI cards to not work, and your RAM to get confused and crash your system.
+
+Now your thinking to yourself 'I can do that' and yes you can, anyone can, but.......
+It takes TIME, I can't stress that enough, if your going to try this, then you'll need to run your system for at least 6 hours between changing your multiplier, and as you can imagine, this can take a long time to do.
+
+For your information, I used Hot CPU Tester, SETI & played Vietcong for testing purposes.
+
+Now, for the hard part:
+
+As most experienced overclockers will tell you, heat is your enemy, killing heat is your number 1 aim, don't worry about your speed at first, a 50Mhz increasde isn't gonna make your 3D Mark scream through the roof, actually, you'll probably not even get any better than what you did before.
+
+There are several ways of dispersing heat, and they are:
+
+Aircooling
+Pro's: Cheap, effective at lower speeds.
+Con's: Noisey, dust collectors, need maintanance.
+
+Watercooling:
+Pro's: Can lower your CPU by about 10c easily.
+Con's: It has water in it, expensive, hard for some to understand.
+
+Pelter:
+Pro's: With watercooling, it's the daddy
+Con's: ONLY EXPERIENCED PEOPLE NEED TO APPLY, very complicated, power hungry, NOT for the faint hearted. Stupidly expensive.
+
+Aircooling:
+Upgrading your CPU fan is the first step, there are several companies that offer aftermarket fans, which are better than the OEM fans are 2 a penny in todays world, but it's NOT just about your CPU fan, your system needs to breath, you need to get rid of 'hot spots' within your system.
+
+Watercooling:
+Its easier than most make out, its a good thing, kit prices can be got from about £120 ($200 US), just make sure they are upgradable, as you might want to add, a Northbridge water block & a GPU water block.
+Modern day kits & parts are idiot proof, and will not leak, unless you act like Noah.
+
+Pelter:
+Pelter cooling is DANGEROUS, minly for your system, fitting it incorrectly, and you could end up with not only a baked CPU but a system that will end up as a very expensive paperweight.
+Ask your local overclocking expert for more info.
+
+
+Basically, if you can get hold of a decent Thoroughbred cored XP, your in luck (just like me), if its unlocked, then your in business, obviously, its not just down to your CPU, your motherboard and RAM will denote whether you can overclock big style or not.
+I'd advise ANYONE thinking of overclocking, to research into it more, weigh up the odds on what they want or need, if your on a buget, DON'T attempt it, things can and do go wrong.
+Most of the time, its not about 'mines faster than yours' or massive speed increases, its done by most, cause it can be. 90% of the time, you'd be better off buying a new CPU (as prices are so low), but if you get the urge, then a new world awaits you
+
+great tutorial. this should help the OC noobs. If I can add something like you said know your specs of the mobo....and if you are serious about OC'ing dont go and get some generic NO-NAME ram and some ghetto mobo. to get the best stability go with ASUS and ABIT for the mobo and Crucial, Kingston, mushkin for the ram. A great forum for OC'ing is amdmb.com.
+
+
+Indeed, if you are serious about your overclocking, its advised you only use serious brand names.
+Generic parts are always a lower spec, and can easily destroy themselves with even a little stress aimed towards them.
+
+Memory advice, use the folloing:
+
+Kingston (added because of reviews, personally, I'm not sure about them).
+Crucial (for Dual Channel DDR ONLY)
+OCZ
+Mushkin
+Corsair
+PNY (for EEC rated)
+Samsung
+Geil (my choice, when I can afford it)
+
+Motherbord advice, use the following:
+
+Asus A7N8X Deluxe nForce2
+Asus A7N8X-VM nForce2
+Asus A7N8X-X nForce2
+Abit KD7-S KT400
+Abit KV7 KT600
+Abit NF7 v2.0 nForce2
+Abit NF7-S v2.0 nForce2
+MSI K7N2 Delta-L Nforce2
+MSI KT6 Delta-LSR KT600
+Epox 8RDA+ nForce2
+Epox 8RGA+ nForce2
+
+Any nForce2 motherboard would be best, they allow more score for overclocking your system.
+_________________

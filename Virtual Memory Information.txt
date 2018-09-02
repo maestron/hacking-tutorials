@@ -1,0 +1,80 @@
+ Tutorial Objective
+
+This tutorial talks about anything about the virtual memory and how much virtual memory you need for your system.
+
+
+Tutorial Introduction & Background
+
+Today application is getting bigger and bigger. Therefore, it requires a bigger system memory in order for the system to hold the application data, instruction, and thread and to load it. The system needs to copy the application data from the HDD into the system memory in order for it to process and execute the data. Once the memory gets filled up with data, the system will stop loading the program. In this case, users need to add more memory onto their system to support that intense application. However, adding more system memory costs the money and the normal user only needs to run the the intense application that requires the memory only for one or two days. Therefore, virtual memory is introduced to solve that type of problem.
+
+
+Terminology & Explanation
+
+There are two types of memory, which are as follows:
+
+* System Memory is a memory that is used to store the application data and instruction in order for the system to process and execute that application data and instruction. When you install the memory sticks to increase the system RAM, you are adding more system memory. System Memory can be known as either the physical memory or the main memory.
+
+* Virtual Memory is a memory that uses a portion of HDD space as the memory to store the application data and instruction that the system deemed it doesn't need to process for now. Virtual Memory can be known as the logical memory, and it controls by the Operating System, which is Microsoft Windows. Adding the Virtual Memory can be done in system configuration.
+
+
+Tutorial Information & Facts or Implementation
+
+Virtual Memory is a HDD space that uses some portion of it as the memory. It is used to store application data and instruction that is currently not needed to be process by the system.
+
+During the program loading process, the system will copy the application data and its instruction from the HDD into the main memory (system memory). Therefore the system can use its resources such as CPU to process and execute it. Once the system memory gets filled up, the system will start moving some of the data and instruction that don't need to process anymore into the Virtual Memory until those data and instruction need to process again. So the system can call the next application data and instruction and copy it into the main memory in order for the system to process the rest and load the program. When the data and instruction that is in the Virtual Memory needs to process again, the system will first check the main memory for its space. If there is space, it will simply swap those into the main memory. If there are not any space left for the main memory, the system will first check the main memory and move any data and instructions that doesn't need to be process into the Virtual Memory. And then swap the data and instruction that need to be process by the system from the Virtual Memory into the main memory.
+
+Having too low of Virtual Memory size or large Virtual Memory size (meaning the size that is above double of the system memory) is not a good idea. If you set the Virtual Memory too low, then the OS will keep issuing an error message that states either Not enough memory or Virtual too low. This is because some portion of the system memory are used to store the OS Kernel, and it requires to be remain in the main memory all the time. Therefore the system needs to have a space to store the not currently needed process data and instruction when the main memory get filled up. If you set the Virtual Memory size too large to support the intensive application, it is also not a good idea. Because it will create the performance lagging, and even it will take the HDD free space. The system needs to transfer the application data and instruction back and forth between the Virtual Memory and the System Memory. Therefore, that is not a good idea. The ideal size for the Virtual Memory is the default size of Virtual Memory, and it should not be exceed the value of the triple size of system memory.
+
+To determine how much virtual memory you need, since the user's system contains the different amount of RAM, it is based on the system. By default, the OS will set the appropriate size for Virtual Memory. The default and appropriate size of Virtual Memory is:
+
+CODE
+<Amount_Of_System_Memory> * 1.5 = <Default_Appropriate_Size_Of_Virtual Memory>
+.
+
+For example, if your system contains 256 MB of RAM, you should set 384 MB for Virtual Memory.
+
+CODE
+256 MB of RAM (Main Memory) * 1.5 = 384 MB for Virtual Memory
+
+
+If you would like to determine how much the Virtual Memory is for your system and/or would like to configure and add more virtual memory, follow the procedure that is shown below. The following procedure is based on windows XP Professional.
+
+1-1) Go to right-click My Computer and choose Properties
+
+1-2) In the System Properties dialog box, go to Advanced tab
+
+1-3) Click Settings button that is from the Performance frame
+
+1-4) Once the Performance Options shows up on the screen, go to Advanced tab
+
+1-5) Under the Advanced tab, click the Change button from the Virtual Memory frame to access to the Virtual Memory setting
+
+Then the Virtual Memory dialog box appears on the screen. In there, you are able to check how much the Virtual Memory you set. If you would like to modify the size of Virtual Memory, follow the procedure that is shown below.
+
+2-1) In there, select the drive letter that is used to install the Operating System
+
+2-2) Choose the option that says, "Custom Size:"
+
+Once you choose that option, the setting for Initial Size and Maximum Size become available for you to set. Initial Size (MB) means the actual size of Virtual Memory, and Maximum Size (MB) means the maximum size of Virtual Memory that is allowed to use.
+
+Let's say if your system contains 512 MB of RAM, then the ideal setting for the Virtual Memory is as follows:
+
+CODE
+
+Initial Size (MB):  768
+Maximum Size (MB):  1500
+
+
+Once you are happy with that Virtual Memory size, click the Set button from Paging file size for selected drive to apply the setting for the Virtual Memory size. Then click the OK button to apply the setting.
+
+That's where you can manage and configure for the size of Virtual Memory.
+
+
+Additional Information
+
+* To maintain the good overall system performance, you should be using the default size of actual size for Virtual Memory and the triple the value of the size of the main memory for the maximum size of Virtual Memory. If you find that main memory plus virtual memory is not big enough to load the intensive application, then you will need to add more main memory onto your system.
+
+
+Search Keyword
+
+virtual memory 

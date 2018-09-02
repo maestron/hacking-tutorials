@@ -1,0 +1,395 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+
+<html>
+<head>
+      <title>Wardriving</title>
+<style type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+
+<center><table BORDER=0 CELLSPACING=2 CELLPADDING=2 WIDTH="308" >
+<caption><TBODY>
+<br></TBODY></caption>
+
+<tr>
+<td>
+<pre><font color="#FF0000">.</font><font color="#000000">########</font><font color="#FF0000">...</font>######<font color="#FF0000">..</font>########<font color="#FF0000">..</font>########
+<font color="#FF0000">.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">.......</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......
+.</font>########<font color="#FF0000">...</font>######<font color="#FF0000">..</font>########<font color="#FF0000">..</font>######<font color="#FF0000">..
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.......</font>##<font color="#FF0000">.</font>##<font color="#FF0000">...</font>##<font color="#FF0000">...</font>##<font color="#FF0000">......
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">..</font>##<font color="#FF0000">......
+.</font>########<font color="#FF0000">...</font>######<font color="#FF0000">..</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......</font></pre>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><a href="http://blacksun.box.sk/" target="_blank">http://blacksun.box.sk/</a><br>
+<a href="http://uc.zemos.net/">Unix Clan</a>
+
+<br>Lecturer: <a href="mailto:simprix@simprix.net">simprix</a>
+<br>Converter: <a href="mailto:DKsk8er166@hotmail.com">DKsk8</a>
+<br>Lecture: Wardriving</center>
+
+<p><br>
+<br>
+<br>
+<br>
+<p>&lt;Forbze>	lol
+<br><b>&lt;simprix>	ok im back</b>
+<br>&lt;AZTEK>	well now loging works
+<br>&lt;AZTEK>	i am loging simprix
+<br><b>&lt;simprix>	ok</b>
+<br><b>&lt;simprix>	anyone can butt in if they want or if i say something wrong</b>
+<br><b>&lt;simprix>	ok</b>
+<br><b>&lt;simprix>	everyone here</b>
+<br>&lt;miteymous>	;]
+<br>&lt;Strider>	ya
+<br><b>&lt;simprix>	ok girls and boys</b>
+<br><b>&lt;simprix>	Ok this will be centralized around linux because I have never done this in Windows and Windows sucks</b>
+<br>&lt;miteymous>	oki
+<br><b>&lt;simprix>	one thing i do know if you want to do this in windows then you need to use netstumpler</b>
+<br>&lt;miteymous>	or ApSniff
+<br>&lt;miteymous>	from a website i am lookin at :/
+<br><b>&lt;simprix>	Ok first off in linux you need to recompile your kernel with netlink and get rid of pcmcia support in the kernel</b>
+<br><b>&lt;simprix>	then you have to get the pcmcia source for pcmcia-cd.sourceforge.net</b>
+<br><b>&lt;simprix>	there are to ways you can do it now</b>
+<br><b>&lt;simprix>	you can use the wireless extensions in the kernel but you need a good card like a cisco aironet card</b>
+<br><b>&lt;simprix>	but the wireless extensions does not have as good sniffing techniques as the linux-wlan source</b>
+<br><b>&lt;simprix>	so they way i have done it is using the linux-wlan-ng source</b>
+<br><b>&lt;simprix>	you can get that from www.linux-wlan.org and you need to compile that</b>
+<br><b>&lt;simprix>	any questions so far?</b>
+<br><b>&lt;simprix>	or is no one listening</b>
+<br>&lt;Strider>	nope
+<br>&lt;miteymous>	is there info on editing the kernel?
+<br><b>&lt;simprix>	have you recompiled a kernel before?</b>
+<br>&lt;Strider>	miteymouse, wheres that site with ApSniff?
+<br>&lt;miteymous>	no im new sorry :(
+<br>&lt;miteymous>	strider: www.wardriving.com
+<br>&lt;Paranoiac>	What he/she/it said^
+<br>&lt;Strider>	thnx
+<br><b>&lt;simprix>	ok well you should read the howto </b>
+<br>&lt;miteymous>	i plan on it :P
+<br><b>&lt;simprix>	ok once you have compiled all that stuff your almost ready to get started</b>
+<br>&lt;Paranoiac>	Could you just explain what it is that those modifications do?
+<br>&lt;Paranoiac>	Or is it too lenghty to explain now.
+<br><b>&lt;simprix>	oh yea the linux-wlan stuff only works with the prism2 chipset, which are cards like linksys, dlink, netgear, zoom alot of consumer cards</b>
+<br><b>&lt;simprix>	what motifications</b>
+<br>&lt;Paranoiac>	The recompilations
+<br><b>&lt;simprix>	they are pretty much drivers for the cards</b>
+<br><b>&lt;simprix>	i prefer the zoom wireless cards</b>
+<br>&lt;Paranoiac>	Ah, ty
+<br><b>&lt;simprix>	ok does everyone in here know what snmp is</b>
+<br>&lt;Forbze>	any aussies here>?
+<br>&lt;Forbze>	SNMP
+<br><font color="red">*	Paranoiac does not....is a know-nothing-newb</font>
+<br><b>&lt;simprix>	well the linux-wlan binaries are alot like using snmp</b>
+<br><b>&lt;simprix>	like to specify the ssid</b>
+<br><b>&lt;simprix>	a ssid is kinda like a network id </b>
+<br><b>&lt;simprix>	say one access point is on ssid: ap01 </b>
+<br><b>&lt;simprix>	and one access point is on ssid: ap02</b>
+<br><font color="red">---	BaGeL[CS] is now known as BaGeL</font>
+<br><b>&lt;simprix>	and you want to attach to ap01 then you would use the ssid of ap01</b>
+<br><b>&lt;simprix>	it is two specify wireless networks</b>
+<br><b>&lt;simprix>	everyone with me?</b>
+<br><b>&lt;simprix>	and questions?</b>
+<br>&lt;Forbze>	SNMP - Simple Network Managment Protocol
+<br><b>&lt;simprix>	ep</b>
+<br><b>&lt;simprix>	yep</b>
+<br>&lt;Paranoiac>	Ah
+<br>&lt;Forbze>	http://www.rad.com/networks/1995/snmp/snmp.htm
+<br>&lt;Paranoiac>	Ty
+<br><b>&lt;simprix>	ok but if you are not familer with snmp and using mibs, you could use a program my friend wrote called wlanfe you can get it from se.rious.net or freshmeat.net</b>
+<br><font color="red">-->	r (trashmail@172.166.185.154) has joined #bsrf</font>
+<br><b>&lt;simprix>	ok now you are ready to go wardriving </b>
+<br><font color="red">-->	Sheik (sheik001@65.58.40.148) has joined #bsrf</font>
+<br><b>&lt;simprix>	i am warning, make sure you are with someone else and make them drive</b>
+<br>&lt;Paranoiac>	Hehe
+<br><b>&lt;simprix>	it is really hard to drive and look at your computer at the same time trust me</b>
+<br>&lt;Forbze>	wtf?
+<br>&lt;Forbze>	drive?
+<br>&lt;Forbze>	and computer
+<br>&lt;Strider>	heh
+<br><b>&lt;simprix>	yes</b>
+<br><b>&lt;simprix>	also you should get some programs before you go </b>
+<br>&lt;miteymous>	so you basically can just use someone elses wireless network?
+<br><b>&lt;simprix>	these programs are kismet, airsnort, scanchan, arpping</b>
+<br><b>&lt;simprix>	yes miteymous</b>
+<br>&lt;miteymous>	like...hijack it...an invisible parasite?
+<br>&lt;miteymous>	ok question
+<br><b>&lt;simprix>	yes</b>
+<br><font color="red">--	Sheik has quit (Quit: )</font>
+<br>&lt;miteymous>	would it be possible to set up your own wireless network, that hijacks your targets, and then spreads it farther via your equipment
+<br>&lt;miteymous>	maybe letting you have free access at your house
+<br><b>&lt;simprix>	yes you could bridge the connection</b>
+<br><b>&lt;simprix>	with a wireless bridge</b>
+<br>&lt;Paranoiac>	he networks would need to overlap, though
+<br>&lt;Paranoiac>	*The
+<br>&lt;miteymous>	would the same basic techniques work with cell phone modems
+<br><b>&lt;simprix>	well if you have the wireless bridge on the same ssid then your ok</b>
+<br><b>&lt;simprix>	and they wont overlap</b>
+<br><b>&lt;simprix>	miteymous: i dont know anything about cell phone modems</b>
+<br>&lt;miteymous>	well i mean they obviously work on different frequencies
+<br><b>&lt;simprix>	it might work but i dont know what cell phones use as there protocals</b>
+<br><b>&lt;simprix>	well then you could use a frequency counter and use a ham radio</b>
+<br><font color="red">--	Forbze has quit (Ping timeout)</font>
+<br>&lt;LiquidKn0wledge>	hey is neve campbelle that girl in the movie three to tango?
+<br><b>&lt;simprix>	everyone ready to continue</b>
+<br><font color="red">--	r (trashmail@172.166.185.154) has left #bsrf</font>
+<br>&lt;Strider>	go ahead :)
+<br>&lt;miteymous>	yah
+<br>&lt;miteymous>	:D
+<br><font color="red">-->	Forbze (thedon@203.134.22.186) has joined #bsrf</font>
+<br><font color="red">---	ChanServ gives channel operator status to Forbze</font>
+<br><b>&lt;simprix>	ok well when you are ready to go you need to put your wireless card in promiscuos mode which means it will gather everything that is in the air </b>
+<br><b>&lt;simprix>	there are tools that come with kismet</b>
+<br><font color="red">--	LiquidKn0wledge (LiquidKn0w@66.153.12.78) has left #bsrf</font>
+<br><b>&lt;simprix>	ok after that is all set you will start up kismet</b>
+<br><b>&lt;simprix>	and go drive around </b>
+<br><b>&lt;simprix>	once something pops up on the screen there will be three sections</b>
+<br>&lt;zemo>	nite all
+<br><b>&lt;simprix>	ssid: it will say the ssid here</b>
+<br>&lt;Strider>	nite
+<br><b>&lt;simprix>	WEP: it will say if wep is being used</b>
+<br><b>&lt;simprix>	channel it will say what channel the network is on </b>
+<br><b>&lt;simprix>	does everyone know what WEP is</b>
+<br>&lt;miteymous>	no
+<br>&lt;Paranoiac>	ditto
+<br><b>&lt;simprix>	wireless encryption protocal</b>
+<br><b>&lt;simprix>	it encrypts the network </b>
+<br><b>&lt;simprix>	so you cant attach to the network unless you have the wep key</b>
+<br>&lt;Paranoiac>	What kind of encryption is it?
+<br><b>&lt;simprix>	RC4</b>
+<br><font color="red">--	ro0t has quit (Quit: rm -rf /;reboot&)</font>
+<br>&lt;miteymous>	so you have to crack the encryption then, does kismet do that?
+<br><b>&lt;simprix>	no </b>
+<br><font color="red">-->	ro0t (ro0t@216.153.217.132) has joined #bsrf</font>
+<br><b>&lt;simprix>	ok we will get to what you do if they use wep</b>
+<br><b>&lt;simprix>	but first we will talk about a network with out wep</b>
+<br><b>&lt;simprix>	while you are watching a kismet it will say what the ssid is remember that</b>
+<br><b>&lt;simprix>	if it says under W: N, then they arent using wep</b>
+<br><b>&lt;simprix>	ok so once you have got these</b>
+<br><b>&lt;simprix>	you will need pop out your card to take it out of promiscues mode </b>
+<br><b>&lt;simprix>	and pop it back in</b>
+<br><b>&lt;simprix>	then you will open wlanfe</b>
+<br><b>&lt;simprix>	and under ssid type the ssid you got from kismet</b>
+<br><b>&lt;simprix>	and click apply</b>
+<br><b>&lt;simprix>	now you are attached </b>
+<br><b>&lt;simprix>	now you need to get a ip </b>
+<br><b>&lt;simprix>	if the access point is using dhcp you can get it that way</b>
+<br><b>&lt;simprix>	but if it isnt you need to find out what ips they are using</b>
+<br><b>&lt;simprix>	to do this we will use arping </b>
+<br><b>&lt;simprix>	run that and we will get some ips they are using </b>
+<br><b>&lt;simprix>	so you will assign a unused ip using ifconfig</b>
+<br><b>&lt;simprix>	and then it is just like you are on a normal network</b>
+<br><b>&lt;simprix>	any questions?</b>
+<br>&lt;miteymous>	so at this point you are connected and have internet access?
+<br>&lt;Strider>	huh? is this thing still going??
+<br>&lt;miteymous>	and access to their network?
+<br>&lt;Strider>	j/k
+<br>&lt;Paranoiac>	Hehe
+<br><b>&lt;simprix>	yes </b>
+<br><b>&lt;simprix>	what Strider are you bored</b>
+<br>&lt;miteymous>	whoah
+<br>&lt;Paranoiac>	Are there many networks that are unsecured?
+<br><b>&lt;simprix>	yes</b>
+<br><b>&lt;simprix>	lots</b>
+<br>&lt;Paranoiac>	Groovy
+<br><b>&lt;simprix>	the city hall in my town is not using wep</b>
+<br><b>&lt;simprix>	Strider: what can we do to keep you interested</b>
+<br>&lt;Strider>	me?
+<br>&lt;Strider>	ermm
+<br>&lt;Strider>	danece?
+<br>&lt;Strider>	dance*
+<br>&lt;Paranoiac>	How can you secure yourself from being detected/accessed?
+<br>&lt;miteymous>	ok so lets say you are connected now
+<br>&lt;miteymous>	would you be able to see all the computers that are shared on the network?
+<br><b>&lt;simprix>	yes</b>
+<br>&lt;miteymous>	network neighborhood type thing?
+<br><b>&lt;simprix>	if you use samba</b>
+<br><b>&lt;simprix>	sorry Strider</b>
+<br><b>&lt;simprix>	Paranoiac: i will get to securing them later</b>
+<br><font color="red">*	miteymous does the chicken dance for Strider</font>
+<br>&lt;Strider>	lmao
+<br>&lt;Paranoiac>	Ahh, ok...thanks
+<br>&lt;Paranoiac>	Bah....that's nothing
+<br>&lt;miteymous>	wait i thought samba was used to show graphics
+<br><font color="red">*	Paranoiac does the Funky Monkey</font>
+<br>&lt;miteymous>	when compiling programs etc
+<br><b>&lt;simprix>	nope</b>
+<br><b>&lt;simprix>	what Strider</b>
+<br>&lt;miteymous>	ahhsoo o_O
+<br><b>&lt;simprix>	ok everyone ready</b>
+<br><b>&lt;simprix>	to talk about wep</b>
+<br>&lt;miteymous>	yup
+<br>&lt;Paranoiac>	Aye, cap'n
+<br>&lt;Strider>	go on then
+<br><b>&lt;simprix>	ok</b>
+<br><b>&lt;simprix>	well out in california two kids figured out how to break wep</b>
+<br>&lt;Strider>	hold on, whats wep?? is that still the wireless thingy?
+<br><b>&lt;simprix>	yes</b>
+<br>&lt;Strider>	ah ok
+<br>&lt;Strider>	carry on
+<br>&lt;miteymous>	wireless encryption protocol :x
+<br><b>&lt;simprix>	it is wireless encryption protocal</b>
+<br><b>&lt;simprix>	ok when you find a wireless network you need to use airsnort</b>
+<br><b>&lt;simprix>	with your card still in promiscuos mode you need to start airsnort and just start to gather packets </b>
+<br><font color="red">-->	GOD (que_import@226C75B7.CF2E741F.41F302F6.IP) has joined #bsrf</font>
+<br><b>&lt;simprix>	usually with a 128 bit wep key you should gather 1 gig of traffic</b>
+<br><b>&lt;simprix>	then it will list the wep key </b>
+<br><b>&lt;simprix>	everyone with me so far</b>
+<br>&lt;Paranoiac>	So it grabs the key from the other user's packets?
+<br>&lt;miteymous>	airsnort figures out the key for you?
+<br><b>&lt;simprix>	yes and beacon frames</b>
+<br><b>&lt;simprix>	yes miteymous</b>
+<br>&lt;Paranoiac>	That's useful
+<br><b>&lt;simprix>	yes</b>
+<br><b>&lt;simprix>	ok so once you have the wep key</b>
+<br>&lt;Paranoiac>	Is the WEP verification a constant activity then? As opposed to using it once, like a password....
+<br><font color="red">-->	nosolution (NS@p19-tnt1.ham.ihug.co.nz) has joined #bsrf</font>
+<br><b>&lt;simprix>	you will load up wlanfe and put the ssid you have and click on the wep key tab and type the key</b>
+<br><b>&lt;simprix>	yes it is constant Paranoiac</b>
+<br><font color="red">-->	Jackel88 (new-web@166.90.65.247) has joined #bsrf</font>
+<br><b>&lt;simprix>	ok so once you attach to the network you need to get your ip the same way you did before </b>
+<br><b>&lt;simprix>	without wep</b>
+<br><font color="red">--	Jackel88 has quit (Quit: Leaving)</font>
+<br><b>&lt;simprix>	ok there are three ways to secure a wireless network besides wep</b>
+<br><font color="red">---	GOD is now known as satan</font>
+<br>&lt;miteymous>	kewl
+<br><b>&lt;simprix>	cause wep sucks</b>
+<br><font color="red">--	bluehaze[BED] has quit (Ping timeout)</font>
+<br>&lt;Paranoiac>	Hehe
+<br>&lt;satan>	hey this is already registered
+<br><b>&lt;simprix>	ok the three ways are a radius server, a kerbores server, ipsec</b>
+<br><font color="red">---	satan is now known as compaq</font>
+<br><b>&lt;simprix>	if you need to know about those ways read the rfc's cause i am not going to explain them this time maybe another lecture</b>
+<br>&lt;miteymous>	suhweet
+<br><b>&lt;simprix>	ok im done any questions </b>
+<br><b>&lt;simprix>	or opinions </b>
+<br>&lt;miteymous>	do you have to have a big antennae?
+<br><b>&lt;simprix>	no </b>
+<br>&lt;miteymous>	and how far away can you be
+<br><font color="red">-->	Ravish (Ravish@210.214.102.213) has joined #bsrf</font>
+<br><b>&lt;simprix>	500 feet is 2 megs a second </b>
+<br><font color="red">*	Strider is away (finger lickin the chicken)</font>
+<br>&lt;miteymous>	hmm
+<br><font color="red">--	Forbze has quit (Quit: Vive La Revolution)</font>
+<br>&lt;miteymous>	thats not that far
+<br>&lt;Paranoiac>	What kind of wireless is this?
+<br><b>&lt;simprix>	i would not go past 500 feet</b>
+<br><b>&lt;simprix>	its 802.11b</b>
+<br>&lt;Paranoiac>	Ahh good
+<br>&lt;Paranoiac>	At least I've heard of it
+<br><b>&lt;simprix>	802.11a, 802.11g are supposed to be better</b>
+<br>&lt;miteymous>	but you said earlier you could bridge it, so itd be possible to get within say 100 feet, bridge the connection to a landline that went back to your house?
+<br><b>&lt;simprix>	yea you could do that </b>
+<br>&lt;miteymous>	to keep the speeds?
+<br>&lt;Ravish>	hi
+<br><b>&lt;simprix>	bridges go up to 2 miles </b>
+<br><b>&lt;simprix>	hey ravish </b>
+<br>&lt;miteymous>	oh wow
+<br>&lt;Paranoiac>	What is a bridge, exactly?
+<br>&lt;miteymous>	can i build one using a coke can and a piece of twine? :p
+<br><b>&lt;simprix>	not a bridge maybe a antenna</b>
+<br>&lt;Paranoiac>	Hehehe
+<br>&lt;miteymous>	lol
+<br>&lt;miteymous>	omgggggggg
+<br>&lt;miteymous>	coke all over my pc
+<br><font color="red">-->	criven (nobody@68.3.152.20) has joined #bsrf</font>
+<br>&lt;Paranoiac>	.....that's not goof
+<br>&lt;Paranoiac>	*good
+<br><b>&lt;simprix>	ok everyone done</b>
+<br>&lt;Paranoiac>	Groovy
+<br><b>&lt;simprix>	or more questions</b>
+<br>&lt;Paranoiac>	By the way, where do you get your tools from?
+<br><b>&lt;simprix>	the internet</b>
+<br>&lt;Paranoiac>	......thanks
+<br><b>&lt;simprix>	freshmeat</b>
+<br>&lt;Paranoiac>	Thank you
+<br><b>&lt;simprix>	so do you guys think i did a good job on my first lecture</b>
+<br>&lt;miteymous>	yes :)
+<br>&lt;Paranoiac>	Yep
+<br><font color="red">---	compaq is now known as AOL</font>
+<br>&lt;miteymous>	im gonna try it out next year, and maybe get free internet access :x
+<br>&lt;Paranoiac>	This is my first, and it was damned good
+<br><font color="red">---	AOL is now known as GODFATHER</font>
+<br><b>&lt;simprix>	ok well if you suys have any questions you can email me at simprix@simprix.net</b>
+<br><b>&lt;simprix>	or simprix@projectnexus.org</b>
+<br>&lt;Paranoiac>	Here's a question: Is there any way to cloak your connection, so that they network can't see your pc?
+<br><b>&lt;simprix>	well you could drop ping packets and setup a firewall and close all ports </b>
+<br><b>&lt;simprix>	but if your doing something on the network they will see you</b>
+<br>&lt;Paranoiac>	Ahh
+<br><font color="red">--	misguidedpoet has quit (Quit: gonna have some fun with dreamweaver)</font>
+<br><font color="red">-->	th0rn (Dude@172.164.43.240) has joined #bsrf</font>
+<br><font color="red">-->	Sub-0 (LiquidKn0w@66.153.12.78) has joined #bsrf</font>
+<br>&lt;miteymous>	oh
+<br>&lt;miteymous>	so eventually they will find you
+<br>&lt;Paranoiac>	Another stupid question: Which OS are you people running?
+<br>&lt;GODFATHER>	win XP
+<br><b>&lt;simprix>	yea if you camp out their</b>
+<br>&lt;miteymous>	:/
+<br><b>&lt;simprix>	i run linux</b>
+<br>&lt;miteymous>	i run winxp atm
+<br>&lt;Paranoiac>	Which distro?
+<br>&lt;GODFATHER>	i run mandrake also
+<br><font color="red">*	Strider is back (finger lickin the chicken) - was away 11mins 38secs</font>
+<br>&lt;BaGeL>	night guys
+<br><font color="red">--	BaGeL has quit (Quit: )</font>
+<br><b>&lt;simprix>	crux </b>
+<br>&lt;Paranoiac>	Ah
+<br>&lt;Paranoiac>	Ty
+<br>&lt;miteymous>	umm
+<br>&lt;miteymous>	corporate pro
+<br>&lt;Paranoiac>	Is there a lecture at this time every week?
+<br><b>&lt;simprix>	not that i know of</b>
+<br>&lt;miteymous>	i think there should be :x
+<br><b>&lt;simprix>	yea</b>
+<br>&lt;Paranoiac>	How does one find out when there will be one?
+<br><b>&lt;simprix>	ask AZTEK</b>
+<br><font color="red">---	Sub-0 is now known as Liquid-is-away</font>
+<br><b>&lt;simprix>	i think there hadn't been one in awhile</b>
+<br>&lt;Strider>	anyone wanna do a lec on summin a bit more n00b orientated?
+<br>&lt;miteymous>	yah, like spoofing your ip :x
+<br>&lt;Paranoiac>	Wasn't this n00b orientated?
+<br>&lt;Strider>	pfft
+<br>&lt;Strider>	it is if u know about it
+<br>&lt;miteymous>	i know about it now, so i would say it was :P
+<br>&lt;Paranoiac>	...crazy...I thought it was
+<br>&lt;Strider>	well i dont know jack shit about linux so i didnt understand a bit of it
+<br>&lt;miteymous>	you can do it on windows too though :/
+<br>&lt;th0rn>	hey can someone please help me find a nice big FAQ on totalitarianism?
+<br>&lt;Paranoiac>	You don't use Linux?
+<br>&lt;th0rn>	:-)
+<br>&lt;th0rn>	lol
+<br>&lt;th0rn>	damn research paper
+<br>&lt;Strider>	nope
+<br>&lt;th0rn>	i've been lookin all over
+<br><b>&lt;simprix	hey guys im going to bed</b>
+<br>&lt;miteymous>	thanx a lot simprix
+<br>&lt;Paranoiac>	Thanks
+<br><b>&lt;simprix>	no problem</b>
+<br><font color="red">---	Strider is now known as The_Don</font>
+<br>&lt;Paranoiac>	You've made a simple n00b very happy
+<br><b>&lt;simprix>	ok</b>
+<br><b>&lt;simprix>	see ya</b>
+<br><font color="red">---	simprix is now known as simprix[away]</font>
+<br>&lt;miteymous>	bye
+<br><font color="red">---	The_Don is now known as Strider</font>
+<br>&lt;Strider>	them logs should come in handy when i do get linux :)
+<br><font color="red">--	AtnNn has quit (Quit: g2g)</font>
+<br>&lt;Paranoiac>	Hehe...I would have got it a long time ago if it weren't for my crappy 56k
+<br><font color="red">*	Paranoiac doesn't like 7-day downloads...</font>
+<br>

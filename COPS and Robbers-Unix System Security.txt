@@ -1,0 +1,954 @@
+                      COPS and Robbers
+                    UN*X System Security
+
+
+
+     In the last few years, computer security has received a
+great  deal  more attention than it has in the past.  Compu-
+terized break-ins and criminal  activity,  once  merely  the
+product  of  the imagination of science fiction writers, has
+became a fairly common  occurence  in  both  commercial  and
+academic  circles.   In this paper, I will go over the prob-
+lems that face any multiuser computing system, then  discuss
+how  these  problems  apply  to  UNIX[1]  specifically,  and
+finally  present  in  detail  a  suite of programs that were
+developed in an attempt to address some of the main problems
+that  could  be  solved  via  software.  UNIX, although con-
+sidered to be a fairly secure operating system  ([Wood  88],
+[Duff  89], etc), has the advantage of having many published
+works ([Grampp and Morris 84],  [Bishop  83],  etc)  on  the
+problems  that  a computing site can have with security, and
+in addition, on how a UNIX system administrator  might  make
+his/her  system more secure by monitoring various aspects of
+his/her UNIX site.  This, combined with  UNIX's  popularity,
+make  it  an  ideal target for a software security system to
+operate on.
+
+     In this report I am not going to discuss specific  ways
+of  breaking  into a given UNIX machine (for a more detailed
+description on how to compromise UNIX security,  see  either
+[Baldwin88],  [Bishop83],  [Wood & Kochran 86], or [Grampp &
+Morris 84]) -- instead, I will concentrate on how to improve
+and  strengthen  the  potentially good security of a generic
+UNIX system by means of a software toolkit that examines the
+weaker  areas  of UNIX that are either traditionally ignored
+(due to the time constraints  or  ignorance  of  the  system
+administrators) or are simply reoccurring problems that need
+to be watched over.  In addition, this report is  not  meant
+for  UNIX  neophytes -- although a great deal of proficiency
+is not needed to read  this  report  and  use  the  programs
+described  herein, a familiarity with basic UNIX features --
+the file system and file permission modes for example -- and
+commands  such  as awk,grep,sed  as  well  as a working
+knowledge of  shell  and  C  programming  are  necessary  to
+_________________________
+9  [1] Although originally designed and developed by Ken
+Thompson and Dennis Ritchie of AT&T, UNIX has grown far
+beyond its' original design and now numerous  companies
+market their own "flavor" of UNIX.  When I use the term
+UNIX in this paper, I don't mean merely AT&T's version,
+but  instead  I  mean  the majority of the most popular
+varieties, made by developers at Berkely,  Sun,  and  a
+host of other manufacturers.  I believe UNIX is still a
+trademark of Bell Laboratories.
+9
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 2 -
+
+
+understand the internal  workings  of  the  security  system
+described in this paper.
+
+     Although there is no reasonable way that  all  security
+problems  can  be solved (at least not with a software solu-
+tion) on any arbitrary UNIX system, administrators and  sys-
+tem  programs  can  be assisted by a software security tool.
+The Computer Oracle Password and Security system (COPS) that
+will  be described in this paper is just such a device.  The
+COPS system is a collection of programs  and  shell  scripts
+that  attempt to address as many of these problems as possi-
+ble in an efficient, portable, and above all in  a  reliable
+and  safe  way.  The main goal of COPS is one of prevention;
+it tries to anticipate and eliminate  security  problems  by
+making sure people don't get a chance to compromise security
+in the first place.  Alerting the administrators of a poten-
+tial  intruder  or  that  a virus has infected the system is
+beyond the scope of the present system, although  with  work
+with  such  capabilities could be added ([Bauer and Koblentz
+88] and [Duff 89].)
+
+     To understand the reason COPS might check any  specific
+problem,  a look at computer security problems in general is
+in order.  The problems listed below are  not  meant  to  be
+inclusive,  but  they  are indicative of the myriad types of
+dilemmas  a  typical   computer   multiuser   system   might
+encounter:
+
+     1)  Administrators, system  programmers,  and  computer
+operators.   The  very  people  that (should) worry the most
+about security are sometimes the ones  that  are  the  least
+concerned.  Carelessness is one of the main culprits; a mis-
+take by a user might cause little or no  problem,  but  when
+someone  with no restrictions (or almost none) on their com-
+puter activity makes a mistake, a security hole can  result.
+"I  can  trust  my users" is a fine statement to make -- but
+can you trust your users' friends?  How about the  users  of
+computers  that  are networked to yours?  New software, sys-
+tems, or procedures can facilitate extra problems; a comput-
+ing  staff  is  often  ill  or completely non-trained on new
+techniques and software.   Too  often  "RTFM"  is  the  only
+training  that  they  will  ever receive.  Programs that are
+created for in-house use are often  ill-documented  and  not
+debugged  thoroughly,  and  when users other than the author
+start to use/abuse the program, problems can result.   Espe-
+cially  misunderstood,  even by experienced UNIX system pro-
+grammers, is the SUID program or, worse yet, the SUID  shell
+script ([Bishop 83].) When a user says that his/her password
+was forgotten (or any other account/security  related  prob-
+lem),  what  checks  are  made  to verify that the person is
+really the owner of that account?  Are users that are  secu-
+rity  problems kept track of, so that repeated abuses of the
+system will result in punitive action?  Does your site  even
+have  a  security  policy?  And of course, the last straw is
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 3 -
+
+
+that most system administrators simply have too  much  other
+work to do than to constantly check the system for potential
+security flaws -- let alone to double-check  that  any  work
+done  by  other  system programmers has been done correctly.
+These are the actions that often get left unsaid and undone.
+
+     A UNIX environment has no special defenses against this
+kind  of "attack".  Fortunately, a number of these potential
+problems  (unless  catastrophic  in  scope)  are  not   only
+correctable,  but are easy to detect with a software toolkit
+such as COPS.  Even the most careful UNIX guru will periodi-
+cally  make  a  mistake;  COPS  has  been designed to aid in
+her/his never ending battle against the forces of darkness.
+
+     2)  Physical security.  This is perhaps the most  frus-
+trating of all possible problems because it effects all com-
+puter systems and is often the hardest to safeguard against.
+Even  if the software is secure, even if the system adminis-
+trators are alert to potential problems, what happens  if  a
+user  walks  up to the root console and starts typing?  Does
+the night janitorial staff let anyone into the machine  room
+without  proper  identification?  Who  has access to the key
+that opens up the computing center?  Are terminals that  are
+logged on left unguarded or unlocked?  Are passwords written
+on or near a users terminal or desk?   No  software  in  the
+world   can  help  against  human  nature  or  carelessness.
+Reiterating to your staff and users  that  terminals  should
+not  be  left  alone  or unguarded and that passwords (espe-
+cially root) should not be typed in front of unfriendly (and
+in this case, _everyone_ is your enemy) eyes would be a good
+start.  A simple analogy: since you  would  never  give  the
+keys  to  the  company car away, why on earth would you give
+away the keys to your computer, which is certainly  worth  a
+hell  of  a lot more time and money (although it may not get
+as good mileage on the interstate.)   Common  sense  goes  a
+long ways to help prevent this kind of risk.
+
+     3)   Authentication.   What  is  authentication?    All
+modern computing systems that have capabilities for multiple
+users have a means of identifying who is using the  computer
+at  any  given time.  A common means of identification is by
+using a password; and since the inception of this idea, poor
+passwords have been a perennial problem.  People have a ten-
+dency to use  their  own  name,  or  their  social  security
+number,  or  some  other  common word, name, or phrase for a
+password.  The problem then arises when an unauthorized user
+wants to access clandestine information, he/she simply tries
+one of these simple passwords until a  successful  match  is
+found.
+
+     Other  problems  with  authentication?   What  computer
+hosts  are  "trusted"  and  allow users to log in from other
+machines without any further authentication?  Are  incorrect
+login   attempts  kept  and/or  monitored  so  as  to  allow
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 4 -
+
+
+administrators to keep track of any unusual activity?   What
+about  "Trojan  horses" -- programs that can steal passwords
+and the privileges that a user owns -- is there a program or
+a administrative method that detects a potential 'horse?
+
+     Fortunately UNIX systems again have  some  fairly  good
+tools  to  aid in this fight.  Although finding simple pass-
+words is indeed a trivial task, forcing the users on a  sys-
+tem  to  use  passwords  that  are  harder  to guess is also
+trivial, by either modifying the mechanism  that  gets/gives
+the  password  to  the  user,  and/or  by  having the system
+administrators run a simple password detector  periodically,
+and notifying users if their password is deemed too obvious.
+The crypt command, although proven  to  be  insecure  for  a
+knowledgeable and resourceful attacker ([Reed and Weinberger
+84], [Baldwin 86]), does offer an added shield against  most
+unauthorized  users.   Logs  can  be kept of incorrect login
+attempts, but as with most security measures, to  be  effec-
+tive  someone (usually the site administrator) must take the
+time to examine the evidence.
+
+     4)  Bugs/Features.  Massive software designs  (such  as
+an  operating system) are usually the result of a team or of
+teams of developers working together.   It  only  takes  one
+programmer to make a mistake, and it will almost always hap-
+pen.  "Back doors" that  allow  unauthorized  entrances  are
+sometimes  purposefully  coded  in -- for debugging, mainte-
+nance, or other reasons.  And there  are  always  unexpected
+side effects when thousands of people using the system start
+doing strange (stupid?) things.  The best  kind  of  defense
+against  this  is to report the problems to the developer as
+they are discovered, and if possible, to also report  a  way
+to fix the problem.  Unfortunately, in many cases the source
+code is needed to make a bug fix,  and  especially  in  non-
+academic  areas,  this  is  simply  not available due to the
+prohibitive costs involved.  Combining this with the  reluc-
+tance of a (usually) commercial developer to admit any prob-
+lems with their product, and the end result  is  a  security
+hole  that  will not be mended unless some kind of financial
+loss or gain is at stake -- for the developer  of  the  pro-
+duct, not yours!
+
+     5)  Ignorance.  Users who don't know or care can  be  a
+problem  as  well.  Even if someone doesn't care about their
+own security, they can  unwittingly  compromise  the  entire
+system   --   especially  if  they  are  a  user  with  high
+privileges.  Administrators and  system  operators  are  not
+immune to this either, but hopefully are better informed, or
+at least have access to a means of combating  this  dysfunc-
+tion.   It  may  also  be due to apathy, an unwillingness to
+learn a new system, a lack of time to  explore  all  of  the
+features  of  a  large system, or simply not enough computer
+savvy to learn more about a very complex system, and no  one
+willing  to teach it to the user.  This problem is much like
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 5 -
+
+
+illiteracy; it is a never-ending battle that will  never  go
+completely  away.  And while a software toolkit such as COPS
+can  help  combat  this  problem  by  calling  attention  to
+neglected  or  misunderstood critical areas, by far and away
+the best weapon against this is education.  An educated user
+will simply not make as many mistakes; and while it may seem
+impractical to teach _all_ users about (even) the  fundamen-
+tals  of  computer  security,  think  of  all  the  time and
+resources wasted tracking down the mistakes that keep recur-
+ring time and time again.
+
+     6)  Unauthorized permissions or privileges.  Are  users
+given _too much_ freedom?  Do new computer accounts have any
+default security at all, or are the new  users  expected  to
+know  what  to do to protect their programs, data, and other
+files.  System  files,  programs,  and  data  are  sometimes
+shipped  with  minimal or no protection when gotten straight
+from the manufacturer; someone at the installation site must
+have  enough  knowledge to "tune" the system to be effective
+and safe.  Password, memory, and log files especially should
+all be carefully monitored, but unfortunately an experienced
+user can often still find out any information they want with
+perseverance and a little luck.  This is where a system such
+as COPS can really shine.  After a new system is configured,
+some  basic  flaws can be uncovered with just a small amount
+of effort.  New system problems that  somehow  slip  through
+the cracks of the site installers can be caught and modified
+before any serious problems result.   The  key  here  is  to
+prevent  your system users from getting a denial of computer
+service that they need and deserve.  Service could mean any-
+thing from CPU time, response time, file space, or any other
+commodity that a computer has to offer.
+
+     7)  Crackers/Hackers/Evil twin brothers.  Not  much  is
+needed  on this subject, save to say that they are often not
+the main problem.  Professional  evil-users  are  a  rarity;
+often harmful acts are done by users who "just wanted to see
+what would happen" or had no idea of  the  ramifications  of
+their acts.  Someone who is truly experienced is very diffi-
+cult to stop, and is certainly  outside  the  realm  of  any
+software  security  tool  as  discussed in this paper.  For-
+tunately,  most  evil-doers  are  fairly  inexperienced  and
+ignorant,  and when they make a mistake, a watchful adminis-
+trator can deal with a problem before it gets out  of  hand.
+Sometimes  they  can even reveal security problems that were
+previously undiscovered.   COPS  can  help  here  mostly  by
+reducing  an  attacker's options; the less holes to exploit,
+the better.
+
+     The COPS system attempts to help protect as many of the
+above  items  as possible for a generic UNIX system.  In the
+proper UNIX spirit, instead of having a large  program  that
+attempts  to solve every possible problem, it is composed of
+several small programs that each check one or more potential
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 6 -
+
+
+UNIX  security  holes.   The  COPS  system uses a variety of
+these problems to see if there are any  cracks  in  a  given
+UNIX security wall.  These methods correspond to some of the
+problems discussed above;  specifically  to  administrators,
+system  programmers, and computer operators; authentication;
+ignorance;  unauthorized  permissions  or  privileges;   and
+finally  crackers/hackers/evil twin brothers (numbers 1,3,5,
+and 6.)  It is very difficult, almost a  practical  impossi-
+bility  to  give software assistance to problems in physical
+security, and finally bugs or features that are present in a
+given  UNIX  system  are  possible  to  detect,  but are not
+covered in this system (yet).  The design of most of the the
+programs  were  at  least described if not outlined from the
+following sources:
+
+Aho, Kernighan, and Weinberger 88
+
+Baldwin 87
+
+Fiedler and Hunter 86
+
+Grampp and Morris 84
+
+Wood and Kochran 86
+
+
+     Of course with all of the problems listed below,  look-
+ing  at  the  actual  source  code  of  the  program is very
+instructive -- each numbered section lists the corresponding
+program that is used to perform the check:
+
+     1)  COPS Checks "vital" system directories  to  see  if
+they are world-writable.  Directories listed as critical are
+in a configuration file and are initially:
+
+/ /etc /usr
+
+/bin /Mail /usr/spool
+
+/usr/adm /usr/etc /usr/lib
+
+/usr/bin /usr/etc /usr/spool/mail
+
+/usr/spool/uucp /usr/spool/at
+
+     The method COPS uses to detect problems -- read through
+a  configuration  file  (dir.chklst)  containing  all of the
+potential danger  spots,  and  then  simply  comparing  each
+directory  modes with a bit mask to see if it is world writ-
+able.  The program that performs this task is dir.chk
+
+     2)  Check "vital" system  files  to  see  if  they  are
+world-writable.   Files  listed  as critical are in a confi-
+guration file (file.chklst) and are initially:
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 7 -
+
+
+/.*
+
+/etc/*
+
+/bin/*
+
+/usr/etc/yp*
+
+/usr/lib/crontab /usr/lib/aliases /usr/lib/sendmail
+
+
+The wildcards are used like in UNIX, so these would  include
+(some of the more important files):
+
+/.login /.profile /.cshrc /.crontab /.rhost
+
+/etc/passwd /etc/group /etc/inittab /etc/rc
+
+/etc/rc.local /etc/rc.boot /etc/hosts.equiv /etc/profile
+
+/etc/syslog.conf /etc/export
+
+As well as the executable command files (among others):
+
+sh,csh, and ls.
+
+
+     Method -- again read through a configuration file list-
+ing  all  of the files to be checked, comparing each in turn
+with a write mask.  The program that performs this  task  is
+file.chk
+
+     3)  Check "vital" system  files  to  see  if  they  are
+world-readable,  plus  check  for  a NFS file system with no
+restriction.  These critical files are:
+
+/dev/kmem /dev/mem
+
+All file systems found in /etc/fstab
+
+Plus a small number of user selectable  files  --  initially
+set to include /.netrc, /usr/adm/sulog, and /etc/btmp.
+
+Method -- checking each in turn  against  a  read  mask  for
+their  read  status.   The  file  system names are read from
+/etc/fstab, the selectable files are  kept  in  a  variable.
+The program that performs this task is dev.chk
+
+     4)  Check all files in system for SUID status,  notify-
+ing the COPS user of any changes in SUID status.
+
+Method -- Use the "find" command on the root directory (this
+must  be  done by root to avoid missing any files unreadable
+but still dangerous.) The previous run will  create  a  file
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 8 -
+
+
+that can be checked against the current run to keep track of
+changes in SUID status and any new SUID files.  The  program
+that performs this task is suid.chk and was written by Pren-
+tiss Riddle.
+
+     5)  Check the /etc/passwd file (and  the  yellow  pages
+password   database,  if  applicable)  for  null  passwords,
+improper #  of  fields,  non-unique  user-id's,  non-numeric
+group id's, blank lines, and non-alphanumeric user-id's.
+
+Method -- Read through password file, flag  any  differences
+with  normal password file, as documented in "man 5 passwd".
+Fortunately, the syntax of the password file  is  relatively
+simple  and  rigid.  The  program that performs this task is
+passwd.chk
+
+
+     6)  Check the /etc/group file  (and  the  yellow  pages
+database, if applicable) for groups with passwords, improper
+# of fields, duplicate users in  groups,  blank  lines,  and
+non-unique group-id's.
+
+Method -- Read through group file, flag any differences with
+normal  group  file  as documented in "man 5 group".  Again,
+the syntax of this file is fairly simple.  The program  that
+performs this task is group.chk
+
+     7)  Check passwords of users on system.
+
+Method -- using  the  stock  "crypt"  command,  compare  the
+encrypted password found in the /etc/passwd file against the
+following (encrypted) guesses:
+
+The login id (uid), information in the gecos field, and  all
+single letter passwords.
+
+The program that performs this  task  is  pass.chk  and  was
+written  by  Craig  Leres  and  was modified by Seth Alford,
+Roger Southwick, Steve Dum, and Rick Lindsley.
+
+     8)  Check the root path,  umask,  and  if  root  is  in
+/etc/ftpuser.
+
+Method -- look inside the /.profile  and  /.cshrc  files  to
+ensure  that  all  of  the  directories listed are not world
+writable, that "." isn't anywhere in the path, and that  the
+umask  is  not set to create world writable files.  The pro-
+gram that performs this task is root.chk
+
+     9)  Examine the commands in  /etc/rc*  to  ensure  that
+none of the files or paths used are world-writable.
+
+Method -- grep through the files  and  examine  any  strings
+that  start  with  "/"  for  writability.   The program that
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 9 -
+
+
+performs this task is rc.chk
+
+     10)  Examine the commands in /usr/lib/crontab to ensure
+that none of the files or paths used are world-writable.
+
+Method -- grep through the  crontab  file  and  examine  any
+strings  after field five (first five are not files, but how
+crontab is to be run) that start with "/"  for  writability.
+The  program  that performs this task is cron.chk 11)  Check
+all of the user home directories  to  ensure  they  are  not
+world writable.
+
+Method -- get all of the home directories using  the  system
+call  getpwent()  and  then  for every home directory found,
+check the write permissions of of the home directory against
+a bit mask.  The program that performs this task is home.chk
+and it was written by John Owens.
+
+     12) Check important user files in  user's  home  direc-
+tories  to  ensure  they  are not world writable.  The files
+checked (all in the individual users'  home  directory,  all
+with the prefix "."):
+
+rhost profile login cshrc kshrc tcshr crhost
+
+netrc forward dbxinit distfile exrc emacsrc
+
+Method -- using the same system call as #10, determine  user
+home  directory.   Then  simply check all of the above files
+against a bit mask.  The program that performs this task  is
+user.chk
+
+     13) Given a goal to compromise, such as user root,  and
+a list of user and group id's that can be used in an attempt
+to achieve the goal, this security tool will search  through
+the  system until it verifies that the goal is compromisible
+or not.  The program that performs this tricky task is  part
+of the U-Kuang (rhymes with "twang") system.  Robert Baldwin
+was kind enough to allow me to include this security checker
+(a fine security machine in it's own right) within this dis-
+tribution.  For more information on this  fascinating  secu-
+rity  checker,  see  kuang.man.ms  and [Baldwin 87].  I have
+rewritten it in Bourne shell (it was in C-Shell) for further
+portability.
+
+     None of programs listed above certain cover all of  the
+possible  areas  that can harm a system, but if run together
+they can aid an overworked administrator to locate  some  of
+the  potential  trouble spots.  The COPS system is not meant
+to be a panacea against  all  UNIX  security  woes,  but  an
+administrator who examines the security toolbox programs and
+this research paper might reduce the danger  of  their  UNIX
+system being compromised -- and that's all any security tool
+can ever hope to do.  The COPS system could never replace  a
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 10 -
+
+
+vigilant  administration  staffed with knowledgeable people,
+but hopefully, as administrators look into the package, more
+comprehensive  programs  will come into being, covering more
+of the problems that will continue as the latest versions of
+UNIX continue to grow.
+
+     Design Notes:
+
+     The programs that are described here were  designed  to
+address the problems discussed above, but still be usable on
+as many UNIX "flavors" as possible.   Speed  was  sacrificed
+for  simplicity/portability;  hopefully  the tools here will
+either be replaced or modified, as by no means are they  the
+final  word  or solution to _any_ of these problems; indeed,
+it is my hope that  after  other  programmers/administrators
+see  this  report,  they will create newer, better, and more
+general tools that can be re-distributed periodically.  None
+of the programs need to be run by root to be effective, with
+the exception of the SUID checker (to ensure that all  files
+are  checked.) Some of the tools were written by myself, the
+others were written by other programmers on the network  and
+(with their permission) presented here.  All of the programs
+in this report are in the public domain, with the  exception
+of Robert Baldwin's U-Kuang system; they all exist solely to
+be used and modified to fit your needs.   If  they  are  re-
+distributed,  please keep them in their original form unless
+it is clearly stated that they were modified.  Any  improve-
+ments (that might not be too hard :-), suggestions, or other
+security programs that you would like  to  see  get  further
+distribution can be sent to:
+
+     df@medusa.cs.purdue.edu
+
+     (That's me)
+
+     or
+
+     spaf@uther.cs.purdue.edu
+
+     (Dr. Eugene Spafford)
+
+     Note that the COPS system is still in an infancy  stage
+--  although it has been tested on a variety of computers at
+Purdue, it has not undergone any serious trials.
+
+     Enhancements I envision include:
+
+i) Improved speed and portability without sacrificing  func-
+tionality (pretty obvious, I guess....)
+
+ii) A level of severity assigned to each  warning;  anything
+that  could  compromise root instantly (root having no pass-
+word, for example) might have a level 0 priority, while sim-
+ply  having a user with a writable home directory might only
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 11 -
+
+
+be level 3.  This way the system could be run at  a  certain
+threshold  level, or simply have the set of warnings priori-
+tized for a less sophisticated administrator.
+
+iii) Better handling of SUID programs.  The current  program
+needs  more  work  to be done on it to be run effectively by
+most people; many will not be willing to put the time needed
+to  go  through  the list of SUID files by hand to decide if
+they are needed or not.  Perhaps also an alarm  would  sound
+if a shell script is SUID; doubly so if root owned.
+
+iv) A CRC checker that would check a file  system  (possibly
+just  the  most  important  programs  (such as this :-)) and
+report if any of the executable files were changed -- possi-
+bly signalling a viral infection.
+
+v) The eradication of any design flaws or coding errors that
+are in the COPS system.
+
+     The main purpose of creating the COPS system  was  two-
+fold;  the first was to foster an understanding of the secu-
+rity problems common to most UNIX systems,  and  the  second
+was  to  try  to  create and apply software tools that, when
+run, will inform system administrators of potential problems
+present in their system.  No attempt is made by the tools to
+correct any problems because a potential security problem at
+one  site  may  be  standard policy/practice at another.  An
+emphasis on furthering education and knowledge about UNIX in
+general is the key to good security practices, not following
+blindly what an unintelligent tool might say.
+
+     Some of the advantages to using a system such  as  COPS
+are:
+
+i)  Nearly  Continuous  monitoring  of  traditional  problem
+areas.
+
+ii) A new system can be checked before being put  into  pro-
+duction.
+
+iii) New or inexperienced administrators can not  only  stop
+some  of  their  problems in security they may have, but can
+also raise their consciousness about the potential for secu-
+rity dilemmas.
+
+     And a couple of disadvantages:
+
+i) An administrator could get a false sense of security from
+running  these  programs.  Caveat emptor (ok, they are free,
+but still beware.)
+
+ii) A specific path to the elimination of the problem is not
+presented.   This  could  also be construed as an advantage,
+when considering the third point.
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 12 -
+
+
+iii) Badguys can get these tools.  You know -- the guys with
+black hats.  What happens when they get a copy of this pack-
+age?  With any sensitive subject like security, knowledge is
+zealously   guarded.    People   are  afraid  that  absolute
+knowledge corrupts -- who knows, they may be right.   But  I
+staunchly  stand by the tree of knowledge.  Let the bad guys
+taste the fruit, and they may see the light,  so  to  speak.
+In  addition,  the  system  does  not say how to exploit the
+hole, just that it exists.
+
+     Results of Running COPS:
+
+     Not surprisingly, the results when COPS was run  varied
+significantly  depending  on what system and site it was run
+on.  Here at Purdue, it was run on a Sequent  Symmetry  run-
+ning DYNIX 3.0.12, on a pair of Suns (a 3/280 and 3/50) run-
+ning UNIX 4.2 release 3.4, a  VAX  11/780  running  4.3  BSD
+UNIX,  a  VAX  8600  running  Ultrix 2.2, and finally a NeXT
+machine running their 0.9 O/S version of UNIX.  The  results
+of  the  COPS  system showed a reasonable amount of security
+concern on all of the machines; the  faculty  only  machines
+showed  the  weakest security, followed by the machines used
+by the graduate  students,  and  finally  the  undergraduate
+machines  had  the  strongest  security  (our administrators
+_know_ that  you  can't  trust  those  (us?)  young  folks.)
+Whether  this was showing that Purdue has a good administra-
+tion, or that the UNIX vendors have a fairly good  grasp  on
+potential  security problems, or if it was merely showcasing
+the shortcomings of this system wasn't clear to me from  the
+results.
+
+     The security results probably will  vary  significantly
+from  machine  to  machine  --  this is not a fault of UNIX;
+merely having the same machine and software  does  not  mean
+that  two  sites will not have completely different security
+concerns.  In addition, different vendors and administrators
+have  significantly varying opinions on how a machine should
+be set up.  There is no fundamental reason  why  any  system
+cannot  pass  all  or nearly all of these tests, but what is
+standard policy at one sites may be an unthinkable  risk  at
+another,  depending  upon the nature of the work being done,
+the information stored on the computer, and the users of the
+system.
+
+     When I first started researching this report, I thought
+it  would  be  a  fairly  easy  task.  Go to a few computing
+sites, read some theoretical papers, gather all the programs
+everyone  had written, and write a brief summary paper.  But
+what I found was an tremendous  lack  of  communication  and
+concerted  effort towards the subject of security.  AT&T had
+written a couple of programs ([Kaplilow and Cherepov 88], as
+had   Hewlett   Packard   ([Spence   89]),   but  they  were
+proprietary.  I heard rumors that the government was  either
+working on or had such a security system, but they certainly
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 13 -
+
+
+weren't going to give it to me.  The  one  book  devoted  to
+UNIX security ([Kochran and Wood 86]) was good, but the pro-
+grams that they presented were not expansive enough for what
+I  had  in  mind,  plus the fact that they had written their
+programs mostly based on System V.  And  while  most  system
+administrators  I  talked  to  had  written at least a shell
+script or two that performed a  minor  security  task  (SUID
+programs seemed the most popular), no one seemed to exchange
+ideas or any their problems with  other  sites  --  possibly
+afraid  that the admission of a weakness in their site might
+be an invitation to disaster.  There is an  excellent  secu-
+rity  discussion  group on the network ([Various Authors 84-
+]), from which I received some excellent ideas for this pro-
+ject, but it is very restrictive to whom it allows to parti-
+cipate.  I hope that with the release of this security  sys-
+tem it will not only help stamp out problems with UNIX secu-
+rity, but would encourage people  to  exchange  ideas,  pro-
+grams,  problems  and solutions to the computer community at
+large.
+
+Dan Farmer September 29, 1989
+
+     Acknowledgements: I would like to thank Eugene Spafford
+for  his  invaluable  help in the researching, planning, and
+development of this project.  Without the writings and  pro-
+grams created by Robert Morris, Matt Bishop, and other capa-
+ble UNIX programmers, this project could never  have  gotten
+off  the  ground.  Thanks also go to Brian Kernighan, Dennis
+Ritchie, Donald Knuth, and Ken Thompson, for  such  inspira-
+tional  computer  work.   And of course without Peg, none of
+this would have come into being.  Thanks  again  to  all  of
+you.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 14 -
+
+
+                        BIBLIOGRAPHY
+
+
+_, UNIX Programmers Manual, 4.2 Berkeley Software  Distribu-
+tion,  Computer  Science  Division, Department of Electrical
+Engineering and Computer Science University  of  California,
+Berkeley, CA, August 1983.
+
+_, DYNIX(R) V3.0.12 System Manuals,  Sequent  Computer  Sys-
+tems, Inc., 1984.
+
+Aho, Alfred V., Brian W. Kernighan, and Peter J. Weinberger,
+The AWK Programming Language, Addison-Wesley Publishing Com-
+pany, 1988.
+
+Authors, Various, UNIX Security Mailing  List/Security  Dig-
+est, December 1984 -.
+
+Baldwin,  Robert  W.,  Crypt  Breakers  Workbench,   Usenet,
+October 1986.
+
+Baldwin, Robert W., Rule Based Analysis  of  Computer  Secu-
+rity, Massachusetts Institute of Technology, June 1987.
+
+Bauer, David S. and Michael E. Koblentz, NIDX - A  Real-Time
+Intrusion Detection Expert System, Proceedings of the Summer
+1988 USENIX Conference, Summer, 1988.
+
+Bishop, Matt, Security Problems with the UNIX Operating Sys-
+tem,  Department  of  Computer  Sciences, Purdue University,
+January 31, 1983.
+
+Bishop, Matt, How to Write a Setuid Program, April 18, 1985.
+
+Denning, Dorothy, Cryptography and Data  Security,  Addison-
+Wesley Publishing Company, Inc, 1983.
+
+Duff, Tom, Viral Attacks On UNIX System  Security,  Proceed-
+ings of the Winter 1988 USENIX Conference, Winter, 1988.
+
+Fiedler, David and Bruce Hunter, UNIX System Administration,
+Hayden Book Company, 1986.
+
+Grampp, F. T. and R. H. Morris, "UNIX Operating System Secu-
+rity,"  AT&T  Bell  Laboratories  Technical Journal, October
+1984.
+
+Kaplilow, Sharon A. and Mikhail Cherepov, "Quest -- A  Secu-
+rity  Auditing Tool," AT&T Bell Laboratories Technical Jour-
+nal, AT&T  Bell  Laboratories  Technical  Journal,  May/June
+1988.
+
+Morris, Robert and Ken Thompson, "Password Security : A Case
+History," Communications of the ACM, November 1979.
+
+
+
+                     February 19, 1991
+
+
+
+
+
+                           - 15 -
+
+
+Reed, Brian, "Reflections on Some Recent Widespread Computer
+Break-ins,"  Communications  of the ACM, vol. Vol 30, No. 2,
+February 1987.
+
+Reed, J.A. and P.J. Weinberger, File Security and  the  UNIX
+System  Crypt Command, Vol 63, No. 8, AT&T Bell Laboratories
+Technical Journal, October 1984.
+
+Smith, Kirk, Tales of  the  Damned,  UNIX  Review,  February
+1988.
+
+Spafford, Eugene H., The Internet Worm Program: An Analysis,
+Purdue Technical Report CSD-TR-823, Nov 28, 1988.
+
+Spafford, Eugene H., 1989.  Private Communications
+
+Bruce Spence, spy: A  UNIX  File  System  Security  Monitor,
+Workshop  Proceedings  of  the  Large  Installation  Systems
+Administration III, September, 1988.
+
+Stoll, Clifford, Stalking the Wily Hacker, Volume 31, Number
+5, Communications of the ACM, May 1988.
+
+Thompson, Ken, Reflections on  Trusting  Trust,  Volume  27,
+Number 8, Communications of the ACM, August 1984.
+
+Wood, Patrick and Stephen  Kochran,  UNIX  System  Security,
+Hayden Books, 1986.
+
+Wood, Patrick, A Loss of Innocence,  UNIX  Review,  February
+1988.

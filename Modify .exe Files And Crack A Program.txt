@@ -1,0 +1,59 @@
+ 1) Don't try to modify a prog by editing his source in a dissasembler.Why?
+Couse that's for programmers and assembly experts only. If any of you dumb kids
+try to view it in hex you'll only get tons of crap you don't understand.
+First off, you need Resource Hacker(last version).It's a resource editor-
+very easy to use.
+
+Resource Hacker Version 3.4.0
+CODE
+http://delphi.icm.edu.pl/ftp/tools/ResHack.zip/
+
+Help File
+CODE
+http://www.users.on.net/johnson/resourceha...eshack_hlp.zip/
+
+
+################################################################################
+#
+2)Unzip the archive, and run ResHacker.exe. You can check out the help file too,
+if you want to be a guru.
+################################################################################
+#
+3)You will see that the interface is simple and clean. Go to the menu File\Open or
+press Ctrl+O to open a file. Browse your way to the file you would like to edit.
+You can edit *.exe, *.dll, *.ocx, *.scr and *.cpl files, but this tutorial is ment
+to teach you how to edit *.exe files, so open one.
+################################################################################
+#
+4)In the left side of the screen a list of sections will appear.
+The most common sections are: -Icon;
+-String table;
+-RCData;
+-Dialog;
+-Cursor group;
+-Bitmap;
+-WAV.
+*Icon: You can wiew and change the icon(s) of the program by double-clicking the icon section,chossing the icon, right-clicking on it an pressing "replace resource". After that you can choose the icon you want to replace the original with.
+*String table: a bunch of crap, useful sometimes, basic programming knowladge needed.
+*RCData: Here the real hacking begins. Modify window titles, buttons, text, and lots more!
+*Dialog:Here you can modify the messages or dialogs that appear in a program. Don't forget
+to press "Compile" when you're done!
+*Cursor group: Change the mouse cursors used in the program just like you would change the icon.
+*Bitmap: View or change images in the programs easy!
+*WAV:Change the sounds in the prog. with your own.
+################################################################################
+####
+
+5) In the RCData,Dialog,Menu and String table sections you can do a lot of changes. You can
+modify or translate the text change links, change buttons, etc.
+################################################################################
+#####
+
+TIP: To change a window title, search for something like: CAPTION "edit this".
+TIP: After all operations press the "Compile Script" button, and when you're done editing save
+your work @ File\Save(Save as).
+TIP: When you save a file,the original file will be backed up by default and renamed to Name_original and the saved
+file will have the normal name of the changed prog.
+TIP: Sometimes you may get a message like: "This program has a non-standard resource layout... it has probably been compressed with an .EXE compressor." That means that Resource Hacker can't modify it becouse of it's structure.
+
+Remember! This is only a small example of what you can do to executables with Resource Hacker.

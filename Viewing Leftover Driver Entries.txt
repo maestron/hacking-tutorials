@@ -1,0 +1,31 @@
+Windows keeps a Device Manager entry for every piece of
+hardware that's ever been recognized by the system, regardless
+of whether it is currently present in the machine or was even
+set up correctly in the first place. The "View Hidden Devices"
+option in Device Manager won't show you these "residual"
+drivers. You can force it to show you everything by going to
+My Computer Properties, the Advanced tab, Environment
+Variables, and adding a new system variable with the name
+"DEVMGR_SHOW_NONPRESENT_DEVICES" and a value of 1. Now opening
+Device Manager and choosing "Show Hidden Devices" really will
+show you everything. Standard practice at the factory is to
+use a single image and just move it from model to model,
+letting it plug and play all the new hardware along the way.
+This leaves you with an impressive list of hardware still in
+the Device Manager, but no longer in the system. You also see
+this to a lesser degree when you restore a system from an
+image you created for backup purposes. These "residual"
+drivers can sometimes cause all kinds of weirdness and are
+best removed by right-clicking on their entry in the Device
+Manager and choosing "uninstall".
+
+This works on Windows 2000/XP (and I assume Server 2003,
+though I haven't tried it). Anyone running a factory loaded
+Compaq or Dell will be amazed at the amount of junk left over
+from this process.
+Jon Pickle
+
+Thanks, Jon. Indeed, Windows has a thing about hanging on to ghost
+entries in Device Manager and also in the Registry. (This is one of the
+reasons why Registries inflate so much over time.) A little judicious
+ghostbusting lets your PC run cleaner and leaner!

@@ -1,0 +1,15 @@
+Boot Winxp Fast 
+
+Follow the following steps
+
+1. Open notepad.exe, type "del c:\windows\prefetch\ntosboot-*.* /q" (without the quotes) & save as "ntosboot.bat" in c:\
+2. From the Start menu, select "Run..." & type "gpedit.msc".
+3. Double click "Windows Settings" under "Computer Configuration" and double click again on "Shutdown" in the right window.
+4. In the new window, click "add", "Browse", locate your "ntosboot.bat" file & click "Open".
+5. Click "OK", "Apply" & "OK" once again to exit.
+6. From the Start menu, select "Run..." & type "devmgmt.msc".
+7. Double click on "IDE ATA/ATAPI controllers"
+8. Right click on "Primary IDE Channel" and select "Properties".
+9. Select the "Advanced Settings" tab then on the device or 1 that doesn't have 'device type' greyed out select 'none' instead of 'autodetect' & click "OK".
+10. Right click on "Secondary IDE channel", select "Properties" and repeat step 9.
+11. Reboot your computer.

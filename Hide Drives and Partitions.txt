@@ -1,0 +1,48 @@
+Hide Drives and Partitions
+
+Do you have data on a partition or hard drive that you don't want tampered with or easily accessible to other users? Well, you can hide any drive/partition in Windows XP, NT, and 2000. That means that they won't show up in Explorer or My Computer.
+
+If you want access to that drive from your user account you should create a desktop shortcut before proceeding. Once hidden, you can still access by typing the drive letter and a colon in Start/Run—for example, "D:" will bring up a folder of the contents on your D drive.
+
+The easiest way with Win XP is to use the TweakUI power toy from Mcft. Go to Start/Run and type in "tweakui" (without the quotes).
+
+Go to My Computer/Drives and uncheck the drive/partition(s) you want hidden. Click "Apply" or "OK" when finished.
+
+If you have XP but not Tweak UI you can download it here...
+http://www.Mcft.com/windowsxp/downloads/powertoys/xppowertoys.mspx
+
+For Win NT, 2000, and XP you can use the following Registry edit:
+
+*Be sure to back up the Registry before proceeding
+http://www.worldstart.com/tips/tips.php/401
+
+Open the Registry Editor by going to Start/Run and typing in "regedit" (without the quotes). Find your way to...
+
+HKEY_CURRENT_USER\Software\Mcft\Windows\CurrentVersion\Policies
+
+Click on "Explorer".
+
+Double-click the "NoDrives" key in the right column. If you don't find a "NoDrives" registry key, just right-click in the right pane and choose "New/DWORD Value" then name the key "NoDrives".
+
+You'll see a value like "0000 00 00 00 00". This is where the fun starts. The four sets of double zeros (after the "0000") are where you'll enter the values for the drive/partitions. Now, stay with me on this—it's not as complicated as it sounds:
+
+The first column is for drives A-H, the second for I-P, the third for Q-X, and the fourth for Y-Z.
+
+The values for each drive are as follows:
+
+1 - A I Q Y
+2 - B J R Z
+4 - C K S
+8 - D L T
+16 - E M U
+32 - F N V
+64 - G O W
+80 - H P X
+
+So, let's say you want to hide drive D. In the first column you would put "08". For drive K you would put "04" in the second column.
+
+But what if you want to hide more than one drive in a column? Simply add the values together: D+E = 8+16 = 24. So in the first column you would put "24".
+
+Still baffled? If you have XP then go get TweakUI and save yourself the math.
+
+Whichever method you use, you can rest easy knowing that the files on that drive or partition are less accessible to other users.

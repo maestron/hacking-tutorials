@@ -1,0 +1,96 @@
+ Removing Banners From Free Webhosts
+
+Today,there r number of wesites,which offer you webspace and areasonable good URL,for free.This service has become most popularas it is the easiest and fastest way of puting up ur site on net,getting an identity for ur self and becoming a part of huge web.
+But The problem is they put Huge banners In that free sevice .
+
+How To remove that?
+its easy
+follow the steps down
+The banners Which r embedded r just about the only source of income for these websites,so if u r caught carrying out any of the below 'No Banner'
+tricks,then u would possible lose ur account. So BEWARE!!!
+
+
+For Geocities,,angel fire,freeservers,50 megs,fortune city,netscape
+
+place the below code after the end HTML tag:
+<noscript></noscript>
+Anglefire/FreeServers/50Megs/FortuneCity/Netscape/tripod
+Place the below code any where on the page:
+<script language="javascript">
+function open() { }
+</script>
+
+the above snippet will give an error and normally no other Java script code would be executed,so no banner would be displayed.however ,it doesn't work in all cases ,so there is yet another Hack for angelfire:Surround the BODY tag with the below code
+
+<noscript></noscript>
+
+If in case any thing doesn't work I am not responsible
+
+if u want for any other free webhost i will give req here
+
+----------------------------------------------------
+
+
+Here are some more for you guys, good luck and have fun
+
+
+Banner Kills
+
+Tripod Insert between the <head> tag
+
+
+<noscript><noscript><noscript><noscript> </noscript></noscript></noscript></noscript>
+
+Angelfire Insert anywhere in the <head> tag (for pop-up option)
+<script language="JavaScript">
+<!--
+function open () {return true;}
+//-->
+</script>
+
+
+BizLand Insert anywhere in the <head> tag
+<noscript>
+<!--UsePopUpAdBanner-->
+
+DigiWeb Insert anywhere
+<script language="javascript">
+var winname1="adw";
+var winname2="indow";
+var windowname=winname1+winname2;
+popBusters = window.open("http://popbusters.cjb.net/sponsor/", windowname, "toolbar=no, location=no, directories=no, menubar=no, scrollbar=no, resizable=no, status=no, width=1, height=1")
+popBusters.close()
+</script>
+
+
+DomainDLX Insert after the </html> tag
+<noscript>
+
+EasySpace Insert after the </html> tag
+<noscript>
+
+Geocities Add this after the </html>
+<noscript>
+<!-- <BODY> -->
+</noscript>
+
+Namezero Insert in the <head> tag
+<script language="Javascript">
+<!---
+if (parent.frames.length)
+parent.location.href= self.location;
+// --->
+</script>
+
+
+Virtual AveInsert after the </html> tag
+<script language="JavaScript">
+<!-- -->
+</noscript>
+</script>
+
+
+50Megs.com Insert below <head> an below <title>
+<noscript>
+<!-- <BODY> -->
+</noscript>

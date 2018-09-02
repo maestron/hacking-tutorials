@@ -1,0 +1,66 @@
+
+Unauthorised Access UK  0636-708063  10pm-7am  12oo/24oo
+                     HOW TO DIAL OUT ON A UNIX SYSTEM.
+                     ---------------------------------
+ This document makes the assumption that you are currently logged on to the
+ system and are sitting in a shell environment.
+         1. First of all we need to locate the L-devices file.
+            It should be found in the /usr/lib/uucp directory,
+            but in case it isn't typing:
+                       find / -name L-devices -print
+            will show you where it is.
+            If you can't find it then don't worry as we can get
+            around it, only it will take a bit of trial and error.
+         2. If you found the L-devices file then we need to list
+            it by typing:
+                       cat L-devices
+            If it runs off the screen then type:
+                       cat L-devices | more
+            This will page the output - space displays the next
+            page and return will show the next line while q quits.
+            This file shows us to which serial line (port) the
+            modems (ACU's) are connected, it also shows when they
+            can be called and the baud rate.
+            We are interested in the serial line and the baud rate.
+            Choose a line with your desired speed and make a note of
+            the serial line. The speed is shown as 2400,1200,300 etc.
+            and the serial line as ttynn where nn is a number.
+         3. If you couldn't find/list the L-devices file then type:
+                       who am i
+            This will show which serial line you are on, and as you
+            are on a modem then it's a fair bet that the others are
+            not too far away. e.g. If you are on line tty07 then
+            there's a good chance of a modem being on tty06,tty08 or
+            thereabouts.
+         4. Now we need to make a direct connection to the modem by
+            typing:
+                       cu -sbaud -l/dev/ttynn dir
+            where baud and ttynn are your desired speed and serial
+            line respectively.
+            If you couldn't find/list the L-devices file then this is
+            where the trial and error I told you about comes in.
+            When you get it right it should come up with 'Connected'.
+         5. Now we are talking directly to the modem. As a precaution
+            at this point I suggest saving the modem's current config
+            by typing:
+                       AT&W
+            Don't worry if you can't see what you are typing as it is
+            probably in quiet mode with echo off.
+            Now restore the factory default settings by typing:
+                       AT&F
+            Now you can set up the modem as you require it, just as
+            you would with your own and use it as normal.
+            When you have finished type:
+                       ATZ
+            to restore the modem back to it's initial state, then
+            type:
+                       ~.
+            It should come up 'Disconnected' and you should now be
+            back in your shell.
+                       -------------------------------
+ It is probably best to try and log on to a RACE system on an 0800 number
+ as then it won't cost you a penny to call your favourite BBS's.
+ If you have any problems or need any UNIX information then send mail to
+ me on HackerNet and I'll see what I can do for you.
+ Wishing you all many, many, happy hours of hacking - THE ANALYST.
+Downloaded From P-80 International Information Systems 304-744-2253

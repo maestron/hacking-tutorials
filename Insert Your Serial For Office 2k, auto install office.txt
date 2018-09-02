@@ -1,0 +1,27 @@
+this came from one of our sod m8's sig. Sorry dont remember who's. Credit to him/her. http://www.thetechguide.com/howto/office2kserial.html
+Worth reading.
+
+Auto-insert your Office2k serial number
+
+
+Hate having to find your serial number every time you need to install something from your Office2k CD?
+How would you like it pre-filled in for you?
+Here's how:
+
+On your Office2k CD, there's a file named SETUP.INI. Open it, and look for the [Options] section.
+Modify it to look like this:
+
+[Options]
+; If a value is present, the [Options] section gives the values of properties to apply to
+; this installation. Specify them in the format:
+; PropName=PropValue
+; Remember to uncomment both the section name and the value names.
+;
+USERNAME=Customer
+PIDKEY=ABCDEFGHIJKLMNOPQRSTUVWXY
+
+
+Use your name for USERNAME, and of course your own serial number for PIDKEY.
+Make sure you uncomment [Options], USERNAME, and PIDKEY else they won't get read
+(you can leave USERNAME commented if you want, but you MUST have [Options]
+uncommented for the PIDKEY value to be read). 

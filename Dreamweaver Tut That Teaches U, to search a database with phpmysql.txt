@@ -1,0 +1,24 @@
+Ok, this should work...First of all, there is one great extension for DW & PHP ADODB object model that is free and great! Download it and install from www.interakt.ro its called PHAKT (NOT impakt, because its not free)
+Install it and you will have another type of PHP ADODB document type
+Start project with PHP ADODB (not old PHP MySQL)
+Page 1
+Create form that has one Editbox and one button.
+Name Edit box smething like e.g. "search" without quotes.
+That form should have form action="results.php" and type set to POST
+Not, create Page 2 and name it results.php. Create new recordset in dw
+like this
+SELECT *
+FROM table
+WHERE table.colum.you.r.searching LIKE '%colname%' OR table.other.column LIKE '%colname%' ORDER BY table.tableid
+this means that we want to select ALL (*) records in table WHERE content of column is similar (Dav, will return Dave, David, Davidof...) to search keyword.
+Next, in variables click + and add variable name colname default value set to % if you want to show all records if form is submited blank, or -1 if You want to show none if form is submited blank. Finaly for Run-time value type $HTTP_POST_VARS['search'] Runtime value is equal name of Edit box name you set up in first page...
+Now, from bindings tab, select values and insert it on page, that You would like to show on page. Ill skip this part assuming You know how to format output and how to limit it but if you dont know ask in reply...
+So now You have page with results. Test it and see if its working.
+If it is, create page 3 and name it details.php. Now, select value from page that you want to link with details page and click on link. Select details.php page and click on parameters. For param name enter something like id since this should be PK in table and unique value, and for value click on lightning icon, and select primary key in your table. In live page link should be like details.php?id=<some_value>.
+As for details page recordset it should look like
+SELECT *
+FROM table
+WHERE table.id = 'colname'
+create vars as for page 2, but change Runtime to $HTTP_GET_VARS['id']
+and format output on page. That should be it, but since im typing it in "realtime" maby i forgot something...
+Home I did helped You 

@@ -1,0 +1,338 @@
+Linking Your Xbox To Your Computer
+
+I. Introduction
+
+Some basics and assumptions (the more you know, the more you UNDERSTAND):
+
+Crossover cable: A crossover cable is needed to directly connect your computer and Xbox. You would plug one end of the cable to your computer and the other end into the Xbox, there are no devices in between. If you have a hub, switch, or router you will not need a crossover cable though some still will work with one. With connecting to hubs, switches, or routers you should use a straight-through cable. The image below shows the difference between the two:
+
+To easily tell if you have a crossover or not, simply look at the two ends side by side. If all the pins, 1 through 8 on both ends are all the same color in the same order, you have a straight-through cable. If pins 1, 3 and 2, 6 are swapped you have a crossover cable. Notice the TX, RX as well. This shows why in pc to pc connections a crossover is required. Otherwise one pc will be transmitting over the same wire the other pc is trying to transmit on.
+
+This guide currently gives configuration examples for setting up an FTP connection with Evox, Avalaunch, MXM, or UnleashX as your dash. It is also recommended to use FlashFXP as your FTP client though many others will work just fine.
+You do not NEED an internet connection to FTP to your Xbox. When you ftp to your Xbox from a computer in your house to the Xbox in your house, no packets (data) need to go out to the internet and they shouldn't even try. The tricky part is when you want to be able to access the internet and ftp to your Xbox at the same time. How this is done and how difficult it is depends on the devices you have.
+I will not list every baby step involved for how to set things, like every mouse click required. If you're not sure how to do something I've said to configure, see number 5 below.
+If something is said in this guide that you don't understand or don't know how to accomplish it, try google. It is a search engine at http://www.google.com
+For example, if I say "Run a command prompt" but don't mention how; don't go immediately posting in the forums asking how you run a command prompt. First, try searching in google, "how to run command prompt windows xp". I'm willing to bet you'll get your answer faster. Another example, just so we're clear, if I say "turn off your winxp firewall", you may search in google, "how to turn off windows xp firewall". Again, I'm betting your answer will come faster.
+This guide now has configuration diagrams to help anyone having difficulty understanding the configuration examples I discuss. Some people simply do better with visuals. The key for the diagrams is provided below:
+
+
+II. Configuration Examples
+Find the configuration that best matches what you have. Reading them all anyway could help your understanding.
+
+1. Computer Direct Connection to Xbox
+In this configuration you have your computer and Xbox directly connected. This direct connection can either be with the crossover cable, or with a straight-through cable to a hub/switch and then another straight-through cable from the hub/switch to your Xbox. Both are 'direct' connections.
+
+2. Computer with two NICs
+In this configuration you have two NICs. One possibly going to a router or a cable or DSL modem, the other you wish to make a direct connection to your Xbox with. You also have the option of configuring your Xbox for live, xbconnect, or xlink by enabling it to get out to the internet through your computer.
+
+3. Computer with one NIC and a router
+In this configuration you should have your computer and Xbox connected to the router. The router's WAN port goes to your cable, DSL modem, or otherwise out to the internet.
+
+PRE SETUP: Before you begin setting up your configurations you should cable everything up properly. Make sure your Xbox is booted up with the dash loaded as well so you can test the settings you will put in. If you are loading your dash from a CD or DVD, any changes you need to make to the evox.ini, avalaunch.xml, config.xml or mxm.xml you will need to re-burn onto the disk then reboot your Xbox with your new boot disk. When making changes to the evox network settings when booting evox from the hard drive, make sure you scroll all the way down when you are finished and select save and exit.
+Setting up Configuration 1
+This is the simplest setup. Even if you have one of the other configurations, if you are experiencing problems you can always try this to help troubleshoot. This configuration can be setup in two different ways as showed in the Configuration 1a and Configuration 1b diagrams.
+
+
+
+
+
+Evolution X Dashboard
+Basically you can setup the [Network] Section of your evox.ini to look like this:
+
+[Network]
+SetupNetwork = Yes
+StaticIP = Yes
+Ip = 192.168.0.3
+Subnetmask = 255.255.255.0
+Defaultgateway =
+DNS1 = 0.0.0.0
+DNS2 = 0.0.0.0
+
+You may also have SkipifNoLink and you can set that to No. Also verify your [FTP] Section looks like this:
+
+[FTP]
+Enable = Yes
+Password = xbox
+IGR = No
+
+MXM Dashboard
+
+If you use MXM as your dash in your MXM.xml file you would want the <network> section to look something like this:
+
+<Network>
+<UseDHCP>false</UseDHCP>
+<IP>192.168.0.3</IP>
+<DNS1>0.0.0.0</DNS1>
+<DefaultGateway>0.0.0.0</DefaultGateway>
+<SubnetMask>255.255.255.0</SubnetMask>
+</Network>
+
+Also just verify there should be an FTPServer section that looks like this:
+
+<FTPServer>
+<ServerPort>21</ServerPort>
+<AllowAnon>False</AllowAnon>
+<AnonRoot>F:</AnonRoot>
+<User>
+<Name>xbox</Name>
+<Password>xbox</Password>
+<Root></Root>
+</User>
+</FTPServer>
+
+Avalaunch Dashboard
+<network setup="1" type="static">
+<ip>192.168.0.3</ip>
+<subnet>255.255.255.0</subnet>
+<gateway>0.0.0.0</gateway>
+<dns1>0.0.0.0</dns1>
+<dns2>0.0.0.0</dns2>
+<proxy enabled="0">
+<server>10.0.0.1</server>
+<port>8080</port>
+</proxy>
+</network>
+
+Also for Avalaunch make sure you set the username to this:
+<user name="xbox" password="xbox">
+
+UnleashX Dashboard
+
+For UnleashX, edit the config.xml file to look like this:
+<Network Enable="Yes" Type="Static">
+<ip>192.168.0.3</ip>
+<subnet>255.255.255.0</subnet>
+<gateway>0.0.0.0</gateway>
+<dns1>0.0.0.0</dns1>
+<dns2>0.0.0.0</dns2>
+<AutoDetect>Yes</AutoDetect>
+</Network>
+
+Also make sure the FTP section in UnleashX is all enabled (which is by default) so it should look like this:
+<FTP Enable="Yes">
+<User>xbox</User>
+<Password>xbox</Password>
+<Port>21</Port>
+<MaxUsers>2</MaxUsers>
+<AllowAnon>No</AllowAnon>
+<Greeting>Welcome to XBOX FTP Server</Greeting>
+</FTP>
+
+If you boot evox with these settings you can verify your Xbox has the correct IP either by looking on a skin that displays it or in settings it will display it in blue text up top. You can also look in the other dashes if you have an IP, if not right on the front screen (via whatever skin you have) then under a settings sub menu. If you see No Link or No IP! Then either one of these settings is wrong, you don’t have it connected to your computer with the correct settings yet, or your crossover cable is bad.
+
+Now on your computer go to the properties of the NIC that has a crossover cable connected to the Xbox. Click on the Internet Protocol (TCP/IP) and then properties. Enter the following:
+
+IP Address: 192.168.0.2
+Subnet Mask: 255.255.255.0
+Gateway: <leave blank>
+DNS: <leave blank>
+That's it. Simple huh? Now set up your FTP Client. For FlashFXP, install the program and run it. Click on "Site Manager" then click to create a new site. Name it Xbox or whatever and for the IP enter 192.168.0.3, verify the port is 21. The username and password are both "xbox", all lower-case and without the quotes. Go to options and uncheck any check marks on PASV or passive mode if you are using Evox. If you are using one of the other dashes you can leave PASV checked. Apply the settings and connect.
+
+If you have your one NIC connection to the internet and just want to unplug that connection and plug in a crossover to your Xbox when you want to FTP there is an awesome way to automate changing your NIC settings from how they need to be set for the internet and how they need to be set for the crossover to the Xbox. Luckily someone has a perfect tutorial for that and its here: http://www.xbox-scene.com/articles/switch-network.php
+
+If you use Windows XP you shouldn’t even need to bother with making those scripts. If your one NIC is set to use dhcp for the internet and when you connect it to your Xbox you always change it to a static address you can enter that address in the Alternate Configuration tab of your NIC. So if you go to your NIC properties then select TCP/IP and hit properties you should see two tabs, a General tab and an Alternate Configuration tab. The General tab you would leave set for dhcp so when you plug into the internet it would work. The alternate tab you would enter settings needed to be connected to your Xbox. Now when you switch your internet connection to the crossover cable of the Xbox windows should detect your dhcp network is down and try using the configuration in the alternate tab automatically. In this way you never have to change your NIC settings even though you are changing from a dhcp internet connection to a static direct to Xbox connection.
+
+If you are having problems connecting still please read the Troubleshooting Section.
+
+Setting up Configuration 2
+
+
+
+The configuration 2 diagram above shows the most common setup you would have with 2 NICs in your PC. The only difference between this and configuration 1 is that the second NIC would have a connection to the internet for you. Chances are this NIC to the internet is getting a public DHCP address like 64.238.121.12, or any such number. If this NIC goes to a router, you may wish to read configuration 3 and you may not need your second NIC at all. So when the NIC gets DHCP like this it is automatically assigned an ip, subnet, gateway, dns, etc. so you don't need to do anything else to it. The only "gotcha" with this configuration is that when you configure your second NIC that goes direct to the Xbox you may configure it in such a way that your computer tries to access the internet through that NIC instead of the correct one with the public DHCP. This is a routing issue and one way to ensure this doesn't happen is to configure the NIC with the connection to your Xbox exactly as in configuration 1, specifically making note that you DO NOT enter a gateway address. Your Xbox itself can also be setup just as in configuration 1. Refer to the Troubleshooting section if you are having problems and yet are set up as I described.
+
+So if you connect one of your NICs to a router in this configuration you may be getting an internal IP like 192.168.x.x instead of an external IP address. If this is the case make sure the NIC that goes out to the Xbox is not given an IP address on the same subnet as the NIC going to your router. For example, when the NIC going to your router and out to the internet is getting an IP of 192.168.1.x and has a subnet mask of 255.255.255.0 and the gateway on this NIC is the IP address of the router, then set the IP address of the NIC going to your Xbox to 192.168.0.x with a subnet of 255.255.255.0 and don't enter a gateway. Then make your Xbox have an IP address on the 192.168.0.x range, and again a gateway would not be needed.
+
+**Advanced Option** If for some reason you would like both your NICs on the same subnet then you can still force the one going internet to be used by default for everything and the one going to the Xbox to only be used when connecting to the static IP of your Xbox. Open up a command prompt and type 'route print'. With route print you can see what route your data packets will take to try to access the internet or your Xbox. What you can do is manually add a route that tells your computer that anytime it tries sending anything to 192.168.0.3 it should use the NIC with the direct connection the Xbox, not the one that goes out to the internet. To do this run the route print command. The first thing you'll see is an interface list. It'll say something like:
+
+Interface List 0x1 ........................... MS TCP Loopback interface 0x2 ...00 06 5b b8 e3 33 ...... 3Com 3C920 Integrated Fast Ethernet Controller 0x3 ...00 02 2d 26 2c 74 ...... Dell TrueMobile 1150 Series Wireless LAN Mini PCI Card
+So in this case the NIC going to the Xbox is 0x2, which would be IF 2 in the command. To add the static route follow this pattern:
+
+route ADD 157.0.0.0 MASK 255.0.0.0 157.55.80.1 METRIC 3 IF 2
+destination^ ^mask ^gateway metric^ ^Interface
+
+So in our example you would type:
+
+route -p add 192.168.0.3 mask 255.255.255.255 192.168.0.2 METRIC 1 IF 2
+to remove this at any time you would just type:
+
+route delete 192.168.0.3
+The other option you have if you want your Xbox to get out to the internet through your computer’s internet connection is to set up Internet Connection Sharing (ICS) on your computer. How to set this is up a good thing to google search. You can also try this page: http://www.xbox.com/en-US/live/connect/windowsics.htm for good details. Once set up the only thing to change is to put a gateway address in your evox.ini, avalaunch.xml, or mxm.xml file which should be your computer’s IP address, so the gateway you would use is 192.168.1.1 since that is probably what ICS will set your NICs IP address to.
+
+Setting up Configuration 3
+
+
+
+This is sort of like configuration 2 but instead of your NIC getting a public DHCP address it should be getting an internal private DHCP address. This address can be anything within this range: The blocks are 10.0.0.0. to 10.255.255.255, 172.16.0.0 to 172.31.255.255, and 192.168.0.0 to 192.168.255.255.
+
+There are very high chances your router is giving out addresses somewhere in 192.168.0.x or 192.168.1.x If this is the case your computer should be successfully getting its DHCP address from your router and if you can plug your Xbox into that router as well then just change your evox.ini to have StaticIP = No. So in our first configuration example you would just have to change the files to be this:
+
+Evolution X Dashboard
+[Network]
+SetupNetwork = Yes
+StaticIP = No
+Ip = 192.168.0.3
+Subnetmask = 255.255.255.0
+Defaultgateway =
+DNS1 = 0.0.0.0
+DNS2 = 0.0.0.0
+
+Once you set StaticIP to be No, the ip, subnet, gateway, and dns values are no longer used. You can boot your Xbox and see what IP it is getting from DHCP and simply FTP to that address.
+
+You can also still have your Xbox use a static ip so that you always no its IP address, even with a router that gives out DHCP. Just make sure the static IP you give it is on the same subnet as the DHCP addresses it is giving out. To do that, make your evox.ini like this:
+
+[Network]
+SetupNetwork = Yes
+StaticIP = Yes
+Ip = 192.168.0.3
+Subnetmask = 255.255.255.0
+Defaultgateway = 192.168.0.1
+DNS1 = 0.0.0.0
+DNS2 = 0.0.0.0
+
+Here you've changed static ip back to yes and your gateway address should be the address of your router now. If your router is on a different subnet and by that I mean its ip is 192.168.1.1 and it is giving out dhcp address's of 192.168.1.x then you would make your evox.ini reflect those differences like this:
+
+[Network]
+SetupNetwork = Yes
+StaticIP = Yes
+Ip = 192.168.1.3
+Subnetmask = 255.255.255.0
+Defaultgateway = 192.168.1.1
+DNS1 = 0.0.0.0
+DNS2 = 0.0.0.0
+
+MXM Dashboard
+
+If you run MXM as your dash and want to use DHCP then the MXM.xml file's <network> section should look like this:
+
+<Network>
+<UseDHCP>True</UseDHCP>
+<IP />
+<DefaultGateway />
+<SubnetMask>255.255.255.0</SubnetMask>
+<DNS1 />
+<DNS2 />
+</Network>
+
+Avalaunch Dashboard
+
+If you run Avalaunch as your dash and want to use DHCP then make the <network> section of the avalaunch.xml look like this.
+
+<network setup="1" type="dhcp">
+<ip>192.168.0.180</ip>
+<subnet>255.255.255.0</subnet>
+<gateway>192.168.0.1</gateway>
+<dns1>195.159.0.100</dns1>
+<dns2>195.159.0.200</dns2>
+<proxy enabled="0">
+<server>10.0.0.1</server>
+<port>8080</port>
+</proxy>
+</network>
+
+UnleashX Dashboard
+
+For UnleashX, edit the config.xml file to look like this:
+<Network Enable="Yes" Type="DHCP">
+<ip>192.168.0.100</ip>
+<subnet>255.255.255.0</subnet>
+<gateway>192.168.0.1</gateway>
+<dns1>192.168.0.1</dns1>
+<dns2>192.168.0.7</dns2>
+<AutoDetect>Yes</AutoDetect>
+</Network>
+
+For all of the dash's configuration files, whenever you have them set to use DHCP, none of the other values you have defined below that are used. So if you have enabled DHCP then the IP address you see in the configuration file is NOT the one your Xbox will likely get. Also be careful if your router is giving out DHCP, and you want to give your Xbox a static IP so you know the IP address all the time then make sure whatever static IP you pick for your Xbox is not already an IP used by something else on your network given out by the router's DHCP range.
+
+Xbox on the Internet
+
+Do you want to…?
+
+Access RSS news feeds on your Xbox
+Successfully browse the internet with Linksboxs
+Use a chat client from a dashboard
+Anything else that requires the Xbox to get out to the internet
+If these things aren’t working for you after setting up FTP to your Xbox following one of the above configurations then there could be a few reasons why. I’ll go over each configuration and describe what you MAY need to modify to get these working.
+
+Configuration 1
+
+With configuration 1a, you can NOT get out to the internet. You would need to either buy a router or another NIC for your PC. Once you’ve purchased one of those, your configuration will follow one of the others. With configuration 1b, you generally can NOT get out to the internet either. If you have this configuration and your PC can get out to the internet then it is probably getting a public IP address from your ISP. This assumes you have a hub or a switch and not a router. You can buy a router and then follow configuration 3, but if you don’t want any new hardware then you can probably only get your Xbox or computer on the internet one at a time. In other words when your computer has the IP from your service provider you can get on the internet. Then maybe you switch it to a private IP in order to FTP to the Xbox. Well to get your Xbox on the internet you’d have to get your Xbox that public IP from your service provider. Set your Xbox to use the same settings as your computer does to get that IP. If you aren’t using DHCP make sure you don’t forget to enter the DNS values otherwise addresses won’t resolve. Remember your computer should either have the private IP values or be turned off in order for your Xbox to successfully get the public IP from your service provider. Some ISPs will give you more than one public IP to use. If that is the case then your computer and Xbox can be on at the same time through the hub or switch.
+
+Configuration 2
+
+The last paragraph in configuration 2 from above describes using ICS to get your Xbox out to the internet. So this is the first step you would need to take. If you are using ICS and you have your Xbox set to use DHCP then it should be done. If, however, you have set your Xbox to a static IP and aren’t able to use linksboks or get the news feeds then chances are you are simply missing the DNS values. Go to a command prompt on your PC that can access the internet and run ‘ipconfig /all’ without the quotes. Look for the NIC that has the connection to the internet and look at the DNS values it has. Whatever they are, use those values in the static configuration of your dashboards network settings. So if you look at the examples I’ve given, most of the DNS values are either blank or set to 0.0.0.0. Just take the DNS IP’s from the ipconfig /all and replace the 0.0.0.0 in the Xbox configuration file with those new values. Save, reboot, and you should be all set.
+
+Configuration 3
+
+This configuration is very easy to get working as well. Again, if you are using DHCP on your Xbox then you shouldn’t be having any problems. If you are using a static IP in this configuration then, just like configuration 2, you are probably only missing the correct DNS values. Follow the same procedure as in configuration 2 to get the DNS values filled into your dash configuration file.
+
+Other ways to Connect
+
+There are a few other ways to connect to your Xbox without using an ftp client. I'd like to mention them here just to cover the 'networking' your Xbox topic but I'll link to the guides/tutorials that I think cover the connection the best. Also, all these other connections still use the ftp protocol, I'll cover telnet later.
+
+You can map a network place on your computer to your Xbox so instead of needing to fire up an ftp app you could just go to windows explorer or a shortcut on your desktop to double-click and there is all your Xbox. Two tutorials have already been written that explain how to do this in Windows XP and Windows 2000.
+For winxp: http://www.xbox-scene.com/articles/map-xp.php
+For win2000: http://www.xbox-scene.com/articles/evoguide6.php - This guide uses webdrive to accomplish this on Windows 2000. Some other software I think would work as well is Internet Neighborhood Pro and FTP Desktop but I've tried none of them so can't recommend one over the other. If you find any freeware app that will provide this functionality let me know and I will try it out and add it here.
+
+You can ftp to your Xbox direct from your web browser. Basically in your web browser instead of putting in http://www.website.com you would put in something like ftp://xbox:xbox@<xbox_ip> and it should open right up to the contents of your Xbox folder structure. Nice and simple, no third party ftp client needed. A good guide for this can be found here: FTP using Internet Explorer and be sure to read the rest of the thread for some tips and answers to questions. There is also a tutorial on the tutorials page here: http://www.xbox-scene.com/articles/ftp-ie.php. Please keep in mind this functionality is not limited to Internet Explorer only. Most browsers support typing in ftp:// instead of http:// if you want to ftp. I use the Opera browser and can connect the same way. If you ever forget the format to use to send the username and password in the address bar you can also (at least with IE and Opera) connect just by typing ftp://<xbox_ip> and then you should get a pop up box prompting you for the username and password.
+Xbox to Xbox Transfers
+
+If you have two Xbox's and want to transfer directly between them there are a few ways to do it. For any way your Xbox's still need network connectivity between each other. You could set them up just like configuration 1 from above or even hook them up to a router and use DHCP.
+
+If you use Avalaunch as your dashboard then the easiest way for you would be to use the File Manager that is built in. When you launch the file manager click start and select switch to remote. Move over to the right side now (which is the remote side) and hit start again. Now select add FTP Server. Enter the IP address info of your other Xbox. Once this is setup you should then be able to switch back and forth between local and remote sides and transfer your files.
+
+If you don't have Avalaunch as your dash you can run a program called XB-FTP. This program you would launch as an app from one Xbox and it your FTP Client. The other Xbox you would leave booted into whatever dash you run and it would be the FTP Server. There is another application you can run on your Xbox called xToolbox. You can use this app to transfer between two Xbox's as well just go into its file manager once it loads and it should be self explanatory for you. Just make sure you edit the host.ini file with the applicable IP address's for your local and remote Xbox. If you have a PC you can also use the FXP method that is detailed here: http://forum.psxcare.com/support/showthrea...p?threadid=7239
+
+You don't have to use XBMP, you can use any dash that supports PASV for this method.
+
+Troubleshooting
+
+First is to verify you are communicating with your Xbox. Run a command prompt and ping your Xbox IP address. In our example that would be 'ping 192.168.0.3'. Also, If you seem to have a connection that gets dropped every so often try to ping like this: 'ping -l 1024 -t 192.168.0.3', this will continuously ping your Xbox with 1024 bytes. Hit ctrl-c to end it. If you get any timed out then maybe you need a new Ethernet cable somewhere. If you can ping try a. and b. below, if you can't ping read that and the rest.
+
+If you can ping but still have problems with FTP, make sure PASV is disabled in your FTP client if evox is your dash. Go to the help for your ftp client to figure out how to do it if you don't know how.
+
+Make sure any firewall programs you run are turned off. Especially if you run Windows XP there is a default firewall that may be on. Its in the advanced properties of your NIC where you can uncheck the box for it to verify it isn't on. Also even if you think you disabled a firewall it could still be blocking ports. Crap Software firewall can behave this way. It does this to ensure no virus or rogue program can disable it. Instead of disabling Crap Software just add the IP address of your Xbox or even the entire subnet as Trusted. Then it will allow packets through.
+
+If you can't ping make sure you check 1b, but also make sure you are using the correct Ethernet cables for your setup. Refer to the basics above about the crossover cable. Try pinging your local computer with these commands: 'ping 127.0.0.1' and 'ping localhost'. If you can ping these it's a good sign your TCP stack and driver for your NIC are loaded properly. If these do not ping correctly the first thing to try is to reload the driver for your NIC or search the manufacturer's website for an updated driver.
+
+Try different ftp clients or make sure you are using the latest version of the client you have, especially if you are using the EvolutionX dashboard make sure you try FlashFXP if you are experiencing any problems.
+
+Make sure you have the video cable plugged into the back of your Xbox (problem experienced by ndiguy). Note: the video cable doesn't have to be connected to your TV but does need to be connected to the back of the Xbox.
+
+Run a sanity check if all else fails... make sure the settings you think are in your evox.ini are actually there. Run a command prompt on your pc and type 'ipconfig /all'. This will list all the settings all the NICs on your computer have. Verify they are all what you think they should be. When posting in the forums for more help try to include these two things in your post, it's a good first step.
+
+If you get No Link! when you boot your Xbox make sure it is set to static ip. Verify the computer or whatever you have it connected to is booted up first and set up correctly. Then boot or reboot the Xbox. Make sure the cable and other hardware you are using is good. As a last resort, maybe your Xbox NIC is bad and needs replacing.
+
+“I have two Xbox’s at home and two separate Xbox live accounts, but when they both try to play live at the same time one always gets booted or disconnected, what’s going on?” There could be a number of things but if you’ve checked everything else and think your network is all good, etc then whatever router you have these connected to could be handling PAT (port address translation) incorrectly. I know for a fact the current Linksys products will not handle this configuration properly. I also know that the Dlink DI-614 does handle this correctly and so would work with this configuration. If you have a different brand router and have this configuration let me know if it works or not for you so I can make a good list of who handles PAT correctly and who doesn’t.
+
+Nothing seems to work for you? Post your problem on the Xbox-scene forums. In your post try giving as much info as needed. Describe how you have things physically connected. Post the network section of your dash’s configuration. Post an ipconfig /all from your computer (or just all IP information). Post any specific error messages you get, especially an FTP log if you can ping your Xbox but just can’t seem to login. Post what software you use on the Xbox and your PC. Finally, make a new thread for your problem, don’t post as a reply to someone else’s problem and don’t just PM someone you think will help.
+FTP Speed Issues
+
+Once people start using FTP the next problem they may have is the speed being too slow. The key to addressing this issue is to try everything! Change your configuration, change software, use every combination of my suggestions below. The more you do the better chance something will reveal itself as the culprit to your slow speeds. Here is a common list of things to check to help improve your speed:
+
+Try the extended ping from number 1 in the troubleshooting section. If you get some replies and some timed outs during that ping this could slow down your speed. Replace your cable(s), update driver(s), try different NIC, etc.
+
+In the advanced properties of your NIC you should be able to find the settings for the speed and duplex of your card. Change these settings and see if some combination gives you better speed than others. Start with speed of 100 and full duplex and cycle through 100/half, 10/full, 10/half.
+
+Check how much free space you have on the PARTITION you are ftp'ing to. If you have an 80GB hard drive and it says you have 20GB left, that doesn't mean you have 20GB of free space left on that partition. That partition could have very little space left while another partition has 18GB left. There are some reports that with <2GB of space FTP speed drops. This is probably one of the most common issues with speed and ftp in general.
+
+If you are using a wireless or usb NIC setup try going wired with standard Ethernet to see if that narrows down the problem for you. And if you were using DHCP try assigning a static IP to your Xbox instead. Also try changing the channel that your wireless is currently communicating on. There could be more interference slowing down your speeds on a certain channel. At least try channels 1, 6, and 11.
+
+Try different software on both ends... experiment. All configurations will be different. Try different FTP clients, updating FTP clients and even try using a different ftp server on the Xbox. One post on the forums suggested that switches from Evox to nexgen increased ftp speeds to the F: drive. The Avalaunch dash seems to be a pretty stable and fast FTP Server as well.
+
+Try different hardware... don't overlook this! For example, if you have a hub, try a new one or better yet get a switch.
+
+If you are using FlashFXP (or maybe try this with any client), some forum posts have suggested that by changing the transfer packet size from 4096 to 2048 you could see a speed increase. Some people run fine at 4096 but I know of at least one instance where changing this value to 2048 has helped tremendously.
+
+Suggestions from ILLusionsOfGrander member on xbox-scene:
+Make sure the NIC on your PC is not just a 10 mbit NIC but a 10/100 mbit NIC. Using a 10/100 NIC as opposed to just a 10 can definitely increase transfer rates
+If you go to the advanced settings of the NIC in your PC, some cards have a "Early TX Threshold" value. Upping this value from its default can also increase speeds. The example given was with a Dlink card and its default value was 8 and changed to 38. This increased the speed from 6500 kBps to 11000 kBps.
+Wireless Xbox
+
+I've noticed a few posts about how to get the Xbox on a wireless network so figured I'd touch on the subject here and give my thoughts on hardware to accomplish such a thing. First thing to consider is whether you want to use 802.11b or 802.11g. Discounting any other deciding factor you may have, and focusing solely on Xbox functionality, if you want to use your Xbox for ftp transfers and to play Xbox live then you'll be fine with 802.11b. If you think you'll want to stream movies or music to it and will want to do a lot of large (over 100mb) ftp transfers you'll want to go with 802.11g. With that...
+
+There are two setups you can use to communicate with your Xbox wirelessly. The first and least common way would be in an ad-hoc fashion. This would be the exact same as using a crossover cable from the Xbox to your pc just without the actual cable. Basically your computer would have some sort of a wireless card whether USB, PCI, or if it's a laptop then a PCMCIA or mini-PCI. For your Xbox you would get a wireless to Ethernet bridge (I'll mention brands in the next paragraph) and basically just RTFM for how to set it up in ad-hoc mode to communicate to the wireless card in your computer. Again, this would be like using a crossover cable, only your computer and Xbox would communicate with each other.
+
+The most popular way which most people would want to implement is with a wireless access point/router. From Linksys if you decided to go with 802.11b you could get model BEFW11S4, if you want 802.11g the WRT54G. From Dlink for 802.11b the DI-614+ is a good one and for 802.11g the DI-624. Now to get your Xbox to communicate wirelessly with one of these access point/routers you would need a wireless to Ethernet Bridge for it. From Linksys for 802.11b you could get a WET11 and for 802.11g the WET54G. From Dlink for 802.11b the DWL-810+ and for 802.11g the DWL-G810. From here it's really just a matter of reading the manual's (if you even need to) to get these bridges to associate to the SSID of your access point.
+
+Now I'd like to say don't think these are the only products that work. There are many other companies with products that do the exact same thing. I just listed the most common of the ones I'd recommend using and if you look up the product you'll get an idea of what to look for from other companies. I'm also not a fan of the MS wireless Ethernet bridge devices. Currently, from what I've seen you need to configure it from the MS dash and with a modified Xbox this isn't always a good thing. However, obviously they will work just fine so feel free to check them out too.
+

@@ -1,0 +1,37 @@
+***NOTE*** THIS ONLY WORKS FOR ATI CARDS
+
+First, open your doom3\base folder. Doubleclick on the pak000.pk4 file. In the "window can't open this file .. .bla bla" dialog, go on and associate the file with an app like WinRar. With this file open in WinRar, go to the glprogs directory in the file. In there you'll find the shaders. The interaction.vfp file seems to be the main rendering shader. Altering this shader to output a constant color turns most objects into that constant color, except for stuff like computer screens etc.
+
+So doubleclick the interaction.vfp file to open it (you may have to associate the .vfp extension with a text editor like notepad or wordpad first since we're going to edit the file). Scroll down to the fragment shader. You'll find these rows:
+
+Code:
+
+PARAM subOne = { -1, -1, -1, -1 };
+PARAM scaleTwo = { 2, 2, 2, 2 };
+
+
+Add this right below them:
+
+Code:
+
+PARAM specExp = { 16, 0, 0, 0 };
+
+
+Now scroll down to this:
+
+Code:
+
+# perform a dependent table read for the specular falloff
+TEX R1, specular, texture[6], 2D;
+
+
+Comment out that line by adding a "#" to it, and add another line that will do the same thing with math instead, so it should look like this:
+
+Code:
+
+# perform a dependent table read for the specular falloff
+# TEX R1, specular, texture[6], 2D;
+POW R1, specular.x, specExp.x;
+
+
+Save the file and close your text editor. WinRar will ask if you want to update the file in the archive, select yes. Close WinRar and enjoy about 40% higher performance in Doom3.

@@ -1,0 +1,185 @@
+ Downloading BitTorrent Files
+
+What is BitTorrent in Plain English?
+
+BitTorrent is a program you download. It is similar to a peer-to-peer file sharing service. Basically it goes like this: You download the installer. You get the link to a file that ends in .torrent and enter that URL into your browser (preferably Internet Explorer). This opens the BitTorrent download window. It starts downloading the file, or episode that you wanted (eg. alias2x01.torrent). As it downloads, it uploads the parts that you have to other people so many people can get it at once. When you've finished downloading the file, you can leave the window open (don't press finish or close the window) and other people can still download from you. This is very much encouraged.
+
+I'm new to all this. How do I download with BitTorrent???
+
+First we need to download and install a BitTorrent client
+
+Official client 3.3
+CODE
+http://www.bitconjurer.org/BitTorrent/index.html
+
+
+Experimental client 3.2.1b-2
+CODE
+http://ei.kefro.st/projects/btclient
+
+
+TheShad0w Experimental S-5.8.3
+CODE
+http://home.elp.rr.com/tur
+
+
+Azureus 2.0.3.0
+CODE
+http://azureus.sourceforge.net/
+
+
+burst! RC5d
+CODE
+http://krypt.dyndns.org:81/torrent/download.phtml
+BT++ 0.5.4 alpha [code]http://btplusplus.sourceforge.net
+
+
+Shareaza 1.8.9.22
+CODE
+http://www.shareaza.com
+
+
+Nova Torrent 0.2.0
+CODE
+http://blackflaw.dyndns.org
+
+
+SimpleBT 0.1.9
+CODE
+http://sourceforge.net/projects/simplebt
+
+
+BitAnarch 1.0.5a
+CODE
+http://sourceforge.net/projects/bitanarch/
+
+
+Personal Torrent Collector 0.8.2.2
+CODE
+http://ptc.sourceforge.net
+
+
+Effusion 0.3.3 beta
+CODE
+http://www.azrael-uk.f2s.com/az/effusion
+
+
+Snark 0.5 beta
+CODE
+http://www.klomp.org/snark
+
+
+ByteTorrent 0.95
+CODE
+http://sourceforge.net/projects/bytetorrent/
+
+
+ABC 2.5
+CODE
+http://pingpong-abc.sourceforge.net
+
+
+Note:
+
+If you?re client freezes during D/Ls, it?s a problem with you?re network card or modem, this happens when you connect to more peers than you?re card or modem can handle & windows shuts it down. There is a cure. Shad0ws Experimental client allows you to set how many incoming peers to allow.
+
+All about BT:
+CODE
+http://www.dessent.net/btfaq/#now_what
+
+
+How to D/L Torrent files
+
+BitTorrent is not like other peer-to-peer applications (such as Winmx, Kazaa, Gnutella, etc.) in that it does not have its own \"universe.\" Put another way, BT lives on top of the Web, which means that all of the searching/listing of available files is done on the web. When you find a file you want to download, you click on it and the BitTorrent client program will run and ask you where to put it, and then start downloading. Or you save target as. Save the file somewhere then click on it when you?re ready to start the D/L.
+
+It doesn't do anything it says:
+Problem connecting to tracker - timeout exceeded
+Problem connecting to tracker - HTTP Error 503: Connect failed
+Problem connecting to tracker - [Error socket error] (10061, \" Connection refused\")
+Problem connecting to tracker - (111, \'Connection refused\'
+
+Generally just wait ... this normally means that the \'Tracker\' is maybe too busy. Leave your window open and it will try to connect every 2 minutes or so.
+
+Note: BT dose resume downloads, just click the torrent file again when you are ready to resume the D/L and save it to same place as the original. All clients have an option for default D/L directory. I suggest setting this option.
+
+My speed is always very slow!!!!!!!!!!
+
+Speeds can be real slow if your one of the below, they all can bet set to allow BT in and out
+
+#1 behind a firewall
+#2 behind a router
+#3 on a network
+#4 Xps firewall is enabled
+
+ports 6881 thru 6999 need to be open to get good speeds
+
+If you need info on bit torrent and how to set it up with a firewall or router
+
+CODE
+http://knowbuddy.dyndns.org/torrent/btclientconfig.html
+
+
+Get general info on how torrent works and how it uses ports
+
+CODE
+http://knowbuddy.dyndns.org/torrent/btclientconfig.html
+
+http://www.dessent.net/btfaq/
+
+
+Where do I get torrent files???
+
+Suprnova mirrors are the best site?s, updated every 20 minutes.
+
+CODE
+http://www.suprnova.org
+
+
+There are others you can use here is another one:
+CODE
+http://www.torrentbox.com
+
+
+Places to find other torrent sites
+CODE
+http://torrentlinks.com/index.php?action=displaycat&catid=10
+http://members.chello.nl/~p.wiersema/
+http://home.quicknet.nl/qn/prive/romeria/bittorrentsites.htm
+
+
+Torrent Search engine
+CODE
+http://novasearch.net/
+
+
+Keeping up with the torrent network
+CODE
+http://www.digital-update.com/forums/attachment.php?s=&postid=163113
+http://www.filesoup.com/phpBB2/index.php
+http://www.lickmytaint.com/
+http://suprnova.org/
+
+
+PeerGuardian
+
+What does PeerGuardian actually do?
+
+PeerGuardian does two things to help P2P users. The first is the obvious one, it closes connections on certain IP addresses. The second is that it optionally logs all connections made to your computer. The reason for this is so that if you do use PeerGuardian but still get sent a legal threat, you can cross-reference the date/time of the alleged infringement with the log. This gives us a list of IPs, one of which will be the IP that's doing the busting. It's basically to help us identify which IPs are doing the busting and weren't known to PeerGuardian before. - Hope that makes sense.
+
+Is PeerGuardian 100% Protection?
+
+CERTAINLY NOT!!! - PeerGuardian relies on users sharing information to stay up to date. It IS contributory to protection and (I'm not trying to blow my own trumpet here!!) it seems to be the most up-to-date and open database of this nature on the internet (as far as I know). The more people who are using full-logging and report the relevant IPs when they get a C&D threat (see above paragraph), the more people we can save. ANONYMOUS P2P is the way ahead IMHO, PeerGuardian isn't 100% effective.. I've NEVER claimed that and never will and I look forward to the day that PG (not just the app, more.. the database and communication between p2p'ers on blocking IPs) becomes totally redundant. I'm just trying to help supply the next-best thing until we get to that stage.
+
+I use PeerGuardian and have still been sent a legal threat.
+
+What do I do?
+
+First of all, stop sharing the file you got busted with. If you're worried, try sharing older/rarer files. If you share Bourne Identity, Terminator 3 and a load of Busta Rhymes mp3s after being busted, you'll be asking for trouble. Second thing to do, check the "full connection log" in PeerGuardian. (you did have it enabled didn't you?) - Work out the difference in timezones on the infringement warning and cross-reference it with the log. From this you should be able to identify a handful of IPs. Either post that list to the PG forums for one of our admins/moderators/members to investigate or investigate it yourself and post the p2p enemy IP to the on-line database. - There are plans to automate this whole process in the future.
+
+CODE
+http://www.peerguardian.net/
+
+
+Well it isn't really much of a tutorial but I spent a lot of time on this so please help me out if it is wrong.
+
+-=-Bullet-T00th-=- 

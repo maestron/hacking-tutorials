@@ -1,0 +1,14 @@
+I went into the system registery and found out that Yahoo! moved the 'banner url' key to a slightly different location. Than what it used in version 5.5!
+
+Yahoo! IM no longer uses 'YUrl', but uses 'View' instead. You gotta click on each key inside of 'View' and edit the 'banner url' string to anything you want... I simply cleared mine out completely and it works flawlessly!
+
+Here is what you gotta do:
+
+Run regedit
+Goto HKEY_CURRENT_USER -> Software -> Yahoo -> Pager -> View
+
+Inside the 'View' key there are a several other keys... go through each one and edit the 'banner url' string to your liking. It even works if the string is left blank (this causes it to look as if ads were never even implemented)! 
+
+Restart Yahoo! IM for the effect to take hold.
+
+This is great for Yahoo! IM 5.6 users who don't want to be bothered with ads. 

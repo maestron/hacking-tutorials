@@ -1,0 +1,15 @@
+You all downloaded some game or app once that was 50 parts big, and you had to rename them all from .bmp to .rar to extract them.
+
+You can easily create a batch file that does that for you.
+
+
+Open Notepad
+
+fill in the notepad:
+
+CODE
+
+ren *.bmp *.rar
+
+
+Ofcourse, you have to edit these two extensions to fit the files you want to convert. Save this file as renamer.bat and run it in the directory where you want to rename your downloads.

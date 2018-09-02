@@ -1,0 +1,15 @@
+If you're one of the many people that NEVER use the "links" folder in your favorites and can't keep windows for re-creating it. Here's how:
+
+[Start] [Run] [Regedit]
+
+Registry Key: HKEY_CURRENT_USER\ Software\ Microsoft\ Internet Explorer\ Toolbar
+
+Modify/Create the Value Data Type(s) and Value Name(s) as detailed below.
+
+Data Type: REG_SZ [String Value] // Value Name:
+
+LinksFolderName
+
+Value Data: [Set the String Value to a blank string]
+
+Open Internet Explorer and manually delete the Links folder from Favorites Menu. The Links folder will not be recreated. Exit Registry and Reboot. 

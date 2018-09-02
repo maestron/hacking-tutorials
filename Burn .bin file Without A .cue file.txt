@@ -1,0 +1,23 @@
+ To burn a bin file, you will need an appropriate cue file.
+
+You do exactly the same as for iso files, but when you click on “burn image,” you don’t browse to the bin itself, but instead to the cue file, and you open that one.
+When the writer starts to burn, it will automatically search for the bin file and start burning it. In fact, the cue file tells the burning program where it can find the bin file that is attached to it. It is VERY IMPORTANT that you use the right cue file when you burn a bin. i.e both cue and bin files that are attached to each other must be located in the same folder, and every bin file has it’s own cue file.
+
+
+Normally, when you download a bin file, you can download the appropriate cue file as well. If you do not have the cue file (or feel bold) you can make the cue file yourself, which is really easy to do:
+
+a. Open notepad
+
+b. Copy the folowing text into notepad:
+
+FILE“nameofimage“BINARY
+TRACK 01 MODE1/2352
+INDEX 01 00:00:00
+
+Where nameofimage.bin is the name of the bin file you want ot burn.
+
+c. The rest is easy: just save the notepad text with the name of the bin, but with the cue extension.
+
+d. The file should be saved in the same folder as its appropriate bin file and should be something like myfile.cue
+
+Or you can use Alcohol 120% to burn directly from the bin file

@@ -1,0 +1,16 @@
+How To Convert File System, fat - fat32 to ntfs
+
+open a dos prompt and give the command
+
+convert d: /fs:ntfs
+
+this command would convert your d: drive to ntfs.
+
+if the system cannot lock the drive, you will be prompted to convert it during next reboot.
+
+Normally you should select yes.
+
+Conversion from fat/fat32 to ntfs is non-destructive, your data on the drive will NOT be lost.
+
+Be aware that converting to ntfs will make that partition of your
+drive unreadable under dos unless you have ntfs utilites to do so.

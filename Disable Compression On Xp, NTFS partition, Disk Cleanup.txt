@@ -1,0 +1,7 @@
+On an NTFS partition, Disk Cleanup can compress old files
+to save space. But calculating the savings and performing
+the compression often take a long time, and on some systems,
+Disk Cleanup hangs during the process. If that happens, or if
+you don't care to wait, use this Registry tweak to disable the
+compression: Delete the key
+HKEY_ LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\ CurrentVersion\Explorer\VolumeCaches\Compress Old Files.

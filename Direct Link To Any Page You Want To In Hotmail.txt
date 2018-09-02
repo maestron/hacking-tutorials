@@ -1,0 +1,40 @@
+Direct Link To Any Page You Want To In Hotmail
+
+This tutorial is for people that don't know how to direct link to .php pages on the web. If you are on a private computer, and don't mind auto-logging in, you will be able to access your folders much faster than going straight to hotmail.com
+
+You will need a bit of information. Log into the hotmail main page. You will see a web address similar to the following:
+
+http://by211.bay211.hotmail.msn.com/cgi-bin/hmhome?fti=yes&curmbox=00000000%2d0000...
+
+
+It won't be exactly the same but it will be similar.
+
+It's time to shorten this up. The only bit of information you really need is the direct web address to the server that contains your particular account. In the above example, you would just need:
+
+CODE
+http://by211.bay211.hotmail.msn.com/cgi-bin/
+
+
+Just copy this section from your particular server addy in your browser's address bar.
+
+Now that the explanation is over, these are the commands you can append to the above example to reach specific pages.
+
+'hmhome' - MSN Hotmail - Today
+'HoTMaiL' - Inbox
+'HoTMaiL?&curmbox=00000000-0000-0000-0000-000000000005' - Junk E-Mail
+'HoTMaiL?&curmbox=00000000-0000-0000-0000-000000000004' - Drafts
+'HoTMaiL?&curmbox=00000000-0000-0000-0000-000000000003' - Sent Messages
+'HoTMaiL?&curmbox=00000000-0000-0000-0000-000000000002' - Trash Can
+'compose' - Compose Message
+'addresses' - Address Book
+'options' - Options, Duh
+'options?section=mail' - Mail Options
+'options?section=personal' - Personal Details
+'protect?screen=filter' - Junkmail Filter
+'options?section=contacts' - Contact Options
+
+------------------------------------------------------------------------------------
+
+Remember, you just need to place these commands directly after 'http://.../cgi-bin/' without spaces.
+
+If you have never tried this before, it works on many websites. So, if you don't like navigating websites, and would rather do that through your web-browser, go ahead and do it.

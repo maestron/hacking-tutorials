@@ -1,0 +1,23 @@
+ Ever had a console program that opens a console window, executes, and vanishes in an instant? Just so that running console programs becomes easier for you, here's some shit i wrote ONLY FOR WINDOWS XP:
+
+
+
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\exefile\shell\runcmd]
+@="Run at Console"
+
+[HKEY_CLASSES_ROOT\exefile\shell\runcmd\command]
+@="cmd /k \"echo Executing (Press Ctrl+C to end program)...&&\"%L\"&&pause&&exit\""
+
+[HKEY_CLASSES_ROOT\batfile\shell\runcmd]
+@="Run at Console"
+
+[HKEY_CLASSES_ROOT\batfile\shell\runcmd\command]
+@="cmd /k \"echo Executing batch script...&&\"%L\"&&pause&&exit\""
+
+
+
+Put that in a file called run_at_console.reg and double click on the file. Click Merge. Then try right-clicking on any console program. You should see a new option called Run at Console. That will cause console programs to run and pause for you to press a key before exiting. Good luck!
+
+PS. And for those who don't know how to copy text from a Command Window, right click on the Window, and then click Mark. Mark (select) the area that you want to copy and press Enter. Data copied. Now go paste it somewhere.

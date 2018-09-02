@@ -1,0 +1,155 @@
+			January 19, 2038 - The Unix Time bug
+                         By Mikkkeee (rammal81@hotmail.com)
+	
+	      For
+	  	o Blacksun Research Facility [BSRF]
+		o Black Box e|zine
+
+
+	  Introduction .......................................... 1
+	  Understanding the Problem ............................. 2
+	  Valid Fix ............................................. 3
+	  Recompiling ........................................... 4
+	  64 bit systems ........................................ 5
+	  What to Expect when Coding ............................ 6
+	  Important Future Dates ................................ 7
+	  Conclusion ............................................ 8
+	  Greetz
+
+
+1: Introduction
+
+Time is a big topic in our life time. Time has been one of the most
+significant elements on our minds as we progressed into the 21st century.
+Everyone all over the world knows about the year 2000 problem not due to
+its technical significance but due to the large media attention it
+recieved. Now don't lie to your self you ph33red the advent of year
+2000, your mom bought extra bread and water and you heart was beating like
+hell while the clock ticked down, but hey you made it. Now you may ask
+what is this article about that y2k bug? Hell no, that bug was mircosoft's
+bug, even though Unix systems remained in pretty good shape as time ticked
+into the 21st century, it was all due to the way Unix treats time that
+made the os immune to that particlular problem. So you ask again what is
+this 2038 title and you soon realize the Unix os is in deep trouble, not
+in the year 2000, but in 2038. Windows users feared the year 2000, but
+Unix users will look on to the future with a dreaded stare, cause 2038
+is coming.
+
+
+2: Understanding the Problem
+
+To understand what this bug is all about we have to look at the core
+of the problem. Unix measures time using a simple method, it counts seconds,
+nothing fancy just seconds. Now everything needs a beginning, a birth and
+on 12:00:00 AM January 1, 1970 (GMT) the birth of Unix time was born. A
+Unix clock contains exactly the number of seconds that has elapsed since
+that date. Now filestamps also use this simple counter which is maintained
+by the file system code in the kernel. We can't understand those long strings
+of seconds, so library functions have been coded to convert that string
+and give an output of something we humans could comprehend quickly, like
+Mon 12 19:54:19 1998.
+<BR>Now the problem arises because the majority of C proggies use a library
+of routines called the standard time library (time.h). Time.h establishes
+a standard 4-byte format for storing time values. It also does the converting,
+displaying and calculations of time values. This 4-byte value believes
+the beginning of time was midnight January 1,1970, and at that moment the
+value of time was '0'. Now a signed 4-byte integer has a limited value
+of 2,147,483,647 , which is the heart of the 2038 problem. The time
+value has always been stored as a 32 bit signed numbers. This means that
+the maximum value of time before a roll-over to the negative side causing
+an invalid time value is achieved in 2,147,483,647 ,which gets converted
+to the dreaded January 19, 2038 at 3:14:07 GMT. ( Iam not sure but i think
+Eastern US will be the first to experience the problem ) .
+
+
+3: Valid fix
+
+Okay so now we know the background behind this problem, lets see how
+we can fix it. There are really two ways that could implement a valid fix.
+
+
+4: Recompiling
+
+Time could be treated as an unsigned quantity which it already is. This
+would allow it to take on values beyond January 19, 2038 and will allows
+us to progress to the 22nd century with no problmes.  This theoretical
+idea is nice, but it has its drawbacks. Many C programs have already been
+compiled with time being a signed quantity. So days in 2039 will be seen
+by the Unix box as being older than days in previous years. This will
+have to call a recompilation, so that might take a while to do.
+
+
+5: 64 bit Systems
+
+The other more logical solution is to replace the 32-bit systems with
+64 bit systems. Now like the first solution this solution also has drawbacks.
+64-bit systems are still relatively new. Many systems in use still deal
+with number values represented by 16/32 bit systems. 64 bit systems are
+the future, but at the moment they are still expensive. If we implement
+processors that understand 64- bit systems, unix will be able to track
+time correctly till all our grandchildren and their children pass away.
+This approach is truly the most logical so this plan might be the valid
+approach.
+
+
+6: What to expect when Coding
+
+Now that we have a good understanding behind this problem, what should
+we look foward to when we code programs. Hopefully, if a coder is reading
+this article, they should get the idea that system design and software
+specifications must be designed with long term goals. Software, unlike
+hardware doesn't wear out, so we should code with a goal past our time.
+Heh, millions are still using DOS and Windows 3.1 when we see those os's
+as obsolete. Code should be flexible, reliable and compatible. We should
+foreshadow updates and expansions which should be made to suit the future.
+Now don't feel bad, Unix isn't the only os with problems heading its way,
+wipe that tear off your eye as we get ready to hear more. Now I won't go
+indepth into these listing, but you should now have an idea after reading
+this article of how the futue will look like.
+
+
+7: Important Future Dates
+
+   o 2030 - A break point in the windows os. The year 2029 will remain 2029
+   but 2030 will be interpreted as being 1930.
+
+   o September 30, 2034 - Unix os will experience an overflow in the
+   time function.
+
+   o 2038 - See this article
+
+   o 2041 - The IBM mainframe internal clocks will not exceed 2041, but this
+   problem has not been confirmed by IBM.
+
+   o January 1, 2046 - Amiga systems will experience date failure. 
+   
+   o 2116 - IBM PC hardware will experience problems similar to Unix's 32 bit
+   interger overlfow.
+
+   o 2184 - Windows NT, which uses 64 bit integer by 100 nanoseconds as its
+   increment will fail in 2184. 
+
+
+8: Conclusion
+
+Now don't be too pessimistic about the future. Technology will hopefully
+implement logical corrections for these problems. Hey remain optimistic,
+2038 is a long way from now, just remember what the coders 30 years ago
+were foreshadowing for the year 2000, nothing! hahahah!
+
+
+Greetz
+
+Well the greetz goes out to the Blacksun Research Facility 
+team for always sticking together through all our hard times. 
+Also lots of greetz goes out to Box Networks [.box.sk]. Also tons  
+of greetz goes out to the many visitors of bsrf, 
+from the msg boards to the irc channel, and all the cool people I
+forgot to mention 
+laterz.
+
+If you find any errors or have some more information to add to this
+tutorial, please email me at rammal81@hotmail.com
+and i'll do what I can to fix it up.
+
+

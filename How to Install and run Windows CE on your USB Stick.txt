@@ -1,0 +1,21 @@
+How to: Install and run Windows CE on your USB Stick
+
+Portable Windows CE is a 'launcher' for the Windows CE device emulator that can run an emulator-based image from a USB keychain.
+
+Download the Windows CE 5.0 Device Emulator.
+Code:
+http://www.Mcft.com/downloads/details.aspx?FamilyID=A120E012-CA31-4BE9-A3BF-B9BF4F64CE72&displaylang=en
+
+Change "Mcft" in link to what it is supposed to be icon_wink.gif
+
+Extract the emulator to a folder on your hard drive by running "setup /a". The installer will prompt you to specify a directory to extract to . For example: D:\PortableCE
+
+Download this launcher script:
+Code:
+http://www.furrygoat.com/Software/launchce.cmd.txt
+
+
+Copy the following launcher script to the directory you extracted the setup to. You'll need to rename the file from launchce.cmd.txt to launchce.cmd
+Once you have that set up, just copy the entire D:\PortableCE folder over to your USB keychain.
+
+To launch the emulator, just plug in your USB keychain, navigate to the PortableCE folder, and run launchce.cmd. You should (hopefully) have the emulator fire up.

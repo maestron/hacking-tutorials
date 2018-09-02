@@ -1,0 +1,475 @@
+                         :::::::::   ::::::::  :::::::::  :::::::::: 
+                         :+:    :+: :+:    :+: :+:    :+: :+:        
+                         +:+    +:+ +:+        +:+    +:+ +:+        
+                         +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                         +#+    +#+        +#+ +#+    +#+ +#+        
+                         #+#    #+# #+#    #+# #+#    #+# #+#        
+                         #########   ########  ###    ### ###  
+                         
+                    	             http://blacksun.box.sk
+                                   ____________________
+           _______________________I      Topic:        I_____________________
+          \                       I   Bascis of am     I                    /
+           \     E-mail:          I    3mp33j3w        I   Written by:     /
+            >                     I                    I                  < 
+           /    fu@ckz.org        I____________________I      Ralph        \
+          /___________________________>           <_________________________\         
+
+
+Basics of am 3mp33j3w
+by Ralph (fu@ckz.org)
+    -AWC (http://awc.rejects.net) 
+
+
+1.  Introduction
+    -About this thing
+    -Who should read this?
+    -Brief intro to Mircoprocessors
+
+2.  Basics
+    -ALU
+    -Accumulator
+    -Data Register
+    -Address Register
+    -Program Counter
+    -Stack Pointer
+    -Instruction Register
+    -Instruction Decoder
+
+3.  Architecture
+    -Buses
+    -Instruction Responses
+      -Fetch
+      -Decode
+      -Execute
+    -Microprocessor Instructions
+    -Modes of Addressing
+      -Inherent Mode
+      -Immediate Mode
+      -Direct Mode
+
+4.  Machine Cycles
+
+5.  Interfacing
+    -Digital
+    -Analog
+    -Robotics
+
+6.  Other
+
+
+
+
+1.  Introduction
+================
+
+About this thing
+----------------
+This article will explain the basics of general MPUs.  It is by no means in-depth or 
+anything, but it should be enough.  I'm taking a fairly lowlevel approach to this thing.
+As in, I will be talking about the circuits and such.
+Please note that while I tryed to keep this information as acurate as possible by 
+reading multiple views on something, I can't guarentee that this info is actually all 
+true since I don't know anyone who wants to and knows enough to proof-read it.
+Also, this thing is very general!  Just by reading it you won't be able to distinguish 
+an Apple from an IBM or even a calculator.
+Finally, even though this thing only explains the very basics of CPUs, it's not really 
+recommended reading material for people who are new to computers.  I assume you're
+familiar with concepts such as the binary numbering system, PC hardware, circuits, etc.
+
+
+Who should read this?
+---------------------
+I have honestly no idea.  Maybe low level programmers, or people new to this might be
+able to put this to some use.  This is basicly just background information you should
+know, but will most likely never actually use it.  Kinda the way most people in
+high school math are thinking.  In addition, this information is fairly old, thus some 
+of this shit has long since been replaced or added on to.
+
+
+Brief intro to Mircoprocessors
+------------------------------
+Inside every computer, there is a little ceramic block of purified crystaline silicon, 
+coated with impurities that give it electronic swithing abilities, and etched with 
+poisonous gases.  This little block was developt in 1971 by Integrated Electronics 
+(Intel).  The earliest version of this thing was the 4004 chip used in Japanese
+calculators.  One year later, the founders of Intel, Robert Noyce and Gorden Moore, 
+designed the 8008 chip.  These things sold rapidly and Motorola produced it's own chip,
+the 6800.  I little later more companies like Signetics (the 2650) and Rockwell 
+(the PPS8) produced their own chips.  Still later many companies started releasing a
+new generations of chips with more functions build into a single chip.  Those are for
+example Fairchild and Mostek's F8, Intels 8048, and my favourite, Zilog's Z80 (still 
+used in GameBoys).  The Z80 stands out because it can handle the numbers DEAD and BEEF.
+Ph33r!  Anyway, eventually most of these companies droped out of the race, and only
+Intel and Motorola kept on developing new processors.  Intel started to work with IBM
+and produced such famous chips as the 8088 and the 8086.  Later a number was added
+with each new version: 80286, 80386, 80486.  The 80586 was renamed to Pentium.  Motorola
+on the other hand went to Apple.  I don't like Apples, so I have no idea what the 
+current chip versions are.
+
+
+
+Basics
+======
+A microprocessor is a chip which must perform at least all following functions:
+* Receive and store binary data
+* Perform arithmetic operations
+* Make Logical decisions
+* Deliver processed data to output circuits
+These statements are very general, and along the way, I will explain how each is
+performed.
+
+
+ALU
+---
+ALU stands for Arithmetic Logic Unit, and is just that.  It performs all the arithmetic
+and logical operations based on binary data being fed to it.  It performs additions
+viva combinational logic based on usually a Full Adder Circuit.  Subtractions is done
+by first negetating the numbers, than adding them.  Mulitplication and Division is done
+by repeaded adding or subtracting respectivly.
+This k-rad ASCII shows you how the ALU would go about adding two numbers (well it's
+supposed to anyway):
+
+            +----------+
+            |  Memory  |
+            +----------+
+            |          |
+         Number 2   Number 1
+            |          |
++-----------+          +-------------+
+|Accumalator|          |Data Register|
++-----------+          +-------------+
+      \                       /
+    Number 2             Number 1
+        \                   /
+         \                 /
+          +---------------+   
+          |      ALU      |
+          +---------------+
+                  |
+               Result
+                  |
+            +-----------+
+            |Accumulator|
+            +-----------+
+
+NOTE: The accumalator that stores the result is the same that stored number 2, I 
+      just couldn't figure out how to express that in ASCII.
+
+
+
+Accumulator
+-----------
+This is a multi-purpose circuit section.  As you can see from my ASCII picture it will
+not only hold a number to be mulitplied, but also store the result.  Usually, the result
+will than be transfered to some form of memory.
+
+
+
+Data Register
+-------------
+Temporary storage for data comming from, and going to the bus.
+
+
+
+Address Register
+----------------
+Conains the address of the current memory data.  Used to access specific points in 
+memory.
+
+
+
+Program Counter
+---------------
+As the name implies, this thing keeps track of the memory location containing the next
+instruction to be executed.  Whenever a break in the flow of the program (a jump, call,
+interrupt, etc), the current number in the program counter is stored in on the stack and
+the new location goes into the program counter.  When the break is finished and control
+is returned to the original routine, the number on the stack gets poped back into the
+program counter.  On most modern CPUs this part would be the Instruction Pointe (IP)
+register.
+
+
+
+Stack Pointer
+-------------
+A data structure that records the last program step prior to a break in the routine.  
+There are two basics systems.  One is to store the last program step in memory and use
+the stack-point counter to index the address.  The other is the one used on almost all
+systems today, Last In First Out, or LIFO.  Think of it as a stack of books.  You put 
+one on top of it, and that one will be the first one to come of next.  Putting stuff on 
+the stack is called Pushing, getting stuff from the stack is called Poping.  For 
+example, say you have 5 books called A, B, C, D, and E stack on top of each other like 
+this:
+A
+B
+C
+D
+E
+Now you add (push) book F to the stack:
+F
+A
+B
+C
+D
+E
+If you pop the stack, you get book F back and the stack looks like this again:
+A
+B
+C
+D
+E
+
+
+
+Instruction Register
+--------------------
+The IR holds the binary data fetched from memory during the decoding and executing of
+that instruction.  
+
+
+
+Instruction Decoder
+-------------------
+The ID sets up the logic which controls the entire MPU.  This includes the control 
+lines, the clock, and bus access.  Everything happending in your processor is controlled 
+from this section of the chip.  Sometimes you may here that everything is controled by 
+the Control Unit, but in fact CU is just a name that summarizes the previously discussed
+units.
+
+
+
+
+3.  Architecture
+================
+Architecture in terms of processors means the layout of a chip.  This might not seem
+as important, but the architecture is what has so far kept Intel alive and dominant.
+Every single micrometer has to carefully layed out for best performance and efficiency.
+
+
+Buses
+-----
+Buses are a conductors that transfer binary data in a system.  A bus can be external, 
+or internal.  External buses are known as System Buses, but we're only interested in the
+internal buses, as they dictate the architecture of the CPU.  
+The most basic bus design is the Single-Bus System.  In this design one one set of
+conductors is used to connect all the units.
+31337 ASCII warning!
+
+=======<>=============================
+              |       |     |    |   |
+              |       |     |  +---+ |  
+              |       |     |  |ACU| |
+              |       |     |  +---+ |
+              |       |     |    |   |
+            +---+   +---+   |    +---+
+            |R1 |   |R2 |   |    |ALU|
+            +---+   +---+   |    +---+
+                            |===<==|
+<> - Two-way data flow
+<  - One-way data flow
+
+Sorry, didn't feel like making a detailed diagram here, but you can kinda see what I
+mean.  There is only a single major bus connectiong all registers and the ALU.  There 
+are other conducting paths branching, but those aren't important.  This design is not 
+being used anymore as it is very slow.  You can see that doing a simple multiplication 
+would already require to be done on a time-sharing basis.  This of course slows the 
+whole thing down by quite a bit.  However this design does have one advantage, size.  
+It's very small, thus the next generation of pens will most likely be using it (that was 
+a joke by the way).
+To get around this speed problem, designers used the Triple-Bus System.  In this design
+3 seperate main buses are being used.  Sorry, no ASCII for this one, just too complex
+for notpad
+Actual chips today are even more detailed.  They use a decendent of the triple-bus 
+design and the bus can be anywhere from 8-bit to 64-bit in size (that is, between 8 and 
+64 conducting wires).  And again, no ASCII for this one, if you're a good ASCII
+artist, please contact me and I could send you a .bmp or something.  Might not be
+easy to draw a detailed 8080 chip with characters though :).
+
+
+
+Instruction Responses
+---------------------
+Every instruction invloves a three-stage sequence, Fetch, Decode and Execute.
+
+
+Fetch
+In this stage the Program Counter is switched to the address bus and the binary sequence
+is read by the Address Decoder.  Then latched into the Instruction Register.
+
+
+Decode
+When the fetch was completed successfully, the decoder kicks in.  The binary data
+recieved represents a specific instruction, and will be conditioned in the Programmable
+Logic Array (PLA) in the decoder.  This part of the MPU is a complex network of
+combinational logic.  The sequences that occur in the decoder are controled by an 
+internal ROM called CROM, or Control Read-Only Memory.  This thing sets up a control
+sequence corosponding to the instruction code entered (OpCode).  Every MPU has its own 
+unique CROM with a set of OpCodes (Operating Codes) called Instruction Set.  Back in
+the days, the 8080 has 78 different opcodes, today a Pentium has about 700.  Some (well 
+most) of these have additional paramters called Operands following them.  These are 
+fetched as the opcode is executed.
+
+
+Execute
+After decoding the instruction, the execute unit directs the synchronzing signals which
+control the ALU, memory, and I/O circuits.  This sequencing and timing is kepy in sync 
+by the Program Counter, which keeps track of every step in the program and control 
+breaks as mentioned earlier.
+
+
+
+Microprocessor Instructions
+---------------------------
+Every MPU is designed to respond to a fixed set of instructions.  As mentioned above,
+the old 8080 has 78 of them.  However, opcodes actually consist of two parts.  One part
+indicates the address mode, the other the actual code.  Usually, only 2 bits are used
+for the address mode part.  A 8-bit computer can thus theoreticly have 64 opcodes, but
+manufactures usually push this limit a bit and include a few variations.
+Some opcode examples are:
+
+Binary     Hex   Mnemonic  Describtion
+01110010b  72h   JC        Jump short if carry flag set
+00001100b  0Ch   OR AL     Perform logical OR on contents of register AL
+
+Binary is the raw instruction opcode being used in the Decoding process, Hex is the
+same number converted to hexidecimal, mnemonic is a more human readable form of that
+instruction.  Mnemonix are what assembly programmers code in.
+
+
+
+Modes of Addressing
+-------------------
+As stated before, a opcode usually contains two bits telling the MPU what addressing
+mode to use.  I will cover the three basic (and outdated) 16-bit address modes, 
+Inherent, immediate and Direct.
+
+Inherent Mode
+This mode invlovles the MPU chip itself as data is being stored on one or more of the
+onchip registers during the execution of the instruction.  The opcode itself holds
+all the information required to execute the instruction.  Each register is identified in 
+the opcode.  For example, say we want to add registers A and B, where A = 000 and 
+B = 111, the opcode for that might be 01000111  The 01 indicates Inherent Mode 
+addressing, the 000 the source register, and 111 the destination register.  As you can 
+see, this opcode contains all the information the decoder needs in order to execute this 
+instruction.
+Steps to execution:
+1.  a) Fetch instruction
+    b) Decode instruction
+2.  Execute instruction
+
+Immediate Mode
+This mode involves the opcode PLUS the operand.  The operand can contain (at the time
+this was writen) 8, 16, 32, or 64 bit information.  This information can either be
+an address where data to be used is located, or the data itself.  The decoder is told
+how many more bytes to read in by the opcode.  An example of this is a jump instruction.
+First comes the opcode telling the MPU to perform a jump, the next few bytes contain
+the address to jump to.
+Steps to execution:
+1.  a) Fetch instruction
+    b) Decode instruction
+2.  a) Obtain operand
+    b) Execute instruction
+
+Direct Mode
+This mode is used when transfering data from the MPU to memory or vice versa.  
+Instructions based on this mode come in three bytes, one for the opcode, two for the 
+(16-bit) address.  For example, the following statement moves the value DEADh into the 
+AX register:
+10111000 10101101 11011110
+10111000 is the opcode for move AX.  Since AX is a 16 bit register, the decoder will 
+assume that the next 16 bits are are the value.
+Steps to execution:
+1.  a) Fetch instruction
+    b) Decode instruction
+2.  a) Obtain address
+    b) Decode address
+3.  a) Obtain operand
+    b) Execute instruction
+
+
+
+
+
+4.  Machine Cycles
+==================
+Timing is a very important thing in MPUs.  Many circuits share the same data bus, and
+must be precisly timed.  I briefly mentioned this earlier, and now I'm covering it a bit
+more in-depth.
+MPU instructions are executed by the control section and timed by a series of machine
+cycles.  The cycles are subdevided into 5 parts called Clock Periods.  A instruction 
+from memory is given 5 clock periods in which it must complete the instruction.  If it
+finishes in less than 5 clock periods, the remaining periods are idled.  The following
+k-rad ASCII shows a instruction fetch cycle:
+
+|---Machine Cycle---|
++---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 5 |
++---+---+---+---+---+
+|-----------| |   |
+      |       |   |
+ Instruction  |  Idle
+    Fetch     |
+              |
+         Increment PC
+          and decode
+
+
+On a modern computer one machine cycle occurs ever 1193180/65536 of a second, or about
+18.2/sec.
+
+
+
+5.  Interfacing
+===============
+Without interfacing, a MPU is about as usefull as condom made of ice.  Even the simplest
+task requires some sort of way to input data, and some way to get the output.  In fact,
+interfacing is so fundamental to the MPU that a interfacing apparatus is usually already
+part of the MPU design.
+
+
+Digital
+-------
+When the MPU recieves data, and performs some function, the result is placed on a data 
+bus.  These bits can then be read by any imaginable device.  All that is necessary is a
+decoder than can read those bits.
+31337 ASCII Alert!
+
++------------+    +------------+    +------------+
+|            |    |            |    |            |
+|    MPU     |    | Interfacing|    |   Display  |
+|            |----|   Chip(s)  |----|            |
+|            |    |            |    |            |
++------------+    +------------+    +------------+
+
+
+
+6. Other
+========
+I cannot be held responsible for anything that happens to you as a result of using this 
+information.
+
+You may freely distribute this text as long as you don't change anything.  If there's
+something you think should be changed, contact me first.
+
+Send feedback to fu@ckz.org
+
+And very important!  If you noticed a mistake (speling, grammer, and especially 
+technical!), please contact me asap.  As I said before, most of this information is 
+fairly outdated and useless, if you know of a specific change that has happened to
+anything discussed here, please let me know.
+
+Please always get the newest version of this and other tutorials at 
+http://awc.rejects.net as they usually contained updated information, and addons.
+
+Greetings to:
+cozgedal, Alf (the cat eating fury dude), Sad1stick, rpc, moJoe, Lindex, and everyone I
+forgot to mention.
+
+
+This space intentionally left blank.
+
+
+
+
+

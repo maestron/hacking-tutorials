@@ -1,0 +1,14 @@
+To restrict a users logon hours , use the net user command. These commands are used from the Command Prompt. (Start - RUN - and type cmd)
+
+Below are some examples:
+
+1 - net user Joanna /time:M-F,08:00-17:00
+
+2 - net user Ninja /time:M-F,8am-5pm
+
+3 - net user Echelon /time:M,4am-5pm;T,1pm-3pm;W-F,8:00-17:00
+
+4 - net user Shine /time:all (this one means this user can always log on)
+
+
+Note:You can only restrict when a user can log on to the system. On a stand alone computer, there is no way to force a user to log off when their hours expire, without a third party script or software.

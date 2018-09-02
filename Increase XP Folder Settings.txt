@@ -1,0 +1,22 @@
+ Windows remembers 400 folder settings. When that number is reached some settings aren't retained any longer. You can change this to 8000 by adding this edit to the registry.
+
+1. Copy the following (everything in the box) into notepdad.
+
+QUOTE
+Windows Registry Editor Version 5.00
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\ShellNoRoam\BagMRU]
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\ShellNoRoam\Bags]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell]
+"BagMRU Size"=dword:00001f40
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\ShellNoRoam]
+"BagMRU Size"=dword:00001f40
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoSaveSettings"=dword:00000000
+
+2. Save the file as folder8000.reg
+3. Double click the file to import into your registry.
+

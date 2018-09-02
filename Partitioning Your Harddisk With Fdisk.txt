@@ -1,0 +1,14 @@
+Partitioning Your Harddisk With Fdisk
+Partitioning your HardDisk
+
+Partitioning involves creating logical units on your hard drive that are then addressed as different drive letters. Not only does it help to organize your data (program files on one drive, games on another, documents on another) but also to speed up your PC. This is so because the drive head has to move a lesser distance for accessing data within one partition. You can also have different filesystems and OSs on the same hard drive.
+
+Partitioning can be done using ‘fdisk’ in DOS/Windows 9x or ‘disk management’ in Windows 2000/ NT/XP. We will describe the procedure for fdisk, since disk management is GUI driven and the basics otherwise remain the same. While several other commercial packages like Partition Magic are available, these utilities (fdisk, computer management) are bundled with their respective OSs. You need a bootable floppy with fdisk.exe, format.com, and sys. com utilities. Before starting, decide how many partitions you want to create and their sizes. You can create one primary and one extended partition using the DOS fdisk. The extended partition can then have multiple logical partitions. Boot your machine using the bootable disk, and do the following.
+
+Run fdisk. The utility will show you a numbered menu from where you can create, view, or delete partitions
+The utility first asks you whether you want to enable large disk support. Type Y (for yes) and press enter if your hard-drive capacity is more than 4 GB. Large disk support creates a FAT32 partition, which can be greater than 2 GB
+Select the first option from fdisk menu to create a primary partition. Specify the partition size in megabytes or percentage size when prompted for it
+Similarly, create an extended partition. Extended partitions by themselves do not appear as drive letters. Instead, logical partitions must be created in them, which are then assigned drive letters
+Exit fdisk and reboot the computer
+Fdisk automatically assigns drive letters to all the partitions. You’ll need to format each partition in order to use it. Use format.com for the same
+Your hard drive is now ready for taking an OS.

@@ -1,0 +1,16 @@
+ Do you experience this kind of problem whenever you attemp to install an application in windows box (2k, xp)?
+
+"The Windows Installer service could not be accessed. This can occur if you are running Windows in safe mode, or if the Windows Installer is not correctly installed. Contact your support personnel for assistance."
+
+The ms website knowledge article 324516 gives 2 methods as a way of fixing this problem, but you might be very lucky if any of the 2 fixes the problem, alot of guys end up formating their systems and doing fresh windows installations or try wired ways of fixing it.
+
+Well, the solution is very easy:
+
+1. right click your root windows installation drive i.e drive where you installed windows
+2. click properties at the bottom
+3. select security tab
+4. click Add and scroll down to SYSTEM account click add and click OK.
+5. allow Full control permission and click Apply and then Ok.
+
+This should solve your problem with windows installer.
+

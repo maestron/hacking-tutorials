@@ -1,0 +1,2773 @@
+********************************************************************************                 
+*                                                                              *
+*                              THE MOTOROLA BIBLE                              *
+*                       For all Cellular AND Pager Info                        *
+*                                                                              *
+*                    MOTOROLA USERS AND PROGRAMMING GUIDES                     *
+*                                By Mike Larsen                                *
+*                                                     Ver. 2.3      
+************
+*                                                                   * 5/03/96 *
+********************************************************************************
+
+Table of Contents:
+
+	Section 1  Introduction             7   Phone Pin Outs
+		2  General User Info        8   Cable Specs
+		3  Programming Info         9   Channel Number vs. Frequency
+		4  Test Mode                10  Trik Clip
+		5  Hacking the FOVC         11  Pager Info
+		6  Reading the SID          12  Disclaimer
+
+I*N*T*R*O*D*U*C*T*I*O*N****************************************S*E*C*T*I*O*N***1
+
+GENERAL DISCLAIMER:
+
+	This manual is not intended to be an aid in cellular fraud.  That is
+both illegal and immoral.  Would you like someone to make charges on your
+phone?  If you want free calls, you want to check elsewhere for information
+pertaining to BOXES, which is NOT mentioned in the Motorola Bible.
+	This manual is not intended for use by people with little electronics
+experience.  This is not a tutorial and not intended to be used except by
+people with previous cellular experience and are familiar with programming
+cellular phones.  There are tons of introductory files all over the net.  For
+more info get into alt.cellular or alt.2600.  If you have specific questions,
+those are the places to start.  
+	If you have any additions are corrections about this manual, please
+email me at:  
+
+	 Mike.Larsen@bbs.uti.com
+	Stularsenmic@vax.colsf.edu
+
+G*E*N*E*R*A*L***U*S*E*R***I*N*F*O******************************S*E*C*T*I*O*N***2
+																								     
+	Before going in to the programming of the cellular phone, it is
+important for the user to know the normal things necessary for day to day
+operation.  While the majority of the stuff in the users manual is intended
+for people that have problems programming their VCR, their are a few things
+that are very important and are only mentioned in the users manual.
+
+			  Turn On: [Pwr]
+		       Place Call: Enter number, [Snd]
+		     Receive Call: [Snd] or open flip fone
+			 End Call: [End] or close flip fone
+		     Store Number: Phone number, [Sto], 2-digit location number
+		    Recall Number: [Rcl], 2-digit location number
+	      Super Speed Dialing: Directory location number, [Snd]
+		 Changing Entries: Press [Rcl] and the 2-digit location number 
+				   so that the number to be changed is 
+				   displayed.  Press and release [Clr] to back 
+				   out each of the digits. Enter a new number 
+				   and press [Sto].
+	    Call Number Displayed: [Snd]
+		Microphone Muting: Press [Fcn], [6].  
+				   To unmute, press [Fcn], [6]
+			Lock Unit: [Fcn], [5] or [LOCK]
+			   Unlock: Three digit unlock code.  If you make an 
+				   error, [Clr] and enter again.
+		   Automatic Lock: [FCN], [6] (not all phones) 
+				   "EnAbLE" will appear if compatible.  
+	      Display Unlock Code: Press [Fcn], [0], your six-digit security
+				   code, [Rcl].
+	Changing Your Unlock Code: Press [Fcn], [0], your six-digit security
+				   code, your NEW 3-digit unlock code, [Sto].
+	     Review Battery Meter: Press [Fcn], [4] and release.
+		    Adjust Volume: Earpiece - Press and hold [Vol] to increase.
+					      Release, press again to decrease.
+				     Ringer - [Fcn], then Vol as above.
+	  Recall Last Number Used: [Rcl], [0], [0]
+	  Recall Own Phone Number: [Rcl], [#]
+	    Individual Call Timer: [Rcl], [#], [#]
+	    Resettable Call Timer: [Rcl], [#], [#], [#]
+      Reset Resettable Call Timer: [Fcn], [0], [7], [Clr]
+	    Cumulative Call Timer: [Rcl], [#], [#], [#], [#]
+		  Access Features: Press [Fcn], [1].  To change features, press
+				   [*] and [#] to scroll and [Clr] to change.
+				   To exit feature menu, press [END].
+      Review/Scroll Menu Features: Press [*] or [#]
+		    Status Review: [Fcn], [0], [9], [Rcl], [#] or [*] scrolls 
+				   messages.  To end press [END].
+	     Changing System Type: Press [Rcl], [*].  Repeatedly press [*] 
+				   until the desired system type appears.  To
+				   select press [Sto].
+       Outgoing Call Restrictions: Press [Fcn], [0], 6-digit security code, 
+				   [1], [Sto].  Phone will place calls only
+				   from memory locations 1-10.
+				   To change back to unrestricted dialing
+				   press [Fcn], [0], 6-digit security code,
+				   [4], [Sto].
+
+	I would like to add that while I have extensively worked on finding
+additional test mode commands, I (nor anyone else) have ever worked with the
+normal operation commands as listed above.  For example, above you will  
+notice sequences with [Fcn], [1] or [Fcn], [0], [7].  This is totally
+unexplored territory.  Happy hacking :)  See entering test mode on the new
+95xx phones.  
+
+--------------------------------------------------------------------------------
+
+Activating the PIN in PIN READY cellfones      Thanks to fringe@rndhse.chi.il.us 
+
+(You cannot use their fone without the PIN activated)
+
+Activating the PIN Ready feature in Motorola fones:
+
+1. Enter user menu - press FNC,1 or FNC,Menu
+2. Select Pin Active in menu and press * once or until "Pin Active"
+   appears in the fone display.
+3. Enable 'Pin Active' feature - press CLR.
+   A small square will appear before 'Pin Active' sayings its enabled.
+4. Exit user menu - press END
+
+To store the PIN into memory:
+
+1. Enter the specific PIN code - press XXXX
+2. Store four digit PIN into memory location 07 - press STO,0,7
+3. Return to normal operation - press CLR
+
+To initiate a call using the PIN Ready feature:
+
+1. Enter the phone number you wish to call:
+    press (XXX)XXX-XXXX, SND
+2. You will hear two short rings, then press SND again.  The PIN
+   Ready feature will automatically send the PIN code you previously
+   stored into memory location 07 and initiate your call.
+
+
+---------
+What is EE3??
+
+    EE3 is the software that Motorola has added to the cellular
+product line which provides feature enhancements and increased 
+security by restricting ESN transfer...
+---------
+Why did the changes take place...
+
+     Due to the FCC Rule change, all new cellular telephones
+that were introduced after Jan. 1, 1995 with new FCC IDs must restrict
+ESN transfer. Phones introduced prior to this date are "grandfathered"
+or not required to be compliant with this rule.
+---------
+How ya can tell the difference between an EE3 and a non-EE3 fone.
+
+     These fones will be identified with the marking of EE3 on the
+FCC label (look on da back of da fone)
+---------
+How does the fone change?!
+
+     Some of the changes EE3 phones have are feature differences,
+accessory compatibility, and service differences.
+---------
+Which fones have the PIN CODE feature?!
+
+	If the phones has EE3 on the back label, then the fone has the
+PIN CODE feature; with the exception of the EE3 TeleTacs and the 
+pre-AC-P300 boxed contours.
+---------
+Can a 3-watt VA be used with EE3 fones?!
+
+     No, the existing 3-watt VA is not compatible with EE3 fones.
+The following part numbers are for the new 3-watt booster for EE3 fones
+and for conversion kits for existing 3-watt kits.  The 3-watt booster
+has its own handset that comes with it.
+
+Deluxe Booster w/Micro Car Handsfree Kit (EE3 pocket and flip)
+# S-5415
+Deluxe Booster w/Micro Car Handsfree Kit (EE3 Elite) <no, eleet!>
+# S-5093
+Deluxe Booster Conversion Kit (EE3 pocket and flip)
+# S-5094
+Deluxe Booster Conversion Kit (EE3 Elite) 
+# TBA
+-----------
+Which Motorola fones have the new Lock feature?!
+
+    All EE3 fones have the NEW lock feature - FCN,5 and STO to lock it
+
+--------------------------------------------------------------------------------
+
+Well, it seems alot of people have been trying to figure out the date of
+manufacture of Motorola cellular phones.  This is easily accomplished by
+locating the MSN (Mechanical Serial Number) somewhere on the telephone.  It can
+be 10 or 11 digits.  If there is no 11th digit, warranty period is one year.  If
+there is an 11th digit, the warranty period can be determined from the following
+charts.  Without a proof of purchase, warranty date is determined by adding 3
+months to the date of manufacture.
+
+MSN Example: 194GSTxxxxW
+
+		194 is the Accounting Product Code (APC) and has little use.
+		  G is the location of manufacture
+		  S is the Year Code of manufacture
+		  T is the Month Code of manufacture
+	       xxxx is the actual serial number (hex) of that telephone 
+		  W is the Warranty Period
+
+Year Code Year   Month Code Month                  Warranty Period Defenition
+    H     1983     A or B   January          A   1 yr w/ possible MCSI coverage  
+    J     1984     C or D   February         B   3 yrs w/ possible MCSI coverage 
+    K     1985     E or F   March            C   5 yrs w/ possible MCSI coverage 
+    L     1986     G or H   April            D   2 yrs w/ possible MCSI coverage 
+    M     1987     J or K   May              E   No Warranty                     
+    N     1988     L or M   June             F   90 Days OEM only                
+    P     1989     N or P   July             H   3 Years, Canada Only            
+    Q     1990     Q or R   August           L   3 Years, OEM Only               
+    R     1991     S or T   September        M   1 Year, OEM Only                
+    S     1992     U or V   October          N, P, X   5 Yrs                         
+    T     1993     W or X   November         Q, R, S, Y, Z   3 Yrs
+    U     1994     Y or Z   December         T   OEM Telephone
+    V     1995                               U   90 Days (Reconditioned Units)
+    W     1996                               W   4 Yrs.
+    X     1997     
+    Y     1998     Location of Manufacture Code     Location
+    Z     1999                   G                  Libertyville, Il.
+
+P*R*O*G*R*A*M*M*I*N*G***I*N*F*O********************************S*E*C*T*I*O*N***3
+									       
+NOTES:  Some units have dual NAM's.
+	The ESN prefix is 130 decimal, 82 hex.
+	Motorola: 1-800-331-6456
+
+There are MANY different models of Motorola phones sold under various
+brand names, if you think it's a Motorola, it probably is.
+
+Determine which access sequence to use:
+
+HAND HELD PORTABLE MODELS
+
+If the phone has a FCN button and no MENU button use sequence 1.
+If the phone has no FCN button use sequence 2.
+If the phone has a MENU button and a FCN button use sequence 4.
+
+INSTALLED MOBILE PHONES AND TRANSPORTABLE MODELS
+
+If the phone has no FCN button and no RCL button use sequence 3.
+If the phone has a FCN button use sequence 4.
+If the phone has a MEM button use sequence 5.
+If the phone has a RCL button and no FCN button use sequence 6.
+
+
+SEQUENCE#     ACCESS CODE
+
+1             FCN   (SECURITY CODE TWICE) RCL
+2             STO # (SECURITY CODE TWICE) RCL
+3             CTL 0 (SECURITY CODE TWICE) *
+4             FCN 0 (SECURITY CODE TWICE) RCL
+5             FCN 0 (SECURITY CODE TWICE) MEM
+6             CTL 0 (SECURITY CODE TWICE) RCL
+
+The default security code is 000000.  The CTL (control) button is the
+single black button on the side of the handset.
+
+
+NAM programing:
+
+1.  Turn the power on.
+
+2.  Within ten seconds enter the access sequence as determined above.
+
+3.  The phone should now show "01" in the left of the display, this is the
+    first programing entry step number.  If it does not the security code
+    is incorrect, or the programing lock-out counter has been exceeded.  In
+    either case you can still program the unit by following the steps under
+    TEST MODE PROGRAMING below.
+
+4.  The * key is used to increment each step:
+
+    Each time you press * the display will increment from the step number,
+    displayed on the left, to the data stored in that step, displayed on
+    the right.  When the data is displayed make any necessary changes and
+    press * to increment to the next step number.
+
+5.  The SND key is used to complete and exit programing when any STEP
+    NUMBER is displayed.
+
+    If you have enabled the second phone number bit in step 10 below then
+    pressing SND will switch to NAM 2.  Steps 01 thru 06, 09 and 10 will
+    repeat for NAM 2, the step number will be followed by a "2" to indicate
+    NAM two.
+
+5.  The CLR key will revert the display to the previously stored data.
+
+6.  The # key will abort programing at any time.
+
+
+PROGRAMING DATA:
+
+STEP#    #OF DIGITS/RANGE    DESCRIPTION
+
+01       00000 - 32767       SYSTEM ID
+02       3 DIGITS            AREA CODE
+03       7 DIGITS            TEL NUMBER
+04       2 DIGITS            STATION CLASS MARK
+05       2 DIGITS            ACCESS OVERLOAD CLASS
+06       2 DIGITS            GROUP ID (10 IN USA)
+07       6 DIGITS            SECURITY CODE
+08       3 DIGITS            LOCK CODE
+09       0333 OR 0334        INITIAL PAGING CHANNEL
+10       6 DIGIT BINARY      OPTION PROGRAMING (SEE NOTE 1)
+11       3 DIGIT BINARY      OPTION PROGRAMING (SEE NOTE 2)
+
+
+NOTES:
+
+Take care with Motorola's use of "0" and "1".  Some options use "0" to
+enable, some use "1".
+
+1.  This is a 6 digit binary field used to select the following options:
+
+    Digit 1:  Internal handset speaker, 0 to enable.
+    Digit 2:  Local Use Mark, 0 or 1.
+    Digit 3:  MIN Mark, 0 or 1.
+    Digit 4:  Auto Recall, always set to 1 (enabled).
+    Digit 5:  Second phone number (not all phones), 1 to enable.
+    Digit 6:  Diversity (Two antennas, not all phones), 1 to enable.
+
+2.  This is a 3 digit binary field used to select the following options:
+
+    Digit 1:  Continuous DTMF, 1 to enable.
+    Digit 2:  Transportable Ringer/Speaker, 0=Transducer, 1=Handset.
+    Digit 3:  8 hour time out in transportable mode, 0 to enable.
+
+
+On newer models, they have added and changed some numbers.  The numbers
+as of the 3/27/92 manual are as follows:
+
+1.  The 6 digit binary field is still the same.  
+
+2.  The 3 digit binary field has become a 5 digit binary field.
+    
+    Digit 1:  Failed Page Indicator                        1=Disabled;0=Enabled
+    Digit 2:  Motorola Enhanced Scan                       1=Enabled; 0=Disabled
+    Digit 3:  Long Tone DTMF                               1=Enabled; 0=Disabled
+    Digit 4:  Transportable Internal Ringer Speaker        1=Handset; 0=Transdcr
+    Digit 5:  Eight Hour Timeout                           1=Disabled;0=Enabled
+
+T*E*S*T***M*O*D*E**********************************************S*E*C*T*I*O*N***4
+
+			      TEST MODE ACCESS:
+
+NEWER 95xx PHONES (Thank you Motorola!!!)
+
+  Many newer phones don't require grounding.  If your software version number
+  is 9526 (I think) or newer, enter this:
+
+  FCN + 0 + 0 + * + * + 8 3 7 8 6 6 3 3 + STO
+  
+  In case you have trouble remembering the number sequence, it spells out 
+  "TESTMODE."  Leave it to Motorola to make this easier and easier all the time.
+  I have used this and it does work.  This command just backs up my claim even
+  further that esn changing via handset is a reality.  It's a matter of finding
+  the correct combination of keys. 
+ 
+  Normal test mode commands work like usual from then on.
+
+  For some odd reason, this hasn't been included in all the 95xx phones.  I 
+  believe they started it in Software 9526.  This is only an estimate, so if
+  you have a 95xx flip, let me know what software version you have and whether
+  it works or not so this date can be isolated.  Mine is a 9562 that worked.
+
+INSTALLED MOBILE PHONES AND TRANSPORTABLE MODELS
+
+To enter test mode on units with software version 85 and higher you must
+short pins 20 and 21 of the transceiver data connector.  An RS232 break out
+box is useful for this, or construct a test mode adaptor from standard
+Radio Shack parts.
+
+For MINI TR or Silver Mini Tac transceivers (smaller data connector) you
+can either short pins 9 and 14 or simply use a paper clip to short the
+hands free microphone connector.
+
+HAND HELD PORTABLE MODELS:
+
+There are two basic types of Motorola portable phones, the Micro-Tac series
+"Flip" phones, and the larger 8000 and Ultra Classic phones.  Certain newer
+Motorola and Pioneer badged Micro-Tac phones do not have a "flip", but
+follow the same procedure as the Micro-Tac.
+
+8000 & ULTRA CLASSIC SERIES:
+
+If you have an 8000 series phone determine the "type" before trying to
+enter test mode.  On the back of the phone, or on the bottom in certain
+older models, locate the F09... number this is the series number.  If the
+FOURTH digit of this number is a "D" you CAN NOT program the unit through
+test mode, a Motorola RTL4154/RTL4153 programer is required to make any
+changes to this unit.
+
+Having determined that you do not have a "D" series phone the following
+procedure is used to access test mode:
+
+Remove the battery from the phone and locate the 12 contacts at the top
+near the antenna connector.  These contacts are numbered 1 through 12 from
+top left through bottom right.  Pin 6, top right, is the Manual Test Mode
+Pin. You must ground this pin while powering up the phone.  Pin 7 (lower
+left) or the antenna connector should be used for ground.  Follow one of
+these procedures to gain access to pin 6:
+
+1.  The top section of the battery that covers the contacts contains
+nothing but air.  By careful measuring you can drill a small hole in the
+battery to gain access to pin 6, alternately simply cut the top off the
+battery with a hack saw.  Having gained access use a paper clip to short
+pin six to the antenna connector ground while powering up the phone.
+
+2.  If you do not want to "destroy" a battery you can apply an external 7.5
+volts to the + and - connectors at the bottom of the phone, ground pin 6
+while powering up the phone as above.
+
+3.  You can also try soldering or jamming a small jumper between pins 6 and
+7 (top right to lower left), or between pin 6 and the antenna connector
+housing ground.  Carefully replace the battery and power up the phone.  Use
+caution with this method not to short out any other pin.
+
+4.  A cigarette lighter adaptor, if you have one, also makes a great test
+mode adaptor as it can be disassembled to give you easier access to pin 6.
+Many are pre marked, or even have holes in the right location.  This is
+because they are often stamped from the same mold that the manufacturer
+uses for making hands free adaptor kits and these kits require access to
+the phone's connectors.
+
+ULTRA CLASSIC II SERIES:
+
+  Ground Pin 2 to pin 4.  
+
+MICRO-TAC "FLIP" SERIES:
+
+This phone follows similar methods as outlined for the 8000 series above.
+
+Remove the battery and locate the three contacts at the bottom of the
+phone, the two outer contacts are raised and connect with the battery.  The
+center contact is recessed, this is the Manual Test Mode connector.
+
+Now look at the battery contacts, the two outer ones supply power to the
+phone, the center contact is an "extra" ground.  This ground needs to be
+shorted to the test mode connector on the phone.  The easiest way to do
+this is to put a small piece of solder wick, wire, aluminum foil or any
+other conductive material into the recess on the phone.  Having done this
+carefully replace the battery and turn on the power, if you have been
+successful the phone will wake up in test mode.
+
+GENERAL NOTES:
+
+HANDSETS:  Most Motorola handsets are interchangeable, when a handset is
+used with a transceiver other than the one it was designed for the display
+will show "LOANER".  Some features and buttons may not work, for instance
+if the original handset did not have a RCL or STO button, and the
+replacement does, you will have to use the control * or control # sequence
+to access memory and A/B system select procedures.
+
+LOCK/UNLOCK PROCEDURES:
+
+     Phones with "LOCK" buttons:  Press lock for at least 1/2 a second.
+
+     Phones with a "FCN" button:  Press FCN 5, note that 5 has the letters
+				  "J,K, and L" for lock.
+
+     Phones with no FCN or LOCK button:  Press Control 5, control is the black
+					 volume button on the side of the
+					 handset.
+
+SYSTEM SELECT PROCEDURES:
+
+     Phones with a RCL button:  Press RCL *, then * to select, STO to store.
+
+     Phones with no RCL button: Press Control * then * to select, # to store.
+
+     Options are:    CSCAn:    Preferred/Non preferred with system lockout.
+		     Std A/b, or Std b/A:  Preferred/Non preferred.
+		     SCAn Ab, or SCAn bA:  Non preferred/Preferred
+		     SCAn A:  "A" ONLY
+		     SCAn b:  "B" ONLY
+		     HOME:     Home only
+
+     (these are typical options, some phone's vary.  C-Scan is only available 
+     on newer models and does not appear unless programed, see below.)
+
+--------------------------------------------------------------------------------
+
+				 TEST MODE
+    
+NOTE: Not all commands work on all telephones.  If a command is not valid the
+      display will show "ErrOr."  Not all numbers have been assigned.  Not all
+      numbers have been listed here.  Some commands were intended only for
+      Motorola factory applications.   (This is the disclaimer in the
+      technical training manual.  I have included all of the other commands I 
+      have discovered one way or another.  Some that say no function do have
+      a function but it is unknown until it is figured out.)
+    
+
+Three test commands are significant for programming and registering the
+the telephone for service:  see full descriptions under TEST MODE COMMANDS.
+
+32#  Clears the telephone.  (Older Motorola allowed either three or fifteen 
+changes in the MIN.  After that, the phone had to be sent to Motorola to reset 
+the counter.  This is the command they use.) 
+
+38#  Displays the ESN
+
+55#  This is the TEST MODE PROGRAMMING (as described below).
+
+
+			      TEST MODE DISPLAY:
+
+
+Test mode consists of two separate levels.  When the telephone is first placed
+in Test Mode, it is in the STATUS DISPLAY LEVEL.  The display will be scrolling
+(or flashing), or it will be locked.  If locked, enter the unlock code and the
+display will begin scrolling.  If the unlock code is not known, press #.  By
+pushing the # key, the technician causes the cellular telephone to change to
+its SERVICING LEVEL.  The display will be   US'  .  There are five types of
+display, depending on the model of the telephone: a 16 character display, a 14
+character display, a 10 digit display (with two versions), an 8 character
+display, and a 7 character display.  The status display is different in analog
+operation than in a TDMA call.
+
+NOTE: Use of a loaner handset is allowed in servicing level, but may not be
+allowed in the status display level.  A locked telephone will not show the
+status display, but will enter the servicing level.
+
+
+14 Character Analog Call Display                  14 Character TDMA Call Display
+
+      +---------------+                                 +---------------+
+      | A B C D E F G |                                 | A B C D E F G |
+      | H I J K L M N |                                 | H I J K L M N |                           
+      +---------------+                                 +---------------+
+
+ABC = Channel                                     ABC = Channel ("A" in the 
+D   = *Call Processing Mode                             position indicates a
+EFG = RSSI                                              channel above 1000)
+H   = **(D)SAT                                    D   = *Call Processing Mode
+I   = 1=TX on                                     EFG = RSSI
+J   = 1=Signalling Tone On                        HIJ = Digital Verification
+K   = Power Level (0-7)                                 Color Code (1-255)
+L   = 1=Control Channel                           K   = Power Level (0-7)
+M   = 1=RX Audio off                              L   = 1=TX on
+N   = 1=TX Audio off                              M   = 1=Bit Error Rate (0-7)
+						  N   = 1=Audio Muted
+
+*Call Processing Mode:                            *Call Processing Mode
+BLANK = AMPS                                      BLANK = AMPS
+A = NAMPS High Sub-Channel                        1 = Slot 1, half rate
+B = NAMPS Center Sub-Channel                      2 = Slot 2, half rate
+C = NAMPS Low Sub-Channel                         3 = Slot 3, half rate
+						  4 = Slot 4, half rate
+**(D)SAT:                                         5 = Slot 5, half rate
+0 = 5970 Hz                                       6 = Slot 6, half rate
+1 = 6000 Hz                                       7 = Slot 1, full rate
+2 = 6030 Hz                                       8 = Slot 2, full rate
+3 = No SAT                                        9 = Slot 3, full rate
+------------
+0-6 = DSAT Vector                                 NOTE:  The Analog Call 
+7 = No DSAT                                              Display will always
+							 show when on a control
+							 channel.
+
+--------------------------------------------------------------------------------
+
+#    Enter SERVICING LEVEL from Test Command Mode.
+
+00#  no function
+
+01#  Restart (Re-enter DC power start-up routine.)  On TDMA telephones, this
+     command has the same effect as 13#.
+
+02#  Display Current Telephone Status (This is a non-altering version of the
+     STATUS DISPLAY.  On a 14 character display, all the information is shown.
+     On a 7 character display only the information on the second line of a 14
+     character display is shown.  On a 10 character display, all the 
+     information on the second line of a 14 character display plus the last 
+     three characters of the first line are shown.)
+
+     STATUS DISPLAY, ALTERNATES BETWEEN:
+     
+     AAA BBB   AAA = Channel Number (decimal)    BBB = RSSI reading for channel
+     CDEFGHI   are as follows:
+
+     C = SAT frequency (0=5970, 1=6000, 2=6030, 3=no channel lock)
+     D = Carrier (0=off, 1=on)
+     E = Signalling tone (0=off, 1=on)
+     F = Power attenuation level (0 through 7)
+     G = Channel mode (0=voice channel, 1=control channel)
+     H = Receive audio mute (0=unmuted, 1=muted)
+     I = Transmit audio mute (0=unmuted, 1=muted)
+
+     Press * to hold display and # to end.
+
+03#  Reset Autonomous Timer.   This command results in the reset of the 
+     autonomous timer but does not provide any test function on these models.
+
+04#  Initializes Telephone to Standard Default Conditions:
+     Carrier Off, Power Level 0, Receiver Audio Muted, Transmit Audio Muted,
+     Signalling Tone Off, SAT Off, Resetting of Watch-Dog Timer Enabled, 
+     DTMF and Audio Tones Off, Audio Path Set to Speaker
+
+05#  TX Carrier On (Key Transmitter)
+
+06#  TX Carrier Off
+
+07#  RX Audio Off (Mute Receiver Audio)
+
+08#  RX Audio On (Unmute Receiver Audio) 
+
+	    NOTE:  It seems Motorola finally discovered that people were using 
+		   this command to eaves-drop on cellular conversations.  On the
+		   newer phones (95xx), this command when used with 11xxxx# 
+		   will only work with the following channels:
+
+		   11xxxx#     Tower Freq.  Mobile Freq. Channel
+		   
+		     #300      Tx  879.00   Rx  834.00    0300  
+		     #333      Tx  879.99   Rx  834.99    0333  
+		     #385      Tx  881.55   Rx  836.55    0385 
+		     #799      Tx  893.97   Rx  848.97    0799  
+		     #991      Tx  869.04   Rx  824.04    0800
+	     
+09#  TX Audio Off
+
+10#  TX Audio On
+
+11(Ch.No.)# Set Transceiver to Channel xxxx (Receive and Transmit in Decimal;
+	    accepts 1, 2, 3, or 4 digits)
+
+	    see Section 9 for detailed information on this command
+
+12x# Set Power Step to x; (0,1-7) 0=Maximum Power (3 Watts) 7=Minimum Power Out
+
+13#  Power Off (Shuts off the radio)
+
+14#  10 kHz Signalling Tone On
+
+15#  10 kHz Signalling Tone Off
+
+16#  Setup  (Transmits a five word RECC message; each of the five words will 
+     be "FF00AA55CC33."  Transmitter de-keys at the end of the message.)
+
+17#  Voice  (Transmits a two word REVC message; each of the two words will be
+     "FF00AA55CC33."  Transmitter de-keys at the end of the message.)
+
+18#  C-Scan  (Allows for entry of as many as 5 negative SID's for each NAM.)
+
+     Newer Motorola phones are equipped with a feature called C-Scan, this is 
+     an option along with the standard A/B system selections.  C-Scan allows 
+     the phone to be programed with up to five inhibited system ID's per NAM.  
+     This is designed to prevent the phone from roaming onto specified non-home
+     systems and therefore reduce "accidental" roaming fees.
+
+     1.  C-Scan can only be programed from test mode, power phone up with the
+	 relevant test mode contact grounded (see above).
+
+     2.  Press # to access test mode.
+
+     3.  Press 18#, the phone will display "0    40000".
+
+     4.  Enter the first inhibited system ID and press *.
+
+     Continue to enter additional system ID's if required.  After the 5th entry
+     the phone will display "N2". Press * to continue and add system ID's for
+     NAM 2 as required.
+
+     5.  If an incorrect entry is made (outside the range of 00000-32767) the
+	 display will not advance, press CLR and re-enter.  Use a setting of
+	 40000 for any un-needed locations.
+
+     6.  When the last entry has been made press * to store and press # to exit,
+	 turn off power.
+
+     or
+     
+     [**Phones without the C-Scan option used this command to SEND NAM.**]
+
+18#  SEND NAM.  Display shows AA BB.  Where AA=Address and BB=Data.  Displays   
+     the contents of the NAM, one address at a time, advanced by pressing the
+     * key.  The following data is contained in NAM.  The test is exited by
+     depressing the # key.
+     SIDH                 Sec. Code
+     OPT. (1,2,&3)        MIN
+     MIN1, MIN2           FCHNA
+     SCM                  FCHNB
+     IPCH                 NDED
+     ACCOLC               CHKSUM       GIM
+
+19#  Display Software Version Number  (4 digits displayed as year and week)
+
+NOTE:  Entering commands 20# through 23# or 27# causes the transceiver to begin
+       a counting sequence or continuous transmission as described below.  In
+       order to exit from the commands to enter another test command, the # 
+       key must be depressed; all other key depressions are ignored.
+
+20#  Receive control channel messages counting correctable and uncorrectable
+     errors.  When the command starts, the number of the command will be 
+     displayed in the upper-right corner of the display.  Entering a # key
+     will terminate the command and display two three-digit numbers in the 
+     display.  The first number is the number of correctable errors and the
+     second is the uncorrectable errors.
+
+21#  Received voice channel messages counting correctable and uncorrectable
+     errors.  When the command starts, the number of the command will be 
+     displayed in the upper right-hand corner of the display.  Entering a # 
+     key terminates the command and will display two three-digit numbers in 
+     display.  The first is the number of correctable errors and the second 
+     is the uncorrectable errors.
+
+22#  Receive control channel messages counting word sync sequence.  When the
+     command starts, the number of the command will be displayed in the upper
+     right-hand corner of the display.  Entering a # key will terminate the
+     command and display the number of word sync sequences in the display.
+
+23#  Receive voice channel messages counting word sync sequences.  When the
+     command starts, the number of the command will be displayed in the upper
+     right-hand corner of the display.  Entering a # key will terminate the 
+     command and display the number of word sync sequences in the display.
+
+24#  Receive control channel data and display the majority voted busy/idle
+     bit.  0=idle  1=busy
+
+25x# SAT On         When                        x=0, SAT=5970HZ
+						x=1, SAT=6000HZ
+						x=2, SAT=6030HZ
+
+26#  SAT Off
+
+27#  Transmit Data  (Transmits continuous control channel data.  All words 
+     will be "FF00AA55CC33."  When the command starts, '27' will be displayed
+     in the right side of the display.  Entering a # key will terminate the
+     command.  The transmitter de-keys when finished.)
+
+28#  Activate the high tone (1150 Hz +/- 55 Hz)
+
+29#  De-activate the high tone
+
+30#  Activate the low tone (770 Hz +/- 40 Hz)
+
+31#  De-activate the low tone
+
+32#  Clear (Sets non-volatile memory to zeroes or factory default.  This 
+     command will affect all counters, all repertory memory including the last
+     number called stack, and all user programmable features including the
+     setting of System Registration.  It does not affect the ESN, NAM, phasing
+     data, or lock code.  This takes a minute or so.  DO NOT TURN OFF THE 
+     TELEPHONE WHILE THIS IS SHOWING '32' ON THE DISPLAY.  WAIT UNTIL THE 
+     NORMAL SERVICE LEVEL DISPLAY RESUMES! [maybe a minute or so])
+
+33x# Turn on DTMF for x  (1-9, *, 0, #, plus the single tones)     
+   Where x=1    697 Hz + 1209 Hz       14  1150 HZ (not used in cellular)
+	   2    697 Hz + 1336 Hz       15  1209 Hz
+	   3    697 Hz + 1477 Hz       16  1336 Hz
+	   4    770 Hz + 1209 Hz       17  1477 Hz
+	   5    770 Hz + 1336 Hz       18  1633 Hz (not used in cellular)
+	   6    770 Hz + 1477 Hz       19  Turn DTMF off
+	   7    852 Hz + 1209 Hz       20  2087 Hz
+	   8    852 Hz + 1336 Hz       21  2308 Hz
+	   9    852 Hz + 1477 Hz       22  2553 Hz (not used in cellular)
+	   *    941 Hz + 1209 Hz       23  Turn DTMF off
+	   0    941 Hz + 1336 Hz       24  3428 Hz (not used in cellular)  
+	   #    941 Hz + 1477 Hz       25  3636 Hz (not used in cellular)   
+	  10    697 Hz                 26  4000 Hz (not used in cellular)  
+	  11    770 Hz                 27  3555 Hz (not used in cellular)   
+	  12    852 Hz                 28  4571 Hz (not used in cellular)  
+	  13    941 Hz                 29  Turn DTMF off
+
+  Someone Please Check Out 24 thru 28 for accuracy.  I had weak equipment.
+
+34#  Turn DTMF Off
+
+35#  Display RSSI ("D" Series Portable Only)
+
+     or
+
+35x# Set Audio Path to x    x=0, V.S.P Microphone (Applies to mobiles only.)
+			    x=1, Speaker
+			    x=2, Alert
+			    x=3, Handset
+			    x=4, Mute
+			    x=5, External Telephone (Applies to Portables Only)
+			    x=6, External Handset (Applies to NEWER Portables)
+
+36nnn# Scan (TDMA Telephones only.  Scans the primary control channels and 
+     attempts to decipher the forward data stream.  The display will show PASS1
+     if the strongest control channel was accessed, PASS2 if the second 
+     strongest was accessed, and FAIL if no control channel could be accessed.)
+
+     (nnn=Scan speed in milliseconds).  Tunes from channel 1 to 666 in order.
+     Entering a * pauses the scan and displays current Channel Number and
+     RSSI reading (AAA=Channel Number and BBB=RSSI Reading).  When scan speed
+     is 300 milliseconds or greater, the current status is displayed during the
+     scan; when less than 300 milliseconds the status is displayed only during
+     pause.  Entering * during a pause causes the scan to resume.  Entering #
+     aborts the scan and leaves the mobile tuned to the current channel.  During
+     this command only the * and # keys are recognized.
+
+     NOTE:  While I haven't heard from ONE single person that this has worked,
+	    Motorola has continued to print this command in all the Technical
+	    Training Books (including the January 96 edition).  
+
+37#  Sets Low Battery Threshold.  Usage: #37#x# where x is any number   
+     from 1 to 255.  If set to 1, the Low Battery indicator will come up
+     when the phone is powered on.  If set to 255, it may never come up.
+
+38#  Display ESN (Displays ESN in four steps, two hexadecimal digits at a time
+     in a for digit display.  The decimal shows the address, 00 through 03 as
+     the first two digits, and two digits of the ESN as the last two digits.
+     Use the '*' to step through the entire hexadecimal ESN.)
+
+     Compander OFF ("D" Series Portables)
+
+     or
+
+38#  SND-SNM.  Display shows AA BB.  Where AA=Address;BB=Data.  Send the SNM
+     to the display.  All 32 bytes of the SNM will be displayed, one byte at 
+     a time.  The byte address will be displayed in the upper right-hand
+     corner and the contents of that address will be displayed in the hex.  
+     The * key is used to step through the address similar to the SEND-NAM
+     (18#) command.
+
+39#  Compander ON ("D" Series Portables)
+
+     or
+
+39#  RCVSU.  Receive one control channel word.  When the word is received it
+     is displayed in hex.  This command will be complete when a control channel 
+     word is received or when the # key is entered to abort the command.
+
+40#  RCVVC.  Receive one voice channel word.  When the word is received it is
+     displayed in hex.  This command will be complete when a voice channel
+     word is received or when the # key is entered to abort the command.
+
+41#  Enables Diversity (On F19CTA... Series only.)
+
+42#  Disables Diversity (On F19CTA... Series only.)
+
+43#  Disable Diversity
+     USE T/R ANTENNA (On F19CTA... Series only.)  
+     USE R ANTENNA (On D.M.T./ Mini TAC)
+
+44#  Disable Diversity
+     USE R ANTENNA (On F19CTA... Series only.)  
+     USE T/R ANTENNA (On D.M.T./ Mini TAC) 
+
+45#  Display Current Receive Signal Strength Indicator (Displayed as a 3 digit
+     decimal number) The strongest signal I have ever received was 179 and I
+     was sitting directly below the tower WITHOUT an external antenna.
+
+46#  Display Cumulative Call Timer
+
+47x# Set RX Audio level to X
+     (For F19CTA ...Series Transceivers) 
+				       X=0, Lowest Volume
+				       X=6, Highest Volume
+				       X=7, mute
+				       Normal setting is 4.
+     (For D.M.T./ Mini TAC Transceivers)
+				       X=0, Lowest Volume
+				       X=7, Highest Volume
+				       Normal setting is 4.
+     (For TDMA Transceivers and F09F... Series and Higher Portables)
+				       X=0, Lowest Volume
+				       X=15, Highest Volume
+				       Normal setting is 2 to 4.  (On TDMA
+				       Transceivers and Micro TAC portables, 
+				       settings 8 through 15 are for DTMF
+				       applications only.)
+
+48#  Side Tone On.  Use this command in conjunction with 350# to test the 
+     entire audio path in hands-free applications.
+
+49#  Side Tone Off
+
+50#  Maintenance data is transmitted and test results displayed:
+     PASS=received data is correct
+     FAIL 1=2second timeout, no data rec.
+     FAIL 2=received data is incorrect
+
+51#  Test of mobile where maintenance data is transmitted and looped back.  
+     Display is as follows:
+     PASS=looped-back data is correct
+     FAIL 1=2 second timeout, no looped-back data
+     FAIL 2=looped-back data is incorrect
+
+52x# SAT Phase Adjustment.  A decimal value that corresponds to phase shift
+     compensation in 4.5 degree increments.  Compensation added to inherent
+     phase shift in transceiver to achieve a total of 0 degrees phase shift.
+
+     Do NOT enter any values except those shown below.
+
+     0 degrees = 0          121.5 degrees = 59           243.0 degrees = 86
+     4.5       = 1          126.0         = 60           247.5         = 87
+     9.0       = 2          130.5         = 61           252.0         = 112
+     13.5      = 3          135.0         = 62           256.5         = 113
+     18.0      = 4          139.5         = 63           261.0         = 114
+     22.5      = 5          144.0         = 40           265.5         = 115
+     27.0      = 6          148.5         = 41           270.0         = 116
+     31.5      = 7          153.0         = 42           274.5         = 117
+     36.0      = 16         157.5         = 43           279.0         = 118
+     40.5      = 17         162.0         = 44           283.5         = 119
+     45.0      = 18         166.5         = 45           288.0         = 120
+     49.5      = 19         171.0         = 46           292.5         = 121
+     54.0      = 20         175.5         = 47           297.0         = 122
+     58.5      = 21         180.0         = 64           301.5         = 123
+     63.0      = 22         184.5         = 65           306.0         = 124
+     67.5      = 23         189.0         = 66           310.5         = 125
+     72.0      = 48         193.5         = 67           315.0         = 126
+     76.5      = 49         198.0         = 68           319.5         = 127
+     81.0      = 50         202.5         = 69           324.0         = 104
+     85.5      = 51         207.0         = 70           328.5         = 105
+     90.0      = 52         211.5         = 71           333.0         = 106
+     94.5      = 53         216.0         = 80           337.5         = 107
+     99.0      = 54         220.5         = 81           342.0         = 108
+     103.5     = 55         225.0         = 82           346.5         = 109
+     108.0     = 56         229.5         = 83           351.0         = 110
+     112.5     = 57         234.0         = 84           355.5         = 111
+     117.0     = 58         238.5         = 85           360.0         = 70
+	      
+53#  Enable scrambler option, when equipped.
+
+54#  Disable scrambler option, when equipped.
+
+55#  Display/Program N.A.M. (Test Mode Programming)
+
+     TEST MODE PROGRAMING:
+
+     Assuming you have completed one of the above steps correctly the phone
+     will wake up in test mode when you turn the power on.  When you first
+     access test mode the phone's display will alternate between various status
+     information that includes the received signal strength and channel number.
+     The phone will operate normally in this mode.  You can now access Service
+     Mode by pressing the # key, the display will clear and a ' will appear.
+     Use the following procedure to program the phone:
+
+     1.  Enter 55# to access programing mode.
+
+     2.  The * key advances to the next step.  (NOTE that test mode programing
+	 does NOT have step numbers, each time you press the * key the phone 
+	 will display the next data entry).
+
+     3.  The CLR key will revert the display to the previously stored data.
+
+     4.  The # key aborts programing at any time.
+
+     5.  To complete programing you must scroll through ALL entries until a '
+	 appears in the display.
+
+     6.  Note that some entries contain more digits than can be displayed by the
+	 phone, in this case only the last part of the data can be seen.
+
+     TEST MODE PROGRAMING DATA: For AMPS and NAMPS Cellular Telephones
+
+     STEP#    #OF DIGITS/RANGE    DESCRIPTION
+
+     01       00000 - 32767       SYSTEM ID
+     02       8 DIGIT BINARY      OPTION PROGRAMING, SEE NOTE 1 BELOW
+     03       10 DIGITS           MIN (AREA CODE & TEL#)
+     04       2 DIGITS            STATION CLASS MARK, SEE NOTE 2 BELOW 
+     05       2 DIGITS            ACCESS OVERLOAD CLASS
+     06       2 DIGITS            GROUP ID (10 IN USA)
+     07       6 DIGITS            SECURITY CODE
+     08       3 DIGITS            UNLOCK CODE
+     09       3 DIGITS            SERVICE LEVEL, SEE NOTE 3 BELOW
+     10       8 DIGIT BINARY      OPTION PROGRAMING, SEE NOTE 4 BELOW
+     11       8 DIGIT BINARY      OPTION PROGRAMING, SEE NOTE 5 BELOW
+     12       0333 OR 0334        INITIAL PAGING CHANNEL
+     13       0333                "A" SYSTEM IPCH
+     14       0334                "B" SYSTEM IPCH
+     15       3 DIGIT             NUMBER PAGING CHANNEL (021 IN USA)
+     16       8 DIGIT BINARY      OPTION PROGRAMING, SEE NOTE 6 BELOW
+
+     Steps 01 through 06 and 12 will repeat for NAM 2 if the second phone 
+     number bit has been enabled in step 11.
+
+     TEST MODE PROGRAMING DATA: For TDMA Cellular Telephones
+
+     STEP#    #OF DIGITS/RANGE    DESCRIPTION
+
+     01       00000 - 32767       SYSTEM ID
+     02       8 DIGIT BINARY      OPTION PROGRAMING, SEE NOTE 1 BELOW
+     03       10 DIGITS           MIN (AREA CODE & TEL#)
+     04       2 DIGITS            STATION CLASS MARK, SEE NOTE 2 BELOW 
+     05       2 DIGITS            ACCESS OVERLOAD CLASS
+     06       2 DIGITS            GROUP ID (10 IN USA)
+     07       6 DIGITS            SECURITY CODE
+     08       3 DIGITS            LOCK CODE
+     09       3 DIGITS            SERVICE LEVEL, SEE NOTE 3 BELOW
+     10       8 DIGIT BINARY      OPTION PROGRAMING, SEE NOTE 4 BELOW
+     11       8 DIGIT BINARY      OPTION PROGRAMING, SEE NOTE 5 BELOW
+     12       0333 OR 0334        INITIAL PAGING CHANNEL
+     13       0333                "A" SYSTEM IPCH
+     14       0334                "B" SYSTEM IPCH
+     15       3 DIGITS            DEDICATED PAGING CHANNELS (021 IN USA)          
+     16       3 DIGITS            SECONDARY INITIAL PAGING CHANNEL.  708 for
+				  system A, 737 for system B.  Allows the TDMA
+				  telephone to be assigned to a TDMA channel in
+				  a call
+     17       708                 SECONDARY INITIAL PAGING CHANNEL FOR SYSTEM A
+     18       737                 SECONDARY INITIAL PAGING CHANNEL FOR SYSTEM B
+     19       8 DIGITS            OPTION PROGRAMMING, SEE NOTE 6 BELOW
+
+     NOTES:
+
+     Take care with Motorola's use of "0" and "1".  Some options use "0" to
+     enable, some use "1".
+
+     These are eight digit binary fields used to select the following options:
+
+     1.  (step 02 above, suggested entry is: 11101001 for "A" system, 10101001
+	 for "B" sys)
+
+	 Digit 1: Local use mark, 0 or 1.
+	 Digit 2: Preferred system, 1=system A, 0=system B.
+	 Digit 3: End to end (DTMF) dialing, 1 to enable.
+	 Digit 4: Not used, enter 0. Formerly used for test mobile.
+	 Digit 5: Repertory (speed) dialing, 1 to enable. (Not used in TDMA)
+	 Digit 6: Auxiliary (horn) alert, 1 to enable.
+	 Digit 7: Hands free (VSP) auto mute, 1 to enable (mutes outgoing hands
+		  free audio until the MUTE key is pressed). (Not used in TDMA)
+	 Digit 8: Min mark, 1 = Enabled.  NOT CHANGEABLE on series II or III.
+
+     2.  Station Class Mark
+
+	  SCM | 666 or 832 Ch. | VOX | Max Power
+	 -----+----------------+-----+-----------
+	   00 |      666       |  N  |   3.0 W
+	   01 |      666       |  N  |   1.2 W
+	   02 |      666       |  N  |   0.6 W
+	   03 |                |     |
+	   04 |      666       |  Y  |   3.0 W
+	   05 |      666       |  Y  |   1.2 W
+	   06 |      666       |  Y  |   0.6 W
+	   07 |                |     |
+	   08 |      832       |  N  |   3.0 W
+	   09 |      832       |  N  |   1.2 W
+	   10 |      832       |  N  |   0.6 W
+	   11 |                |     |
+	   12 |      832       |  Y  |   3.0 W
+	   13 |      832       |  Y  |   1.2 W
+	   14 |      832       |  Y  |   0.6 W
+	   15 |                |     |
+
+     3.  Service Level Codes:
+
+	 001   The telephone will only dial numbers in memory locations 01, 02
+	       and 03.  No keypad entries or memory storage is possible.
+	       Restrict ALL outgoing calls by clearing locations 01, 02, and 03
+	       and place the phone in servicing level 001.  In some phones this
+	       applies to memory locations 01 - 10.
+	 002   The telephone will dial only numbers from memory locations.  The
+	       keypad is disabled and super speed dialing is not enabled.
+	 003   Keypad dial only; no memory recall allowed.
+	 004   Unlimited keypad and memory dialing.  (DEFAULT)
+	 005   Seven-digit dialing only
+	 006   Full keypad and memory dialing, but memory locations 1 through
+	       10 cannot be changed.
+	 007   The phone will dial only from as many as 50 programmable memory
+	       locations
+
+     4.  (step 10 above, suggested entry is: 00000100)
+
+	 Digits 1 - 3: Not used in USA, enter 0.
+	 Digit 4: Extended Field.  When enabled, the telephone will scan
+		  more than 32 paging channels.  Not used in USA, 0 to disable
+	 Digit 5: Single system scan, 1 to enable (scan A or B system only,
+		  determined by bit 2 of step 02. Set to "0" to allow user the
+		  option).
+	 Digit 6: Super speed dial, 1 to enable (pressing N, or NN SND will 
+		  dial the number stored in memory location NN).
+	 Digit 7: User selectable service level, 0 to enable (allows user to 
+		  set long distance/memory access dialing restrictions).
+	 Digit 8: Lock function, 0 to enable (allows user to lock/un-lock the
+		  phone, if this is set to 1 the phone can not be locked).
+
+     5.  (step 11 above, suggested entry is: 00000000)
+
+	 Digit 1: Handset programing, 0 to enable (allows access to programing
+		  mode without having to enter test mode).
+	 Digit 2: Second phone number (not all phones), 1 to enable.
+	 Digit 3: Call timer access, 0 to enable. (Not used in TDMA)
+	 Digit 4: Auto system busy redial, 0 to enable.
+	 Digit 5: Internal Speaker disable, 1 to enable (use with select VSP
+		  units only, do not use with 2000 series mobiles).
+	 Digit 6: IMTS/Cellular, 1 to enable (rarely used).
+	 Digit 7: User selectable system registration, 0 to enable.
+	 Digit 8: Dual antenna (diversity), 1 to enable.
+
+     6.  (step 16 and 19 above, suggested entry is: 0011010 for portable and 0011011
+	 for mobile units)
+
+	 Digit 1: Enhanced Scan, when enabled, four strongest signalling
+		  channels are scanned instead of two. 1=enabled, 0-disabled.
+	 Digit 2: Cellular Connection, used only in series II phones if a
+		  series I cellular connection is used with a series II.
+		  0=series II, 1=series I, 0 for ALL TDMA PHONES
+	 Digit 3: Continuous DTMF, 1 to enable (software version 8735 and later)
+	 Digit 4: Transportable Internal Ringer/Speaker.  When set to 0, audio
+		  is routed to the external speaker of the transportable; 1
+		  routes it to the handset.
+	 Digit 5: 8 hour time-out, 0 to enable (software version 8735 and later)
+	 Digit 6: Not used, 0 only.
+	 Digit 7: Failed page indicator, 0 to enable (phone beeps when an
+		  incoming call is detected but signal conditions prevent
+		  completion of the call).
+	 Digit 8: Portable scan, 0 for portable, 1 for mobile units.
+
+56#  Illumination Diagnostic.  Lights up all lights (except the green in use
+     light) and displays all "8"'s.  The phone is also muted until repowered.
+
+57x# Call Processing Mode   
+		   x=0, AMPS
+		   x=1, NAMPS
+		   x=2-4, RESERVED 
+		   x=5, TDMA signalling
+		   x=6, TDMA signalling with loopback before decoding
+		   x=7, TDMA signalling with loopback voice after decoding
+		   x=8, TDMA signalling with loopback FACCH after decoding
+		   x=9, TDMA forced synchronization
+
+58#  Compander On (Audio compressor and expander) (See 39#)
+
+59#  Compander Off (Audio compressor and expander) (See 38#)
+
+60#  no function
+
+61#  ESN Transfer (For Series I D.M.T./Mini TAC only)
+
+62#  Turn On Ringer Audio Path
+
+63#  Turn Off Ringer Audio Path
+
+64#  ? Does something, doesn't display anything
+
+65#  ? Does something, doesn't display anything 
+
+66#  Identity Transfer (Series II Trancvrs and later mobiles, F09HG..., 
+     F09HL..., F09HY..., F09HR..., F09LF..., F09NF..., F09PY..., F09QY...,
+     F09RY..., and most retail portables shipping prior to April 1, 1995.)
+     Does the actual transfer of the ESN and NAM info.  See the 80x# command.
+
+67#  Displays two 3 digit numbers.  If you keep entering this command 
+     repeatedly, the first number will constantly change, the second won't
+     (as far as I have seen).
+
+68#  Diaplay FLEX and Model Information
+
+69#  Used with 66# for Identity Transfer.  In models shipped without the 66#
+     command, this is used with 80x# instead.  Reads NAM information, repertory
+     memory, and C-Scan ID SID's from old phone.
+
+70#  Abbreviated field transmitter audio deviation command, for transceivers
+     with FCC ID ABZ89FT5668.
+
+71#  Abbreviated field power adjustment command, for transceivers with FCC ID
+     ABZ89FT5668.
+
+72#  Field audio phasing commands.  The left side of the display should read
+     "00" followed by a two digit number.  The "00" indicates the first 
+     programming step.  If you press the *, the 00 changes to 01 and so on until 
+     08.  The "06" and "0A" are used to change the audio level (to change: 
+     press the volume up or down keys).  Other registers...don't know.
+     
+73#  Field power adjustment command.
+
+80x# Current Identity Transfer Procedure.  (Available in telephones shipping 
+     after April 1, 1995.)  This does NOT transfer the ESN.
+
+		   x=0, Transfers NAM information (On TDMA telephones, this
+			command also transfers C-Scan SID's.)
+		   x=1, Transfers repertory memory (names & telephone numbers
+			in memory.)
+		   x=2, Transfers C-Scan SID's on analog telephones (Not 
+			available on TDMA telephones.)
+
+NOTES:  As new fones come out, more commands are added/deleted as needed.  
+	The majority of these commands were figured using VERY old software
+	versions.  Some commands won't work on some phones.  If you find a
+	command that does something, please inform me as well as the software
+	version number of the phone it was discovered on. 
+
+--------------------------------------------------------------------------------
+
+* NEW SECTION *
+
+	      COMMANDS THAT DO SOMETHING BUT I DON'T KNOW WHAT!!!
+
+74#
+
+75#
+
+76#
+
+77#
+
+78#
+
+99#
+
+If you have any insight to these commands or if you have any more to add to the
+list, please email me promptly.  Thank you.
+
+H*A*C*K*I*N*G***T*H*E***F*O*V*C********************************S*E*C*T*I*O*N***5
+									       
+Note:  This is NOT my hack.  Thanks to Patrk@delphi.com for this addition.
+
+
+		   HACKING THE FOVC
+ 
+
+Problem:  When listening to something interesting (a conversation),
+just when that sexy sounding horny broad begins to give her
+phone number to some lucky guy, HANDOFF!!! then static... DAMN!
+ 
+Trick:    Hack the FOVC.
+ 
+    a quick definition:  FOVC  = FOward Voice Channel
+			 FOCC  = FOward Control Channel
+			 REVC  = REverse Voice Channel
+			 RECC  = REverse Control Channel
+ 
+As the phone travels through cells, the FOVC is where the tower tells
+the phone to adjust power levels for the current cell or to change to
+a new channel for use in the new cell. This info can be hacked apart.
+So. When you've found a good conversation, don't be lazy! Enter 40#!
+This makes the phone listen for commands on the voice channel
+(embedded in the audio portion- you can hear it as a "bump" sound). It
+will just sit there and the display will read '40' , but the
+conversation will still be audible.  Now when the phone receives a
+FOVC command (a 40 bit sequence) data will flow across the display, in
+hex format, and stop. Listen to the phone, if the conversation is
+still there, then the command was only to adjust power levels. If the
+conversation is gone, then its a handoff. If you only got a power
+adjustment command just press # or clr,  which ever gets you back to
+the ' prompt. Enter 40# and keep listening. You can also use the # key
+to cancel the 40# command, if you want to change channels or something.
+ 
+If it was a handoff, its time for some quick math. You have to convert
+some of the numbers to binary, and then to decimal. I don't know how
+many characters your phone's display will show. Mine only shows the
+last seven of the ten hex digits. Count left from the end 6 digits.
+Write down that digit and the next two on a piece of paper, ie:
+ 
+ 
+    ???j16djjj    j=junk numbers  (hex numbers range from 0-9,a-f)
+    / \
+    these are lost due to scrolling
+ 
+       write down  16d then convert it to a binary string:
+ 
+       1 = 0001
+       6 = 0110
+       d = 1101    (d=13)
+ 
+       now you have a binary string like this:  000101101101
+       throw away the first 2 bits and get:       0101101101
+       convert this to decimal and get:                  365
+ 
+ 
+365 is the new channel the conversation has moved to! Enter 110365#
+and voila! You too, can hear the horny babe's phone number!
+ 
+Don't forget to enter 40# again, as the call may be moving quickly
+through cells ( small cells or freeway driving ) or the call can get
+bounced around by the tower for cell traffic purposes.
+ 
+Here's one more example of the hex>binary>decimal conversion.
+ 
+	???j5aejjj
+ 
+	5  =  0101
+	a  =  1010
+	e  =  1110
+ 
+	full string        = 010110101110
+	truncate 2 msb     =   0110101110
+	convert to decimal =          430
+
+R*E*A*D*I*N*G***T*H*E***S*I*D**********************************S*E*C*T*I*O*N***6
+		
+READING THE SID WITH THE MOTOROLA PHONE
+---------------------------------------
+
+-----------=?> Doctor Who <?=----------
+
+This document is copyright by the author, and may be redistributed without
+charge as long as it is not changed in any way. No user other than the author
+or his assignees may charge for distribution of this document.
+
+Written on March 19, 1995. A sunny, but still somewhat cold sunday.
+
+The SID (System IDentification) of a control channel can be determined using
+the test mode of the Motorola cellular phone. This document assumes the reader
+understands cellular technology in general, and how to access Motorola's test
+mode in specific.
+
+Tune the phone to the desired control channel with 11xxx# where XXX is the 
+channel number. Hit 39# to receive one control channel word. One should appear
+in less than two seconds, filling up all ten digits on the display with hexa-
+decimal digits. Do this repeatedly until one is found with the correct 
+pattern. Digit places start at the left hand side and go to the right.
+
+The first digit should be C, D, E, or F. This letter can be used to determine the
+DCC/SAT of the cell. A "C" is SAT 0, D is 1, E is 2, and F is 3. Ignore digits
+8, 9, and 10. They are parity bytes. Digit 7 should be "6" or "E", though I
+have never found it to be other than "E". The hexadecimal value of represented
+by digits 2 through 5 is then divided by two, and then 1 added if the carrier
+is a "A" side, "non-wireline" carrier. The result is the System ID.
+
+for example:
+
+E00388EA08
+
+E means this cell has an SAT/DCC of 3. The A08 is ignored. The E to the left of
+it is proper and normal, so this is the right kind of message. Ignore the 8 in
+position 6, that is, just to the left of the E. 0038 in hexadecimal translates
+((3*16=48)+8))  to 56. 56/2 = 28. Looking up System ID 28 on my chart indicates
+Nynex in Boston. This is correct.
+
+Please be aware that the two SID charts I have seen around the net are very
+outdated. I have a more recent version on paper which I may eventually type in,
+when I have the time and energy.
+
+The methods used above are only a very crude way to do what could be done
+much more efficiently by computer. I am sure that programs will be written to
+do exactly this, but I am holding off until I have thoroughly hacked the
+meaning of all these types of messages before writing such a program. I am 
+also contemplating the design of a cable to replace the handset, running 
+from the 25 pin connector on the side of my Bag Phone to a computer.
+
+-----------=?> Doctor Who <?=-----------
+drwho@l0pht.com  "Do what thou wilt shall be the whole of the law"
+RADIOPHONE cellular archive http://www.l0pht.com/radiophone
+
+ 
+
+P*H*O*N*E***P*I*N*-*O*U*T*S************************************S*E*C*T*I*O*N***7
+									       
+Before going into the cable specs, here are the pin-outs to all phones as of
+now (in the US).  A very special thanks go to Motorola for faxing me the new
+Ultra Classic II pin-outs!
+
+--------------------------------------------------------------------------------
+
+15 pin cable pinouts 
+
+ PIN    DESIGNATION/FUNCTION
+  1     Battery A+, red wire
+  2     Transmit Audio / ON-OFF Function, a shared line between Audio (AC) and
+	ground.  This line will toggle the ON/OFF status of the telephone.
+  3     Ground (A+ return), black wire
+  4     Ignition Sense Lead, green with a black tracer
+  5     Receiver Audio (RX High), to handset connector pin 8
+  6     Regulated +9.5 volts, to handset connector pin 2
+  7     T-Data, one of the 3-wire bus lines, to handset connector pin 3
+  8     C-Data, one of the 3-wire bus lines, to handset connector pin 4
+  9     Digital Hands-Free Microphone / Manual Test.  When the pin is grounded,
+	which can be done by shorting the two connectors of the Hands-Free
+	microphone, the unit is enabled to work in TEST MODE.
+  10    R-Data, one of the 3-wire bus lines, to handset connector pin 5
+  11    Handset Logic Ground, to handset connector pin 1
+  12    Speaker High \  
+		      | -> Only on SKN4279A and SKN4277A
+  13    Speaker Low  /
+  14    Handset Audio Ground, to handset connector pin 6
+  15    Auxiliary Alert, yellow lead with a black tracer, used to blow the horn
+	or flash the headlights.  Provides a ground for the relay; maximum 
+	current is 1/2 amp.  It is  *N O T*  recommended that this circuit be
+	used to drive the horn or headlights directly.
+
+--------------------------------------------------------------------------------
+
+25 pin cable pinouts (series 2 and 3 transceivers)
+
+ PIN    DESIGNATION/FUNCTION
+  1     Transmit Audio/ON - OFF Function
+  2     Mobile/Transportable Select Line
+  3     Ground (A + return), one of 2 black wires.  Both are required for proper
+	operation
+  4     Battery A +, one of 2 red wires. Both are required for proper operation.
+  5     Ignition Sense Lead, green with red tracer
+  6     Receiver audio to handset (RX High), pin 8 on the handset connector
+  7     Ground
+  8     Regulated +9.5 volts to handset, pin 2 on handset connector
+  9     Ground
+  10    Auxiliary Alert, yellow with black tracer, used to blow the horn or
+	flash the headlights.  Provides a ground function. NOTE: 1/2 amps
+	maximum current.  The recommended method is to drive a relay 
+	(e.g. MOT 59K813674).  Ignition Sense, pin 5, must be low for this
+	function to work.
+  11    T-Data, one of the 3-wire bus lines, to pin 3 of the handset connector
+  12    C-Data, one of the 3-wire bus lines, to pin 4 of the handset connector
+  13    Ground
+  14    Transmit Audio Shield
+  15    Transmit Audio
+  16    Battery A+, one of two red wires. Both are required for proper operation
+  17    Ground, one of two black wires. Both are required for proper operation 
+  18    R-Data, one of the 3-wire bus lines, to pin 5 of the handset connector
+  19    Receiver audio to external speaker
+  20    Ground for receiver audio (shield) to external speaker
+  21    Manual test line.  When connected to ground, puts phone in test mode
+  22    Ground
+  23    Handset logic ground, to handset connector pin 1
+  24    Handset audio ground, to handset connector pin 6
+  25    Accessory ground, to external speaker
+
+--------------------------------------------------------------------------------
+
+OEM 32 pin cable pinouts        16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1
+				+----------------------------------------------+
+Note: Looking into connector  C |*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *| 
+  on the transceiver with the  D |*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *|
+  antenna port down.            +----------------------------------------------+
+
+Pin#  Designation/Function Row C         Pin#  Designation/Function Row D
+  1  Battery A+                            1  Not Used
+  2  Ignition Sense                        2  Antenna Drive (for power antenna)
+  3  Status Display Control                3  Not Used
+  4  Not Used                              4  Auxiliary Alert, used to blow the
+					      horn or flash the headlights 
+					      through a relay
+  5  Ground (A+ Return)                    5  Not Used
+  6  GM Proprietary Serial Data Bus         6  GM proprietary serial bus
+  7  Audio Ground, from GM Audio bus to    7  Audio Ground (not connected)
+     telephone
+  8  Low level audio, from telephone to GM 8  Low Level Audio (not connected)
+     Audio bus
+  9  Not used                              9  Manual Test Line; when grounded
+					      this line enables TEST MODE
+  10 Not used                              10 RX High
+  11 Mobile / Transportable select line    11 Ground (TX Shield)
+  12 Handset Logic Ground                  12 Regulated +9.5 volts
+  13 T-Data, one of the 3-wire bus lines   13 C-Data, one of the 3-wire bus lines
+  14 R-Data, one of the 3-wire bus lines   14 Audio Ground
+  15 TX High / ON-OFF                      15 Ground (Rx Shield)
+  16 VSP Microphone High                   16 VSP Microphone Ground
+
+--------------------------------------------------------------------------------
+
+Pinouts for the Motorola 8000 brick phone - "N" series
+-----------=?> Doctor Who <?=-----------
+11/21/94
+
+ numbering starts on top left         1  2  3  *  4  5  6 
+				      7  8  9  *  10 11 12
+ PIN    SIGNAL
+  *     GROUND
+  1     logic ground
+  2     not used
+  3     audio in to phone
+  4     audio out (and on/off toggle)
+  5     4.75 Bias
+  6     Manual test line
+  7     Ground for audio signals (common)
+  8     TRU data line
+  9     not used
+  10    CMP data line
+  11    RTN data line
+  12    ignition sense
+
+--------------------------------------------------------------------------------
+
+CVC BLOCK
+
+ [ 1] [ 2] [ 3]   [ 4] [ 5] [ 6]
+
+ [ 7] [ 8] [ 9]   [10] [11] [12]
+
+ 1   VSP Enable        7   GROUND
+ 2   SPKR Enable       8   S TRU
+ 3   TX HI on/off      9   AUX Alert
+ 4   RX HI             10  S CMP
+ 5   RX HI OPT         11  S RTN
+ 6   MAN TEST          12  IGN
+
+--------------------------------------------------------------------------------
+
+Flip Fones and all fones using the dpc/pt flip cable
+						 
+						   J3 Pin  Function
+ 1   2   3   4   5   6   7   8           + G -       1     Logic Ground
+ |   |   |   |   |   |   |   |           | | |       2     Ext. 7.5V
+						     3     TRU
+						     4     CMP
+  (looking at back of phone with battery removed)    5     RTN
+						     6     Audio Ground
+						     7     RX Audio OUT (spkr)
+						     8     TX Audio IN (mic)
+
+--------------------------------------------------------------------------------
+
+New External Connector for the Ultra Classic II CVC Pinblocks
+		      \
+		       \
+			\
+			 \
+      []            []    \      Pin   Designation/Function
+\                          \
+  +-------------------------+     1    Regulated 8 volts
+  |     12 10  8  6  4  2   |     3    ext. switched A+ enable
+  |      -  -  -  -  -  -   |     5    ext. spkr/mic enable
+  | O                       |     7    TX hi - on/off
+  |      -  -  -  -  -  -   |     9    T Data
+\ |     11  9  7  5  3  1   |    11    R Data
+  +-------------------------+
+		   |              2    Audio Ground
+	    PHONE /               4    manual test
+				  6    ignition / charger B+
+				  8    RX hi
+				 10    C Data
+				 12    logic ground
+
+C*A*B*L*E***S*P*E*C*S******************************************S*E*C*T*I*O*N***8
+									       
+OK OK OK.  Here are the cable specs.  They are 100% correct.  Of course I
+wouldn't know because these are for information purposes only.  I have been
+told however by VERY reliable sources that they are guaranteed, 100%, GRADE-A,
+correct.  If they don't work for you, you did something wrong.
+
+--------------------------------------------------------------------------------
+
+    Cable Instructions for the bag phones       (thanks Jakey)
+
+
+phone (female 25 pin)      computer (male 25 pin) (parallel port)
+
+18 ----------------------- 1
+21 ----------------------- 2
+1 ------------------------ 4   Below are 10K ohm resistors  
+12 ----------------------- 12 ----/\/\/----.
+11 ----------------------- 13 ----/\/\/----+
+4,5,8 -------------------------------------'
+2,3,17,20----------------- 18 --- Ground/black wire (-12 Volts)
+16 ------------------------------ Positive/yellow wire (+12 volts)
+
+By the way, Jakey told me to remind you that the handset can NOT be plugged in
+while this cable is hooked up.
+
+--------------------------------------------------------------------------------
+
+		 Motorola Cellphone cable construction  for flips
+		 -------------------------------------
+
+
+  DB25        FLIP                                  Battery Eliminator cable
+  ----        ----                                  attatchment pins up:      
+    1(--------)4                                                              
+						      --------=               
+    2(--|<----)Jump this line to the Center                1  =               
+	       Pin on the back of phone.              --------=               
+							      =               
+    4(--|<----)1   "|<" is the IN4001 diode.          --------=               
+							      =               
+   12(--------)5                                      --------=               
+							   4  =  -->To phone  
+   13(--------)6                                      --------=               
+							   5  =               
+18-25(-+------)8                                      --------=               
+       |                                                   6  =               
+       |    +-)7                                      --------=               
+       |    |                                              7* =               
+       |    |                                         --------=               
+       |    |                                              8* =               
+      NeG  PoS ---Cig adapter                         --------=               
+
+
+DB25 Male                Phone                     Power Connector
+						    (see Note 1)
+1-To phone pin 4         1-DB25 pin 4(see note 2)  Gnd-To Db25 Pins 18-25 and
+2-To Phone test lead     2-NC                          Phone pin 8
+  (see note 2)
+3-NC                     3-NC                      Tip-To phone pin 7
+4-To phone pin 1         4-To DB25 pin 1
+  (see note 2)
+5-NC                     5-To DB25 pin 12
+6-NC                     6-To DB25 pin 13
+7-NC                     7-To tip on power connector
+8-NC                     8-GND
+9-NC                     Test Lead-To DB25 pin 2 (See note 2)
+10-NC
+11-NC
+12-To Phone pin 5
+13-To Phone pin 6
+14-NC
+15-NC
+16-NC
+17-NC
+18-GND \
+19-GND |
+20-GND |
+21-GND |--Conn together to GND on 12v conn
+22-GND |  And pin 8 on phone plug
+23-GND |
+24-GND |
+25-GND /
+
+  NOTE 1:
+     The power adapter on the cable is 12 volt input but is a regulated
+     7.95 volts out. DO NOT connect 12 volts between pins 7 and 8 on the
+     phone connector.
+
+  NOTE 2:
+			 |  /|
+	  DB25 Pin 4-----| < |------Phone pin 1
+			 |  \|
+
+			 |  /|
+	  DB25 Pin 2-----| < |------Phone test lead
+			 |  \|
+
+
+--------------------------------------------------------------------------------
+
+Motorola Transceivers
+_____________________
+4500x,4800x,6800x,Etc.
+______________________
+Female 25 Pin                                Male 25 Pin
+D-Connector                                  D-connector
+To transceiver                               To P.C.Parallel Port
+	  Pin                                     Pin
+	  1._____________________________________  4.
+	  2._____________________________________ 18.
+				     ___10k______ 13.
+				    / 
+  ______4+5._______________________/____10K______ 12.
+ |       12.____________________________________/
+ |       11._____________________________________ 13.
+ |       18._____________________________________  1.
+ |       21._____________________________________  2.
+ |    ___14+17+20+23.____________________________ 18.
+ |    |
+ |    |___ -ve
+ |
+ |________ +ve 9 Volt
+
+--------------------------------------------------------------------------------
+
+ Motorola 8500x 8800x(early type)
+ ________________________________
+  
+ 25 Pin D-plug(P.C.lpt1)           Phone Back(battery removed)
+  
+ Pin          Diode,s         []    []    []      []    []    []
+  3.--orange-|<1n4001---------------------/       /           / 
+  4.--blue---|<1n4001----------------------------/           / 
+  2.--red----|<1n4001---------------------------------------/
+
+ 19.-------------\
+ 20.-----------\ |            []    []    []     []     []    []
+ 18.--black----+-+------------/     /            /      /
+ 13.--yellow-----------------------/            /      /
+ 12.--brown------------------------------------/      /
+  1.--grey-------------------------------------------/
+  
+  
+  
+			      []                              [] 
+			  -8 to -12V.                     +8 to =12V.
+ NOTE Diode protocol: Kathode---|<diode---Anode
+
+C*H*A*N*N*E*L***N*U*M*B**E*R***V*S*.***F*R*E*Q*U*E*N*C*Y*******S*E*C*T*I*O*N***9
+									       
+Frequency Range for 666 Channels:      Reverse (Mobile TX) 825.020 - 844.990 MHz
+				       Forward (Mobile RX) 870.020 - 889.990 MHz
+
+Frequency Range for 832 and 2412 Channels: 
+				       Reverse (Mobile TX) 824.030 - 848.980 MHz
+				       Forward (Mobile RX) 869.030 - 893.980 MHz
+
+Frequency Calculation for Channels 1-799:
+		  Reverse (Mobile TX) Frequency = 825.00 MHz + (Ch.# X .030 MHz)
+		  Forward (Mobile RX) Frequency = 870.00 MHz + (Ch.# X .030 MHz)
+									       
+Frequency Calculation for Channels 991-1023:
+	 Reverse (Mobile TX) Frequency = 825.00 MHz - [.030 MHz X (1023 - Ch.#)]
+	 Forward (Mobile RX) Frequency = 870.00 MHz - [.030 MHz X (1023 - Ch.#)]
+
+To determine the center frequency of an associated NAMPS sub-channel in these
+formulas, subtract 10 kHz from the restult for the low sub-channel, leave the 
+result as is for the center sub-channel, and add 10 kHz to the result for the 
+high sub-channel.
+
+--------------------------------------------------------------------------------
+
+The following text I took from the Poisoned Pen BBS (Hi guys).  Thanks Jakey
+for taking the time to decipher all of this shit.  As far as I know, with 
+the exception of a post on #cellular and the upload to Poisoned Pen, there is
+nothing in print with this compilation.  Again, special thanks go to Jakey
+(jbs@mcs.net) for the long, seemingly endless work.
+								
+
+CELLULAR PHONE FREQUENCIES AND MOTOROLA
+TEST MODE NUMERIC CODES.
+( Motorola test mode channel numbers )
+( are for use in motorola test mode  )
+( with function 11xxxx#              )
+( All frequencies in Megahertz FM    )
+Lower Set (1-666)
+
+Tower Freq.  Mobile Freq.    11xxxx# Channel
+
+Tx  870.03   Rx  825.03  Chan  0001  #1
+Tx  870.06   Rx  825.06  Chan  0002  #2        
+Tx  870.09   Rx  825.09  Chan  0003  #3        
+Tx  870.12   Rx  825.12  Chan  0004  #4        
+Tx  870.15   Rx  825.15  Chan  0005  #5
+Tx  870.18   Rx  825.18  Chan  0006  #6
+Tx  870.21   Rx  825.21  Chan  0007  #7
+Tx  870.24   Rx  825.24  Chan  0008  #8
+Tx  870.27   Rx  825.27  Chan  0009  #9
+Tx  870.30   Rx  825.30  Chan  0010  #10
+Tx  870.33   Rx  825.33  Chan  0011  #11
+Tx  870.36   Rx  825.36  Chan  0012  #12
+Tx  870.39   Rx  825.39  Chan  0013  #13
+Tx  870.42   Rx  825.42  Chan  0014  #14
+Tx  870.45   Rx  825.45  Chan  0015  #15
+Tx  870.48   Rx  825.48  Chan  0016  #16
+Tx  870.51   Rx  825.51  Chan  0017  #17
+Tx  870.54   Rx  825.54  Chan  0018  #18
+Tx  870.57   Rx  825.57  Chan  0019  #19
+Tx  870.60   Rx  825.60  Chan  0020  #20
+Tx  870.63   Rx  825.63  Chan  0021  #21
+Tx  870.66   Rx  825.66  Chan  0022  #22
+Tx  870.69   Rx  825.69  Chan  0023  #23
+Tx  870.72   Rx  825.72  Chan  0024  #24
+Tx  870.75   Rx  825.75  Chan  0025  #25
+Tx  870.78   Rx  825.78  Chan  0026  #26
+Tx  870.81   Rx  825.81  Chan  0027  #27
+Tx  870.84   Rx  825.84  Chan  0028  #28
+Tx  870.87   Rx  825.87  Chan  0029  #29
+Tx  870.90   Rx  825.90  Chan  0030  #30
+Tx  870.93   Rx  825.93  Chan  0031  #31
+Tx  870.96   Rx  825.96  Chan  0032  #32
+Tx  870.99   Rx  825.99  Chan  0033  #33
+Tx  871.02   Rx  826.02  Chan  0034  #34
+Tx  871.05   Rx  826.05  Chan  0035  #35
+Tx  871.08   Rx  826.08  Chan  0036  #36
+Tx  871.11   Rx  826.11  Chan  0037  #37
+Tx  871.14   Rx  826.14  Chan  0038  #38
+Tx  871.17   Rx  826.17  Chan  0039  #39
+Tx  871.20   Rx  826.20  Chan  0040  #40
+Tx  871.23   Rx  826.23  Chan  0041  #41
+Tx  871.26   Rx  826.26  Chan  0042  #42
+Tx  871.29   Rx  826.29  Chan  0043  #43
+Tx  871.32   Rx  826.32  Chan  0044  #44
+Tx  871.35   Rx  826.35  Chan  0045  #45
+Tx  871.38   Rx  826.38  Chan  0046  #46
+Tx  871.41   Rx  826.41  Chan  0047  #47
+Tx  871.44   Rx  826.44  Chan  0048  #48
+Tx  871.47   Rx  826.47  Chan  0049  #49
+Tx  871.50   Rx  826.50  Chan  0050  #50
+Tx  871.53   Rx  826.53  Chan  0051  #51
+Tx  871.56   Rx  826.56  Chan  0052  #52
+Tx  871.59   Rx  826.59  Chan  0053  #53
+Tx  871.62   Rx  826.62  Chan  0054  #54
+Tx  871.65   Rx  826.65  Chan  0055  #55
+Tx  871.68   Rx  826.68  Chan  0056  #56
+Tx  871.71   Rx  826.71  Chan  0057  #57
+Tx  871.74   Rx  826.74  Chan  0058  #58
+Tx  871.77   Rx  826.77  Chan  0059  #59
+Tx  871.80   Rx  826.80  Chan  0060  #60
+Tx  871.83   Rx  826.83  Chan  0061  #61
+Tx  871.86   Rx  826.86  Chan  0062  #62
+Tx  871.89   Rx  826.89  Chan  0063  #63
+Tx  871.92   Rx  826.92  Chan  0064  #64
+Tx  871.95   Rx  826.95  Chan  0065  #65
+Tx  871.98   Rx  826.98  Chan  0066  #66
+Tx  872.01   Rx  827.01  Chan  0067  #67
+Tx  872.04   Rx  827.04  Chan  0068  #68
+Tx  872.07   Rx  827.07  Chan  0069  #69
+Tx  872.10   Rx  827.10  Chan  0070  #70
+Tx  872.13   Rx  827.13  Chan  0071  #71
+Tx  872.16   Rx  827.16  Chan  0072  #72
+Tx  872.19   Rx  827.19  Chan  0073  #73
+Tx  872.22   Rx  827.22  Chan  0074  #74
+Tx  872.25   Rx  827.25  Chan  0075  #75
+Tx  872.28   Rx  827.28  Chan  0076  #76
+Tx  872.31   Rx  827.31  Chan  0077  #77
+Tx  872.34   Rx  827.34  Chan  0078  #78
+Tx  872.37   Rx  827.37  Chan  0079  #79
+Tx  872.40   Rx  827.40  Chan  0080  #80
+Tx  872.43   Rx  827.43  Chan  0081  #81
+Tx  872.46   Rx  827.46  Chan  0082  #82
+Tx  872.49   Rx  827.49  Chan  0083  #83
+Tx  872.52   Rx  827.52  Chan  0084  #84
+Tx  872.55   Rx  827.55  Chan  0085  #85
+Tx  872.58   Rx  827.58  Chan  0086  #86
+Tx  872.61   Rx  827.61  Chan  0087  #87
+Tx  872.64   Rx  827.64  Chan  0088  #88
+Tx  872.67   Rx  827.67  Chan  0089  #89
+Tx  872.70   Rx  827.70  Chan  0090  #90
+Tx  872.73   Rx  827.73  Chan  0091  #91
+Tx  872.76   Rx  827.76  Chan  0092  #92
+Tx  872.79   Rx  827.79  Chan  0093  #93
+Tx  872.82   Rx  827.82  Chan  0094  #94
+Tx  872.85   Rx  827.85  Chan  0095  #95
+Tx  872.88   Rx  827.88  Chan  0096  #96
+Tx  872.91   Rx  827.91  Chan  0097  #97
+Tx  872.94   Rx  827.94  Chan  0098  #98
+Tx  872.97   Rx  827.97  Chan  0099  #99
+Tx  873.00   Rx  828.00  Chan  0100  #100
+Tx  873.03   Rx  828.03  Chan  0101  #101
+Tx  873.06   Rx  828.06  Chan  0102  #102
+Tx  873.09   Rx  828.09  Chan  0103  #103
+Tx  873.12   Rx  828.12  Chan  0104  #104
+Tx  873.15   Rx  828.15  Chan  0105  #105
+Tx  873.18   Rx  828.18  Chan  0106  #106
+Tx  873.21   Rx  828.21  Chan  0107  #107
+Tx  873.24   Rx  828.24  Chan  0108  #108
+Tx  873.27   Rx  828.27  Chan  0109  #109
+Tx  873.30   Rx  828.30  Chan  0110  #110
+Tx  873.33   Rx  828.33  Chan  0111  #111
+Tx  873.36   Rx  828.36  Chan  0112  #112
+Tx  873.39   Rx  828.39  Chan  0113  #113
+Tx  873.42   Rx  828.42  Chan  0114  #114
+Tx  873.45   Rx  828.45  Chan  0115  #115
+Tx  873.48   Rx  828.48  Chan  0116  #116
+Tx  873.51   Rx  828.51  Chan  0117  #117
+Tx  873.54   Rx  828.54  Chan  0118  #118
+Tx  873.57   Rx  828.57  Chan  0119  #119
+Tx  873.60   Rx  828.60  Chan  0120  #120
+Tx  873.63   Rx  828.63  Chan  0121  #121
+Tx  873.66   Rx  828.66  Chan  0122  #122
+Tx  873.69   Rx  828.69  Chan  0123  #123
+Tx  873.72   Rx  828.72  Chan  0124  #124
+Tx  873.75   Rx  828.75  Chan  0125  #125
+Tx  873.78   Rx  828.78  Chan  0126  #126
+Tx  873.81   Rx  828.81  Chan  0127  #127
+Tx  873.84   Rx  828.84  Chan  0128  #128
+Tx  873.87   Rx  828.87  Chan  0129  #129
+Tx  873.90   Rx  828.90  Chan  0130  #130
+Tx  873.93   Rx  828.93  Chan  0131  #131
+Tx  873.96   Rx  828.96  Chan  0132  #132
+Tx  873.99   Rx  828.99  Chan  0133  #133
+Tx  874.02   Rx  829.02  Chan  0134  #134
+Tx  874.05   Rx  829.05  Chan  0135  #135
+Tx  874.08   Rx  829.08  Chan  0136  #136
+Tx  874.11   Rx  829.11  Chan  0137  #137
+Tx  874.14   Rx  829.14  Chan  0138  #138
+Tx  874.17   Rx  829.17  Chan  0139  #139
+Tx  874.20   Rx  829.20  Chan  0140  #140
+Tx  874.23   Rx  829.23  Chan  0141  #141
+Tx  874.26   Rx  829.26  Chan  0142  #142
+Tx  874.29   Rx  829.29  Chan  0143  #143
+Tx  874.32   Rx  829.32  Chan  0144  #144
+Tx  874.35   Rx  829.35  Chan  0145  #145
+Tx  874.38   Rx  829.38  Chan  0146  #146
+Tx  874.41   Rx  829.41  Chan  0147  #147
+Tx  874.44   Rx  829.44  Chan  0148  #148
+Tx  874.47   Rx  829.47  Chan  0149  #149
+Tx  874.50   Rx  829.50  Chan  0150  #150
+Tx  874.53   Rx  829.53  Chan  0151  #151
+Tx  874.56   Rx  829.56  Chan  0152  #152
+Tx  874.59   Rx  829.59  Chan  0153  #153
+Tx  874.62   Rx  829.62  Chan  0154  #154
+Tx  874.65   Rx  829.65  Chan  0155  #155
+Tx  874.68   Rx  829.68  Chan  0156  #156
+Tx  874.71   Rx  829.71  Chan  0157  #157
+Tx  874.74   Rx  829.74  Chan  0158  #158
+Tx  874.77   Rx  829.77  Chan  0159  #159
+Tx  874.80   Rx  829.80  Chan  0160  #160
+Tx  874.83   Rx  829.83  Chan  0161  #161
+Tx  874.86   Rx  829.86  Chan  0162  #162
+Tx  874.89   Rx  829.89  Chan  0163  #163
+Tx  874.92   Rx  829.92  Chan  0164  #164
+Tx  874.95   Rx  829.95  Chan  0165  #165
+Tx  874.98   Rx  829.98  Chan  0166  #166
+Tx  875.01   Rx  830.01  Chan  0167  #167
+Tx  875.04   Rx  830.04  Chan  0168  #168
+Tx  875.07   Rx  830.07  Chan  0169  #169
+Tx  875.10   Rx  830.10  Chan  0170  #170
+Tx  875.13   Rx  830.13  Chan  0171  #171
+Tx  875.16   Rx  830.16  Chan  0172  #172
+Tx  875.19   Rx  830.19  Chan  0173  #173
+Tx  875.22   Rx  830.22  Chan  0174  #174
+Tx  875.25   Rx  830.25  Chan  0175  #175
+Tx  875.28   Rx  830.28  Chan  0176  #176
+Tx  875.31   Rx  830.31  Chan  0177  #177
+Tx  875.34   Rx  830.34  Chan  0178  #178
+Tx  875.37   Rx  830.37  Chan  0179  #179
+Tx  875.40   Rx  830.40  Chan  0180  #180
+Tx  875.43   Rx  830.43  Chan  0181  #181
+Tx  875.46   Rx  830.46  Chan  0182  #182
+Tx  875.49   Rx  830.49  Chan  0183  #183
+Tx  875.52   Rx  830.52  Chan  0184  #184
+Tx  875.55   Rx  830.55  Chan  0185  #185
+Tx  875.58   Rx  830.58  Chan  0186  #186
+Tx  875.61   Rx  830.61  Chan  0187  #187
+Tx  875.64   Rx  830.64  Chan  0188  #188
+Tx  875.67   Rx  830.67  Chan  0189  #189
+Tx  875.70   Rx  830.70  Chan  0190  #190
+Tx  875.73   Rx  830.73  Chan  0191  #191
+Tx  875.76   Rx  830.76  Chan  0192  #192
+Tx  875.79   Rx  830.79  Chan  0193  #193
+Tx  875.82   Rx  830.82  Chan  0194  #194
+Tx  875.85   Rx  830.85  Chan  0195  #195
+Tx  875.88   Rx  830.88  Chan  0196  #196
+Tx  875.91   Rx  830.91  Chan  0197  #197
+Tx  875.94   Rx  830.94  Chan  0198  #198
+Tx  875.97   Rx  830.97  Chan  0199  #199
+Tx  876.00   Rx  831.00  Chan  0200  #200
+Tx  876.03   Rx  831.03  Chan  0201  #201
+Tx  876.06   Rx  831.06  Chan  0202  #202
+Tx  876.09   Rx  831.09  Chan  0203  #203
+Tx  876.12   Rx  831.12  Chan  0204  #204
+Tx  876.15   Rx  831.15  Chan  0205  #205
+Tx  876.18   Rx  831.18  Chan  0206  #206
+Tx  876.21   Rx  831.21  Chan  0207  #207
+Tx  876.24   Rx  831.24  Chan  0208  #208
+Tx  876.27   Rx  831.27  Chan  0209  #209
+Tx  876.30   Rx  831.30  Chan  0210  #210
+Tx  876.33   Rx  831.33  Chan  0211  #211
+Tx  876.36   Rx  831.36  Chan  0212  #212
+Tx  876.39   Rx  831.39  Chan  0213  #213
+Tx  876.42   Rx  831.42  Chan  0214  #214
+Tx  876.45   Rx  831.45  Chan  0215  #215
+Tx  876.48   Rx  831.48  Chan  0216  #216
+Tx  876.51   Rx  831.51  Chan  0217  #217
+Tx  876.54   Rx  831.54  Chan  0218  #218
+Tx  876.57   Rx  831.57  Chan  0219  #219
+Tx  876.60   Rx  831.60  Chan  0220  #220
+Tx  876.63   Rx  831.63  Chan  0221  #221
+Tx  876.66   Rx  831.66  Chan  0222  #222
+Tx  876.69   Rx  831.69  Chan  0223  #223
+Tx  876.72   Rx  831.72  Chan  0224  #224
+Tx  876.75   Rx  831.75  Chan  0225  #225
+Tx  876.78   Rx  831.78  Chan  0226  #226
+Tx  876.81   Rx  831.81  Chan  0227  #227
+Tx  876.84   Rx  831.84  Chan  0228  #228
+Tx  876.87   Rx  831.87  Chan  0229  #229
+Tx  876.90   Rx  831.90  Chan  0230  #230
+Tx  876.93   Rx  831.93  Chan  0231  #231
+Tx  876.96   Rx  831.96  Chan  0232  #232
+Tx  876.99   Rx  831.99  Chan  0233  #233
+Tx  877.02   Rx  832.02  Chan  0234  #234
+Tx  877.05   Rx  832.05  Chan  0235  #235
+Tx  877.08   Rx  832.08  Chan  0236  #236
+Tx  877.11   Rx  832.11  Chan  0237  #237
+Tx  877.14   Rx  832.14  Chan  0238  #238
+Tx  877.17   Rx  832.17  Chan  0239  #239
+Tx  877.20   Rx  832.20  Chan  0240  #240
+Tx  877.23   Rx  832.23  Chan  0241  #241
+Tx  877.26   Rx  832.26  Chan  0242  #242
+Tx  877.29   Rx  832.29  Chan  0243  #243
+Tx  877.32   Rx  832.32  Chan  0244  #244
+Tx  877.35   Rx  832.35  Chan  0245  #245
+Tx  877.38   Rx  832.38  Chan  0246  #246
+Tx  877.41   Rx  832.41  Chan  0247  #247
+Tx  877.44   Rx  832.44  Chan  0248  #248
+Tx  877.47   Rx  832.47  Chan  0249  #249
+Tx  877.50   Rx  832.50  Chan  0250  #250
+Tx  877.53   Rx  832.53  Chan  0251  #251
+Tx  877.56   Rx  832.56  Chan  0252  #252
+Tx  877.59   Rx  832.59  Chan  0253  #253
+Tx  877.62   Rx  832.62  Chan  0254  #254
+Tx  877.65   Rx  832.65  Chan  0255  #255
+Tx  877.68   Rx  832.68  Chan  0256  #256
+Tx  877.71   Rx  832.71  Chan  0257  #257
+Tx  877.74   Rx  832.74  Chan  0258  #258
+Tx  877.77   Rx  832.77  Chan  0259  #259
+Tx  877.80   Rx  832.80  Chan  0260  #260
+Tx  877.83   Rx  832.83  Chan  0261  #261
+Tx  877.86   Rx  832.86  Chan  0262  #262
+Tx  877.89   Rx  832.89  Chan  0263  #263
+Tx  877.92   Rx  832.92  Chan  0264  #264
+Tx  877.95   Rx  832.95  Chan  0265  #265
+Tx  877.98   Rx  832.98  Chan  0266  #266
+Tx  878.01   Rx  833.01  Chan  0267  #267
+Tx  878.04   Rx  833.04  Chan  0268  #268
+Tx  878.07   Rx  833.07  Chan  0269  #269
+Tx  878.10   Rx  833.10  Chan  0270  #270
+Tx  878.13   Rx  833.13  Chan  0271  #271
+Tx  878.16   Rx  833.16  Chan  0272  #272
+Tx  878.19   Rx  833.19  Chan  0273  #273
+Tx  878.22   Rx  833.22  Chan  0274  #274
+Tx  878.25   Rx  833.25  Chan  0275  #275
+Tx  878.28   Rx  833.28  Chan  0276  #276
+Tx  878.31   Rx  833.31  Chan  0277  #277
+Tx  878.34   Rx  833.34  Chan  0278  #278
+Tx  878.37   Rx  833.37  Chan  0279  #279
+Tx  878.40   Rx  833.40  Chan  0280  #280
+Tx  878.43   Rx  833.43  Chan  0281  #281
+Tx  878.46   Rx  833.46  Chan  0282  #282
+Tx  878.49   Rx  833.49  Chan  0283  #283
+Tx  878.52   Rx  833.52  Chan  0284  #284
+Tx  878.55   Rx  833.55  Chan  0285  #285
+Tx  878.58   Rx  833.58  Chan  0286  #286
+Tx  878.61   Rx  833.61  Chan  0287  #287
+Tx  878.64   Rx  833.64  Chan  0288  #288
+Tx  878.67   Rx  833.67  Chan  0289  #289
+Tx  878.70   Rx  833.70  Chan  0290  #290
+Tx  878.73   Rx  833.73  Chan  0291  #291
+Tx  878.76   Rx  833.76  Chan  0292  #292
+Tx  878.79   Rx  833.79  Chan  0293  #293
+Tx  878.82   Rx  833.82  Chan  0294  #294
+Tx  878.85   Rx  833.85  Chan  0295  #295
+Tx  878.88   Rx  833.88  Chan  0296  #296
+Tx  878.91   Rx  833.91  Chan  0297  #297
+Tx  878.94   Rx  833.94  Chan  0298  #298
+Tx  878.97   Rx  833.97  Chan  0299  #299
+Tx  879.00   Rx  834.00  Chan  0300  #300
+Tx  879.03   Rx  834.03  Chan  0301  #301
+Tx  879.06   Rx  834.06  Chan  0302  #302
+Tx  879.09   Rx  834.09  Chan  0303  #303
+Tx  879.12   Rx  834.12  Chan  0304  #304
+Tx  879.15   Rx  834.15  Chan  0305  #305
+Tx  879.18   Rx  834.18  Chan  0306  #306
+Tx  879.21   Rx  834.21  Chan  0307  #307
+Tx  879.24   Rx  834.24  Chan  0308  #308
+Tx  879.27   Rx  834.27  Chan  0309  #309
+Tx  879.30   Rx  834.30  Chan  0310  #310
+Tx  879.33   Rx  834.33  Chan  0311  #311
+Tx  879.36   Rx  834.36  Chan  0312  #312
+Tx  879.39   Rx  834.39  Chan  0313  #313
+Tx  879.42   Rx  834.42  Chan  0314  #314
+Tx  879.45   Rx  834.45  Chan  0315  #315
+Tx  879.48   Rx  834.48  Chan  0316  #316
+Tx  879.51   Rx  834.51  Chan  0317  #317
+Tx  879.54   Rx  834.54  Chan  0318  #318
+Tx  879.57   Rx  834.57  Chan  0319  #319
+Tx  879.60   Rx  834.60  Chan  0320  #320
+Tx  879.63   Rx  834.63  Chan  0321  #321
+Tx  879.66   Rx  834.66  Chan  0322  #322
+Tx  879.69   Rx  834.69  Chan  0323  #323
+Tx  879.72   Rx  834.72  Chan  0324  #324
+Tx  879.75   Rx  834.75  Chan  0325  #325
+Tx  879.78   Rx  834.78  Chan  0326  #326
+Tx  879.81   Rx  834.81  Chan  0327  #327
+Tx  879.84   Rx  834.84  Chan  0328  #328
+Tx  879.87   Rx  834.87  Chan  0329  #329
+Tx  879.90   Rx  834.90  Chan  0330  #330
+Tx  879.93   Rx  834.93  Chan  0331  #331
+Tx  879.96   Rx  834.96  Chan  0332  #332
+Tx  879.99   Rx  834.99  Chan  0333  #333
+Tx  880.02   Rx  835.02  Chan  0334  #334
+Tx  880.05   Rx  835.05  Chan  0335  #335
+Tx  880.08   Rx  835.08  Chan  0336  #336
+Tx  880.11   Rx  835.11  Chan  0337  #337
+Tx  880.14   Rx  835.14  Chan  0338  #338
+Tx  880.17   Rx  835.17  Chan  0339  #339
+Tx  880.20   Rx  835.20  Chan  0340  #340
+Tx  880.23   Rx  835.23  Chan  0341  #341
+Tx  880.26   Rx  835.26  Chan  0342  #342
+Tx  880.29   Rx  835.29  Chan  0343  #343
+Tx  880.32   Rx  835.32  Chan  0344  #344
+Tx  880.35   Rx  835.35  Chan  0345  #345
+Tx  880.38   Rx  835.38  Chan  0346  #346
+Tx  880.41   Rx  835.41  Chan  0347  #347
+Tx  880.44   Rx  835.44  Chan  0348  #348
+Tx  880.47   Rx  835.47  Chan  0349  #349
+Tx  880.50   Rx  835.50  Chan  0350  #350
+Tx  880.53   Rx  835.53  Chan  0351  #351
+Tx  880.56   Rx  835.56  Chan  0352  #352
+Tx  880.59   Rx  835.59  Chan  0353  #353
+Tx  880.62   Rx  835.62  Chan  0354  #354
+Tx  880.65   Rx  835.65  Chan  0355  #355
+Tx  880.68   Rx  835.68  Chan  0356  #356
+Tx  880.71   Rx  835.71  Chan  0357  #357
+Tx  880.74   Rx  835.74  Chan  0358  #358
+Tx  880.77   Rx  835.77  Chan  0359  #359
+Tx  880.80   Rx  835.80  Chan  0360  #360
+Tx  880.83   Rx  835.83  Chan  0361  #361
+Tx  880.86   Rx  835.86  Chan  0362  #362
+Tx  880.89   Rx  835.89  Chan  0363  #363
+Tx  880.92   Rx  835.92  Chan  0364  #364
+Tx  880.95   Rx  835.95  Chan  0365  #365
+Tx  880.98   Rx  835.98  Chan  0366  #366
+Tx  881.01   Rx  836.01  Chan  0367  #367
+Tx  881.04   Rx  836.04  Chan  0368  #368
+Tx  881.07   Rx  836.07  Chan  0369  #369
+Tx  881.10   Rx  836.10  Chan  0370  #370
+Tx  881.13   Rx  836.13  Chan  0371  #371
+Tx  881.16   Rx  836.16  Chan  0372  #372
+Tx  881.19   Rx  836.19  Chan  0373  #373
+Tx  881.22   Rx  836.22  Chan  0374  #374
+Tx  881.25   Rx  836.25  Chan  0375  #375
+Tx  881.28   Rx  836.28  Chan  0376  #376
+Tx  881.31   Rx  836.31  Chan  0377  #377
+Tx  881.34   Rx  836.34  Chan  0378  #378
+Tx  881.37   Rx  836.37  Chan  0379  #379
+Tx  881.40   Rx  836.40  Chan  0380  #380
+Tx  881.43   Rx  836.43  Chan  0381  #381
+Tx  881.46   Rx  836.46  Chan  0382  #382
+Tx  881.49   Rx  836.49  Chan  0383  #383
+Tx  881.52   Rx  836.52  Chan  0384  #384
+Tx  881.55   Rx  836.55  Chan  0385  #385
+Tx  881.58   Rx  836.58  Chan  0386  #386
+Tx  881.61   Rx  836.61  Chan  0387  #387
+Tx  881.64   Rx  836.64  Chan  0388  #388
+Tx  881.67   Rx  836.67  Chan  0389  #389
+Tx  881.70   Rx  836.70  Chan  0390  #390
+Tx  881.73   Rx  836.73  Chan  0391  #391
+Tx  881.76   Rx  836.76  Chan  0392  #392
+Tx  881.79   Rx  836.79  Chan  0393  #393
+Tx  881.82   Rx  836.82  Chan  0394  #394
+Tx  881.85   Rx  836.85  Chan  0395  #395
+Tx  881.88   Rx  836.88  Chan  0396  #396
+Tx  881.91   Rx  836.91  Chan  0397  #397
+Tx  881.94   Rx  836.94  Chan  0398  #398
+Tx  881.97   Rx  836.97  Chan  0399  #399
+Tx  882.00   Rx  837.00  Chan  0400  #400
+Tx  882.03   Rx  837.03  Chan  0401  #401
+Tx  882.06   Rx  837.06  Chan  0402  #402
+Tx  882.09   Rx  837.09  Chan  0403  #403
+Tx  882.12   Rx  837.12  Chan  0404  #404
+Tx  882.15   Rx  837.15  Chan  0405  #405
+Tx  882.18   Rx  837.18  Chan  0406  #406
+Tx  882.21   Rx  837.21  Chan  0407  #407
+Tx  882.24   Rx  837.24  Chan  0408  #408
+Tx  882.27   Rx  837.27  Chan  0409  #409
+Tx  882.30   Rx  837.30  Chan  0410  #410
+Tx  882.33   Rx  837.33  Chan  0411  #411
+Tx  882.36   Rx  837.36  Chan  0412  #412
+Tx  882.39   Rx  837.39  Chan  0413  #413
+Tx  882.42   Rx  837.42  Chan  0414  #414
+Tx  882.45   Rx  837.45  Chan  0415  #415
+Tx  882.48   Rx  837.48  Chan  0416  #416
+Tx  882.51   Rx  837.51  Chan  0417  #417
+Tx  882.54   Rx  837.54  Chan  0418  #418
+Tx  882.57   Rx  837.57  Chan  0419  #419
+Tx  882.60   Rx  837.60  Chan  0420  #420
+Tx  882.63   Rx  837.63  Chan  0421  #421
+Tx  882.66   Rx  837.66  Chan  0422  #422
+Tx  882.69   Rx  837.69  Chan  0423  #423
+Tx  882.72   Rx  837.72  Chan  0424  #424
+Tx  882.75   Rx  837.75  Chan  0425  #425
+Tx  882.78   Rx  837.78  Chan  0426  #426
+Tx  882.81   Rx  837.81  Chan  0427  #427
+Tx  882.84   Rx  837.84  Chan  0428  #428
+Tx  882.87   Rx  837.87  Chan  0429  #429
+Tx  882.90   Rx  837.90  Chan  0430  #430
+Tx  882.93   Rx  837.93  Chan  0431  #431
+Tx  882.96   Rx  837.96  Chan  0432  #432
+Tx  882.99   Rx  837.99  Chan  0433  #433
+Tx  883.02   Rx  838.02  Chan  0434  #434
+Tx  883.05   Rx  838.05  Chan  0435  #435
+Tx  883.08   Rx  838.08  Chan  0436  #436
+Tx  883.11   Rx  838.11  Chan  0437  #437
+Tx  883.14   Rx  838.14  Chan  0438  #438
+Tx  883.17   Rx  838.17  Chan  0439  #439
+Tx  883.20   Rx  838.20  Chan  0440  #440
+Tx  883.23   Rx  838.23  Chan  0441  #441
+Tx  883.26   Rx  838.26  Chan  0442  #442
+Tx  883.29   Rx  838.29  Chan  0443  #443
+Tx  883.32   Rx  838.32  Chan  0444  #444
+Tx  883.35   Rx  838.35  Chan  0445  #445
+Tx  883.38   Rx  838.38  Chan  0446  #446
+Tx  883.41   Rx  838.41  Chan  0447  #447
+Tx  883.44   Rx  838.44  Chan  0448  #448
+Tx  883.47   Rx  838.47  Chan  0449  #449
+Tx  883.50   Rx  838.50  Chan  0450  #450
+Tx  883.53   Rx  838.53  Chan  0451  #451
+Tx  883.56   Rx  838.56  Chan  0452  #452
+Tx  883.59   Rx  838.59  Chan  0453  #453
+Tx  883.62   Rx  838.62  Chan  0454  #454
+Tx  883.65   Rx  838.65  Chan  0455  #455
+Tx  883.68   Rx  838.68  Chan  0456  #456
+Tx  883.71   Rx  838.71  Chan  0457  #457
+Tx  883.74   Rx  838.74  Chan  0458  #458
+Tx  883.77   Rx  838.77  Chan  0459  #459
+Tx  883.80   Rx  838.80  Chan  0460  #460
+Tx  883.83   Rx  838.83  Chan  0461  #461
+Tx  883.86   Rx  838.86  Chan  0462  #462
+Tx  883.89   Rx  838.89  Chan  0463  #463
+Tx  883.92   Rx  838.92  Chan  0464  #464
+Tx  883.95   Rx  838.95  Chan  0465  #465
+Tx  883.98   Rx  838.98  Chan  0466  #466
+Tx  884.01   Rx  839.01  Chan  0467  #467
+Tx  884.04   Rx  839.04  Chan  0468  #468
+Tx  884.07   Rx  839.07  Chan  0469  #469
+Tx  884.10   Rx  839.10  Chan  0470  #470
+Tx  884.13   Rx  839.13  Chan  0471  #471
+Tx  884.16   Rx  839.16  Chan  0472  #472
+Tx  884.19   Rx  839.19  Chan  0473  #473
+Tx  884.22   Rx  839.22  Chan  0474  #474
+Tx  884.25   Rx  839.25  Chan  0475  #475
+Tx  884.28   Rx  839.28  Chan  0476  #476
+Tx  884.31   Rx  839.31  Chan  0477  #477
+Tx  884.34   Rx  839.34  Chan  0478  #478
+Tx  884.37   Rx  839.37  Chan  0479  #479
+Tx  884.40   Rx  839.40  Chan  0480  #480
+Tx  884.43   Rx  839.43  Chan  0481  #481
+Tx  884.46   Rx  839.46  Chan  0482  #482
+Tx  884.49   Rx  839.49  Chan  0483  #483
+Tx  884.52   Rx  839.52  Chan  0484  #484
+Tx  884.55   Rx  839.55  Chan  0485  #485
+Tx  884.58   Rx  839.58  Chan  0486  #486
+Tx  884.61   Rx  839.61  Chan  0487  #487
+Tx  884.64   Rx  839.64  Chan  0488  #488
+Tx  884.67   Rx  839.67  Chan  0489  #489
+Tx  884.70   Rx  839.70  Chan  0490  #490
+Tx  884.73   Rx  839.73  Chan  0491  #491
+Tx  884.76   Rx  839.76  Chan  0492  #492
+Tx  884.79   Rx  839.79  Chan  0493  #493
+Tx  884.82   Rx  839.82  Chan  0494  #494
+Tx  884.85   Rx  839.85  Chan  0495  #495
+Tx  884.88   Rx  839.88  Chan  0496  #496
+Tx  884.91   Rx  839.91  Chan  0497  #497
+Tx  884.94   Rx  839.94  Chan  0498  #498
+Tx  884.97   Rx  839.97  Chan  0499  #499
+Tx  885.00   Rx  840.00  Chan  0500  #500
+Tx  885.03   Rx  840.03  Chan  0501  #501
+Tx  885.06   Rx  840.06  Chan  0502  #502
+Tx  885.09   Rx  840.09  Chan  0503  #503
+Tx  885.12   Rx  840.12  Chan  0504  #504
+Tx  885.15   Rx  840.15  Chan  0505  #505
+Tx  885.18   Rx  840.18  Chan  0506  #506
+Tx  885.21   Rx  840.21  Chan  0507  #507
+Tx  885.24   Rx  840.24  Chan  0508  #508
+Tx  885.27   Rx  840.27  Chan  0509  #509
+Tx  885.30   Rx  840.30  Chan  0510  #510
+Tx  885.33   Rx  840.33  Chan  0511  #511
+Tx  885.36   Rx  840.36  Chan  0512  #512
+Tx  885.39   Rx  840.39  Chan  0513  #513
+Tx  885.42   Rx  840.42  Chan  0514  #514
+Tx  885.45   Rx  840.45  Chan  0515  #515
+Tx  885.48   Rx  840.48  Chan  0516  #516
+Tx  885.51   Rx  840.51  Chan  0517  #517
+Tx  885.54   Rx  840.54  Chan  0518  #518
+Tx  885.57   Rx  840.57  Chan  0519  #519
+Tx  885.60   Rx  840.60  Chan  0520  #520
+Tx  885.63   Rx  840.63  Chan  0521  #521
+Tx  885.66   Rx  840.66  Chan  0522  #522
+Tx  885.69   Rx  840.69  Chan  0523  #523
+Tx  885.72   Rx  840.72  Chan  0524  #524
+Tx  885.75   Rx  840.75  Chan  0525  #525
+Tx  885.78   Rx  840.78  Chan  0526  #526
+Tx  885.81   Rx  840.81  Chan  0527  #527
+Tx  885.84   Rx  840.84  Chan  0528  #528
+Tx  885.87   Rx  840.87  Chan  0529  #529
+Tx  885.90   Rx  840.90  Chan  0530  #530
+Tx  885.93   Rx  840.93  Chan  0531  #531
+Tx  885.96   Rx  840.96  Chan  0532  #532
+Tx  885.99   Rx  840.99  Chan  0533  #533
+Tx  886.02   Rx  841.02  Chan  0534  #534
+Tx  886.05   Rx  841.05  Chan  0535  #535
+Tx  886.08   Rx  841.08  Chan  0536  #536
+Tx  886.11   Rx  841.11  Chan  0537  #537
+Tx  886.14   Rx  841.14  Chan  0538  #538
+Tx  886.17   Rx  841.17  Chan  0539  #539
+Tx  886.20   Rx  841.20  Chan  0540  #540
+Tx  886.23   Rx  841.23  Chan  0541  #541
+Tx  886.26   Rx  841.26  Chan  0542  #542
+Tx  886.29   Rx  841.29  Chan  0543  #543
+Tx  886.32   Rx  841.32  Chan  0544  #544
+Tx  886.35   Rx  841.35  Chan  0545  #545
+Tx  886.38   Rx  841.38  Chan  0546  #546
+Tx  886.41   Rx  841.41  Chan  0547  #547
+Tx  886.44   Rx  841.44  Chan  0548  #548
+Tx  886.47   Rx  841.47  Chan  0549  #549
+Tx  886.50   Rx  841.50  Chan  0550  #550
+Tx  886.53   Rx  841.53  Chan  0551  #551
+Tx  886.56   Rx  841.56  Chan  0552  #552
+Tx  886.59   Rx  841.59  Chan  0553  #553
+Tx  886.62   Rx  841.62  Chan  0554  #554
+Tx  886.65   Rx  841.65  Chan  0555  #555
+Tx  886.68   Rx  841.68  Chan  0556  #556
+Tx  886.71   Rx  841.71  Chan  0557  #557
+Tx  886.74   Rx  841.74  Chan  0558  #558
+Tx  886.77   Rx  841.77  Chan  0559  #559
+Tx  886.80   Rx  841.80  Chan  0560  #560
+Tx  886.83   Rx  841.83  Chan  0561  #561
+Tx  886.86   Rx  841.86  Chan  0562  #562
+Tx  886.89   Rx  841.89  Chan  0563  #563
+Tx  886.92   Rx  841.92  Chan  0564  #564
+Tx  886.95   Rx  841.95  Chan  0565  #565
+Tx  886.98   Rx  841.98  Chan  0566  #566
+Tx  887.01   Rx  842.01  Chan  0567  #567
+Tx  887.04   Rx  842.04  Chan  0568  #568
+Tx  887.07   Rx  842.07  Chan  0569  #569
+Tx  887.10   Rx  842.10  Chan  0570  #570
+Tx  887.13   Rx  842.13  Chan  0571  #571
+Tx  887.16   Rx  842.16  Chan  0572  #572
+Tx  887.19   Rx  842.19  Chan  0573  #573
+Tx  887.22   Rx  842.22  Chan  0574  #574
+Tx  887.25   Rx  842.25  Chan  0575  #575
+Tx  887.28   Rx  842.28  Chan  0576  #576
+Tx  887.31   Rx  842.31  Chan  0577  #577
+Tx  887.34   Rx  842.34  Chan  0578  #578
+Tx  887.37   Rx  842.37  Chan  0579  #579
+Tx  887.40   Rx  842.40  Chan  0580  #580
+Tx  887.43   Rx  842.43  Chan  0581  #581
+Tx  887.46   Rx  842.46  Chan  0582  #582
+Tx  887.49   Rx  842.49  Chan  0583  #583
+Tx  887.52   Rx  842.52  Chan  0584  #584
+Tx  887.55   Rx  842.55  Chan  0585  #585
+Tx  887.58   Rx  842.58  Chan  0586  #586
+Tx  887.61   Rx  842.61  Chan  0587  #587
+Tx  887.64   Rx  842.64  Chan  0588  #588
+Tx  887.67   Rx  842.67  Chan  0589  #589
+Tx  887.70   Rx  842.70  Chan  0590  #590
+Tx  887.73   Rx  842.73  Chan  0591  #591
+Tx  887.76   Rx  842.76  Chan  0592  #592
+Tx  887.79   Rx  842.79  Chan  0593  #593
+Tx  887.82   Rx  842.82  Chan  0594  #594
+Tx  887.85   Rx  842.85  Chan  0595  #595
+Tx  887.88   Rx  842.88  Chan  0596  #596
+Tx  887.91   Rx  842.91  Chan  0597  #597
+Tx  887.94   Rx  842.94  Chan  0598  #598
+Tx  887.97   Rx  842.97  Chan  0599  #599
+Tx  888.00   Rx  843.00  Chan  0600  #600
+Tx  888.03   Rx  843.03  Chan  0601  #601
+Tx  888.06   Rx  843.06  Chan  0602  #602
+Tx  888.09   Rx  843.09  Chan  0603  #603
+Tx  888.12   Rx  843.12  Chan  0604  #604
+Tx  888.15   Rx  843.15  Chan  0605  #605
+Tx  888.18   Rx  843.18  Chan  0606  #606
+Tx  888.21   Rx  843.21  Chan  0607  #607
+Tx  888.24   Rx  843.24  Chan  0608  #608
+Tx  888.27   Rx  843.27  Chan  0609  #609
+Tx  888.30   Rx  843.30  Chan  0610  #610
+Tx  888.33   Rx  843.33  Chan  0611  #611
+Tx  888.36   Rx  843.36  Chan  0612  #612
+Tx  888.39   Rx  843.39  Chan  0613  #613
+Tx  888.42   Rx  843.42  Chan  0614  #614
+Tx  888.45   Rx  843.45  Chan  0615  #615
+Tx  888.48   Rx  843.48  Chan  0616  #616
+Tx  888.51   Rx  843.51  Chan  0617  #617
+Tx  888.54   Rx  843.54  Chan  0618  #618
+Tx  888.57   Rx  843.57  Chan  0619  #619
+Tx  888.60   Rx  843.60  Chan  0620  #620
+Tx  888.63   Rx  843.63  Chan  0621  #621
+Tx  888.66   Rx  843.66  Chan  0622  #622
+Tx  888.69   Rx  843.69  Chan  0623  #623
+Tx  888.72   Rx  843.72  Chan  0624  #624
+Tx  888.75   Rx  843.75  Chan  0625  #625
+Tx  888.78   Rx  843.78  Chan  0626  #626
+Tx  888.81   Rx  843.81  Chan  0627  #627
+Tx  888.84   Rx  843.84  Chan  0628  #628
+Tx  888.87   Rx  843.87  Chan  0629  #629
+Tx  888.90   Rx  843.90  Chan  0630  #630
+Tx  888.93   Rx  843.93  Chan  0631  #631
+Tx  888.96   Rx  843.96  Chan  0632  #632
+Tx  888.99   Rx  843.99  Chan  0633  #633
+Tx  889.02   Rx  844.02  Chan  0634  #634
+Tx  889.05   Rx  844.05  Chan  0635  #635
+Tx  889.08   Rx  844.08  Chan  0636  #636
+Tx  889.11   Rx  844.11  Chan  0637  #637
+Tx  889.14   Rx  844.14  Chan  0638  #638
+Tx  889.17   Rx  844.17  Chan  0639  #639
+Tx  889.20   Rx  844.20  Chan  0640  #640
+Tx  889.23   Rx  844.23  Chan  0641  #641
+Tx  889.26   Rx  844.26  Chan  0642  #642
+Tx  889.29   Rx  844.29  Chan  0643  #643
+Tx  889.32   Rx  844.32  Chan  0644  #644
+Tx  889.35   Rx  844.35  Chan  0645  #645
+Tx  889.38   Rx  844.38  Chan  0646  #646
+Tx  889.41   Rx  844.41  Chan  0647  #647
+Tx  889.44   Rx  844.44  Chan  0648  #648
+Tx  889.47   Rx  844.47  Chan  0649  #649
+Tx  889.50   Rx  844.50  Chan  0650  #650
+Tx  889.53   Rx  844.53  Chan  0651  #651
+Tx  889.56   Rx  844.56  Chan  0652  #652
+Tx  889.59   Rx  844.59  Chan  0653  #653
+Tx  889.62   Rx  844.62  Chan  0654  #654
+Tx  889.65   Rx  844.65  Chan  0655  #655
+Tx  889.68   Rx  844.68  Chan  0656  #656
+Tx  889.71   Rx  844.71  Chan  0657  #657
+Tx  889.74   Rx  844.74  Chan  0658  #658
+Tx  889.77   Rx  844.77  Chan  0659  #659
+Tx  889.80   Rx  844.80  Chan  0660  #660
+Tx  889.83   Rx  844.83  Chan  0661  #661
+Tx  889.86   Rx  844.86  Chan  0662  #662
+Tx  889.89   Rx  844.89  Chan  0663  #663
+Tx  889.92   Rx  844.92  Chan  0664  #664
+Tx  889.95   Rx  844.95  Chan  0665  #665
+Tx  889.98   Rx  844.98  Chan  0666  #666
+
+Upper Set Part 1 (667-799)
+
+Tower Freq.  Mobile Freq.    11xxxx# Channel
+
+Tx  890.01   Rx  845.01  Chan  0667  #667
+Tx  890.04   Rx  845.04  Chan  0668  #668
+Tx  890.07   Rx  845.07  Chan  0669  #669
+Tx  890.10   Rx  845.10  Chan  0670  #670
+Tx  890.13   Rx  845.13  Chan  0671  #671
+Tx  890.16   Rx  845.16  Chan  0672  #672
+Tx  890.19   Rx  845.19  Chan  0673  #673
+Tx  890.22   Rx  845.22  Chan  0674  #674
+Tx  890.25   Rx  845.25  Chan  0675  #675
+Tx  890.28   Rx  845.28  Chan  0676  #676
+Tx  890.31   Rx  845.31  Chan  0677  #677
+Tx  890.34   Rx  845.34  Chan  0678  #678
+Tx  890.37   Rx  845.37  Chan  0679  #679
+Tx  890.40   Rx  845.40  Chan  0680  #680
+Tx  890.43   Rx  845.43  Chan  0681  #681
+Tx  890.46   Rx  845.46  Chan  0682  #682
+Tx  890.49   Rx  845.49  Chan  0683  #683
+Tx  890.52   Rx  845.52  Chan  0684  #684
+Tx  890.55   Rx  845.55  Chan  0685  #685
+Tx  890.58   Rx  845.58  Chan  0686  #686
+Tx  890.61   Rx  845.61  Chan  0687  #687
+Tx  890.64   Rx  845.64  Chan  0688  #688
+Tx  890.67   Rx  845.67  Chan  0689  #689
+Tx  890.70   Rx  845.70  Chan  0690  #690
+Tx  890.73   Rx  845.73  Chan  0691  #691
+Tx  890.76   Rx  845.76  Chan  0692  #692
+Tx  890.79   Rx  845.79  Chan  0693  #693
+Tx  890.82   Rx  845.82  Chan  0694  #694
+Tx  890.85   Rx  845.85  Chan  0695  #695
+Tx  890.88   Rx  845.88  Chan  0696  #696
+Tx  890.91   Rx  845.91  Chan  0697  #697
+Tx  890.94   Rx  845.94  Chan  0698  #698
+Tx  890.97   Rx  845.97  Chan  0699  #699
+Tx  891.00   Rx  846.00  Chan  0700  #700
+Tx  891.03   Rx  846.03  Chan  0701  #701
+Tx  891.06   Rx  846.06  Chan  0702  #702
+Tx  891.09   Rx  846.09  Chan  0703  #703
+Tx  891.12   Rx  846.12  Chan  0704  #704
+Tx  891.15   Rx  846.15  Chan  0705  #705
+Tx  891.18   Rx  846.18  Chan  0706  #706
+Tx  891.21   Rx  846.21  Chan  0707  #707
+Tx  891.24   Rx  846.24  Chan  0708  #708
+Tx  891.27   Rx  846.27  Chan  0709  #709
+Tx  891.30   Rx  846.30  Chan  0710  #710
+Tx  891.33   Rx  846.33  Chan  0711  #711
+Tx  891.36   Rx  846.36  Chan  0712  #712
+Tx  891.39   Rx  846.39  Chan  0713  #713
+Tx  891.42   Rx  846.42  Chan  0714  #714
+Tx  891.45   Rx  846.45  Chan  0715  #715
+Tx  891.48   Rx  846.48  Chan  0716  #716
+Tx  891.51   Rx  846.51  Chan  0717  #717
+Tx  891.54   Rx  846.54  Chan  0718  #718
+Tx  891.57   Rx  846.57  Chan  0719  #719
+Tx  891.60   Rx  846.60  Chan  0720  #720
+Tx  891.63   Rx  846.63  Chan  0721  #721
+Tx  891.66   Rx  846.66  Chan  0722  #722
+Tx  891.69   Rx  846.69  Chan  0723  #723
+Tx  891.72   Rx  846.72  Chan  0724  #724
+Tx  891.75   Rx  846.75  Chan  0725  #725
+Tx  891.78   Rx  846.78  Chan  0726  #726
+Tx  891.81   Rx  846.81  Chan  0727  #727
+Tx  891.84   Rx  846.84  Chan  0728  #728
+Tx  891.87   Rx  846.87  Chan  0729  #729
+Tx  891.90   Rx  846.90  Chan  0730  #730
+Tx  891.93   Rx  846.93  Chan  0731  #731
+Tx  891.96   Rx  846.96  Chan  0732  #732
+Tx  891.99   Rx  846.99  Chan  0733  #733
+Tx  892.02   Rx  847.02  Chan  0734  #734
+Tx  892.05   Rx  847.05  Chan  0735  #735
+Tx  892.08   Rx  847.08  Chan  0736  #736
+Tx  892.11   Rx  847.11  Chan  0737  #737
+Tx  892.14   Rx  847.14  Chan  0738  #738
+Tx  892.17   Rx  847.17  Chan  0739  #739
+Tx  892.20   Rx  847.20  Chan  0740  #740
+Tx  892.23   Rx  847.23  Chan  0741  #741
+Tx  892.26   Rx  847.26  Chan  0742  #742
+Tx  892.29   Rx  847.29  Chan  0743  #743
+Tx  892.32   Rx  847.32  Chan  0744  #744
+Tx  892.35   Rx  847.35  Chan  0745  #745
+Tx  892.38   Rx  847.38  Chan  0746  #746
+Tx  892.41   Rx  847.41  Chan  0747  #747
+Tx  892.44   Rx  847.44  Chan  0748  #748
+Tx  892.47   Rx  847.47  Chan  0749  #749
+Tx  892.50   Rx  847.50  Chan  0750  #750
+Tx  892.53   Rx  847.53  Chan  0751  #751
+Tx  892.56   Rx  847.56  Chan  0752  #752
+Tx  892.59   Rx  847.59  Chan  0753  #753
+Tx  892.62   Rx  847.62  Chan  0754  #754
+Tx  892.65   Rx  847.65  Chan  0755  #755
+Tx  892.68   Rx  847.68  Chan  0756  #756
+Tx  892.71   Rx  847.71  Chan  0757  #757
+Tx  892.74   Rx  847.74  Chan  0758  #758
+Tx  892.77   Rx  847.77  Chan  0759  #759
+Tx  892.80   Rx  847.80  Chan  0760  #760
+Tx  892.83   Rx  847.83  Chan  0761  #761
+Tx  892.86   Rx  847.86  Chan  0762  #762
+Tx  892.89   Rx  847.89  Chan  0763  #763
+Tx  892.92   Rx  847.92  Chan  0764  #764
+Tx  892.95   Rx  847.95  Chan  0765  #765
+Tx  892.98   Rx  847.98  Chan  0766  #766
+Tx  893.01   Rx  848.01  Chan  0767  #767
+Tx  893.04   Rx  848.04  Chan  0768  #768
+Tx  893.07   Rx  848.07  Chan  0769  #769
+Tx  893.10   Rx  848.10  Chan  0770  #770
+Tx  893.13   Rx  848.13  Chan  0771  #771
+Tx  893.16   Rx  848.16  Chan  0772  #772
+Tx  893.19   Rx  848.19  Chan  0773  #773
+Tx  893.22   Rx  848.22  Chan  0774  #774
+Tx  893.25   Rx  848.25  Chan  0775  #775
+Tx  893.28   Rx  848.28  Chan  0776  #776
+Tx  893.31   Rx  848.31  Chan  0777  #777
+Tx  893.34   Rx  848.34  Chan  0778  #778
+Tx  893.37   Rx  848.37  Chan  0779  #779
+Tx  893.40   Rx  848.40  Chan  0780  #780
+Tx  893.43   Rx  848.43  Chan  0781  #781
+Tx  893.46   Rx  848.46  Chan  0782  #782
+Tx  893.49   Rx  848.49  Chan  0783  #783
+Tx  893.52   Rx  848.52  Chan  0784  #784
+Tx  893.55   Rx  848.55  Chan  0785  #785
+Tx  893.58   Rx  848.58  Chan  0786  #786
+Tx  893.61   Rx  848.61  Chan  0787  #787
+Tx  893.64   Rx  848.64  Chan  0788  #788
+Tx  893.67   Rx  848.67  Chan  0789  #789
+Tx  893.70   Rx  848.70  Chan  0790  #790
+Tx  893.73   Rx  848.73  Chan  0791  #791
+Tx  893.76   Rx  848.76  Chan  0792  #792
+Tx  893.79   Rx  848.79  Chan  0793  #793
+Tx  893.82   Rx  848.82  Chan  0794  #794
+Tx  893.85   Rx  848.85  Chan  0795  #795
+Tx  893.88   Rx  848.88  Chan  0796  #796
+Tx  893.91   Rx  848.91  Chan  0797  #797
+Tx  893.94   Rx  848.94  Chan  0798  #798
+Tx  893.97   Rx  848.97  Chan  0799  #799
+
+Upper Set Part 2 (991-1023)
+
+Tower Freq.  Mobile Freq.    11xxxx# Channel
+
+Tx  869.04   Rx  824.04  Chan  0991  #800
+Tx  869.07   Rx  824.07  Chan  0992  #801
+Tx  869.10   Rx  824.10  Chan  0993  #802
+Tx  869.13   Rx  824.13  Chan  0994  #803
+Tx  869.16   Rx  824.16  Chan  0995  #804
+Tx  869.19   Rx  824.19  Chan  0996  #805
+Tx  869.22   Rx  824.22  Chan  0997  #806
+Tx  869.25   Rx  824.25  Chan  0998  #807
+Tx  869.28   Rx  824.28  Chan  0999  #808
+Tx  869.31   Rx  824.31  Chan  1000  #809
+Tx  869.34   Rx  824.34  Chan  1001  #810
+Tx  869.37   Rx  824.37  Chan  1002  #811
+Tx  869.40   Rx  824.40  Chan  1003  #812
+Tx  869.43   Rx  824.43  Chan  1004  #813
+Tx  869.46   Rx  824.46  Chan  1005  #814
+Tx  869.49   Rx  824.49  Chan  1006  #815
+Tx  869.52   Rx  824.52  Chan  1007  #816
+Tx  869.55   Rx  824.55  Chan  1008  #817
+Tx  869.58   Rx  824.58  Chan  1009  #818
+Tx  869.61   Rx  824.61  Chan  1010  #819
+Tx  869.64   Rx  824.64  Chan  1011  #820
+Tx  869.67   Rx  824.67  Chan  1012  #821
+Tx  869.70   Rx  824.70  Chan  1013  #822
+Tx  869.73   Rx  824.73  Chan  1014  #823
+Tx  869.76   Rx  824.76  Chan  1015  #824
+Tx  869.79   Rx  824.79  Chan  1016  #825
+Tx  869.82   Rx  824.82  Chan  1017  #826
+Tx  869.85   Rx  824.85  Chan  1018  #827
+Tx  869.88   Rx  824.88  Chan  1019  #828
+Tx  869.91   Rx  824.91  Chan  1020  #829
+Tx  869.94   Rx  824.94  Chan  1021  #830
+Tx  869.97   Rx  824.97  Chan  1022  #831
+Tx  870.00   Rx  825.00  Chan  1023  #832 or #0
+
+T*R*I*K*-*C*L*I*P********************************************S*E*C*T*I*O*N***1*0
+									       
+I got this from a bbs in the (708) are code.  It had no name associated
+with it.  Since NOONE has mailed me any other info on it, I will keep this
+in the bible until someone bitches or sends me something tangible.  Besides,
+with Loadkit so readily available, who has the time to mess with it?
+								-ML
+
+			      MOTOROLA "TRIK-CLIP"
+
+
+This is the plans I recieved for the Flip.  Supposedly if one knew the
+pinouts on the other moto phones one could transpose. (maybe!)  I never
+tested this so I don't know if it works.  The chip in the flip the text
+is talking about is a 32 pin square plcc
+
+After Phone Disassembly Locate 27c512 Eprom on phone board.  This is
+On The Upper Right Side Of The Display Next To The Roam Indicator.
+This Is a 32 pin Square device.  **Note the dot and beveled edge
+for pin orientation (the dot is pin 1) Count to the left
+counter clock wise 2 3 4 5 and so on.  To the Right or clockwise
+of the dot is pin 32 Vcc.  This will aid you in your count to find
+pin 25 which is the eprom output enable.  This pin is at ground or
+Vss - Level.  **Note Pin 25 on Eprom in phone must be lifted from
+the phone board ground or Vss state.  Use an X-acto Knife and or
+soldering iron and tools to cut pin at board level where pin
+narrows.  Do not bend wide part of pin up on eprom as this could
+break off of Eprom.  Also Wide Part of pin Will be used to make
+contact with eprom test clip adapter.  The eprom test clip adapter
+will take pin 25 to logic high through an 8 to 10 thousand
+resistor to pin 32 Vcc.  This will Gate off all data Commands from
+the phone board eprom and allow the eprom test clip adaptor to
+take over.  **Note test clip could touch narrow part of cut off
+pin on board and cause phone not to power up please remove or fold
+down as low as possible so test clip only touches side of eprom.
+
+After programing is complete put pin 25 back together or find a
+suitable ground or Vss - source.  The phone will power up and work
+without pin 25 put back together but for long term precaution
+put back to a logic zero or ground to enable the output enable.
+
+To use the eprom test clip adapter pull the locking wedge on the
+test clip into the upper position.  Seat the eprom test clip adapter
+onto the eprom in the phone.  Make sure to orient the dot and
+beveled edge with each other.  Push the locking wedge down to lock
+the the eprom test clip adapter onto the eprom in the phone.  Hook up
+the programing cable to the computer and plug into the jack on the
+base of the phone.  Also hook up the loose lead with a jumper to the
+center terminal between the battery contacts.  Turn power on green
+light on phone display should come on then a complete display test
+will light up after that the no service will blink along with the
+signal level mark in corner of display.  If the antenna is still on
+the phone it could change to roam or something else.  I  suggest
+remove the antenna so the cell sight will not see you.  If you do
+not get a power on test with the display there are 3 possible
+things (1) pin 25 on phone board is touching the test clip this
+can be checked by looking with a volt meter at pin 25 where
+resistor connects for 4 to 5 volts pos with reference to ground.
+(2) Test clip is not sitting on chip good some times you have pull
+the test clip up off of the eprom a 64th of an inch all the way
+around.  (3) there is corrupt data, Pull the eprom test clip off
+Phone check to see if power on display is there.
+
+Computer see if data or phone number or cell sight code or data
+whole is ok I've seen the cell sight ID corrupt and the phone play
+dead on  the power on test. The test clip sometimes needs
+maintenance look at the gold pins.
+
+Make sure all the pins are level with the edge of it.  If not take
+an X-acto or pin and lightly bend them out so they are along the
+edge of the plastic of the test clip.
+
+Always check to see if eprom in phone contacts are clean before
+putting test clip on.  **Note when test clip is on phone - only
+change the ESN only. *The other data phone number lock and so on
+can be changed without the test clip and and should be done so.
+
+The software version in the test clip is 9148 you will see this in
+the right corner of the computer.  Sometimes the program will crash
+during the ESN write this will put all zeros in the ESN field
+check the test clip try again.  Sometimes I've had to do this 3 or 4
+times.  Also watch the phone display for codes I've seen at the end
+of a wright the code (FO8) just before power down I've had no
+problem there but during the key wright (FO8) means I've crashed.
+
+Also during the time when the program is counting back into the
+phone I've had (F1O) show up in the display of the phone this
+problem means the next time you may not get the power on display
+test pull test clip read phone check data to see if cell sight
+code is corrupt or some other data correct try again.  A word of
+caution do not push on eprom on top of test clip as this could
+seat eprom lower into adapter and cause bad contact.  To remove
+test clip pull locking wedge up to unlock the eprom test clip
+adapter from the eprom in the phone.  Continue pulling up to lift
+the eprom test clip adapter from the eprom in the phone.
+
+P*A*G*E*R*S**************************************************S*E*C*T*I*O*N***1*1
+
+STRAIGHT FROM A CELLULAR ONE DEALER DUMPSTER!!!  Date Dec 8, 1995
+(appears EXACTLY like it is on the fax)
+
+CAP code, which is the pager's ESN, can be found in 2 places:
+	
+	1)  The back of the pager (bar code)
+	    For example:
+	    1st number: 929.7125 = frequency
+	    2nd number: 1234567  = CAP code
+	    3rd number: 12345678 9s = Factory serial number
+			      or
+	2)  When the pager is off:  press top button twice
+		  and view CAP code, press a 3rd time and
+		  view frequency
+
+This fax didn't say what type of pager it is, so let me know when you try this
+if it worked or not.  
+
+--------------------------------------------------------------------------------
+
+Subject: BRAVO pagers - undocumented test features
+
+
+SELF TEST:
+     TO PUT UNIT INTO A SELF TEST TURN OFF PAGER. NOW HOLD DOWN THE
+GRAY ARROW KEY AND BLACK LOCK KEY AT THE SAME TIME AND TURN ON
+PAGER. THIS TELLS THE CPU IN PAGER TO GO INTO A SELF TEST. YOU WILL
+GET A 2 SECOND LONG BEEP, RELEASE THE GRAY & BLACK BUTTON AND PUSH
+THE GRAY BUTTON BEFORE THE 2 SECOND BEEP ENDS. IF YOU DID ALL THIS
+IN TIME YOU WILL HAVE "SPL" OR "PAGING P?" AND NOT THE DOTTED LINE
+YOU ARE USED TO SEEING WHEN YOU TURN ON PAGER . BY PRESSING THE
+GRAY KEY IT WILL GO TO A DISPLAY TEST, PRESS AGAIN AND YOU WILL GET
+THE PAGERS CAPCODE (CAPCODE IS THE UNIQUE SERIAL NUMBER WHICH THE
+PAGING TRANSMITTERS TRANSMITS TO YOUR PAGER TO TURN ON YOUR PAGER
+WHEN SOMEONE PAGES YOU). WAIT AND IN ABOUT 3 SECONDS IT WILL
+DISPLAY YOUR SECOND CAPCODE (IF YOU HAVE ONE-MOST DON'T) PRESS THE
+GRAY KEY AGAIN AND IT WILL CHECK CONTROLS, PRESS IT AGAIN AND IT
+WILL TEST VIBRATOR FUNCTION (IF YOUR PAGER HAS IT). TURN OFF PAGER
+AND TURN ON AGAIN TO DISABLE SELF TEST.
+
+SPECIAL PROGRAMMED FEATURES:
+     TAKE OFF BATTERIES CLIP AND IN CENTER TOWARD THE FRONT OF
+PAGER YOU WILL SEE A PRINTED CIRCUIT BOARD EDGE PINS (JUST LIKE THE
+BACK SIDE OF A NETENDO CARTAGE. THIS EDGE PINS ARE PLUGGED INTO A
+CORE PROGRAMMER. THE PROGRAMMER CAN CHANGE.
+
+     CAPCODES: SEE ABOVE
+
+     AUTORESET TO MANUAL: YOUR PAGER IN AUTORESET WILL BEEP 8 TIMES
+THEN STOP BEEPING. MANUAL RESET THE BEEPER WILL KEEP BEEPING TILL
+THE COWS COME HOME OR YOU PUSH A BUTTON TO LOOK AT THE MESSAGE.
+
+     DISPLAY: ENGLISH PROMPTS OR INTERNATIONAL-SYMBOL SCREENS
+DISPLAYED.
+
+     SILENT MODE CHIRP: FOR A SINGLE BEEP WHEN YOUR PAGED. NOT FOR
+USE ON VIBRATOR PAGERS.
+
+     BEEP ON BAD DATA: YOUR PAGER HEARS IT'S CAPCODE BUT RECEIVED
+BAD DISPLAY MESSAGE, IT WILL PUT "EEE" ACROSS DISPLAY TO SHOW BAD
+RECEIVE. IF THIS IS FEATURE IS NOT ENABLED AND YOU RECEIVE BAD DATA
+YOUR PAGER WILL NOT BEEP AND YOU WILL HAVE NO IDEA SOMEONE TRYED TO
+PAGE YOU.
+
+     
+******************************************************************
+NOW LETS SAY YOU ARE UNHAPPY WITH YOUR PAGING COMPANY "A" BUT OWN
+YOUR PAGER. YOUR $200.00+ PAGER IS TUNED TO THEIR FREQUENCY AND YOU
+WANT TO GO TO ANOTHER PAGING COMPANY BUT NOT LOSE ALL THE MONEY YOU
+SPENT FOR YOUR PAGER. THE ANSWER IS TO RE-CRYSTAL PAGER TO THE NEW
+FREQUENCY OF COMPANY "B". BUT WE MUST ANSWER SOME QUESTIONS FIRST
+TO SEE WHAT IT WILL COST. 
+
+     1. WHAT IS YOUR PAGERS CODING FORMAT (POCSAG) OR (GSC)
+	  THE EASY WAY TO TELL IS TO DO A SELF TEST AND READ
+	  CAPCODE. IF IT'S 7 NUMBERS IT'S POCSAG. IF IT'S 6 NUMBERS
+	  AND 1 LETTER IT'S GSC. IF YOUR PAGER DOES NOT MATCH THE
+	  SAME CODING FORMAT AS COMPANY "B" IT WILL COST MORE THEN
+	  IT'S WORTH TO CHANGE.
+
+     2. WHAT BAUD RATE IS YOUR PAGER WORKING AT ? DO SELF TEST AND
+IF DISPLAY SHOWS PAGING P1 PAGER IS WORKING AT 1200 BAUD OTHER WISE
+YOU ARE SAFE TO ASSUME 512 BAUD IT MUST MATCH COMPANY "B" BAUD RATE
+TO BE WORTH YOUR TIME.
+
+     3. ARE YOU IN THE SAME FREQUENCY BAND 931 MHZ OR 450 MHZ ETC.
+IF COMPANY "A" AND COMPANY "B" ARE NOT IN SAME BAND IT WILL TAKE A
+NEW RECEIVER BOARD TO CONVERT PAGER AND COST TO MUCH TO TRY.
+
+     IF ALL THE ANSWERS ABOVE SHOW YOU ARE COMPATIBLE YOU CAN CALL
+COMPANY "B" AND TELL THEM YOU WANT TO DO BUSINESS WITH THEM AND
+NEED A CAPCODE NUMBER SO YOU CAN GET PAGER RECRYSTALED AND HAVE A
+CAPCODE PROGRAMMED AT THE SAME TIME.
+
+     NOW YOU CAN HAVE COMPANY "B" RECOMMEND A SHOP THAT WILL
+RE-CRYSTAL PAGER OR LOOK UP ONE YOURSELF.
+
+(sorry for the all caps, that was how I received it and I am lazy.   -ML)
+
+D*I*S*C*L*A*I*M*E*R******************************************S*E*C*T*I*O*N***1*2
+
+DISCLAIMER:  I, Mike Larsen, accept NO responsibility for people using any
+info within this text for fraudulent purposes.  I did not intend for the info
+to be used towards fraud or theft of services.  The main reason I spent 
+hundreds of hours creating and compiling this information is because 
+programming fees are BULLSHIT and they know it.  
+	Oh, by the way, I forgot to mention in the above disclaimer that I do
+nothing fraudulent with MY fone.  I pay a bill and everything and can prove 
+it.  So will the "feds" or whoever the Internet gestapo is that's been sending
+me mail about me being under their "watchful eye", please go for someone else
+that's dealing child pornography or asking for WaReZ?  Thanks.
+	The sole reason I compiled this info into book form is to let people
+that are capable, work on their phone.  I did not compile this for the sole 
+purpose of fraud.  There is a company in Illinois called BIG BOYZ TOYZ who are
+a bunch of complete FUCKZ who refused to give me my security code and/or
+programing manual.  Phrack published a tidbit about it a few issues back and
+I figured if I was going to go through all the trouble of learning all of this,
+I might as well let everybody share it.  By the way, if you ever see a BIG
+BOYZ TOYZ store, they charge WAY too much for everything and will go for list 
+price unless you know the going price.
+
+
+	Mike.Larsen@bbs.uti.com
+	stularsenmic@vax.colsf.edu
+
+******T*H*E***E*N*D*****T*H*E***E*N*D******T*H*E***E*N*D*****T*H*E***E*N*D******
+
+

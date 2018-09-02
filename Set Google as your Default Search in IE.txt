@@ -1,0 +1,19 @@
+dd Google as your default search engine in IE.
+
+Copy everything in the box below into NOTEPAD
+
+CODE
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
+"Search Page"="http://www.google.com"
+"Search Bar"="http://www.google.com/ie"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\SearchURL]
+""="http://www.google.com/keyword/%s"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Search]
+"SearchAssistant"="http://www.google.com/ie"
+
+1. Save the file as Google.reg
+2. Double click to import to your registry. 

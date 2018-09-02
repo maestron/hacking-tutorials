@@ -1,0 +1,725 @@
+    Transcript of _Now_It_Can_Be_Told_:  "Mad Hackers' Key Party"
+              Hosted by Geraldo Rivera  (Sept. 30, 1991)
+
+Geraldo:  I'm Geraldo rivera.  And now, It can be told.
+
+<Flashy intro featuring various bleeps and sounds and what is supposed
+to look like a computer screen>
+
+Geraldo:  You're watching life imitate art.
+
+<home video of hackers hacking.  Room is in disarray, with a few
+computers scattered around among various wires and cables and
+telephones, and other equipment.>
+
+Geraldo:  Exclusive video of teenagers playing a dangerous and
+mind-boggling version of War Games.
+
+<video focuses on what appears to be 3 teenagers typing on computer
+keyboards.>
+
+<video focuses on one of the screens.>
+
+Geraldo:  If you think it's kid stuff, just watch this.
+
+<screen shows:
+|     quit
+| 221 Goodbye.
+| rugrcx>
+|        telnet tracer.army.mil
+| Trying 192.33.5.135....
+| Connected to tracer.army.mil
+| Escape character is '^]'.
+|
+|
+|
+| Xenix K3-4 (tracer.army.mil)
+|
+|
+|
+| login:
+|       dquayle
+| Password:_
+>
+<screams of joy from kids>
+<screen shows: Warning (banner)...This terminal is not secure...Do not
+process classified information...Protect user IDs, passwords...Control
+access to your system....Destroy classified and sensitive
+material....>
+
+Geraldo:  Straight into the US Army computer.  In the name of the vice
+president!!  Straight out with America-s counter-terrorist strategies
+in the Persian Gulf war. <video of bombings during Gulf War.)
+
+Cliff Stoll:  These guys in the army, they didn't do their homework.
+They screwed up.  <shows Cliff Stoll sitting in chair, terminal on
+behind him.>
+
+Geraldo:  You bet they did.  And they're not the only ones.
+
+<more video of hackers hacking, Emmanuel Goldstein talking on a
+telephone>
+
+Geraldo:  Try the Pentagon, NASA, the White House.
+
+<video showing guy next to payphone, Japanese Kanji characters fill
+the screen>
+
+Geraldo:  ...the IRS, the Department of Justice, and the stock
+exchange.
+
+<Japanese video now shows hacker typing on laptop in front of pay
+phone - It is dark out.>
+
+Phiber Optik (guy next to pay phone, typing on laptop):  I find it
+very thrilling.  It's quite interesting.
+
+Some guy in a suit speaking in a microphone:  Tomorrow's terrorists
+may be able to more damage with a keyboard, than with a bomb.
+
+<more video of a hacker hacking>
+
+Geraldo:  Now it can be told.  A terrifying expose on Malice In
+Wonderland.  The Mad Hacker's Key Party.
+
+<screen displays that title over hacker typing on keyboard>
+<Intro to the show>
+
+Geraldo:  Welcome everybody.  Up front today, a new kind of warfare.
+This kind of combat won't be fought with bombs and bullets, but with
+bits and bytes, RAMs, and ROMs.  I'm talking about computer terrorism.
+Imagine this nightmare:  Saddam Hussein breaking into our Pentagon
+computers.  Well, as your about to see, we have discovered that this
+is frightningly possible, given a combination of floppy disks and
+sloppy security.  Before you meet a mad hacker, live, right here in
+our studio, watch as our correspondant Krista Bradford discovers just
+how vulnerable our national defense system really is.
+
+<screen switches to Krista Bradford in corner office, in front of terminal>
+
+Krista:  Thanks Geraldo.  Computers:  they are absolutely essential to
+our national defense.  Our military depends on them to win wars and to
+save lives.  So you'd think they'd do everything possible to protect
+these computers, but, think again.  This exclusive video proves
+otherwise.  <she hits play button on VCR, hacker home video pops up
+again>
+
+Krista:  This video looks like a home video, but its implications are
+astounding.
+
+<video passes over computer (IBM compat.) - notable is an issue of
+2600 propped up against the keyboard>
+
+Krista:  These kids are in Amsterdam; they are not the enemy, they are
+not spies.  They are computer hackers and they are about to break into
+a US Army computer.
+
+Emmanuel:  This is about as blatant a violation as you can possibly
+get.
+<screen shows Emmanuel Goldstein>
+
+Krista:  Emmanuel Goldstein is the editor of 2600, The Hacker Quarterly.
+<screen switches to Emmanuel typing at keyboard, focuses on pile of 2600's
+stacked nearby>
+
+<screen switches back to hacker home video, Emmanuel on the phone>
+
+Krista:  He was with the hackers as thy gained unauthorized access to
+the Army computer.
+
+<list of *.MIL sites scrolls across a computer screen>
+
+Krista:  Although it wasn't classified, what the hackers found was
+alarming.
+
+<long e-mail message scrolls across a screen>
+
+Krista:  A sensitive memo which details a counter-terrorist plan.
+<screen shows bomb going off>  The date:  January 15th - Saddam
+Hussein's deadline to withdraw his forces from Kuwait.  <more footage
+from the Gulf War>
+
+<screen switches to Emmanuel being interviewed again>
+
+Emmanuel:  It was incredible how easy it was.  Because, literally they
+picked a machine at random out of a thousand machines that they had a
+listing of.  And used various means just to get in.
+
+<screen switches to the screen I typed above, except the first login
+is guest [Login incorrect]..Second login, sync, password prompt
+appears?
+
+Krista:  In order to get into a computer, you need to be an authorized
+user, and have a password.  So the hackers had to create one.  Using a
+well-known bug in the system, they managed to copy the password file
+and do just that.
+
+<list of /etc/passwd floats by>
+
+Emmanuel:  <sitting at terminal>  The idea was to create a user named
+Dan Quayle, and give him superuser privileges, as well he deserves.
+
+Krista:  Now here's the trick:  because they didn't know any
+legitimate passwords, they left the space for Dan Quayle's password
+blank.
+
+<screen focuses on dquayle record of /etc/passwd, highlights the
+colons after 'dquayle'>
+
+Emmanuel:  Everything between those two colon's is the encrypted
+password, but there's nothing between those two colons, so there's no
+password.
+
+Krista:  Next, the hacker's call back as Dan Quayle, and now they
+don't need a password to get in.
+
+<screen shows login as dquayle, null password...Hackers cheer as
+WARNING banner and logon screen (summarized above) appears.>
+
+Krista:  At this point, all of about 5 minutes have passed.  A few
+seconds later, and they have gained complete control.
+
+Emmanuel:  That means they have access to the entire system, they
+control the entire system.  They can take it down, they can change
+every file.  They can read anybody's mail.
+
+Krista:  <walking along outside>  So just how serious was this
+violation?  Well, the Army, the Justice Department, and the FBI
+wouldn't tell us.  They all refused to comment.  But this we do know:
+the US Army computer that was accessed was designed for "Authorized
+Use By Official Personnel Only".  You wouldn't want just anybody using
+this computer, especially during a time of war.
+
+<screen shows jet taking off...screen switches to guy ( Winn Schwartau
+[Information Security Consultant])  sitting in front of terminal set
+up with some other electronic devices attached.
+
+Winn:  The military knows better.  They should be protective of their
+computers a lot better than they are.
+
+<helicopter shown...screen switches to Emmanuel>
+
+Emmanuel:  Obviously, there's a problem.  Obviously people can get
+into anything and see anything.
+
+<screen switches to Cliff Stoll>
+
+Cliff:  These guys in the Army, they didn't do their homework.  They
+screwed up.
+
+<switches back to video of hackers>
+
+Krista:  They sure did.  This isn't the first time Dutch hackers have
+infiltrated government computers.
+
+<video of space shuttle taking off>
+
+Krista:  Just this April, another group made its way into the
+computers at NASA, the Pentagon, and other sensitive locations.
+<screen shows newspaper headline of said event>.
+
+<screen shows the Pentagon>
+
+Emmanuel:  If our own military doesn't know enough to look for these
+bugs and make it hard for people to get into their systems, what can
+we say about non-classified computers or computers run by schools and
+various other institutions?
+
+<screen zooms in on hardback copy of _The_Cuckoo's_Egg>
+
+Krista:  Cliff Stoll, author of The CUckoo's Egg:  How he tracked down
+a hacker selling secrets to the KGB.  Stoll opposes hacking, likening
+it to breaking into someone's house.
+
+<screen shows cliff sitting in front of a Mac LC showing familiar
+'Flying Toasters'....Cliff appears more sedate than as seen before on
+other programs>
+
+Cliff:  Is there good that can come from someone breaking into my
+house?  If someone sneaks in through my window over there, comes in
+and starts looking at things, is there any good that can come from
+that?
+
+<screen switches back to Emmanuel>
+
+Emmanuel <with hand raised, looking mad at Cliff's comment>:  I don't
+like that analogy.  Hackers are not interested in personal files of
+individual people.  They're interested in huge databases and computer
+systems.
+
+<screen switches to Japanese TV, Kanji characters spread all
+over...It's night...Guy is standing in front of lighted-up pay phone>
+
+Phiber:  My handle's Phiber Optik.  I'm a computer hacker from the
+east coast.
+
+<screen shows Phiber taking acoustic coupler from a bag...[This scene looks
+extremely modern-day Cyberpunk-ish]>
+
+Krista:  The Dutch aren't the only ones breaking into US computers.
+
+Phiber:  I find it actually very, very thrilling.  It's quite
+interesting.
+
+<screen shows laptop set on some cement stool....Screen moves to show
+other people milling around...Gee, is that Mr. Goldstein?!?  And a
+g-man looking type in sunglasses [
+
+Krista:  It is nighttime in the meat packing district of New York
+City.  A Japanese camera crew is documenting the work of one of
+America's most notorious hackers.
+
+<Phiber connects the coupler to the pay phone>
+
+Phiber:  I enjoy this...Just know as much as you can about technology
+and about, uh, computer networking.  <he's busy getting the pay phone
+set up>
+
+Krista:  They watch him hook up his computer to a payphone, so the
+call can't be traced to his home.
+
+Phiber:  <typing on the laptop>  Hacker's goal is basically to become
+one with the machine.  [in a Socratic-dialogue tone of
+voice]
+
+Krista:  Unlike Holland, hacking in the US is a crime, so this hacker
+prefers to remain anonymous.
+
+<screen switches to dark bookstore where A. Hacker [Phiber] sits
+across from Krista>
+
+Krista:  So what gives you the right to access other people's
+computers?
+
+A. Hacker:  To tell you the truth, I really don't care hat someone
+keeps on their computers.  Me, myself personally, and my close friends
+are mainly interested in programming the machines.
+
+Krista:  But if the machines are owned by somebody else, they're not
+your machines!
+
+A. Hacker:  Well, sure, but we'd just be coexisting with the people
+that normally use the machine.
+
+Krista:  Have you ever gotten into the White House computers?
+
+A. Hacker:  Well, I can't personally say whether I have or not.  I
+know it's certainly possible, there's nothing stopping anyone from it.
+
+<shot of White House>
+
+Krista:  Did you ever see anything interesting when you were there?
+
+A. Hacker:  Well, I'm not gonna say I was ever there...bu...uhh...No
+comment...
+
+<screen switches back to the studio>
+
+Geraldo:  Joining me now is Craig Neidorf. Craig is one of the
+country's most notorious hackers.  He has the dubious distinction of
+being one of the first people prosecuted under the Computer Abuse and
+Fraud Act.  Although the charges against him were eventually dropped.
+
+Geraldo:  Do you think it's fun what the Dutch kids did?  Get any
+kicks out of it?
+
+Craig [KL]:  I'm sure they probably thought it was fun.  I was a bit
+disturbed by it  when I heard about it.
+
+Geraldo:  Yeah.  And you'll see why, after this.
+
+<cut away to commercial, but first a message from Winn Schwartau and
+Geraldo...>
+
+Winn:  We do, potentially face an electronic Pearl Harbor.
+
+<shot of Pearl Harbor>
+
+Geraldo:  Is the United States vulnerable to a computer invasion by
+the enemy?  We'll be back in a moment with some of the scenarios for
+terror, as we continue our report on the Mad Hacker's Key Party.
+
+<Commercial>
+
+Geraldo:  We'll be hearing more from our hacker friend here in a
+moment, as well as from somebody who prosecutes guys just like Craig.
+
+Geraldo:  In their own defense Craig and the other hackers say they
+demonstrate graphically just how vulnerable are to sabotage.  Another
+word for sabotage in the high-tech 90's is terrorism.  Here's Krista
+Bradford with the second part of her alarming report.
+
+Krista:  Thanks Geraldo.  For years the US government has known about
+the threat of computer terrorism, but it has done little to protect
+itself.  Computer security is routinely cut from the budget.  So now
+we are in the precarious position of life possibly imitating art.
+That according to a recent Congressional subcommitee, when the
+subcomittee roled a clip from the movie Die Hard.
+
+<actually it's Die Hard II...Clip shows scene where head hancho at
+Dullus Airport realizes someone else has control of their computer
+system>
+
+<scene switches to that Winn guy...An Information Security Consultant>
+
+Winn:  A dedicated, motivated group of individuals with proper funding
+and a little bit of knowledge of technology.....
+
+<another clip from Die Hard II...Workers scrambling around the control
+tower..Chaos...>
+
+Winn:  ....has the capability to effectively invade the United States
+via his computers and communication systems, shut those systems down
+that they wish to shut down, and do it invisibly by remote control.
+
+<screen shows plane taking off>
+
+Krista:  The FAA's computerized air traffic control system holds the
+lives of tens of thousands of travellers in the balance every second.
+
+<screen shows fictional computer graphic of air traffic over map of
+the country>
+
+Krista:  The federal reserve system moves $250 trillion through it's
+computer networks every year.  The more computers we have the more
+vulnerable we become to computer terrorism.
+
+<shot of terrorists hijacking TWA plane>
+
+Guy in suit in front of microphone:  A recent national research
+council report says that the modern thief can steal more with a
+computer, than with a gun.  Tomorrow's terrorists may be able to do
+more damage with a keyboard, than with a bomb.  That's frightening.
+
+Krista:  Dan Glickman (sp?) sits on the House Science, Space, and
+Technology Committee and recently chaired a hearing on computer
+security.  Winn Schartau, a leading authority on information security
+and author of the novel _Terminal_Compromise_ testified at this
+hearing.
+
+Winn:  Terrorism is not necessarily implied by bombs and bullets.  You
+can affect massive amounts of people by attacking the right computers.
+And that's terrorism.
+
+<switch back to Emmanuel>
+
+Emmanuel:  The computer is a tool.  And any tool can be used as a
+weapon.
+
+<switch back to A. Hacker - now we see he's with another person (B.
+hacker?)>
+
+A. Hacker:  I wouldn't as much call it a weapon as I would call it an
+extension of one's own mind.
+
+<switch back to Winn.  He's setting up some sort of satellite receiver
+next to his terminal and equipment>
+
+Krista:  For the first time on television we can see just how
+vulnerable computers are to attack.  There are four ways the computer
+can be used as a weapon.  Number one, viruses:  programs that copy
+themselves over and over again.  In January, there were 480 viruses
+In June, 921.  At the current rate there will be 100,000 viruses by
+the year 1995.
+
+<shows fictional graphic of computers all over the map of the US,
+apparently supposed to be infected>
+
+Winn:  There are a new breed of viruses coming out that actually can
+cause physical damage to the computer.  Either cause the monitor
+itself to blow up, or cause the hard disk to physically crash, thus
+rendering all the information unusable.
+
+Krista:  Number 2, interception.  Terrorists can intercept phone lines
+used by computers and faxes.  HIgh-tech phone taps.
+
+<shows fictional graphic of guy at keyboard intercepting signals
+transmitted between two computers>
+
+Winn:  There are very, very simple, off-the-shelf, products and
+techniques that are available to listen in on all your digital
+communications.
+
+Krista:  Number 3, electromagnetic eavesdropping.  Something our own
+government has allegedly kept under wraps for 40 years, so it can
+protect its military computers while spying on other unprotected
+systems.
+
+Winn:  You have to view the computer as a miniature radio transmitter.
+All the information that is being processed on it, and is being
+displayed on the terminal, your video display terminal, is being
+broadcast into the air just like a radio transmitter.
+
+Krista:  In an exclusive demonstration of just how easy it is while
+someone is typing at a computer terminal we can see someone up else to
+a mile and a half away tune in the radiation with an antenna and read
+exactly what is being typed.
+
+<screen shows one person typing in fictional credit card information,
+then switches back to Winn's setup, where he tunes in to the frequency
+19.9217 and is able to see on his terminal the information that was
+being typed on the other terminal>
+
+Krista:  And finally number 4, computer guns.  These guns are not
+loaded with bullets but transmit high frequencies or electromagnetic
+pulses, which, when fired, can cause an entire computer system to
+crash.
+
+<shows fictional graphic of satellite transmitting signal which causes
+computer to blow up>
+
+Winn:  What if I shot your computer with my hertz (sp? unclear word)
+gun every hour on the hour, forcing your computers down every hour?
+It takes approximately a half-hour to forty-five minutes to bring one
+back up, how long can your company sustain that before you cry uncle?
+
+<shows hacker home video again>
+
+Krista:  Just how real is the threat of computer terrorism?  Real
+enough, according to a GAO report on computer security at the
+Department of Justice.  The report identified many disturbing computer
+flaws which have life and death implications.
+
+<shows report>
+
+Krista:  Real enough according to another GAO report on computer
+security at the stock market.  Six of our nation's stock market
+computers are at risk, which handle 1.8 trillion dollars every year.
+
+<shows stock market report>
+
+Krista:  Real enough that according to a report just this September
+which revealed that top secret bomb designs for every nuclear weapon
+in the country were left unprotected in the computer system at the
+Rocky Flats Nuclear Weapons Plant.
+
+Winn:  The current state of affairs is such that we do potentially
+face an electronic Pearl Harbor.
+
+<bomb exploding footage>
+
+Krista <in front of statue of statue in Washington, apparently>:  Just
+how many acts of computer terrorism there have been is impossible to
+say since our own government refuses to comment.  But, the manifesto
+for the terrorist group The Red Brigade vows that one of its main
+goals is to target and destroy computer systems.
+
+<shot of Die Hard II again., where Bruce Willis says "This is just the
+beginning">
+
+<back to the studio...>
+
+Geraldo:  Joining us now via satellite from Oakland, CA is the
+Assistant District Attorney Don Ingraham ... for Alameda County and he
+has been prosecuting computer hackers for years.
+
+<Don is in the TV box, between Geraldo and Craig [KL]>
+
+Geraldo:  Don, how do you respond to the feeling common among so many
+hackers that what they're doing is a public service; they're exposing
+the flaws in our security systems?
+
+Don:  Right, and just like the people who rape a coed on campus are
+exposing the flaws in our nation's higher education security.  It's
+absolute nonsense.  They are doing nothing more than showing off to
+each other, and satisfying their own appetite to know something that
+is not theirs to know.
+
+Geraldo:  Don, you stand by, Craig as well.  And when we come back
+we'll hear more from prosecutor Ingraham and from, I guess his
+archrival here, the Mad Hacker Craig Neidorf.
+
+<Commercial>
+
+Geraldo:  We're back with Craig Neidorf, a former University of
+Missouri student who ran a widely distributed electronic newsletter
+[Phrack, duh] for computer hackers.  He is so proud of being America's
+Most Wanted computer hacker that he has put together this very
+impressive scrapbook.
+
+<Geraldo holds up a colorful scrapbook..On the left page shows a
+lightning bolt hitting what looks to be a crown [Knight Lightning]
+...And on the right it looks like a graphic saying "Knight Lightning"
+and below that is  a black circle with a white lightning bolt, and
+next to that is a triangle that looks very similar to the triangle
+with an eye that appeared on the cover of _GURPS_Cyberpunk_ [which
+said in it, the book that was seized by the Secret Service! see page
+4...- but the one on KL is illegible]>
+
+Geraldo:  Knight Lightning I guess that was your code?
+
+KL:  It was my editor handle.
+
+Geraldo:  That's your handle.  OK.  And from Oakland, CA we are
+talking with the Assistant District Attorney Don Ingraham, who is hard
+driven, you might say, to put people like Craig behind bars.  Don, do
+you think Craig's lucky that he's not behind bars right now?
+
+Don:  Yes, I think he's extraordinarily lucky.  He was part of a
+conspiracy, in my opinion, to take property that wasn't his and share
+it with others.  They charged him with interstate transport of stolen
+property - couldn't make the threshold -and it came out that it had
+been compromised by, unfortunately, released by another Bellcore
+subsidiary.  But was certainly not through any doing of HIS that he is
+a free man.
+
+Geraldo:  So you think that his activities stink, then.
+
+Don:  Absolutely.  No Question about it.
+
+Geraldo:  Craig, you wanna respond?  Are you doing something for the
+greater good of society?
+
+KL:  Well I was merely publishing a newsletter.  I  didn't go out and
+find this document.  Rather it was sent to me.  In many ways it could
+be compared to Daniel Ellsberg sending the Pentagon Papers to the New
+York Times.
+
+Geraldo:  Do you figure it that way Don?  Is he like Daniel Ellsberg?
+
+Don:  No, Ellsberg went to court to deal with it.  Daniel Ellsberg's
+release of the Pentagon Papers is the subject of a published court
+decision to point out it was a matter of national security and
+national interest.  The E911 codes, which is the citizen's link to the
+police department are not a matter of national security.  They're a
+matter of the central service to the community.......
+
+Geraldo:  You broke into the 911 system?  He broke into the 911
+system!
+
+KL:  No, that's not correct.  I never entered any 911 telephone
+system.
+
+Don:  I didn't say he entered into it.  What I said was that he and
+Riggs conspired together to take a code that they knew was necessary
+to 911 and to take it apart to see how it worked.  They never had the
+owner's permission, they never asked for it.
+
+Geraldo:  Alright, lemme ask you this....
+
+KL:  The court found that there was no conspiracy here.
+
+Geraldo:  You were acquitted.  You were vindicated at least from
+criminal responsibility.  Lemme just quickly ask you this:  hackers
+have been inside the White House computer.
+
+KL:  Yes they have.
+
+Geraldo:  And they've been inside the Pentagon computer.
+
+KL:  Yes.
+
+Geraldo:  And if Saddam Hussein hired some hackers whether they're
+from Holland or any other place, he could've gotten into these
+computers, presumably.
+
+KL:  Presumably, he could've.
+
+Geraldo:  And gotten some valuable information.
+
+KL:  It's definitely possible.
+
+Geraldo:  And you still think hackers are performing a public service?
+
+KL:  That's not what I said.  I think that those kind of activities
+are wrong.  But by the same token, the teenagers, or some of the
+people here that are not performing malicious acts, while they should
+be punished should not be published as extreme as the law currently
+provides.
+
+Geraldo:  You're response to that Don?
+
+Don:  I don't think they're being punished very much at all.  We're
+having trouble even taking away their gear.  I don't know one of them
+has done hard time in a prison.  The book, Hafner's book on
+_Cyberpunk_, points out that even Mitnick who is a real electronic
+Hannibal Lecter ... did not get near any of the punishment that what
+he was doing entitled him to.
+
+Geraldo: <laughing>  An electronic Hannibal Lecter.  OK, stand by,
+we'll be back with more of this debate in a moment...
+
+<Commercials>
+
+Geraldo:  Back with Craig Neidorf and prosecutor Don Ingraham.  Craig,
+do you think hackers are voyeurs or are they potentially terrorists?
+
+KL:  I think they resemble voyeurs more than terrorists.  They are
+often times looking at places where they don't belong, but most
+hackers do not intend to cause any damage.
+
+Geraldo:  Do you buy that Don?
+
+Don:  If they stopped at voyeurism they would be basically
+sociopathic, but not doing near the harm they do now.  But they don't
+stop at looking, that's the point.  They take things out and share
+them with others, and they are not being accountable and being
+responsible as to whom they are sharing this information.  That is the
+risk.
+
+Geraldo:  Can they find out my credit rating?  I know that's not a
+national security issue, but I'm concerned about it.
+
+Don:  Piece of cake.
+
+Geraldo:  No problem.
+
+Don:  Assuming....
+
+Geraldo:  Go ahead.  Assuming I have a credit rating...hahahah....
+
+Don:  Assume that the credit is not carried by someone who is using
+adequate security.
+
+Geraldo:  But you think Craig it's not problem.
+
+KL: I think it's no problem.
+
+Geraldo:  Give me quickly the worst case scenario.  Say Abu Nidal had
+you working for him.
+
+KL:  I'm sorry?
+
+Geraldo: Abu Nidal, notorious .....
+
+KL:  As far as your credit rating?
+
+Geraldo:  No, not as far as my credit rating..  The world, national
+security.
+
+KL:  Well, hackers have gotten into computer systems owned by the
+government before.  At this point they've never acknowledged that it
+was anything that was ever classified.  But even some unclassified
+information could be used to the detriment of our country.
+
+Geraldo:  Like the counter-terrorist strategy on January 15th, the day
+of the deadline expired in the Persian Gulf.
+
+KL: Perhaps if Saddam Hussein had somehow known for sure that we were
+going to launch an attack, it might have benefited him in some way,
+but I'm really not sure.
+
+Geraldo:  Don, worst case scenario, 30 seconds?
+
+Don:  They wipe out our communications system.  Rather easily done.
+Nobody talks to anyone else, nothing moves, patients don't get their
+medicine.  We're on our knees.
+
+Geraldo:  What do you think of Craig, quickly, and people like him?
+
+Don:  What do I think of Craig?  I have a lot of respect for Craig, I
+think he's probably going to be an outstanding lawyer someday.  But he
+is contributing to a disease, and a lack of understanding ethically,
+that is causing a lot of trouble.
+
+Geraldo:  One word answer. As the computer proliferate won't hackers
+also proliferate?  Won't there be more and more people like you to
+deal with?
+
+Knight Lightning:  I think we're seeing a new breed of hacker.  And
+some of them will be malicious.
+
+Geraldo:  Some of them will be malicious.  Yes, well, that's it...for
+now.  I'm Geraldo Rivera.
+
+                           [End of Program]

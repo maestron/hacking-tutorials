@@ -1,0 +1,743 @@
+ Windows XP Tips Collection
+
+
+
+
+Here's how to check if your copy of XP is Activated
+Go to the run box and type in oobe/msoobe /a
+and hit ok ...theirs your answer
+
+Windows Explorer Tip
+When launched in Windows Millennium/Win2k/WinXP,Explorer by default will open the "My Documents" folder. Many people prefer the behavior from previous versions of Windows, where Windows Explorer would open and display "My Computer" instead of the new way. To revert to the old way [My Computer by default rather than My Documents as the default], simply edit the shortcut to Windows Explorer, by right clicking on it, and left clicking "Properties" and changing the "Target" box to: "C:\WINDOWS\EXPLORER.EXE /n,/e," [adjust the path/drive letter if needed]. The key is to add the "/n,/e," to the end of the shortcut (don't type the quotes).
+Backup your Fresh install
+After you complete your clean install and get all your software installed I would recommend that you use something like Drive Image 3 or 4 to do an image of your install partition, then burn the image to CD and keep it. XP is a different creature for some people. If you mess it up when playing around with it, just bring the image back. You can be up and running again in 20 minutes vs. the two to three hours it will take to get the whole thing and all your stuff installed again.
+Note the default install of XP is about 1.5gigs and the DI image may be larger that 700 meg. So don't install too much on the OS partition. To help downsize the Image I run the System file checker and reset the cache size to 40 or 50 meg (It's well over 300 by default).
+To run it open the command prop and type:
+SFC /?
+SFC /purgecache
+SFC /cachesize=50
+and finally rebuild the cache with SFC /scannow (have the CD ready)
+I also Delete the Pagefile.sys and hibernate.sys files before running Drive Image..
+
+
+Section 2 By Ankit
+1.When setting up the system with tweaks or making changes to the core OS or hardware always be logged in as administrator. Seems that while XP does create an account upon install that has administrator privileges, its not the same as the administrator account is. Think about it this way - if the account created was the same then why have an administrator account period?
+
+2.It is always better to install winXP clean than to do an upgrade.
+
+3. The files and settings wizard is your friend. However it doesn't save the account passwords for your e-mail and news groups accounts in OE. Export these accounts manually from within OE first before hand and save them in a safe place. This way you will not need to remember what the account info was, just import the account again.
+
+4. If using a SB Live sound card and trying to run Unreal (the game) you may have some problems. This is not the fault of winXP or Unreal. the problem is a bad driver design from creative and the Devloader portion. There is currently no work around for this problem.
+
+5. Many - many games do run in winXP with comparability mode. The easiest way to do this is to simply create a shortcut on the desktop to the game executable and choose the compatibility tab of the shortcut and set up for win98.
+
+6. Do not disable all the services that you find outlined in the win2K tweak guides floating around. Instead set them to manual instead of disabled. This will allow something to start up when it is needed and you'll avoid the BSOD thing that can occur if something gets disabled that wasn't supposed to.
+
+7. The winXP firewall is actually very good. However it is not very configurable. I would recommend tiny personal firewall from www.tinysoftware.com. <http://www.tinysoftware.com.> It free and all you need. It so far is the most compatible with winXP - why you may ask? - because (little known trivia fun fact here) this is where the winXP firewall came from. Both the XP built in firewall and tiny will give complete stealth. However what you can do - which is kind of cool is divide the work between the two and use both. use tiny to just filter the ports you want to filter instead of everything and let the built in XP firewall take care of the rest. The result is a smoother running firewall system that reacts much more quickly. I've used Nortons , zone alarm (which contrary to popular belief is not a real firewall and a joke in the IT community as a whole) and several of the rest, Tiny has been the best so far.
+
+8. After you complete your clean install and get all your software installed I would recommend that you use something like drive image 4 to do an image of your install partition, then burn the image to CD and keep it. XP is a different creature for some people. If you mess it up when playing around with it, just bring the image back. You can be up and running again in 20 minutes vs. the two to three hours it will take to get the whole thing and all your stuff installed again.
+
+9. choose winXP pro over the personal version because it has more bells and whistles. However if the bells and whistles do not appeal to you then the home (personal) version is the way to go.
+
+10. Avoid problems with WinXP. Insure that your hardware is on the HCL. Don't be mad because the latest and greatest doesn't work with your hardware. It is not the fault of MS , winXP or anything or one else. Not defending them here, just being practical. Look at it this way - if your dream car costs $100,000 dollars and you don't have $100,000 is it the car manufactures fault? nope because thats the free enterprise system and the way it works. Try to upgrade your hardware if you can. If you can't, wait for drivers from the manufacturer that support winxp. I would highly recommend before installing winXP that you go out and get the win2000 drivers for all your hardware. 99% of the win2000 drivers will work in winXP. This way if winxp doesn't have drivers, you do.
+
+XP will ship with out the Virtual Java Machine.
+It will not appear on windows update either. Some sites will prompt you to install it upon visit to their sites. However this might change in the near future due to the problem between SUN and MS so the link you get pointed to might no be there.
+
+You can get the virtual Java machine now and have it ready to use when you install XP.
+
+go to:
+
+<http://www.microsoft.com/java/>
+
+and download the VJM for winNT. If you try to d/l the one for win2000 (which is exactly the same as the one for NT) you will be told to get the service pack. You don't want to do this for XP.
+
+or download it from:
+
+<http://download.microsoft.com/download/vm/Install/3802/W9X2KMe/EN-US/msjavx86.exe>
+
+keep it in a safe place and use it when you install XP.
+XP browsing speed up tweak
+when you connect to a web site your computer sends information back and forth, this is obvious. Some of this information deals with resolving the site name to an IP address, the stuff that tcp/ip really deals with, not words. This is DNS information and is used so that you will not need to ask for the site location each and every time you visit the site. Although WinXP and win2000 has a pretty efficient DNS cache, you can increase its overall performance by increasing its size.
+
+You can do this with the registry entries below:
+
+************begin copy and paste***********
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters]
+"CacheHashTableBucketSize"=dword:00000001
+"CacheHashTableSize"=dword:00000180
+"MaxCacheEntryTtlLimit"=dword:0000fa00
+"MaxSOACacheEntryTtlLimit"=dword:0000012d
+
+************end copy and paste***********
+
+make a new text file and rename it to dnscache.reg. The copy and paste the above into it and save it. Then merge it into the registry.
+
+Grouping multiple open windows
+WinXP will group multiple open windows (IE windows for example) into one group on the task bar to keep the desktop clear. This can be annoying at times - especially when comparing different web pages because you have to go back to the task bar, click on the group and then click on the page you want and then you only get one page because you have to click on each one separately. I think the default for this is 8 windows - any combination of apps or utilities open.
+
+You can modify this behavior by adding this reg key at:
+
+Change number of windows that are open before XP will start
+grouping them on the Taskbar
+
+HKEY_CURRRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\
+add reg_Dword "TaskbarGroupSize"
+
+modify "TaskbarGroupSize" entry to be the number of windows you want open before XP starts to group them on the task bar.
+A value of 2 will cause the Taskbar buttons to always group
+
+Another tweak is to disable or enable recent documents history. This can be done at:
+
+HKEY_CURRRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\
+this key should already be present - if it isn't you'll need to add it:
+reg_Binary "NoRecentDocsHistory"
+modify it so that value reads 01 00 00 00
+
+Wanna network but don't have all the stuff?
+If you want to network two winXP machines together you don't have to install a full blown network setup, i.e...switches, hubs, routers, etc...
+
+All you need is two NIC cards (three if you want to share an Internet connection) and a cross over cable.
+
+1. Connect one NIC to your broadband connection device like normal.
+2. Install a second NIC in the machine with the broadband connection.
+3. install a NIC in the second machine.
+4. connect the cross over cable between the second machine NIC and the second NIC in the board band connection machine.
+5. re-boot both.
+6. Run the networking wizard if necessary.
+
+or:
+use a direct connection setup with a parallel port to parallel port connection to the two machines. You will not be able to share a connection with the direct connect.
+Help is just a directory away! - Tip
+In windows XP pro at C:\Windows\help - you will find many *.chm files. These are the help files. Just start one up and find what your looking for without going thru the main help menu. If for example you are interested in command line tools or command line references start up the ntcmds.chm file. If you use command line a lot for things just create a shortcut on your desktop to this file and it there when you need it.
+
+You could go thru the Help thing to find these but on the home version some are not linked in some of the help. This is shorter.
+
+Speed things up a bit tip
+this might help some of you.
+
+1. go to control panel - system.
+2. click on the advanced tab
+3. under "performance" click on the settings button
+4. click on the Advanced tab
+5. click on the "Background Services" button
+6. Click OK
+
+Section 3
+
+Windows XP Tips 'n' Tricks
+==========================
+Please note that some of these tips require you to use a Registry Editor (regedit.exe), which could render your system unusable. Thus, none of these tips are supported in any way: Use them at your own risk. Also note that most of these tips will require you to be logged on with Administrative rights.
+
+Unlocking WinXP's setupp.ini
+============================
+
+
+WinXP's setupp.ini controls how the CD acts. IE is it an OEM version or retail? First, find your setupp.ini file in the i386 directory on your WinXP CD. Open it up, it'll look something like this:
+
+ExtraData=707A667567736F696F697911AE7E05
+Pid=55034000
+
+The Pid value is what we're interested in. What's there now looks like a standard default. There are special numbers that determine if it's a retail, oem, or volume license edition. First, we break down that number into two parts. The first five digits determines how the CD will behave, ie is it a retail CD that lets you clean install or upgrade, or an oem CD that only lets you perform a clean install? The last three digits determines what CD key it will accept. You are able to mix and match these values. For example you could make a WinXP CD that acted like a retail CD, yet accepted OEM keys.
+
+Now, for the actual values. Remember the first and last values are interchangeable, but usually you'd keep them as a pair:
+
+Retail = 51882 335
+Volume License = 51883 270
+OEM = 82503 OEM
+
+So if you wanted a retail CD that took retail keys, the last line of your setupp.ini file would read:
+
+Pid=51882335
+
+And if you wanted a retail CD that took OEM keys, you'd use:
+
+Pid=51882OEM
+
+
+
+How do I get the "Administrator" name on Welcome Screen?
+=======================================================
+
+To get Admin account on the "Welcome Screen" as well as the other usernames, make sure that there are no accounts logged in.
+
+Press "ctrl-alt-del" twice and you should be able to login as administrator!
+
+finally worked for me after I found out that all accounts have to be logged out first
+
+
+
+Fix Movie Interference in AVI files
+==================================
+
+If you have any AVI files that you saved in Windows 9x, which have interference when opened in Windows XP, there is an easy fix to get rid of the interference:
+
+Open Windows Movie Maker.
+Click View and then click Options.
+Click in the box to remove the check mark beside Automatically create clips.
+
+Now, import the movie file that has interference and drag it onto the timeline. Then save the movie, and during the re rendering, the interference will be removed.
+
+
+
+Create a Password Reset Disk
+============================
+
+If you?re running Windows XP Professional as a local user in a workgroup environment, you can create a password reset disk to log onto your computer when you forget your password. To create the disk:
+
+Click Start, click Control Panel, and then click User Accounts.
+Click your account name.
+Under Related Tasks, click Prevent a forgotten password.
+
+Follow the directions in the Forgotten Password Wizard to create a password reset disk.
+
+Store the disk in a secure location, because anyone using it can access your local user account
+
+
+
+Change Web Page Font Size on the Fly
+====================================
+
+If your mouse contains a wheel for scrolling, you can change font size on the fly when viewing a Web page. To do so:
+
+Press and hold Ctrl. Scroll down (or towards yourself) to enlarge the font size. Scroll up (or away from yourself) to reduce the font size.
+
+You might find it useful to reduce font size when printing a Web page, so that you can fit more content on the page.
+
+
+WinXP Clear Page file on shutdown
+=================================
+
+WINXPCPS.REG (WinXP Clear Page file on shutdown)
+
+This Registration (.REG) file clears the Page file when you power off the computer.
+Restart Windows for these changes to take effect!
+ALWAYS BACKUP YOUR SYSTEM BEFORE MAKING ANY CHANGES!
+
+Browse to: HKEY_LOCAL_MACHINE \ System \ CurrentControlSet \ Control \ Session Manager \ Memory Management
+
+and add the DWORD variable "ClearPageFileAtShutdown"=dword:00000001
+
+You can also do this without reg hacking.
+Go to Control panel Administrative tools, local security policy. then go to local policies ---> security options.
+Then change the option for "Shutdown: Clear Virtual Memory Pagefile"
+
+
+Group Policy for Windows XP
+===========================
+
+One of the most full featured Windows XP configuration tools available is hidden right there in your system, but most people don't even know it exists. It's called the Local Group Policy Editor, or gpedit for short. To invoke this editor, select Start and then Run, then type the following:
+
+gpedit.msc
+
+After you hit ENTER, you'll be greeted by gpedit, which lets you modify virtually every feature in Windows XP without having to resort to regedit. Dig around and enjoy!
+
+
+Forgetting What Your Files Are?
+===============================
+
+This procedure works under NTFS.
+
+As times goes along you have a lot files on your computer. You are going to forget what they are. Well here is way to identify them as you scroll through Windows Explorer in the future.
+
+This procedure works under NTFS.
+
+1.. Open up a folder on your system that you want to keep track of the different files you might one to identify in the future.
+
+2.. Under View make certain that you set it to the Details.
+
+3.. Highlight the file you want to keep more information on. Right click the file and you will get a pop up menu. Click on properties.
+
+4.. Click on the Summary Tab (make sure it says simple not advanced on the button in the box), You should now get the following fields,
+
+Title,Subject, Author, Category, Keywords, Comments
+
+You will see advanced also if you have changed it to simple, Here will be other fields you can fill in.
+
+5.. Next you can fill in what ever field you want.
+
+6.. After you finished click the apply button then OK.
+
+7.. Next right click the bar above your files, under the address bar and you should get a drop down menu. Here you can click the fields you want to display.
+
+8.. You should now see a list with the new fields and any comments you have done.
+
+9.. Now if you want to sort these just right click a blank spot and then you sort the information to your liking.
+
+
+Temporarily Assign Yourself Administrative Permissions
+======================================================
+
+Many programs require you to have Administrative permissions to be able to install them. Here is an easy way to temporarily assign yourself Administrative permissions while you remain logged in as a normal user.
+
+Hold down the Shift key as you right-click on the program?s setup file.
+
+Click Run as.
+
+Type in a username and password that have Administrative permissions.
+
+This will also work on applications in the Start menu.
+
+
+Create a Shortcut to Lock Your Computer
+=======================================
+
+Leaving your computer in a hurry but you don?t want to log off? You can double-click a shortcut on your desktop to quickly lock the keyboard and display without using CTRL+ALT+DEL or a screen saver.
+
+To create a shortcut on your desktop to lock your computer:
+
+Right-click the desktop.
+Point to New, and then click Shortcut.
+
+The Create Shortcut Wizard opens. In the text box, type the following:
+rundll32.exe user32.dll,LockWorkStation
+
+Click Next.
+
+Enter a name for the shortcut. You can call it "Lock Workstation" or choose any name you like.
+
+Click Finish.
+
+You can also change the shortcut's icon (my personal favorite is the padlock icon in shell32.dll).
+
+To change the icon:
+
+Right click the shortcut and then select Properties.
+Click the Shortcut tab, and then click the Change Icon button.
+
+In the Look for icons in this file text box, type:
+Shell32.dll.
+
+Click OK.
+
+Select one of the icons from the list and then click OK
+
+You could also give it a shortcut keystroke such CTRL+ALT+L. This would save you only one keystroke from the normal command, but it could be more convenient.
+
+
+
+Create a Shortcut to Start Remote Desktop
+=========================================
+
+Tip: You can add a shortcut to the desktop of your home computer to quickly start Remote Desktop and connect to your office computer.
+
+To create a shortcut icon to start Remote Desktop
+
+Click Start, point to More Programs, point to Accessories, point to Communications, and then click on Remote Desktop Connection.
+
+Click Options.
+
+Configure settings for the connection to your office computer.
+
+Click Save As, and enter a name, such as Office Computer. Click Save.
+
+Open the Remote Desktops folder.
+
+Right-click on the file named Office Computer, and then click Create Shortcut.
+
+Drag the shortcut onto the desktop of your home computer.
+
+To start Remote Desktop and connect to your office computer, double-click on the shortcut
+
+
+Instantly Activate a Screen saver
+================================
+
+Turn on a screen saver without having to wait by adding a shortcut to your desktop:
+
+Click the Start button, and then click Search.
+In the Search Companion window, click All file types.
+
+In the file name box, type *.scr
+
+In the Look in box, choose Local Hard Drives (C or the drive where you have system files stored on your computer.
+
+Click Search.
+
+You will see a list of screen savers in the results. Pick a screen saver you want. You can preview it by double-clicking it.
+
+Right click on the file, choose Send To, and then click Desktop (create shortcut).
+
+To activate the screen saver, double-click the icon on your desktop
+
+
+Add a Map Drive Button to the Toolbar
+=====================================
+
+Do you want to quickly map a drive, but can?t find the toolbar button? If you map drives often, use one of these options to add a Map Drive button to the folder toolbar.
+
+Option One (Long Term Fix)
+
+Click Start, click My Computer, right-click the toolbar, then unlock the toolbars, if necessary.
+
+Right-click the toolbar again, and then click Customize.
+
+Under Available toolbar buttons, locate Map Drive, and drag it into the position you want on the right under Current toolbar buttons.
+
+Click Close, click OK, and then click OK again.
+
+You now have drive mapping buttons on your toolbar, so you can map drives from any folder window. To unmap drives, follow the above procedure, selecting Disconnect under Available toolbar buttons. To quickly map a drive, try this option.
+
+Option Two (Quick Fix)
+
+Click Start, and right-click My Computer.
+Click Map Network Drive.
+
+If you place your My Computer icon directly on the desktop, you can make this move in only two clicks!
+
+
+Software not installing?
+========================
+
+If you have a piece of software that refuses to install because it says that you are not running Windows 2000 (such as the Win2K drivers for a Mustek scanner!!) you can simply edit HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Windows NT/CurrentVersion/ProductName to say Microsoft Windows 2000 instead of XP and it will install. You may also have to edit the version number or build number, depending on how hard the program tries to verify that you are installing on the correct OS. I had to do this for my Mustek 600 CP scanner (compatibility mode didn't' help!!!) and it worked great, so I now have my scanner working with XP (and a tech at Mustek can now eat his words).
+
+BTW, don't' forget to restore any changes you make after you get your software installed
+
+You do this at your own risk.
+
+
+Use your Windows Key
+====================
+
+The Windows logo key, located in the bottom row of most computer keyboards is a little-used treasure. Don't' ignore it. It is the shortcut anchor for the following commands:
+
+Windows: Display the Start menu
+Windows + D: Minimize or restore all windows
+Windows + E: Display Windows Explorer
+Windows + F: Display Search for files
+Windows + Ctrl + F: Display Search for computer
+Windows + F1: Display Help and Support Center
+Windows + R: Display Run dialog box
+Windows + break: Display System Properties dialog box
+Windows + shift + M: Undo minimize all windows
+Windows + L: Lock the workstation
+Windows + U: Open Utility Manager
+Windows + Q: Quick switching of users (Powertoys only)
+Windows + Q: Hold Windows Key, then tap Q to scroll thru the different users on your PC
+
+
+
+Change your CD key
+==================
+
+You don't need to re-install if you want to try the key out ... just do this:
+
+1. Go to Activate Windows
+2. Select the Telephone option
+3. Click "Change Product Key"
+4. Enter RK7J8-2PGYQ-P47VV-V6PMB-F6XPQ
+5. Click "Update"
+
+Now log off and log back in again. It should now show 60 days left, minus the number of days it had already counted down.
+
+Note: If your crack de-activated REGWIZC.DLL and LICDLL.DLL, you are going to have to re-register them.
+
+
+
+Remove the Shared Documents folders from My Computer
+====================================================
+
+One of the most annoying things about the new Windows XP user interface is that Microsoft saw fit to provide links to all of the Shared Documents folders on your system, right at the top of the My Computer window. I can't imagine why this would be the default, even in a shared PC environment at home, but what's even more annoying is that you cannot change this behavior through the sh*ll
+: Those icons are stuck there and you have to live with it.
+Until now, that is.
+
+Simply fire up the Registry Editor and navigate to the following key:
+HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft \ Windows \ CurrentVersion \ Explorer \ My Computer \ NameSpace \ DelegateFolders
+
+You'll see a sub-key named {59031a47-3f72-44a7-89c5-5595fe6b30ee}. If you delete this, all of the Shared Documents folders (which are normally under the group called "Other Files Stored on This Computer" will be gone.
+
+You do not need to reboot your system to see the change.
+
+
+Before: A cluttered mess with icons no one will ever use (especially that orphaned one). After: Simplicity itself, and the way it should be by default.
+
+
+This tip For older XP builds
+===================
+
+Edit or remove the "Comments" link in window title bars
+
+During the Windows XP beta, Microsoft has added a "Comments?" hyperlink to the title bar of each window in the system so that beta testers can more easily send in a problem report about the user interface. But for most of us, this isn't an issue, and the Comments link is simply a visual distraction. And for many programs that alter the title bar, the Comments link renders the Minimize, Maximize, and Close window buttons unusable, so it's actually a problem.
+Let's get rid of it. Or, if you're into this kind of thing, you can edit it too.
+
+Open the Registry Editor and navigate to the following keys:
+My Computer \ HKEY_CURRENT_USER \ Control Panel \ Desktop \ LameButtonEnabled
+My Computer \ HKEY_CURRENT_USER \ Control Panel \ Desktop \ LameButtonText
+
+The first key determines whether the link appears at all; change its value to 0 to turn it off. The second key lets you have a little fun with the hyperlink; you can change the text to anything you'd like, such as "Paul Thurrott" or whatever.
+
+Editing either value requires a restart before the changes take effect.
+
+
+Before: An unnecessary hyperlink. Have some fun with it! Or just remove it entirely. It's up to you.
+
+
+
+Rip high-quality MP3s in Windows Media Player 8
+================================================
+
+The relationship between Windows Media Player 8 and the MP3 audio format is widely misunderstood. Basically, WMP8 will be able to playback MP3 files, but encoding (or "ripping" CD audio into MP3 format will require an MP3 plug-in. So during the Windows XP beta, Microsoft is supplying a sample MP3 plug-in for testing purposes, but it's limited to 56 Kbps rips, which is pretty useless. However, if you have an externally installed MP3 codec, you can use WMP8 to rip at higher bit rates. But you'll have to edit the Registry to make this work.
+Fire up the Registry Editor and navigate to the following key:
+HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft \ MediaPlayer \ Settings \ MP3Encoding
+
+Here, you'll see sub-keys for LowRate and LowRateSample, which of course equates to the single 56 Kbps sample rate you see in WMP8. To get better sampling rates, try adding the following keys (Using New then DWORD value):
+
+"LowRate" = DWORD value of 0000dac0
+"MediumRate" = DWORD value of 0000fa00
+"MediumHighRate" = DWORD value of 0001f400
+"HighRate" = DWORD value of 0002ee00
+
+Now, when you launch WMP8 and go into Tools, then Options, then Copy Music, you will have four encoding choices for MP3: 56 Kbps, 64 Kbps, 128 Kbps, and 192 Kbps. Note that you will not get higher bit rate encoding unless you have installed an MP3 codec separately; the version in Windows Media Player 8 is limited to 56 Kbps only.
+
+
+Find the appropriate location in the Registry... ...add a few DWORD values... ...And then you'll be ripping CDs in higher-quality MP3 format!
+
+
+
+Speed up the Start Menu
+=======================
+
+The default speed of the Start Menu is pretty slow, but you can fix that by editing a Registry Key. Fire up the Registry Editor and navigate to the following key:
+HKEY_CURRENT_USER \ Control Panel \ Desktop \ MenuShowDelay
+
+By default, the value is 400. Change this to a smaller value, such as 0, to speed it up.
+
+
+
+Speed up the Start Menu (Part two)
+==================================
+
+If your confounded by the slow speed of the Start Menu, even after using the tip above, then you might try the following: Navigate to Display Properties then Appearance then Advanced and turn off the option titled Show menu shadow . You will get much better overall performance.
+
+
+
+Speed up Internet Explorer 6 Favorites
+======================================
+
+For some reason, the Favorites menu in IE 6 seems to slow down dramatically sometimes--I've noticed this happens when you install Tweak UI 1.33, for example, and when you use the preview tip to speed up the Start menu. But here's a fix for the problem that does work, though it's unclear why:
+Just open a command line window (Start button -> Run -> cmd) and type sfc, then hit ENTER. This command line runs the System File Checker, which performs a number of services, all of which are completely unrelated to IE 6. But there you go: It works.
+
+
+Do an unattended installation
+=============================
+
+The Windows XP Setup routine is much nicer than that in Windows 2000 or Windows Me, but it's still an hour-long process that forces you to sit in front of your computer for an hour, answering dialog boxes and typing in product keys. But Windows XP picks up one of the more useful features from Windows 2000, the ability to do an unattended installation, so you can simply prepare a script that will answer all those dialogs for you and let you spend some quality time with your family.
+I've written about Windows 2000 unattended installations and the process is pretty much identical on Windows XP, so please read that article carefully before proceeding. And you need to be aware that this feature is designed for a standalone Windows XP system: If you want to dual-boot Windows XP with another OS, you're going to have to go through the interactive Setup just like everyone else: An unattended install will wipe out your hard drive and install only Windows XP, usually.
+
+To perform an unattended installation, you just need to work with the Setup Manager, which is located on the Windows XP CD-ROM in D:\SupportTools\DEPLOY.CAB by default: Extract the contents of this file and you'll find a number of useful tools and help files; the one we're interested in is named setupmgr.exe. This is a very simple wizard application that will walk you through the process of creating an answer file called winnt.sif that can be used to guide Windows XP Setup through the unattended installation.
+
+One final tip: There's one thing that Setup Manager doesn't add: Your product key. However, you can add this to the unattend.txt file manually. Simply open the file in Notepad and add the following line under the [UserData] section:
+
+ProductID=RK7J8-2PGYQ-P47VV-V6PMB-F6XPQ
+
+(This is a 60 day CD key)
+
+Then, just copy winnt.sif to a floppy, put your Windows XP CD-ROM in the CD drive, and reboot: When the CD auto-boots, it will look for the unattend.txt file in A: automatically, and use it to answer the Setup questions if it's there.
+
+Finally, please remember that this will wipe out your system! Back up first, and spend some time with the help files in DEPLOY.CAB before proceeding.
+
+
+For Older builds or not using setupreg.hiv file
+===============================================
+
+Remove the Desktop version text
+
+During the Windows XP beta, you will see text in the lower right corner of the screen that says Windows XP Professional, Evaluation Copy. Build 2462 or similar. A lot of people would like to remove this text for some reason, and while it's possible to do so, the cure is more damaging than the problem, in my opinion. So the following step will remove this text, but you'll lose a lot of the nice graphical effects that come in Windows XP, such as the see-through icon text.
+
+To remove the desktop version text, open Display Properties (right-click the desktop, then choose Properties) and navigate to the Desktop page. Click Customize Desktop and then choose the Web page in the resulting dialog. On this page, check the option titled Lock desktop items. Click OK to close the dialog, and then OK to close Display Properties. The text disappears. But now the rest of your system is really ugly. You can reverse the process by unchecking Lock desktop items.
+
+There's also a shortcut for this process: Just right-click the desktop and choose Arrange by then Lock Web Icons on the Desktop.
+
+
+--------------------------------------------------------------------------------
+Enable ClearType on the Welcome Screen!
+=======================================
+
+As laptop users and other LCD owners are quickly realizing, Microsoft's ClearType technology in Windows XP really makes a big difference for readability. But the this feature is enabled on a per-user basis in Windows XP, so you can't see the effect on the Welcome screen; it only appears after you logon.
+
+But you can fix that. Fire up the Registry Editor and look for the following keys:
+
+(default user) HKEY_USERS \ .Default \ Control Panel \ Desktop \ FontSmoothing (String Value)
+HKEY_USERS \ .Default \ Control Panel \ Desktop \ FontSmoothingType (Hexadecimal DWORD Value)
+
+Make sure both of these values are set to 2 and you'll have ClearType enabled on the Welcome screen and on each new user by default.
+
+
+
+Stop Windows Messenger from Auto-Starting
+=========================================
+
+If you're not a big fan of Windows Messenger simply delete the following Registry Key:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\MSMSGS
+
+
+Display Hibernate Option on the Shut Down dialog
+================================================
+
+For some reason, Hibernate may not be available from the default Shut Down dialog. But you can enable it simply enough, by holding down the SHIFT key while the dialog is visible. Now you see it, now you don't!
+
+
+Add album art to any music folder
+=================================
+
+One of the coolest new features in Windows XP is its album thumbnail generator, which automatically places the appropriate album cover art on the folder to which you are copying music (generally in WMA format). But what about those people that have already copied their CDs to the hard drive using MP3 format? You can download album cover art from sites such as cdnow.com or amguide.com, and then use the new Windows XP folder customize feature to display the proper image for each folder. But this takes time--you have to manually edit the folder properties for every single folder--and you will lose customizations if you have to reinstall the OS. There's an excellent fix, however.
+
+When you download the album cover art from the Web, just save the images as folder.jpg each time and place them in the appropriate folder. Then, Windows XP will automatically use that image as the thumbnail for that folder and, best of all, will use that image in Windows Media Player for Windows XP (MPXP) if you choose to display album cover art instead of a visualization. And the folder customization is automatic, so it survives an OS reinstallation as well. Your music folders never looked so good!
+
+
+Album cover art makes music folder thumbnails look better than ever!
+
+
+Change the location of the My Music or My Pictures folders
+======================================================
+
+In Windows 2000, Microsoft added the ability to right-click the My Documents folder and choose a new location for that folder in the shell
+. With Windows XP, Microsoft has elevated the My Music and My Pictures folders to the same "special shell folder" status of My Documents, but they never added a similar (and simple) method for changing those folder's locations. However, it is actually pretty easy to change the location of these folders, using the following method.
+
+Open a My Computer window and navigate to the location where you'd like My Music (or My Pictures) to reside. Then, open the My Documents folder in a different window. Drag the My Music (or My Pictures) folder to the other window, and Windows XP will update all of the references to that folder to the new location, including the Start menu.
+
+Or use Tweak UI
+
+
+Add/Remove optional features of Windows XP
+==========================================
+
+To dramatically expand the list of applications you can remove from Windows XP after installation, navigate to C:\WINDOWS\inf (substituting the correct drive letter for your version of Windows) and open the sysoc.inf file. Under Windows XP Professional Edition RC1, this file will resemble the following by default:
+
+[Version] Signature = "$Windows NT$"
+DriverVer=06/26/2001,5.1.2505.0
+
+[Components]
+NtComponents=ntoc.dll,NtOcSetupProc,,4
+WBEM=ocgen.dll,OcEntry,wbemoc.inf,hide,7
+Display=desk.cpl,DisplayOcSetupProc,,7
+Fax=fxsocm.dll,FaxOcmSetupProc,fxsocm.inf,,7
+NetOC=netoc.dll,NetOcSetupProc,netoc.inf,,7
+iis=iis.dll,OcEntry,iis.inf,,7
+com=comsetup.dll,OcEntry,comnt5.inf,hide,7
+dtc=msdtcstp.dll,OcEntry,dtcnt5.inf,hide,7
+IndexSrv_System = setupqry.dll,IndexSrv,setupqry.inf,,7
+TerminalServer=TsOc.dll, HydraOc, TsOc.inf,hide,2
+msmq=msmqocm.dll,MsmqOcm,msmqocm.inf,,6
+ims=imsinsnt.dll,OcEntry,ims.inf,,7
+fp_extensions=fp40ext.dll,FrontPage4Extensions,fp40ext.inf,,7
+AutoUpdate=ocgen.dll,OcEntry,au.inf,hide,7
+msmsgs=msgrocm.dll,OcEntry,msmsgs.inf,hide,7
+msnexplr=ocmsn.dll,OcEntry,msnmsn.inf,,7
+smarttgs=ocgen.dll,OcEntry,msnsl.inf,,7
+RootAutoUpdate=ocgen.dll,OcEntry,rootau.inf,,7
+Games=ocgen.dll,OcEntry,games.inf,,7
+AccessUtil=ocgen.dll,OcEntry,accessor.inf,,7
+CommApps=ocgen.dll,OcEntry,communic.inf,HIDE,7
+MultiM=ocgen.dll,OcEntry,multimed.inf,HIDE,7
+AccessOpt=ocgen.dll,OcEntry,optional.inf,HIDE,7
+Pinball=ocgen.dll,OcEntry,pinball.inf,HIDE,7
+MSWordPad=ocgen.dll,OcEntry,wordpad.inf,HIDE,7
+ZoneGames=zoneoc.dll,ZoneSetupProc,igames.inf,,7
+
+[Global]
+WindowTitle=%WindowTitle%
+WindowTitle.StandAlone="*"
+
+The entries that include the text hide or HIDE will not show up in Add/Remove Windows Components by default. To fix this, do a global search and replace for ,hide and change each instance of this to , (a comma). Then, save the file, relaunch Add/Remove Windows Components, and tweak the installed applications to your heart's content.
+
+
+Cool, eh? There are even more new options now under "Accessories and Utilities" too.
+
+
+Remove Windows Messenger
+========================
+
+It seems that a lot of people are interested in removing Windows Messenger for some reason, though I strongly recommend against this: In Windows XP, Windows Messenger will be the hub of your connection to the .NET world, and now that this feature is part of Windows, I think we're going to see a lot of .NET Passport-enabled Web sites appearing as well. But if you can't stand the little app, there are a couple of ways to get rid of it, and ensure that it doesn't pop up every time you boot into XP. The best way simply utilizes the previous tip:
+
+If you'd like Windows Messenger to show up in the list of programs you can add and remove from Windows, navigate to C:\WINDOWS\inf (substituting the correct drive letter for your version of Windows) and open sysoc.inf (see the previous tip for more information about this file). You'll see a line that reads:
+
+msmsgs=msgrocm.dll,OcEntry,msmsgs.inf,hide,7
+
+Change this to the following and Windows Messenger will appear in Add or Remove Programs, then Add/Remove Windows Components, then , and you can remove it for good:
+
+msmsgs=msgrocm.dll,OcEntry,msmsgs.inf,7
+
+Autolog On tip for XP
+real easy and straight forward.
+1. click on "Start" - then click on "Run" - type "control userpasswords2"
+2. click OK
+3. On the Users tab, clear the "Users must enter a user name and password to
+use this computer" check box.
+4. A dialog will appear that asks you what user name and password should be used to logon automatically.
+
+Your all set.
+
+Aspi
+WinXP does not come with an Aspi layer. So far almost 90% of the problems with winXP and CD burning software are Aspi layer problems. After installing winXP, before installing any CD burning software do a few things first:
+
+1. Open up "My computer" and right click on the CD Recorder. If your CD recorder was detected as a CD recorder there will be a tab called "Recording". On this tab uncheck ALL of the boxes. apply or OK out of it and close my computer.
+
+2. Next install the standard Aspi layer for NT. Reboot when asked.
+
+Thats is. after the reboot you can install any of the currently working CD recording applications with no problems. If using CD Creator do not install direct CD or Take two as they are currently incompatible but Roxio has promised a fix as soon as XP is released.
+
+Print Dir
+XP alas does not include a way to print a directory listing aside from using the command prompt. I talking about a right click on the directory and print the files names on the printer type of Dir print. So I guess we will need to add one - start up regedit and add the following
+
+[HKEY_CLASSES_ROOT\Folder\shell\print\command]
+@="command.com /c dir %1 > PRN"
+
+[HKEY_CLASSES_ROOT\Folder\shell\print\command]
+@="command.com /c dir %1 > dirprnt.txt"
+
+Right click on a folder in windows explorer and choose "print". The contents of the folder will appear in a file called dirprnt.txt in the folder. open the file and print it out. If you want to print directly to the printer remove the second line containing "dirprnt.txt"
+
+Rename Multiple files
+A new, small, neat feature for winXP deals with renaming files. I personally have always wanted the OS to include a way to do a mass file renaming on a bunch of files. You can now rename multiple files at once in WinXP. Its real simple:
+
+1. Select several files in Explorer, press F2 and rename one of those files to
+something else. All the selected files get renamed to the new file name (plus a number added to the end).
+
+2. thats it. Simple huh.
+
+I would recommend that you only have the files you want to rename in the directory your working in. I would also recommend that until you get used to this neat little trick that you save copies of the files in a safe location while your getting the hang of it.
+
+Handy for renaming those mass amounts of porn pics you d/l from the web
+Use Window Blinds XP to add themes
+Windows Blinds XP has been integrated into the Windows XP operating system. Microsoft and Stardock have entered into a partnership in which Microsoft will use their technology in the Windows XP operating system. With Windows Blinds XP installed you have additional styles to choose from in display properties.
+And the best part is you can download over 1000 different styles and even make your own very easily with the SDK.
+To get started you need to download the Windows Blinds XP extension: www.stardock.com/files/wbxp-b5_private.exe to download the latest beta
+Note: You must register at http://scripting.stardock.com/customer/wbxp_beta.asp to be able to legally download the Windows Blinds XP beta. Once you register they will even e-mail you when new builds are available for download.
+Once downloaded, install the program and you will notice the extra styles in the display properties when you run the program.
+To download more styles www.wincustomize.com/index.asp and select windows blinds on the menu on the left.
+
+Show file extensions
+Ever wonder where you file extensions went? Working with files when you can not tell what the file extension can be a huge pain in the butt. Thankfully, MS has made it possible for all file names with the extensions to be shown.
+In any folder that contains files. Click on the tools menu and select folder options.
+Then click on the view tab.
+Locate where it lists Hide extensions of known file types and uncheck it.
+Click OK.
+
+
+XP memory tweaks
+Below are some Windows XP memory tweaks. They are located in the windows registry at: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+DisablePagingExecutive - When enabled, this setting will prevent the paging of the Win2k Executive files to the hard drive, causing the OS and most programs to be more responsive. However, it is advised that people should only perform this tweak if they have a significant amount of RAM on their system (more than 128 MB), because this setting does use a substantial portion of your system resources. By default, the value of this key is 0. To enable it, set it to 1.
+LargeSystemCache - When enabled (the default on Server versions of Windows 2000), this setting tells the OS to devote all but 4 MB of system memory (which is left for disk caching) to the file system cache. The main effect of this is allowing the computer to cache the OS Kernel to memory, making the OS more responsive. The setting is dynamic and if more than 4 MB is needed from the disk cache for some reason, the space will be released to it. By default, 8MB is earmarked for this purpose. This tweak usually makes the OS more responsive. It is a dynamic setting, and the kernel will give up any space deemed necessary for another application (at a performance hit when such changes are needed). As with the previous key, set the value from 0 to 1 to enable. Note that in doing this, you are consuming more of your system RAM than normal. While LargeSystemCache will cut back usage when other apps need more RAM, this process can impede performance in certain intensive situations. According to Microsoft, the "[0] setting is recommended for servers running applications that do their own memory caching, such as Microsoft SQL Server, and for applications that perform best with ample memory, such as Internet Information Services."
+IOPageLockLimit - This tweak is of questionable value to people that aren't running some kind of server off of their computer, but we will include it anyway. This tweak boosts the Input/Output performance of your computer when it is doing a large amount of file transfers and other similar operations. This tweak won't do much of anything for a system without a significant amount of RAM (if you don't have more than 128 MB, don't even bother), but systems with more than 128 MB of RAM will generally find a performance boost by setting this to between 8 and 16 MB. The default is 0.5 MB, or 512 KB. This setting requires a value in bytes, so multiply the desired number of megabytes * 1024 * 1024. That's X * 1048576 (where X is the number, in megabytes). Test out several settings and keep the one which seems to work best for your system.
+
+
+
+
+Finished on
+Saturday, September 08, 2001
+Special thanks to
+
+
+Links
+CODE
+http://www.tweakxp.com/default.asp
+http://www.wxperience.com/
+http://www.xs4all.nl/~binkbv/windowsxp/
+http://users.aol.com/axcel216/
+http://scripts.wincustomize.com/skins.asp
+http://thor.prohosting.com/~1cls/
+

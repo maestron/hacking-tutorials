@@ -1,0 +1,36 @@
+Rapidshare Hacked, unlimited upload, no countdown
+
+UNLIMITED download/upload
+Its very easy to fool Rapid Share server if your IP address is assigned by your ISP. Just follow these simple steps:
+
+clean up IE or netscape or Firefox cookie( In this case the one that belong to rapidshare website)
+On Command prompt (open MS-DOS)
+type -----> ipconfig /flushdns <---Enter
+type -----> ipconfig /release <---Enter
+type -----> ipconfig /renew <---Enter
+type -----> exit <--------Enter
+
+Or save these commands in a bat file and run it everytime you need to fool Rapidshare server. Remember to clean up rapidshare cookie in your temp Internet files folder.
+
+Now you should be ready to download/upload as many files as you want from their server.
+
+another way, get proxies from the internet and apply to the browser.
+some of proxies might not work though...
+
+Note:
+If you are on a LAN and behind a router (using NAT, for example)---this will not work.
+If you use a fixed proxy--- this will not work.
+If you have a fixed IP address from your ISP or college or employer or whatever -- this will not work.
+If you happen to get the same IP address from your DHCP server because it's assigned to you -- this will not work
+
+NO waiting
+THIS "cheat" for RAPIDSHARE DOWNLOADS eliminates the "WAITING" for the file. No more COUNTDOWNS. So heres what you do:
+
+1. First, Find a rapidshare download.
+2. Hit the FREE BUTTON, like always.
+3. While your waiting for it to countdown, change the URL in the bar to:
+Code:
+java script:c(countdown = 0);
+and hit ENTER or the GO button over and over. Eachtime you do so, it decreases 10-20 seconds. Few times and the link appears.
+or you can simply do the code below ONCE
+java script: for (i=0; i<30; i++) { c(); }

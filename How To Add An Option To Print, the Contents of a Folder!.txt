@@ -1,0 +1,36 @@
+How to Add an Option to Print the Contents of a Folder
+
+Would you like to be able to right click any folder in Explorer and print its contents? You can add this option to the context menu by following these steps:
+
+First, you need to create a batch file called Printdir.bat. Open Notepad or another text editor and type (or cut and paste) this text:
+
+@echo off
+dir %1 /-p /o:gn > "%temp%\Listing"
+start /w notepad /p "%temp%\Listing"
+del "%temp%\Listing"
+exit
+
+Now, in the Save As dialog box, type "%windir%\Printdir.bat" (without the quotation marks) and click the Save button.
+Click Start, Control Panel, Folder Options.
+Click the File Types tab, and then click File Folder.
+Click the Advanced button.
+Click the New button.
+
+In the Action box, type "Print Directory Listing" (without the quotation marks).
+
+In the Application used to perform action box, type "Printdir.bat" (without the quotation marks).
+
+Click OK in all three dialog boxes to close the dialog boxes.
+
+You're not quite finished yet! Now you need to edit the Registry, so open your favorite Registry Editor.
+
+Navigate to HKEY CLASSES ROOT\Directory\shell.
+
+Right click on "default" and select Modify.
+In the File Data box, type "none" (without the quotation marks).
+
+Click OK and close the Registry Editor.
+
+Now when you right click a folder, you'll see the option to Print Directory Listing. Selecting it will print the contents of the folder.
+
+Who needs a stinking program to print a folder directory?

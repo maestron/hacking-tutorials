@@ -1,0 +1,60 @@
+<-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=>  
+  AN EXPIRIENCED HACKER'S GUIDE TO:
+                            H A C K I N G   T R W 
+                             Written by Minotaur 
+                                 Release 1.0   
+<-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=> 
+
+INTRODUCTION
+------------
+    Unlike most of my previous text files this text file has been written for expirienced hackers.  What does that mean?  Well if you are a beginner that means you probably wont understand most of this and should not attempt to hack TRW.  If you are expirienced then go right ahead...
+
+
+HACKING TRW
+-----------
+When you connect up to TRW, the dialup will identify itself with the
+message "TRW".  It will then wait for you to type the appropriate answer-
+back (such as CTRL-G).  Once this has been done, the system will print out
+some numbers and then "CIRCUIT BUILDING IN PROCESS".  After this, it clears
+the screen with a CTRL-L followed by a CTRL-Q.  After it sends you the CTRL-Q, it is ready for you to log in.  You first type in the 4 character identifying
+code for the location you are.
+
+SOME EXAMPLES ARE:
+TCA1 - For certain California Subscribers.
+TCA2 - A second California TRW system.
+TNJ1 - A New Jersey Database.
+TGA1 - A Georgia Database.
+
+     You should then hit return.  On the next line, you must type your 3 character option.  Most requests use the RTS option.  OPX, RTX, and some others exist.  (Note: TRW accepts an A, C, or S as the X in some options.)  Then you would then type in a 7 digit subscriber code followed by a 3-4 character password.  It seems that if you manage to get hold of a TRW printout (by trashing a business), the subscriber code will be on it, leaving only a 3-4 character password for you to hack.
+
+EXAMPLE LOGON
+-------------
+Set your communications program as follows:
+Half Duplex, Even Parity, 7 Data Bits and 2 Stop Bits
+
+
+ATDT 741-6016 
+CONNECT 
+
+System: TRW
+User  : CTRL-G
+System: -1017-101-
+
+        Circuit building in process
+
+        CTRL-L CTRL-Q
+
+User  : TCA1 (RETURN)
+System:
+User  : RTS 1234567ABC (RETURN) CTRL-S
+
+NOTE: If you: **system error** it just means you entered an invalid code, and it will start you over.
+
+CONCLUSION
+----------
+    That's it!  I hope this text file will be able to help you get started on hacking TRW.  If you have any problems and have access to the Internet I can be mailed at the following address:
+moon!cyberden!minotaur@well.sf.ca.us
+And remember...
+              This is file IS NOT for info purposes only!
+
+                                                     +++ MINOTAUR +++

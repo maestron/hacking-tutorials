@@ -1,0 +1,449 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fcharset0 Courier New;}{\f1\fswiss\fcharset0 Arial;}}
+\viewkind4\uc1\pard\tx0\tx959\tx1918\tx2877\tx3836\tx4795\tx5754\tx6713\tx7672\tx8631\f0\fs20 A Basic UNIX Overview\par
+\par
+Asriel\par
+\par
+\par
+  UNIX FOR DOS ADDICTED WaReZ PuPPieZ AND THEIR PETS\par
+\par
+\par
+  Introduction\par
+  ------------\par
+\par
+  One of the most common operating systems in existance is Unix. Unix\par
+  exists in many different flavors, from Berkeley BSD to AT&T System V\par
+  to SunOs. Basic working knowledge of Unix is almost essential to a\par
+  hacker, as it is the system a hacker is most likely to come across.\par
+  If you intend to use the internet at all, or to do any serious\par
+  exploration of Telenet, the ability to navigate through Unix is a\par
+  necessity. (Unix is also the single most interesting system in\par
+  existance: it's just fun to fuck with).\par
+  \par
+  Unix Logins\par
+  -----------\par
+\par
+  Most Unix logins look essentially the same. A general Unix login\par
+  prompt looks something like this:\par
+\par
+  connected to five.finger.com\par
+  login:\par
+\par
+  That first line is the system identifier. Although it's not at all\par
+  essential to what you are doing, it's good to know what system you are\par
+  attempting to log on to.\par
+  The second line is what typically identifies the system you are on as\par
+  Unix. Almost all Unix systems greet a user with the same prompt:\par
+  login:.\par
+  Well, there's not much to do in Unix from the outside, and Unix\par
+  systems are typically fairly secure at this point. You may be able to\par
+  obtain a list of users, or current users, by logging in as 'who', but\par
+  other than that there are few functions available here.\par
+  Unless you are on the internet, or have accounts specifically for the\par
+  specific machine you are on, the only way on to the system is to try\par
+  the default passwords. What are the default passwords?\par
+  Unix systems come installed with certain passwords automatically. In\par
+  addition, some accounts must exist on a system. One such account is\par
+  'root'. This user is the divine Kami of the Unix system... in short,\par
+  an all access pass. Unfortunately, few systems allow root logins\par
+  remotely, and even fewer leave 'root' unpassworded. Nevertheless, it's\par
+  always worth a shot... try this:\par
+\par
+  connected to ren.stimpy.net\par
+  login: root\par
+  password: root\par
+  invalid login\par
+  login:\par
+\par
+  well, nice try anyways... other possible passwords for root include\par
+  'sysadmin', 'sys', 'admin'... you get the idea. You may also want to\par
+  try these passwords with a single digit appended (added, idiot) to\par
+  them... meaning the password 'root' could be 'root1' or 'root2'.\par
+  An interesting tip about passwords in general... many people that use\par
+  passwords under 8 characters tend to add a digit or a non-alphanumeric\par
+  character to the password. This is done in order to hinder guessing,\par
+  and to stop password breakers (more on this later). In this case, you\par
+  may want to try adding a space before root... or even an ascii 255 to\par
+  the end.\par
+  Fortunately, there is more than one default password in a unix\par
+  system... a quick list:\par
+\par
+  sys        sys\par
+  bin        bin\par
+  daemon     daemon\par
+  rje        rje\par
+  setup      setup\par
+  uucp       uucp/nuucp/anonymous\par
+  nuucp      uucp/nuucp/anonymous\par
+  mountfsys  mountfsys\par
+\par
+  In the System\par
+  -------------\par
+\par
+  Ok, at this point, I'm going to assume you've gotten past the login...\par
+  as painful as that may sound. Although Unix may be secure from the\par
+  outside, without effort from the system administrators, the inside of\par
+  the system is not.\par
+  First off, you'll likely by asked for a terminal. vt100 serves your\par
+  purposes sufficently, and it's typically the default, so hit enter.\par
+  Now, hopefully, you have a prompt. There are many different types of\par
+  unix prompts, some of which contain current directory information,\par
+  some of which are just a single character. Just don't panic when my\par
+  examples don't look exactly like what you've got on your screen.\par
+  The first thing you *need* to do on the system is establish your tty\par
+  paramters. As eldritch and arcane sounding as this term may seem, it's\par
+  actually quite simple... you need to tell the system what keys are\par
+  going to do what.\par
+  The command to set these parameters is 'stty'. Watch:\par
+\par
+  squinkyB ] stty erase ^h\par
+  squinkyB ]\par
+\par
+  There... that wasn't so bad, was it? Well, it's also pretty\par
+  meaningless to you, unless you have the ascii table memorized and are\par
+  pretty good at on-the-spot deduction.\par
+  The tty erase parameters determines which key is to be used as a\par
+  backspace. At times, this may already be set when you log in, or it\par
+  may be set to a suitable alternate (such as delete). Most of the time\par
+  the system will tell you when you log on if this is so. In this case,\par
+  we've entered ^h in order to make the backspace key, appropriately\par
+  enough, backspace.\par
+  Another extremely important parameter is 'intr'. The 'intr' paramter\par
+  tells the Unix system what you intend to use as a break character...\par
+  you should have this set to ^c.\par
+\par
+  Getting Around\par
+  --------------\par
+\par
+  A good thing to remember about Unix is that it's alot like DOS. Files\par
+  are laid out in directories just as in DOS... in fact, the only\par
+  immediate difference in the directory structures is that Unix uses a\par
+  forward slash ("/", moron!) instead of a backwards one.\par
+  Also, the basic Unix directory navigation command is identical to DOS.\par
+  In order to change directories, you use the command 'chdir', or 'cd'.\par
+  A quick example:\par
+\par
+  1 /usr1/astoria ] cd ..\par
+  2 /usr ]\par
+\par
+  Wala. That simple. Quick notes:\par
+\par
+  \u1102? cd / will take you to root.\par
+  \u1102? cd /*pathname* will take you to *pathname*\par
+  \u1102? cd home will take you to your home directory.\par
+\par
+  You can make and delete your own directories with the mkdir/rmdir\par
+  commands. Simply put, mkdir makes a subdirectory off of the current\par
+  directory, and rmdir removes a subdirectory from the current\par
+  subdirectory. Good to know if you plan to do a lot of file transfers.\par
+  An important note about Unix directories, files, and concepts:\par
+  Unix is a case-sensitive operating system. Thus, the files\par
+\par
+  \u1102? Spleen\par
+  \u1102? spleen\par
+  \u1102? SPLEEN\par
+  \u1102? SpLeEn\par
+\par
+  are all different. This rule applies to directories and command line\par
+  paramters, as well as most other Unix ideas.\par
+  Another nice thing to know about Unix: Unix files are not subject to\par
+  the normal DOS 8 character limit. Thus, you can have vast filenames,\par
+  such as "this_file_ate_my_biscuit".\par
+\par
+  Some other important commands\par
+  -----------------------------\par
+\par
+  First and foremost, you should know cp. cp is the basic Unix\par
+  equivalent of the DOS COPY command. The command line for cp is\par
+  identical to that of COPY.\par
+  Next on the scale of cosmic import is cat. cat is the Unix equivalent\par
+  of the DOS TYPE command, and once again, for simple file displaying,\par
+  the command line is identical.\par
+   Variations on the theme:\par
+   pg: displayes a file page by page. Type "pg x filename", where x is a\par
+       number of lines to display before pausing and filename is the\par
+       file you wish to display.\par
+   more: displays a file screen by screen.\par
+   Stupid pet trick:\par
+   You can use your cat to copy files, simply by using the directional\par
+   operators. To copy a file from here to there using cat, simply type:\par
+\par
+   % cat here\par
+   this is the file here\par
+   % cat there\par
+   this is the file there\par
+   % cat here > there\par
+   % cat there\par
+   this is the file here\par
+\par
+   The operator ">" simply takes the output from the cat command and\par
+   places is in the location specified after it.\par
+  Another vital command to know is 'rm'. rm deletes a file from the\par
+  system, in the same way DEL would on a DOS system. Not to much else to\par
+  say.\par
+  Critical in your navigation of a Unix system is the ls command. ls is\par
+  DOS DIR on heroin. Simply type ls and you get a nice, neat list of\par
+  files in the directory.\par
+   DIR on controlled substances:\par
+   There are a few command line parameters that you should know...\par
+   foremost is l. ls -l gets you a list of files, and valuable\par
+   information about each file, including permissions (more on that\par
+   later), size, and linked files.\par
+   Another useful command for long file lists is C. ls -C gets you a\par
+   list of files in multiple columns, much the same as DIR /W would\par
+   merit a double column report of all existing files. A quick reminder:\par
+   ls -C is NOT the same as ls -c. Unix = case sensitive.\par
+  Another good command to know, mv will move a file from directory to\par
+  directory. For those of you without DOS 6.0 <gasp>, mv simply copies a\par
+  file to another directory and deletes the original.\par
+   quick tip for files on the lam:\par
+   if you want to rename a file (to protect the innocent), you need to\par
+   mv a file to a different file name. A quick demo:\par
+\par
+   # ls\par
+   myfile\par
+   # cat myfile\par
+   this is my file\par
+   # mv myfile my_other_file\par
+   # ls\par
+   my_other_file\par
+   # cat my_other_file\par
+   this is my file\par
+\par
+  Another vastly important command is 'man'. In fact, man is probably\par
+  one of the most important commands extant for a beginning user... it\par
+  calls up the system's help files. To use man, simply type in 'man\par
+  command', where command is a Unix command you seek to gain\par
+  enlightenment regarding. It's a great way to gain an understanding of\par
+  Unix commandline parameters.\par
+  If you are interested in seeing who's been on of late, or just want a\par
+  few names to try to hack, type 'who'. You get a quick list of users\par
+  that have accessed the system lately. If you <god forbid> need to know\par
+  who you are at this point, type 'whoami'.\par
+  If you want to change your identity on the system, type 'su name'\par
+  where name is an account on the system. It'll ask you for the account\par
+  password, then, *presto*... instant transmogrification.\par
+   A Caveat for smart alec hackers:\par
+   Unix typically logs usage of the su command. While su may seem like a\par
+   great opportunity to try to hack out passwords manually without\par
+   worrying about the system hanging up after 3 attempts, it's typically\par
+   not a good idea to do this, as it may alert the administrators to\par
+   your presence.\par
+  *Numero Uno on the list of commands NEVER to use on a Unix system:\par
+  The 'passwd' command changes your password on a Unix system. Seems\par
+  innocous enough, eh? Uh-uh. If your account is active, and there's a\par
+  very strong chance that it either is or will be, there is no better\par
+  way to lose the account than to change the password, only to have the\par
+  legitimate user alert the sysadmins when he/she can't gain access to\par
+  his/her normal account (well, there are better ways... you could\par
+  simply mail the sysadmin and tell him you are trying to hack his\par
+  grandmother's life support machine through your account).\par
+  I've seen this single, quick command turn a extremely lax system\par
+  into an ironclad security compound in less than a day.\par
+  DONT-FUCK-WITH-IT.\par
+  *Numero Dos on that same list:\par
+  The 'mail' command reads and sends mail. So what? Well, unless your\par
+  account is stable (and it isn't unless you either paid for it or\par
+  killed the original owner in such a way that his body cannot claw it's\par
+  way out of it's grave to it's keyboard), the user is more likely than\par
+  not going to know if you read his mail. In addition, if you send mail\par
+  out of the system (type 'mail', and a username/address; type in your\par
+  message and end it with a ^d on it's own line), the response from your\par
+  message will likewise alert the user to your presence.\par
+\par
+  System Spelunking\par
+  -----------------\par
+\par
+  The first place you want to check out in the wild uncharted directory\par
+  tree of your friendly neighborhood Unix system is the "/etc"\par
+  directory. What's in it? The single most intensely important file on\par
+  the system (besides a world writable root owned SUID file... but don't\par
+  worry about that)... the passwd file.\par
+  What is in the passwd file?\par
+\par
+  \u1102?  a list of all accounts on the system\par
+  \u1102?  a list of the passwords for these accounts\par
+  \u1102?  a list of access levels for these accounts\par
+  \u1102?  a list of the home directories for these accounts\par
+  \u1102?  a list of information pertaining to these accounts.\par
+\par
+  Why the hell the Unix designers decided this file should be world\par
+  readable is beyond me. Be content to know that your standard everyday\par
+  run-of-the-mill-lacking-in-certified-cosmic-power 'cat' command WILL\par
+  display this file. As will pg and more. However, because most users\par
+  don't have write permissions (more on that later) to the /etc\par
+  directory, 'cat' is pretty much the only applicable command here.\par
+  However, if you need to copy the file to your own directory (for\par
+  whatever reason), just cat it there with the directional operator (>).\par
+  The catch:\par
+  Well, there are two catches here. First off, regardless of system\par
+  security, if the passwords are in the file, they are encrypted. You\par
+  can't decrypt them. Although you can get a list of accounts without\par
+  passwords this way (just look for accounts with no entry in the\par
+  password field), and a list of accounts that can't be logged onto\par
+  remotely/at all (NO LOGIN), you can't get much else. Sucks, don't it?\par
+  Notice I said 'if' the passwords are there.\par
+  <ominous soundtrack please>\par
+  Some horrible, paranoid, draconian system administrators mutilate\par
+  their passwd files in such a way that (*gasp*) the passwords don't\par
+  show up. All you get is one cold, icy X staring at you from the bowels\par
+  of Unix Shell Siberia, mocking you as you pull your hair out in\par
+  frustration (sorry, but this is a sore spot with me). The kidnapped\par
+  passwords reside in the shadow file in the /etc directory, available\par
+  with your standard everyday run-of-the-mill-but-distinct-in-the-fact-\par
+  that-only-root-level-accounts-can-use-it-to-this-extent 'cat' command.\par
+  Well, if the passwords are encrypted, what good are they?\par
+  By themselves, nothing. A account with a Unix encrypted password will\par
+  get you no further than an account with no listed password at all. You\par
+  can't even deduce the amount of characters in the password if it's\par
+  encrypted. So what's the use?\par
+  The Unix method of encrypting files is available to the public. It is\par
+  also, to most mortals, irreversable. Essentially, this means you can\par
+  encrypt a string of characters, but not decrypt it. Even the unix\par
+  system itself doesn't decrypt the password when you log on...\par
+  When you log on, the Unix system takes whatever you enter at the\par
+  password prompt, encrypts it, and matches it to the entry in the\par
+  passwd file. Thus, the Unix system never decrypts the password... it\par
+  only compares it to a different encrypted string.\par
+  While this may not sound too particularly useful at first, it is.\par
+  There are programs that have been written to do the same thing on a\par
+  personal computer... you supply it a list of passwords and a list of\par
+  words to attempt to use as passwords (called dictionaries), and it\par
+  spends the night encrypting dictionaries and matching them to password\par
+  entries. By running a dictionary through a passwd file, on a typical\par
+  system, you can usually get 10-20 accounts. Good personal computer\par
+  examples of this program idea include Killer Cracker (the industry\par
+  standard, so to speak) and CrackerJack (faster than Killer Cracker).\par
+   Quick tips for CrackerJunkies with leech access at an H/P BBS:\par
+   A standard dictionary will not uncover passwords protected with an\par
+   appended digit or non-alphanumeric character. In order to get around\par
+   this, you need only grab a program that processes the dictionary file\par
+   to add that digit to each entry in the dictionary... although this\par
+   takes longer, and you'll need to do it multiple times, you can\par
+   typically get 10 more accounts just by adding a 1 to every entry.\par
+  Files and directories in Unix are characterized further by their\par
+  permissions. Permissions are a standard system of who gets access to a\par
+  specific function of that file or directory. Standard permissions\par
+  include read, write, and execute. You can get a list of permissions by\par
+  typing 'ls -l'. The first field in the listing contains the\par
+  permissions, grouped as follows:\par
+\par
+  owner  group   world\par
+  --------------------\par
+  rwx    rwx     rwx\par
+\par
+  (Not drawn to scale... in fact, it doesn't look anything like that).\par
+  Essentially, as long as the letter is there, you have access to that\par
+  facet of the file. If the letter is not there, you'll see a dash...\par
+  meaning you don't have access to that function. An example:\par
+\par
+  rwxr-x--x\par
+\par
+  In this case, the owner of the file can Read the file, Write to the\par
+  file, and eXecute the file; members of his group (a bunch of linked\par
+  accounts) can Read the file, CANNOT Write to the file, and can eXecute\par
+  the file; and the rest of the user population CANNOT Read or Write to\par
+  the file, but CAN eXecute the file.\par
+\par
+  rwx---rwx\par
+\par
+  is a WORLD-READABLE, WORLD-WRITABLE, WORLD-EXECUTABLE file. This\par
+  simply means that anyone can read, write, or execute the file.\par
+\par
+  Another permission sometimes set to a file is the SUID bit. An SUID\par
+  file contains a smallcase s in the user executable section of the\par
+  permissions list...\par
+\par
+  rws--x--x\par
+\par
+  When you execute an SUID file, your user ID becomes that of the owner\par
+  of the file. While this may not look to important at first, by now you\par
+  should know that no really important super elite hacker concept does.\par
+  Take a look at this:\par
+\par
+  rwsr-x--x\par
+\par
+  Synopsis? It's a world executable SUID file. In essence, anyone can\par
+  execute the file, and in doing so, become the owner of the file for\par
+  the duration of the time that file is operating. However, this doesn't\par
+  get you much, because you typically can't do anything while the\par
+  programis running. More likely than not, it's calculating how many\par
+  pencils it needs to order for school tomorrow or some other such\par
+  drivel.\par
+  The real power of the SUID file comes into play in this situation:\par
+\par
+  rwsrwxrwx\par
+\par
+  You won't see a lot of these, but when you do, look out. What you have\par
+  here is a world writable SUID file... and a world writable program can\par
+  be any program on the system you have read access to. Like, say,\par
+  /bin/sh... the Unix shell...\par
+  Quick command line example... 'diablo' is a root owned, world writable\par
+  SUID file. I'm going to ignore the rest of the output of the ls\par
+  command.\par
+\par
+  #ls -l\par
+  rwsrwxrwx... ...diablo\par
+  #cat /bin/sh > diablo\par
+  #diablo\par
+  $\par
+\par
+  Oh, just so you know, the $ prompt denotes root access.\par
+  Good deal, huh? In general, if you have right privs to an SUID file,\par
+  copy it to your own directory and cat /bin/sh into it. You now have an\par
+  instant gateway to the account of the owner of that file.\par
+  If you want to find files that you can do this with, try this out:\par
+\par
+  #find / -user root -perm -4000 -exec /bin/ls -al \{\} ";"\par
+\par
+  This will give you a list of all root owned SUID files. If you want\par
+  more info on the 'find' command, just 'man find'.\par
+\par
+  Well, I'm overdo for an appointment on the IRC in #warez... so I'll\par
+  cut off here. I hope I've been of assistance to you.\par
+\par
+----------------------------------------------------------------------------\par
+  A C T U A L  A R T I C L E  E N D S  H E R E . . .\par
+\par
+  Please feel free to save an extra 1k of file space and invoke the DOS\par
+  EDIT CUT command at the dotted line. Do not remove the rest of this\par
+  article on penalty of law.\par
+\par
+  S00P3R GR00P-3SQU3 GR33TZ / +HANX\par
+\par
+  Greets go out to Nowhere Man, INC, THG, UNT, SaD, SoD, PTA, SOB\par
+  Thanks to... ________________________\par
+                     your ad here\par
+\par
+  Current DWE Akshul M3mbre Boards:\par
+\par
+  Nitro Burnin' Funny Cars    WHQ/DWEnet HOST     (312)582-1115  <XANAX>\par
+  The Prodigal Sun            CHQ/MECCA           (312)238-3585  <ASRIEL>\par
+  Dark Waters                 HQ/Infosite         (312)667-0222  <MONK>\par
+  PyroTechnics II             Infosite            (708)991-9403  <PYRO>\par
+\par
+  DWE M3/\\/\\B3R LiST\par
+\par
+  President and Dictator for Life: Xanax\par
+  Head Courier/Warez Cracker: Asriel\par
+  Head Fisherman/Trout Expert: Changeling\par
+  Head Person That Gets Asriel Free CDs: Monk\par
+  Head Person That Gets DWE Members Free WaReZ: Pyro\par
+  Head Person That Knows More Than Asriel (Honorary Title): LVX\par
+  Head Person That Actually Wrote for DWE without Coercion: Cosmos\par
+  Head Know-It-All Stoner that runs 386bsd: Goldstein\par
+\par
+  Want to write for DWE? Neither do we. But if the spirit moves you,\par
+  write up an article about anything we haven't discussed already, and\par
+  post it somewhere in DWEnet or at any of the member boards, or call\par
+  any of the members voice and dictate it to them, or submit it to them\par
+  school newspaper of any of the members, or tack it on a bulletin board\par
+  in the Third Coast Cafe in Century Mall, and chances are it'll be\par
+  released as a s00per c00l DWE article.\par
+\par
+ W H A T  F O L L O W S  M U S T  N O T  B E  D E L E T E D\par
+---------------------------------------------------------------------------\par
+  (c) 2003 Hackers-Network\par
+  Asriel(tm) appears courtesy of Hasbro, Inc.\par
+\pard\f1\par
+}
+ 

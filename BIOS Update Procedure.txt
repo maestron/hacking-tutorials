@@ -1,0 +1,80 @@
+BIOS Update Procedure
+
+All latest Motherboards today, 486/ Pentium / Pentium Pro etc.,ensure that upgrades are easily obtained by incorporating the system BIOS in a FLASH Memory component. With FLASH BIOS, there is no need to replace an EPROM component. Once downloaded, the upgrade utility fits on a floppy disc allowing the user to save, verify and update the system BIOS. A hard drive or a network drive can also be used to run the newer upgrade utilities. However, memory managers can not be installed while upgrading.
+
+Most pre-Pentium motherboards do not have a Flash BIOS. The following instructions therefore do not apply to these boards. If your motherboard does not have a Flash BIOS (EEPROM) you will need to use an EPROM programmer to re-program the BIOS chip. See your dealer for more information about this.
+
+Please read the following instructions in full before starting a Flash BIOS upgrade:
+A. Create a Bootable Floppy (in DOS)
+
+•With a non-formatted disk, type the following:
+
+format a:/s
+
+•If using a formatted disk, type:
+
+sys a:
+
+This procedure will ensure a clean boot when you are flashing the new BIOS.
+
+B. Download the BIOS file
+
+•Download the correct BIOS file by clicking on the file name of the BIOS file you wish to download.
+
+•Save the BIOS file and the Flash Utility file in the boot disk you have created. Unzip the BIOS file and the flash utility file. If you don't have an "unzip" utility, download the WinZip for Windows 95 shareware/ evaluation copy for that one time use from _www.winzip.com or _www.pkware.com. Most CD ROMs found in computer magazines, have a shareware version of WinZip on them.
+
+•You should have extracted two files:
+
+Flash BIOS utility eg: flash7265.exe (for example)
+
+BIOS eg: 6152J900.bin (example)
+
+Use the latest flash utility available unless otherwise specified (either on the BIOS update page or in the archive file). This information is usually provided.
+
+C. Upgrade the System BIOS
+
+During boot up, write down the old BIOS version because you will need to use it for the BIOS backup file name.
+
+Place the bootable floppy disk containing the BIOS file and the Flash Utility in drive a, and reboot the system in MS-DOS, preferably Version 6.22
+
+•At the A:> prompt, type the corresponding Flash BIOS utility and the BIOS file with its extension.
+
+For example:
+
+flash625 615j900.bin
+
+•From the Flash Memory Writer menu, select "Y" to "Do you want to save BIOS?" if you want to save (back up) your current BIOS (strongly recommended), then type the name of your current BIOS and its extension after FILE NAME TO SAVE: eg: a:\613J900.bin
+
+Alternatively select "N" if you don't want to save your current BIOS. Beware, though, that you won't be able to recover from a possible failure.
+
+•Select "Y" to "Are you sure to program?"
+
+•Wait until it displays "Message: Power Off or Reset the system"
+
+Once the BIOS has been successfully loaded, remove the floppy disk and reboot the system. If you write to BIOS but cannot complete the procedure, do not switch off, because the computer will not be able to boo, and you will not be given another chance to flash. In this case leave your system on until you resolve the problem (flashing BIOS with old file is a possible solution, provided you've made a backup before)
+
+Make sure the new BIOS version has been loaded properly by taking note of the BIOS identifier as the system is rebooting.
+
+For AMI BIOS
+Once the BIOS has been successfully loaded, remove the floppy disk and reboot the system holding the "END" key prior to power on until you enter CMOS setup. If you do not do this the first time booting up after upgrading the BIOS, the system will hang.
+
+BIOS Update Tips
+note:
+1.Make sure never to turn off or reset your computer during the flash process. This will corrupt the BIOS data. We also recommend that you make a copy of your current BIOS on the bootable floppy so you can reflash it if you need to. (This option is not available when flashing an AMI BIOS).
+
+2. If you have problems installing your new BIOS please check the following:
+
+Have you done a clean boot?
+In other words, did you follow the above procedure for making a bootable floppy? This ensures that when booting from "A" there are no device drivers on the diskette. Failing to do a clean boot is the most common cause for getting a "Memory Insufficient" error message when attempting to flash a BIOS.
+
+If you have not used a bootable floppy, insure a clean boot either by
+
+a) pressing F5 during bootup
+
+b) by removing all device drivers on the CONFIG.SYS including the HIMEM.SYS. Do this by using the EDIT command.
+
+Have you booted up under DOS?
+Booting in Windows is another common cause for getting a "Memory Insufficient" error message when attempting to flash a BIOS. Make sure to boot up to DOS with a minimum set of drivers. Important: Booting in DOS does not mean selecting "Restart computer in MS-DOS Mode" from Windows98/95 shutdown menu or going to Prompt mode in WindowsNT, but rather following the above procedure (format a: /s and rebooting from a:\).
+
+Have you entered the full file name of the flash utility and the BIOS plus its extension?
+Do not forget that often you will need to add a drive letter (a:\) before flashing the BIOS. Example: when asked for file name of new BIOS file which is on your floppy disk, in case you're working from c:\ your will need to type a:\615j900.bin, rather than 615j900.bin only.

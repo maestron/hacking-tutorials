@@ -1,0 +1,412 @@
+
+
+                        A simple TCP spoofing attack
+
+
+Over the past few years TCP sequence number prediction attacks have become a
+real threat against unprotected networks, taking advantage of the inherent
+trust relationships present in many network installations.  TCP sequence
+number prediction attacks have most commonly been implemented by opening a
+series of connections to the target host, and attempting to predict the
+sequence number which will be used next.  Many operating systems have
+therefore attempted to solve this problem by implementing a method of
+generating sequence numbers in unpredictable fashions.  This method does
+not solve the problem.
+
+This advisory introduces an alternative method of obtaining the initial
+sequence number from some common trusted services.  The attack presented here
+does not require the attacker to open multiple connections, or flood a port
+on the trusted host to complete the attack.  The only requirement is that
+source routed packets can be injected into the target network with fake
+source addresses.
+
+This advisory assumes that the reader already has an understanding of how
+TCP sequence number prediction attacks are implemented.
+
+The impact of this advisory is greatly diminished due to the large number of
+organizations which block source routed packets and packets with addresses
+inside of their networks.  Therefore we present the information as more of
+a 'heads up' message for the technically inclined, and to re-iterate that
+the randomization of TCP sequence numbers is not an effective solution
+against this attack.
+
+
+Technical Details
+~~~~~~~~~~~~~~~~~
+
+The problem occurs when particular network daemons accept connections
+with source routing enabled, and proceed to disable any source routing
+options on the connection.  The connection is allowed to continue, however
+the reverse route is no longer used.  An example attack can launched against
+the in.rshd daemon, which on most systems will retrieve the socket options
+via getsockopt() and then turn off any dangerous options via setsockopt().
+
+An example attack follows.
+
+Host A is the trusted host
+Host B is the target host
+Host C is the attacker
+
+Host C initiates a source routed connection to in.rshd on host B, pretending
+to be host A.
+
+Host C spoofing Host A         <SYN>    -->  Host B in.rshd
+
+Host B receives the initial SYN packet, creates a new PCB (protocol
+control block) and associates the route with the PCB.  Host B responds,
+using the reverse route, sending back a SYN/ACK with the sequence number.
+
+Host C spoofing Host A  <--  <SYN/ACK>       Host B in.rshd
+
+Host C responds, still spoofing host A, acknowledging the sequence number.
+Source routing options are not required on this packet.
+
+Host C spoofing Host A         <ACK>    -->  Host B in.rshd
+
+We now have an established connection, the accept() call completes, and
+control is now passed to the in.rshd daemon.  The daemon now does IP
+options checking and determines that we have initiated a source routed
+connection.  The daemon now turns off this option, and any packets sent
+thereafter will be sent to the real host A, no longer using the reverse
+route which we have specified.  Normally this would be safe, however the
+attacking host now knows what the next sequence number will be.  Knowing
+this sequence number, we can now send a spoofed packet without the source
+routing options enabled, pretending to originate from Host A, and our
+command will be executed.
+
+In some conditions the flooding of a port on the real host A is required
+if larger ammounts of data are sent, to prevent the real host A from
+responding with an RST.  This is not required in most cases when performing
+this attack against in.rshd due to the small ammount of data transmitted.
+
+It should be noted that the sequence number is obtained before accept()
+has returned and that this cannot be prevented without turning off source
+routing in the kernel.
+
+As a side note, we're very lucky that TCP only associates a source route with
+a PCB when the initial SYN is received.  If it accepted and changed the ip
+options at any point during a connection, more exotic attacks may be possible.
+These could include hijacking connections across the internet without playing
+a man in the middle attack and being able to bypass IP options checking
+imposed by daemons using getsockopt().  Luckily *BSD based TCP/IP stacks will
+not do this, however it would be interesting to examine other implementations.
+
+Impact
+~~~~~~
+
+The impact of this attack is similar to the more complex TCP sequence
+number prediction attack, yet it involves fewer steps, and does not require
+us to 'guess' the sequence number.  This allows an attacker to execute
+arbitrary commands as root, depending on the configuration of the target
+system.  It is required that trust is present here, as an example, the use
+of .rhosts or hosts.equiv files.
+
+
+Solutions
+~~~~~~~~~
+
+The ideal solution to this problem is to have any services which rely on
+IP based authentication drop the connection completely when initially
+detecting that source routed options are present.  Network administrators
+and users can take precautions to prevent users outside of their network
+from taking advantage of this problem.  The solutions are hopefully already
+either implemented or being implemented.
+
+1. Block any source routed connections into your networks
+2. Block any packets with internal based address from entering your network.
+
+Network administrators should be aware that these attacks can easily be
+launched from behind filtering routers and firewalls.  Internet service
+providers and corporations should ensure that internal users cannot launch
+the described attacks.  The precautions suggested above should be implemented
+to protect internal networks.
+
+Example code to correctly process source routed packets is presented here
+as an example.  Please let us know if there are any problems with it.
+This code has been tested on BSD based operating systems.
+
+        u_char optbuf[BUFSIZ/3];
+        int optsize = sizeof(optbuf), ipproto, i;
+        struct protoent *ip;
+
+        if ((ip = getprotobyname("ip")) != NULL)
+                ipproto = ip->p_proto;
+        else
+                ipproto = IPPROTO_IP;
+        if (!getsockopt(0, ipproto, IP_OPTIONS, (char *)optbuf, &optsize) &&
+            optsize != 0) {
+                for (i = 0; i < optsize; ) {
+                        u_char c = optbuf[i];
+                        if (c == IPOPT_LSRR || c == IPOPT_SSRR)
+                                exit(1);
+                        if (c == IPOPT_EOL)
+                                break;
+                        i += (c == IPOPT_NOP) ? 1 : optbuf[i+1];
+                }
+        }
+
+
+One critical concern is in the case where TCP wrappers are being used.  If
+a user is relying on TCP wrappers, the above fix should be incorporated into
+fix_options.c.  The problem being that TCP wrappers itself does not close
+the connection, however removes the options via setsockopt().  In this case
+when control is passed to in.rshd, it will never see any options present,
+and the connection will remain open (even if in.rshd has the above patch
+incorporated).  An option to completely drop source routed connections will
+hopefully be provided in the next release of TCP wrappers.  The other option
+is to undefine KILL_IP_OPTIONS, which appears to be undefined by default.
+This passes through IP options and allows the called daemon to handle them
+accordingly.
+
+
+Disabling Source Routing
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+We believe the following information to be accurate, however it is not
+guaranteed.
+
+--- Cisco
+
+To have the router discard any datagram containing an IP source route option
+issue the following command:
+
+no ip source-route
+
+This is a global configuration option.
+
+
+--- NetBSD
+
+Versions of NetBSD prior to 1.2 did not provide the capability for disabling
+source routing.  Other versions ship with source routing ENABLED by default.
+We do not know of a way to prevent NetBSD from accepting source routed packets.
+NetBSD systems, however, can be configured to prevent the forwarding of packets
+when acting as a gateway.
+
+To determine whether forwarding of source routed packets is enabled,
+issue the following command:
+
+# sysctl net.inet.ip.forwarding
+# sysctl net.inet.ip.forwsrcrt
+
+The response will be either 0 or 1, 0 meaning off, and 1 meaning it is on.
+
+Forwarding of source routed packets can be turned off via:
+
+# sysctl -w net.inet.ip.forwsrcrt=0
+
+Forwarding of all packets in general can turned off via:
+
+# sysctl -w net.inet.ip.forwarding=0
+
+
+--- BSD/OS
+
+BSDI has made a patch availible for rshd, rlogind, tcpd and nfsd.  This
+patch is availible at:
+
+ftp://ftp.bsdi.com/bsdi/patches/patches-2.1
+
+OR via their patches email server <patches@bsdi.com>
+
+The patch number is
+U210-037 (normal version)
+D210-037 (domestic version for sites running kerberized version)
+
+
+BSD/OS 2.1 has source routing disabled by default
+
+Previous versions ship with source routing ENABLED by default.  As far as
+we know, BSD/OS cannot be configured to drop source routed packets destined
+for itself, however can be configured to prevent the forwarding of such
+packets when acting as a gateway.
+
+To determine whether forwarding of source routed packets is enabled,
+issue the following command:
+
+# sysctl net.inet.ip.forwarding
+# sysctl net.inet.ip.forwsrcrt
+
+The response will be either 0 or 1, 0 meaning off, and 1 meaning it is on.
+
+Forwarding of source routed packets can be turned off via:
+
+# sysctl -w net.inet.ip.forwsrcrt=0
+
+Forwarding of all packets in general can turned off via:
+
+# sysctl -w net.inet.ip.forwarding=0
+
+
+--- OpenBSD
+
+Ships with source routing turned off by default.  To determine whether source
+routing is enabled, the following command can be issued:
+
+# sysctl net.inet.ip.sourceroute
+
+The response will be either 0 or 1, 0 meaning that source routing is off,
+and 1 meaning it is on.  If source routing has been turned on, turn off via:
+
+# sysctl -w net.inet.ip.sourceroute=0
+
+This will prevent OpenBSD from forwarding and accepting any source routed
+packets.
+
+
+--- FreeBSD
+
+Ships with source routing turned off by default.  To determine whether source
+routing is enabled, the following command can be issued:
+
+# sysctl net.inet.ip.sourceroute
+
+The response will be either 0 or 1, 0 meaning that source routing is off,
+and 1 meaning it is on.  If source routing has been turned on, turn off via:
+
+# sysctl -w net.inet.ip.sourceroute=0
+
+
+--- Linux
+
+Linux by default has source routing disabled in the kernel.
+
+
+--- Solaris 2.x
+
+Ships with source routing enabled by default.  Solaris 2.5.1 is one of the
+few commercial operating systems that does have unpredictable sequence
+numbers, which does not help in this attack.
+
+We know of no method to prevent Solaris from accepting source routed
+connections, however, Solaris systems acting as gateways can be prevented
+from forwarding any source routed packets via the following commands:
+
+# ndd -set /dev/ip ip_forward_src_routed 0
+
+You can prevent forwarding of all packets via:
+
+# ndd -set /dev/ip ip_forwarding 0
+
+These commands can be added to /etc/rc2.d/S69inet to take effect at bootup.
+
+
+--- SunOS 4.x
+
+We know of no method to prevent SunOS from accepting source routed
+connections, however a patch is availible to prevent SunOS systems from
+forwarding source routed packets.
+
+This patch is availible at:
+
+ftp://ftp.secnet.com/pub/patches/source-routing-patch.tar.gz
+
+To configure SunOS to prevent forwarding of all packets, the following
+command can be issued:
+
+# echo "ip_forwarding/w 0" | adb -k -w /vmunix /dev/mem
+# echo "ip_forwarding?w 0" | adb -k -w /vmunix /dev/mem
+
+The first command turns off packet forwarding in /dev/mem, the second in
+/vmunix.
+
+
+--- HP-UX
+
+HP-UX does not appear to have options for configuring an HP-UX system to
+prevent accepting or forwarding of source routed packets.  HP-UX has IP
+forwarding turned on by default and should be turned off if acting as a
+firewall.  To determine whether IP forwarding is currently on, the following
+command can be issued:
+
+# adb /hp-ux
+ipforwarding?X      <- user input
+ipforwarding:
+ipforwarding: 1
+#
+
+A response of 1 indicates IP forwarding is ON, 0 indicates off.  HP-UX can
+be configured to prevent the forwarding of any packets via the following
+commands:
+
+# adb -w /hp-ux /dev/kmem
+ipforwarding/W 0
+ipforwarding?W 0
+^D
+#
+
+--- AIX
+
+AIX cannot be configured to discard source routed packets destined for itself,
+however can be configured to prevent the forwarding of source routed packets.
+IP forwarding and forwarding of source routed packets specifically can be
+turned off under AIX via the following commands:
+
+To turn off forwarding of all packets:
+
+# /usr/sbin/no -o ipforwarding=0
+
+To turn off forwarding of source routed packets:
+
+# /usr/sbin/no -o nonlocsrcroute=0
+
+Note that these commands should be added to /etc/rc.net
+
+
+
+If shutting off source routing is not possible and you are still using
+services which rely on IP address authentication, they should be disabled
+immediately (in.rshd, in.rlogind).  in.rlogind is safe if .rhosts and
+/etc/hosts.equiv are not used.
+
+
+Attributions
+~~~~~~~~~~~~
+
+Thanks to Niels Provos <provos@physnet.uni-hamburg.de> for providing
+the information and details of this attack.  You can view his web
+site at http://www.physnet.uni-hamburg.de/provos
+
+Thanks to Theo de Raadt, the maintainer of OpenBSD for forwarding this
+information to us.  More information on OpenBSD can be found at
+http://www.openbsd.org
+
+Thanks to Keith Bostic <bostic@bsdi.com> for discussion and a quick
+solution for BSD/OS.
+
+Thanks to Brad Powell <brad.powell@west.sun.com> for providing information
+for Solaris 2.x and SunOS 4.x operating systems.
+
+Thanks go to CERT and AUSCERT for recommendations in this advisory.
+
+You can contact the author of this advisory at oliver@secnet.com
+
+
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: 2.6.3ia
+
+mQCNAzJATn0AAAEEAJeGbZyoCw14fCoAMeBRKiZ3L6JMbd9f4BtwdtYTwD42/Uz1
+A/4UiRJzRLGhARpt1J06NVQEKXQDbejxGIGzAGTcyqUCKH6yNAncqoep3+PKIQJd
+Kd23buvbk7yUgyVlqQHDDsW0zMKdlSO7rYByT6zsW0Rv5JmHJh/bLKAOe7p9AAUR
+tCVPbGl2ZXIgRnJpZWRyaWNocyA8b2xpdmVyQHNlY25ldC5jb20+iQCVAwUQMkBO
+fR/bLKAOe7p9AQEBOAQAkTXiBzf4a31cYYDFmiLWgXq0amQ2lsamdrQohIMEDXe8
+45SoGwBzXHVh+gnXCQF2zLxaucKLG3SXPIg+nJWhFczX2Fo97HqdtFmx0Y5IyMgU
+qRgK/j8KyJRdVliM1IkX8rf3Bn+ha3xn0yrWlTZMF9nL7iVPBsmgyMOuXwZ7ZB8=
+=xq4f
+-----END PGP PUBLIC KEY BLOCK-----
+
+Copyright Notice
+~~~~~~~~~~~~~~~~
+The contents of this advisory are Copyright (C) 1997 Secure Networks Inc,
+and may be distributed freely provided that no fee is charged for
+distribution, and that proper credit is given.
+
+ You can find Secure Networks papers at ftp://ftp.secnet.com/pub/papers
+ and advisories at ftp://ftp.secnet.com/advisories
+
+ You can browse our web site at http://www.secnet.com
+
+ You can subscribe to our security advisory mailing list by sending mail to
+ majordomo@secnet.com with the line "subscribe sni-advisories"
+

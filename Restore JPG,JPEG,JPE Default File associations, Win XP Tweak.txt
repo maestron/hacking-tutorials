@@ -1,0 +1,57 @@
+ JPG,JPEG,JPE File associations fixes
+
+This reg file will restore the default file associations.
+
+
+
+1. Copy the following (everything in the box) into notepdad.
+
+
+QUOTE
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\.jpe]
+"PerceivedType"="image"
+@="jpegfile"
+"Content Type"="image/jpeg"
+
+[HKEY_CLASSES_ROOT\.jpe\OpenWithProgids]
+"jpegfile"=hex(0):
+
+[HKEY_CLASSES_ROOT\.jpe\PersistentHandler]
+@="{098f2470-bae0-11cd-b579-08002b30bfeb}"
+
+[HKEY_CLASSES_ROOT\.jpeg]
+"PerceivedType"="image"
+@="jpegfile"
+"Content Type"="image/jpeg"
+
+[HKEY_CLASSES_ROOT\.jpeg\jpegfile]
+
+[HKEY_CLASSES_ROOT\.jpeg\jpegfile\ShellNew]
+
+[HKEY_CLASSES_ROOT\.jpeg\OpenWithProgids]
+"jpegfile"=hex(0):
+
+[HKEY_CLASSES_ROOT\.jpeg\PersistentHandler]
+@="{098f2470-bae0-11cd-b579-08002b30bfeb}"
+
+[HKEY_CLASSES_ROOT\.jpg]
+"PerceivedType"="image"
+@="jpegfile"
+"Content Type"="image/jpeg"
+
+[HKEY_CLASSES_ROOT\.jpg\jpegfile]
+
+[HKEY_CLASSES_ROOT\.jpg\jpegfile\ShellNew]
+
+[HKEY_CLASSES_ROOT\.jpg\OpenWithProgids]
+"jpegfile"=hex(0):
+
+
+
+
+2. Save the file as xp_jpg_jpe_jpeg_file_assoc_fix.reg
+3. Double click the file to import into your registry.
+
+NOTE: If your anti-virus software warns you of a "malicious" script, this is normal if you have "Script Safe" or similar technology enabled.

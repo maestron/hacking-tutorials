@@ -1,0 +1,489 @@
+Some Tips And Tricks For Your Windows XP
+
+STOP NOISE IN COPYING AUDIO CD
+When using 3rd party burning software (eg, Nero Burning Rom) to copy audio CD,some noise may be heard at the end of each track. To prevent this,try the following method:
+1. Enter System Properties\device manager
+2. Select IDE ATA/ATAPI controllers
+3. Double click on thee CD writer IDE channel
+4. Select advance setting
+5. Change the transfer mode to 'PIO Only'
+6. Restart Computer
+
+DISABLING THE 'UNSIGNED DRIVER' DIALOGS
+This option wll disable the screen wich keeps popping up when you try to install 'digitally unsigned drivers'. Normally you can choose to continue the install anyways, but I have had situations where you cannot continue the install.. very annoying.. This is how to fix it:
+Click Start - Run
+then type: gpedit.msc
+then hit enter.
+Browse the folder tree to the following location:
+User Configuration - Administrative Templates - System
+now right-click Code signing for Device drivers and select Properties.
+On the Settings tab, either select
+- enable, and then select ignore from the appearing listbox..
+- or click the disable option. Click apply and Ok and your set!
+Alternatively especially for XP Home users:
+Open "System" properties (Windows key + pause or Right click 'My Computer' - properties or Control Panel - System).On the Hardware tab click the "Driver Signing" button. In the dialogue that comes up choose "Ignore" to install the new driver anyway.
+
+DMA MODE ON IDE DEVICES VIEWS
+Just like Windows 2000, Windows XP still fails to set the DMA mode correctly for the IDE device designated as the slaves on the primary IDE and secondary IDE channels. Most CD-ROMS are capable of supporting DMA mode, but the default in XP is still PIO. Setting it to DMA won't make your CD-ROM faster, but it will consume less CPU cycles. Here's how:
+1. Open the Device Manager. One way to do that is to right click on "My Computer", select the Hardware tab, and Select Device Manager.
+2. Expand "IDE ATA/ATAPI Controllers" and double-click on "Primary IDE Channel"
+3. Under the "Advanced Settings" tab, check the "Device 1" setting. More than likely, your current transfer mode is set to PIO.
+4. Set it to "DMA if available".
+Repeat the step for the "Secondary IDE Channel" if you have devices attached to it. Reboot.
+
+RESTORING MEDIA PLAYER
+To restore Windows Media Player insert the the XP CD into the CD drive (if it autostarts click exit). Open a command window and type the following :
+rundll32.exe setupapi,InstallHinfSection InstallWMP7 132 c:\windows\inf\wmp.inf
+
+RESTORING ACCESS TO CD ROM'S
+If you removed CD Burning software, or for some other mystical reason, can not longer access your CD ROM's, in most cases following registry keys needs to be deleted: Locate and delete the UpperFilters and LowerFilters values under the following key in the registry:
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E965-E325-11CE-BFC1-08002BE10318}
+
+DELETING THE INDEX.DAT
+Del "C:\Documents and Settings\aeon\Local Settings\Temporary Internet Files\Content.IE5\index.dat"
+
+CONTROL PANEL ON THE DESKTOP.
+On The Desktop, Right Click Your Mouse Then Choose "New | Folder". Name The Folder As "ControlPanel. {21EC2020-3AEA-1069-A2DD-08002B30309D}" Without The "Quote Things. And Now You Can Access The Control Panel More Faster Then Before.
+
+CHANGING INTERNET EXPLORER ICON NAME.
+Open Registry Editor Then Go To : "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\CLSID". You Can See A Few Key Below It.
+
+Now Go To This Key {871C5380-42A0-1069-A2EA-08002B30309D}, Double Click At The Default Value On The Right, Enter Whatever Name You Like.
+
+REMOVING USERNAME IN THE STARTMENU
+Open Registry Editor Then Go To : "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer".
+On The Right, Make A New Entry With Right Click On Your Mouse Then Choose "New | DWORD Value" Change The Entry's Name Into "NoUserNameInStartMenu", Double Click In The New Entry And Fill The "Value Data" With "1". Press OK, Exit From The Registry Editor. Restart Your Computer.
+
+INTERNET EXPLORER LIGHTING-FAST STARTUP.
+Isn't it annoying when you want to go to a new website, or any other site but your homepage, and you have to wait for your 'home' to load? This tweak tells Internet Explorer to simply 'run', without loading any webpages. (If you use a 'blank' page, that is still a page, and slows access. Notice the 'about:blank' in the address bar. The blank html page must still be loaded..). To load IE with 'nothing' [nothing is different than blank]:
+1. Right-click on any shortcut you have to IE
+[You should create a shortcut out of your desktop IE icon, and delete the original icon]
+2. Click Properties
+3. Add ' -nohome' [with a space before the dash] after the endquotes in the Target field.
+4. Click OK
+Fire up IE from your modified shortcut, and be amazed by how fast you are able to use IE!
+
+INTERNET EXPLORER SPEED UP.
+Edit your link to start Internet Explorer to have -nohome after it. For Example: "C:\Program Files\Internet Explorer\IEXPLORE.EXE" -nohome
+This will load internet explorer very fast because it does not load a webpage while it is loading. If you want to go to your homepage after it is loaded, just click on the home button.
+
+SPEED UP BROWSING WITH DNS CATCH.
+when you connect to a web site your computer sends information back and forth, this is obvious. Some of this information deals with resolving the site name to an IP address, the stuff that tcp/ip really deals with, not words. This is DNS information and is used so that you will not need to ask for the site location each and every time you visit the site. Although WinXP and win2000 has a pretty efficient DNS cache, you can increase its overall performance by increasing its size. You can do this with the registry entries below:
+************begin copy and paste***********
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters]
+"CacheHashTableBucketSize"=dword:00000001
+"CacheHashTableSize"=dword:00000180
+"MaxCacheEntryTtlLimit"=dword:0000fa00
+"MaxSOACacheEntryTtlLimit"=dword:0000012d
+************end copy and paste***********
+make a new text file and rename it to dnscache.reg. Then copy and paste the above into it and save it. Then merge it into the registry.
+
+START IEXPLORER WITH EMPTY BLUE SCREEN.
+Set your default page to about:mozilla and IE will show a nice blue screen upon startup.
+
+SPEED UP DETAILED VIEW IN WINDOWS EXPLORER.
+If you like to view your files in Windows Explorer using the "Details" view here is a tweak to speed up the listing of file attributes: Viewing files in Windows Explorer using the "Details" mode shows various attributes associated with each file shown. Some of these must be retrieved from the individual files when you click on the directory for viewing. For a directory with numerous and relatively large files (such as a folder in which one stores media, eg: *.mp3's, *.avi's etc.)
+
+Windows Explorer lags as it reads through each one. Here's how to disable viewing of unwanted attributes and speed up file browsing:
+1. Open Windows Explorer
+2. Navigate to the folder which you wish to optimize.
+3. In "Details" mode right click the bar at the top which displays the names of the attribute columns.
+4. Uncheck any that are unwanted/unneeded.
+Explorer will apply your preferences immediately, and longs lists of unnecessary attributes will not be displayed. Likewise, one may choose to display any information which is regarded as needed, getting more out of Explorer.
+
+WEB PAGES SLOWS DOWN, FIX.
+The tweak is simple. Beside the QoS and others around the Internet for the new XP OS, I found out that native drivers sometimes slow you down (cable and xDSL users). So if you have applied all tweaks and you are still having slow downs try reinstalling your NICs drivers. The difference is noticeable. My web pages now load almost instantly where they used to take even a minute!
+
+FIX IE 6 SLOWDOWNS AND HANGS.
+1. Open a command prompt window on the desktop (Start/Run/command).
+2. Exit IE and Windows Explorer (iexplore.exe and explorer.exe, respectively, in Task Manager, i.e - Ctrl-Alt-Del/Task Manager/Processes/End Process for each).
+3. Use the following command exactly from your command prompt window to delete the corrupt file:
+C:\>del "%systemdrive%\Documents and Settings\%username%\Local
+Settings\Temporary Internet Files\Content.IE5\index.dat"
+4. Restart Windows Explorer with Task Manager (Ctrl-Alt-Del/Task Manager/Applications/New Task/Browse/C:\Windows\explorer.exe[or your path]) or Shutdown/Restart the computer from Task Manager.
+
+SPEED UP WEB BROWSING.
+Iv'e personally found a dramatic increase in web browsing after clearing the Windows XP DNS cache. To clear it type the following in a command prompt: ipconfig /flushdns.
+
+ALLOW MORE THAN 2 SIMULTANEOUS DOWNLOADS ON IEXPLORER 6.
+This is to increase the the number of max downloads to 10.
+1. Start Registry Editor (Regedt32.exe).
+2. Locate the following key in the registry:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings
+3. On the Edit menu, click Add Value , and then add the following registry values:
+"MaxConnectionsPer1_0Server"=Dword:0000000a
+"MaxConnectionsPerServer"=Dword:0000000a
+4. Quit Registry Editor.
+
+IPV6 INSTALLATION FOR WINDOWS XP.
+This protocol is distined to replace the Internet Protocal Version 4 used by Internet Explorer it uses hexadecimal ip addresses instead of decimal example (decimal ip 62.98.231.67) (hexadecimal IP 2001:6b8:0:400::70c)
+To install To install the IPv6 Protocol for Windows XP:
+Log on to the computer running Windows XP with a user account that has local administrator privileges. Open a command prompt. From the Windows XP desktop, click Start, point to Programs, point to Accessories, and then click Command Prompt. At the command prompt, type: ipv6 install
+For more information on IPv6, visit the site below:
+CODE
+http://www.microsoft.com/windowsxp/pro/techinfo/administration/ipv6/default.asp
+
+
+ANOTHER WAY TO FIX IEXPLORER 6 SLOW PAGES LOADED.
+Here's an easier way to get to index.dat file as addresse in another tweak submitted here.
+1. click on Internet Explorer
+2. go to to your root dir (usually C:)
+3. open Documents and Settings folder
+4. open "your username folder"
+5. open UserData
+6. **close IE if you have it open**
+rename index.dat to index.old
+logoff and log back on (don't need to restart) open up IE and go to a web page or site that always seemed to load slowly. It should load a lot more quickly now. NOTE. Always rename or backup .dat or other system files before deleting.
+
+EASY WAY TO ADD THE ADMINISTRATOR USER TO THE WELCOME SCREEN.
+Start the Registry Editor Go to:
+HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft \ Windows NT \ CurrentVersion \ Winlogon \ SpecialAccounts \ UserList \
+Right-click an empty space in the right pane and select New > DWORD Value Name the new value Administrator. Double-click this new value, and enter 1 as it's Value data. Close the registry editor and restart.
+
+DRIVE ICONS.
+To set the icon of any drive (hard disk, cd rom or anything else) with a letter (C:\ etc.), run REGEDIT (Start -> Run -> regedit)
+Navigate to:
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer
+If one doesn't already exist, create a new KEY called "DriveIcons". Under this key, create a new key with the letter of your drive. I.e. C for your C:\ drive.
+To change the icon for that drive, create a key inside that one called DefaultIcon and set the path of (Default) to the location of your icon
+eg C\DefaultIcon\ then (Default) = D:\Documents\C Drive Icon.ico
+To change the name of that drive, create a key in the drive letter one (eg C\) called DefaultLabel and set the (Default) to what you want the drive to be called. This is useful if you want to assign a long name to the floppy drive.
+
+CHANGING OEM REGISTRATIONS.
+Have you used someone's new Hewlet Packard with their OEM version of Windows XP? You've seen that HP has their own icon in the Start Menu, underneath Run, that goes to their Help Site. Now, you can have your icon that does anything you want (website, program, etc) and says anything you want. Basically, you are "branding" Windows XP (Home or Pro), great for if you are a computer builder and sell them, or you just want to make Windows XP your own. It involves Regedit.
+1. Start up Notepad and creat a new registry file (*.reg) and copy and paste the following into it:
+Windows Registry Editor Version 5.00
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}]
+@="YOUR COMPANY NAME"
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\DefaultIcon]
+@="YOUR ICON HERE"
+00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,68,00,70,00,6c,00,69,00,\
+6e,00,6b,00,2e,00,69,00,63,00,6f,00,00,00
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\InProcServer32]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,73,00,68,00,\
+64,00,6f,00,63,00,76,00,77,00,2e,00,64,00,6c,00,6c,00,00,00
+"ThreadingModel"="Apartment"
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\Instance]
+"CLSID"="{3f454f0e-42ae-4d7c-8ea3-328250d6e272}"
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\Instance\InitPropertyBag]
+"CLSID"="{13709620-C279-11CE-A49E-444553540000}"
+"method"="ShellExecute"
+"Command"="YOUR TITLE HERE"
+"Param1"="YOUR FUNCTION HERE"
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\shellex]
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\shellex\ContextMenuHandlers]
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\shellex\ContextMenuHandlers\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}]
+@=""
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\shellex\MayChangeDefaultMenu]
+@=""
+[HKEY_CLASSES_ROOT\CLSID\{2559a1f6-21d7-11d4-bdaf-00c04f60b9f0}\ShellFolder]
+"Attributes"=dword:00000000
+2. Edit where it says YOUR ICON HERE to a path to an icon (ex. c:\\icon.ico), it must be 24x24 pixels and in *.ico format. Use double back slash for path names.
+3. Edit both places where it says YOUR TITLE HERE to what you want it to say in the Start Menu (ex. Elranzer Homepage).
+4. Edit where it says YOUR FUNCTION here to what you want it to do when you click it, it can be anything... your website, a local HTML document, a program, a Windows funtion, whatever your imagination can provide (ex. http://www.shareordie.com).
+5. Save this file as brand.reg, double-click it to enterin your information, and refresh Explorer (log off/on) to see it in the Start Menu!! This works in both Home and Professional (and probably 64-Bit Professional) Editions!
+
+ORIGINAL WALLPAPERS.
+This is more of a fun tweak than it is useful. Go to run, type regedit press ok. when that comes up go to HKEY_CURRENT_USER>Control Panel>Desktop
+Now find the orginalwallpaper, right click and select modify.In the text box type the path to the file you want to be your orginal desktop wallpaper.
+
+DELETING My eBooks AND SPECIALS FOLDER IN MY DOCUMENTS.
+Click Start, then Run and type: regsvr32 /u mydocs.dll
+then delete them.
+
+DISABLE WINDOWS PICTURE AND FAX VIEWER.
+By default, Windows XP opens all picture files (gif,jpg,...) with the included Windows Picture and Fax Viewer no matter what other picture viewers you have installed. To disable the Windows Picture and Fax Viewer, unregister shimgvw.dll. This can be done from command prompt: regsvr32 /u shimgvw.dll
+
+REMOVE PAST ITEMS ICONS IN TASKBAR.
+Some times When you check your TasKbar properties or when you hide or unhide icons you can see old icons from Uninstalled or old programs you dont have anymore. This Tweak will help you how to get rid of this problem Thanks to leobull of Xperience.or How To clear the Past Items or Icons list in the TaskBar, perform the following steps:
+1.Open Regedit Navigate to:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TrayNotify
+2.Delete the IconStreams and PastIconsStream values
+3.Open Task Manager, click the Processes tab, click Explorer.exe , and then click End Process .
+4.In Task Manager, click File , click New Task , type explorer , and then click OK .
+
+LOCKING COMPUTERS.
+To lock a computer in XP, as you probably know, you press "L" while holding down "Windows Logo" key on your keyboard. However, if you would like to lock a computer remotely, for example via "Remote Administrator", you don't have this ability. What you can do instead, is to create a shortcut on remote computer's desktop where Target %windir%\System32\rundll32.exe user32.dll,LockWorkStation Start In %windir%
+
+ADMINISTRATOR IN WELCOME SCREEN.
+When you install Windows XP an Administrator Account is created (you are asked to supply an administrator password), but the "Welcome Screen" does not give you the option to log on as Administrator unless you boot up in Safe Mode.
+First you must ensure that the Administrator Account is enabled:
+1 open Control Panel
+2 open Administrative Tools
+3 open Local Security Policy
+4 expand Local Policies
+5 click on Security Options
+6 ensure that Accounts: Administrator account status is enabled Then follow the instructions from the "Win2000 Logon Screen Tweak" ie.
+1 open Control Panel
+2 open User Accounts
+3 click Change the way users log on or log off
+4 untick Use the Welcome Screen
+5 click Apply Options
+You will now be able to log on to Windows XP as Administrator in Normal Mode.
+
+BUGFIXES.
+This is a strange bug in Windows XP Pro but it can and does happen to everyone. When you open the My Computer screen and your Documents folder is missing but all the other users folders are there try this tweak.
+STEP 1:
+START > RUN > REGEDIT > HKEY_LOCAL_MACHINE / Software / Microsoft / Windows / Current Version / Explorer / DocFolderPaths
+Once you click the DocFolderPaths folder you should see all the user's folders.
+STEP 2:
+Add a new string value
+Value Name: your user name
+Value Data: the path to your docs folder ( ex. C:\Documents and Settings\your docs folder )
+Exit Registry editor and open my computer, your docs folder should now be visable.
+
+MOUSE POINTERS.
+It seems that even without pointer precision disabled, the mouse under XP is still influenced by an acceleration curve. This is especially noticeable in games. To
+
+completely remove mouse acceleration from XP, you will need to go into the registry and adjust the SmoothmouseXYCurve values. Here is how its done.
+1. Click Start button
+2. Select Run
+3. Type 'regedit' in the open textbox
+4. Open the tree 'HKEY_CURRENT_USER', select control panel, then select mouse
+5. Right clicking, modify the SmoothMouseXCurve and SmoothMouseYCurve hexidecimal values to the following:
+SmoothMouseXCurve:
+00,00,00,00,00,00,00,00
+00,a0,00,00,00,00,00,00
+00,40,01,00,00,00,00,00
+00,80,02,00,00,00,00,00
+00,00,05,00,00,00,00,00
+SmoothMouseYCurve:
+00,00,00,00,00,00,00,00
+66,a6,02,00,00,00,00,00
+cd,4c,05,00,00,00,00,00
+a0,99,0a,00,00,00,00,00
+38,33,15,00,00,00,00,00
+If done correctly, you will notice you are holding a markedly more responsive mouse.
+
+HIDDEN WINDOWS XP ICONS.
+Windows XP Pro and Home contains icons for folders and files that cannot normally be seen, you can select to view hidden files from the folder options menu, but there are still some that remain hidden.
+You can set windows to view these files as normal hidden files, so that when you use the view hidden files and folders toggle from the folder options menu that these will be turned on/off along with the normal hidden files.
+These files are usually system files and should not be altered/deleted unless you really know what you are doing, if you don't yet still wish to change them I might suggest that you create back-ups of your system first.
+I will personally accept no responsibility for any damage caused by using this tweak. To view the hidden files you need to open up regedit, if you are not sure how to do this, select run from the start menu and type in 'regedit' without the apostrophe's. In the regedit window, expand out the groups by clicking on the '+' next to the name in the left hand column of regedit, and navigate to the below address.
+HKEY_CURRENT_USER \SOFTWARE \MICROSOFT \WINDOWS \CURRENTVERSION \EXPLORER \ADVANCED
+when you have clicked the advanced folder on the left pane, look down the list at the titles in the right hand pane, one of those titles is 'ShowSuperHidden'
+double click the title and in the window that appears set the value to equal 1 to show the super hidden files and 0 to hide them.
+
+XP HOME ADVANCED FILE PERMISSIONS.
+This is actually an addition to my previous post entitled "Get XP Pro file security with XP Home". In the aforementioned post I outlined how to access
+*Advance file Permissions* on NTFS file systems for XP Home simply by booting into *Safe Mode*, rt-clicking any file or folder, and navigating to the *Security tab*. This gives the user the ability to allow or deny read, write, execute, read & write, display contents, full-control, iheritance, and take ownership permissions, with many more options available to apply to different users and groups stored on the computer. Well, you don't have to do this in *Safe Mode* (XP Home). Although it is a little less intuitive, you can simply go to your command prompt - Start>All Programs>Accessories>Command Prompt. Now type "cacls" in the window (without the quotes). This gives you the ability to add, remove or modify file permissions on files and folders through the command prompt. Type "cacls /?" for help on different options and variables. You do not need to be in safe mode to use this so it makes it a little quicker than using the safe mode security tab GUI. Remember - this only applies to NTFS. Here also is a very useful link to find a lot of extras and tweaks straight from the horse's mouth - the Microsoft Resource Center. You will find a lot of very useful web-based extra's here, most of them left unknowing to the general public - such as, "Online Crash Analysis" - a site that looks like Windows Update but you can upload your crash "dump logs" (when you get those system or application crash error reports). Microsoft will then analyze the log file and tell you some more info about WHY the system crashed (ie. faulty hardware/software/conflicts, etc).
+
+FLASHGET :BYPASSING 8 MAX SIMULTANEOUS JOBS.
+Users of Flash get will notice that the maximum number of file splits is 8. This number can be increased by the tweak below:
+1. Run regedit.
+2. Navigate to [HKEY_CURRENT_USER\Software\JetCar\JetCar\General\]
+3. Right Click -> Add String Value.
+4. Name as MaxSimJobs -> Set the value as what ever number you want.
+After a restart you should be able to download with more file splits.
+
+OUTLOOK EXPRESS WINDOWS TITLE TWEAKS.
+Change the window title of Outlook Express to anything you want!
+In regedt32 and navigate to HKEY_CURRENT_USER\Identities\{EE383506-901D-43C6-8E40-9A61901DF7CC}\Software\Microsoft\Outlook Express\5.0. Add a new string key called WindowTitle and make its value the desired window title. Then close the registry editor, and restart Outlook Express (if it's running.) Your new title now shows up in the title bar!
+
+WINDOWS MEDIA PLAYER 9.
+When installing WMP 9 it leaves a watersign on your desktop. You can easily remove this with: regedit:
+HKey_Local_Machine\SOFTWARE\microsoft\system certificates\CA\certificates\FEE449EE0E3965A5246F00E87FDE2A065FD89D4
+HKey_Local_Machine\software\microsoft\system certificates\ROOT\certificates\2BD63D28D7BCD0E251195AEB519243C13142EBC3
+Remove both lines and restart computer.
+
+CHANGING THE WINDOWS MEDIA PLAYER TITLEBAR.
+This is a per-user tweak. Open RegEdit.
+Browse to the following key:
+HKEY_USERS\S-1-5-21-xxxxxxxxx-xxxxxxxxx-xxxxxxxxxx-xxxx\Software\Policies\Microsoft\WindowsMediaPlayer
+(the x's will vary from computer to computer , it's the key without the "_Classes" at the end) Create the following String, "TitleBar" , the value of this will now become the TitleBar of Windows Media Player.
+
+AUTO DELETE TEMPORARY FOLDER.
+First go into gpedit.msc
+Next select -> Computer Configuration/Administrative Templates/Windows Components/Terminal Services/Temporary Folder
+Then right click "Do Not Delete Temp Folder Upon Exit"
+Go to properties and hit disable. Now next time Windows puts a temp file in that folder it will automatically delete it when its done! Note from Forum Admin: Remember, GPEDIT (Group Policy Editor) is only available in XP Pro.
+
+CLEANUP STARTUP ITEMS IN MSCONFIG.
+Do you ever uninstall programs and they are still listed under startup items in msconfig? Personally, I found myself with 30 such items from old installs. Microsoft leaves you no way to clean up this list, but have no fear, I have figured it out for you.
+1. Open MSconfig and click on the startup items tab
+2. Open Regedit and naviate to HKLM/Software/Microsoft/Sharedtools/MSconfig/startupreg
+3. Compare the list of registry keys under startup reg with their counterparts in msconfig.
+4. Delete the keys which are no longer valid.
+5. Voila! You've cleaned up msconfig.
+
+REMOVING SERVICES DEPENDENCIES.
+This will allow you to disable a service or uninstall it from your system without effecting another service that depends on it. Here's how you do it
+1. After you have set your services the way you want them and you have disabled/uninstalled something that another services depends on, run "regedit"
+2. Under HKEY_LOCAL_MACHINE\System\find the service that will not function, do to another service being disabled/uninstall (found in ControlSet001\Services, ControlSet002\Services, and CurrentControlSet\Services)
+3. Once you have found the service right-click on the string value, "DependOnService,"and modify
+4. You should now see a list of services that it is dependent on. Simply delete the service that you have disabled/uninstalled
+5. Restart your computer and your ready to go Disclaimer REMEMBER TO BACKUP YOU REGISTRY FIRST I'm not totaly sure if this will have any negative effects on your system. I used this method after uninstalling "Netbios over Tcpip" from my system completely, so that my Dhcp service would function and I have had NO negative effects on my system.
+
+ANOTHER WAY TO DELETE HIDDEN DEVICES.
+You can view and delete or modify hidden devices by:
+1. Openning Device Manager. (I usually right-click on My Computer, select Properties, select the Hardware tab, then select Device Manager.)
+2. Select View and check "Show hidden devices"
+3. Hidden devices will appear below with the others and can be modified.
+
+HOW TO GET "My Briefcase" IN WINDOWS XP.
+go to C:\WINDOWS\system32\dllcache. look for a file named "syncapp".
+double click it. an icon should appear on your desktop that says "My Briefcase". double click it. it will come up with this window that tells you how to use it.
+
+TURN NUMLOCK ON AT LOGON.
+NumLock does not toggle on by default (system-wide), even if you have it set in your PC's BIOS, because of XP's multi-user functionality. Guess Microsoft doesn't know everyone actually turns it on, which should be reason enough for what acts as "default"...
+Anyway, you can hack the Windows Registry to change this behavior, or run a script at logon to turn NumLock on.
+1. To enable NumLock through the Registry:
+* Open Windows' Registry Editor (START > RUN, type "REGEDIT").
+*. Navigate to HKEY_USERS\.Default\Control Panel\Keyboard.
+*. Change the value for InitialKeyboardIndicators from 0 to 2.
+2. To enable NumLock using a script, see this MS Knowledgebase article for complete instructions:
+CODE
+http://support.microsoft.com/directory/article.asp?ID=KB;EN-US;Q262625
+
+Option 1 is the quicker method, but if you have more than one user on your system and one or more don't want NumLock on (stranger things have been known of), then option 2 is the way to go since it allows you to only attach the script to specific users.
+
+FREE DISK SPACE BY DELETING RESTORE POINTS.
+Start button-all programs-accessories-system tools-cleanup-more options. You will have the option of deleting your restore points.When your done creat one
+restore point as a back up.
+
+HOW TO REAL GET RID OF UNNECESSARY SOFTWARE
+to uninstall things like msn messenger and other hidden installs thru add remove programs, do this: find sysoc.inf (you might have to enable "show hidden files" and "show hidden/protected system folders" in explorer) and open it in notepad replace all ",hide" with "," (both with out quotes) which is easiest to do with the replace all command under edit then in add/remove programs under add/remove windows compnents and whole new list of things to uninstall and add are now listed (such as internet explorer)
+
+HAVING PROGRAMS RUN WHEN WINDOWS LOADS SLOWS DOWN YOUR STARTUP.
+There are two ways do disable programs that may be in your startup (like icq, messanger,) The easiest is to do the following:
+1. start --> run --> msconfig
+2. Click on the "startup" tab (furthest right)\
+3. Unclick any items you don't want to load when windows starts.
+The second is by deleting registry entrys, this can be done the following way:
+1. Start --> run --> regedit
+2. Navigate to : HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+3. Delete any entry's that you don't want to load up
+
+TURN OFF INDEXING TO SPEED UP XP.
+Windows XP keeps a record of all files on the hard disk so when you do a search on the hard drive it is faster. There is a downside to this and because the computer has to index all files, it will slow down normal file commands like open, close, etc. If you do not do a whole lot of searches on your hard drive then I suggest turnning this feature off:
+1. Control Panel
+2. Administrative Tools
+3. Services
+4. Disable Indexing Services
+
+HALF LIFE AND WINDOWS XP.
+1. How to recover from incompatible drivers
+Before you install new drivers set a system restore point. Start>All programs>Accessories>system tools>system restore
+After your new drivers don't work reset your computer. Press F8 repeatedly as soon as the BIOS screen disappears, and before the Windows XP screen appears. Select safe mode. Use system restore again to undo your mess.
+2. Video Drivers
+The NVidia drivers that come with XP do not allow you to run Half Life in OpenGL. Update to the newest drivers.
+Despite the fact that they are not official drivers, 22.50 was the only set which worked
+3. Sound Drivers
+Use windows update to update Creative drivers.
+4. Fixing screen flicker
+Windows XP defaults to 60Hz for games. A fix is available here:
+CODE
+http://www.fileplanet.com/dl/dl.asp?/planetquake/ztn/nvreffix-setup.exe
+
+Select "set: ev ery resolution to monitor's maximum supported rate"
+5. Fixing lag
+If you are having trouble with lag, try disabling the windows XP firewall. Go to control panel>network connections. Select connection, right click, properties, advanced, untick the firewall.
+6. Mouse
+You can improve your mouse smoothness for games.
+Control panel>mouse>hardware>properties>advanced
+Change the sample rate to a higher one, eg. 200
+
+REGISTRY METHOD FOR REMOVING STARTUP ITEMS.
+I prefer to use MSCONFIG selective startup to troubleshoot. To remove entries for good, open the registry:
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RUN and HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\RUN
+Delete entries of unwanted startup daemons and tray procedures.
+
+DISPLAY MESSAGE ON STARTUP.
+Start regedit, if you are unfamiliar with regedit please see our FAQ.
+Navigate to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+Modify the key legalnoticecaption with what you want to name the window.
+Modify the key legalnoticetext with what you want the window to say. Restart.
+
+REMOVE THE DEFAULT IMAGE VIEWER IN WINDOWS ME/XP.
+This tweak works in Windows Me/XP, I have not try it in Windows NT/2000 yet, because i don't have that OS, you can try it if you have.
+*This tweak does not work in Windows 95/98
+To remove the Windows default Image Viewer, first:
+Click Start Menu
+Select Run menu
+Type "cmd", (for Windows Me, type "command")
+Then type "regsvr32 /u shimgvw.dll" to unregister this dll. This will stop it from previewing any picture that it support, e.g. JPEG, Bitmap, GIF....
+* Before perform this tweak, make sure that you have the alternative Image Viewer installed in you windows e.g. ACDsee, FireGraphics... because once you do this tweak without that application, you can't open and view your image anymore! So, to undo it, type "regsvr32 shimgvw.dll" in command prompt.
+
+SPEED UP BOOT BY DISABLING UNUSED PORTS.
+You may have tried many tweaks like modifying windowsXP start-up applications, prefetches, unload DLLs method,etc. And yes those methods do work for me.
+I have just accidentally found out another way to give you an extra boost in windowsXP's boot performance. This is done by disabling your unused devices in
+Device Manager. for example, if you don't have input devices that are connected to one of your USBs or COM ports, disabling them will give you an extra perfromance boost in booting. Go to Control Panel -> System -> Hardware tab -> device manager Disable devices that you don't use for your PC and then restart.
+
+CLEAR UNWANTED ENTRIES FROM ADD/REMOVE PROGRAMS.
+Run the Registry Editor (REGEDIT).
+Open HKEY_LOCAL_MACHINE\ SOFTWARE\ Microsoft\ Windows\ CurrentVersion\ Uninstall Remove any unwanted keys under "Uninstall."
+
+CLICKING * .AVI FILES ON EXPLORER CAUSING 100% CPU USAGE.
+Well windows seem to have a REALLY big problem when it comes to reading AVI files. It seems that when you click on an AVI file in explorer, it'll try to read the entire AVI file to determine the width,height, etc. of the AVI file (this is displayed in the Properties window). Now the problem with Windows is that if you have a broken/not fully downloaded AVI file that doesnt contain this info, Windows will scan the entire AVI file trying to figure out all these properties which in the process will probably cause 100% CPU usage and heavy memory usage. To solve this problem all you have to do is the following:
+1. Open up regedit
+2. Goto HKEY_CLASSES_ROOT\SystemFileAssociations\.avi\shellex\PropertyHandler
+3. Delete the "Default" value which should be "{87D62D94-71B3-4b9a-9489-5FE6850DC73E}"
+Voila! Please not that this will no longer provide you with the windows properties displaying the AVI file information such as width, height, bitrate etc. But its a small price to pay for saving you resources.
+NOTE: Please use caution when using regedit. Improper usage may cause windows to behave imcorrectly. Also, I cannot be held resposible. Backup your registry first.
+
+CD ROM STOPS AUTOPLAYING/AUTORUN.
+And the AutoPlay Tab has disappeared in My Computer, Devices With Removable Storage, Right Click on CDROM, Properties.
+Solution: The service: "Shell Hardware Detection" has been set to Manual or Disabled. Go to Control Panel, Administrative Tools, Services. Return this service to "Automatic".
+
+SHUTDOWN XP FASTER 1.
+Like previous versions of windows, it takes long time to restart or shutdown windows xp when the "Exit Windows" sound is enabled. to solve this problem you
+must disable this useless sound. click start button then go to settings -> control panel -> Sound,Speech and Audio devices -> Sounds and Audio Devices -> Sounds, then under program events and windows menu click on "Exit Windows" sub-menu and highlight it.now from sounds you can select,choose "none" and then click apply and ok. now you can see some improvements when shutting down your system.
+
+SHUTDOWN XP FASTER 2.
+Start Regedit.
+Navigate to HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control.
+Click on the "Control" Folder.
+Select "WaitToKillServiceTimeout"
+Right click on it and select Modify.
+Set it a value lower than 2000 (Mine is set to 200).
+
+EASIEST WAY TO DELETE PREFETCH.
+1. Open notepad.exe, type del c:\windows\prefetch\*.* /q (without the quotes) & save as "delprefetch.bat" in c:\
+2. From the Start menu, select "Run..." & type "gpedit.msc".
+3. Double click "Windows Settings" under "Computer Configuration" and double click again on "Startup" in the right window.
+4. In the new window, click "add", "Browse", locate your "delprefetch.bat" file & click "Open".
+5. Click "OK", "Apply" & "OK" once again to exit.
+6. Reboot your computer.
+
+SPEED UP MENU DISPLAY.
+When using the start menu the you will notice a delay between different tiers of the menu hierarchy. For the fastest computer experience possible I recommend changing this value to zero. This will allow the different tiers to appear instantly. Start Regedit. If you are unfamiliar with regedit please refer to our FAQ on how to get started.
+Navigate to HKEY_CURRENT_USER\Control Panel\Desktop
+Select MenuShowDelay from the list on the right.
+Right on it and select Modify.
+Change the value to 0.
+Reboot your computer.
+
+16 COLOUR ICONS.
+If you select 16bit mode for graphics your icons will revert to using 8bit (16 color) icons. Yuck! Change the following registry setting to:
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics] "Shell Icon BPP"="16" "Shell Icon Size"="32" Setting the BPP to 16bit will yield 65565 colors for icons.
+
+DE-CRYPT ENCRYPTED FILES ON WINDOWS XP.
+1. Login as Administrator
+2. Go to Start/Run and type in cmd and click OK.
+At the prompt type cipher /r:Eagent and press enter
+This prompt will then display:
+Please type in the password to protect your .PFX file:
+Type in your Administrator password
+Re-confirm your Administrator password
+The prompt will then display
+Your .CER file was created successfully.
+Your .PFX file was created successfully.
+The Eagent.cer and Eagent.pfx files will be saved in the current directory that is shown at the command prompt. Example: The command prompt displays
+C:\Documents and Settings\admin> the two files are saved in the admin folder. (For security concerns, you should house the two files in your Administrator folder or on a floppy disk).
+3. Go to Start/Run and type in certmgr.msc and click OK. This will launch the Certificates Manager. Navigate to Personal and right click on the folder and select All Tasks/Import. The Certificate Import Wizard will appear. Click Next. Browse to the C:\Documents and Settings\admin folder. In the Open dialog box, change the Files of Type (at the bottom) to personal Information Exchange (*.pfx,*.P12). Select the file Eagent.pfx and click Open. Click Next. Type in your Administrator password (leave the two checkboxes blank) and click Next. Make sure the Radio button is active for the first option (Automatically select the certificate store based on the type of certifcate). Click Next. Click Finish. (You'll receive a message that the import was successful). To confirm the import, close Certificates Manager and re-open it. Expand the Personal folder and you will see a new subfolder labeled Certificates. Expand that folder and you will see the new entry in the right side column. Close Certificate Manager.
+4. Go to Start/Run and type in secpol.msc and click OK. This will launch the Local Security Policy. Expand the Public Key Policies folder and then right click on the Encrypted File System subfolder and select Add Data Recovery Agent... The Wizard will then display. Click Next. Click the Browse Folders... button. Browse to the C:\Documents and Settings\admin folder. Select the Eagent.cer file and click Open. (The wizard will display the status User_Unknown. That's ok). Click Next. Click Finish. You will see a new entry in the right side column. Close the Local Security Policy.
+You, the Administrator are now configured as the default Recovery Agent for All Encrypted files on the Local Machine.
+To Recover Encrypted files: Scenario #1
+If you have completed the above steps BEFORE an existing user encrypted his/her files, you can log in to your Administrator account and navigate to the encrypted file(s). Double click on the file(s) to view the contents.
+Scenario #2
+If you have completed the above steps AFTER an existing user has already encrypted his/her files, you must login to the applicable User's User Account and then immediately logout. Next, login to your Administrator account and navigate to the encrypted file(s). Double click on the file(s) to view the contents.
+*Warning Do not Delete or Rename a User's account from which will want to Recover the Encrypted Files. You will not be able to de-crypt the files using the steps outlined above.
+
+DUMP FILES TWEAK & DISABLE DR.WATSON.
+"Dump file. A dump file stores data from memory during a system crash and can be helpful when diagnosing problems, but like a swap file, it can also expose a lot of sensitive, unencrypted data. To prevent Windows from creating the file, go to Control Panel | System. Click on the Advanced tab and then the Settings button on the Startup and Recovery pane. Set the drop-down menu under Write debugging information to (none). "Similarly, the debugging program Dr. Watson saves information when applications crash. To disable it, go to:
+HKEY_local_machine\software\Microsoft\WindowsNT\CurrentVersion\ AeDebug and set the Auto string to 0. Then use Windows Explorer to go to Documents and Settings\All Users\Shared Documents\DrWatson. Delete User.dmp and Drwtsn32.log, the insecure logs the program creates." Heed related advice from 'microsoft' regarding 'Disable Dr.Watson' first before the preceding Dr. Watson advice (go Google search.) Back up with System Restore, and go ahead. As cautious as I am, I have gladly applied these tweaks, and followed related microsot advice on Dr. Watson.
+
+Precaution: Backups All Of Your Data Before Tweaking, Not All Of The Tips I've Mentioned Above Were Tested. I Don't Responsible For Any Damages. Happy Experiments 

@@ -1,0 +1,25 @@
+How To Block Websties Without Software, block websites
+
+ Steps:
+
+1] Browse C:\WINDOWS\system32\drivers\etc
+2] Find the file named "HOSTS"
+3] Open it in notepad
+4] Under "127.0.0.1 localhost" Add 127.0.0.2 www.sitenameyouwantblocked.com , and that site will no longer be accessable.
+5] Done!
+
+-So-
+
+127.0.0.1 localhost
+127.0.0.2 www.blockedsite.com
+
+-->www.blockedsite.com is now unaccessable<--
+
+
+For every site after that you want to add, just add "1" to the last number in the internal ip (127.0.0.2) and then the addy like before.
+
+IE: 127.0.0.3 www.blablabla.com
+127.0.0.4 www.blablabla.com
+127.0.0.5 www.blablabla.com 
+
+etc

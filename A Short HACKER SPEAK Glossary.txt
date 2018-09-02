@@ -1,0 +1,228 @@
+***********************************************************************
+This article is being presented through the *StarBoard* Journal of  the 
+FlagShip/StarShip  SIGs  (Special  Interest Groups) on Delphi and GEnie 
+telecommunication networks.  Permission is hereby granted to non-profit 
+organizations only to reprint this article or pass it along electronic-
+ally as long as proper credit is given  to  both  the  author  and  the 
+*StarBoard* Journal.  
+*********************************************************************** 
+
+                    A Short 'HACKERSPEAK' Glossary
+                                 -
+   A reference to a few of the terms used by many computer hackers.
+                                 -
+  (Researched and compiled by members of the Hollywood User Group)
+                                 -
+
+arg - (argh) noun.  An argument, in the mathematical sense.
+
+automagically - adverb.  Automatically, but in a way which, for some 
+reason (for example, because it's too complicated or too trivial) the 
+speaker doesn't feel like explaining.
+
+bells and whistles - n.  Unnecessary (but often convenient, useful, 
+good-looking, or amusing) features of a program or other object. Added 
+to a bare-bones, working program.
+
+bit - n.  1) A unit of information obtained by asking a question (e.g. 
+- 'I need a few bits about Punter protocol')  2) A mental flag; 
+reminder that something should be done eventually.
+
+buffer - verb.  The act of saving or setting aside something to be done 
+later.  (e.g. - 'I'm going to buffer that and go eat now').
+
+bug - n.  A problem or mistake; unwanted property or side effect.  
+Usually of a program, but can refer to a person.  Can be very simple or 
+very complicated.  Antonym: FEATURE.
+
+bum - v.  To improve something by rearranging or removing its parts.  
+Most often done to a program to increase speed or save memory space, 
+usually at the expense of clarity.
+
+buzz - v.  Of a program, to run without visible progress or certainty 
+of finishing.  Resembles CATATONIA except that a buzzing loop may 
+eventually end.
+
+canonical - (ki NAHN i kil) adjective.  Standard, usual or ordinary way 
+of doing something.
+
+catatonia - n.  A condition in which something is supposed to happen, 
+but nothing does.  (e.g. - Nothing you type will appear on the screen.  
+It's catatonic.  Often means a CRASH has occured.)
+
+crash - 1) n.  Sudden, drastic failure.  Usually refers to a complete 
+computer system or program.  2) v.  To fail suddenly or cause to fail.  
+3) v.  Of people, to go to sleep.
+
+creeping featurism - n.  Tendency for anything complicated to become 
+even more so because people keep saying, 'Hey, it would be terrific if 
+the program had this feature, and could do this, and...'  The result is 
+a patchwork program, confusing to read, with a lot of 'neat' features.
+
+crock - n.  Said of a program that works, but in an extremely awkward 
+or cumbersome manner.
+
+crunch - v.  To process, usually in a time-consuming, complex way.  
+Example:  Performing large, repetitive numerical computations is called 
+'number crunching'.  2) v.  To reduce the size of a file (often in a 
+complicated way) to save space.
+
+dec'ed out - (decked out) adj.  Stoned, drunk (and possibly trying to 
+program, regardless).  Uncomplimentary.  Derives from the 65-- series 
+ML opcode DECrement, i.e.: decrease a value.
+
+elegant - adj.  Said of a piece of code that does the RIGHT THING in a 
+way beautiful to look at.
+
+feature - n.  An extra property or behaviour added to a program that 
+already does the job.  May or may not be useful, necessary or 
+convenient.
+
+fencepost error - n.  A mathematical 'off-by-one' error.  Most often 
+found in programs that must count loops (it will count one time too 
+many, or too few).  Term comes from the problem:  'If you build a fence 
+100 feet long with posts 10 feet apart, how many posts fo you need?'  
+Example:  Suppose you want to process an array of items x thru y.  How 
+many are there?  The correct answer is x-y+1 (not x-y, which would be 
+off by one).
+
+flavor - n. variety, kind, type.  (flavorful - adj.  Aesthetically 
+pleasing).
+
+flush - v.  To scratch, delete or destroy something.  Often something 
+superfluous or useless.
+
+fudge - v.  Perform in an incomplete, but marginally acceptable way.  
+'I fudged it, so it works.'
+
+GC - (jee see) 1) v.  To clean up, throw away useless things.  2) To 
+forget.  GC is an abreviation of the term 'Garbage Collection', the 
+common method of freeing up memory space.
+
+glitch - n.  Sudden interruption in electrical service, common sense, 
+or program function.  Usually happens only when you pray that it 
+doesn't.
+
+grovel - v.  To work interminably, examine minutely or in extreme 
+detail.
+
+gun - v.  To forcibly terminate a program.  'It was a boring display, 
+so I gunned it.'
+
+hack - n.  An appropriate application of ingenuity.  It could be a 
+quick-and-dirty bug fix, or a time-consuming and elegant work of art.  
+A clever technique.
+
+hack value - n.  The motivation for expending effort and time toward a 
+seemingly pointless goal, the point being the resulting hack.
+
+hack attack - n.  Period of greatly increased hacking activity.  Not to 
+be confused with a Mac-Attack.
+
+hacker - n.  1) One who greatly enjoys learning the details of a 
+computer system and how to stretch their capabilities (as opposed to 
+REAL USERS who learn only the minimum amount necessary).  2) One who 
+programs enthusiastically, rather than just theorizing about it.  3) 
+One capable of appreciating HACK VALUE.  4) An expert of any kind  5) A 
+malicious or inquisitive meddler (in the case of a 'system hacker' or a 
+'password hacker').
+
+inc it up - (also 'incing') v.  Specifically related to studying, 
+reading, or learning ML.  Derives from the 65-- series ML instruction 
+INCrement a value; i.e. increase it.
+
+jock - n.  Programmer characterized by the large, cumbersome, 
+brute-force programs he/she writes.  The programs may work, but slowly, 
+inelegantly, or in an ugly way.
+
+kludge - (kloog)  1) n.  Clever programming trick, most often to fix a 
+bug.  Efficient, but maybe unclear.  2) v.  To insert a kludge into a 
+program (to fix a bug or add a feature).
+
+magic - adj.  Something as yet unexplained or too complex to imagine.
+
+M&M's - n.  Mental and Midget; i.e. Mental Midget.  Uncomplimentary 
+term applied most often to 'system hackers' who intrude for disruptive 
+or destructive purposes (like to crash BBS's).
+
+misfeature - n.  A FEATURE that eventually turns out to be more trouble 
+than it was worth, possibly because it is inadequate for a new user or 
+situation that has evolved.  Misfeatures are different from bugs or 
+side-effects in that they are often more basic to the program design 
+and, at one time, were carefully planned.
+
+moby - 1) adj.  Immense, complex, or impressive.  2) n.  Total size of 
+a computers address space.
+
+mode - n.  A general state.  Examples:  DAY MODE - state a person is in 
+when s/he is working days and sleeping nights.
+
+mumble - interjection.  Said when the correct response is too 
+complicated to put into words or has not been thought out.  Can 
+indicate a reluctance to enter a long discussion.
+
+mumblage - n.  The subject matter of one's mumbling.  Replaces 'all 
+that stuff'.
+
+nop around (or nopping) - v.  Hanging out; not doing much; not 
+programming.  Derives from the 65-- series ML instruction code 'NOP' 
+(No OPeration).
+
+obie (or o.b.) - n.  Derives from a pun with the word 'OverByte'.  
+Usually relates to a ML routine that doesn't work because of some 
+small mistake, possibly an incorrect addressing mode or even a typing 
+error.  Most often one or two bytes wrong.
+
+patch - 1) n.  Piece of code intended as a quick-and-dirty remedy to a 
+BUG or MISFEATURE.  2) v.  To fix something temporarily; insert a patch 
+into a piece of code; make the main program machine-specific.
+
+punt - v.  To give up; decide not to do.
+
+rave - v.  1) To persist in discussing something.  2) To speak 
+authoritatively about that which one knows very little.  3) To 
+proselytize.
+
+real user - n.  A commercial user; a non-hacker who uses computer 
+applications only.
+
+Real World, The - n.  1) Places where programs have only business 
+applications.  2) Institutions such as IBM.  3) The location of 
+non-programmers and non-programming activity.  The first two 
+definitions are uncomplimentary; the third is not.
+
+Right Thing, The - n.  that which is obviously the appropriate thing to 
+use, do, say, etc.
+
+rude - (rood or roo-day) adj.  Programs badly written or functionally 
+poor.
+
+sacred - adj.  Reserved for the exclusive use of something.  Usually 
+refers to memory location or register that shouldn't be used because 
+what is stored there must not change.
+
+slurp - v.  To read a large data file into memory before using or 
+processing data.
+
+smart - adj.  Said of a program (or something) that does THE RIGHT 
+THING.
+
+SMOP - n.  An acronym for a 'Small Matter Of Programming'.  A piece of 
+code that would not at all be hard to write, but would take a very long 
+time because of its size.  Not worth the trouble.
+
+snail mail - n.  Mail sent via Post Office, rather than electronically.
+
+software rot - n.  Hypothetical disease that causes working programs to 
+stop working when unused for a period of time.
+
+tense - adj.  Of programs, very clever and efficient.  A tense 
+programmer produces tense code.
+
+vanilla - adj.  Standard, usual, or ordinary FLAVOR.
+
+zero - v.  1) To set a bit or variable to zero.  2) To erase, or 
+discard all data from.
+
+zorch - v.  1) To move quickly.  2) Influences.  3) Energy or ability.
+                                                                                                                                                                                                                                                                                                                                                                                                

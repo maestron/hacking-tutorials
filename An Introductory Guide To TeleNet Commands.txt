@@ -1,0 +1,41 @@
+
+
+                   An Introductory Guide To TeleNet Commands
+     I don't know how many of you use TeleNet to call this system (or other
+systems) but I thought this might come in handy for those that do.
+     Some basic info about TeleNet commands.  To enter a TeleNet you must be at
+the TeleNet prompt "@".  You can get there two ways:
+1)  When you first dial TeleNet you will be at the prompt
+2)  When connected to a system via TeleNet you can return to TeleNet
+    command mode by typing "<CR>@<CR>" (See note A.)
+     Once you get to the prompt here are some of the commands available to you
+and a brief description of what they do.
+ Command           Function
+-------------------------------------------------------------------------
+ C xxxxxxx<CR>     Connects you to a specific host or terminal.
+ STAT<CR>          Display network port address.
+ FULL<CR>          Set full duplex
+ HALF<CR>          Set half duplex
+ DTAPE<CR>         Prepares the network for bulk file transfers.
+ CONT<CR>          Return to transfer mode from command mode.
+ BYE<CR> or D<CR>  Disconnects you from the currently connected host.
+ HANGUP<CR>        Tells TeleNet to hang up the phone....
+ TERM xx<CR>       Changes your terminal type.  xx can be one of the
+                   following:
+                             D1  =  CRT's and Personal Computers
+                             B3  =  Bi-directional printers
+                             A2  =  Uni-directional printers
+                             A5  =  Slow printing terminal which
+                                    loses data on the left side
+                                    at another setting.
+                             A9  =  same as A5
+                            <CR> =  Unknown
+ MAIL or           Requests connection to Telemail.
+ TELEMAIL<CR>
+ TEST CHAR<CR>     Used to test the system if you are receiving
+                   garbled output.  Use this and look for garbled
+                   characters or patern breaks.  If you do try
+                   adjusting your parity or contact TeleNet.
+ TEST ECHO<CR>     If you feel your input to the system is being
+                   garbled by your parity or contact TeleNet.
+ TEST ECHO<CR>     If you feel your input to the system is being

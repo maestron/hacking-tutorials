@@ -1,0 +1,101 @@
+ Remove MSN Messenger from XP
+
+First of all you can try what Microsoft Suggests:
+CODE
+http://support.microsoft.com/?kbid=302089
+===================================================================
+then you may try some more ways of removing MSN.
+I am not responsible for the use or the misuse of this information.
+Use at your own risk.
+
+==================================================================
+2nd way:
+To remove MSN Messenger open your run box and copy/paste this:
+RunDll32 advpack.dll,LaunchINFSection %windir%\INF\msmsgs.inf,BLC.Remove
+Click OK, follow any instructions that may pop up, and and MSN Messenger will
+uninstall! you should be rid of the little pain forever !
+(Always easy to reload it if you decide you want it in the future.)
+
+==================================================================
+
+3rd way:
+The following method works in Windows XP Professional, but
+has not been tested on a system with SP1 installed. FYI, I've seen scripts that are
+similar to this, but fail miserably, automatically deleting other much-needed
+components! Better to do this slow and manually!
+
+1. Exit MSN Messenger by right-clicking the MSN icon in the notification area, and
+selecting Exit.
+2. Add the following registry entries, both with a DWORD value of 1:
+
+a. HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Messenger\Client\PreventRun
+b. HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Messenger\Client\PreventAutoRun
+
+3. Open a command prompt by clicking Start/Run, then typing "command" and clicking OK.
+4. Uninstall MSN Messenger by typing "rundll32 advpack.dll,LaunchINFSection %systemRoot%\INF\msmsgs.inf,BLC.Remove"
+5. Uninstall the leftover installation information file by typing
+"rundll32 setupapi,InstallHinfSection BLC.Remove 128 %systemRoot%\INF\msmsgs.inf"
+6. Allow MSN Messenger to be displayed in the Add/Remove Windows Components dialog
+in the future (if it pops up again!)
+by typing "notepad.exe %systemRoot%\INF\sysoc.inf" and deleting the word "hide" from the
+line that starts with "msmsgs=".
+It MAY be possible to skip to this step directly and perform the uninstallation directly from
+the Add/Remove Windows Components dialog, but that method MAY leave unwanted
+components and has not been thoroughly tested.
+7. Cross your fingers and reboot! You will probably get a message asking you to confirm the
+removal of some leftover files. Click OK.
+
+=====================================================================
+
+4th way:
+There Is a way to uninstall Messenger cleanly. I don't know if these steps apply for Home version.
+1. Control PanelAdd Remove Programs click on "add emove windows components" on the left hand side.
+In the box that pops up...scroll down to the bottom and highlight "windows messenger" then UNcheck the box.
+2. Hit next and let the uninstall complete. (it's not a very obvious un-install) When it's, done make sure you
+to RESTART WINDOWS! (the messenger icon will still be in the tray if you don't!)
+
+
+======================================================================
+5th way:
+Search for sysoc.inf. It should be located in the C:\windows\inf\........
+CODE
+visit the:
+http://www.tacktech.com/display.cfm?ttid=288
+and follow the excellent instructions given step by step by icons!
+
+======================================================================
+6th way
+1. First, right click the Messenger icon in the system tray and click Exit.
+2. Right click the Start button and click the Explore command to open the Windows Explorer.
+3. In the Windows Explorer, expand the Program Files folder on the partition where your operating
+system is installed (the partition that holds the WINDOWS directory) and right click the Messenger
+folder and select Rename.
+4. Rename the folder to MessengerDISABLED and press ENTER to commit the name change.
+5. Restart the Computer. No more Windows Messenger
+
+====================================================================
+7th way and many thanks to ralph for the following:
+
+You could also check out...
+CODE
+http://grc.com/stm/shootthemessenger.htm
+
+Download and run our small (22 kbyte) "ShootTheMessenger.exe" utility. It will display the current
+status of your system's Messenger Service. The button near the bottom of its window will allow
+you to set the service to whichever state ? running or disabled ? that you desire.
+
+If, for any reason, you should ever choose to re-enable the Windows Messenger Service, simply
+re-run ShootTheMessenger to do so.
+====================================================================
+
+You could also check out...
+
+CODE
+http://grc.com/stm/shootthemessenger.htm
+
+
+QUOTE
+Download and run our small (22 kbyte) "ShootTheMessenger.exe" utility. It will display the current status of your system's Messenger Service. The button near the bottom of its window will allow you to set the service to whichever state ? running or disabled ? that you desire.
+
+If, for any reason, you should ever choose to re-enable the Windows Messenger Service, simply re-run ShootTheMessenger to do so.
+

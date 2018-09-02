@@ -1,0 +1,36 @@
+Win XP Tip, Hidden Back-up utility
+
+ Insert your windows XP disc into your PC.
+
+Click exit if your installation screen comes up.
+
+Now go too your CD drive in *My Computer*. Right-click and select open.
+
+Choose VALUE ADD\MSFT\NT BACK-UP FILE.
+
+In the *files of type* drop down list be sure that *select all files* is on.
+
+Click on the NTBACK-UP.msi file and click okay.
+
+Click the finish button and now go over too the start button\ALL PROGRAMS\ACCESSORIES\SYSTEM TOOLS\ and there it is now.. BACK-UP FILES...
+
+Great little tool that Microsoft never should have hidden. 
+
+
+Win XP Tip, Rename Multiple Files
+
+A new, small, neat feature for winXP deals with renaming files. I personally have always wanted the OS to include a way to do a mass file renaming on a bunch of files. You can now rename multiple files at once in WinXP. Its real simple:
+
+1. Select several files in Explorer, press F2 and rename one of those files to something else. All the selected files get renamed to the new file name (plus a number added to the end).
+
+2. Thats it. Simple huh.
+
+I would recommend that you only have the files you want to rename in the directory your working in. I would also recommend that until you get used to this neat little trick that you save copies of the files in a safe location while your getting the hang of it.
+
+ Ever wonder what's going on behind that splash screen? Well, now you can find out!
+
+Right click My Computer, Properties, Advanced, Startup and Recovery, Edit. Edit BOOT.INI. Add "/SOS" right after "/fastdetect" with a space between. The line will look something like this:
+
+
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS="Microsoft Windows XP Professional" /fastdetect /SOS
+. Then you're finished. The first part, multi(0)..... may not be the same on your machine. Upon restarting, the splash screen will be gone. It can be re-enabled by removing the new switch. 

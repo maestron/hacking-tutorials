@@ -1,0 +1,345 @@
+Crash Course in X Windows Security
+
+1. Motivation / introduction 
+2. How open X displays are found 
+3. The local-host problem 
+4. Snooping techniques - dumping windows 
+5. Snooping techniques - reading keyboard 
+6. Xterm - secure keyboard option
+7. Trojan X programs [xlock and xdm] 
+8. X Security tools - xauth MIT-MAGIC-COOKIE 
+9. Concluding remarks
+
+
+
+
+
+1. Motivation / introduction
+
+X windows pose a security risk. Through a network, anyone can connect
+to an open X display, read the keyboard, dump the screen and windows
+and start applications on the unprotected display. Even if this is a
+known fact throughout the computer security world, few attempts on
+informing the user community of the security risks involved have been
+made.  This article deals with some of the aspects of X windows
+security. It is in no sense a complete guide to the subject, but
+rather an introduction to a not-so-known field of computer
+security. Knowledge of the basics of the X windows system is
+necessary, I haven't bothered including an introductory section to
+explain the fundamentals. I wrote some code during the research for
+this article, but none of it is included herein.  If the lingual flow
+of English seem mayhap strange and erroneous from byte to byte, this
+is due to the fact that I'm Scandinavian.  Bare with it. :)
+
+
+
+
+
+2. How open X displays are found
+
+An open X display is in formal terms an X server that has its access
+control disabled. Disabling access control is normally done with the
+xhost command.
+
+$ xhost +
+
+allows connections from any host. A single host can be allowed
+connection with the command
+
+$ xhost + ZZZ.ZZZ.ZZZ.ZZZ
+
+where Z is the IP address or host-name. Access control can be enabled
+by issuing an
+
+$ xhost - 
+
+command. In this case no host but the local-host can connect to the
+display.  Period. It is as simple as that - if the display runs in
+'xhost -' state, you are safe from programs that scans and attaches to
+unprotected X displays.  You can check the access control of your
+display by simply typing xhost from a shell. Sadly enough, most sites
+run their X displays with access control disabled as default. They are
+therefore easy prey for the various scanner programs circulating on
+the net.
+
+Anyone with a bit of knowledge about Xlib and sockets programming can
+write an X scanner in a couple of hours. The task is normally
+accomplished by probing the port that is reserved for X windows,
+number 6000. If anything is alive at that port, the scanner calls
+XOpenDisplay("IP-ADDRESS:0.0") that will return a pointer to the
+display structure, if and only if the target display has its access
+control disabled. If access control is enabled, XOpenDisplay returns 0
+and reports that the display could not be opened.
+
+E.g:
+
+Xlib: connection to "display:0.0" refused by server
+Xlib: Client is not authorized to connect to Server
+
+The probing of port 6000 is necessary because of the fact that calling
+XOpenDisplay() on a host that runs no X server will simply hang the
+calling process. So much for unix programming conventions. :)
+
+I wrote a program called xscan that could scan an entire subnet or
+scan the entries in /etc/hosts for open X displays. My remark about
+most sites running X displays with access control disabled, originates
+from running xscan towards several sites on the internet.
+
+
+
+
+
+3. The localhost problem
+
+Running your display with access control enabled by using 'xhost -'
+will guard you from XOpenDisplay attempts through port number
+6000. But there is one way an eavesdropper can bypass this
+protection. If he can log into your host, he can connect to the
+display of the localhost. The trick is fairly simple. By issuing these
+few lines, dumping the screen of the host 'target' is accomplished:
+
+$ rlogin target
+$ xwd -root -display localhost:0.0 > ~/snarfed.xwd
+$ exit
+$ xwud -in ~/snarfed.xwd
+
+And voila, we have a screendump of the root window of the X server
+target. 
+
+Of course, an intruder must have an account on your system and be able
+to log into the host where the specific X server runs. On sites with a
+lot of X terminals, this means that no X display is safe from those
+with access. If you can run a process on a host, you can connect to
+(any of) its X displays.
+
+Every Xlib routine has the Display structure as it's first
+argument. By successfully opening a display, you can manipulate it
+with every Xlib call available. For an intruder, the most 'important'
+ways of manipulating is grabbing windows and keystrokes.
+
+
+
+
+
+
+4. Snooping techniques - dumping windows
+
+The most natural way of snarfing a window from an X server is by using
+the X11R5 utility xwd or X Window System dumping utility. To get a
+grip of the program, here's a small excerpt from the man page
+
+ DESCRIPTION
+      Xwd is an X Window System window dumping utility.  Xwd allows Xusers
+      to store window images in a specially formatted dump file.  This file
+      can then be read by various other X utilities for redisplay, printing,
+      editing, formatting, archiving, image processing, etc.  The target
+      window is selected by clicking the pointer in the desired window.  The
+      keyboard bell is rung once at the beginning of the dump and twice when
+      the dump is completed.
+
+Shortly, xwd is a tool for dumping X windows into a format readable by
+another program, xwud. To keep the trend, here's an excerpt from the
+man page of xwud:
+
+
+ DESCRIPTION
+      Xwud is an X Window System image undumping utility.  Xwud allows X
+      users to display in a window an image saved in a specially formatted
+      dump file, such as produced by xwd(1).
+
+I will not go in detail of how to use these programs, as they are both
+self-explanatory and easy to use. Both the entire root window, a
+specified window (by name) can be dumped, or a specified screen.  As a
+'security measure' xwd will beep the terminal it is dumping from, once
+when xwd is started, and once when it is finished (regardless of the
+xset b off command). But with the source code available, it is a
+matter of small modification to compile a version of xwd that doesn't
+beep or otherwise identifies itself - on the process list e.g.  If we
+wanted to dump the root window or any other window from a host, we
+could simply pick a window from the process list, which often gives
+away the name of the window through the -name flag.  As before
+mentioned, to dump the entire screen from a host:
+
+$ xwd -root localhost:0.0 > file
+
+the output can be directed to a file, and read with
+
+$ xwud -in file
+
+or just piped straight to the xwud command.
+
+Xterm windows are a different thing. You can not specify the name of
+an xterm and then dump it. They are somehow blocked towards the
+X_Getimage primitive used by xwd, so the following
+
+$ xwd -name xterm
+
+will result in an error. However, the entire root window (with Xterms
+and all) can still be dumped and watched by xwud. Some protection.
+
+
+
+
+
+
+5. Snooping techniques - reading keyboard
+
+If you can connect to a display, you can also log and store every
+keystroke that passes through the X server. A program circulating the
+net, called xkey, does this trick. A kind of higher-level version of
+the infamous ttysnoop.c. I wrote my own, who could read the keystrokes
+of a specific window ID (not just every keystroke, as my version of
+xkey).  The window ID's of a specific root-window, can be acquired
+with a call to XQueryTree(), that will return the XWindowAttributes of
+every window present. The window manager must be able to control every
+window-ID and what keys are pressed down at what time.  By use of the
+window-manager functions of Xlib, KeyPress events can be captured, and
+KeySyms can be turned into characters by continuous calls to
+XLookupString. 
+
+You can even send KeySym's to a Window. An intruder may therefore not
+only snoop on your activity, he can also send keyboard events to
+processes, like they were typed on the keyboard.  Reading/writing
+keyboard events to an xterm window opens new horizons in process
+manipulation from remote. Luckily, xterm has good protection
+techniques for prohibiting access to the keyboard events.
+
+
+
+
+
+6. Xterm - Secure keyboard option
+
+A lot of passwords is typed in an xterm window. It is therefore
+crucial that the user has full control over which processes can read
+and write to an xterm.  The permission for the X server to send events
+to an Xterm window, is set at compile time. The default is false,
+meaning that all SendEvent requests from the X server to an xterm
+window is discarded. You can overwrite the compile-time setting with a
+standard resource definition in the .Xdefaults file:
+
+xterm*allowSendEvents	True
+
+or by selecting Allow Sendevents on the Xterm Main Options
+menu. (Accessed by pressing CTRL and the left mouse button But this is
+_not_ recommended. Neither by me, nor the man page. ;) Read access is
+a different thing. 
+
+Xterms mechanism for hindering other X clients to read the keyboard
+during entering of sensitive data, passwords etc. is by using the
+XGrabKeyboard() call. Only one process can grab the keyboard at any
+one time. To activate the Secure Keyboard option, choose the Main
+Options menu in your Xterm window (CTRL+Left mouse button) and select
+Secure Keyboard.  If the colors of your xterm window inverts, the
+keyboard is now Grabbed, and no other X client can read the KeySyms.
+
+The versions of Xterm X11R5 without patch26 also contain a rather
+nasty and very well known security hole that enables any user to
+become root through clever use of symbolic links to the password
+file. The Xterm process need to be setuid for this hole to be
+exploitable.  Refer to the Cert Advisory:
+CA-93:17.xterm.logging.vulnerability.
+
+
+
+
+
+
+7. Trojan X clients - xlock and X based logins
+
+Can you think of a more suitable program for installing a
+password-grabbing trojan horse than xlock? I myself cannot. With a few
+lines added to the getPassword routine in xlock.c, the password of
+every user using the trojan version of xlock can be stashed away in a
+file for later use by an intruder. The changes are so minimal, only a
+couple of bytes will tell the real version from the trojan version.
+
+If a user has a writable homedir and a ./ in her PATH environment
+variable, she is vulnerable to this kind of attack. Getting the
+password is achieved by placing a trojan version of Xlock in the users
+homedir and waiting for an invocation.  The functionality of the
+original Xlock is contained in the trojan version.  The trojan version
+can even tidy up and destroy itself after one succesfull attempt, and
+the user will not know that his password has been captured.
+
+Xlock, like every password-prompting program, should be regarded with
+suspicion if it shows up in places it should not be, like in your own
+homedir.
+
+Spoofed X based logins however are a bit more tricky for the intruder
+to accomplish.  He must simulate the login screen of the login program
+ran by XDM. The only way to ensure that you get the proper XDM login
+program (if you want to be really paranoid) is to restart the
+X-terminal, whatever key combination that will be for the terminal in
+question.
+
+
+ 
+
+
+
+
+8. X Security tools - xauth MIT-MAGIC-COOKIE 
+
+To avoid unathorized connections to your X display, the command xauth
+for encrypted X connections is widely used. When you login, xdm
+creates a file .Xauthority in your homedir. This file is binary, and
+readable only through the xauth command. If you issue the command
+
+$ xauth list
+
+you will get an output of:
+
+your.display.ip:0  MIT-MAGIC-COOKIE-1  73773549724b76682f726d42544a684a
+
+  display name     authorization type               key
+
+The .Xauthority file sometimes contains information from older
+sessions, but this is not important, as a new key is created at every
+login session. To access a display with xauth active - you must have
+the current access key.
+
+If you want to open your display for connections from a particular
+user, you must inform him of your key.
+He must then issue the command 
+
+$ xauth add your.display.ip:0  MIT-MAGIC-COOKIE-1 73773549724b7668etc.
+
+Now, only that user (including yourself) can connect to your display.
+Xauthority is simple and powerful, and eliminates many of the security
+problems with X.
+
+
+
+
+
+9. Concluding remarks
+
+Thanks must go to Anthony Tyssen for sending me his accumulated info
+on X security issues from varius usenet discussions. I hope someone
+has found useful information in this text. It is released to the
+net.community with the idea that it will help the user to understand
+the security problems concerned with using X windows. Questions or
+remarks can be sent to the following address:
+
+______________________________________________________________________
+runeb / cF --- runeb@stud.cs.uit.no  ---   http://www.cs.uit.no/~runeb
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

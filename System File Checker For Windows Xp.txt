@@ -1,0 +1,50 @@
+Scans and verifies the versions of all protected system files after you restart your computer. Syntax
+
+sfc [/scannow] [/scanonce] [/scanboot] [/revert] [/purgecache] [/cachesize=x]
+
+Parameters
+
+/scannow
+Scans all protected system files immediately.
+/scanonce
+Scans all protected system files once.
+/scanboot
+Scans all protected system files every time the computer is restarted.
+/revert
+Returns the scan to its default operation.
+/purgecache
+Purges the Windows File Protection file cache and scans all protected system files immediately.
+/cachesize=x
+Sets the size, in MB, of the Windows File Protection file cache.
+/?
+Displays help at the command prompt.
+
+Remarks
+
+* You must be logged on as a member of the Administrators group to run sfc.
+* If sfc discovers that a protected file has been overwritten, it retrieves the correct version of the file from the %systemroot%\system32\dllcache folder, and then replaces the incorrect file.
+* If the %systemroot%\system32\dllcache folder becomes corrupt or unusable, use sfc /scannow, sfc /scanonce, or sfc /scanboot to repair the contents of the Dllcache directory.
+
+Formatting legend
+
+Format Meaning
+Italic Information that the user must supply
+Bold Elements that the user must type exactly as shown
+Ellipsis (...) Parameter that can be repeated several times in a command line
+Between brackets ([]) Optional items
+Between braces ({}); choices separated by pipe (|). Example: {even|odd} Set of choices from which the user must choose only one
+Courier font Code or program output
+
+Windows File Protection
+
+Using File Signature Verification
+
+Driver Signing for Windows
+
+Command-line reference A-Z
+
+Please note that this Command Line reference is to varify the integrity of the WindowsXP DLL's that were shipped with Windows XP. It will try to repair damaged DLL's by prompting for the Windows CD.
+
+The Windows XP System File Protection which remains active in the background monitors these DLL's and if it detects an altered DLL will alert a user with a popup message asking for the Windows XP CD. This is so that it can revert the corrupt DLL back to its original state.
+
+SFC checker in Windows XP can only be ran by an Administrator and is not ran in the same way as its previous incarnation from the Windows 98 OS.

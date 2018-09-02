@@ -1,0 +1,47 @@
+Did you know that in Windows XP you can shut down your computer from the (eventually DOS prompt) command line box? Moreover, you can do this by clicking your mouse only once.
+
+All you need to do is... right-click on an empty Desktop spot -> select New -> Shortcut -> type shutdown followed by a space, and then enter one or more of the parameters listed below -> click Next -> type a suggestive name for your new shortcut -> finally, click Finish.
+
+This is the Shutdown.exe (located in %systemroot%\System32, usually C:\Windows\System32) syntax:
+
+
+shutdown [-i|-l|-s|-r|-a] [-f] [-m \\computername] [-t xx] [-c "Text"] [-d[u][p]:xx:yy]
+
+Valid command line switches:
+
+-a = Abort system shutdown in progress ONLY IF the -t xx timeout option was already set to ANY value other than 0. ALL switches except -l and -m are ignored during abort.
+
+-c "Text" = Text comment (case insensitive) to be displayed in the Message area of the System Shutdown window. MUST be enclosed between quotes. Maximum allowed 127 ASCII characters.
+
+-d [u][p]:xx:yy = Reason code for shutdown:
+u = User code.
+p = Planned shutdown code.
+xx = Major reason code. Positive integer number less than 256.
+yy = Minor reason code. Positive integer number less than 65536.
+
+-f = Force running applications to close without warning.
+
+-i = Display the shutdown interface (GUI). MUST be the first option!
+
+-l = Log off the current user of the local computer (default action). Can NOT be used with the -m option unless the current user has Sysadmin rights, in which case the -m switch takes precedence.
+
+-m \\computername = Remote/network computer name (most always case sensitive) to log off/restart/shut down. Current user MUST have Sysadmin rights to be allowed to use this switch!
+
+-s = Shut down the local computer.
+
+-r = Shut down and restart (reboot) the local computer.
+
+-t xx = Set shutdown timer to timeout for xx seconds. IF NOT specified defaults to 20 seconds. Allowed values between 0 and 99 seconds. The -a switch is the ONLY one that CAN be used during the timeout period.
+
+NOTES:
+The dash (-) in front of these switches can be replaced by a forward slash (/).
+
+Spaces are NOT required to separate the shutdown command from ANY following switches, but ARE required to separate ANY switch from its following parameter(s), if any.
+For example:
+
+shutdown -s -c "Shutting down!" -t 3
+
+tells your computer to shutdown after waiting for 3 seconds while the System Shutdown window will display text above in the Message area.
+
+Optional: after you're done creating your customized shortcut for shutdown -> right-click on it -> select Properties -> enter your desired key "combo" in the Shortcut Key box (e.g. Ctrl + Alt + End) -> click OK/Apply.
+From now on just left-click on your shutdown shortcut or hit that key combination to turn off/restart/log off your computer. 

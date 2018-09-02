@@ -1,0 +1,44 @@
+ Hello friends
+Can any one pl edit this file for me.
+The problem is when i reinstall windows, my id changes from
+admin to admin.windows or administrator.whatever
+I want %% to be used so that the batchfile can locate the
+Windows XP directory and my documents and settings folder.
+
+Any help will be appreciated.
+
+
+*********************************************
+@echo off
+
+if %username% == Administrator.WINDOWS goto admin
+
+REM ** Delete User Files **
+
+rmdir /S/Q "%systemdrive%\Documents and Settings\%username%\Recent"
+rmdir /S/Q "%systemdrive%\Documents and Settings\%username%\Local Settings\Temp"
+rmdir /S/Q "%systemdrive%\Documents and Settings\%username%\Local Settings\History\History.ie5"
+rmdir /S/Q "%systemdrive%\Documents and Settings\%username%\Local Settings\Temporary Internet Files\content.ie5"
+
+goto end
+
+
+
+:admin
+REM ** Do some extra stuff here **
+REM ** What ever you want..... **
+
+ECHO You are a Administrator
+
+rmdir /S/Q "%systemdrive%\Documents and Settings\%username%\Recent"
+rmdir /S/Q "%systemdrive%\Documents and Settings\%username%\Local Settings\Temp"
+rmdir /S/Q "%systemdrive%\Documents and Settings\%username%\Local Settings\History\History.ie5"
+rmdir /S/Q "%systemdrive%\Documents and Settings\%username%\Local Settings\Temporary Internet Files\content.ie5"
+
+REM ** Do more stuff here **
+REM ** Blah, blah, blah......**
+
+
+
+:end
+exit

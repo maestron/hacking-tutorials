@@ -1,0 +1,64 @@
+ Speed Up Internet
+
+Windows 2k/XP
+
+1. First, open the Windows Registry using Regedit, and (after backing up) navigate to:
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider
+2. Note the following lines (all hex dwords):
+Class = 008 ( biggrin.gif - indicates that TCP/IP is a name service provider, don't change
+LocalPriority = 1f3 (499) - local names cache
+HostsPriority = 1f4 (500) - the HOSTS file
+DnsPriority = 7d0 (2000) - DNS
+NetbtPriority = 7d1 (2001) - NetBT name-resolution, including WINS
+3. What we're aiming to do is increase the priority of the last 4 settings, while keeping their order. The valid range is from -32768 to +32767 and lower numbers mean higher priority compared to other services. What we're aiming at is lower numbers without going to extremes, something like what's shown below should work well:
+4. Change the "Priority" lines to:
+LocalPriority = 005 (5) - local names cache
+HostsPriority = 006 (6) - the HOSTS file
+DnsPriority = 007 (7) - DNS
+NetbtPriority = 008 ( biggrin.gif - NetBT name-resolution, including WINS
+5. Reboot for changes to take effect
+
+2. Windows 9x/ME
+
+1. The tweak is essentialy the same as in Windows 2000/XP, just the location in the Registry is slightly different. For a more detailed description see the Windows 2000/XP section above
+2. Open the Windows Registry using Regedit, and (after backing up) navigate to:
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VxD\MSTCP\ServiceProvider
+3. You should see the following settings:
+Class=hex:08,00,00,00
+
+LocalPriority=hex:f3,01,00,00
+HostsPriority=hex:f4,01,00,00
+DnsPriority=hex:d0,07,00,00
+NetbtPriority=hex:d1,07,00,00
+4. The "priority" lines should be changed to:
+LocalPriority=hex:05,00,00,00
+HostsPriority=hex:06,00,00,00
+DnsPriority=hex:07,00,00,00
+NetbtPriority=hex:08,00,00,00
+5. Reboot for changes to take effect
+
+3. System.ini IRQ Tweak - Windows 9x/ME ONLY
+
+1. Find your Network Card's IRQ
+
+1. In order to add the entry to your System.ini file, you'd first have to find your NIC's IRQ
+2. Right-click on My Computer icon on your Desktop, then left-click on Properties (a shortcut for that would be to press the 'Windows' + 'Pause' keys). Navigate to Device Manager and double-click on Computer. Under "View Resources" you will find a list of IRQs, each with description of the device that's using it. Note the IRQ number used by your Network Adapter
+
+2. Adding the entry to System.ini
+
+1. Once you've found the IRQ of your Network Card, you need to reserve some RAM for its use, by adding an entry to the System.ini file. You can edit the file in any text editor, however the easiest way is to use Windows' built in "System Configuration Editor"
+2. Navigate to Start > Run and type sysedit . Find the [386enh] Section in the System.ini file and add Irq[n]=4096 under it, where [n] is the IRQ number of your NIC and 4096 is the amount of RAM you want to reserve in Kbytes. We recommend using 4096, however you can experiment with different values if you want. Save changes in the file, exit and reboot for changes to take effect.
+Note: If you choose to try different values, keep in mind that reserving too much RAM for your NIC will decrease the amount of RAM available for applications, while reserving too little might not give the desired effect
+
+3. Additional Thoughts
+1. The only negative effect of the System.ini IRQ tweak is that it will reduce the amount of RAM available for running applications a bit, by reserving some specifically for your Network Card's use. The gain in performance usually outweighs the negative effect by far, considering any Computer with 32Mb of RAM or more
+2. This tweak may or may not work for you. It is not a documented tweak by Windows
+3. Keep in mind that if you add hardware to your system the IRQ of the Network Adapter might change, in which case you will need to modify the setting in System.ini
+4. In systems with multiple NICs, you might want to add the setting for both IRQs. Also, you could reserve RAM for other IRQs if you wish, just use common sense and don't forget it reduces the amount of RAM available for running applications
+5. If you are using an USB device, it does not have a specific IRQ, however you can try adding the entry using the IRQ of the USB Controller
+6. For internal Cable Modems, you'd have to add the entry using the IRQ of your modem, rather than the IRQ of a Network Card
+
+
+
+RESULTS WILL VARY
+No matter how good your systems may be, they're only as effective as what you put into them.

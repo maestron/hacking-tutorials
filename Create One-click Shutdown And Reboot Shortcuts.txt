@@ -1,0 +1,35 @@
+Create One-Click Shutdown and Reboot Shortcuts:
+
+
+First, create a shortcut on your desktop by right-clicking on the desktop, choosing New, and then choosing Shortcut. The Create Shortcut Wizard appears. In the box asking for the location of the shortcut, type shutdown. After you create the shortcut, double-clicking on it will shut down your PC.
+
+But you can do much more with a shutdown shortcut than merely shut down your PC. You can add any combination of several switches to do extra duty, like this:
+
+shutdown -r -t 01 -c "Rebooting your PC"
+Double-clicking on that shortcut will reboot your PC after a one-second delay and display the message "Rebooting your PC." The shutdown command includes a variety of switches you can use to customize it. Table 1-3 lists all of them and describes their use.
+
+I use this technique to create two shutdown shortcuts on my desktop—one for turning off my PC, and one for rebooting. Here are the ones I use:
+
+shutdown -s -t 03 -c "Bye Bye m8!"
+shutdown -r -t 03 -c "Ill be back m8 ;)!"
+
+Switch
+What it does
+
+-s
+Shuts down the PC.
+
+-l
+Logs off the current user.
+
+-t nn
+Indicates the duration of delay, in seconds, before performing the action.
+
+-c "messagetext"
+Displays a message in the System Shutdown window. A maximum of 127 characters can be used. The message must be enclosed in quotation marks.
+
+-f
+Forces any running applications to shut down.
+
+-r
+Reboots the PC.

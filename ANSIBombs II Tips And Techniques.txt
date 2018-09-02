@@ -1,0 +1,208 @@
+                  ANSI Bombs II: Tips and Techniques
+
+                                  By
+
+                           The Raging Golem
+
+
+    I. Introduction
+
+    After writing the last file, a lot of people let me know about the
+mistakes I had made.  I guess this file is to clear up those miscon
+ceptions and to let people know about some of the little tricks behind
+ANSI bombing.  Of course, ANSI bombing isn't as dangerous as a lot of
+people make it out to be, but bombs are still fun to make and with a
+little planning deliver some degree of success.  ANSI bombing can
+be dangerous, so I am tired of hearing people say that an ANSI bomb is
+harmless, another misconception I hope to clear up.  Now, most people
+that have spent time experimenting with ANSI bombs probably know most
+of the material in this file, but it might be fun just to read anyway.
+
+    2. Misconceptions
+
+    In my last file, I made three major blunders, or what I would con
+sider to be major blunders.  First, I said that ANSI bombs could be
+used on BBSs to screw people over, but I guess I was wrong.  It was
+pure speculation on what other people had said that made me say that.
+ANSI codes, including those that redefine keys, are sent over the
+lines, but most comm programs don't use ANSI.SYS; they use their own
+version of ANSI, which doesn't support key redefinition.  Some people
+might have a program that supports it, but I haven't seen it yet.  I
+have tested bombs on systems on my own and proved to myself that they
+don't work.  I have also seen people fuck up bombs that would have
+worked by uploading them in a message.  The second misconception is
+that ANSI bombs are dangerous when put into zips.  I haven't really
+tested this out much, but from what I hear with the newer versions of
+PKZIP, you have to specify that you want to see ANSI comments when
+unzipping.  It is unlikely that you would waste your time unzipping
+something again after seeing "Format C:" in the middle of an escape
+code.  I could be mistaken, but I'm pretty sure that I'm right. Third,
+the last thing that was a misconception is that VANSI.SYS will protect
+your system from key redefinition.  Maybe the newer versions don't
+support key redefinition, but mine sure as hell does.  There are pro
+grams out there that don't support it, but I don't know any of the
+names.  Of course, if I were you, I would be wary about using some
+thing other then ANSI.  I have a few friends that are working on "A
+Better ANSI" for PDers, which, instead of being better, really screws
+them over.
+
+    3. An Overview
+
+    Now, in case you haven't read my other file (it's called ANSI.DOC,
+kind of lame but fairly informative), I'll briefly go over the struc
+ture of an ANSI bomb.  Skip this part if you know what an ANSI bomb is
+and how to make one.
+    In ANSI everything is done with a system of escape codes.  Key
+redefinition is one of those codes.  (From now, whenever I say ESC, I
+really mean the arrow, ).  Here is a basic command:
+                          ESC [13;27p
+    This would make the <Enter> key (13 is the code for enter) turn
+into the <Escape> key (27 is the code for escape).  The  always has to
+be there, as do the bracket and the "p", but what is between the
+bracket and the "p" is up to you.  The first number is always the key
+that you want to be redefined.  If there is a zero for the first num
+ber, that means the key is in the extended set, and therefore, the
+first two numbers are the code.  The bracket signifies the beginning
+of the definition, and the "p" signifies the end.  Whenever you want a
+key pressed, you have to use it's numerical code (i.e. 13 is the code
+for <Enter>).  You can't redefine strings, but you can redefine a key
+to become a string (i.e. ESC [13;"Blah"p would make <Enter> say
+"Blah").  Strings must be inside of quotes, which includes commands
+that you want typed on the DOS prompt (i.e. ESC [13;"Del *.*";13p
+would delete everything in the directory, note that 13 stands for
+Enter in this case, not the redefinition).  An escape code can have
+as many commands as you want in it, but each one has to be separated
+by a semi-colon.  You can only redefine one key in each escape code,
+so if you want to redefine another key, you have to start another
+escape code.  That's about it when it comes to bombs, now that you
+have the basics, all you really need is a little imagination.
+
+    4. Tips and Tricks
+
+    A. The Y/N Redefinition
+
+    Now, here's a simple but fun little ANSI bomb:
+
+                   ESC [78;89;13p ESC [110;121;13p
+
+    Basically, all this does is turn a capital "N" into "Y" and a
+lower-case "n" into "y".  Alone this doesn't do too much, except for
+screw around with what they are typing.  On the other hand, try adding
+this line of code to the ANSI bomb:
+
+                   ESC [13;27;13;"del *.*";13p
+
+    Most people would automatically press "N" when they see "Del *.*",
+but when they do, they will be screwed over.  This portion of a bomb
+is very useful when it comes to making good bombs.
+
+    B. Screwing with the Autoexec.bat
+
+    Here is another line of code that you may find useful in future
+bombing projects:
+
+                   ESC [13;27;13;"copy bomb.ans c:\";13;"copy con
+                     c:\autoexec.bat";13;"type bomb.ans";13;0;109;
+                     13;"cls";13p
+
+    This line of code makes the bomb a little more permanent and a
+little more dangerous.  It copies the bomb into the root directory,
+then it change/creates the autoexec.bat, so the bomb is typed after
+every boot-up.  Of course, the person could just boot off a disk, but
+I'm sure this would get them a few time.  It could also probably
+appear as though it were a virus, scaring the shit out of the owner of
+the computer.
+
+    C. Turning Commands into Other Commands
+
+    One of the best pranks to do to someone using an ANSI bomb is to
+redefine commands.  That way if they type in "copy", it will turn into
+"Del *.*".  Since you can't actually change the whole string, you have
+to take a different approach.  You have to change a few of the keys,
+so when typed, they type and execute the desired command.  I guess it
+would be coolest to have to command exactly the same length; that way
+you could redefine one key at a time to obtain the desired effect.
+It doesn't really matter how you do it, just as long as it works.  You
+might make an ANSI that says "Wow, check out what this bomb did to
+your directory", and then have it redefine the keys, so when they type
+in "dir", it turns into "del".  I think you get the idea.
+
+    D. Trojans
+
+    By now, everybody knows what a Trojan is.  You probably wouldn't
+think so, but ANSI bombs can be used as Trojans and in Trojans. First,
+if you are planning on crashing a board, but you're not very good at
+programming, then make yourself an ANSI bomb.  Try to find out in
+which directory the main files for running the BBS are stored. They
+are usually under the name BBS or the name of the software, like WWIV
+or Telegard.  Then, make a bomb that either just deletes all the files
+in that directory, or if you want the board to be down a longer time,
+then make one that formats the Hard Drive.  In this form ANSI bombs,
+if they are well planned out, can be easy to make Trojans. Second,
+ANSI bombs can used in Trojans.  This is probably stretching it a
+little, but say you wanted to write a Trojan that would delete a
+directory, every time you typed a certain key, then you could use an
+ANSI bomb.  First make some batch and com/exe files that would search
+for protecting programs like Norton and turn them off.  Then you could
+copy the file into the root directory, along with your versions of
+autoexec.bat, config.sys, ANSI.sys, and whatever else.  (To make it
+look more realistic make the files Resource.00x to trick the user,
+then when copying, use the real name).  Then somehow lock the computer
+up or do a warm boot through some pd program, which is easily attain
+able.  When the computer loads back up, you can screw that shit out of
+them with your ANSI bomb.
+
+    5. Conclusion
+    It would seem to some people that ANSI bombs are very dangerous,
+and to others that they are stupid or lame.  Personally, I think that
+ANSI bombs are just plain old fun.  They're not too hard to make, but
+there is a lot that you can do with them.  They are nowhere near as
+malicious as virii, so if you're looking for unstoppable destruction,
+look elsewhere, but they do serve their purpose.  I know that there
+are programs out there that help you program ANSI bombs, but I think
+that they kind of take the fun out of them.  Probably, some day soon,
+I'll quit making ANSI bombs and start looking more into virii and pure
+Trojans.  But for now, ANSI bombs suit my purpose.
+
+                               -TRG
+
+    Appendix A: Key Code Program
+
+    Here is a small program, which I find very helpful.  After loading
+it up, it tells you the numeric code for every key you type in.  Spe
+cial means that it is in the extended set and therefore uses zero, and
+"q" ends the program.  Unfortunately,  I can't take any credit for
+this program.  I got it over the phone from Heavymetl, and it was made
+by his brother.  So many thanks go out to Heavymetl and his brother,
+even though they'll probably be a little pissed at me for including
+this in my file.  It is in Pascal and can be compiled in most Turbo
+Pascal compilers.
+
+    Use CRT;
+    Var
+      CH : CHAR;
+    Begin
+      Repeat
+        CH := ReadKey;
+        If CH = #0 then
+          Begin
+            CH := ReadKey;
+            WriteLn(CH,'(Special) - ',ORD(CH));
+          End
+        Else
+          WriteLn(CH,' - ',ORD(CH));
+      Until
+        CH = 'q';
+    End.
+
+    Thanks go out to:
+
+    Heavymetl and his brother for the program and ideas.  Weapons
+Master for the input and the help he has given me.  Everybody else who
+has helped me out; you know who you are, or at least, you think you
+know who you are.  Most of all, to those brave soldiers risking their
+asses everyday for us half-way across the world in Saudi Arabia.  Your
+deeds haven't gone unnoticed, of course that's mainly because that's
+all the news ever shows nowadays.  Also, to anybody else I might have
+forgotten.  Thanks.
+

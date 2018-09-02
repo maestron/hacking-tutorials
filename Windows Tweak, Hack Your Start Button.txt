@@ -1,0 +1,62 @@
+Window's Tweak: Hack Your Start Button
+written by Sarah Lane on Wednesday, July 21, 2004
+
+
+I've gotten so many requests on how to change the Windows XP Start button, I'm going to teach you how to hack it to pieces manually.
+Before you get started, you might want to print out this page for easy reference.
+
+Change the Start text
+
+1. First of all, make sure you download Resource Hacker. You'll need this puppy to edit resources inside your Windows shell.
+
+2. Locate explorer.exe in your c:\Windows directory. Make a copy of the file in the same directory and rename it explorer.bak.
+
+3. Now launch Resource Hacker. In the File menu, open explorer.exe. You'll now see a bunch of collapsed folders.
+
+4. Expand the String Table folder and then find folder No. 37 (folder No. 38 if you're in Windows Classic mode).
+
+5. Click on resource 1033 and locate the text that says "Start." This is your Start button, and now you've got control over what it says! Change the "Start" text to your text of choice. You don't have a character limit, but the text takes up valuable taskbar space, so don't make it too long.
+
+6. Click on the button labeled Compile Script. This updates the settings for your Start button. But nothing will happen until you complete through step #20, so keep going!
+
+Change your hover text
+
+7. While you're here, why not also change the text that pops up when your mouse hovers over your Start button?
+
+8. Right now it says "Click here to begin." Well, duh! We already know that's where to begin!
+
+9. Open folder No. 34 and click on resource 1033.
+
+10. Find the text that says "Click here to begin" and change it to something cooler. Might I suggest "Click here for a good time, baby."
+
+11. Click on the Compile Script button to update this resource.
+
+Customize your Start icon
+
+12. For an added bonus, you can also change the Windows icon to the left of the text, too.
+
+13. Collapse the String Table folder and expand the Bitmap folder at the top of your folder list.
+
+14. Click on folder No. 143 and click on resource 1033. You should see that familiar Windows icon.
+
+15. Go to the Action Menu and select "Replace bitmap." Select "Open file with new bitmap", and locate the replacement image on your machine. Note: The image must have a .bmp extension and a size of 25 pixels by 20 pixels. Then click the Replace button.
+
+Here's the image I've been using instead of the Windows icon, in case you want to use it.
+
+
+
+16. Now that you've made your changes, save the file in your Windows folder with another name, such as newstartbutton.exe. Don't name it Explorer.exe, because that file is already being used by your system. Close all open programs and restart your system.
+
+17. Boot into Safe Mode With Command Prompt by pressing F8 on startup. Then choose Safe Mode in the command prompt.
+
+18. Log on as administrator and enter your password.
+
+19. When the command prompt comes up, make sure you're in the right directory by typing "cd c:\windows" (without the quotes).
+
+20. Now type "copy c:\windows\newstartbutton.exe c:\windows\explorer.exe" (no quotes). Type "yes" (no quotes) to overwrite the existing file, then restart your system by typing "shutdown -r" (no quotes).
+
+When Windows relaunches, you'll see your new Start button in all its glory!
+
+
+
+

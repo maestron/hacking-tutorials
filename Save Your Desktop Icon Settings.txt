@@ -1,0 +1,18 @@
+Please note: this tutorial is taken from here
+http://www.virtualplastic.net/html/desk_adv.html#save
+
+Recognize this ?? You've got all your windows sized, icons placed the way they look great.... explorer crash! (Or, the thing crashes not that much anymore, but it seems to forget sometimes...) And there you go again.. but, there's a way to recover all your settings, that's windows placing, sizing and icon positions, with just one click (Win 9x/2k).
+
+First, make it all look, once more, just the way you want it to be. Choose about 30 folders you access frequently to look good (don't forget your win- and system dir, program files etc.).
+
+Now these settings are in the Registry, open it and go to:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer
+Select the folder 'Streams'. Choose 'Registry' in the toolbar, and 'export registry-key'. The information in the key is being stored in a .reg file, which is a simple textfile. Name & store where you want. Then do the same with the folder 'StreamMRU'.
+
+Close RegEdit and open the last file with notepad. Remove the first line (REGEDIT4) and copy the rest. Then open your first file and paste it at the end. Save, close and make a shortcut to your desktop. And then, have fun and mess up all your favorite folders. Once exhausted (double)click your shortcut and confirm you wanna enter this info into the Registry. Rejoice!
+
+A lot of graphic cards come with some software to save your desktop icon layout. If yours didn't, alternatives:
+
+Softwarium Restore Desktop http://www.softwarium.com/download/RDSetup.exe "magically restores icons' positions after display resolution changing. You can also restore saved icons' positions manually by rightclicking on the desktop" (free, all versions).
+
+(!!) An even more integrated solution, that works in all versions, is using layout.dll/layout.reg http://www.virtualplastic.net/download/hacks/layout.zip from the NT 4 Resource Kit. Put the .dll in your (9x) \Windows\System, (2k) \Winnt\System32 or (XP) \Windows\System32 folder, import the .reg file and have the option to save and restore (one configuration) in the rightclickmenu of My Computer and the bin (14 kB, source: Jorge Walker at Axcel216).

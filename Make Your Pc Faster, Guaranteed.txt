@@ -1,0 +1,45 @@
+1. First, run a scandisk or checkdisk. Let Windows fix any errors.
+
+2. Run a disk cleanup utility...this will flush your temporary internet folder, trash can, temp system files, etc.
+
+3. Delete any garbage files or data...if possible, run a Duplicate File Finder program.
+
+4. Run Defrag on all partitions (NOTE: run this after you have deleted all trash and excess files!)
+
+5. Run a registry cleaner utility and delete or get rid of any orphaned entries in that registry.
+
+6. Check your exisiting swap file for it's size and location (*will explain location later in the post). If you have alot of ram (i.e. 1 gig and over) set this swap file to something small, like 250 mb. The reason is that this will force Windows to load more into memory, resulting in faster performance (note: some games and applications actually require a certain sized swap file so check your applications performance after making a size adjustment for any error messages.)
+
+7. Under XP, you can tell Windows to use Classic Style on your desktop, - this will remove the neat single click and internet-style desktop but for lower end systems this will improve performance in other areas, such as gaming and multi-tasking.
+
+8. Run msconfig and under startup and only keep the programs that are essential to load in the tray icon (and hence stay resident in memory). Uncheck anything else non-essential, like an ATI or Nvidia control panel, Quicktime utility, Real Audio, etc.
+
+9. Upgrade drivers! Check for the latest BIOS, video, motherboard, sound, etc drivers from the manufacturers. Alot of my friends had chipsets on their motherboard that had advanced disk management capabilities or AGP port settings but the drivers weren't loaded for them so they were never being used. A simple upgrade realized a noticeable difference. For instance, they didn't have the latest driver for their AGP port so it was set to 1x, instead of being used at 4x!
+
+10. (OK, so this won't speed up your PC but it could save you alot of time and trouble later on!) After making all these improvements, make a working backup! I use Ghost, but for XP users you can also use System Restore...
+
+-FOR ADVANCED USERS-
+
+1. Take a look under the hood (for IDE owners). How are your IDE devices configured? If you have more than 1 hard drive, put the master hard drive on the primary IDE channel and the secondary hard drive on the secondary IDE channel (most motherboards have two IDE channels).
+
+2. Place all CDROM drives, DVD readers etc. on the secondary IDE channel (or SCSI bus, etc). This will reduce I/O contention with your master hard drive which should have your OS and apps installed...
+
+3. Remember when I mentioned the location of the swap file? OK, if you have 2 hard drives and you have one on the primary IDE channel and the other on the secondary IDE channel, move the swap file to a partition ON THE SECOND hard drive (on the secondary IDE channel). This will greatly improve system performance as the PC can write to the swap file while loading and running OS and system commands without I/O contention on the primary IDE channel!
+
+4. Take a look under the hood (for SCSI owners) What kind of SCSI do you have? If it's the newer Ultra 160/320 etc cards then guess what? Any devices placed on the same bus will automatically default to the slowest drive on the chain...this means that if you have say, an Ultra 160 SCSI card, and it has an Ultra 160 drive (capable of transferring 160 mb/sec) on the same chain as a SCSI cdrom drive (capable of only 40 mb/sec) then the whole bus slows down to the 40 mb/sec speed...use different chains for the slower devices and maximize those hard drives!
+
+5. Run a utility like WCPUID and check the settings...is your CPU/front speed bus/AGP port running as fast as they should be? If not, check your drivers and BIOS configuration options. Also, are all of your chipset features enabled? If not, then enable them! (usually done in your BIOS!)
+
+6. Dig in to the BIOS...check settings like boot order, for example...is it checking the floppy first? Change this! Select your order to reflect the hard drive first, then CD, then floppy for a noticeable boot time improvement. Also disable any non-used on board peripherals...for instance, - does your motherboard come with an on-board NIC card? Guess what, if you don't use that NIC card and it is enabled it will eat up valuable CPU cycles and can be detrimental to your systems' performance. DISABLE THAT MUTHA! Also, see if you can play with memory timing and CPU clock frequencies (NOTE! This is for expert users only!) Set these timings to "Aggressive" and see what happens in your games and apps...Also, check to see what your video aperature is set to. If you have a video card with 128 megs of on-baord memory, your aperature should be set to this amount too. Read the BIOS owner manual for further non-general performance tricks or improvements! Do you have the latest BIOS firmware version?
+
+7. Under hardware properties, check to see that everything is working properly, and fix any hardware contention issues. You'll see the dreaded yellow exclamation point (!) beside any hardware componenet that is not working correctly.
+
+8. Evaluate the potential for system/hardware upgrades...usually, the best bang for the buck is adding memory so buy all that you can afford (don't go much above 512 megs for Win 98 or ME). If you have a motherboard with an 8x - capable AGP port but you are using an older 4x video card, consider upgrading to an 8x card. You get the idea here...
+
+9. Quit using software pigs like Norton system utilities, etc. These place files everywhere and can be a real system resource hog on lower end PCs.
+
+10. Did I mention to make a good backup? Do it now! Also, while you're at it, run a good virus program with the latest definitions.
+
+There are more options to make your system faster, such as overclocking, etc. but (just about) everything I've mentioned in this tech post costs you nothing and will result in faster system performance! Good luck and if you have any questions on how to do anything mentioned here, ask a knowledgeable friend or consult a book, - don't mess up something trying to do something you are not sure of!
+
+Good luck and I'd like to dedicate this post to all of WorldWarez which has given me so much! You're all great, peeps!

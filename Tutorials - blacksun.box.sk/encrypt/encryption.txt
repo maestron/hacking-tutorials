@@ -1,0 +1,162 @@
+                                                              The Basics of Cryptography
+                                                                           by tHe mAnIaC
+                                                    contact me at: dancho@mbox.digsys.bg
+                                                       maniac@forbidden.net-security.org
+                                                                              16.11.1999
+|=|=|=|=|=|=|=|A=|N=|A=|R=|C=|H=|Y=|=|R=|U=|L=|E=|S|=|=|=|=|=|=|=|=|=|
+
+This guide is for educational purposes only I do not take any responsibility about anything
+happen after reading the guide. I'm only telling you how to do this not to do it. It's your decision.
+If you want to put this text on your Site/FTP/Newsgroup or anything else you can do it but don't
+change anything without the permission of the author.
+<--=--=--=--=--=--=--=--=>
+A word from the author:
+
+I hope you like my texts and find them useful.
+If you have any problem or some suggestion feel free to e-mail me but please don't send mails like
+"I want to hack the US government please help me" or "Tell me how to bind a trojan into a .jpg"
+Be sure if I can help you with something I will do it.
+<--=--=--=--=--=--=--=--=>
+
+Table of Contents
+
+1.What is this text about?
+2.About Encryption and how it works
+3.About the Cryptography and PGP
+4.Ways of breaking the encryption
+-Bad pass phrases
+-Not deleted files
+-Viruses and trojans
+-Fake Version of PGP
+=--=--=--=--=--=--=--=--=
+
+
+1.What is this text about?
+-=-=-=-=-=-=-=-=-=-=-=-=-=
+In this text I'll explain you everything about encryption,what is it,PGP,
+ways that someone can read your encrypted files etc.Every hacker or
+paranoid should use encryption and keep the other from reading their
+files.The encryption is very important thing and I'll explain you how can
+someone break and decrypt your files.
+
+2.About Encryption and how it works
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+The Encryption is very old.Even Julius Caesar used it when he was 
+sending messages because he didn't trust to his messengers.You see
+encryption is everywhere,when you watch some spy film you see
+there's always a computer with encrypted files or some film about hackers
+when the feds busted the hacker and they see all of the hacker's files are
+encrypted.
+
+When you have simple .txt file that you can read this is called "plain text".
+But when you use encryption and encrypt the file it will become unreadable
+by the time you don't enter the password.This text is called cipher text.
+The process of converting a cipher text into plain text is called decryption.
+
+Here's a little example:
+
+Plain text ==>Encryption==>Ciphertext==>Descryption==>Plaintext
+
+This example shows you the way when you encrypt and decrypt a file.
+
+3.About the Cryptography and PGP
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Cryptography is science that use the mathematics to encrypt and decrypt data.This science 
+let you keep your files and documents safe even on insecure networks like the Internet.
+The cryptography can be weak and strong.The best is of course the strong one.Even when you
+use all the computers in the world and they're doing billion operations in second you'll just need
+BILLIONS of years to decrypt strong encryption.
+
+PGP (Pretty Good Privacy) is maybe the best encryption program to encrypt your files and documents.
+It work in this way:
+
+When you encrypt one file with PGP,PGP first compress the file.This saves you disk space and modem
+transmition.Then it creates a session key.This session key works with a very secure and fast
+confidential encryption algorithm to encrypt the file.Then the session key is encrypted with the
+recipient's public key.
+PGP ask you for pass phrase not for password.This is more secure against the dictionary attacks
+when someone tries to use all the words in a dictionary to get your password.When you use 
+pass phrase you can enter a whole phrase with upper and lowercase letters with numeric and
+punctuation characters.
+
+
+4.Ways of breaking the encryption
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+PGP has been written for people that want their files encrypted for people that want privacy.
+When you send an e-mail it can be read from other people if you use PGP only the person for who
+is the message will be able to read it.
+
+
+Now you know many things about PGP and the encryption but you may like to know can someone
+break it and read your private texts and files.In fact if you use all the computers in the world to 
+decrypt a simple PGP message they'll need 12 million times the age of the universe to break it.
+You see this is the BEST the encryption is so strong noone can break it.
+The people that program it has done their work now everything depends on you.
+
+-Bad pass phrases
+*****************
+
+The algorithm is unbreakable but they're other ways to decrypt the text and read it.
+One of the biggest mistakes when someone writes his/her pass phrase is that the pass phrase is
+something like : "John" "I love you" and such lame phrases.Other one are the name of some friend
+or something like that.This is not good because this is pass phrase not password make it longer
+put numbers and other characters in it.The longer your pass phrase is the harder it will be guessed
+but put whole sentences even one that doesn't make sense just think in this way:
+Someone is brute-forcing thousands of pass phrases from a dictionary therefore my pass phrase
+should be someone that is not there in the dictionary something very stupid like:
+
+hEllowOrld33IjustwanTtoteLLtoev3ryon3thatI'maLamErandI'mahacKer666
+
+This is easy to remember because it's funny and there are only a few numbers but you may not use
+upper and lowercase characters.I hope you know will put some very good pass phrase and be sure
+noone will know it.
+
+Another mistake is that you may write the pass phase on a paper and if someone find it you'll loose
+it and he/she will be able to read your encrypted files.
+
+-Not deleted files
+******************
+
+Another big security problem is how most of the operating systems delete files.So when you encrypt
+the file you delete the plain text and of course leave the encrypted one.
+But the system doesn't actually delete the file.It just mark those blocks of the disk deleted and free.
+Someone may run a disk recovery program and still see all the files but in plaintext.Even when you're
+writing your text file with a word editor it can create some temporary copies of it.When you close it
+these files are deleted but as I told you they're still somewhere on your computer.
+PGP has tool called PGP Secure Wipe that complete removes all deleted files from your computer
+by overwriting them.In this way you'll only have the encrypted files on your computer.
+
+-Viruses and Trojans
+********************
+
+Another dangerous security problem are the viruses and the trojans.So when you infect with a
+trojan the attacker may run a key logger on your system.
+
+*Note
+A key logger is a program that captures all keystrokes pressed by you then saves them on your
+hard drive or send them to the attacker
+***************************************
+So after the attacker run it he/she will be able to see everything you have written on your computer
+and of course with your PGP pass phrase.
+There are also a viruses designed to do this.Simpy record your pass phrase and send it back to the
+attacker.
+
+-Fake Version of PGP
+********************
+
+Another security problem is the PGP source that is
+available so someone can make a fake copy of it that is recording your pass phase and
+sending it back to the attacker.The program will look real and it will work but it may also have
+functions you even don't know about.
+A way of defending of these security problems is to use a trojan and a virus scanner.You should
+also be sure your computer is clean from viruses and trojans when you install PGP and also be sure
+you get PGP from Network Associates Inc. not from some other pages.
+
+So now I hope you understand that PGP can't be braked but if you use it wisely and be sure
+your pass phrase is good one,you're not infected with viruses or trojans and you're using the
+real version of PGP you'll be secure.
+
+
+
+tHe mAnIaC is a member of Black Sun Research Facility (BSRF).
+Get more BSRF tutorials at http://blacksun.box.sk.

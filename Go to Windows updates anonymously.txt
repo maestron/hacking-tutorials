@@ -1,0 +1,8 @@
+Would you like to use the Windows Update feature without being forced to register with Microsoft? OK then, this is what you can do:
+
+Launch good ol' Regedit.
+Go down to HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion.
+Look for a value named RegDone. If it isn't there create a new value with that name.
+Right click the new value and choose Modify. Make the value 1.
+Close Regedit and
+Enjoy!

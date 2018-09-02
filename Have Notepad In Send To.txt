@@ -1,0 +1,20 @@
+Have Notepad In Send To
+
+
+
+Many apply a registry tweak to have notepad as an option for unknown file types. We frequently see such files which are actually just text, but named with some odd file-extension. And then, some suspicious files which we want to make sure what the contents are. Well, in such cases where the registry tweak is applied, the downside happens to be that even some known files get associated with notepad - but no, all we want is to be able to open a file with notepad - the association part in such cases is unwanted interference. Also, notepad becomes a permanent fixture on the right-click menu - which is again an annoyance.
+
+So what we do, is to have notepad as an option in the Send-To options, of the right-click menu in explorer. It fulfils the purpose to perfection (atleast, in my case). Here's what we do:
+
+1. right-click desktop, choose "New >> Shortcut"
+2. Type the location of the item - "notepad" - (that's all, no need to give path)
+3. Next >> type name for shortcut - "Edit with Notepad"
+4. Click finish
+5. Now right-click this shortcut on the desktop, and choose properties.
+6. Confirm that the "target" and "start in" fields are using variables - "%windir%\system32\notepad.exe" - (absolute paths will be problematic if you use this .LNK on machines other than your own)
+7. Now, browse to "%UserProfile%\SendTo" in explorer (which means "C:\Documents and Settings\User_Name\SendTo\" folder)
+8. And copy the "Edit with Notepad.lnk" file which you already created, to that folder.
+9. So now, you can right-click on ANY file-type, and be offered an option to open with notepad, from the SendTo sub-menu.
+
+So now, you just right-click on an .nfo or .eml or .diz file (which are associated with other programs, and are sometimes just plain-text files), and choose "Send To >> Edit with Notepad" and it will open in notepad!
+No more botheration of applying registry tweaks for something as simple as this.

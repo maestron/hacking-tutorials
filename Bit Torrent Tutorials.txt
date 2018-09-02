@@ -1,0 +1,49 @@
+Bit Torrent Tutorials
+
+The first things you need to know about using Bit Torrent:
+-- Bit Torrent is aimed at broadband users (or any connection better than dialup).
+-- Sharing is highly appreciated, and sharing is what keeps bit torrent alive.
+-- A bit torrent file (*.torrent) contains information about the piece structure of the download (more on this later)
+-- The method of downloading is not your conventional type of download. Since downloads do not come in as one
+big chunk, you are able to download from many people at once, increasing your download speeds. There may be
+100 "pieces" to a file, or 20,000+ pieces, all depending on what you're downloading. Pieces are usually small (under 200kb)
+-- The speeds are based upon people sharing as they download, and seeders. Seeders are people who constantly
+share in order to keep torrents alive. Usually seeders are on fast connections (10mb or higher).
+
+In this tutorial, I will be describing it all using a bit torrent client called Azureus. This client is used to decode the .torrent files into a useable format to download from other peers. From here on out, I will refer to Bit Torrent as BT.
+
+Which BT client you use, is purely up to you. I have tried them all, and my personal favorite is Azureus for many reasons. A big problem with most BT clients out there, is that they are extremely CPU intensive, usually using 100% of your cpu power during the whole process. This is the number one reason I use Azureus. Another, is a recently released plug-in that enables you to browse all current files listed on suprnova.org (the #1 source for torrent downloads).
+
+Before you use the plug-in, take a look at /http://www.suprnova.org, and browse the files. Hold your mouse over the links, and you'll notice every file ends in .torrent. This is the BT file extension. Usually, .torrent files are very small, under 200kb. They contain a wealth of information about the file you want to download. A .torrent file can contain just 1 single file, or a a directory full of files and more directories. But regardless, every download is split up into hundreds or thousands of pieces. The pieces make it much easier to download at higher speeds. Back to suprnova.org. Look at the columns:
+
+Added | Name | Filesize | Seeds | DLs (and a few more which aren't very useful.)
+
+I'll break this down.
+Added: Self explanitory, its the date the torrent was added.
+Name: Also self explanitory.
+Filesize: Duh
+Seeds: This is how many people are strictly UPLOADING, or sharing. These people are the ones that keep .torrent files alive. By "alive", I mean, if there's no one sharing the .torrent file, no one can download.
+DLs: This is how many people currently downloading that particular torrent. They also help keep the torrent alive as they share while they download.
+
+It's always best to download using a torrent that has a decent amount of seeders and downloaders, this way you can be assured there's a good chance your download will finish. The more the better.
+
+Now that you should understand how torrent files work, and how to use them, on to Azureus!
+First, get JAVA! You need this to run Azureus, as java is what powers it. Get Java here: /http://java.sun.com/j2se/1.4.2/download.html
+Next, get Azureus at: /http://azureus.sourceforge.net
+Next, get the Suprnovalister plugin from /http://s93732957.onlinehome.us/storage/suprnovalister.jar
+
+Install Java JRE before you do ANYTHING.
+
+Install Azureus, and then in the installation folder, create 2 more folders. ./Plugins/suprnovalister (For example, if you installed Azureus to C:\PROGRAM FILES\AZUREUS, create C:\PROGRAM FILES\AZUREUS\PLUGINS\SUPRNOVALISTER). Next, put the suprnovalister.jar file that you downloaded, in that folder.
+
+Load up Azureus, and if you want, go through the settings and personalize it.
+
+The tab labeled "My Torrents" is the section of Azureus you need the most often. That lists all your transfers, uploads and downloads. It shows every bit of information you could possibly want to know about torrents you download.
+
+In the menu bar, go to View > Plugins > Suprnova Lister. This will open up a new tab in Azureus. Click on "Update Mirror". This will get a mirror site of suprnova.org containing all current torrent files available. Once a mirror is grabbed, choose a category from the drop-down box to the left and click "Update". Wah-lah, all the available downloads appear in the main chart above. Just double click a download you want, and bang its starting to download. Open the "My Torrents" tab again to view and make sure your download started.
+
+After your download has finished, be nice, and leave the torrent transferring. So people can get pieces of the file from you, just as you got pieces from other people.
+
+Alternatively, if you don't want to use the plugin... you can just head to suprnova.org and download files to any folder. Then go to File > Open > .torrent File in Azureus.
+
+This should about wrap it up for the Bit Torrent Tutorial. If you guys think of anything I should add, or whatnot, just let me know and I'll check into it.

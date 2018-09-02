@@ -1,0 +1,141 @@
+Make Dvd Iso From Suse 9.2 5 Cds Iso, Linux mode and Windows mode ISO creation
+
+Linux Mode:
+You should have all the isos in a folder (e.g., susedvd) and make 5 subdirectories (e.g., cd1 to cd5) to mount them. Do the following as root. You should have a DVD iso created after you finish. Make sure you have enough space on the hard disk.
+
+# Create Directories
+CODE
+mkdir CD1 CD2 CD3 CD4 CD5
+
+
+# Mount the CDs in loop back mode
+CODE
+mount -o ro,loop SuSE_9.0_CD1.ISO cd1
+mount -o ro,loop SuSE_9.0_CD2.ISO cd2
+mount -o ro,loop SuSE_9.0_CD3.ISO cd3
+mount -o ro,loop SuSE_9.0_CD4.ISO cd4
+mount -o ro,loop SuSE_9.0_CD5.ISO cd5
+
+
+# Copy the boot directory from CD1
+CODE
+cp -a cd1/boot .
+mkdir i586 noarch
+
+
+# Concatenate checksums from 5 CDs (on one line)
+# Create the NEW MD5SUMS as one file in order to allow SuSE to validate (thus install) all of the files from every CD and not just CD #1
+# For the i586 directory:
+CODE
+cat CD1/suse/i586/MD5SUMS CD2/suse/i586/MD5SUMS CD3/suse/i586/MD5SUMS CD4/suse/i586/MD5SUMS CD5/suse/i586/MD5SUMS > i586/MD5SUMS
+
+# For the i686 directory:
+CODE
+cat CD1/suse/i686/MD5SUMS CD2/suse/i686/MD5SUMS CD3/suse/i686/MD5SUMS CD4/suse/i686/MD5SUMS CD5/suse/i686/MD5SUMS > i686/MD5SUMS
+
+# For the noarch directory:
+CODE
+cat CD1/suse/noarch/MD5SUMS CD2/suse/noarch/MD5SUMS CD3/suse/noarch/MD5SUMS CD4/suse/noarch/MD5SUMS CD5/suse/noarch/MD5SUMS > noarch/MD5SUMS
+
+#cd2/suse/i586/emacs-21.3-52.i586.rpm has checksum error
+#8e790b997fc6e187c197ab11c4f580fc emacs-21.3-52.i586.rpm
+# if you want to correct it, edit the MD5SUMS
+
+# Create DVD iso (on one line)
+CODE
+mkisofs -o SuSE_9.0.iso -b boot/loader/isolinux.bin -c boot/loader/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -l -P SuSE -r -T -V SuSE_9.0 -x cd1/boot -x cd1/suse/i586/MD5SUMS -x cd1/suse/noarch/MD5SUMS -x cd2/suse/i586/MD5SUMS
+-x cd2/suse/noarch/MD5SUMS -x cd3/suse/i586/MD5SUMS -x cd3/suse/noarch/MD5SUMS -x cd4/suse/i586/MD5SUMS -x cd4/suse/noarch/
+MD5SUMS -x cd5/suse/i586/MD5SUMS -x cd5/suse/noarch/MD5SUMS -graft-points cd1 boot/=boot suse/i586/MD5SUMS=i586/MD5SUMS suse
+/noarch/MD5SUMS=noarch/MD5SUMS suse/=cd2/suse suse/=cd3/suse suse/=cd4/suse suse/=cd5/suse
+
+# Burn the iso
+
+Optionally, you can mount this ISO like you did above to verify it will work correctly, or if you don't want to actually burn it. Just call:
+CODE
+mkdir DVD
+mount SuSE_9.2.iso DVD -o loop
+
+
+Windows Mode:
+
+This is a basic how to convert the 5 Suse 9.2 Pro CD's into 1 Suse 9.2 Pro DVD.
+
+** Note this is intended ONLY for a purchased version of Suse, and is not intended for anyone to use in the act of pirating software. Don’t beat me up for this, but Additional software, and hardware are required ( Ultra ISO ) and a computer running a version of Windows with NTFS file system to handle the large file that will be created. I would have used Linux but I could not locate the tools to do this as easy. There are always discussions about piracy etc. I do not condone it. I have used this method for combining many different types of legal CD's into ONE DVD. That way I can keep my original copies safe and sound in their multiple CD format, not worry about scratching or damage, and it is darn handy if you use a lot of CD's as I do. I hope somebody can use this how to, and make their life a little better, as the basic concept applies to lots of other multiple CD software's as well.
+
+1.) Create a folder to hold the ISO image on the Windows PC.
+
+2.) Create an ISO image of the First CD of the Suse 9.2 set in the folder you created. I used Nero to create an nrg image and converted it using Ultra ISO. Ultra ISO can also create an image from the tools menu select CD/DVD Image.
+
+3.) Next open the Image you created with Ultra ISO, there you will be able to see the internal directory structure of the image file. You can extract files from it or add files / folders to it. It should look like, not expanded:
+
+SU920.001
++Boot
++Docu
++Dosutils
+Media.1
++Suse
+
+4.) Insert CD # 2 into the drive and open it using the bottom browser pane of Ultra ISO. On the right side bottom pane select EVERYTHING on the disk. Drag this selection to the very top of the image directory top left window where it is labeled “ SU920.001 “ and drop it there. It will ask about overwriting several files “ license, copying, etc just answer yes to all.
+
+5.) Once CD # 2’s contents have been added to the image of CD # 1, select file and save the image. You have to leave the CD # 2 in the drive until this step is completed. Note the save takes a while it could be 10 minutes on a slow machine.
+
+6.) Repeat steps 4 and 5 for each of the 3 remaining CD’s. Remember to save after you add each of the CD’s contents. Always make sure you drag to the very top of the directory structure where it says SU920.001, and save after each CD.
+
+7.) When you get to this step you should have an image file that shows in Ultra ISO as 3,240 MB, windows will display this number differently in explorer. The directories should read top to bottom as below not expanded:
+
+SU920.001 ( This is the Volume Label ) that we are going to change next.
++Boot
++Docu
++Dosutils
+Media.1
+Media.2
+Media.3
+Media.4
+Media.5
++Suse
+
+8.) Next select the top of the directory structure where it states “SU920.001”, right click it and rename it to SU920.DVD. I’m not sure this step even matters but that’s what I did. It should now look like:
+
+SU920.DVD
++Boot
++Docu
++Dosutils
+Media.1
+Media.2
+Media.3
+Media.4
+Media.5
++Suse
+
+9.) Only one problem left, the MD5SUM files are messed up as the only ones you have in the image file are the last CD’s MD5SUM's. These files are plain text files that have a file list of the directory contents and each of the MD5SUM’s for each file. They are contained in the directories i586, i686, noarch, and setup directories under the suse directory.
+
+SU920.DVD
++Boot
++Docu
++Dosutils
+Media.1
+Media.2
+Media.3
+Media.4
+Media.5
++Suse
+I586
+I686
+Noarch
++Setup
+
+10.) We do not need to bother with the “setup” directory MD5SUM file, it is still the original from CD # 1, and it should only be one file md5sum listed, none of the other CD’s has this directory.
+
+11.) Create a temporary directory for each of the i586, i686, noarch directories on the windows PC, Insert CD #1 into the drive and copy the MD5SUM files from the CD to the respective temp hard disk folders.
+
+12.) Next insert each of the other CD’s ( 2, 3, 4, and finally 5 ) one at a time and append the appropriate MD5SUM text to the bottom of the MD5SUM files from CD # 1. Remember when they are saved DO NOT GIVE THEM A FILE EXTENSION! Windows may want to assign it as “ MD5SUM.txt “ it should be “ MD5SUM ” Without the quotes.
+
+13.) When the MD5SUM files are all combined into a plain text file for each directory i586, i686, noarch, we just use Ultra ISO to copy each of these files to their respective directory and overwrite the existing MD5SUM file inside of the image, and save the ISO image again. The image file is complete and ready to burn.
+
+14.) The last step is to use your favorite DVD burning software and burn the image to a blank + or - DVD of your choice. I always use a slow speed for DVD burning for quality. Save the image file until you are sure that you have a good burn.
+
+All together creating the ISO image took about an hour and a half to complete, and another half an hour to burn. Not too bad as I was figuring out what was needed on the fly.
+
+taken from
+CODE
+http://forums.suselinuxsupport.de/index.php?showtopic=8491

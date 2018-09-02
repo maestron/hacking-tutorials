@@ -1,0 +1,46 @@
+First thing to keep in mind: If your computer hasn't crashed yet, it will in the future! So instead of waiting for fate to strike, take some precautions now:
+
+1) BACK-UP! Buy some decent DVD-R discs and put everything useful in them. When you have more useful stuff, backup again. Do this often.
+
+2) Keep your computer healthy. Use an antivirus, an anti-spy, and a firewall. Keep them updated. Check regularly for Windows critical fixes.
+
+3) Don't install software that would do dangerous things to your hard drive. A boot manager would fall in this category.
+
+4) Use a registry cleaner before and after you install or uninstall any software. Many of the problems that will keep Windows from booting are caused by sloppy software that mess up your registry. A good registry cleaner is Tune-up Utilities.
+Code:
+http://www.tune-up.com/
+
+
+5) Run chkdsk now and then. Go to Start> Run. Type chkdsk /F. Press enter.
+
+
+In case your PC has already crashed, read the following:
+
+Most important: Don't panic! Panic is like a little demon that whispers in your ear to format your hard drive and reinstall everything. Don't do it! You will lose all your data and the little demon will laugh at you.
+
+To be exact you can still recover your data if you format your drive (by using special software), but only if you don't write anything on the disc afterwards. In other words format + windows install = bad idea. If you reinstall windows without formating your drive, you will only lose the files on your desktop and "My Documents" folder.
+
+In all occasions you should make sure to safeguard your files before attempting any kind of repair!
+
+So let's go about how to do that:
+
+The fast way: Go to this site:
+Code:
+http://www.knoppix.org
+. Knoppix is a Linux distribution than runs from a CD. Download the Knoppix ISO and burn it. Put it in your CD drive. On startup access BIOS and change the boot sequence so that your computer boots from the CD drive. Save settings and exit. Upon reboot, Knoppix will load.
+
+Knoppix is much like windows and it comes with its own CD burner. Locate it, launch it and backup everything you want on CD. Now you don't have to worry anymore!
+
+
+The less fast way: This requires that you have access to a second PC. Open the case of your computer and remove the hard disk.
+
+Install it as a slave on the second PC.
+
+Depending on respective configurations, you may have to change some jumper settings on the drive. Read the manual for help with installing hard drives and setting jumpers.
+
+After this is done, boot the second PC. If everything went out ok, you should be able to access your drive without problems. (Edit: Note that Win98 cannot recognize a local NTFS (Win2K/XP) disk.)
+
+Copy everything you need from your own hard drive to the other one. Now you don't have to worry anymore!
+
+Replace your computer's hard disk, fix all problems and reverse the process to copy the data back to your computer, or take CD backups on the other PC.
+

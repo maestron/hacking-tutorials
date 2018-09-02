@@ -1,0 +1,27 @@
+ Question:
+
+When I sign onto Messenger in Windows XP, there's a drop-down menu of sign-addresses I can use. Is there a way to keep those addresses from appearing, so I have to type it in each time?
+
+Answer:
+
+Yes there is a way, although you will need to modify/create a key within the system registry. Open the Registry Editor, and navigate to the key:
+
+HKEY_LOCAL_MACHINE\ SYSTEM\ CurrentControlSet\ Control\ Lsa
+
+Create a Value called "disabledomaincreds" and set it to "1".
+
+Reboot will finalise the process.
+
+Note: This is generally only usefull if you are setting up a system to be used by many users.
+
+Key Details:
+
+Machine Key: [HKEY_LOCAL_MACHINE\ SYSTEM\ CurrentControlSet\ Control\ Lsa]
+Value Name: disabledomaincreds
+Data Type: REG_DWORD (DWORD Value)
+Data Value: "1" = disable : "0" = enable
+
+
+Heres a faster, safe, alternate way: must be logged in as ADMIN
+
+Goto Start + Control Panel + User Accounts + Choose your account + "Manage my network passwords" at the top left + Then delete whichever msn accounts you don't need

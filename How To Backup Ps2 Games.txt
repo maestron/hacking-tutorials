@@ -1,0 +1,190 @@
+ Hi guys...here I found a tutorial of another Foum:
+INFO: Text didn't write by me!
+
+
+Okay, these are some methods to backup PS2 titles and Xbox titles, in order to play a backup you need a modchip of some sort, I have also included a tutorial on boot methods. Follow any one of these instructions to fit your needs. You can tell what format the PS2 title is by looking at the written side of the disc, DVD's are Silver and CD's are Purple. The DVD backup methods here consist of reading the image to the hard drive then burning it to the media for an easier backup, this depends on your hardware and it?s setup. I say that because the proper setup would be to have the Reader and Writer on separate IDE cables. This allows no cross information when doing Disc to Disc/On the fly copying. But, since most people would not know how to check or fix this, I suggest reading the image to your Hard Drive and then burning from there. *A little useful trick*, If the DVD backup "image" is small enough in size you can fit it onto a CD-R (80 minute or larger if need be) instead of using a more expensive DVD-R. I have done this succesfully using Prassi and the first tutorial for it below. In addition a DVD Movie backup will play on a PS2/Xbox without a chip. As I get more info I will update. Dexter
+
+
+PS1/PS2 CD backup tutorials
+
+
+Using CloneCD (v4.x.xx) for PS1/PS2
+
+1. Start CloneCD
+2. Select "Copy CD"
+3. Select your Reader, press Next
+4. Select "Game CD", press Next
+5. Select/Deselect your options here (on the fly, cue or delete) then press Next
+6. Select your Writer, press Next
+7. Select your burn speed and "Game CD"
+8. Press "OK" to begin
+
+
+Using Alcohol 120% for PS1/PS2
+
+1. Start Alcohol 120%
+2. Select ?Copy Wizard?
+3. Select your Reader & Read Speed
+4. Select or Deselect ?Copy current disc on the fly?
+5. For Datatype select which console PS1 or PS2, press Next
+6. Select your Image location and Name for it, press Next
+7. Select you Writer, Write Speed and anything else you feel you might need
+8. Make sure the Datatype selected is the same you chose above
+9. Press Start to begin
+
+
+PS2 DVD backup tutorials
+
+
+Using Prassi
+
+1. Start Primo
+2. Select "go to full application"
+3. Right Click the drive that has your original in it
+4. Select "build global image" and choose a path for the image (preferably on an NTFS opsys)
+5. After the image is extracted go to next step
+6. Choose the 3rd disc icon from the left *or* click file, new job, Global/Other Image
+7. Then just burn the .gi (global image) of the game
+
+
+This next way has one less step which saves some time because once you press record it does everything by itself (if you have a DVD reader and DVD Writer)
+
+1. Start Primo
+2. Use the "PrimoDVD Starter" (it's easier, and less confusing)
+3. Choose "disc copy"
+4. Select your Reader and Also your Writer
+5. Select "make a temp image on HD..."
+6. Select your burn speed and then record to begin
+
+
+Using Nero
+
+1. Start Nero, Use the Wizard (for easy use)
+2. Select "DVD" then select Next
+3. Select "Copy a DVD" then select Next
+4. Select your source drive
+5. Check OFF "copy on the fly" then select next
+6. Select your write speed
+7. Select either "Test", "Test and Burn" or "Burn"
+8. Press "Burn" to begin
+
+This next way is without the Wizard
+
+1. Start Nero, and select "File" then "New..."
+2. On upper left side of the window from the drop down menu select "DVD"
+3. Select "DVD Copy" Icon
+4. Select "Copy options" tab
+5. Check OFF "copy on the fly"
+6. Select source drive and read speed
+7. If needed Select "Image" tab to choose image directory and select/deselect "delete image..."
+8. Select "Burn" tab and choose your settings
+9. Press "Copy" to begin
+
+
+Using Alcohol 120%
+
+1. Start Alcohol 120%
+2. Select ?Copy Wizard?
+3. Select your Reader
+4. For ?Separate Image file every:? choose ?Never Separate?
+5. Select or Deselect ?Copy current disc on the fly?, press Next
+6. Select your Image location and Name for it, press Next
+7. Select you Writer, Write Speed and anything else you feel you might need
+8. Select or Deselect ?Delete image file after recording?
+9. Press Start to begin
+
+
+XBOX backup tutorials
+
+
+Xbox original games are burned from the outside in. The only way to backup a title is to have a modchip like X-exuter (best), Enigma, or Xodus/Matrix. You also have to flash the bios and have a CD program inserted or installed into the X-Box named EVO-X (this allows you to assign the X-Box an IP address). The game has to be stored on the X-Box's HD, this allows you to file transfer the title to your PC using an ftp program like FlaxhFXP (best) or similar. From there you use a burning application to make the backup. Some applications allows you to "drag & drop" right from the Xbox or you can build an ISO of the image then burn to CD-R/W or DVD-R/W backup. (I will update this to show steps as soon as I have a minute)
+
+
+Modded PS2 with or without Action Replay/GameShark CD & DVD backup booting methods
+
+PS2 with NeoKey/Sbox & AR/GS, PS1 CD backup booting
+
+1. Turn on PS2 and NeoKey/Sbox
+2. Press Eject
+3. Insert PS1 CD backup
+4. Press reset
+5. PS2 tray will close
+6. PS1 CD backup will now boot
+
+
+PS2 with NeoKey/Sbox & AR/GS, PS2 CD backup booting
+
+1. Have AR/GS dongle in a memory card slot
+2. Power on your PS2
+3. Insert AR/GS disc
+4. At the AR/GS menu, select Start Game, With/Without codes
+5. Eject and swap to your PS2 CD backup and press X.
+6. Screen will change and game will now boot
+
+* Note - Neokey will not play DVD-R!
+* Note - Old versions of AR2/GS2 you might need to press R1+O instead of X to boot games
+
+
+PS2 with Neo 2.2, PS1 CD backup booting
+
+1. Turn on PS2
+2. Press Eject
+3. Insert PS1 CD backup
+4. Press reset
+5. PS2 tray will close
+6. PS1 CD backup will now boot
+
+
+PS2 with Neo 2.2 & AR/GS, PS2 CD backup booting
+
+1. Have AR/GS dongle in a memory card slot
+2. Power on your PS2
+3. Insert AR/GS disc
+4. At the AR/GS menu, select Start Game, With/Without codes
+5. Eject and swap to your PS2 CD backup and press X.
+6. Screen will change and game will now boot
+
+
+PS2 with Neo 2.2 & AR/GS, PS2 DVD backup booting
+
+1. Have AR/GS dongle in a memory card slot
+2. Power on your PS2
+3. Insert AR/GS disc, close tray
+4. Power off your PS2, wait a few seconds
+5. Press and Hold Reset button to load AR/GS
+6. At the AR2/GS2 menu, press EJECT while still holding Reset
+7. Swap AR/GS disc for an Original-TOC-DVD* and wait 10 seconds
+8. Select "AR/GS Codes"
+9. Highlight "Add new code" and press X to get to the next screen
+10. Press X three times. You will see "Updating code list please wait" each time)
+11. Press "Start" on controller
+12. Select "Without codes", press X
+13. Then Press X again, and immediately release the Reset button, you will see "Updating code list please wait"
+14. The PS2 tray will eject allowing you to swap Original-TOC-DVD* for DVD backup and then close on it?s own
+15. Screen will change and game will now boot
+
+* Note - "Original-TOC-DVD" is an original DVD that is a larger file size than the backup
+* Note ? For a shortcut make a few ?Add new codes? and after step 8 just highlight one of them and press square to delete it, then proceed on with step 11
+
+PS2 with Messiah
+
+1. PSX Backups will boot directly.
+2. PS2 CD-R Backups will boot directly.
+3. PS2 Unpatched EA backups will boot directly.
+4. PS2 DVD-R Backups will boot directly.
+
+
+PS2 with Magic 2, 3 or 3.5
+
+1. PSX Backups will boot directly.
+2. PS2 CD-R Backups will boot directly.
+3. PS2 Unpatched EA backups will boot directly.
+4. PS2 DVD-R Backups will boot directly.
+
+
+Ps2 with Apple Mod
+
+1. PSX Backups will boot directly.
+2. PS2 CD-R Backups will boot directly.
+3. PS2 Unpatched EA backups will boot directly.
+4. PS2 DVD-R Backups will boot directly.[CODE] 

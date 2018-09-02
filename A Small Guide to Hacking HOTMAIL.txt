@@ -1,0 +1,76 @@
+From hacker@mitchell.demon.nl Mon Mar 02 20:09:04 1998
+Newsgroups: alt.hacking
+Subject: Hotmail Hack info !
+From: Terry Mitchell <hacker@mitchell.demon.nl>
+Date: Mon, 02 Mar 1998 12:09:04 -0800
+
+HOTMAIL HACKING INFO.
+
+
+I_1_I  - Brute force hacking
+a. Use telnet to connect to port 110 (Hotmail´s pop-server)
+b. Type USER and then the victim´s username
+c. Type PASS and then the guess a password
+d. Repeat that until U have found the correct password. 
+!. This is called brute force hacking and requires patience. 
+It´s better than trying to guess the victims password on 
+hotmail homepage only because it´s faster. 
+____
+I_2_I  - The Best way 
+a. Get the username of the victim (It usually stands in the adress-field
+)
+b. Then type " www.hotmail.com/cgi-bin/start/victimsusername "
+c. U´re in! 
+!. This hack only work if U are on the same network or computer as the 
+victim and if he don´t log out. 
+____
+I_3_I  - The old way 
+a. Go to http://www.hotmail/proxy.html
+b. Now type the victims username. (press login)
+c. Look at the source code.
+d. On the fifth row U should find "action=someadress"
+e. Copy that adress and paste it into the adress-field
+f. You are in... 
+!. As you can see it´s a long procedure and the victim have 
+plenty of time to log out. 
+____
+I_4_I  - Another... 
+a. Go to hotmail´s homepage
+b. Copy the source code.
+c. Make a new html file with the same code but change method=post to
+method=enter
+d. "view" the page
+e. Change the adress to www.hotmail.com/ (don´t press enter!)
+f. Make the victim type in his username and password
+g. Look in the adress-field. There you´ll see ...&password:something... 
+!. This is the way I use, because it lets you know the password. 
+(If he exits the browser U can see the password in the History folder!)
+
+READ!
+Hotmail´s sysops have changed the "system" so that the victim may log
+out even
+if U are inside his/her account. So don´t waste U´r time!
+
+---
+
+So you want to get some hotmail passwords?  
+This is pretty easy to do once you have got the hang of it.  
+If you are a beginner, I wouldn't make this your first attempt at 
+hacking.  When you need to do is use a port surfer and surf over to 
+port 80.  While there, you have to try and mail the user that you 
+want the password from.  It is best to mail them using the words 
+"We" and "Here at Hotmail..."  Most suckers fall for this and end 
+up giving out their password.  There is another way to also, you can 
+get an anon mailer, and forge the addres as staff@hotmail.com.  But 
+you have to change the reply address to go to a different addres 
+like user@host.com.  The person that you are trying to get the pass 
+from MUST respond to that letter for the mail to be forwarded to you. 
+Have text like "Please reply to this letter with the subject "PASSWORD"
+and underneith please include your user name and password.  
+If you have trouble Loging in withing the next few days, this is 
+only because we are updating our mail servers but no need to worry, 
+your mail will still be there.  Even though the server may be down 
+for an hour.  From the staff at Hotmail, Thank You."
+
+
+

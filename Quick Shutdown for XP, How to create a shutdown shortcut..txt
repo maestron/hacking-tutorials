@@ -1,0 +1,9 @@
+Ever want a quicker way to shutdown XP without navigating through the start menu, or using a third party shutdown utility Here is a script that will do just that.
+
+Right click the desktop and choose New Shortcut. Copy and paste this script or type it in.
+
+%windir%System32shutdown.exe -s -t 0
+
+Choose Next and name it whatever you like. I name mine OFF. Click Finished. Right click and choose properties and pick a Icon for it if you'd like. I use a wall light switch Icon. I drag mine into my QuickLaunch toolbar for one click shutdown.
+
+Enjoy!

@@ -1,0 +1,35 @@
+ Ultimate Google Way
+
+Look for Appz in Parent Directory
+
+intext:"parent directory" intext:"[EXE]"
+
+
+intext:"parent directory" index of:"[EXE]"
+
+
+intext:"parent directory" index of:"[RAR]"
+
+This will look for any exe or optionaly for zip, rar, ace, iso, bin and etc.
+
+Look for Moviez in Parent Directory
+
+intext:"parent directory" intext:"[VID]"
+
+
+intext:"parent directory" index of:"[VID]"
+
+This will look for any video filetype in parent directory. You can optionaly add index:"xvid" or intext:"divx" for specific codec movie.
+
+Look for Muzik in Parent Directory
+
+intext:"parent directory" intext:"[MP3]"
+
+
+intext:"parent directory" index of:"[MP3]"
+
+This will look for any music files.
+
+Look for Gamez in Parent Directory
+
+intext:"parent directory" index of:"[Gamez]"

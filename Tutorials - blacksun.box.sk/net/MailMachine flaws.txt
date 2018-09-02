@@ -1,0 +1,91 @@
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+MailMachine flaws / by Wang (www.wangproducts.co.uk)
+ For Black Sun Research Facility (blacksun.box.sk)
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+-> What is MailMachine.cgi?
+
+MailMachine is a perl CGI script written by Mike's World (http://www.mikesworld.net). MailMachine is described as:
+
+"Mail Machine is a great mailing list script that allows visitors to your website to subscribe and unsubscribe to your mailing list without ANY work from you. This is a great way to inform your visitors on what's happening, and bring them back!"
+
+The reason I have written this is not to encourage people to go and mess up servers with MailMachine running - it is to make people realise it is not a secure script. Hopefully the author will then take notice of what I have said and do something about it.
+
+-> What flaws are present?
+
+I recently downloaded MailMachine for use on my server, and after a couple of test runs I realised that a number of flaws are present. Here are the problems I found, although there are probably a lot more:
+
+1) Subscribing
+
+When the 'confirm subscription' option is on, it is easy for anyone to guess the confirmation url they need to go to confirm the subscription as it follows this format:
+
+http://www.domain.com/cgi-bin/mailmachine.cgi?<insert email>
+
+So, a hacker could subscribe anyone he wants to the list by first entering their email address and clicking subscribe, and then confirming the subscription by adding a ?<email> on the end of the scripts location. This renders MailMachine's confirm subscription option useless.
+
+2) Unsubscribing
+
+The same type of security problem is present, except this time a confirmation is not even necessary. A member of the list can unsubscribe themselves at any time by going to:
+
+http://www.domain.com/cgi-bin/mailmachine.cgi?<insert email>
+
+No confirmation will be sent, they will simply recieve a email to say they have been unsubscribed. So, a hacker can unsubscribe anyone from the list by going to that address. This effectively means that anyone can unsubscribe anyone.
+
+3) Permissions
+
+"Email.txt" and "Temp.txt" hold the subscribed emails and the 'to be confirmed' email addresses respectfully. By default the permissions set to the files "email.txt" and "temp.txt" means that the two files can be read by anyone. A hacker could access the file "email.txt" and unsubscribe everyone from the list using the technique mentioned above.
+
+4) Banned addresses
+
+The owner of the list is allowed to specify some banned addresses, however, these banned addresses are cAsE sensitive. So, if I ban the address:
+
+trouble@hacker.com
+
+That email can still be easily subscribed to the list by subscribing the address:
+
+Trouble@hacker.com
+
+(Notice the capital 'T')
+
+This makes it very difficult and annoying for a mailing list admin to actually ban an address.
+
+5) More Case problems
+
+MailMachine makes checks to see if someone who tries to subscribe is already subscribed. The case sensitivity is also present on subscribing an address. Therefore, the checks that mailmachine makes to see if the address is already subscribed are pointless - even with checks, if you@you.com is subscribed - You@you.com would be allowed.
+
+6) Major problems with www.hotmail.com
+
+When a confirmatiom email is sent, the address the recipient must click will look something like this:
+
+http://www.domain.com/cgi-bin/mailmachine.cgi?<insert email>
+
+Clicking this link should then send the person to the screen which will confirm their subscription...however, if the email is sent to a hotmail account, this will not happen.
+
+Hotmail does not read the '?' as part of the actual link, and therefore cuts off everything after the ? - so the address the recipient is actually taken to would be:
+
+http://www.domain.com/cgi-bin/mailmachine.cgi
+
+Which will not confirm their subscription...this makes it difficult for a hotmail user to confirm his or her subscription.
+
+--> Suggested fixes
+
+There are a lot of problems, but they can all easily be fixed. I suggest that the author does the following:
+
+1> Make the confirmation link have a unique code at the end, for example:
+
+Instead of: http://www.domain.com/cgi-bin/mailmachine.cgi?<insert email>
+
+Make it: http://www.domain.com/cgi-bin/mailmachine.cgi?<insert email>Qs672n
+
+2> When checks are done to see if an address is subscribed or banned - convert the email addresses to full uppercase. Then there will be no case sensitivity issues.
+
+3> Add a feature so that the admin can send a confirmation for each unsubscribe request.
+
+4> Send emails in html. This gets rid of the hotmail '?' bug as it is part of a <a href> link.
+
+5> Provide information on how to chmod or secure the email.txt and temp.txt files correctly.
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Wang
+Wang Products - http://www.wangproducts.co.uk
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

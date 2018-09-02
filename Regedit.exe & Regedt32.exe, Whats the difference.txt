@@ -1,0 +1,30 @@
+Have you ever noticed that there are two versions of the Registry Editor on your computer? Ever wondered why? Well let me just give you a little insight!
+
+It all depends on your Operating System. If you have Windows 2000 :
+
+Regedit.exe
+
+Regedit.exe is included with Windows NT 4.0 and Windows 2000 primarily for its search capability. You can use Regedit.exe to make changes in the Windows NT 4.0 and Windows 2000 registry, but you cannot use it to view or edit all functions or data types on Windows NT 4.0 and Windows 2000.
+
+The following limitations exist in the Regedit.exe version that is included with Windows NT 4.0 and Windows 2000:
+
+You cannot set the security for registry keys.
+You cannot view, edit, or search the value data types <>REG_EXPAND_SZ and <>REG_MULTI_SZ. If you try to view a <>REG_EXPAND_SZ value, Regedit.exe displays it as a binary data type. If you try to edit either of these data types, Regedit.exe saves it as <>REG_SZ, and the data type no longer performs its intended function.
+You cannot save or restore keys as hive files.
+Microsoft recommends that you use Regedit.exe only for its search capabilities on a Windows NT 4.0-based or Windows 2000-based computer.
+
+Regedt32.exe
+
+Regedt32.exe is the configuration editor for Windows NT 4.0 and Windows 2000. Regedt32.exe is used tomodify the Windows NT configuration database, or the Windows NTregistry. This editor allows you to view or modify the Windows NT registry.The editor provides views of windows that represent sections of theregistry, named hives. Each window displays two sections. On the leftside, there are folders that represent registry keys. On the right side,there are the values associated with the selected registry key. Regedt32 isa powerful tool, and you must use it with extreme caution when you changeregistry values. Missing or incorrect values in the registry can make theWindows installation unusable.
+
+Note: Unlike Regedit.exe, Regedt32.exe does not support importing and exporting registration entries (.reg) files.
+
+Or..Windows XP and Windows Server 2003
+
+Regedit.exe
+
+Regedit.exe is the configuration editor for Windows XP and Windows Server 2003. Regedit.exe is used tomodify the Windows NT configuration database, or the Windows NTregistry. This editor allows you to view or modify the Windows NT registry. It supports setting security on registry keys, viewing and editing <>REG_EXPAND_SZ and <>REG_MULTI_SZ, and saving and restoring hive files.On the leftside, there are folders that represent registry keys. On the right side,there are the values associated with the selected registry key. Regedit isa powerful tool. You must use extreme caution when you use it to changeregistry values. Missing or incorrect values in the registry can make theWindows installation unusable.
+
+Regedt32.exe
+
+In Windows XP and Windows Server 2003, Regedt32.exe is a small program that just runs Regedit.exe. 

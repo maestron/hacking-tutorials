@@ -1,0 +1,71 @@
+
+***********************************************************************
+ADVISORY: TCP packet fragment attacks against firewalls and filters
+  System: TCP/IP networks  
+  Source: http://all.net, Dr. Frederick B. Cohen
+***********************************************************************
+Packet Fragmentation Attacks
+Introduction to Packet Fragmentation
+Packet fragmentation is the part of the Internet Protocol (IP) suite of
+networking protocols that assures that IP datagrams can flow through any
+other sort of network. (For details, see Internet Request For Comments 791
+(rfc791) and are available and searchable in electronic form from Info-Sec
+heaven on the World-Wide-Web at http://all.net, through gopher service at
+all.net, or by ftp service from rs.internic.net.) Fragmentation works by
+allowing datagrams created as a single packet to be split into many smaller
+packets for transmission and reassembled at the receiving host.
+Packet fragmentation is necessary because underlying the IP protocol, other
+physical and or logical protocols are used to transport packets through
+networks. A good example of this phenomena is on the difference between
+Ethernet packets (which are limited to 1024 bytes), ATM packets (which are
+limited to 56 bytes), and IP packets which have variable sizes up to about
+1/2 million bytes in length.
+The only exception to this rule is in the case of an internet datagram
+marked don't fragment . Any internet datagram marked in this way is
+supposed to not be fragmented under any circumstances. If internet
+datagrams marked don't fragment cannot be delivered to their destination
+without being fragmented, they are supposed to be discarded instead. Of
+course, this rule doesn't have to be obeyed by the IP software actually
+processing packets, but it is supposed to be.
+How Packet Reassembly Attacks Work
+The packet fragmentation mechanism leads to attacks that bypass many
+current Internet firewalls, but the reason these attacks work is not
+because of the way fragmentation is done, but rather because of the way
+datagrams are reassembled.
+Datagrams are supposed to be fragmented into packets that leave the header
+portion of the packet intact except for the modification of the fragmented
+packet bit and the filling in of an offset field in the IP header that
+indicates at which byte in the whole datagram the current packet is
+supposed to start. In reassembly, the IP reassembler creates a temporary
+packet with the fragmented part of the datagram in place and adds incoming
+fragments by placing their data fields at the specified offsets within the
+datagram being reassembled. Once the whole datagram is reassembled, it is
+processed as if it came in as a single packet.
+According to the IP specification, fragmented packets are to be reassembled
+at the receiving host. This presumably means that they are not supposed to
+be reassembled at intermediate sites such as firewalls or routers. This
+decision was made presumably to prevent repeated reassembly and
+refragmentation in intermediate networks. When routers and firewalls
+followed the rules, they found a peculiar problem.
+The way firewalls and routers block specific services (such as telnet )
+while allowing other services (such as the world wide web http service) is
+by looking into the IP packet to determine which Transfer Control Protocol
+(TCP) port is being used. If the port corresponds to 80, the datagram is
+destined for http service, while port 23 is used for telnet . In normal
+datagrams, this works fine. But suppose we didn't follow the rules for
+fragmentation and created improper fragmented packets? Here's what one
+attacker did:
+   *  Create an initial packet which claims to be the first fragment of a
+     multi-packet datagram. Specify TCP port 80 in the TCP header so it
+     looks like a datagram going to http service, which is allowed to pass
+     the firewall.
+   *  The firewall passes the packet to the host under attack and passes
+     subsequent packet fragments in order to allow the destination host to
+     reassemble the packet.
+   *  One of the subsequent packets has an offset of 0 which causes the
+     reassembler to overwrite the initial part of the IP packet. This is
+     the part of the IP packet that specifies the TCP port. The attacker
+     overwrites the IP port number which was originally 80 with a new port
+     number such as 23, and is now granted telnet access to the host under
+     attack despite the firewall that is supposed to block the service.
+ 

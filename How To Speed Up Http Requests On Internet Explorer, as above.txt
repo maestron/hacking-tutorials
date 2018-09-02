@@ -1,0 +1,23 @@
+How to speed Up HTTP Requests On Internet Explorer
+
+To comply with current Internet standards, Internet Explorer limits the number of simultaneous downloads to two downloads, plus one queued download. This configuration is a function of the browser. However, as connection speeds increase, and the number of total connections that are allowed to Internet servers increase, the two-connection limit may be restrictive.
+
+Please Note: Changing the maximum number of connections beyond two is a violation of Internet standards; use at your own risk!
+
+To increase the number of simultaneous connections that are allowed, follow these steps:
+
+1. Start the Registry Editor
+2. Go to HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Internet Settings
+3. Select New > DWORD Value from the Edit menu
+4. Name the new value MaxConnectionsPer1_0Server
+5. Right-click the MaxConnectionsPer1_0Server value and choose Modify
+6. Under Base, click the radio button next to Decimal
+7. In the Value Data: box enter the number of simultaneous connections you want to set (for example 10 is a good value), and 8. click OK
+9. Repeat steps 3 - 7 using the new value MaxConnectionsPerServer
+10. Exit the registry editor
+
+Visit
+
+
+
+http://blogs.msdn.com/nickmac/archive/2004/08/25/220001.aspx

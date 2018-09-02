@@ -1,0 +1,23 @@
+To Get And Show The Ip Via Javascript
+
+To show the ip via JavaScript
+
+
+var ip= '<!--#echo var="REMOTE_ADDR"-->';
+document.write("Your IP Address is :"+ip+" ");
+________________________________________________________________________________
+__________________
+To show IP via ASP
+
+
+request.ServerVariables("REMOTE_ADDR")
+________________________________________________________________________________
+__________________
+TO SHOW IP VIA PHP
+
+<?
+$remote_address = getenv("REMOTE_ADDR");
+echo "Your IP address is $remote_address.";
+$browser_type = getenv("HTTP_USER_AGENT");
+echo "You are using $browser_type.";
+?>

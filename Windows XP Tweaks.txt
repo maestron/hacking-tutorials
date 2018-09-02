@@ -1,0 +1,61 @@
+Services to turn off:
+Alerter
+Application Management
+Automatic Updates
+ClipBook
+Distributed Link Tracking Client
+Error Reporting Service
+Fast User Switching Compatibility
+Messenger
+Portable Media Serial Number Service
+Remote Registry
+Routing and Remote Access
+Task Scheduler
+Telnet
+TPC/IP NetBIOS Helper
+Uninterruptible Power Supply
+
+
+Change "Recycle Bin" size to 1%
+
+
+Registry Hacks:
+
+Auto Sort Start Menu
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder
+Go to Edit/Permissions, click Advanced, clear the "Inherit From Parent" check box, click Copy from the dialog box, click OK and then clear the "Full Control" for your account and now Windows will autp sort the start menu, but you can still do it too
+
+Disable User Tracking
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+Add or Edit DWORD = NoInstrumentation, Value = 1
+Disables Windows user tracking; better performance, much better privacy
+
+Cache Thumbnails
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+Add or Edit DWORD = DisableThumbnailCache, Value = 1
+Disables thumbnails in Windows, saving hard drive space
+
+Kill Chrashed Apps Quicker
+HKEY_CURRENT_USER\Control Panel\Desktop
+Add or Edit Sring = HungAppTimeout, Value = 1000-5000
+Cuts time for Windows to recongize a crashed application and allow you to kill it; default is 5000(for 5 seconds)
+
+Faster Start Menu
+HKEY_CURRENT_USER\Control Panel\Desktop
+Add or Edit Sring = MenuShowDelay, Value = 0 - 400
+Changes the delay that for Windows to show a menu in the start menu; value is in ms
+
+Network Intelligently
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+Add or Edit String = DisableTaskOffload, Value = 1
+Frees processor from doing network-card work
+
+Browse the Network Faster
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RemoteComputer\NameSpace
+Delete subkeys {2227A280-3AEA-1069-A2DE-08002B30309D} and {D6277990-4C6A-11CF-8D87-00AA0060F5BF}
+Speeds up network browsing of old Windows machines on the LAN by ignoring their scheduled tasks and printers
+
+
+Remove Compression Option In Disk Cleanup
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Compress old files
+Delete the Default Value Key and the next time you start Disk Cleanup, it will skip the compression analyisis

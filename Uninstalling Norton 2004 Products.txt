@@ -1,0 +1,17 @@
+As you have seen once Norton 2004 Products have been install and a wrong key has been entered, Norton Products aren't able to run, even if you uninstall and reinstall them, well here is the registry entries taht you have to delete as well as the folders
+
+The registry files you need to delete
+HKEY_CLASSES_ROOT and delete all symatec entries (there is alot of entries so dont panic just delete all of them)
+
+Second you need to delete the following
+HKEY_CURRENT_USER\Software\Symantec
+and
+HKEY_LOCAL_MACHINE\SOFTWARE\Symantec
+
+Finally delte the folders call Symantec
+C:\Program Files\Symantec
+C:\Program Files\Common Files\Symantec Shared
+And the hidden one thats is at (Must enable "Show hidden files and folders" under the file option menu)
+C:\Documents and Settings\All Users\Application Data\Symantec
+
+After doing all this crap reboot and install a fresh copy of Norton

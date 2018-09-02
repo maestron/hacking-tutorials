@@ -1,0 +1,42 @@
+
+<?php
+if($_SERVER['QUERY_STRING'] == "SoD")
+ print "owns you!";
+else
+ print "don't front!";
+?>
+
+
+Description: Instead of calling files like ( index.php?str=blah ) , you could do ( index.php?SoD ) and it would print out "owns you!". You can add more strings in there, this is just an example.
+
+
+
+   $vars = explode(",", urldecode(getenv('QUERY_STRING')));
+   $v1 = array_shift($vars);
+   $v2 = array_shift($vars);
+   $v3 = array_shift($vars);
+
+   switch ($v1) {
+       case 'first.1': {
+           print("This is v1, first string case 'file.php?first.1'.");
+           break;
+           }
+      case 'first.2': {
+      switch ($v2) {
+           case 'second': {
+               switch($v3) {
+                   case 'third': {
+                     print("This is v3, the last case 'file.php?first.2,second,third'.");
+                     break;
+                   }
+               }
+           }
+       }
+       }
+   }
+
+
+Description: This basically does what the 1st one does but with more strings and a different seperator rather than '&'. I don't really want to go into too much detail on the thread so if people are confused or need explaining, reply or PM me.
+
+That's it for the navigation as I am not going to do the other due to they're everywhere else and I wanted to be different and show everyone this method.
+

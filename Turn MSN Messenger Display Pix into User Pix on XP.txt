@@ -1,0 +1,40 @@
+ How to turn MSN Messenger Display Pictures into User Pictures on XP
+For the pix you downloaded from MSN
+
+If you’ve ever wanted to turn the display pictures you download from MSN into an account picture (the one that appears in your Start Menu next to your username) for XP here’s how.
+
+1) In messenger Choose ==> Change Display Picture and then ==> Download more pictures.
+
+2) Download the desired images.
+
+3) Open 'Folder Options' in Explorer and make sure you can view Hidden Files and folders.
+
+4) Navigate to X:\Documents and Settings\User_Name\Application Data\Microsoft\MSN Messenger, where X: is the drive XP is on and User_Name is your username.
+
+5) In here you'll see folders with long numbers for names. The next bit is trial and error. If you go into each of the folders you should see that some of them have a folder called UserTile inside of them. In that directory it will have .dat files. The files which have TFR in their names are the images (to make your life easier there is a list at the bottom showing which file is which for a few of them).
+
+6) Going through all the UserTile folders copy these .dat files to a new folder. Now rename them and change their extension from .dat to .bmp by right clicking on them and choosing 'Rename'. Then try to open them in MS Paint or the Windows Fax and Picture Viewer. Not all of them will work (I'm not sure if this is just because some of them aren't actually image files, but any you downloaded should do).
+
+7) If you want to edit them open them up in MS Paint and then make changes there or copy and paste them into your favourite image editor (opening directly doesn't seem to work as the formats are bit messed up from the renaming). Make any changes you want and save (either as BMP, JPEG, GIF or PNG).
+
+8) Go to Control Panel ==> User Accounts
+
+9) Click on your account and then choose 'Change my picture', then select 'Browse for more pictures'.
+
+10) Browse to the image you just saved and select 'Open' and that's it!
+
+11) You can also use the image as your SoD avatar - to do so you'll have to resize the image to being 64 X 64 pixels and save as either (gif, jpeg, swf, png). If you are uploading it to SoD make sure it's less than 20 KB. Otherwise upload to a web server and enter it's URL in the space provided and press 'Update Avatar'.
+
+A list to help you identify the file you want:
+
+CODE
+
+
+TFR1C - Spider
+TFR3F - Leaf
+TFRRB - Jellyfish
+TFRRC - Ladybug
+
+
+
+N.B. The codes above may change, I'm not sure. I may add more files to the list later on.

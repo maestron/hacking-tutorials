@@ -1,0 +1,11 @@
+Go to Start --> Run --> Regedt32
+
+Go to HKEY_CURRENT_USER\Control Panel\Desktop
+
+Locate the key called "MenuShowDelay" and it is probably set to 400.
+
+Change that value to 150.
+
+Reboot your computer.
+
+You should notice a slight increase in the speed of your menus

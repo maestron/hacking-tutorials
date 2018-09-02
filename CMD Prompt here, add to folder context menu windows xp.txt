@@ -1,0 +1,26 @@
+ add the open cmd prompt to folder context menus
+also drives and My Computer
+
+copy what's in the code area to notepad and save as cmd here.reg
+
+CODE
+
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Drive\shell\cmd]
+@="Command Prompt"
+
+[HKEY_CLASSES_ROOT\Drive\shell\cmd\command]
+@="cmd.exe /k \"cd %L\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd]
+@="Command Prompt"
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd\command]
+@="cmd.exe /k \"cd %L\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\shell\cmd]
+@="Command Prompt"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\shell\cmd\command]
+@="cmd.exe /k \"cd %L\""

@@ -1,0 +1,18 @@
+When you perform a search for a file in Windows XP. The default setting is for XP to ONLY return files in the "Search Results" pane - when they are registered file types to a program on your PC.
+
+In other words if you are looking for a file that is NOT registered with an application on your PC, it will not be found using the default search settings.
+
+However, you can turn off the default by a quick Tweak of the registry!
+
+Open the Registry editor (type regedit from the Run command) and navigate to:
+
+HKEY LOCAL MACHINE\ SYSTEM\ CurrentControlSet\ Control\
+ContentIndex
+
+Double-Click the value named:
+
+FilterFilesWithUnknownExtensions
+
+..and change the value from 0 to 1
+
+Exit the registry editor and reboot!

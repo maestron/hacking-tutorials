@@ -1,0 +1,120 @@
+ Win XP Tweaks
+
+-----------
+STARTUP
+-----------
+
+
+Windows Prefetcher
+******************
+[HKEY_LOCAL_MACHINE \ SYSTEM \ CurrentControlSet \ Control \ Session Manager \ Memory Management \ PrefetchParameters]
+
+Under this key there is a setting called EnablePrefetcher, the default setting of which is 3. Increasing this number to 5 gives the prefetcher system more system resources to prefetch application data for faster load times. Depending on the number of boot processes you run on your computer, you may get benefits from settings up to 9. However, I do not have any substantive research data on settings above 5 so I cannot verify the benefits of a higher setting. This setting also may effect the loading times of your most frequently launched applications. This setting will not take effect until after you reboot your system.
+
+
+Master File Table Zone Reservation
+**********************************
+[HKEY_LOCAL_MACHINE \ SYSTEM \ CurrentControlSet \ Control \ FileSystem]
+
+Under this key there is a setting called NtfsMftZoneReservation, the default setting of which is 1. The range of this value is from 1 to 4. The default setting reserves one-eighth of the volume for the MFT. A setting of 2 reserves one-quarter of the volume for the MFT. A setting of 3 for NtfsMftZoneReservation reserves three-eighths of the volume for the MFT and setting it to 4 reserves half of the volume for the MFT. Most users will never exceed one-quarter of the volume. I recommend a setting of 2 for most users. This allows for a "moderate number of files" commensurate with the number of small files included in most computer games and applications. Reboot after applying this tweak.
+
+
+Optimize Boot Files
+*******************
+[HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft \ Dfrg \ BootOptimizeFunction]
+
+Under this key is a text value named Enable. A value of Y for this setting enables the boot files defragmenter. This setting defragments the boot files and may move the boot files to the beginning (fastest) part of the partition, but that last statement is unverified. Reboot after applying this tweak.
+
+Optimizing Startup Programs [msconfig]
+**************************************
+
+MSConfig, similar to the application included in Win9x of the same name, allows the user to fine tune the applications that are launched at startup without forcing the user to delve deep into the registry. To disable some of the applications launched, load msconfig.exe from the run command line, and go to the Startup tab. From there, un-ticking the checkbox next to a startup item will stop it from launching. There are a few application that you will never want to disable (ctfmon comes to mind), but for the most part the best settings vary greatly from system to system.
+
+As a good rule of thumb, though, it is unlikely that you will want to disable anything in the Windows directory (unless it's a third-party program that was incorrectly installed into the Windows directory), nor will you want to disable anything directly relating to your system hardware. The only exception to this is when you are dealing with software, which does not give you any added benefits (some OEM dealers load your system up with software you do not need). The nice part of msconfig is that it does not delete any of the settings, it simply disables them, and so you can go back and restart a startup application if you find that you need it. This optimization won't take effect until after a reboot.
+
+Bootvis Application
+*******************
+The program was designed by Microsoft to enable Windows XP to cold boot in 30 seconds, return from hibernation in 20 seconds, and return from standby in 10 seconds. Bootvis has two extremely useful features. First, it can be used to optimize the boot process on your computer automatically. Second, it can be used to analyze the boot process for specific subsystems that are having difficulty loading. The first process specifically targets the prefetching subsystem, as well as the layout of boot files on the disk. When both of these systems are optimized, it can result in a significant reduction in the time it takes for the computer to boot.
+
+Before attempting to use Bootvis to analyze or optimize the boot performance of your system, make sure that the task scheduler service has been enabled – the program requires the service to run properly. Also, close all open programs as well – using the software requires a reboot.
+
+To use the software to optimize your system startup, first start with a full analysis of a fresh boot. Start Bootvis, go to the Tools menu, and select next boot. Set the Trace Repetition Settings to 2 repetitions, Start at 1, and Reboot automatically. Then set the trace into motion. The system will fully reboot twice, and then reopen bootvis and open the second trace file (should have _2 in the name). Analyze the graphs and make any changes that you think are necessary (this is a great tool for determining which startup programs you want to kill using msconfig). Once you have made your optimizations go to the Trace menu, and select the Optimize System item. This will cause the system to reboot and will then make some changes to the file structure on the hard drive (this includes a defragmentation of boot files and a shifting of their location to the fastest portion of the hard disk, as well as some other optimizations). After this is done, once again run a Trace analysis as above, except change the starting number to 3. Once the system has rebooted both times, compare the charts from the second trace to the charts for the fourth trace to show you the time improvement of the system's boot up.
+
+The standard defragmenter included with Windows XP will not undo the boot optimizations performed by this application.
+
+
+
+-----------------------------------
+General Performance Tweaks
+-----------------------------------
+
+
+IRQ Priority Tweak
+******************
+[HKEY_LOCAL_MACHINE \ System \ CurrentControlSet \ Control \ PriorityControl]
+
+You will need to create a new DWORD: IRQ#Priority (where # is the number of the IRQ you want to prioritize) and give it a setting of 1. This setting gives the requisite IRQ channel priority over the other IRQs on a software level. This can be extremely important for functions and hardware subsystems that need real-time access to other parts of the system. There are several different subsystems that might benefit from this tweak. Generally, I recommend giving either the System CMOS or the video card priority. The System CMOS generally has an IRQ setting of 8, and giving it priority enhances the I/O performance of the system. Giving priority to the video card can increase frame rates and make AGP more effective.
+
+You can give several IRQs priority, but I am not entirely certain how the system interacts when several IRQs are given priority – it may cause random instabilities in the system, although it is more likely that there's a parsing system built into Windows XP to handle such an occurrence. Either way, I would not recommend it.
+
+QoS tweak
+*********
+QoS (Quality of Service) is a networking subsystem which is supposed to insure that the network runs properly. The problem with the system is that it eats up 20% of the total bandwidth of any networking service on the computer (including your internet connection). If you are running XP Professional, you can disable the bandwidth quota reserved for the system using the Group Policy Editor [gpedit.msc].
+
+You can run the group policy editor from the Run command line. To find the setting, expand "Local Computer Policy" and go to "Administrative Templates" under "Computer Configuration." Then find the "Network" branch and select "QoS Packet Scheduler." In the right hand box, double click on the "Limit Reservable Bandwidth." From within the Settings tab, enable the setting and then go into the "Bandwidth Limit %" and set it to 0%. The reason for this is that if you disable this setting, the computer defaults to 20%. This is true even when you aren't using QoS.
+
+Free Idle Tasks Tweak
+*********************
+
+This tweak will free up processing time from any idle processes and allow it to be used by the foreground application. It is useful particularly if you are running a game or other 3D application. Create a new shortcut to "Rundll32.exe advapi32.dll,ProcessIdleTasks" and place it on your desktop. Double-click on it anytime you need all of your processing power, before opening the application.
+
+Windows Indexing Services
+Windows Indexing Services creates a searchable database that makes system searches for words and files progress much faster – however, it takes an enormous amount of hard drive space as well as a significant amount of extra CPU cycles to maintain the system. Most users will want to disable this service to release the resources for use by the system. To turn off indexing, open My Computer and right click on the drive on which you wish to disable the Indexing Service. Enter the drive's properties and under the general tab, untick the box for "Allow the Indexing Service to index this disk for fast file searching."
+
+Priority Tweak
+**************
+[HKEY_LOCAL_MACHINE \ SYSTEM \ CurrentControlSet \ Control \ PriorityControl]
+
+This setting effectively runs each instance of an application in its own process for significantly faster application performance and greater stability. This is extremely useful for users with stability problems, as it can isolate specific instances of a program so as not to bring down the entire application. And, it is particularly useful for users of Internet Explorer, for if a rogue web page crashes your browser window, it does not bring the other browser windows down with it. It has a similar effect on any software package where multiple instances might be running at once, such as Microsoft Word. The only problem is that this takes up significantly more memory, because such instances of a program cannot share information that is in active memory (many DLLs and such will have to be loaded into memory multiple times). Because of this, it is not recommended for anyone with less than 512 MB of RAM, unless they are running beta software (or have some other reason for needing the added stability).
+
+There are two parts to this tweak. First is to optimize XP's priority control for the processes. Browse to HKEY_LOCAL_MACHINE \ SYSTEM \ CurrentControlSet \ Control \ PriorityControl and set the "Win32PrioritySeparation" DWORD to 38. Next, go into My Computer and under Tools, open the Folder Options menu. Select the View tab and check the "Launch folder windows in separate process" box. This setting actually forces each window into its own memory tread and gives it a separate process priority.
+
+Powertweak application
+**********************
+xxx.powertweak.com
+
+Powertweak is an application, which acts much like a driver for our chipsets. It optimizes the communication between the chipset and the CPU, and unlocks several "hidden" features of the chipset that can increase the speed of the system. Specifically, it tweaks the internal registers of the chipset and processor that the BIOS does not for better communication performance between subsystems. Supported CPUs and chipsets can see a significant increase in I/O bandwidth, increasing the speed of the entire system. Currently the application supports most popular CPUs and chipsets, although you will need to check the website for your specific processor/chipset combo – the programmer is working on integrating even more chipsets and CPUs into the software.
+
+Offload Network Task Processing onto the Network Card
+*****************************************************
+[HKEY_LOCAL_MACHINE \ SYSTEM \ CurrentControlSet \ Services \ Tcpip \ Parameters]
+
+Many newer network cards have the ability of taking some of the network processing load off of the processor and performing it right on the card (much like Hardware T&L on most new video cards). This can significantly lower the CPU processes needed to maintain a network connection, freeing up that processor time for other tasks. This does not work on all cards, and it can cause network connectivity problems on systems where the service is enabled but unsupported, so please check with your NIC manufacturer prior to enabling this tweak. Find the DWORD "DisableTaskOffload" and set the value to 0 (the default value is 1). If the key is not already available, create it.
+
+Force XP to Unload DLLs
+***********************
+[HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft \ Windows \ CurrentVersion \ Explorer]
+"AlwaysUnloadDLL"=dword:00000001
+
+XP has a bad habit of keeping dynamic link libraries that are no longer in use resident in memory. Not only do the DLLs use up precious memory space, but they also tend to cause stability problems in some systems. To force XP to unload any DLLs in memory when the application that called them is no longer in memory, browse to HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft \ Windows \ CurrentVersion \ Explorer and find the DWORD "AlwaysUnloadDLL". You may need to create this key. Set the value to 1 to force the operating system to unload DLLs.
+
+Give 16-bit apps their own separate processes
+*********************************************
+[HKEY_LOCAL_MACHINE \ SYSTEM \ CurrentControlSet \ Control \ WOW]
+"DefaultSeparateVDM"="Yes"
+
+By default, Windows XP will only open one 16-bit process and cram all 16-bit apps running on the system at a given time into that process. This simulates how MS-DOS based systems viewed systems and is necessary for some older applications that run together and share resources. However, most 16-bit applications work perfectly well by themselves and would benefit from the added performance and stability of their own dedicated resources. To force Windows XP to give each 16-bit application it's own resources, browse to HKEY_LOCAL_MACHINE \ SYSTEM \ CurrentControlSet \ Control \ WOW and find the String "DefaultSeparateVDM". If it is not there, you may need to create it. Set the value of this to Yes to give each 16-bit application its own process, and No to have the 16-bit application all run in the same memory space.
+
+Disable User Tracking
+*********************
+[HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Policies \ Explorer]
+"NoInstrumentation"=dword:00000001
+
+The user tracking system built into Windows XP is useless to 99% of users (there are very few uses for the information collected other than for a very nosy system admin), and it uses up precious resources to boot, so it makes sense to disable this "feature" of Windows XP. To do so, browse to HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Policies \ Explorer and find the DWORD "NoInstrumentation". You may need to create this key if it is not there. The default setting is 0, but setting it to 1 will disable most of the user tracking features of the system.
+
+Thumbnail Cache
+***************
+[HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Explorer \ Advanced]
+"DisableThumbnailCache"=dword:00000001
+
+Windows XP has a neat feature for graphic and video files that creates a "thumbnail" of the image or first frame of the video and makes it into an oversized icon for the file. There are two ways that Explorer can do this, it can create them fresh each time you access the folder or it can load them from a thumbnail cache. The thumbnail caches on systems with a large number of image and video files can become staggeringly large. To disable the Thumbnail Cache, browse to HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Explorer \ Advanced and find the DWORD "DisableThumbnailCache". You may need to create this key. A setting of 1 is recommended for systems where the number of graphic and video files is large, and a setting of 0 is recommended for systems not concerned about hard drive space, as loading the files from the cache is significantly quicker than creating them from scratch each time a folder is accessed.

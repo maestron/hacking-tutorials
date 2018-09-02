@@ -1,0 +1,72 @@
+Simple Tweaks for Peak PC Graphics Performance
+
+Adjust the settings for your graphics board and display to improve image quality.
+
+When it comes to your PC, looks definitely matter. Tiny text, blurry images, and flickering screens aren't just annoying, they can lead to eyestrain, lost productivity, and a bill from the glazier for replacing the window you toss your monitor through out of frustration. But you don't have to give your display the heave-ho: A few simple adjustments to your graphics card and other Windows settings can ensure peak visual performance.
+
+Your PC's graphics card is controlled by its Windows driver, so get the latest driver release for your board. To see what version you have, right-click the desktop and choose Properties to open the Display Properties dialog box, then click Settings, Advanced, Adapter (in Windows XP, also select Properties, Driver).
+
+Visit your graphics-card vendor's Web site to download the most recent version of the driver, but don't install beta drivers. These are works in progress that may cause more trouble than they're worth.
+
+Sight-Saving Settings
+
+Here are a few settings that should be available for all graphics drivers.
+
+Resolution: This is the number of dots--or pixels (short for "picture elements")--displayed on your screen. The higher the resolution, the more dots per inch, and the sharper the displayed image (if your monitor supports the higher resolution). High resolutions increase the processing demands on your graphics board and PC.
+
+The graphics cards in most computers made in the last three or four years support resolutions of at least 1024 by 768--meaning the screen image is composed of an orthogonal array 1024 pixels across and 768 pixels tall--and some support screen resolutions as high as 1600 by 1200. However, many older systems, as well as some newer budget systems, have a top resolution of only 800 by 600.
+
+To adjust screen resolution, open Display Properties and click Settings. Slide the 'Screen area' or 'Screen resolution' bar to a higher (More) or lower (Less) resolution. Though higher resolutions improve image quality, they also shrink icons, text, and other on-screen objects. Experiment to find the setting that's right for you. For most people, 1024 by 768 is the highest resolution they can read easily on a 17-inch CRT monitor.
+
+Color depth: This setting is the number of colors that your graphics card supports. The more colors available for use, the more realistic the image, but again, the more colors on your screen, the greater the processing demands on your system.
+
+Your graphics card's color-depth settings are listed in Display Properties under the Settings tab on the Colors drop-down menu ('Color quality' in Windows XP). Each is named for the number of bits it assigns to each pixel: True Color (also called 24-bit color) makes 16,777,216 colors available, while High Color (16 bits) supports 65,536 colors. At lower than 16-bit color, your images may suffer. Many drivers no longer offer 8-bit (256 colors) or 15-bit (32,536 colors) settings.
+
+New PCs often support 32-bit color, which offers the same 16 million-plus colors as True Color. The extra 8 bits control image opacity. This is useful in fast-moving 3D games but of little help in most business apps.
+
+Refresh rate: Expressed in hertz, or cycles per second, this tells how often the phosphors that glow to create an image on a CRT screen are reenergized--that is, the times per second that the screen's image is redrawn. A refresh rate that's too low can cause annoying screen flicker. Even if you don't see the flicker, slow refreshes can cause eyestrain and headaches.
+
+Conventional wisdom says your refresh rate should be no less than 72 Hz. Some experts say the minimum rate is 80 Hz. Try different refresh rates until you find the one that works for you. Note that if your refresh rate is too high, you could lose image opacity. Still, few of us can discern rates higher than 85 Hz.
+
+To adjust your screen's refresh rate in Windows XP, open Display Properties and click Settings, Advanced, Adapter, List All Modes. Pick a combination of refresh rate, screen resolution, and color depth from the list of supported values.
+
+To change your refresh rate in other versions of Windows, open Display Properties and then click Settings, Advanced, Adapter. Select an option from the 'Refresh rate' drop-down menu. If you see no options there, however, your graphics board and monitor don't support multiple refresh rates.
+
+Even in that case, you might be able to increase your display's refresh rate by decreasing your screen resolution or your color depth. All three specs compete for graphics-processing capacity, so if your graphics system is running at its maximum, try increasing one setting and lowering another. For example, reducing color depth from 32-bit to 16-bit--no big deal if you never look at photos--may free up enough processing power to let you bump your refresh rate from an annoying 60 Hz to an eye-pleasing 72 Hz. Or you may be able to increase resolution from 800 by 600 to 1024 by 768. There's no guarantee, but these tricks might work.
+
+Windows automatically sets your screen refresh rate to a safe but slow 60 Hz when it can't detect your monitor. To confirm that Windows XP correctly recognizes your monitor, open Display Properties and click Settings, Advanced, Monitor. If your monitor isn't listed under 'Monitor type', download and install the device's driver from the manufacturer's Web site.
+
+In other versions of Windows, verify that Plug and Play is enabled. Make sure your monitor is listed under 'Display' on the Settings tab in Display Properties, and then click Advanced, Monitor. Verify that Automatically detect Plug & Play monitors is checked. If it isn't, select it and then reset your refresh rate to a level that is higher than Windows' default 60 Hz.
+
+DirectX: This Windows component controls multimedia functions. To check your current DirectX version, click Start, Run, type dxdiag, and click OK. Choose the System tab and look under System Information on the lower part of the screen. DirectX 9 is the latest version; if you don't have it, download it from Microsoft.
+Touch Those Dials!
+
+You can improve the image quality of your monitor via its built-in controls. The options vary by display manufacturer and model, but you should find brightness and other controls on most monitors.
+
+Adjust brightness and contrast: Use this gray-scale image on your screen. Be sure you can see as many of the image's 17 shades as possible; the two or three darkest may be tough to view in a bright room.
+
+Center and align: Few monitors come straight from the factory with optimal screen geometry. Use your monitor's screen-placement controls to center your displayed image, keep its edges straight, and minimize unfilled screen space.
+
+To avoid eyestrain and other physical problems, put the top of the screen at eye level and at arm's length from your head (your best position may vary). Orient your screen to avoid glare from lights and windows. If that's not possible, get a glare filter such as Kensington's $34 GlareMaster.
+
+Clean it: Gently wipe your screen with a soft, lightly moistened cloth. Unless the monitor is really filthy, avoid cleaning solutions, which can damage delicate screen coatings. Clean the dust from the cooling vents in the monitor's case; overheating is your display's lethal enemy.
+
+Graphics Triage
+
+If your screen goes blank, the problem is likely due to a disconnected monitor cable, an unplugged power cord, or a too-low brightness setting. Monitors do die, however. If you smell something burning or hear popping sounds, your monitor could be failing--turn it off immediately. Monitors have been known to spontaneously combust.
+
+Corrupted graphics drivers cause all kinds of PC problems. To check for a damaged graphics driver, install the plain-vanilla VGA driver that comes with Windows. If your troubles disappear, reinstall a clean copy of the monitor's original driver, or an updated version.
+
+Some graphics boards don't work or play well with other hardware devices. Windows allows you to disable graphics-acceleration functions for the sake of compatibility. Open Display Properties and click Settings, Advanced, Troubleshooting in Windows XP and 2000, or Settings, Advanced, Performance in Windows 98 and Me. Move the slider under 'Hardware acceleration' to the left to disable your graphics acceleration.
+
+A shaking or shimmering image on your screen may be due to nearby magnetic fields. Keep clocks and other appliances that use electric motors, and those that use a lot of electricity (such as microwave ovens), far from your monitor. Power lines behind walls can cause interference, so try moving the display away from nearby walls.
+
+If your screen image is washed in blue, red, or green, check for a loose cable connecting your graphics board to your monitor. Look for bent pins inside the cable connector; you can often straighten them with needle-nose pliers. If on-screen objects have a rainbow cast, some monitors have convergence controls that you can use to tune the image.
+
+Living in a Flat World
+
+Notebook displays are fine-tuned in the factory to work with the system's other hardware; your desktop's flat panel likely isn't. And tuning an LCD isn't the same as tuning a CRT monitor. If both your LCD and graphics board support Digital Visual Interface connections, make sure they're using them. Vendors don't always ship a DVI cable with cards that produce both analog and digital signals, so you'll have to replace the analog cable. If your display supports DVI but your graphics card doesn't, upgrade your card.
+
+Make sure your LCD is set to its native resolution. Many flat-panel displays don't look good at other resolutions. Unfortunately, some 15-inch LCDs have a native resolution of 1024 by 768 dpi, which makes text minuscule. The solution is to open Display Properties, click Appearance, and change the setting on the 'Font size' drop-down menu to increase the size of your text. (Most browsers include their own font-size settings.)
+
+In Windows XP, open Display Properties, click Appearance, Effects, and check Use the following method to smooth screen fonts. Select ClearType to see a big improvement in the appearance of many of your fonts.

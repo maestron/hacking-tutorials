@@ -1,0 +1,11 @@
+ Windows XP has a vast number of configuration dialogs, but some adjustments can be performed only by directly editing the Registry. Frequently, tips involving Registry tweaks include stern warnings to back up the Registry before making any change. The Windows XP Backup applet can back up the Registry along with other elements of the System State, but the resulting data file can occupy hundreds of megabytes. You're better off saving a system restore point each time you're about to edit the Registry. Better still, you can use Regedit to back up only the Registry keys that will be changed.
+
+Click on Start | Run and enter Regedit to launch the Registry editor. To back up an individual key you plan to edit, navigate to the key and right-click on it. Choose Export from the menu, and save the key to a REG file. Open the REG file in Notepad and insert a few comment lines that describe the source and purpose of the tweak. (To create a comment line, simply put a semicolon at the start of the line.)
+
+Now go ahead and make all the changes to Registry keys and values specified by the tip you're applying. Any time you add a new key or value, make a note of it with another comment line in the REG file. When you're done, save the REG file and close Notepad.
+
+
+If later you want to undo this Registry tweak, just double-click on the REG file and confirm that you want to add it to the Registry. This will restore any deleted keys or values and will restore the original data for any values whose data was changed. Note that this will not remove new keys or values that were added; that's why you need to make comments about such changes.
+
+Right-click on the REG file and choose Edit, which will open it in Notepad. Check for comments about keys or values that were added, and if you find any, use Regedit to delete them. You can delete the REG file itself once you've completed this process
+

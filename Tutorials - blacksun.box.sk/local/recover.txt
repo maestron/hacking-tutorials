@@ -1,0 +1,119 @@
+Session Start: Sat Jun 24 19:06:06 2000
+* Logging #bsrf to '#bsrf.log'
+<GoLdDeMoN> raven, do u know how they find out info after ur hd has been 
+formatted?
+<jobber-d> im logging right now
+<|BaRoN1|> NM...
+<Raven> |BaRoN1|, GMT is Greenwich Mean Time (Greenwich is where the 
+diagonal uhm line thingi, whatever they call it in english, goes through)
+<Raven> GoLdDeMoN, that's easy
+<jobber-d> the degree?
+<Raven> hey i'll lecture on that
+<Raven> ok is everyone ready?
+<jobber-d> yes
+<Raven> |BaRoN1| ok
+<jobber-d> im logging
+<|BaRoN1|> what r u doing here in such late houre?
+<Raven> |BaRoN1| it's the summer vacation dammit
+<RedShadow> meridian, is what its called
+<Raven> ohh and just for the sake of it...
+*** Raven sets mode: +vvvv jobber-d Blade dvx RedShadow
+*** Raven sets mode: +vvvv GoLdDeMoN snider Hatch seek3r
+*** Raven sets mode: +v EBULA
+<Raven> :-)
+<jobber-d> lol
+<|BaRoN1|> ohhh ... i`m allways forget ...
+<Raven> alright let's make it quick
+<RedShadow> you don't want to incite a riot like last time
+<Raven> RedShadow that's why i didn't use /mop
+<Raven> so anyway...
+<Raven> suppose you have some sensitive data on your hd
+<Raven> something reeeally sensitive
+<Raven> something that the fbi would like to lay it's hands on
+<Raven> well actually fbi would like to lay it's hands on many things
+<jobber-d> like my nads
+<Raven> especially at the time when Jay Edgar Hoover was in charge...
+<Raven> uhm nevermind forget it, sick little joke
+<Raven> which involves crossdressers and handcuffs, forget it
+<Raven> so anyway
+<jobber-d> :)
+<Raven> suppose you want to get rid of ANY traces at all
+<Raven> so the feds won't find anything
+<|BaRoN1|> ...i`m blushing ...
+<Raven> and won't play the jailhouse rock, as elvis would have said
+<Raven> ok first i'll tell u how the fbi recovers files
+<Hatch> encrypt the the disk !!
+<Raven> so anyway your hard drive has some sectors on it called FATs - File 
+Allocation Tables
+<Raven> and these sectors contain the locations of all the files
+<Raven> when u delete a file, it is removed from the FAT
+<jobber-d> raven: does this apply to linux disks?
+<Raven> but not from the disk...
+<Raven> jobber-d yes
+<Raven> even to diskettes
+<Raven> and tape drives too, i think
+<snider> same concept anyways
+<Raven> so anyway the fbi can use a tool that reads the raw data that's on 
+the hd
+<Raven> and browse through it
+<Raven> eventually they'll find the data
+<snider> like debug.exe
+<Raven> because it wasn't deleted from the disk
+<Raven> it was just removed from the FAT
+<GoLdDeMoN> so wouldn't u be losing space over time even if u delete things?
+<Raven> what u can do is either use file shredding utilities
+<Raven> or encrypt the file
+<Raven> GoLdDeMoN no, eventually things get overwritten after they are 
+deleted
+<snider> gold, you can legally write to sectors that have no FAT entry
+<Raven> snider that's right
+<snider> :)
+*** Ghost_Rider has joined #bsrf
+<Ghost_Rider> hi guys
+<Ghost_Rider> hi raven
+<jobber-d> eh ghost! mini-lecture
+<Ghost_Rider> snider
+<Ghost_Rider> jobber
+<Hatch> what's the address of the fat in the disk raven?
+<Raven> now file shredding utilities scramble the file, toss it, garble it, 
+pee on it and stomp on it a little and then reset it to zero and only then 
+delete it
+<Raven> yeah a spontaneous one, ghost
+<Hatch> 0000:0000?
+<jobber-d> ill send you the log once its done
+<Raven> encryption, on the other hand, will overwrite the file with an 
+encrypted one
+<GoLdDeMoN> where can u get file shredding utilities?
+<Hatch> hey ghost
+<Raven> and then u can delete it
+<Raven> GoLdDeMoN there's one for windows which i know, it's called file 
+shredder
+<snider> hatch, right after the master boot record is the first partitions 
+FAT
+<Ghost_Rider> talking about how to really delete files right?
+<Raven> dunno any for linux, i never used these things, and i only came 
+across the windows one by accident
+<jobber-d> correct
+<Raven> hey u think the others would be interested to hear this?
+<Raven> maybe u could send me the logs
+<GoLdDeMoN> do u know where to get the raw data viewing utility?
+<Raven> barakirs@netvision.net.il, later
+<jobber-d> ill snd the logs
+<Ghost_Rider> Raven: if you now the offsets where to write you can use an 
+asm program to write 0 on them
+<Raven> just don't flood me
+<Raven> :-)
+<Raven> GoLdDeMoN i think Partition Magic does that
+<jobber-d> :)
+<Ghost_Rider> raven
+<GoLdDeMoN> thanx
+<Ghost_Rider> did you check the tut?
+<Raven> or Norton Rescue, uhm... something, i don't remember how it's called
+<Raven> ok that's it, if u want to send me your logs, cut them here
+<Raven> -- cut --
+<snider> everyone, you can use the -l funcion from debug.exe to wiev data, 
+its almost too easy
+<Raven> Ghost_Rider yes, u can continue your work
+<snider> hehe
+Session Close: Sat Jun 24 19:15:01 2000
+

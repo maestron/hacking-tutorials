@@ -1,0 +1,60 @@
+Get unlimited bandwidth from your host for free
+
+
+NOTE: This applies only to specific hosting companies, due to the
+specific setup needed and does have its drawbacks.
+
+While setting up hosting space with a specific company I often deal
+with, I noticed that they used a shared IP. (IP shared by two or more
+websites/domains.) Well, the rates for unlimited bandwidth were
+around $50+ per month, which I found unreasonable. I didnt require
+much space, and didnt want to be limited to a mere 3 gig of traffic
+per month.
+
+Back on track... When setting up the acct, the hosting company needs
+to know the domain name so that they can direct it accordingly.
+(example: 'http://www.123.4.567.890/~user1/ ,
+'http://www.123.4.567.890/~user2/ etc)
+
+At this point you can give a url that doesnt belong to you at all. As
+long as the nameservers dont change, that should have absolutly no
+negative effects on you or your site whatsoever.
+
+How it works is this:
+The host propogates you a certain amount space on its servers, and
+monitors the traffic that enters their space through the domain its
+registered under. Being that the domain isn't connected to the site
+at all, it registers ZERO traffic.
+
+Zero traffic registered = can't possibly go over bandwidth
+restrictions
+can't possibly go over bandwidth restrictions = free unlimited
+bandwidth
+
+Now the problems with this (besides the ethical ones) is that your
+host may offer X amount of mail addys with the acct
+(you@y...) and these will not work, as the name isnt on their
+DNS. However, some domain companies allow you to set it up
+regardless. Another problem seems to be strictly cosmetic, but can be
+highly problematic... Once you attach the domain you want onto the
+site, each page comes up/w the ip/UN the host propagated to your
+acct. Its at this point where you have to have a phenominal 10-15
+character alphanumerical or better (#, &, etc) pw, or your site will
+be vulnerable to attack since the attacker already has your UN. This
+only gives attackers a slight advantage as the amount of time it
+would take to brute force a 10 character pw @ a rate of 1,000,000 per
+second is 10 years. Add numbers and case sensitivity to that and it
+becomes approx 26,980 years.
+
+While I'm on it, I may as well add that if you use this method,
+obviously you are going to be using the lowest cost hosting plan
+available, which in turn will offer the least amount of space. Thats
+why free hosts were invented.
+
+Free hosts suck as a general rule. Who wants a site smothered in ads?
+However, if you upload all your programs, graphics and other large
+files (have a backup of course) to a reliable free host and target
+them accordingly from your site you have just freed up a signifigant
+amount of space. The only setback/w this is having to keep an index
+card or file around/w your pws, as you should never use the same one
+twice, and want to use complicated ones.

@@ -1,0 +1,4 @@
+Change the CHKDSK countdown time
+When you schedule CHKDSK to run at the next boot, the system will prompt you to press a key to cancel the operation while CHKDSK is running. The system will display a countdown during that cancel period. The default value is 10 seconds. To Change this open up Regedit and locate:
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\AutoChkTimeOut
+You can change the value to anything from zero to 259,200 seconds (3 days). With a timeout of zero, there is no countdown and you cannot cancel the operation

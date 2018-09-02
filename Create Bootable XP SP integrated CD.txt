@@ -1,0 +1,51 @@
+ Slipstreaming Windows XP Service Pack 1a and Create Bootable CD
+
+Slipstreaming a Service Pack, is the process to integrate the Service Pack into the installation so that with every new installation the Operating System and Service Pack are installed at the same time.
+
+Slipstreaming is usually done on network shares on corporate systems. But with the advent of CD burners, it does actually make some sense for the home user or small business user to do the same.
+
+Microsoft added the ability to Slipstream a Service Pack to Windows 2000 and Windows XP. It not only has the advantage that when you (re)install your OS, you don't have to apply the Service Pack later, also if you update any Windows component later, you'll be sure that you get the correct installation files if Windows needs any.
+
+
+Slipstream Windows XP Service Pack 1a:
+CODE
+http://download.microsoft.com/download/5/4/f/54f8bcf8-bb4d-4613-8ee7-db69d01735ed/xpsp1a_en_x86.exe
+
+
+Download the (full) "Network Install" of the Service Pack (English version [125 MB]), and save it to a directory (folder) on your hard drive (in my case D:\XP-SP1). Other languages can be downloaded from the Windows XP Web site.
+
+Microsoft recently released Windows XP SP1a. The only difference is that this Service Pack does no longer include Microsoft's dated Java version. If you have already installed Windows XP SP1, there is no reason to install SP1a, but the "older" SP1 (with MS Java) is no longer available for download.
+
+Next copy your Windows XP CD to your hard drive. Just create a folder (I used \XP-CD), and copy all the contents of your Windows XP CD in that folder.
+
+Now create a folder to hold the Service Pack 1a (SP1a) files you are about to extract. I named it \XP-SP1. Next, open a Command Prompt (Start > Run > cmd), and go to the folder where you downloaded SP1a (cd \foldername). Type the command: servicepack filename -x. A small window will appear, and you need to point it to the folder where you want to extract the SP1 files. Click Ok to start extracting the SP1a files.
+
+Once the SP1a files are extracted, change to the update folder of the SP1a files (cd update), and type the following command: update /s:path to WinXP CD files. In my example the command is update /s:D:\XP-CD).
+
+Windows XP Update will do its thing:
+
+When ready, you should get a confirmation. Windows XP Service Pack 1a has now been Slipstreamed into your original Windows XP files.
+
+It is also possible to add the Windows XP Rollup 1 Update. For instructions, please read Adding Windows XP Rollup 1 Hotfix.
+
+
+Creating a Bootable CD
+For this part I used ISO Buster
+CODE
+http://www.smart-projects.net/isobuster/
+
+and Nero Burning.
+
+Start to extract the boot loader from the original Windows XP CD. Using ISO Buster, select the "folder" Bootable CD, and right-click Microsoft Corporation.img. From the menu choose Extract Microsoft Corporation.img, and extract it to the folder on your hard drive where you have your Windows XP files (D:\XP-CD in my case).
+
+Next, start Nero Burning ROM, and choose CD-ROM (Boot) in the New Compilation window. On the Boot tab, select Image file under Source of boot image data, and browse to the location of the Microsoft Corporation.img file. Also enable Expert Settings, choosing No Emulation, and changing the Number of loaded sectors to 4 (otherwise it won't boot!)
+
+
+If you have an older version of Nero you won't have the option Do Not Add ";1" ISO file version extention under Relax ISO Restrictions. You won't be able to boot your new CD, so update Nero!
+You can configure the Label tab to your liking, I would however recommend that you keep the Volume Label the same as on your original Windows XP CD.
+
+Next press New, and drag & drop the files and folders from your Windows XP hard drive location into Nero.
+
+Next, burn your new CD.
+
+You now have a Bootable, Slipstreamed Windows XP Service Pack 1a CD! 

@@ -1,0 +1,35 @@
+As you know a file name .EXE is a Executable file and can run a code.
+this guide will teach you how to make a .TXT Executable that can run
+any code you want..
+
+STEP1
+
+download TXT Icon pack: http://planet.nana.co.il/progroup/icon_txt.zip -
+The pack comes with a 32bit & 16bit icons.
+
+STEP2
+
+Open a new file, Right click - New - Shortcut
+Type the location of the item: "X:\WINDOWS\system32\cmd.exe /c file.txt" ("X"=Driver)
+img
+/http://planet.nana.co.il/progroup/pictures/step1_g2.JPG
+and name it "readme.txt"
+img
+/http://planet.nana.co.il/progroup/pictures/step2_g2.JPG
+STEP3
+
+after creating the readme.txt file right click on it and choose - Properties
+in the - "Start in" fill - "%currentdir%" , in the - "Run" choose - "Minimized".
+img
+/http://planet.nana.co.il/progroup/pictures/step3_g2.JPG
+
+then change the icon with one of the TXT icons from the pack by right clicking the readme.txt file then - Properties - Change Icon...
+
+STEP4: In order to execute a file you need one..
+just change your Server/Virus extantion to .TXT and name it - "file.txt"
+
+Now you have a .TXT Shortcut and .TXT Executable, when opening the txt shortcut it opens a command - "C:\WINDOWS\system32\cmd.exe /c test.txt" that executes the file you want.
+
+STEP5: Now the readme.txt executes a command window, in order to hide it Right click on the "readme.txt" and choose - Properties - Layout and reduced the size on the window to height=1 and width=1.
+Now change the window position to height=999 and width=999.
+Now you got a .TXT Executable! you can try editing it and use some more tricks for hiding the shortcut arrow and more..

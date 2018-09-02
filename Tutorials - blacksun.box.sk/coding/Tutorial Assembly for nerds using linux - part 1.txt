@@ -1,0 +1,200 @@
+################################################## 
+Tutorial Assembly for nerds using linux - part 1 
+made by member Olaf of LNG - Linux security group 
+email – linuxsecgroup@hotmail.com 
+################################################## 
+
+If you want to join LNG mailing list go to 
+http://www.egroups.com/group/linuxsecgroup 
+
+############ Introduction ############ 
+
+Assembly nowadays is a hard thing to learn, not because it's difficult but 
+because people thinks that there is no reason to learn assembly! That's 
+not true... With assembly you can have total power above the computer, and 
+know exactly what he's doing. Try to remember that while trying to learn! 
+You may wondering: Why to read this tut? Good point... There are thousands 
+of papers for programming assembly in x86. That's true... But did they 
+teach you how to make apps for linux? Did they talked about linux 
+interrupts? I don't think so... There are many tutorials about programming 
+assembly for x86 in dos and windows, but very few on linux. I want to 
+change that. So this is the first issue of a collection of papers about 
+that. If you find that this paper has any error, please contact me and let 
+me know. 
+
+##### Index ##### 
+
+1. Numbering systems 
+1.1. Decimal system 
+1.2. Binary system 
+1.2.1. Converting a binary number to a decimal number 
+1.2.2. Converting a decimal number to a binary number 
+1.3. Hexadecimal system 
+1.4. Conventions 
+2. Binaries in computers 
+2.1. Bit 
+2.2. Nibble 
+2.3. Byte 
+2.4. Word 
+2.5. Double word 
+
+###################### 1. Numbering systems ###################### 
+
+1.1. Decimal system 
+
+Nowadays we use the decimal numbering system in almost everything that is 
+related to numbers. We use it so often and in a natural way that we forget 
+it's meaning. What is decimal system? 
+
+. Every decimal number, has only digits between zero and nine, 
+making a total of 10 digits 
+Note: how many fingers do you have? ...10. In fact the decimal 
+system is bound to human anatomy. 
+. Ok, and what is the meaning of each digit? Consider the 
+following numbers: 234 and 234,43 
+We do some transformations 
+-> 234 i.e. 200 + 30 + 4 i.e. 2 * 10^2 + 3 * 10^1 + 4 * 10^0 
+-> 234,43 = 2 * 10^2 + 3 * 10^1 + 4 * 10^0 + 0,43 = 2 * 10^2 + 3 * 
+10^1 + 4 * 10^0 + 4 * 10^-1 + 3 * 10^-2 
+Do you see the relation? Each digit appearing to the left of the 
+decimal point represents a value between zero and nine times an increasing 
+power of ten. Digits appearing to the right of the decimal point represent 
+a value between zero and nine times a decreasing power of ten. 
+
+1.2. Binary system 
+
+Binary system uses only two digits, by convention the digits are 0 and 1. 
+This system is so widely used in computers... By coincidence or not this 
+system adjusts perfectly to computers... Computers operate using binary 
+logic. The computer represents values using two different voltage levels, 
+in this way we can represent 0 and 1. Like I said before the same applies 
+to binary system, it is well adjust to computer anatomy! 
+
+1.2.1. Converting a binary number to a decimal number 
+Apply the same rule we saw in 1.1, but with powers of two. 
+Example: 1010 -> 1 * 2^3 + 0 * 2^2 + 1 * 2^1 + 0 * 2^0 = 10 
+1.2.2. Converting a decimal number to a binary number 
+
+We have two ways to do it: 
+
+1.2.2.1 We consecutively divide the decimal value by a power 
+two(keeping the remainder), while the result of the division is different 
+than zero. The binary representation is obtained by the sequence of 
+remainders in the inverse order of the divisions. 
+
+Consider the number 10(in decimal): 
+
+10 / 2 
+0 5 / 2 
+1 2 / 2 
+0 1 / 2 
+1 0 
+
+So in binary we write 1010 
+
+1.2.2.2 You can try to find out the number by adding powers of two, 
+that added will produce the decimal result. 
+
+Consider for example number 123... hmmm it's a number not less than 2^0 
+and not greater then 2^7. Cool… 
+
+2^7 2^6 2^5 2^4 2^3 2^2 2^1 2^0 
+0 1 1 1 1 0 1 1 because 1 * 2^6 + 1 * 2^5 + 1 * 
+2^4 + 1 * 2^3 + 0 * 2^2 + 1*2^1 + 1 * 2^0 
+= 123 
+Our result is 1111011. 
+
+1.3. Hexadecimal system 
+
+You saw how many digits took to represent the number 123 in binary. 7 
+digits! Imagine 1200, 10000,... it hurts. So programmers had to choose 
+another numbering system, just to "talk" to the machine... and no... it's 
+not the decimal system!! You saw the trouble we had to convert one simple 
+number like 10 between decimal and binary... I think you don't want to 
+spend half of your life doing that. Engineers thought on that and they 
+elected the hexadecimal system... Hexadecimals is the "english" for 
+computers. They have two special features: 
+- They're very compact 
+- it's simple to convert them to binary and vice-versa. A 
+hexadecimal number has digits with a value between 0 and 15 times a 
+certain power of sixteen. Because we only know digits between 0-9 we have 
+to use six more digits! We can use the 6 first letters of the alphabet. 
+Let's see a example: FF = 15 * 16^1 + 15 * 16^0 = 255 (16) (10) 
+
+Converting between binary and hexadecimal is very easy! To convert binary 
+to hexadecimal remember that every four digits correspond to a single 
+hexadecimal digit... to convert back to binary just apply the inverse 
+rule! Let's take a look at the next example: 
+
+110 1011 = 0110 1011 =6B 
+(2) (16) 
+
+It's very easy!! To make things easier, take a look at the following 
+table: 
+
+################ 
+# D # H # B # 
+################ 
+# 0 # 0 # 0000 # 
+# 1 # 1 # 0001 # 
+# 2 # 2 # 0010 # 
+# 3 # 3 # 0011 # 
+# 4 # 4 # 0100 # 
+# 5 # 5 # 0101 # 
+# 6 # 6 # 0110 # 
+# 7 # 7 # 0111 # 
+# 8 # 8 # 1000 # 
+# 9 # 9 # 1001 # 
+#10 # A # 1010 # 
+#11 # B # 1011 # 
+#12 # C # 1100 # 
+#13 # D # 1101 # 
+#14 # E # 1110 # 
+#15 # F # 1111 # 
+################ 
+
+1.4. Conventions 
+
+Programming in assembly, requires you to obey some rules when using 
+numbers, because you can use three different numbering systems. 
+
+When writing a number: 
+
+- all numbers have to start with a decimal digit 
+- all numbers end with a letter, indicating the type of number: 
+. for hexadecimals the letter is h 
+. binary numbers end with b 
+. decimals end with t or d We will use the following notation: 
+
+Xn Xn-1 ... X2 X1 -> Xi represents a bit, and i<-[0,1,...,n] represents 
+it's position. 
+
+######################## 2. Binaries in computers ######################## 
+
+2.1. Bit is the abbreviation to binary digit. We'll use this abbreviation 
+all the time. As you may have guessed that “bit” is the smallest unit of 
+data on a binary computer. 
+
+2.2. Nibble is a set of four bits. For example 1110, 1101, 1111 is a 
+nibble... every thing that has 4 bits is a nibble. 
+X3 X2 X1 X0 -> X1 X0 are the low order bits in the nibble, while 
+X2X3 are the high order bits. 
+
+2.3. Byte -> This is the most used data structure in computers. A byte is 
+a collection of eight bits: 
+X7 X6 X5 X4 X3 X2 X1 X0 When referring to a byte we say that it's 
+low order nibble is X0 X1 X2 X3, while the high order nibble is X4 X5 X6 
+X7. Note: bytes are used to represent characters using the ASCII 
+character set. 
+
+2.4. A word consists of 2 bytes, i.e. a group of 16 bits. In a byte you 
+have a low order byte and high order byte. 
+
+2.5. A double word consists of 2 words, i.e. 4 bytes i.e. 32 bits. In a 
+double word you have a L.O. word and a H.O. word. 
+
+In the next tutorial I will talk about: 
+
+- Arithmetic operations - Signed and unsigned numbers - System 
+Organization - Flags and registers - Logical operations on bits - Some 
+instructions like: mov, jmp, call, and... 

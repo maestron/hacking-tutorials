@@ -1,0 +1,85 @@
+PART 2
+-------------------------------------------------------------------------------------
+
+Now that I have got you excited about bittorrents and you have downloaded everything on the internet, including your uncles famous cabbidge stew I would like to introduce you to the magic of XDCC transfer over IRC
+
+Ladies and Gents please download mirc, the most popular IRC client from
+CODE
+http://www.mirc.com
+
+and to make the entire process as easy as watering a cactus please get this great xdcc downloading script for mirc from
+CODE
+http://xdccklipper.sourceforge.net/
+
+How do I install this scrip you ask ? use your eyes, and follow the instructions on the website *duh*
+
+Moving along now, i will paste a whole heap of sites that allow you to search for XDCC packets.
+
+CODE
+http://Xdccsearch.com
+http://PacketNews.com
+http://Xdccspy.com
+http://Infabot.com
+http://packetseek.com
+http://xdccspider.com
+http://Isohunt.com
+http://Ircspy.com <-= THE BEST
+http://www.mircsearch.co.uk/
+http://www.infade.com
+http://mydownloader.com/
+http://www.debateroom.com/ [<-= submitted by PcGuru]
+http://isohunt.com/ [<-= submitted by LanoX] (a good IRC & Bittorent Search Engine
+
+
+1st fire up MIRC, I assume u have filled in a nick and all that info go to the
+CODE
+http://ircspy.com
+and type in what you are searching for. Once you get hits, click on a link and a window will popup asking you to connect to a new server. ACCEPT and you will find yourself inside a channel full of people and robots. Now hit CTRL + V this will paste /msg robot xdcc send 1 (where one denotes the number of the file that they are serving, so it could be 15 and bot is the name of the bot, the bots USUALLY have a + in front of their name and are all the way near the top of the list) and smack enter. This will make a request to the bot.
+
+Now 3 things could happen. 1 your download will start immidately and u will get this warning window asking you if you want to accept a download (all this can be turned off and I recommend that you do that in the mirc options along with ignoring of certain file types, I also recommend turning on auto accept for your convenience, if you download a virus, then it should be obvious, and don't click on anything you did not download intentionally and all will be rosy!!). 2. you will be placed in a queue and you download will start when you reach the top of the queue or 3. the bot is not there, or has change its packets and the packet you just requested is not the one that you expected.
+
+Very EASY!!
+
+Now you ask, well if thats all I do, what was the point of that script, its just confusing me with all these extra windows?
+
+HA HA
+
+The point of the script is that some channels provide so much great content and have lots of bots, that u just want to idle in that channel, and *know* what every bot is offering and be able to get it with a mouse click.
+
+Welcome to the point of the SCRIPT!!
+
+Thats exactly what those 2 windows are, one lists all the available packets, and the other one displays the status of the files that you want to get (please have auto accept ON)
+
+simply right click on the file you want and select "get packet"
+
+So what are some of these great channels and servers you talk about OLD man ?
+
+Alright, theres a couple I like, simply cause they serve loads of *NEW* METAL releases and this sort of stuff gets me as excited as milk and cookies.
+
+start up mirc, close that popup connect window. and in the status windows type:
+
+/server irc.efnet.nl
+
+then type: /join #metalmetal and
+
+then type: /join #metalheadz
+
+What other good servers and channels are there ?
+
+Find them yourself though ircspy and other searchers. Once you find something you want, stay around in the channel for a little while and see what else they serve, and if its good, then remember the server and channel. Simple!!
+
+Now the final trick for all you leechers is invaluable. What if I want to be on 5 different servers at once?
+Well you can load up 5 different mircs, OR load up 5 different servers inside of one mirc. How ? right click on the first icon from your left, that looks like 2 yellow stick, and select open new server window.
+Whooa man now I have 2 status windows!!
+
+Thats right, and if u click on the 2nd status windows and type in /server your.bloodyserver.org you can get on the other server and the script will conveniently open up 2 new windows for this server
+
+Also if you are using a search engine such as ircspy, u can open a new status windows and click on it, so that when u hit a new link, it will ask u to connect using this new status window, and not disconnect you from the server you are already on!!
+
+The only BAD thing about the script is, that if you close mirc, your download queue will be LOST.
+
+OK have fun kids, and be good to your parents!
+
+PS. you downloaded all this, but got no idea where it is ? well its in c:\mirc\downloads or wherever you installed mirc (DUH!!)
+
+Thanks to OLI who wrote these guides. 

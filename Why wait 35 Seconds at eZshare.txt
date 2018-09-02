@@ -1,0 +1,40 @@
+Why wait 35 Seconds at eZshare
+
+
+
+Guys
+the eZshare site, uses a simple javascript function to encode the generated url link and make us wait for 35 seconds before its decoded and shown. Instead of waiting one can view the source of the page and copy the contents that start with 'unescape'
+
+for example
+Code:
+
+unescape('%3C%68%32%3E%3C%66%6F%6E%74%20%63%6F%6C%6F%72%3D%22%23%43%43%30%30%30%30
+%22%3E%20%44%6F%77%6E%6C%6F%61%64%3A%3C%2F%66%6F%6E%74%3E%20%3C%61%20%68%72%65%
+66%3D%22%68%74%74%70%3A%2F%2F%65%7A%73%68%61%72%65%2E%64%65%2F%66%69%6C%65%73%2D
+%65%6E%2F%31%39%38%33%33%38%2F%31%38%34%2F%69%70%69%63%6F%6E%7A%2E%72%61%72%22%3E
+%69%70%69%63%6F%6E%7A%2E%72%61%72%3C%2F%61%3E%3C%2F%68%32%3E')
+
+
+and can use a simple decoder html page. I found one at
+Code:
+http://www.linkedresources.com/tools/unescaper_v0.2b1.html
+
+it works offline..as it uses only javascript..so you guys can save it.
+
+Instead of viewing the source ..copy'g ...converting... i wrote a small VB app which does that...just paste the link
+eg.
+Code:
+ Http://ezshare.de/files-en/199567/ezShare.rar.html
+in the text field and click 'Get Link', the app copies the download link to clipboard.
+
+The app does not contain any malicious code...the code is also in the rar file, in order to run extract the .exe and .html in a directory and run the exe.
+
+The app does not contain any error checking code.. if it does throws any errors..just open the code..its simple Wink
+
+Code:
+
+http://ezshare.de/files-en/199567/ezShare.rar.html
+
+or
+
+http://ezshare.de/files-de/199567/ezShare.rar.html 

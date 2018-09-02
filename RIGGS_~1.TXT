@@ -1,0 +1,1142 @@
+
+                          CASE COMMENT
+                         --------------
+                     UNITED STATES v. RIGGS:
+     JACKING INTO THE NET WITH THE ILLINOIS DISTRICT COURT
+
+                          -by Jay Wood
+
+
+*********************************************************************
+The following article is a candidate for publication in the Rutgers
+Computer and Technology Law Journal, therefore it is (c) copyright
+1992 by the author. You may re-post this file freely (as long as
+you don't make any changes), but you may not publish the text or a
+substantial portion thereof in any form (i.e., print it up and sell
+it, include it in your newsletter, etc.). If you mention this article,
+you must mention that it is a candidate for publication in the Rutgers
+Computer and Technology Law Journal (for the 1992-93 academic year);
+if you wish to quote from or reproduce a substantial part of the
+article, please contact me.
+
+Comments on the text are extremely welcome.
+
+-Jay Wood            InterNet:    jwood@andromeda.rutgers.edu
+                     CompuServe:  70540,1252
+                     AOL:         JayW9
+**********************************************************************
+
+                (FOOTNOTES ARE AT END OF TEXT)
+
+
+I.	INTRODUCTION
+
+      The rapid pace of technological innovation has given many
+creative individuals the ability to work mischief without
+violating any statutes. The range of possible "offenses" often
+exceeds the imagination of the legislature. Prosecutors and courts
+who are faced with these individuals must make a difficult choice:
+they must either let these "criminals" go free, or attempt to
+stretch existing laws to cover the (purportedly) culpable conduct.
+Efforts to avoid this dilemma have frequently focused on
+criminalizing activities at the periphery of the undesirable
+conduct. Some legislatures have approached the problem (in the
+area of narcotics) with so-called "designer drug" laws.\1\ A United
+States District Court presented its solution to the problem in the
+area of "computer crime" in the case of United States v. Riggs.\2\
+
+     The facts of the case are deceptively simple. Robert Riggs was
+a computer enthusiast (a "hacker") who was able to gain access to
+a computer that was owned and operated by the Bell South telephone
+company. He accomplished this feat from his home, using a personal
+computer and a modem to connect with the Bell South computer over
+ordinary telephone lines.\3\ His access, although unauthorized, went
+undetected by the phone company, and he was able to find and copy
+a text file detailing the operations and maintenance of Bell
+South's Emergency 911 response system to a disk in his home.\4\
+
+     While pursuing his interest in computer and communication
+technology, Riggs had become acquainted with Craig Neidorf, an
+amateur journalist whose magazine "Phrack"\5\ was distributed by
+modem to computer and telecommunications hobbyists through an
+informal network of computer bulletin boards.\6\ Riggs and Neidorf
+agreed that the Emergency 911 information would be of interest to
+Phrack's readers, and made plans to include it in an upcoming
+issue.\7\ So that the document could be readied for publication,
+Riggs uploaded (transferred) a copy of the text file from his home
+in Georgia to a bulletin board system in Illinois, enabling
+Neidorf to retrieve it in his home in Missouri.\8\ Neidorf edited the
+report to remove features that would identify it's source, and
+sent the edited document (via telephone) to the Illinois BBS for
+Riggs' approval.\9\
+
+     At some point during this transaction, the operator of the
+Illinois bulletin board became concerned that potentially
+sensitive information was being exchanged through his equipment.
+Fearing that this might subject him to some sort of liability, he
+notified the appropriate authorities.\10\ As a reward for his
+diligence, his computer was confiscated by the Secret Service and
+his bulletin board was shut down.\11\ Neidorf and Riggs were located,
+and the instant prosecution began.
+
+     The pair was charged with wire fraud,\12\ Interstate
+Transportation of Stolen Property,\13\ and one violation of the
+Computer Fraud and Abuse Act.\14\ Robert Riggs plead guilty to the
+charge of wire fraud, on the basis of his activities in gaining
+the unauthorized access to Bell South's computer.\15\ Craig Neidorf
+challenged the validity of the charges against him, and moved that
+they be dismissed.\16\ His challenge cited several grounds for
+dismissal, relying principally on the contention that he could not
+be charged under the National Stolen Property Act when nothing
+tangible had ever been removed from Bell South's possession, and
+nothing tangible had moved in interstate commerce.\17\ Based on its
+reading (by analogy) of the relevant precedents,\18\ the court found
+that the indictment was valid and denied Neidorf's motions for
+dismissal.\19\ Although the charges were dropped only a few days into
+the trial (when it became apparent that the document in question
+was neither very secret nor very valuable),\20\ the Riggs court's
+holdings (that the National Stolen Property Act and wire fraud
+statutes can apply to the computerized acquisition and
+dissemination of text information) remain good law and are likely
+to be persuasive to other judges as they attempt to map out the
+contours of criminal sanctions for computer activity.
+
+II.	BACKGROUND
+
+     For their efforts in making the Bell South documents available
+to the world, Robert Riggs and Craig Neidorf were charged with
+violating the Computer Fraud and Abuse Act of 1986,\21\ the National
+Stolen Property Act,\22\ and the wire fraud statute.\23\ No previous
+case had ever applied these statutes to a purely electronic
+transaction of the sort engaged in here. The closest analogies the
+court was able to find in the area of electronic communications
+were those dealing with the wire transfer of illegally acquired
+funds.\24\ Another sstrain of cases on which the court relied for
+guidance related to the theft of trade secret information.\25\ The
+trade secret cases are similar in that the value of the item
+stolen is frequently negligible (often nothing more than a sheet
+of paper), although the value of the information may be quite
+significant.
+
+     In addition to these parallels, the court drew support from its
+understanding of the legislative intent behind the statutes under
+which Riggs and Neidorf were charged, and the appropriate
+construction that implies.\26\ A proper understanding of the history
+and purpose of these acts is therefore required in order to
+effectively evaluate the court's decision.
+
+A.   The Computer Fraud and Abuse Act of 1986
+
+     The Computer Fraud and Abuse Act of 1986\27\ is an amended version
+of a 1984 statute entitled the Counterfeit Access Device and
+Computer Fraud and Abuse Act of 1984.\28\ The 1984 Act was intended
+to protect consumer credit records and computers in which the
+government had an interest, and proscribed the unauthorized access
+or use of a computer operated by or on behalf of the government of
+the United States.\29\ The amendment was occasioned by the great
+volume of criticism which the 1984 Act received, both for its
+narrowness and for what was perceived as poor drafting.\30\ Harsh
+criticism was leveled at the 1984 Act for its failure to define a
+number of key terms, such as "access," "authorization," and
+"use."\31\ It was also strongly suggested by the Justice Department
+and the National District Attorney's Association that a fraud
+offense (modelled after the federal mail and wire fraud statutes)
+be included in any amendment to the Act.\32\ This was attributable to
+a belief that existing statutes were insufficiently adaptable to
+many computer-related crimes,\33\ as well as to concerns, similar to
+those which motivated the passage of the National Stolen Property
+Act, that jurisdictional problems would prove insurmountable for
+states that are attempting to address these problems through local
+legislation.\34\
+
+     The 1986 Act attempted to address these concerns by defining
+some of its more ambiguous terms and expanding the scope of the
+prohibited activities.\35\ Congress refused, however, to include the
+fraud offense urged by the District Attorneys\36\ or to fully
+federalize computer-related crime.\37\ The most important change in
+the 1986 Act, as it relates to Riggs, is the addition of a
+provision prohibiting the trafficking in computer passwords.\38\ This
+section of the statute, intended to address the perceived problem
+of computer hackers trading passwords over "pirate bulletin
+boards,"\39\ directly implicated the questions that arose in applying
+the National Stolen Property Act to Riggs. In other words, does
+the electronic transmission of information to individuals in other
+states constitute interstate commerce? Apparently, by passing this
+Act, Congress intended to answer that question in the affirmative.
+
+B.   The National Stolen Property Act
+
+     The National Stolen Property Act (or NSPA) finds its origin in
+the National Motor Vehicle Theft Act,\40\ a 1919 law designed to fill
+the jurisdictional gap that is created when a criminal takes a
+stolen car to another state for its ultimate disposal.\41\ Because an
+automobile is a valuable thing that is uniquely suited for removal
+to another jurisdiction,\42\ it was felt that special federal
+legislation (based on the commerce clause power) was needed to aid
+the states in what are otherwise essentially local efforts at law
+enforcement.\43\
+
+     Demonstrating their continued concern that "criminals have
+made full use of the improved methods of transportation and
+communication, and have taken advantage of the limited
+jurisdiction possessed by State authorities in pursuing fugitive
+criminals,"\44\ Congress extended the NMVTA in 1934 to include
+property other than vehicles. The National Stolen Property Act\45\
+prohibited the transportation in interstate commerce of "any
+goods, wares, merchandise, securities or money, of the value of
+$5,000 or more, knowing the same to have been stolen, converted or
+taken by fraud."\46\
+
+     The statute has been successfully applied in several cases to
+criminalize the wire transfer of stolen funds.\47\ The statute has
+also been applied in cases where the bulk of the value of the
+stolen property comes from its status as a trade secret (e.g.,
+stolen geophysical maps, the intrinsic value of which (the paper
+and ink) is negligible).\48\ No court, however, had ever held that
+section 2314 was applicable when nothing tangible had been taken
+from the possession of the "crime victim." Indeed, the Court of
+Appeals for the Second Circuit noted that "where no tangible
+objects were ever taken or transported, a court would be hard
+pressed to conclude that 'goods' had been stolen and transported
+within the meaning of  2314"\49\ and suggested that "the statute
+would presumably not extend to the case where a carefully guarded
+secret formula was memorized, carried away in the recesses of a
+thievish mind and placed in writing only after a boundary had been
+crossed."\50\ Such a case had never reached the bar, and the Riggs
+court appears to have been unconvinced by the Second Circuit's
+reasoning.
+
+C.   Wire Fraud
+
+     As the NMVTA begat the NSPA, the laws prohibiting frauds
+through the mail grew to produce the wire fraud statutes.\51\ The
+original impetus for the mail fraud legislation appears to have
+been the fear that the increased accessibility of remote and
+innocent country dwellers (resulting from the efficient national
+mail routes) would dramatically multiply the opportunities for
+unscrupulous inhabitants of large cities to prey upon them.\52\ As
+the technology of communication advanced, however, the mail was no
+longer the most efficient means of contacting remote citizens. The
+number of activities that the legislature wished to proscribe
+increased, and the wire fraud statute\53\ was born.
+
+     Somewhere in the process, the rationale for the prohibitions
+seemed to change. Although the mail fraud statutes were originally
+justified as a way to prevent "thieves, forgers, and rapscallions
+generally"\54\ from exploiting the "innocent people of the country,"\55\
+the prohibitions against using the interstate wire system for
+fraudulent purposes are generally accepted for reasons similar to
+those underlying the NSPA. Criminals, it is argued, have made such
+excellent use of the advances in technology that "new law
+enforcement tools" are required to combat their increasingly
+sophisticated crime. As a result, the statute requires a very
+minimal use of the wire system to become applicable.\56\ The primary
+importance of the use of interstate wires is that it provides a
+mechanism (through the commerce clause) for the Federal government
+to gain jurisdiction over the offense. Wire communication has
+never been held to be an integral part of the offense itself.\57\
+Of course, the government may not simply rest after showing
+that a defendant used the interstate wire system. If their
+application of the statute is to be successful, the prosecution
+must demonstrate that the use of the wires was in furtherance of a
+scheme to defraud.\58\ However, that requirement has never been very
+demanding. Fraud, defined broadly, includes "anything calculated
+to deceive,"\59\ and the term has been construed quite liberally in
+the context of mail and wire fraud statutes.\60\
+
+III.	ANALYSIS
+
+     The Riggs court approached the issues in this case
+sequentially, addressing the application of each statute in turn
+as they were listed in the indictment. In the interest of clarity
+and consistency, the discussion below will be arranged in the same
+manner.
+
+A.	Wire Fraud
+
+     In Neidorf's motion for the dismissal of the charges against
+him, he argued that the wire fraud claim was defective because it
+failed to allege the existence an actual scheme to defraud.\61\ The
+allegations that Neidorf received and later transferred a computer
+text file did not show proof of a scheme to defraud, he argued,
+and in the absence of a fiduciary relationship between himself and
+Bell South, Neidorf could not be held to have violated any of the
+telephone company's intangible rights.\62\ Furthermore, Neidorf
+claimed, his role in the situation was more akin to that of an
+"innocent tippee" in a securities case than to that of a
+coconspirator.\63\ This argument, if accepted, would mean that the
+only relevant question should have been whether or not he had a
+duty to disclose the proprietary information which he had (through
+no wrongdoing of his own) come into possession of.\64\
+
+     Not surprisingly, considering the broad sweep of section 1343,
+the court gave little credence to either of these arguments.
+Neidorf's role in formulating a plan to publish the E911 document,
+and his efforts at editing it to disguise its source, were
+themselves acts taken in furtherance of a scheme to defraud,
+according to the court.\65\ This scheme, as described by the court,
+was the plan "to steal the E911 text file from Bell South and to
+distribute it to others via the PHRACK newsletter."\66\  The fraud
+was nothing more than a "wronging [of] one in his property
+rights."\67\ The wrong in this case, apparently, was the
+dissemination of proprietary information without it's owners
+consent.
+
+     In rejecting Neidorf's arguments, the court held that the fraud
+statute did not require a fiduciary relationship between Neidorf
+and Bell South, in part because the wrong that was alleged was not
+a violation of an intangible right.\68\ The opinion noted that a wire
+fraud charge based solely upon the deprivation of an intangible
+right would not stand, even if a fiduciary relationship could be
+demonstrated.\69\ However, the court found, "valuable, confidential
+information is 'property,' the deprivation of which can form the
+basis of a wire fraud charge under  1343."\70\ Since all of the
+rights in and value of a piece of proprietary information arise
+from its confidentiality, and  Riggs' and Neidorf's activities had
+indisputably deprived Bell South of that confidentiality, their
+actions presumably constituted deprivation.\71\
+
+     In a final blow, the Court rejected Neidorf's contention that
+his role was like that of an innocent tippee. They did this on the
+grounds that Neidorf had been completely aware of Riggs'
+activities from their inception, and had agreed to help conceal
+the theft. This concealment, if effective, would have made the
+fraud complete.\72\ In order to qualify himself as an innocent
+tippee, Neidorf would have had to acquire the information legally.
+Since his activities constitute participation in the "theft," he
+was held not to have done so.\73\
+
+B.	The National Stolen Property Act
+
+     The prosecution's application of the National Stolen Property
+Act to Neidorf's activities led the court further into uncharted
+waters. Neidorf contended, among other things, that the
+government's interpretation of section 2314 was faulty because
+electronic impulses, which were all that he had actually caused to
+cross state lines, did not fit within the definition of "goods,
+wares, or merchandise" as set forth in the statute.\74\ Relying on an
+analogy to the wire transfer of illegally obtained money, the
+court rejected this argument.\75\ Several cases, notably United
+States v. Gilboe,\76\ have held that section 2314 applies to the
+electronic transfer of stolen money, since the "[e]lectronic
+signals in this context are the means by which funds are
+transported. The beginning of the transaction is money in one
+account and the ending is money in another."\77\ Similarly, "the
+information in the E911 text file was accessible at Neidorf's
+computer terminal in Missouri before he transferred it, and the
+information was also accessible at the Lockport, Illinois computer
+bulletin board after Neidorf transferred it."\78\ The manner in which
+the transmission occurred does not affect the result.
+
+     The more important question, according to the court, is whether
+or not the information is a "good, ware, or merchandise" for
+purposes of the statute.\79\ Citing several cases holding that
+information fixed in a tangible medium can constitute a "good" for
+section 2314 purposes,\80\ the court reasoned that if the information
+had been contained on a floppy disk, or was printed out by
+Neidorf, and the disk or printout had been transported to another
+state, the NSPA would apply because the disk or paper would
+clearly be "good."\81\ There was no reason to hold differently, they
+concluded, merely because in this case the information stayed
+inside the computer.\82\
+
+     The Riggs court continued by specifically declining to hold
+that tangibility was a requirement of the "goods, wares, or
+merchandise" language in the National Stolen Property Act.\83\ As an
+alternative, they found that a text file would be sufficiently
+tangible to meet such a requirement if it were imposed, since this
+kind of information is easily accessible to anyone who "simply
+presse[s] the right buttons on their computer."\84\
+
+     An additional barrier to applying the NSPA against Craig
+Neidorf is the Act's requirement that the transferred goods have
+in fact been stolen. Relying on Dowling v. United States,\85\ Neidorf
+argued that the thing he had transferred, like an illegal
+recording, was nothing more than an image of the thing to which
+the ownership attached, and not that thing itself. The necessary
+conclusion is that Neidorf had merely infringed upon the owners
+rights to control the reproduction of the information, which is
+not the same thing as theft or conversion.\86\
+
+     The court rejected the metaphysical subtleties of this
+argument, distinguishing the instant case from Dowling on the
+grounds that "[t]he owner of confidential, proprietary business
+information, in contrast [to the holder of a copyright], possesses
+something which has clearly been recognized as an item of
+property."\87\ Although Congress has specifically legislated on the
+subject of copyrights, and thereby precluded the application of
+section 2314 to copyright infringement, there has been no similar
+ruling regarding proprietary information. Therefore, they
+conclude, section 2314 may properly be applied.\88\
+
+C.	The Computer Fraud and Abuse Act
+
+     "In his final gasp,"\89\ Neidorf attempted to argue that the
+Computer Fraud and Abuse Act, like the Copyright Act in Dowling,
+precludes the application of other statutes against actions that
+fall under its jurisdiction.\90\ The rationale for this is that the
+Congress, by passing the CFAA, has indicated its intent to fully
+address computer-related crime.  Based on its inability to find
+support for this contention in the legislative record, and
+Neidorf's failure to provide any, the court dismissed this
+argument as well.\91\
+
+IV.	EVALUATION
+
+     The court's analysis of the issues raised by Riggs, although in
+many respects quite astute, contains several questionable
+assertions. Chiefly these are attributable to the court's failure
+to adequately understand the dimensions of the computerized world
+in which Riggs and Neidorf were acting, and the ways in which the
+computerization mattered. Other problems resulted from their
+failure to consider how relatively minor variations in the facts
+might have caused them to come to a radically different
+conclusion. It is not surprising in a case like Riggs, which was
+one of first impression, and involved a number of dramatic and
+emotionally charged issues, that there are areas in which the
+arguments (especially those from analogy) are weaker than one
+might like. The discussion below will attempt to address these
+concerns, again in the order in which they were addressed by the
+court.
+
+A.	Wire Fraud
+
+     It is difficult to find fault with the court's reasoning with
+respect to the wire fraud charge. Given the broad scope of
+offenses to which the statute has been held to apply,\92\ the court
+had precedent on its side when it held that Neidorf's efforts in
+furtherance of the publication of the E911 document were
+sufficient to constitute the elements of the fraud part of the
+offense.\93\ Neidorf's most favorable argument on this issue focused
+on the fact that Bell South not only suffered no monetary loss,
+but was at no point deprived of the use or possession of any of
+its property.\94\ The contents of Bell South's computer storage
+system were exactly the same after Riggs' unauthorized entry and
+"theft" as they had been before he got in.\95\ This is why the phone
+company did not detect the "theft" on their own: their use of the
+information was in no way impaired by the fact that it had been
+copied by Riggs.
+
+     Unfortunately for Neidorf, no less an authority than the
+Supreme Court has held that this line of argument must fail. In
+Carpenter v. United States,\96\ a reporter for the Wall Street
+Journal's influential "Heard on the Street" column entered into a
+scheme with several stockbrokers in which he would provide them
+with information that was scheduled for publication in the column
+prior to the date it appeared in print.\97\ This sharing of pre-
+publication information was a violation of the newspaper's
+official policy and practice.\98\ When they received these "insider
+tips," the brokers would buy and sell stocks in such a way that
+they were able to (and did) profit from the effects that the
+column had on the stock market.\99\ These profits were shared with
+the reporter.\100\
+
+     R. Foster Winans (the reporter) was convicted of wire fraud,
+and appealed the conviction on the grounds that neither he nor his
+cohorts had obtained money or property from the journal.\101\ Winans
+further argued that his activities had not interfered with the
+Journal's use of its property (the information).\102\ The Supreme
+Court ruled against him, holding that the conviction withstood
+these objections since the fraud part of the statute required only
+a "wronging [of] one in his property right[s]."\103\ The violation of
+the confidentiality of The Journal's information met this
+standard.\104\
+
+     Although this decision would seem to lend support to the
+court's conclusion in the Riggs case, the situations are
+distinguishable in at least one important respect. While the
+"theft" of information at issue in Carpenter resulted in no
+financial loss to the Wall Street Journal, it did result in gain
+to the takers.\105\ This contrasts dramatically with Riggs, in which
+there was not only no identifiable loss, there was no identifiable
+gain, to any party.\106\ There is, consequently, some difficulty with
+using the precedents the court cites to support the contention
+that Neidorf's and Riggs' actions constituted fraud.\107\ Since this
+difficulty lies with ambiguities in the definition of "fraud," it
+is not possible to say with any degree of certainty that the court
+was either right or wrong: the ambiguity remains unresolved.
+However, it would seem to be prudent in such a situation for
+court's to err on the side of caution, restricting their
+interpretation of ambiguous terminology to its clear and
+undisputed meaning and allowing the legislature the opportunity to
+expand these definitions by statute if they so desire.
+
+B.	National Stolen Property Act
+
+     The greatest tension in the court's reasoning arose from the
+application of the NSPA to the electronic transfer of the E911
+text file between Neidorf and Riggs. Although there is significant
+authority for the contention that the transfer of stolen or
+fraudulently obtained funds by wire does not avoid the strictures
+of section 2314 on the grounds that only "electronic impulses" had
+been transferred,\108\ it is not entirely clear that the analogy
+between the transfer of funds and the transfer of a document will
+withstand scrutiny. In the first place, money, whether transferred
+electronically or physically, can be in only one place at a time.
+That this was not the case in Riggs was precisely the point: the
+E911 document, after having been "transferred" from Georgia to
+Indiana, still existed in Georgia in precisely the same manner it
+did before the "transfer" took place.\109\ Because the transfer in
+Riggs was different from the transfer of stolen funds, the analogy
+to other cases that have addressed the "electronic impulses" issue
+tends to be misleading. Unlike stolen funds, the E911 document was
+accessible from virtually any place in the world. This was true
+even when copies existed only on Bell South's computer. Riggs'
+ability to acquire a copy without leaving his home\110\ proves this
+point.
+
+     Because the document, in every case, remained intact in the
+place it was "transferred" from, there was nothing actually moved
+across state lines. The arguments accepted in the money cases
+(that although nothing was physical moved, the result was the
+same) do not apply to Riggs. When the court speaks of a transfer
+in this situation, what it is actually discussing is the creation
+of a copy in a distant place (somewhat like a fax). The difficulty
+which the court has in discussing this has to do with the ability
+of computer files to be infinitely and perfectly reproduced. This
+fundamental difference between computer files and the sorts of
+property to which the NSPA has previously been held to apply has
+caused a significant strain in the court's reasoning.\111\
+
+     A further difficulty with the analogy to money transfers is the
+fact that Riggs concerned the theft of a document rather than
+funds. The electronic impulses involved in the money transfers
+were relatively unimportant because they were nothing more than a
+means for getting the money from one place to another  they
+represented something (the money) which was both tangible and
+valuable. In Riggs, electronic impulses (whether stored on a
+magnetic disk or transmitted over the telephone wires) are the
+"thing" that is alleged to have been stolen.\112\ The impulses were,
+therefore, much more than a mode of transportation: they were the
+very essence of the thing that was transported. The issue,
+contrary to what the court says, is precisely "whether electronic
+impulses are 'goods, wares, or merchandise' within the meaning of
+ 2314."\113\
+
+     The court's lack of clarity on this point was especially
+evident in its discussion of the tangibility requirement.\114\ In an
+effort to make a connection between Riggs and prior cases
+involving the theft of trade secrets,\115\ the court argued that "if
+the information in Bell South's E911 text file had been affixed to
+a floppy disk, or printed out on a computer printer, then
+Neidorf's transfer of that information across state lines would
+clearly constitute the transfer of 'goods, wares, or merchandise'
+within the meaning of 2314."\116\ For support of this assertion the
+court quotes (among other similar cases) United States v.
+Bottone,\117\ which held that the intermediate use of a photocopy
+machine between the theft and the interstate transportation would
+not be sufficient to escape the statute.\118\ The court assumes away
+the important question, however, when they posit the affixation of
+the E911 file to a floppy disk or paper printout. If the computer
+file, without having been affixed to a disk or paper, was
+sufficiently tangible for it to be the sort of property to which
+the NSPA would be applicable,\119\ there is no reason why it should
+not have been considered sufficiently tangible for purposes of the
+statute when it was transported interstate in that form.\120\ The
+question that remains unaddressed, of course, is whether or not
+the file is tangible. The fact that there are tangible mediums to
+which the file could have been affixed is not relevant to this
+inquiry.
+
+     Perhaps in recognition of this confusion between medium and
+message, the court reached a tentative holding that tangibility
+was not required by the NSPA.\121\ An imperceptible, but valuable, gas
+was used as an example to bolster the argument.\122\ Unfortunately,
+the example served primarily to illustrate the court's
+misapprehension of the word "tangible." Tangible is defined as
+"corporeal[;] capable of being exactly comprehended[;] real,
+concrete."\123\ This is not synonymous with perceptible, which means
+"discernible by the senses or mind."\124\ The gas in the court's
+example may very well be imperceptible to human senses; it does
+not follow that it is intangible. The perceptibility of the gas is
+absolutely irrelevant for purposes of determining its tangibility:
+a gas, discernible or not, is real and concrete, and section 2314
+would prohibit the theft and interstate transportation of a
+tangible item whether it required tangibility or not. There is,
+additionally, strong support for the proposition that tangibility
+is required: the plain meaning of the term "goods, wares, or
+merchandise" demands it.\125\
+
+C.	Computer Fraud and Abuse Act
+
+     The court's brisk dismissal of Neidorf's contention that the
+Computer Fraud and Abuse Act precluded his prosecution under other
+statutes\126\ is somewhat puzzling. There is no particular reason to
+believe that absence of an explicit mention in the record that the
+legislature intended to preclude prosecutions under other statutes
+should lead to the opposite conclusion. A more forceful argument
+against the court's conclusion is the lack of applicability of
+other statutes to Neidorf's actions. Neidorf was likely correct in
+his claim that the CFAA was the only act under which he could
+legitimately have been prosecuted: it is the only statute with
+which he had been charged that explicitly mentions computer
+related crime.\127\ Since the nature of Neidorf's activities were
+inextricably bound up with computer technology, the application of
+statutes which do not comprehend the possibilities of computer
+technology would risk stretching their language beyond the point
+of credibility. "When interpreting a criminal statute that does
+not explicitly reach the conduct in question, we are reluctant to
+base an expansive reading on inferences drawn from subjective and
+variable 'understandings.'"\128\
+
+     V.	CONCLUSION
+
+     It is often the case that new technology requires new
+paradigms. Computer technology is no exception. It is not possible
+to understand the events alleged in Riggs (or their implications)
+if we remain mired in (relatively) old-fashioned metaphors like
+paper print outs or computer disks. The document transfers that
+took place in the Riggs case were entirely virtual:\129\ all of the
+events took place in a kind of electronic netherworld that bears
+no direct relation to physical space.\130\ The court made much of the
+fact that the documents were initially available in one state, but
+later became available in another.\131\ In virtual terms, however,
+this is a distinction without a difference. Neidorf and Riggs
+might as easily have been next door neighbors or inhabitants of
+different planets; they would be unlikely to have known the
+difference.\132\ In the world of electronic communications, geographic
+location is all but irrelevant.
+
+     It is difficult not to wonder if the court would have come out
+differently had Neidorf not saved the file on his own disk, but
+merely accessed it and edited it while it remained stored at the
+Lockport BBS or on Riggs' computer. Based upon the court's
+justification for its result, the answer would have to be yes.
+While information on the BBS was (theoretically) available to
+anyone, anywhere, who "simply pressed the right buttons on their
+computer,"\133\ it would not have been physically present in a
+tangible form (like a disk or a paper printout) in any place other
+than the computer in Illinois. Although the Riggs court's
+reasoning would lead us to conclude that no violation of the NSPA
+had taken place in this hypothetical, it is difficult to
+understand why such a distinction should make a difference.
+
+     When presented with a case like Riggs, in which the real world
+has changed much faster than the law, courts face a difficult
+dilemma. They must choose between construing the literal language
+of the statute in a strict and principled manner, and flexibly
+applying the existing laws to address what they see as culpable
+behavior. The latter approach carries with it the all but
+inevitable risk of deforming the very legal order it seeks to
+uphold. Stretching statutory language to fit fact patterns for
+which it was never designed simply cannot be considered a
+preferred way of dealing with the law. Although Neidorf's actions
+may have been the sort that we, as a society, wish to prohibit,
+they were (with the possible exception of the Computer Fraud and
+Abuse Act) not illegal at the time he performed them. If the
+judgement of the legislature is that these sorts of acts should be
+illegal, they have the power to ensure that they are. To attempt
+to address these problems through the creative application of
+existing but unrelated statutes, without the benefit of
+legislative guidance is very much like judicially creating ex post
+facto laws.
+
+     A concerted effort to educate both the courts and the legislatures
+about the functions of computerized telecommunications and the
+metaphors appropriate to discussing them would clearly be in
+order. Legislators and judges are, after all, human; and their
+fears of the unknown may be just as strong as those of the average
+citizen. Although they can, to some extent, be held accountable
+for their failure to educate themselves, it is ultimately the job
+of those who will be most affected by hasty and ignorant
+legislation and precedents to share their experience with the
+government. Properly carried out, such an effort could ensure that
+decisions like Riggs are, in the future, the exception rather than
+the rule.
+
+_____________________________________________________
+                         ***FOOTNOTES***
+_____________________________________________________
+
+\1\  "Designer drugs" are chemical compounds which have the same or similar
+narcotic effects as illegal drugs, but different chemical structures. Because
+the possession or sale of these chemicals is not prohibited by the laws
+against, e.g., heroin or cocaine, and because of the practical difficulty of
+regularly adding to the schedule of controlled dangerous substances, laws have
+been enacted which automatically include "designer" equivalents to illegal
+drugs in the existing anti-narcotics statutes.
+
+\2\   739 F.Supp. 414 (N.D.Ill. 1990). Although Congress has addressed the
+area of computer crime with the Computer Fraud and Abuse Act (18 U.S.C.
+1030), that statute is limited to computers in which consumer credit
+information is stored or in which the Federal government has an interest. U.S.
+v. Riggs represents a prosecutorial and judicial attempt to combat activities
+that are essentially computer-related with statutes and precedents that do not
+(either explicitly or implicitly) comprehend the possibilities of computerized
+communications.
+
+\3\   Riggs, 739 F.Supp. at 417.
+
+\4\   Id.
+
+\5\   The name comes from combining the words "phreak" and "hack," which are
+the terms used for the acts of exploring, respectively, the telephone network
+and computer systems.
+
+\6\   A computer bulletin board, or BBS, is a software program which runs on a
+computer that is connected to one or more telephone lines. The program allows
+computer users with access to modems to phone up the BBS and, among other
+things, access electronic mail, upload and download computer files, and leave
+messages for later callers. See, e.g., Jensen, An Electronic Soap Box:
+Computer Bulletin Boards and the First Amendment, 39 Fed.Com.L.J. 217 (1987).
+
+\7\   Riggs, 739 F.Supp. at 417
+
+\8\   Id.
+
+\9\   Id.
+
+\10\  John Perry Barlow, Crime and Puzzlement: In Advance of the Law on the
+Electronic Frontier; Cyberspace, WHOLE EARTH REV., September 22, 1990, at 44.
+
+\11\   Id.
+
+\12\   18 U.S.C.  1343.
+
+\13\   18 U.S.C.  2314.
+
+\14\   18 U.S.C.  1030(a)(6)(A).
+
+\15\   Michael Alexander, Hacker Trial Begins in Chicago, COMPUTERWORLD, July
+30, 1990, at 8; Motions to Dismiss Wire Fraud and Transport of Stolen Property
+Claims For Hacker Publishing Activity Denied, But Charges Dropped, THE COMPUTER
+LAWYER, September 1990, at 37 [hereinafter Motions to Dismiss].
+
+\16\   United States v. Riggs, 739 F.Supp. 414 (N.D.Ill. 1990), and 743
+F.Supp. 556 (N.D.Ill. 1990).
+
+\17\   Riggs, 739 F.Supp. at 420.
+
+\18\   The cases cited by the court consist of holdings that the interstate wire
+transfer of stolen funds falls within the ambit of the National Stolen
+Property Act (United States v. Kroh, 896 F.2d 1524 (8th Cir. 1990); United
+States v. Goldberg, 830 F.2d 459 (3rd Cir. 1987); United States v. Wright, 791
+F.2d 133 (10th Cir. 1986); and United States v. Gilboe, 684 F.2d 235 (2nd Cir.
+1982)) and cases holding that the stolen property may, under some
+circumstances, be intellectual property (United States v. Bottone, 365 F.2d
+389, 393 (2nd Cir. 1966); United States v. Greenwald, 479 F.2d 320 (6th Cir.
+1973); United States v. Lester, 282 F.2d 750 (3rd Cir. 1960); and United
+States v. Seagraves, 265 F.2d 876 (1959)).
+
+\19\   739 F.Supp. at 426; 743 F.Supp. at 562.
+
+\20\   Michael Alexander, Dial 1800...for Bellsouth 'Secrets,' COMPUTERWORLD,
+August 6, 1990, at 8; Craig Bromberg, In Defense of Hackers, N.Y. TIMES MAG.,
+April 21, 1991, at 44; Motions to Dismiss, supra note 15; Score One for the
+Hackers of America, NEWSWEEK, August 6, 1990, at 48.
+
+\21\   18 U.S.C.  1030(a)(6)(A).
+
+\22\   18 U.S.C.  2314.
+
+\23\   18 U.S.C.  1343.
+
+\24\   See note 18, supra.
+
+\25\   See note 18, supra.
+
+\26\   739 F.Supp at 421, 423.
+
+\27\   18 U.S.C.  1030.
+
+\28\   Pub. L. No. 98173, ch. 21, 98 Stat. 2190 (1984) (codified as amended at
+ 18
+U.S.C.  1030 (1988)).
+
+\29\   Dodd. S. Griffith, Note, The Computer Fraud and Abuse Act of 1986: A
+Measured Response to a Growing Problem, 43 VAND. L. REV. 453, 460 (1990);
+David A. Bender, PREVENTION AND PROSECUTION OF COMPUTER AND HIGH TECHNOLOGY
+ CRIME
+(MB)  3.05[b].
+
+\30\   Griffith, supra note 29, at 466473.
+
+\31\   Id. at 470.
+
+\32\   Id. at 469.
+
+\33\   Griffith, supra note 29, at 469 n.128; 473.
+
+\34\   Id. at 472.
+
+\35\   Id. at 474.
+
+\36\   Id. at 478.
+
+\37\   Griffith, supra note 29, at 484.
+
+\38\   18 U.S.C. 1030(a)(6)(A).
+		"(a) Whoever
+			* * *
+ 		(6) knowingly and with intent to defraud traffics (as defined in
+section 1029) in any password or similar information through which a computer
+may be accessed without authorization, if
+ 		(A) such trafficking affects interstate or foreign commerce
+			* * *
+		shall be punished as provided in subsection (c) of this section."
+
+\39\   Griffith, supra note 29, at 481.
+
+\40\   18 U.S.C.  2312.
+
+\41\   United States v. Smith, 686 F.2d 234, 24446 (1982).
+
+\42\   "The automobile was uniquely suited to felonious taking whether by
+ larceny,
+embezzlement, or false pretenses. It was a valuable, salable article which
+itself supplied the means for speedy escape." Dowling v. United States, 105
+S.Ct. 3127, 3134 n.12 (1985) (quoting United States v. Turley, 877 S.Ct at
+400401).
+
+\43\   Id. at 313435.
+
+\44\   Id. at 3134 n.13 (quoting from the Attorney General in 78 Cong. Rec. 2947
+(1934)).
+
+\45\   18 U.S.C.  2314.
+		"Whoever transports in interstate or foreign commerce any goods,
+wares, merchandise, securities or money, of the value of $5,000 or more,
+knowing the same to have been stolen, converted, or taken by fraud
+			* * *
+		"Shall be fined not more than $10,000 or imprisoned not more than
+ten years, or both."
+
+\46\   Id.
+
+\47\   See United States v. Kroh, 896 F.2d 1524 (8th Cir. 1990); United States
+ v.
+Goldberg, 830 F.2d 459 (3rd Cir. 1987); United States v. Wright, 791 F.2d 133
+(10th Cir. 1986); United States v. Gilboe, 684 F.2d 235 (2nd Cir. 1982).
+
+\48\   United States v. Lester, 282 F.2d 750 (3rd Cir. 1960); United States v.
+Seagraves, 265 F.2d 876 (1959). See also United States v. Greenwald, 479 F.2d
+320 (6th Cir. 1973).
+
+\49\   United States v. Bottone, 365 F.2d 389, 393 (2nd Cir. 1966).
+
+\50\   Id.
+
+\51\   The language in  1343 (the wire fraud statute) concerning the elements of
+the offense is the same as that in  1341 (the mail fraud statute). The courts
+have, accordingly, construed them to have the same effect.
+
+\52\   McNally v. United States, 107 S.Ct. 2875, 287980 (1987) ("The sponsor of
+the recodification stated, in apparent reference to the antifraud provision,
+that measures were needed 'to prevent the frauds which are mostly gotten up in
+the large cities . . . by thieves, forgers, and rapscallions generally, for
+the purpose of deceiving and fleecing the innocent people of the country.'").
+
+\53\   18 U.S.C.  1343.
+		"Whoever, having devised or intending to devise any scheme or
+artifice to defraud, or for obtaining money or property by means of false or
+fraudulent pretenses, representations, or promises, transmits or causes to be
+transmitted by means of wire, radio, or television communication in interstate
+or foreign commerce, any writings, signs, signals, pictures, or sounds for the
+purpose of executing such scheme or artifice, shall be fined not more than
+$1,000 or imprisoned not more than five years, or both."
+
+\54\   McNally, 107 S.Ct. at 2879.
+
+\55\   Id.
+
+\56\   See, e.g., United States v. Condolon, 600 F.2d 7 (C.A.Va. 1979)
+ ("Gravaman
+of offense of wire fraud is simply the misuse of interstate communication
+facilities"); United States v. Cowart, 595 F.2d 1023 (C.A.Ga. 1979) ("To prove
+wire fraud, government must show scheme, use of interstate communications,
+such as telephone, and criminal intent to defraud); United States v. Corey,
+566 F.2d 429 (C.A.N.Y. 1977) ("To prove a violation of this section, it need
+only be shown that a defendant was one of the participants in a fraudulent
+scheme which was furthered by the use of interstate transmission facilities").
+
+\57\   See supra note 56.
+
+\58\   18 U.S.C.  1343.
+
+\59\   BLACK'S LAW DICT. (6th. ed. 1990).
+
+\60\   United States v. Keane, 522 F.2d 534 (7th Cir. 1975) ("A specific
+ violation
+of state law . . . is not necessary to obtain a conviction for mail fraud").
+
+\61\   United States v. Riggs, 739 F.Supp. 414, 418 (N.D. Ill. 1990).
+
+\62\   Id. at 41819.
+
+\63\   Id. at 419.
+
+\64\   Id.
+
+\65\   Riggs, 739 F.Supp. at 418.
+
+\66\   Id.
+
+\67\   Id. (quoting Hammerschmidt v. United States, 265 U.S. 182 (1924)).
+
+\68\   Id. at 419.
+
+\69\   Riggs, 739 F.Supp. at n.7 (citing McNally v. United States, 483 U.S. 350
+(1987), for the proposition that "a mail fraud charge must be based on the
+deprivation of property[, although] the property which forms the basis for a
+wire fraud or mail fraud charge can be 'intangible' property").
+
+\70\   Id. The court cites Carpenter v. United States, 108 S.Ct. 316, 320 (1987)
+(holding that the publication schedule and contents of the Wall Street
+Journal's "Heard on the Street" column is confidential business information
+and therefore protected property under  1341) and United States v. Keane, 852
+F.2d 199, 205 (7th Cir. 1988) (finding protectable property in a city's
+confidential plans for acquiring real estate) as support.
+
+\71\   The court does not explicitly draw this conclusion in their opinions,
+perhaps because the reasoning is somewhat problematic. In the first place, it
+is difficult to understand precisely how the usual rationale for protection of
+proprietary business information (the preservation of competitive advantage)
+applies in the case of a publicly regulated monopoly such as the telephone
+company. Although it has been suggested that the integrity of the 911 response
+system may be compromised by the widespread publication of this kind of
+information, that argument would seem to urge the application of some sort of
+quasi-national security interest standard of secrecy rather than the
+prohibitions of the trade secret law.
+       It should also be noted that proprietary information does not easily fit
+into the category of things of which one can be deprived. It is easy to imagine
+that a limited (as in this case) or even broad publication of confidential
+information would not rob it of all utility in the hands of its original
+possessor. Still, the court's decision seems to suggest that any degree of
+deprivation would be sufficient to trigger the application of section 1343.
+Although this would be consistent with much of the other wire fraud
+jurisprudence (e.g., the principle that any use of the wire system is
+sufficient for the statute to apply), there is no indication that the court
+even considered this potentially problematic area. As it is easily conceivable
+that public knowledge of even the existence of some information could lessen
+its utility, the court's interpretation of the wire fraud statute would seem
+bound to collide with the First Amendment (if the collision has not, as
+Neidorf argued, already occurred).
+
+\72\   Riggs, 739 F.Supp. at 419.
+
+\73\   Id.
+
+\74\   Id. at 420.
+
+\75\   Id.
+
+\76\   684 F.2d 235 (2d Cir. 1982).
+
+\77\   Id. at 238.
+
+\78\   Riggs, 739 F.Supp. at 420.
+
+\79\   Id.
+
+\80\   United States v. Greenwald, 479 F.2d 320 (6th Cir. 1973) (documents
+containing chemical formulas); United States v. Bottone, 365 F.2d 389 (2nd
+Cir. 1966) (copies of documents describing the manufacture of a patented
+drug); United States v. Lester, 282 F.2d 750 (3rd Cir. 1960) (copies of
+geophysical maps); and United States v. Seagraves, 265 F.2d 876 (1959) (same
+as Lester).
+
+\81\   Riggs, 739 F.Supp. at 421.
+
+\82\   Id.
+
+\83\   Id.
+
+\84\   Id. at 422.
+
+\85\   105 S. Ct. 3127 (1985). In a prosecution for the sale of bootleg Elvis
+Presley recordings, the court held that the goods actually shipped (the
+illegally manufactured records) do not come within the range of section 2314
+because no physical part of the shipment had been "stolen, converted, or taken
+by fraud." The court further held that a copyright is not the sort of interest
+that is capable of being "stolen, converted, or taken by fraud."
+
+\86\   Riggs, 739 F.Supp. at 422.
+
+\87\   Id. at 423.
+
+\88\   Id.
+
+\89\   Id.
+
+\90\   Riggs, 739 F.Supp. at 423.
+
+\91\   Id. See also Griffith, supra note 29, at 484485
+
+\92\   See supra note 56 and related text; see also supra note 60.
+
+\93\   Riggs, 739 F.Supp. at 418.
+
+\94\   Although the statement of facts does not explicitly state this, it is
+implicit both from the nature of computer telecommunications (erasing the file
+from the Bell South computer would have required actions in addition to merely
+downloading it) and from Riggs' ability to successfully conceal his access to
+the file. See also infra note 109.
+
+\95\   See supra note 94.
+
+\96\   108 S.Ct. 316 (1987).
+
+\97\   Id. at 318-319.
+
+\98\   Id. at 319.
+
+\99\   Id.
+
+\100\   Carpenter, 108 S.Ct. at 319.
+
+\101\   Id. at 320-321.
+
+\102\   Id.
+
+\103\   Id. at 321.
+
+\104\   "Petitioners' arguments that they did not interfere with the Journal's
+ use
+of the information . . . miss the point. * * * Petitioners cannot successfully
+contend . . . that a scheme to defraud requires a monetary loss, such as
+giving the information to a competitor; it is sufficient that the Journal has
+been deprived of its exclusive use of the information, for exclusivity is an
+important aspect of confidential business information and most private
+property for that matter."
+Id. See also note 69, supra.
+
+\105\   Id. at 319.
+
+\106\   Phrack was an amateur publication. It was (and is) distributed at no
+ charge
+to readers. Copies are available for downloading from numerous public and
+private bulletin board systems or from InterNet sites such as
+ftp.cs.widener.edu (in directory /pub/cud/phrack).
+
+\107\   This difficulty may not be insurmountable. If fraud signifies nothing
+ more
+than "wronging one in his property rights by dishonest methods or schemes,"
+then the statute would seem to apply to the facts in Riggs. Hammerschmidt v.
+United States, 44 S.Ct. 511, 512 (1924). However, "the words 'to defraud' . .
+. usually signify the deprivation of something of value." Id.; see also
+BLACK'S LAW DICT. (6th. ed. 1990). This language indicates that the statute
+should not apply to a case like Riggs where neither loss nor gain (nor, in
+fact, deprivation) is involved. This ambiguity seems to have gone largely
+unexplored; it is certainly unresolved, and the Riggs court ignores it
+entirely.
+
+\108\   See, e.g., United States v. Gilboe, 684 F.2d 235 (2d Cir. 1982); United
+States v. Kroh, 896 F.2d 1524 (8th Cir. 1990); United States v. Goldberg, 830
+F.2d 459 (3d Cir. 1987); United States v. Wright, 791 F.2d 133 (10th Cir.
+1986); United States v. Kenngott, 840 F.2d 375 (7th Cir. 1987).
+
+\109\   The term "download" does not imply the deletion of any files.
+ Furthermore,
+the factual allegations in the case charge only that Riggs transferred the
+text file from the Bell South computer system, not that he tampered with the
+contents of that system. This is further borne out by the failure of Bell
+South to detect Riggs' unauthorized access. See Riggs, 739 F.Supp. at 417; see
+also note 94, supra.
+
+\110\   Riggs, 739 F.Supp. at 417.
+
+\111\   See, e.g., Dowling v. United States, 105 S.Ct. 3127, 3133 (1985) (The
+ NSPA
+"seems clearly to contemplate a physical identity between the items unlawfully
+obtained and those eventually transported").
+
+\112\   It will not do to claim that the information is the thing which has been
+stolen; the NSPA applies only to "goods, wares, merchandise, securities or
+money" (18 U.S.C.  2314), and this requires tangibility. United States v.
+Smith, 686 G.2d 234, 240 (1982) ("The phrase goods, wares, or merchandise
+connotes tangible items; something tangible has or possesses physical form.").
+Accepting, arguendo, the Riggs court's holding that an electronically
+transferred document is a tangible object, this goes no further than to state
+that "when proprietary business information is affixed to some tangible
+medium, such as a piece of paper, it constitutes 'goods, wares, or
+merchandise' within the meaning of  2314." United States v. Riggs, 739
+F.Supp. 414, 420 (1990). The tangible medium in this case can be nothing other
+than the computer file.
+
+\113\   Riggs, 739 F.Supp. at 420 ("The question this case presents, then, is
+ not
+whether electronic impulses are 'goods, wares, or merchandise' within the
+meaning of  2314, but whether the proprietary information contained in Bell
+South's E911 text file constitutes a 'good, ware, or merchandise' within the
+purview of the statute.").
+
+\114\   Id. at 421.
+
+\115\   United States v. Greenwald, 479 F.2d 330 (6th Cir. 1973); United States
+ v.
+Bottone, 365 F.2d 389 (2nd Cir. 1966); United State v. Lester, 282 F.2d 750
+(3rd Cir. 1960); United States v. Seagraves, 265 F.2d 876 (1959).
+
+\116\   Riggs, 739 F.Supp. at 421.
+
+\117\   365 F.2d 389 (2nd Cir. 1966).
+
+\118\   Id. at 393.
+
+\119\   That is, that it was a good, ware, or merchandise. "Sometimes  the
+ meaning
+of 'goods' is extended to include all tangible items, as in the phrase 'goods
+and services.'" BLACK'S LAW DICT. (6th. ed. 1990). A good cannot, presumably,
+be an intangible item. See also United States v. Smith, 686 F.2d 234, 240
+(1982).
+
+\120\   In other words, the bare text file (unaffixed to any medium) was what
+ was
+stolen, as well as what was transported. The Bottone court was able to come to
+the decision it did because something tangible was taken from Lederle, and
+something tangible was transported across the border. Bottone v. United
+States, 365 F.2d 389, 393-394 (2nd Cir. 1966). The only issue was that "the
+intangible information that was the purpose of the theft was transformed and
+embodied in a different physical object." Id. at 393. The court went to great
+pains to emphasize that its conclusions would not apply "where no tangible
+objects were ever taken and transported." Id. This is, however, precisely the
+situation in Riggs.
+
+\121\   "[T]his court is not entirely convinced that tangibility is an absolute
+requirement of 'goods, wares, or merchandise' under  2314." United States v.
+Riggs, 739 F.Supp. 414, 421 (N.D.Ill. 1990).
+
+\122\   Id. at 421.
+
+\123\   THE AMERICAN HERITAGE DICTIONARY OF THE ENGLISH LANGUAGE (William
+ Morris, ed.,
+New College Ed. 1978).
+
+\124\   Id.
+
+\125\   See supra note 119.
+
+\126\   Riggs, 739 F.Supp. at 423.
+
+\127\   It remains an open question whether his actions constitute the
+ trafficking
+in stolen passwords, as prohibited by the CFAA. 18 U.S.C. 1030(a)(6)(A).
+
+\128\   Williams v. United States, 102 S.Ct. 3088, 3092 (1982) (quoted in
+ Dowling
+v. United States, 105 S.Ct. 3127, 3133-3134 (1985)).
+
+\129\   "Existing or resulting in essence or effect though not in actual fact,
+form, or name." THE AMERICAN HERITAGE DICTIONARY OF THE ENGLISH LANGUAGE
+ (William
+Morris, ed., New College Ed. 1978). This term is often used to describe the
+"space" in which computer events take place (viz., virtual reality).
+
+\130\   This "place" is often referred to as "cyberspace," a term originally
+ coined
+by the writer William Gibson but quickly adopted in the computer world,
+especially among the hacker subculture. See, e.g., WILLIAM GIBSON, NEUROMANCER
+(1984).
+
+\131\   Riggs, 739 F.Supp. at 420.
+
+\132\   In a recent experiment, for example, private computer users were able to
+send electronic mail to orbiting space shuttle astronauts through publicly
+accessible networks. See, e.g., Joe Abernathy and Mark Carreau, Electronic
+Mail Beams Shuttle's Message Home, HOUSTON CHRON., Aug. 5, 1991, at 1A.
+
+\133\   Riggs, 739 F.Supp. at 422.
+
+
+
+

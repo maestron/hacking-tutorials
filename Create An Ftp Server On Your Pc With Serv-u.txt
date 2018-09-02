@@ -1,0 +1,56 @@
+Create An Ftp Server On Your Pc With Serv-u
+
+
+Requirements:
+Serv-U
+No-IP.com Website
+
+Quote:
+Step 1. Getting a static IP address.
+Get a static address for your FTP server. You will want to do this as opposed to using your IP address for several reasons. First, it’s easier keeping up-to-date. Imagine having to change all of your setting every time your IP changed. With No-IP, the No-IP service runs in background on your computer and updates your current IP address with your FTP server’s URL (for example, you get ftp://rkchoolie.serveftp.com). Second reason, you don’t want your IP address posted out there for everyone to see.
+
+1. Go to www.No-IP.com to create a new user account.
+2. Fill in the information that is required and the click Register button.
+3. Your account has now been created and your account password has been emailed to you.
+4. Check your email mailbox and wait for the mail that contains your password
+5. Go back to www.No-IP.com and type your email address and password to login to your account.
+6. Once in your account, click on Add a host in the left menu
+7. Type in the Hostname you want (example: rkchoolie) and pick a Domain from the list (example: ftpserve.com)
+8. Check Allow Wildcards and click the Submit button
+9. You now have your static address (example: rkchoolie.serveftp.com)
+10. Click on your OS link in the Dyn-Update Client in the bottom right menu and follow links to download the client
+11. Once downloaded, install the software and type in your email address and password when asked.
+12. Finally tick the checkbox near your static address.
+
+You now have a static web address .
+
+
+Quote:
+Step 2. Installing and setting the FTP server
+1. Install Serv-U 4.0.
+2. Start Serv-U and use the wizard to setup your ftp.
+3. Click next until you're asked for an IP address, leave it blank and then click next.
+4. Type the domain name you've just registered above (example: preacher.serveftp.com) in the domain name field and then click Next.
+5. You are asked if you want to allow anonymous access, select No and then click next.
+6. You are then asked to create a named account, check yes and then click next.
+7. Type in the user name you wish for this account (example: Harrie) and click next.
+8. Type a password for this account (example: $p3c1aL). For security reasons, try to create a password with some letters, numbers and special characters. Then click next.
+9. You will then be asked for the Home directory of the account you just created. Select the directory and then click next.
+10. Select yes to lock this account to the Home directory. You want to do this so that the user can not go any further up that his home directory. Click next.
+11. The account is now set so click finish.
+
+Quote:
+Step 3. Configuring user accounts
+1. In the left tree-menu, select the account you've just created and then click on the General tab.
+2. Check Hide ‘Hidden’ Files.
+3. Check Allow only and enter the number one in the box.
+4. Set the Max. download speed to what ever you want. If this is an account that many will be using, set it low to save on your bandwidth. I usually have mine set between 10 – 20. If you leave it blank, users will be able to download from you at full bandwidth.
+5. Set the Max no. of users to how many you want to be able to log on at one time. This depends on your connection speed but try these (56 - 1, ISDN - 3, ADSL or cable - 5-6 users.)
+6. Now, click on the Dir Access tab.
+7. You should see the home folder in there. Highlight it and make your permissions.
+8. If you only want users to be able to download check only Read, List, & Inherit.
+9. If you want users to be able to upload, but to only one particular folder but not download, click the add button and then select that folder. Now highlight the folder and set these permissions on that folder. Check Write, Append, List, Create, & Inherit. Once you have made the permissions click on the up arrow that is located at the bottom right-hand corner. You want this special upload folder to be list first, before the home folder.
+10. If there is a folder that you don’t want anyone to have access to, but it is inside the home folder, then click the add button and then select that folder. Now highlight the folder and make sure that all checkboxes are left. Once you have made the permissions click on the up arrow that is located at the bottom right-hand corner. You want this no access folder to be listed at the very top.
+11. There are many other different sets of permissions you can play with. I just covered your basics.
+12. Your server is now set!
+13. Try logging on with the username and password and see if it works. 

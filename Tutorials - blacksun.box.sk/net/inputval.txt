@@ -1,0 +1,125 @@
+Input Validation Attacks
+========================
+Written by R a v e N for BSRF (http://blacksun.box.sk)
+17/7/2000
+
+"Input Validation Attacks". Some of you may be startled by this term. But, to
+tell you the truth, it's quite simple, and fun too. Here, let me explain.
+
+What's an IVA?
+--------------
+IVA stands for an Input Validation Attack. I'll try to make this as simple as
+possible, so even the ones of you who don't have any programming experience
+would still understand.
+Suppose you have a program that receives input. That could be practically
+anything. In fact, almost every application that you know receives some sort
+of input. When you tell your browser where to go, you're giving it input. When
+you play a computer game and you tell your figure to move to the left, that's
+input. When you type in your password, that's input too. So, what happens when
+a program doesn't validate the input that you give it correctly?
+Suppose, for example, that if you typed your input, and then a certain
+character and afterwards a command and it will be executed? Or maybe, if you
+type a password that's too long, the program will go amok and let you in
+without the password. Or maybe it'll let you in if you won't type anything
+at all.
+The program didn't validate the input correctly - it didn't make sure that the
+user is typing what he is supposed to type. So let's make a long story short -
+there is a bug or a hole in the program or it's implementation that involves
+certain input, and the program doesn't make sure that such input is not given,
+thus allowing us to exploit the hole. Now for a few examples, to clear things
+up and to show you how this can be done and exploited.
+
+Examples
+--------
+The best possible real example that I can think of is the PHF hole. Yes, PHF!
+Some of you may already recognize this hole. Yeah, yeah, we know it's dated
+back in 1996, but let's forget about it for a second and concentrate on how
+this works.
+
+Let's imagine we're back in 1996. PHF is a CGI script that comes standard with
+the Apache Web Server - the world's most popular web server (and it still is
+until this very day). Everything is doing just fine, until Jennifer Myers
+found out that the PHF script will accept the newline character and issue
+commands to the command line with the webserver's privileges. This means that
+if httpd (the HTTP Daemon, i.e. the program that listens on port 80 (by
+default) and waits for HTTP connections. The term daemon isn't limited to
+Internet-related issues, and is better explained in other BSRF tutorials) is
+running as root (which is a very stupid thing to do. Web servers should run
+from a very restricted account), every command can be executed with root
+privileges.
+
+Basically, to get the password file, all you had to do is to type this:
+http://www.some-vulnerable-webserver.com/cgi-bin/phf?Qalias=x&0a/bin/cat&20/etc/passwd
+
+Then you will get the password file, as if you had console access to a root
+terminal and typed in cat /etc/passwd (if the file is shadowed, you can also
+get /etc/shadow. After all, you have root permissions). From this point, all
+you have to do is to run a password cracker and wait.
+Smarter crackers would issue different commands. For example, they could
+create an .rhosts file on root's home directory and add their hostname and
+username, and then use rlogin to remotely login to that system (if such a
+service is running and is not firewalled. But then again, an admin that is
+stupid enough to run httpd as root would probably also have it running
+unrestrictedly as well). Refer to rlogin's manual page for further
+instructions.
+
+Analyzing the attack
+--------------------
+http://www.some-vulnerable-webserver.com/cgi-bin/phf?Qalias=x&0a/bin/cat&20/etc/passwd
+
+Hmm...
+That's awfully long, isn't it? Let's take it piece by piece.
+
+http://www.some-vulnerable-webserver.com
+There's not much to explain here - this part tells your web browser who to
+contact.
+
+/cgi-bin/phf
+This part tells your browser to request for the file called phf, under the
+cgi-bin directory, which is under the root directory (it's the main directory,
+similar to c:\ in the DOS / Windows world).
+
+?
+Passes input to phf, the cgi script.
+
+Qalias=x
+So far this is normal input, which the program (and the programmer) is
+expecting.
+
+&0a
+This is the fun part. &0a is the new line metacharacter. It tells PHF to
+start a completely new command line.
+
+/bin/cat&20/etc/passwd
+The command to execute. Tells PHF to run the following command:
+/bin/cat /etc/passwd
+The cat program is a standard Unix program that dumps the contents of a file
+to the "standard output" (stdout). This usually means your computer monitor,
+unless the output is redirected (to the printer, to a file, or in this case,
+through a TCP/IP socket and straight down to our browser).
+&20 is another metacharacter, which stands for a blank space, which is also
+called a "white space" (it is used instead of real spaces because httpd cannot
+accept spaces in URL requests).
+
+How to prevent such attacks
+---------------------------
+First of all, make sure that everything runs with privileges that are as
+restricted as possible, and can only access files that it should and has to
+have access to (and if so, minimize access. For example: a web server needs to
+be able to read html, gif, jpg, cgi scripts or other files that belong to the
+web site, but does not require writing access to them). That way you can
+minimize or completely eliminate any possible damage.
+Also, as a developer, you must take security into mind when you code your
+programs, and also test them under unexpectable conditions. In other words,
+when you test a car, you test it for all sorts of strange situations and wild
+crashes, and drive it through different kinds of terrains. You can't just make
+sure that it can drive and then send it out to the market, otherwise people
+will realize that although the car works just fine in normal conditions, it
+doesn't handle unexpected ones properly, and will eventually switch to another
+manufacturer.
+
+
+Thank you for reading. You can catch up with other BSRF tutorials at
+blacksun.box.sk - just find the tutorials page. And remember, if you have a
+question, we have an excellent message board, and you can post your question
+there.

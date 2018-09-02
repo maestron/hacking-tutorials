@@ -1,0 +1,112 @@
+If you would like to keep a particularly interesting chat that has scrolled by but is still in your buffer there is a way to save it! Type "ALT -" (alt minus) to enter the system menu under the top left little icon thingy above every channel or private conversation. In this menu select the Buffer/Save As/ entry and save your buffer to a file. Succes! 
+
+The LOCK feature in mIRC allows you to minimize mIRC and lock it with a password for strange eyes. If you control-minimize mIRC (keep the Ctrl-key pressed down while minimizing mIRC), it will be locked with your password. If no password was set previously mIRC will ask you for one. Later when you want to maximize mIRC you need your password to activate it. An extention of this feature in the /File/Options/General/Lock/ menu can be used to lock mIRC or certain channels for your children! 
+
+Shift+Mouse on Switchbar Did you know that you can 'fast-close' a window in mIRC by clicking its button on the Switchbar while holding the SHIFT key pressed down?? 
+
+/uwho Ever wondered who you're actually speaking with? The /whois {nick} command shows you a lot of cryptic info in the Status window but the /uwho {nick} command will open a clear and informative User Central. Give it a try! You can also store address info of your friends in the User Central for future reference. 
+
+ALT + Minus Press the key combination ALT and 'minus' simultaneous to access the windows' System Menu's (found under that little horizontal bar in every top left corner of ANY window in mIRC and windows). Here you can set the fonts you like, the logging options, save the buffer and set various other things for private and channel conversations. 
+
+/clear Use the /clear command to flush away all old text you dont want to read again. /clearall clears all text in all windows! 
+
+Remember that old doskey feature under DOS? mIRC has it too! Use the arrow up/down keys, eventually combined with SHIFT, to recall old commands and text lines. 
+
+/channel The /channel command will open the Channel Central that displays all modes and bans set on your current channel. 
+
+/pdcc Use the undocumented /pdcc [on|off] command to speed up your DCC sessions! It will pump a certain amount of your data packages away to the reciever, ahead of the confirmation of their arrival. Try it, it works  . 
+
+Quick reference to mIRC's commands: 
+
+
+If you need more info on any command listed here, type /help {command} in mIRC. The list here is far from complete! 
+/ Recalls the previous line entered in the current window. 
+/! Recalls the last command typed in any window. 
+/action {action text} Sends the specifed action to the active channel or query window. 
+/ame {action text} Sends the specifed action to all channels which you are currently on. 
+/amsg {text} Sends the specifed message to all channels which you are currently on. 
+/auser {level} {nick|address} Adds a user with the specified access level to the remote users list. 
+/auto [on|off|nickname|address] Toggles auto-opping of a nick or address or sets it on or off totally. 
+/away {away message} Sets you away leave a message explaining that you are not currently paying attention to IRC. 
+/away A plain away sets you being back. 
+/ban [#channel] {nickname} [type] Bans the specified nick from the curent or given channel. 
+/beep {number} {delay} Locally beeps 'number' times with 'delay' inbetween the beeps. /channel Pops up the channel central window (only works in a channel). 
+/clear Clears the entire scrollback buffer of the current window. 
+/clearall Clears all text in all open windows. 
+/ctcp {nickname} {ping|finger|version|time|userinfo|clientinfo} Does the given ctcp request on nickname. 
+/ctcps [on|off] Sets the Tools/Remote/ section (not) to listen to CTCP commands. Or checks its status. 
+/closemsg {nickname} Closes the query window you have open to the specified nick. 
+/creq [ask | auto | ignore] Sets your DCC 'On Chat request' settings in DCC/Options. 
+/dcc send {nickname} {file1} {file2} {file3} ... {fileN} Sends the specified files to nick. 
+/dcc chat {nickname} Opens a dcc window and sends a dcc chat request to nickname. 
+/dde [-r] {service} {topic} {item} [data] Allows DDE control between mIRC and other applications. 
+/ddeserver [[on [service name] | off] To turn on the DDE server mode, eventually with a givem service name. 
+/describe {#channel} {action text} Sends the specifed action to the specified channel window. 
+/disable {#groupname} De-activates a group of commands or events. 
+/disconnect Forces a hard and immediate disconnect from your IRC server. Use it with care. 
+/dlevel {level} Changes the default user level in the remote section. 
+/dns {nickname | IP address | IP name} Uses your providers DNS to resolve an IP address. 
+/echo [nickname|#channel|status] {text} Displays the given text only to YOU on the given place in color N. 
+/enable {#groupname} Activates a group of commands or events. 
+/events [on|off] Sets the Tools/Remote/ section (not) to listen to ON .. Events. Or checks its status. 
+/exit Forces mIRC to closedown and exit. 
+/finger {nick|address} Does a finger on a users address. 
+/flood [{numberoflines} {seconds} {pausetime}] Sets a crude flood control method. 
+/flush [levels] Clears all nicknames from the Remote/users list that are currently not on your channels. 
+/font Activates the font selection dialog. 
+/fsend [on|off] Shows fsends status and allows you to turn dcc fast send on or off. 
+/fserve {nickname} {maxgets} {homedirectory} [welcome text file] Opens a fileserver. 
+/groups [-e|d] Shows all (enabled or disabled) groups defined in the remote sections. 
+/guser {level} {nick} [type] Adds the user to the user list with the specified level and address type. 
+/help {keyword} Brings up the Basic IRC Commands section in the mIRC help file. 
+/ignore [on|off|nickname|address] Toggles ignoring of a nick or address or sets it on or off totally. 
+/invite {nickname} {#channel} Invites another user to a channel. 
+/join {#channel} Makes you join the specified channel. 
+/kick {#channel} {nickname} Kicks nickname off a given channel. 
+/list [#string] [-min #] [-max #] Lists all currently available channels, evt. filtering for parameters. 
+/load {-apuce} {filename.ini} Loads Aliases, Popups or Remote items into mIRC. 
+/log [on|off] Shows the logging status or sets it on or off for the current window. 
+/me {action text} Sends the specifed action to the active channel or query window. Also see /describe and /ctcp action. 
+/mode {#channel|nickname} [[+|-]modechars [parameters]] Sets channel or user modes. 
+/msg {nickname} {message} Send a private message to this user without opening a query window. 
+/names {#channel} Shows the nicks of all people on the given channel. 
+/nick {new nickname} Changes your nickname to whatever you like. 
+/notice {nick} {message} Send the specified notice message to the nick. 
+/notify [on|off|nickname] Toggles notifying you of a nick on IRC or sets it on or off totally. 
+/onotice [#channel] {message} Send the specified notice message to all channel ops. 
+/omsg [#channel] {message} Send the specified message to all ops on a channel. 
+/part [#channel] [message] Makes you leave the specified channel. 
+/partall Makes you leave all channels you are on. 
+/ping {server address} Pings the given server. NOT a nickname. 
+/play [-cpqmrlt] [channel/nick] {filename} [delay/linenumber] Allows you to play text files. 
+/pop {delay} [#channel] {nickname} Performs a randomly delayed +o on a not already opped nick. 
+/protect [on|off|nickname|address] Toggles protection of a nick or address or sets it on or off totally. 
+/query {nickname} {message} Open a query window to this user and send them the private message. 
+/quit [reason] Disconnect you from IRC with the optional byebye message. 
+/raw [on|off] Sets the Tools/Remote/ section (not) to listen to Raw commands. Or checks its status. 
+/raw {raw command} Sends any raw command you supply directly to the server. Use with care! 
+/remote [on|off] Sets the Tools/Remote/ section (not) to listen to CTCP or Raw remote commands and Events. Or checks its status. 
+/rlevel {access level} Removes all users from the remote users list with the specified access level. 
+/run {c:\path\program.exe} [parameters] Runs the specified program, evt. with parameters. Also try /run h**p://w*w.mirc.com etc. 
+/ruser {nick[!]|address} [type] Removes the user from the remote users list. 
+/save [-apuce] {filename.ini} Saves remote sections into a specified INI file. 
+/say {text} Says whatever you want to the active window. 
+/server [server address [port] [password]] Reconnects to the previous server or a newly specified one. 
+/sound [nickname|#channel] {filename.wav} {action text} Sends an action and a fitting sound request. 
+/speak {text} Uses the external text to speech program Monologue to speak up the text. Better use /gtalk with mIRC's Agent support. 
+/sreq [ask | auto | ignore] Sets your DCC 'On Send request' settings in DCC/Options. 
+/time Tells you the time on the server you use. 
+/timer[N] {repetitions} {interval in seconds} {command} [| {more commands}] Activates a timer. 
+/timestamp [on | off] Sets timestamping on or off for all your conversations. 
+/topic {#channel} {newtopic} Changes the topic for the specified channel. 
+/ulist {level} Lists all users in the remote list with the specified access levels. 
+/url [on|off|show|hide] [address] Opens the URL window that allows you to surf the www parallel to IRC. 
+/uwho [nick] Pops up the user central with information about the specified user. 
+/splay {c:\path\sound.file} Locally plays the specified sound file. 
+/who {#channel} Shows the nicks of all people on the given channel. 
+/who {*part.of.address*} Shows all people on IRC with a matching address. 
+/whois {nickname} Shows information about someone in the status window. Also try /uwho. 
+/whowas {nickname} Shows information about someone who -just- left IRC. 
+/write [-cidl] {filename} [text] To write the specified text to a .txt file. 
+
+mIRC supports lots, lots and a lot more commands... Especially the commands that are used in scripts, with lots of options, are not included in this list. Therefore this list should be seen as a suggestion to get you going 

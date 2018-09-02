@@ -1,0 +1,37 @@
+How do I Test My VirusScan Installation? (Eicar)
+
+Description
+
+After installing VirusScan, you may logically wonder, how do I know if it's working? The answer is a test virus. The EICAR Standard AntiVirus Test File is a combined effort by anti-virus vendors throughout the world to implement one standard by which customers can verify their anti-virus installations.
+
+Solution
+
+To test your installation, copy the following line into its own file, then save the file with the name EICAR.COM. More detailed instructions are found below.
+
+X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*
+
+The file size will be 68 or 70 bytes.
+
+If VirusScan is running and configured correctly, when you try to save the file, VirusScan will detect the virus. If VirusScan is not running, start it and scan the directory that contains EICAR.COM. When your software scans this file, it will report finding the EICAR test file.
+
+Note that this file is NOT A VIRUS. Delete the file when you have finished testing your installation to avoid alarming unsuspecting
+users.
+
+The eicar test virus is available for download from the following website:
+http://www.eicar.org/download/eicar.com
+
+Creating Eicar.com
+
+   1. Click on Start.
+   2. Select Run.
+   3. In the Open box type: notepad
+   4. Maximize the window.
+   5. Highlight the following on the following line of text:
+      X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*
+   6. Right click on the highlighted text and choose 'copy'.
+   7. Switch back to Notepad.
+   8. Right click anywhere inside of Notepad and select 'paste'.
+   9. Click the File menu and select 'save as'.
+  10. Change the 'Save as Type' to 'all files'.
+  11. Name the file eicar.com.
+

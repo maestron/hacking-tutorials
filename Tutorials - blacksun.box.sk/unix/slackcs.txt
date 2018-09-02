@@ -1,0 +1,146 @@
+Dial-Up Modem Connection Sharing by
+Boris Kurktchiev aka MANOWAR^ <webmaster@bgdefenders.zzn.com>
+for BlackSun Research Facility http://blacksun.box.sk
+
+July 31, 2001
+
+A mini HOWTO on a simple way to securely share your dial-up modem connection between
+Slackware and Windows 9x and Win2k using IPtables and IP Masquerading.
+
+1. Introduction
+
+This is a mini HOWTO that describes an easy and secure way of setting up your Home
+Connection Sharing using Slackware Linux 7.0, 7.1, and 8.0.
+What you need in order for this to work:
+
+     - A Network Card
+     - A Ethernet Hub / or a Cross Over Cable
+     - The 2.4.* kernel version
+     - And most important Slackware Linux installed.
+
+If you do not have anything from the above list, then you might have to work your own way of
+doing this.
+
+1.1 Copyright
+
+Copyright (c) 2001, Boris Kurktchiev
+
+You can distribute this document under the terms of the GNU General Public License, which you
+can get at http://www.gnu.org/copyleft/gpl.html.
+Information and other contents in this document are the best of my knowledge. However, this
+may have made errors. 
+So you should determine if you want to follow the instructions given in this document.
+Nobody is responsible for any damage to your computer and any other loss derived from the use
+of the information contained herein.
+
+THE AUTHOR AND MAINTAINERS ARE NOT RESPONSIBLE FOR ANY DAMAGE 
+INCURRED DUE TO ACTIONS TAKEN BASED ON INFORMATION CONTAINED IN
+THIS DOCUMENT.
+
+Of course, I am open to all type of suggestions and corrections on the content of this document.
+
+2. Configuring Networking
+
+I am assuming that you have not tried hooking up the two or more PC so I am going to start from
+scratch. So you have your network card plugged in, you have your modem up and running, but now your
+mom needs to get on the internet and she is definitely not a Linux lover.
+Well lets start setting up the network so we can keep your mom happy:
+
+2.1 Configuring Slackware
+
+     1. Log in as root 
+     2. In your console run netconfig
+     3. Go through first few windows where you specify the name of your machine and the
+	host name you want to have
+     4. The third window you should see is SETUP IP FOR "your host name" 
+     5. Click on Static IP
+     6. You are going to be prompted a window and you are going to put 192.168.0.1 in it.
+	That is going to be your IP on your home network.
+     7. Leave the default net mask as 255.255.255.0
+     8. When you are asked for a gateway just hit enter, when you are asked if you are going
+	to run name server click no, and after that you should be good to go.
+     9. You are going to be prompted for your network card to be detected just let the
+	program find the module for your card (if the system has that module compiled)
+     10.If netconfig tells you that you don't have the module for your network card than you
+	better find out what your card name is and compile it in the kernel
+	(if you don't know how to do that go and read the Kernel-HOWTO at www.linuxdocs.org).
+
+2.2 Configuring Windows
+
+     1. Log in (the use of admin privileges are necessary)
+     2. Right click on network neighborhood
+     3. Right click on local connections
+     4. Then click on TCP/IP protocol and go to properties (if you don't have the protocol
+	installed just hit install go to Protocols and select TCP/IP and click install.
+     5. There click use static IP: in the IP box put 192.168.0.2 then go to netmask and enter
+	255.255.255.0 and for the default gateway enter 192.168.0.1
+     6. Now for DNS services you are going to add the IP your ISP (Internet Service Provider)
+	had provided you with if you don't know it then
+	Connect to the Internet in windows and then go to Start/Run and type winipcfg and a window
+	with at least 2 IP's will be shown.
+ 	Those two are the two DNS servers provided by your ISP. Put them both in the
+	DNS service at the TCP/IP configuration.
+     7. Click ok and go back to your Slackware machine.
+
+3. Setting up the connection sharing
+     
+Well her goes the most exciting part of the exercise. Setting up the sharing script. Right now I can
+only tell you how to start the script we are going
+Create using KPPP.
+So start up your favorite text editor (I usually use Pico for simple editing) and copy this script
+     
+     echo "1" > /proc/sys/net/ipv4/ip_dynaddr
+     iptables -F
+     iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+     iptables -A INPUT -i ppp0 --source 192.168.1.0/24 -j DROP
+     iptables -A INPUT -i ppp0 --source 10.0.0.0/8 -j DROP
+     iptables -A INPUT -i ppp0 --source 172.16.0.0/12 -j DROP
+     iptables -A FORWARD -i eth0 -j ACCEPT
+     iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+     iptables -A FORWARD -m limit --limit 5/minute --limit-burst 5
+
+The first iptables line is flushing the iptables rules. The second is setting your ppp0
+( your modem ) interface to masquerading, the third linedenies any connection to your ppp0 interface from the three "C" class IP's used for home
+networking, the forwarding lines are the ones that are doing the
+magic they are allowing your Network Card to be used as an ISP that serves the 192.168.0.2 PC.
+That's it you are done. Now exit and save do chmod a+x filename then do cp filename /usr/bin and
+now you are good to go. You are all set.
+
+Now in order to run this script upon connection using KPPP go to setup and then select the name
+of the account and then go to execute
+in the upon connect space put the name of the file you just put the iptables rules and then connect
+to the Internet using KPPP. IF you are using PPP the only
+way I can figure out right now for you to execute the rules is to do it manually. wait for
+ppp-on/go do its job and then execute the file.
+
+Now go to the Windows computer and try connecting to a site. If you did everything right you
+should be able to surf the net without any problem.
+If you want to be able to do dial on demand go to www.sourceforge.net and do a search for daild
+there is a good HOWTO on configuring diald on
+www.linuxdocs.org.
+
+4. Some Security Additions
+
+Well everything is cool now and you have your network connection sharing up and running. Here
+are a few tips on how to make you computer and network
+a little more secure.
+     1. log in as root and go to /etc
+     2. pico(or whatever your favorite text editor is) hosts.deny. Now put this line in there
+	ALL:  ALL
+	This deny's any access to any service on your PC.
+        The bad thing is that you blocked yourself and your network too that way.
+     3. now do pico hosts.allow and put this in there on separate lines
+     	ALL: 127.0.0.1
+	ALL: 192.168.0.
+        now you have granted access to the services to your localhost and your network.
+
+That's it now you can go and edit the inetd.conf file and comment in all the services you don't
+need.
+
+5. Credits
+
+I would like to thank:
+
+Ghost_Rider for adding the 3 INPUT rules in order to make more secure script.
+Paul Ramsey <pramsey@refractions.net> for his Home Networking mini Howto that inspired me to write
+mine mini Howto.

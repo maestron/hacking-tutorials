@@ -1,0 +1,40 @@
+ How To Copy A Dvd Which Will Play On A X Box
+
+HOW TO COPY A DVD WHICH WILL PLAY ON A X BOX
+
+TOOLS YOU WILL NEED:
+
+DVD decrypter
+DAEMON TOOLS
+DVD2ONE
+NERO 5.5.10 or above.
+
+1. Rip the DVD in ISO mode with DVD decrypter to your hdd.
+(mode=ISO-read)
+
+2. Right click DEAMON TOOLS icon on your desktop
+virtual cd/dvd rom
+Device 0 [k] no media
+Mount Image - ISO file
+
+3. Make a main folder ( title MOVIE ) on your desktop.
+make 2 subfolders in it VIDEO_TS and AUDIO_TS
+
+4. Open DVD2ONE. choose movie only or entire disc.
+source - drive you mounted in step 2 (VIDEO_TS)
+Destination - VIDEO_TS folder you created in step 3.
+start
+
+5. DEAMON TOOLS - unmount the drive you made in step 2.
+you can now delete the ISO file to save disc space
+
+6. open NERO
+close wizard
+New Compilation DVD
+Left Column (DVDROM/UDF/ISO)
+No Multisession
+UHF check Force DVD compatability (required for x box)
+Label ( NAME OF MOVIE ) ALL CAPITAL LETTERS
+Click New
+drag over the VIDEO_TS FOLDER and AUDIO_TS folder you made
+BURN

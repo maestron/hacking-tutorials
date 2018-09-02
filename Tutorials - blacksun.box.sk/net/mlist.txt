@@ -1,0 +1,95 @@
+The Mailing List Security Mini-Tutorial / Written by R a v e N (blacksun.box.sk)
+<==============================================================================> 5/10/99, version 1.0
+Author's notes: I'm getting tired of repeating myself*, so please read my previous tutorials (located at http://blacksun.box.sk).
+Otherwise, you might not understand some of the terminology.
+
+* Until recently, I had to repeat concepts and terminology that I already explained about in previous tutorials so people who are just reading my first tutorial won't have any difficulties understanding it. Well, I'm kinda tired of doing so, and I'd rather spend my precious time on writing the actual content, so please read my previous tutorials first. Oh, by the way, I just want you to understand that I am writing this tutorial in order to teach people how to protect themselves, not to teach them how to attack others. Also, I am not responsible for anything you do, and I don't recommend you to start hacking every mailing list in sight. Use this information in order to protect yourself and your mailing list only (and maybe a friend's mailing list, if he needs help). If you want to impress someone, the best way is to protect him, not to attack him. This will show your true power.   ;-) Anyway, have fun!
+Send comments or questions to barakirs@netvision.net.il, or post them on our message board at blacksun.box.sk.
+
+Table of Contents
+<===============>
+* What is a mailing list?
+* What does it do?
+* Different types of mailing lists.
+* Why would I want a mailing list?
+* Where do I get a mailing list?
+* How do I hack a mailing list?
+* Which mailing lists can I hack into?
+* When is it legal and when does it get illegal?
+* What do I need to start?
+* How do I do it?
+
+
+What is a mailing list?
+=======================
+A mailing list is a useful tool in the hands of webmasters (people who run websites). Visitors who would like to receive notices regarding updates to this website can write down their mailing list into a special form within this website, or send an Email to some special address which automatically adds you to the mailing list. Then, when this website gets updated, the webmaster can announce to all of the people that signed up to the mailing list about the update.
+The mailing list I have just described was an announcements mailing list. It simply allows the owner of the list to send announcements to the entire list.
+
+There are three different kinds of mailing lists:
+a) an announcements mailing list, such as the one I have just described.
+b) a discussion mailing list, where everyone can send a message to some Email address and they will be delivered to the entire list immediately. This can be used to discuss a certain subject that the mailing list is all about. For example: hiking in north Dakota, computer security, growing and/or studying mushrooms, the study of Mars or Chinese politics (although it is not recommended to start a discussion list about politics and such issues, since every angry extremist can use a simple mail bombing program to flood the entire list and all of it's members with thousands of hate messages).
+c) a moderated mailing list, which is exactly the same as a discussion mailing list, only your messages don't get instantly delivered to the entire list. Instead, the owner of the mailing list needs to authorize these messages before they go out into the public's eye (censorship... but it's also quite useful to block spammers and mail bombers).
+
+Whether you are a webmaster or whether you just have some ideas to share with the public, what you need is a mailing list. It has been proved that putting a mailing list on your website generates more returning visitors. Also, running a discussion or a moderated mailing list about one or many of your hobbies is quite fun.
+
+There are two kinds of mailing lists out there: web-based mailing lists and majordomo/minordomo mailing lists.
+Web-based mailing lists: these mailing lists are called that way because they are based on the web. That is, if you want one of those mailing lists you have to enter the company's website and purchase one (or sign up for a free mailing list, which usually has lesser features).
+The best free web-based mailing lists out there are Listbot (http://listbot.linkexchange.com) and Onelist (http://www.onelist.com).
+Majordomo/Minordomo - I don't know the origin of the name, but anyway, these mailing lists have tons of feature, they are easy to handle, it is extremely easy to transfer your entire mailing list from one place to another and most of all, they are far more secure than the web-based mailing lists.
+To get one, you could either get your own server and set up a majordomo or minordomo mailing list on it (the software itself is free), ask someone else to let you set up a mailing list on his server or find some company on the web that provides such mailing lists and hosts them on their server.
+Note about minordomo: AFAIK (As Far As I Know), Minordomo is a smaller version of Majordomo. In case I am mistaken (and I probably am, since this is a simple wild-ass guess), please Email me the correct definition of Minordomo to barakirs@netvision.net.il (and maybe the origin of the name).
+
+
+How do I hack a mailing list?
+=============================
+During this tutorial, you will learn how to hack EVERY web-based mailing list, and perhaps some Majordomo/Minordomo mailing lists (note: this will not work on our mailing list, so don't even bother...   ;-)  ).
+
+First of all, you need to read the Sendmail tutorial in order to learn how to send fake mail. This tutorial can be found at blacksun.box.sk. We also advise you to read the Info-Gathering tutorial, available also at blacksun.box.sk.
+Now, I need you to understand what "social engineering" is.
+There are two ways to get a password:
+a) by using hacking skills to get it.
+b) by using social engineering, which mostly requires some hacking skills and maybe some info-gathering skills (and a little luck, of course).
+Here, let me explain. Social engineering is getting the password you want (for example: the password for the mailing list) by convincing someone to give it to you. So now you are probably saying "hey, this crap doesn't have anything to do with hacking at all!". Well, for your information, almost every social engineering "hack" will require some hacking skills, or will at least have more chances in succeeding if the attacker has these skills.
+
+The hack
+--------
+First of all, I advise you to try this own on a mailing list that YOU own. It is illegal to get a password to someone else's account, even if you don't use the password at all (just attempting to get the password is quite incriminating).
+I will describe the attack from the attacker's point of view, but this does not mean that I encourage you to do anything illegal.
+
+What you will need:
+a) the owner's Email address.
+b) as many details about the owner as possible (his name or the name he used to sign up, his telephone number (if he filled out this field when he first signed up), his home address, zip code etc').
+c) some luck (if "lady luck" won't assist you, you could always try again. Sooner or later you will succeed. Trust me on this one).
+d) the Email address of the company's help desk (the same address the real owner would go to in order to ask for help). If the only way to contact the company that hosts the mailing list is through a javascript-based form (a form that is embedded into a webpage within the company's website) and you can't figure out their Email address by looking at the source of the HTML page or playing around with their CGIs or whatever, forget it (unless, of course, you figured out a way to fool the CGI or the form or something into thinking you are sending your message from any address you would like to).
+
+Now, simply use what you've learned from the Sendmail tutorial to fake a mail to the helpdesk. Make up some convincing story. For example:
+
+Subject: "recover my password" script doesn't work
+Help! I am moving to a new Email address, and I want to update my member profile to have my new Email address in it, but alas - I cannot. I forgot my password.
+I tried going to the "retrieve my password" page on your website. I entered my Email address (I'm completely sure it was the correct one) and waited for over than two days, but I still didn't get it.
+In a few hours from now I will not be able to check this mailbox anymore. Please send your reply to my new Email address, which is: < your "new" Email address comes here. I recommend using an anonymous Email address from some free Email provider, such as Hotmail, so in case someone will get suspicious they won't be able to track you down >.
+Please send me my password to my new Email address, or simply change my Email address in my member profile to the new one. Whichever you choose to do, please notify me (please send the mail to the NEW address, otherwise I will completely miss it).
+
+Yup, that's about it. Oh, and it's recommended to set a reply-to value to the message which will contain your "new Email address".
+
+
+But wait!! Before you start hacking every mailing list in sight, remember that it is ILLEGAL. If you want to try this out, start your own mailing list and try to "hack" into it.
+
+
+Other tutorials by BSRF
+-----------------------
+* FTP Security.
+* Sendmail Security.
+* Overclocking.
+* Ad and Spam Blocking.
+* Anonymity.
+* Info-Gathering.
+* Phreaking.
+* Advanced Phreaking.
+* More Phreaking.
+* IRC Warfare.
+* Proxies, Wingates and SOCKS Firewalls.
+* RM Networks.
+* The Windows Registry.
+* Hardware.
+* Cracking.

@@ -1,0 +1,137 @@
+Data Capacity of CDs [Tutorial] 
+
+Abstract
+You can fit on a S/VCD without overburning:
+- approx. 735 MB of MPEG data onto a 74min/650MB disc
+- approx. 795 MB of MPEG data onto an 80min/700MB disc
+
+You can fit on a CD-ROM without overburning:
+- approx. 650 MB of data onto a 74min/650MB disc
+- approx. 703 MB of data onto an 80min/700MB disc
+
+----------------------------------------------------------------
+
+Introduction
+Let us ignore for now the terms of megabyte for CD capacity and try to understand how the data is stored on a CD.
+
+As well all know, the data is stored digitally as binary data. This means, however the actual information is actually kept on the disc, this information is in the form of "1"s and "0"s. Physically, the information on a CD is as pits on a thin sheet of metal (aluminium).
+
+An a CD-R disc, the data is physically on an organic dye layer which simulates the metal layer on a real pressed CD.
+
+----------------------------------------------------------------
+
+How is the information structured
+Now, on the CD, the information isn't just organised from beginning to end willy-nilly. Otherwise, it would be really hard to find a useful piece of information on the CD.
+
+Rather, the information is organised in sectors. Consider a sector as like a page in a book. Just like you are able to quickly find something in a book if you know the page number, you can quickly find something on a CD if you know the sector number.
+
+Now, remember that the CD was original made to hold audio data. It was decided, that the CD would would 75 sectors per second of audio. Although I cannot guess where this number comes from, it is quite appropriate for the audio CD. It means that you can "seek" an audio CD accurately to 1/75th of a second -- which is more than enough for consumer purposes.
+
+Now, with this in mind, we can work out the total data capacity of user data for 1 sector.
+
+----------------------------------------------------------------
+
+The total data capacity of user data of 1 sector on a CD
+CD audio uses uncompressed PCM stereo audio, 16-bit resolution sampled at 44.1 kHz.
+
+Thus 1 second of audio contains:
+16 bits/channel * 2 channels * 44100 samples/second * 1 second
+= 1411200 bits
+= 176400 bytes
+
+Since there are 75 sectors per second
+1 sector
+= 176400 bytes / 75
+= 2352 bytes
+
+One sector on a CD contains 2352 bytes max.
+
+----------------------------------------------------------------
+
+The concept of different MODES and FORMS of burning
+Now, audio CD was well and good, but the medium would become much more useful if you could store other data on the disc as well. This became to be know as CD-ROM of course.
+
+Now, the audio-CD uses the ENTIRE sector for audio data.
+
+However, for CD-ROMs this caused a problem. Simply, CDs and the CD reading mechanisms were not 100% faultless. That is, errors (indeed frequent errors) could be made during the reading. For audio CDs, this does not matter as much as you could simply interpolate from the adjacent audio samples. This will obviously NOT DO for data CDs. A single bit error could lead to a program being unexecutable or ruin an achive file.
+
+Thus, for CD-ROMs, part of each sector is devoted to error correction codes and error detection codes. The CD-R FAQ has the details, but in effect, only 2048 bytes out of a total of 2352 bytes in each sector is available for user data on a data CD.
+
+This burning mode is either MODE1 or MODE2 Form1.
+
+----------------------------------------------------------------
+
+MODE2 Form2 sectors of VCDs and SVCDs
+Now, for VCDs and SVCDs, the video tracks do not necessarily require the robust error correction as normal data on a CD-ROM. However, there is still some overhead per sector that is used for something other than video data (e.g., sync headers).
+
+S/VCDs video tracks are burnt in what is called MODE2 Form2 sectors. In this mode, only 2324 bytes out of a total of 2352 bytes in each sector is available for user data.
+
+This is MUCH MORE than for CD-ROMs, but still less per sector than audio CD.
+
+----------------------------------------------------------------
+
+The disc capacities of CD-ROMs, audio-CDs and VCDs
+Now, obviously what ultimately determines the capacity of a disc is the total number of sectors it contains. This is similar to the total number of pages in a blank exercise book (if you recall the book analogy).
+
+The secondary determinant is the burning mode of the disc.
+
+For audio CDs, it is as if you could fill each page from top to bottom with audio data as the entire sector is used for audio data.
+
+For CD-ROMs, it is as if you need to first rule a margin and then leave the bottom part of each page for footnotes (headers + ECC + EDC). The amount of text you can actually write per page is then less due to these other constraints.
+
+For S/VCDs, we still need to rule a margin on the page, but we don't have to worry about the footnotes (headers). We can fit MORE text than a CD-ROM, but less than an audio-CD.
+
+Now remember, 1 second on a CD = 75 sectors.
+
+Thus:
+- 74 min CD = 333,000 sectors
+- 80 min CD = 360,000 sectors
+
+
+Data capacity in Mb for an audio-CD
+74 min
+= 333,000 sectors * 2352 bytes / sector
+= 783216000 bytes
+= 746.9 Mb
+
+80 min
+= 360,000 sectors * 2352 bytes / sector
+= 846720000 bytes
+= 807.5 Mb
+
+
+Data capacity in Mb for a CD-ROM
+74 min
+= 333,000 sectors * 2048 bytes / sector
+= 681984000 bytes
+= 650.4 Mb
+
+80 min
+= 360,000 sectors * 2048 bytes / sector
+= 737280000 bytes
+= 703.1 Mb
+
+
+Data capacity in Mb for a S/VCD
+74 min
+= 333,000 sectors * 2324 bytes / sector
+= 773892000 bytes
+= 738.0 Mb
+
+80 min
+= 360,000 sectors * 2324 bytes / sector
+= 836640000 bytes
+= 797.9 Mb
+
+----------------------------------------------------------------
+
+Conclusions
+As you can see, the often quoted capacities of 650MB and 700MB refer to CD-ROM capacities.
+
+Due to the fact that S/VCDs use a different burning mode where MORE of each sector is available as user data, the relatively capacities are HIGHER.
+
+Now, since S/VCDs are not composed of PURELY video tracks and have some unavoidable overheads, the actually total capacity left for video tracks is a few Mb less for each disc (about 735 Mb for 74min discs and 795 Mb for 80min discs). This is where the often quoted capacities of 740MB and 800MB come from. They are quite accurate.
+
+All these capacities are available BEFORE overburning. Overburning is where you burn MORE sectors than the disc is rated for. If you overburn, you can typically achieve about 1-2 minutes of additional capacity (depending on your drive and media).
+
+---------------------------------------------------------------- 

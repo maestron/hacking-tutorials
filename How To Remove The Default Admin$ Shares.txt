@@ -1,0 +1,16 @@
+By default Windows 2000, Windows XP and WinNT automatically setup hidden admin shares (admin$, c$ and d$), this registry key will disable these hidden shares.
+
+System Key: [HKEY_LOCAL_MACHINE\ System\ CurrentControlSet\ Services\ LanmanServer\ Parameters]
+Value Name: AutoShareWks
+Data Type: REG_DWORD (DWORD Value)
+Value Data: (0 = disable shares, 1 = enable)
+
+This registry key actually stops the recreation of the shares, therefore it may be necessary to delete the shares through the drive properties also or you can also remove the shares through the Computer Management Console.
+
+1. In Control Panel, double-click Administrative Tools, and then double-click Computer Management.
+
+2. Click to expand Shared Folders, and then click Shares.
+
+3. In the Shared Folder column, right-click the share you want to delete, click Stop sharing, and then click OK.
+
+Note : To remove the admin share for only the current session use the second method (Computer Management console), if you want a permanent removal, add the AutoShareWks registry.

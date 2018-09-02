@@ -1,0 +1,104 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Comic Sans MS;}{\f1\froman\fcharset0 Times New Roman;}{\f2\froman\fprq2\fcharset0 Times New Roman;}{\f3\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue255;\red255\green0\blue255;\red255\green0\blue0;}
+\viewkind4\uc1\pard\sb100\sa100\b\f0\fs28 Telnet: the Number One Hacker Tool\b0\f1\fs24\par
+\par
+In this Guide you will learn:\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\fi-360\li720\sb100\sa100\cf1\ul What is telnet?\cf0\ulnone  \par
+\cf1\ul{\pntext\f3\'B7\tab}How to telnet\cf0\ulnone  \par
+\cf1\ul{\pntext\f3\'B7\tab}How to get telnet accounts <begin11c.shtml>\cf0\ulnone  \par
+\cf1\ul{\pntext\f3\'B7\tab}Why you might not want to telnet <begin11c.shtml>\cf0\ulnone  \par
+\cf1\ul{\pntext\f3\'B7\tab}How to install a telnet server on your home Windows computer <begin11c.shtml>\cf0\ulnone  \par
+\cf1\ul{\pntext\f3\'B7\tab}How to turn off a telnet server on your home Linux computer <begin11d.shtml>\cf0\ulnone  \par
+\cf1\ul{\pntext\f3\'B7\tab}How to explore computers using telnet <begin11d.shtml>\cf0\ulnone  \par
+\cf1\ul{\pntext\f3\'B7\tab}Why not use a portscanner instead? <begin11f.shtml>\cf0\ulnone  \par
+\cf1\ul{\pntext\f3\'B7\tab}How to break into web sites using telnet <begin11f.shtml>\cf0\ulnone  \par
+\pard\sb100\sa100 "Where do I type that command?" People ask that all the time when they read my early Guides to (mostly) Harmless Hacking. I wrote those guides back when the Internet was in its infancy and almost everyone in cyberspace used telnet. However, nowadays you might never even hear about telnet, much less use it, unless you are a hacker. So if you are still wondering about telnet, today is your lucky day.\par
+\b\fs28 What Is Telnet?\b0\fs24\par
+Telnet is a protocol that is most commonly used to log into a remote computer. It also is the single most powerful hacking tool on the planet. With just a telnet client program, you can:\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\fi-360\li720\sb100\sa100 send email \par
+{\pntext\f3\'B7\tab}download source code from web sites \par
+{\pntext\f3\'B7\tab}send unexpected input to webservers that can give you amazing and sometimes illegal results \par
+{\pntext\f3\'B7\tab}give arbitrary input to many other services on Internet host computers \par
+{\pntext\f3\'B7\tab}probe the services offered by servers, routers and even people's home computers. \par
+\pard\sb100\sa100\b\fs28 How to Telnet\b0\fs24\par
+Don't know how to telnet? Click the easy telnet links at happyhacker.com and land in the middle of a real hacker wargame! This should work regardless of your computer operating system -- if you have an up to date browser, if your online service provider gives you a true Internet connection, and if your computer is able to telnet at all.\par
+Did those links get you into a telnet session? Were you able to login to a remote computer? If yes, congratulations.\par
+If not, how can you fix the problem? If no telnet program appeared on your monitor when you clicked these links, perhaps your browser is too ancient to allow telnet. Try installing the latest Netscape browser (\cf1\ul <http://www.netscape.com/>\cf0\ulnone ). Or, perhaps your operating system does not include a telnet program. In that case, install or reinstall Windows 95 or 98. If you own a Mac, get the superb Mac OS X or Linux PPC (\cf1\ul <http://www.linuxppc.com/>\cf0\ulnone ).\par
+If a telnet program came up and failed to connect, possibly the computer you were trying to telnet into was down or just plain no longer in existence. Or, you may be using America Online (or a similar extremely poor online service). If so, your simplest solution may be to get a better online service provider. Determined to hack using AOL? \cf1\ul See http://happyhacker.org/aol.shtml <../aol.shtml>\cf0\ulnone  for some ways to make AOL give you a true Internet connection.\par
+OK, so you've managed to telnet for the first time. Presumably you don't want to limit yourself to telnet links on web sites. How do you telnet anywhere you want to go?\par
+If you have Linux or any other type of Unix (BSD, SCO, Solaris, Sun OS, Irix, Ultrix, etc.) telneting is easy. Just bring up "console" or "shell" (or whatever your GUI calls the command line interface). At the prompt type:\par
+telnet <hostname or IP address>\par
+\b\f0\fs28 More on Telnet: the Number One Hacker Tool\b0\f1\fs24\par
+Windows 2000 works pretty much like Unix. See Figure 1 for an example of a Win 2000 telnet login. Not shown on the screen was the command "telnet 10.0.0.10", which I gave at the Command (MS-DOS) prompt.\par
+Figure 1: Telnet using Windows 2000\par
+If you have Windows 95, 98 or NT, to telnet, bring up the MS-DOS prompt (Start --> Programs --> MS-DOS). \line\line Click "connect" then "remote system\'85". In the host name box place the host name or IP address of the computer to which you wish to telnet. Leave the Port and Term Type boxes alone for now.\par
+Here is a really important point. Every day people email me complaining that some computer won't let them telnet into it. They ask what they are doing wrong. They aren't doing anything wrong:\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\fi-360\li720\sb100\sa100 Maybe the computer they are trying to reach no longer exists. \par
+{\pntext\f3\'B7\tab}Maybe the computer they are trying to reach doesn't allow telnet logins. For example, whois.internic.net no longer allows telnet logins on port 23 (the default port). \cf1\ul Click here to learn how to telnet into whois.internic.net on the right port for that particular server. <../whois.shtml>\cf0\ulnone  \par
+{\pntext\f3\'B7\tab}Maybe a firewall is blocking them. \par
+{\pntext\f3\'B7\tab}Or maybe they make a telnet connection and the remote computer asks for a user name and password they don't have. Then they email me asking for how to get a login name and password that will work. \par
+\pard\sb100\sa100\cf2\f2 Newbie note: The owners or administrators of any Internet host computer decide who gets user names and passwords. Believe it or not, about once a week someone emails me asking what user name and password their own online service provider has assigned them for a telnet login. That's why I'm telling people the obvious -- if you want to telnet into any computer, and you don't have a user name and password, you must ask the owner, administrator of tech support for that system for a user name and password. If they won't give that to you, they don't want you to have it!\cf0\par
+\cf3\b\i\f1 You can go to jail warning: If you guess the user name and password, or use a computer breakin technique to get or create them, or if someone other than an owner or administrator or a legitimate user on that system gives you a user name and password, it is against the law to use them. Many computer criminals give out user names and passwords that they obtained illegally.\cf0\b0\i0\par
+\b\f0\fs28 More on Telnet: the Number One Hacker Tool\b0\f1\fs24\par
+\b\fs28 How to Get Telnet Accounts\b0\fs24\par
+OK, so you want to get legal user names and passwords so you can telnet into other computers. Here are some of the best ways:\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\fi-360\li720\sb100\sa100 See \cf1\ul http://happyhacker.org/links2.shtml#shells <../links2.shtml>\cf0\ulnone  for organizations that will give you free shell accounts. You can telnet into these. \par
+{\pntext\f3\'B7\tab}Ask Internet Service Providers for shell accounts. Some offer them, although most don't. \par
+{\pntext\f3\'B7\tab}Set up a telnet server on your own computer (see instructions below). Yes, once you are running a telnet server, you can telnet from your computer back into your computer. Simply give the command "telnet 127.0.0.1". \par
+{\pntext\f3\'B7\tab}Make friends with people who run Internet computers with telnet servers. \par
+\pard\sb100\sa100\b\fs28 Why you May Not Want to Telnet\b0\fs24\par
+If you love your shell account server, don't ever, ever telnet or ftp into it. I recommend Ssh or Openssh for logging into remote computers? The telnet (and ftp) protocol is a "clear text" transmission. That means that computer on the same LAN as either You or your destination computer, or any computer on any LAN or network path through which your connection passes can steal your login name, password or anything else that goes across your connection. Ssh and OpenSsh encrypt all communications so no one can snoop on you.\par
+\b\fs28 How to Install a Telnet Server on your Windows Computer\b0\fs24\par
+Usually you can't telnet into a Windows home computer. The reason is, they aren't running telnet servers. Here's how to get a telnet server on your home Windows computers so your friends and you can telnet in and play.\par
+For Windows NT, the Options Pack includes a primitive telnet server.\par
+For Windows 95/98/NT and 2000, you also can install shareware or commercial telnet servers. Check out http://www.winfiles.com, or do a web search.\par
+Of course installing a telnet server makes your computer vulnerable to all sorts of trouble from hackers. It's your funeral, don't come crying top me if a telnet visitor destroys your computer\par
+\b\f0\fs28 More on Telnet: the Number One Hacker Tool\b0\f1\fs24\par
+\b\fs28 How to Turn off a Telnet Server on your Unix-type Computer\b0\fs24\par
+If you go online with Linux or other Unix-type computer, a telnet server is the easiest way to ensure you get destroyed by a malicious hacker. Here's how to prevent this. On most of these, the file /etc/inetd.conf launches most of your servers. Edit the file to put a "#" in front of the line that has telnet in it and either reboot your computer or kill and restart inetd.\par
+If your computer doesn't use inetd to launch services, you should be able to find telnetd under /etc/init.d.\par
+Install ssh instead and only use that to log into your shell account.\par
+\b\fs28 How to Explore Computers Using Telnet\b0\fs24\par
+Even if a computer doesn't have a telnet server, there are lots of fun and even legal things to do to it using telnet. The easiest thing to do is extract "banners" from a victim computer. A banner is a message a computer will often give when you telnet to a port that is running an Internet server of some sort.\par
+For example, most mail sending servers use port 25. To telnet to port 25 from Win 2000 or a Unix shell, simply type:\par
+telnet <hostname or IP address> 25\par
+\pard Windows 95, 98 and NT make it a tiny bit harder. \par
+\par
+\pard\sb100\sa100\b\f0\fs28 More on Telnet: the Number One Hacker Tool\b0\f1\fs24\par
+If the victim computer is running a mail server, you will see something that looks like this:\par
+Whoa, look at that! The victim computer told us what operating system (Windows NT) and mail server (Mercur) it runs!\par
+A quick search of the Bugtraq archives at \cf1\ul <http://www.securityfocus.com/>\cf0\ulnone  revealed horrid things a criminal could do to that Mercur mail server. Since I think it is more fun to be nice, I told someone at the company using this mail server about the problems. He invited me to vacation at his beautiful Swiss home, where he and his wife keep horses and take long trail rides in the Alps. Golly, that is much more fun than breaking into a computer!\par
+Right about now some elite ueberhaxorz are probably reading this and saying "What a lamer Meinel is! We can do the same thing by running nmap."\par
+They are right, you can learn the same things by running a port scanning program such as nmap (available at \cf1\ul <http://www.insecure.org/>\cf0\ulnone ). However, I am quite careful about under what circumstances I run any port scanner. In order to get information on what programs are running on what ports, you must run a port scanner in a mode that will probably convince the owner of the victim computer that you are a criminal. He or she may persuade your online service provider to cancel your account.\par
+The other reason to analyze computers using telnet is that you learn more. It's the difference between eating at McDonalds and learning how to cook.\par
+\par
+\b\f0\fs28 More on Telnet: the Number One Hacker Tool\b0\f1\fs24\par
+A quick search of the Bugtraq archives at \cf1\ul <http://www.securityfocus.com/>\cf0\ulnone  revealed horrid things a criminal could do to that Mercur mail server. Since I think it is more fun to be nice, I told someone at the company using this mail server about the problems. He invited me to vacation at his beautiful Swiss home, where he and his wife keep horses and take long trail rides in the Alps. Golly, that is much more fun than breaking into a computer!\par
+Right about now some elite ueberhaxorz are probably reading this and saying "What a lamer Meinel is! We can do the same thing by running nmap."\par
+They are right, you can learn the same things by running a port scanning program such as nmap (available at \cf1\ul <http://www.insecure.org/>\cf0\ulnone ). However, I am quite careful about under what circumstances I run any port scanner. In order to get information on what programs are running on what ports, you must run a port scanner in a mode that will probably convince the owner of the victim computer that you are a criminal. He or she may persuade your online service provider to cancel your account.\par
+The other reason to analyze computers using telnet is that you learn more. It's the difference between eating at McDonalds and learning how to cook.\par
+\b\fs28 How to Break into Web Sites Using Telnet\b0\fs24\par
+You don't have to use a web browser to access files on a web site. All you need to do is:\par
+telnet <victimcomputer> 80\par
+Or specify port 80 in a Windows telnet.\par
+If you are using Windows 95/98/NT, whenever you are NOT logging into a telnet account, you should enable local echo. Otherwise whatever you type in (unless you are in a telnet account) will not show on the screen. To enable local echo, click Terminal --> Preferences --> Local Echo.\par
+So how do you send stuff back to the webserver? Try this:\par
+GET / HTTP/1.0\line <your command here>\par
+What kinds of commands can you send? The book \cf1\ul Hackproofing Your Network <../bookstore/general.shtml>\cf0\ulnone  (by Ryan Russell of Securityfocus.com and Stance Cunningham) suggests a fun and harmless hack. Create and store a bogus cookie in the location on your web browser that stores cookies. (Find it by searching for the file "cookies.txt".) Name your bogus cookie something like "MyBogusCookie." Then telnet to the victim webserver and give something like this command:\par
+GET / HTTP/1.0\line User-Agent: HaveABogusCookieThisIsAJoke 123.4\line Cookie: /; MyBogusCookie\par
+The \cf1\ul\'dcberhacker! -- How to Break into Computers <../uberhacker/index.shtml>\cf0\ulnone  book details a number of serious attacks you can perform through sending funny input to a webserver. Basically, you need to learn how to write shell programs, and then find ways to get them to be run by the webserver. I'm not going to explain them here, however. These attacks, when carried out against a vulnerable webserver, are so easy that little kids could do them, and I don't want to be responsible for their behavior. It's much harder for little kids to get a hold of Russell's and my books than it is for them to read this GTMHH on the Happy Hacker website.\par
+So are you dying to know what to send a webserver in order to break into it, without having to buy a book? Here are some hints. How to do this will depend on what webserver it is, what operating system it runs on, whether its security weaknesses have been fixed, and whether the web designer has used things such as Common Gateway Interface (CGI) or Server Side Includes (SSIs) that have weaknesses in them.\par
+You will have to research these issues at Web sites that archive vulnerabilities and exploits such as \cf1\ul <http://www.securityfocus.com/>\cf0\ulnone  and \cf1\ul <http://packestorm.securify.com/>\cf0\ulnone . You will need to study web site programming (HTML -- hypertext markup language, CGI and SSIs) and shell programming. You will need to learn webserver commands (documented at \cf1\ul <http://www.w3.org/hypertext/WWW/markup/Markup.html>\cf0\ulnone ). You will have to use your brain and be persistent.\par
+But at least if you come across a telnet exploit, now you know the answer to the question "where do I type that command?"\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 

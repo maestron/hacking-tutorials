@@ -1,0 +1,15 @@
+ If any body remembers or misses the old "winipcfg", which is missing from Windows XP, then there is a easy way to get this back from Microsoft.
+
+Instead of using the command line to display or configure your ip with "ipconfig", you can download wntipcfg from Microsoft which gives you the same GUI as the old winipcfg.
+
+Download:
+CODE
+http://microsoft.com/windows2000/techinfo/reskit/tools/existing/wntipcfg-o.asp
+
+
+Then follow these steps:
+
+Install it (the default is c:\program files\resource kit\ )
+Copy wntipcfg.exe to c:\windows
+Rename it to winipcfg.exe
+Now you can just click on run, then type in "winipcfg".

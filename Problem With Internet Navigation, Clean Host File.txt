@@ -1,0 +1,21 @@
+We have seen a large number of computers coming in with problems navigation on the internet. Also unable to go to Windows update and viurs update sites. Here is a quick fix that also seems to speed navigation up some.
+
+Just for safety create a copy of the file before making changes.
+
+goto
+
+C:\windows\system32\drivers\etc\ (Windows XP)
+
+C:\I386 (Windows 2000)
+
+Open the host with notepad.
+
+remove all entries bellow
+
+127.0.0.1 localhost
+
+
+then save and close
+
+
+

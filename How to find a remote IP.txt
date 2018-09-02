@@ -1,0 +1,41 @@
+How to find a remote IP
+
+Method 1
+
+To view someone's IP# when they send you hotmail email do this:
+1) Click "Options" on the upper right side of the page.
+2) On the left side of the page, Click "Mail"
+3) Click "Mail Display Settings"
+4) Under "Message Headers" select "Full" or "Advanced"
+5) Click ok
+
+Method 2
+reg a dydns account and install the ip pointer, so each time you ping the host name you regestored
+
+for example:
+you regestor the host name myhost.dydns.com, then you keep a little software running on the target host. The little software will keep update your IP to dydns.com server.
+
+so at your pc just start cmd, and ping myhost.dydns.com, it will give you the most updated ip address.
+
+Method 3
+neverender, what doesn't work for you? Simply type in nc -vvv -l -p 80 on your box, which will set it to listen in verbose mode on port 80. Then give them a link to your IP address (for example: 111.111.111.11) and tell them to type it in their browser. The browser should resolve the address as well as append port 80 automatically. Just make sure that your friend is not very computer literate.
+
+Method 4
+Just download a very simple server such as this one and install it on your comp. Then run it and give your ip to the person you want and tell them to connect to it through a browser. Your server will log their connection and you will get their IP.
+
+link:http://www.download.com/Abyss-Web-Server/3000-2165-10283992.html?tag=lst-0-6
+
+
+Other Ways
+-www.imchaos.com and make a "spy poll" to put in ur profile, this will tell u the IP of anybody who answers ur poll
+-originalicons.com there is a page for doin it (i dont like it, but it works)
+-or irc
+
+
+Here is a more detailed tutorial about using NetCat.
+
+http://www.onlamp.com/pub/a/onlamp/2003/05/29/netcat.html
+
+Windows users can download NetCat from here:
+
+http://www.atstake.com/research/tools/network_utilities/

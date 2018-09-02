@@ -1,0 +1,248 @@
+
+   The Myth of the 2600Hz Detector
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+    Just about everyone I talk to
+these days about ESS seems to be
+scared witless about the 2600Hz
+detector.  I don't know who thought
+this one up, but it simply does not
+exist.  So many of you people whine
+about this so-called phreak catching
+device for no reason.  Someone with
+AT&T said they had it to catch phrea-
+kers.  This was just to scare the
+Blue-Boxers enough to make them quit
+boxing free calls.
+    I'm not saying ESS is without its
+hang-ups, either.  One thing that ESS
+can detect readily is the kick-back
+that the trunk circuitry sends back
+to the ESS machine when your little
+2600Hz tone resets the toll trunk. 
+After an ESS detects a kick-back it
+turns an M-F detector on and recordes
+any M-F tones X-mitted.
+---------------------------------------
+   DEFEATING THE KICK-BACK DETECTOR
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+     As mentioned in my previous
+note, kick-back detection can be a
+serious nuisance to anyone interested
+in gaining control of a trunk line.
+     The easiest way to by-pass this
+detection circuitry is not really by-passing
+it at all, it is just letting the
+kick-back get detected on some other line.
+     This other line is your local
+MCI, SPRINT, or other long distance
+carrier (except AT&T).  The only
+catch is that the service you use
+must not disconnect the line when
+you hit the 2600Hz tone.
+This is how you do it:  Call
+up your local extender, put in the
+code, and dial a number in the 601
+area code and the 644 exchange.
+Lots of other exchanges work across
+the country, I'm sure, but this is
+the only one that I have found so
+far.  Anyway, when it starts ringing,
+simply hit 2600Hz and you'll hear the
+kick-back, (ka-chirp, or whatever).
+Then you are ready to dial whoever
+you want (conferences, inward, route
+ and rate, overseas, etc.) from the
+trunk line in operator tones!
+Since blowing 2600Hz doesn't make you
+you a phreaker until the toll equip-
+ment resets the line, kickback
+detection is the method AT&T chooses
+(for now).
+     This information comes as a
+result of my experiments & experience
+and has been verified by local AT&T
+employees I have as acquaintances.
+They could only say that this is
+true for my area, but were pretty
+sure that the same idea is imple-
+mented across the country.
+
+=======================================
+
+Now that you know how to access a trunk
+line or as operators say a loop, I will
+tell you the many things you can do
+with it.
+
+Here is a list of AT&T services acces-
+sible to you by using a Blue Box.
+
+        A/C+101    Toll Switching
+        A/C+121    Inward operator
+        A/C+131    Information
+        A/C+141    Route & Rate op.
+        A/C+11501  Mobile operator
+        A/C+11521  Mobile operator
+
+
+
+Starting Conferances:
+---------------------
+
+This is one the most useful attributes
+of blue boxing. Now the confs. are up
+24 hours/day and 7 days/week and the
+billing lines are being billed. 
+Since I beleive the above is true
+(about the billing lines being billed)
+I would recommend that you never let
+your # show up on the conf. if you 
+started it, put it on a loop and then
+call the loop. ENOUGH BULLSHIT!!!!!
+To start the conf. dial one of these
+three numbers in M-F while you are on
+the trunk.
+
+213+080+XXXX
+XXXX=1050,3050
+special XXXX=1000,1100,1200,1500,2200,
+2500.
+     These #s are in L.A. and are the
+most watched, I do not advise using 
+this NPA.
+
+312+001+1050 or 3050
+
+914+042+1050 or 1100,1200 ect..
+
+
+***************************************
+UPDATE, I BELEIVE ONLY 914 WORKS AT THE
+MOMENT
+***************************************
+
+Once connected with one of these you
+will either hear a re-order, busy, or
+cherp. When you hear the cherp enter
+the billing line in M-F. I use the
+conf. dial- up.
+  A billing line example:
+       kp312+001+1050st
+You will then hear two tutes and a re-
+cording asking you for the # of confer-
+rees including yourself.  Enter a #
+between 20 and 30. If you ever get over
+30 people on a conferance all you will
+hear is jumbled voices.  After the it
+says "Your conferance size is XX" then
+hit # sign.  Add Your favorite loop on
+and hit 6 to transfer control to it.
+After it says control will be transfer-
+ed hang up and call the other side of
+the loop, hit #sign and follow the in-
+structions. A bonus for conf. is to add
+an international # dial 1+011+CC+NUMBER
+pretty cool ehhh.
+A few extra notes.
+    Do not add #s that you will want to
+    hang up, add these through MCI or
+    Sprint. 
+
+    You cannot blow anyone off w/2600hz
+    unless they are in an old X-bar or
+    older system.
+
+    Many D.A. operators will stay on 
+    after you abuse them; you may have
+    to start another or at least don't
+    say any numbers.
+
+    Never add the tone side of a loop
+    onto a conf.
+
+    Never add more than one MCI node on
+    your conf.
+
+
+Route & Rate:
+-------------
+
+
+Note Route & Rate and RQS perform the 
+same service.
+
+     R&R simply tells you route and rate info which is very valuble, ex.
+such as the inward routing for an ex-
+change in an area code.  An inward 
+routing will let you call her and she
+can do an emergency interupt for you.
+She can tell you how to get interna-
+tional operators, ect.
+
+Here are the terms you are required to
+use:
+
+     International,
+        -operator route
+           for [country, city].
+           *Gives you inward op.
+        -directory route
+           for [country, city].
+           *Gives you Directory Ass.
+        -city route
+           for [country, city].
+           *Gives you country and city
+            code.
+
+     Operator route for [A/C]+
+        [EXCHANGE]
+        *Gives you inward op. route
+         ex. [A/C]+ or [A/C]+0XX+
+         when she says plus she means
+         plus 121.
+     Numbers route for [state, city]
+        *Gives you A/C.
+
+     Place name [A/C]+[EXCHANGE]
+        *Gives you city/state for that
+        A/C and exchange.
+
+
+
+International calls:
+--------------------
+
+
+To call international over cable simply
+access a trunk and dial kp011XXXst
+ wait for sender tone, kpXXXCC-NUMBERst
+
+XXX - A 3 digit country code, it may 
+not be 3 digits so just put 1 or 2 0's
+in front of it.
+CC - is the city code
+
+To go by satellite:
+     dial kp18Xst    X - numbers 2-8
+     wait for sender tone then
+     kpXXXCCNUMBERst
+
+
+---------------------------------------
+
+Fedex will put out a file on RQS soon.
+
+Written by:           Scarface
+                         &
+                       Zardoz
+
+DISTRIBUTED THROUGH THE PIRATE CLUB/1200
+CALL THE PIRATE CLUB/1200 AE LINE: 814-234-1667 PW: SWITCH 300/1200 BAUD
+CALL INFINITY'S EDGE: 814-237-0216 300/1200 BAUD
+
+CRACKER JACK
+THE PIRATE CLUB/1200
+THE CONNECTION I/O
+DOS BUSTERS

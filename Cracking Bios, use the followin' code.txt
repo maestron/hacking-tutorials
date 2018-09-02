@@ -1,0 +1,30 @@
+Here is the best way to crack the bios password in win 95/98:
+
+Follow the steps below:
+
+1) Boot up windows.
+2) go to dos-prompt or go to command prompt directly from the windows start up menu.
+
+3) type the command at the prompt: "debug" (without quotes ninja.gif )
+4) type the following lines now exactly as given.......
+o 70 10
+o 71 20
+quit
+exit
+
+4) exit from the dos prompt and restart the machine
+
+
+password protection gone!!!!!!!!!!!!! biggrin.gif
+
+EnjoYYYYYYYYYY
+
+PS: I tested this in Award Bios........
+There seems to be some issue regarding display drivers on some machines if this is used. Just reinstall the drivers, Everything will be fine...........
+
+I have not found any other trouble if the codes are used.
+
+To be on safe side, just back up your data..........
+
+
+The use of this code is entirely at ur risk.......... It worked fine for me..........

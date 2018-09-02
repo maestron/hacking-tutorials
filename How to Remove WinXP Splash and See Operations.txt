@@ -1,0 +1,23 @@
+Are you having boot up problems and would like to know what it going on behind that Windows Loading Logo? To find out, you can disable the splash screen by making a small change to the Boot.ini file.
+
+Follow these steps (carefully!):
+
+1. Open the "System Properties" dialog box ( Settings - Control Panel - System)
+
+2. On the Advanced tab, click the Settings button in the "Startup And Recovery" section.
+
+3. In the "Startup And Recovery" dialog box, select the Edit button in the "System Startup" section.
+
+4. The Boot.ini file will open in Notepad; locate the line that ends with the /fastdetect switch.
+
+5. Position your cursor to the right after the parameter, press the spacebar, and add the /SOS switch.
+
+6. Save the Boot.ini file, and close Notepad.
+
+7. Click Cancel to close both the "Startup And Recovery" dialog box and the "System Properties" dialog box.
+
+8. Restart the computer to see the effect.
+
+Once the computer restarts you will notice that the Windows Splash Screen is no longer present. Instead you can observe some of the boot up operations that Windows XP performs during the startup stage.
+
+To renable the splash screen, follow the same procedure but remove the "/SOS".

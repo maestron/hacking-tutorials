@@ -1,0 +1,277 @@
+Have you ever been wondering why there aren't many viruses and remote
+administration trojans? (in fact there are less than 10 viruses, and you
+can protect yourself without the need for any anti-virus software. and I don't
+know about remote administration trojans, but as of this moment, Windows has
+over 1,000 remote administration trojans... check the chart at moosoft.com!)
+
+Here's a log from a spontaneous IRC lecture that I held at BSRF's IRC channel
+(see blacksun.box.sk/irc.html for more information. BSRF's homepage can be
+found at blacksun.box.sk).
+
+<kript0n> hey rav
+<Raven> hi everyone!
+<Raven> i'm in a good mood
+<kript0n> and i tried to nmap him
+<Esamurai> hey raven
+<kript0n> Raven: nice :D
+<Raven> therefore i'm gonna do a spontaneous irc lecture!
+<_quato_> salutations and respect to raven
+<kript0n> yeahh
+<kript0n> can i join ya?
+<kript0n> :D
+<Raven> i have to wait for someone to show up first
+<_quato_> cool
+<Raven> his name is protoss
+<kript0n> :))
+<Raven> he'll be here in a sec
+<Raven> somebody log this please
+<kript0n> oh... protoss... :D
+<_quato_> whats the lecture about
+<kript0n> i'm loggin.
+--> blade (zruya@212.179.141.110) has joined #bsrf
+<blade> hey
+<kript0n> Raven: why don't you log it also?
+<blade> i'm getting openbsd ;)
+<kript0n> blade: good 4 you
+<kript0n> but i prefer freebsd
+<_quato_> me too
+--> Cypher (r_T_s@cloaked.rlz.netvision.net.il) has joined #bsrf
+<Raven> kript0n i have a logging module for bitchx
+<Raven> but so far,
+<Raven> i tried to use it three times
+<kript0n> use sdtdin :D
+<kript0n> =))
+<Raven> it only worked in the first time
+<Raven> the second time i mistyped the command to load the module
+<Raven> and i thought it was running for the whole time
+<kript0n> and it wasnt :D
+<kript0n> hhehee
+<Raven> the third time, i don't remember what happened
+<kript0n> that roks
+<kript0n> =)
+<Raven> anyway i think it's jinxed
+<_quato_> cool
+<Cypher> hey
+<kript0n> soo Raven... it will be 'bout...?
+<m0ded> what lecture?
+<Raven> the command is /load something.mod, i think it's bxlog04.mod, lemme check...
+--> ZhorTroX (~zhortrox@k1hi415.dial.kabelfoon.nl) has joined #bsrf
+<Raven> now where did i put that module...
+<Raven> ohh btw protoss won't be showing up
+<Raven> ok who's logging?
+* kript0n looks under the table
+<kript0n> no mod here
+<-- Maveric has quit (Leaving)
+<kript0n> i am
+<Raven> lol
+<Raven> anybody else?
+<kript0n> :D
+<blade> lecture ?
+<_quato_> me
+<m0ded> me
+<kript0n> :D
+<Raven> blade, a spontaneous one
+<kript0n> Raven: many backups :)
+<Raven> i'm in a good mood    :-)
+<Cypher> what is the lecture about?
+<Raven> yeah, it was bxlog2.0.bx
+<Raven> that was the name of the module
+<Raven> ok start your loggers people!!
+<kript0n> i'm allways loggin0
+<kript0n> i'm allways loggin'.
+<kript0n> -------------------------- start
+<m0ded> start
+<Raven> Why are there so little viruses / remote administration trojans for Unix/Linux
+<Raven> ==============================================================================
+<Raven> :-)
+<kript0n> hello there and welcome to a new lecture by Raven :D
+* ZhorTroX smiles
+<kript0n> this is CNN
+<kript0n> :)
+<Raven> yeah yeah thank you and SHUT UP!!!!!!
+<Raven> :-)
+<kript0n> hehehehe
+<Raven> so anyway
+<ZhorTroX> heh
+<Raven> before we start...
+<Raven> i'd like to hold a little discussion
+* ZhorTroX sighs
+<kript0n> oh yeahhhhh
+<Raven> Why do people create viruses?
+<_quato_> oh cool
+<Cypher> cause they are bored
+<kript0n> 1) dumbasses!
+<kript0n> 2) nothing to do
+<_quato_> im braindead
+<blade> they are bored
+<Raven> nonono this isn't the attitude people
+<kript0n> 3) test knowledge
+<ZhorTroX> Out of boreddom ;)
+<ZhorTroX> REVENGE!!
+<Cypher> dumbasses that have nothing to do
+<m0ded> to hurt otherz
+<Raven> nonono there's another reason
+<kript0n> nope....
+<_quato_> ok the discussion!!!
+<kript0n> not to hurt...
+<Raven> people create viruses mainly because they have a mental sickness that most people have
+<Raven> some people take it out in real life
+<ZhorTroX> to impress people!
+<Raven> others create viruses
+<Raven> ZhorTroX, no
+<Raven> this sickness is called:
+<ZhorTroX> hehe
+<kript0n> stress
+<Raven> Popularity Delusions and the Madness of Crowds
+<kript0n> :D
+<ZhorTroX> revenitus
+<kript0n> what about
+<_quato_> virus writing is not out of stress
+--> cika_mark (asddsa@i225.ppp-bg.sezampro.yu) has joined #bsrf
+<Raven> i don't know about the original creator of melissa, for example, but today people create viruses that spread themselves in order to become famous
+<Raven> they wish to be "recognized"
+<_quato_> its out of professional competition
+<ZhorTroX> sounds interesting though
+<Raven> sure there are a few people left that create this for fun or for the challenge
+<_quato_> excatly
+<kript0n> its like this...
+<Raven> some just like to hurt others
+<kript0n> they just wanna make their names bounce into outlook :DDDDDD
+<Raven> but most people want to create viruses in order to spread their name together with the virus
+<m0ded> and go to jail ;p
+<ZhorTroX> yep. 
+<_quato_> and out of the fact they are testing the limits of their knowledge
+<Raven> ok thank you and SHUT UP!!!!!!!!!
+<Raven> :-)
+<kript0n> :)
+<kript0n> again
+<Raven> people are complaining about all the, uhm... background noise
+<Raven> in every lecture
+<kript0n> yes...
+<Raven> it's a hard time reading the logs like that
+<kript0n> lets stop
+<ZhorTroX> it's fun, i think
+<Raven> ok so speak up only if you have something important to say
+<kript0n> not.
+<ZhorTroX> :|
+<Raven> so anyway...
+<Raven> one of the reasons that there are so little viruses and RATs (remote administration trojans) for unix/linux is...
+<Raven> the lack of popularity
+<Raven> not so many people use unix and unix-based systems, right?
+<kript0n> of course.
+<Raven> it's much more fun watching the whole world crash when CIH was unleashed
+<Raven> here's another reason:
+<_quato_> virus writing is an art form
+* ZhorTroX nods
+<Raven> in unix-based systems, there are different users on the system
+<Raven> with root having maximum privileges
+<kript0n> now here comes my part
+<Raven> every program runs with your privileges
+<kript0n> nope
+<Raven> a program can't access a file unless you have permission to access it, etc'
+<kript0n> depends.
+<kript0n> let me say something
+<Raven> kript0n suppose it's not a magical h4x0r program
+<Raven> :-)
+<Raven> unless the security is breached, ok?
+<Raven> kript0n u wanna say something?
+<kript0n> the biggest reason why security is breached is due to:
+<kript0n> suid!
+<Raven> kript0n right, but that doesn't do anything in our case
+<Raven> i'll explain
+<kript0n> but, i'll talk bout this in the 8 :D
+<kript0n> it has to do Raven...
+<Raven> so suppose you get a suspicious file...
+<Raven> from icq
+<Raven> from irc
+<Raven> from email
+<Raven> from a website
+<Raven> etc'
+<Raven> you wouldn't run it as root, right??
+<kript0n> from your mamma
+<Raven> you would create a less privileged user
+<kript0n> 'course
+<m0ded> why not
+<Raven> and run it from that user
+<Raven> so if it's a malicious program like a trojan or a virus it won't be able to do much
+<ZhorTroX> ahuh
+<Raven> paranoid people will also run debuggers to see exactly what the program does
+<Raven> so here's why there are less viruses and RATs for unix/linux!
+<Raven> less people would get infected
+<ZhorTroX> wheew end of the lecture!
+<Raven> thus people are less motivated to create viruses and RATs for unix
+<kript0n> =)
+<Raven> ZhorTroX that's not all
+<kript0n> ------------------------------------------------- end :D
+<kript0n> hehe
+<kript0n> NOT
+<kript0n> :D
+<Raven> here's another reason:
+<-- Cypher (r_T_s@cloaked.rlz.netvision.net.il) has left #bsrf (gtg)
+* ZhorTroX smiles
+<Raven> today, over 80% of all infected boxes get infected via email
+<Raven> mostly because of vb trojans and such that hurt outlook users
+<Raven> i.e. the love virus, for example
+<Raven> and it's deadly sibling...
+<Raven> that will COMPLETELY erase your hard drive!!
+<_quato_> those arent true viruses
+<Raven> now, the last time i checked, unix systems aren't vulnerable to outlook bugs...
+<Raven> ;-)
+<ZhorTroX> get to the point hehe
+<kript0n> and fuck the mbr (the hardcore ones)
+<Raven> well actually there's a version of outlook for SunOS
+<ZhorTroX> d'oh!
+<kript0n> Raven: calm down... there are vulnerable systems!
+<_quato_> somehow the eseentail concept of a virus seems to have been misconstrued over the years
+<kript0n> to those stupid bugs...
+<Raven> kript0n :-)
+<Raven> _quato_ right
+<kript0n> there are... linux systems included
+<Raven> kript0n would you mind explaining yourself?
+<kript0n> ok.
+<kript0n> its like this
+<kript0n> as you guys may know, 
+<_quato_> a virus a program that ca replicate any way possible any its sole purpose is to survive, 
+<_quato_> not to destroy
+<kript0n> the visual basic technology, has been out there for some time now,
+<ZhorTroX> ahuh
+<kript0n> and thus has been letting eggs around many progs...
+<cika_mark> what would hapen if i run virus under unix with less privleged user and next day i login as root.....wounld virus spread to all my system or its just to less user files and permitions....i think u undestand me :)
+<kript0n> cika_mark: nope. but let me continue
+<cika_mark> ok
+<Raven> cika_mark you have to run an infected file as root for the infection to be system-wide
+<Raven> but hey, if u fail to create that less-privileged user
+<kript0n> Raven: in fact, sendmail was updated due to some bugs that (and you may find this hard to believe) made the vb code act...
+<kript0n> not in that winbug way
+<Raven> and accidentally give it write access to some impotant files
+<kript0n> but it fucked up some stupid guys
+<Raven> like for example /bin/ls, the ls program that lists the contents of a directory
+<Raven> and then root uses it...
+<Raven> then the system is infected
+<Raven> but that less-privileged user should only have execute privileges for ls
+<cika_mark> yes but is viurs active only when is less privileged user login or when anyone is logedin
+<Raven> anyway just make sure that when you create that safe user (this method is called a sandbox, btw. you run a program in an underprivileged environment)
+<Raven> and make sure you don't leave any breaches
+<kript0n> in fact.. i use a different puter as a sandbox.
+<Raven> ohh btw there are a few viruses for linux
+<Raven> less than 10, as far as i know
+<Raven> windows has over 10,000
+<kript0n> Raven: hehehe... you have it kinda wrong :D
+<Raven> and over 1,000 remote administration trojans
+<kript0n> there are MANY viruses
+<kript0n> :D
+<ZhorTroX> over millions
+<kript0n> they just don't spread because,
+<Raven> ZhorTroX nah
+<ZhorTroX> raven :mm hehe
+<Raven> kript0n ok, there are about 15,000 known viruses i think
+<kript0n> 1) it gathers some knowledge to mess with linux and unix
+<Raven> that was in mcafee's website a little while ago
+<ZhorTroX> you're talking about *known*
+<Raven> a few months ago, maybe i'm outdated
+<kript0n> 2) ppl aren't dumbasses to not understand what they souldn't run
+<Raven> kript0n right, people who use even the simplest of all linux distributions would know not to accept any untrusted files
+<kript0n> of course.
+<kript0n> that is a basic of security
+<Raven> ok, that's all for today
+<Raven> the lecture ends here

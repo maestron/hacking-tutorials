@@ -1,0 +1,15 @@
+ How can I uninstall Windows XP and return to my old Windows 98?
+
+If you've upgraded to XP from Windows Me or Windows 98, go to the Add/Remove Programs Control Panel applet and click Uninstall Windows XP.
+
+If you want, you can also uninstall XP from the command prompt by performing the following steps:
+
+    * Start the computer in Safe Mode with Command Prompt support (press F8 during start up).
+    * Navigate to %systemroot%\system32.
+    * Type osuninst.exe and press Enter.
+    * Follow the onscreen instructions.
+
+
+If XP was installed as a dual-boot system along with Win98 or W2K then you can simply format the partition on which it is installed. That is one of the reasons I always recommend to install separate operating systems on separate partitions!
+
+Note: Windows XP Professional provides an uninstall tool when upgrading from Windows 98 on a drive formatted as FAT or FAT32. Therefore, when upgrading this type of drive, you will not have the option to upgrade to NTFS, as this would negate the uninstall option. However, you can convert the drive to NTFS after installation if you choose.

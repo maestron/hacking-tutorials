@@ -1,0 +1,21 @@
+By default, Microsoft includes the /prefetch:1 switch to speed up it's Windows Media Player application start time. This switch can be used for other Windows applications and also many third party programs.
+
+Example #1
+
+You have AOL 8.0 installed on the computer. Complete the steps outlined bewlo to add the /prefetch:1 switch to AOL's Target path.
+
+1. Right click on the AOL shortcut and select properties from the menu.
+
+2. In the Target: Field add the /prefetch:1 switch to the very end of the path, like this: "C:\Program Files\America Online 8.0\aol.exe" /prefetch:1 and then click ok.
+
+Now start AOL. It would load at least 50 times faster than ever before.
+
+Example #2
+
+1, Go to the Start button/All Programs/Accessories/System Tools
+
+2. Right click on System Restore and select properties from the menu that appears. Add the /prefetch:1 to the Target Path entry so it looks like this %ystemRoot%\System32\restore\rstrui.exe /prefetch:1 and click ok.
+
+Now System Restore will start immediately when executed.
+
+Note: This switch will only work with some programs. Others will return a message saying the program in the target box is invalid. Just remove the switch

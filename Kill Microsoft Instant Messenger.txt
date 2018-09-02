@@ -1,0 +1,8 @@
+This will remove Microstufts Instant Messenger (MSN). This wotked in WinXP Pro, but may work on others....
+
+So, go to START-->RUN copy and paste the following:
+QUOTE
+RunDll32 advpack.dll,LaunchINFSection %windir%\INF\msmsgs.inf,BLC.Remove
+
+
+Clink ok. No more msn process lwink.gif

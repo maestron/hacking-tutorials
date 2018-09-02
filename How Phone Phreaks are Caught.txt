@@ -1,0 +1,89 @@
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #                        HOW PHONE PHREAKS ARE CAUGHT                         #
+#                     from 2600 magazine V4 #7 July 1987                      #
+#                          written by NO SEVERANCE                            #
+#                          typed by G. A. ELLSWORTH                           #
+#                                                                             #
+#()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()(#
+
+     Until about four months ago, I worked for a large long distance company. I was given the pink slip because some guy in my office found out that I did a    little hacking in my spare time.  It seems that most companies just aren't into that anymore.  I feel I should do all I can to keep phreaks from getting caught by the IC's(Independent Carriers or Interexchange Companies).  Remember: a safe phreak is an educated phreak.
+     When you enter an authorization code to access a long distance company's   network there are a few things that happen.  The authorization code number you  enter is cross referenced in a list of codes.  When an unassigned code is       received the switch will print a report consisting of the authorization code,   the date and time, and the incoming trunk number (if known) along with other    miscellaneous information.
+     When an authorization code is found at the end of a billing cycle to have  been "abused" in the switch, one of two things is done.  Most of the time the   code is removed from the database and a new code is assigned.  But there are    times when the code is flagged "abused" in the switch.  This is very dangerous. Your call goes through, but there is a bad code report printed.(this is similar to an unassigned code report, but it also prints out the number being called.)  You have no way to know this is happening but the IC has plenty of time to have the call traced.  This just goes to show that you should switch codes on a      regular basis and not use one till it dies.
+
+                                     ACCESS
+
+     There are several ways to access an IC's network.  Some are safe and some  can be deadly.
+     FEATURE GROUP A (FGA). This is a local dial-up to a switch.  It is just a  regular old telephone number (for example 871-2600).  When you dial the number  it will ring (briefly) and give a dial tone telling you to proceed.  There are  NO identifying digits (i.e. your telephone number) sent to a switch.  The switchis signaled to give you a dial tone from the ringing voltage alone.  The only   way you could be caught hacking codes on an FGA would be if Telco (your local   telephone company) were to put an incoming trap on the FGA number.  This causes the trunk number your call came over to be printed out.  From the trunk number  Telco could tell which central office (CO) your call was coming from.  From     there Telco could put an outgoing trap in your CO which would print the number  of the person placing the call to that number--that is provided that you are in an ESS or other Electronic Switch.  This is how a majority of people are caught hacking codes on a FGA access number.
+     Next down the line we have Feature Group B (FGB).  There are two FGB       signalling formats called FGB-T and FGB-D.  All FGBs are 950-XXXX numebers and Ihave yet to find one that doesn't use FGB-T format.  
+     When you dial an FGB number your call can take two paths: 1) Large COs havedirect trunks going to the different IC's.  This is more common in Electronic   offices.  2) Your call gets routed through a large switch called a tandem, whichin turn has trunks to all the ICs.  
+     When you dial an FGB-T number the IC's switch receives: KP+ST
+     This prompts the switch to give you a dial tone. The IC gets no informationregarding your phone number.  The only thing that makes it easier to catch you  is that with a direct trunk from your central office when you enter a bad code  the IC knows what office your coming from.  Then it's just a matter of seeing   who is calling that 950 number.
+     On the other hand, when you dial an FBG-D number the switch receives:
+
+KP+(950-XXXX)+ST followed by
+
+KP+0+NXX-XXXX+ST or KP+0+NPA
+
+NXX-XXXX+ST
+
+     The first sequence tells that there is a call coming in, the 950-XXXX      (optional) is the same 950 number that you call.  The second sequence contains  your number (ANI-Automatic Number Identification).  If the call comes over the  trunk directly from your CO it will not have your NPA (Area Code).  If the call is routed through a tandem it will contain your NPA number. FGB-D was originallydeveloped so that when you got the dial tone you could enter just the number youwere calling and your call would go through; thus alleviating authorization     codes.  FGB-D can also be used as FGB-T, where the customer enters a code but   the switch knows where the call is coming from.  This could be used to detect   hackers, but has not been done, yet at least not to my switch.  
+     FGB-D was the prelude to FEATURE GROUP D (FGD).  FGD is the heart of Equal Access.  Since FGD can only be provided by electronic offices, equal access is  only available under ESS (or any other electronic office).  FGD is the          signalling used for both 1+ dialing (when you choose an IC over AT&T) and       10XXX dialing.  The signalling format for FGD goes as follows: 
+
+KP+II+10D(10 digits)+ST followed by 
+
+KP+10D+ST 
+
+     The first sequence is called the identification sequence.  This consists of KP. information digits(II), and the calling party's telephone number with NPA  (10D ANI) finished up with ST.  The second address seqeunce has KP, the called  number (10D) followed by ST.  There is a third FGD sequence not shown here whichhas to do with international calling--I may deal with this in a future article. When the IC's switch receives an FGD routing it will check the information      digits to see if the call is approved and if so put the call through.  Obviouslyif the information digits indicate the call is coming from a coin phone, the    call will not go through.
+
+     This is a list of information digits commonly used by Bell Operating       Companies.
+Code   Sequence         Meaning
+00     identification   Regular line, no special treatment
+01     identification   ONI(Operator Number Identification) mulitparty lines
+02     identification   ANI failure
+06     identification   Hotel or Motel    
+07     identification   Coinless,hospital,inmate etc.
+08     identification   InterLATA restricted 
+10     address          10X test call
+13     international    011-plus:direct distance dialed
+15     international    01-plus:operator assisted
+27     identification   Coin
+68     identification   InterLATA-restricted hotel or motel
+78     identification   InterLATA-restricted hospital, coinless, inmate etc.
+95     address          959-XXXX test call
+
+     There is a provision with FGD so when you dial 10xxx# you will get a switchdial tone as if you dial a 950.  Unfortunately, this is not the same as dialing a 950.  The IC would receive: 
+
+KP+II+10D(ANI)+ST
+KP+ST
+
+     The KP+ST gives you the dial tone, but the IC has your number by then.
+
+                                   800 NUMBERS
+
+     Now that we have the feature groups down pat we will talk about 800        numbers.  Invisible to your eyes, there are two types of 800 numbers.  There    are those owned by AT&T--which sells WATS service.  There are also new 800      exchanges owned by the IC's.  So far, I believe only MCI, US SPRINT, and WesternUnion have bought there own 800 exchanges.  It is very important not to use     codes on 800 numbers in an exchange owned by an IC.  But first...
+     When you dial an AT&T 800 number that goes to an IC's switch the following happens.  The AT&T 800 number is translated at the AT&T switch to an equivalent POTS (Plain Old Telephone Service).  This number is an FGA number and as stated before does not know where you're calling from.  They might know what your      general region is since the AT&T 800 numbers can translate to different POTS    numbers depending on where you're calling from.  This is the beauty of FGA and  AT&T WATS but this is also why it's being phased out.
+     On the other hand, IC-owned 800 numbers are routed as FGD calls--very      deadly. The IC receives:
+
+KP+II+10D+ST
+
+KP+800 NXX XXXX+ST
+
+     When you call an IC 800 number which goes to an authorization code-based   service, you're taking a great risk.  The IC's can find out very easily where   you're calling from.  If you're in an electronic central office your call can godirectly over an FGD trunk.  When you dial and IC 800 number from a             non-electronic CO your call gets routed through another switch, thus ending up  with the same undesirable effect.
+     MCI is looking into getting an 800 billing service tariffed where a        customer's 800 WATS bill shows the number of everyone who has called it.  The   way the IC's handle billing, if they wanted to find out who made a call to their800 number, that information would be available on billing tapes.  The trick is not to use codes on an IC owned 800
+     The way to find out who owns an 800 exchange is to call 800-NXX-0000 (NXX  being the 800 exchange).  If this is owned by AT&T you will get a message       saying, "You have reached the AT&T Long Distance Network.  Thank you for        choosing AT&T.  This message will not be repeated."  When you call an exchange  owned by an IC you will usually get a recording telling you that your call      cannot be completed as dialed, or else you will get a recording with the name ofthe of the IC.  If you call another number in an AT&T 800 exchange (i.e.        800-NXX-0172) the recording you get should always have an area code followed by a number and a letter, for example, "Your call cannot be completed as dialed.   Please check the number and dial again.  312 4T." AS of last month, most AT&T   recordings are done in the same female voice.  An MCI recording will tell you to"Call customer service at 800-444-4444" followed by a switch number ("MCI 20G").     Some companies such as US Sprint, are redesigning their networks.  Since   the merger of US Telecom and GTE Sprint, US Sprint has had 2 seperate networks. The US Telecom side was Network 1 an dthe GTE side was Network 2.  US Sprint    will be joining the two, thus forming Network 3.  When Network 3 takes effect   there will be no more 950-0777 or 10777.  All customers will have 14 digit      travel cards (referred to as FON cards, or Fiber Optic Network cards) based on  their telephone numbers.  Customers who don't have equal access will be given   seven digit "home codes". These authorization codes may only be used from your  home town or city.  The access number they will be pushing for travel code      service will be 800-877-8000.  This cutover was supposed to be completed by June27th, 1987 but the operation has been pushed back.
+     One last way to tell if the port you dialed is in an IC's 800 exchange is  if it doesn't ring before you get the tone.  When you dial an FGA number it willring shortly but when you dial 10XXX# you get the tone right away.  Last but notleast, I will provide you with a list of 800 exchanges that are owned by IC's. Amajority of them are owned by MCI.
+
+1800-XXX-....
+                                       MCI
+
+XXX= 234,274,283,284,288,289,333365,444,456,627,666,678,727,759,777,825,876,888,937,950,955,999  
+
+                                    US SPRINT
+
+XXX= 347,366,699,877 
+
+                                  WESTERN UNION                                 XXX= 988 
+
+And to avoid confusion, these are the AT&T 800 exchanges:
+
+XXX= 202,212,221,222,223,225,227,228,231,232,233,235,237,238,241,242,243,245,247,248,251,252,253,255,257,258,262,263,265,267,268,272,282,292,302,213,321,322,323,325,327,328,331,332,334,336,338,341,342,343,344,345,346,348,351,352,354,356,358,361,362,363,367,368,372,382,387,392,402,412,421,422,423,424,426,428,431,432,433,435,437,438,441,442,443,445,446,447,448,451,452,453,457,458,461,462,463,456,468,471,482,492,502,512,521,522,523,524,525,526,527,528,531,532,533,535,537,538,541,542,543,544

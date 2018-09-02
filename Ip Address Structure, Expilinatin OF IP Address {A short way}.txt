@@ -1,0 +1,182 @@
+   IP ADDRESS STRUCTURE:
+
+Note: the terms multicast address and MSB are explained at the end.
+
+
+
+Every station on a PSN (packet switched network) that is based on the TCP/IP
+protocol (your computer is one, for example. Yes, we're referring to a host
+that is connected to the net) must have an IP address, so it can be identified,
+and information can be relayed and routed to it in an orderly fashion.
+
+
+
+An IP address consists of a 32 bit logical address. The address is divided
+into two fields:
+
+
+
+1) The network address:
+
+
+Assigned by InterNIC (Internet Network Information Center).
+In fact most ISPs (internet service providers) purchase a number of addresses
+and assign them individually.
+
+
+
+2) The host address:
+
+
+An address that identifies the single nodes throughout the network. It can be assigned
+by the network manager, by using protocols for it such as DHCP, or the workstation itself.
+
+
+
+[The IP networking protocol is a logically routed protocol, meaning that address 192.43.54.2
+will be on the same physical wire as address 192.43.54.3 (of course this is not always true. It depends on the
+
+subnet mask of the network, but all of that can fill a text of its own)
+
+
+IP address structure:
+
+
+   ---.---.---.---
+
+   ^             ^
+   |             |
+network    |    host
+
+Every " --- " = 8 bits.
+The first bits ===> network address
+The last bits  ===> host address.
+with 8 bits you can present from 0-255 . (binary=(2 to the power of 8)-1)
+
+Example:
+11000010.01011010.00011111.01001010 (binary)
+194.90.31.74 (decimal)
+IP address CLASSES :
+We can classify IP addreses to 5 groups. You can distinguish them by comparing the "High Order" bits (the first four bits on the
+left of the address):
+
+type  | model  | target | MSB |addr.range    |bit number| max.stations|
+     |        | groups |     |              |net./hosts|             |
+------|--------|--------|-----|--------------|----------|-------------|
+ A   |N.h.h.h | ALL    |  0  | 1.0.0.0      |   24/7   | 16,777,214  |
+     |        | ACCEPT |     |    to        |          |             |
+     |        | HUGE   |     | 127.0.0.0    |          |             |
+     |        | CORPS  |     |              |          |             |
+-----------------------------------------------------------------------
+     |N.N.h.h | TO ALL | 10  | 128.1.00     | 16/14    | 65,543      |
+ B   |        | LARGE  |     |    to        |          |             |
+     |        | CORPS  |     | 191.254.00   |          |             |
+-----------------------------------------------------------------------
+     |N.N.N.h |TO ALOT | 110 | 192.0.1.0    | 8/22     |  254        |
+ C   |        |OF      |     |    to        |          |             |
+     |        |SMALL   |     | 223.225.254  |          |             |
+     |        |CORPS   |     |              |          |             |
+-----------------------------------------------------------------------
+D    | NONE   |MULTI-CA|1110 | 224.0.0.0     | NOT FOR |   UNKNOWN   |
+     |        |ST ADDR.|     |    to         | USUAL   |             |
+     |        |RFC-1112|     |239.255.255.255| USE     |             |
+-----------------------------------------------------------------------
+E    | NOT FOR|EXPERIME|1,1,1,1| 240.0.0.0     |NOT FOR|  NOT FOR USE|
+     |  USE   |NTAL    |       |   to          |USE    |             |
+     |        |ADDR.   |       |254.255.255.255|       |             |
+-----------------------------------------------------------------------
+
+N=NETWORK , h=HOST .
+
+
+
+Notice the address range 127.X.X.X.
+These addresses are assigned to internal use to the network device, and are
+used as an application tool only. For example: 127.0.0.1, the most common one,
+is called the loopback address - everything sent here goes directly back to
+you, without even traveling out on the wire.
+Also, some IPs are reserved for VPNs - Virtual Private Networks. These are
+local area networks over wide area networks that use the Internet Protocol to
+communicate, and each computer inside the network is assigned with an IP
+address. So, suppose a certain computer wants to send a data packet to
+another host on the network with the IP 'x', but there's also another host on
+the Internet that has the same IP - what happens now? So this is why you
+cannot use these and other forms of reserved IPs on the Internet.
+
+EXTRA:
+
+Distinguishing different groups:
+
+You have to compare the first byte on the left in the address as follows:
+
+
+
+
+Type |    First byte  | MSB
+    |    in decimal  |
+----------------------------
+A    | 1-127          | 0
+----------------------------
+B    | 128-191        | 10
+----------------------------
+C    | 192-223        | 110
+----------------------------
+D    | 224-239        | 1110
+----------------------------
+E    | 240-254        | 1111
+----------------------------
+
+
+NOTES: Yes, we know, we've left A LOT of things unexplained in this text.
+With time, we will write more tutorials to cover these and other subjects. So
+in the meantime, I suggest that you go to http://blacksun.box.sk, find the
+tutorials page and see if there's anything else that's interesting to you.
+And remember - we also have a message board, so if you have any questions,
+feel free to post them there.
+
+
+weird shit (newbie note):
+
+1) Multicast: (copied from RFC 1112)
+  IP multicasting is the transmission of an IP datagram to a "host
+  group", a set of zero or more hosts identified by a single IP
+  destination address.  A multicast datagram is delivered to all
+  members of its destination host group with the same "best-efforts"
+  reliability as regular unicast IP datagrams, i.e., the datagram is
+  not guaranteed to arrive intact at all members of the destination
+  group or in the same order relative to other datagrams.
+
+  The membership of a host group is dynamic; that is, hosts may join
+  and leave groups at any time.  There is no restriction on the
+  location or number of members in a host group.  A host may be a
+  member of more than one group at a time.  A host need not be a member
+  of a group to send datagrams to it.
+
+  A host group may be permanent or transient.  A permanent group has a
+  well-known, administratively assigned IP address.  It is the address,
+  not the membership of the group, that is permanent; at any time a
+  permanent group may have any number of members, even zero.  Those IP
+  multicast addresses that are not reserved for permanent groups are
+  available for dynamic assignment to transient groups which exist only
+  as long as they have members.
+
+  Internetwork forwarding of IP multicast datagrams(ip packets)is handled by
+  "multicast routers" which may be co-resident with, or separate from,
+  internet gateways.  A host transmits an IP multicast datagram as a
+  local network multicast which reaches all immediately-neighboring
+  members of the destination host group.  If the datagram has an IP
+  time-to-live greater than 1, the multicast router(s) attached to the
+  local network take responsibility for forwarding it towards all other
+  networks that have members of the destination group.  On those other
+  member networks that are reachable within the IP time-to-live, an
+  attached multicast router completes delivery by transmitting the
+  datagram(ip packet) as a local multicast.
+
+  *if you donot understand the above do not worry, it is complicated and dry
+  but reread it and read it again get a dictionary if it helps.
+  Hacking is not easy.
+
+2) MSB: Most Significent Bit:
+  In set numbers the first number on the left is the most important because it
+  holds the highest value as opposed to the LSB=> least significent bit, it
+  always holds the the smallest value.

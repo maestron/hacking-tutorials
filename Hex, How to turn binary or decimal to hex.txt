@@ -1,0 +1,52 @@
+First go to http://www.shareordie.com/forum/index.php?showtopic=3269 to learn binary.
+
+OK, 1,453,752 is 101100010111010111000 is binary, now we turn it into a Hex number.
+
+First Hex numbers goes like this:
+1=1
+2=2
+.
+.
+9=9
+10=A
+11=B
+12=C
+13=D
+14=E
+15=F
+
+Now you need to take the first octet (the far right 4) and place it under this little grid:
+
+8 4 2 1
+--------
+1 0 0 0 = 8
+
+See the 1 under the 8 column?
+That is what you add.
+
+So the next octet is 1011, put it under the grid:
+
+8 4 2 1
+--------
+1 0 0 0 = 8
+1 0 1 1 = B
+
+See 8+2+1=11, so you can't just say 11 you have to put it in a Hex number, which is B.
+So the full Hex number of 1,453,752 is:
+
+8 4 2 1
+--------
+1 0 0 0 = 8
+1 0 1 1 = B
+1 1 1 0 = E
+0 0 1 0 = 2
+0 1 1 0 = 6
+0 0 0 1 = 1 <-- Just add zero if it isn't a full octet
+
+162EB8
+
+So if you want to turn a number in to the shorter version of Hex, just turn it into binary, then use this grid and you'll do fine
+
+
+
+P.S. Thanks Korrupt for the number to work with

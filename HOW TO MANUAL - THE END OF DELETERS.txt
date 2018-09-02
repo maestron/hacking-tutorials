@@ -1,0 +1,338 @@
+HOW TO MANUAL - THE END OF DELETERS  
+
+"- - = W A R E Z P I R A T E Z = - -
+HOW TO MANUAL - THE END OF DELETERS
+===================================
+CREATED BY: [Piratez] 04/11/01
+
+TABLE OF CONTENTS
+=================
+
+Title Line
+
+1. Introduction_______________________________________________________23
+2. Invisible Directories______________________________________________36
+3. Inaccessable Directories___________________________________________83
+4. Smart Directories__________________________________________________135
+5. Undeletable Files__________________________________________________168
+6. Ultimate Protection________________________________________________199
+7. FAQ________________________________________________________________228
+8. Contacts___________________________________________________________250
+9. Credits____________________________________________________________256
+
+
+Introduction
+============
+
+This doucmentation should not be used to exploit webservers. Some of the
+techniques used here have certain outputs that can crash old servers making
+them unusable. Throughout this manual, techniques will be passed on from
+exploits found in the 'windows' OS. That 'ACTUALLY' helps in the prevention
+of deletion. There are lots of methods in stopping a deleter, without the
+ANY restrictions set on the server but most have some weak point. After
+comming across foure new techniques, making a folder 'invisible' or
+undetectable from an ftp client LIST fuction. Making folders/directories
+inaccessable and clone prevention, creating smart directories which slows
+down the users attempt. I'm sure most users would thank me for this,
+'undeletable files'. After experiencing rock solid protection and safe
+files. I decided to document it for future reference of the next generation
+of software pirates.
+
+
+Invisible Directories
+=====================
+
+The idea of invisiable directoires came about when I came across paths that
+were "/ /example/" and was not listed in the main folder but was still
+'accessable'. These can be created in all directories without other users
+knowing it exists unless being searched for 'MANUALLY', which takes ages at
+the present time to search through each folder for "/ /".
+
+Creating Invisible Directories
+------------------------------
+1. before
+******************************************************************
+./pub/
+./images/
+./_vti_pvt/
+./_vti_cnf/
+./_vti_log/
+./temp/
+******************************************************************
+
+2. after
+******************************************************************
+./ /~/temp/tagged/for/team/warezpiratez/fxp/ <- hidden folder
+./pub/
+./images/
+./_vti_pvt/
+./_vti_cnf/
+./_vti_log/
+./temp/
+******************************************************************
+
+To create the hidden folders, make a new dir. as follows using this method.
+[backslash][space][backslash][foldername1][backslash][foldername2]...
+ie. / /foldername1/foldername2/...
+the 'space' isn't a name but a 'character' that does not get listed,
+therefore making the directories impossible to view.
+
+NOTE: Making the hidden folders several LAYERS/SUB-DIRECTORIES deep is
+recommended.
+ie. / / / /~/temp/tagged/for/ /team/warez/ /piratez/fxp/
+meaning.
+
+This technique is not 'anti-deletion proof' but hidden from deletion proof!
+Wink
+Read more to find out how to combine ALL THREE TECHNIQUE to make it
+'REMOTELY' impossible to delete. Please note the 'quotes', REMOTELY in a
+sense that remote/local host. The 'siteadmin' can still 'delete' the folder
+"if he's around that is Smile"
+
+
+Inaccessable Directories
+========================
+
+Inaccessable directories prevents the user from 'entering' the folder
+period. The user will not be able to enter the folders unless knowing the
+'entire' remote path.
+
+Creating Inaccessable Directories
+----------------------------------
+
+1. before
+****************************************************************************
+**********************************
+./temp/tagged/for/team/warezpiratez/fxp/
+./pub/
+./images/
+./_vti_pvt/
+./_vti_cnf/
+./_vti_log/
+./temp/
+****************************************************************************
+**********************************
+
+2. after
+****************************************************************************
+**********************************
+./COM1 / temp/tagged/for/team/warezpiratez/fxp/ <- inaccessable directories,
+due to 'COM1' former windows bug.
+./pub/
+./images/
+./_vti_pvt/
+./_vti_cnf/
+./_vti_log/
+./temp/
+****************************************************************************
+**********************************
+To create inaccessable folders, use the following list of 'UNUSABLE NAMES'
+
+COM1 COM1 COM3 COM4 (Windows COM PORTS)
+LPT1 LPT2 LPT3 LPT4 (Windows Printer Ports)
+AUX
+NUL
+
+Make a new folder "COM1[space][backslash][space][backslash]
+ie. /COM1 / /
+
+NOTE: This makes the folder inaccessable, even to the siteadmin.(unless
+accessed from DOS, local with access to the machine.)
+
+To use the dir. Create a new folder called
+"COM1[space][backslash][space][foldername1][backslash][foldername2]
+ie. /COM1 / / ~/temp/tagged/
+
+NOTE: This folder is still inaccessable, if a user attempts to enter it. To
+gain access to the folder, the 'full path' must be known. To enter the
+folder use the RAW command 'CWD' change dir. path. to enter the folder.
+ie. CWD /COM1 / / ~/temp/tagged/ and voila the folder is usable and working.
+
+TIP: Creating the folder 'several' LAYERS/SUB-DRIECTORIES deep. It is
+impossible to enter.
+
+
+Smart Directories
+=================
+
+This technique involves, the creation of directories that are 'COPYRIGHT' Wink
+How's that for a simple description. The idea is to create directories that
+would contain [peroids] thorough each of the subdirectories or segmenets.
+The use of this is quite sipmle, note the word 'COPY'RIGHT. Most users use
+the ftp://login :password at ip :port/path/ format for faster access to an ftp.
+
+
+Creating Smart Directories
+--------------------------
+To create 'smart' directories. Make the folder names of each sub directories
+contain a period before, inside, and after words within the subdirectories
+creating a fake 'file' recognition. The Widows based clients will assume the
+folders to be files with windows using its 8.3 format for file names
+1. before
+****************************************************************************
+**********************************
+ftp://anonymous@anonymous@123.456.789:21/temp/tagged/for/team/warezpiratez/f
+xp/
+****************************************************************************
+**********************************
+
+2. after
+****************************************************************************
+**********************************
+ftp://anonymous@anonymous@123.456.789:21/temp/tagged ./for . /team. /. warez
+.piratez/fxp
+****************************************************************************
+**********************************
+
+NOTE: Be as creative as possible with the dot formation, to prevent COPYING
+of all folders through each directories. The idea is to make the directories
+act as file extensions therefore when copied, it will be 'queued'
+and the user has to enter the directories MANUALLY. Other 'SYMBOLS' can be
+used NOT ONLY just periods. But I find this most common, if the creator
+intends to create a catch phrase 'memorable' to him alone.
+
+****************************************************************************
+**********************************
+QUEUE: 1. /temp/tagged ./for . /team. /. warez .piratez/fxp <- result of
+folder extensions
+****************************************************************************
+**********************************
+
+
+Undeletable Files
+=================
+
+Sad that we had to resolve to this but, this might be the end of deletion as
+we speak. I find no other method out there that can accomplish this task
+except setting restrictions from the server. This method involves the file
+being self-protected. Meaning the files are 'accessable'/'downloadable' but
+can NOT be deleted. The idea is to make the file corrupted/crash making it
+'in use'.
+
+Creating Undeletable Files
+--------------------------
+To create a self protected file, rename the entire file including the
+extensions to the follwoing format
+filename[space][period]/[space]/ ie. filename ./ / The / / in the name as
+shown above in the previous example
+of creating invisible directories makes the .extesion impossible to view on
+the pub as a windows recognized mime
+but, once dowloaded it will be shown and accessable. How's that for wits.
+Wise up deleters, ~censored~ off!
+
+1. before
+****************************************************************************
+**********************************
+warezpiratez.rar <- rar mime, winrar.
+****************************************************************************
+**********************************
+
+2. renaming
+****************************************************************************
+**********************************
+warezpiratez ./ /
+****************************************************************************
+**********************************
+
+3.
+****************************************************************************
+**********************************
+warezpiratez <- unknown file(undeletable,downloadable) <- file will take the
+correct mime format on localhost
+****************************************************************************
+**********************************
+
+
+Ultimate Protection
+===================
+The ultimate protection is OBVIOULY, YOUR SELF and YOUR wits against the
+deleters. Use private FTPs, get
+fast sites T1+, but in this case, it would be the combination of all four
+techniques. Using them into one major and
+thoughtout plan.
+
+Creating The Ultimate Protection
+--------------------------------
+
+To create the ultimate protection that is desirable, first of all, create
+the invisible folders as shown above, several sub.dirs deep. Then creating
+an 'inaccesable' folder within those invisible folders. Then the next step
+is to create those smart directories so it slows down ANY attempt to gain
+full access, and also it makes to user run into inaccessable folders
+because. The idea is to trap the user before those folders using the smart
+directories idea. I didn't think that was ingenieus but just common sense
+and seemd smart!.
+
+1. before
+****************************************************************************
+**********************************
+/temp/tagged/for/team/warezpiratez/fxp/ <- no protection
+****************************************************************************
+**********************************
+
+2. after
+****************************************************************************
+**********************************
+/ / /./ ./COM1 / temp/tagged ./for . /team. /. warez .piratez/fxp <-
+protection(still weak)
+****************************************************************************
+**********************************
+
+NOTE: You can be creative with this technique, make it more complex, I
+didn't do it in this manual because then
+that would make YOU just confused. I hope this helps, and please UNDERSTAND.
+It is not hard, unless YOU didn't read
+from the Introduction. I made this well detailed. For it to be as simple as
+possible.
+
+FAQ
+===
+
+1. What is a SUB-DIRECTORY
+- It is the folder that is second/inside another folder. ie.
+firstfolder/subdir/
+
+2. What is a pub
+- Short for public ftp. There are, no restrictions/protection on the access
+over files. Some
+have them in most cases but then uploads/downloads are denied. Some would
+not allow fxp.
+
+4. What does all this mean?
+- Good question, this means that there should be more warez around in the
+future. More gamez for YOU, more appz
+for me. Wink You too.
+
+5. Who are deleters?
+- Deleters are mean and NASTY people, shit faces. There spammers and lame
+sometimes ANTI-PIRACY groups that hang
+among us, without knowing. Deleting files when possible to stop the warez
+scene or just being GAY!
+
+6. What can I do to help?
+- You can help the WAREZ scene, getting this manual to them informing them
+of HOPE! and not DOH!PE
+
+
+Contacts
+========
+
+[Piratez] - EFnet IRC
+
+
+Credits
+========
+
+This manual was inspired from the makers of other how to stop the deleter
+manuals but never worked or at least it was not doucmented in detail to
+understand much. The information was gathered from other sources that had
+some lines of credit others none. All samples and examples are original,
+well planned out. Unless a flaw is dettected, please report for another
+release. I REALLY hate deleting bitches. Thanks goes to #NBK(EFnet IRC) and
+other linux members for bug fixing windows and its exploit to help stop
+spammers/deleters around the world. Your skills are HIGHLY admired and
+apprechiated. Keep the warez scene alive. Greets goes out the the deleters,
+with one last request. DELETE ME NOW BITCH!
+
+
+THE END

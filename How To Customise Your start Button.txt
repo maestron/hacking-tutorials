@@ -1,0 +1,26 @@
+First you need a tool called "Resource Hacker". This free program allows you to change resources in any .exe file such as "Explorer.exe", which includes the [Start] button's Label. You can visit Download.com and search there for "Resource Hacker".
+After you download it, follow the guide here:
+
+Step 1:
+
+A - Run "Resource Hacker" and open the file "%windir%\Explorer.exe".
+B - You see a Tree of all Resources in this file, expand the "String Table"
+C - Find the "start" and replace it with your own text. then press the [Compile Script] button.
+D - Save "Explorer.exe" as "MyStart.exe" DONT save it as Explorer.exe, do "save as.." and give it a new name.
+E - Quit "Resource Hacker".
+
+Step 2:
+
+A - Click on the [Start] button and choose the "Run..." item from the start menu. (Or use the shortcut key WinKey+R)
+B - Type "RegEdit" in the Run "Dialog Box". And then press the [Ok] buton to run the "Registry Editor" program.
+C - Go to: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Winlogon" and find the "Shell" property.
+D - Replace value of the "Shell" property to "MyStart.exe".
+E - Quit "Registry Editor".
+F - Restart your system.
+
+Note about Registry Editor:
+if you did not find the key "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Winlogon", you can search the Registry for the "Explorer.exe", to do this use the Edit Menu | Find Next (Ctrl+F).
+
+
+AmirBehzad Eslami's site has a handy tool for altering your start button, which makes life much easier, you can find his site here:
+h**p://www.startbtn.main-page.com

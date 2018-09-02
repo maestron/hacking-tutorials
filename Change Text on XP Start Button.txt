@@ -1,0 +1,26 @@
+Step 1 - Modify Explorer.exe File
+
+In order to make the changes, the file explorer.exe located at C:\Windows needs to be edited. Since explorer.exe is a binary file it requires a special editor. For purposes of this article I have used Resource Hacker. Resource HackerTM is a freeware utility to view, modify, rename, add, delete and extract resources in 32bit Windows executables and resource files (*.res). It incorporates an internal resource script compiler and decompiler and works on Microsoft Windows 95/98/ME, Windows NT, Windows 2000 and Windows XP operating systems.
+
+get this from h**p://delphi.icm.edu.pl/ftp/tools/ResHack.zip
+
+The first step is to make a backup copy of the file explorer.exe located at C:\Windows\explorer. Place it in a folder somewhere on your hard drive where it will be safe. Start Resource Hacker and open explorer.exe located at C:\Windows\explorer.exe.
+
+The category we are going to be using is "String Table". Expand it by clicking the plus sign then navigate down to and expand string 37 followed by highlighting 1033. If you are using the Classic Layout rather than the XP Layout, use number 38. The right hand pane will display the stringtable. We’re going to modify item 578, currently showing the word “start” just as it displays on the current Start button.
+
+There is no magic here. Just double click on the word “start” so that it’s highlighted, making sure the quotation marks are not part of the highlight. They need to remain in place, surrounding the new text that you’ll type. Go ahead and type your new entry. In my case I used Click Me!
+
+You’ll notice that after the new text string has been entered the Compile Script button that was grayed out is now active. I won’t get into what’s involved in compiling a script, but suffice it to say it’s going to make this exercise worthwhile. Click Compile Script and then save the altered file using the Save As command on the File Menu. Do not use the Save command – Make sure to use the Save As command and choose a name for the file. Save the newly named file to C:\Windows.
+
+
+Step 2 – Modify the Registry
+
+!!!make a backup of your registry before making changes!!!
+
+Now that the modified explorer.exe has been created it’s necessary to modify the registry so the file will be recognized when the user logs on to the system. If you don’t know how to access the registry I’m not sure this article is for you, but just in case it’s a temporary memory lapse, go to Start (soon to be something else) Run and type regedit in the Open field. Navigate to:
+
+HKEY_LOCAL_MACHINE\ SOFTWARE\ Microsoft\ Windows NT\ CurrentVersion\ Winlogon
+
+In the right pane, double click the "Shell" entry to open the Edit String dialog box. In Value data: line, enter the name that was used to save the modified explorer.exe file. Click OK.
+
+Close Registry Editor and either log off the system and log back in, or reboot the entire system if that’s your preference. If all went as planned you should see your new Start button with the revised text.[/b] 

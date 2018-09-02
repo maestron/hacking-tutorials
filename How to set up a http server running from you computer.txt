@@ -1,0 +1,67 @@
+How to set up a http server running from you computer
+
+(Either you can set up a basic server which means you stop at step... or if you want to make a server with free address you can continue after that step)
+
+1. We are going to use a program called hfs i like the beta version (2) you will need to download this program.
+Go to www.rejetto.com/temp/hfs2.0beta23.zip
+
+2. Make a folder where you wish to run it from for example C:/Program files/hfs or C:/Documents and settins/Username/My documents/Hfs
+
+3. Move the downloaded zip file into that folder and extract it.
+
+4. Delete the zip file and KEEP THE OTHER FILES!!!!!
+user posted image
+5. Run the program and it will come up with a screen that looks like this
+user posted image
+6. Click the button that says easy mode (this turns it into expert mode which basicly means you have all the options)
+
+7. Where it says port change the port to 80 (this can clash with some programs like webcam on msn and maybe others im not sure) ((the port you choose doesnt really matter 80 is just easier))
+
+8. How to turn on port forwarding. (ONLY for people with routers) ((this varies depending on which make of router you have but for my router sweex i will tell you how its done))
+Go to internet explorer or mozzilla firefox. Type into the address bar 192.168.2.1 with nothing in else. A window will come up asking you for username and password by default this is admin and 1234 it will only be different if you have changed it.
+
+9. This window should then show up.
+
+user posted image
+
+Click general setup then you will see this window
+
+user posted image
+Click NAT then port forwarding
+You should now see this
+
+user posted image
+
+In private ip you need to post your computers local network address like for example 192.168.1.1 or 192.168.1.2 it depends. If you do not know how to do this here is how its found out
+Click start>run>cmd type in the command line ipconfig
+wait
+some information will come up looking like this
+user posted image
+
+That is your computers local network address.
+
+So going back to
+
+
+user posted image
+Now go back to hfs and you must enter your ip (not your local address but your ip) here
+
+user posted image
+Keep the http:// in front of your ip.
+This is essentially now your server. Make sure it is on and you can go and visit it at http://yourip:port/
+To add files simply drag and drop them in. Then click virtual folder.
+
+That was if you do not want a personal address you can make it personal like mine http://randomshitfromtimmy.no-ip.org very easily.
+All you have to do is go to www.no-ip.com
+Make a username
+Log in
+Click add on the left hand side
+Make a hostname (mine is randomshitfromtimmy)
+Click port 80 redirect
+Enter your ip in the ip address field
+And choose the port you wish to forward (this is either 80 or the other one that you chose)
+Click add redirect.
+
+Now you have a fully working hfs system.It runs of you bandwidth so if lots of people are downloading you will find your net goes slowly so remeber to set limits.
+
+(below is a pic of a set up hfs working) Ips blurred for privacy. 

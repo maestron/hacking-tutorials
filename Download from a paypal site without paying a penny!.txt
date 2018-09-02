@@ -1,0 +1,21 @@
+Just a little basic html tip for those who are trying to download an application from sites which has an paypal order page & link to start you off.
+
+Use a proxy when you try this to hide your ip as some sites will record your ip when you connect for security.
+
+1) Rightclick your mouse (ctrl+click) viewsource and open the source of the site in an a texteditor
+2) Search for the word "return"
+3) Next to it you can find the url for the thank you page
+4) Copy the url and paste it in your browser and you will see the download link
+
+This works only if you can download instantly after payment, it will not work if the link needs to be emailed to you.
+
+You can try it here to start with:
+Code:
+http://www.ramphelp.com/halfpipe.html
+
+
+About half way down the page you will find:
+
+<input type="hidden" name="return" value="http://www.ramphelp.com/65984523/thanks/68912hp654/26865thankyouhp08363215423.html ">
+
+Copy the link into your browser and download.

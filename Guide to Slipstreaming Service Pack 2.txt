@@ -1,0 +1,95 @@
+DarkLegacy's Guide to Slipstreaming Service Pack 2
+
+Note: All images are hosted with ImageShack.
+
+• This guide will allow you to sucsessfully install Service Pack 2 on the original (gold) code of Microsoft Windows XP.
+• The version of Windows you have purchased/downloaded does not matter as far as slipstreaming (they're all the same anyway).
+
+Things you need:
+• Microsoft Windows XP (duh :P)
+• Service Pack 2:
+
+URL http://download.microsoft.com/download/1/6/5/165b076b-aaa9-443d-84f0-73cf11fdcdf8/WindowsXP-KB835935-SP2-ENU.exe
+
+• Windows XP Boot sector:
+
+http://www.neowin.net/downloads/xpboot.bin
+
+• Nero Burning Rom (find it on SoD)
+
+Step One
+
+Insert the Microsoft Windows XP CD into your CD-ROM drive, and create a new folder on your hard-drive labelled "CD".
+
+Copy all of the files from the Windows XP CD to the "CD" folder.
+
+
+
+
+Step Two
+
+Download Service Pack 2 and place it within the root of your hard-drive.
+Ex: C:\ D:\ etc..
+
+
+
+Step Three
+
+Go to Start -> Run and type in "F:\WindowsXP-KB835935-SP2-ENU.exe -s:F:\CD" (depending on where you put the folder)
+
+The actual command is -s:drive:\folder
+
+
+
+Step Four
+
+The Service Pack 2 updater will automatically slipstream Service Pack 2 into your "CD" folder.
+
+
+
+
+Step Five
+
+If you browse back to the CD folder, you'll notice that new folders and files appeared from the SP2 update. At this point, you can include any software you wish onto this CD, but make sure that the size of the folder does not exceed the media you are burning on. If you're not sure, a regular CD is 700 megabytes.
+
+
+
+Step Six
+
+Go to Start and Search for files and folders. Go to all files and folders, and type in "wpa.dbl". This is the activation file for your current installed version of XP. Make a copy of the file and paste it into your CD folder.
+
+
+
+Step Seven
+
+Open up Nero Smartstart, and click on the icon that looks like two people. This turns the program into "professional mode". Search for create a bootable CD. Click on it, and make sure that your settings agree with the following picture; also make sure that you downloaded the Windows XP boot sector.
+
+
+
+Step Eight
+
+Continue onto the next tab, and make sure that your settings agree with the picture:
+
+
+
+Step Nine
+
+In this step, you can label your CD whatever the hell you want. I recommend WXPSP2_EN.
+
+
+Step Ten
+
+Go to "new" and locate your CD folder. Drag all of the files in the CD folder to the compilation window on the right, and nero will calculate how much disk space was used. If it exceeds 700 MB, get rid of some programs that you added to the CD. If you didn't add anything; just push burn.
+
+
+Step Eleven
+
+Make sure that your settings check with the picture:
+
+
+
+Step Twelve
+
+Just push burn, and that's it! Congradulations, you just made a bootable Win XP CD with SP2 slipstreamed!
+
+

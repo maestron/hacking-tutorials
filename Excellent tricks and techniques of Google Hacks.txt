@@ -1,0 +1,4116 @@
+Excellent tricks and techniques of Google Hacks  
+
+ws_ftp.ini is a configuration file for a popular FTP client that stores usernames, (weakly) encoded passwords, sites and directories that the user can store for later reference. These should not be on the web!
+
+That's some good stuff. Just copy/paste the text into your own WS FTP ini file and you're good as gold (assuming you're using the same version). Don't forget - even if they have taken the file offline, use the "cache:FULL_URL/wsftp.ini" to see the contents.
+probably one of the best exploits I have seen in a long time, when I did it there were about 20 vulnerable computers, just recently there was 4 so I hope whitehats got to this before anyone else. really nice !!
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:index.of ws_ftp.ini
+
+==============================================
+
+Frontpage.. very nice clean search results listing !! I magine with me that you can steal or know the password of any web site designed by "Frontpage". But the file containing the password might be encrypted; to decrypt the file download the program " john the ripper".
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"# -FrontPage-" inurl:service.pwd
+
+==============================================
+
+This searches the password for "Website Access Analyzer", a Japanese software that creates webstatistics.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"AutoCreate=TRUE password=*"
+
+==============================================
+
+This is a query to get inline passwords from search engines (not just Google), you must type in the query followed with the the domain name without the .com or .net.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"http://*:*@www" bangbus or "http://*:*@www"bangbus
+
+Or
+
+http://bob:bob@www
+
+Or
+
+http://admin:*@www
+
+==============================================
+
+
+
+
+
+
+This search is a cleanup of a previous entry by J0hnny. It uses "parent directory" to avoid results other than directory listings.
+
+WS_FTP.ini is a configuration file for a popular win32 FTP client that stores usernames and weakly encoded passwords.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:ini ws_ftp pwd
+
+Or
+
+"index of/" "ws_ftp.ini" "parent directory"
+
+==============================================
+
+Microsoft Frontpage extensions appear on virtually every type of scanner. In the late 90's people thought they where hardcore by defacing sites with Frontpage. Today, there are still vulnerable servers found with Google.
+
+An attacker can simply take advantage from administrators who 'forget' to set up the policies for Frontpage extensions. An attacker can also search for 'filetype:pwd users'.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:pwd service
+
+==============================================
+
+
+Not all of these pages are administrator's access databases containing usernames, passwords and other sensitive information, but many are! And much adminstrated passwords and user passwords, a lot of emails and the such tooÖ
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+allinurl: admin mdb
+
+==============================================
+
+DCForum's password file. This file gives a list of (crackable) passwords, usernames and email addresses for DCForum and for DCShop (a shopping cart program(!!!). Some lists are bigger than others, all are fun.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+allinurl:auth_user_file.txt
+
+==============================================
+
+This search brings up sites with "config.php" files. To skip the technical discussion, this configuration file contains both a username and a password for an SQL database. Most sites with forums run a PHP message base. This file gives you the keys to that forum, including FULL ADMIN access to the database. To see view the PHP files; there in lies the catch. Browsers are made to process the commands of PHP before display, so if no commands, nothing to show. You can't use that persay to get into the config file, but it would show potential threats if someone got into server anyway. (If that happens you're basically boned anyway, not much around that.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:index.of config.php
+
+By the way, to know how to view the PHP file contents, you can use this code:
+
+intitle:"Index of" phpinfo.php
+
+==============================================
+
+These files contain ColdFusion source code. In some cases, the pages are examples that are found in discussion forums. However, in many cases these pages contain live sourcecode with usernames, database names or passwords in plaintext.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:cfm "cfapplication name" password
+
+==============================================
+
+FlashFXP offers the easiest and fastest way to transfer any file using FTP, providing an exceptionally stable and robust program that you can always count on to get your job done quickly and efficiently. There are many, many features available in FlashFXP.
+
+The flashFXP.ini file is its configuration file and may contain usernames/passwords and everything else that is needed to use FTP.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:ini inurl:flashFXP.ini
+
+==============================================
+
+The encryption method used in WS_FTP is _extremely_ weak. These files can be found with the "index of" keyword or by searching directly for the PWD= value inside the configuration file.
+
+There is an easy way to decrypt the hash, use the decryptor at:
+
+
+http://www.codebluehacks.com/Tools.php?ID=1
+
+Or
+
+http://www.hispasec.com/directorio/laboratorio/Software/ws_ftp.html
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:ini ws_ftp pwd
+
+==============================================
+
+These files contain cleartext usernames and passwords, as well as the sites associated with those credentials. Attackers can use this information to log on to that site as that user.
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:log inurl:"password.log"
+==============================================
+
+Web Wiz Forums is a free ASP Bulletin Board software package. It uses a Microsoft Access database for storage. The installation instructions clearly indicate to change the default path and filename (admin/database/wwForum.mdb).
+vendor: http://www.webwizguide.info/web_wiz_forums/
+
+The forum database contains the members passwords, either encrypted or in plain text, depending on the version.
+
+Please note: this search is proof that results can stay in Google's index for a long time, even when they are not on the site any longer. Currently only 2 out of 9 are actually still downloadable by an attacker.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:mdb wwforum
+
+==============================================
+
+VNC is a remote-controlled desktop product. Depending on the configuration, remote users may not be presented with a password. Even when presented with a password, the mere existance of VNC can be important to an attacker, as is the open port of 5800.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"VNC Desktop" inurl:5800
+
+
+
+By the way, New version of VNC changed title to VNC Viewer so now you can search forÖ
+
+intitle:vnc.desktop inurl:5800
+
+==============================================
+
+linux vpns store their usernames and passwords for CHAP authentification in a file called "chap-secrets" where the usernames and the passwords are in cleartext.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+inurl:chap-secrets -cvs
+
+==============================================
+
+These lock files often contain usernames of the user that has locked the file. Username harvesting can be done using this technique.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"index of" / lck
+
+==============================================
+
+A standard FTP configuration file that provides far too many details about how the server is setup, including installation paths, location of logfiles, generic username and associated group, etc.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:conf inurl:proftpd.conf -sample
+
+==============================================
+
+This search finds registry files from the Windows Operating system. Considered the "soul" of the system, these files, and snippets from these files contain sensitive information, in this case usernames and/or passwords.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:reg reg HKEY_CURRENT_USER username
+
+==============================================
+
+Allows an attacker to create an account on a server running Argosoft mail server pro for windows with unlimited disk quota (but a 5mb per message limit should you use your account to send mail).
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"adding new user" inurl:addnewuser -"there are no domains"
+
+==============================================
+
+The famous Sun linux appliance. The default page displays this text:
+
+"Congratulations on Choosing a Cobalt RaQ - the premier server appliance platform for web hosting. This page can easily be replaced with your own page. To replace this page, transfer your new content to the directory /home/sites/home/web".
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+(inurl:81/cgi-bin/.cobalt/) | (intext:"Welcome to the Cobalt RaQ")
+
+==============================================
+
+WS_FTP.LOG can be used in many ways to find more information about a server. This query is very flexible, just substitute "+htpasswd" for "+FILENAME" and you may get several hits that you hadn't seen with the 'normal' search.
+
+Filenames suggested by the forum to explore are: phpinfo, admin, MySQL, password, htdocs, root, Cisco, Oracle, IIS, resume, inc, sql, users, mdb, frontpage, CMS, backend, https, editor, intranet . The list goes on and on..
+
+A different approach might be "allinurl: "some.host.com" WS_FTP.LOG filetype:log" which tells you more about who's uploading files to a specific site.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
++htpasswd +WS_FTP.LOG filetype:log
+
+==============================================
+
+The Web Data Administrator is a utility program implemented in ASP.NET that enables you to easily manage your SQL Server data wherever you are. Using its built-in features, you can do the following from Internet Explorer or your favorite Web browser.
+Create and edit databases in Microsoft SQL Server 2000 or Microsoft SQL Server 2000 Desktop Engine (MSDE) Perform ad-hoc queries against databases and save them to your file system Export and import database schema and data.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:"Web Data Administrator - Login"
+
+==============================================
+
+The Aanval Intrusion Detection Console is an advanced intrusion detection monitor and alerting system. Currently supporting modules for Snort and syslog - Aanval provides real-time monitoring, reporting, alerting and stability. Aanval's web-browser interface provides real-time event viewing and system/sensor management.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:"remote assessment" OpenAanval Console
+
+==============================================
+
+Google is so smart, itís scary sometimes. I has found another interesting (to say the least) Google use.
+I just ran across a pretty scary new google trick. It seems they have just recently added number span searching to their engine. Take a look at this example:
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+visa 4356000000000000..4356999999999999
+
+Basically, what this search does is search for the word ìvisaî [credit card] with any numbers that fit within your query. i.e. any Visa credit card number with the first four digits 4356.
+As you can see, Google has searched the entire range against its DB. Within minutes I found some crazy sites like this one. Now please know that Google didnít create this tool to be used like this. Itís actually quite handy when used correctly. Just an FYI for all of you.
+
+==============================================
+
+Tired of websearching ? Want something to read ? You can find Ebooks (thousands of them) with this search..LIT files can be opened with Microsoft Reader (http://www.microsoft.com/reader/).
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:lit lit (books|ebooks)
+
+==============================================
+
+Using Google, and some finely crafted searches we can find a lot of interesting information.
+
+For Example we can find: Credit Card Numbers / Passwords / Software / MP3's
+...... (and on and on and on)Presented below is just a sample of interesting searches that we can send to google to obtain info that some people might not want us having.. After you get a taste using some of these, try your own crafted searches to find info that you would be interested in.
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:"Index of" passwords modified
+
+And
+
+allinurl:auth_user_file.txt
+
+And
+
+"access denied for user" "using password"
+And
+
+"A syntax error has occurred" filetype:ihtml
+And
+
+allinurl: admin mdb
+And
+
+"ORA-00921: unexpected end of SQL command"
+And
+
+inurl:passlist.txt
+And
+
+"Index of /backup"
+And
+
+"Chatologica MetaSearch" "stack tracking:"
+And
+
+Amex Numbers: 300000000000000..399999999999999
+
+And
+
+MC Numbers: 5178000000000000..5178999999999999
+
+And
+
+visa 4356000000000000..4356999999999999
+
+==============================================
+
+Notice I am only changing the word after the parent directory, change it to what you want and you will get a lot of stuff.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"parent directory " /appz/ -xxx -html -htm -php -shtml -opendivx -md5 -md5sums
+
+And
+
+"parent directory " DVDRip -xxx -html -htm -php -shtml -opendivx -md5 -md5sums
+
+And
+
+"parent directory "Xvid -xxx -html -htm -php -shtml -opendivx -md5 -md5sums
+
+And
+
+"parent directory " Gamez -xxx -html -htm -php -shtml -opendivx -md5 -md5sums
+
+And
+"parent directory " MP3 -xxx -html -htm -php -shtml -opendivx -md5 -md5sums
+
+And
+
+"parent directory " Name of Singer or album -xxx -html -htm -php -shtml -opendivx -md5 -md5sums
+
+Or
+
+?intitle:index.of? mp3
+
+You only need add the name of the song/artist/singer.
+Example: ?intitle:index.of? mp3 jackson
+==============================================
+
+You can change the string to watever you want, ex. microsoft to adobe, iso to zip etcÖ
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+inurl:microsoft filetype:iso
+
+==============================================
+
+This search reveals channel keys (passwords) on IRC as revealed from IRC chat logs.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"sets mode: +k"
+==============================================
+These are eggdrop config files. Avoiding a full-blown descussion about eggdrops and IRC bots, suffice it to say that this file contains usernames and passwords for IRC users.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+eggdrop filetype:user user
+
+==============================================
+
+This will search for backup files (*.bak) created by some editors or even by the administrator himself (before activating a new version).
+
+Every attacker knows that changing the extenstion of a file on a webserver can have ugly consequences.
+
+see results; just write in the (http://www.google.com/) search engine the code:
+
+filetype:bak inurl:"htaccess|passwd|shadow|htusers"
+
+==============================================
+
+Let's pretend you need a serial number for windows xp pro. The key is the 94FBR code.. it was included with many MS Office registration codes so this will help you dramatically reduce the amount of 'fake' porn sites that trick you.
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"Windows XP Professional" 94FBR
+
+By the way, don't forget to change "Window sXP Professional" to any product you need its serial number.
+
+==============================================
+
+Notice this excellent trick. You can search for any product whether hardware or software (between any prices price: for example, $250.. $350 ).
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+DVD player $250..350
+
+By the way, don't forget to change "DVD player" to any product you need to search for.
+
+==============================================
+
+At first glance, this search reveals even more examples of operating system users enabling the operating system default web server software. This is generally accepted to be a Bad Idea(TM) as mentioned in the previous example. However, the googleDork index on this particular category gets quite a boost from the fact that this particular screen should NEVER be seen by the general public. To quote the default index screen: "Any users attempting to connect to this site are currently receiving an 'Under Construction page'" THIS is not the 'Under Construction page.' I was only able to generate this screen while sitting at the console of the server. The fact that this screen is revealed to the general public may indicate a misconfiguration of a much more insidious nature...
+
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:"Welcome to Windows 2000 Internet Services"
+
+==============================================
+
+Suppose you want a certain song to a singer and you can not find it; by this trick you can find the song in the original directory of the original web site.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"index of/" "Top Gun" .mp3
+
+By the way, don't forget to change "Top Gun" to any song you need to search for.
+
+==============================================
+
+This is a fabulous link. This is the secret link of the web site "Google" to search for any "Crack" you need.
+
+Just write the following link in the address bar:
+
+http://www.googlecrack.com/WWW/
+
+==============================================
+
+By the way, for anyone who needs to have an account in the google mail for "One GigaByte", go to the following address bar. You will receive within "36 hours" the confirmation mail for your registration:
+
+http://www.googlemail.cjb.net/
+
+Or from:
+
+http://www.gmailforums.com/index.php
+
+By the way, you can open your Google mail from your browser through this link:
+
+http://toolbar.google.com/gmail-helper/
+
+==============================================
+
+Imagine that when you enter any web site, and you are surprised that when searching for any program in it you can not find it. By this fabulous trick, you can find the link for downloading any program in this site through any search engine.
+
+For example, suppose you want to search for the program "Norton" in the web site www.download.com ; when you go to www.google.com and write the following code, you will be surprised that the "Google" search engine searches only in the site www.download.com. To do this:
+
+Write in the address bar of the web browser this address: www.google.com.
+When opening the web site; write in the search engine this code: "norton site: www.download.com", and press the button search or "√»ÕÀ".
+As mentioned earlier: the code is easy, you just write in the place of the word "Norton"; any word you need to search for in the site followed in the code.
+The code again is....
+norton site:www.download.com
+
+By the way, you can practice this code at any search engine.
+
+Another trick is that you can force the search engine of the "Google" web site to search for a certain category like "Linux" topics. When you add any category after the Google link and write any thing in the search engine, you will surprised that the site searched for Linux only. For example, if you wrote the following code:
+http://www.google.com/linux
+As I mentioned in the code earlier, the site followed by the word "Linux". So the web site is forced for searching for the Linux topics only all over the internet.
+==============================================
+Imagine that you can connect to another computer remotely through the internet from the feature called "Remote Desktop Web Connection".
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:"Remote Desktop Web Connection"
+
+==============================================
+
+Through this query you can find every web page "Google" has crawled for a specific site.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+Site: Microsoft.com
+
+==============================================
+Through this query, you can see web servers with default pages can serve as juicy targets.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+Intitle:test.page.for.apache "it worked"
+
+==============================================
+
+No one can deny that the directory listings can be a source of great information.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+Intitle:index.of/admin
+
+==============================================
+
+We will use this query to locate additional servers, subtract common hostnames from the query.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+Site: Microsoft.com - Site:www.Microsoft.com
+
+==============================================
+
+From this query you can get huge user names and passwords from huge sites for free.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"Welcome to *" "Your password is *"
+
+==============================================
+
+From this query you can collect many numbers of ".PST" files, which contain all E-mail folders, addresses or anything else that Outlook 97, 2000, xp or 2003 collects.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+outlook filetype:pst
+
+==============================================
+
+allinurl:gmail.google.com
+
+"NetLife" Exclusive: Security hole found in "Gmail"
+An Israeli hacker reveals: A security hole in "Gmail" allows the compromise of users' email boxes ñ without the need of a password Nitzan Weidenfeld, Nana NetLife Magazine.
+
+So youíve got a "Gmail" mail account? Or maybe youíve just received an invitation? Well, we have some bad news for you: Your mail box is exposed. A major security hole in Google's mail service, allows full access to user accounts, without the need of a password.
+
+"Everything could get publicly exposed ñ your received mails might be readable, as well as all of your sent mail, and furthermore ñ anyone could send and receive mail under your name", thus reveals Nir Goldshlagger, an Israeli hacker, on an exclusive interview with "Nana NetLife" Magazine. "Even more alarming", he explains, "is the fact that the hack itself is quite simple. All that is needed of the malicious hacker, beside knowledge of the specific technique, is quite basic computer knowledge, the victim's username ñ and thatís it, he's inside".
+
+When approached, Google admitted to the security flaw. Google also assured us that this matter is being resolved, and that "the company will go to any length to protect its users".
+
+The flaw which was discovered by Goldshlagger and was tested many times by Nana's editorial board had shown an alarming success rate. In order not to further jeopardize mail boxes' owners, we will only disclose that the process is based upon a security breach in the service's identity authentication. It allows the hacker to "snatch" the victims cookie file (a file planted in the victim's computer used to identify him) using a seemingly innocent link (which directs to Gmail's site itself). Once stolen, this cookie file allows the hacker to identify himself as the victim, without the need of a password. Even if the victim does change his password afterwards, it will be to no avail. "The system authenticates the hacker as the victim, using the stolen cookie file. Thus no password is involved in the authentication process. The victim can change his password as many times as he pleases, and it still won't stop the hacker from using his box", explains Goldshlagger.
+
+Whether hackers have already used this method to compromise users' accounts is unclear at the moment.
+
+Matters are several times worse when it comes to a service such as "Gmail". Besides the obvious blow to Google's seemingly spotless image, we're looking here at a major threat to anyone who has turned to "Gmail" as his major email box. "Because "Gmail" offers a gigabyte of storage, several times bigger than most other web based mail services, users hardly delete any old correspondence", says Goldshlagger. "The result is a huge amount of mail accumulating in the users' boxes, which frequently include bank notices, passwords, private documents and other files the user wanted to backup. Who ever takes a hold of this data, could literally take over the victim's life and identity".
+
+"Ofer Elzam", a security expert for "Aladdin", who examined the security hole at "Nana's Netlife" request, explains: "This is a major threat, for the following reasons: First ñ the users have no way of protecting themselves. Second ñ it's quite easy to carry out, and third ñ it allows identity theft, which is nothing less than a serious danger to the victim".
+
+"On the bright side", he adds, "its a good thing that this hole was found now, before the service was officially announced and offered to millions of users world-wide. I reckon it's just a matter of time before an automatic tool is made, which would allow even the less computer-savvy people to exploit this hack. The damage, needless to say, could be huge"
+
+Is there a way, after all, to protect ourselves in the face of this danger? Elzam does not bear good news on the matter. "The only immediate solution that comes to mind is not using "Gmail" to store any messages or files that might be maliciously used. At least until Google attends to this problem".
+
+I received a weird email last week and I forwarded it to the bug report. Guess that was the cookie link I talked about. I put it here:
+
+
+
+
+
+
+
+From: accounts-noreply@google.com <accounts-noreply@google.com>
+To: xxxx@xxxx
+Date: Tue, 26 Oct 2004 08:22:16 -0700 (PDT)
+Subject: Google Password Assistance
+Reply | Reply to all | Forward | Print | Add sender to contacts list | Trash this message | Show original
+
+To initiate the process for resetting the password for your
+xxxxx@gmail.com Google Account, visit the link below
+
+http://www.google.com/accounts/xxxx----removed----xxxx
+
+Thank you for using Google.
+
+For questions or concerns regarding your account, please send mail to
+accounts-support@google.com.
+
+This is a post-only mailing. Replies to this message are not monitored
+or answered.
+
+
+And this is the explanation to what mentioned earlier:
+
+Last Monday reported that a vulnerability in "GSuite". A local user can obtain the target user's "GMail" password.
+
+It is reported that a local user with access to the target user's 'documents and settings\user name\Application Data\GSuite\' folder can view the 'settings.xml' file, which contains the target user's password in ASCII value encoded form. The password can be readily decoded.
+
+Impact: A local user can obtain a target user's GMail password.
+Solution: No solution was available at the time of this entry. The vendor plans to include a fix in the next release.
+
+==============================================
+
+
+
+
+
+The Cisco VPN 3000 concentrator is a remote access VPN. This web-based logon portal is for remote management of the Concentrator; by submitting a correct UID and PASS you will '0wn' their concentrator. I. E. is able to delete, copy, and configure whatever your heart desires. You would be in control of all of their VPN's that concentrator has control of.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:Cisco Systems, Inc. VPN 3000 Concentrator
+
+==============================================
+
+This query searches for open root directories of servers running online shopping carts. This shopping cart has an online store 'manager'; in /online-store/StoreManager where you can edit everything from product lists, databases, taxes and passwords.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:Index.Of /" stats merchant online-store cgi-local etc | cgi-bin
+
+==============================================
+
+Sometimes people make mistakes and post their Cisco configurations on "help sites" and don't edit info. So we might be able to find the enable passwords.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intext:"enable secret 5 $"
+
+
+Or, for more specifications
+
+intext:"enable secret 5 $" "Current configuration:"
+
+==============================================
+
+This query searches for the following in the servers:
+Network Statistics
+General Info
+Total disk space/memory
+Php environment!!!
+Current network connections!!!
+Running services...
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:"sysinfo * " intext:"Generated by Sysinfo *
+
+==============================================
+
+Imagine that when you enter any web site, and you are surprised that when searching for any program in it you can not find it. By this fabulous trick, you can find the link for downloading any program in this site through any search engine.
+
+For example, suppose you want to search for the program "norton" in the web site www.download.com ; when you go to www.google.com and write the following code, you will be surprised that the "google" search engine searches only in the site www.download.com. To do this:
+
+Write in the address bar of the web browser this address: www.google.com.
+When opening the web site; write in the search engine this code: "norton site:www.download.com", and press the button search or "√»ÕÀ".
+As mentioned earlier: the code is easy, just write in the place of the word "norton"; any word you need to search for in the site followed in the code.
+
+The code again is ....
+
+norton site:www.download.com
+
+By the way, you can practise this code at any seach engine.
+
+-------------------------------------------------------------------------------------
+
+Another trick is that you can force the search engine of the "google" web site to search for a certain category like "Linux" topics. when you add any category after the google link and write any thing in the search engine, you will surprised that the site searched for linux only. For example, if you wrote the following code:
+
+
+http://www.google.com/linux
+
+
+As we mentioned in the code earlier, the site followed by the word "linux". So the web site is forced for searching for the linux topics only all over the internet.
+_________________
+Best Regards,
+Mahmoud Hany,
+Country: Egypt,
+Title: IT instructor,
+Mobile: 0106354485
+	
+View user's profile Send private message 	 	
+blackwood
+Kiddie
+Kiddie
+
+
+Joined: 21 Sep 2004
+Posts: 22
+Location: Egypt
+	
+PostPosted: Thu Nov 18, 2004 1:14 pm    Post subject: Continue........... 	Reply with quoteBack to top
+Imagine that you can connect to another computer remotely through the internet from the feature called "Remote Desktop Web Connection".
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:"Remote Desktop Web Connection"
+
+==============================================
+
+Through this query you can find every web page "Google" has crawled for a specific site.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+Site: Microsoft.com
+
+==============================================
+Through this query, you can see web servers with default pages can serve as juicy targets.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+Intitle:test.page.for.apache "it worked"
+
+==============================================
+
+No one can deny that the directory listings can be a source of great information.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+Intitle:index.of/admin
+
+==============================================
+
+We will use this query to locate additional servers, subtract common hostnames from the query.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+Site: Microsoft.com - Site:www.Microsoft.com
+
+==============================================
+
+From this query you can get huge user names and passwords from huge sites for free.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+"Welcome to *" "Your password is *"
+
+==============================================
+
+From this query you can collect many numbers of ".PST" files, which contain all E-mail folders, addresses or anything else that Outlook 97, 2000, xp or 2003 collects.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+outlook filetype:pst
+
+==============================================
+
+allinurl:gmail.google.com
+
+"NetLife" Exclusive: Security hole found in "Gmail"
+An Israeli hacker reveals: A security hole in "Gmail" allows the compromise of users' email boxes ñ without the need of a password Nitzan Weidenfeld, Nana NetLife Magazine.
+
+So youíve got a "Gmail" mail account? Or maybe youíve just received an invitation? Well, we have some bad news for you: Your mail box is exposed. A major security hole in Google's mail service, allows full access to user accounts, without the need of a password.
+
+"Everything could get publicly exposed ñ your received mails might be readable, as well as all of your sent mail, and furthermore ñ anyone could send and receive mail under your name", thus reveals Nir Goldshlagger, an Israeli hacker, on an exclusive interview with "Nana NetLife" Magazine. "Even more alarming", he explains, "is the fact that the hack itself is quite simple. All that is needed of the malicious hacker, beside knowledge of the specific technique, is quite basic computer knowledge, the victim's username ñ and thatís it, he's inside".
+
+When approached, Google admitted to the security flaw. Google also assured us that this matter is being resolved, and that "the company will go to any length to protect its users".
+
+The flaw which was discovered by Goldshlagger and was tested many times by Nana's editorial board had shown an alarming success rate. In order not to further jeopardize mail boxes' owners, we will only disclose that the process is based upon a security breach in the service's identity authentication. It allows the hacker to "snatch" the victims cookie file (a file planted in the victim's computer used to identify him) using a seemingly innocent link (which directs to Gmail's site itself). Once stolen, this cookie file allows the hacker to identify himself as the victim, without the need of a password. Even if the victim does change his password afterwards, it will be to no avail. "The system authenticates the hacker as the victim, using the stolen cookie file. Thus no password is involved in the authentication process. The victim can change his password as many times as he pleases, and it still won't stop the hacker from using his box", explains Goldshlagger.
+
+Whether hackers have already used this method to compromise users' accounts is unclear at the moment.
+
+Matters are several times worse when it comes to a service such as "Gmail". Besides the obvious blow to Google's seemingly spotless image, we're looking here at a major threat to anyone who has turned to "Gmail" as his major email box. "Because "Gmail" offers a gigabyte of storage, several times bigger than most other web based mail services, users hardly delete any old correspondence", says Goldshlagger. "The result is a huge amount of mail accumulating in the users' boxes, which frequently include bank notices, passwords, private documents and other files the user wanted to backup. Who ever takes a hold of this data, could literally take over the victim's life and identity".
+
+"Ofer Elzam", a security expert for "Aladdin", who examined the security hole at "Nana's Netlife" request, explains: "This is a major threat, for the following reasons: First ñ the users have no way of protecting themselves. Second ñ it's quite easy to carry out, and third ñ it allows identity theft, which is nothing less than a serious danger to the victim".
+
+"On the bright side", he adds, "its a good thing that this hole was found now, before the service was officially announced and offered to millions of users world-wide. I reckon it's just a matter of time before an automatic tool is made, which would allow even the less computer-savvy people to exploit this hack. The damage, needless to say, could be huge"
+
+Is there a way, after all, to protect ourselves in the face of this danger? Elzam does not bear good news on the matter. "The only immediate solution that comes to mind is not using "Gmail" to store any messages or files that might be maliciously used. At least until Google attends to this problem".
+
+I received a weird email last week and I forwarded it to the bug report. Guess that was the cookie link I talked about. I put it here:
+
+
+
+
+
+
+
+From: accounts-noreply@google.com <accounts-noreply@google.com>
+To: xxxx@xxxx
+Date: Tue, 26 Oct 2004 08:22:16 -0700 (PDT)
+Subject: Google Password Assistance
+Reply | Reply to all | Forward | Print | Add sender to contacts list | Trash this message | Show original
+
+To initiate the process for resetting the password for your
+xxxxx@gmail.com Google Account, visit the link below
+
+http://www.google.com/accounts/xxxx----removed----xxxx
+
+Thank you for using Google.
+
+For questions or concerns regarding your account, please send mail to
+accounts-support@google.com.
+
+This is a post-only mailing. Replies to this message are not monitored
+or answered.
+
+
+And this is the explanation to what mentioned earlier:
+
+Last Monday reported that a vulnerability in "GSuite". A local user can obtain the target user's "GMail" password.
+
+It is reported that a local user with access to the target user's 'documents and settings\user name\Application Data\GSuite\' folder can view the 'settings.xml' file, which contains the target user's password in ASCII value encoded form. The password can be readily decoded.
+
+Impact: A local user can obtain a target user's GMail password.
+Solution: No solution was available at the time of this entry. The vendor plans to include a fix in the next release.
+
+==============================================
+
+
+
+
+
+The Cisco VPN 3000 concentrator is a remote access VPN. This web-based logon portal is for remote management of the Concentrator; by submitting a correct UID and PASS you will '0wn' their concentrator. I. E. is able to delete, copy, and configure whatever your heart desires. You would be in control of all of their VPN's that concentrator has control of.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:Cisco Systems, Inc. VPN 3000 Concentrator
+
+==============================================
+
+This query searches for open root directories of servers running online shopping carts. This shopping cart has an online store 'manager'; in /online-store/StoreManager where you can edit everything from product lists, databases, taxes and passwords.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:Index.Of /" stats merchant online-store cgi-local etc | cgi-bin
+
+==============================================
+
+Sometimes people make mistakes and post their Cisco configurations on "help sites" and don't edit info. So we might be able to find the enable passwords.
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intext:"enable secret 5 $"
+
+
+Or, for more specifications
+
+intext:"enable secret 5 $" "Current configuration:"
+
+==============================================
+
+This query searches for the following in the servers:
+Network Statistics
+General Info
+Total disk space/memory
+Php environment!!!
+Current network connections!!!
+Running services...
+
+To see results; just write in the (http://www.google.com/) search engine the code:
+
+intitle:"sysinfo * " intext:"Generated by Sysinfo *
+
+==============================================
+_________________
+Best Regards,
+Mahmoud Hany,
+Country: Egypt,
+Title: IT instructor,
+Mobile: 0106354485
+	
+View user's profile Send private message 	 	
+blackwood
+Kiddie
+Kiddie
+
+
+Joined: 21 Sep 2004
+Posts: 22
+Location: Egypt
+	
+PostPosted: Thu Nov 18, 2004 1:20 pm    Post subject: Continue........... 	Reply with quoteBack to top
+http://e.pku.edu.cn/enindex.htm [Searching for books on FTP and HTTP servers]
+
+intitle:index.of? pdf cisco [The Google Code]
+===================================================================================================
+http://en.fixdown.com/eall_1.htm
+
+http://www.fixdown.com/sort/n_144_1.htm
+
+http://www.fixdown.com/new/new04_1.htm
+
+http://kazus.ru/modules.php?name=EBooks
+
+http://max.hosting.ru/
+===================================================================================================
+http://safariexamples.informit.com/
+
+You'll FIND ALL THE FOLLOWING EBOOKS IN THE ABOVE SITE:
+
+0130084565 Mobile Location Services: The Definitive Guide
+0130091154 The Linux Development Platform
+0130094021 C++: A Dialog: Programming with the C++ Standard Library
+0130122475 Informix Handbook
+0130211192 XML Processing with Python (with CD-ROM)
+0130220280 Practical Programming in Tcl and Tk (3rd Edition)
+0130260363 Core Python Programming
+0130281875 Real World Linux Security: Intrusion Prevention, Detection and Recovery
+0130320722 Just Java 2 (5th Edition)
+0130324108 Learning to Program in C++ (CD-ROM)
+0130354732 Embedded Software Development with eCos
+0130385603 Practical Programming in Tcl and Tk (4th Edition)
+0130404462 XSLT and XPATH: A Guide to XML Transformations
+0130412066 TrellixWeb Web Site Creation Kit
+0130449113 Verilog HDL (2nd Edition)
+0130463612 DB2 Universal Database V8 for Linux, UNIX, and Windows Database Administration Certification Guide (5th Edition)
+0130463868 BEA WebLogic Server Administration Kit
+0130463884 Advanced DBA Certification Guide and Reference for DB2 UDB v8 for Linux, Unix and Windows
+0130463914 DB2 Universal Database v8 Application Development Certification Guide, Second Edition
+0130464163 Halting the Hacker: A Practical Guide to Computer Security (With CD-ROM)
+0130464562 Real World Linux Security (2nd Edition)
+0130470651 Analog Electronics with LabVIEW (With CD-ROM)
+0130474150 Image Processing with LabVIEW and IMAQ Vision
+0130476765 J2EE and JAX: Developing Web Applications and Web Services
+0130600814 HP-UX 11i System Administration Handbook and Toolkit
+0130618861 LabVIEW for Electric Circuits, Machines, Drives, and Laboratories
+0130621544 JumpStart Technology: Effective Use in the Solaris Operating Environment (With CD-ROM)
+0130623385 Web Services: A Java Developer's Guide Using e-Speak (With CD-ROM)
+0130650765 DB2 Universal Database for OS/390 Version 7.1 Certification Guide
+0130654140 Planning Smarter: Creating Blueprint Quality Software Specifications with CDROM
+013066538X UNIX Shells by Example (3rd Edition)
+0130674494 Integrated Project Management
+0130796662 Graphic Java 2, Volume 1: AWT (3rd Edition)
+0130796670 Graphic Java 2, Volume 2: Swing (3rd Edition)
+0130832928 Core Swing: Advanced Programming
+0130844667 Advanced Java Networking (2nd Edition)
+0130869856 Windows Graphics Programming: Win32 GDI and DirectDraw (With CD-ROM)
+0130882488 Core JSP
+0130894680 Core Java 2, Volume 1: Fundamentals (5th Edition)
+0130907634 SOAP: Cross Platform Web Services Development Using XML
+0130911119 J2EE Applications and BEA WebLogic Server
+0130927384 Core Java 2, Volume II: Advanced Features (5th Edition)
+0131002872 Thinking in Java (3rd Edition)
+0131003135 Applications Interface Programming Using Multiple Languages: A Windows Programmer's Guide
+0131007718 DB2 Universal Database for OS/390 v7.1 Application Certification Guide
+0131007726 DB2 SQL Procedural Language for Linux, Unix and Windows
+0131018833 HP-UX 11i Systems Administration Handbook and Toolkit, Second Edition
+0131401580 DB2 Version 8: The Official Guide
+0131401629 JavaScript by Example
+0131407457 OpenOffice.Org 1.0 Resource Kit
+0131493868 PANIC! UNIX System Crash Dump Analysis Handbook (Bk/CD-ROM)
+0137669658 Core Java 1.1 Volume II Advanced Features
+0201309726 Programming for the Javaô Virtual Machine
+0201485397 Java Design Patterns: A Tutorial
+0201485583 The Java Tutorial Continued: The Rest of the JDK
+0201615762 The Guru's Guide to Transact-SQL
+0201657589 LDAP Programming with Javaô
+0201675234 The Korn Shell: Linux and Unix Shell Programming Manual (3rd Edition)
+0201699567 Real-Time Design Patterns: Robust Scalable Architecture for Real-Time Systems
+0201700468 The Guru's Guide to SQL Server Stored Procedures, XML, and HTML (With CD-ROM)
+0201700476 The Guru's Guide to SQL Server Architecture and Internals
+0201702622 Director 8 and Lingo Authorized (3rd Edition)
+0201702657 Visual Basic Design Patterns VB 6.0 and VB.NET (With CD-ROm)
+0201702843 AdobeÆ AcrobatÆ 4.0 Classroom in a Book (2nd Edition)
+0201703092 The Practical SQL Handbook: Using SQL Variants (4th Edition)
+0201703661 SAP BW: A Step by Step Guide for BW 2.0
+0201703939 The Javaô Tutorial: A Short Course on the Basics (3rd Edition)
+0201704218 JavaServer Pages
+0201709201 Director 8 Demystified
+0201710153 AdobeÆ IllustratorÆ 9.0 Classroom in a Book
+0201710161 Adobe Photoshop 6.0 Classroom in a Book
+020171017X AdobeÆ GoLiveÆ 5.0 Classroom in a Book
+0201710188 Adobe Premiere 6.0: Classroom in a Book
+0201710412 The Java 3Dô API Specification (2nd Edition)
+0201716127 AdobeÆ PhotoshopÆ 6.0 Studio Techniques
+0201719568 Hack I.T.: Security Through Penetration Testing
+0201719622 Building Parsers With Java
+020172796X Photoshop 6 ImageReady 3 Hands-On Training (With CD-ROM)
+0201728281 A Programmer's Guide to Java Certification: A Comprehesive Primer, Second Edition
+0201729318 Macromedia Flash 5: Training from the Source
+0201729377 AdobeÆ AcrobatÆ 5.0 Classroom in a Book
+0201729563 Building Scalable and High-Performance Java Web Applications Using J2EE Technology
+020172989X AdobeÆ PhotoshopÆ 6.0 and IllustratorÆ 9.0 Advanced Classroom in a Book
+0201731355 Macromedia Dreamweaver 4: Training from the Source
+0201731363 Maxon Cinema 4D 7
+0201734028 Create Dynamic Web Pages Using PHP and MySQL
+0201741318 Adobe After Effects 5.0: Classroom in a Book
+0201741334 Dreamweaver 4 Hands-On Training
+0201741644 Macromedia Director 8.5 Shockwave Studio for 3D: Training from the Source
+0201750430 After Effects 5 for Macintosh and Windows: Visual QuickPro Guide
+0201750775 Guerrilla Oracle: The Succinct Windows Perspective
+0201752832 Microsoft SQL Server 2000: A Guide to Enhancements and New Features
+0201752840 Database Design for Mere Mortals: A Hands-On Guide to Relational Database Design, Second Edition
+0201752948 Oracle SQL and PL/SQL Handbook: A Guide for Data Administrators, Developers, and Business Analysts
+020175469X After Effects 5.0/5.5 Hands-On Training
+0201756242 Adobe Illustrator 10 Classroom in a Book
+0201756250 Adobe PageMaker 7.0 Classroom in a Book
+0201758210 Process Quality Assurance for UML-Based Projects
+0201758466 Macromedia Flash MX Advanced for Windows and Macintosh Visual QuickPro Guide
+0201768119 The Java Web Services Tutorial
+0201770040 XML and Java: Developing Web Applications, Second Edition
+0201770210 Macromedia Flash MX Game Design Demystified
+0201770229 Macromedia Flash MX ActionScripting: Advanced Training from the Source
+0201774259 Real World XML Web Services: For VB and VB .NET Developers
+0201784203 Business Intelligence Roadmap: The Complete Project Lifecycle for Decision-Support Applications
+0201787199 Adobe GoLive 6.0 Classroom in a Book (With CD-ROM)
+0201787202 Adobe InDesign 2.0 Classroom in a Book
+0201791684 The J2EE Tutorial
+0201794829 Macromedia Flash MX: Training from the Source
+0201795361 Macromedia MX eLearning: Advanced Training from the Source
+0201799286 Macromedia Fireworks MX: Training from the Source
+0201799294 Macromedia Dreamweaver MX: Training from the Source
+0201799405 Code Reading: The Open Source Perspective
+0201844532 C# Design Patterns: A Tutorial
+0321108949 Applied C++: Techniques for Building Better Software
+0321108957 Honeypots: Tracking Hackers
+0321112555 Real Web Project Management: Case Studies and Best Practices from the Trenches
+0321112768 Photoshop 7/ImageReady for the Web Hands-On Training
+0321115627 Adobe Photoshop 7.0 Classroom in a Book
+032111583X Final Cut Pro 3 for Macintosh (Visual QuickPro Guide)
+0321123808 Java Data Objects
+0321125169 ColdFusion MX Web Application Construction Kit, Fifth Edition
+0321133455 Troubleshooting Microsoft Technologies: The Administrator's Repair Manual
+0321150791 JavaServer Pages, Second Edition
+0321154991 XForms: XML Powered Web Forms
+0321158857 Adobe Premiere 6.5 Classroom in a Book
+0321159985 Moving to Linux: Kiss the Blue Screen of Death Goodbye!
+0321166809 Macromedia Dreamweaver MX Dynamic Applications: Advanced Training from the Source
+0321168828 .NET-A Complete Development Cycle
+0321180992 Mac OS X Hands-On Training
+0672309998 Alison Balter's Mastering Access 97 Development, Premier Edition, Second Edition (2nd Edition)
+0672312417 Visual C++ 6 Unleashed
+0672315068 F. Scott Barker's Microsoft Access 2000 Power Programming
+0672315149 XML Unleashed
+0672315335 Sams Teach Yourself Visual Basic 6 in 24 Hours
+0672316250 Sams Teach Yourself RoboHELP 2000 for HTML Help in 24 Hours (Teach Yourself -- Hours)
+0672317427 Microsoft Windows 2000 Professional Unleashed (Unleashed)
+0672317842 PHP and MySQL Web Development
+0672317958 Building Java Enterprise Systems with J2EE
+067231813X Professional Development with Visio 2000 (Other Sams)
+0672318873 Com+ Unleashed (Unleashed)
+0672318989 Sams Teach Yourself E-Commerce Programming with ASP in 21 Days (Teach Yourself -- 21 Days)
+0672319012 Sams Teach Yourself Dreamweaver UltraDev 4 in 21 Days
+067231973X Scot Hillier's COM+ Programming with Visual Basic
+0672319853 Red Hat Linux 7 Unleashed
+0672319977 Microsoft SQL Server 2000 Unleashed
+0672320541 Applied XML Solutions (Sams Professional Publishing)
+0672320606 Kylix Developers Guide (With CD-ROM)
+0672320754 Sams Teach Yourself to Create Web Pages in 24 Hours (3rd Edition)
+0672321157 Delphi 6 Developer's Guide (With CD-ROM)
+0672321335 Zope Web Application Construction Kit
+0672321777 Building Dynamic WAP Applications with MobileDev
+0672322064 FreeBSD Unleashed (With CD-ROM)
+0672322110 Enhydra XMLC Java Presentation Development
+0672322242 Sams Teach Yourself C++ in 24 Hours, Complete Starter Kit (3rd Edition)
+067232332X Peer-to-Peer Programming on GrooveÆ
+0672323478 JBoss Administration and Development
+0672323699 Tricks of the Windows Game Programming Gurus (2nd Edition)
+0672323842 Sams Teach Yourself J2EE in 21 Days (With CD-ROM)
+0672324172 BEA WebLogic Workshop Kick Start
+0672324245 Sams Teach Yourself FreeBSD in 24 Hours
+067232427X Borland JBuilder Developer's Guide
+0672324334 Sams Teach Yourself BEA WebLogic Server 7.0 in 21 Days
+0672324598 Maximum Security, Fourth Edition
+067232461X Sams Teach Yourself Game Programming in 24 Hours
+0672324679 Microsoft SQL Server 2000 Unleashed (2nd Edition)
+0672324725 Struts Kick Start
+0672324806 Borland C++Builder 6 Developer's Guide
+0672324873 BEA WebLogic Server 8.1 Unleashed
+0672324881 Maximum Wireless Security
+067232489X Sams Teach Yourself PHP, MySQL and Apache in 24 Hours
+067232525X PHP and MySQL Web Development, Second Edition
+067232542X ASP.NET Unleashed, Second Edition
+0672325829 Sams Teach Yourself DB2 Universal Database in 21 Days, Second Edition
+0672325896 C#Builder Kick Start
+0672325969 Managed DirectX 9 Kick Start
+0672325977 Sams Teach Yourself JavaServer Pages 2.0 in 24 Hours, Complete Starter Kit with Apache Tomcat
+0735709475 Inside AutoCADÆ 2000, Limited Edition
+0735709718 Cisco CCNA Exam #640-507 Certification Guide (With CD-ROM)
+0735709955 Cisco CCNP Support Exam Certification Guide (With CD-ROM)
+0735709971 Web Application Development with PHP 4.0 (with CD-ROM)
+073571052X C++ XML
+0735710619 Windows 2000 Power Toolkit
+0735710929 MCSE Training Guide (70-227): Installing, Configuring, and Administering Microsoft Internet Security and Acceleration (ISA) Server 2000
+0735710945 Inside 3ds max 4
+0735711054 Inside Flash (With CD-ROM)
+0735711291 MCAD/MCSD/MCSE Training Guide (70-229): SQL Server 2000 Database Design and Implementation
+0735711348 Inside LightWave 7 (With CD-ROM)
+0735711488 Inside AutoCAD 2002
+073571150X Building Accessible Websites (With CD-ROM)
+0735711577 MCSE Training Guide (70-244): Supporting and Maintaining a Windows NT Server 4 Network
+073571181X Inside Dreamweaver MX
+073571195X Java for the Web with Servlets, JSP, and EJB: A Developer's Guide to J2EE Solutions
+0735712352 Cocoon: Building XML Applications
+0735712530 Inside Maya 5
+0735712832 The Flash MX Project
+0735713278 Maya 4.5 Fundamentals
+0789713993 "Special Edition Using Microsoft Excel 97, Best Seller Edition" (2nd Edition)
+0789715538 Using Microsoft Windows 95 With Internet Explorer 4.0 (Special Edition Using...)
+0789716062 Special Edition Using Microsoft Access 2000
+0789718146 Special Edition Using Lotus Notes and Domino R5
+0789719045 Special Edition Using Microsoft PowerPoint 2000
+0789722534 Using Microsoft Project 2000 (Special Edition)
+0789722674 Special Edition Using HTML 4 (6th Edition)
+0789724448 Special Edition Using Macromedia Flash 5 (with CD-ROM)
+0789724472 Microsoft SQL Server 2000 Database Development From Scratch
+078972510X Special Edition Using Microsoft Access 2002
+0789725428 Upgrading and Repairing PCs (13th Edition)
+0789725576 Upgrading and Repairing Networks (3rd Edition)
+0789725673 Special Edition Using Enterprise JavaBeans (EJB) 2.0
+0789726270 Special Edition Using MicrosoftÆ Windows XP, Home Edition
+0789726289 Special Edition Using Windows XP Professional
+078972667X Special Edition Using Macromedia Director 8.5 (With CD-ROM)
+0789726769 C++ by Example
+0789727277 Special Edition Using Adobe GoLive 6
+0789727609 Special Edition Using Adobe Photoshop 7
+0789727625 Special Edition Using Macromedia Flash MX
+0789727633 Special Edition Using Microsoft Commerce Server 2002
+0789727730 MCSE Training Guide (70 270): Windows XP Professional (With CD-ROM)
+0789727900 Platinum Edition Using Microsoft Windows XP
+0789728001 Upgrading and Repairing Laptop Computers
+078972801X CISSP Training Guide
+0789728192 MCAD/MCSD Training Guide (70-306): Developing and Implementing Windows-Based Applications with Visual Basic.NET and Visual Studio.NET
+0789728206 MCAD/MCSD Training Guide (70-310): Developing XML Web Services and Server Components with Visual Basic .NET and the .NET Framework
+0789728214 Sun Certification Training Guide (310-080): Java 2 Enterprise Edition (J2EE) Web Component Developer
+0789728249 MCAD/MCSD Training Guide (70-320): Developing XML Web Services and Server Components with Visual C# .NET and the .NET Framework
+0789728303 Network+ Training Guide
+0789728362 Security+ Training Guide
+0789728613 Java 2 Programmer Exam Cram (310-035)
+0789728621 Java 2 Enterprise Edition (J2EE) Web Component Developer Exam Cram 2 (Exam Cram 310-080)
+078972863X MCSE Windows 2000 Network Infrastructure Exam Cram 2 (Exam Cram 70-216)
+0789728648 MCSE Windows 2000 Active Directory Services Design Exam Cram 2 (Exam Cram 70-219)
+0789728656 Network+ Exam Cram 2 (Exam Cram N10-002)
+0789728664 MCSA Managing a Windows 2000 Network Environment Exam Cram 2 (Exam Cram 70-218)
+0789728672 A+ Exam Cram 2 (Exam Cram 220-221, Exam Cram 220-222)
+0789728680 Solaris 8 System Administrator Exam Cram 2 (Exam CX-310-011 and CX-310-012)
+0789728699 Solaris 9 System Administrator Exam Cram 2 (Exam Cram 310-014, Exam Cram 310-015)
+0789728702 Solaris 9 Network Administration Exam Cram 2 (Exam Cram CX-310-044)
+0789728710 MCSE Windows 2000 Active Directory Services Infrastructure Exam Cram 2 (Exam 70-217)
+0789728729 MCSE Windows 2000 Professional Exam Cram 2 (Exam Cram 70-210)
+0789728737 MCSE Windows 2000 Server Exam Cram 2 (Exam Cram 70-215)
+0789728745 MCSE Windows XP Professional Exam Cram 2 (Exam Cram 70-270)
+0789728788 MCSE/MCSA Training Guide (70-216): Windows 2000 Network Infrastructure, Second Edition
+0789728818 MCSE/MCSA Training Guide, Second Edition (70-215): Windows 2000 Server
+0789728826 Special Edition Using Microsoft CRM
+0789728974 MCAD Developing XML Web Services and Server Components with Visual C# .NET and the .NET Framework Exam Cram 2 (Exam Cram 70-320)
+0789728982 MCAD Developing and Implementing Web Applications with Microsoft Visual Basic .NET and Microsoft Visual Studio .NET Exam Cram 2 (Exam Cram 70-305)
+0789728990 MCAD Developing and Implementing Windows-based Applications with Microsoft Visual Basic .NET and Microsoft Visual Studio .NET Exam Cram 2 (Exam Cram 70-306)
+0789729008 MCAD Developing XML Web Services and Server Components with Visual Basic .NET and the .NET Framework Exam Cram 2 (Exam Cram 70-310)
+0789729016 MCAD Developing and Implementing Web Applications with Microsoft Visual C# .NET and Microsoft Visual Studio .NET Exam Cram 2 (Exam Cram 70-315)
+0789729105 Security+ Exam Cram 2 (Exam Cram SYO-101)
+0789729466 MCSA/MCSE Managing and Maintaining a Windows Server 2003 Environment Exam Cram 2 (Exam Cram 70-290)
+0789729482 MCSA/MCSE 70-291 Training Guide: Implementing, Managing, and Maintaining a Windows Server 2003 Network Infrastructure
+0789729504 MCSE Planning, Implementing, and Maintaining a Microsoft Windows Server 2003 Active Directory Infrastructure Exam Cram 2 (Exam Cram 70-294)
+0789729512 MCSA/MCSE Implementing and Administering Security in a Windows 2000 Network Exam Cram 2 (Exam Cram 70-214)
+0789729520 Special Edition Using Microsoft Office Access 2003
+0789729539 Special Edition Using Microsoft Office Excel 2003
+0789729547 Special Edition Using Office Microsoft FrontPage 2003
+0789729555 Special Edition Using Microsoft Office 2003
+0789729563 Special Edition Using Microsoft Office Outlook 2003
+078972958X Special Edition Using Microsoft Word 11
+0789729725 Easy CDs & DVDs
+0789729741 Upgrading and Repairing PCs, 15th Edition
+0789729792 Novell's CNE Update to NetWare 6 Study Guide
+0789729911 CCNP BCMSN Exam Cram 2 (642-811), Second Edition
+078972992X Java 2 Developer Exam Cram 2 (Exam Cram CX-310-252A and CX-310-027)
+0789729970 MCDBA, MCSE, MCSD, MCAD Training Guide (70-229): SQL Server 2000 Database Design and Implementation
+0789730111 MCSA/MCSE Managing and Maintaining a Windows Server 2003 Environment Exam Cram 2 (Exam Cram 70-292)
+078973012X MCSE Planning and Maintaining a Windows Server 2003 Network Infrastructure Exam Cram 2 (Exam Cram 70-293)
+0789730170 Cisco BSCI Exam Cram 2 (Exam Cram 642-801)
+0789730200 CCNP BCRAN Exam Cram 2
+0789730219 CCNP CIT Exam Cram 2 (642-831)
+0789730235 CCSP CSPFA Exam Cram 2 (Exam Cram 642-521)
+0789730243 CCSP CSI Exam Cram 2 (9E0-131)
+0789730251 CCSP SECUR Exam Cram 2 (642-501)
+078973026X CCSP CSVPN Exam Cram 2 (Exam Cram 642-511)
+0789730367 Easy Microsoft Windows XP Home Edition, Second Edition
+0789730375 PMP Exam Cram 2
+156830370X AdobeÆ PageMakerÆ 6.5 Classroom in a Book
+1568304676 Adobe Premiere 5.0 Classroom in a Book
+157870085X Solaris 2.6 Administrator Certification Training Guide, Part 1
+1578702496 Solaris 7 Administrator Certification Training Guide: Part I and Part II
+1578702615 Solaris 8 Network Administrator Training Guide (With CD-ROM)
+1587050609 Developing Cisco IP Phone Services: A Cisco AVVID Solution
+1587130173 High Availability Network Fundamentals (With CD-ROM)
+1587200333 Cisco CID Exam Certification Guide
+1587200538 CCIE Routing and Switching Exam Certification Guide
+1587200554 Cisco CCNA Exam #640-607 Certification Guide (3rd Edition)
+1587200767 CCDA Exam Certification Guide (CCDA Self-Study, 640-861), Second Edition
+1587200775 CCNP BCMSN Exam Certification Guide (CCNP Self-Study, 642-811), Second Edition
+1587200783 CCNP BSCI Exam Certification Guide (CCNP Self-Study), Second Edition
+158720083X CCNA ICND Exam Certification Guide (CCNA Self-Study, 640-811, 640-801), Fourth Edition
+0735711291 MCAD/MCSD/MCSE Training Guide (70-229): SQL Server 2000 Database Design and Implementation
+0735711534 Fireworks MX Fundamentals
+===================================================================================================
+ftp://ftp.netz.ru/Books/
+
+ftp://130.133.1.100/doc/
+
+ftp://ftp2.trainingtools.com/
+
+ftp://195.161.102.62/pub/books/
+
+ftp://213.131.9.205/ftp/Polosko/
+
+ftp://202.96.64.158/pub/
+
+ftp://195.135.232.80/Books/
+===================================================================================================
+http://dlc.pconline.com.cn/list.jsp?dltypeid=6&kindid=1001 [MCSE exams]
+===================================================================================================
+http://www.vbforums.com/
+
+http://www.excelforum.com/
+===================================================================================================
+http://www.winxpfix.com/page15.htm
+
+http://www.tweakxp.com/
+
+http://www.tipsdr.com/
+
+http://www.greenhorntutor.com/
+
+http://www.blackviper.com/WinXP/service411.htm
+
+http://www.theexceladdict.com/
+
+http://www.exceltip.com/
+===================================================================================================
+http://219.139.240.53/itebook/OReilly%20-%20-Dinamic%20HTML%20-%20The%20Definitive%20Reference.2ed.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20ActionScript%20Cookbook%20-%202003.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Building%20Embedded%20Linux%20Systems.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20building%20secure%20servers%20with%20linux.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20C%20Sharp%20Language%20Pocket%20Reference.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Cisco%20Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Dreamweaver%20MX%202004.The%20Missing%20Manual.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Java%20Enterprise%20Best%20Practices.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Java%20Servlet%20Programming%202nd.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Kerberos%20-%20The%20Definitive%20Guide%20-%202003.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Learning%20XML%202ed.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Learning.Java.2ndEd.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20linux%20security%20cookbook.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Linux%20Server%20Hacks,%202003.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Linux%20Unwired.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20MySQL%20Pocket%20Reference.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Perl%20CD%20Bookshelf,%20Version%204.0%20(2004)%20[0596006225].chm
+
+http://219.139.240.53/itebook/OReilly%20-%20PHP%20Pocket%20Reference%20-%202nd%20Edition.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20practical%20unix%20&%20internet%20security,%203rd%20edition.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Programming%20Embedded%20Systems%20in%20C%20and%20C++.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Python%20Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Python%20Programming%20on%20Win32.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Python%20Standard%20Library.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Secure%20Coding.%20Principles%20and%20Practices.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Sendmail.3rd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20VBScript%20In%20Nutshell%20(CHM).chm
+
+http://219.139.240.53/itebook/OReilly%20-%20Visual%20Basic%20Shell%20Programming.chm
+
+http://219.139.240.53/itebook/OReilly%20-%20XML%20in%20a%20Nutshell%20(2nd%20Edition%20-%202002).chm
+
+http://219.139.240.53/itebook/OReilly%20BLAST.chm
+
+http://219.139.240.53/itebook/OReilly%20C%20Pocket%20Reference.chm
+
+http://219.139.240.53/itebook/OReilly%20Learning%20the%20KORN%20Shell.chm
+
+http://219.139.240.53/itebook/OReilly%20Mastering%20Oracle%20SQL.chm
+
+http://219.139.240.53/itebook/OReilly%20Practical%20UNIX%20and%20Internet%20Security.chm
+
+http://219.139.240.53/itebook/OReilly%20Tomcat%20-%20The%20Definitive%20Guide%20(2003)%20LiB.chm
+
+http://219.139.240.53/itebook/OReilly-Malicious%20Mobile%20Code%20Virus%20Protection%20for%20Windows.chm
+
+http://219.139.240.53/itebook/OReilly-Transact.Sql.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly-Using%20Samba(0-56592-449-5).chm
+
+http://219.139.240.53/itebook/OReilly.Access.Cookbook.Second.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.ADO.Dot.NET.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly.ADO.Dot.Net.In.A.Nutshell.chm
+
+http://219.139.240.53/itebook/OReilly.Amazon.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly.Apache.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly.AppleScript.The.Definitive.Guide.chm
+
+http://219.139.240.53/itebook/OReilly.ASP.Dot.NET.In.A.Nutshell.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Cascading.Style.Sheets.The.Definitive.Guide.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Cpp.In.A.Nutshell.chm
+
+http://219.139.240.53/itebook/OReilly.CSharp.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly.DNS.On.Windows.Server.2003.chm
+
+http://219.139.240.53/itebook/OReilly.Dot.NET.Framework.Essentials.3rd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Dot.NET.Windows.Forms.In.A.Nutshell.chm
+
+http://219.139.240.53/itebook/OReilly.eBay.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly.Eclipse.A.Java.Developers.Guide.chm
+
+http://219.139.240.53/itebook/OReilly.ESSENTIAL.CVS.chm
+
+http://219.139.240.53/itebook/OReilly.Excel.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly.Hardcore.Java.chm
+
+http://219.139.240.53/itebook/OReilly.HTML.And.XHTML.The.Definitive.Guide.5th.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.J2EE.Design.Patterns.chm
+
+http://219.139.240.53/itebook/OReilly.Java.Data.Objects.chm
+
+http://219.139.240.53/itebook/OReilly.Java.Database.Best.Practices.chm
+
+http://219.139.240.53/itebook/OReilly.Java.Examples.In.A.Nutshell.3rd.EditioneBook.chm
+
+http://219.139.240.53/itebook/OReilly.Java.Extreme.Programming.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly.Java.Performance.Tuning.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Java.Server.Pages.3rd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Java.Servlet.And.JSP.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly.JavaScript.Pocket.Reference.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.JavaServer.Faces.chm
+
+http://219.139.240.53/itebook/OReilly.Learning.Perl.Objects.References.And.Modules.chm
+
+http://219.139.240.53/itebook/OReilly.Learning.Python.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Learning.UML.chm
+
+http://219.139.240.53/itebook/OReilly.Learning.Unix.For.Mac.OS.X.Panther.chm
+
+http://219.139.240.53/itebook/OReilly.Learning.Visual.Basic.Dot.Net.chm
+
+http://219.139.240.53/itebook/OReilly.Learning.XML.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Learning.XSLT.chm
+
+http://219.139.240.53/itebook/OReilly.Linux.Security.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly.Linux.Server.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly.Mac.OS.X.In.A.Nutshell.chm
+
+http://219.139.240.53/itebook/OReilly.Mac.OS.X.The.Missing.Manual.Panther.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Mac.OS.X.Unwired.chm
+
+http://219.139.240.53/itebook/OReilly.Managing.The.Windows.2000.Registry.chm
+
+http://219.139.240.53/itebook/OReilly.Mastering.Oracle.SQL.chm
+
+http://219.139.240.53/itebook/OReilly.Mastering.Perl.For.Bioinformatics.chm
+
+http://219.139.240.53/itebook/OReilly.Mastering.Regular.Expressions.2nd.Edition.eBook-FOS.chm
+
+http://219.139.240.53/itebook/OReilly.Mastering.Visual.Studio.Dot.NET.chm
+
+http://219.139.240.53/itebook/OReilly.Network.Security.Assessment.chm
+
+http://219.139.240.53/itebook/OReilly.Network.Security.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly.Oracle.Essentials.Oracle.Database.10g.3rd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Oracle.PL.SQL.Language.Pocket.Reference.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Oracle.Regular.Expressions.Pocket.Reference.chm
+
+http://219.139.240.53/itebook/OReilly.PC.Hardware.In.A.Nutshell.3rd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Perl.6.Essentials.chm
+
+http://219.139.240.53/itebook/OReilly.Perl.Cookbook.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Perl.Template.Toolkit.chm
+
+http://219.139.240.53/itebook/OReilly.Postfix.The.Definitive.Guide.chm
+
+http://219.139.240.53/itebook/OReilly.Practical.Mod.Perl.chm
+
+http://219.139.240.53/itebook/OReilly.Practical.RDF.chm
+
+http://219.139.240.53/itebook/OReilly.Programming.ASP.Dot.NET.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Programming.Dot.NET.Security.chm
+
+http://219.139.240.53/itebook/OReilly.Programming.Dot.NET.Windows.Applications.chm
+
+http://219.139.240.53/itebook/OReilly.PROGRAMMING.VISUAL.BASIC.DOT.NET.2ND.EDITION.chm
+
+http://219.139.240.53/itebook/OReilly.ProgrammingColdFusionMX.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.Python.In.A.Nutshell.2003-CHM.chm
+
+http://219.139.240.53/itebook/OReilly.RADIUS.chm
+
+http://219.139.240.53/itebook/OReilly.Regular.Expression.Pocket.Reference.chm
+
+http://219.139.240.53/itebook/OReilly.RELAX.NG.chm
+
+http://219.139.240.53/itebook/OReilly.Secure.Programming.Cookbook.For.C.And.Cpp.chm
+
+http://219.139.240.53/itebook/OReilly.Security.Warrior.chm
+
+http://219.139.240.53/itebook/OReilly.Sendmail.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly.Spidering.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly.SQL.Tuning.chm
+
+http://219.139.240.53/itebook/OReilly.Squid.The.Definitive.Guide.chm
+
+http://219.139.240.53/itebook/OReilly.Transact.Sql.Cookbook.chm
+
+http://219.139.240.53/itebook/OReilly.VBScript.In.A.Nutshell.2nd.Edition.chm
+
+http://219.139.240.53/itebook/OReilly.WebLogic.The.Definitive.Guide.chm
+
+http://219.139.240.53/itebook/OReilly.Windows.Server.2003.In.A.Nutshell.chm
+
+http://219.139.240.53/itebook/OReilly.Windows.Server.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly.Windows.XP.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly.Windows.XP.Pro.The.Missing.Manual.chm
+
+http://219.139.240.53/itebook/OReilly.Windows.XP.Unwired.chm
+
+http://219.139.240.53/itebook/OReilly.Wireless.Hacks.chm
+
+http://219.139.240.53/itebook/OReilly_Mastering%20Visual%20Studio%20.NE.chm
+===================================================================================================
+http://www.almaktba.com/index.php?cid=139
+
+http://list4test.com/members_tako/tech/lughat_alC.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/cpp.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/pro_assemply_part2_arabic.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/PROG_barmajah_gharaziah.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/PROG_win32api.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/PROGE_JavaScriptCourse_E.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/PROGE_Visual_E.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/pro_abo_program.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/pro_directx7_albdayahwalnhaya.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/PROG_learnphp_easy.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/PROGE_Java_E.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/PROGE_laern_perl_E.zip [Arabic Book]
+
+http://list4test.com/members_tako/tech/tech_vb_liljami.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/pro_membersarea.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/tjzeat_alkors_alsalb.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/com_mashakel_badaltashghil.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/COM_ASBAB_BOTALJEHAZ.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/COME_harddisk2_E.zip [Arabic Book]
+
+http://list4test.com/members_tako/tech/tech_tajmiwasyna_alhasebalali.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/com_cp_coomands.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/com_talam_al_cp.zip [Arabic Book]
+
+http://list4test.com/members_tako/tech/Dos_arabic.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/com_ekhtsarat_keyboard.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/com_aarabic_linuxguide.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/COME_dos_E.zip [Arabic Book]
+
+http://list4test.com/members_tako/tech/tech_winxparabic.zip [Arabic Book]
+
+http://list4test.com/tako/tec/com/com_hyallawhatul.zip [Arabic Book]
+
+http://list4test.com/tako/tec/ent/ent_ftpprotocol.zip [Arabic Book]
+
+http://list4test.com/tako/tec/ent/ENT_learn_navogator.zip [Arabic Book]
+
+http://list4test.com/tako/tec/ent/ent_html.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/harakt.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/MIX_altejarah_alelktronyah_mata.zip [Arabic Book]
+
+http://list4test.com/members_tako/tech/tech_SQL.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/nokat_tahawl_fitarikh.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/MIX_Hack_n_secur_AR.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/MIXE_330javatips_E.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/MIXE_MAIL_HIST_E.zip [Arabic Book]
+
+http://list4test.com/members_tako/tech/tech_AffMasters.zip [Arabic Book]
+
+http://list4test.com/members_tako/tech/actionSCRIPT.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/MIX_alaselah_alaksar_shoyuan_linux.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/MIX_muzakerat_alshabkat.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/MIXE_hack_reges_E.zip [Arabic Book]
+
+http://list4test.com/tako/tec/mix/mix_albramejakhabisah.zip [Arabic Book]
+
+http://list4test.com/tako/tec/pro/PROGE_VBNET4ASPNET_E.zip [Arabic Book]
+
+http://lazurus.shacknet.nu:8000/O%27Reilly%20Refrence%20Library/index.htm
+
+http://download.xdrive.com/s/370921074aDfMe4tSJVCHKSZxjd1&partner=plus
+
+http://lazurus.shacknet.nu:8000/motbible.txt
+
+http://lazurus.shacknet.nu:8000/utt/index.htm
+
+http://lazurus.shacknet.nu:8000/itb/index.htm
+
+http://lazurus.shacknet.nu:8000/docs.rinet.ru/index.html
+
+http://www.ccxx.net/books/Cisco%20Press%20CCNA%20ICND%202004+.pdf
+
+http://lazurus.shacknet.nu:8000/HUGECELL_TXT.htm
+
+http://lazurus.shacknet.nu:8000/SIDs.txt
+
+http://rahmat.zikri.com/books.html
+
+http://bxteam.org/knjige.php
+
+http://www.adobeevangelists.com/
+
+http://kyberia.sk/kbase/
+
+http://www.net130.com/ccna/
+
+www.dhruvaraj.com
+
+http://www.yaxoo.com/Books/
+
+http://books.pdox.net/
+
+http://www.msfirewall.org/
+
+http://tinyurl.com/352gd
+
+http://files3.webfile.ru/get/2099591332/John.Wiley.and.Sons.AutoCAD.2005.rar
+
+http://www.we-r-here.com/cad/
+
+http://www.geocities.com/wwwwarezbborg/E-Books/
+
+http://books.pdox.net/Computers/
+
+http://www.ebookcn.net/
+
+http://www.click-now.net/ebooks.htm
+
+http://www.free-ebooks.net/
+
+http://www.nerd-star.com/books/
+
+http://books.malonus.com/ebooks/computer_science/Apache/
+
+http://books.malonus.com/ebooks/computer_science/OpenBSD/
+
+http://books.malonus.com/ebooks/computer_science/Programing/
+
+http://books.malonus.com/ebooks/computer_science/cisco/
+
+http://books.malonus.com/ebooks/computer_science/crypthography/
+
+http://books.malonus.com/ebooks/computer_science/dvd/
+
+http://books.malonus.com/ebooks/computer_science/hacking_cracking/
+
+http://books.malonus.com/ebooks/computer_science/linux/
+
+http://books.malonus.com/ebooks/computer_science/networking/
+
+http://books.malonus.com/ebooks/computer_science/security/
+
+http://books.malonus.com/ebooks/computer_science/xml/
+
+http://www.lubsecurity.org/
+
+http://hellnet.perverz.hu/ebookz/
+
+http://www.ex0dus.org/downloads/EBooks/
+
+http://s87305863.onlinehome.us/download.html
+
+http://202.41.85.117/~praveen/downloads/
+
+http://hellnet.perverz.hu/ebookz/Adobe/
+
+http://bookshelf.sleepnet.net/files/
+
+http://argos.observatorio.unal.edu.co/virtual/books/
+
+http://www.nr.cc.va.us/eaton/new-horizons/pages/guidedtour.htm
+
+http://www.itcertifer.com/
+
+http://www.itcertifer.com/download/default.asp
+
+http://web.1asphost.com/justdreamsite/books.html
+
+http://www.mcu.cz/atm/index.php
+
+http://books.dimka.ee/
+
+http://www.qodbc.com.au/downloads.htm
+
+http://voodoo.mcomm.ru/Archive/Books/
+
+http://hongphuc.homeip.net/home/upload/index.php?direction=0&order=&directory=Ebook
+
+http://market.renderosity.com/index.ez?Form.sess_id=19272991&Form.sess_key=1095526980
+
+http://www.planet-source-code.com/
+
+http://dragon.rulez.cz/e-buk/
+
+http://www.learnvisualstudio.net/
+
+http://www.ya-q8.com/download.php?action=list&cat_id=11&s=
+
+http://sudhirmangla.i6networks.com/dotnet/books.htm
+
+http://www.narada.nl/
+
+http://lazurus.shacknet.nu:8000/itb/index.htm
+
+http://lazurus.shacknet.nu:8000/utt/index.htm
+
+http://lazurus.shacknet.nu:8000/O%27Reilly%20Refrence%20Library/index.htm
+
+http://lazurus.shacknet.nu:8000/docs.rinet.ru/index.html
+
+http://babis.homeip.net/computers/
+
+http://www.gylka.com.ua/books/John%20Wiley%20&%20Sons%20-%20Adobe%20Premiere%20Pro%20Bible.rar
+
+http://www.shteker.com/sasa/World_Atlas.pdf
+
+http://www.davehilla.com/ebooks/
+
+http://66.194.238.238/~avaxhome/download/5/New.Riders.3ds.MAX.6.Fundamentals.eBook-LiB.chm
+
+http://jztele.com/~coldice/book/net/
+
+http://www.et.utt.ro/public/Docs/
+
+http://cisco.cumt.edu.cn/ciscodown/en_CCNA1_v31.zip
+
+http://cisco.cumt.edu.cn/ciscodown/en_CCNA2_v31.zip
+
+http://cisco.cumt.edu.cn/ciscodown/en_CCNA3_v31.zip
+
+http://cisco.cumt.edu.cn/ciscodown/en_CCNA4_v31.zip
+
+http://s6.yousendit.com/d.aspx?id=C6244ED072216A978C0322776D4311DC
+
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_gs.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_01.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_02.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_03.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_04.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_05.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_06.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_07.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_08.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_09.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_10.pdf
+http://www.adobe.com/education/pdf/cib/encore/encore_cib_11.pdf
+
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_gs.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_01.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_02.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_03.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_04.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_05.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_06.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_07.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_08.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_09.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_10.pdf
+http://www.adobe.com/education/pdf/cib/ae6/ae6_cib_11.pdf
+
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_gs.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_tour.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_01.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_02.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_03.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_04.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_05.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_06.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_07.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_08.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_09.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_10.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_11.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_12.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_13.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_14.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_15.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_16.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_17.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_18.pdf
+http://www.adobe.com/education/pdf/cib/ill_cs/ill_cs_cib_19.pdf
+
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_gs.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_dv.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_tour.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_01.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_02.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_03.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_04.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_05.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_06.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_07.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_08.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_09.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_10.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_11.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_12.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_13.pdf
+http://www.adobe.com/education/pdf/cib/prempro/prempro_cib_14.pdf
+
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_gs.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_tour.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_01.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_02.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_03.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_04.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_05.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_06.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_07.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_08.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_09.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_10.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_11.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_12.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_13.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_14.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_15.pdf
+http://www.adobe.com/education/pdf/cib/idcs/id_cs_cib_vc.pdf
+
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_gs.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_01.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_02.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_03.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_04.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_05.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_06.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_07.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_08.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_09.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_10.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_11.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_12.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_13.pdf
+http://www.adobe.com/education/pdf/cib/glcs/gl_cs_cib_vc.pdf
+
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_gs.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_01.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_02.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_03w.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_03m.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_04.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_05.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_06.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_07.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_08.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_09.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_10.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_11.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_12.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_13.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_14.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_15.pdf
+http://www.adobe.com/education/pdf/cib/acro6/acro6_cib_16.pdf
+
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cibgs.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib_tour.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib01.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib02.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib03.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib04.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib05.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib06.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib07.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib08.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib09.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib10.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib11.pdf
+http://www.adobe.com/education/pdf/cib/pre65_cib/pre65_cib12.pdf
+
+http://download.adobe.com/pub/adobe/magic/audition/win/2.02/audition_user_guide.pdf
+===================================================================================================
+Total Training for Photoshop 7.0 - (9 CDs)
+1- Download "BitTorrent" from (http://bitconjurer.org/BitTorrent/download.html).
+Install CD 310.4 Mb
+http://66.90.75.92/suprnova//torrents/1733/Total%20Training%20for%20Photoshop%207%20-%20Install%20CD(6).torrent
+CD1 667.7 Mb
+http://66.90.75.92/suprnova//torrents/1750/Total%20Training%20for%20Photoshop%207%20-%20CD%201%20of%208(2).torrent
+CD2 673.2 Mb
+http://66.90.75.92/suprnova//torrents/1750/Total%20Training%20for%20Photoshop%207%20-%20CD%202%20of%208(3).torrent
+CD3 725.7 Mb
+http://66.90.75.92/suprnova//torrents/1739/Total%20Training%20for%20Photoshop%207%20-%20CD%203%20of%208(2).torrent
+CD4 686.4 Mb
+http://66.90.75.92/suprnova//torrents/1706/Total%20Training%20for%20Photoshop%207%20-%20CD%204%20of%208(2).torrent
+CD5 295.1 Mb
+http://66.90.75.92/suprnova//torrents/1703/Total%20Training%20for%20Photoshop%207%20-%20CD%205%20of%208(3).torrent
+CD6 711.1 Mb
+http://66.90.75.92/suprnova//torrents/1697/Total%20Training%20for%20Photoshop%207%20-%20CD%206%20of%208(2).torrent
+CD7 706.2 Mb
+http://66.90.75.92/suprnova//torrents/1697/Total%20Training%20For%20Photoshop%207%20-%20CD%207%20of%208(3).torrent
+CD8 319.5 Mb
+http://66.90.75.92/suprnova//torrents/1697/Total%20Training%20for%20Photoshop%207%20-%20CD%208%20of%208(2).torrent
+
+===================================================================================================
+
+New Updates:
+------------------
+
+http://www.ebook.singcat.com/Ebook/
+
+http://rtfm.rdslink.ro/Books/
+
+http://books.baubas.net/
+
+ftp://195.222.134.71/Bookz/Other/
+
+http://bad.zazone.net/flash%20tutors/
+
+http://harry.studentenweb.org/hackerinfo/
+
+http://61.129.70.16/~shengjun/
+
+http://alexander.pmf.ukim.edu.mk/predmeti/is/chitanje/
+
+http://www.srdc.metu.edu.tr/~yavuz/Ceng490/resources/
+
+http://examen.tazmanonline.nl/mcse/
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/ [all about Cisco]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/CCIE/ [CCIE books]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/CCIP/ [CCIP books]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/CCSP/ [CCSP books]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/CISCO%20IP%20TELEPHONY/ [CISCO IP telephony]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/MPLS/ [MPLS books]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/QOS/ [QOS books]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/Simulation/ [many simulations]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/TELEPHONY%20SPECIALIZATION/ [telephony specializations books]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/bccran/ [BCCRAN books]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/ccnpdoc/ [CCNP books]
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/password_recovery/ [password recovery books]
+
+http://ftp.cdut.edu.cn/pub3/uncate_doc/Network/
+
+http://www.viacom.com.br/~silici0/
+
+http://ftp.cdut.edu.cn/pub3/uncate_doc/ [alllllllllllllllllllllllllllllllllll Oreilly books]
+
+http://ftp.cdut.edu.cn/pub3/uncate_doc/Programming/ [programming books]
+
+http://ftp.cdut.edu.cn/pub3/uncate_doc/Misc/The_Code-Linux/ [The code Linux]
+
+http://ftp.cdut.edu.cn/ [download many operating systems]
+
+http://jztele.com/~coldice/book/
+
+http://www.hackemate.com.ar/textos/Nsa/
+
+http://newsroom.cisco.com/dlls/tln/exec_team/powell/pdf/
+
+http://www.uni-konstanz.de/RZ/wlan/ipsec/software/
+
+https://rsvj.ath.cx/documentation/Networking/Cisco/
+
+https://rsvj.ath.cx/documentation/Networking/courses/Animated/
+
+https://rsvj.ath.cx/documentation/
+
+http://www.hackemate.com.ar/textos/Nsa/
+
+http://hysteria.sk/redtime/books/
+
+http://ftp.ux0.de/pub/network/Cisco/multicast/tutorial/
+
+http://mankmok.sdf-eu.org/dotNet/
+
+http://ftp3.cdut.edu.cn/
+
+http://sparcs.kaist.ac.kr/~force/archive/Books/
+
+http://www.davehilla.com/ebooks/
+
+http://0xf47a.afraid.org/docs-n-ebooks/
+
+http://people.arcada.fi/~sinnc/
+
+http://www.u-n-f.com/books/archive/
+
+http://www.greenandwhite.net/~kkip/Coursework%20Project/
+
+http://docs.cafe-philo.net/
+
+http://www.csie.ntu.edu.tw/~piaip/docs/
+
+http://www.blacksheepnetworks.com/security [Hacking and Security]
+
+http://www.blacksheepnetworks.com/security/hack/ [Hacking and Security]
+
+http://marathon.csee.usf.edu/~kwb/nsf-ufe/ [Hacking and Security]
+
+http://www.net.ohio-state.edu/security/talks/199x/199x_state-of-the-hack/ [Hacking and Security]
+
+http://www.linux-france.org/prj/inetdoc/telechargement/ [Hacking and Security]
+
+http://www.telematik.informatik.uni-karlsruhe.de/lehre/seminare/LinuxSem/downloads/netfilter/?C=S;O=A [Hacking and Security]
+
+http://www.microalcarria.com/descargas/documentos/Wireless/ [Hacking and Security]
+
+http://www.ifi.uio.no/doc/ [Hacking and Security]
+
+http://www.anakata.hack.se/files/ [Hacking and Security]
+
+http://www.planetpdf.com/mainpage.asp?webpageid=2365 [Hacking and Security]
+
+http://opensees.berkeley.edu/OpenSees/?C=M;O=A [Hacking and Security]
+
+http://linux.ucla.edu/~dap24/libdbi/ [Hacking and Security]
+
+http://www.moreilly.com/CISSP/ [Hacking and Security]
+
+http://www.networkcommand.com/docs/ [Hacking and Security]
+
+http://fringe.davesource.com/Fringe/Hacking/ [Hacking and Security]
+
+http://adsl.cutw.net/ [Hacking and Security]
+
+http://bokeoa.com/~core/files/ [Hacking and Security]
+
+http://jztele.com/~coldice/ [Hacking and Security]
+
+http://jinshi.homelinux.net/Docs/computer/ [Hacking and Security]
+
+http://www.c-lab.de/java/ [Java Books]
+
+http://books.pdox.net/Computers/ [Java Books]
+
+http://xarch.tu-graz.ac.at/autocad/stdlib/ [Java Books]
+
+http://haje.kaist.ac.kr/~oedalpha/tips/ [Java Books]
+
+http://hspf.com/pub/java/ [Java Books]
+
+http://acm2.ustc.edu.cn/~roger/files/ [Java Books]
+
+http://mediamaniac.dyndns.org/Downloads/BUECHER/ [Java Books]
+
+http://www.cs.wustl.edu/~schmidt/PDF/ [Java Books]
+
+http://www.mirrors.wiretapped.net/security/cryptography/apps/ssh/Java/sshtools/ [Java Books]
+
+http://www.arts-festival.com/ [Java Books]
+
+http://www.ibiblio.org/pub/Linux/docs/HOWTO/translations/it/pdf/ [Java Books]
+
+http://books.malonus.com/ebooks/computer_science/security/
+
+http://ftp.interlegis.gov.br/pub/interlegis/SIT/cisco/DOCUMENTS_BGP_SECURITY_SWICTHCONF_IOS_REFERENCE_DESIGN/
+
+http://lorien.s2s.msu.ru/pub/docs/
+
+http://www.elo.utfsm.cl/~respaldo/
+
+http://www.thelawlers.com/essays.html
+
+http://www.wz2k.co.uk/pages/downloads/downloads-index.php?uploadCat=Photoshop%20Video#top [Photoshop Videos]
+
+http://www.psdland.com:8080/zwaed/kotb/index.php [excellent arabic tutorial site]
+
+http://www.sudanixpro.net/bookz/Super.XP.Tweaking.Guide.rar
+
+http://www.eit.ihk-edu.dk/0803/Aoopi/MS%20press%20-%20Microsoft.NET%20Remoting.pdf
+
+http://www.mansoorbinsaeed.com/docs/how%20to/
+=============================================================================
+
+Magazines:
+--------------
+
+PC Magazine - Nov-02-04
+http://imgs.zinio.com/magazines/200062/64746857.zno
+
+Popular Science - Oct-04;
+http://imgs.zinio.com/magazines/330042/62028585.zno
+
+Electronic Gaming Monthly - Dec-04; http://imgs.zinio.com/magazines/6505574/66699811.zno
+
+Personal Computer World - Nov-04; http://imgs.zinio.com/magazines/52054981/63547757.zno
+
+Computer Gaming World - Nov-04; http://imgs.zinio.com/magazines/6502696/62416507.zno
+
+Better Software - Oct-04; http://images.zinio.com/magazines/11151027/63927244.zno
+
+Internet Works - Nov-04; http://imgs.zinio.com/magazines/35712781/63770444.zno
+
+CIO Insight - Oct-04;
+http://images.zinio.com/magazines/6949638/64255793.zno
+
+Digital Camera World - Nov-04; http://imgs.zinio.com/magazines/6459963/66764346.zno
+
+Talk Middle East - Oct-04; http://imgs.zinio.com/magazines/36182943/63971469.zno
+
+Laptop Magazine - Sep-04; http://imgs.zinio.com/magazines/35710241/59722114.zno
+
+Microsoft Windows XP - Dec-04; http://imgs.zinio.com/magazines/2110680/64681181.zno
+
+PC Answers - Nov-04;
+http://imgs.zinio.com/magazines/6459960/64627777.zno
+
+CosmoGIRL - Oct-04;
+http://imgs.zinio.com/magazines/48965789/61844047.zno
+
+Seventeen - Nov-04;
+http://imgs.zinio.com/magazines/6391719/63936877.zno
+
+Mobile PC - Nov-04;
+http://imgs.zinio.com/magazines/45243363/66706030.zno
+
+PC Magazine (UK) - Sep-04; http://imgs.zinio.com/magazines/1828690/63600271.zno
+
+Dynamic Graphics - Oct-Nov-04; http://images.zinio.com/magazines/17164010/63016953.zno
+
+http://images.zinio.com/download/1.6.0.815b-EN/ZinioReader_2202894149.exe [Zinio Reader]
+=============================================================================
+
+The Broken Videos:
+-------------------------
+
+Code:
+http://www.thebroken.org
+
+
+Video Release 0003: return of thebroken
+We kick it off with Windows password hash extraction and cracking. Also learn the basics of modding the Xbox, PS2 and GameCube. Plus, Ramziís back with a mission: impossible self-destructing laptop. And we sit down with Kevin Mitnick to find out what life is like for a hacker in prison.
+Encoded: DivX Runtime: 31:33 Size: 152MB
+Download Mirrors:
+Code:
+http://homepage.mac.com/kevinrose/thebroken3.avi
+http://www.thebroken.org/episodes/03/thebroken_3.avi
+
+
+Video Release 0002: Hacking with Ramzi "door buster"
+If you've ever watched an episode of "Cops", then you've probably seen a door battering ram in use. Now Ramzi shows you how to build a door buster for your own home use. For only $20 in parts from your local Home Depot, the door's history.
+Encoded: DivX Runtime: 05:39 Size: 27.3MB
+Download Mirrors:
+Code:
+http://homepage.mac.com/kevinrose/thebroken2.avi
+http://www.thebroken.org/episodes/01.5/thebroken_15.avi
+
+
+Video Release 0001: Enter thebroken
+Our first episode jumps right into wardriving and wap hacking. Also learn the basics of social engineering with "free pizza 4 life". And of course, a hacker tip with Ramzi.
+Encoded: DivX Runtime: 17:00 Size: 82.1MB
+Download Mirrors:
+Code:
+http://homepage.mac.com/kevinrose/thebroken1.avi
+http://www.thebroken.org/episodes/01/thebroken_1.avi
+=============================================================================
+
+Free trick for downloading the famous [Syngress Books] more than "80" books:
+---------------------------------------------------------------------------------------------
+
+1- Go to the web site [www.syngress.com].
+2- Click on [create an account] at upper right hand side of screen to register for free.
+3- Enter any garbage information in all fields in the registration.
+4- Once you are registered, enter the following URL: [http://www.syngress.com/solutions/XXXX/download.cfm], and replace the "XXXX" with the code of the book. For example, to download "70-290 Study Guide", use the URL: "http://www.syngress.com/solutions/274_MCSE_70290/download.cfm".
+
+5- Codes of books:
+
+CODE BOOK NAME
+175_Net_mobile_web - .NET Mobile Web Developer's Guide
+230_lgo_ris2 - 10 Cool Lego Mindstorm Robotics Invention System 2 Projects
+229_lgo_ubp - 10 Cool LEGO Mindstorm Ultimate Builder Projects
+227_lgo_dsdk - 10 Cool Lego Mindstorms Dark Side Robots
+24670214 - 70-214 Study Guide
+274_MCSE_70290 - 70-290 Study Guide
+254_MCSE_70291 - 70-291 Study Guide
+271_MCSE_70292 - 70-292 Study Guide
+255_MCSE_70293 - 70-293 Study Guide
+272_MCSE_70296 - 70-296 Study Guide
+110_Avd_App - Administering Cisco QoS in IP Networks
+130_mig_asp - ASP Configuration Handbook
+166_asp_dev - ASP.NET Web Developers Guide
+253_BD_Cisco_Intrntwkg - Best Damn Cisco Internetworking Book Period
+252_BD_Firewall - Best Damn Firewall Book Period
+145_biztalk - BizTalk Server 2000
+160_bluetooth - Bluetooth Application Developer's Guide
+169_cisco_wlan - Building a Cisco Wireless LAN
+71_Conf_CNSAD_Win2000 - Building Cisco Networks for Windows 2000
+93_sbcran - Building Cisco Remote Access Networks
+250_DMZs - Building DMZs for Enterprise Networks
+174_lego_robo - Building Robots with Lego Mindstorms
+140_san_broc - Building SANs with Brocade Fabric Switches
+223_C_Java - C# for Java Programmers
+167_C# - C#.NET Web Developer's Guide
+ccna_superpack - CCNA Super Pack
+192_chk_pt - Check Point Next Generation Security Administration
+259_chkpt - Check Point NG VPN-1/FireWall-1
+109_ciscoip - Cisco AVVID & IP Telephony Design and Implementation
+267_cssp_ids - Cisco Security Professional's Guide to Secure Intrusion Detection Systems
+235_pix - Cisco Security Specialist's Guide to PIX Firewalls
+189_xp - Configuring and Troubleshooting Windows XP Professional
+94_avvid - Configuring Cisco Avvid
+70_voip - Configuring Cisco Voice Over IP
+228_VOIP2E - Configuring Cisco Voice Over IP, Second Edition
+111_ctrx - Configuring Citrix Metaframe for Windows 2000 Terminal Services
+220_CitrixXP - Configuring Citrix MetaFrame XP for Windows Including Feature Release 1
+128_mc_em - Configuring Exchange 2000 Server
+208_ipv6 - Configuring IPv6 for Cisco IOS
+132_isa - Configuring ISA Server 2000
+245_symntc - Configuring Symantec AntiVirus Enterprise Edition
+68_Win2000_Sec - Configuring Windows 2000 Server Security
+147_w2K_noad - Configuring Windows 2000 Without Active Directory
+165_cell - Consumer's Guide to Cell Phones & Wireless Service Plans
+73_odba - DBA's Guide to Databases on Linux
+92_Win2000_Deploy - Deploying Windows 2000 with Support Tools
+152_wan_luc - Designing a Wireless Network
+114_SQL_Dna - Designing SQL Server 2000 Databases for .net Enterprise Servers
+206_XML_Web - Developing .NET Web Services with XML
+210_Java_APIs_dev - Developing Web Services with Java APIs for XML Using WSDP
+226_InfoWar - Dr. Tom Shinder's ISA Server and Beyond
+119_email - E-mail Virus Protection Handbook
+193_hck_cf5 - Hack Proofing ColdFusion
+138_hack_lnx - Hack Proofing Linux
+158_hack_sun - Hack Proofing Sun Solaris 8
+181_hackproofW2K - Hack Proofing Windows 2000 Server
+224_hack_xml - Hack Proofing XML
+134_hack_ecomm - Hack Proofing Your E-commerce Site
+221_hck_identity - Hack Proofing Your Identity in the Information Age
+194_Hck_net2e - Hack Proofing Your Network, Second Edition
+95_hack - Hack Proofing Your Network: Internet Tradecraft
+137_hack_app - Hack Proofing Your Web Applications
+182_Hack_wireless - Hack Proofing Your Wireless Network
+287_HRD_HCK - Hardware Hacking
+69_ipad - IP Addressing and Subnetting: Including IPv6
+190_Journey_Internet - Journey to the Center of the Internet
+243_lgo_mstr - LEGO Mindstorms Masterpieces
+240_lgo_tools - Lego Software Power Tools
+76_Mng_ActDir_Win2000_Ser - Managing Active Directory for Windows 2000 Server
+112_ipsec - Managing Cisco Network Security
+218_CiscoSec2e - Managing Cisco Network Security Second Edition
+75_Mng_Win2000_NetServs - Managing Windows 2000 Network Services
+115_mc_sec - Mission Critical! Internet Security
+113_MC2k - Mission Critical! Windows 2000 Server Administration
+234_nokia - Nokia Network Security Solutions Handbook
+139_palm_dev - Palm OS Web Application Developers Guide
+177_lego_JAVA - Programming Lego Mindstorms with Java
+183_Ruby - Ruby Developer's Guide
+225_Cybercrime - Scene of The Cybercrime: Computer Forensics Handbook
+286_NSA_IAM - Security Assessment Case Studies for Implementing the NSA IAM
+236_secplus - Security+ Study Guide
+219_sniffer - Sniffer Pro Network Optimization & Troubleshooting Handbook
+244_snort - Snort 2.0 Intrusion Detection
+232_SpecialOps - SPECIAL OPS: Host and Network Security
+241_sscp - SSCP Study Guide
+249_STL_NTW - Stealing the Network: How to Own the Box
+91_Win2000_TCPIP - Troubleshooting Windows 2000 TCP/IP
+153_vb_net - VB.NET Developer's Guide
+159_wg_wi - Webmaster's Guide to the Wireless Internet
+180_AD_2e - Windows 2000 Active Directory Second Edition
+77_Win2000_Conf_Wiz - Windows 2000 Configuration Wizards
+74_Sysad - Windows 2000 Server System Administration Handbook
+155_xml_NET - XML .NET Developer's Guide
+
+6- For quick downloading, use my account and password:
+User Name: [mhany@virgitech.com]
+Password: [poiuytrewq]
+
+=============================================================================
+
+Huge excellent arabic links for books and tutorials:
+-------------------------------------------------------------
+
+** «·»—„ÃÂ **
+
+«”„ «·ﬂ «» : «·»—„ÃÂ «·ﬂ«∆‰ÌÂ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/gen/oop.htm
+_________________
+Best Regards,
+Mahmoud Hany,
+Country: Egypt,
+Title: IT instructor,
+Mobile: 0106354485
+	
+View user's profile Send private message 	 	
+blackwood
+Kiddie
+Kiddie
+
+
+Joined: 21 Sep 2004
+Posts: 22
+Location: Egypt
+	
+PostPosted: Thu Nov 18, 2004 1:21 pm    Post subject: Continue........... 	Reply with quoteBack to top
+Huge excellent arabic links for books and tutorials:
+-------------------------------------------------------------
+
+** «·»—„ÃÂ **
+
+«”„ «·ﬂ «» : «·»—„ÃÂ «·ﬂ«∆‰ÌÂ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/gen/oop.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» »—„Ã… «·”Ì
+·€… «·»—„ÃÂ: C /«·”Ì
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/c/c1.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—„Ã… «·”Ì - œ—Ê”
+·€… «·»—„ÃÂ: C /«·”Ì
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/c/c2lessons.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—„Ã… «·√”„»·Ì
+·€… «·»—„ÃÂ: «·√”„»·Ì/ Assembley
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/assm/assm1.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—„Ã… «·√”„»·Ì
+·€… «·»—„ÃÂ: «·√”„»·Ì/ Assembley
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programmin...assmlessons.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „Ê”Ê⁄… «·»—„Ã… »«· ++C
+·€… «·»—„ÃÂ: «·”Ì »·” »·”/ ++C
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/cplus/cplus.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ÿ—Ìﬁ «·»—„Ã… ›Ì ++C
+·€… «·»—„ÃÂ: «·”Ì »·” »·”/ ++C
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/cplus/cplus1.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄·„ «·»—„Ã… »Ê«”ÿ… MFC
+·€… «·»—„ÃÂ: MFC Ê«·++C
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/cplus/mfc.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·›ÃÊ«· »Ì”ﬂ œÊ  ‰ 
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ . ‰  VB.NET
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vbnet/vbnet.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ≈Õ —«› «·›ÃÊ«· »Ì”ﬂ œÊ  ‰ 
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ . ‰  VB.NET
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vbnet/masvbnet.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : Ê«ÃÂ… »—„Ã… «· ÿ»Ìﬁ« (API)
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ 6 VB
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vb6/api.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—„Ã… «·Ê”«∆ÿ «·„ ⁄œœ… »≈” Œœ«„ DirectX
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ 6 VB
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vb6/dx.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ›ÃÊ«· »Ì”ﬂ ··Ã„Ì⁄
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ 6 VB
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vb6/oop.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «· ⁄«„· „⁄ „”Ã· «·‰Ÿ«„
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ 6 VB
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vb6/reg.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» —«∆⁄ ··›ÃÊ«· »Ì”ﬂ
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ 6 VB
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vb6/good.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄·„ «·›ÃÊ«· »Ì”ﬂ 6 ··„» œ∆‰
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ 6 VB
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vb6/beg.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬁÊ«⁄œ «·»Ì«‰«  ›Ì «·›ÃÊ«· »Ì”ﬂ 6
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ 6 VB
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vb6/vbdatabase.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «· ⁄«„· „⁄ Ê”«∆ÿ «· Œ“Ì‰
+·€… «·»—„ÃÂ: «·›ÃÊ«· »Ì”ﬂ 6 VB
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programming/vb6/save.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «· ⁄«„· „⁄ ﬁÊ«⁄œ «·»Ì«‰« 
+·€… «·»—„ÃÂ: SQL
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programming/database/sql.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·√”«”Ì«  ›Ì «· ⁄«„· „⁄ ﬁÊ«⁄œ «·»Ì«‰« 
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programmin...se/database.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „«Ìﬂ—Ê”Ê›Ê  ¬ﬂ”Ì”
+·€… «·»—„ÃÂ: Microsoft Access
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/programmin...base/Access.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄·Ì„ ¬ﬂ”Ì” 1
+·€… «·»—„ÃÂ: Microsoft Access
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programmin...ase/Access1.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄·Ì„ ¬ﬂ”Ì” 2
+·€… «·»—„ÃÂ: Microsoft Access
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/programmin...ase/Access2.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+
+** »—„Ã… «·„Ê«ﬁ⁄ **
+
+«”„ «·ﬂ «» : œÊ—… ›Ì «·≈ ‘  Ì ≈„ ≈·
+·€… «·»—„ÃÂ: HTML
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/html/html.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·„—Ã⁄ «·ﬂ«„· ›Ì «· HTML
+·€… «·»—„ÃÂ: HTML
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/html/htmlfull.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄·„ «· PHP »”ÂÊ·…
+·€… «·»—„ÃÂ: PHP
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/php/easyphp.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄·„ «· PHP
+·€… «·»—„ÃÂ: PHP
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/php/learnphp.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄—› ⁄·Ï «· PHP Ê«· MYSQL
+·€… «·»—„ÃÂ: PHP - MYSQL
+«·‹‹  ‹‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/php/learnphp&mysql.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—„Ã… «·‹ ASP
+·€… «·»—„ÃÂ: ASP
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/asp/asp.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—„Ã… «·„Ê«ﬁ⁄ »«·›·«‘
+·€… «·»—„ÃÂ: FLASH Action Script
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/Act...tion_Script.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „ﬁœ„Â ‰ÕÊ Ã«›« ”ﬂ—» 
+·€… «·»—„ÃÂ: Java Script
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/jav...ojavascript.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» „ „Ì“ ›Ì  ⁄·Ì„ «·Ã«›« ”ﬂ—» 
+·€… «·»—„ÃÂ: Java Script
+«·‹‹‹‹ Õ„Ì‹·: http://www.cb4a.com/book/netpro/jav.../javascript.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—„Ã… «·≈” «Ì·
+·€… «·»—„ÃÂ: CSS
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/CSS/css.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» „ „Ì“ ›Ì  ⁄·Ì„ «·Ã«›« ”ﬂ—» 
+·€… «·»—„ÃÂ: Java Script
+«·‹‹‹‹ Õ„Ì‹·: http://www.cb4a.com/book/netpro/jav.../javascript.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—„Ã… «·≈” «Ì·
+·€… «·»—„ÃÂ: CSS
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/netpro/CSS/css.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+
+** «·Ã—«›Ìﬂ” Ê«· ’„Ì„ **
+
+«”„ «·ﬂ «» : «·›Ê Ê‘Ê» ··„Õ —›Ì‰ 1
+·€… «·»—„ÃÂ: PhotoShop
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/photoshop/photo1.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·›Ê Ê‘Ê» ··„Õ —›Ì‰ 2
+·€… «·»—„ÃÂ: PhotoShop
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/photoshop/photo2.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·›Ê Ê‘Ê» ··„» œ«Ì‰
+·€… «·»—„ÃÂ: PhotoShop
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/photos...nphotoshope.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» —«∆⁄ ›Ì «·›—Ê‰  »ÌÃ
+·€… «·»—„ÃÂ: FrontPage
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/frontpage/frontpage.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·›—Ê‰  »ÌÃ
+·€… «·»—„ÃÂ: FrontPage
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/frontp...ntpagesmall.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : vBulletin  —ﬂÌ» „‰ œÏ
+·€… «·»—„ÃÂ: vBulletin
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/vb/vb1.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : PHP —ﬂÌ» „‰ œÏ Ê —ﬂÌ› ”Ì—›— ··
+·€… «·»—„ÃÂ: vBulletin & PHP
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/vb/vbphp.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·›·«‘ ≈„ ≈ﬂ” MX
+·€… «·»—„ÃÂ: Flash MX
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/flashmx/flashmx.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·‘«„· ›Ì ›·«‘
+·€… «·»—„ÃÂ: Flash MX
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/flash/flashmx.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·«Ê Êﬂ«œ
+·€… «·»—„ÃÂ: AutoCad 2000
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/autocad/autocad.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ «·”Ì »‰·
+·€… «·»—„ÃÂ: Cpanel
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/cpanel/cpanel.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂÌ› ÌﬂÊ‰ „Êﬁ⁄ﬂ ‰«ÃÕ«
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/des/gen/howto.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ’„Ì„ «·√·⁄«» »»—‰«„Ã game maker
+·€… «·»—„ÃÂ: Games
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/des/games/gamemaker.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+
+** √‰Ÿ„… «· ‘€Ì· **
+
+«”„ «·ﬂ «» : ‰Ÿ«„ «· ‘€ÌÌ· Dos
+·€… «·»—„ÃÂ: MS - DOS
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/os/dos/dos.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄·Ì„ ‰Ÿ«„ «· ‘€ÌÌ· Dos
+·€… «·»—„ÃÂ: MS - DOS
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/os/dos/learndos.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „Ê”Ê⁄… ÊÌ‰œÊ“ 2000
+·€… «·»—„ÃÂ: Windows 2000
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/os/windows2000/windows2000.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „—‘œﬂ «·√„Ì‰ ·≈ﬂ ‘«› «·ÊÌ‰œÊ“ XP
+·€… «·»—„ÃÂ: Windows XP
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/os/winxp/winxp.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „‘«ﬂ· »œ∆ «· ‘€ÌÌ· ÊﬂÌ›Ì…  ŒÿÌÂ«
+·€… «·»—„ÃÂ: Windows
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/os/problems/problems.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ ⁄„· ›Ê—„«  Ê ‰’Ì» XP
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/os/gen/format.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : œ·Ì· ‰Ÿ«„ «· ‘€ÌÌ· ·Ì‰ﬂ”
+·€… «·»—„ÃÂ: Linux
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/os/linux/liunx.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·√”∆·… «·„ ﬂ——… ›Ì ·Ì‰ﬂ”
+·€… «·»—„ÃÂ: Linux
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/os/linux/faq.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·—œÂ«  ·Ì‰ﬂ” 9
+·€… «·»—„ÃÂ: Linux
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/os/linux/redhat.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+
+** «·Â«—œÊÌ— Ê⁄ «œ «·ﬂ„»ÌÊ — **
+
+«”„ «·ﬂ «» : ﬂ «» „ „Ì“ ›Ì ⁄ «œ «·Õ«”»
+·€… «·»—„ÃÂ: ⁄ «œ «·Õ«”»
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/hardware/hardwaregood.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  ⁄·„ »œÊ‰  ⁄ﬁÌœ  Ã„Ì⁄ Ê’Ì«‰… «·Õ«”Ê»
+·€… «·»—„ÃÂ: ⁄ «œ «·Õ«”»
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/hardware/learneasy.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ ﬂ«„· ··ﬁ—’ «·’·»
+·€… «·»—„ÃÂ: ⁄ «œ «·Õ«”»
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/hardware/harddisk.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ ··⁄ «œ Ê«·„⁄«·Ã«  ⁄·Ï ‘ﬂ· HTML
+·€… «·»—„ÃÂ: ⁄ «œ «·Õ«”»
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/hardware/waha.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+
+** «·‘»ﬂ«  **
+
+«”„ «·ﬂ «» : „”«— «·‘»ﬂ« 
+·€… «·»—„ÃÂ: CISCO
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/networks/cisco.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·‘»ﬂ« 
+·€… «·»—„ÃÂ: MCSE
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/networks/mcse.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „–ﬂ—Â ›Ì «·‘»ﬂ« 
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/networks/note.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·»Ê—»ÊÌ‰  ÃœÌœ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/powerpoint.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ≈⁄œ«œ «·»ÌÊ”
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/gen/bios.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·«‰ —‰ 
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/internet.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ≈Œ ’«—«  ·ÊÕ… «·„›« ÌÕ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹‹ Õ„Ì‹·: http://www.cb4a.com/book/gen/keyboard.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „—‘œﬂ «·√„Ì‰ ·· ⁄—› ⁄·Ï «·–«ﬂ—…
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/gen/memory.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·Õ„«Ì… ›Ì ⁄«·„ «·≈‰ —‰ 
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/secinternet.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „’ÿ·Õ«  «·Õ«”» «·√·Ì
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/mos.htm
+_________________
+Best Regards,
+Mahmoud Hany,
+Country: Egypt,
+Title: IT instructor,
+Mobile: 0106354485
+	
+View user's profile Send private message 	 	
+blackwood
+Kiddie
+Kiddie
+
+
+Joined: 21 Sep 2004
+Posts: 22
+Location: Egypt
+	
+PostPosted: Thu Nov 18, 2004 1:23 pm    Post subject: Continue........... 	Reply with quoteBack to top
+«”„ «·ﬂ «» : ﬂ «» ·‘—Õ »—‰«„Ã «·‰Ì—Ê
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://www.cb4a.com/book/gen/nero.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «· ’«—Õ ›Ì (nix.*)
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/permission.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·„Ê”Ê⁄… «·Õ«”Ê»ÌÂ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/mosoa.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·„Ê”Ê⁄… «·Õ«”Ê»ÌÂ 2
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/mosoa2.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—Ê ÊﬂÊ·«  «·‹‹FTP
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/ftp.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã «·ÊÊ—œ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/word.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã «·≈ﬂ”·
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/excel.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» :  Õ·Ì· «·»Ì«‰«  «·≈Õ’«∆Ì… »«·≈ﬂ”·
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/excel_2.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «· Ã«—… «·≈·ﬂ —Ê‰Ì…( ÃœÌœ)
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/Ecommerce.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã „÷«œ «·›«Ì—Ê” ‰Ê— Ê‰
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.cb4a.com/book/gen/norton.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «»… „Ê”Ê⁄… «·„‰ œÌ«  · ⁄·„ ﬂÌ›Ì…  —ﬂÌ» „‰ œÌ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.alsayra.com/download/paf...ion=file&id=290
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã Black Ice
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://members.lycos.co.uk/absbateam14/blackice.html
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã 3D-Effect
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://members.lycos.co.uk/geosemsem07/effect_3d.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã eBook Workshop ·’‰⁄ ﬂ » «·ﬂ —Ê‰Ì…
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.alsayra.com/download/paf...ion=file&id=293
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ« ·»—‰«„Ã «· Õ„Ì· Mass Downloader 2.5
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.alsayra.com/download/paf...ion=file&id=294
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã MPEG Eitor
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://members.lycos.co.uk/geosemsem07/mpeg.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã Safe House
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://members.fortunecity.com/geosemsem/index.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã ReGet Deluxe · ”—Ì⁄ «· Õ„Ì· Ê«·»ÕÀ ⁄‰ «·»—«„Ã+ ÕÊÌ· ‘«‘… »œ¡ xp ≈·Ï 2000 —Ê⁄…+ »—‰«„Ã ÌŒ»—ﬂ »«·»—‰«„Ã «·„‰«”» ·√„ œ«œ „⁄Ì‰.
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.powow.com/flashnet/
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : „‘«ﬂ· «·ﬂ„»ÌÊ — ÊÕ·Ê·Â«+·„‰⁄ «·„Ê«ﬁ⁄ «·***Ì… anti-porn ‘—Õ »«·’Ê—+ﬂÌ›  Ê’· Â«—œÌ‰ »ÃÂ«“ﬂ ‘—Õ »«·’Ê—+‘—Õ »«·’Ê— ·⁄„·«ﬁ «·÷€ÿ_Wainrar+‘—Õ ·›Õ’  Ê«›ﬁ directx „⁄ ﬂ—  «·‘«‘…
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.powow.com/nasoriiii5/
+«· Õ„Ì· «Ì÷«: http://www.geocities.com/nasoriiii5/
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂÌ›Ì… ⁄„· ’Ì«‰… ·ÃÂ«“ﬂ „‰ «·ÊÌ‰œÊ“+‘—Õ ·ÊÕ… «· Õﬂ„ «·Œ«’… »ÊÌ‰œÊ“
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.geocities.com/nasoriiii/
+«· Õ„Ì· «Ì÷«: http://www.powow.com/nasoriiii4
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» ·‘—Õ «· ”ÃÌ· »·«ÌﬂÊ” +  —ﬂÌ» „‰ œÌ«  iB
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://www.powow.com/nasoriiii/index.html
+«· Õ„Ì· «Ì÷«: http://www.geocities.com/nasoriiii4/
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» ·‘—Õ »—‰«„ÃSystem Mechanic v4
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://www.members.lycos.co.uk/absba4ever/Index.html
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·‘—Õ »«·’Ê— ·»—‰«„Ã «· ⁄—Ì» ˝ResHacker+‘—Õ »—‰«„Ã EO Video · ÕÊÌ· ’Ì€ «·√›·«„ Ê‰”ŒÂ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.geocities.com/nasoriiii6/
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã Throttle · ”—Ì⁄ Ã„Ì⁄ «‰Ê«⁄ «·« ’«·+- ‘—Õ ﬂ«„· ·»—‰«„Ã «·Õ„«ÌÂ Norton AntiVirus 2003
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ Õ„Ì‹·: http://www.geocities.com/nasoriiii6/
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «·‘—Õ «·ﬂ«„· ·»—‰«„Ã «·‰Ì—Ê( «·«’œ«— «·Œ«„”)+‘—Õ »—‰«„Ã win fax+‘—Õ Total Recorder «·—«∆⁄ · ”ÃÌ· «·√’Ê« 
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://www.geocities.com/nasoriiii8/
+«· Õ„Ì· «Ì÷«: http://www.powow.com/nasoriiii8
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã «·ﬂ·ﬂ ÊﬂÌ›Ì… «· ⁄«„· „⁄Â+ﬂÌ›  ‰”Œ ⁄·Ï √ﬁ—«’ 800 - 900 „Ì€« --øøø
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.geocities.com/nasoriiii10/
+«· Ã„Ì· «Ì÷«: http://www.powow.com/nasoriiii9/
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ÿ—Ìﬁ… ‰”Œ ﬁ—’ „Õ„Ì »Ê«”ÿ… À·«À »—«„Ã+‘—Õ „»”ÿ ·‹ ZoneAlarmPro4 ¬Œ— «’œ«—
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.geocities.com/nasoriiii11/
+«· Õ„Ì· «Ì÷«: http://www.powow.com/nasoriiii11
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã Easy GIF Animator 2_11 »«· ›’Ì·+‘—Õ Ê ⁄—Ì» GifArt's Button Maker 1_1·’‰⁄ ”„« 
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://members.lycos.co.uk/mon99/
+«Ê http://members.lycos.co.uk/aly999/index.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã The 911 CD Builder v2_0 «·—«∆⁄+‘—Õ »«·’Ê— ··»—‰«„Ã «·‘ÂÌ— ›Ï «·»ÕÀ copernic
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://members.lycos.co.uk/mon99/
+«Ê http://members.lycos.co.uk/aly999/index.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ „›’· ﬂÌ›  Õ„· «Ì »—‰«„Ã „‰ „ﬂ »… «·„‘«€» »GetRight+‘—Õ »—‰«„Ã webexe ·⁄„· ﬂ » ≈·ﬂ —Ê‰Ì… —«∆⁄…
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://members.lycos.co.uk/mon99/
+«Ê http://members.lycos.co.uk/aly999/index.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ‘—Õ »—‰«„Ã leap ftp 2_7_2 ·‰ﬁ· «·„·›«  »«·’Ê—
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://members.lycos.co.uk/mon99/
+«Ê http://members.lycos.co.uk/aly999/index.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : «”«”Ì«  «·Â«—œÊÌ—
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://members.lycos.co.uk/mon99/
+«Ê http://members.lycos.co.uk/aly999/index.htm
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» ÌÕ ÊÌ ⁄·Ì «·‘—Õ »—‰«„Ã AntiPorn ·„‰⁄ «·„Ê«ﬁ⁄ «·***Ì…
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.shohra.com/members/abosalma/antiporn.rar
+«Ê http://www.shohra.com/members/abosalma1/antiporn.rar
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» ÌÕ ÊÌ ⁄·Ì «·‘—Õ »—‰«„Ã Get Data Back ·«” ⁄«œ… «·„·›« 
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹‹ ‹Õ„Ì‹·: http://www.shohra.com/members/abosalma/getdata.rar
+«Ê http://www.shohra.com/members/abosalma1/getdata.rar
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» ÌÕ ÊÌ ⁄·Ì «·‘—Õ »—‰«„Ã Xing MPEG Encoder ·÷€ÿ „·›«  «·›ÌœÌÊ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹ ‹‹‹Õ„Ì‹·: http://www.shohra.com/members/abosalma/xingencod.rar
+«Ê http://www.shohra.com/members/abosalma1/xingencod.rar
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ﬂ «» ÌÕ ÊÌ ⁄·Ì «·‘—Õ »—‰«„Ã Golden Eye ·„—«ﬁ»… «·ÃÂ«“ «À‰«¡ €Ì«»ﬂ
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.shohra.com/members/abosalma1/goldeneye.rar
+«Ê http://www.shohra.com/members/abosalma2/goldeneye.rar
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : »—‰«„Ã ’«‰⁄ —„Ê“ „‰ œÌ«  «·„‘«€»
+·€… «·»—„ÃÂ: ⁄«„
+«·‹‹ ‹‹Õ„Ì‹·: http://www.shohra.com/members/abosalma1/absbacode.rar
+«Ê http://www.shohra.com/members/abosalma2/absbacode.rar
+
+‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
+
+«”„ «·ﬂ «» : ÕÊ«·Ì 13 ﬂ «» · ⁄·Ì„ «·›Ê Ê‘Ê» Êœ—Ê” ⁄‰Â
+·€… «·»—„ÃÂ: ›Ê Ê‘Ê»
+«·‹ ‹‹‹Õ„Ì‹·: http://www.psdland.com:8080/zwaed/kotb/index.php
+======================================================
+
+Huge Rare Programs:
+--------------------------
+
+»—«„Ã «·”«» ”›‰
+«·‘—Õ Ê«· Õ„Ì·
+http://www.geocities.com/ala_kifk/p...rogrem_sub7.htm
+
+»—‰«„Ã sub seven GOLD
+ Õ„Ì· «·»—‰«„Ã
+http://portwolf.hack3r.com/zips/sub72.1gold.zip
+ ⁄—Ì» «·»—‰«„Ã
+http://mypage.ayna.com/leza/21.s7m
+‘—Õ «·»—‰«„Ã
+http://geocities.com/samysw/nowsub7.htm
+
+
+»—‰«„Ã sub seven BONUS
+ Õ„Ì·
+«·»—„http://portwolf.hack3r.com/zips/sub7bonus.zip
+ ⁄—Ì» «·»—‰«„Ã
+http://mypage.ayna.com/leza/21.s7m
+‘—Õ «·»—‰«„Ã
+http://geocities.com/samysw/nowsub7.htm
+
+
+»—«„Ã «·‰  »ÌÊ”
+http://aljar7.4t.com/hpc.htm
+‘—Õ «·‰  »ÌÊ”
+http://aljar7.4t.com/nb.htm
+
+»—«„Ã ·√Œ —«ﬁ «·√ÃÂ“…  ÃœÂ« Â‰«
+http://jehad.itgo.com/com.htm
+
+
+√Œ —«ﬁ «·»—Ìœ« 
+
+»—‰«„Ã wwwhack
+«· Õ„Ì·
+http://faisalm.50megs.com/download/hack/wwwhack.zip
+«·‘—Õ
+http://www.ahliz.net/vb/showthread....mp;pagenumber=1
+
+Ê»—«„Ã «Œ—Ï ·√Œ —«ﬁ «·»—Ìœ  ÃœÂ« Â‰«
+http://aljar7.4t.com/hemail.htm
+
+’›Õ… «Œ —«ﬁ «·»—Ìœ «·«·ﬂ —Ê‰Ì
+http://jehad.itgo.com/email.htm
+
+
+«Œ —«ﬁ «·„Ê«ﬁ⁄
+
+»—‰«„Ã wwwhack
+«· Õ„Ì·
+http://faisalm.50megs.com/download/hack/wwwhack.zip
+«·‘—Õ1
+http://aljar7.4t.com/whack1.htm
+«·‘—Õ2
+http://aljar7.4t.com/whack2.htm
+
+»—‰«„Ã WebCracker4.0
+«· Õ„Ì·
+http://www.haqerz.com/files/anti-le...ebCrack40.crack
+
+«·‘—Õ
+http://www.geocities.com/arabhacker2000/webcracker.htm
+
+
+»—‰«„Ã Brutus
+«· Õ„Ì·
+http://geocities.com/kaser01/brutus.jpg
+«·‘—Õ
+http://www.ahliz.net/vb/showthread....mp;pagenumber=1
+
+»—‰«„Ã Unsecure2.1
+«· Õ„Ì·
+http://packetstorm.securify.com/Cra...NT/uns12exe.zip
+
+«·‘—Õ
+http://aljar7.4t.com/uns.htm
+»—«„Ã Œ«’… »«·„Ê«ﬁ⁄  ÃœÂ« Â‰«
+http://jehad.itgo.com/web.htm
+
+÷—» «·«Ì„Ì·
+
+ÿ—ﬁ  œ„Ì— «·»—Ìœ  ÃœÂ« Â‰«
+http://www.geocities.com/eljehad/hackmail.htm
+
+ÿ—ﬁ  œ„Ì— «·»—Ìœ „⁄ «·»—‰«„Ã Ê»«·⁄—»Ì
+http://www.geocities.com/ala_kifk/drq_mail.htm
+
+»—‰«„Ã Kaboom
+http://mypage.ayna.com/devil2k/kaboom30.zip
+
+»—‰«„Ã Euthan
+http://mypage.ayna.com/devil2k/euthan15.zip
+
+»—‰«„Ã aenima
+http://www.arabshacker.com/aenima.zip
+
+»—‰«„Ã upyours4beta3
+http://******s.nbci.com/hacknowledge/upyours4beta3.zip
+
+»—‰«„Ã sneaky Mail
+http://******s.nbci.com/hacknowledge/sneaky.zip
+
+÷—» «·„Ê«ﬁ⁄
+
+ﬂÌ›  œ„— ”Ì—›—«  «·„Ê«ﬁ⁄ «·ÌÂÊœÌ…øø Â‰« «·ÃÊ«»
+http://www.home4arab.com/******s//i...ews_servers.htm
+
+
+»—‰«„Ã «·œ—… «·Õ—»Ì ··ÂÃÊ„ ⁄·Ï «·„Ê«ﬁ⁄ «·≈”—«∆Ì·Ì… °°
+ ÃœÂ Â‰« „⁄ «·‘—Õ
+http://www.yaroun.8m.com/dorrah.htm
+
+ÿ—Ìﬁ… „‰ ÿ—ﬁ  œ„Ì— «·„Ê«ﬁ⁄
+
+«› Õ «·œÊ” Ê„‰ À„ «ﬂ » Â–« «·«„— ⁄·Ï ”»Ì· «·„À«·
+
+ping http://******x/
+
+»œ· «·√**«  «ﬂ » «”„ «·„Êﬁ⁄
+
+ œ„Ì— «·„Ê«ﬁ⁄ »œÊ‰ »—«„Ã ·· œ„Ì— °° Â‰« ÿ—Ìﬁ… «·‘—Õ
+http://www.geocities.com/ala_kifk/drq_battle.htm
+
+
+”—ﬁ… «·«—ﬁ«„ «·”—Ì… - «·»«”Ê—œ
+
+BiosHackÌŒ —ﬁ ⁄œ… «‰Ê«⁄ „‰ «·»ÌÊ”
+http://paragon.revoluti0n.org/Bios/bioshack.zip
+
+ARJ ·**— «·‹
+http://www.hackpalace.com/cracking/...swords/arj1.zip
+
+
+FTP ··»ÕÀ ›Ï «·‘»ﬂ… ⁄‰
+http://hackersclub.com/km/files/hfi...check-0_31.perl
+
+
+·«ŸÂ«— „«  Õ  «·‰ÃÊ„
+http://paragon.revoluti0n.org/PassCrack/passthief*****
+
+ﬁÊ«∆„ ⁄œ - ÊÊ—œ ·” 
+
+ ” ⁄„· ›Ï »⁄÷ «·„Ê«ﬁ⁄
+http://paragon.revoluti0n.org/PassCrack/adult2lst.zip
+
+«”„«¡ –ﬂÊ—
+http://paragon.revoluti0n.org/PassCrack/male-names.zip
+
+
+«”„«¡ «‰«À
+http://paragon.revoluti0n.org/PassC...emale-names.zip
+
+
+·’‰«⁄… ﬁ«∆„…
+http://hackersclub.com/km/files/pas...ts/dictmake.zip
+
+
+·«—ﬁ«„ «·œÌÃÌ «·
+http://paragon.revoluti0n.org/PassCrack/4digits.zip
+
+
+«·›Ì—Ê”« 
+
+°°° √œÊ«   ’‰Ì⁄ «·›Ì—Ê”«  °°°≈Œÿ— «·›Ì—Ê”«  Ê«·ﬂÀÌ—
+«·ﬂÀÌ—  ÃœÂ« Â‰« // «ŒÊ«‰Ì «ŒÊ« Ì «—ÃÊ «Œ– «·Õ–— ⁄‰œ
+ ‰“Ì·Â« ·«‰Â« ﬁœ  ⁄ÿ» «·„«–— »Ê—œ///
+
+http://jehad.itgo.com/vairuses.htm
+
+„·› ÌÕ ÊÌ ⁄·Ï 130 ›Ì—Ê”
+http://www.vbzor.4t.com/w6/130vs.zip
+
+»—‰«„Ã ·’‰«⁄… ›Ì—Ê”«  («·œÌœ«‰) „⁄ ‘—Õ ·Â
+«· Õ„Ì·
+http://www.virtue.nu/kaser/vbswg2.zip
+«·‘—Õ
+http://ahliz.net/vb/showthread.php3?threadid=5941
+
+„ﬂ »…  Õ ÊÏ ⁄·Ï ﬂ » ·· ⁄·Ì„ Ê«·‘—Õ
+http://e-jehad.8m.com/Library/index.html
+ Õ ÊÌ Â–Â «·„ﬂ »… ⁄·Ï ”·”·… „‰ «·œ—Ê” Ê «·ﬂ » «·„ ⁄·ﬁ…
+» ⁄·Ì„ «Œ —«ﬁ «·„Ê«ﬁ⁄ Ê «·»—Ìœ «·≈·ﬂ —‰Ì Ê «·√ÃÂ“… ..
+«·ﬁ”„ ﬁÌœ «· ÿÊÌ— Ê «· ÕœÌÀ .. ‰ „‰Ï ·ﬂ„ Õ”‰ «·ﬁ—«¡… Ê
+«· ⁄·„ .. ﬂ„« ‰”√·ﬂ„ «·œ⁄«¡ ·ﬂ «» Ê ‰«‘—Ì «·œ—Ê” .. Ê
+«··Â «·„Ê›ﬁ .
+
+„·«ÕŸ… :- Ì›÷·  ‰“Ì· «·ﬂ » Ê «·œ—Ê” »œÊ‰ »—«„Ã «· ‰“Ì·
+° ·√‰Â« ﬁœ ·«  ⁄„· .
+
+
+ÊÂ‰« ⁄‘—«  «·œ—Ê” Ê»«·⁄—»Ì… °° —«∆⁄…
+http://www.geocities.com/ala_kifk/dros.htm
+
+œ—Ê” »«·⁄—»Ì… ·√Œ —«ﬁ «·„Ê«ﬁ⁄  ÃœÂ« Â‰«
+http://www.geocities.com/eljehad1/learn.htm
+
+œ—Ê” »«·⁄—»Ì… ·√Œ —«ﬁ «·√ÃÂ“…  ÃœÂ« Â‰«
+http://www.geocities.com/eljehad1/learn.htm
+
+œ—Ê” »«·⁄—»Ì… · œ„Ì— «·„Ê«ﬁ⁄  ÃœÂ« Â‰«
+http://www.geocities.com/eljehad1/learn.htm
+
+ÊÂ‰« „Ã„Ê⁄… œ—Ê” »«··€… «·√‰Ã·Ì“Ì…
+http://www.geocities.com/eljehad1/learn.htm
+
+
+«‰Ê«⁄ «·Â«ﬂ—“
+http://aljar7.4t.com/hinfo.htm
+
+»⁄÷ «· Ê÷ÌÕ«  Ê«·œ—Ê”
+
+„««·–Ì  ” ÿÌ⁄ ›⁄·Â ·ﬂÌ  Ã«Âœ «·ﬂ —Ê‰Ì« ø
+http://e-jehad.8m.com/Tips/e-jehad_HowTo.htm
+
+«·«Œ —«ﬁ »œÊ‰ ”Ì—›— - »« ‘
+http://www.ahliz.net/vb/showthread....mp;pagenumber=1
+
+
+«“«·…  —ÊÃ«‰ »—«„Ã «·Âﬂ—“
+http://www.ahliz.net/vb/showthread.php3?threadid=1196
+_________________
+Best Regards,
+Mahmoud Hany,
+Country: Egypt,
+Title: IT instructor,
+Mobile: 0106354485
+	
+View user's profile Send private message 	 	
+blackwood
+Kiddie
+Kiddie
+
+
+Joined: 21 Sep 2004
+Posts: 22
+Location: Egypt
+	
+PostPosted: Thu Nov 18, 2004 1:25 pm    Post subject: Continue........... 	Reply with quoteBack to top
+Nuke - ‰ÌÊﬂ
+http://www.ahliz.net/vb/showthread....mp;pagenumber=1
+
+
+»—«„Ã „‰Ê⁄…
+
+" »—«„Ã Â«ﬂÌ‰Ã ⁄—»Ì… " »«·«÷«›… ≈·Ï »—‰«„Ã «·„Ã«Âœ «·√·ﬂ —Ê‰Ì  ÃœÂ« Â‰«
+http://e-jehad.8m.com/Hack/ArProgz/index.html
+
+’‰⁄ √—ﬁ«„ «·›Ì“«
+http://www.geocities.com/ala_kifk/p...ogrem_visia.htm
+
+»—‰«„Ã „Ã«ÂœÌ‰ «·‰  ° »—‰«„Ã ⁄—»Ì °° Ê’·«  «· Õ„Ì· ›Ì «·√”›·
+
+http://mypage.ayna.com/drmmm/mojahdin.zip
+
+http://mypage.ayna.com/drmmm/mojahdin*****
+
+
+Ì—«„Ã «·√ ’«· Ê«·„Õ«œÀ…
+
+mIRC (32-bit) v5.91t
+ftp://ftp.dal.net/dalnet/clients/mirc/mirc591t.exe
+Name: Dhafer Al-holaisi
+s/n: 15448-1432890
+»—‰«„Ã «·‘«  «·‘ÂÌ—
+
+
+Gooey 2.1
+http://a648.g.akamaitech.net/f/648/.../gooey21eng.exe
+‰”Œ… √ÕœÀ ·· ÕœÀ „⁄ “«∆—Ì «·„Êﬁ⁄ «·–Ì   ’›ÕÂ
+
+
+PalTalk v3.5 build 344
+http://216.74.151.142/download/0.x/pal_install.exe
+»—‰«„Ã √‰Ìﬁ ··„Õ«œÀ… »«·’Ê  Ê«·ﬂ·«„ ⁄»— «·≈‰ —‰ 
+
+
+Microsoft Chat v2.9
+http://www.bdr130.com/soft/MicrosoftChatarb.exe
+»—‰«„Ã œ—œ‘… „‰ „Ìﬂ—Ê”Ê›  „⁄—»
+
+
+»—«„Ã Œœ„Ì… ··ÃÂ«“ Ê«·√‰ —‰ 
+
+
+WinZip8 Final
+ftp://ftp.download.com/pub/ppd/winzip80.exe
+Name: Dhafer Al-holaisi
+s/n: 85143383
+«·»—‰«„Ã «·‘ÂÌ— ·›ﬂ «·„·›«  «·„÷€Êÿ…
+
+
+WinRAR v2.80
+http://209.235.4.116/rar/wrar280tc.exe
+»—‰«„Ã ¬Œ— √ﬁ· ‘Â—Â „‰ Win zip ·›ﬂ «·„·›«  «·„÷€Êÿ…
+
+
+Shut Down Timer
+http://aloud.virtualave.net/software/ShutdownTimer.zip
+»—‰«„Ã Ìÿ›∆ ÃÂ«“ «·ﬂ„»ÌÊ — ›Ï «·”«⁄… «·‰Ï  ÕœœÂ« ·Â
+
+
+WebFerret v3.02
+ftp://zdftp.zdnet.com/pub/private/s...sers/wferet.exe
+‰”Œ… ﬂ«„·… ··»ÕÀ «·”—Ì⁄ ⁄‰ √Ì „⁄·Ê„… œ«Œ· «·≈‰ —‰ 
+
+
+Pal 1.6a
+http://www.kburra.com/downloads/cp1setup.exe
+·Õ„«Ì… ÃÂ«“ﬂ „‰ «·ﬂÊﬂÌ“ «·€Ì— „—€Ê» ›Ì “—⁄Â
+Name: Dhafer Al-holaisi
+s/n: 3335201
+
+
+Advanced dialer v2.4
+ftp://zdftp.zdnet.com/pub/private/s...ools/advdlr.zip
+ÌﬁÊ„ »Õ”«» «·Êﬁ  Ê«· «—ÌŒ «·–Ì √ ’·  ›ÌÂ »«·«‰ —‰  Œ·«· «·‘Â—
+
+
+CD-R Win v4.0a
+ftp://ftp.cdarchive.com/pub/goldenh...ad/cdr40a-e.exe
+Name: Dhafer Al-holaisis
+CompanyE-mail: abuturky
+ulockkey: CB59A206-7F8D8D1A-A38BFFCA-FB7B879E
+checkkey:30222598-B4D42F1C-DC0672D0-58F07854
+»—‰«„Ã „‘ÂÊ— Ê—œÌ› ··ﬂ·Ê‰ ·‰”Œ «·”ÌœÌ Ê«·”ÌœÌ «·„Õ„Ì
+
+
+Part it 2.03
+4Windows 9x/NT/ME
+http://www.skylarkutilities.com/download/part-it.zip
+Name: dhafer
+s/n: PRT-F1B9A337-65C06874-6
+⁄„·Â  Ã“∆… «·„·›«  «·ﬂ»Ì—… ·‰”ŒÂ« ⁄·Ï √ﬁ—«’ ›·Ê»Ì Ê”ÂÊ·… ≈” ⁄«œ Â«
+
+
+PortFlash v2.0
+http://www.webroot.com/pfinstall.exe
+Ì„”Õ ŒÿÊ« ﬂ ›Ï «·√‰ —‰ 
+
+
+WinFax Pro v10 full
+http://212.252.113.91/yardimci/wnfaxpro.exe
+ftp://63.124.222.11/.tmpD/.%20thede...%20Pro%2010.zip
+: http://65.108.63.78/abuturky/winfaxpro10.zip
+
+
+Mail Alert
+http://www.conducent.com/affiliate/...ilAlertInst.exe
+·≈Œ»«—ﬂ »ÊÃÊœ —”«∆· »—ÌœÌ… ·≈” ﬁ»«·Â«
+
+
+»—«„Ã «· ’›Õ Ê ’„Ì„ «·„Ê«ﬁ⁄
+
+FrontPage98 , Size (25M)
+http://64.41.78.229/uaesawah/microsoft_frontpage_98.zip
+s/n: 11121111111
+
+
+WebStyle v2.0
+http://www.xara.com/downloads/software/wstyle2dl.exe
+»—‰«„Ã —”Ê„Ì · ’„Ì„ «·⁄‰«ÊÌ‰ Ê«·√“—«— ·’›Õ«  «·≈‰ —‰ 
+unlock code: 1234567
+«·ﬂ—«ﬂ: http://65.108.63.78/abuturky/xarawebstyle2crk.zip
+
+
+Smart Explorer v4.8
+http://65.108.63.78/abuturky/smarte48.zip
+‰”Œ… ﬂ«„·… „ ’›Õ ’€Ì— Ê–ﬂÌ »Â ﬂ· «·ŒÌ«—«  «·÷—Ê—Ì…
+Name: craig stroup
+s/n: 1023105344
+«·√ÕœÀ
+Smart Explorer v4.9
+http://65.108.63.78/abuturky/sesetupfull.exe
+‰”Œ… ﬂ«„·… „ ’›Õ ’€Ì— Ê–ﬂÌ »Â ﬂ· «·ŒÌ«—« 
+Name: Abuturky_Dhafer Al-holaisi
+s/n: 965277253
+√Ê
+User: Steven Kern s/n: 736191262
+
+
+DreamWaver4
+http://a23.g.akamai.net/7/23/2740/0...weaver4TBYB.exe
+»—‰«„Ã ﬁÊÌ Ê„ ﬂ«„· · Õ—Ì— ’›Õ«  «·≈‰ —‰  „⁄ œ⁄„Â ··⁄—»Ì… ·« ”Ã·Â Ê«‰ 
+„ ’· »«·≈‰ —‰ 
+s/n: DWW400-03771-57289-73501
+
+
+HomeSite v4.52
+http://www.l0tek.com/downloads/fo-h452.zip
+‰”Œ… ﬂ«„·… „Õ—— ’›Õ«  «‰ —‰  ”—Ì⁄ ÊﬁÊÌ ‰Ÿ«„ ÊÌ“ÊÌÃ ÊÌœ⁄„ «·⁄—»Ì…
+Name : Anything
+s/n: HS45EE-5030480010
+
+‰›” «·»—‰«„Ã «·”«»ﬁ „⁄ «·ﬂÀÌ— „‰ «·„Ì“«  «·√Œ—Ï
+Directory Snoop 3.14
+ftp://zdftp.zdnet.com/pub/private/s...ties/dirsnp.zip
+
+
+ÊÌ⁄„· „⁄ «·„·›«  «·⁄—»Ì…Format ·≈” ⁄«œ… «·„·› „‰ «·√„«ﬂ‰ «·„⁄ÿÊ»… »”»» ›Ì—Ê” „« √Ê  ÂÌ∆…
+Final Data v1.0
+http://65.108.63.78/abuturky/finaldata10.zip
+ﬂ—«ﬂ:http://65.108.63.78/abuturky/finaldata1crk.zip
+
+
+ÊÂ–« «·»—‰«„Ã ·Õ–› «·„·›«  Ê·‰ Ì„ﬂ‰ ≈”⁄«œ Â« ›Ì„« »⁄œ »«·ÿ—ﬁ «·”«»ﬁ…
+Eraser v4.11
+ftp://zdftp.zdnet.com/pub/private/s...es/eraserfl.zip
+
+
+»—‰«„Ã ·≈” —Ã«⁄ «·»Ì«‰«  »⁄œ „”Õ «·ÃÂ«“
+Norton Ghost2002
+http://65.108.63.78/abuturky/ghost.zip
+
+
+»—‰«„Ã ·≈œ«—… «·»Ì«‰«  Ê«·ﬁÌ«„ »«·⁄„·Ì«  ⁄·Ï «·„·›« 
+Norton_Utilities2001
+ftp://ftp.download.com/pub/win95/ut...200_5.0_618.exe
+s/n: 07-31-90069-NL
+
+
+Â–« «·»—‰«„Ã ·›ﬂ ÷€ÿ «·„·›«  «·„÷€Êÿ… ÊÂÊ Ì›ﬂ „« Ì·Ì
+zip, cab, rar, lha, uue, xxe
+CoolZIPv 1.01
+http://www.innersky.com/cgi-bin/dnload.cgi?coolzip.exe
+ﬂ—«ﬂ:http://202.103.100.253/hambo/othergroup2/dsicz101.zip
+
+
+»—‰«„Ã ’€Ì— ·›ﬂ «·÷€ÿ
+winrar v2.8
+http://dl1.51soft.com:8080/soft/126/winrar280.zip
+ﬂ—«ﬂ:http://abuturky,eksa.net/winrar280bkrk.zip
+
+
+»—‰«„Ã ·÷€ÿ Ê›ﬂ ÷€ÿ «·„·›«  ÊÌœ⁄„ Ã„Ì⁄ «··Ê«Õﬁ «·„⁄—Ê›…
+ZipAll
+http://tucows.qualitynet.net/files2/ZA433.EXE
+
+
+»—‰«„Ã Ì÷€ÿ ·„·›« 
+Easy Zip 2000 v 4.6
+http://www.alhosoon.com/ezip46.exe
+
+
+Ì‘›— «·„·›«  »ﬂ·„«  ”— ·«  › Õ »œÊ‰Â«
+Secret
+ftp://ftp.symantec.com/misc/nss.exe
+
+
+»—‰«„Ã · ‘›Ì— «·„·›«  Ê«·„Ã·œ«  ÊÂÊ «·√ﬁÊÏ »Ì‰ «·—»«„Ã
+ddCrypt v. 1.4
+http://dd-soft.tripod.com/ddcrypt.exe
+
+
+Õ„«Ì… «·„·›«  »ﬂ·„«  ”—Ì…  Œ «—Â« √‰  ·«  › Õ »œÊ‰Â«
+Norton Secret Stuff v1.0
+http://members.tripod.com/progrmz/NSecret.zip
+
+
+Â–« «·»—‰«„Ã Ì” ⁄Ìœ «·„·›«  «·Œ«’… »»—‰«„Ã «·ÊÊ—œ Õ’—« «· «·›…
+Word Recovery v1.0.1
+ftp://zdftp.zdnet.com/pub/private/s...ng/wordrecv.zip
+
+
+»—«„Ã ’Ì«‰…
+„”—⁄ ··√·⁄«» œ«Œ· «·ﬂ„»ÌÊ — ÊÂÊ »—‰«„Ã ⁄„·Ì Ãœ«
+SciTech Display Doctor
+ftp://ftp.scitechsoft.com/sdd/sdd653.exe
+Name: CoKeBoTtLe99 R/ 20000-529D848E-00000
+
+
+Â–« «·»—‰«„Ã Ì⁄ÿÌ  ﬁ—Ì—« „›’·« ⁄‰ ﬁÿ⁄ «·ﬂ„»ÌÊ — Ê√œ«ƒÂ« ·„⁄—›… √Ì‰ «·⁄ÿ· »«· ÕœÌœ
+SiSoft Sandra 2001se Pro
+http://213.93.58.90/kekforce/downloadz/fo-s01se.zip
+
+
+Â–« «·»—‰«„Ã Ì›Õ’ ‰Ê⁄ ﬂ„»ÌÊ —ﬂ ÊÌ⁄ÿÌﬂ ”—⁄ Â «·ÕﬁÌﬁÌ…
+ShowMHZ
+http://65.108.63.78/abuturky/showmhz.exe
+
+
+«‰”Œ „·›«  ‰Ÿ«„ «·ÊÌ‰œÊ“ ··ﬁ—’ Ê√÷› ≈·ÌÂ Â–Â «·„·›«  »⁄œ ›ﬂ ÷€ÿÂ« Ê≈ —ﬂ «·»«ﬁÌ ⁄·ÌÂ ≈– Ì⁄—› «·”ÌœÌ Ê„‰ À„ ÌﬁÊ„ »≈‰“«· «·ÊÌ‰œÊ“ „»«‘—… Ê»œÊ‰ Êﬁ›…
+Starter
+http://65.108.63.78/abuturky/starter.zip
+
+
+Â–« «·»—‰«„Ã · ’›Õ «·—ÌÃÌ” —Ì
+StartEd 3.80
+ftp://ftp.uni-hamburg.de/pub/os/win...til/started.zip
+
+
+Â–« «·»—‰«„Ã ·’Ì«‰… «·—ÌÃÌ” —Ì
+RegCleaner v3.4
+http://www.vtoy.fi/jv16/RegCleaner.exe
+
+
+ﬂÀÌ—« „« Ì ·› ”ÌœÌ „Â„ »”»» √Ê »¬Œ— ÊÌﬂÊ‰ ⁄·ÌÂ „·›«  „Â„… Â–« «·»—‰«„Ã ·≈‰ﬁ«– «·„·›« 
+CDR-Diagnostic 1.6.4
+http://www.cdrom-prod.com/pub/cdrdiag.exe
+
+
+‰›” «·»—‰«„Ã «·”«»ﬁ ·ﬂÌ Ì‰ﬁ– «·„·›«  „‰ «·”ÌœÌ «· «·›
+BadCopy 99 v2.0
+http://www.jufsoft.com/download/bcopy99v2.exe
+Name: Dhafer Al-holaisi s/n: 405419
+
+
+»—‰«„Ã ·’Ì«‰… ﬂ«›… √Ã“«¡ «·ﬂ„»ÌÊ — ÊÌÃ⁄· «·»—«„Ã  ⁄„· »‘ﬂ· √”—⁄ ·«  ” Â«‰ »ﬁÊ… Â–« «·»—‰«„Ã
+System Mechanic v3.6e
+ftp://ftp1.iolohost.com/system_mechanic.exe
+Name: Abuturky s/n: 83866-ST954-0776755445
+
+
+»—‰«„Ã · ”—Ì⁄ √œ«¡ «·ÊÌ‰œÊ“ »‘ﬂ· ⁄«„ Ê ”—Ì⁄ ⁄„· «·„·Õﬁ« 
+Power Tools v2.85
+http://www.dmisoftware.com/drptools.exe
+s/n: b87d789wnfijwefh87eyf87h
+
+
+Ì⁄—÷ ·ﬂ √‰Ê«⁄ «·ﬁÿ⁄ «·„ÊÃÊœ… ›Ì ÃÂ«“ﬂ »«·≈÷«›… ≈·Ï œ—Ã… Õ—«—… «·„⁄«·Ã Ê«·–«ﬂ—… «·„ƒﬁ Â
+CPUCooL v6.2.2
+http://65.108.63.78/abuturky/CPUcool622.zip
+s/n: 10983040
+
+
+ ”—Ì⁄ ÃÂ«“ «·ﬂ„»ÌÊ — »„⁄«·Ã… Ê — Ì» –«ﬂ—… «·ﬂ«‘ ≈‰Â »—‰«„Ã ⁄„·Ì Ê„›Ìœ
+Cacheman 5.0
+http://65.108.63.78/abuturky/cachem50.exe
+s/n: 322_11_222_9
+
+
+Ì‰Ÿ› Â–« «·»—‰«„Ã «·Â«—œ „‰ «·„·›«  «·„Â„·… ÊÌﬁÊ„ »≈“«·… «·»—«„Ã «·⁄«·ﬁ… «· Ì ·Ì” »Â« Œ«’Ì… UnInstall «·Õ–› √Ì «· Ì ·Ì” „⁄Â« »—‰«„Ã
+Norton CleanSweep
+http://soft.hardware.ru/files/ncs2001.zip
+
+
+Â–« «·»—‰«„Ã Ì‰Ÿ„ ⁄„· «·–«ﬂ—… ÊÌœÌ—Â« ÊÌ»Ì‰ ﬂ„ ≈” Œœ„  „‰Â« ÊÂÊ „›Ìœ
+RAM Idle SE v2.6
+http://www.simtel.net/pub/simtelnet...il/ramidl26.zip
+
+
+ÌﬁÊ„ Â–« «·»—‰«„Ã »«· Œ›Ì› ⁄‰ «·–«ﬂ—… »«· ﬁ·Ì· „‰ Õ„Ê· Â« ﬂ„«  ” ÿÌ⁄ ⁄„· –·ﬂ »‰›”ﬂ √Ê   —ﬂÂ ··»—‰«„Ã ·ÌﬁÊ„ »Â–« «·⁄„· „„« ÌƒœÌ ≈·Ï √œ«¡ „„ «“ ··ÃÂ«“
+FreeMem Professional
+ftp://zdftp.zdnet.com/pub/private/s...es/fremem32.zip
+s/n: 235612617935
+
+
+ ‰ŸÌ„ ⁄„· «·–«ﬂ—… Ê≈‰ﬁ«–Â« ﬁ»· √‰  „ ·∆  „«„« Ê ƒœÌ ≈·Ï ⁄„·Ì«  „„‰Ê⁄…
+MemWatcher v3.0.2
+http://65.108.63.78/abuturky/mw302.zip
+
+
+›Ì ﬂÀÌ— „‰ «·√ÕÌ«‰ Ê⁄‰œ ≈€·«ﬁ »—‰«„Ã „« ›≈‰Â Ì»ﬁÏ ⁄«·ﬁ« ›Ì «·–«ﬂ—… „„« ÌƒœÌ ≈·Ï  “«Õ„ Ê≈»ÿ«¡ √œ«¡ Ê⁄„· «·ÃÂ«“ Ê«·Õ· ÂÊ Â–« «·»—‰«„Ã ‰‰’Õ »Â »‘œ…
+Memory Cleaner v2.4.02
+http://65.108.63.78/abuturky/memclnr.zip
+
+
+Â–« «·»—‰«„Ã Ì⁄ÿÌﬂ  ﬁ—Ì—« ﬂ«„·« Ê„›’·« ⁄‰ ﬂ· ‘∆ ›Ì «·ﬂ„»ÌÊ —
+Sys check
+http://65.108.63.78/abuturky/syscheck.exe
+
+
+Â–« «·»—‰«„Ã ÌﬁÊ„ »›Õ’ «·„·›«  «·„ÊÃÊœ… ›Ì „Ã·œ «·‰Ÿ«„ ·œÌﬂ ÊÌﬁÊ„ »›—“ «·„·›«  «· Ì ·„ Ì⁄œ ·Â« ⁄„· ‰Â«∆Ì« Ê„‰ À„ ÌﬁÊ„ »Õ–›Â« Ê·ﬂ‰ »⁄œ ”ƒ«·ﬂ Ê√Œ– ≈–‰ﬂ ÿ»⁄«
+Clean System Directory
+http://www.ozemail.com.au/~kevsol/clnsysdr.zip
+
+
+»—‰«„Ã · ﬁ”Ì„ «·Â«—œ Ê Ã“∆ Â „‰ ‘—ﬂÊ ÊÌ” —‰ œÌÃÌ «· ÊÂÊ «·‰”Œ… «·ÕœÌÀ… „‰Â  ⁄„· „⁄ ÊÌ‰œÊ“ „Â„« ﬂ«‰  ‰”Œ Â
+EZ-drive
+http://65.108.63.78/abuturky/EZ9.zip
+
+
+»—‰«„Ã · Õ—Ì— «·’›Õ«  Ê»Â ﬁÊ«·» Ã«Â“… Ìœ⁄„ «·Ã«›«
+PageBuilder v 3.0c
+http://www.tafweb.force9.co.uk/download/pbldr_30.zip
+ﬂ—«ﬂ:http://65.108.63.78/abuturky/cr-pb30c.zip
+
+
+Ìœ⁄„ «··€… «·⁄—»Ì… Ê«·Ã«›«Ê√‰’Õ »Â »‘œ…
+Aceexpert v3.02i
+ftp://zdftp.zdnet.com/pub/private/s...ls/acexpert.exe
+Name: C0Ke2000 s/n: E8VN-2Z3Q-PWZC-LHN1
+
+
+ÊÂÊ »—‰«„Ã ·· ’„Ì„ «·”—Ì⁄ ÊÌœ⁄„ «·Ã«›« ﬂ„« √‰Â ÌÕÊÌ ⁄·Ï „ ’›Õ œ«Œ·Ì
+Alex's HTML Editor v1.1
+ftp://zdftp.zdnet.com/pub/private/s...ls/alexhtml.zip
+
+
+√Ì÷« „Õ—— ’›Õ«  ”—Ì⁄ Ê⁄„·Ì ÊÌœ⁄„ «··€… «·⁄—»Ì…
+HomeSite v4.52
+http://www.l0tek.com/downloads/fo-h452.zip
+s/n: HS45EE-5030480010
+
+
+„Õ—— ·ﬂ «»… „·›«  «·”Ì ÃÌ √Ì «· Ì Ì„ﬂ‰ √‰  ﬁÊ„ „‰ Œ·«·Â« »»—„Ã… «·⁄œÌœ „‰ «·√„Ê— «·„»Â„… „À· œ› — «·“Ê«— Ê«·„‰ œÌ«  «·ÕÊ«—Ì…
+Perl Code Editor
+http://aloud.virtualave.net/software/PerlCodeEditor.zip
+
+
+ ” ÿÌ⁄ »Ê«”ÿ… Â–« «·»—‰«„Ã ≈‰‘«¡ „« Ì”„Ï «·„”«⁄œ… ·»—‰«„Ã „« ⁄‰ ÿ—Ìﬁ ’›Õ«  «·Ê»
+Microsoft HTML Help
+http://msdn.microsoft.com/library/t...hp/htmlhelp.EXE
+
+
+»—‰«„Ã  —Ì— ’›Õ«  «·≈‰ —‰  »«·≈÷«›… ≈·Ï ÊÃÊœ ﬁÊ«·» Ã«›« Ã«Â“… ›ﬁÿ —ﬂ»
+Webford v2.1
+http://65.108.63.78/abuturky/webford.zip
+
+
+· ’„Ì„ «·√“—«— »·€… «·Ã«›« „⁄ ≈⁄ÿ«∆Â« Ã„Ì⁄ √‰Ê«⁄ «· √ÀÌ—« 
+JavaScript Buttons
+http://www.lonewolf.gr/apps/jsbp.zip
+
+
+· ’„Ì„ «·ﬁÊ«∆„ »·€… «·Ã«›«
+JavaScript Menu
+http://www.lonewolf.gr/apps/jmenu.zip
+
+
+ ’„Ì„ √“—«— «·Ã«›« «·–Â»Ì…
+Applet Button Factory v5.0
+ftp://ftp.blackdomino.com/pub/applet50.exe
+ﬂ—«ﬂ:http://krack.tzo.com/crack/abf50.zip
+Name: 12aew s/n: 9j8f5
+
+
+ ’„Ì„ √“—«— Ê⁄‰«ÊÌ‰ ·’›Õ«  «·ÊÌ»
+WebStyle1.2
+ftp://onyx.xara.net/pub/xaraltd/style110.exe
+ﬂ—«ﬂ:http://65.108.63.78/abuturky/webstyle12.zip
+
+
+HTML Java Visual basic „Õ—— ’›Õ« 
+Scribbler 2000 v1.9.1
+http://www.creamsoft.com/download/scribbler.zip
+Name: DSCeNe 2000 Code: 0dE98202555f2454
+
+
+»—«„Ã „Õ«œÀ…
+≈‰Â »—‰«„Ã „Õ«œÀ… Ã„Ì· Ãœ« Ì „Ì“ »ÊÃÊœ ’Ê— „⁄»—… ⁄‰ ﬂ· Ã„·… „‰ «·Ã„·
+Microsoft Chat 2.5A
+http://www.anti-leech.com/antileech...:microsoft_chat
+
+
+»—‰«„Ã „Õ«œÀ… –ﬂÌ ÌÃ» √‰  Ã—»Â ·ﬂÌ  —Ï »√‰Â ·Ì” ÷—Ê—Ì √‰  ﬂ‰ „‘ —ﬂ« ·  ÕœÀ
+AOL Messenger
+http://www.anti-leech.com/antileech...0:aol_messenger
+
+
+ ” ÿÌ⁄ √‰   Õ«Ê— „‰ “Ê«— «·Êﬁ⁄ «·–Ì √‰  ›ÌÂ «·¬‰ √Ì «·–Ì‰ Ì‘·—ﬂÊ‰ﬂ » ’›Õ „Êﬁ⁄ „« Ê·ﬂ‰ „‘ﬂ· Â »√‰Â ÌÃ» √‰ ÌﬂÊ‰ Â–« «·»—‰«„Ã „ÊÃÊœ ·œÏ Ã„Ì⁄ «·„ ÕœÀÌ‰
+Gooey 2
+http://www.anti-leech.com/antileech.cgi?sali90:gooey_2
+
+
+»—‰«„Ã · »«œ· «·„·›«  Ê«·„Õ«Ê—… »«·ﬂ «»Ê Ê«·’Ê  Ê«·’Ê—…
+Messenger
+ftp://ftp.uni-stuttgart.de/pub/syst...t/messenger.zip
+
+
+ÊÂÊ »—‰«„Ã —«∆⁄ ··„Õ«œÀ… ÊÌ⁄ „œ ⁄·Ï Õ”«» «·ÂÊ „Ì·
+MSN Messenger v3.5
+http://65.108.63.78/abuturky/mmssetup.exe
+
+
+»—‰«„Ã ··œ—œ‘… »«··€… «·⁄—»Ì…
+Odigo Messenger v2.5
+http://www.odigo.com/download/odigo25b_smart.exe
+
+
+‰›” «·»—‰«„Ã «·”«»ﬁ Ê·ﬂ‰ Â–Â «·‰”Œ… «·≈‰ﬂ·Ì“Ì… ›ﬁÿ
+Odigo Messenger v3.0
+http://www.odigo.com/30/odigo3b_537eng.exe
+
+
+Â« › √‰Ìﬁ ··≈ ’«· ⁄»— «·≈‰ —‰  Ê·ﬂ‰ ·Ì” „⁄ Â« › ≈‰„« „⁄ ÿ—› ¬Œ— ⁄‰œÂ ‰›” «·»—‰«„Ã
+MediaRing Talk
+http://a160.g.akamaitech.net/7/160/...RTALK-SETUP.EXE
+
+
+»—‰«„Ã ÃÌœ ··„Õ«œÀ… ÌÃ» √‰  › Õ Õ”«» ⁄‰œÂ„ √Ì÷«
+Get Firtalk
+http://multitude-svca.www.conxion.c...etalk_setup.exe/
+
+
+··„Õ«œÀ… »«·’Ê  Ê«·ﬂ·«„
+PalTalk v3.5
+http://216.74.151.142/download/0.x/pal_install.exe
+
+
+»—‰«„Ã œ—œ‘… ⁄„·Ì Ê’€Ì— Ê»”Ìÿ Ãœ«
+Fun Chat v2.0
+http://www.softseek.com/cgi-bin/dow...ck/pkd-fc2i.zip
+
+
+»—‰«„Ã ﬂ«„· «·ÊŸ«∆› ··„Õ«œÀ… Ê«·œ—œ‘…
+CheetaChat v6.3.22
+ftp://ftp.zdnet.com/pub/private/sWl...rc/cchatful.exe
+
+
+„Õ«œÀ… ’Ê  Ê’Ê—… Êﬂ«„Ì—« ÊÌ»
+Iris Phone v3.0
+http://irisphone.com/demo/iris_30.exe
+ﬂ—«ﬂ:http://www.wtcracks.com/dl/i/irisphon.zip
+sn/ #93763176421934759356482953
+
+
+·· ÕœÀ „⁄ √ﬂÀ— „‰ Ê«Õœ √Ê „⁄ Ã„«⁄…
+HearMe VoiceContact v2.0
+http://download.hearme.com/HearMeVC2Setup.exe
+
+
+»—«„Ã Œœ„… „·›« 
+· Ã“∆… «·„·› ≈·Ï „·›«  ’€Ì—… »≈„ﬂ«‰ﬂ Ê÷⁄Â« ⁄·Ï «·ﬁ—’ «·„—‰ ÊÂÊ „›Ìœ Ãœ« ›Ì Õ«· ≈‰ﬂ  ⁄„· „⁄ «·„·›«  «·ﬂ»Ì—… «·ÕÃ„ Ê·«  ” ÿÌ⁄ Ê÷⁄Â« ⁄·Ï ﬁ—’ „—‰
+Part it 2.03
+http://www.skylarkutilities.com/download/part-it.zip
+ﬂ—«ﬂ:http://202.103.100.253/hambo/others3/cr-pa203.zip
+name :dhafer s/n: PRT-F1B9A337-65C06874-6
+
+
+√Ì÷« »—‰«„Ã · ﬁÿÌ⁄ «·„·›«  Ê·ﬂ‰Â Ì „Ì“ ⁄‰ ”«»ﬁÂ »√‰Â ·« Ì—Ìœ «·»—‰«„Ã ‰›”Â · Ã„Ì⁄ Â–Â «·„·›«  Ê≈‰„« Ìﬂ›Ì ‰Ÿ«„ «·ÊÌ‰œÊ“ · —ﬂÌ»Â„
+1ToX File Spliter v2.57
+http://j.piquemal.free.fr/1tox.zip
+Name: dusko FirstName: nadia s/n:3684123256
+
+
+»—‰«„Ã „ Œ’’ Êﬂ«„· „Â„ Â  Ã“∆… «·„·›«  «·ﬂ»Ì—… ÊÌﬁ”„Â« ≈·Ï √ﬁ”«„   ‰«”» „⁄ «·„ﬂ«‰ «· Ì ”Ê›  Ê÷⁄ ›ÌÂ „À·« ﬁ—’ „—‰ √Ê »—Ìœ ≈·ﬂ —Ê‰Ì
+KW_Split'Em v1.5
+http://www.knowware-soft.com/freeware/kw_splitem.exe
+
+
+Ìﬁ”„ «·„·›«  «·ﬂ»Ì—… ≈·Ï ’€Ì—… ÊÌ‘ﬂ· „·›  ÿ»ÌﬁÌ ·ﬂÌ ÌÃ„⁄Â„ ›Ì „ﬂ«‰ ¬Œ—
+File Split PRO V4.6
+http://65.108.63.78/abuturky/fspro46.zip
+s/n: F863-1300-2390-EXJW-017-FY
+
+
+· ”ÂÌ· «· ⁄«„· „⁄ «·„·›«  »‘ﬂ· ⁄«„
+shellgem v 1.36
+ftp://zdftp.zdnet.com/pub/private/s...es/shellgem.zip
+
+
+ﬂÀÌ—« „‰ «·√ÕÌ«‰ „« ‰ﬁÊ„ »Õ–› „·›«  ≈·Ï «·”·… Ê‰›—€ «·”·… Ê›Ì„« »⁄œ ‰ﬂ ‘› »√‰ Â–Â «·„·›«  „Â„… Ãœ« Ê·« ‰” ÿÌ⁄ ≈—Ã«⁄Â„ ≈·« »Ê«”ÿ… Â–« «·»—‰«„Ã
+R4A v1.04
+http://65.108.63.78/abuturky/r4a104.zip
+Name: Mr_GReeN [WkT!] s/n: MW3XPC85TE3J
+
+
+»—‰«„Ã Ì ÌÕ ·ﬂ «·« ’«· Â« ›Ì« »„‰  ‘«¡ ⁄‰ ÿ—Ìﬁ «·≈‰ —‰ 
+Free World Dialup
+http://www.pulver.com/fwd/
+
+
+« ’«· »«·Â« › ⁄‰ ÿ—Ìﬁ «·≈‰ —‰ 
+WinPhone
+http://www.prog.arch.unige.it/~aodd...hone/Wphone.htm
+
+
+« ’«· »«·Â« › ⁄‰ ÿ—Ìﬁ «·≈‰ —‰ 
+Really Easy Voice
+ftp://download.really-easy.com/pub/revsetup.exe
+
+
+·≈ŸÂ«— —ﬁ„ Â« › «·–Ì « ’· »ﬂ ≈–« ﬂ‰  „‘ —ﬂ »Â–Â «·„Ì“… ÊÂÊ ›⁄«· Ãœ«
+Call Display v1.0
+http://members.tripod.com/get2him/calldisp.exe
+
+
+ ” ÿÌ⁄ √‰   ’· »√Ì Â« › √Ê ﬂ„»ÌÊ — ›Ì «·⁄«·„ ⁄‰ ÿ—Ìﬁ «·≈‰ —‰  Ê·«  Õ «Ã ≈·« ·ﬂ—  «·›«ﬂ” Ê«·„«Ìﬂ—Ê›Ê‰ Ê·«  Õ”» ·ﬂ ”ÊÏ œﬁ«∆ﬁ ≈‰ —‰ 
+PhoneFree v6.0
+http://phonefree.interactive.net/Ph...etup_6_2_22.exe
+
+
+√Ì÷« „À· ”«»ﬁÂ „Ã«‰« Ê··≈ ’«· »√Ì œÊ·… ›Ì «·⁄«·„
+HATF Telephone Software
+http://www.hatf.com/Download/HATFTelephone.exe
+
+
+·· ÕÀ „⁄ «·⁄«·„ «·Œ«—ÃÌ ⁄»— «·≈‰ —‰ 
+Internet phone
+http://www.pt.lu/comnet/files/comms/iphone5.exe
+sn/ V1Q7-SC97-NNNN-1X-0000-3BFF/A2BE
+
+
+√Ì÷« »ƒ‰«„Ã ··≈ ’«· „‰ ÃÂ«“ «·ﬂ„»ÌÊ — ≈·Ï √Ì Â« › ⁄»— «·≈‰ —‰  ÊÂÊ „Ã«‰Ì √Ì÷«
+PC-to-Phone v2.1
+ftp://194.165.206.9/pub/PC-to-Phone.exe
+
+
+»—‰«„Ã „ ﬂ«„· ·≈œ«—… «·›«ﬂ” ÊÂÊ »—‰«„Ã  Œ’’Ì Ê‘«„· ·ﬂ· «·ÊŸ«∆›
+WinFax Pro v10.0
+http://212.252.113.91/yardimci/wnfaxpro.exe
+sn/231-6736-472-2928
+ﬂ—«ﬂ:http://65.108.63.78/abuturky/winfaxpro10.zip
+
+
+»—‰«„Ã ·≈—”«· Ê«” ﬁ»«· «·›«ﬂ”« 
+Just The Fax v2.9y
+http://ourworld.cs.com/rkssoft1/jtf32.exe
+Name: Dhafer s/n: RKS-2600724
+
+
+»—‰«„Ã ‘»ÌÂ ·”«»ﬁ… ÊÂÊ ·≈—”«· Ê«” ﬁ»«· «·›«ﬂ”
+MightyFax v2.9y
+http://ourworld.cs.com/rkssoft1/mf32.exe
+Name: TEAM DiSTiNCT s/n: RKS-5525013
+
+
+ÊÂ–« «·»—‰«„Ã ·Ê’· ÃÂ«“Ì‰ „⁄ »⁄÷Â„ · »«œ· «·„·›«  ›Ì„« »Ì‰Â„
+Zow v3.1
+http://65.108.63.78/abuturky/zow310.exe
+
+
+»—«„Ã «·’Ê  Ê«·’Ê—…
+»—‰«„Ã „‘ÂÊ— Ãœ« ·ﬁ—«¡… «·„·›«  «·’Ê Ì… „‰ «·≈‰ —‰  ÊÂÊ „Â„ Ãœ« Ê€‰Ì ⁄‰ «· ⁄—Ì›
+RealPlayer Plus8
+http://www.anti-leech.com/antileech...90:real_player8
+sn/ 1016-10-1160
+
+
+»—‰«„Ã ÃÌœ Ãœ« ≈– Ìœ⁄„ «·ﬂÀÌ— „‰ «··Ê«Õﬁ Õ Ï «· Ì Ìœ⁄„Â« ”«»ﬁÂ Ê–Ê Ê«ÃÂ… Ã„Ì·… ﬂ„« Ì „Ì“ ÊÌ⁄ÿÌÂ« —Ê‰ﬁ« Œ«’« „⁄  Õﬂ„ Ê«”⁄ »„ÊÃ«  «·’Ê  ÊÌ‘€· ›ÌœÌÊ √Ì÷«Mp3 »ﬁ—«¡… „·›« 
+JetAudio 4.8
+http://www.anti-leech.com/antileech...i90:jetaudio4.8
+
+
+»—‰«„Ã  ‘€Ì· «·›ÌœÌÊ «·„„ «“ Ê»«·‰”»… ·‰« ÂÊ √›÷· »—‰«„Ã  ‘€Ì· ›ÌœÌÊ ⁄·Ï «·≈ÿ·«ﬁ ﬂ„« √‰Â Ìœ⁄„ ·Ê«Õﬁ ’Ê Ì… √Ì÷« »«·≈÷«›… ≈·Ï „Ì“ Â «·„‘ÂÊ—… »√Œ– ·ﬁÿ… „‰ «·›·„ ≈·Ï ’Ê—…
+Xing Player3.30
+http://www.anti-leech.com/antileech...90:xing_player3
+
+
+RealProducer Plus G2
+http://www.anti-leech.com/antileech...:real_producer8
+sn/ 212-08806-1648
+
+
+Real Player ÌﬁÊ„ »«· ÕÊÌ· „‰ ﬂ«›… «··Ê«Õﬁ «·’Ê Ì… Ê«·’Ê—Ì… ≈·Ï „·›«  «·
+Real Juke Box V2
+http://www.anti-leech.com/antileech...0:real_jukebox8
+sn/ 352-88760-1716
+
+
+»—‰«„Ã Ã„Ì· Ãœ« ÊÂÊ √Ì÷« €‰Ì ⁄‰ «· ⁄—Ì› Ì „Ì“ »”ÂÊ· Â Ê»œ⁄„Â ··ﬂÀÌ— „‰ ·Ê«Õﬁ «·„·›«  «·’Ê Ì… «·ﬂÀÌ—…
+WinAmp Full v 2.75
+http://download.nullsoft.com/winamp...amp275_full.exe
+
+
+Mp3 · ÕÊÌ· «·„·›«  «·’Ê Ì… „Â„« ﬂ«‰  »„« ›Ì –·ﬂ „·›« «·”ÌœÌ ≈·Ï ··«Õﬁ…
+MpegDJ Encoder v1.98b
+http://www.anti-leech.com/antileech..._encoder_v1.98b
+ﬂ—«ﬂ:http://www.anti-leech.com/antileech...encoder_v1.98bc
+
+
+ÊÂÊ „›Ìœ · ÕÊÌ· «·„·›«  ≈·Ï ‰€„«  „Ê»«Ì· Midi ≈·Ï „·›«  Wav Â–« «·»—‰«„Ã ÌÕÊ· «·„·›« 
+Amidi 1.6
+http://www.anti-leech.com/antileech.cgi?sali90:amidi16
+ﬂ—«ﬂ:http://www.anti-leech.com/antileech.cgi?sali90:amidi16c
+
+
+ÊÂÊ »—‰«„Ã ÷Œ„ Ãœ« ÊﬁÊÌ Ê„Â„ Â —ƒÌ… «·√›·«„ Ê«·„·›«  Ê«· ·›“ÌÊ‰ «·„ÊÃÊœ ⁄·Ï «·≈‰ —‰  ÊÂÊ „‰ ‘—ﬂ… √»· „«ﬂÌ‰ Ê‘ ÊÌ„ «“ ⁄‰ €Ì—Â »”—⁄ Â «·—ÂÌ»… »«· Õ„Ì· „‰ «·≈‰ —‰ 
+Quick Time5
+http://www.anti-leech.com/antileech...li90:quicktime5
+Name: microke Company: wamadhat
+S/N : PMME-GGQM-EMRU-UPE3-5678
+
+
+„‰Â Ê≈·ÌÂ Real Player ÂÊ »—‰«„Ã  ÕÊÌ· ÊÌ „Ì“ ⁄‰ €Ì—Â »≈„ﬂ«‰Ì Â »‰ÕÊÌ· „·›« 
+Streambox Ripper2009
+http://www.anti-leech.com/antileech...0:streambox2009
+ﬂ—«ﬂ:http://www.anti-leech.com/antileech...ali90:sbox2009c
+
+
+»—«„Ã ·‰ﬁ· „·›« 
+
+· ⁄œÌ· ÊÕ›Ÿ «·„·›«  »‘ﬂ· ”—Ì⁄ Ê»œÊ‰ Õ«Ã… ··»—„Ã…
+SiteEZ v1.9
+http://ftp.hyperpres.com/ftp/SiteEZ/setup.exe
+
+
+· Õ„Ì· ÊÕ›Ÿ «·„·›«  Ê‰ﬁ·Â„ ≈·Ï «·”Ì—›— ÊÌ„ﬂ‰Â «·„ «»⁄… »«·⁄„·Ì… ≈–« ≈‰ﬁÿ⁄ «·≈ ’«· ≈–« ﬂ«‰ «·”Ì—›— Ìœ⁄„ Â–Â «·„Ì“… √·« ÊÂÌ „ «»⁄… «·Ã·”… »⁄œ «·≈‰ﬁÿ«⁄
+FTP Voyager v8.0.0.2
+http://davesworld.tucows.com/files/ftpvsetup.exe
+ﬂ—«ﬂ:http://65.108.63.78/abuturky/d-fv8001.zip
+
+
+»—‰«„Ã ·‰ﬁ· «·„·›«  „‰ Ê≈·Ï «·”Ì—›—
+LeapFTP v2.7.1
+ftp://ftp1.enet.com.cn/pub/game/too...ork/lftp271.exe
+Name: Dhafer Al-holaisi s/n: 214065-49410835290
+
+
+«·Ã„Ì⁄ Ì⁄„·Ê‰ „⁄ Â–« «·»—‰«„Ã ·»”«ÿ Â
+AceFTP V 1.31
+ftp://visicom.superb.net/aftp131.exe
+Name: CZY s/n: 673JLA-VPAM85-FT74N7-L5643E
+
+
+«·»—‰«„Ã «·√›÷· ·√‰Â ÌÕÊÌ Ã„Ì⁄ «·„Ì“«  «·ﬂÿ·Ê»… ÊÂÊ Ì›Ìœ «·Œ»—«¡ ‰‰’Õ »Â »‘œ…
+WS_FTP Pro v7
+http://65.108.63.78/abuturky/fo-wftp7.zip
+
+
+·‰ﬁ· «·„·›«  ≈·Ï «·”Ì—›— ⁄·Ï «·‘»ﬂ… »„„Ì“«  Â«∆·…
+3D-FTP 3.0 beta1
+ftp://ftp.3dftp.com/pub/3dftp3b1.zip
+s/n: 3D-A563E9-NL2Q72
+
+
+»—«„Ã · ’„Ì„ «·„Ê«ﬁ⁄
+
+ÌÕ ÊÌ ⁄·Ï „ÊÀ—«  Ã«›« Ã«Â“…
+Applet FX Freeware v1.1
+ftp://ftp.unina.it/pub/Pcibm/winsit...til/afxfe11.exe
+
+
+„Õ—— ’›Õ«  «·≈‰ —‰  «·„‘ÂÊ— ÊÂÊ «·√›÷· œ«∆„« „‰ ‘—ﬂ… „«Ìﬂ—Ê”Ê› 
+FrontPage2000
+ftp://gatekeeper.dec.com/pub/micro/...1stpage2000.exe
+sn/ GC6J3-GTQ62-FP876-94FBR-D3DX8
+
+
+»—‰«„Ã · Õ—Ì— «·’›Õ«  ÊÂÊ „ ﬂ«„· Ê·Ì” »Â √Ì ⁄Ì» ﬂ„« ≈‰Â Ìœ⁄„ «·⁄—»Ì…
+DreamWaver4
+http://a23.g.akamai.net/7/23/2740/0...weaver4TBYB.exe
+ﬂ—«ﬂ:http://202.103.100.253/newtrends/200012/tmgmdw40.zip
+s/n: DWW400-03771-57289-73501
+
+
+¬·… Õ«”»… ⁄·„Ì… „ Œ’’…
+Calc98 v4.52
+http://www.fdgroup.co.uk/neo/fsi/c9845w.exe
+
+
+»—‰«„Ã ·ﬂ‘› ﬂ·„«  «·”— «· Ì ÂÌ ⁄»«—… ⁄‰ ‰ÃÊ„
+Alhajisstars
+http://65.108.63.78/abuturky/alhajisstars.exe
+
+
+»—‰«„Ã ·‰ÿﬁ «·ﬂ·„«  «· Ì  ﬂ »Â« »⁄œ… √’Ê«   Œ «—Â« ÊÂÊ »—‰«„Ã —«∆⁄ Ãœ«
+Talk
+http://65.108.63.78/abuturky/talk.zip
+
+
+·„⁄—›… «· ÊﬁÌ  «·⁄«·„Ì ›Ì √Ì „ﬂ«‰
+ActiveEarth
+http://www.cadi.com/AppZ/ActiveEarth.zip
+
+
+ÊÂÊ ·≈÷«›Ê ÊŸ«∆› ⁄·Ï «·√“—«— ›Ì ·ÊÕ… «·„›« ÌÕ
+Hotkeys
+ftp://zdftp.zdnet.com/pub/private/s...es/hotkey95.zip
+
+
+Â–« «·»—‰«„Ã Ì⁄ÿÌﬂ ⁄œ”…  ﬁÊ„ » ﬂ»Ì— Ã“¡ „‰ √Ã“«¡ ”ÿÕ «·„ﬂ » ≈·Ï „÷«⁄›«  ﬂÀÌ—… Ê»œﬁ… ⁄«·Ì…
+Lens v1.31ftp://zdftp.zdnet.com/pub/private/sWlIB/utilities/desktop_accessories/lensmagn.exe
+
+
+Â–« «·»—‰«„Ã ÌﬁÊ„ » —Ã„… «·ﬁÊ«∆„ ··»—«„Ã «·√Ã‰»Ì… ≈·Ï ﬁÊ«∆„ ⁄—»Ì… ·ﬂÌ Ì”Â· «·⁄„· „⁄Â«
+RC-WinTrans v6.0
+http://www.schaudin.com/data/rct60lit.exe
+
+
+„·›«  „Â„… · ‰›Ì– »—«„Ã ›ÌÃÊ«· »Ì”Ìﬂ ⁄·Ï √Ì ÃÂ«“ ·« ÌÕÊÌ «·›ÌÃÊ«· »Ì”Ìﬂ ›ÌÂ
+VB6 Runtime Files
+http://msvaus.www.conxion.com/downl.../vbrun60sp4.exe
+
+
+√›÷· »—«„Ã  ’„Ì„ «·ŒÿÊÿ
+ScanFont v313
+ftp://zdftp.zdnet.com/pub/private/s...ools/scnfnt.zip
+ﬂ—«ﬂ:http://65.108.63.78/abuturky/scanfont313crk.zip
+
+
+„‘€· √·⁄«» «·”Ê‰Ì »·«Ì ” «Ì‘‰ «·ÃœÌœ ÊÌ⁄„· ⁄·Ï «·≈‰ ·
+Bleem15b
+http://www.anti-leech.com/antileech...90:bleem15intel
+Intel
+
+
+AMD „‘€· √·⁄«» «·”Ê‰Ì »·«Ì ” «Ì‘‰ «·ÃœÌœ ÊÌ⁄„· ⁄·Ï
+Bleem15b
+http://www.anti-leech.com/antileech...li90:bleem15amd
+
+
+»—‰«„Ã ’«‰⁄ «·‘⁄«—« 
+LogoMaker
+http://www.shahid.org.uk/Logos.zip
+
+
+Ì„ﬂ‰ﬂ “Ì«œ… «·’Ê— Ê«·‰€„«  ··Œ·ÌÊÌ ⁄‰ ÿ—Ìﬁ Â–« «·»—‰«„Ã Ê„‰ „„Ì“« Â √‰Â Ì„ﬂ‰ﬂ „‰ ”„«⁄ «·‰€„… ﬁ»·  Õ„Ì·Â« ÊÌœ⁄„ «·‰€„«  «·ÿÊÌ·… Ãœ«
+LogoManager 1.2.3
+http://mypage.ayna.com/alwahed2000/lm123.EXE
+ﬂ—«ﬂ:http://arabsgate.net/vb/attachment....p;postid=303718
+
+
+·„‰ ·„ Ì⁄Ã»Â «·»—«„Ã «·”«»ﬁ… ›Ì  ‘€Ì· «·”Ê‰Ì »·«Ì ” «Ì‘‰
+ps2
+http://www.nease.net/~jack/ps/cvgs141.zip
+
+
+· ⁄—Ì» «·»—«„Ã «·€Ì— „⁄—»…
+ResHack
+http://www.arabsgate.com/cgi-bin/so...
+_________________
+Best Regards,
+Mahmoud Hany,
+Country: Egypt,
+Title: IT instructor,
+Mobile: 0106354485
+	
+View user's profile Send private message 	 	
+blackwood
+Kiddie
+Kiddie
+
+
+Joined: 21 Sep 2004
+Posts: 22
+Location: Egypt
+	
+PostPosted: Thu Nov 18, 2004 1:26 pm    Post subject: Continue........... 	Reply with quoteBack to top
+· ⁄—Ì» «·»—«„Ã «·€Ì— „⁄—»…
+ResHack
+http://www.arabsgate.com/cgi-bin/so...jump.cgi?ID=333
+„·› «· ⁄—Ì»:http://www.tietovayla.fi/dsp/ftp/tools/ResHack.zip
+
+
+ﬁ«⁄œ… »Ì«‰«  ÷Œ„…  ÕÊÌ «·¬·«› „‰ «·√—ﬁ«„ «· ”·”·Ì… ··»—«„Ã «·⁄œÌœ… «·„ÊÃÊœ… ‰‰’Õ »Â »‘œ… ›≈–« ·„  Ãœ —ﬁ„ »—‰«„Ã „« ›≈‰ﬂ ”Ê›  ÃœÂ Â‰« »«·≈÷«›… ≈·Ï √‰ »Â „Õ—ﬂ »ÕÀ ⁄‰ «·√—ﬁ«„ «· ”·”·Ì… Ê«·‘Ê«—Œ ›Ì «·≈‰ —‰  ﬂ·Â« ≈–« ·„  Ãœ ÿ·»ﬂ ›ÌÂ ›Ê—«
+serial cracker
+http://trustme.fateback.com/Sc380win.zip
+
+
+»—«„Ã « ’«·« 
+»—‰«„Ã ’€Ì— ·≈—”«· Ê≈” ﬁ»«· «·›«ﬂ”«  ﬂ„« √‰Â Ìœ⁄„ «··€… «·⁄—»Ì…  „«„« ÊÌÊÃœ »Â „Ì“… √Œ—Ï »√‰Â Ì” ÿÌ⁄ ≈—”«· ›«ﬂ”«  ≈·Ï «·»—Ìœ «·≈·ﬂ —Ê‰Ì
+Fax2000
+http://www.anti-leech.com/antileech.cgi?sali90:fax2000
+sn/ J1018200381
+
+
+»—‰«„Ã —«∆⁄ Ãœ« ÊÂÊ Ì„ﬂ‰ «·„” Œœ„ „‰ Ê’· ÃÂ«“Â „⁄ ÃÂ«“ ¬Œ— ⁄·Ï √‰ Ì Ê«Ãœ ‰›” «·»—‰«„Ã „„« Ì„ﬂ‰ „‰ Ã·» ”ÿÕ „ﬂ » «·ﬂ„»ÌÊ — «·„÷Ì› ≈·Ï ÃÂ«“ﬂ · —Ï √œﬁ «· ›«’Ì· «·„„ﬂ‰Â ›Ì «·ÃÂ«“ «·„÷Ì› ﬂ„« √‰ﬂ  ” ÿÌ⁄ «·Ê·ÊÃ ≈·Ï ‘»ﬂ… «·≈‰ —‰  ≈–« ﬂ«‰ Â–« «·ﬂ„»ÌÊ — «·„÷Ì› œ«Œ· ≈·Ï «··≈‰ —‰  ﬂ„« »≈„ﬂ«‰ﬂ ‰”Œ «·„·›«  Ê≈⁄ÿ«ƒÂ „·›«  √Œ—Ï √À‰«¡ › Õ Ã·”… ⁄„· ﬂ„« »≈„ﬂ«‰ﬂ ≈‰‘«¡ „” Œœ„Ì‰ ›Ì «·ﬂ„»ÌÊ — «·„÷Ì› Ê≈⁄ÿ«∆Â„ ’·«ÕÌ«  ﬂ„« ·Ê √‰ﬂ ›Ì ‰Ÿ«„  „«„« ” ›«Ã√ »√‰ﬂ ⁄‰œ  Õ—Ìﬂ «·„«Ê” „‰ ÃÂ«“ﬂ ”Ê›   Õ—ﬂ ‰›” «·Õ—ﬂ… ›Ì «·ﬂ„»ÌÊ — «·„÷Ì› NT ÊÌ‰œÊ“
+LapLink2000
+http://www.anti-leech.com/antileech...i90:laplink2000
+sn/ L95-SSSS-994001-75B
+
+
+ÊÂÊ »—‰«„Ã ⁄„·Ì Ê›⁄«· ·¬·Â «·—œ «· ·ﬁ«∆Ì ⁄·Ï «·Â« › ﬂ„« √‰Â Ì„ﬂ‰ √‰ Ì„Ì“ ’Ê  «·›«ﬂ” ⁄‰œ › Õ «·›«ﬂ” „‰ ÃÂ… «·≈ ’«· ·ﬂÌ ÌÕÊ· «·ÿ·» ≈·Ï „” ·„ «·›«ﬂ” √Ê √Ì »—‰«„Ã ¬Œ—
+Advanced Call Center
+http://www.anti-leech.com/antileech...ced_call_center
+ﬂ—«ﬂ:http://www.anti-leech.com/antileech...ed_call_centerc
+
+
+»—‰«„Ã ⁄„·Ì ·≈—”«· Ê≈” ﬁ»«· «·›«ﬂ”«  Ì„ﬂ‰ √‰ Ì ‘«—ﬂ „⁄ »—«„Ã √Œ—Ï ﬂ«·ÊÊ—œ
+MightyFax2.9Win98
+http://www.anti-leech.com/antileech...ghtyfax_29win98
+Name : wamadhat visitor Serial : RKS-7996413
+
+
+»—‰«„Ã Ì”«⁄œ ⁄·Ì «·ﬂ «»… »«·⁄—»Ì… ›Ì «·»—«„Ã «· Ì ·«Ì„ﬂ‰ «·ﬂ «»… »«·Õ—Ê› «·⁄—»Ì… »Â« „À· «·›·«‘ Ê€Ì—Â Ê·· ⁄—› «ﬂÀ— ⁄·Ï „„Ì“«  Â–« «·»—‰«„Ã Ê·„“Ìœ „‰ «·‘—Õ
+http://www.geocities.com/cppnow/alwaseet.htm
+
+
+Swish v1.51
+»—‰«„Ã —”„ ÃœÌœ Ì‰«›” »—‰«„Ã «·›·«‘ Ê ” ÿÌ⁄ «·«ÿ·«⁄ «ﬂÀ— ⁄·Ï „„Ì“«  Â–« «·»—‰«„Ã Ê·„“Ìœ „‰ «·‘—Õ
+http://www.noorah.com/surprise_may.html
+
+
+RealPlayer 7 Plus
+—Ì· »·Ì— «·’œ«— «·”«»⁄ „‰ «‘Â— «·»—«„Ã «·„” Œœ„… «· Ì   ÌÕ ·ﬂ „‘«Âœ… «·’Ê— «· ·›“ÌÊ‰Ì… Êﬂ–·ﬂ ”„«⁄ «·’Ê  „‰ Œ·«· «·«‰ —‰  —ﬁ„ «· ”ÃÌ· ”Ê›  ÃœÂ „⁄ «·„·› Ê·„“Ìœ „‰ «·‘—Õ
+http://www.muslm.net/vb/showthread.php3?threadid=4716
+
+
+RealPlayer 8 Plus
+‰”Œ… ÃœÌœ… „‰ Â–« «·»—‰«„Ã ÊÂÊ „‰ «‘Â— «·»—«„Ã «·„” Œœ„… «· Ì   ÌÕ ·ﬂ „‘«Âœ… «·’Ê— «· ·›“ÌÊ‰Ì… Êﬂ–·ﬂ ”„«⁄ «·’Ê  „‰ Œ·«· «·«‰ —‰  Ê·„“Ìœ „‰ «·‘—Õ
+http://www.ashya.net/learn/softlearn-realp.html
+
+
+GoldWave 32-bit v4.21
+»—‰«„Ã ÃÊ·œ Ê«Ì› ÊÂÊ »—‰«„Ã ÌﬁÊ„ »⁄„·  ”ÃÌ·«  ’Ê ÌÂ Ê»œﬁ… „„ «“… Ê·„⁄—›… «·„“Ìœ ⁄‰ Â–« «·»—‰«„Ã Ê·„“Ìœ „‰ «·‘—Õ
+http://abomaged.virtualave.net/ubb/...TML/000005.html
+
+
+Ulead MediaStudio Pro 6.0
+ Õ—Ì— «·›ÌœÌÊ«·„ ﬁœ„ √œ«… ”Â·… Ê€Ì— „⁄ﬁœ…  „ﬂ‰ﬂ „‰ ⁄„· ⁄—Ê÷ ›ÌœÌÊ ’Ê  Ê’Ê—… ›Ì „‰ ÂÏ «·ﬁÊ… Ê«·ÃÊœ… Ê·„“Ìœ „‰ «·‘—Õ
+http://www.abobadr.net/3dsmax/bonus/mstudio6-1.htm
+
+
+RealProducer Plus G2
+Â–« «·»—‰«„Ã Ì” Œœ„ · ÕÊÌ· ‰”ﬁ «·„·›«  «· «·Ì… : AVI, MOV, QT, WAV, AU, MPG ≈·Ï „·›«  RealPlayer «·’Ê ÌÂ √Ê «·›ÌœÌÊÌÂ° ﬂ–·ﬂ Ì„ﬂ‰ »Ê«”ÿ… Â–« «·»—‰«„Ã ⁄„· ’›Õ«  ÊÌ» ’Ê Ì… Ê›ÌœÌÊÌ… »ﬂ· ”ÂÊ·… Ê·„“Ìœ „‰ «·‘—Õ
+http://www.geocities.com/sultan33a/prod.htm
+
+
+SoundForge 4.5h
+ ” ÿÌ⁄ »Ê«”ÿ… Â–« «·»—‰«„Ã „‰ ‰ﬁ· «·’Ê  „‰ «·ﬂ«”Ì  «·Ï «·ﬂ„»ÌÊ — Ê„‰ À„ «·Ï «·«‰ —‰  Ê·„“Ìœ „‰ «·‘—Õ
+http://www.al-atheer.com/vb/showthr...p?threadid=5170
+
+
+Macromedia Dreamweaver 3
+„’„„ ’›Õ«  „„Ì“ ÊﬁÊÌ Ê·„“Ìœ „‰ «·‘—Õ
+http://www.saudint.com/dream/index.htm
+
+
+Windows Media On-Demand Producer V4.0.0.85
+»—‰«„Ã · ÕÊÌ· ’Ì€ WAV Ê AVI ≈·Ï ’Ì€… √Œ—Ï ·‰‘—Â« ⁄·Ï «·ÊÌ» »”—⁄… Ê”ÂÊ·… Ê·„“Ìœ „‰ «·‘—Õ
+http://www.masaher.org/vb/showthread.php?threadid=4230
+
+
+Edit Plus 2.01b
+»—‰«„Ã „„ «“ · Õ—Ì— «·‰’Ê’ Ê’›Õ«  «·«‰ —‰  Ê·„“Ìœ „‰ «·‘—Õ
+http://www.masaher.org/vb/showthread.php?threadid=2569
+
+
+FrontPage Xpress
+„Õ—— ’›Õ«  ÊÌ» Ìœ⁄„ «··€… «·⁄—»Ì… Ê·„“Ìœ „‰ «·‘—Õ
+http://www.saqr.f2s.com/fpe.htm
+
+
+Nero Burner 5.0.3.1
+ ” ÿÌ⁄ »Â–« «·»—‰«„Ã  ÕÊÌ· „·›«  (MP3) «·Ï „·›«  (CDA) √Ì «·Ï «”ÿÊ«‰«  ”„⁄Ì… Ì„ﬂ‰  ‘€Ì·Â« »„‘€· «·”Ì œÌ «·„ÊÃÊœ »«·”Ì«—… Ê·„“Ìœ „‰ «·‘—Õ
+http://www.moltaqa.com/forums/showt...3?threadid=3673
+
+
+Photo-Brush V1.3c
+»—‰«„Ã —”Ê„Ì „„ «“ Ê—«∆⁄ Ì”«⁄œﬂ ⁄·Ï Ê÷⁄ ·„”«  Ã„«·Ì… ⁄·Ï «·’Ê—… ÊÌÃ⁄·ﬂ   Õﬂ„ »Â« „‰ Œ·«· «·«œÊ«  «·„ Ê›—… „⁄ «·»—‰«„Ã ÊÌ ⁄«„· „⁄ «·‰’ «·⁄—»Ì Ê·„“Ìœ „‰ «·‘—Õ
+http://www.mediachance.com/pbrush/
+
+
+PicaView v1.32
+»—‰«„Ã ·«” ⁄—«÷ «·’Ê— »«·÷€ÿ »“ «·„«Ê” «·«Ì„‰ Ê·„“Ìœ „‰ «·‘—Õ
+http://www.moltaqa.com/forums/showt...3?threadid=8195
+
+
+ﬂÌ›  ÂÌ¡ ÃÂ«“ﬂ ··«‰ —‰ 
+ﬂÌ›   ’›Õ «·«‰ —‰ http://209.237.157.69/alshamlani/droos.htm
+
+
+‘—Õ ﬂÌ›Ì… √⁄œ«œ »—Ìœ HOTMAIL ⁄·Ï »—‰«„Ã «·√Ê  ·Êﬂ
+http://www.omania.net/vip/ubb/Forum...27.html?3526757
+
+
+‘—Õ ﬂÌ›Ì… √÷«›… «·⁄‰«ÊÌ‰ «·Ï »—Ìœﬂ
+http://www.omania.net/vip/ubb/Forum...89.html?3421787
+
+
+‘—Õ ÿ—Ìﬁ…  —ﬂÌ» «·ubb
+http://www.omania.net/vip/ubb/Forum4/HTML/001400.html
+
+
+ﬂÌ›Ì… «” Œœ«„ «·„«”Õ…
+http://www.omania.net/vip/ubb/Forum...14.html?7387383
+
+
+ﬂÌ›Ì… √—”«· —”«·… »Â« ’Ê—… Ì‘«ÂœÂ« «·„” ﬁ»· ⁄‰œ › Õ «·—”«·…
+http://www.omania.net/vip/ubb/Forum...87.html?6613568
+
+
+‘—Õ ﬂÌ›  ›Õ’ ÃÂ«“ﬂ „‰ «·›Ì—Ê”«  ⁄‰ ÿ—Ìﬁ «·√‰ —‰ 
+http://www.omania.net/vip/ubb/Forum...70.html?2718322
+
+
+‘—Õ ﬂÌ›Ì… «·√ ’«· „‰ „Êﬁ⁄ hottelephone
+http://www.omania.net/vip/ubb/Forum4/HTML/001691.html
+
+
+ﬂÌ›Ì… ≈—”«· Ê≈” ﬁ»«· «·›«ﬂ” ⁄‰ ÿ—Ìﬁ ÃÂ«“ «·ﬂ„»ÌÊ —
+http://www.crosswinds.net/~abuzaben/droos/winfax.htm
+
+
+»—«„Ã «‰ —‰Ì 
+
+≈‰ Â–« «·»—‰«„Ã ÌﬁÊ„ »„”«⁄œ ﬂ ›Ì  Õ„Ì· «·„·›«  „‰ ⁄·Ï «·‘»ﬂ… »ÿ—Ìﬁ… ”—Ì⁄… Ê¬„‰… ÕÌÀ »≈„ﬂ«‰Â „ «»⁄…  ‰“Ì· Â–« «·„·› ≈–« ﬁÿ⁄ «·≈ ’«· »œÊ‰ «·⁄Êœ… · Õ„Ì·Â „‰ ÃœÌœ ÊÌ„ﬂ‰ ≈œ«—… «·„·›«  «·Ê«Ã»  Õ„Ì·Â« »œ«Œ·Â ÊÌ€·ﬁ «·ÃÂ«“ ·ÊÕœÂ »⁄œ «· ﬂ„Ì· ≈‰ √Õ»» 
+GetRight (32-bit) v4.5
+http://www.get-right.com/getrt450.exe
+s/n: 146647922132
+
+›Ì—Ê”«  ŒÿÌ—… «œŒ· Â‰« °° Ê—»‰« Ì” —
+http://aljar7.4t.com/virus.htm 

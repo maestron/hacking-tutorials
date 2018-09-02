@@ -1,0 +1,12 @@
+ How Long Has Your System Been Running?
+
+Here's how you verify system uptime:
+
+Click Start | Run and type cmd to open a command prompt.
+At the prompt, type systeminfo
+
+Scroll down the list of information to the line that says System Up Time.
+
+This will tell you in days, hours, minutes and seconds how long the system has been up.
+
+Note that this command only works in XP Pro, not in XP Home. You can, however, type net statistics workstation at the prompt in Home. The first line will tell you the day and time that the system came online.

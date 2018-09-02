@@ -1,0 +1,125 @@
+Lots Of Windows Xp Tips, Take A Look !
+
+Lock XP Workstation (#1)
+
+You can lock your XP workstation with two clicks of the mouse. Create a new shortcut on your desktop using a right mouse click, and enter 'rundll32.exe user32.dll, LockWorkStation' in the location field. Give the shortcut a name you like. That's it -- just double click on it and your computer will be locked. And if that's not easy enough, Windows key + L will do the same.
+
+Remove Windows XP system software (#2)
+
+XP hides some system software you might want to remove, such as Windows Messenger, but you can tickle it and make it disgorge everything. Using Notepad or Edit, edit the text file /windows/inf/sysoc.inf, search for the word 'hide' and remove it. You can then go to the Add or Remove Programs in the Control Panel, select Add/Remove Windows Components and there will be your prey, exposed and vulnerable.
+
+New commands (#3)
+
+For those skilled in the art of DOS batch files, XP has a number of interesting new commands. These include 'eventcreate' and 'eventtriggers' for creating and watching system events, 'typeperf' for monitoring performance of various subsystems, and 'schtasks' for handling scheduled tasks. As usual, typing the command name followed by /? will give a list of options -- they're all far too baroque to go into here.
+
+Windows XP supports IPv6 (#4)
+
+XP has IP version 6 support -- the next generation of IP. Unfortunately this is more than your ISP has, so you can only experiment with this on your LAN. Type 'ipv6 install' into Run... (it's OK, it won't ruin your existing network setup) and then 'ipv6 /?' at the command line to find out more. If you don't know what IPv6 is, don't worry and don't bother.
+
+Kill tasks from the command line (#5)
+
+You can at last get rid of tasks on the computer from the command line by using 'taskkill /pid' and the task number, or just 'tskill' and the process number. Find that out by typing 'tasklist', which will also tell you a lot about what's going on in your system.
+
+Enable ClearType by default (#6)
+
+XP has ClearType -- Microsoft's anti-aliasing font display technology-- but doesn't have it enabled by default. It's well worth trying, especially if you were there for DOS and all those years of staring at a screen have given you the eyes of an astigmatic bat. To enable ClearType, right click on the desktop, select Properties, Appearance, Effects, select ClearType from the second drop-down menu and enable the selection. Expect best results on laptop displays. If you want to use ClearType on the Welcome login screen as well, set the registry entry
+
+HKEY_USERS/.DEFAULT/ControlPanel/Desktop/FontSmoothingType to 2.
+
+Run program as different user (#7)
+
+You can run a program as a different user without logging out and back in again. Right click the icon, select Run As... and enter the user name and password you want to use. This only applies for that run. The trick is particularly useful if you need to have administrative permissions to install a program, which many require. Note that you can have some fun by running programs multiple times on the same system as different users, but this can have unforeseen effects.
+
+Speed up the Start Menu (#8)
+
+The Start Menu can be leisurely when it decides to appear, but you can speed things along by changing the registry entry HKEY_CURRENT_USER/Control Panel/Desktop/MenuShowDelay from the default 400 to something a little snappier. Like 0.
+
+Rename multiple files at once (#9)
+
+You can rename loads of files at once in Windows Explorer. Highlight a set of files in a window, then right click on one and rename it. All the other files will be renamed to that name, with individual numbers in brackets to distinguish them. Also, in a folder you can arrange icons in alphabetized groups by View, Arrange Icon By... Show In-Groups.
+
+Show cover art in Media Player (#10)
+
+Windows Media Player will display the cover art for albums as it plays the tracks -- if it found the picture on the Internet when you copied the tracks from the CD. If it didn't, or if you have lots of pre-WMP music files, you can put your own copy of the cover art in the same directory as the tracks. Just call it folder.jpg and Windows Media Player will pick it up and display it.
+
+Display Hibernate Option on the Shut Down dialog (#11)
+
+For some reason, Hibernate isn't available from the default Shut Down dialog. But you can enable it simply enough, by holding down the SHIFT key while the dialog is visible. Now you see it, now you don't!
+
+Enable ClearType on the Welcome Screen! (#12)
+
+As laptop users and other LCD owners are quickly realizing, Microsoft's ClearType technology in Windows XP really makes a big difference for readability. But the this feature is enabled on a per-user basis in Windows XP, so you can't see the effect on the Welcome screen; it only appears after you logon.
+
+But you can fix that. Fire up the Registry Editor and look for the following keys:
+
+(default user) HKEY_USERS \ .Default \ Control Panel \ Desktop \
+FontSmoothing (String Value)
+HKEY_USERS \ .Default \ Control Panel \ Desktop \
+FontSmoothingType (Hexadecimal DWORD Value)
+
+Make sure both of these values are set to 2 and you'll have ClearType enabled on the Welcome screen and on each new user by default.
+
+Change User Picture (#13)
+
+Click on the Icon at the top of the start menu. Select desired picture from resulting screen Windows 2000 style logon. To revert back to the Win2k style logon so you can log on as the administrator and other options, press ctrl+alt+delete twice at the logon screen. Change the location of the My Music or My Pictures folders:
+
+In Windows 2000, Microsoft added the ability to right-click the My Documents folder and choose a new location for that folder in the shell. With Windows XP, Microsoft has elevated the My Music and My Pictures folders to the same "special shell folder" status of My Documents, but they never added a similar (and simple) method for changing those folder's locations. However, it is actually pretty easy to change the location of these folders, using the following method.
+
+Open a My Computer window and navigate to the location where you'd like My Music (or My Pictures) to reside. Then, open the My Documents folder in a different window. Drag the My Music (or My Pictures) folder to the other window, and Windows XP will update all of the references to that folder to the new location, including the Start menu.
+
+Protect Your Files From Unauthorized Users (#14)
+
+Other users with permission to delete a file (users with Modify or Full Control permission) can't use your encrypted files-but they can make them difficult for you to use. Any such user can rename your files, which can make them difficult to find, and can also delete your files. (Even if the user merely deletes them to the Recycle Bin and doesn't remove them altogether, the deleted files are unavailable to you because you don't have access to any other user's Recycle Bin.) Therefore, if you're concerned about protecting your files from other authorized users as well as from a thief who steals your computer, you should modify the NTFS permissions to prevent any type of modification by other users.
+
+Shutdown Your System in a Hurry (#15)
+
+If you need to shut down in a hurry-or if a frozen application prevents you from shutting down in the normal ways-you can use the following procedure. Be aware, however, that you won't get an opportunity to save open documents. To perform an emergency shutdown, press Ctrl+Alt+Del to display Task Manager. Open the Shut down menu and hold down the Ctrl key as you click the Turn Off command. Poof! If your computer is part of a domain, the procedure is similar. Press Ctrl+Alt+Del and then hold down Ctrl when you click Shut Down. In this situation, you'll get a warning message pointing out-quite correctly-that this should be used only as a last resort.
+
+Provide Personal Support (#16)
+
+It never fails: when friends, co-workers, or family members discover that you're a Windows expert, you get pressed into service as an unpaid support technician. If the party asking for help is running any edition of Windows XP and has an active Internet connection, your job is much easier. Have the other person send you a Remote Assistance request; when you accept the request, you connect directly to their computer and can edit Registry settings, fix file associations, set System options, and perform just about any other troubleshooting or repair task, just as if you were sitting at the other person's desk.
+
+Quickly Fix Connectivity Problems (#17)
+
+Are you having trouble connecting to other computers on your local area network? If your network uses a hardware firewall that assigns IP addresses to each machine and you're certain you've configured all other components correctly, check to see whether the Internet Connection Firewall is enabled. That component can effectively block communication between PCs on the network.
+
+Hack IE Title Bar (#18)
+
+This can be an impressive bit of personalization. Use your name or moniker to brand Internet Explorer. Go to HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\ and left-click on Main to change the string "Window Title" to whatever you wish.
+
+Unload DLLs (#19)
+
+To prevent Windows from caching DLLs after the program using them has closed, follow this procedure: Navigate to
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ then left-click on Explorer. Right-click (as above) and create the DWORD
+
+AlwaysUnloadDLL with a value of 1. This requires a reboot to take effect. This will allow memory to be used more efficiently.
+
+Registry Hacks (#20)
+
+Editing the Windows Registry, while much more common now than in years past, is still not to be entered into lightly. You can break Windows, cause boot failure. I know you're gonna do it anyway; why else would you be reading this. Just be careful, OK?
+
+These are few because, for the most part WinXP can be customized through the interlace or with third-party freeware (as above).
+
+All of the tips below require running regedit. To do so, hit 'Start/Run' then type 'regedit' and follow the instructions.
+
+Naturally, I take no responsibility for any damage or loss of data incurred in the remote possibility that something goes terribly wrong.
+
+The Ultimate Appearance Tweak (#21)
+
+Microsoft said: "You can connect up to 10 monitors to your Windows XP-based computer and display numerous programs or windows at one time. You can use your mouse to move items from one monitor to another. You can open a different file on each monitor. Or several. Or you can stretch one item across several monitors; so for example, you can see more columns in a Microsoft Excel spreadsheet, or the entire layout of a Web page, without scrolling." Consider it. Monitors and PCI video cards are pretty cheap now. Windows recognizes the addition & allows easy adjustments on the 'Display Properties/Settings' menu.
+
+Save Streaming Media (#22)
+
+It's cool to listen to MP3s (or watch movies) over the Internet. Often, saving this media, however, seems impossible. Hey, if it plays on your computer, it's on your hard drive. Once the file is fully loaded and with folder view set to show hidden and systems folders, searches for the media (.mp3 or .mpg). There it is!
+
+Securing the Paging File (#23)
+
+If you're truly concerned about the possibility of your computer falling into the wrong hands, you should be sure that you don't leave any tracks in the paging file. By default, when you shut down your system, the paging file remains intact. People who've access to your computer could conceivably look through the unencrypted paging file to find information they shouldn't have.
+
+Assign a Keyboard Shortcut (#24)
+
+Click in the Shortcut Key field and press a keyboard combination that you want to use for launching or switching to this program. The shortcut key you assign must consist of one character key (a letter, number, or symbol) plus at least two of the following three keys: Ctrl, Alt, and Shift. (If you press a character key only, Windows automatically adds Ctrl+Alt.)
+
+Shortcut keys work only when assigned to a program shortcut on the Start menu, the Programs menu, or the Desktop. The shortcuts you define will not work if it conflicts with a combination used in the program whose window has the focus.
+
+Please remember, we cannot accept responsibility with what you decide to do with these tips. These tips act as a guide to tweaking and changing Windows XP from the default settings. If you are unsure about how to make these changes then don't meddle !

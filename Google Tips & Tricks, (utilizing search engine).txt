@@ -1,0 +1,96 @@
+==================================================
+Utilizing search engines
+==================================================
+
+So much information is on the web, its mind boggling. Thankfully we have search
+engines to sift through them and catagorize them for us. Unfortunatly, there is still so
+much info that even with these search engines, its often a painstakingly slow process
+(something comparable to death for a hacker) to find exactly what you're looking for.
+
+Lets get right into it.
+
+I use google.com as my primary search engine because it presently tops the charts as far as
+the sites that it indexes which means more pertinent info per search.
+
+1. Page translation.
+Just because someone speaks another language doesn't mean they dont have anything useful to say. I use translation tools like the ones found at
+
+http://babelfish.altavista.com
+and
+
+http://world.altavista.com
+to translate a few key words I am searching for. Be specific and creative because these tools arent the most accurate things on the planet.
+
+2. Directories.
+These days everything is about $$$. We have to deal/w SEO (search engine optimization) which seems like a good idea on paper until you do a search for toys and get 5 pornsites in the first 10 results. Using a sites directory will eliminate that. You can narrow your search down easily by looking for the info in specific catagories. (PS google DOES have directories, they're at: directory.google.com)
+
+3. Here are some tips that google refers to as "advanced"
+
+A. "xxxx" / will look for the exact phrase. (google isnt case sensitive)
+B. -x / will search for something excluding a certain term
+C. filetype:xxx / searches for a particular file extention (exe, mp3, etc)
+D. -filetype:xxx / excludes a particular file extention
+E. allinurl:x / term in the url
+F. allintext:x / terms in the text of the page
+G. allintitle:x / terms in the html title of that page
+H. allinanchor:x / terms in the links
+
+4. OR
+Self explanatory, one or the other... (ie: binder OR joiner)
+
+5. ~X
+Synonyms/similar terms (in case you can't think of any yourself)
+
+6. Numbers in a range.
+Lets say you're looking for an mp3 player but only want to spend up to $90. Why swim through all the others? MP3 player $0..$90 The 2 periods will set a numeric range to search between. This also works with dates, weights, etc
+
+7. +
+Ever type in a search and see something like this:
+"The following words are very common and were not included in your search:"
+Well, what if those common words are important in your search? You can force google to search through even the common terms by putting a + in front of the denied word.
+
+8. Preferences
+It amazes me when I use other peoples PCs that they dont have their google search preferences saved. When you use google as much as I do, who can afford to not have preferences? They're located on the right of the search box, and have several options, though I only find 2 applicable for myself...
+A. Open results in new browser
+B. Display 10-100 results per page. (I currently use 50 per page, but thats a resolution preference, and 5X's the default)
+
+9. *
+Wildcard searches. Great when applied to a previously mentioned method. If you only know the name of a prog, or are looking for ALL of a particular file (ie. you're DLing tunes) something like *.mp3 would list every mp3.
+
+10. Ever see this?
+"In order to show you the most relevant results, we have omitted some entries very similar to the X already displayed. If you like, you can repeat the search with the omitted results included." The answer is YES. yes yes yes. Did I mention yes? I meant to.
+
+11. Search EVERYWHERE
+Use the engine to its fullest. If you dont find your answer in the web section, try the group section. Hell, try a whole different search engine. Dont limit yourself, because sometimes engines seem to intentionally leave results out.
+ex. use google, yahoo, and altavista. search the same terms... pretty close, right? Now search for disney death. Funny, altavista has plenty of disney, but no death...hmmm.
+
+If you've read this far into this tutorial without saying, "Great, a guy that copied a few google help pages and thinks its useful info" then I will show you WHY (besides accuracy, speed, and consistancy finding info on ANYTHING) its nice to know how a search engine works. You combine it/w your knowledge of other protocol.
+
+Example:
+Want free music? Free games? Free software? Free movies? God bless FTP! Try this search:
+intitle:"Index of music" "rolling stones" mp3
+Substitute rolling stones/w your favorite band. No? Try the song name, or another file format. Play with it. Assuming SOMEONE made an FTP and uploaded it, you'll find it.
+
+For example....I wanted to find some Sepultura. If you never heard them before, they're a Brazilian heavy metal band that kicks ass. I started with this:
+intitle:"Index of music" "Sepultura" mp3 <-- nothing
+intitle:"Index of música" "Sepultura" mp3 <-- nothing
+intitle:"Index of musica" "Sepultura" mp3 <-- not good enough
+intitle:"Index of music" "Sepultura" * <-- found great stuff, but not enough Sepultura
+
+At this point it occurs to me that I may be missing something, so I try:
+intitle:"index of *" "sepultura" mp3 <-- BANG!
+(and thats without searching for spelling errors)
+Also try inurl:ftp
+
+I find that * works better for me than trying to guess other peoples mis-spellings.
+
+The same method applies for ebooks, games, movies, SW, anything that may be on an FTP site.
+
+I hope you enjoyed this tutorial, and I saw that recently a book and an article was written on the very same topic. I havn't read them as of yet, but check em out, and get back to me if you feel I missed something important and should include anything else.
+
+intitle:"index of" "google hacks" ebook
+
+
+Ps. I've said it before, I'll say it again... BE CREATIVE.
+You'll be surprised what you can find.
+

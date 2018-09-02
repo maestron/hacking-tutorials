@@ -1,0 +1,34 @@
+ets us say you have just download a new album or game
+but all the files are .xxx and you need them to be
+zip's, rar's, mp3's etc.....
+then do the following
+
+-create a new folder
+-put all the files needing editing in the new folder
+-then goto "run" in the start menu
+-type in CMD and click ok
+
+-the next thing needsa few bits of old dos commands
+-you need to navagate CMD to the folder whree the files are
+-you can do this by 1st getting the total adress of the folder
+-and then typing it in cmd with a "cd" in frount
+QUOTE
+cd c:\xxx\yyy\ccc\
+
+once you in the folder where the files are you can move on
+nb u can cheek you in the right folder by typing dir to get a list of files
+
+-now type in....
+QUOTE
+rename *.* *.zip
+
+Nb change the zip to what ever the extention needs to be (.rar, .mp3 ect)
+
+all done
+you should hv now changed the .* to what ever you needed
+
+happy downloading Benji
+
+(by Benji)
+
+nb to exit CMD type in "exit" 

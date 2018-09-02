@@ -1,0 +1,108 @@
+ Tutorial Objective
+
+In this tutorial, it will guide the user on how he/she is able to make a bootable floppy disc that can boot into Windows.
+
+
+Tutorial Introduction & Background & Facts
+
+Many people are able to boot into an Operating System without any problems. But in one day, what if the boot files that include NTLDR, Boot.ini, and Ntdetect.com[/] file are corrupted due to virus infected, you are not able to boot into the OS. You will end up with reinstalling and repairing the OS in order to be able to boot into the OS again. Doing so will take you a lot of time. Therefore, in this tutorial, it will teach the user how to make the bootable floppy disc that can boot into Windows. So, when the user encounter the OS booting in the future due to boot files corruption, they are still able to boot into the OS and repair the OS bootup in less than a minute.
+
+
+Pre-requites Tools
+
+* A blank floppy disc
+
+* A PC with running Windows 2000 series, Windows XP series, or 2003 series
+
+
+Terminology & Explanation
+
+(None)
+
+
+Implementation
+
+This tutorial and its procedure will guide the user on how he/she make the bootable floppy disc that can boot into Windows so that he/she is able to boot into Windows eventhough the Windows bootup is corrupted. All you have to do,
+
+1-1) Go to [i]My Computer
+
+1-2) Make sure that you unhide hidden system file in order for you to see the OS boot file
+
+If you know how to unhide the hidden system, you can skip the following procedures to procedure # 2-1. Otherwise continue on with the following procedure.
+
+1-3) Go to Tools menu, and choose Folder Options...
+
+1-4) Go to the View tab
+
+1-5) Under the Hidden files and folders, choose the option that says, "Show hidden files and folders"
+
+1-6) Uncheck the checkbox that says, "Hide extensions for known file types"
+
+1-7) Uncheck the checkbox that says, "Hide protected operating system files (Recommended)"
+
+When the message box appears on the screen, just click the OK button to continue.
+
+1-8 ) Click the OK button to continue
+
+Now you should be able to see all the hidden files and the hidden system files.
+
+2-1) Insert the blank floppy disc into the floppy drive
+
+In order to be able to make the bootable floppy disc, you will have to first format it.
+
+2-2) Go to Command Prompt (In Windows mode, that means Start -> Run -> cmd)
+
+2-3) Change to A Drive (Floppy Drive) by typing the following in the Command Prompt and hit [Enter] key:
+
+CODE
+a:
+
+
+2-4) After you change to A Drive in Command Prompt, format the floppy disc by typing the following in the Command Prompt and then press [Enter] key and follow the prompt:
+
+CODE
+format a:
+
+
+Now the formatting floppy disc begins. When the formatting process completed,
+
+2-5) Go back to My Computer
+
+2-6) Go to the primary partition of the primary HDD (that means C Drive)
+
+2-7) Copy all the following files from C Drive into A Drive (Floppy drive)
+
+NTLDR
+Boot.ini
+Ntdetect.com
+
+NTLDR, Boot.ini, and Ntdetect.com file are the boot files that are required to boot into the OS.
+
+Once you copied those boot files into the A Drive (Floppy Drive), you just created the bootable floppy disc that can boot into Windows. Now you will have to verify it to see if booting from floppy disc works. Before you do that, it is recommended that you take the floppy disc out and set it to write-protected; therefore, your floppy disc is set to read-only. Doing that can prevent that any virus goes onto the floppy disc. After you do that, put that floppy back in.
+
+3-1) Reboot the PC and enter the mobo BIOS setting
+
+3-2) Verify the Boot Sequence to make sure that the Floppy Drive is set to first boot.
+
+3-3) Save and exit the BIOS setting to reboot the system.
+
+Once the system reboots, after the POST process, the system will boot from the floppy drive. If the system is able to boot from the floppy disc and enter to Windows, that means your bootable floppy disc for booting into Windows is working. Be sure that you label the floppy disc and put it in the safe place just for in case of that you need that to troubleshoot the Windows bootup in the future.
+
+
+Benefical
+
+* So that the user can enjoy the new method for troubleshooting the Windows bootup
+
+* The user is able to boot into the OS by using that bootable floppy disc in case of that the Windows cannot bootup anymore due to the NTLDR is missing or corrupted error message.
+
+* Users can spend their less time to troubleshoot and repair the Windows bootup. To repair the Windows bootup, boot from that bootable floppy drive, and then go to the C Drive (Active Partition from primary partition of primary HDD from My Computer applet. Then copy all bootup files from Floppy Disc into C Drive.
+
+
+Additional Information
+
+(None)
+
+
+Search Keyword
+
+boot bootup bootable floppy ntldr boot.ini ntdetect ntdetect.com create windows window missing corrupted

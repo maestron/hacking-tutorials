@@ -1,0 +1,46 @@
+how to make a new web site
+http://www.make-a-web-site.com/
+http://www.pagetutor.com/pagetutor/makapage/index.html
+www.webmonkey.com
+
+Colour Palletes
+http://colormatch.dk
+
+HTMLlock <---Need
+
+http://www.devside.net
+http://www.devside.net/download/crypto/disclaimer1.html
+
+well, if you want text seperate from image, you could just do this:
+
+
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+<td><td>
+
+your text here, it's totally fun, yeah yeah yeah
+
+</td><td>
+
+<img src="your picture here">
+
+</td></tr>
+</table>
+
+
+
+if you want to have the image on the left side, and text on the right side, just reverse the code like so:
+
+
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+<td valign="bottom" align="left">
+
+<img src="your picture here">
+
+</td>
+
+<td><td>
+
+your text here, it's totally fun, yeah yeah yeah
+
+</td></tr>
+</table>

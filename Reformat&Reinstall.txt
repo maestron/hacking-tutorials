@@ -1,0 +1,40 @@
+Re-format & Re-install 
+
+
+Part 1 
+
+This series covers the basic steps of reformatting your hard drive and re-installing Windows. Now, this is not for the digitally squeamish and it's defiantly one of those do-at-your-own-risk deals. It's not intended for novices and should not be attempted unless you are fairly comfortable with DOS (if you have to ask what DOS is, than skip this tip). 
+
+A final warning - This is a general procedure so you may run into unforeseen problems. You may be able to get answers to problems at the message board, but don't come cryin' to me - You've been warned!! 
+
+OK, before we start any kind of disk formatting, we need to back up all the important info on your computer. I usually copy everything to my CD-R or a few zip disks. I generally only back up stuff that I created. I don't backup programs I have on disk, I re-install those. Make sure you get everything that's important to you backed up (maybe twice) because after we're done formatting the disk it will be COMPLETELY GONE! 
+
+Next, you'll want a boot disk. Even if you don't think you'll need it you should still have it, just in case. 
+
+To make a boot disk for win 95/98, (not a Windows recovery disk) follow these steps: 
+
+1. Open My Computer, insert a 3.5 floppy into your Drive A: and right-click the icon for your A: drive. Select Format from the resulting menu. 
+
+2. Select Full format and check the "Copy system files box". Then hit Start to format the disk. 
+
+ 
+
+>> Note that if you are using Win ME that the above little trick won't work. You'll need to go to your Start button, Settings, Control Panel. Open up the Add/Remove programs icon. From there, click the Startup Disk tab and create a new startup disk.<< 
+
+You should now have a bootable disk. You'll probably want to copy the following files to it: 
+
+EDIT.COM (you may need this to create or edit DOS files- this should be there if you made a Win ME recovery disk) 
+FORMAT.COM (for disk formatting) 
+FDISK.EXE (you'll lean about FDISK tomorrow- this should be there if you made a Win ME recovery disk) 
+MSCDEX.EXE (you may need this for your CD ROM) 
+
+All the above files should be under your C:\Windows\Command\ directory. 
+If not, use the Find feature to locate them (Start button, "Find" or "Search", depending on what version of Windows you have) . Once you find the files, right-click them and select Send to, 3 1/2 Floppy (A). 
+
+ 
+
+Here's some other stuff you'll want handy: 
+
+- Your CD ROM driver 
+- Your Windows CD 
+- Your Windows Setup Disk 1 (it's a floppy that you may have if you have a full version of Win 98. It's not 100% neces

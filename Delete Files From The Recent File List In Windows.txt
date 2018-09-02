@@ -1,0 +1,23 @@
+This tip requires a change to the Windows Registry. Please see the MSFN Guide "Backup Your Registry" if you are new to the Windows Registry.
+
+Windows Media Player (WMP) is a built-in application that allows you to play multimedia files. Like many other applications, WMP remembers the most recently played files and displays them in the Recent File List under the File menu. This feature is useful if you regularly play certain files, but you may want to clear the list if you share the computer and a user account or create archives and CDs.
+
+There are two ways you can clear the list:
+
+I. The ClearMRU.exe Utility is available for free in the Windows Media Player Bonus Pack from Microsoft, but Microsoft does not support this tool.
+
+II. You can also manually delete the list through the Windows Registry:
+
+1. Start the Windows Registry Editor, regedit.exe, by typing regedit in the Windows Run Command Line.
+
+2. Go to HKEY_CURRENT_USER\Software\Microsoft\MediaPlayer\Player\RecentFileList.
+
+3. Delete the RecentFileList subkey.
+
+4. If you've also streamed content from the Internet, you can delete the RecentURLList subkey.
+
+5. Exit the Registry Editor.
+
+6. Restart the computer.
+
+To keep certain files in the list, don't delete the entire key. Deleting individual entries within the key will get rid of the files that you no longer want in the Recent File List.

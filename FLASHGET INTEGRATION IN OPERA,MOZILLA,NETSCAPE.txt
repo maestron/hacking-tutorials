@@ -1,0 +1,114 @@
+1ST -> DOWNLOAD THIS: http://www.amazesoft.com/npfg11.exe
+
+THEN:
+Opera5&6 & Netscape6.x, 7.x, Mozilla 1.x and Mozilla Firefox 0.x
+Please download FlashGet Opera Plug-in 1.1. Install this plug-in into ...\Opera\Plugins or ...\Netscape6\Plugins or ..\Mozilla\Plugins or ..\FireFox\plugins directory.
+
+Netscape 6 does not support the same click monitoring methods used by FlashGet with previous versions of Netscape. They left out the features that have been there since Netscape Version 1.0. For now, you must either:
+Right click the links and do "Copy Link Location".
+Or, the plugins used for FlashGet's Opera click monitoring do work in Netscape--with some quirks and differences from the other click monitoring. Just install FlashGet's Opera plugins into the ...\Netscape\Plugins directory.
+
+Menuitem "Download by FlashGet" in Mozilla FireFox
+FlashGot is an extension for integrating FlashGet and Mozilla Firefox 0.9 or later. It is available on Mozilla Update. Note that some antivirus software may incorrecly claim that it has a virus, as it uses Visual Basic Script (.vbs) files when integrating with Internet Explorer. Thanks Giorgio Maone.
+
+Menuitem "Download by FlashGet" in Opera
+see How Customizing Opera's context-menus.
+
+Opera 7
+Install this plug-in into ...\Opera7\Plugins and enable it in Opera(Menu->File->Preferences...)
+
+
+NetCaptor
+Must use monitor method 2 in FlashGet(default setting), also need enable "Brower help object" in netcaptor options/general.
+
+
+
+2: MENU ITEM -> DOWNLOAD USING FLASHGET!!!
+
+
+Customizing Opera's context-menus
+=================================
+Build #040912
+
+
+
+What's this about?
+~~~~~~~~~~~~~~~~~~
+Using Opera 7.x one is able to customize the rightclick menus. That in
+mind it's possible to add a menu item for "Download using FlashGet".
+First you need to know, that every kind of menu entry in Opera is
+saved as plaintext in standard_menu.ini in the Opera defaults folder
+(normally C:\Program Files\Opera7\defaults). So, we need to modify this
+file in order to add our FlashGet menu extension.
+
+
+
+Requirements
+~~~~~~~~~~~~
+- Opera 7.0 or above
+- FlashGet 1.60 or above
+
+
+
+Here we go!
+~~~~~~~~~~~
+1) Get the folder where Opera is installed. See the registry at
+
+[HKLM\SOFTWARE\Netscape\Netscape Navigator\5.0, Opera\Main]
+"Install Directory"="C:\\Program Files\\Opera7"
+
+From here on I will use %opera% instead of the whole path we got
+from the registry since we need to save this info into a variable
+to use it in our program.
+
+ATTENTION! Be sure to not use this variable in any files we modify!
+Always use the whole path we got from the registry. Otherwise it
+will mess up your Opera installation!
+
+
+2) Goto this folder and copy
+
+%opera%\defaults\standard_menu.ini
+
+to
+
+%opera%\profile\menu\standard_menu.ini
+
+
+3) Open this file with a text editor and change the following:
+
+- change the name (line 7) into "Opera Standard with FlashGet extension"
+- search for the categories
+
+"[Link Popup Menu]" and "[Image Link Popup Menu]"
+
+and add the following line to both categories:
+
+Item, "Download using FlashGet" = Execute program, "C:\Program Files\FlashGet\flashget.exe","%l"
+
+That is a lowercase L after the last %
+
+- save the file and start Opera
+
+
+4) Goto "File/Preferences/Toolbars and Menus". In newer versions
+it's called "Extra's/Preferences/Toolbars and Menus" and highlight
+the new entry "Opera Standard with FlashGet extension" in the field
+"Menu setup"
+
+
+5) Press "OK" and that's it! Now you can download link-targets (both
+text- AND image-links) by right-clicking on a link and choose
+"Download using FlashGet".
+
+
+
+Hint:
+~~~~~
+You can skip 4) and 5) if you add the following line into section [User Prefs]
+of the file %opera%\profile\opera6.ini
+
+Menu Configuration=%opera%\profile\menu\standard_menu.ini
+
+This can easily be done using Nullsoft's NSIS Installer 2.0.
+Get it from www.nullsoft.com

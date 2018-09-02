@@ -1,0 +1,34 @@
+Windows Xp: Speed Up Your, Speed Up Your Network and Internet Access
+
+I have a dial up connection and it improve my speeds about 25% in surfing the internet. give it a try. Im IT , only do it if you feel comfortable with changing registry. 
+
+Increasing network browsing speed
+
+Does your computer slow down when you browse your local area network and connect to other computers that are sharing data? One of the most common causes of this slowdown is a feature of Windows Explorer that looks for scheduled tasks on remote computers. This effort can take some time on some computers and can really slow down your browsing. The window with which you are browsing the network may appear to freeze momentarily, as the system is waiting for a response from the remote computer.
+
+Windows XP: Speeding Disk Access
+
+Although this problem is a complex one, the solution is very simple. Instead of having to wait for the remote scheduled tasks, which is useless information to anyone who is not a system administrator remotely configuring scheduled tasks, you can disable this feature.
+
+In order to do this, you will have to change the System Registry and delete a reference to a key so that this feature will not be loaded. To do this, follow these steps:
+
+1. Open up the Registry Editor by clicking the Start Menu and selecting Run. Then type regedit in the text box and click the OK button.
+
+2. Once the Registry Editor has loaded, expand the HKEY_LOCAL_MACHINE key.
+
+3. Next, expand Software and then Microsoft.
+
+4. Locate Windows and expand that as well.
+
+5. You will want to be editing the main system files, so expand CurrentVersion.
+
+6. Because this feature is a feature of the Windows component known as Explorer, expand the Explorer key.
+
+7. Next, you will want to modify the remote computer settings, so expand the RemoteComputer key and then expand the NameSpace key to show all of the features that are enabled when you browse to a remote computer.
+
+8. In the NameSpace folder you will find two entries. One is "{2227A280-3AEA-1069-A2DE-08002B30309D}" which tells Explorer to show printers shared on the remote machine. The other, "{D6277990-4C6A-11CF-8D87-00AA0060F5BF}," tells Explorer to show remote scheduled tasks. This is the one that you should delete. This can be done by right-clicking the name of the key and selecting Delete.
+
+Tip:
+If you have no use for viewing remote shared printers and are really only interested in shared files, consider deleting the printers key, "{2227A280-3AEA-1069-A2DE-08002B30309D}", as well. This will also boost your browsing speed.
+
+Once you have deleted the key, you just need to restart and the changes will be in effect. Now your network computer browsing will be without needless delays.

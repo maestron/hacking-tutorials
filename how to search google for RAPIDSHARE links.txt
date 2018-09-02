@@ -1,0 +1,30 @@
+how to search google for RAPIDSHARE links
+
+
+If you wanna find some apps, files etc on rapidshare.de via google, do the following.
+
+Paste this into the google search window (not the adress bar):
+
+site:rapidshare.de -filetype:zip OR rar daterange:2453402-2453412
+
+* this searches the site rapidshare.de for any file that is rar or zip, and
+has been indexed between 1-11 February.
+
+dvd site:rapidshare.de -filetype:zip OR rar daterange:2453402-2453412
+
+* this is the same search but it specifically searches for "dvd" with the same
+search criteria, so any app posted with the word dvd in it will be found.
+
+There are mainly three criteria to keep in mind when doing this search.
+
+1. site: your site of choice to search
+
+2. filetype: filetypes you wanna search,if you put a "OR" after the first
+filetype you can add more.
+
+3. daterange: (start date-enddate)
+
+* this uses the "julian calendar", converter can be found here:
+
+Code:
+http://aa.usno.navy.mil/data/docs/JulianDate.html

@@ -1,0 +1,17 @@
+ how to execute chm files in linux
+
+ download the following rpms on ur pc:-
+
+http://dag.wieers.com/packages/chmlib/chmlib-0.35-1.1.fc3.rf.i386.rpm
+ftp://rpmfind.net/linux/dag/fedora/3/en/i386/dag/RPMS/wxGTK-2.4.2-5.1.fc3.rf.i386.rpm
+http://acmserver.cs.ucr.edu/%7Ensoracco/rpms/xchm-0.9.8-1.i386.rpm
+
+and also install them in the same sequence. using the command:-
+
+rpm -ivh <package name>
+
+Note:- i am giving the path of packages for fedora cpre 3. if want for any other os take a look at the following sites.
+
+chmlib:- http://dag.wieers.com/packages/chmlib/
+wxGTK:- ftp://rpmfind.net/linux/dag/
+xchm: - platform independent for all redhat's.............

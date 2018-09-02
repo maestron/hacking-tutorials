@@ -1,0 +1,14 @@
+
+
+Speed up menu display
+
+
+
+When using the start menu the you will notice a delay between different tiers of the menu hierarchy. For the fastest computer experience possible I recommend changing this value to zero. This will allow the different tiers to appear instantly.
+
+Start Regedit. If you are unfamiliar with regedit please refer to our FAQ on how to get started.
+Navigate to HKEY_CURRENT_USER\Control Panel\Desktop
+Select MenuShowDelay from the list on the right.
+Right on it and select Modify.
+Change the value to 0
+Reboot your computer.

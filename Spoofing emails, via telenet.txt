@@ -1,0 +1,19 @@
+ get a smtp server ( i use mx1.hotmail.com) theyre normally like
+mx1,mx2 etc..thehost.com.
+
+Now, go to Start>Run>cmd
+then in the cmd window, type
+telnet mx1.hotmail.com 25
+then
+HELO hotmail.com
+then
+MAIL FROM : (fakeemailhere)
+then
+RCPT TO: (person)
+then
+DATA
+then type your message, you can press enter for a new line, finish the message by a full stop (.) on a new line, press enter!
+
+spoofed.
+
+

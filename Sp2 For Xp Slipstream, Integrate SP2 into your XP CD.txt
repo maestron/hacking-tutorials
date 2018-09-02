@@ -1,0 +1,165 @@
+This is a long one but it works really nicely:
+
+I have used this method with great success and I want to say that I did not create it, but in checking several sources, I find that it is pretty much the standard way to Slipstream the new SP2 that is being posted all over so have fun ...... If you follow the steps to the letter, you shouldn't fail on the very first attempt or the first burn
+
+SlipSTreaming XP SP2
+
+Now that Service Pack 2 (SP2) has been released (RTM 2180) for Windows XP a lot of people have been updating their systems. In fact, a lot have been doing clean installations followed immediately by applying SP2 to eliminate much of the garbage that has collected over the past year of using XP. There really isn't a downside to reformatting and doing a clean install, but if there was one I suppose it could be that the installation of SP2 might be quite time consuming, especially if you do it through Windows Update. However, there is a way to reduce this time expenditure.
+
+If you fall into the category of users that frequently reformat their systems and clean install XP from the CD then creating a slipstreamed version of XP/SP2 can be a huge time saver. You invest the time once and then on subsequent reinstalls you avoid bringing XP up to SP2 speed via Windows Update downloads and installations. You will still have to get the post SP2 updates from Windows Update, but the time saved will still be worthwhile.
+
+
+There are a few essential items necessary to successfully create the slipstreamed CD. You will need:
+
+The original Windows XP installation CD ROM (Preferably A Corporate Edition)
+Note \ it doesn’t matter if you slipstreamed a normal XP version or XP with SP1 (By MS OR Slipstreamed before) one At the end you’ll always come out with a XP\ SP2 CD ROM.
+The new CD can be created from either the Home or Professional version of Windows XP. If your computer came with an OEM version of XP it can also be used.
+
+Windows XP Service Pack 2 - It will be necessary to either download SP2 or obtain it on CD. To slipstream, you need the full SP2 which is a 265MB( RTM Version) download from forum or wait till it’s officially on Microsoft site.
+
+CD Creation Software - A burning program for your CD-R or CD-RW drive that allows creating bootable CD's. Unfortunately, while XP does come with the capability to burn CD's built in, the software it uses is not suitable for this task. Since the majority I know seem to be using Nero Burning Rom I've used it in the tutorial, but the instructions can be adapted to other burning software.
+
+ISO Buster - Used to extract the boot loader image file for the Bootable CD. It's a free download (free to try ware)
+
+Building Directories
+The first step is to build a directory structure to hold the files that will be used in the CD creation process. It's a simple structure, requiring nothing more than a main folder with three sub-folders. It doesn't matter what names you use for your structure or where you locate them on your hard drive, but most users find drive C the easiest. I used the structure shown below, located on Drive “C:\”. Create whatever folders you are comfortable with or use the ones below if you want to cut and paste commands later in the tutorial. Whatever your choice, it's the relationship between the components that's important, not the naming of the parts.
+
+Main Folder: XP-SS [Located on Drive C]
+Sub-Folder: SS-Boot
+Sub-Folder: SS-Root
+Sub-Folder: SS-XP2
+Copying and Extracting Files:
+
+The first step is to insert the Windows XP CD and copy the entire contents into the SS-Root folder or the equivalent folder in your structure.
+Before copying the XP CD make sure that the system is set to display all hidden and system files to ensure a complete copy of all files on the CD. The settings to control what files are visible are located in Windows Explorer > Tools > Folder Options > View tab. Make sure [Show hidden files and folders] radio button is selected and [Hide protected operating system files] is unchecked.
+
+The second step is to navigate to where you downloaded the Service pack 2 file. If you downloaded SP2 from Microsoft it should be named xpsp2_en_x86.exe.
+The current RTM version named \ xpsp2_RTM_ENU.exe. Copy the file to the XP-SS folder and then rename it to xp-sp2.exe after the copy operation completes.
+(If you are using the CD of SP1 the files should already be extracted. Copy them into the XP-SS folder)
+
+Use the Run dialogue shown below to extract the contents of the Service Pack to the previously created SS-XP2 folder.
+The Run dialogue box is accessed from [Start] [Run]
+The command to begin the extraction is: C:\XP-SS\XP-SP2.EXE -U -X:C:\XP-SS\SS-XP2
+
+
+Apply the extracted Service Pack 2 to Windows XP in the SS-Root folder using the [Run] dialogue box.
+
+The Run dialogue box is accessed from [Start] [Run]
+The command to apply the Service Pack is:
+C:\XP-SS\SS-XP2\i386\update\Update.exe -S:C:\XP-SS\SS-Root
+
+The Service Pack 2 is being integrated into the Windows installation folder.
+Then:
+Successful completion of the integration process.
+
+
+In order to make the new CD bootable it's necessary to add the file Microsoft Corporation.img to the folder SS-Boot we created earlier. There are a number of ways to do this but the easiest is to use ISO Buster. With the Windows XP CD in your CD drive,( Or Any Bootable Win Xp Version You Might Have) open ISO Buster. Click on Bootable CD in the left pane then right click ( Microsoft Computing.img )( IF Its Not The MS Original CD The Boot File Name Might Any Thing Else The Most Common IS (Arnes Boot Record.img ) so any way we’ll use the (*.img file) in the right pane,
+finally right clicking Extract Microsoft Corporation.img file. (Extrack To SS-Boot Folder)
+
+
+Setting Up The Nero Burning Rom Software:
+Depending on how you have Nero configured it may open to a wizard that offers a number of screens to walk you through the process of selecting the type of CD to be created. If the wizard does appear, close it so the main Nero application loads
+
+Select [File] [New...] from the menu bar.
+
+The New Compilation window will open.
+
+
+In the left column, select “CD-ROM (Boot)” then select the Boot tab
+
+In [Source of Boot Image Data] section, select the [Image File] radio button.
+
+Use the [Browse] button to navigate to the C:\XP-SS\SS-BOOT folder and select MicrosoftCorporation.img file (it ill be asking for A “*.ima File Put the last scroller down on (all files (*.*) ) and choose the *. Img file we extracted earlier (it will work fine).
+
+Make sure the [Enable Expert Settings] box is checked.
+
+Set [Kind of Emulation] to No Emulation
+
+Set [Load Segment of Sectors] to 07C0
+
+Set [Number of Loaded Sectors] to 4 (Failing to set this to 4 will make the CD unbootable)
+
+Once the settings are in place, switch to the ISO tab
+
+ISO Tab
+
+Select them as follows
+
+File Name Length ( Max Of 31 Chars ( ISO Level 2)
+Format mode 1
+Character Set Iso 9660
+And then make sure all the other options are checked
+
+Very Important Note
+
+In the [Relax ISO Restrictions] section it's essential you check the [Do Not Add the ';1' ISO File Version Extension] checkbox or the slipstreamed CD will not be able to boot. If this option is not available on the ISO tab, you must stop now and upgrade to a newer version of Nero - Burning Rom before proceeding.
+
+The Label Tab:
+
+I've never had a problem with any of the slipstreamed CD's I've created by using a Volume Label different from the label that is provided for Windows XP home and Professional version CD's. However, if you prefer, set a Volume Label consistent with the original XP CD. The official labels are listed below.
+
+Set the [Volume Label] field depending on your Windows XP version.
+
+If you have Windows XP Professional enter WXPCCP_EN
+
+If you have Windows XP Home enter WXHCCP_EN
+
+If you have Windows XP Professional OEM enter WXPOEM_EN
+
+If you have Windows XP Home OEM enter WXHOEM_EN
+
+
+With SP2:
+
+Set the [Volume Label] field depending on your Windows XP version.
+
+If you have Windows XP Professional enter WXPCCP_SP2_EN
+
+If you have Windows XP Home enter WXHCCP_ SP2_EN
+
+If you have Windows XP Professional OEM enter WXPOEM_ SP2_EN
+
+If you have Windows XP Home OEM enter WXHOEM_ SP2_EN
+
+Once the Volume Label has been set, click the [Burn] tab to open the window where the basic burn parameters will be selected.
+
+The Burn Tab:
+
+Make sure the [Write] and [Finalize CD] options are checked in the Action section of the Burn tab and that the proper [Write Speed] has been selected for your burner. The [Write Method] should be set to Disc-At-Once. If you want more than one copy of the CD, enter a new value in [Number of Copies].
+
+Once the burn options have been set, click the [New] button to open the window where the files to be added to the CD will be selected.
+
+Adding The Files To Be Copied:
+
+Clicking the [New] button in the previous step opens the Nero - Burning Rom - ISO1 window that's divided into two distinct sections; ISO1 and File Browser.
+
+
+In the File Browser window, navigate to SS-Root or your equivalent folder. Click on the first file in the list, hold down the Shift key and click on the last file in the list to select all the files and folders in the C:\XP-SS\SS-Root folder.
+
+Drag and drop the selected files to the ISO1 window.
+
+Press the [Burn] icon on the menu bar to open the Write CD window. the [Burn] icon is the ninth one from the left in the menu bar.
+
+”Important Important Important”:
+When you press burn the previous setting window will appear before you press burn button in the right go back to the boot tab and make sure of the following one more time
+
+*Make sure the [Enable Expert Settings] box is checked.
+
+*Set [Kind of Emulation] to No Emulation
+
+*Set [Load Segment of Sectors] to 07C0
+
+*Set [Number of Loaded Sectors] to 4 (Failing to set this to 4 will make the CD unbootable)
+Nero will by default disable them so make sure they are set right - its better of you review the rest of the settings as well.
+
+Burning XP:
+
+The Write CD screen allows visual monitoring of the burning process. A few notes are in order relating to insuring a successful burn.
+
+Before you start the burning process close all other programs. Burning a CD can be very processor and memory intensive and there is no sense in taxing the system more than necessary.
+
+If you use a screensaver, disable it before the burning process as an extra precaution. The same applies to your anti virus software if it starts scans or updates automatically.
+
+How long the burning process takes will vary widely depending on your system and the CD burner speed. It may not appear like anything is happening at times, but be patient and more than likely all will be fine.
+
+If the burn does fail, especially because of a buffer problem, reduce the speed of the burn and try again.

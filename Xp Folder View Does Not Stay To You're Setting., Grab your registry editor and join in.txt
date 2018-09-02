@@ -1,0 +1,32 @@
+Xp Folder View Does Not Stay To You're Setting., Grab your registry editor and join in
+
+Why Doesn't Windows Remember My Folder View Settings?
+
+If you've changed the view settings for a folder, but Windows "forgets" the settings when you open the folder again, or if Windows doesn't seem to remember the size or position of your folder window when you reopen it, this could be caused by the default limitation on storing view settings data in the registry; by default Windows only remembers settings for a total of 200 local folders and 200 network folders.
+
+To work around this problem, create a BagMRU Size DWORD value in both of the following registry keys, and then set the value data for both values to the number of folders that you want Windows to remember the settings for. For example, for Windows to remember the settings for 5000 local folders and 5000 network folders, set both values to 5000.
+
+Here is how:
+
+Follow these steps, and then quit Registry Editor:
+1. Click Start, click Run, type regedit, and then click OK.
+2. Locate and then click the following key in the registry:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell
+3. On the Edit menu, point to New, and then click DWORD Value.
+4. Type BagMRU Size, and then press ENTER.
+5. On the Edit menu, click Modify.
+6. Type 5000, and then click OK.
+
+AND:
+
+1. Locate and then click the following key in the registry:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\ShellNoRoam
+2. On the Edit menu, point to New, and then click DWORD Value.
+3. Type BagMRU Size, and then press ENTER.
+4. On the Edit menu, click Modify.
+5. Type 5000, and then click OK.
+
+Note:
+
+When you use roaming user profiles, registry information is copied to a server when you log off and copied to your local computer when you log on. Therefore, you may have performance issues if you increase the BagMRU Size values for roaming user profiles.
+

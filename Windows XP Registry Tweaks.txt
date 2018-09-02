@@ -1,0 +1,755 @@
+Hacking Windows XP Registry
+
+
+
+Structure of Windows XP Registry :
+
+
+When you will open the Windows XP Registry , you will see it's divided into two panes. On the left side there are Five main 
+Keys as shown below. These can be expanded to several Sub-Keys, which further has many Sub-Keys.
+
++HKEY_CLASSES_ROOT
+
++HKEY_CURRENT_USER
+
++HKEY_LOCAL_MACHINE
+
++HKEY_USERS
+
++HKEY_CURRENT_CONFIG
+
+
+
+
+
+
+
+Before you try out the Tweaks, learn how to Backup and Restore Windows XP Registry.
+Types of Registry Backups :
+It?s very important that before you do editing you make a backup of the current registry. If you ignore this warning, it might prove deadly for you?so better listen to me J 
+Open your registry. Go to Start>Run , type regedit . When you invoke the Export function from File>Export, you are given a choice of different file types that can be saved :
+Registration Files (*.reg)
+Registry Hive Files (*.*)
+Text Files (*.txt)
+Win9x/NT 4 Registration Files (*.reg)
+All Files
+
+Each one of the different file types above plays an important role in how the data you export is saved. Choosing the wrong type can give you unexpected results. So let me explain you quickly these file types.
+
+Registrations Files : The Registration Files option creates a .reg file. This is the most well known file format used for backing up the registry. The Registration File can be used in two ways. As a text file it can be read and edited using Notepad outside of Registry Editor. Once the changes have been made and saved, right clicking the file and using the [Merge] command adds the changed file back into the registry. If you make additions to the registry using regedit and then merge the previously saved Registration File, anything that you've added via regedit will not be removed, but changes you make to data using regedit that previously existed in the saved Registration File will be overwritten when it is merged
+
+Registry Hive Files : Unlike the Registration Files option above, the Registry Hive Files option creates a binary image of the selected registry key. The image file is not editable via Notepad nor can you view its contents using a text editor. However, what the Registry Hive Files format does is create an image perfect view of the selected key and allow you to import it back into the registry to insure any problematic changes you made are eliminated. 
+
+Text Files : This option does just as the name suggests. It creates a text file containing the information in the selected key. It's most useful purpose is creating a record or snapshot of a key at a particular point in time that you can refer back to if necessary. It cannot be merged back into the registry like a Registration File.
+
+Win9x/NT 4 Registration Files : This option creates a .reg file in the same manner used by the Registration Files option. It's used by previous Windows versions and serves no purpose in XP unless you want to merge a key from XP into a previous version of Windows.
+
+Out of the give above choices , the safest method of backing up registry is to use Registry Hive Files option. No matter what ever you do or goes wrong in editing, importing the image of the key will eliminate all changes.
+
+**Note-> I have included the exact name/value between [ ] brackets. [ & ] should be ignored, only the data inside them should be considered. 
+
+
+
+1. Customize Windows Media Player Title Bar
+
+Change the title bar to read Windows Media Player provided by <your text>, so if I had entered text ?Abhishek Bhuyan? , it would read: Windows Media Player provided by Abhishek Bhuyan
+
+[Start] [Run] [Regedit]
+
+Go to HKEY_CURRENT_USER\Software\Policies\Microsoft
+Create the Key [WindowsMediaPlayer]
+Create String value named [TitleBar] 
+
+Data Type: REG_SZ // Value Name: TitleBar
+Double click TitleBar and Enter the text to be displayed in the title bar.
+
+Exit Registry / Reboot
+
+2. Minimize Outlook 2002 to the System Tray
+
+If you frequently access Outlook during the day it?s more convenient to have it minimized to the system tray rather than invoking it each time you need to send/receive e-mail. This tweak minimizes Outlook 2002 to the system tray:
+
+[Start] [Run] [Regedit]
+
+Go to HKEY_CURRENT_USER\Software\Microsoft\Office\10.0\Outlook\Preferences
+
+Modify/Create Data Type DWORD named [MinToTray]
+Setting for Value Data: [0 = Disabled / 1 = Enabled]
+
+Exit Registry / Reboot
+
+3. Specify Default IE Download Directory
+
+This tweak changes the default directory where downloads initiated in Internet Explorer are stored on the system.
+
+[Start] [Run] [Regedit]
+
+Go to HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer
+
+Modify/Create String Value of Data type REG_SZ Named [Download Directory]
+Value Data: [Enter Path to Directory to be Assigned as Defualt for Downloads]
+
+Exit Registry / Reboot
+
+4. Force Use of Classic Start Menu
+
+This tweak loads the Classic Start Menu and makes it impossible to change back to the Windows XP version
+
+[Start] [Run] [Regedit]
+
+Go to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Modify/Create the DWORD Value of Data type REG_DWORD Named [NoSimpleStartMenu]
+Value Data: [0 = Default / 1 = Force Classic Start Menu]
+
+Exit Registry / Reboot
+
+5. Hide/Show Internet Explorer Desktop Icon
+
+By default, Windows XP does not show the Internet Explorer icon on the Windows desktop. Using the registry tweak below allows you to control whether or not the Internet Explorer icon is displayed. 
+
+[Start] [Run] [Regedit]
+
+Go to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [NoInternetIcon]
+Setting for Value Data: [0 = Disabled / 1 = Enabled]
+
+Exit Registry / Reboot
+
+6. Increase Menu Display Speed
+
+When you click on the Start Menu there is some delay to display the contents , just for no reason. Effects are pretty though. The default speed can be adjusted with a quick registry entry.
+
+The default value is 400. Set it to 0 and the delay is gone. If you are not able to adjust pick a number that suits your style and make the change.
+
+[Start] [Run] [Regedit]
+
+Go to HKEY_CURRENT_USER\Control Panel\Desktop
+
+Modify/Create String value of Data type REG_SZ Named [MenuShowDelay]
+
+Value Data: [Default = 400 / Adjust to Preference]
+
+Exit Registry / Reboot
+
+7. Change the Location of Special Folders
+
+This tweak allows changing the location of special folders on the system. Any of the folders listed in the registry key may be moved.
+
+[Start] [Run] [Regedit]
+
+Go to : HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserShell Folders
+
+Modify/Create String value of Data type REG_SZ Named [Various Folder Names] 
+
+Data Type: REG_SZ [String Value] // Value Name: Consult RegEdit for Folder Names
+
+Value Data: [Move the folder to the new desired location using explorer, and then edit the matching folder in RegEdit to reflect the new folder location]
+
+Exit Registry and Reboot
+
+8. Faster Browsing in Windows Explorer on Network Computers
+
+By default, a Windows XP machine connecting to a Windows 95/98/Me computer will search for scheduled tasks or enabled printers on the remote computer. Two sub-keys control this behavior. Deleting them will speed up browsing on the remote computer.
+
+[Start] [Run] [Regedit]
+
+Go to : HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\RemoteComputer\NameSpace
+
+To Disable Scheduled Task Checking
+Value Name: {D6277990-4C6A-11CF-8D87-00AA0060F5BF}
+Delete the sub-key in the left pane of Registry Editor
+
+To Disable Printer Checking
+Value Name: {2227A280-3AEA-1069-A2DE-08002B30309D}
+Delete the sub-key in the left pane of Registry Editor
+
+Exit Registry / Reboot
+
+9. Add Administrator Account to Log In Screen
+
+When Windows XP is first installed it requires you to enter at least one name of a user who will access the computer. Once you create this name the default Administrator account vanishes. To access it, press Ctrl-Alt-Delete twice at the Welcome screen to retrieve the standard Windows 2000 logon dialog. Log on as Administrator from this point. To log the Administrator off, click [Start] [Log Off] and [Log Off] when the [Log Off Windows] selection box appears. The Log On screen with the available users will be displayed.
+
+To Make the Administrator Account Always Visible on the Login Screen use this Registry Tweak.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [Administrator]
+Setting for Value Data: [0 = Disabled / 1 = Enabled]
+
+Exit Registry / Reboot
+
+10. Increase Internet Download Connections
+
+Increase Simultaneous Internet Download Connections. Increases the number of allowed simultaneous connections to ten (10).
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [MaxConnectionsPer1_0Server]
+Setting for Value Data: [0000000a]
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [MaxConnectionsPerServer]
+Setting for Value Data: [0000000a]
+
+Exit Registry / Reboot
+
+
+11. Connected Web Files and Folders
+
+Connecting web files and folders allows a primary .htm or .html file to be moved in conjunction with files associated with the primary document. Once the primary document has been defined, create a sub-folder using the same name as the primary document but assign it a .files extension. Whenever the primary file is moved, the sub-folder will also move and remain as a sub-folder of the primary.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [NoFileFolderConnection]
+Setting for Value Data: [0 = Enabled (Default) / 1 = Disabled]
+
+Exit Registry / Reboot
+
+12. Hide/Show My Documents Folder on Desktop
+
+By default, Windows XP does not show the My Documents folder on the Windows desktop. Using the registry tweak below allows you to control whether or not My Documents is displayed. 
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}\ShellFolder
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [Attributes]
+Setting for Value Data: [Default = 0xf0400174 / Hidden = 0xf0500174]
+
+Exit Registry / Reboot
+
+13. Create a Hidden User Account
+
+This tweak allows an account that is normally displayed on the Welcome screen to be hidden from view. To log on using the account it's necessary to use the Log On To Windows dialog box similar to the one in Windows 2000 i.e. press CTRL+ALT+DEL twice.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Winlogon\SpecialAccounts\UserList
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [Type Name of Account to be Hidden]
+Setting for Value Data: [0 = Account is Hidden / 1 = Enabled]
+
+Exit Registry / Reboot
+
+While the account is hidden on the Welcome screen, note that the account profile will be visible in C:\Documents and Settings or wherever user profiles are stored as well as in Local Users and Groups.
+
+14. Create Legal Notice Logon Dialog Box
+
+In situations where you need users to read a legal notice before logging on, this tweak will create the caption for the notice. 
+
+Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+
+Modify/Create String Value of Data type REG_SZ Named [LegalNoticeCaption]
+Value Data for LegalNoticeCaption: [Type the Caption for the Dialog Box]
+
+Modify/Create String Value of Data type REG_SZ Named [LegalNoticeText]
+Value Data for LegalNoticeText: [Type the Data for the Legal Notice]
+
+Exit Registry / Reboot
+
+15. Manage Internet Explorer Error Reporting
+
+This tweak removes the IE Error Reporting tool from appearing with the option to send browser debugging reports to Microsoft.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main
+
+Note:- Create both values listed below and set according to the bold type for the tweak to function properly.
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [IEWatsonEnabled]
+Value Data: [0 - Disabled / 1 - Enabled]
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [IEWatsonDisabled] 
+Value Data: [0 - Disabled / 1 - Enabled]
+
+Exit Registry / Reboot
+
+16. Customize Logon and Security Dialog Title
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\ CurrentVersion\Winlogon
+
+Modify/Create String Value of Data type REG_SZ Named [Welcome]
+Value Data: [0 = Disabled / 1 = Enabled]
+
+Exit Registry / Reboot
+
+17. Customize Logon Box Message
+
+This is the message displayed on the Classic Logon box, not the XP ?Welcome? logon screen
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\ CurrentVersion\Winlogon
+
+Modify/Create String Value of Data type REG_SZ Named [LogonPrompt]
+Value Data: [Enter the text of the message]
+
+Exit Registry / Reboot
+
+18. Welcome Screen Logon Vs Classic Logon
+
+This tweak specifies whether the Welcome screen or the Classic logon will be used to access Windows XP.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [LogonType]
+Value Data: [0 - Classic Mode / 1 - Welcome Screen]
+
+Exit Registry / Reboot
+
+19. QoS (Quality Of Service) Bandwidth Reserve Setting
+
+By default, Windows XP reserves 20% of the connection bandwidth for QoS traffic. This tweak allows the setting to be altered to a different percentage of connection bandwidth. If the system uses more than a single adapter for network connections, each adapter may be set individually by navigating to:
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Psched\Parameters\Adapters\{Adpater-ID} rather than HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [NonBestEffortLimit]
+Setting for Value Data: [Enter as a Percentage / Default Value = 20]
+
+Exit Registry / Reboot
+
+20. Enable/Disable Save Password in DUN
+
+This tweak saves user passwords for Dial Up Networking so they do not have to be re-entered each session.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\Parameters
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [DisableSavePassword]
+Setting for Value Data: [0 = Disabled (Passwords Saved) / 1 = Enabled (Passwords Not Saved)]
+
+Exit Registry / Reboot
+
+21. Change the Registered Organization/Owner of Windows XP
+
+This tweak allows modification of the registered owner and organization of the Windows XP software.
+
+Note:- This tweak has nothing to do with Windows Product Activation (WPA) and will not allow you to register illegal XP software.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+
+Modify/Create String Value of Data type REG_SZ Named [RegisteredOrganization] or [RegisteredOwner]
+Setting for Value Data: [Modify the Values to Reflect Current Information]
+
+Exit Registry / Reboot
+
+22. Remove Links Folder in Favorites
+
+The Links folder is part of Favorites whether it's being accessed through Internet Explorer or the Favorites menu in the Start Menu. This tweak will remove it from those locations.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Toolbar
+
+Modify/Create String Value of Data type REG_SZ Named [LinksFolderName]
+Value Data: [Set the String Value to a blank string]
+
+Open Internet Explorer and manually delete the Links folder from Favorites Menu.
+The Links folder will not be recreated.
+
+Exit Registry / Reboot
+
+23. Enable/Disable Active Window Tracking to Mouse Movements
+
+When the mouse is moved over an open window it automatically sets the focus to that particular window. It does not bring the window to the foreground of the open windows.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_CURRENT_USER\Control Panel\Mouse
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [ActiveWindowTracking]
+Setting for Value Data: [0 = ActiveWindowTracking Disabled / 1 = ActiveWindowTracking Enabled]
+
+Exit Registry / Reboot
+
+24. Auto Disconnect for Internet Explorer
+
+Use this edit to automatically disconnect from Internet Explorer after a specified length of time has elapsed. Use this trick on anyone whom you don?t like using your computer with net J 
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanServer\Parameters
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [Autodisconnect]
+Value Data: [Enter a new disconnect time. Use Hexadecimal if you are unfamiliar with Binary]
+
+Exit Registry / Reboot
+
+25. Auto Reboot on System Crash
+
+By default, when the Windows XP operating system crashes an automatic reboot of the system occurs. While this behavior can be convenient, the downside is the error message accompanying the crash is not visible. Often times this information can be a great help in troubleshooting the source of the crash. This behavior can be modified in two ways; via the registry or using the System Properties property sheet.
+
+[Start] [Run] [Regedit]
+
+Registry Key: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [AutoReboot]
+Setting for Value Data: [0 = AutoReboot Disabled / 1 = AutoReboot Enabled]
+
+Exit Registry / Reboot
+
+Open System Properties via Start > Control Panel > Performance and Maintenance > System
+
+[System Properties may also be opened using the WinKey+Pause key combination]
+
+Select the Advanced tab and then click Settings in the Startup and Recovery section
+
+In System Failure section, clear the checkbox next to Automatically Restart
+
+Click OK and OK to exit
+
+26. Modify Control Panel Categories
+
+Even if you like the new style for Control Panel, you might at times wish you could shift some items around into a different category. It's possible. 
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Extended Properties\{305CA226-D286-468e-B848-2B2E8E697B74} 2
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [Choose one of the applets with .cpl extension]
+
+Setting for Value Data: [Select the value from table below]
+
+Other Control Panel Options 0 
+Appearance and Themes 1 
+Printers and Other Hardware 2 
+Network and Internet Connections 3 
+Sounds, Speed, and Audio Devices 4 
+Performance and Maintenance 5 
+Date, Time, Language, and Regional Options 6 
+Accessibility Options 7 
+Add or Remove Programs 8 
+User Accounts 9 
+
+Exit Registry / Reboot
+
+To further customize the items that appear in the new Control Panel, do a search of your system for all files that end in .cpl extension. If they aren't already listed, you can add them with a new DWORD value and then assign them to a category of your choosing.
+
+27. Enable/Disable Run Commands Specific to the Registry
+
+This tweak controls the use of the Run command on the local machine
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\ Policies\Explorer
+
+Create a DWORD value of Data Type REG_DWORD for each Run function that will be disabled.
+
+Modify/Create the Value Name [DisableLocalMachineRun] 
+Modify/Create the Value Name [DisableLocalMachineRunOnce] 
+
+Modify/Create the Value Name [DisableCurrentUserRun] 
+Modify/Create the Value Name [DisableCurrentUserRunOnce] 
+
+Setting for Value Data: [0 = Disabled / 1 = Enabled]
+
+Exit Registry / Reboot
+
+28. Enable/Disable System Properties Access from My Computer
+
+This tweak removes access to System Properties via My Computer as well as via Control Panel.
+
+[Start] [Run] [Regedit]
+
+Go to: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Modify/Create DWORD Value of Data type REG_DWORD Named [NoPropertiesMyComputer]
+Value Data: [0 - Display Properties / 1 - Hide Properties]
+
+Exit Registry / Reboot
+
+29. Uninstall Programs Manually
+
+Just because Windows XP has the Add/Remove Programs feature it doesn't mean your application will appear in the list. Furthermore, even if it does appear, it's no guarantee that the uninstall feature will work. When you run across one of these situations the items listed below will help in getting rid of the application. Be aware that these steps may not remove everything associated with the application and can impact other applications on the computer. Have a backup or restore point and use caution.
+
+Find the directory for the application and delete all the files in the directory. Delete the directory. 
+
+Open regedit and navigate to HKEY_LOCAL_MACHINE\SOFTWARE and find the folder for the application. Delete the folder. 
+
+Open regedit and navigate to HKEY_CURRENT_USER\SOFTWARE and find the folder for the application. Delete the folder. 
+
+To remove the application entry from Add/Remove Programs (if present) open regedit and navigate to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall and find the folder for the application. Delete the folder. 
+
+Some applications have Services attached to them. If this is the case, navigate to HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services, locate and delete the service. 
+
+In Windows Explorer, navigate to the individual user settings and delete program references. Common places to check would be: 
+
+C:\Documents and Settings\All Users\Start Menu\Programs and delete relevant entries.
+
+C:\Documents and Settings\All Users\Start Menu\Programs\Startup and delete relevant entries.
+
+C:\Documents and Settings\%YourUserID%\Start Menu\Programs and delete relevant entries.
+
+[Do this for each User ID listed]
+
+C:\Documents and Settings\%YourUserID%\Start Menu\Programs\Startup and delete relevant entries.
+
+[Do this for each User ID listed]
+
+If no entries were found in the previous step and the application launches automatically, navigate to
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows
+
+and delete the entry.
+
+30. Create a right-click command prompt option
+
+You can right-click a folder to get a list of actions you can apply to it. Here?s a way to create an action on that right-click menu that opens a command prompt window with that folder as the current directory. In a text editor such as Notepad, type the following exactly:
+
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Folder\shell\Cmd Here]
+
+@=?Command &Prompt Here?
+
+[HKEY_CLASSES-ROOT\Folder\shell\Cmd Here\command]
+
+@=?cmd.exe /k pushd %L?
+
+
+
+Save the file with any name you want, with a .reg extension. Then double-click the saved file and choose Yes to merge the file?s information into the Registry. You can delete the file. Right-click any folder and you?ll see the CommandPrompt Here option.
+
+31. Adjusting System Restore values
+
+The new System Restore feature in Windows XP automatically backs up a snapshot of your system, including your Registry, every 24 hours. It also saves restore points for 90 days. Neither of these values is directly editable in the System Restore program, but you can change them in the Registry. Go to:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\SystemRestore 
+
+You?ll find an assortment of settings here. To change the interval between automatically created restore points, change the RPGlobalInterval setting. To change the number of days that a restore point is retained, change the RPLifeInterval setting.
+
+System Restore time intervals are measured in seconds, not days, so you must convert the number of days you want into seconds. There are 86,400 seconds in a day, so multiply 86,400 by the number of days you want to determine the value. (There are 3,600 seconds in an hour, I hope you know)
+
+32. Erase the swap file at shutdown
+
+You might be concerned about someone browsing your users? swap files and gathering up little bits of their sensitive data. A remote possibility, to be sure, but it could happen. For that extra measure of security, go to:
+
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Memory Management 
+
+Set the ClearPageFileAtShutdown DWORD to 1. This will make shutdowns take longer, because it overwrites everything in the swap file with zeroes. Don?t turn this feature on unless you have a serious security threat.
+
+33. Delete the Files Stored on This Computer category in the My Computer window
+
+In Windows XP, the My Computer window?s listing is broken down by categories: Hard Disk Drives, Devices with Removable Storage, and so on. One of these categories is Files Stored on This Computer, which appears at the top of the My Computer window. If a user doesn?t need it , you can get rid of it. To do so, go to:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\
+NameSpace\Delegate Folders 
+
+Delete the {59031a47-3f72-44a7-89c55595fe6b30ee} subkey to remove the category.
+
+34. Change the desktop cleanup frequency
+
+Through Display Properties (Desktop tab, Customize Desktop button, General tab), you can turn on and off a feature that runs the Desktop Cleanup Wizard every 60 days. You don?t have an option to set a different interval there, but you can change the interval in the Registry. To do so, go to:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\CleanupWiz 
+
+Change the Days Between Clean Up Value to some other number of days (in decimal format).
+
+35. Sort menus alphabetically
+
+When you install a new program for a user, it doesn?t find its place in the alphabetical Start menu hierarchy right away; it hangs out at the bottom for a little while. If your users employ the Classic Start menu, they can re-alphabetize it manually by right-clicking the taskbar and choosing Properties, clicking the Customize button next to the Classic Start Menu, and clicking the Sort button. With the Windows XP style of Start menu, however, you don?t have an equivalent button. To make Windows always alphabetize the list, remove the permissions from the Registry key that controls the sort order for the Start menu. To do so, go to: 
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder 
+
+Choose Edit | Permissions and click the Advanced button. Deselect the Inherit From Parent The Permission Entries That Apply To Child Objects check box and then click Copy when the Security dialog box pops up. Click OK and clear the Full Control entry for your account and all security groups you are a member of. Leave only Read permission.
+
+36. Prevent programs from loading at startup
+
+Remember back in the good old days of Windows 3.1 when you could open up the Win.ini file in a text editor and remove an item from the RUN= line to disable it from running at startup? With Windows 9x and above, the Win.ini file became less useful because 32-bit programs were set to run at startup from within the Registry instead.
+
+One way to selectively disable programs from loading at startup is to use MSCONFIG (from the Run command) to deselect certain items. Another way to remove them is to edit the Registry directly. Consider the following locations: 
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+
+for applications that start up for all users 
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+
+for applications that start up when the current user logs on 
+
+Remove the entry for a program by right-clicking it and selecting Delete to prevent it from loading.
+
+37. Change categories in the Control Panel
+
+Windows XP?s Control Panel is broken down by category in the default Category view, but the group to which an item belongs is not always obvious. If you disagree with Microsoft?s assignments, you can switch them around. To assign a different category to an item, go to: 
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Extended Properties\
+{305CA226-D286-468e-B848-2B2E8E697B74} 2 
+
+Find the item you want to change and double-click it to bring up a dialog box. Change the item?s DWORD value to your preference. Use the Table given below as a guide (shown with decimal numbers, which is the way you should enter them).
+
+DWORD value to set 
+
+Other Control Panel Options 0 
+
+Appearance and Themes 1 
+
+Printers and Other Hardware 2 
+
+Network and Internet Connections 3 
+
+Sounds, Speed, and Audio Devices 4 
+
+Performance and Maintenance 5 
+
+Date, Time, Language, and Regional Options 6 
+
+Accessibility Options 7 
+
+Add or Remove Programs 8 
+
+User Accounts 9
+
+38. Grouping multiple open windows 
+
+Windows XP will group multiple open windows (IE windows for example) into one group on the task bar to keep the taskbar clear. This can be annoying at times - especially when comparing different web pages because you have to go back to the task bar, click on the group and then click on the page you want and then you only get one page because you have to click on each one separately. I think the default for this is 8 windows - any combination of apps or utilities open. 
+
+You can modify this behavior by adding this registry key at: 
+
+HKEY_CURRRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\ 
+
+add a Dword value of type REG_DWORD named [TaskbarGroupSize]
+
+modify "TaskbarGroupSize" entry to be the number of windows you want open before XP starts to group them on the task bar. 
+
+A value of 2 will cause the Taskbar buttons to always group 
+
+Another tweak is to disable or enable recent documents history. This can be done at: 
+
+HKEY_CURRRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\ 
+
+this key should already be present - if it isn't you'll need to add it: 
+
+Add a Binary value of type REG_BINARY named [NoRecentDocsHistory]
+
+modify it so that value reads 01 00 00 00
+
+39. Disable Tips 
+
+To disable Ballon tips in Windows XP do this registry tweak
+
+Go to : HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced 
+
+Create a new DWORD value, name it EnableBalloonTips, and set it equal to 0. If EnableBalloonTips is already there and equal to 1, set it equal to 0. Quit the registry editor, log off, and log back on. Voila! Your computer will stop talking down to you.
+
+40. Add/Remove optional features of Windows XP 
+
+To dramatically expand the list of applications you can remove from Windows XP after installation, navigate to C:\WINDOWS\inf and open the sysoc.inf file. {Opps , if you didn?t find the inf directory, you are right. It?s a hidden folder, so go to Tools>Folder Options> View , enable Show Hidden Files & Folders.}
+
+[Version]
+
+Signature = "$Windows NT$"
+
+DriverVer=07/01/2001,5.1.2600.0
+
+[Components]
+
+NtComponents=ntoc.dll,NtOcSetupProc,,4
+
+WBEM=ocgen.dll,OcEntry,wbemoc.inf,hide,7
+
+Display=desk.cpl,DisplayOcSetupProc,,7
+
+Fax=fxsocm.dll,FaxOcmSetupProc,fxsocm.inf,,7
+
+NetOC=netoc.dll,NetOcSetupProc,netoc.inf,,7
+
+iis=iis.dll,OcEntry,iis.inf,,7
+
+com=comsetup.dll,OcEntry,comnt5.inf,hide,7
+
+dtc=msdtcstp.dll,OcEntry,dtcnt5.inf,hide,7
+
+IndexSrv_System = setupqry.dll,IndexSrv,setupqry.inf,,7
+
+TerminalServer=TsOc.dll, HydraOc, TsOc.inf,hide,2
+
+msmq=msmqocm.dll,MsmqOcm,msmqocm.inf,,6
+
+ims=imsinsnt.dll,OcEntry,ims.inf,,7
+
+fp_extensions=fp40ext.dll,FrontPage4Extensions,fp40ext.inf,,7 
+
+AutoUpdate=ocgen.dll,OcEntry,au.inf,hide,7
+
+msmsgs=msgrocm.dll,OcEntry,msmsgs.inf,hide,7
+
+RootAutoUpdate=ocgen.dll,OcEntry,rootau.inf,,7
+
+IEAccess=ocgen.dll,OcEntry,ieaccess.inf,,7
+
+
+
+Games=ocgen.dll,OcEntry,games.inf,,7
+
+AccessUtil=ocgen.dll,OcEntry,accessor.inf,,7
+
+CommApps=ocgen.dll,OcEntry,communic.inf,HIDE,7
+
+MultiM=ocgen.dll,OcEntry,multimed.inf,HIDE,7
+
+AccessOpt=ocgen.dll,OcEntry,optional.inf,HIDE,7
+
+Pinball=ocgen.dll,OcEntry,pinball.inf,HIDE,7
+
+MSWordPad=ocgen.dll,OcEntry,wordpad.inf,HIDE,7
+
+ZoneGames=zoneoc.dll,ZoneSetupProc,igames.inf,,7
+
+[Global]
+
+WindowTitle=%WindowTitle%
+
+WindowTitle.StandAlone="*"
+
+The entries that include the text hide or HIDE will not show up in Add/Remove Windows Components by default. To fix this, do a global search and replace for ,hide and change each instance of this to , (a comma). Then, save the file, re launch Add/Remove Windows Components, 
+
+41. Remove Windows Messenger 
+
+It seems that a lot of people are interested in removing Windows Messenger for some reason, though I strongly recommend against this: In Windows XP, Windows Messenger will be the hub of your connection to the .NET world, and now that this feature is part of Windows, I think we're going to see a lot of .NET Passport-enabled Web sites appearing as well. But if you can't stand the little app, there are a couple of ways to get rid of it, and ensure that it doesn't pop up every time you boot into XP. The best way simply utilizes the previous tip: 
+
+If you'd like Windows Messenger to show up in the list of programs you can add and remove from Windows, navigate to C:\WINDOWS\inf and open sysoc.inf (see the previous tip for more information about this file). You'll see a line that reads: 
+
+msmsgs=msgrocm.dll,OcEntry,msmsgs.inf,hide,7 
+
+Change this to the following and Windows Messenger will appear in Add or Remove Programs, then Add/Remove Windows Components, then , and you can remove it for good: 
+
+msmsgs=msgrocm.dll,OcEntry,msmsgs.inf,7
+
+42. Rename multiple files ( it is not a Registry tweak though. I thought this to be really cool, so I have put it here)
+
+A new, small, neat feature for Windows XP deals with renaming files. I personally have always wanted the OS to include a way to do a mass file renaming on a bunch of files. You can now rename multiple files at once .Its really simple: 
+
+Select several files in Explorer, press F2 and rename one of those files to something else. All the selected files get renamed to the new file name (plus a number added to the end). Simple J 
+
+
+
+
+I hope you enjoyed the above Registry tricks ! May be next time I?ll come up with more. That's all for now . 
+To know more tricks + topics on Hacking, Security, Programming.
+
+
+
+
+

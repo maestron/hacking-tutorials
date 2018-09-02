@@ -1,0 +1,9 @@
+re you sick of seeing the same tips again and again when you first logon to Windows? Now you can change them to whatever you want, whether it's quotes, jokes or a to-do list, anything is possible.
+
+Open your registry and find the key below.
+
+HKEY_LOCAL_MACHINE\ SOFTWARE\ Microsoft\ Windows\ CurrentVersion\ Explorer\ Tips
+
+Create a new string valued named by incrementing the existing value names and set it to the required tip text.
+
+eg. 32 - Dont forget to Visit ShareOrDie.com

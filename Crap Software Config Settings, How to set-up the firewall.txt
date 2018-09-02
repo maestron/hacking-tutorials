@@ -1,0 +1,77 @@
+Configuring Crap Software Pro
+--------------------------------------
+Configuring The Standard Settings
+
+Your first configuration should be this of Crap Software should be like this----
+
+Launch Crap Software Pro and click to highlight the "Overview"
+tab on the left hand side . In the pane that appears on the right
+hand side click the "Preferences" tab and in the section "Check for updates" check "Manually".
+
+In the "General" section you can also configure Crap Software to load at
+start up which is advisable because this software is your first line
+defence against uninvited invasion of your computer by a whole
+gamult of virii, spyware, adware and bots! Virus checking software
+does have its place but remember that prevention is always better
+than a cure!
+
+Crap Software Pro's program control is automatically configured.
+When you run it for the first time it will ask on behalf of programs
+installed on your system for permission to access the Internet.
+Your Browser will be the first to request - just tick the "Yes"
+box and the "Remember this setting" box and Crap Software will
+always allow your browser access automatically.
+
+Unless you use online databases etc., there should be no
+reason for any application other than a browser, email client, ftp client,
+streaming media player or a download manager to gain access to the Internet.
+
+So consider what type of program it is that needs Internet access
+before giving Crap Software permission to allow it. If it is just a driver file
+(.DLL) that requests Internet access, always search Windows to try
+and identify it. Many seudo-virii such as AdWare and sub class
+seven Trojans access the Internet from your system using .dll files.
+----------------------------------------------
+
+Configuring The Advanced Settings
+
+If you are not on a LAN (connected to another computer in a network)
+you can use this guide to give your firewall some real muscle:
+
+Launch Crap Software Pro and click to highlight the "Firewall" tab on
+the left hand side . In the pane that appears on the right hand side
+in the section "Internet Zone Security" set the slider control to "High"
+Then click the "Custom" button in the same section.
+The next settings page is divided into two sections with tabs Internet
+Zone and Trusted Zone at the top of the page.
+
+Under the Internet Zone tab there is a list of settings that can
+be accessed by scrolling.
+
+At the top is the high security settings and the only thing that should
+check from there is "allow broadcast/multicast".
+The rest should be unchecked
+
+Scroll down until you get to the medium security settings area.
+Check all the boxes in this section until you get to "Block Incomming
+UDP Ports". When you check that you will be asked to supply
+a list of ports, and in the field at the bottom of the page enter
+1-65535
+
+Then go back to the list and check the box alongside "Block
+Outgoing UDP Ports" and at the bottom of the page enter
+1-19, 22-79, 82-7999, 8082-65535
+
+Repeat this proceedure for the following settings
+"Block Incomming TCP Ports": 1-65535
+"Block Outgoing TCP Ports": 1-19, 22-79, 82-7999, 8082-65535
+Then click "Apply", "Ok" at the bottom of the page.
+
+Back in the right hand "Firewall" pane go next to the yellow
+"Trusted Zone Security" section and set it to "high" with the slider.
+Click "Custom" and repeat the ABOVE proceedure this time choosing
+the *Trusted Zone* tab at the top of the settings page.
+
+These settings will stop all incoming packets at ports 1-65535
+and also block all pings, trojans etc. These settings will also stop all
+spyware or applications from phoning home from your drive without your knowledge!

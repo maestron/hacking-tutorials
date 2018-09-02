@@ -1,0 +1,62 @@
+How to do a high Quality DivX rip
+
+First and foremost, go to
+
+http://www.doom9.org
+
+and go to their downloads section.
+get the following files:
+under Audio:
+Besweet
+Besweet GUI
+
+Under Codecs:
+DivX 5.2.1 Pro
+
+Under Divx/Mpeg-4 encoders:
+Nandub 1.0RC2
+
+
+then get this:
+http://www.dvd-digest.tv/downloads/files/virtualdub/vdub_pack-145.exe
+alternatively, get any version of virtualdub that includes mp3 support.
+
+these are all the required tools, there are ways with fewer items, but they produce very inferior outputs. Besides, after you get used to it, the whole process is really easy.
+
+
+Okay, first and foremost, pull out Nandub. This is the step that takes the longest, as well as where you will make most of your decisions. I am going to assume that you are making a 1 cd rip. If you do what is in this faq, there won't be much reason to do anything else. Twisted Evil
+
+First of all, run Nandub . It will pop up a dialogue box, and want to know if you are making a new project or resuming an old. New, of course. Give it a name and tell fairuse where you want it to store its data. Fairuse is about to rip the entire movie to your harddrive(nice if you want to go rent a movie and return it the next day).
+
+Then it will ask for your DVD drive with a dvd in it. give it. Then, select which video stream you want. This is usually pretty obvious as the movie stream is the one that is an hour or so long. If there are two of these, check out the other tags. which languages and so on. worst case senario is that you have to trial and error. but that is rare. choose the long stream and hit next.
+
+This is where Nandub rips everything to your hard drive. depending on the speed of various components in your computer, and the length of the movie, this could take a while. let it finish. and then move on.
+
+Once all that is done, the really important screen pops up. this is where you set resolutions and video length. first, cut off the ending credits with the slider, but DO NOT mess with the beginning, as the sound and video frames need to start at the same point for sync. Then hit auto set for the cropping region, this is usually just fine. Then decide whether or not you want subtitles, which would be the subpicture stream. When you're done, hit next.
+
+Set the field mode to IVTC. This will give you better quality for size, as it runs at 24 frames instead of 30, due to the nature of divx, there won't be any noticeable difference in quality, but 6 less frames to deal with each second(and to store data for) really add up. Besides this is the correct mode for all movies anyway. NExt.
+
+This is where you set FINAL file size, including audio, for 1 cd rip, set to 690, for 2, set to double that. Then follow the directions they give you and choose a final resolution that has between a 120:1 and 150:1 (if possible, sometimes the movie is compression ratio. NEXT!
+
+This screen is where you determine quality. The autoadd button is usefull, and will give you decent quality, with 4 encodings. What this does is encode the movie 4 times, and then mix the frames to creat the final encoding, with the most efficient possible encoding for each frame. which is how we get bad ass quality for a single cd. I usually go for 8 encodings, as on my athlon 1600+ this rarely takes more than 8 hours to do, so I just go to sleep, wake up, and its done.
+
+Then add the audio encoding that you want.
+
+Hit next.
+And let the bastard fly. Depending on what you set, and your computer, this could take from a few hours to a few days. CPU's of 1.2Ghz+ are nice right about here. You can do stuff while this is going on, but it makes things take much longer.
+
+In the end you will have a bunch of encodings in the folder you specified at the beginning, the 4+ you chose and the final. You will also have an AC3 stream. Take the final AVI and toss it someplace to await the rest of the audio work you have to do, and you can erase the other encodings, freeing up a few gigs in the process of space.
+
+NEXT: AUDIO
+
+Ok, this is where Besweet comes in.
+
+Extract BeSweet and the GUI into the same folder. Now Run the GUI.
+
+At the top there are three fields. One for BeSweet which you should point at the besweet.exe that you should have unzipped to the same directory you are running the Gui from, A field for the AC3 stream, which is in the folder where you sent the encoded video from Fairuse, and an output mp3. The output mp3 has to be an existing file, so make a text file, rename it (yourmovie).mp3 and just say yeah, its cool to change the extension and make things weird. besweet will overwrite it so don't worry. point the third field at that file. The default values for stuff should be fine. but to make sure go to Azid 1(on the left) and select stereo, and then go to Lame 2 and select constant bit rate, and 128(assuming that is what you want). then click on besweet again, and finally, click on AC3 to MP3.
+
+Let the bastard fly.
+
+Now. When its done you should have an mp3 that is the entire soundtrack for the movie. This is where virtualdub comes in. run the virtualdub mp3 version. go to File:open video file and select the final encoding that you had from way back. Then go to audio and select mp3 audio. it will ask you for the file, give it the mp3. Go to audio again and make sure direct stream copy is selected. Then go to video and make sure that direct stream copy is also selected. Finally go to file again and SAVE AVI. give it a file name and let the bastard fly. This final file is your movie. Beautiful and glorious. Congratulations, its a DivX rip. Aren't you proud. burn to cd, and give copies to all your friends.
+
+Note: These is a RIP

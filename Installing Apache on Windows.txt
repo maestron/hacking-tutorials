@@ -1,0 +1,104 @@
+Installing Apache on Windows
+
+
+Installing Apache on Windows, why? Because let's face it Windows
+is easy, and well Apache sure beats using IIS. This tutorial is meant for the person who would like to set up there own little
+web server. It's not meant for the IT Person running a fortune 500 company. But hey if you want go ahead.
+
+Instalation:
+
+First thing you need is to download the webserver. Now for windows
+users your gonna want to go download the .exe . The apache website is www.apache.org Your gonna wanna head to the apache
+binaries sections for Win32 I believe it is at http://www.apache.org/dist/httpd/binaries/win32/
+There you will be able to download a version of apache.
+
+
+Now before you download it you gonna want to make a folder. This folder is
+where your gonna server your root directory. Now if you don't want to do
+this it's ok. You can use the default path if you want. Put usually this helps
+in setting up other things like php, and MySQL. Most people do is they create
+a folder in the C:\ directory called WWW or somthin. You can name it whatever you want.
+
+
+Ok so have downloaded the Apache Web Server. Your ready to go with the setup.
+No the version I have downloaded was apache_2.0.36-win32-x86-no_ssl.msi This
+was a newer version and supposedly supposed to be more secure. The first screen you get when your in the setup is The welcome screen we don't care much about that
+but owell so hit next. The next screen is the terms and service. And yes
+your going to agree to the terms duh. The next screen is some documentation.
+I never really read it but if you want go ahead and do it. Once your done
+hit next again. Know we see a screen that says enter a network domain. Erase what is ever in there and type localhost. Now the next box says
+Servername, erace what is ever in the box and put in localhost.
+The next is Administrators e-mail address. Go ahead and fill that in.
+But make sure to change it. Now there are 2 little radio buttons.
+Pick the one that best suites your needs. Now that we got that all
+filled out. Hit Next and you'll go to a screen that asks you which
+type of install you want to do. Then hit next.
+
+
+If you wanted to server out of your one special folder. Change the
+file location of were your gonna install apache. Or just leave it at the default path. Click install and it should be on
+it's way. Once it's done installing hit the finish button.
+
+The test:
+First were gonna check to see if Apache installed correctly.
+This is how we do it. Open up Internet Explorer and type in " http://localhost" . If everything went smooth then you should
+be seeing a message that looks like this" Seeing this instead of the website you expected?" Yippee!!!
+Apache is working. See now wasnt' that really simple. Ok now were gonna
+do some fun stuff.
+
+Alright now that we got or test done lets move on to changing some of this
+stuff that apache did on default. In Internet Explorer if you installed
+on the deafult path. Make your way to C:\Program Files\Apache Group\Apache2
+This is your Main Apache Directory were you can find everything. If you want
+take a short break and run around. There are some cool things there. Don't
+worry if you don't understand what's in these files just yet.
+
+Break Time:
+Go take a leak, get some pepsi and somthin to eat. If you got smokes light
+them up in your new found glory.
+
+
+Alright so now you've got apache installed and your about to start dishing out
+your web pages that you took so much time on to build. Head to the folder called
+htdocs, this is your main folder. There should be a whole bunch of pages What i do
+is i select them all and move them to another folder. The htdocs folder is the best
+folder in the world. It's gonna be one of the places you spend most of your time
+dishing out content for the world. Ok so get rid of all that stuff that is in your
+htdocs folder. And move all your great content inside replacing it. Alright so now
+once we moved all are content inside the htdocs folder and we tested it to make
+sure it was there. http://localhost remember. Now let's get out of there. Go to
+Apache's main directory. Now just to be aware of what is going on and get a good
+example of how Apache Functions head off to a folder called "conf" This is the
+configuration files Apache Uses. If you ever wanted to install php and other
+server side scripting languages this is where you would do it. Now you get 2 copys
+Use 1 as a backup and never edit it at all. Go ahead and open the folder and open
+"httpd.conf" Read it very carefully cause in this tutorial were not gonna read
+about it. I just want you to know it's there. Anytime you edit the httpd.conf file
+you must re-start apache in order for it to work. Another good tip for you new people
+to apache is you may notice the log files. Yes there great and make sure to make backups
+of the logs they will come in handy. As security precautions. I also recommend getting
+a firewall set up. There are lots of great security features that apache has but this
+is a tutorial to installing apache.
+
+
+Alright so now you've got your webpages up. But the only way people will be able to view
+your pages is my typing in your ip address. This is a bumper. Lets look at some free
+re-directories. www.n2v.net, This is a cool one. You sign up put your ip adress of your
+new webserver in and whalla your done. Type in www. .n2v.net and it goes to your server
+and brings up your super nice webpages. Now if you go to google and search for free
+domain names or re-directors you should come up with alot. Many People already know
+about the www.dot.tk one of the coolest things in the world. Free .tk very simple
+That's all you need. It works perfect for my webserver and I've got around 3,000 hits
+so it's working good. If you don't wanna do it you don't have to. But it just
+makes it simple.
+
+
+Alright that comes to the conclusion of installing Apache Win32 for WINDOWS users.
+Very easy. One last thing Please Read more of the Apache
+Documentation either on there website or in your Apache2
+directory. If you liked reading this tutorial on how to setup Apache check my
+website for others at www.bonfire.tk . Yes there will be follow ups. I'll be
+writing another apache tutorail soon so you can set up PHP. The most awesome
+scripting language ever built. And also another on how to secure Apache and yes
+ALL FOR WINDOWS!! .
+

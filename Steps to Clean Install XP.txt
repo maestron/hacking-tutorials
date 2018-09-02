@@ -1,0 +1,180 @@
+  Steps to Clean Install XP
+
+  If the above instructions for configuring your system to boot from  CD
+  or you have acquired the necessary boot floppy/floppies; you can now
+  boot the computer and follow the on screen prompts. Have your Product Key
+  available, typical install is around 30 minutes. If setup seems to hang,
+  wait at least 10 minutes + before restarting system. You should experience
+  momentary screen blackouts.
+
+  1. Power on the computer. Press the Pause/Break key as soon as you see 
+     text on the screen. [If you currently are running in an OS of any flavor, 
+     insert XP CD and restart computer. Skip to #3 if system is configured 
+     to boot from CD.]
+
+
+  2. Insert XP CD into CD drive. Press ENTER to resume booting from the XP CD.  
+     (BIOS must support booting from CD and boot order must be set so CD 
+     boots before hard drive. If computer does not support booting from CD 
+     go to 2a for floppy install).
+
+     2a. Floppy install: Boot from Win98/Me/Special XP install floppy
+     disk with smartdrv.exe added to the boot disk; or the Win XP set
+     of 6 floppy disks.
+
+  3. Look for message "booting from CD" usually located at the bottom of
+     the screen. If you have a factory splash screen, press ESC to unload
+     it.
+
+     3a. Floppy install: From the A Prompt; A:\type: smartdrv.exe. then
+     press ENTER. If you are using the XP boot floppy setup disks skip
+     to step #5.
+
+  4. Press any Key when you see the prompt to "Press Any Key"
+
+     4a. Floppy install: CD to the location of the CD-ROM drive with the
+     XP setup files; CD to the i386 folder where you will type: winnt.exe
+     to start setup.
+
+  5. Setup will start copying files, if you need to install any third
+     -   party or RAID drivers press F6 at this time. the copying of files
+     can take awhile.
+
+  6. Next you will get the option to repair or enter setup, choose to
+     enter setup. Press ENTER. To see images full size, place mouse cursor
+     over image and click/double click or press the left button and open.
+
+  7. Press F8 if you agree to the license.
+
+  8. Setup will scan for previous Windows installations
+
+  9. If you are using the upgrade version of XP on a computer without
+     any version of Windows currently installed, this is where you will
+     replace the XP CD with your qualifying CD, XP setup will scan the
+     qualifying CD and instruct you to replace it with the XP CD to continue
+     XP setup; otherwise, you will not see this screen. Clean install
+     qualifying media can be any of the following Win NT3.51, 4.0, 2000,
+     Win 95, 98, Me. 10. Choose the location to install.
+
+     10a If this is a clean hard drive, you can choose to create a
+     partition in the un-partitioned space. At this point, you can allow
+     Setup to use all the space or set a size for the partition.
+
+     10b If the hard drive or partition has a previous installation of
+     XP you want to remove, choose to delete the partition by pressing
+     "D". You will then be prompted to create a new partition in the
+     empty space. This will remove all data from the delete space.
+
+     10c If you intend to use multiple partitions, or dual boot, this is
+     where  you specify the size of the boot partition and or setup
+     location for XP. If you are planning to dual boot XP, I would
+     create a small 100 meg DOS  partition for the first primary partition,
+     then an 8 to 10 gig partition for XP. You can partition and format
+     the remaining space after XP is setup from Disk Manager. If you do not
+     intend to dual boot, you can either use all the un-partitioned space,
+     or create an 8 to 10 gig partition for XP and leave the rest free to
+     partition later.
+
+   Note: If a fat32 partition larger than 32 gigabyte is desired, the
+   hard drive or partition will need to be created before running XP
+   setup. XP will not create a fat 32 partition larger than 32 gig, but
+   will support one previously created.
+
+  11. Choose the file system from this screen. If dual booting and you
+      created the small 100 meg partition, make it a fat partition. NTFS is
+      configured at the optimal file size during the initial setup. See this
+      link for more on NTFS
+
+  12. If you have more that one partition or hard drive on your system,
+      make sure you are formatting the correct partition/drive.
+
+  13. Select F to continue.
+
+  14. Setup will show a progress box and reboot when copying files is
+      complete.
+
+  15. When you see the "Press any Key to Reboot" do not Press any Key.
+      If CD boots anyway, remove CD and reboot.
+
+  16. From this point, you will follow the on screen prompts.
+
+  17. If you live outside the US, you will probably need to modify the
+      default settings.
+
+  18. Personalize your XP Enter your Name and Organization.
+
+  19. Enter the Product Key. The Key is located on the back of the CD folder
+      in  the  Retail versions, and on a holographic label with the OEM
+      versions purchased with a piece of hardware. Write this key down and
+      secure it in a safe place in case the original is misplaced destroyed
+      through natural causes or stupidity. 8-)
+
+  20. Choose a name for the  computer, this should be a unique name for
+      the computer, especially if it is to be connected to a network. In Pro,
+      you are given the option of creating a password or leaving it blank.
+
+  21. Set your Time Zone and Time and Date.
+
+  22. Setup will scan for network.
+
+  23.  If  detected you will have the choice to choose a typical
+       configuration or custom. Choose typical if you are unsure.
+
+  24. For home you will choose your workgroup, if a network is already
+      established and you intend to connect to it, use the existing
+      workgroup name, otherwise, I suggest using the default.
+
+  25. For Pro, the same goes for Pro as suggested for Home, but you will
+      have the choice to join a Domain, if you do  not have a Domain or  do
+      not know leave blank.
+
+  26. Setup will continue and reboot when completed ignore the "Press
+      Any Key".
+
+  27. The loading XP window will now display after reboot.
+
+  28. You will see a change display settings, say yes, and accept the
+      setting if you can see the screen after accepting.
+
+  29. You will see a welcome screen, press next and unfortunately you
+      have to wait for the dialog to finish.
+
+  30. Set up you internet or network connection.
+
+  31. This is the Activate, Register screen. You must activate within
+      30 days of installing XP, but you do not ever have to register,
+      Registration is completely optional and if you do not register, no
+      personal information will be transmitted during activation. If you
+      register, then activation will transmit that information along with
+      the activation. The first Activation is usually done over the internet
+      if the computer is connected to the internet, otherwise, it can be
+      accomplished by copying the alphanumeric  string from the activation
+      screen and make a phone call to the on screen supplied phone number.
+      The activation center will then give you a slightly longer number to
+      input into for activation. I suggest you do not activate immediately
+      in case you need to make hard ware changes, or install to a different
+      system within the thirty days, and you will be reminded on boot up
+      until you do.
+
+  Blaster worm warning: Do not immediately activate over the internet
+  when asked, enable the XP firewall before connecting to the internet.
+  You can activate after the firewall is enabled.
+  Control Panel - Network Connections. Right click the connection you
+  use, Properties, and there is a check box on the Advanced page.
+
+  32. Setup users screen. Set at least one user for yourself or the person
+      that will be using the computer.
+
+  33. Thank You
+
+  34.  Logon to XP and apply Service Pack and Critical updates from Windows
+       Update before installing any software or hardware.
+
+  35. Install your anti-virus software.
+
+  36. Install all applications and setup your email.
+
+  37. Restore from Files and Settings transfer after reinstalling all
+      applications.
+
+  Last updated 2/23/04 Michael Stevens MS-MVP

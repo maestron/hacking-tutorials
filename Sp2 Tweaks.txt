@@ -1,0 +1,94 @@
+ Sp2 Tweaks
+
+Disable the SP antivirus and firewall functions - and keep XP from nagging about it:
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center]
+"AntiVirusDisableNotify"=dword:00000001
+"FirewallDisableNotify"=dword:00000001
+; don't monitor firewall and antivirus
+"AntiVirusOverride"=dword:00000001
+"FirewallOverride"=dword:00000001
+
+;Disable antivirus and firewall check at boot time
+
+SP2 enables Auto Updates by default. This is good for you, but some folks disagree, so here is how to turn it off:
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update]
+"AUOptions"=dword:00000001
+;disable Auto Update
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center]
+"UpdatesDisableNotify"=dword:00000001
+;Stop nagging about AU being turned off
+
+How to turn off the SP2 firewall (if you must):
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]
+"EnableFirewall"=dword:00000000
+; turn off firewall policy for domain profile
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile]
+"EnableFirewall"=dword:00000000
+;disable firewall policy for standard profile
+
+Change some popup settings:
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+;turn off IE popup blocker and return activeX handling to pre-SP2 setting for local system and current user
+;1001 = 1 (prompt before download signed ActiveX)
+;1004 = 1 (prompt before downloading unsigned ActiveX)
+;1200 = 0 (prompt before download signed ActiveX)
+;1809 = 3 (disable popup blocking)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4]
+"1001"=dword:00000001
+"1004"=dword:00000001
+"1200"=dword:00000000
+"1809"=dword:00000003
+
+Or you can disable Security Center altogether by disabling the wscsvc service.
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]
+"Start"=dword:00000004
+;Disable Security Center

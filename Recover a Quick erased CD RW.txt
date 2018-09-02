@@ -1,0 +1,47 @@
+ Procedure used to recover data from a quick-erased CD-RW disc
+
+1. Make a file of exactly the size of the cdrw disc's capacity (650MB in my case).
+(this step may not be needed)
+
+2. With Nero I created a new project and added the file to it so that I have the disc filled. I gues you can also fill up the disc with other files.
+The reason why I fill the disc is because I want Nero to make a session that uses the entire disc. Like I wrote earlier in this thread I experienced that my CD-Drive refuses to read off the disc beyond the session's boundaries. When you quick-erase a disc there is no session anymore so the drive will not read at all. Burning a new session will overwrite the data and burning only a small session will NOT make the drive read the other data that is still on the disc.
+The reason why I used the one big file is so that I could later on recognize which part of the disc was overwritten by this file because this file contained all zeros (0x00).
+
+3. I pressed burn and selected disc-at-once. Then while Nero was burning the leadin I pressed cancel. My CD-Drive finished writing the lead-in and Nero reported an error.
+This is what was accomplished however: Now the disc contains a session that says that the used disc size is the complete disc. Nero did not get to writing file because I cancelled it. Good thing because I don't want Nero to write any files because my old data will get overwritten!
+I gues it works the same with different writing software. Another method that I used during a test was simply press the reset button of the computer when the burning software was done with writing the lead-in and started with the files.
+
+4. I had to restart the computer after cancelling burning.
+With the cdrw disc inserted I saw in "my computer" that windows recognized that the disc was 650MB, clicking on it gave an error. Good so far!
+
+Now with IsoBuster you can extract the sectors from a disc to a file. This is what I did.
+I gues that if you have data-recovery software at this point it will be usefull because now (if all went well;)) the CD-Drive WILL read data from the entire disc. Anyway, I used ISO-Buster because the files that I needed to recover where a bit odd for nowadays (.XM, .S3M, .MP3):
+In IsoBuster I had to do several steps:
+
+Step 1: Find out from and to which sector the drive will read
+By choosing "Sector View" you can look at any given sector.
+Here I found out what the first and the last sectors where that are readable. (Hint I used the method for the old game: "Gues a number below 100, I'll tell if it is higher or lower than what you gues")
+Step 2: Extract the actual sectors
+By choosing "Extract From-To" you can extract any given range of sectors to a file. My disc was a data-disc so I choose the first extraction type "User data, 2048 bytes/block...".
+
+In the end I got a .tao file which was about 650MB. I ran several programs on it to look for files inside a file by searching for file-header-paterns:
+1. Multi Ripper 2.80 (for DOS, for the .XM files. It does many other file formats as well (jpg,png, bmp,wav,etc,etc +100). Try google with this query: Multi Ripper 2.80. I still had the file from good old days but I saw several good search results)
+
+2. Winamp for mp3.
+Winamp will scan any file when you give it the extension .mp3 and play it as one big song (so I renamed the .tao file to .mp3). I used the discwriter to get a .wav and the Adobe Audition to manually cut and save my songs. I looked at the MP3 file format and it is hard to find an mp3 file in a big file because it has no clear header just a bunch of mpeg-frames in most cases for me . A lot of my files had no ID3v2 or ID3v1 tags... But after a couple of hours I recovered everything.
+
+Finally a list of used stuff:
+
+Software:
+- IsoBuster v1.5
+- Nero 6.3.0.3
+- Multi Ripper 2.80
+- WinAmp v5.02
+- Windows XP Pro NL (patched up)
+
+Hardware:
+- NEC DVDRW ND1300A 1.06
+
+Disc:
+- some old 4 speed cdrw
+

@@ -1,0 +1,2234 @@
+
+             D E F A M A T I O N   L I A B I L I T Y 
+                               O F 
+                     C O M P U T E R I Z E D 
+         B U L L E T I N   B O A R D   O P E R A T O R S 
+            A N D   P R O B L E M S   O F   P R O O F 
+
+
+
+                                       John R. Kahn
+                                       CHTLJ Comment
+                                       Computer Law Seminar
+                                       Upper Division Writing
+                                       February, 1989
+                                       
+                                       
+---
+             D E F A M A T I O N   L I A B I L I T Y 
+                               O F 
+                     C O M P U T E R I Z E D 
+         B U L L E T I N   B O A R D   O P E R A T O R S 
+            A N D   P R O B L E M S   O F   P R O O F 
+
+John R. Kahn
+CHTLJ Comment/Upper Division Writing/Computer Law Seminar
+
+February, 1989
+
+_________________________________________________________________
+
+I.  INTRODUCTION
+    
+         A  computer  user  sits  down  at her personal computer, 
+turns  it  on, and has it dial the number of a local computerized 
+bulletin  board  service  (BBS)  where  she  has  been exchanging 
+opinions,    information,    electronic    mail,   and   amicable 
+conversation  with other users. Upon connecting with the BBS, she 
+enters  a secret "password", presumably known only to herself and 
+to  the  bulletin  board  operator,  so  as to gain access to the 
+system.
+
+         To  her  surprise,  she  finds herself deluged with lewd 
+electronic  mail  from  complete  strangers  and hostile messages 
+from  persons  with  whom she believed she was on friendly terms. 
+The messages read: "Why did you call me a worthless son-of-a ----
+-  yesterday? I really thought we could be friends, but I guess I 
+was  wrong";  "Hey, baby, I liked your fetish you were telling me 
+about  yesterday:  call  me at home, or I'll call YOU"; and, "Why 
+didn't  you  get around to telling me about your venereal disease 
+sooner?".  Yet  our user has not called this BBS in weeks and has 
+never  made  any  of  these statements. Dismayed and angered, the 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn              2
+----------------------
+
+user  comes  to  realize  that  she is the victim of computerized 
+bulletin board abuse.
+
+         A  personal  computer  hobbyist  (hereafter "SYSOP") who 
+operates  a  computerized bulletin board system notices a rash of 
+heated  arguments, profanity and complaints being reported to him 
+by  users  on  what had been a forum for the peaceful exchange of 
+ideas.   Investigating   the   complaints,   he   discovers  that 
+previously     responsible     users     have     suddenly    and 
+uncharacteristically  been  leaving  insulting,  rude  and  false 
+messages  about other users on the bulletin board. One user is so 
+enraged   about   a   public   message  accusing  her  of  sexual 
+misadventures  that  she  is  threatening  to  sue  the  computer 
+hobbyist  in  libel  for  having permitted the message to appear. 
+The  SYSOP  realizes  that  both  he  and  his  subscribers  have 
+suffered computerized bulletin board abuse.
+
+         The  aggravating  force behind both the above situations 
+is   most   likely   a   third  user  (known  hereafter  as  "the 
+masquerader")   who   maliciously   exploits  both  his  computer 
+knowledge  and  his  access  to  BBSes. Since the masquerader has 
+discovered  the  password  and name of the regular user, and uses 
+them  to  access  bulletin boards, he appears for all intents and 
+purposes  to  be that regular user. The computer thus believes it 
+has  admitted a legitimate subscriber to its database when it has 
+in  fact  given  almost  free  reign  to  a  reckless hacker. The 
+masquerader,  posing  as another legitimate user, is then free to 
+portray  that  user  in  whatever  light  he  pleases and also to 
+harass other users of the bulletin board.
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn              3
+----------------------
+
+
+         When  validated  users  later discover that someone else 
+has   been  impersonating  them,  they  invariably  cancel  their 
+subscriptions  to  that  BBS  and often bring a defamation action 
+against   its  SYSOP  for  the  smearing  of  their  good  names. 
+Conversely,   the   SYSOP,  in  an  effort  to  avoid  liability, 
+reluctantly  engages  in  monitoring  each  and  every  piece  of 
+information  posted  daily  by  hundreds  of  users. If the SYSOP 
+chooses  instead  to  stop  running  his  BBS altogether, another 
+efficient and valuable forum for ideas is lost.
+
+         What  sort of defamation action may be maintained by the 
+wrongfully  disparaged  user?  Is the computerized bulletin board 
+offered  by  the  SYSOP  subject to the stricter self-scrutiny of 
+newspapers,  or  does  it operate under some lesser standard? How 
+may  the  initial  party  at  fault  -  the masquerader - be held 
+accountable for his computerized torts?
+
+         The  scope  of  this  Comment  will  be  to  examine the 
+defamation   liability   of   computerized   BBS   operators  and 
+evidentiary  proof  issues  that  arise  in  tracing computerized 
+defamation  to  its  true  source.  Other possible Tort causes of 
+action  -  intentional infliction of emotional distress, invasion 
+of  privacy,  trespass  to  chattels  -  are not addressed. It is 
+assumed  throughout  that  the  plaintiff is a private person and 
+that  the issues involved are not matters of "public interest" as 
+defined in Gertz v. Robert Welch, Inc.1
+
+
+    A.   Background
+
+         Computerized  BBSes exist as a quick, easy and efficient 
+way   to  acquire  and  exchange  information  about  the  entire 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn              4
+----------------------
+
+spectrum   of   interests.2   The  growing  popularity  of  these 
+electronic  forums  was  demonstrated  in  a  recent  study which 
+numbered  BBSes  at  more  than  3,500  nationwide.3 The size and 
+complexity  of  computerized  BBSes  range from relatively simple 
+programs,  run  on  privately-owned  microcomputers  with  a  few 
+hundred  subscribers,  to vast, multi-topic database systems with 
+nationwide lists of subscribers and operated for profit.4
+
+         The  process  of  reaching,  or "accessing" one of these 
+bulletin  boards  is  quite  simple:  all  that  is required is a 
+computer,   a  computer  program  that  allows  the  computer  to 
+communicate  over  the phone lines, and a "modem" (a device which 
+converts   the   computer's   electrical  signals  into  acoustic 
+impulses,  defined  infra).5  Once  she has accessed the BBS, the 
+caller   is   free   to  trade  useful  non-copyrighted  computer 
+programs,  exchange  ideas  on  a host of topics, post electronic 
+mail  for  later reading by others, and much more.6 The ease with 
+which  most  BBSes may be accessed and the wealth of interests to 
+be  found  there  ensure  that they will continue to be important 
+sources of information and discourse.
+
+         However,  the speed and efficiency of computerized BBSes 
+also  subject  them  to  serious, wide-ranging civil and criminal 
+abuse.  Recently  a  young  computer user paralyzed several major 
+computer  systems across the nation by sending a harmful computer 
+program  (or  "worm")  to  them  over  telephone  lines. The worm 
+quickly  replicated  itself  in  the computers' memories and thus 
+decreased  their  output  capacities.7  Further, certain computer 
+abusers  (known  as  "hackers") use the power of the computerized 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn              5
+----------------------
+
+forum  to  ply  illegal  copies  of  copyrighted  programs,  bilk 
+hundreds  of  millions  of  dollars annually from credit card and 
+phone  companies, and to wrongfully access others' data files.8 A 
+minority   of  other  BBSes  exist  mainly  to  circulate  racist 
+ideologies.9
+
+         What  is  more,  it now appears that the ancient tort of 
+defamation  is  actively  being  practiced  through  the  use  of 
+computerized   BBSes.10   Due   to   the   almost   ethereal  way 
+computerized  BBSes  operate  - one person may conveniently leave 
+an  electronic  message for others to respond to at their leisure 
+and  there  is  no  need  for the parties to converse directly or 
+even  to  know  each other11 - the risk of detection when the BBS 
+is  abused  is  lower  than  that for defamation practiced in the 
+print  media.12  Difficulties  arise  with  identifying  the true 
+party  at  fault  and with authenticating the computer records as 
+evidence  of  the  defamation.13  Adding  to  this  problem is an 
+uncertainty  in  the laws concerning the appropriate liability of 
+SYSOPs  for defamatory messages on their BBSes of which they were 
+unaware.14
+
+
+    B.   Definitions
+
+         The  following  are  brief definitions of some important 
+technical terms connected with electronic BBSes:
+
+         SYSOP:  An  abbreviation  for "System Operator", this is 
+the  individual  generally responsible for organizing information 
+and  for  trouble-shooting  on  a computerized bulletin board. On 
+larger  bulletin  boards  covering  hundreds  of  topics, several 
+SYSOPS  may  be in charge of maintaining information contained in 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn              6
+----------------------
+
+separate  discrete  fields.15 But when the BBS is privately owned 
+and  operated,  a  single SYSOP may very well oversee all aspects 
+of  the  board's  operations, in addition to being able to access 
+all his users' passwords and personal information.16
+
+         Modem:   An  abbreviation  for  "Modulator/Demodulator". 
+This  is  a  device  which  links a computer to an ordinary phone 
+line  and  converts computer signals to auditory phone signals. A 
+computer  modem  on  the  other  end  of  the  transmission  then 
+reverses  the  process.  Computers  using  modems  transfer  data 
+rapidly across phone lines and thus share information.17
+
+         Validation:  Basically  this is a set of procedures used 
+by  responsible  SYSOPs  to  do everything reasonably possible to 
+verify  that  the personal information supplied by a user is true 
+and  correct.  Common  sense and emerging legal standards dictate 
+that  the  SYSOP should not merely rely on the name provided by a 
+potential  user  when  the  SYSOP  does  not personally know that 
+individual.   The   SYSOP   may   be  required  to  independently 
+corroborate  the  prospective  subscriber's  information by first 
+asking  the  potential  user's name, address and phone number and 
+then  by  checking  that information with directory assistance.18 
+These  procedures  will hopefully aid the operator in identifying 
+wrongdoers  if  misuse  occurs;19 however, as will be seen, these 
+procedures are by no means foolproof.
+
+         Database:  Any  collection  of  data  in  a computer for 
+purposes  of  later  retrieval  and  use, i.e., names, addresses, 
+phone numbers, membership codes, etc.
+
+         User:  Anyone who accesses a computerized bulletin board 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn              7
+----------------------
+
+system  and is exposed to the information stored there. Users may 
+be  identified  by  their  true  names,  by an assigned numerical 
+code, or by colorful "handles", or "usernames."20
+
+         Operating  System:  This is a program which controls the 
+computer's   basic  operations  and  which  recognizes  different 
+computer  users  so  that their actions do not interfere with one 
+another.21  For  example,  most multi-user operating systems will 
+not  allow  one  user  to delete another's data unless the second 
+user  gives  explicit  permission.22 BBS system software programs 
+perform  this  function  through  their  use  of  "accounts"  and 
+"passwords":23  private electronic mail sent to a particular user 
+may  not  be read or deleted by others. The BBS' operating system 
+is  also  designed  to  deny access to those attempting to log on 
+under an unvalidated or unrecognized name.24
+
+         Account/Username:   As   another   part  of  BBS  system 
+security,   each   user  chooses  an  "account",  or  "username", 
+consisting  of  one  to  eight  letters  or  numbers.25  The BBS' 
+operating  system then will not allow commands issued by one user 
+of  one  account to modify data created by another account;26 nor 
+will  it  grant  access to an account that has been terminated or 
+invalidated.
+
+         Password:  Yet  another aspect of BBS system security is 
+the  use  of  "passwords"  as  a  prerequisite  to  accessing the 
+computer  system.  Most  operating  systems  require  the user to 
+enter  both  her  account name and password to use the account.27 
+Because  electronic  mail  cannot be sent without the username to 
+which  it  is  being addressed, and because the account cannot be 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn              8
+----------------------
+
+used  without  knowledge of the password, usernames are generally 
+public  knowledge  while  passwords are a closely-guarded secret, 
+known only to the user and the operating system.28
+
+         Teleprocessing:  This is defined as accessing a computer 
+from  a remote location, usually over a telephone line or similar 
+communications channel.29
+
+         Uploading/Downloading:   For   purposes   of  exchanging 
+computer  programs  or  electronic mail over the phone lines, the 
+process  of transferring information from one's personal computer 
+to  the bulletin board is called uploading. The reverse process - 
+transferring  information  from  a  bulletin  board to a personal 
+computer - is known as downloading.30
+
+II. DEFAMATION LIABILITY OF COMPUTERIZED BBS OPERATORS
+
+    A.   Computerized Defamation: Libel or Slander?
+
+         Libel  is  the  "publication  of  defamatory  matter  by 
+written  or printed words, by its embodiment in physical form, or 
+by  any  other  form  of  communication  that has the potentially 
+harmful  qualities characteristic of written or printed words."31 
+Publication   of   a  defamatory  matter  is  "its  communication 
+intentionally  or by a negligent act to one other than the person 
+defamed."32  A  communication  is  defamatory  if it "tends to so 
+harm  the reputation of another as to lower him in the estimation 
+of  the  community  or to deter third persons from associating or 
+dealing  with  him."33  The  difference between libel and slander 
+has  traditionally  depended  upon the form of the communication: 
+oral  defamation  generally  is considered slander, while written 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn              9
+----------------------
+
+defamation  is  generally  considered libel.34 The distinction is 
+important,  because  libel  requires  no proof of special damages 
+and  is  actionable  by  itself, while slander generally requires 
+proof of special damages in order to be actionable.35
+
+         However,  with  the  advent  of  electronic  media,  the 
+traditional  libel/slander  distinctions  as  they apply to sight 
+and  hearing are no longer valid. For example, passing defamatory 
+gestures  and  signals,  though visible to sight, were considered 
+slander;36  an  ad-libbed  statement  on  a  telecast impugning a 
+person's financial status was found to be libel.37
+
+         It  has been suggested that the real distinction between 
+libel  and  slander  is  the  threat  and  magnitude  of  harm to 
+reputation  inherent in the form of publication.38 Libel has been 
+historically  associated  with  writings because (1) a writing is 
+made  more  deliberately  than  an  oral statement; (2) a writing 
+makes  a  greater  impression  to  the  eye  than  does  an  oral 
+statement  to  the  ear;  (3)  a  writing  is more permanent than 
+speech;  and (4) a writing has a wider area of dissemination than 
+speech.39  These  four  qualities  inherent in a writing made the 
+possible  harm  to  reputation greater than mere spoken words. In 
+applying  libel  to  the  new  form of computerized communication 
+used  on  BBSes,  the  potentiality  for  harm  to  reputation is 
+significant,  and  should  again  be  considered  the controlling 
+factor.
+
+         In  our hypothetical situation, the user discovered that 
+another  user  (the masquerader) had usurped her account name and 
+password,  causing  her  great embarrassment and humiliation. The 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             10
+----------------------
+
+act  of  prying into and taking another's computer information to 
+misuse  it elsewhere would indicate a certain deliberation on the 
+actor's   part  to  spread  defamatory  messages.  Secondly,  the 
+defamatory  message is displayed to other users on their computer 
+monitors  in  the  form of electronic characters, making a visual 
+impression.  Third,  this electronic defamation is more permanent 
+than  mere  words  because  it is stored in the BBS' memory until 
+erased  by the user or SYSOP. Finally, the message arguably has a 
+wider  area  of dissemination than a one-to-one spoken defamation 
+because,  as a message on an electronic BBS, it has the potential 
+of  being  viewed  by  hundreds, perhaps thousands, of users each 
+day.  Based  on these four criteria, the capacity for harm to our 
+user's  reputation  due to the masquerader's activities is indeed 
+great enough to be considered libellous.
+
+    B.   Defamation Liability of the SYSOP
+
+         Having  established  the  electronic  message  as  being 
+libellous,   the  next  issue  is  to  determine  the  extent  of 
+liability  for  the  SYSOP who unknowingly permits the message to 
+be  communicated  over  his  BBS.  Case  law  indicates  that the 
+SYSOP's  liability depends upon the type of person defamed and on 
+the subject matter of the defamation.
+
+         1.   Degree of fault required
+
+         The  United  States  Supreme  Court has addressed modern 
+defamation  liability  in  two  major decisions. Both conditioned 
+the  publisher's  liability  on the type of person defamed and on 
+the  content  of the defamation. In New York Times v. Sullivan,40 
+the  Court  determined  that  in  order  for a public official to 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             11
+----------------------
+
+recover  damages  in  a  defamation action, the statement must be 
+shown  to  have  been  made  with  "actual  malice",  i.e.,  with 
+knowledge  of  its  falsity  or  with  reckless disregard for its 
+truth.41  Due  to  society's interest in "uninhibited, robust and 
+wide-open"  debate  on  public  issues, neither factual error nor 
+defamatory  content  sufficed  to  remove  the  First Amendment's 
+shield from criticism of an official's conduct.42 
+
+         The  Supreme  Court  further  elaborated  on  defamation 
+liability  standards in the private and quasi-private sphere when 
+it  decided Gertz v. Robert Welch, Inc.43 In Gertz, the publisher 
+of  a  John  Birch  Society  newsletter  made  certain  false and 
+inaccurate  accusations  concerning an attorney who represented a 
+deceased  boy's family. The family had civilly sued the policeman 
+who  murdered  the  boy.  In  rebutting what he perceived to be a 
+secret  campaign  against  law  and order, the publisher labelled 
+the  family's attorney a "Leninist" and "Communist-fronter".44 In 
+addition,  the  publisher  asserted  that the attorney had been a 
+member  of  the National Lawyers Guild, which "'probably did more 
+than  any  other  outfit  to  plan  the  Communist  attack on the 
+Chicago  police  during  the  1968  Democratic Convention.'"45 In 
+publishing  these  statements  throughout  Chicago,  the managing 
+editor  of  the Birch Society newsletter made no effort to verify 
+or substantiate the charges against the attorney.46
+
+         The  Supreme  Court  held  in  Gertz  that  while  First 
+Amendment   considerations   protect  publications  about  public 
+officials47  and about "public figures"48, requiring a showing of 
+"actual  malice"  before  defamation  damages could be recovered, 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             12
+----------------------
+
+the  same  was  not  true for defamation suits brought by private 
+citizens49,  a  group to which the attorney was held to belong.50 
+Private  citizens  were  seen  as deserving more protections from 
+defamation  than public officials or public figures, so they were 
+not  required  to  show  "actual  malice"  as  a  precondition to 
+recovery.51  The  Court  then left it to the states to decide the 
+precise   standard   of   liability  for  defamation  of  private 
+individuals,  so  long  as  liability  without  fault was not the 
+standard.52
+
+         By  Gertz,  then,  the appropriate standard of liability 
+for  publicizing  defamation  of  private parties falls somewhere 
+below  actual malice and above strict liability. The problem with 
+defining  the defamation standard for computerized BBS operators, 
+however,  is  a lack of uniform standards. In such circumstances, 
+the   objective  "reasonable  person"  standard  will  likely  be 
+applied  to  the SYSOP's actions.53 Several cases may be usefully 
+applied by analogy.
+
+         The  court  in  Hellar  v.  Bianco54  held  that  a  bar 
+proprietor  could  be  responsible  for  not removing a libellous 
+message  concerning  the  plaintiff's  wife  that appeared on the 
+wall  of  the  bar's  washroom  after  having been alerted to the 
+message's  existence.55  The court noted that "persons who invite 
+the  public  to  their  premises  owe  a  duty  to  others not to 
+knowingly  permit  their  walls  to  be  occupied with defamatory 
+matter....  The  theory  is  that  by  knowingly  permitting such 
+matter  to  remain  after  reasonable opportunity to remove [it], 
+the  owner  of  the wall or his lessee is guilty of republication 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             13
+----------------------
+
+of  the  libel."56  The  Hellar  court  then  left  the  ultimate 
+determination  of  the bar owner's negligence to the jury.57 This 
+holding  seems  to  be  in  accord with the Restatement of Torts, 
+which provides:
+
+         PUBLICATION:
+
+         (2)  One  who  intentionally  and unreasonably 
+              fails  to  remove  defamatory matter that 
+              he  knows  to  be  exhibited  on  land or 
+              chattels  in  his possession or under his 
+              control  is  subject to liability for its 
+              continued publication.58
+
+         Contrarily,  however, the Ohio court of appeals in Scott 
+v.  Hull59  found  that  the  building  owner  and  agent who had 
+control  over  a  building's maintenance were not responsible for 
+libel  damages  for graffiti inscribed by an unknown person on an 
+exterior  wall.60  The  court distinguished Hellar by noting that 
+in  Hellar  the  bartender  constructively adopted the defamatory 
+writing  by  delaying  in removing it after having been expressly 
+asked to do so:
+
+         "It  may  thus  be  observed  from these cases 
+         that  where  liability is found to exist it is 
+         predicated  upon  actual  publication  by  the 
+         defendant  or  on the defendant's ratification 
+         of  a publication by another, the ratification 
+         in  Hellar  v. Bianco...consisting of at least 
+         the   positive   acts  of  the  defendants  in 
+         continuing  to  invite  the  public into their 
+         premises  where  the  defamatory matter was on 
+         view  after  the  defendants  had knowledge of 
+         existence of same."61
+
+         The  Scott  court  held  that  defendants  could only be 
+responsible  for publishing a libellous remark through a positive 
+act,  not  nonfeasance;  thus,  their  mere failure to remove the 
+graffiti  from  the building's exterior after having it called to 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             14
+----------------------
+
+their  attention  was  held  not  to  be  a  sufficient  basis of 
+liability.62
+
+         A  situation  similar to Scott arose recently in Tackett 
+v.  General  Motors  Corporation.63  There, an employee brought a 
+libel  suit  against  his  employer  for,  inter alia, failing to 
+remove  allegedly  defamatory signs from the interior wall of its 
+manufacturing  plant  after having notice of their existence. One 
+large  sign  remained  on  the wall for two to three days while a 
+smaller  one  remained  visible  for  seven  to  eight  months.64 
+Instead   of   focussing  on  the  Scott  malfeasance/nonfeasance 
+test,65   the   Tackett   court  considered  defendant's  implied 
+adoption  of  the  libellous statement to be the correct basis of 
+liability.66  While  saying  that  failure  to remove a libellous 
+message  from  a  publicly-viewed  place may be the equivalent of 
+adopting  that  statement,  and  noting that Indiana would follow 
+the  Restatement  view "when the time comes,"67 the Tackett court 
+held  that  the  Restatement  view could be taken too far. Citing 
+Hellar, the court wrote:
+
+         The  Restatement  suggests that a tavern owner 
+         would   be   liable   if  defamatory  graffiti 
+         remained  on  a  bathroom  stall a single hour 
+         after  the discovery [Citation to Hellar]. The 
+         common  law  of  washrooms is otherwise, given 
+         the  steep discount that readers apply to such 
+         statements   and   the  high  cost  of  hourly 
+         repaintings  of  bathroom  stalls [Citation to 
+         Scott].   The  burden  of  constant  vigilance 
+         exceeds  the  benefits  to be had. A person is 
+         responsible   for   statements   he  makes  or 
+         adopts,  so  the  question is whether a reader 
+         may  infer  adoption  from  the  presence of a 
+         statement.  That inference may be unreasonable 
+         for  a  bathroom  wall  or  the  interior of a 
+         subway  car  in  New York City but appropriate 
+         for  the  interior  walls  of  a manufacturing 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             15
+----------------------
+
+
+         plant,   over   which   supervisory  personnel 
+         exercise  greater supervision and control. The 
+         costs  of  vigilance  are  small (most will be 
+         incurred    anyway),    and    the    benefits 
+         potentially   large   (because  employees  may 
+         attribute  the  statements  to  their employer 
+         more  readily  than patrons attribute graffiti 
+         to barkeeps).68
+         
+         According  to  this  reasoning,  then,  the location and 
+length  of  time the libel is allowed to appear plays an integral 
+part  in  determining  whether  a given defendant has adopted the 
+libel, and thus has published it.
+
+         An  application  of  the foregoing analysis to the issue 
+at  hand  highlights  the  need  for greater care in allowing the 
+posting  of  electronic mail messages on a BBS. The Tackett court 
+noted  that  while  the content of graffitti scrawled on bathroom 
+walls  might be subject to healthy skepticism by its readers, the 
+same  might  not be true for other locations such as interiors of 
+subway  cars  or  manufacturing  plant  walls.69 If this is true, 
+then  it  is  reasonable  to  assume  that  a  defamatory message 
+displayed  in a forum for the exchange of ideas is more apt to be 
+taken  seriously  by  its readers - especially when the libellous 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             16
+----------------------
+
+message purports to be written by the subject of the libel.70
+
+         Further,  the Tackett court indicated that the high cost 
+of   repainting  bathroom  stalls  by  the  hour  outweighed  its 
+perceptible  benefits. The same is not true for electronic BBSes, 
+where  the costs of prevention are minimal in light of the threat 
+of widespread harm to users' reputations.71
+
+         2.   Damages
+
+         Once  the plaintiff establishes that the SYSOP failed to 
+act  reasonably in removing statements known to be libellous from 
+his  BBS  or  in  negligently failing to prevent their appearance 
+there,72  no  proof  of  special damages is necessary as libel is 
+actionable  per  se.73 The state's interest in protecting private 
+reputations  has been held to outweigh the reduced constitutional 
+value  of speech involving matters of no public concern such that 
+presumed  and  punitive damages may be recovered absent a showing 
+of actual malice.74
+
+         The  proper  gauge  of  liability  has again raised some 
+questions.75  One writer has noted that if the burden of proof is 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             17
+----------------------
+
+to  rest  on  the  plaintiff,  she  may  be  at a disadvantage in 
+producing  sufficient  evidence  to demonstrate negligent conduct 
+on  the  part  of  the  SYSOP.76  Solutions  to this problem have 
+ranged  from  a  rebuttable presumption of negligence in favor of 
+the  plaintiff77  to  adoption  of  a set of standards similar to 
+those  set  out  in  the  Federal Fair Credit Reporting Act.78 In 
+either   event,  damage  awards  for  computer  abuse  have  been 
+addressed both by federal and state law.79
+
+         3.   Suggestions
+
+         Because  computerized  BBSes  are still a relatively new 
+technological  phenomena, consistent standards for SYSOPs' duties 
+have  yet  to  be developed.80 However, at least one users' group 
+has  adopted  a voluntary code of standards for electronic BBSes, 
+applicable  to  both  users  and  SYSOPs  of  boards  open to the 
+general public:
+
+         SCOPE:
+
+         This  Minimum  Code  of  Standards  applies to 
+         both  users  and  SYStem Operators (SYSOPs) of 
+         electronic  bulletin  boards  available to the 
+         general public.
+
+         FREEDOM OF SPEECH AND IDEAS
+
+         Each  user  and  SYSOP  of  such systems shall 
+         actively   encourage   and  promote  the  free 
+         exchange   and   discussion   of  information, 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             18
+----------------------
+
+
+         ideas,  and  opinions, except when the content 
+         would:
+         -    Compromise  the  national security of the 
+              United States.
+         -    violate proprietary rights.
+         -    violate personal privacy,
+         -    constitute a crime,
+         -    constitute libel, or
+         -    violate   applicable  state,  federal  or 
+              local   laws  and  regulations  affecting 
+              telecommunications.
+
+         DISCLOSURE
+
+         Each user and SYSOP of such system will:
+         -    disclose their real name, and
+         -    fully  disclose  any personal, financial, 
+              or  commercial  interest  when evaluation 
+              any specific product or service.
+
+         PROCEDURES
+
+         SYSOPS shall:
+
+         -    review  in  a  timely manner all publicly 
+              accessible information, and
+         -    delete  any  information  which they know 
+              or  should  know conflicts with this code 
+              of standards.
+
+         A  'timely  manner'  is  defined  as  what  is 
+         reasonable  based  on  the potential harm that 
+         could be expected. Users are responsible for:
+
+         -    ensuring   that   any   information  they 
+              transmit  to such systems adheres to this 
+              Minimum Code of Standards, and
+
+         -    upon   discovering   violations   of  the 
+              Minimum  Code of Standards, notifying the 
+              SYSOP immediately.
+
+         IMPLEMENTATION
+
+         Electronic  bulletin board systems that choose 
+         to  follow  this  Minimum  Code  of  Standards 
+         shall  notify  their  users by publishing this 
+         Minimum  Code,  as  adopted by the [Capitol PC 
+         Users  Group],  and  prominently  display  the 
+         following:
+         'This  system  subscribes  to  the  Capitol PC 
+         Users  Group  Minimum  Code  of  Standards for 
+         electronic bulletin board systems.'81
+
+         While  non-binding  on  publicly-accessible  BBSes,  the 
+above  guidelines  furnish  sound  basic policies that all SYSOPs 
+might  use in shielding themselves from defamation liability. Our 
+hypothetical  at  the  beginning  of  this  Comment  described  a 
+situation  where  a  malicious  intruder  was  able to access and 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             19
+----------------------
+
+masquerade  as  a validated user on a BBS; the following are some 
+additional  computer  security measures that the reasonable SYSOP 
+could conduct to avoid that situation:
+
+         a.   Special   "screening"   software:  One  writer  has 
+suggested  discouraging  potential BBS misuse through programming 
+the  BBS  to  reject  those messages containing common defamatory 
+and  obscene  language;82  such a program would discard a message 
+containing  any  of  those  terms and would presumably notify the 
+SYSOP  of  their  presence.  Drawbacks to this procedure are that 
+computer  programs cannot understand all the nuances of libellous 
+messages83  and  would  thus  lead  to the rigid deletion of many 
+otherwise legitimate messages.84
+
+         b.   Unique    passwords:   A   more   fundamental   and 
+economical  approach  would  be  for the SYSOP to both notify all 
+new  users  about the potential for computerized BBS abuse and to 
+encourage  their  use of a unique password on each BBS they call. 
+This  would  have  the  practical effect of keeping a masquerader 
+from   using  the  names  and  passwords  found  on  one  BBS  to 
+wrongfully  access  and  masquerade on other BBSes. A drawback to 
+this  procedure is that the truly malicious masquerader may still 
+discover  a BBS' most sensitive user records by way of a renegade 
+computer  program  called  a "trojan horse".85 However, one could 
+speculate  that  the SYSOP acts reasonably in informing potential 
+users of the existing threat and in helping them avoid it.
+
+         c.   Encryption:  This  is  essentially  a  way  for the 
+SYSOP  to make the users' passwords unique for them. The power of 
+the  computer  allows complex algorithms to be applied to data to 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             20
+----------------------
+
+encode  it in such a way that, without the key to the code, it is 
+virtually  impossible to decode the information.86 This technique 
+would  have  the  added  benefit of forcing the masquerader, upon 
+accessing  the BBS with a trojan horse program, to search for the 
+secret  decoding  algorithm  in  addition to the BBS' secret user 
+files.  Indeed,  it  is  conceivable that a special encryption or 
+password  could  be devised to allow only the SYSOP access to the 
+BBS'   decoding   algorithm.   However,   encryption  involves  a 
+significant  overhead  -  impractical  for most small, privately-
+operated  BBSes - and is more frequently used to protect messages 
+from  one  system  to  another  where  the  data is vulnerable to 
+interception as it passes over transmission lines.87
+
+         d.   Prompt  damage  control:  In  accord with Hellar,88 
+the  Restatement  (Second)  of Torts,89 and possibly Tackett,90 a 
+SYSOP  acts reasonably in promptly assisting the libelled user to 
+partially  reverse  the  effects  of  the  masquerader's actions. 
+Recall  that  in  those  instances  a  defendant was held to have 
+impliedly  adopted  a defamatory statement by acting unreasonably 
+slowly  in  removing  it  from his property once having been made 
+aware  of  it.91 While it may be unreasonable to expect the SYSOP 
+to  monitor  each message posted every day - especially where the 
+defamatory  message  appears to have been left by the true user - 
+it  is  not  too  much  to  require  the  SYSOP to quickly remedy 
+security  flaws  in  his BBS as they are pointed out to him.92 To 
+this  end, the SYSOP has several options. In situations where the 
+defaming   user   libels  another  without  masquerading  as  the 
+libelled  party,  the  SYSOP  could  simply  delete the defamer's 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             21
+----------------------
+
+account.  In  situations  where  a  user  masquerading as another 
+posts  a  libellous message, the SYSOP could publish a retraction 
+to  all  his subscribers, urging them to use a different password 
+on  each  BBS  they  call. Further, where a masquerader published 
+the  libel,  the  SYSOP  should offer his full cooperation to the 
+maligned  user  in  tracking down the time and date the libellous 
+message  was  posted93  in  order  to  better  limit  the SYSOP's 
+liability.
+
+         Certain  BBS  SYSOPs  claim that holding them liable for 
+information   appearing  on  their  BBSes  violates  their  First 
+Amendment  rights by restricting their right to free speech94 and 
+by  holding  them  responsible  for  the libel perpetrated by the 
+
+From kadie Sat Oct 12 09:53:46 1991
+To: cafb-mail
+~Subject: Computers and Academic Freedom mailing list (batch edition)
+Status: R
+
+
+Computers and Academic Freedom mailing list (batch edition)
+Sat Oct 12 09:53:27 EDT 1991
+
+[For information on how to get a much smaller edited version of the
+list, send email to archive-server@eff.org. Include the line:
+   send acad-freedom caf
+- Carl ]
+
+In this issue:
+
+:                                                                             
+
+The addresses for the list are now:
+	comp-academic-freedom-talk@eff.org     - for contributions to the list
+		or	caf-talk@eff.org
+	listserv@eff.org    - for automated additions/deletions
+                (send email with the line "help" for details.)
+	caf-talk-request@eff.org    - for administrivia
+
+-------------------
+
+masquerader.  It has been suggested that the SYSOP should be held 
+to  the  same standard of liability as a neighborhood supermarket 
+which   furnishes   a   public  bulletin  board:95  just  as  the 
+supermarket  would not be liable for posting an advertisement for 
+illicit  services,  so  should the BBS SYSOP escape liability for 
+libellous  messages left on his board, especially when its poster 
+appears to be a validated user.96
+
+         However,  this  comparison  lacks  merit for the reasons 
+given  by  the  Seventh  Circuit  in  Tackett  v.  General Motors 
+Corporation.97  The  defendant's liability in that case rested on 
+its  publication of libel by implicitly adopting the statement.98 
+Defendant's  failure  to  remove a defamatory sign painted on one 
+of  the  interior  walls of its factory for seven or eight months 
+after  discovering  its  presence  was  such that "[a] reasonable 
+person  could conclude that Delco 'intentionally and unreasonably 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             22
+----------------------
+
+fail[ed]   to   remove'  this  sign  and  thereby  published  its 
+contents."99
+
+         There  would  certainly  be  accomplice liability if the 
+supermarket  unreasonably  delayed  removing an advertisement for 
+illegal  services  from its bulletin board once it was made aware 
+of  it.  The  market  could  be  seen  as having adopted the ad's 
+statements  by  not  acting  responsibly  to  its viewing public. 
+Similarly,  a  SYSOP  would  be  liable  for  defamatory messages 
+posted  on  his  BBS - even by what appears to be the true user - 
+if  he  fails  to  act  reasonably by using his computer skill to 
+eviscerate  the  libel.100  While  the  computerized  BBS  may be 
+nothing  more  than a hobby of the SYSOP, the speed with which it 
+can  disseminate potentially damaging information among its users 
+demands the standards of responsibility described above.
+
+    C.   Defamation Liability of the Masquerader
+
+         1.   Degree of fault required
+
+         It  should  be noted that the liability and proof issues 
+concerning  the  SYSOP  and  masquerader  are  inverse. As to the 
+SYSOP  who allows libellous messages to be posted on his BBS, his 
+liability  may  be  inferred  simply  by  those  messages  having 
+appeared  there;101  however, his degree of fault - actual malice 
+or  simple  negligence  -  is  subject  to debate.102 Conversely, 
+while  the  masquerader's  degree of fault is clearly evident,103 
+tracing  that  fault back to him is a more elusive matter.104 The 
+requisite  degree of fault for masqueraders is set out in federal 
+and state law.105
+
+         2.   Damages
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             23
+----------------------
+
+
+         Assuming  arguendo  that  the  masquerader's  defamatory 
+publications  have  been  successfully  traced back to him by the 
+plaintiff,  actual  and  punitive  damages  may then be recovered 
+from  him  based on his knowledge of the publication's falsity or 
+reckless  disregard  for its truth.106 Federal and state law have 
+also specified certain remedies.107
+
+III PROBLEMS OF PROOF
+
+    A.   Proof of SYSOP's Actions
+
+         We  have seen that while the appropriate degree of fault 
+for  a  SYSOP  to  be liable for defamatory messages appearing on 
+his  BBS  is subject to dispute,108 a showing that the defamation 
+appeared  there  due  to  the  SYSOP's  negligence  is  much more 
+capable  of  resolution.109  The jury should be made aware of the 
+actual  validation/security procedures practiced by the SYSOP and 
+should  weigh  them  in  light  of  the  prevailing  practice.110 
+Several  facets  of  an emerging standard of care for SYSOPs have 
+already  been  suggested  in  this  Comment,111  and  the SYSOP's 
+adherence to them could be shown through users' testimony.
+
+    B.   Proof of Masquerader's Actions
+
+         In  contrast  with  the  degree  of  fault  required  to 
+establish  the  SYSOP's publication of the libellous message, the 
+degree  of  fault  for  the  masquerader  is much less subject to 
+debate.   The   masquerader's   actions  are  not  likely  to  be 
+considered  merely  inadvertent or negligent.112 However, because 
+the  masquerader  has  intentionally  discovered  and usurped the 
+user's  name  and  password,  he  appears  to be that user on all 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             24
+----------------------
+
+computer    records.   Tracing   the   masquerader's   defamatory 
+publication   back   to   him   thus  encounters  some  important 
+evidentiary  barriers:  the  maligned  user  is forced to rely on 
+computerized  records  produced  by  the BBS and phone company in 
+trying  to  link  the masquerader's libellous publication back to 
+him.113  We  turn  now  to consider the evidentiary hurdles to be 
+overcome  in  tracing  the  libellous  communication  to its true 
+source.
+
+         1.   The Hearsay Rule & Business Records Exception
+
+         The   first   evidentiary  obstacle  to  connecting  the 
+masquerader  with  his libellous publication is the hearsay rule. 
+As  defined  by  the  Federal  Rules  of  Evidence, hearsay is "a 
+statement,  other than one made by the declarant while testifying 
+at  the  trial or hearing, offered in evidence to prove the truth 
+of  the  matter  asserted";114  as  such,  it  is inadmissible as 
+evidence  at  trial.115 Computer-generated evidence is subject to 
+the  hearsay  rule,  not  because  it  is  the  "statement  of  a 
+computer",  but  because it is the statement of a human being who 
+entered  the  data.116 To the extent the plaintiff user relies on 
+computer-generated  records  to  show that a call was placed from 
+the  masquerader  to  the  BBS  at the time and date in question, 
+then, her evidence may be excluded.
+
+         However,  numerous  exceptions  to the hearsay rule have 
+developed   over   the  years  such  that  evidence  which  might 
+otherwise  be  excluded  is deemed admissible. The most pertinent 
+hearsay  exception  as  applied  to  computerized evidence is the 
+"business  records  exception",  which  admits  into evidence any 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             25
+----------------------
+
+records  or  data  compilations,  so  long  as (1) they were made 
+reasonably  contemporaneously  with  the  events they record; (2) 
+they  were  prepared/kept  in the course of a regularly conducted 
+business  activity;  and  (3)  the business entity creating these 
+records  relied  on  them  in  conducting  its operations.117 The 
+veracity  of  the  computer  records  and  of the actual business 
+practices  are shown by the record custodian's or other qualified 
+witness'  testimony,  unless  the  circumstances indicate lack of 
+trustworthiness.118  The  term  "business"  as  used in this rule 
+includes  callings  of  every  kind, whether or not conducted for 
+profit.119
+
+         Statutes  and  judicial decisions in several states have 
+gradually  recognized that the business records exception extends 
+to  include computer-generated records.120 This is largely due to 
+(1)  modern business' widespread reliance on computerized record-
+keeping,  (2)  the impracticability of calling as witnesses every 
+person   having   direct   personal  knowledge  of  the  records' 
+creation,  and (3) the presumption that if a business was willing 
+to  rely  on  such records, there is little reason to doubt their 
+accuracy.121
+
+         Using  this  exception  to  the  hearsay rule, plaintiff 
+user  would most likely seek to admit the BBS' computer-generated 
+username/password  log-in  records  plus the phone company's call 
+records  to  establish  the  connection between the masquerader's 
+telephone  and  the  BBS  at  the  precise  instant the libellous 
+message  was  posted.122 As an initial matter, however, plaintiff 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             26
+----------------------
+
+must  first  lay  a  foundation  for  both  the  BBS'  and  phone 
+company's computer-generated business records.
+
+         A  sufficient  foundation for computer-generated records 
+was  found  recently to exist in People v. Lugashi.123 There, the 
+California  Court  of Appeal affirmed a conviction of grand theft 
+based  on  evidence adduced from computer-generated bank records. 
+Defendant,  an  oriental  rug  store owner, had been convicted of 
+fraudulently   registering   thirty-seven  sales  on  counterfeit 
+credit  cards.  The  issuing  banks became suspicious of criminal 
+activity  when  charge  card  sales  data  from defendant's store 
+showed  44  fraudulent  uses of charge cards at defendant's store 
+within  only  five  weeks.124  As  each  fraudulent  credit  card 
+transaction   was   completed,   defendant  registered  the  sale 
+simultaneously  with  the  banks'  computers.125  Each  night, as 
+standard  bank  practice,  the  banks  then  reduced the computer 
+records  of  credit  card transactions to microfiche. Information 
+gleaned   from  these  microfiche  records  was  entered  against 
+defendant at trial.126
+
+         The  California  Court  of  Appeal  recognized the trial 
+court   judge's   wide   discretion   in  determining  whether  a 
+sufficient  foundation  to  qualify evidence as a business record 
+has  been  laid.127 It held that defendant's allocations of error 
+were  without merit since defendant himself had acknowledged that 
+the  bank's  computer  entries  memorialized  in  the  microfiche 
+record  were  entered  simultaneously  as  they  occurred  in the 
+regular  course  of  business.128  Further,  the Court of Appeals 
+dismissed  defendant's  claim  that  only a computer expert could 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             27
+----------------------
+
+supply  testimony  concerning  the  reliability  of  the computer 
+record:
+    Appellant's  proposed test incorrectly presumes computer 
+    data  to  be  unreliable, and, unlike any other business 
+    record,   requires   its   proponent   to  disprove  the 
+    possibility  of error, not to convince the trier of fact 
+    to  accept  it,  but  merely to meet the minimal showing 
+    required for admission....
+    The  time  required  to produce this additional [expert] 
+    testimony  would unduly burden our already crowded trial 
+    courts to no real benefit.129
+    
+    
+
+         The  Lugashi  court  then  followed  the  bulk  of other 
+jurisdictions  adopting  similar analyses and upholding admission 
+of  computer  records  with similar or less foundational showings 
+over similar objections.130
+
+         As  to  admission  into evidence of telephone companies' 
+computer-generated   call  records  under  the  business  records 
+exception,  courts  have  evinced  a  similar attitude to that in 
+Lugashi.  In  State  v.  Armstead,131  a  prosecution for obscene 
+phone  calls,  the trial court was held to have properly admitted 
+computer   printouts  showing  that  calls  had  been  made  from 
+defendant's  mother's  telephone,  despite defendant's contention 
+that  the  witness  who  was called to lay the foundation had not 
+been  personally  responsible  for  making the record.132 Because 
+the  printout represented a simultaneous self-generated record of 
+computer   operation,   the  court  held  it  was  therefore  not 
+hearsay.133
+
+         In   an   Ohio   prosecution  for  interstate  telephone 
+harassment,  it  was  held  no  error  was committed in admitting 
+defendant's  computerized  phone  statement  under  the  Business 
+Records  exception  which  showed  that  telephone calls had been 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             28
+----------------------
+
+made  from  defendant's  phone  in  Ohio  to  various  numbers in 
+Texas.134  A  sufficient foundation for the admission of business 
+records  under  Federal  Rules of Evidence 803(6) was established 
+when  a  telephone  company  witness  identified  the  records as 
+authentic  and  testified they were made in the regular course of 
+business.135
+
+         Applying  the foregoing analyses to BBSes, the plaintiff 
+user  would  establish a foundation for the correlated BBS136 and 
+telephone  company  phone logs by showing that (1) they were made 
+contemporaneously  with  the posting of the libellous message;137 
+(2)  they  were  prepared/kept  in  the  course  of  a  regularly 
+conducted  business  activity,  since  both the BBS and telephone 
+company  consistently  maintain  accounts  of all persons who use 
+their  services;  and (3) the BBS and telephone company relied on 
+those  records for billing purposes.138 Once such a foundation is 
+laid,  the  trial court has wide discretion in admitting business 
+records into evidence.139
+
+         2.   Authentication & the Voluminous Records Exception
+
+         The  second  evidentiary  barrier encountered in tracing 
+the  masquerader's  libellous messages back to him is proving his 
+authorship  of  the  libel,  or "authenticating" the computerized 
+records.140  The computer-generated phone and BBS records showing 
+that  a call from a certain phone number at a particular date and 
+time  resulted  in  a  libellous  message  being  published  must 
+somehow be linked to the masquerader.
+
+         The  Federal  Rules  of  Evidence  provide  in pertinent 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             29
+----------------------
+
+part:
+    (a)  General     provision.     The    requirement    of 
+         authentication  or  identification  as  a condition 
+         precedent   to   admissibility   is   satisfied  by 
+         evidence  sufficient  to support a finding that the 
+         matter in question is what its proponent claims.
+    (b)  Illustrations.  By  way  of  illustration only, and 
+         not   by  way  of  limitation,  the  following  are 
+         examples   of   authentication   or  identification 
+         conforming with the requirements of this rule:...
+         (6)  Telephone       conversations.       Telephone 
+              conversations,  by  evidence  that  a call was 
+              made  to  the  number  assigned at the time by 
+              the  telephone  company to a particular person 
+              or business, if 
+              (A)  in  the  case of a person, circumstances, 
+                   including  self-identification,  show the 
+                   person  answering  to  be the one called, 
+                   or
+              (B)  in  the  case of a business, the call was 
+                   made  to  a  place  of  business  and the 
+                   conversation    related    to    business 
+                   reasonably     transacted     over    the 
+                   telephone....141
+
+         The   question   of   whether   a  writing  is  properly 
+authenticated  is  primarily  one  of  law  for the court; if the 
+court  decides  the  question affirmatively, it is ultimately for 
+the  jury.142  The  court  will  make  no  assumptions  as to the 
+authenticity    of    documents   in   deciding   their   initial 
+admissibility.143  The  difficulty  presented  here  is  that the 
+Federal  Rules  of  Evidence  seem  to  require authentication of 
+telephone  calls  by  reference to their specific content.144 The 
+specific  content  of  a  given phone call is not demonstrated by 
+phone logs showing merely the date and time the call occurred.
+
+         The   authentication   of  extrinsic  documents  may  be 
+subject  to  a  "best  evidence  rule"  objection.  As  stated in 
+Federal Rule of Evidence 1002:
+    REQUIREMENT  OF  ORIGINAL:  To  prove  the contents of a 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             30
+----------------------
+
+    writing,  recording, or photograph, the original of that 
+    writing,  recording,  or  photograph is required, unless 
+    provided  otherwise  in  these  rules  or  by  an act of 
+    Congress.145
+    
+    
+
+         Since  its  introduction  in  the  18th century, various 
+rationales  have  been  posited  for  this rule.146 While earlier 
+writers  asserted  that  the  rule  is intended to prevent fraud, 
+most  modern  commentators  agree that the rule's main purpose is 
+to  convey  to  the  court  the  exact  operative  effect  of the 
+writing's contents.147
+
+         However,   at  least  one  jurisdiction  has  implicitly 
+equated  compliance  with the business records exception with the 
+Best  Evidence  Rule.  In Louisiana v. Hodgeson,148 the defendant 
+in  a  manslaughter  trial  contended  that  a  printout  of  her 
+telephone  bill, offered to show communications between her and a 
+third  party,  was  not authenticated.149 The court, while making 
+no  specific  reference  to  the  authentication  point, rejected 
+defendant's  contention,  noting  that  the  information from the 
+computer's  storage was the company's business record and that it 
+was accessible only by printout.150
+
+         Similarly,  in  an  Indiana bank robbery prosecution,151 
+the  state  offered  microfiche copies of the telephone company's 
+computerized   records   showing  certain  telephone  calls  from 
+defendant.  On appeal, defendant argued that these documents were 
+not  authenticated  because  they were not the "original or first 
+permanent  entry,"  and  that they therefore should not have been 
+admitted  into  evidence.  The  court  disagreed,  saying  that a 
+duplicate  was  admissible  to  the  same  extent  as an original 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             31
+----------------------
+
+unless  a  "genuine  issue" were raised as to the authenticity of 
+the original.152
+
+         By  these  precedents,  then,  provided  plaintiff  user 
+establishes  that  both  the  telephone and BBS user records were 
+prepared  in  accordance  with the business records exception,153 
+the  fact  that  a  call from the masquerader's phone is shown to 
+have  occurred  at  the  same  instant  the libellous message was 
+posted  may  be sufficient to authenticate that the call was made 
+by  the  masquerader.  Other  circumstantial  evidence adduced by 
+plaintiff user would strengthen this inference.154
+
+         Another  authentication  hurdle  in  plaintiff's case is 
+the  requirement  that  the  entire  original record sought to be 
+authenticated  be  produced.155 This requirement can prove highly 
+impractical  in  situations  where  there  are  vast  numbers  of 
+individual  records  extending  over  long  periods  of  time.156 
+Requiring  plaintiff  to produce the entire body of these records 
+would  be  unduly  expensive and time-consuming. What is more, if 
+plaintiff   were   to  attempt  to  summarize  vast  computerized 
+business  data  compilations  so  as to introduce those summaries 
+into  evidence  without  producing  the complete body of computer 
+records,  such  summaries  might not be admissible on the grounds 
+that they were not made "in the regular course of business."157
+
+         However,   an   exception   to   strict   authentication 
+requirements   of   the   Federal  Rules  of  Evidence  has  been 
+developed. Rule 1006 provides:
+    The  contents  of  voluminous  writings,  recordings, or 
+    photographs  which  cannot  conveniently  be examined in 
+    court  may be presented in the form of a chart, summary, 
+    
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             32
+----------------------
+
+    or  calculation.  The originals, or duplicates, shall be 
+    made  available  for examination or copying, or both, by 
+    other  parties  at  reasonable time and place. The court 
+    may order that they be produced in court.158
+    
+    
+
+         In   Cotton   v.  John  W.  Eshelman  &  Sons,  Inc.,159 
+summaries  of  certain  computerized  records  were held properly 
+admitted  into  evidence on the theory that "[w]hen pertinent and 
+essential  facts  can  be ascertained only by an examination of a 
+large  number  of  entries  in  books  of  account, an auditor or 
+expert  examiner  who has made an examination and analysis of the 
+books  and  figures  may testify as a witness and give summarized 
+statements   of   what   the  books  show  as  a  result  of  his 
+investigation,  provided  the  books themselves are accessible to 
+the   court   and  to  the  parties."160  Under  this  precedent, 
+plaintiff  user would only need to produce the pertinent parts of 
+the computerized records, as determined by an impartial auditor.
+IV. CONCLUSION
+
+         It  is  difficult  to  overestimate  the ease with which 
+computers  now  enable  us  to  compile and exchange information. 
+Computerized  "bulletin boards" run on personal microcomputers by 
+private  persons  and  businesses  are  examples of this enhanced 
+form  of  communication.  Users  can  trade computer programs and 
+exchange  a  wealth  of ideas, opinions, and personal information 
+through such forums.
+
+         The  advantages  of  this  process  break down, however, 
+when   malicious   users   abuse   the   system  and  BBS  SYSOPS 
+intentionally  or  negligently allow this to occur. The nature of 
+computerized  data  is  such  that  tortious  misinformation  may 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             33
+----------------------
+
+easily  be  spread to thousands of users before it is discovered. 
+Because  the  potential  for harm to reputation is so tremendous, 
+appropriate  standards  of liability and methods of proof must be 
+addressed.
+
+         The  requisite  degree  of  fault  in  libelling private 
+persons  is  less than that for libelling public officials/public 
+figures,  and  may  be established as against a SYSOP by a simple 
+showing  of  his  negligent failure to observe reasonably minimal 
+computer   security  measures.  The  basis  of  liability  for  a 
+masquerader  who  intentionally misappropriates another's private 
+information is even less subject to debate.
+
+         Two  main evidentiary hurdles face the plaintiff seeking 
+to  link  the  masquerader  with  his  libellous  message through 
+reliance  on  computer-generated records. First, the hearsay rule 
+automatically  excludes  all  evidence produced out-of-court that 
+is  being  offered  to  prove  the  truth  of the matter at hand. 
+Second,   the   authentication   requirement   demands  that  the 
+masquerader's   connection   to  the  entire  body  of  proffered 
+computer records be established.
+
+         However,  certain exception to both of these limitations 
+ease   the   plaintiff's  burden.  First,  the  business  records 
+exception  to  the  hearsay  rule  admits  computer  records into 
+evidence  if they (1) were made reasonably contemporaneously with 
+the  events  they record; (2) were prepared/kept in the course of 
+a  regularly  conducted  business  activity; and (3) the business 
+entity  creating  these  records relied on them in conducting its 
+operations.  Both  BBS  and  telephone  company  records may come 
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             34
+----------------------
+
+under  this  exception. Second, the voluminous writings exception 
+allows  the  contents  of  voluminous  computerized records which 
+cannot  conveniently  be examined in court to be presented in the 
+form  of a summary. So long as the original records or duplicates 
+thereof  are  available  for  examination  by  other  parties  at 
+reasonable  times  and  places,  the entire data compilation need 
+not   be   produced.   Plaintiff  should  employ  both  of  these 
+exceptions  in an effort to convince a jury by a preponderance of 
+the  evidence that the masquerader has abused his computer skills 
+and has damaged plaintiff's reputation.
+
+           ==============================================
+Resent-Message-Id: <9004210506.AA15278@gaak.LCS.MIT.EDU>
+	id AA20305; Fri, 20 Apr 90 12:46:45 PDT
+~Date: Fri, 20 Apr 90 12:42:02 PDT
+~From: Lang Zerner <langz@ebay.sun.com>
+Message-Id: <9004201942.AA08069@khayyam.EBay.Sun.COM>
+~Subject: Sysops and libel liability -- endnotes
+Resent-Date:  Sat, 21 Apr 90 0:05:23 CDT
+Resent-From: telecom@eecs.nwu.edu
+Resent-To: ptownson@gaak.LCS.MIT.EDU
+Status: RO
+Here are the endnotes to the paper I submitted in a separate message.
+Be seeing you...
+==Lang
+=======
+
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             35
+----------------------
+
+                             ENDNOTES
+
+1.       418 U.S. 323, 94 S.Ct. 2997, 41 L.Ed.2d 789 (1974).
+
+2.       These  interests can cover anything from science fiction 
+         to  gourmet  cooking. Uyehara, Computer Bulletin Boards: 
+         Let the Operator Beware, 14 Student Lawyer 28 (1986).
+
+3.       Id., at 30.
+
+4.       The  data  service  Compuserve  is one such national BBS 
+         run  for  profit  by business organizations. Uyehara, at 
+         28.  Other  examples  of  large databases of interest to 
+         the  legal profession are computerized research services 
+         such as LEXIS and WESTLAW.
+
+5.       Uyehara,  at  28;  Manning, Bulletin Boards: Everybody's 
+         Online  Services,  Online, Nov. 1984, at 8,9. "Modem" is 
+         defined infra, note 17 and accompanying text.
+
+6.       "...computer   bulletin   boards   offer   their   users 
+         important  benefits.  An  individual  can use a bulletin 
+         board  to  express  his  opinion  on  a matter of public 
+         interest.  He  may  find  a  review  of  a product he is 
+         considering  buying.  He  may  find  a  useful  piece of 
+         software.  An  individual  might  also  use the bulletin 
+         board  to  ask  a  technical  question  about a specific 
+         computer   program."   Note,   Computer  Bulletin  Board 
+         Operator  Liability  For  User Misuse, 54 Fordham L.Rev. 
+         439,  440  (1985)  (Authored  by  Jonathan Gilbert); see 
+         also  Lasden,  Of  Bytes And Bulletin Boards, N.Y.Times, 
+         August  4, 1985, sec. 6, at 34, col. 1, where the author 
+         notes  computer  users  may now use BBSes to voice their 
+         opinions directly to State Senators' offices.
+
+7.       "Virus"  Hits  Nation's  Research  Computers,  San  Jose 
+         Mercury News, Nov. 4, 1988, at 1, col. 1.
+
+8.       "It   is  estimated  that  the  theft  of  long-distance 
+         services  and  software  piracy  each  approximate  $100 
+         million  a  year;  credit card fraud via computers costs 
+         about   $200   million   annually."   Pittman,  Computer 
+         Security  In Insurance Companies, 85 Best's Rev. - Life-
+         Health Ins. Edition, Apr. 1985 at 92.
+
+9.       Schiffres,  The  Shadowy  World  of  Computer "Hackers," 
+         U.S. News & World Report, June 3, 1985, at 58.
+
+10.      Pollack,  Free  Speech Issues Surround Computer Bulletin 
+         Board  Use,  N.Y.  Times,  Nov. 12, 1984, note 1, at D4, 
+         col. 6.
+         
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             36
+----------------------
+
+11.      Note, 54 Fordham L.Rev. 440-441 (1985).
+
+12.      Poore and Brockman, 8 Nat'l L.J. 14, (1985).
+
+13.      See infra, Topic III, Problems of Proof.
+
+14.      The  uncertainty  revolves  around  how to define BBSes. 
+         When  viewed as analogous to newspapers and other media, 
+         SYSOPS  would  be  responsible for any message posted on 
+         their   systems,   much   as   newspaper   editors   are 
+         responsible  for  articles  appearing  in  their medium. 
+         Uyehara,  14  Student  Lawyer  30 (1986). But when BBSes 
+         are  compared to a bulletin board found in a public hall 
+         or  supermarket,  the liability issue is focused more on 
+         those  actually  posting the messages rather than on the 
+         board's  owner.  Id.,  at 30. This Comment suggests that 
+         BBS  SYSOPs  be  held  to  a reasonable standard of care 
+         emerging  specifically  for  their endeavors. See infra, 
+         Topic II.
+
+15.      Poore  and  Brockman,  8  Nat'l L.J. 14, (1985). Another 
+         writer  has  noted  that Compuserve now has over 200,000 
+         users  making  use  of  nearly  100  diverse  databases. 
+         Lasden,  Of  Bytes  And  Bulletin  Boards,  N.Y.  Times, 
+         August 4, 1985, sec. 6, at 34, col. 1.
+
+16.      Poore and Brockman, 8 Nat'l L.J. 14 (1985).
+
+17.      14  Am  Jur.  POF 2d Computer-Generated Evidence Sec. 11 
+         (1977).
+
+18.      Note, 54 Fordham L.Rev. 439, 446 (1985).
+
+19.      Id.
+
+20.      See "Account," infra, note 25 and accompanying text.
+
+21.      Garfinkel,  An  Introduction  to  Computer  Security, 33 
+         Prac. Law.41-42 (1987).
+
+22.      Id.
+
+23.      See infra, notes 25 and 27 and accompanying text.
+
+24.      Some   more   sophisticated  operating  systems  provide 
+         greater  access  control  by  (1) recording unauthorized 
+         attempts  at  entry;  (2)  recording  those attempts and 
+         sending  a  warning  to the perpetrator; and (3) keeping 
+         the   perpetrartor  off  the  system  permanently  until 
+         he/she   is   reinstated   by  the  computer's  security 
+         administrator  or  SYSOP. Balding, Computer Breaking and 
+         Entering:  The  Anatomy of Liability, 5 Computer Lawyer, 
+         Jan. 1988, at 6.
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             37
+----------------------
+
+25.      Garfinkel,  An  Introduction  to  Computer  Security, 33 
+         Prac. Law. 42 (1987).
+
+26.      Id.
+
+27.      Id.  "A  password is a secret word or phrase that should 
+         be  known  only  to  the user and the computer. When the 
+         user  first  attempts to use the computer, he must first 
+         enter  the  password.  The  computer  then  compares the 
+         typed  password  to  the  stored  password  and, if they 
+         match, allows the user access."
+
+28.      Id., at 42 and 46.
+
+29.      14  Am.  Jur. POF 2d Computer-Generated Evidence Sec. 11 
+         (1977).
+
+30.      54 Fordham L.Rev. 439, note 2 (1985).
+
+31.      Restatement (Second) of Torts Sec. 568(1) (1976).
+
+32.      Restatement (Second) of Torts Sec. 577(1) (1976).
+         
+
+33.      Restatement (Second) of Torts Sec.559 (1976).
+
+34.      Veeder,   The   History   and   Theory  of  the  Law  of 
+         Defamation, 3 Colum. L.Rev. 546, 569-571 (1903).
+
+35.      Restatement (Second) of Torts Sec. 622 (1976).
+
+36.      Restatement, Torts Sec. 568, comment d (1938).
+
+37.      Shor  v.  Billingley,  4  Misc.2d  857, 158 N.Y.S.2d 476 
+         (Sup.  Ct.  1956),  aff'd  mem., 4 App.Div. 2d 1017, 169 
+         N.Y.S.2d 416 (1st Dep't. 1957).
+
+38.      Torts:     Defamation:     Libel-Slander    Distinction: 
+         Extemporaneous  Remarks  Made  on  Television Broadcast: 
+         Shor  v.  Billingley,  4  Misc. 2d 857, 158 N.Y.S.2d 476 
+         (Sup.Ct.  N.Y.  County  1957),  43 Cornell L.Q. 320, 322 
+         (1957) (Authored by Stephen A. Hochman).
+
+39.      Id.
+         
+
+40.      376  U.S.  254,  84  S.Ct.  710,  11 L.Ed.2d 686 (1964), 
+         motion  denied  376  U.S. 967, 84 S.Ct. 1130, 12 L.Ed.2d 
+         83.
+         
+
+41.      376 U.S. 254, 273.
+
+42.      376 U.S. 254, 280.
+
+43.      418 U.S. 323, 94 S.Ct. 2997, 41 L.Ed.2d 789 (1974).
+         
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             38
+----------------------
+
+44.      Gertz v. Robert Welch, Inc., 418 U.S. 323, 326.
+
+45.      Id.
+
+46.      Id., at 327.
+
+47.      "...those  who  hold governmental office may recover for 
+         injury  to reputation only on clear and convincing proof 
+         that  the  defamatory  falsehood was made with knowledge 
+         of  its  falsity  or  with  reckless  disregard  for the 
+         truth."  Gertz v. Robert Welch, Inc., 418 U.S. 323, 342. 
+         "An  individual  who decides to seek governmental office 
+         must  accept  certain  necessary  consequences  of  that 
+         involvement  in  pubic  affairs.  He  runs  the  risk of 
+         closer  public  scrutiny  than  might  otherwise  be the 
+         case." Id., at 344.
+
+48.      "...[A]n  individual  may attain such pervasive fame and 
+         notoriety  that  he  becomes  a  public  figure  for all 
+         purposes   and   in  all  contexts.  More  commonly,  an 
+         individual  voluntarily injects himself or is drawn into 
+         a  particular  public  controversy and thereby becomes a 
+         public  figure  for a limited range of issues. In either 
+         case  such  persons  assume  special  prominence  in the 
+         resolution of public questions." 418 U.S. 323, 351.
+         
+
+49.      "Even  if  the  foregoing  generalities do not obtain in 
+         every   circumstance,   the   communications  media  are 
+         entitled  to act on the assumption that public officials 
+         and  public  figures have voluntarily exposed themselves 
+         to   the   increased  risk  of  injury  from  defamatory 
+         falsehood   concerning   them.  No  such  assumption  is 
+         justified  with  respect to a private individual. He has 
+         not  accepted  public  office or assumed an 'influential 
+         role  in  ordering  society.'  Curtis  Publishing Co. v. 
+         Butts,  388  U.S., at 164 ...He has relinquished no part 
+         of  his interest in the protection of his own good name, 
+         and  consequently  he  has a more compelling call on the 
+         courts   for   redress   of   injury  inflicted  by  the 
+         defamatory  falsehood. Thus, private individuals are not 
+         only  more  vulnerable  to  injury than public officials 
+         and  public  figures;  they  are  also more deserving of 
+         recovery." Id., at 345.
+
+50.      "...[P]etitioner   was  not  a  public  figure.  He  ... 
+         plainly  did  not thrust himself into the vortex of this 
+         public  issue,  nor did he engage the public's attention 
+         in an attempt to influence its outcome." Id., at 352.
+
+51.      Justice Powell noted for the Court that
+         
+           "[T]he  communications  media are entitled to act on 
+           the  assumption  that  public  officials  and public 
+           figures   have  voluntarily  exposed  themselves  to 
+           increased  risk  of injury from defamatory falsehood 
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             39
+----------------------
+           concerning  them.  No  such  assumption is justified 
+           with  respect  to  a  private individual. He has not 
+           accepted  public  office  or assumed an 'influential 
+           role  in  ordering  society....' He has relinquished 
+           no  part  of  his  interest in the protection of his 
+           own  good  name,  and  consequently  he  has  a more 
+           compelling  call on the courts for redress of injury 
+           inflicted  be  defamatory  falsehood.  Thus, private 
+           individuals  are  not only more vulnerable to injury 
+           than  public  officials and public figures; they are 
+           also more deserving of recovery." Id., at 345.
+           
+
+52.      Id., at 347.
+
+53.      Keeton,  Dobbs,  Keeton  and Owen, Prosser and Keeton on 
+         Torts,  sec.  32,  p.174.  See also Vaughn v. Menlove, 3 
+         Bing. (N.C.) 467, 132 Eng.Rep. 490 (1837).
+
+54.      111  Cal.  App.  2d  424,  244  P.2d  757,  28 ALR2d 451 
+         (1952).
+         
+
+55.      111 Cal. App. 2d 424, 427.
+
+56.      Id., at 426.
+
+57.      Id, at 427.
+
+58.      Restatement (Second) of Torts Sec. 577(2) (1976).
+
+59.      22 Ohio App.2d 141, 259 N.E.2d 160 (1970).
+         
+
+60.      Scott v. Hull, 259 N.E.2d 160, 162 (1970).
+
+61.      Id., at 161.
+
+62.      Id., at 162.
+
+63.      836 F.2d 1042 (7th Cir. 1987).
+         
+
+From kadie Sat Oct 12 09:54:35 1991
+To: cafb-mail
+~Subject: Computers and Academic Freedom mailing list (batch edition)
+Status: R
+
+
+Computers and Academic Freedom mailing list (batch edition)
+Sat Oct 12 09:54:16 EDT 1991
+
+[For information on how to get a much smaller edited version of the
+list, send email to archive-server@eff.org. Include the line:
+   send acad-freedom caf
+- Carl ]
+
+In this issue:
+
+:                                                                             
+
+The addresses for the list are now:
+	comp-academic-freedom-talk@eff.org     - for contributions to the list
+		or	caf-talk@eff.org
+	listserv@eff.org    - for automated additions/deletions
+                (send email with the line "help" for details.)
+	caf-talk-request@eff.org    - for administrivia
+
+-------------------
+
+
+64.      Id., at 1047.
+
+65.      The  Court  of  Appeals  noted  the Restatement view and 
+         observed  that  Indiana  law  had  neither  embraced nor 
+         rejected that approach. Id., at 1046.
+
+66.      Id.
+
+67.      Id.
+
+68.      Id., at 1046-47.
+
+69.      Id.
+         
+
+70.      Recall   that   in   our   hypothetical   a  third  user 
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             40
+----------------------
+         masquerading  as  another  is  transmitting  messages to 
+         others, revealing embarassing and false information.
+         
+
+71.      BBS  systems  security  and  other preventative measures 
+         are discussed more fully infra, Topic 3.d.
+         
+
+72.      Issues  in  proving  the  SYSOP's role in publishing the 
+         libellous  statement  are  discussed more fully in Topic 
+         III. A., infra.
+
+73.      Sydney  v.  MacFadden  Newspaper  Publishing  Corp., 242 
+         N.Y.  208, 151 N.E. 209, 44 A.L.R. 1419 (1926). See also 
+         Restatement  (Second) of Torts Sec. 621 (1976) ("One who 
+         is  liable  for a defamatory communication is liable for 
+         the  proved, actual harm caused to the reputation of the 
+         person defamed.")
+
+74.      Dun  & Bradstreet, Inc. v. Greenmoss Builders, Inc., 472 
+         U.S. 749, 86 L.Ed.2d 593, 105 S.Ct. 2939 (1985).
+
+75.      See supra, note 53 and accompanying text.
+
+76.      Note,  Protecting  the  Subjects  of  Credit Reports, 80 
+         Yale L.J. 1035, 1051-52, n.88 (1971).
+
+77.      Gertz  did  not  rule  out  an assumption of defendant's 
+         negligence.  See  Eaton,  The American Law of Defamation 
+         Through  Gertz  V.  Robert  Welch,  Inc., and Beyond: An 
+         Analytical Primer, 61 Va. L.Rev. 1349 (1975).
+
+78.      15  U.S.C.A. Sec. 1681 et seq. (1974). Two standards are 
+         proposed  there:  the  first,  willful noncompliance, is 
+         defined  as  equivalent  to  the  New York Times "actual 
+         malice"  standard,  and  violators are liable for actual 
+         and  punitive  damages.  Sec. 1681(n), supra. Presumably 
+         this  would  apply  to  the situation where the SYSOP is 
+         dilatory  in  removing the libellous message. The second 
+         proposed  standard,  negligent  noncompliance, occurs in 
+         the  absence  of  willfulness  and  results in liability 
+         only   for   actual   damages.   Sec.   1681(o),  supra. 
+         Situations  where  the  SYSOP failed to adopt reasonable 
+         computer   security   measures  might  come  under  this 
+         category.
+
+79.      18  U.S.C.S.  Sec.  2707(b),(c) (Law. Co-op 1979 & Supp. 
+         1988) provides in pertinent part:
+           (b)  Relief.  In  a civil action under this section, 
+                appropriate relief includes -
+                (1)  Such  preliminary  and  other equitable or 
+                     declaratory relief as may be appropriate;
+                (2)  damages under subsection (c); and
+                (3)  a  reasonable  attorney's  fee  and  other 
+                     litigation costs reasonably incurred. 
+           (c)  Damages.  The  court may assess as damages in a 
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             41
+----------------------
+                civil  action under this section the sum of the 
+                actual  damages  suffered  by the plaintiff and 
+                any  profits  made  by the violator as a result 
+                of  the  violation,  but  in  no  case  shall a 
+                person  entitled  to  recover receive less than 
+                the sum of $1,000.
+           
+         18  U.S.C.S. Sec. 2707(e) (Law. Co-op 1979 & Supp. 1988) 
+         limits  the civil action under this section to two years 
+         after  the date upon which the claimant first discovered 
+         or   had   a  reasonable  opportunity  to  discover  the 
+         violation.
+         As  to  damage  provisions  supplied  by  state law, see 
+         California Penal Code 502(e)(1),(2) (West Pub. 1988):
+           (e)(1)  In  addition  to any civil remedy available, 
+           the  owner  or  lessee  of  the  computer,  computer 
+           system,  computer network, computer program, or data 
+           may   bring   a  civil  action  against  any  person 
+           convicted   under   this  section  for  compensatory 
+           damages,  including  any  expenditure reasonably and 
+           necessarily  incurred  by  the  owner  or  lessee to 
+           verify  that  a  computer  system, computer network, 
+           computer  program, or data was not altered, damaged, 
+           or  deleted  by  the access. For purposes of actions 
+           authorized  by  this  subdivision, the conduct of an 
+           unemancipated  minor  shall be imputed to the parent 
+           or  legal  guardian having control or custody of the 
+           minor,  pursuant to the provisions of Section 1714.1 
+           of the Civil Code.
+           (2)   In   any   action  brought  pursuant  to  this 
+           subdivision   the   court   may   award   reasonable 
+           attorney's fees to a prevailing party.
+           
+
+80.      A  lawsuit  recently filed in the United States District 
+         Court  for  the  Southern  District of Indiana may break 
+         new  ground  in  enunciating  precisely what BBS SYSOPs' 
+         reasonable  duties  of  care  are. Thompson v. Predaina, 
+         Civil  Action  #IP-88  93C  (S.D.  Ind. filed 1988). The 
+         complaint  alleges,  inter  alia,  invasion of plaintiff 
+         user's  privacy, libel, and wrongful denial of access to 
+         the  BBS  in  violation  of  U.S.C.  Title  18,  ss 2701 
+         (a)(2).  As  to  statutory damages available, see infra, 
+         note 105.
+
+81.      Gemignani,  Computer Law 33:7 (Lawyers Co-op 1985, Supp. 
+         1988)  (quoting  Capitol  PC Users Group Minimum Code of 
+         Standards   for   electronic   Bulletin  Board  Systems, 
+         reprinted in 4 Computer Law Reptr. 89).
+
+82.      Note,  54  Fordham  L.Rev.  439, 449 (1985) (Authored by 
+         Jonathan Gilbert).
+
+83.      Id., at 449.
+
+84.      Id., at 449-50.
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             42
+----------------------
+
+85.      A  "trojan  horse"  program takes control of the BBS and 
+         allows   its   sender  to  access  and  steal  its  most 
+         sensitive  information.  Fites,  Johnston and Kratz, The 
+         Computer  Virus Crisis, Van Nortrand/Reinhold (1989), at 
+         39 and 45.
+
+86.      Balding,  Computer Breaking and Entering: The Anatomy of 
+         Liability, 5 Computer Law. (January 1988), at 6.
+
+87.      Id.
+
+88.      Hellar  v.  Bianco, 244 P.2d 757. See supra, note 54 and 
+         accompanying text.
+
+89.      Restatement  (Second)  of  Torts Sec. 577(2) (1976). See 
+         supra, note 58 and accompanying text.
+
+90.      Tackett  v.  General  Motors  Corporation, 836 F.2d 1042 
+         (7th  Cir.  1987).  See  supra, note 63 and accompanying 
+         text.
+
+91.      See note 53, supra, and accompanying text.
+         
+
+92.      It  has  been  suggested  that  this  would be the rough 
+         equivalent  of a newspaper publishing a retraction after 
+         discovering  what  it  had printed was defamatory. Note, 
+         54  Fordham  L.Rev.  439,  note 55 (1985). BBS operators 
+         should  not  be held liable in this situation insofar as 
+         they  did not know of the nature of the statement at the 
+         time  it  was  made.  Restatement (Second) of Torts Sec. 
+         581 (1977).
+
+93.      Proving  the  masquerader's  actions  is  discussed more 
+         fully infra, Topic III. B.
+
+94.      Stipp,  Computer  Bulletin  Board  Operators  Fret  Over 
+         Liability  for Stolen Data, Wall St. J. Nov. 9, 1984, at 
+         33, col. 1.
+
+95.      Id.
+
+96.      See   Topic   I.,   supra,  where  the  masquerader  has 
+         discovered  and  uses  the  password  and  name  of  the 
+         regular  user;  he  appears for all intents and purposes 
+         to be that regular user.
+
+97.      836 F.2d 1042 (7th Cir. 1987).
+
+98.      Id., at 1047.
+
+99.      Id.
+
+100.     Indeed,  U.S.C.  Title  18, Sec. 2702 (Law. Co-op 1979 & 
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             43
+----------------------
+         Supp.  1988)  proscribes the knowing dissemination of an 
+         electronically stored communication by the SYSOP:
+           Sec. 2702. Disclosure of contents
+           (a)  Prohibitions.  Except as provided in subsection 
+                (b)-
+                (1)  a    person   or   entity   providing   an 
+                     electronic  communication  service  to the 
+                     public  shall not knowingly divulge to any 
+                     person   or   entity  the  contents  of  a 
+                     communication  while in electronic storage 
+                     on that service; and
+                (2)  a   person   or  entity  providing  remote 
+                     computing  service to the public shall not 
+                     knowingly  divulge to any person or entity 
+                     the  contents  of  any communication which 
+                     is carried or maintained on that service-
+                     (A)  on  behalf  of, and received by means 
+                          of  electronic  transmission from (or 
+                          created    by   means   of   computer 
+                          processing      of     communications 
+                          received   by   means  of  electronic 
+                          transmissions  from), a subscriber or 
+                          customer of such service; and
+                     (B)  solely  for  the purpose of providing 
+                          storage    or   computer   processing 
+                          services   to   such   subscriber  or 
+                          customer,  if  the  provider  is  not 
+                          authorized  to access the contents of 
+                          any  such communications for purposes 
+                          of  providing any services other than 
+                          storage or computer processing.
+           
+         A  similar  provision is embodied in Cal. Pen. Code sec. 
+         502(c)(6) (West Pub. 1988), which provides:
+         
+                (c)  Except  as  provided  in  subdivision (i), 
+                     any   person   who   commits  any  of  the 
+                     following  acts  is  guilty  of  a  public 
+                     offense:
+                     (6)  Knowingly   and   without  permission 
+                          provides  or  assists  in providing a 
+                          means   of   accessing   a  computer, 
+                          computer  system, or computer network 
+                          in violation of this section.
+           
+           
+
+101.     The  doctrine of res ipsa loquitor, or "the thing speaks 
+         for  itself"  warrants  the  inference  of  the  SYSOP's 
+         negligence,  which  the  jury  may  draw  or  not as its 
+         judgement   dictates.   See  Sullivan  v.  Crabtree,  36 
+         Tenn.App. 469, 258 S.W.2d 782 (1953).
+
+102.     See discussion under Topic II. B., supra.
+
+103.     As   someone  who  intentionally  accesses  confidential 
+         password  information  to  masquerade  as other users on 
+         other  BBSes, the masquerader falls well within the pale 
+         
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             44
+----------------------
+         of  "actual  malice"  defined  in Gertz v. Robert Welch, 
+         Inc.,   418   U.S.   323,   342,   supra,  note  43  and 
+         accompanying  text (a defamatory falsehood was made with 
+         knowledge  of its falsity or with reckless disregard for 
+         the truth).
+
+104.     Evidentiary   problems   involved   with   proving   the 
+         masquerader's  actions  are discussed more in Topic III. 
+         B., infra.
+
+105.     18  U.S.C.S. Sec. 2707(a) (Law. Co-op 1979 & Supp. 1988) 
+         describes the masquerader's fault thus:
+           (a)  Cause  of action. Except as provided in section 
+                2703(e),    any    provider    of    electronic 
+                communication  service, subscriber, or customer 
+                aggrieved  by  any violation of this chapter in 
+                which  the  conduct  constituting the violation 
+                is  engaged  in  with  a knowing or intentional 
+                state  of  mind may, in a civil action, recover 
+                from  the  person  or  entity  which engaged in 
+                that   violation   such   relief   as   may  be 
+                appropriate.
+                
+         California  Penal  Code  sec.  502(c) et seq. (West Pub. 
+         1988) is even more specific:
+           (c)  Except  as  provided  in  subdivision  (i), any 
+                person  who  commits  any of the following acts 
+                is guilty of a public offense:
+                (1)  Knowingly  accesses and without permission 
+                     alters,  damages,  deletes,  destroys,  or 
+                     otherwise   uses   any   data,   computer, 
+                     computer  system,  or  computer network in 
+                     order to either
+                     (A)  devise   or  execute  any  scheme  or 
+                          artiface   to  defraud,  deceive,  or 
+                          extort, or
+                     (B)  wrongfully  control  or obtain money, 
+                          property or data.
+                                   * * *
+                (3)  Knowingly  and  without permission uses or 
+                     causes to be used computer services.
+                (4)  Knowingly  accesses and without permission 
+                     adds,   alters,   damages,   deletes,   or 
+                     destroys  any  data, computer software, or 
+                     computer  programs  which  reside or exist 
+                     internal   or   external  to  a  computer, 
+                     computer system, or computer network.
+                                     * * *
+                (7)  Knowingly  and without permission accesses 
+                     or  causes  to  be  accessed any computer, 
+                     computer system, or computer network.
+           
+
+106.     Gertz v. Robert Welch, Inc., 418 U.S. 323, 342.
+
+107.     In  addition  to  the  remedies  set  forth in note 105, 
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             45
+----------------------
+         supra,  the  following  federal  and state penalties may 
+         apply:
+         18  U.S.C.S.  Sec.  2701(b),(c) (Law. Co-op 1979 & Supp. 
+         1988):
+           (b)  Punishment.   The  punishment  for  an  offense 
+                under subsection (a) of this seciton is -
+                (1)  if  the  offense is committed for purposes 
+                     of    commercial    advantage,   malicious 
+                     destruction    or   damage,   or   private 
+                     commercial gain -
+                     (A)  a  fine  not  more  than  &250,000 or 
+                          imprisonment  for  not  more than one 
+                          year,  or  both,  in  the  case  of a 
+                          first      offense     under     this 
+                          subparagraph; and
+                     (B)  a    fine   under   this   title   or 
+                          imprisonment  for  not  more than two 
+                          years,  or  both,  for any subsequent 
+                          offense under this subparagraph; and
+                (2)  a   fine   of  not  more  than  $5,000  or 
+                     imprisonment   for   not   more  than  six 
+                     months, or both, in any other case. 
+           (c)  Exceptions.  Subsection  (a)  of  this  section 
+                does   not   apply   with  respect  to  conduct 
+                authorized-
+                (1)  by  the  person or entity providing a wire 
+                     or electronic communications service;
+                (2)  by  a user of that service with respect to 
+                     a  communication  of  or intended for that 
+                     user; or
+                (3)  in  section  2703,  2704,  or 2518 of this 
+                     title.
+           
+         For  an  example of state-mandated damages provisions on 
+         this  subject,  see California Penal Code sec. 502(d) et 
+         seq. (West Pub. 1988).
+
+108.     See discussion under Topic II. B., supra.
+
+109.     See note 101, supra.
+
+110.     "Custom...bears  upon  what  other will expect the actor 
+         to  do, and what, therefore, reasonable care may require 
+         the   actor  to  do,  upon  the  feasibility  of  taking 
+         precautions,  the  difficulty of change, and the actor's 
+         opportunity  to  learn  the risks and what is called for 
+         to  meet them. If the actor does only what everyone else 
+         has  done, there is at least an inference that the actor 
+         is  conforming  to  the  community's  idea of reasonable 
+         behavior."  Keeton,  Dobbs, Keeton and Owen, Prosser and 
+         Keeton  on  Torts,  sec.  33,  p.194.  See  also  James, 
+         Particularizing   Standards  of  Conduct  in  Negligence 
+         Trials,  5  Vand. L. Rev. 697, 709-714 (1952); Ploetz v. 
+         Big  Discount  Panel  Center,  Inc.,  402 So.2d 64 (Fla. 
+         App. 1981).
+         
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             46
+----------------------
+
+111.     See notes 80-93, supra, and accompanying text.
+
+112.     See note 103, supra.
+
+113.     See  Pfau  and Keane, Computer Logs Can Pinpoint Illegal 
+         Transactions,  Legal  Times  of Washington, vol. 6, p.16 
+         (May  14,  1984):  "Computers can monitor their own use. 
+         Unlike  other  such  forms  of physical evidence such as 
+         guns,  computers  can keep track of individual users and 
+         other  identifying  data.  Imagine a gun that logs every 
+         instance  it  is  fired  or  even handled, and shows the 
+         date,  time,  and  activity.  Recovery  of such a weapon 
+         would be essential to the prosecution.
+         "Most   computers   have   long   had  built-in  logging 
+         capabilities....The   log   function   was  designed  to 
+         facilitate  billing  for  the  use of computer resources 
+         rather  than  to  assist  crime detection. To the extent 
+         that  the  owner  of  a smaller computer does not charge 
+         for  its  use,  he or she has no incentive to purchase a 
+         self-executing  log.  Still, such logs keep surprisingly 
+         accurate records of who is using the computer."
+
+114.     Fed. R. Evid. 801(c).
+
+115.     Fed.  R. Evid. 802: "Hearsay is not admissible except as 
+         provided  by  these rules or by other rules precribed by 
+         the  Supreme Court pursuant to statutory authority or by 
+         Act  of  Congress."  Exclusion  of  hearsay  evidence is 
+         grounded  on:  (1)  nonavailability of the declarant for 
+         cross-examination   and   observance  of  demeanor;  (2) 
+         absence  of  an oath by the person making the statement; 
+         amd  (3)  significant  risk  that  the  person  that the 
+         witness  may report proffered statements inaccurately. 2 
+         Bender, Computer Law, sec. 6.01[2].
+
+116.     Gemignani,  The  Data  Detectives:  Building A Case From 
+         Computer Files, 3 Nat'l L.J. 29 (1981).
+
+117.     Fed.  R.  Evid. 803(6). See also 2 Bender, Computer Law, 
+         sec. 6.01[4] (1988).
+
+118.     Fed. R. Evid. 803(6).
+
+119.     Id.  In  current  practice  records  kept  by  nonprofit 
+         organizations,  such as churches, have long been held to 
+         be  admissible.  Ford  v.  State,  82 Tex.Cr.R. 638, 200 
+         S.W.  841  (1918).  It  is  at  least  arguable  that  a 
+         computerized  BBS,  although run as a hobby, falls under 
+         the same classification.
+
+120.     See  Iowa  Code Ann. Sec. 622.28; People v. Lugashi, 252 
+         Cal.Rptr 434 (Cal.App. 2 Dist. 1988).
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             47
+----------------------
+
+121.     See  14  Am.Jur.  POF2d  Sec. 15 (1977, Supp. 1988). Cf. 
+         United  States  v. De Georgia, 420 F.2d 889, 2 CLSR 479, 
+         484  (1969,  CA9  Ariz),  where  it  was held that it is 
+         immaterial  whether a business record is maintained in a 
+         computer   rather   than   in  company  books  regarding 
+         admissibility  of  those  records,  so  long  as (1) the 
+         trial  court  requires the proponent of the computerized 
+         records    to    lay    a   foundation   as   to   their 
+         trustworthiness,  and  (2)  the  opposing party is given 
+         the  same  opportunity  to  inquire  into the computer's 
+         accuracy  as  he would have to inquire into the accuracy 
+         of written business records.
+
+122.     The  BBS  program run on the SYSOP's computer ordinarily 
+         "stamps"  the  date  and time of day each user logs onto 
+         the   BBS.   A  corresponding  record  is  automatically 
+         affixed  to each piece of electronic mail posted so that 
+         the  reader  knows  when  it  was added to the database. 
+         Similarly,   the  telephone  company  maintains  copious 
+         records  of  the  date  and  time  each  phone  call  is 
+         connected  in  its  dialing  area.  The  caller  has  no 
+         control over either of these processes.
+
+123.     252 Cal.Rptr. 434 (Cal.App. 2 Dist. 1988).
+
+124.     Id., at 437.
+
+125.     Id.
+
+126.     Id. 
+
+127.     Id., at 439.
+
+128.     Id., at 437.
+
+129.     Id., at 440.
+
+130.     Id.,  at  442. See also United States v. Russo, 480 F.2d 
+         1228  (CA6 Mich, 1973), cert den 414 U.S. 1157, 94 S.Ct. 
+         915,  39 L.Ed.2d 109; Capital Marine Supply, Inc. v. M/V 
+         Roland  Thomas  II,  719 F.2d 104 (1983 CA5 La), 104 Fed 
+         Rules  Evid Serv 731; Peoples Cas & Coke Co. v. Barrett, 
+         118  Ill.App.3d  52,  73  Ill.  Dec. 400, 455 N.E.2d 829 
+         (1983).
+
+131.     432 So.2d 837 (La., 1983).
+
+132.     Id., at 839-40.
+
+133.     Id., at 839.
+
+134.     United  States  v.  Verlin,  466  F.Supp.  155  (ND Tex, 
+         1979).
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             48
+----------------------
+
+135.     Id., at 158.
+
+136.     The  reasonable  SYSOP should offer his full cooperation 
+         in  aiding  the maligned user to regain her good name by 
+         providing  her  with  his  BBS' phone-in records made at 
+         the  time  the  libellous message appeared. See note 93, 
+         supra.
+
+137.     See note 123, supra.
+
+138.     Cf.  note  118,  supra.  As  to  an electronic BBS being 
+         classified  as  a  "business"  for hearsay purposes, see 
+         note 120, supra.
+
+139.     See note 128, supra.
+
+140.     Authentication  has been broadly described thus: "[W]hen 
+         a  claim  or  offer  involves impliedly or expressly any 
+         element  of personal connection with a corporeal object, 
+         that  connection  must  be  made to appear...." Wigmore, 
+         Evidence,   Sec.   2129  at  564  (2d  ed.  1972).  This 
+         requirement is also known as the "Best Evidence Rule."
+
+141.     Fed. R. Evid. 901(a),(b)(6).
+
+142.     2 Bender, Computer Law, sec. 5.03[1][a] (1988).
+
+143.     Id.
+
+144.     See    Fed.   R.   Evid.   901(b)(6):   "(6)   Telephone 
+         conversations.   Telephone  conversations,  by  evidence 
+         that  a call was made to the number assigned at the time 
+         by  the  telephone  company  to  a  particular person or 
+         business,  if  ***  (B)  in  the case of a business, the 
+         call   was   made   to  a  place  of  business  and  the 
+         conversation  related  to business reasonably transacted 
+         over the telephone...." (emphasis added).
+
+145.     Fed. R. Evid. 1002.
+         
+
+146.     E.W.  Cleary,  McCormick on Evidence, sec. 231 (2nd. Ed. 
+         1972).
+         
+
+147.     Id.  Further  rationales  for  the  rule  are  risks  of 
+         inaccuracy    contained   in   commonly   used   copying 
+         techniques    and   heightened   chances   of   witness' 
+         forgetfulness through oral testimony. Id., sec. 231.
+         
+
+148.     305 So.2d 421, 7 C.L.S.R. 1238 (La. 1974).
+
+149.     305 So.2d 421, 427.
+
+150.     Id., at 428.
+---
+Defamation Liability of Computerized BBS Operators
+& Problems of Proof          (C) 1989 John R. Kahn             49
+----------------------
+
+151.     Brandon v. Indiana, 396 N.E.2d 365 (Ind. 1979).
+
+152.     Id., at 370.
+
+153.     See note 121, supra, and accompanying text.
+
+154.     Other   circumstantial  evidence  might  include,  among 
+         other  things:  possible  motive  for the masquerader to 
+         defame  plaintiff;  plaintiff's  own  inability  to call 
+         from  the phone number from which the defamatory message 
+         is  shown  to  have  originated;  or  even an electronic 
+         "fingerprint"  left  by  the  particular  computer  from 
+         which   the  defamatory  message  originated.  Pfau  and 
+         Keane,  Computer  Logs Can Pinpoint Illegal Trasactions, 
+         Legal Times of Washington, vol. 6, p.16 (May 14, 1984).
+
+155.     Fed. R. Evid. 1002 provides:
+             REQUIREMENT  OF  ORIGINAL. To prove the content of 
+             a  writing, recording, or photograph, the original 
+             of   that  writing,  recording  or  photograph  is 
+             required,   unless  provided  otherwise  in  these 
+             rules or by an Act of Congress.
+             
+
+156.     Examples  of  this situation are the telephone company's 
+         keeping   of   hundreds   of   thousands  of  individual 
+         computerized  records of each telephone call made within 
+         a  certain  dialing area, or a BBS' extensive history of 
+         subscriber use compiled for billing purposes.
+
+157.     See  Harned  v. Credit Bureau of Gilette, 513 P2d 650, 5 
+         CLSR 394 (1973).
+
+158.     Fed. R. Evid. 1006.
+         
+
+159.     137 Ga.App. 360, 223 S.E.2d 757 (1976).
+
+160.     223 S.E.2d 757, 760.

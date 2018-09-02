@@ -1,0 +1,24 @@
+ok m8s,
+any of you that do websites and like to open .html and similar files in notepad to edit scrpits, this is THE coolest windows registry edit ever
+you can download the zip file with the .reg in it (run it and it automatically adds itself to your registry) or do it manually
+CODE
+http://www.geocities.com/ichbindeingott5/winXP-Notepad.zip
+
+
+Manually: regedit and navigate to
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\Shell
+add the key "notepad"
+it's default value should be "Open with Notepad"
+now, under "notepad", add the key "Command"
+it's default value should be (with the quotes) "C:\Windows\System32\Notepad.exe" "%1"
+
+ok, exit regedit and go right click on ANY file...
+your new option: Open with Notepad
+
+HOW BADASS IS THAT?!?!?!?
+I FOUND THIS ONE ON MY OWN!!!!!!
+
+i know this one works on XP and 2000, you can PROBABLY enter it manually on windows 9x, but i have not tested that
+
+
+okay okay, i know maybe not everyone cares...but this was fun for me because i love tweaking my computer AND it makes some web design stuff eaiser for me :D

@@ -1,0 +1,35 @@
+The best firewall is a hardware firewall that is completely separate from your operating system. It need not be a dedicated router, could be an old pentium box running Linux. Below I have found some sites that have How To's on setting up an outside hardware router using an old computer and using a little linux program that fits on a single floppy disk.
+
+Brief Description:
+floppyfw is a router with the advanced firewall-capabilities in Linux that fits on one single floppy disc.
+
+Features:
+Access lists, IP-masquerading (Network Address Translation), connection tracked packet filtering and (quite) advanced routing. Package for traffic shaping is also available.
+Requires only a 386sx or better with two network interface cards, a 1.44MB floppy drive and 12MByte of RAM ( for less than 12M and no FPU, use the 1.0 series, which will stay maintained. )
+Very simple packaging system. Is used for editors, PPP, VPN, traffic shaping and whatever comes up. (now this is looking even more like LRP (may it rest in peace) but floppyfw is not a fork.)
+Logging through klogd/syslogd, both local and remote.
+Serial support for console over serial port.
+DHCP server and DNS cache for internal networks.
+
+floppyfw
+
+
+h#tp://www.zelow.no/floppyfw/
+
+
+
+Sentry Firewall CD-ROM is a Linux-based bootable CDROM suitable for use as an inexpensive and easy to maintain firewall, server, or IDS(Intrusion Detection System) Node. The system is designed to be immediately configurable for a variety of different operating environments via a configuration file located on a floppy disk, a local hard drive, and/or a network via HTTP(S), FTP, SFTP, or SCP.
+
+The Sentry Firewall CD is a complete Linux system that runs off of an initial ramdisk, much like a floppy-based system, and a CD. The default kernel is a current 2.4.x series kernel with various Netfilter patches applied. An OpenWall-patched current 2.2.x kernel is also available on the CD.
+
+Booting from the CDROM is a fairly familiar process. The BIOS execs the bootloader(Syslinux) - which then displays a bootprompt and loads the kernel and ramdisk into memory. Once the kernel is running, the ramdisk is then mounted as root(/). At this point our configuration scripts are run(written in perl) that configure the rest of the system. It is the job of these configure scripts to put the various startup and system files into the proper location using either what is declared in the configuration file(sentry.conf) or the system defaults located in the /etc/default directory.
+
+Most of the critical files used at boot time can be replaced with your own copy when declared in the configuration file. This is essentially how we allow the user to configure the system using his/her own configuration and init files.
+
+All of the binaries, files, scripts, etc, used to create the CD-ROM are also available on the CD-ROM. So, with a little practice, you can easily build and customize your own bootable Sentry Firewall CD. Please see the HOWTO for more details.
+
+
+Sentry Firewall
+
+
+ht*p://www.sentryfirewall.com/docs.html#overview

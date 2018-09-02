@@ -1,0 +1,38 @@
+Burn a BIN without a CUE using NERO
+
+You've downloaded a *.BIN file, but there was no *.CUE file associated and you still want to burn the *.BIN file using Nero
+
+Your options are:
+
+1) Create yourself a *.CUE
+
+2) Convert the *.BIN to an *.ISO
+
+3) OR use Nero to burn without the *.CUE file!!!
+
+Yes, that's possible... just follow these steps and you will be sorted. No need for *.CUE files anymore
+
+Ok, here we go...
+
+1) Start Nero
+
+2) File -> Burn Image
+
+3) Browse to the *.BIN file that you want to burn and open it
+
+4) A window saying "Foreign Image Settings" will open
+
+5) Check the settings. They should be as followed:
+
+* Type of image: leave it to Data Mode 1
+* Select the Raw Data check box
+Note ->> The block size will change automatically from 2048 to 2352
+* Leave Image Header and Image Trailer unchanged and set to 0
+* Leave "Scrambled" and "Swapped" check boxes unchecked
+
+6) Click on burn!
+
+7) Enjoy
+
+This tut was for Nero 5.x.x.x, I was told that "Burn Image" is under "recorder" in Nero 6. The rest of the steps should be the same...
+xkalibur 

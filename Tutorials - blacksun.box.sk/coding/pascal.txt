@@ -1,0 +1,1441 @@
+  		       :::::::::   ::::::::  :::::::::  :::::::::: 
+                       :+:    :+: :+:    :+: :+:    :+: :+:        
+                       +:+    +:+ +:+        +:+    +:+ +:+        
+                       +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                       +#+    +#+        +#+ +#+    +#+ +#+        
+                       #+#    #+# #+#    #+# #+#    #+# #+#        
+                       #########   ########  ###    ### ###  
+                         
+              	              http://blacksun.box.sk
+                               ____________________
+    __________________________I      Topic:        I_______________________
+   \                          I Pascal programming I                      /
+    \     E-mail:             I   for newbies      I   Written by:       /
+    >                         I                    I                    < 
+   /devil_panther@hotmail.com I____________________I devil panther       \
+  /___________________________>                <__________________________\
+   			    
+
+
+
+
+
+
+ 
+Introduction.
+
+1) The Basics.
+  1.1) Basic constraction of the program.
+  1.2) Variables and Definition types.
+  1.3) Basic commands.
+  1.4) Div and Mod.
+  1.5) If...Else.
+  1.6) Case.
+  1.7) Consts.
+  1.8) Random numbers.
+  1.9) GoToXY.
+
+2) Loops.
+  2.1) For...to...do.
+  2.2) While...do.
+  2.3) Repeat...until.
+
+3) Arrays.
+  3.1) Array's definition.
+  3.2) Using Arrays.
+  3.3) Using Arrays and Loops.
+
+4) Strings.
+  4.1) What the heck Strings are?!
+  4.2) String definition.
+  4.2) Using basic String.
+
+5) Procedures and Functions.
+  5.1) What the heck a Procedure is?!
+  5.2) Writing a Procedure.
+  5.3) Parameters' rules.
+  5.4) Writing a Procedure with Parameters passing.
+  5.5) Return Parameters in Procedure.
+  5.6) What the heck is a Function?!
+  5.7) Writing a Function, and returns it's value. +
+  5.8) The problem with Procedures/Functions, and the solution.
+  
+6) Uses...
+  6.1) What is a Uses file?!
+  6.2) Uses Crt.
+  6.3) Writing your own Uses File.
+
+**) Final Words.
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  *) Introduction:
+   *****************
+Hello people, I'm the Devil Panther, and I'll teach you newbie programmers out there, the most
+simple language of the huge(well, it's not that huge...) programming world, and all you need is
+a brain, so run to make an x-ray to check if your brain is inside your head and not on the floor
+when it spilled out from you ear, so if you see some thing red on the floor, and it's hard to thing, 
+get the idea, IT'S YOUR BRAIN DOWN THERE and stop reading!!! :)
+This tutorial is only to make you understand the basics of the Pascal language, and a little 
+of the advanced part programming like the use of your own written functions in a better way.
+At the end of the tutorail you will find the best example ever, for a good Pascal program.
+It's an old Card game I wrote once. It's not perfect but you can make it perfect!
+I think you know this old cards game, called Black Jack (21)... The game have bugs, like cards 
+repeat them self, it's YOUR job to fix it! REMEMBER: I made those bugs at the program on
+purpose and I use too many variables also on purpose, so it's your DRILL/JOB to fix the bugs 
+and minimize the use of the variables in the game!!! To me, fixing this the game is like 1 2 3... 
+but to you, lets just say that you'll spend a lot of your spare time to fix the game by making the 
+code more effective, but it'll payoff in the end, believe me, it always does.
+
+And Remember this as well, "I didn't write this tutorial for myself, I wrote it for you" ;) 
+
+Just One Small Thing before you start, the text inside the { } at the middle of the code are 
+'Line Notes', it's explains to you the meaning of the command, and what it's does.
+
+P.S: You can get a free Turbo Pascal compiler at the next URL:
+ http://www.geocities.com/dp_site/Archive2/pascal.zip
+Or try and look at the: www.borland.com web-site, you decide!
+
+NOW go, go my children(actually, you were my childer I would shoot you and then shoot 
+myself!) and learn the most simple programming language there is to learn, almost the most 
+simple!!!
+
+NOTE: When I'm talking about a Command, I'm actually mean: Function or a Procedure... 
+But, by calling those functions/procedure: commands, will make it easier for you to understand. It's for your own good!!! :) Because you don't know what a function is, or what a procedure is and
+what it's good for and all this crap, but don't worry about it, you will learn about it in this tutorial.
+
+NOTE: Turbo Pascal's compiler isn't sensitive for caps (you know, the small chars, and the big 
+big chars), for example: you can write: "writeln", or "WRITELN", or even "WriTELn" it's all the 
+same to the Dos compilers, because Dos isn't sensitive for caps, and it's a Dos based
+compiler, even if you run it in Windows OS, but if you'll use a Windows based Pascal compiler
+(like Dev Pascal, by BloodShed), but if you still would like Windows based compiler, then go to:
+www.bloodshed.net and download a Windows based Pascal Based. 
+Just take that in mind.
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1) The Basics.
+
+  1.1) Basic constraction of the program:
+      *******************************************
+First thing you need to know, is that every pascal program must have a name, 
+what do i mean... Every program will start with: program the_name;
+the name can't start with a number or any special signs, but you can use the numers in the 
+middle, but no the signs. you can't put a space in the middle of the name only _ , 
+and every command in pascal must end with ;  and so as: program abc;
+
+Look at the next basic skeleton of a pascal program:
+ program program_struction;
+  var
+   { here will come the global variables, we will get to it later! }
+  begin { the Main begin without ; at the end }
+   { you write your code here }
+  end. { end of the program! the end of the program must be with a full stop at the end }
+
+Simple isn't it!? :)
+
+  1.2) Variables and Definition types:
+      **************************************
+Remember the VAR part in the skeleton, now we will talk about it.
+But first a varible is a TAG, which let you to keep info inside it... like a number or a letter.
+Let say we need a varuble that can keep a number in it, what do we do, how do we write it!?
+First you need to ask your self what kind of num do you need in the program...real number (3.26), or a integer number (3)... look:
+ program var_example;
+  VAR 
+   a, c, e: integer;
+   b, d, f: real;
+   ch: char;
+  { you can choose any name you like for the varibles, but not in the name of the functions
+    and commands }
+  begin  { Main Begin }
+   ...
+  end.  { Main End }
+
+And in the Math section, the only sign which is different is: /
+and the + , - , *  are the same! 
+You see: in "REAL" type variable you can use / , but in the integer you can use only 'div' !
+Because the integer type variable can include inside it only an integer number, so the 'div'
+action will do the  /  but the variable which will get the the action's result (if it's an integer),
+will get only the number before the dot (.) !
+So in conclusion: the integer type can't get into it a REAL type number or a variable!!!
+But a REAL type variable can get into it an integer type number or an integer type variable!
+The threes type was "CHAR", this means that the variable "ch" will get only letters and special signs!
+( Every Char owns a special number, an ASCII char number form 1 to 255 (256), you can get the 
+full list of all the ASCII code easaly at the next URL: 
+ http://members.tripod.com/~plangford/index.html
+You can transfer this char into it's ascii code, and back the next way:
+1. If you want to get the "letter", and you got the number of this letter 
+   (the number is the ascii code), you will do the next:
+    ch:=chr(97);  { "ch" must be "CHAR" type variable. }
+                  { the ascii code 97 is the char 'a' }
+                  { You can also put an integer variable in the "CHR( )" instead of the number
+                    but the variable MUST be an integer type!!! }
+2. To get the number of the specific char (letter) you can do the next:
+    a:=ord('b');  { The "a" 'can' be 'REAL', it won't be a mistake. But it's a bad programming 
+                    thinking, you see a real programmer MUST own a special LOGIC to program
+                    right! }
+                  { You can use instead of 'b' in the ( ), a "CHAT" type variable! }
+                  { the ascii code of 'b' is 98, so after this command the value of "a" will be:
+                    98 , simple, isn't it?!! }
+
+There is a Boolean type too, but you don't need it for know, a lot type more are exist, in Pascal!
+
+  1.3) Basic commands:
+      ************************
+1.3.1)
+Let us start from the most simple one: write('Devil Panther is cool!');
+What will it do, you ask?! It will print the line in the ' ' on the screen.
+But what will happen if you will do the next: 
+ program printing_example;
+  begin  { main begin, and as you can see we didn't put 'var', before the begin, because we didn't 
+              need any variables for this example }
+   write('DP ');
+   write('is cool');
+  end.  { main end }
+
+It will print:
+ DP is cool
+
+What will you do if you want the program to get one line down after the DP ?
+ program printing_exampe2;
+  begin  { the main begin }
+   writeln('DP'); { when you use writeln it will get one line down after he printed the line }
+   write('is cool'); { but here it will stay at the same line after he printed! }
+  end.  { the main end }
+
+You can also print varibles on the screen as well:
+ program printing_example3;
+  var
+   a: integer;  { the declaration of the variable 'a', as integer }
+  begin  { the main begin }
+   a:= 5; { it will place 5 into the variable 'a', this is the way to place value into a varible }
+           { the value must much the type of the variable, like the number 5 you may only enter
+            into an integer or a real type variable, you can't do it with a char type variable!!! }
+           { when you put := after a variable, this means that the value you'll write after the :=
+             will enter into the variable and stay there, until you'll place into it some other value,
+             or the program will end }
+   writeln('the number is A is: ',a,' got it?');
+  end.  { the main end }
+
+1.3.2)
+The Readln command is made so the user of the program could make an input to a variable!
+look: 
+ readln(a); { this will make an input in to the variable 'a', this means, that the user need to                   
+                  type/enter a value, when the program will get to the 'readln' command }
+
+  1.4) Div and Mod:
+      ******************
+Let say we got a variable with a number inside it, let say 34:
+ program div_mod_example;
+  var
+   a, c: integer;  { declaration of variables, from an integer type }
+  begin  { the main begin }
+   a:=34;
+  { and now we will do the next: }
+   c:=a div 10;
+   a:=a mod 10;
+  end.  { the main end }
+
+You probebly think: "What the hell is that???". 
+Well, the first command will dev it by 10. 34 / 10 = 3.4 , right?!
+So in the first command "c" will get the left part, which is before the dot.
+And in the second command "a" will get the right part, which is after the dot.
+The variable 'c' has now the value of 3,
+and,
+the variable 'a' has now the value of 4.
+
+We didn't use "a" first, because we still needed it in it's full size (34).
+You see, you need a logical thinking for programming, not just learning commands and use them, you need to know how to use them in a right way, because without that you stuck!
+
+ 1.5) If...Else:
+     ************
+Sometimes you need to check the variables, and comparing them you a value, or to another variable.
+So, how do you do it, you ask. Simple, there is a simple check with 'if'.
+For example, let say 
+ ...
+ a:=56;
+{ and }
+ d:=45;
+ ...
+
+Let say you want to check if they're equal...
+ if (a=d) then  { the condition, will come in the ( ) and after that will come: than }
+
+Now, if you will use only one command after the if just write it down under the if check!
+But if you got more than one... then you must put BEGIN under the if check, to write down
+your code that you wish the program to do if the condition is right (activated), after you wrote
+you code you must put END;  (NOT with a full stop(.)!!! But with ;)
+
+You can also check  
+ if (a>d) then { this will check if "a" is bigger than "d", if it's it will activate the code
+                 under the 'if' }
+
+You can check if "a" is Bigger than "d", or equal!
+ if (a>=d) then
+
+You can do the same thing with  "<"  and  "<=".
+You can as well check if the values aren't equal: "<>". This will come alone without any 
+">" or "<".
+
+
+Ok, that was one condition "if"... Now the multi condition "if":
+Let say: 
+ a:=45;
+ d:=32;
+ if ((a>d)and(77-d=a)) then
+  ...
+
+What we did here is: "a" getting the value of 45, and "d" will get 32.
+The "if" will check if the value in "a" is bigger than the value in "d", 
+AND  77-(the value of "d")=(the value of "a", meaning 45) .
+In this case the if will be right! 
+The AND in the middle of the "if" mean that the condition in the first ( ) and the second ( )
+must be right too!!!
+
+
+There can be an OR instead of AND...
+ if ((a>d)or(77-d=a)) then
+
+The OR means that you need that only one condition to be right, so the "if" will be activated!
+And in the AND you need that both of the conditions to be correct, so the "if" will be activated!
+
+
+What we did for now was a SIMPLE "if". Now will come not the hard part of the "if", but not as
+simples as the "if" we did before, no we'll add an ELSE to the "if".
+The idea of the "ELSE" is: When the condition of the if won't activated, the program will 
+continue to the else part, but if the "if" is activated, the programs will jump over the "ELSE"
+part, and continue the program like nothing happen!
+The trick of the "ELSE" is: that the sign  ;  will never come before the "ELSE"...
+Look:
+
+if (2=9) then
+ writeln('I the man')  { you see... no  ;  before the "ELSE" }
+                      { the unsigned last command before the "ELSE" includes the end;
+                        so instead of end; it will be end }
+else 
+ writeln('The DP is cool!');
+
+In this case the program will see than 2 isn't equal to 9, and will jump to the "ELSE" part,
+and print on the screen:  The DP is cool!
+(and it will get down one line, remeber... writeln is one line down, and write is stay on the 
+ same line! )
+
+Check out this full program with if and else examples:
+
+ program the_example;
+  var
+   a, b, c: integer;  
+  begin  { the main begin }
+   a:=1;
+   b:=2;
+   c:=3;
+   if ((b-a=a)and(b+a=c)) then  { this will check if the condition of 2-1=1, and the condition of                                                
+                                             2+1=3 are true, if so then the variable 'a' will receive zero into itself}
+    a:=0
+   else  { or else, if even ONE of the contiosions is wrong/false then the variables 'b' and 'c', will
+             receive zero, each and every one of them ('b' and 'c') }
+    b:=0;
+    c:=0;
+  end.  { the main end }
+
+  1.6) Case:
+      **********
+First thing you need to know about the "CASE" is that it kind of like "if".
+But it's most like the Simple type of "if", with "ELSE".
+Take this small  program for example:
+ program case_example;
+  var
+   a: integer;
+  begin  { the main begin }
+   readln(a);  { an input by the user to the variable 'a' }
+   case (a) of 
+    1: writeln('you pressed 1');
+    2: writeln('you pressed 2');
+    3: writeln('you pressed 3');
+   end;
+  end.  { the main end }
+
+The "CASE" is on the variable "a", the "CASE" will check if the value in "a" is one of the list's 
+under the "CASE", the number or the char before the  :  is the value you like to check for,
+And the line after the  :  is the command you like to activate if the value is correct!
+( NOTE: you CAN'T use more than one command here after the  :   ).
+And when you like to close the "Case", you must put end;  but NO begin after/under the 
+"CASE (   { variable you like to check }   ) OF" !!!
+ 
+  1.7) Consts:
+      ************
+Sometimes in your program you need some kind of number for constant use!!!
+Let say you want to check some variables if they're equal to: 3741 .
+So instead of every time writing the number (3741), you can declare the number in a special
+variable. Who to do it?! you ask, no problem!
+If you like to do such a thing, you must do it after the "PROGRAM", and before the "VAR"!!!
+After writing "CONST".
+Look at this small example:
+ program const_example;
+ const
+  m = 3741;  { we declared "m" as a const variable, you can't change it! }
+                  { the const variable can be change, and can use as how many as you like!!! }
+ var
+  a, c: integer;  { just a regular global variables of the type of integer! }
+ begin { the main begin }
+  a:=7315;
+  c:=m;
+  if (a=m)
+   writeln('A is cool!') { and here there is no  ;  in the end, because the next command will be "ELSE"! }
+  else { you see, we didn't use another begin here, because the "if" comes right after the "ELSE",
+         like one command, and after the "if" the same thing... only one command!}
+   if (c=m)
+    writeln('C is so cool, when I stucked a big Cock to every girl in the school.');
+ end. { the main end }
+
+
+  1.8) Random numbers:
+      ************************
+Sometimes if you need to use a random number. Why you ask?!
+Well, lets take a small example of a card game, evry time you will take a card the program must 
+use some kind of number, right?! But what number should the program use... You need to tell the 
+program in what range of number you need the program to choose (the program isn't the one who
+takes those number, but the PC timer is. You see all the program is does is to take a number 
+from the running time of the computer. It's a lame example of who the "RANDOM" number idea 
+works, but it's all you need to know about it!)
+
+OK, there are three types of "RANDOM" number.
+1. A random number which it's range will be from 0 to 1, so the variable who'll get the result
+   of the random into itself, will be a "REAL" type of variable.
+   For example, the number which may come up when you'll do the next:
+    b:=random;  { remember that "b" is a "REAL" type of variable!!! }
+
+   and the numbers could be in the variable "b", after this command are: 0.146... , 0.164... 
+   and more.
+
+2. Another type of Random is where YOU decide, from what range the program will take a random.
+   Lets say you like a random number from 4 to 9, ok?!
+   Look:
+    a:=random(9+1)+4;  { the variable "a", is an integer type! }
+
+   What we did here was, we added to the number in the ( ) 1 -> 9+1 
+   (you can write 10 it's just the same, but it's no mistake to keep using 9+1), 
+   because the program will automatically sub from the number in the ( ) 1 .
+   So, if we haven't put +1 after the 9, then the range of the random numbers would be 4 to 8,
+   got it!? GOOD!
+   Now, after the ( ) we put +4, so the program would know from where to start looking for 
+   a random number. If you will put -4 after the ( ) you will get the range from -4 to 9 !   
+   NOTE: The only PROBLEM with this way of 'ranging the random numbers', is that every time 
+   you will run your program the rundom number will be every time the same one!!! (BUMMER)
+   
+3. The threes and the last way will also let you range a random numbers,
+   but this way WILL SOLVE THE BUMMER problem of the last way!!!
+   All YOU need to do is to use the LAST way, BUT, you must put: "RANDOMIZE" after the 
+   main "BEGIN"!!! So after you placed the "RANDOMIZE" under the main "BEGIN". So each time the 
+   will program runs, the random number will be different,
+   (but won't get out of the specified range)!
+
+Take a look at this random example, in a full program:
+ program random_example;
+  begin { the main begin }
+   writeln('the random number between 0 to 1, is: ',random);
+   writeln('and the random number between 35 to 150, is: ',random(115)+35); { 150-35=115 }
+  end.  { the main end }
+
+  1.9) GoToXY:
+      *************
+Sometimes you like to play with location of the spot of where the next line will be written next,
+So, how do you do it, simply! With command GoToXY which you use inside your code.
+Look at the next example: 
+ gotoxy(3,4);  { you can always put variables instead of values, but the values and variables 
+                 MUST be in an integer type form! }
+after this small example of the command, the spot on the screen will be 3 places from the 
+top left side of the screen, and 4 places under the it!
+It's just like in math the first value is the X and the second one is the Y!
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+2) Loops.
+
+  2.1) For...to...do:
+      ******************
+Sometimes in your program you need to do some thing a few times, this thing called a loop!
+The first type of the loop, and the most simple one if "FOR" loop.
+In this loop you have to know 'how many time you want to do a specific thing?!'.
+Lets take the most simple example ever, printing on the screen 10 times the word 'cool':
+ program loop_cool;
+ var
+  i: integer;  { here we declared an index for the loop! the name of the variable can be
+                 every name you like, just like a simple variable, because it's a simple variable } 
+ begin  { Main Begin }
+  for i:=1 to 10 do  { This loop is for 1 (including 1) to 10 (including 10) }
+   writeln('cool');  { Because we have here only one command after the "FOR", you won't need the
+                       "BEGIN" under it! But if you had more than one command you like to be 
+                       in the loop, you MUST put the "BEGIN" under the "FOR", and "END;" under
+                       the last command you like the loop to do! }
+ end.  { Main End }
+
+The main idea of this loop is that it will reapeat it self from the first command inside the 
+loop (in this case is: "WRITELN('cool');"), to the last one for how many time as you wish 
+(in this case the number of times is 10).
+
+At the end of this loop the value inside of the variable "i" will be 10.
+
+You can do the loop upside down, by placing "DOWNTO" between the 1 and 10 instead of just "TO"!
+So at the end of this loop with the "DOWNTO" instead of "TO", the value of the variable "i" will
+be 1, you will see why is pascal own this "DOWNTO" thing after you will learn the Arrays!
+
+
+  2.2) While...do:
+      ****************
+The last loop was the "FOR" loop, we knew the exact times we like to do the loop, but sometime
+you just can't know the it while programming the program... so you need to let the program to 
+decide of how many time the loop will run. We'll use now a loop which will check the given
+condition(s) (the condition(s) you will give the loop, just like the "if") every time it'll
+repeat itself. The loop called: "While", and this is how this loop's structure looks like:WHILE ( here will come the condition you like to check ) DO
+
+The condition will look like just like the "if"'s condition!
+The idea of the one or more commands after if just like the "FOR" loop.
+
+The only thing you need to do so the loop won't be endless... You need that the condition in 
+some place to be UNcorect! So lets take this small example of the "While" loop:
+In this example the idea is to print the line "DP is cool" for 9 times! 
+Look:
+ program while_loop_example;
+  var
+   i: integer;
+  begin  { the main begin }
+   i:=0; { we placed 0 in the variable "i", so we could INCrease the variable by one every
+         time the loop will be repeated! }
+   While (i<9) do
+    begin  { the begin of the loop }
+     writeln('DP is cool!');  { this is the line we need to print on the screen! }
+     inc(i);  { here we Increasing the variable "i" by 1, it's the same if you'll do "i:=i+1;" }
+               { NOTE: there is also another command like "INC", but upside down: "DEC" is just
+                 like: "i:=i-1;"  GOT IT?! }
+    end;  { the end of the loop }
+    { When the "i" won't be less than 9, the loop will be stoped! }
+    { and the program will continue the program after the end; (in this case) }
+    { at the end of the loop the value in "i" will be 9. }
+  end.  { the main end }
+  
+the way, if we place before the "WHILE" loop, into the variable "i" the value 9 or more...
+The program will just check if the condition is correct, if it's than it will go into the loop...
+And if the value of i (here) is makes the condition incorrect, that it won't even go into the 
+loop (inside the loop), and value of "i" won't change, the program is actually will jump over
+the loop, and continue the program like nothing happen!!!
+
+I hope this's clear to you! Like it's to me! ;)
+
+  2.3) Repeat...until:
+      *******************
+Like I said in the "WHILE" loop if the condition isn't correct, then it won't even execute the 
+inside of the loop even one time... But sometimes we need to do the loop at list once.
+OK... let start the explanation on this most simple loop... All you need to remember is that
+this Repeat loop is the opposite of the "While" loop. In "While" loop you checked the condition
+first, and then entered the loop, but in "Repeat" case no matter what the condition is, the 
+inside of the loop will be done at list once. The "Repeat" loop will be stoped, ONLY when the 
+condition is correct, check out this simple example for the "Repeat" loop...
+Look:
+ program repeat_loop_example;
+  var
+   i: integer; 
+  begin  { the main begin }
+   repeat  { Well, we may have more than one command inside the loop, but the "Repeat" itself
+                is like the "Begin" in other loops, and the "Until" in this loop acts like the "End;" in the
+                others! }
+    writeln('Enter some kind of number value...');  { the line we want to print on the screen! }
+    readln(i);  { Here you need to make an input to the variable "i", the "i" could be in a "REAL" 
+                    or an "INTEGER" type form (this means you CAN'T enter a letter or any other sign
+                    from the keyboard, ONLY numbers!!!) when you'll enter the number you wish just
+                    press ENTER to enter it into the variable "i". }
+   until (i=0);  { The loop will repeat itself until the value in the variable "i" will be 0 }
+  end.  { the main end }
+ 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+3) Arrays.
+
+  3.1) Array's definition:
+      ***********************
+First a few words about the Array, the array is a type of variable, the idea is that a simple 
+variable can't include inside itself more than one value... but the array type of variable CAN.
+Under the "VAR" (in your program) you define the number of cells to the array, in the next
+way: 
+ program example;
+ var
+  arr: ARRAY [1..3] OF integer; { here we declared to the array variable called "arr", 3 cells, and
+                                              the value every cell can get is only an "Integer" type. }
+begin  { the main "Begin" }
+ ...
+The two dots betweet the 1 and the 3 means 'from where to where'. you can use as many cells
+as you whish... You can use any name you like for the array, instead of "arr" in this small
+example, you MUST keep this form: 
+arrayname: ARRAY [the_first_cell .. the_last_cell] OF the_type_of_value_in_every_cell.
+Those cells makes the program more effective, and less work for you.
+
+  3.2) Using Arrays:
+      *******************
+Ok... now you know how to difine an array, but you don't know how to use it, now look:
+we said that the array is number of cells, right?! And we want to enter a specific cell and enter
+a value into it, the next example will explain to you how to enter a value into a specific cell, and
+how  to read a value from a specific cell as well.
+The next example will show you away to enter into the cell a value:
+ Begin  {the main "Begin" }
+  arr[1]:=22;  {the cell number 1 will include inside it the value 22 }
+  arr[2]:=5;    {the cell number 2 will include inside it the value 5 }
+  arr[3]:=0;    {the cell number 3 will include inside it the value 0 }
+
+The idea is that the number of the Cell is in the [ ]. Remember that you can't use a number of 
+cell which is out of range (in this case the range is from 1(including 1) to 3(including 3), so you 
+CAN'T do the: 
+ arr[4]:=1;   { the number of the cell is 4, and our last cell number is 3, so the compiler will show 
+                   an 'Error'!!!  REMEMBER that! }
+
+Now, how do you read from the value from a specific cell?! Lets say i would like to print the the
+cell number 2 on screen... look:
+ writeln(arr[2]);  { This will print the value inside the cell 2 on the screen }
+
+Just remember that "arr[2]" is like a simple variable, you can do what ever you like with it...
+You can play any math on it, just like on a simple variable ( * , + , -), but it's 'div', or / depended
+on the type of the value inside the cell (if it "Integer" then it's div, and if it's "Real" then it's / )
+Ok... Lets move on...
+
+  3.5) Using Arrays and Loops:
+      ********************************
+Until now we wrote in the [ ] the number of the cell we want to use, but in 90% of working
+with arrays, we never use a specific cell... We'll use Loops, the 'Index' of the loop instead of a
+specific value (the specific number of the cell) in the [ ]... Check out the next example and you'll
+get the idea:
+ program example_ARRAYS_LOOPS;
+ var
+  i: integer;  { here we declared an "Integer" type variable, which we will use as an Index. }
+ begin  { the main begin }
+  for i:=1 to 3 do  { a simple "For" loop from 1 to 3 (including 1 and 3) }
+   arr[i]:=i+1;  { every cell from 1 to 3 will get the INDEX, the "i"+1... so cell 1 will include 2, 
+                      cell 2 will include 3, and cell 3 will include 4 }
+ end.  {the main end }
+
+You can use any type of loop as you wish, and the number number of the cell is the Index, or you can use variables, as long as this variable will change every time the loop will repeat itself 
+( Like the variable is been Increased or Decreased, it's your choise! ) so you won't get into 
+a situation when you will use the same cell.
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+4) Strings.
+
+  4.1) What the heck Strings are?!
+       ***********************************
+Remember the "Char" type variables, well a String is just like an Array but every cell in this array
+will be from "Char" type. You can use arrays of "Char" type, but this will be stupid... because 
+there is a special declaration of String, I'll explain how to declare and use the string in the next two sections.
+
+  4.2) String's definition:
+      ************************
+Here I'll compare the "Char" type array declaration,  and the original String's type declaration.
+
+1. Ok, lets start with the "Char" type array first:
+ program Char_Array;
+ var
+  fake_string: array[1..5] of char;
+
+2. And now the original String's one: 
+ program the_String;
+ var
+  str: string;
+
+Using the original way is better because, it's much more simple and less to write, and you don't
+always have to declare a specific range, but if you like to do it (if you know the number of chars
+you're going to use, or you just like to save some memory space, or both. ), here is the way you
+declare an exact number of chars in the string:
+ var
+  str: string[5];
+
+And this will create a string variable of 5 chars.
+
+  4.2) Using basic String:
+      *************************
+Ok, I'll explain you now the process of working with Strings, like compering two strings, making 
+an input to a string, pulling an output of the string, how to find out the length of the string, and making:
+4.2.1)Comparing two strings, the direct way:
+ if (str1>str2) then
+  ...
+
+4.2.2)Comparing two strings, char by char:
+  for i:=1 to 10 do
+   if (str1[i]=str2[i]) then
+     ...
+
+4.2.3)Making a string input, the direct way:
+ readln(str1);
+
+4.2.4)Making a string input, char by char:
+ for i:=1 to 10 do
+  readln(str1[i]);
+
+4.2.5)Pulling an output of the string, the direct way:
+ writeln(str1);
+
+4.2.6)Pulling an output of the string, char by char:
+ for i:=1 to 10 do
+  write(str1[i]);
+
+4.2.7)Getting the length of the string, the only way:
+ x:=length(str1); { the variable x must be from an integer type ONLY. }
+                        { now 'x' includes the number of chars there are in the 'str1' string. }
+
+Well, that's all you need to know on how you need to declare and use the string, simple hah!? :)
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+5) Procedures and Functions.
+
+  5.1) What the heck a Procedure is?!
+      ****************************************
+Until now we wrote our entire programs in one part!!! But this isn't effective, like lets take for
+example a program which you need to print on the screen 3 different lines, at the beginning, 
+at the middle, and at the end. In each part you need print all 3 lines... so what... you will
+write those lines at every part of the program again and again, it's stupid don't you think...?!
+So, what we'll do is write a small "procedure" which will include inside itself those 3 lines...
+But first I'll explain to you, what a procedure is. A procedure can include inside itself commands
+and conditions checking, and every thing you learn until now. The procedure may be used from
+any place at the Main of the programs (between the Main "Begin" and the Main "End."), the 
+procedure may be used from another procedure as well. If you haven't understood it so well, don't worry, after a few examples you'll get the idea. Let us continue...
+
+  5.2) Writing a Procedure:
+      ***************************
+The Procedures will be written before the Main "Begin".
+To open a procedure you write: "Procedure" then the name of the procedure, and then ";",
+simple, don't you think... Now, under it, you must put "Begin", (it's the law :) ) even if you have 
+only one command in the procedure. The procedure will end when you'll put "End;".
+Look at the next example to get the idea:
+ program Procedure_example;  { the program's title }
+ procedure line;  { openning a procedure }                       
+  begin  { the Procedure's "Begin" }
+   writeln(' Uncle Fucker, just like the song says.');
+  end;
+ begin  { the Main "Begin" }
+  write('I am an');  { printing on the screen: "I am an", and staying on the same line... }
+  line;  { using the procedure, it's like the code written inside the procedure is passed here... }
+          { the 'writeln' command in the procedure will start from the last line, print " Uncle Fucker,    
+            just like the song says.", and then, it will jump one line down. }
+  write('You are an');
+  line;
+  write('We all a bunch of ');
+  line;
+ end.  { the Main "End" }
+
+We didn't use "Var" in our small example program, because we didn't need any global variables in our example program.we could also declare some Local variables, by placing a "Var" before the procedure's "Begin", just like the regular "Var" we knew from the first chapters, except that:
+Those Local variables will exist only in the procedure, and will be deleted if you won't store them 
+inside a Global variable (the variables we declared in the "Var" under the "Program" 's name,
+as you know the global variable are known to the whole program, and the local variable are only
+known to the procedure itself, to the specific procedure, not to all of the procedures.
+
+  5.3) Parameters' rules:
+      ************************
+Until now what we did, was only a simple procedure... This means that we could only use: Global 
+variable (the variable you declaring in the "Var" under the "Program" 's name) inside the procedure, but what we will do know is returning variable from the procedure, and inputting them 
+into it (the procedure)...
+To do that you need to remember the next two rules:
+1. When you send a variable to procedure, the type of variable you send to the procedure
+is the same as the type of the variable which will receive the Data of the variable you sent.
+I know it's like Chinese to you, or French to all the Chinese readers :)
+2. If you like to send an Array to a procedure you need to write a "Type" definition, under the
+"program" (before the "Var"). This is how you do it:
+
+ program Type_definition;
+ const
+  m = 5;
+ type
+  arr_type = array[1..m] of integer;
+ var
+ ...
+
+'arr_type' is now a new declaration type, this 'arr_type' could have any name as you like.
+If you like to send an array to procedure, and you wrote the procedure so it will receive
+an array from the 'arr_type' type, then the array which you'll send to this procedure 
+MUST have the same number of cells as the type the procedure receives. In the above
+example of "Type" the array MUST be 5 cells long, from 1 to 5.
+Now, after you understood the rules you may move on to the next section, which will explain
+you: Who to use Parameters, how to send variables to another procedure and even to receive them back with a new Data in them... just continue reading!
+
+  5.4) Writing a Procedure with Parameters passing:
+      ********************************************************
+Well I hope you understood the rule, becuase we can't go on to the "writing a procedure with 
+parameters passing" part without those rules, so if you're not sure if you understood the rules, 
+please reread the rules chapter again and again until you'll under stand them perfectly!!!
+But if you did understand them, let's go on...
+The whole idea of parameters passing is to make the programming more simple and more 
+effective, like for example, take a look at the next procedure:
+
+ procedure example1;
+  begin
+   writeln('a newbie is a lamer :)');
+  end;
+
+Now, instead of 'newbie' you could place any other word, isn't it?!
+So, how about writing a procedure that will place a String type variable instead the word newbie, 
+so you may use this procedure in different places with a different meaning. You could do it like
+this:
+
+ procedure  example2(the_word: string);
+  begin
+   writeln('a ',the_word,' is a lamer :)');
+  end;
+
+Now, you probably ask, "so... how do I use this procedure???". Very simple, look at this small 
+program:
+
+ program the_use;
+  var
+   name: string;
+   number: integer;
+  begin  { the Main Begin }
+   name:='moron';
+   number:=25;
+   example2(name);  { this line will print on the screen: "a moron is a lamer :)" }
+   example2('moron');  { this line will print the same thing as the line above, the variable 'name',                                                                                                                                     
+                                  received inside itself the line: moron . }
+   example2(number);  { this line won't work because, actually with this line in the code, you 
+                                   won't be able even to compile the code, why you ask, then return back
+                                   and reread the rules chapter again, because the type of variable wich the
+                                   procedure receives does not much the type of variable you send to the 
+                                   procedure!!! }
+  end.  { the Main End }
+
+Ok, now you can send more than one variable to a procedure, but you need to write a procedure
+to receive that much variables, and when you send the values/variables to the procedure you 
+need to send them at the same order as the variables were writen in the procedure to receive 
+those values/variabels, they also must mutch the order they been written, it's all said in the 
+rules part!!!
+
+In the next chapter you'll learn how to return values from the procedure as a parameter!
+
+  5.5) Returning Parameters in Procedures:
+      **********************************************
+After you learn the parameters' rules, and you know how to write a procedure with them,
+I may now teach you how to return values with them:
+ procedure return_example(var a: integer);
+
+You see the littele "var" before the 'a' variable, this means that at the end of the procedure the 
+value which inside the variable 'a' will be returned to the variable you send to this procedure, and which the variable 'a' received it's value!
+
+This way is mostly used, when you need to return more than one value, or you need to return special values, like Arrays, which is that the only way to do that!
+
+In the next chapter you will see other ways to return one value only, without sending any other variable to pass the value.
+
+  5.6) What the heck is a Function?!
+      **************************************
+Very good, you got this far, I'm proud of you, because now comes the GOOD part, but a little harder than the previous chapters, but don't worry >:)
+Well, a function is actually a procedure, that must always return a value, even if the function 
+haven't received any values/variables into itself!
+The only thing you need to know is that a Function can return one value only, in the section you will see how to write a function, how to return the value, and you will learn the rules of writing
+a function, so, just continue reading!
+
+  5.7) Writing a Function, and returns it's value:
+      **************************************************
+Now, the only thing that the procedure is different from a function, is that the function can only 
+return one value (not like the procedure), and the way of returning that value is defferent than the 
+return of value in the procedure, as you remember, in the procedure we return values with 'Var', 
+right?! But in a function you do it with the function's name itself, I'll explain later.
+Because now I'm going to exaplain you write the function first, and the then how to return it's 
+value.
+
+5.7.1)Using function without any parameters passing:
+ function func_example: integer;
+  begin
+   writeln('it's all cool...');
+   func_example:=5;
+   writeln('man, I am good!!!');
+  end;
+
+This is how you write a basic/simple function. But we almost never use those type of functions, 
+that don't receive any parameters into itself. Any way I'll explain you the example above:
+do you see the ':' after the function's name, and after we see 'integer', this integer, is actualy
+the type of value that this function may return, it could be any of the type of declaration, you 
+declare the variables them selfs.
+Then as you can see, inside the function there is first a "writeln" command, wich will print 
+'it's all cool' on the screen, then you see that an undeclared variable receive into itself the value of 5, but if you'll look closely, you'll see, that the variable's name is the same as the function's, how you ask?! very simple, you see, when you make the function's name to receive some kind of 
+value, the function stops, well it isn't actualy stops, but you should stop writing the functin, to 
+save yourself useless mistakes. But there is another "writeln" command after receiving a 
+value by the function's name ( func_example:=5; ), and as I said before, and I'll say it again, you
+should stop writing the function, after the retrieve of a value from the function, so the program will get to the "writeln('man, I am good!!!');" command, but you shouldn't do it, it's just wrong. :)
+
+Now Iook at how you call, and receive a value from a function, and where does the value 
+goes to?!
+
+ program calling_a_function;
+  var
+   x, sum: integer;
+  { here will come the function we wrote before }
+  begin  { Main Begin }
+   x:=func_example;  { the value of our function, that we wrote returns to x. }
+   writeln('One way to call a function, that returns: ',x);
+   writeln('Another way to call a function, that returns: ',func_example);
+   { this is another way, which is more 'effective', when you print the returning value 
+     the function, instead, of placing it into a variable, and then printing it on the screen! }
+   { you only place the return value into a variable, when you know that you don't need it for
+     print out on the screen. please check out the threes way of use of the return value. }
+   sum:=func_example+func_example;
+   { this line will call the function once, and add it's return value to the ruturn value of the 
+     second function it will call, but you may do this act with variable and make actions on them 
+     with the function's return value that way!!! }
+  end.  { Main End }
+
+
+5.7.2)Using function with parameters passing:
+In paragraph 5.7.1, we learn how to write a basic/simple type of function (without any parameters
+passing), now we'll see how the function will look like with parameters, and how to call this kind 
+of function. Check out the next example, of parameters passing in a function:
+
+ function func_example(num1, num2: integer): integer;
+  begin
+   func_example:=num1+num2;
+  end;
+
+This function received two parameters, 'num1' and 'num2', then it added 'num1' to 'num2', and the result will go to 'func_example', that will be return from the function!
+
+Now, look how to call a function with parameters passed into it:
+
+ program calling_a_function;
+  var
+   x, sum: integer;
+  begin  { Main Begin }
+   x:=func_example(2,3);  { the value of our function, that we wrote returns to x. }
+   writeln('One way to call a function, that returns: ',x);
+   writeln('Another way to call a function, that returns: ',func_example(2,3));
+   { this is another way, which is more 'effective', when you print the returning value 
+     the function, instead, of placing it into a variable, and then printing it on the screen! }
+   { you only place the return value into a variable, when you know that you don't need it for
+     print out on the screen. please check out the threes way of use of the return value. }
+   sum:=func_example(2,3)+func_example(2,3);
+   { this line will call the function once, and add it's return value to the ruturn value of the 
+     second function it will call, but you may do this act with variable and make actions on them 
+     with the function's return value that way!!! }
+  end.  { Main End }
+
+Simple isn't it?! 
+
+Final Note about the Functions/Procedures: all functions and procedures must be written before
+the Main Begin!!!
+
+But there is a small problem with the functions/procedures' calling, about that you'll learn in the 
+next chapter. 
+
+  5.8) The problem with Procedures/Functions, and the solution:
+      **********************************************************************
+You learn that you can can a function/procedure from another function/procedure, BUT you can't 
+call a function/procedure from another function/procedure, if the function/procedure you calling hasn't been written before the one it been called from! So, how can you call a function/procedure
+from another function/procedure even if the function/procedure you tring to call was written after the function/procedure you calling from?! 
+It's truly simple, all you need to do is to declare the function/procedure the one you like to call 
+before all the inside of the functions/procedures are been written.
+I'll show you two examples, the one which won't work, and the one that will:
+
+program Won't_Work;
+procedure calling;
+ begin
+  cool;
+ end;
+procedure cool;
+ begin
+  writeln('You're a newbie!!! at list for now!!! :)');
+ end;
+begin  { main Begin }
+ calling;
+end.  { main End }
+  
+program Will_Work;
+procedure cool;  { declaring the 'cool' procedure, so we could call it from the 'calling' procedure, 
+                          even if the 'cool' procedure was written after 'calling' procedure! }
+procedure calling;
+ begin
+  cool;
+ end;
+procedure cool;
+ begin
+  writeln('You're a newbie!!! at list for now!!! :)');
+ end;
+begin  { main Begin }
+ calling;
+end.  { main End }
+
+Now you may call the 'cool procedure from any where in the program!!! You see how simple his
+is, so simple tha it scares me! :)
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+6) Uses...
+
+  6.1) What is a Uses file?!
+      ***************************
+A Uses file is kind of like a header file (if you know C/C++). A Uses file is a file which includes inside itself some functions, and when you'll include the Uses file, you may use it's functions.
+You can use a ready Uses file of the compiler or to write your own functions and include them 
+inside a new Uses file (a *.tpu file, I'll get to it). Don't worry... I'll get to the part of how to use an 
+exist uses file, and how to write one.
+
+  6.2) Uses Crt:
+      **************
+The most used Uses file in pascal programming is the Crt file, you can check for the file at the 
+pascal's Bin dir, the file called: "crt.tpu". Now... the most used functions of this Uses file are:
+ - clrscr
+ - textcolor
+ - textbackground
+
+But first, check out the next example to see how to use a Uses file:
+ program Uses_Example;
+  uses crt;  { the Uses file declaration Must come under the "Program", and only under it. }
+ var
+  ...
+
+In the above example we included the crt.tpu file in our program, so now you can use all the 
+Crt functions... Like:
+ - clrscr  =>  this function will Clear/Clean the screan from all the text.
+ - textcolor  =>  this function will change the color of the text, colors are from 1 to 15 (includes),
+                       you can also use the name of the color, like: black, white, yellow, green, red, etc.
+ - textbackground  => this function is the background of the text, not the background of the whole
+                                screen... the colors are the same as in "textcolor".
+
+The next example will show you how to use those functions:
+ program Crt_Example;
+  uses crt;  { the declaration of the Crt file in the program }
+ begin  { the Main begin. We skiped right to the "Begin", and didn't include the "Var" part,
+             because we don't need any variables here }
+  writeln('The normal text.');  { the good old gray color of the text }
+  clrscr;  { here we clear the screen, and the above line will disappear }
+  textcolor(blue);  { now instead of the original gray color of the compiler the new color will
+                            be blue }
+  writeln('The colored text, in blue.);  { this will show you a line on the screen in the blue color }
+  clrscr;  { again we'll clear the screen, and the above line will disappear as well }
+  textbackground(yellow);  { the new background of the text is now yellow }
+  writeln('The colored text, in blue on a yellow background of the text.');  { an example of how the 
+                                                                                                          text will look on the yellow
+                                                                                                          background of the text }
+  clrscr; { here we clearing the text again, but his time instead of black background it'll be yellow }
+            { because the last textbackground color was Yellow! }
+  writeln('The colored text, in blue on a yellow background of the whole screen.');  { shows you
+                                                                                                                        how the text
+                                                                                                                        will look like
+                                                                                                                        on the 'total'
+                                                                                                                        background }
+ end.  { the Main end }
+
+  6.3) Writing your own Uses File:
+      ***********************************
+Well, let say we wrote some kind of function which we'll use in many programs...
+For example let say you know that you need to include in all your programs the same 'about' function which will tell the user of the program, who the program was written by, etc.
+In this small chapter I'll teach you how to make your own Uses file, just the Uses Crt file.
+The struction of the Uses file is like that:
+ UNIT cool_fun;  { the name of our Uses file is now 'cool_fun' }
+                        { so, just like the Crt file, you write this to under the "Program", to include 
+                          this new Uses file into your program: "uses cool_fun;" }
+ INTERFACE
+  { here you may include another Uses file, like Crt, or any of yours }
+  { you may also put here the declaration of "Type", if you planning to use Array passing
+    parameters }
+  { you may as well include variables (global variables) which will be known inside this 
+    Uses file, and I think in the main program as well. }
+  
+  { Now, here we will declare some functions/procedures or both! The functions/procedures 
+    you'll decalre are the functions/procedures you will be able to call/use from the Main program, 
+    in which, this Uses file is been declared. }
+  { Note: There must be at list one function or procedure under the INTERFACE }
+  { INTERFACE Summary: Every thing you will write in the INTERFACE could be used from the 
+    main program, or from another Uses file, if this file was declared! }
+ IMPLEMENTATION
+  { as like in the INTERFACE part you may declare variables, and call other Uses files, 
+    the only differences between the INTERFACE and the IMPLEMENTATION, is that 
+    what you declare in the IMPLEMENTATION, stays in IMPLEMENTATION, it's for the 
+    Uses file use only! }
+  { in this part you need to write the function/procedure itself, not only the declaration of it, 
+    as we did in the INTERFACE part }
+  { you may also include functions and procedures that haven't been declared in the 
+    INTERFACE part, but you won't be able to use those functions/procedures, from any other
+    place than this Uses only } 
+  { you may call all functions/procedures, including the declared and the not declared ones from 
+    any of the other functions/procedures, including the declared and the not declared ones }
+ BEGIN  { this is the Uses file Begin }
+  { This part will stay Empty, in 99% it does! So, don't write anything between the Begin and the 
+    End. } 
+ END.  { Uses file End }
+
+All this you will write and save in the type of *.PAS file, then when you'll compile that 
+*.PAS file, and the compiler will create a *.TPU file (Turbo Pascal Unit), this *.TPU file will be created 
+in the same dir as the *.PAS file was ( the *.PAS will stay, don't worry )
+If you like to use this file, you need to place it in the same directory as the compiler's files 
+(inside the BIN dir).
+
+This is it folks, this is how you write your own Uses file, easy, isn't it. And it's VERY useful in 
+Pascal Programming, just like the Header files in C/C++.
+
+This was the last chapter of my truly cool tutorial, please read the Final Words!
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  **) Final Words:
+    *****************
+Well, that's the ending, the ending of our story, that the ending, the ENDING...
+This is it! Men... you are free to go, to run wild on the fields of the cyber space,
+Born to be wiiiiiiiild... I hope you understood the basics of Pascal. But the language isn't over here, hell no, you still got two topics to learn on your own, using Files and Graphics.
+( Graphics and working with Files aren't that important in Pascal, but you're free to learn them! )
+Personally I like to work/play with files, but in C! Because playing with files in C is 
+the most easy thing you had ever seen, so my advise to you is to learn C too.
+If you think: "Why the heck do I need all this, if you haven't thought me Filing and Graphics?"
+Then remember I promissed you a Black Jack game, here you go, just like I promised,
+This will show you, that you don't need to know how to work with files or  creating graphic and 
+stuff, you can create a really cool and color full game in a simple text mode!
+This also a good Drill for you, fix the repeating of the cards and try to use less variables than me.
+If you like more practice, ask the WebMaster of the site who published this tutorial to connect 
+me, and I will publish exercises, so you could practice at home by writing programs all by yourself!!!
+
+And Remember this as well, "I didn't write this tutorial for myself, I wrote it for you"!
+
+P.S: Please don't E-Mail with any questions, Sorry, but I'm too Busy... 
+So just go masturbate, as a wise man once said: "If you'll do it, it'll COME" ;)
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+About the Source Code:
+~~~~~~~~~~~~~~~~~~
+I placed some notes inside the (* *) in the source code ( the (* *) and the { } are just the same ).
+( But you can't open the note with (* and close it with }, or open with { and close with *), it's not
+working that way. )
+The places I put the notes in, are the places I think are the most important for you to understand
+what's going on in the source code, and how the game works (the total idea).
+Well, enjoy yourself... as for me, I going to bed, my girl is waiting for me :)
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ The Source Code for the Black Jack game I was telling you about at the introduction section.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+program Devil_Black_Jack;  { Devil_BJ™ }
+(* All Rights Reserved ® To Me, But You Can Edit It As You Like, Just Remember That I Wrote
+   This Small, And Truly Simple Game, Not You! *)
+uses crt;  (* In section 6.2 we studied about the functions included inside the CRT file, well,
+                  here we'll use them, functions like the "clrscr" and "textcolor", etc. *)
+const  (* Here we declaring some constant variable, or should I say Range *)
+nums=[16..21];
+var (* declaring variables for our game *)
+comp,n,m,tot,tot_p_one,x,x2,z,z2: integer;
+a,b,c,d,a2,b2,c2,e,f,g,h,e2,f2,g2,num,num_comp,mone,mone2,winning: integer;
+title,title_comp,num_wr,num_wr_comp,cool,cool2: string;
+game,enter,player,q1,q2,q3,q4,q5,q6: char;
+T: boolean;
+
+(* You see how many variables i used, you can easly use less variables, by edit the program 
+   a little. *)
+
+procedure card; 
+(* This procedure is using the ASCII code list, to build the card's sides, the "qX" variables are
+   the one which will include the value which will build the sides of each card *)
+ begin
+  q1:=chr(201);
+  q2:=chr(205);
+  q3:=chr(187);
+  q4:=chr(186);
+  q5:=chr(188);
+  q6:=chr(200);
+ end;
+procedure p_one;
+(* The Player's turn procedure *)
+ begin
+   textbackground(green);
+  clrscr;
+(* If we'll use the "textbackground" function and then "clrscr", this will color the whole
+   screen with the color we used in "textbackground" *)
+  a:=0; b:=0; c:=0; d:=0; a2:=0; b2:=0; c2:=0; mone:=0;
+  tot_p_one:=0; (* This small variable is very important to the Winning or Losing progress,
+                  the variable counts the Total-Sum of the Player's cards *)
+  player:='y';
+  textcolor(white);  (* the color of the text is now white! *)
+   writeln('Your`s!');
+  while (player='y')and(tot_p_one<=18) do
+(* This "While" loop will run while the variable "player" is 'y' AND the Total-Sum of the player
+   is under 19 (no including 19) *)
+   begin
+    x:=random(14+1-6)+6;  (* the program will run a rundom number for the 'value' of the card *)
+    case x of  (* The good old "Case" for the Card's Sign acording to the random number above!*)
+     6: num_wr:='6';
+     7: num_wr:='7';
+     8: num_wr:='8';
+     9: num_wr:='9';
+     10: num_wr:='10';
+     11: num_wr:='J';
+     12: num_wr:='Q';
+     13: num_wr:='K';
+     14: num_wr:='A';
+    end;  (* the end of the case *)
+    case x of (* This is another "Case" on the same Random number, this "Case" we need to
+                 determine the Card's value in the game... Like: King(K) is the number 13 but in
+                 the game it's value will be 4, you can change a few thing here as well to make
+                 the game more 'effective' *)
+     6: num:=6;
+     7: num:=7;
+     8: num:=8;
+     9: num:=9;
+     10: num:=10;
+     11: num:=2;
+     12: num:=3;
+     13: num:=4;
+     14: num:=11;
+    end; (* the end of the case *)
+   x2:=random(4)+1;  (* Random number for the type of the card *)
+    if x2=1 then begin title:=chr(3); textcolor(red); end;
+    if x2=2 then begin title:=chr(4); textcolor(red); end;
+    if x2=3 then begin title:=chr(5); textcolor(black); end;
+    if x2=4 then begin title:=chr(6); textcolor(black); end;
+     inc(mone);
+    if mone=1 then a:=num;
+    if mone=2 then b:=num;
+    if mone=3 then c:=num;
+    if mone=4 then d:=num;
+    if mone=5 then a2:=num;
+    if mone=6 then b2:=num;
+    if mone=7 then c2:=num;
+      cool:=cool+num_wr+title+',';  (* "cool" is a string of all card, this
+                                        variable will show you at the end
+                                        of the game the card you had, and
+                                        next to it the total sum of the cards
+                                        you had. *)
+     if (a+b in nums)and(c=11) then c:=1;
+(* the "IN" sign checks if the sun of the (a+b) is in range of the "NUMS",
+   which we declared at the const! *)
+(* the same are the rest of the "IN" using conditions *)
+     if (a+b+c in nums)and(d=11) then d:=1;
+     if (a+b+c+d in nums)and(a2=11) then a2:=1;
+     if (a+b+c+d+a2 in nums)and(b2=11) then b2:=1;
+     if (a+b+c+d+a2+b2 in nums)and(c2=11) then c2:=1;
+      tot_p_one:=a+b+c+d+a2+b2+c2; (* the total sum of the cards! *)
+    if (num_wr<>'10')then  (* the '10' includes 'two chars', 1 and 0, this will move the one small 
+                                        wall of the card, and mess it's struction, that why we need to check the                                         
+                                        card before printing the card's struction. *)
+     begin
+      writeln(q1,q2,q2,q2,q3);
+      writeln(q4,'':1,num_wr,title,q4);
+      writeln(q4,'':3,q4);
+      write(q6,q2,q2,q2,q5);
+     end
+    else  (* the else here, will be only executed if the above "if"'s
+             condition isn't correct, in this case, if the variable "num_wr"
+             isn't isn't 10 ( <> )  *)
+     begin
+      writeln(q1,q2,q2,q2,q3);
+      writeln(q4,num_wr,title,q4);
+      writeln(q4,'':3,q4);
+      write(q6,q2,q2,q2,q5);
+     end;
+   textcolor(11);
+  write('MORE? ');  (* here and in the next command the pragram asks you,
+                       "if you like to take another card...", if you do like
+                       to take another card, then press: 'y'. And if you don't
+                       then just press: 'n'. *)
+  readln(player);
+ end;
+  T:=true;
+ end;
+procedure computer;
+(* This procedure is computer's turn of playing *)
+ begin
+  tot:=0;
+  comp:=0;
+   n:=1;
+   m:=40;
+    gotoXY(m,n);
+     textcolor(yellow);
+   writeln('Computer`s');
+   writeln;
+   inc(n);
+    e:=0; f:=0; g:=0; h:=0; e2:=0; f2:=0; g2:=0;
+  while (comp=0)and(tot<=16) do
+   begin
+    (* the random and checking of variables are pritty much the same as at
+       the player's fucntion *)
+    z:=random(14+1-6)+6;
+     case z of
+      6: num_wr_comp:='6';
+      7: num_wr_comp:='7';
+      8: num_wr_comp:='8';
+      9: num_wr_comp:='9';
+      10: num_wr_comp:='10';
+      11: num_wr_comp:='J';
+      12: num_wr_comp:='Q';
+      13: num_wr_comp:='K';     
+      14: num_wr_comp:='A';
+     end;
+     case z of
+      6: num_comp:=6;
+      7: num_comp:=7;
+      8: num_comp:=8;
+      9: num_comp:=9;
+      10: num_comp:=10;
+      11: num_comp:=2;
+      12: num_comp:=3;
+      13: num_comp:=4;
+      14: num_comp:=11;
+     end;
+    z2:=random(4)+1;
+     if (z2=1) then begin title_comp:=chr(3); textcolor(red); end;
+     if (z2=2) then begin title_comp:=chr(4); textcolor(red); end;
+     if (z2=3) then begin title_comp:=chr(5); textcolor(black); end;
+     if (z2=4) then begin title_comp:=chr(6); textcolor(black); end;
+      inc(mone2);
+     if (mone2=1) then e:=num_comp;
+     if (mone2=2) then f:=num_comp;
+     if (mone2=3) then g:=num_comp;
+     if (mone2=4) then h:=num_comp;
+     if (mone2=5) then e2:=num_comp;
+     if (mone2=6) then f2:=num_comp;
+     if (mone2=7) then g2:=num_comp;
+       cool2:=cool2+num_wr_comp+title_comp+',';
+      if (e+f in nums)and(g=11) then g:=1;
+      if (e+f+g in nums)and(h=11) then h:=1;
+      if (e+f+g+h in nums)and(e2=11) then e2:=1;
+      if (e+f+g+h+e2 in nums)and(f2=11) then f2:=1;
+      if (e+f+g+h+e2+f2 in nums)and(g2=11) then g2:=1;
+     if (num_wr_comp<>'10') then
+      begin
+        gotoXY(m,n);
+       writeln(q1,q2,q2,q2,q3);
+        inc(n);
+        gotoXY(m,n);
+       writeln(q4,'':1,num_wr_comp,title_comp,q4);
+        inc(n);
+        gotoXY(m,n);
+       writeln(q4,'':3,q4);
+        inc(n);
+        gotoXY(m,n);
+       writeln(q6,q2,q2,q2,q5);
+        inc(n);
+      end (* you see no  ;  just like i told you at the start of the tutorial *)
+     else
+      begin
+        gotoXY(m,n);
+       writeln(q1,q2,q2,q2,q3);
+        inc(n);
+        gotoXY(m,n);
+       writeln(q4,num_wr_comp,title,q4);
+        inc(n);
+        gotoXY(m,n);
+       writeln(q4,'':3,q4);
+        inc(n);
+        gotoXY(m,n);
+       writeln(q6,q2,q2,q2,q5);
+        inc(n);
+       writeln;
+      end;
+       tot:=e+f+g+h+e2+f2+g2;  (* the total sum of the computer's cards! *)
+   end;
+ end;
+procedure exit;
+(* just a stupid exit procedure for the game's main *)
+ begin
+  clrscr;
+   textbackground(white);
+    textcolor(black);
+  writeln('You had played: The "Devil Black-Jack"!');
+  writeln('You played nice, thank you come again!');
+  writeln;
+ end;
+procedure crediet;
+(* the game's crediets procedure, also for the game's main! *)
+ begin
+  clrscr;
+   textbackground(white);
+   textcolor(black);
+  writeln('This is version one (v1.0) of the "Devil Black-Jack"!');
+  writeln('The game was written by Devil Panther, with Pascal language, on the year 2001.');
+  writeln;
+   textcolor(yellow);
+  writeln('Press (g) to go to the Game!');
+  writeln('Or Press (e) to Exit the game!');
+   write('':3,'Press Now: ');
+   readln(enter);
+  if (enter='g') then
+   p_one;
+  if (enter='e') then
+   exit;
+ end;
+procedure help;
+(* the help procedure of the game, also used from the game's main *)
+ begin
+  clrscr;
+   textbackground(white);
+   textcolor(black);
+  writeln('This is the most easier game in a world of cards, the rools are simple:');
+  writeln('All you need is no to pass the 21; By this numbers of cards:');
+  writeln('"6" => 6, "7" => 7, "8" => 8, "9" => 9, "10" => 10,');
+  writeln('"J" => 2, "Q" => 3, "K" => 4, "A" => 11');
+   textcolor(red);
+  writeln('(By when the sum of the before numbers is bigger than 15,');
+  writeln('then the next "ACE" will be "A" => 1)');
+  writeln;
+     textcolor(yellow);
+    writeln('To go to the Game Press (g)!');
+    writeln('Or Press (e) to Exit!');
+    write('':3,'Press Now: ');
+    readln(enter);
+     if (enter='g') then p_one;
+     if (enter='e') then exit;
+ end;
+procedure main;
+ begin
+ repeat
+ clrscr;
+   textcolor(blue);
+  write('To the(');
+   textcolor(red);
+  write('g');
+   textcolor(blue);
+  write(')ame | (');
+   textcolor(red);
+  write('h');  textcolor(blue);
+  write(')elp | (');
+   textcolor(red);
+  write('c');
+   textcolor(blue);
+  write(')rediet | (');
+   textcolor(red);
+  write('e');
+   textcolor(blue);
+  writeln(')xit');
+  writeln;
+  write('Your Choice: ');
+   textcolor(black);
+  readln(enter);
+ until (enter='g')or(enter='h')or(enter='c')or(enter='e');
+   if (enter='g') then p_one;
+   if (enter='h') then help;
+   if (enter='c') then crediet;
+   if (enter='e') then exit;
+ end;
+BEGIN
+randomize; (* This is the randomize for the random, so the random numbers
+              won't repeat itselfs... *)
+textbackground(green);
+clrscr;
+T:=false;
+card;
+main;
+if T then (* while the T is true *)
+ begin
+   computer;
+  writeln;
+   textbackground(black);
+   textcolor(white);
+    inc(n);
+    gotoXY(m,n);
+  write('Your`s: ');
+  writeln(cool,': ',tot_p_one);
+    inc(n);
+    gotoXY(m,n);
+     textcolor(yellow);
+  write('Computer`s: ');
+  writeln(cool2,': ',tot);
+    inc(n);
+    gotoXY(m,n);
+  writeln;
+    inc(n);
+    gotoXY(m,n);
+     textcolor(red);
+   if (tot_p_one>21)and(tot<=21) then
+    writeln('You Lost!!');
+   if (tot_p_one<=21)and(tot<=21) then
+    begin
+     if (tot_p_one>tot) then writeln('You Won!');
+     if (tot_p_one<tot) then writeln('You Lost!');
+     if (tot_p_one=tot) then writeln('No One Wins!');
+    end;
+   if (tot_p_one<=21)and(tot>21) then
+    writeln('You Won!!');
+   if (tot_p_one>21)and(tot>21) then
+    writeln('Every one lost!!!');
+      writeln;
+      writeln;
+       textcolor(10);
+   end;
+END.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ Copy Righted © On The Year 2001.   

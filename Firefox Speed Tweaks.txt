@@ -1,0 +1,25 @@
+Yes, firefox is already pretty damn fast but did you know that you can tweak it and improve the speed even more?
+
+That's the beauty of this program being open source.
+Here's what you do:
+In the URL bar, type “about:config” and press enter. This will bring up the configuration “menu” where you can change the parameters of Firefox.
+
+Note that these are what I’ve found to REALLY speed up my Firefox significantly - and these settings seem to be common among everybody else as well. But these settings are optimized for broadband connections - I mean with as much concurrent requests we’re going to open up with pipelining… lol… you’d better have a big connection.
+
+Double Click on the following settins and put in the numbers below - for the true / false booleans - they’ll change when you double click.
+
+Code:
+browser.tabs.showSingleWindowModePrefs – true
+network.http.max-connections – 48
+network.http.max-connections-per-server – 16
+network.http.max-persistent-connections-per-proxy – 8
+network.http.max-persistent-connections-per-server – 4
+network.http.pipelining – true
+network.http.pipelining.maxrequests – 100
+network.http.proxy.pipelining – true
+network.http.request.timeout – 300
+
+
+One more thing… Right-click somewhere on that screen and add a NEW -> Integer. Name it “nglayout.initialpaint.delay” and set its value to “0”. This value is the amount of time the browser waits before it acts on information it receives. Since you’re broadband - it shouldn’t have to wait.
+
+Now you should notice you’re loading pages MUCH faster now!

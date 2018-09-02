@@ -1,0 +1,90 @@
+After repeated requests for beep codes i have decided to post them here maybe they could be pinned
+
+Standard Original IBM POST Error Codes
+Code Description
+
+1 short beep System is OK
+2 short beeps POST Error - error code shown on screen No beep Power supply or system board problem Continuous beep Power supply, system board, or keyboard problem Repeating short beeps Power supply or system board problem
+1 long, 1 short beep System board problem
+1 long, 2 short beeps Display adapter problem (MDA, CGA)
+1 long, 3 short beeps Display adapter problem (EGA)
+3 long beeps 3270 keyboard card
+IBM POST Diagnostic Code Descriptions
+Code Description
+100 - 199 System Board
+200 - 299 Memory
+300 - 399 Keyboard
+400 - 499 Monochrome Display
+500 - 599 Colour/Graphics Display
+600 - 699 Floppy-disk drive and/or Adapter
+700 - 799 Math Coprocessor
+900 - 999 Parallel Printer Port
+1000 - 1099 Alternate Printer Adapter
+1100 - 1299 Asynchronous Communication Device, Adapter, or Port
+1300 - 1399 Game Port
+1400 - 1499 Colour/Graphics Printer
+1500 - 1599 Synchronous Communication Device, Adapter, or Port
+1700 - 1799 Hard Drive and/or Adapter
+1800 - 1899 Expansion Unit (XT)
+2000 - 2199 Bisynchronous Communication Adapter
+2400 - 2599 EGA system-board Video (MCA)
+3000 - 3199 LAN Adapter
+4800 - 4999 Internal Modem
+7000 - 7099 Phoenix BIOS Chips
+7300 - 7399 3.5" Disk Drive
+8900 - 8999 MIDI Adapter
+11200 - 11299 SCSI Adapter
+21000 - 21099 SCSI Fixed Disk and Controller
+21500 - 21599 SCSI CD-ROM System
+
+AMI BIOS Beep Codes
+Code Description
+
+1 Short Beep System OK
+2 Short Beeps Parity error in the first 64 KB of memory
+3 Short Beeps Memory failure in the first 64 KB
+4 Short Beeps Memory failure in the first 64 KB Operational of memory
+or Timer 1 on the motherboard is not functioning
+5 Short Beeps The CPU on the motherboard generated an error
+6 Short Beeps The keyboard controller may be bad. The BIOS cannot switch to protected mode
+7 Short Beeps The CPU generated an exception interrupt
+8 Short Beeps The system video adapter is either missing, or its memory is faulty
+9 Short Beeps The ROM checksum value does not match the value encoded in the BIOS
+10 Short Beeps The shutdown register for CMOS RAM failed
+11 Short Beeps The external cache is faulty
+1 Long, 3 Short Beeps Memory Problems
+1 Long, 8 Short Beeps Video Card Problems
+
+Phoenix BIOS Beep Codes
+Note - Phoenix BIOS emits three sets of beeps, separated by a brief pause.
+
+Code Description
+1-1-3 CMOS read/write failure
+1-1-4 ROM BIOS checksum error
+1-2-1 Programmable interval timer failure
+1-2-2 DMA initialisation failure
+1-2-3 DMA page register read/write failure
+1-3-1 RAM refresh verification failure
+1-3-3 First 64k RAM chip or data line failure
+1-3-4 First 64k RAM odd/even logic failure
+1-4-1 Address line failure first 64k RAM
+1-4-2 Parity failure first 64k RAM
+2-_-_ Faulty Memory
+3-1-_ Faulty Motherboard
+3-2-4 Keyboard controller Test failure
+3-3-4 Screen initialisation failure
+3-4-1 Screen retrace test failure
+3-4-2 Search for video ROM in progress
+4-2-1 Timer tick interrupt in progress or failure
+4-2-2 Shutdown test in progress or failure
+4-2-3 Gate A20 failure
+4-2-4 Unexpected interrupt in protected mode
+4-3-1 RAM test in progress or failure>ffffh
+4-3-2 Faulty Motherboard
+4-3-3 Interval timer channel 2 test or failure
+4-3-4 Time of Day clock test failure
+4-4-1 Serial port test or failure
+4-4-2 Parallel port test or failure
+4-4-3 Math coprocessor test or failure
+Low 1-1-2 System Board select failure
+Low 1-1-3 Extended CMOS RAM failure 

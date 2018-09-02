@@ -1,0 +1,87 @@
+How to Rename File Extensions  
+
+A lot of people here may ask how to rename a file extension in windows; well it’s very simple and takes little of your time. There are two ways to rename a file extension ‘without’ a stupid program.
+
+Number 1, Folder Options:
+
+Go into your Control Panel, in my case I use Windows XP so I would press [Start then Control Panel]. Now that you figured out how to get in Control Panel open “Folder Options” and click the view tab and make sure ‘Hide file extensions for know files’ is not selected, then press Ok.
+
+Now go into a folder and notice you can see your files extensions, rename them to whatever you'd like, for instance:
+
+Code:
+Dildos.exe to Dildos.Anonymous / Etc,Etc,Etc
+
+
+
+Number 2, MS-DOS:
+
+The difference between renaming files in DOS is that you can rename multiple files rather then one at a time, therefore making time gracious. Here I’ll provide you a few examples.
+
+Go to your start menu and open run, then type “cmd” without parenthesis. Ok you’re in MS-DOS right? Geesh common man I know a 5 year old that can do it. Ok good your in? Excellent… Ok now find out which directory has your files and type:
+
+Example
+
+cd C:\Files\
+
+
+In your case “C:\Files\” may not exist, so type in the directory that your have you files in. If everything goes will dos will look kinda like this:
+
+Code:
+Microsoft Windows XP [Version 5.1.2600]
+(C) Copyright 1985-2001 Microsoft Corp.
+
+C:\Documents and Settings\User>cd C:\Files\
+
+
+If all fails, you perhaps didn’t type in the correct folder/name and it will look like this:
+
+Code:
+C:\Documents and Settings\User> >cd C:\Filse\
+The system cannot find the path specified.
+
+
+
+Did you get in the directory yet????? If not I recommend you stick with the first step and hang yourself. Oh your in? OK COOL, type: dir and you will be provided with what files are in your folder, including their extensions. In my case:
+
+Code:
+C:\Files>dir
+ Volume in drive C has no dildo.
+ Volume Serial Number is CXXX-XXXX
+
+ Directory of C:\Files
+
+02/01/2005  07:22 PM    <DIR>          .
+02/01/2005  07:22 PM    <DIR>          ..
+01/31/2005  06:40 PM            14,336 stf.bmp
+01/31/2005  06:40 PM            14,336 stf02.bmp
+               2 File(s)         28,672 bytes
+               2 Dir(s)  39,024,766,976 bytes free
+
+C:\Files>
+
+
+Did you notice how I had two files named stf. Since both of these files have the same extension, *.bmp they can be renamed all together. If there are other files in there witht he same extension and you don't want to rename them, move them to another folder and / or directory.
+
+Last but not least, after listening to my horrific grammar type:
+
+Code:
+C:\Files>ren *.bmp *.rar
+
+
+And your results are:
+Code:
+
+C:\Files>dir
+ Volume in drive C has no penis.
+ Volume Serial Number is CXXX-XXXX
+
+ Directory of C:\Files
+
+02/01/2005  07:37 PM    <DIR>          .
+02/01/2005  07:37 PM    <DIR>          ..
+01/31/2005  06:40 PM            14,336 stf.rar
+01/31/2005  06:40 PM            14,336 stf02.rar
+               2 File(s)         28,672 bytes
+               2 Dir(s)  39,024,676,864 bytes free
+
+C:\Files>]

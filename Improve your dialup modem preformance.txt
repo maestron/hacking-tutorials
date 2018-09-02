@@ -1,0 +1,18 @@
+You can't assume that just because you connected at a speed like 48.3KBps that you will stay there. Today's modems automatically fall back to a lower speed if the line noise is too high to maintain a faster connection, but sometimes they fall back too soon or too far.
+
+Here's how to do it:
+
+
+Click Start the button.
+Select Settings.
+Click Control Panel.
+Double-click on the Modems icon.
+Select your modem.
+Click the Properties button.
+Click the Connections tab.
+Click the Advanced button.
+In the "Extra settings" field, type S36=7
+Click OK to save your settings.
+
+
+This will force your modem to try to stay connected at high speeds in two different ways before dropping back to an asynchronous mode with auto speed buffering.

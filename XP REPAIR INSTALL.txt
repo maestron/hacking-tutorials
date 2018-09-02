@@ -1,0 +1,153 @@
+   
+   XP REPAIR INSTALL
+   
+   1. Boot the computer using the XP CD. You may need to change the 
+      boot order in the system BIOS. Check your system documentation 
+      for steps to access the BIOS and change the boot order. 
+    
+    
+  2. When you see the "Welcome To Setup" screen, you will see the 
+     options below This portion of the Setup program prepares Microsoft 
+     Windows XP to run on your computer:
+
+   To setup Windows XP now, press ENTER.
+
+   To repair a Windows XP installation using Recovery Console, press R.
+
+   To quit Setup without installing Windows XP, press F3.
+ 
+ 
+    
+    
+    3. Press Enter to start the Windows Setup. 
+
+      do not choose "To repair a Windows XP installation using the 
+      Recovery Console, press  R", (you do not want to load Recovery 
+      Console). I repeat, do not choose "To repair a Windows XP 
+      installation using the Recovery Console, press  R". 
+
+    4. Accept the License Agreement and Windows will search for existing 
+       Windows installations. 
+
+    5. Select the XP installation you want to repair from the list and 
+       press R to start the repair. If Repair is not one of the options, 
+       read  this Warning!! 
+
+    6. Setup will copy the necessary files to the hard drive and reboot.  
+       Do not press any key to boot from CD when the message appears. 
+       Setup will continue as if it were doing a clean install, but your 
+       applications and settings will remain intact.
+     
+    Blaster worm warning: Do not immediately activate over the internet 
+    when asked, enable the XP firewall
+    [ http://support.microsoft.com/?kbid=283673 ]
+    before connecting to the internet. You can activate after the 
+    firewall is enabled. Control Panel - Network Connections. Right click 
+    the connection you use, Properties, and there is a check box on the 
+    Advanced [ http://michaelstevenstech.com/xpfirewall1.jpg ] page.
+
+
+    7. Reapply updates or service packs applied since initial Windows XP 
+    installation. Please note that a Repair Install from the Original 
+    install XP CD will remove SP1/SP2 and service packs will need to be 
+    reapplied. 
+    Service Pack 2
+    http://www.microsoft.com/downloads/details.aspx?FamilyId=049C9DBE-3B8E-
+    4F30-8245-9E368D3CDB5A&displaylang=en 
+    An option I highly recommend is creating a Slipstreamed XP CD with SP2.
+    Slipstreaming Windows XP with Service Pack 2 (SP2)
+    http://www.winsupersite.com/showcase/windowsxp_sp2_slipstream.asp
+ 
+  ______________________________________________________________________
+    
+    Warning!!
+    If the option to Repair Install is not available and you continue 
+    with the install;you will delete your Windows folder and Documents 
+    and Settings folder. All applications that place keys in the registry 
+    will need to be re-installed. You should exit setup if the repair 
+    option is not available and consider other options.
+
+    Try the link below if the repair option is not available.
+    Windows XP Crashed?
+    http://www.digitalwebcast.com/2002/03_mar/tutorials/cw_boot_toot.htm
+    Here's Help. 
+    A salvage mission into the depths of Windows XP, explained by a 
+    non-geek
+
+    by Charlie White 
+    http://www.digitalwebcast.com/2002/03_mar/tutorials/cw_boot_toot.htm
+
+    Related links
+    You May Lose Data or Program Settings After Reinstalling, Repairing, 
+    or Upgrading Windows XP (Q312369)
+    http://support.microsoft.com/default.aspx?scid=kb;en-us;Q312369
+
+    System Restore "Restore Points" Are Missing or Deleted (Q301224)
+    http://support.microsoft.com/default.aspx?scid=kb;en-us;Q301224
+
+    How to Perform an In-Place Upgrade (Reinstallation) of Windows XP 
+    (Q315341)
+    http://support.microsoft.com/search/preview.aspx?scid=kb;en-us;Q315341
+    
+    Warning!! If the Repair Option is not Available 
+    What should I do? Most important do not ignore the information below!
+
+    If the option to Repair Install is NOT available and you continue 
+    with the install; you will delete your Windows folder, Documents and 
+    Settings folders.  All Applications that place keys in the registry 
+    will need to be re-installed. 
+
+    You should exit setup if the repair option is not available and 
+    consider other options. I have found if the Repair option is not 
+    available, XP is usually not repairable and will require a Clean 
+    install.http://michaelstevenstech.com/cleanxpinstall.html
+    If you still have the ability to access the Windows XP installation, 
+    backup all important files not restorable from other sources before 
+    attempting any recovery console trouble shooting attempts. 
+    
+    Possible Fix by reconfiguring boot.ini using Recovery Console.
+    1.Boot with XP CD or 6 floppy boot disk set.
+    2. Press R to load the Recovery Console.  
+    3. Type bootcfg.  
+    4. This should fix any boot.ini errors causing setup not to see the  
+       XP OS install.  
+    5. Try the repair install.
+
+    One more suggestion from MVP Alex Nichol
+
+    "Reboot, this time taking the immediate R option, and if the CD 
+     letter is say K: give these commands
+
+    COPY K:\i386\ntldr C:\
+    COPY K:\i386\ntdetect.com C:\
+
+
+   (two other files needed - just in case) 
+
+   1. Type: ATTRIB -H -R -S C:\boot.ini DEL C:\boot.ini 
+
+   2. Type: BootCfg /Rebuild
+
+   which will get rid of any damaged boot.ini, search the disk for 
+   systems and make a new one. This might even result in a damaged 
+   windows reappearing; but gives another chance of getting at the 
+   repair"
+ 
+
+   Feedback on success or failure of the above fixes would be greatly 
+   appreciated.
+
+
+
+    Feedback on success or failure of the above fix would be greatly 
+    appreciated.
+    xpnews@michaelstevenstech.com
+
+
+    
+Michael Stevens MS-MVP XP
+Publishing of this document without permission of the author is 
+forbidden.
+4-29-2003
+Revised 11-05-2004
+

@@ -1,0 +1,216 @@
+news groups the how to do  
+
+FOUND ON DIFFRENT FORUM
+
+ok there is a lot to explain and most of it is un needed or more to the point
+you wont need it . well at least not to start with . maybe in a few months when you
+feel more at home with the world of usenet you may feel the need to look deeper
+this tutorial is therefore aimed at the guys who want to use a news group but
+have no idea what one is how to install needed items and download the files
+you want .
+
+ok news groups = a good place to download the newest movie / game / application / music ect
+yer im sure its more than that but do you realy care ? ..
+
+ok needed in order i think best . some files may seem odd but they will make life easy so dont moan
+just download them ok Razz..
+
+Code:
+1. http://bullbrand.giveit2me4free.com/downloads/nl_setup.exe
+2. http://www.nettle.us/quickpar/QuickPar-0.9.1.0.exe
+3. http://www.rarlab.com/rar/wrar342.exe
+4. http://www.daemon-tools.cc/dtcc/portal/download.php?mode=Download&id=34
+
+
+1 is the application used to connect to the news groups and download the files
+2 is a application made to help fix any files application No 1 fails to download correctly
+3 is winrar always use the newest version around as most files posted to the newsgroups
+do use the newest versions
+4 Daemon Tools is a virtual CDrom DVD drive great for testing any cd's or DVD you download
+before burning them to Disks .
+
+1 is a pay for application and in time you may well want to subscribe to it as it is one of the
+best applications out there for doing its job. but the link i give you is for the final version 1
+and keygens are all over the net for this one .
+or check next post down for chicken link
+2. smartpar is realy freeware so no need to worry here
+3. winrar is always cracked so check out google its your friend Razz ..
+4. Daemon Tools is freeware no probs eh!..
+
+ok now you have to do some work that i cant do for you you have to go and find out
+what you own ISP's News Server Address is .
+
+Mine is at Pipex =
+Code:
+nntp.dsl.pipex.com
+
+
+username and password are required to login to it
+
+NTL users can try any of these
+Code:
+news.cache.ntlworld.com
+news.cache.cable.ntlworld.com
+news.ntlworld.com
+news.cable.ntlworld.com
+newscache.cable.ntlworld.com
+
+newsfep1a-gui.server.ntli.net
+newsfep1a-gui.server.ntli.net
+newsfep1b-gui.server.ntli.net
+newsfep1c-gui.server.ntli.net
+newsfep1d-gui.server.ntli.net
+newsfep2a-gui.server.ntli.net
+newsfep2b-gui.server.ntli.net
+newsfep2c-gui.server.ntli.net
+newsfep2d-gui.server.ntli.net
+newsfep1a-win.server.ntli.net
+newsfep1b-win.server.ntli.net
+newsfep1c-win.server.ntli.net
+newsfep1d-win.server.ntli.net
+newsfep2a-win.server.ntli.net
+newsfep2b-win.server.ntli.net
+newsfep2c-win.server.ntli.net
+newsfep2d-win.server.ntli.net
+
+news.tesco.net (yep you can access these from an ntl account)
+news.virgin.net (yep you can access these from an ntl account)
+Cache servers unreliable but at least accept a connection:
+
+cache1-mant.server.ntli.net
+inktomi1-bro.server.ntl.com
+inktomi2-bro.server.ntl.com
+
+
+sorry but there are so many ISP's out there i cant possibly find them .do not install
+anything until you have this information without it you cant do jack ..
+ok if you have now got the news server info your ISP use's then procced to install
+app No 1
+on install leave it all on default click ok next yes ok ect til all is done then run it.
+on 1st run look at the very top menus and click on OPTIONS
+then click DOWNLOADS if needed change the path to the download folder as needed
+remember you will be downloading many gigs so make sure the drive has room .
+if not edit the path and change the drive make a new folder ect so you have room.
+
+now click on HEADERS and untick " all ways get all headers" and enter 100000 in
+both the boxes . this will download if and when required the last 5 days headers
+(you may never do it just setting up incase you feel brave Razz // )
+
+now click NZB files . ok click everthing in here except "pretty up subfolder names "
+and then apply the settings . now we setup the news server connection info so do
+this next.
+
+look at the tabs near the top area the first one is called "Usenet Manager"
+click it and you will be able to add a new news server by right clicking in the white area
+and selecting ADD NEW SERVER , in this new box enter the details you should have
+the SERVER ADDRESS is the news server your ISP gave you to use.
+the nick name can be anything you like should be same as the ADDRESS if you typed it in
+the number of connections can vary so its trial and error here set it to 1 con and then increase
+it untill you see a problem .(normaly says access forbiddon ) when you connect of course
+if you require a login (some do some dont) tick the box and enter a user and password
+for your news server this will normaly be the same user and password you use to connect
+to the ISP's ADSL system . if you dont require a login then un tick the box and enter nothing
+in user and password areas . it knows if your on there ADSL network and connects if you are.
+again bit of trial and error here ..
+once you think its right click OK and then look at the icons at the top click the one flashing with the word
+CONNECT and look at the bottom of the display you should see a status of what is going on
+if it says "Idle & ready for action" your done .
+if it says "Unable to authenticate please check quota and user password ect" you have it wrong
+and will need to recheck the user password ect you entered. till it does work if you get totaly
+lost here you can always call your ISP support and ask for the dam News Server login needed.
+it is not illegal to use this service so you are not breaking any laws.
+
+ok if we all have the "Idle & ready for action" we can close the newsleecher application down
+we done setting it up.
+
+ok now install Smartpar and winzip and daemon tools . just use the default settings as they work fine.
+
+ok ready to test this system out then here we go
+Code:
+Registry Rescue v2.8
+http://www.newzbin.com/972728 (1.1MB)
+alt.binaries.w***z.ibm-pc.0-day
+
+
+the above is a tiny part of an email i get every day from a website called newzbin.com
+they have a team that look at the main groups and report new posts so lets say
+someone posts a new movie there team go and find all the rar files that you need to download
+to make the movie work and put all the links to download these files into 1 text file called
+a NZB file so when that file is OPENED newsleecher the application we just setup see's
+its an NZB file and then opens up it loads the contents of the TEXT file into the app and
+connects to your ISP News server and then starts to auto download the movie into the download
+folder you setup a few mins ago . now depending on your conection speed and the size of
+the files your gona download newsleecher will give you a ETA on time to compleate.
+
+NZB files are the secret here they do all the hard work sites like newzbin create these
+NZB files but they also expect you to be a subscriber to there system to be allowed to
+get them . newzbin for example costs 0.25p (UK) a week so for 13 pound a year you can
+have access to it all . now we know some here cant afford to pay these fee's so i'm having a
+new area created so we can have some that can afford the fee to grab some of these NZB
+files and UPLOADED them directly to the forum so members can simply click to save these
+files so we can all enjoy the power of NG's .
+
+ok so what the hell is smartpar and whats it do..
+simple it fixes broken downloads .
+ok movie has 50 rar files of 15meg each to make the whole movie up .
+on a newsgroup posts are limited to 5000 lines per post .
+so what they do is split the 15meg rar files into say 60 files each with
+5000 lines per file . the newsleecher then downloads each of the 60 part files
+and then glues them all together to remake the 15meg rar file .
+but sometimes one or 2 of these 5000 lines posts get lost and the rar file
+is then incompleate ie: a bad rar file and it wont ever extract so you just
+downloaded a 800meg waste of space set of files that are useless .
+or are they Razz you will 99% of the time also see extra files being downloaded
+theses have the file extension (.PAR2) these contain information to rebuild
+incompleate broken part files so the 15meg rar file can now be made good .
+it does have limits but so far in all my time i have only had 1 movie that would not
+repair and I had to bin it . a realy good system IMO ..
+
+winrar well its industry standard aint it ..
+
+daemon tools well i use it a lot to save me burning DVDs i can mount a DVD iso file
+and watch the Movie on my PC no disks needed . it has a million other uses but thats
+one i use it for.
+
+the following post contains a sample of an email i receive from newzbin everyday telling me the latest
+release info i normaly click on the item i want it opens the webpage up and members will see a button
+marked "GET MESSAGE ID'S " i click that and they send me the needed NBZ file i open it and in mins
+im playing that new game / watching that new movie or installing that great application i always wanted
+you get the idea im sure ..
+
+downside is depending on your ISP there could be extra costs involved if they limit the amount of data
+your allowed to download ie: 5 gigs per moth or something like that.
+NZB files can be hard to get if you do not have an account with a service like newzbin.com
+(my advice is to subscribe hell you can try it for 8 weeks for £2 UK thats some downloads
+lets say you download the first day WINDOWS XP CORP INC Service PACK 2 worth £140 UK
+and maybe 3 new PS2 games @ £30 UK each and maybe 2 MOVIES that arnt even out yet
+no value you can see that on a daily / weekly cost it is well worth it .
+but before anyone here runs off and subscribes to anything please STOP STOP STOP
+we will post daily some of the NZB files we may even have a request or something setup
+so you can 100% confirm you can run and work with NG's for ZERO costs . if you cant work them , all it cost you was a few mins of your time and you dloaded 4 small files .
+
+good luck guys this is not as compleate as i wanted it to be but those in the group who
+know me also know why my time is limited so sorry im selling it shorter than i wanted.
+but it has enough clear and simple directions
+to get anyone with almost zero knowhow to a NG's downloading pro in less than 10 mins
+
+
+here are a few file to practise on .
+these files have a life expectancy of 5 to 6 days form date of post so DONT complain in 8 days they dont work..
+
+Musicmatch Jukebox Plus v10.00.1025b
+http://bullbrand.giveit2me4free.com/downloads/Musicmatch_Jukebox_Plus.nzb
+
+No1 DVD Ripper Se V1.3.39
+http://bullbrand.giveit2me4free.com/downloads/No1_DVD_Ripper.nzb
+
+U2 - The Best of 1990-2000
+http://bullbrand.giveit2me4free.com/downloads/U2_-_The_Best_of_1990-2000.nzb
+
+click on them and save or open them if you installed newsleecher right they will auto open it and download if they open it and the download does not start check that in OPTIONS / ADVANCED , "auto connect on startup" is ticked or simply click the connect icon when it has opened to start the download ..
+
+if they open as XML pages or when you right click and save as they try and save as .xml pages then download this file
+http://bullbrand.giveit2me4free.com/downloads/test_nbz.rar
+that is a rar of the 3 files above just extract it and open the nzb files
+
+remember though you dont need to read these files they are just to tell the newsleecher where to go and get what you want

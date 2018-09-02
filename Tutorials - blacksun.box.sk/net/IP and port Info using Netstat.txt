@@ -1,0 +1,169 @@
+       *%*  _.|~~|._  | ~~~~)\~~~/  /~~~~~| |~~| /~~/  |~~~~~~~/ | ~~~~) *%*         
+       *%* |__    __| |  @ /  | |   | /~~~  |  |/  /   | |~~~~~  |  @ /  *%*      
+       *%*    |  |    | |\ \  | |   | |     |     <    | |_____  | |\ \  *%*       
+       *%*    |__|    |_| \_\ | |   | \____ |  |\  \   |  _____\ |_| \_\ *%*  
+        *%*%*%*%*%*%*%*%*%*%*/~ ~\  \_____/ |__| \__\  | |_____          *%*    
+                          *%*~~~~~  * TrickSoft.net *  |______/  *%*%*%*%*%*  
+                          *%*%*%*%*%*%*%*%*%*%*%*%*%*%**%*%*%*%*%*%*                                                  (Cadtrick@hotmail.com) - Date:June,01,2000
+----------------
+Contact Info:
+----------------
+Written by: TriÇker(with some slight modifications by R a v e N)
+Email:Cadtrick@hotmail.com
+ICQ:40884568
+AIM:zTrickerz
+Web:http://tricksoft.net
+----------------
+________________________________________________
+Title: IP and port Info using Netstat
+------------------------------------------------
+Table of Contents:
+------------------------------------------------
+INTRO
+I.Use of Netstat
+II.Detecting Open ports
+III.SYN and ACK
+IV.Using Netstat it for ICQ and AIM
+V.Other Uses
+VI.Tools and Utilities
+VII.Two Quick Tips
+Conclusion
+------------------------------------------------
+------------------------------------------------
+------------------------------------------------
+Intro
+------------------------------------------------
+Hello thanks for reading this text on learning more about using netstat
+to help you.  Please disregard any spelling or punction or any other 
+grammer errors.  This text is written so the average reader can understand
+it. Not to complicated. Please enjoy and feel free to email me.
+------------------------------------------------
+I.Use of Netstat
+------------------------------------------------
+-  (To OPEN Netstat) - To open [Netstat] you must do the following: Click on the 
+-  [Start] button-->Then click [Programs]--> Then look for [Ms-Dos Prompt].
+Netstat is a very helpful tool that has many uses. I personally use Netstat
+to get IP addresses from other users I'm talking with on ICQ or AIM.  Also
+you can use Netstat go moniter your port activity for attackers sending syn
+requests (part of the TCP/IP 3 way handshake) or just to see what ports are 
+listening/Established. Look at the example below for the average layout of 
+a responce to typing Netstat at the C:\windows\ prompt. 
+~~~~~~~~~~~~~~~~~~~~
+C:\WINDOWS>netstat
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    pavilion:25872         WARLOCK:1045           ESTABLISHED
+  TCP    pavilion:25872         sy-as-09-112.free.net.au:3925  ESTABLISHED
+  TCP    pavilion:31580         WARLOCK:1046           ESTABLISHED
+  TCP    pavilion:2980          205.188.2.9:5190       ESTABLISHED
+  TCP    pavilion:3039          24.66.10.101.on.wave.home.com:1031  ESTABLISHED
+~~~~~~~~~~~~~~~~~~~
+Now look above at the example. You will see [Proto] on the top left. This just 
+tells you if the protocal is TCP/UDP etc. Next to the right you will see 
+[Local Address] this just tells you the local IP/Hostname:Port open.  Then to the 
+right once again you will see [Foreign Address] this will give you the persons
+IP/Hostname and port in the format of IP:Port with ":" in between the port and IP.
+And at last you will see [State] Which simply states the STATE of the connection.
+This can be Established if it is connected or waiting connect if its listening.
+Now with this knowledge we will dive into deeper on how to use this for monitering
+and port activity and detecting open ports in use.
+------------------------------------------------
+II.Detecting Open ports
+------------------------------------------------
+Now so you are noticeing something funny is going on with your computer? Your cd-rom
+tray is going crazy...Opening and closing when your doing nothing. And you say What the
+phruck is going on..or you realize someones been messing with a trojan on your computer.
+So now your goal is to locate what trojan it is so you can remove it right? Well your right.
+So you goto your ms-dos prompt. Now there are many ways to use Netstat and below is a help
+menu. Look through it.
+~~~~~~~~~~~~~~~~~~~~
+C:\WINDOWS>netstat ?
+
+Displays protocol statistics and current TCP/IP network connections.
+
+NETSTAT [-a] [-e] [-n] [-s] [-p proto] [-r] [interval]
+
+  -a            Displays all connections and listening ports.
+  -e            Displays Ethernet statistics. This may be combined with the -s
+                option.
+  -n            Displays addresses and port numbers in numerical form.
+  -p proto      Shows connections for the protocol specified by proto; proto
+                may be TCP or UDP.  If used with the -s option to display
+                per-protocol statistics, proto may be TCP, UDP, or IP.
+  -r            Displays the routing table.
+  -s            Displays per-protocol statistics.  By default, statistics are
+                shown for TCP, UDP and IP; the -p option may be used to specify
+                a subset of the default.
+  interval      Redisplays selected statistics, pausing interval seconds
+                between each display.  Press CTRL+C to stop redisplaying
+                statistics.  If omitted, netstat will print the current
+                configuration information once.
+~~~~~~~~~~~~~~~~~~~~~
+I personally like using (C:\Windows\Netstat -an) Which Displays all connections and
+listening ports in the form of IP instead of Hostname.  As you see how i did the command
+Netstat(space)-a(Displays all connections and listening ports.)n(in numerical form)
+Netstat -an  -So doing that does TWO of the options at once no need for -a-n.  So
+now that you know how to use netstat to view all your connections and listening you
+can search for common ports like 12345(old Netbus Trojan),1243(subseven) etc.  This 
+Becomes very handy for everything you will soon find out. Take a break now and go chill
+out on your couch and relax for about 5 minutes and let all this soak in then come back
+ready to learn more. :)
+------------------------------------------------
+III.SYN and ACK
+------------------------------------------------
+When you here Syn and Ack(ACKnowledge) you do not think of the communication of packets on 
+your system. Well let me tell you what SYN and ACK do.
+	[SYN] - SYN in common words is a request for a connection used in the 3-way handshake
+in TCP/IP. Once you send a SYN out for a connection, the target computer will reply with a SYN and ACK. So basically when you see in [State] catagory Syn that means you are sending
+out a request to connect to something.
+	[ACK] - Now the ACK is a ACKnowledgement to the request made by a computer that is 
+trying to connect to you. Once a Syn is sent to you you need to ACK it, then Send back another syn to the computer requesting connection to confirm the packet sent was correct.
+I sure hope that helped you understand a little more about SYN and ACK. If you have further
+questions try looking for texts on TCP/IP (such as BSRF's TCP/IP text - blacksun.box.sk/tcpip.txt). Now onto the fun stuff.
+------------------------------------------------
+IV.Using Netstat it for ICQ and AIM
+------------------------------------------------
+Have you ever wanted to get someones IP address or hostname using [Aol Instant Messanger]
+or [ICQ]? Well your in Luck. 
+	[AIM] - With AIM you can not ussually find the exact IP address without some trial and error because most of the time it seems to open up all online users on Port
+5190. So Less users online easier it is. So goto Ms-Dos Prompt and type netstat -n here you will see under [Foreign Addresses] a IP:With port 5190. Now one of those IP's connected
+to you with 5190 is going to be your target aim user. Just use trial and error to find out
+is ussually the easiest way.
+	[ICQ] - To get a IP using netstat of a ICQ user is easy before talking to the person on ICQ you must open ms-dos prompt and do netstat -n to list all IP's and ports.Write them
+down or copy them somewhere you will remember to look back. Now it's time to find out his 
+IP. Message the user witha  single message now quickly do Nestat -n. And you will have a new added line of a IP address, just search for the new one on the list under foreign and once you find it you now have your buddys ip without any patches or hacks. Pure skill :P.
+------------------------------------------------
+V.Other Uses
+------------------------------------------------
+Netstat can be used to get IPs of anything and anyone, as long as there's a direct connection between you and the target (i.e. direct messages, file transfers or ICQ chats in ICQ, DCC (Direct Client Connection) chat and file transfers in IRC etc' etc').
+------------------------------------------------
+VI.Tools and Utilities:
+------------------------------------------------
+Port scanning: To look for any open ports on a computer:
+ - [7th Sphere Port scanner] - (2 mirror sites so if one link doesnt work)
+      - http://members.xoom.com/Cryptog/7spereportscan.exe
+      - http://members.xoom.com/gohan_3/7spereportscan.exe
+Firewall to moniter Ports and registry:
+ - [Lockdown 2000]
+      - http://www.lockdown.com
+For Communicating better:
+ - [ICQ]
+      - http://www.icq.com
+ - [Aol Instant Messanger]
+      - http://www.aol.com
+------------------------------------------------
+VII.Two Quick Tips
+------------------------------------------------
+a.Sometimes Netstat can generate very long lists, which are especially confusing for newbies. If you're having difficulties, just run netstat, and then make a direct connection of some sort to your target, or make it connect to you (ICQ, IRC etc', you get the picture) and run netstat again. There should be a new line - this is what you're looking for.
+b.If netstat's output is too long, type 'netstat -an > c:\some-directory\some-file.txt' (without the quotes, and you can replace the parameters -an and the filename and it's path with anything you'd like). This will dump the output to that file for easy viewing, and will also let you copy & paste.
+------------------------------------------------
+Conclusion
+------------------------------------------------
+I think there are better ways to understand the internet than with tools you find.
+Learn how to do stuff manually so you fully understand whats going on. This will fuel your
+power and kill your lameness :) 
+
+-Tricker
+

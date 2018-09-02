@@ -1,0 +1,36 @@
+How To Setup Your Own Dns (Domain Name Server)
+
+This is only a quick tutorial, there are literally hundreds of little tricks you can do with a DNS, but this will get your basics up and running. I'm assuming you want to setup a windows DNS server, but the principals will work for most servers.
+
+You will need..
+
+1) A domain name over which you have full control
+2) DNS server software(Windows server always comes with one of these)
+3) At least one fixed IP address, allthough two is highly desirable
+4) An idea of what services you want on your server
+
+The first thing you need to do is create your new domain entry. In windows this is called a "Zone" and you will have one for every domain name you have. Add your main domain in the forward lookup zone as a Primary zone, which will be in the format "Domainname.com", or .co.uk, or whatever, you shouldn't need any more details for this bit. Do *not* allow dynamic updates unless this is a local network DNS. Once it is created you will have 2 entry's under your new domain, "SOA"(Or Start of Authority) and "NS"(Or Name server). If you want a 100% compliant DNS then you should now follow the same process but adding a domain as a reverse lookup zone. Any changes you make to the forward lookup should have the "Update Reverse Lookup" option ticked if its available, if not you must update the reverse zone manually(This is very important).
+
+Now edit the "NS" entry in your forward zone to "NS0.DomainName.Com", and set it to the relevant IP address. Add another (NS) record and set it to "NS1.DomainName.Com". If using 2 IP address, try to make NS0 the first IP. Now you need to configure the SOA entry in the forward lookup zone. The serial number should be changed to a date followed by a number in this format "YYYYMMDDnn", this is not required, but is advised by RIPE. The primary server will be the "NS0.domainname.com" entry you just made and the responsible person should be left for now. The refresh interval should be set somewhere between 1200 to 43200 seconds, the retry should be between 120-7200 seconds and the expires after should be around 2-4 weeks(I'll let you work out the seconds for that). The minimum TTL is quite important, and depending on what you are going to do with the domain, you might need to tweak this a bit. Typically a value between 1-3 hours should be used. Now go to your "Name server" settings in your SOA record(In windows this is a tab in the same window) remove the defaults, and add your two Name servers that you just setup. We will come back to the SOA record later, but for now we need to do some more stuff.
+
+If you want a website, then your going to want the WWW. setting up. We will set it up as an "A" record, which means it is a separate top level record and will be populated separately from other entries. So add an "A" to your forward lookup zone and put the entry as "WWW", and set the IP address to wherever you want the website to be. This will be where the domain always goes, and it could be anywhere. Just make sure there is a web server waiting there for it. If you want FTP, then setup the same thing but with "FTP" in the entry. You will now also have to setup "A" records for the NS0 and NS1 name servers that you added previously, just make them the same as WWW and FTP, but make sure the IP addresses match the ones used for setting up the "NS" records. Also add a blank "A" record, this will make sure that "domainname.com" works as well as "www.domainname.com".
+
+Now you should decide whether or not you want to have mail on this domain. It is Hegel advisable that you set one up, even if it just to catch domain mail about abuse or potential problems that might occur. You can find plenty of high quality free mail servers out there, but I would recommend "Mail Enable", its free and provides everything you would want, but if you want webmail you do have to pay something extra for it. We will now configure the MX records. Add an "A" name for your mail server, you can add 2 if you want, but for simplicity I would advise staying with 1. We will call ours "Mail.domainname.com", and point it to one of our IP addresses. Now add an "MX" record in the Forward Lookup zone, giving it the full "A" record you just entered "Mail.domainname.com", and do not setup a host or child domain, just leave it blank.
+
+This next step isn't needed, but is again highly recommended.
+
+Now to finish the SOA you need to add two more records. A "RP" entry, which is a Responsible Person, and they will be the contact point for domain complaints and a "MB" entry, which is a mailbox entry. The "MB" should just be pointed to the mail server domain name "Mail.domainname.com", and the "RP" should have the host or domain set to the name of your mail box. So for this server it will be "Tony.Domainname.com", and the mailbox will be set to the "MB" record you just made. Don't worry about the RP address having no "@" in it, this is the expected format for an "RP" entry. You will now have to go back into the SOA and change the responsible person to the new "RP" record you just made.
+
+And thats it, your done! You can add as many "A" records as you like to point to other web servers, or a multitude of FTP sites. And you can add "CNAME" records to basically point to another name, usually an "A" record, like an alias.
+
+Now before you switch your domain on, you need to check that the server is performing properly. So go to www.dnsreport.com, and run the report on your domain "domainname.com", and it will give you a very detailed report of any problems, and even a short description of how to fix the problems. If all is OK, then you are ready to go live. If your domain name is new, or not currently hosted anywhere then the first thing you should do is re-point the domain at your new server. You will typically do this with the provider who owns the domain, and it will be different with all hosts. But the basic settings are the same. You will be asked for at least 2 name servers and ip addresses to go with them. Just put in "NS0.domainname.com" and "NS1.domainname.com" and put in the correct IP addresses. Make sure you do not mess this up, as changes to your main NS servers could potentially take several days to straighten themselves out. Update these settings, and then sit back and wait. You can do a whois on the main DNS server of your domain provider to check if the settings have worked, but again this doesn't always work. For the big 3 domains(.com .net .org) you can do a whois on the network associates site to see the changes instantly. You can also track the progress of the domain changes by doing an NSLookup in dos, like this...
+
+c:\nslookup ns0.domainname.com NS0.yourprovidersdns.com
+
+That will give you the entries your domain provider has
+
+c:\nslookup www.domainname.com ns0.domainname.com
+
+And this will tell you if the changes for your domain have gone through to your ISPs DNS yet. It should give you back the IP address of your new DNS server.
+
+You should always make sure your server is backed up, and that you refresh or update the DNS when you are making changes.

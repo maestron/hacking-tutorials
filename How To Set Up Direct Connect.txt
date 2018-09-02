@@ -1,0 +1,269 @@
+ Things you will need before we start:
+
+CODE
+DC++ http://dcplusplus.sourceforge.net/
+
+
+Your Brain (some of you might have to dig it out and dust it off)
+
+Note: This tutorial was written while using DC++ v0.241. Some things might change as versions progress
+
+1. Installation
+
+Ok, first, install the program. It should be awfully simple. There are 2 different types of installs: The Installer, and the Zip file. If you get the installer, simply run it and install DC++. If you get a zip, you'll have to create a program directory, and extract all the files in there. Then, for ease, place a shortcut to DCPlusPlus.exe on your Desktop or Start menu or wherever.
+
+Then, double click DCPlusPlus.exe to start it up.
+
+2. The First Thing You See
+You'll be greeted with a window with all sorts of icons and windows and crap. Here is where I make sense of all this nonsense.
+
+1. Public Hubs: This brings up the Public Hubs list, listing all the hubs that have registered (not all hubs have to register, there are likely to be hundreds not on the list. These are private hubs. DC++ used to host its own Hub lists, but due to bandwidth, it stopped. In order to receive the hub lists again, I suggest you go to
+CODE
+http://www.imperialnet.org
+and sign up for their Public Hub list. I will tell you what to do with this later.
+
+A Note about Hubs: Think of Hubs as P2P chat rooms. Connecting to a hub allows you to chat and download files from other users connected to that hub. It is completely decentralized, with downloads dependant upon the users, and not the hub. So if for any reason, a hub closes, your download will not be affected. Certain features, however, are dependant upon the hub, like searching and chatting.
+
+2. Reconnect: This reconnects you to the hub you are currently connected to. If you are connected to multiple hubs, it will only reconnect to the one that is up front. Note that when you get disconnected from a hub, the program will automatically attempt to reconnect every 10 minutes or so. This button is so that you can force a reconnect, to reconnect earlier, or sometimes re-enter the hub for whatever reason.
+
+3. Follow Last Redirect: Hub Operators have the ability to redirect any and all users. What the redirect function does, is it disconnects you from your current hub, and connects you to a different one. Redirects are often used when a hub you try to connect to is full, so the owner/op sends you to his friends hub. Redirects are also used to send you away if you do not share enough, or do not have enough open slots. I will talk more on Redirects, Shares, and Slots later.
+
+4. Favorite Hubs: Think of this as your Favorites list in your Internet Browser. This brings up a window which stores all your Favorite Hubs. If you happen across a hub you really like and want to add it to your Favorites, the easiest way is to simply type /fav .
+
+5. Download Queue: This displays your Download list. Files that you choose to download are displayed in this list. Along with information such as the User you are downloading from, the filesize, download status, download priority, and so-on.
+
+6. Finished Downloads: This opens a window which displays all of your completed downloads. Note that the list is erased (but not your files) each time you close DC++.
+
+7. Finished Uploads: Same as Finished Downloads, except, for Uploads. (The door swings both ways)
+
+8. Search: This is what most of you will be using while connected to a Hub. Clicking this icon will bring up a search dialog, allowing you to select all kinds of variables to fine-tune your search. Keep in mind that sometimes, on slower hubs, searches might take some time. Don't be impatient, or you might not find what you are looking for.
+
+Note on Searching: Many users make the mistake of entering a hub and asking in the chat if a anyone has a file. This is wrong. People will often times not respond, and if they do, they will suggest you use the search function.
+
+9. ADL Search: Stands for Automatic Directory Listing. Using this function automatically lists files that you are looking for when you download a users filelist. This feature is very unreliable, and I do not recommend using it. It is not as effective as a regular search.
+
+10. Settings: The takes you straight to the Settings window.
+
+11. Notepad: DC++ has its own built in notepad where you can add snippets of information... a web address.. anything. Think of it as a little memo pad. Information is automatically saved once the notepad is closed.
+
+12. Download Queue File Tree: This is the file tree for the download queue. Each time you open it, you must click your way to the directory you wish to save files to. It eventually leads to the default Download folder, and in my opinion, is nothing but a pain in the rear. You can toggle the use of the File tree by clicking the Check Mark below the field.
+
+13. Download Queue Main: This is the main field where added downloads will appear.
+
+14. Active Transfers: This area displays all of the running Downloads and Uploads. This is where you look to see what percentage a transfer is at, what speed it is downloading at, and any status it might be in.
+
+15. Tabs: This area displays quick tabs of all open windows. Simply click a tab, and the window is brought to the front.
+
+16. Status Bar: This displays various statistical information about your current DC++ session. It shows how many Slots are open/total. Your total bytes Downloaded and Uploaded. As well as the current Download/Upload speed, with the amount of Downloads and Uploads in Parenthesis. ( )
+
+
+3. Configuring the Options
+
+With a mild understanding of the icon bar, let's venture into the program options. Here I will further explain some of the finer things of Direct Connect.
+
+General Tab
+
+Personal Information
+
+Nick (Required) : This is where you would type in your nickname. Think of this as your screenname. Pretty self-explanatory.
+Email: Obviously, you could type your email in this field. You are not required to fill in this field, and many users do not. Chances are, if it's even filled in, it is not valid.
+Description: Type in a description of the files you offer. If you plan upon sharing a bunch of games, type in Games, or something else easy to understand. Limit of 35 Characters.
+Connection: Select the Speed of your Internet Connection. Do NOT Lie.
+
+Connection Settings
+
+Select the proper connection settings depending upon your connection. Here is some help:
+
+Active: The usual connection mode, you can specify your IP if detection fails and a port of your choice if you need to. This mode will use a random port between 1025 and 32000 chosen anew on restart if you do not specify one.
+
+Passive: Compatibility connection mode for users behind Firewalls they can't change to let DC++ connections through.
+Only use this if Active is not working.
+
+Note on Passive: A Passive user CANNOT connect or download to another Passive user.
+
+Note on Routers: If you use a router, getting active mode to work can be a pain, but it is possible. First, discover your true IP by visiting /http://www.whatismyip.com. Take your IP address and paste it into the Active Mode IP Field. Then, set it to port 412 or 1412. Open your Router configuration and set the Router to forward TCP and UDP port 412 or 1412
+(Thanks to Mannerheim, A.K.A. Pac-Girl, for the info)
+
+Downloads Tab
+
+Directories
+
+Default Download Directory: This is where downloads will be placed by default.
+Unfinished Downloads Directory: This is where files that have not yet completed will be temporarily stored. Once the file is complete, it will be moved to the Default Download Directory. This field is optional. If you leave it blank, all files are stored in the Default Download Directory.
+
+Limits
+
+Maximum Simultaneous Downloads: How many files you can be downloading at once. Set to 0 for No Limit.
+Maximum Download Speed to Start New Downloads: Unfortunately, I don't understand what this setting affects. I simply leave it disabled. Sorry
+
+Public Hubs List
+
+Public Hubs List URL: Like I mentioned earlier. the list of public hubs the program retrieves is downloaded from a site. Here is where you specify the address. DC++ used to host the list, but has since stopped. I suggest you go to ttp://www.imperialnet.org and sign up for a personal public hub list. The link will be sent to you via email. You place the link in this field.
+HTTP Proxy: If you wish to use a proxy when downloading the hub list.
+
+Sharing Tab
+
+Shared Directories
+
+Here is where you specify what directories you want to share. 98% of Hubs on the Direct Connect network require you to share a certain amount of data. If you do not have at least 5gb or more or data to share, There is a good chance you will not get access to any hubs. Most good hubs require 10gb or more. Also, most hubs will kick you if you share certain files. These files include VOB files, WAV files, DLLs, and DATs. There are many other types of files hubs do not want you sharing. You might want to consult the hub rules when you enter, to make sure you are not sharing any of those files. Note that cannot share individual files, but only the folders that they are in.
+
+Do not, I repeat, DO NOT share your Windows Directory, your Program Files directory, or any other installed application/games directories. These directories house files that are useless to other users on the hub, and may get you promptly kicked and banned on the hub.
+
+Automatically Open an Extra Slot if Speed is Below __kB/s: By default, this is disabled. If for any reason, your total upload speed drops below the specified kB/s, the program will automatically open another slot.
+Upload Slots: This field is very important. This sets how many files may be downloaded from you at once. If you have 3 slots open, and a user starts downloading from you, you will only have 2 slots open. Many hubs require you have a total of 3 slots open, plus 1 slot per additional hub you are connected to. So, if you are connected to 3 hubs, and each one requires 3 slots, plus 1 per hub. You would end up requiring a total of 5 slots to be open. 3 for the first hub, and then plus 2 for the 2 other hubs. You need only have slots available. In the event all the slots fill up with downloaders, you are not required to open more. Some hubs have limits as to how many slots you can have open, so don't crank it up really high.
+
+Appearance Tab
+
+Colors
+
+Select Window Color: Simple. Click the button to select the window color, for your background text. Preview is displayed in the window.
+Select Text Style: Click this button to choose the Text Font, Color, Size, and Style that will be used when displaying text.
+
+Options
+
+Full Row Select in Lists: When viewing File Lists, this will highlight the entire row, instead of just the filename. Simply a personal preference, and does not affect performance in any way.
+Filter Kick and NMDC Debug Messages: This option chooses whether or not to display the Kick messages and other minor messages displayed by the Neo-Modus Direct Connect Client. I prefer to have this option off.
+Minimize to Tray: DC++ will minimize to the system tray as an icon, instead of the Task Bar
+Show Timestamps in Chat by Default: This will make all chat entries appear with the time they were posted in front of them.
+Confirm Application Exit: Asks if you really want to close DC++ when you Exit.
+View Status Messages in Main Chat: Whether or not to view Status messages in the chat, or in PM (Sometimes not at all)
+Show Joins / Parts in Chat by Default: This displays when users join and leave the hub you are connected to. On large hubs, this can get annoying.
+Use System Icons when Browsing files: When you browse a users files, this will use you own system icons to display certain files. This slows down the process a little, but you hardly notice it. If you turn this off, DC++ uses its own custom icons for files.
+Set Finished Manager(s) Tab to Bold when an Entry is added: If you have the Finished Downloads/Uploads Windows open, this will make the tab display bold text when such a transfer is completed.
+
+Default Away Message
+
+By Default, the DC++ client sets you to Away Mode when you minimize, and Back when you restore the window. This is the default message displayed.
+
+Language File
+
+DC++ can be configured with an XML file to display text in your preferred Language. Visit the DC++ website to download Language files, and set the path in this field.
+
+Logs and Sounds Tab
+
+Logging
+
+Set the Directory in which logs will be saved to, and Check the aspects you wish you keep logs of. Do not type anything in the fields, simply check the option.
+
+Sounds
+
+Make an annoying sound every time a private message is received: Makes a sound every time someone sends you a private message
+Make an annoying sound when a private message window is opened: Makes a sound every time a private message window is opened... duh
+
+The annoying sound they are referring to is simply the Default System Beep. To change the sound, change your Default Beep in Windows.
+
+Advanced Tab
+
+Advanced Settings
+
+Rollback: This is the amount of bytes that are rolled back and redownloaded when you resume a download. Useful for preventing File Inconsistencies in the event of a system crash or stupid firewall,but doesn't always work. Default is 4096.
+Write Buffer Size: Anti-fragmentation feature, DC++ saves every X bytes to keep fragmentation low.
+Client Version: What version number to report to hubs and users. I highly recommend you leave this blank.
+Max Tab Rows: How many rows of window tabs to display before refusing to add more.
+Auto Away on Minimize: Here is where you change whether or not DC++ should automatically set you to away when you minimize the window. If you do not turn this on, you will have to type /away and /back in the main chat to activate the away feature.
+Automatically Follow Redirects: If an op or hub redirects you to another hub, having this checked will automatically redirect you. If not, you will be disconnected from the hub, and forced to press the "Follow Last Redirect" button to be redirected.
+Clear Search Box after each search: This will clear the search box after you search for something.
+Open the Public hubs window at startup: This will make the Public Hubs window appear automatically when DC++ is started.
+Open the Download Queue Window at startup: Opens the Download Queue Window at Startup.
+Automatically Search for Alternative Download Locations: When a download is added, it will automatically search for other results, depending upon filename and filesize. if it matches, it will automatically add the user as an alternative source. Using this feature sometimes causes problems, but often does more good than bad.
+Popup Private Messages: Brings new PMs to the front, as opposed to leaving them in the background.
+Ignore messages from users that are not online: Prevents you from receiving messages from offline users, like bots for instance. Turning this on is highly discouraged, as bots often send you important information.
+Popup Messages from users that are not online: If you choose not to ignore the offline users, you can choose to simply have their message displayed in the main chat, instead of in a PM.
+Remove Dupes completely from your share: In the event you share 2 of the exact same file, one of the files will be completely removed from your share (but not your hard drive). Regardless, DC++ will not count duplicate files towards your share.
+Install URL Handler on Startup: With this checked, clicking on dchub:// links will open the hub in DC++
+Use Small Send Buffer: In case Uploads slow your downloads a lot Mainly for dialup users, but some broadbanders might find it useful.
+Don't Delete File Lists When Exiting: When you download someone's file list, it is temporarily stored in the DC++ folder until you exit the application. By default, the program deletes these files when you exit. Check this to keep those filelists. Keeping a file list might prevent you from seeing new files from that user. Keeping the lists is discouraged.
+Automatically Disconnect users who leave the hub: When a user downloads a file from you and then leaves the hub he found you at, it is generally considered a bad thing, as it prevents you and anyone else in the hub from downloading off him (think Leecher). This feature disconnects users that are no longer in the hub once they download. This option is highly encouraged.
+Show Progress Bars for Transfers: This displays a colored bar showing the progress of a transfer. Uses some CPU power, but most of you won't notice it.
+Enable Automatic SFV checking: This option is very cool, although rarely used. If this option is enabled. DC++ will automatically check a downloaded file's CRC with the supplied SFV. If the file fails the check, the file is redownloaded. If it fails a second time, the current user is removed as a source and the program searches for alternatives. SFVs are only checked if they are in the same folder as the files you are downloading.
+Automatically Refresh Share List Every Hour: When you start DC++, it creates a file list of all the files you are sharing. Sometimes, you can add or remove files from shared directories without the list being updated, and then your share amount isn't updated, nor are the files reported in your file list. This re-builds the file list every hour to ensure that it is current. To manually update your file list, type /refresh in the main chat.
+Use antifragmentation method for downloads: Prevents files from being fragmented, avoiding file errors. This usually isn't a problem.
+
+Go ahead and Click OK, and restart DC++.
+
+4. Hub Lists, Connecting, and Favorites
+
+With your DC++ properly configured, we are ready to rock. First, I hope you signed up and configured the url for the hub list, if not, scroll up and learn how. Go ahead and click the Public Hubs Icon and it will bring up the Public Hubs window. Give it a minute (depending upon your connection) and it will populate a huge list of hubs. These are all the Public hubs that the list you downloaded have responded to. You can use the Filter option to filter out key words in a hub's title or description. Let's connect to the Official AWB hub. To the lower right, you will find a Manual Connect Address field. In that field, type awb.no-ip.org:8888 and press connect. If you did not connect, it could be for a number of reasons:
+
+1. The hub is down. Wait a few minutes and try again.
+2. Your firewall is restricting access. Make sure you allow the DC++ program to bypass your firewall, or if you cannot set such a setting, you use the Passive mode.
+
+Soon after, you will be connected to the hub, and the main chat will appear and display the Rules and News. I highly suggest you read over the information, as it will inform you about the Rules for users, and Recent News, as well as some Hub-Using information. Once you are done getting a quick feel, type /fav into the main chat. That will add this hub to your favorites. Now, to view your favorites, click the Favorite Hubs icon above. The window will open, and you will see the AWB Hub in the list. Notice the check mark next to the title. Checking a hub in the list means you will automatically connect to it when you start DC++. You may also right click on an entry and edit its information, as well as set a specific Nick and password that will be used when you connect to the hub. The password is only used for Registered users and Ops. Chances are, you are neither. Leave it blank.
+
+5. The Main Chat Window
+
+Now, sit back and stare at the main chat. Depending upon your settings, you might see users Joining and Parting. Sometimes the hub gets busy with chatter. Feel free to participate by adding your own input, but as always, don't be an ass.
+
+Take a look to the right of the chat area. You should see a list with a bunch of names. This is the user list. you can scroll up and down, and left and right to view how much each user is sharing, their description, their connection type, and email. DC++ users will also have a <++ tag in their description. This tells you that they are using DC++, and also gives you a little information on their settings. Reading the <++ tag is as follows:
+
+In order of appearance:
+V: Client version
+M: Mode, A = Active, P = Passive
+H: Number of opened hub windows where they are not a registered member
+S: Number of slots open.
+
+You can hide the User list by unchecking the box below the field.
+
+The user icons also play an important role. Normal users have a standard, green icon. Most users will have this icon. A DC++ user's icon changes to Blue on the first direct connection to that user. Passive users icons have a brick wall displayed on their icon, also showed on the first direct connection. Operators have a key in their icon.
+
+Go ahead and right-click on a user in the user list. Notice how you can perform certain actions, like sending a private message, downloading that users file list, and granting them an extra slot. If for any reason that user tries to download something off you, and you don't have any free slots, you can temporarily grant that user an extra slot if you wish. Also note that you can right click on a name in the main chat to access the same options.
+
+DC++ also allows certain commands to be typed in the main chat. Here is a list of all the commands:
+
+/grant Grants a slot to the user of the pm window you type it in
+/close Closes the current window
+/help Displays a short help message
+/refresh Refreshes your list of shared files
+/away <message> Specifies a message to auto-respond in PM's while you're AFK. If you do not specify a message, it displays the default one you set in your settings.
+/back Turn away message off
+/slots <#> Changes your number of slots to <#>
+/clear Clears the main chat windows
+/ts Switches timestamps in chat windows on and off
+/showjoins Toggles joins/parts messages for the current hub
+/search <string> Searches for <string>
+/join <hub> Joins <hub>
+/dc++ Gives a comment about DC++ and shows the URL where
+you can get it
+/fav or /favorite Adds hub to favorites (also works in pm's from that user, to add the user to your favorites)
+
+The status area at the bottom of the main chat window is used to display various information, like The last hub message you recieved, The total amount of users in a hub, and total share amount that all users are sharing.
+
+6. Searching, Downloading, and File Lists
+
+Ok. Now lets start searching for something. Searching is simple, and effective. Go ahead and click on the Search icon above the main chat, and that will bring up the Search window. Here you can type in what you want to search for, the file size, the type, and whether or not to display only results from users with free slots. Trying to download a file from users without free slots forces you to wait in line until a slot becomes available. It is best to turn on this feature.
+
+Go ahead and search for something. For testing, lets search for Red Faction 2. Type Red Faction 2 into the search, and press enter. You don't have to specify the file size, or type, those are usually if you are looking for a specific filename.
+
+Depending upon your connection speed, you should get a few results. The results are categorized by User, Filename, Type, Size, Path of that file in the users share, Slots, Connection Type of that user, Hub the user is connected to, and Exact size in bytes.
+
+To download a file, simply double click on it, or right click on it and choose Download. It is automatically downloaded to your default Download Directory. If you wish to download it to a different directory, you can Right click and choose Download to... The Download to... function is also useful when adding a source of a current download, but the filename is different, and the Auto-Find Sources function doesn't pull it up.
+
+Now, if for any reason the file doesn't download, there are a few things to check:
+
+A. Is the user still connected to the hub? If they aren't, the download will stop.
+B. Does the user have free slots? If not, you will see "No Slots Available" in the status area.
+C. If you see "All Download Slots Taken" that means you have filled up your download slots. To increase the limit, change your Maximum Simultaneous Downloads in your settings.
+D. Are you in Passive mode? If so, the user you are downloading from might also be in Passive mode. A Passive mode user CANNOT download from another passive mode user. See why getting active mode to work is so useful?
+E. In some situations, the file might become corrupted during transfer. Check the Download Queue and look at the Errors column of a download, to see any errors.
+F. Your Router isnt configured properly
+
+While you are on the Download Queue window, lets go over its functions. Like I mentioned earlier, this window lists all the downloads you have attempted. It displays the Filename, the Status, Size, Download Priority, the Users that are sharing the file (sources), and any errors during transfer.
+
+The Download Priority is an interesting feature, allowing you to pause a download, as well as set a Priority in which to download a file. Obviously, Highest Priority files will be downloaded first. To Pause a download, right click on the download, and change the Priority to Pause. Then right click on the file and Close the Connection. If you close the connection without Setting the Priority to Pause, the Download will resume within a few minutes. To cancel a download, simply delete its entry in the Download Queue, and Close the Connection.
+
+Ok. now, lets say you want to see all the files a certain user is sharing. You simply download that users file list. Right click on the users name in the userlist, Main Chat, or a search result from that user, and choose Get File List. It'll start downloading that users file list.
+
+Note on File Lists: Certain small files can be transferred even when no slots are available. Since the makers of DC++ think it is stupid to have to fight for a slot when you are only downloading a small txt file, they allowed such files to bypass the slot limit, and transfer even when all slots are taken. Usually, the File Lists are one of these small files.
+
+Once the file list is downloaded, it will automatically display. You can then navigate through the users shared files much like that on a normal windows machine. Double click a file to download it, or right-click to view extra functions.
+
+7. Extras
+
+There are a few extra features that DC++ offers, that really aren't important, but I'll discuss them anyway
+
+First, click the file manu. you'll notice entries for all the Icons on the main window, and a few others. I'll Explain them.
+
+Favorite Users: Displays your favorite users. Pretty simple. To add a user to your favorites, right click on their username, and choose Add to Favorites.
+Search Spy: Lets you see all the search strings that users are sendind to your computer, as well as how many times it has occurred. Useful or spying.. not much else.
+Open File List: In the event you have a saved file list, you can open it here. It is usually easier and much better to download it anew, in case it has become outdated.
+Import Queue from NMDC: This is in case you previously used the Neo Modus Direct Connect client. This will import all your queued items, instead of you adding them manually. 

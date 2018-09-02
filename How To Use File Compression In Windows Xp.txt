@@ -1,0 +1,74 @@
+How To Use File Compression In Windows Xp
+
+How To Use File Compression in Windows XP
+Article ID	:	307987
+Last Review	:	July 15, 2004
+Revision	:	1.1
+This article was previously published under Q307987
+IN THIS TASK
+•	SUMMARY
+ 	
+•	NTFS Compression
+•	Compressing an NTFS Volume
+•	Compressing Files or Folders on NTFS Volume
+•	Displaying Compressed Files in Color
+•	REFERENCES
+On this Page
+SUMMARY	SUMMARY
+REFERENCES	REFERENCES
+SUMMARY
+Compressing files, folders, and programs decreases their size and reduces the amount of space they use on your volumes or removable storage devices. Volume compression decreases the amount of space that is used by all of the files and folders that are stored on that volume. Because of a potential loss of performance, you may not want to compress some files.
+
+back to the top
+NTFS Compression
+NTFS compression is available on volumes that use the NTFS file system, and NTFS compression has the following features and limitations:
+•	You can use NTFS compression to compress individual files and folders, as well as an entire NTFS volume.
+•	You can compress a folder without compressing its contents.
+•	You can work with NTFS-compressed files without decompressing them, because they are decompressed and recompressed without user intervention.
+•	You can display NTFS-compressed file and folder names in a different color to make them easier to identify.
+•	You may notice a decrease in performance when you work with NTFS-compressed files. When you open a compressed file, Windows automatically decompresses it for you, and when you close the file, Windows compresses it again. This process may decrease your computer performance.
+•	NTFS-compressed files and folders only remain compressed while they are stored on an NTFS Volume.
+•	You cannot encrypt an NTFS-compressed file.
+
+
+Compressing an NTFS Volume
+
+You must be logged on as an administrator or a member of the Administrators group to complete this procedure. If your computer is connected to a network, network policy settings may also prevent you from completing this procedure. To compressing an NTFS volume:
+1.	Click Start, then click My Computer.
+2.	Right-click the volume you want to compress, and then click Properties.
+3.	On the General tab, click to select the Compress Volume to save disk space check box, and then click OK.
+4.	In Confirm Attribute Changes, click the option you want.
+
+
+Compressing Files or Folders on NTFS Volume
+
+To compress a file or folder:
+1.	Click Start, and then click My Computer.
+2.	Double-click the NTFS Volume that contains the folder or folders you want to compress.
+3.	Right-click the file or folder you want to compress, and then click Properties.
+4.	On the General tab, click Advanced.
+5.	Click to select the Compress contents to save disk space check box, and then click OK.
+6.	In the Properties dialog box, click OK.
+7.	In Confirm Attribute Changes, click the option you want.
+
+NOTE: If you move or copy a file into a compressed folder, it is compressed automatically. If you move a file from a different NTFS Volume into a compressed folder, it is also compressed. However, if you move a file from the same NTFS Volume into a compressed folder, the file retains its original state, either compressed or uncompressed.
+
+
+Displaying Compressed Files in Color
+You can change the display of files and folders that are compressed in Windows Explorer and My Computer, so it is easy to see them. To display compressed files in color:
+1.	Double-click Folder Options in Control Panel.
+2.	Click Start, and then click Control Panel.
+3.	Click Appearance and Themes, and then click Folder Options.
+4.	On the View tab, click to select the Show encrypted or compressed NTFS files in color check box.
+
+
+
+
+REFERENCES
+
+Windows supports two types of compression, NTFS compression and compression by using the Compressed (zipped) Folders feature.
+
+For additional information about zipped folders, click the article number below to view the article in the Microsoft Knowledge Base:
+306531 How To Use Compressed (Zipped) Folders
+For additional information about NTFS compression, click the article number below to view the article in the Microsoft Knowledge Base:
+251186 Best Practices for NTFS Compression 

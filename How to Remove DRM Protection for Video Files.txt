@@ -1,0 +1,62 @@
+How to Remove DRM Protection for Video Files 
+
+This is how to unprotect the Video files from Mcft latest technology DRM.
+So here is the procedure:
+
+1. Install fresh Windows XP SP1 (English)
+2. Download and install WMP9 from Mcft
+3. Make sure you are now able to play the .wmv files from the DVD. That requires running dvdrun.exe, individualizing WMP and finding the right proxy if you are not in US to get the license.
+4. Get the DRM2WMV files from the below links
+5. Download Japanese version of WMP9 from Mcft
+6. Doubleclick the downloaded file, it will unpack all installation files to temp directory in your Documents and Settings directory. Get the drmv2clt.dll file and copy it to c:\Program Files\Windows Media Player directory. Cancel the Japanese WMP9 installation.
+7. Edit lines 9-12 of the drmdbg.ini downloaded from step 4 as written bellow
+
+drmv2clt=1;
+drmclien=0;
+blackbox=0;
+indivbox=0;
+
+8. Doubleclick drmdbg.exe. It should open WMP. Navigate to your wmv file. After acquiring the license the drmdbg DOS window should display something like this:
+
+drmdbg Ver 0.31 by taku
+CreateProcess: c:\Program Files\Windows Media Player\wmplayer.exe
+010010C5 ‚v‚è‚O‚Î‚« ‚G‚Ù‚g‚’¸[ ‚|‚C‚Ù‚g
+IsDebuggerPresent: memwriteret=1 callret=0
+crc: 2850B98C c:\Program Files\windows media player\drmv2clt.dll
+setbp 09252BCC 50
+eax 00D6E1C8
+
+<DRM2WMV2>
+<KID></KID>
+<SID>LCqa6j9UTtiPj3FZKZ0pFnIYzaM=</SID>
+<INFO></INFO>
+[]
+</DRM2WMV2>
+
+Copy the last 6 lines and paste them to T2_Part1.key text file to the drm2wmv1241\drm2 directory.
+
+9. Copy the wmv files from the DVD to the drm2wmv1241 directory.
+10. Change your date to 12/Feb/2005
+11. Open DOS window, go to drm2wmv1241 directory. Type
+md c:\windows\#dummy
+X.wmv (where X indicates your file name)
+
+The file should be decrypted. Here is what I see:
+
+J:\drm2wmv1241>md c:\windows\#dummy
+
+J:\drm2wmv1241>drm2wmv X.wmv (where X indicates your file name)
+
+DRM(Ver1&2) Conversion tool Ver 1.241 by taku
+
+J:\drm2wmv1241>drm2wmv X.wmv (where X indicates your file name)
+DRM(Ver1&2) Conversion tool Ver 1.241 by taku
+DRMv1 KID (17fG9KorUkm83BmyUnPv3w==)
+DRMv2 KID (17fG9KorUkm83BmyUnPv3w==)
+≈S‚p‚P‚b‚g…ˆ: 110189¸@1‚p‚P‚b‚g‚T‚C‚Y: 9418
+|################# | 34%
+
+
+You can download the file from here
+Code:
+http://www.savefile.com/files/7205691

@@ -1,0 +1,139 @@
+This file is an addendum to "A Novice's Guide To Hacking" written by "The
+Mentor".  The word "hacking" is here used the way the non-hacking public
+thinks it is used, to mean breaking into somebody else's computer.  Its
+purpose is to expand and clarify the information about the TOPS-20 operating
+system, which runs on DECsystem-20 mainframes.  The Mentor basically lumped
+this system in with TOPS-10 and didn't note important differences between the
+two.  I will here reproduce in full what The Mentor had to say about TOPS-10
+and about VMS, which are the parent and the offspring of TOPS-20.
+
+VMS-       The VAX computer is made by Digital Equipment Corporation (DEC),
+           and runs the VMS (Virtual Memory System) operating system.
+           VMS is characterized by the 'Username:' prompt.  It will not tell
+           you if you've entered a valid username or not, and will disconnect
+           you after three bad login attempts.  It also keeps track of all
+           failed login attempts and informs the owner of the account next time
+           s/he logs in how many bad login attempts were made on the account.
+           It is one of the most secure operating systems around from the
+           outside, but once you're in there are many things that you can do
+           to circumvent system security.  The VAX also has the best set of
+           help files in the world.  Just type HELP and read to your heart's
+           content.
+           Common Accounts/Defaults:  [username: password [[,password]] ]
+           SYSTEM:     OPERATOR or MANAGER or SYSTEM or SYSLIB
+           OPERATOR:   OPERATOR
+           SYSTEST:    UETP
+           SYSMAINT:   SYSMAINT or SERVICE or DIGITAL
+           FIELD:      FIELD or SERVICE
+           GUEST:      GUEST or unpassworded
+           DEMO:       DEMO  or unpassworded
+           DECNET:     DECNET
+
+
+DEC-10-    An earlier line of DEC computer equipment, running the TOPS-10
+           operating system.  These machines are recognized by their
+           '.' prompt.  The DEC-10/20 series are remarkably hacker-friendly,
+           allowing you to enter several important commands without ever
+           logging into the system.  Accounts are in the format [xxx,yyy] where
+           xxx and yyy are integers.  You can get a listing of the accounts and
+           the process names of everyone on the system before logging in with
+           the command .systat (for SYstem STATus).  If you seen an account
+           that reads [234,1001]   BOB JONES, it might be wise to try BOB or
+           JONES or both for a password on this account.  To login, you type
+           .login xxx,yyy  and then type the password when prompted for it.
+           The system will allow you unlimited tries at an account, and does
+           not keep records of bad login attempts.  It will also inform you
+           if the UIC you're trying (UIC = User Identification Code, 1,2 for
+           example) is bad.
+           Common Accounts/Defaults:
+           1,2:        SYSLIB or OPERATOR or MANAGER
+           2,7:        MAINTAIN
+           5,30:       GAMES
+
+**** note:  I'm remembering this stuff from several years ago, and in some
+cases my memory may be foggy or stuff may be outdated.
+
+TOPS-20, once you are inside, resembles VMS much more than it resembles  
+TOPS-10, as far as I know (I'm not really familiar with VMS).  From the
+outside, it's more like TOPS-10, except that the prompt is a @ instead of a
+period.  You can enter many commands without logging in, including SYSTAT and
+probably FINGER.  (Sometimes you can even use the mail program without
+logging in.)  It is very helpful.  Not only does the command HELP lead to
+lots of useful information, but anywhere in typing a command you can press ?
+and it will tell you what the format of the command expects.  For instance,
+if you type ? by itself, it will tell you all the words that a command can
+begin with.  If you type S?, it will tell you all the commands that start
+with the letter S.  If you type SYSTAT ?, it will tell you the options
+available on the systat command.  You can use this at any point in any
+command.  Furthermore, if there is only one possibility (you have typed a
+unique abbreviation), you can press Escape and it will finish the word for
+you.  I'm not sure, but I think TOPS-20 was the system that first introduced
+filename completion as well --turning a uniquely abbreviated filename into a
+complete name when you press escape, beeping if the abbreviation is not
+unique.  With command keywords you can leave the abbreviation un-expanded,
+with filenames you have to expand it (or type it all in) for it to work.
+
+Use the "Login" command to log in, followed by a username.  It will prompt
+for a password.  Note that a password can be something like 39 characters
+long, as can the username itself.  TOPS-20 does NOT use numbers like 317,043
+for user IDs.  (Note that these numbers in TOPS-10 are octal, not decimal.) 
+Furthermore, the password can contain spaces.  So, if somebody wants to make
+his password difficult to guess, he can easily do so.
+
+(But sometimes they might get overconfident.  I remember a story from
+Stanford...  Someone asked the large cheese if he would let him know what the
+operator password was, and he said "The operator password is currently
+unavailable."  So the guy tried "currently unavailable" as a password, and
+got in.  (Which reminds me of the time they got a real bug in the system
+there...  a head crash caused by an ant on the disk platter.))
+
+In general, TOPS-20 does not limit the number of login attempts, nor does it
+keep a record of bad tries.  However, it is not difficult for the local
+management to add such measures, or others such as a delay of several seconds
+after each attempt.  And unlike Unix, it is difficult to evade these even
+once you're in.  Without heavy in-depth knowledge, you can't test a username-
+password combination except through a system call, which will enforce delays
+and limited failures and such against password-trying programs.
+
+So, TOPS-20 is easy to defend against the "database hack", in which you try
+many different common passwords with many different usernames.  (Unix is
+much more vulnerable to this.)  But any particular system, especially a lax
+one like a college machine (DEC is always popular in academia), might have
+little defense here.  But you might not know how much defense until too late.
+
+Do try the GUEST username.
+
+But TOPS-20 can be very vulnerable to trojan horses.  See, there's this thing
+called the Wheel bit.  A username that has the Wheel property can do anything
+the system operator can do, such as ignore file protection masks, edit the
+disks at the track/sector level, change any area of memory...  On Unix, only
+one user, the superuser, can read and write protected files.  On TOPS-20, any
+user can do these things from any terminal, if the Wheel attribute is set in
+his user data.  Some campus computers tend to accumulate excess trusted users
+with wheel bits, and have to periodically prune away the unnecessary ones.
+
+The thing is that a wheel can do these things without knowing that he has
+done them.  Normally the privileged commands are deactivated.  But a program
+run by a wheel can activate the privileges, do anything it wants, cover its
+tracks, and deactivate them without the user ever being the wiser.  So if you
+can get any wheel user to run any program you wrote, such as a game or small
+utility...  there's no limit to what you can do.  In particular, you can
+create a new username, and make it a wheel.  Or you can simply ask the system
+outright for someone's password, if I'm not mistaken.  (All this requires
+access to TOPS-20 programming manuals, but some of the necessary material
+should be available on line.)  You cannot actually conceal this creation, as
+far as I know...  but maybe with sophisticated enough knowledge you could
+make it not immediately apparent...  Anyway, once you get that far in, you can
+probably keep one step ahead of them for a while...  If they erase your new
+accounts, you can use the passwords to old ones...  They can change all of
+the wheel passwords, but a lot of the regular users won't change for some
+time...  You could even lock the operators out of their own system by
+changing all their passwords for them, if you were crazy enough, perhaps
+forcing them to shut the machine down to regain control of it.  They might
+even have to restore stuff from tape backup.
+
+Even if you don't wedge your way into secret stuff, a TOPS-20 system can be
+fun to explore.  It's much more novice-friendly than most systems, and much
+more hacker-friendly as well.  I think the ascendency of Unix as the least-
+common-denominator OS that everybody can agree on is a definite loss,
+compared to TOPS-20.

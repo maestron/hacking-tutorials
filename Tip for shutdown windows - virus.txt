@@ -1,0 +1,11 @@
+ Try to open:
+
+Run -> cmb -> shutdown -a
+
+This prevent the shutdown.
+
+ create a new shortcut.. then write;
+shutdown -s -t 0 = this is for shut down in 0 seconds (t = time s=shutdown)
+shutdown -r -t 0 = same but this is for restart comp. in 0 seconds..
+(only for windows xp)
+in win.98 this is different; we were wrote rundll32.exe -s or something like this..i couldnt remember right now..

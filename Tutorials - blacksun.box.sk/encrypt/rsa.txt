@@ -1,0 +1,254 @@
+______________________________________________________________________________________________
+
+                            RSA: Attacking the cryptosystem [V. 1.3]
+            
+                            Written by The Death, February 8th 2001
+                (I can be found on the BoxNetwork's IRC server under ThyDeath)
+
+______________________________________________________________________________________________
+
+Table of Content
+1.0..............................................................Introduction
+1.1..................................Basic Math & Functions Used In This Part
+1.2................................................Basic Statements Used Here
+1.3............................................................Trial Division
+1.4..................................The Idea Behind The Described Algorithms
+1.5........................................................Fermat's Factoring
+1.6.............................................................Pollard's P-1
+1.7....................................................Initial Segment Attack
+
+2.0............................................................Random Attacks
+2.1...................................................Basic Randomness Attack
+2.2.............................................................Pollard's RHO
+
+3.0.......................................................Real-Life Scenarios
+3.1..............................................................Known phi(N)
+3.2............................................................Common Modulus
+______________________________________________________________________________________________
+
+
+>>>  1.0 Introduction  <<<
+The RSA cryptosystem is the most widely-used Asymmetric Cryptosystem. In this toturial I will
+explain some vulnerabilities of this Cryptosystem, for people to learn from and protect themself
+or attack others.
+
+I will not explain the Cryptosystem itself, As it is described in many pages in the Internet.
+Furthermore, i will expect you to know Cryptosystem yourself.
+
+If you have any questions you can find your answers at the sci.crypt newsgroup, or you can ask 
+me on the IRC or Email (thedeadh@netvision.net.il)
+
+This part is dealing with one aspect: Finding the factors of the modulus. next parts will deal 
+other aspects of attacking this Cryptosystem.
+
+The Death
+
+
+>>>  1.1 Basic Math & Functions Used In This Part  <<<
+
+* Length(N) returns N's number of digits
+* The ^ symbol will be used here for Exponent.
+* M is the Modulus of the key.
+* P & Q are the two primes, which their product is M
+* [R] Denotes the greatest integer not exceeding R. Example: [4] = 4, [4.6] = 4, [-2.1] = -3. 
+* The GCD(a,b) function returns the Greatest Common Divisor of a & b. 
+  Example: GCD(100, 30) = 10, GCD(7,17) = 1.
+* Euler's Phi(N) Function returns the greatest B that comply: B =< N, GCD(B,N) = 1
+
+
+>>>  1.2 Basic Statements Used Here  <<<
+
+* X^2 - Y^2 = (X+Y)(X-Y)
+  Proof:
+  (X+Y)(X-Y) = X^2 - XY + XY - Y^2 = X^2 - Y^2
+
+* M is odd, unless P or Q = 2
+  Proof:
+  M = PQ. P & Q are primes, Therefore are not divisible by 2 unless they are 2.
+  The product of two primes is divisible only by these primes.
+
+* Fermat's factoring theorem: Every odd number can be written as the difference of two squares,
+  X^2 - Y^2 (X,Y : Natural).
+  Proof:
+  WTF?! I Don't care what the proof is! Go dig him up and ask him if you wish!
+
+* Conclusions from the Phi function:
+  * If P is a prime, then Phi(P^K) = (P^(K-1))*(P-1)
+  * If P is a prime, then Phi(P) = P-1
+  * If GCD(A,B) = 1 Then Phi(A*B) = Phi(A)*Phi(B)
+
+(Note: Fermat was a jackass guy who enjoyed solving mathematical sentences, then ask his friends
+ to solve them themself, just to annoy them)
+
+
+>>>  1.3 Trial Division  <<<
+
+This is the lesser algorithm there is for attacking the RSA cryptosystem. I put it here because
+ hmmm.... hmmmmm..... I am not sure. Maybe i inhaled too much CO2 from the Coke bottle.
+Anyways, It is simple:
+
+1) Assign X = 2
+2) Is X a divisor of M ?
+  * Yes - You found the P factor! Q is M/X, and now you cracked the modulus!
+  * No  - Assign X with the next prime and do this step again
+
+This algorithm is very slow when dealing high numbers. I still can't recall why did i put it
+ here.
+
+
+>>>  1.4 The Idea Behind The Described Algorithms  <<<
+
+The next algorithms are called specific factorization algorithms. They can theoreticlly factor
+ every modulus, but work best on a key with primes that weren't chosen properly.
+Each of them has a short description of the element it attacks, and how to avoid it.
+
+
+>>>  1.5 Fermat's Factoring  <<<
+
+This attack is based on Fermat's Factoring Theorem (No shit...). 
+If X^2 - Y^2 = M, then X^2 - M = Y^2.
+M is known, so we will brute-force X to find a pair X & Y that comply being Integers.
+
+The algorithm is as follows:
+1) Assign X with [SquareRoot(M)]
+2) Is SquareRoot(X^2 - M) = [SquareRoot(X^2 - M)] ?
+  * No - Increase X by 1 and do this step again
+  * Yes - Proceed to step 3
+3) Assign Y with SquareRoot(X^2 - M)
+4) The factorisation of M is (X+Y)(X-Y), meaning P = X-Y and Q = X+Y
+
+This algorithm is very effective against keys with modulus produced from two close primes.
+The bigger ((sqrt(P) - sqrt(Q))^2)/2 is, the greater is the number of steps needed for Fermat's
+factoring attack to find P and Q.
+
+
+>>>  1.6 Pollard's P-1  <<<
+
+The algorithm is as follows:
+1) Choose a number A that comply 1 < A < M
+2) Choose a number K
+3) Is GCD(A,M) = 1 ?
+  * Yes - You found a factor, GCD(A,M)
+  * No - Proceed to step 4
+4) Assign L = A^K mod M
+5) Assign D = GCD(L-1, M)
+6) Is D a factor of M ?
+  * Yes - You found a factor, D. P = D, Q = M/D.
+  * No  - Change K and/or A and return to step 3
+
+This algorithm is effective on M such that P or Q has small prime factors.
+
+
+>>>  1.7 Initial Segment Attack  <<<
+There is no exact algorithm, but this what i got: (M#3, M#1... will be used to reffer to the 
+  # digit of M. Say M = 72342, then M#1 = 2, M#5 = 7...)
+
+1) Assign A = 2
+2) Assign T with the minimum number of 0s to check the segment
+3) Is M#A, M#(A+1)...M#(A+T) = 0 ?
+  * Yes - Proceed to step 4
+  * No  - If A < Length(M) Then increase A by 1 and return to step 2, else exit
+4) Assign B with the segment from M#A to M#1 (Initial segment starting from M#A)
+5) Is GCD(B,M) > 1 ? 
+  * Yes - You found a factor! P = GCD(B,M), Q = M/P
+  * No - If A < Length(M) Then increase A by 1 and return to step 2, else exit
+
+This algorithm is effective if Length(P) < Length(Q) by much, and Q has alot of 0s in it.
+
+
+______________________________________________________________________________________________
+
+>>>  2.0 Random Attacks  <<<
+These attacks are based some statistic theories which i am not fimilliar with.
+The basic idea is taking some algorithms (some described in the 1st section) and adding some
+randomness to them.
+
+Additional function used here is Random, which denotes a random number.
+
+>>>  2.1 Basic Randomness Attack  <<<
+This is the simplest attack on this field. Like Trial Devision on the 1st section, this is the
+most basic algorithms and slow algorithm might be created...
+
+1) Assign A = Random Mod sqrt(N)
+2) Is A a divisor of N ?
+   * Yes - Well good for you!
+   * No  - Go back to step 1...
+
+
+>>>  2.2 Pollard's RHO  <<<
+A better algorithm (for some statistical reasons...)
+
+1) Assign X = Random Mod N
+2) Assign Y = Random Mod N
+3) Is X - Y a divisor of N ?
+   * Yes - Good!
+   * No  - You know what to do...
+
+This is the most basic idea. It can be improved using a polynomial. Example:
+1) Assign X = Random Mod N
+2) Assign Y = Random Mod N
+3) Set X = (X^2 +1) Mod N
+3) Set Y = (Y^2 +1) Mod N
+4) Set Y = (Y^2 +1) Mod N Again
+5) Set Z = GCD(X-Y, N)
+6) Is 1 < Z < N ?
+   * Yes - You found a factor (Z) !
+   * No - go back to 1...
+
+
+*** More to come soon! ***
+
+
+______________________________________________________________________________________________
+
+>>>  3.0 Real-Life Scenarios  <<<
+Here I will show some situations that might occur if the application or person making/using
+the RSA Cryptosystem is not fully aware of them.
+Sometimes trivial knowledge of an organization's security architecture might reveal some flaws
+that can be explotied to crack a key, or find the plaintext of a message.
+
+
+>>>  3.1 Known phi(N)  <<<
+Take a look at the RSA Cryptosystem's Key-Generation proccess. There is a great part relying 
+on (P-1)(Q-1). The 3rd conclusion of the Phi() function states that Phi(N) is equivalent to 
+(P-1)(Q-1) (Because N = PQ. P,Q = Primes).
+The fact that Phi(N) is used in the proccess is useful to us if the app saves a log of the 
+proccess, or we can find Phi(N) in any other way.
+Once Phi(N) is found, we can find P & Q. Here is how:
+Phi(N) = PQ - (P+Q) +1 = N -P -Q +1
+Therefore: Q = N -Phi(N) +1 -P
+Now, N = PQ. Instead of Q we put the value from the last equation. Therefore:
+N = P*(N -Phi(N) +1 -P), thus P^2 -P*(N -Phi(N) +1) +N = 0. 
+This is a typical quadratic equation, which you can solve using the quadratic formula.
+Once solved, P is exposed, Therefore Q is exposed, Therefore key is factored.
+
+
+>>>  3.2 Common Modulus  <<<
+The next scenario will relay on this basic one:
+Suppose there is a modulus S which is shared among several people. Each has it's own private/public 
+exponents set, but all based on the same modulus. None of the men know the factors. (This scenerio 
+may occur if a company chooses to issue all of the employees with keys, and for optimization uses a 
+common modulus).
+If one sends a message to two people sharing the same modulus, and an evesdropper is listening and 
+reading the communication, the evesdropper can get the original message out of the two.
+* M - The original message
+* J, K - The two ciphertexts
+* S - The common modulus
+* A, B - The public exponents of the two recipents
+
+GCD(J,K) = 1, the evesdropper uses the extended euclidian algorithm to find two numbers such that 
+a*x + b*y = 1. Using x and y, the evesdropper computes:
+M = (J^x)*(K^y) Mod S
+
+And there you go...
+
+
+
+______________________________________________________________________________________________
+
+That is all for now. I will add this part other algorithms as I find & learn them.
+Expect preceeding parts to come!
+
+The Death
+
+______________________________________________________________________________________________

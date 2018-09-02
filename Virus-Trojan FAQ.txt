@@ -1,0 +1,37 @@
+
+23. What is a trojan/worm/virus/logic bomb?
+
+This FAQ answer was written by Theora:
+
+Trojan:
+     Remember the Trojan Horse? Bad guys hid inside it until they could get
+     into the city to do their evil deed. A trojan computer program is
+     similar. It is a program which does an unauthorized function, hidden
+     inside an authorized program. It does something other than what it
+     claims to do, usually something malicious (although not necessarily!),
+     and it is intended by the author to do whatever it does. If it's not
+     intentional, its called a 'bug' or, in some cases, a feature :) Some
+     virus scanning programs detect some trojans. Some virus scanning
+     programs don't detect any trojans. No virus scanners detect all
+     trojans.
+Virus:
+     A virus is an independent program which reproduces itself. It may
+     attach to other programs, it may create copies of itself (as in
+     companion viruses). It may damage or corrupt data, change data, or
+     degrade the performance of your system by utilizing resources such as
+     memory or disk space. Some virus scanners detect some viruses. No
+     virus scanners detect all viruses. No virus scanner can protect
+     against "any and all viruses, known and unknown, now and forevermore".
+Worm:
+     Made famous by Robert Morris, Jr. , worms are programs which reproduce
+     by copying themselves over and over, system to system, using up
+     resources and sometimes slowing down the systems. They are self
+     contained and use the networks to spread, in much the same way viruses
+     use files to spread. Some people say the solution to viruses and worms
+     is to just not have any files or networks. They are probably correct.
+     We would include computers.
+Logic Bomb:
+     Code which will trigger a particular form of 'attack' when a
+     designated condition is met. For instance, a logic bomb could delete
+     all files on Dec. 5th. Unlike a virus, a logic bomb does not make
+     copies of itself.

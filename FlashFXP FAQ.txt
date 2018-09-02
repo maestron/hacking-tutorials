@@ -1,0 +1,48 @@
+Frequently Asked Questions
+
+For most updated content, visit our website
+
+Q: What is FXP? 
+A: FXP is a term adopted by earlier clients which provided site to site FTP transfers. 
+ 
+Q: When trying to transfer files from one site to another I keep getting this error 500 illegal port command. 
+A: The FTP Server is set up to not allow or doesn't support FXP. Located in the Site Manager on the Advanced tab, you will find the option "alternative fxp method". By enabling upload/download (depending on the direction of the transfer), you may be able to get the server to allow FXP. Note: It is common for some sites to only allow FXP in one direction and not the other. By enabling alternative fxp method, this problem is sometimes solved. 
+ 
+Q: Why do I keep getting this message: "Only client IP address allowed for PORT command" when trying to FXP? 
+A: The FTP Server is set up to block FXP. In most cases using alternative fxp method doesn't solve this problem. 
+ 
+Q: I've tried everything but I can't get a site to site transfer to work, what is wrong? 
+A: Site to site transfers are not supported by some software/hardware configurations. Often, this is due to an incompatibility with NAT (Network Address Translation). NAT is not aware of site to site transfers and when it detects you are attempting to transfer a file, it modifies the FTP protocol to match your local "inside" IP. Several users have reported that Microsoft Internet Sharing is not compatible. 
+ 
+Q: Why can't I see any files? I can see them in other ftp clients. 
+A: There are two possible reasons.
+1. You are behind a firewall and the FTP server is unable to connect to your computer. To resolve this issue you need to use Passive mode. This option is located in Preferences on the Proxy tab. Check "Use Passive mode".
+2. The files may be hidden on the ftp server, and in order to see them you need to change the list method. This is located in Preferences on the Options tab. Change the List method to show hidden files. Note: some sites don't allow you to view hidden files and will result in an error. To resolve this problem, go into the Site Manager, select the site and click the advanced tab. Uncheck "show hidden files", then save to keep the changes 
+ 
+Q: I can't see the toolbar icons or the icons are messed up. 
+A: This problem happens on Windows 95 systems when the \Windows\System\ComCtl32.dll file is out of date. This DLL is responsible for drawing the toolbar buttons and their images. You can download the latest version from this link: MS Common Control Update! 
+ 
+Q: When FXPing why doesn't FlashFXP show a file progress, transfer speed or how much time is remaining? 
+A: The FXP protocol (site to site) doesn't provide any means of measurement. After one file is FXPed, FlashFXP attempts to estimate the remaining time for the next file and total remaining time for all files in the queue.  
+ 
+Q: Will FlashFXP ever support connecting to more then 2 sites? 
+A: FlashFXP was designed to provide very easy access and usability to the site to site feature. Allowing more than two would only complicate things. For now let's stick with 2. 
+ 
+Q: Why doesn't FlashFXP support Squid? 
+A: FlashFXP v1.3 now supports it. 
+ 
+Q: Why doesn't FlashFXP download http:// urls from the clipboard? 
+A: FlashFXP is not a browser or a web download manager. For FlashFXP you need to use the ftp addresses. 
+ 
+Q: Is it possible to import site lists from another FTP clients? 
+A: Yes, You can import other site lists into FlashFXP from the Site Manager by right-clicking on the site list and selecting Import from the menu. 
+ 
+Q: FlashFXP looks confusing, All I want to do is download and upload files. I don't need site to site transfers.. help!?! 
+A: We have just the thing for you, With a click of the mouse FlashFXP can transform into your normal looking FTP client. From the main menu select View then click FTP Only. You can always uncheck this later to bring back the power of site to site transfers. 
+ 
+Q: I use ZipMagic and now all of my zips appear as folders in FlashFXP, how can I make the zips appear as zips?  
+A: You need to make one small change in the ZipMagic Properties window. First, click the Start Menu, then go to Programs|ZipMagic 4.0|ZipMagic Properties. Click the "Zip Folders" button, then click the "Applications" button. Then just add FlashFXP to the list of applications that sees zip files as files. 
+ 
+Q: I purchased FlashFXP v1.x-1.3 and my key doesn't work for v1.4-v2.0! 
+A: The key format was changed starting with version 1.4. You will need to email support@flashfxp.com and request a new one. New keys are provided free of charge. 
+

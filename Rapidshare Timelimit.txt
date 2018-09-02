@@ -1,0 +1,22 @@
+Directions
+Rapidshare traces the users IP address to limit each user to a certain amount of downloading per day. To get around this, you need to show the rapidshare server, a different IP address. You can do this one of multiple ways.
+
+Requesting a new IP address from your ISP server.
+
+Here's how to do it in windows:
+1. Click Start
+2. Click run
+3. In the run box type cmd.exe and click OK
+4. When the command prompt opens type the following. ENTER after each new line.
+
+
+ipconfig /flushdns
+ipconfig /release
+ipconfig /renew
+exit
+
+
+5. Erase your cookies in whatever browser you are using.
+6. Try the rapidshare download again.
+Frequently you will be assigned a new IP address when this happens. Sometime you will, sometimes you will not. If you are on a fixed IP address, this method will not work. To be honest, I do not know how to do this in linux/unix/etc. If this works for you, you may want to save the above commands into a batch file, and just run it when you need it.
+

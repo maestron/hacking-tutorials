@@ -1,0 +1,65 @@
+"The Catalyst 4.9 beta drivers are a sneak peak into future drivers that ATI is continuously working on. They were released mainly for the OpenGL component update, targeting improved Doom3 performance. Having said that, newer generations of hardware will get the most benefit from this driver (X800* series). While I haven't done specific benchmarks, X800 users can see performance increase of 5~30%, depending on the level and the system/hardware type. Regretfully, older hardware, such as 9700's and even 9800's will not get as much benefit. And if paired with a slower system (or with less memory) might see +/- performance improvements."[/size]
+
+Source: www.Teamradeon.com
+
+There is a boost, but don't expect miracles. With that said, give this a read:
+
+As all of you who already have this game recognized the game is very slow even on new Computers.
+
+I found out the reason for this and the solution to fix this problem.
+
+As you already know after installation the game consits only of the doom3.exe and some .PK4 files. Those PK4 files includes the entire game (sounds, videos, textures etc.) in high compressed form.
+
+Normally those files were decompresse during the game.
+
+But this exactly is the problem. Even new CPUs are not able to decompress those files while running the game with good peformance and therfore the game runs very **** also on new computers. I don't know if the develpers of
+ID-Soft was just too stupid to think about this or if they have an agreement with some hardware manufacturing firms.
+
+How to get around this problem:
+
+It is very simple. Go to your Doom 3 installation directoy and get inside the folder "Base". There are some .PK4 files you have to open each of them with WinRAR 3.3 and extract their entire contents to the Base dir in you Doom 3 installation folder (replace all files if they are any duplicates). Now you have to delete all .PK4 files in the Base folder to prevent the game to use those compressed files again. 
+
+Now the game starts and runs much faster!!!
+
+Have fun playing Doom 3!!!
+
+It supposedly gives a small performance boost and improves some load times.
+
+This is a guarenteed way to get a MASSIVE performance increase to your game, at the expense of taking up a little ore hard drive space (2 gigs approx). I went from running low quality at 800x600 to running High Quality on 1024x768. This improves load times AND framerate/details.
+
+There is a catch! By doing this, you temporarily can't connect to pure multiplayer servers. You have been warned (I'll tell you how to revert it at the end)
+
+After installation, the Doom III Folder consists only of the doom3.exe and some .PK4 files. Those PK4 files includes the entire game (sounds, videos, textures etc.) compressed. They are normally uncompressed in mid game, which is very hard on your CPU. Lets fix this!
+
+1. Make a copy of ALL the files in C:\Program Files\Doom 3\base. This is some big filage, but if you want to revert to MP without reinstalling you need to do it.
+
+2. Unrar the following .pk4 files (just pretend they are .rar's and open them with winrar) into the C:\Program Files\Doom 3\base folder (each one should unrar a single folder such as textures or models):
+
+pak000.pk4
+pak001.pk4
+pak002.pk4
+pak003.pk4
+pak004.pk4 (This one has many files, put them all in \Base and over right any that apply.
+
+3. Now delete the files above (pak000-004) or move them to another folder for storage so you can revert to multiplayer.
+
+When you want to revert to multiplayer, restore everything you had before and get rid of the new stuff. I'm not sure if the folder "maps" is the same or not, so make sure you back that up.
+
+When in normal mode, you should have "maps" "savegames" "config.spec" "doomConfig.cfg" "doomkey" "game00.pk4" and "gamex86.dll", nothing else. ALSO! If you open DoomConfig.cfg (C:\programfiles\doom3\base) in notepad and change
+
+seta image_cacheMegs "32"
+
+to a higher number, such as 96 or 128 you will see a big increase too. Go for it bad boys!"
+
+
+keep informed if one of you manages to test sometime today.
+
+Other stuff I found:
+
+http://www.ocfaq.com/softmod/bios.php
+
+BIOS to flash your ATI's cards
+
+http://www.anandtech.com/cpuchipsets/showdoc.aspx?i=2149&p=3
+
+explanation on how to run the DOOM 3 benchmark demo

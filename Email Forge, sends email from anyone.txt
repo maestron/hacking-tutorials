@@ -1,0 +1,37 @@
+ 1. Some ISP's block port 25 so it might not work
+2. Most likely, you won't be able to see what yer typing
+
+First of all, you need an SMTP server. These are extremely common and, in fact, I'll provide one for you (mail.hotmail.com). SMTP: Simple Mail Transfer Protocol. This service runs on port 25 (in most cases) and is used to send outgoing email.
+
+Now, open up the command prompt and telnet to mail.hotmail.com on port 25 (note: to see what you type, type telnet and enter then type in set local_echo):
+
+
+
+code:--------------------------------------------------------------------------------
+telnet mail.hotmail.com 25
+--------------------------------------------------------------------------------
+
+
+When yer connected type in (except what's in between *'s; you chose what will go in the []):
+
+code:--------------------------------------------------------------------------------
+helo
+*wait*
+mail from:[whoever]@[whoever.com]
+*wait*
+rcpt to:[whoever]@[whoever.com]
+*wait*
+data
+*wait*
+[write]
+[whatever you want]
+[in]
+[as many]
+[lines as wished]
+.
+*wait*
+quit
+--------------------------------------------------------------------------------
+
+
+Helo is just a handshake with the server. Mail from: is FROM who you want the email to be. rcpt to: is who you want the email to go to. under data is what you want sent. the '.' ends data. quit quits. There! simple isn't it.

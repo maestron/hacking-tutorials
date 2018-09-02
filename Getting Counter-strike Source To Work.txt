@@ -1,0 +1,61 @@
+Getting Counter-Strike Source to work
+
+Step 1- Download cssource_notcracked_beta_emporio.rar, cssource_cracked_emporio.rar and cssource_updates_emporio.rar (make sure this update is V2).
+
+Step 2- Extract cssource_notcracked_beta_emporio.rar to a folder (for this example we will use E:/CS: Source*), then extract cssource_cracked_emporio.rar to E:/CS: Source*(overwrite all files) and finally extract cssource_updates_emporio.rar(V2) to E:/CS: Source* (overwrite all files).
+
+Step 3- Make a NEW steam account(We will use Bob1g2** for this example).
+
+Step 4- Now here comes the tricky part. After you have made a NEW steam account, get any counter strike: condition zero key (and no i won't tell you one) off the internet. Launch steam and click on Condition Zero in the Avaible Games list. Click on Register this product and click next. Once you get to the point where it says, "Steam is processing you request" open up Task Manager (Ctrl, Alt, Delete at the same time) and click on steam.exe and once the steam window has 1 bar that is yellow, click terinate process on the task manager.
+
+Step 5- Open up steam again and check if Condition Zero is in your My Games list. If it isn't then repeat Step 3 using a different key untill you get Condition Zero is your My Games list. Once you get it in your My Games list then, download Codename Gordon and once it has finished downloading, launch it. Once you get into the menu, then click exit.
+
+Step 6- Go into the folder where you installed steam and copy ClientRegistry.blob into the folder where you installed CS: Source.
+
+Step 7- Go into the folder where you installed CS: Source and open up SteamApp.cfg.
+
+Step 8- Once you have opened up SteamApp.cfg, edit it so it only has this in it:
+
+CODE
+
+SteamAppId=10
+#SteamAppVersionId=0
+SteamInstallPath="E:/CS: Source*"
+# [as is clearified later on, this should be your email address:]
+#SteamAppUser=aalb002@cafe.boomtown.net
+SteamAppUser=Bob1g2**
+
+
+Make sure you change the Bob1g2** bit to the new steam account you created and the E:/CS: Source* to where you installed counter-strike source.
+
+Step 9- Make a sortcut of hl2.exe with these in the sortcut(without the quotes) "-steam -game cstrike"
+
+*Change this to where you installed CS: Source.
+**Change this to your new steam account.
+
+Downloads
+
+cssource_notcracked_beta_emporio.rar- fxp://cs.rivera.ru/games/Counter-Strike/CS_Source/client/cssource_notcracked_beta_emporio.rar
+
+cssource_cracked_emporio.rar- fxp://cs.rivera.ru/games/Counter-Strike/CS_Source/client/V2/cssource_cracked_emporio.rar
+
+cssource_updates_emporio.rar(v2)- fxp://cs.rivera.ru/games/Counter-Strike/CS_Source/client/V2/cssource_updates_emporio.rar
+
+Limit is 100 users max
+
+Other things you should know
+
+Don't download the V3 update since that doesn't work yet.
+
+If you get a error saying that you are not subscribed, then do steps 4-6 to make it work again.
+
+If you get unable to set mode then do this:
+go to your registry -> HKEY_CURRENT_USER\Software\Valve\Source\Settings -> look up the entry "ScreenRefreshRate" -> doubleclick -> type your favourite monitor hz value into the field (i.e. 100hz, if your monitor can handle it) -> change the base setting from hexadecimal to decimal -> finished. (excerpt taken from flinkerhamster tutorial)
+
+Some Servers
+
+1. 66.199.235.42:27014
+
+2. 24.141.2.86
+
+These servers have being tested by me and are working.

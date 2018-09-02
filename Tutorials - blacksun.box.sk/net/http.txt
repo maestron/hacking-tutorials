@@ -1,0 +1,431 @@
+______________________________________________________________
+
+HTTP Torn Apart, By Ankit Fadia. ankit@bol.net.in
+______________________________________________________________
+Published on BSRF - http://blacksun.box.sk
+Secret subliminal message: visit BSRF, NOW!!
+
+What exactly happens when you type a URL(Uniform Resource Locator) in the
+location bar of the browser? Well firstly the browser performs a DNS queiry
+and converts the human readable domain name (like hotmail.com) into a machine
+readable IP address. Once the browser gets the IP address of the host, it
+connects to Port 80(The HTTP daemon by default runs on Port 80) of the remote
+host and asks the host for a particular document or page with the help of HTTP
+commands. HTTP or HyperText Transfer Protocol is the protocol used by browsers
+to communicate with hosts i.e. to ask for a particular file at a specific URL
+or to send or post data to the server.We are never aware of this process which
+occurs in the background.
+
+Now in this section we will learn to do manually what the browser does 
+automatically.When the browser asks for a file at a specific URL it is said to
+'request' for information. Now before we move on, let's see what a typical
+request 
+looks like. A typical HTTP request would be something like the below:
+
+get url HTTP/1.1 
+
+Let's see what the specific parts of a typical request stands for.The first
+word i.e. the 'get' part is called the method.There are 3 types of methods-:
+
+The Get method
+
+The 'get' method is the most common method which is widely used.It is with the
+'get' method that the browsers request for pages or douments.In this kind of
+method you are the client(browser) and request for a page from the server
+which is the host you are connected to.
+
+The Post Method
+
+The 'post' method is used to upload files to the server.This kind of method is
+used say when you upload your website by using not the FTP service but by
+straightaway uploading files through a HTML page.In this method there is a
+reversal of roles and now you become the server and the host you are connected
+to becomes the client.
+
+The Head Method
+
+The 'head' method is the least popular method and not many people know about
+it.Although not widely used, it is still a part of HTTP methods. You would use
+the 'head' method say when you want to make sure that a particualar file
+exists at a particular URL without downloading the entire file.This method
+just downloads the header info of a particular file and not the entire file.
+
+All this might seem a bit weird, but I suggest that you just understand the
+basic difference between the various methods and then move on.
+
+Anyway coming back to the various parts of a HTTP request.The first part as
+you now know is the method, now the second part is the URL that you are
+requesting.Say for example I want to request the contacts.htm file then the
+HTTP request would look something like:
+
+get /contacts.htm  HTTP/1.1
+
+Now you may ask where the first '/' has come from. Now to understand that you
+need to look at the URL that you type into the Location bar of the browser.Say
+for example, the HTML file that you are requesting is 
+http://www.microsoft.com/windows.htm then the URL would be what is left after
+removing the http:// and the domain name i.e. www.microsoft.com. Hence the URL
+is /windows.htm
+
+Now what will the URL be if you want to request for Yahoo homepage? Normally
+you write http://www.yahoo.com in the location bar to access Yahoo's homepage.
+Now if we remove the http:// and also the domain name(www.yahoo.com) then what
+is left? 
+Nothing. This means the URL of the HTTP request is '/'. Hence the HTTP request
+now looks like.
+
+get / HTTP/1.1
+
+The third part of the HTTP request is pretty self explanatory.The HTTP/1.1
+specifies the version of the HTTP service used by the browser.So say if a
+server is running HTTP/1.1 and a browser which is running HTTP/1.0 requests a
+page then the server will send the page in terms of HTTP/1.0 only removing the
+enhancements of HTTP/1.1
+
+So now that you know what a normal HTTP request sent by your browser looks,
+let's find out how we can do this manually.This too requires Telnet.Now you
+know how important the Telnet client is in a Hacker's armoury.So launch your
+Telnet client and connect to Port 80(As the HTTP daemon runs on Port 80) of
+any host.If the host you are trying to connect to does not have a website i.e
+does not have Port 80 open, then you would get a Error Message.If the
+connection is successful then the Title bar of your Telnet client will show
+the host address you are connected to and it will be ready for user input.
+
+The HTTP daemon is not as boring as it seems to be till now.Infact it is very
+very interesting.Once telnet is ready for input just type h (or any other
+letter) and hit enter twice.
+
+***********
+Hacking Truth: After each HTTP command one has to press Enter Twice to send
+the command to the server or to bring about a response from a server.It is
+just how the HTTP protocol works.
+**********
+
+Now as 'h' or any other command that you typed is not a valid HTTP command,
+the server will give you an error message, something like the below:
+
+HTTP/1.1 400 Bad Request
+Server: Netscape-Enterprise/3.5.1
+
+The server replies with the version of HTTP it is running(not so important),
+it gives us an error message and the error code associated with it(again not
+so important), but it also gives us the OS name and OS version, it is
+running.Wow!!! It gives hackers who want to break into their server the
+ultimate piece of information which they require.
+
+Anyway now let's see what happens when we give a normal authentic request
+requesting for the main page of Yahoo.So after I telnet to Port 80 of
+www.yahoo.com I give the command:
+
+get / http/1.1
+
+(requesting for the Yahoo Homepage)
+ 
+HTTP/1.0 200 OK
+Content-Length: 12085
+Content-Type: text/html
+
+(No OS name,interesting, well Yahoo being a Top Web Company has configured
+their server to not display the OS name and Version when an HTTP request is
+encountered.)
+
+<html><head><title>Yahoo!</title><base href=http://www.yahoo.com/><meta http-
+equiv="PICS-Label" content='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l 
+gen true for "http://www.yahoo.com" r (n 0 s 0 v 0 l 
+0))'></head><body><center><form action=http://search.yahoo.com/bin/search><map
+name=m><area coords="72,0,130,58" href=r/wn><area coords="131,0,189,58" 
+href=http://mail.yahoo.com><area coords="414,0,472,58" href=r/i1><area 
+coords="473,0,531,58" href=r/hw></map><img width=600 height=59 border=0 
+usemap="#m" src=http://a1.g.a.yimg.com/7/1/31/000/us.yimg.com/i/main4s3.gif 
+alt=Yahoo><br><table border=0 cellspacing=0 cellpadding=4 width=600><tr><td 
+align=center width=160>
+<a href="/homet/?http://auctions.yahoo.com"><b>Yahoo! 
+Auctions</b></a><br><small><a 
+href="/homet/?http://list.auctions.yahoo.com/27813-category.html">Pokemon</a>,
+<a href="/homet/?http://list.auctions.yahoo.com/26360-category-
+leaf.html">cars</a>, <a href="/homet/?http://list.auctions.yahoo.com/40291-
+category-leaf.html">'N Sync</a></small></td><td align=center><a 
+href="
+http://rd.yahoo.com/M=26036.208672.1462854.389576/S=2716149:NP/A=167764/?h
+ttp://messenger.yahoo.com/" target="_top"><img width=230 height=33 
+src="
+http://a32.g.a.yimg.com/7/32/31/000/us.yimg.com/a/ya/yahoopager/messenger/m
+essengermail.gif" alt="Yahoo! Messenger" border=0></a></td><td align=center 
+width=160><a href="/homet/?http://mail.yahoo.com"><b>Yahoo!
+Mail</b></a><br>free 
+email for life</td></tr><tr><td colspan=3 align=center><input size=30 name=p>
+<input type=submit value=Search> <a href=r/so>advanced 
+search</a></td></tr></table><table border=0 cellspacing=0 cellpadding=4 
+width=600><tr><td nowrap align=center><small><a href=r/sh>Shopping</a> -
+<a href=r/os><b>Auctions</b></a> -
+<a href=r/yp>Yellow Pages</a> -
+<a href=r/ps>People Search</a> -
+<a href=r/mp>Maps</a> -
+<a href=r/ta>Travel</a> -
+<a href=r/cf>Classifieds</a> -
+<a href=r/pr>Personals</a> -
+<a href=r/pl>Games</a> -
+<a href=r/yc>Chat</a> -
+<a href=r/ub><b>Clubs</b></a><br><a href=http://mail.yahoo.com>Mail</a> -
+<a href=r/ca>Calendar</a> -
+<a href=r/pg>Messenger</a> -
+<a href=r/cm><b>Companion</b></a> -
+<a href=r/i2>My Yahoo!</a> -
+<a href=r/dn>News</a> -
+<a href=r/ys>Sports</a> -
+<a href=r/wt>Weather</a> -
+<a href=r/tg>TV</a> -
+<a href=r/sq>Stock Quotes</a> -
+<a href=r/xy>more...</a></small></td></tr><tr><td></td></tr></table><table 
+border=0 cellspacing=0 width=600><tr><td bgcolor=339933><table border=0 
+cellspacing=0 cellpadding=0><tr><td 
+height=2></td></tr></table></td></tr></table><table border=0 cellspacing=7 
+cellpadding=2><tr><td valign=top align=center>
+
+<table cellspacing=0 cellpadding=3 border=0 width="100%"><tr><td align=center 
+bgcolor=99cc99><font face=arial><a href=r/s/1><b>Yahoo! 
+Shopping</b></a></font><small> - Thousands of stores.
+Millions of products.</small><table cellspacing=0 cellpadding=2 border=0 
+width="100%"><tr><td align=center bgcolor=ffffff><table cellspacing=0 border=0
+width="100%"><tr><td colspan=2><font face=arial 
+size=2><b>Departments</b></font></td><td><font face=arial 
+size=2><b>Stores</b></font></td><td><font face=arial 
+size=2><b>Products</b></font></td></tr><tr><td valign=top 
+width="22%"><small>&#183;
+<a href=r/s/2>Apparel</a><br>&#183;
+<a href=r/s/3>Bath/Beauty</a><br>&#183;
+<a href=r/s/4>Computers</a><br>&#183;
+<a href=r/s/5>Electronics</a></small></td><td valign=top 
+width="22%"><small>&#183;
+<a href=r/s/10>Flowers</a><br>&#183;
+<a href=r/s/11>Sports</a><br>&#183;
+<a href=r/s/7>Music</a><br>&#183;
+<a href=r/s/9>Video/DVD</a></small></td><td valign=top width="31%"><small>
+&#183; <a href=r/s/eb>Eddie Bauer</a><br>
+&#183; <a href=r/s/ash>Ashford</a><br>
+&#183; <a href=r/s/toys>Toys R Us</a><br>
+&#183; <a href=r/s/nord>Nordstrom</a><br>
+</small></td><td valign=top width="25%"><small>
+&#183; <a href=r/s/nsync>'N Sync</a><br>
+&#183; <a href=r/s/cam>Digital cameras</a><br>
+&#183; <a href=r/s/poke>Pokemon</a><br>
+&#183; <a href=r/s/mp3>MP3 players</a><br>
+</small></td></tr></table></td></tr></table></td></tr></table>
+
+<table border=0 cellspacing=0 cellpadding=4><tr><td valign=top 
+nowrap><small><font size=3 face=arial><a href=r/ar><b>Arts & 
+Humanities</b></a></font><br><a href=r/li>Literature</a>,
+<a href=r/ph>Photography</a>...<br><br><font size=3 face=arial><a 
+href=r/bu><b>Business & Economy</b></a></font><br><a href=r/co>Companies</a>,
+<a href=r/fi>Finance</a>,
+<a href=r/jo>Jobs</a>...<br><br><font size=3 face=arial><a 
+href=r/ci><b>Computers & Internet</b></a></font><br><a href=r/in>Internet</a>,
+<a href=r/ww>WWW</a>,
+<a href=r/sf>Software</a>,
+<a href=r/ga>Games</a>...<br><br><font size=3 face=arial><a 
+href=r/ed><b>Education</b></a></font><br><a href=r/un>College and 
+University</a>,
+<a href=r/k2>K-12</a>...<br><br><font size=3 face=arial><a 
+href=r/en><b>Entertainment</b></a></font><br><a href=r/cl>Cool Links</a>,
+<a href=r/mo>Movies</a>,
+<a href=r/hu>Humor</a>,
+<a href=r/mu>Music</a>...<br><br><font size=3 face=arial><a 
+href=r/go><b>Government</b></a></font><br><a href=r/el>Elections</a>,
+<a href=r/mi>Military</a>,
+<a href=r/la>Law</a>,
+<a href=r/tx>Taxes</a>...<br><br><font size=3 face=arial><a 
+href=r/he><b>Health</b></a></font><br><a href=r/md>Medicine</a>,
+<a href=r/ds>Diseases</a>,
+<a href=r/dg>Drugs</a>,
+<a href=r/ft>Fitness</a>...</small></td><td valign=top nowrap><small><font 
+size=3 face=arial><a href=r/nm><b>News & Media</b></a></font><br><a 
+href=r/fc>Full Coverage</a>,
+<a href=r/nw>Newspapers</a>,
+<a href=r/tv>TV</a>...<br><br><font size=3 face=arial><a
+href=r/rs><b>Recreation 
+& Sports</b></a></font><br><a href=r/sp>Sports</a>,
+<a href=r/tr>Travel</a>,
+<a href=r/au>Autos</a>,
+<a href=r/od>Outdoors</a>...<br><br><font size=3 face=arial><a 
+href=r/rf><b>Reference</b></a></font><br><a href=r/lb>Libraries</a>,
+<a href=r/dc>Dictionaries</a>,
+<a href=r/qt>Quotations</a>...<br><br><font size=3 face=arial><a 
+href=r/re><b>Regional</b></a></font><br><a href=r/ct>Countries</a>,
+<a href=r/rg>Regions</a>,
+<a href=r/us>US States</a>...<br><br><font size=3 face=arial><a 
+href=r/sc><b>Science</b></a></font><br><a href=r/am>Animals</a>,
+<a href=r/as>Astronomy</a>,
+<a href=r/eg>Engineering</a>...<br><br><font size=3 face=arial><a 
+href=r/ss><b>Social Science</b></a></font><br><a href=r/ac>Archaeology</a>,
+<a href=r/ec>Economics</a>,
+<a href=r/lg>Languages</a>...<br><br><font size=3 face=arial><a 
+href=r/cu><b>Society & Culture</b></a></font><br><a href=r/pe>People</a>,
+<a href=r/ev>Environment</a>,
+<a href=r/rl>Religion</a>...</small></td></tr></table></td>
+<td align=right valign=top bgcolor=dcdcdc width=155><table border=0 
+cellspacing=1 width="100%"><tr><td align=center bgcolor=ffffcc nowrap 
+colspan=2><table border=0 cellspacing=0 cellpadding=0 width=120><tr><td 
+align=center><font face=arial size=2><b>In the 
+News</b></font></td></tr></table></td></tr><tr><td 
+valign=top><b>&#183;</b></td><td><small><a 
+href="/homer/?http://fullcoverage.yahoo.com/fc/world/Elian_Gonzalez/">Reno
+says 
+Elian to be returned to father</a></small></td></tr><tr><td 
+valign=top><b>&#183;</b></td><td><small><a 
+href="/homer/?http://fullcoverage.yahoo.com/Full_Coverage/World/Zimbabwe/
+">Zimba
+bwe land seizures continue</a></small></td></tr><tr><td 
+valign=top><b>&#183;</b></td><td><small><a 
+href="/homer/?http://sports.yahoo.com/pga/">The Masters</a>, <a 
+href="/homer/?http://sports.yahoo.com/mlb/">MLB</a>, <a 
+href="/homer/?http://sports.yahoo.com/nba/">NBA</a></small></td></tr><tr><td 
+align=right colspan=2><a href=r/xn><small>more...</small></a></td></tr><tr><td
+align=center bgcolor=ffffcc colspan=2><font face=arial 
+size=2><b>Marketplace</b></font></td></tr><tr><td 
+valign=top><b>&#183;</b></td><td><small><a 
+href="/homer/?http://taxes.yahoo.com/">Y! Tax Center</a> - tax guide, online 
+filing, and more</small></td></tr><tr><td 
+valign=top><b>&#183;</b></td><td><small><a href=/homer/?http://b2b.yahoo.com
+>Y! 
+Business Marketplace</a> - products for all
+industries</small></td></tr><tr><td 
+valign=top><b>&#183;</b></td><td><small>Free <a 
+href="/homer/?http://www.bluelight.com/isp.html">56K Internet 
+Access</a></small></td></tr><tr><td valign=top><b>&#183;</b></td><td><small><a
+href="/homer/?http://bills.yahoo.com/">Yahoo! Bill Pay</a> - free 3-month
+trial 
+</small></td></tr><tr><td align=right colspan=2><a 
+href=r/xm><small>more...</small></a></td></tr><tr><td align=center 
+bgcolor=ffffcc colspan=2><font face=arial size=2><b>Inside 
+Yahoo!</b></font></td></tr><tr><td valign=top><b>&#183;</b></td><td><small><a 
+href="/homer/?http://movies.yahoo.com">Y! Movies</a> - showtimes, reviews, 
+info</small></td></tr><tr><td valign=top><b>&#183;</b></td><td><small><a 
+href="/homer/?http://photos.yahoo.com/">Yahoo! Photos</a> - upload, share, and
+print pictures</small></td></tr><tr><td 
+valign=top><b>&#183;</b></td><td><small>Play free <a 
+href="/homer/?http://baseball.fantasysports.yahoo.com/baseball/">Fantasy 
+Baseball</a></small></td></tr><tr><td
+valign=top><b>&#183;</b></td><td><small><a 
+href="/homer/?http://geocities.yahoo.com/home/">Yahoo! GeoCities</a> - build 
+your free home page</small></td></tr><tr><td align=right colspan=2><a 
+href=r/xi><small>more...</small></a></td></tr></table></td></tr></table>
+<table border=0 cellspacing=0 width=600><tr><td bgcolor=339933><table border=0
+cellspacing=0 cellpadding=0><tr><td 
+height=2></td></tr></table></td></tr></table>
+</form><form action=http://search.local.yahoo.com/zipsearch><table border=0 
+cellspacing=4 cellpadding=0><tr><td align=right valign=top 
+nowrap><small><b>World Yahoo!s</b></small></td><td></td><td valign=top 
+colspan=2><small><i>Europe</i> :
+<a href=r/dk>Denmark</a> -
+<a href=r/fr>France</a> -
+<a href=r/de>Germany</a> -
+<a href=r/it>Italy</a> -
+<a href=r/no>Norway</a> -
+<a href=r/es>Spain</a> -
+<a href=r/se>Sweden</a> -
+<a href=r/uk>UK & Ireland</a><br><i>Pacific Rim</i> :
+<a href=r/ai>Asia</a> -
+<a href=r/an>Australia & NZ</a> -
+<a href=r/cc><b>China</b></a> -
+<a href=r/cn>Chinese</a> -
+<a href=r/hk>HK</a> -
+<a href=r/jp>Japan</a> -
+<a href=r/kr>Korea</a> -
+<a href=r/sg>Singapore</a> -
+<a href=r/tw>Taiwan</a><br><i>Americas</i> :
+<a href=r/ag><b>Argentina</b></a> -
+<a href=r/br>Brazil</a> -
+<a href=r/cd>Canada</a> -
+<a href=r/mx>Mexico</a> -
+<a href=r/ep>Spanish</a></small></td></tr><tr><td align=right 
+nowrap><small><b>Yahoo! Get Local</b></small></td><td></td><td
+nowrap><small><a 
+href=r/lo>LA</a> -
+<a href=r/ny>NYC</a> -
+<a href=r/ba>SF Bay</a> -
+<a href=r/ch>Chicago</a> -
+<a href=r/mm>more...</a> &nbsp;&nbsp;</small></td><td nowrap><small><input 
+name=q size=5 maxlength=5>&nbsp;<input type=submit value="Enter Zip 
+Code"></small></td></tr><tr><td align=right valign=top 
+nowrap><small><b>Other</b></small></td><td></td><td valign=top 
+colspan=2><small><a href=r/ya>Autos</a> -
+<a href=r/em>Careers</a> -
+<a href=r/di>Digital</a> -
+<a href=r/ye>Entertainment</a> -
+<a href=r/le><b>Event Guide</b></a> -
+<a href=r/gr>Greetings</a> -
+<a href=r/yh>Health</a> -
+<a href=r/iv><b>Invites</b></a> -
+<a href=r/ne>Net Events</a><br><a href=r/ms>Message Boards</a> -
+<a href=r/mv>Movies</a> -
+<a href=r/rk>Music</a> -
+<a href=r/yr>Real Estate</a> -
+<a href=r/sb>Small Business</a> -
+<a href=r/il>Y! Internet Life</a> -
+<a href=r/yg>Yahooligans!</a></small></td></tr></table></form><table border=0 
+cellspacing=0 width=600><tr><td bgcolor=339933><table border=0 cellspacing=0 
+cellpadding=0><tr><td height=2></td></tr></table></td></tr></table><table 
+border=0 cellspacing=6 cellpadding=0><tr><td align=right><a 
+href=r/vs><small>Yahoo! prefers</small></a></td><td><a href=r/vs><img width=37
+height=23 border=0 
+src=http://a1.g.a.yimg.com/7/1/31/000/us.yimg.com/a/vi/visa/sm.gif
+></a></td></tr
+></table><small><a href=r/ad>How to Suggest a Site</a> -
+<a href=r/cp>Company Info</a> -
+<a href=r/pv>Privacy Policy</a> -
+<a href=r/ts>Terms of Service</a> -
+<a href=r/cb>Contributors</a> -
+<a href=r/hr>Openings at Yahoo!</a><p>Copyright &copy; 2000 Yahoo! Inc. All 
+rights reserved.<br><a href=r/cy>Copyright 
+Policy</a></small></center></body></html>
+
+
+The get method gives the HTML source of the document requested.It seems just
+as if you are seeing the source by clicking View> Source.
+
+Similiarly you can see what happens when you issue the 'PUT' and 'Head' 
+methods.Just replace 'Get' with the Method that you want to use.For 
+
+Example,
+
+head / http/1.1 and put/ http/1.1
+
+****************
+
+Hacking Truth: Let's go back to the response that we got from the HTTP daemon
+once the HTTP Get method was okayed at Yahoo.The first line of the response
+was:
+
+HTTP/1.0 200 OK
+
+Now what does this 200 signify? Well the '200' is called the status 
+code.Whenever you give the server a HTTP command, it processes the command and
+accrodingly displays a status code.A status code is a 3 digit code in the form
+of xxx. Status codes start from 1xx to 5xx.I am not sure what the 1xx series
+signifies as they are rarely used.The 2xx series signify a succssful
+completion of the HTTP command given.The 3xx series signify errors due to
+moving of documents.The 4xx series signify errors caused at browser side and
+finally the 5xx series signify errors at the server side.
+
+The most common status code that you come across, but may not have ever see is
+the 200 OK status code.Each time you are able to see a page on the browser
+successfully, the browser has been sent this status code by the HTTP daemon.
+
+The most common errors that you might come across and actually see would be
+the 404 Error---Not Found. This error emssage means that the Url that you
+tying to access is not found, it has either been moved or has been deleted or
+the linking of the web pages itself has not been done properly.I can go to the
+up directory to look for the exact new changed URL.
+
+***************
+
+Ankit Fadia
+ankit@bol.net.in
+
+To receive more tutorials on Hacking, Perl, C++ and Viruses/Trojans join my
+mailing list:
+
+Send an email to programmingforhackers-subscribe@egroups.com to join it.
+
+Visit my Site to view all tutorials written by me at: 
+http://www.crosswinds.net/~hackingtruths

@@ -1,0 +1,17 @@
+Change The Default Location For Installing Apps
+-----------------------------------------------
+
+As the size of hard drives increase, more people are using partitions to separate and store groups of files.
+
+XP uses the C:\Program Files directory as the default base directory into which new programs are installed. However, you can change the default installation drive and/ or directory by using a Registry hack.
+
+Go to :-
+
+- Start > Run
+
+- Type “regedit” (without “” NOOBS!)
+
+- Go to this directory…
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion
+
+- Look for the value named ProgramFilesDir. by default,this value will be C:\Program Files. Edit the value to any valid drive or folder and XP will use that new location as the default installation directory for new programs.

@@ -1,0 +1,186 @@
+ ***************************************************************************
+ *                                                                         *
+ *                           The Telephone Works                           *
+ *                              Egghead Dude                               *
+ *  CHiNA                                                           CHiNA  *
+ ***************************************************************************
+
+         Welcome to CHiNA Educational InfoFile Series II, # 3.  Once again,
+    be looking for new files weekly for the next few weeks until school starts
+    again.  And contrary to Megaton Man's belief, we are still very much alive
+    and in production.  If he tells you otherwise, kindly call him a peasant
+    and tell him to fuck himself...if you want.  Enjoy!
+
+
+Here are the standards in Telephone Color Coding:
+
+         Telephone circuits are paired as 'tip' and 'ring' wires. On POTS
+    (plain old telephone service) tip is 0 volts and ring is -48 volts (tip is
+    not 'ground' though as it is a blanced line).  The pairs must be
+    distinguishable from one another easily so they are colour coded.  The
+    colour of the wire indicates whether it is tip or ring.  In a quad wire
+    green and black are tip while red and yellow are ring.
+
+         pair#          tip colour          ring colour
+         _____          __________          ___________
+
+          1             white               blue
+          2             white               orange
+          3             white               green
+          4             white               brown
+          5             white               slate  (silver)
+          6             red                 blue
+          7             red                 orange
+          8             red                 green
+          9             red                 brown
+          10            red                 slate
+          11            black               blue
+          12            black               orange
+          13            black               green
+          14            black               brown
+          15            black               slate
+          16            yellow              blue
+          17            yellow              orange
+          18            yellow              green
+          19            yellow              brown
+          20            yellow              slate
+          21            violet  (purple)    blue
+          22            violet              orange
+          23            violet              green
+          24            violet              brown
+          25            violet              slate
+
+         An individual wire is identified by it's colour and the colour of
+    it's stripe.  The main colour determines whether it is tip or ring while
+    the stripe identifies it's pair (i.e. a black wire with a blue stripe is
+    tip of pair 11).  In many cables the stripe is missing in which case the
+    pairs are distinguished by the way they are twisted, by pulling back the
+    sheath pairs are more obvious.
+
+          As you can see there are only 5 tip colors and 5 ring colours (5
+    x 5 = 25). a 100 pair cable is made up of four of these 25 pair bundles.
+    The first bundle is wrapped by a white/blue binder string, the second by a
+    white/orange binder, the third by a white/green and the fourth by a
+    white/brown.  This scheme can be extended infinitum.
+
+         Some folks think that the order is:
+     Pair  Tip  Ring
+       1   RED   GRN
+       2   YEL   BLK
+       3   BLU   WHT,
+    and that the 1st pair was backwards in a modular connector compared to the
+    rest.
+
+         Wrong. The polarity is off.  Modular connectors reverse the polarity
+    so they make the issue pretty confusing.  A modular line cord (that is a
+    properly made _telephone_ line cord) has a flat topology such that when
+    laid on a table the top of both connectors is up.  This means that a
+    reversal (polarity wise) takes place.  Tip becomes ring on all pairs (the
+    wire is a ribbon in theory). the top of both connectors is up.  A 'set'
+    jack (the one inside the telephone) is wired backwards to compensate.
+
+         In addition, the system employed throughout the (used-to-be) Bell
+    System was actually very simple. There wer five colors assigned to "tip"
+    and five colors assigned to "ring". This gives a total combination of
+    twenty-five pairs (very convenient!).
+
+         The colors assigned to the "tip" are;
+
+     white   wt
+     red     rd
+     black   bk
+     yellow  yl
+     violet  vi
+
+         The colors assigned to the "ring" are;
+
+     blue    bl
+     orange  or
+     green   gr
+     brown   br
+     slate   sl (sometimes mistakenly called gray)
+
+         Standard phone convention is to identify the "tip" first and then the
+    "ring" when referring to a pair. Thus, the first five pairs of a telephone
+    cable are the "white" pairs;
+
+     white/blue   wt/bl
+     white/orange wt/or
+     white/green  wt/gr
+     white/brown  wt/bn
+     white/slate  wt/sl
+
+         The next five are the "red" pairs:
+
+     red/blue     rd/bl
+     red/orange   rd/or
+     red/green    rd/gr
+     red/brown    rd/bn
+     red/slate    rd/sl
+
+         And so on, until all twenty five pairs are identified. What happens
+    when there are more than twenty-five pairs in a cable? Simple, enclose
+    each twenty-five pair group in a color coded binder. And guess what the
+    color coding is for the binder. Yep, the same as the wires in the binder.
+    The first binder group is the "white/blue" binder the second is the
+    "white/orange" binder, and so on.  If it is necessary to refer to the
+    twenty-sixth pair of a fifty pair cable it is referred to as "two
+    white/blue" or 2-wt/bl. The seventy-ninth pair in a one-hundred pair cable
+    is called "four white/brown" or 4-wt/bn. This all holds true for the first
+    twenty-four binders in a cable.  The twenty-fifth binder is a little
+    different, and my recollection is a little hazy but I believe the binder
+    colors are white-white-blue. Yes that's two whites and a blue. It might be
+    two blues and a white.  It's been a long time since I was in a cable over
+    six hundred pairs. One thing I know for sure is that they double up on one
+    of the binder colors after the twenty-fourth binder group.
+
+         There is also a convention for the positioning the pairs on
+    connecting blocks.  The Ring is usually on the Right and the Tip is
+    usually on the Top.  As you can see there is a pattern here, Ring-Red-
+    Right and Tip-Top.  I guess this was done to make it easier for us dumb
+    installers to remember! |-)
+
+         The only difference in the color coding between telephone cable (the
+    stuff used outside and strung along poles or underground in conduit) and
+    telephone inside wiring (the gray colored stuff in the walls and up in the
+    ceiling) is that the inside wire has each pair traced with the color of
+    its mate.  That is, the first pair is a white wire with a blue tracer and
+    its mate is blue with a white tracer.  This is done to avoid "splitting" a
+    pair.  Splitting is getting the ring of one pair and the tip of another.
+    In outside phone cable each pair is twisted with its mate and the chances
+    of splitting a pair are not as great (although it's been known to happen
+    ;-)).
+
+         With wiring done inside a house, a little history is in order. Back
+    when we had party-lines,(I know, we still do, but very few still in
+    service and none available for new service) three wires were necessary
+    because a ground was required to make the bell ring.  So, the original
+    phone wiring had three conductors, red, green and yellow.  Red and green
+    were ring and tip respectively and yellow was the ground.  Then people
+    started getting away from party lines and into princess and trimline
+    phones with lights in the dial.  The yellow was no longer the ground and a
+    black wire was added and the yellow and black were used to supply power
+    for the lamps from a small transformer.  Time marches on, and now people
+    are getting second lines installed in their homes. Since the new phones
+    get the power for their lamps from the phone line directly, the yellow
+    and black are now "spare".  The yellow is usually the ring and black is
+    the tip.  Of course, houses that have been pre-wired with six-pair inside
+    wire would normally have line 1 on the white/blue pair and line 2 on the
+    white/orange pair.  In many pre-wire installations I have found that the
+    sixth pair (red/blue) was used for transformer power, although I don't
+    believe that was ever an official practice.
+
+            Written by: Egghead Dude        Edited by: The Conflict
+                        Golf City BBS
+                        CHiNA Node #5
+
+         Hope you enjoyed this one, and once again, look for more!  Please
+    distribute this file freely, and if you really must speak to CHiNA,
+    contact us on one of our member boards (a node list should be available
+    wherever you receieved this file).  Thanks for you support!
+
+         A big HELLO to Mr. X, The Maestro, Barimor (hear you're doing wonders
+    for the FiRM!), Jolly Green Giant, Feetsack, Lord Blix, Maxwell Smart, The
+    Viper, etc...if you want to be said HELLO to, too bad, we don't like you!
+    Really...we'll be seeing you!
+

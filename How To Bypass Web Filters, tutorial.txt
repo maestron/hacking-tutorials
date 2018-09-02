@@ -1,0 +1,90 @@
+How to bypass web filters 
+
+
+
+There are several occasions where you will be at a public te How to bypass web filters
+rminal, and require access to a particular website that is blocked for some reason or another. How to bypass these restrictions is a very common question, and will be covered here.
+
+Lets pretend for a moment that the Internet is made up of 26 websites, A-Z. The web filter blocks your browser from accessing sites X-Z, but not sites A-W. Simply make the browser think you’re going to A-
+W. There are a variety of ways to do this:
+
+
+Proxy Servers: 
+This is a list of http proxies. These sites may not be up forever, so you may need to search for “free http proxy” or “public proxy servers” or other similar terms.
+
+Proxy server lists:
+• http://www.aliveproxy.com
+• http://www.multiproxy.org
+• http://www.publicproxyservers.com/index.html
+• http://www.tehbox.com/proxy
+• http://www.proxz.com
+• http://www.proxy4free.com/index.html
+• http://free-proxies.com
+
+Now that you have a list of proxies, you would open IE (internet explorer) and click on Tools > Internet Options > Connections > LAN Settings > Advanced. Enter the address and port of one of the servers from the list in the proper area (http) and make sure the “use a proxy server for your LAN” option is selected. Remember to replace the proxy and port at your terminal to the original when you're done.
+
+*Note: Some proxies listed may not work, and this method may decrease your surfing speed. By trying various entries, you’ll find one that works, or works faster.
+
+The infamous translation trick:
+Go to a web page translation site and use their services to “translate a page to English” thus accessing the blocked page through their trusted site.
+
+You’ll notice that several translation sites are blocked, but by using less popular ones, this method can still be effective. Here is a list of some translation services. Again, these sites may not be up forever, so you may need to search for them.
+
+• http://babelfish.altavista.com
+• http://world.altavista.com
+• http://translation.langenberg.com
+• http://freetranslation.com/web.thm
+
+Url Scripting:
+
+
+
+Url scripting is the easiest method. It works on a select few web filters and is based on the same principal as the translation trick. By typing and address like “www.yahoo.com@www.restricted_site.com the filter will not go into effect as it recognizes the trusted site (in this case yahoo.com)
+
+Other tricks:
+Simply open the command prompt and type:
+Ping restricted.com ? restricted.com obviously being the restricted site
+At this point you can take down the IP address (ex. 216.109.124.73) and enter it into the browser. If access to the command prompt is also restricted, see “How to bypass restrictions to get to the command prompt.” If this article has been taken from information leak, then know that it involves anything from opening the browser, selecting view > source, then saving it as X.bat and opening it to opening a folder or browser and typing in the location of cmd.exe depending on the OS. I will not go into further, as this a completely different topic.
+
+Use https://restrictedsite.com as referring to it as a secured site may confuse the filter.
+
+Note: These are ancient methods that many new filters defend against, but still may be applicable in your situation. If not, a little history never hurt anyone.
+
+Web based Proxies:
+Another one of the easier, yet effective methods include web based proxies. These are simple in the fact that you just enter the restricted address and surf! Some of these have some restrictions, like daily usage limits, etc but you can also use another proxy (perhaps one that sucks, like a text only) to bypass their restrictions as well. Here is a list of some:
+
+• http://proxify.com]http://proxify.com
+• http://www.anonymizer.com/index.cgi]http://www.anonymizer.com/index.cgi
+• http://www.guardster.com/]http://www.guardster.com/
+• http://anonymouse.ws/anonwww.html]http://anonymouse.ws/anonwww.html
+• http://www.the-cloak.com/login.html]http://www.the-cloak.com/login.html
+• https://www.megaproxy.com/freesurf]https://www.megaproxy.com/freesurf
+• http://www.anonymizer.ru]http://www.anonymizer.ru
+• https://nadaily.com/cgi-bin/nph-proxyb.cgi]https://nadaily.com/cgi-bin/nph-proxyb.cgi
+• http://www.userbeam.de/cgi-bin/nph-userbeam.cgi]http://www.userbeam.de/cgi-bin/nph-userbeam.cgi
+• http://www.free2.surffreedom.com/nph-free.cgi]http://www.free2.surffreedom.com/nph-free.cgi
+
+Proxy Programs:
+There are many proxy programs that allow you to surf anonymously that are more or less based on the same topics we’ve covered here. I’ve added them just to cover the topic thoroughly:
+
+• http://www.hotscripts.com/Detailed/28480.html]http://www.hotscripts.com/Detailed/28480.html
+• http://www.inetprivacy.com/a4proxy/anonymous-grc.htm]http://www.inetprivacy.com/a4proxy/anonymous-grc.htm
+• http://www.orangatango.com/home/index.ie.html]http://www.orangatango.com/home/index.ie.html
+• http://www.steganos.com]http://www.steganos.com
+• http://www.anonymization.net]http://www.anonymization.net ? toolbar that requires admin rights to install
+
+Making your own CGI proxy server:
+
+Making your own proxy server may come in handy, but I personally find that simply uploading a txt file/w a list of proxies to a free host makes for a much easier and headache free solution. If you don’t know PERL, there is code out there to help you set it up. Check out these sites for more info:
+
+• http://httpbridge.sourceforge.net]http://httpbridge.sourceforge.net
+• http://www.jmarshall.com/tools/cgiproxy]http://www.jmarshall.com/tools/cgiproxy
+• http://www.manageability.org/blog/stuff/open-source-personal-proxy-servers-written-in-java/view]http://www.manageability.org/blog/stuff/op...en-in-java/view
+
+
+
+Admin Access:
+When all else fails, you can simply take over the PC and alter or delete the damn filter. This method varies according to the OS (operating system) you are dealing with. Please see “Hacking Windows NT” for more information. If this tutorial has been taken from information leak, then I will go as far as to say it involves booting the PC in another OS, copying the SAM file and cracking it using a program like saminside or LC5 rather than start a whole new topic within one.
+
+
+

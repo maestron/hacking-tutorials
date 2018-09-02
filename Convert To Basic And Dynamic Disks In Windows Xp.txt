@@ -1,0 +1,69 @@
+Windows XP Professional supports two types of disk storage: basic and dynamic. Basic disk storage uses partition-oriented disks. A basic disk contains basic volumes (primary partitions, extended partitions, and logical drives).
+
+Dynamic disk storage uses volume-oriented disks, and includes features that basic disks do not, such as the ability to create volumes that span multiple disks (spanned and striped volumes).
+
+General Notes
+Before you change a basic disk to a dynamic disk, note these items:
+
+
+You must have at least 1 megabyte (MB) of free space on any master boot record (MBR) disk that you want to convert. This space is automatically reserved when the partition or volume is created in Microsoft Windows 2000 or Windows XP Professional. However, it may not be available on partitions or volumes that are created in other operating systems.
+
+When you convert to a dynamic disk, the existing partitions or logical drives on the basic disk are converted to simple volumes on the dynamic disk.
+
+After you convert to a dynamic disk, the dynamic volumes cannot be changed back to partitions. You must first delete all dynamic volumes on the disk, and then convert the dynamic disk back to a basic disk. If you want to keep your data, you must first back up or move the data to another volume.
+
+After you convert to a dynamic disk, local access to the dynamic disk is limited to Windows XP Professional and Windows 2000.
+
+If your disk contains multiple installations of Windows XP Professional or Windows 2000, do not convert to a dynamic disk. The conversion operation removes partition entries for all partitions on the disk with the exception of the system and boot volumes for the current operating system.
+
+Dynamic disks are not supported on portable computers or Microsoft Windows XP Home Edition.
+
+Before you change a dynamic disk back to a basic disk, note that all existing volumes must be deleted from the disk before you can convert it back to a basic disk. If you want to keep your data, back up the data, or move your data to another volume.
+
+How to Convert a Basic Disk to a Dynamic Disk
+
+To convert a basic disk to a dynamic disk:
+
+1) Log on as Administrator or as a member of the Administrators group.
+
+2) Click Start, and then click Control Panel.
+
+3) Click Performance and Maintenance, click Administrative Tools, and then double-click Computer Management.
+
+4) In the left pane, click Disk Management.
+
+5) In the lower-right pane, right-click the basic disk that you want to convert, and then click Convert to Dynamic Disk.
+
+NOTE:You must right-click the gray area that contains the disk title on the left side of the Details pane. For example, right-click Disk 0.
+
+6) Select the check box that is next to the disk that you want to convert (if it is not already selected), and then clickOK.
+
+7) Click Details if you want to view the list of volumes in the disk.
+
+8) Click Convert.
+
+9) Click Yes when you are prompted to convert, and then click OK.
+
+How to Convert a Dynamic Disk to a Basic Disk
+
+To change a dynamic disk back to a basic disk:
+
+1) Back up all the data on all the volumes on the disk you want to convert to a basic disk.
+
+2) Log on as Administrator or as a member of the Administrators group.
+
+3) Click Start, and then click Control Panel.
+
+4) Click Performance and Maintenance, click Administrative Tools, and then double-click Computer Management.
+
+5) In the left pane, click Disk Management.
+
+6) Right-click a volume on the dynamic disk that you want to change to a basic disk, and then click Delete Volume.
+
+7) Click Yes when you are prompted to delete the volume.
+
+8) Repeat steps 4 and 5 for each volume on the dynamic disk.
+
+9) After you have deleted all the volumes on the dynamic disk, right-click the dynamic disk that you want to change to a basic disk, and then click Convert to Basic Disk.
+
+NOTE:You must right-click the gray area that contains the disk title on the left side of the Details pane. For example, right-click Disk 1.

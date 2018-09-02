@@ -1,0 +1,70 @@
+Winsock 2 Repair
+
+ WinXP Tips & Trix - Winsock 2 Repair
+
+
+
+Repairing Damaged Winsock2
+
+The symptoms when Winsock2 is damaged show when you try to release and renew the IP address using IPCONFIG...
+
+And you get the following error message:
+
+An error occurred while renewing interface 'Internet': An operation was attempted on something that is not a socket.
+
+Also Internet Explorer may give the following error message:
+The page cannot be displayed Additionally, you may have no IP address or no Automatic Private IP Addressing (APIPA) address, and you may be receiving IP packets but not sending them.
+
+There are two easy ways to determine if Winsock2 is damaged:
+
+From the XP source files, go to the Support / Tools directory
+
+Winsock Test Method 1
+Run netdiag /test:winsock
+
+The end should say Winsock test ..... passed
+
+Winsock Test Method 2
+
+Run Msinfo32
+Click on the + by Components
+Click on the by Network
+Click on Protocol
+There should be 10 sections if the Winsock2 key is ok
+MSAFD Tcpip [TCP/IP]
+MSAFD Tcpip [UDP/IP]
+RSVP UDP Service Provider
+RSVP TCP Service Provider
+MSAFD NetBIOS [\Device\NetBT_Tcpip...
+MSAFD NetBIOS [\Device\NetBT_Tcpip...
+MSAFD NetBIOS [\Device\NetBT_Tcpip...
+MSAFD NetBIOS [\Device\NetBT_Tcpip...
+MSAFD NetBIOS [\Device\NetBT_Tcpip...
+MSAFD NetBIOS [\Device\NetBT_Tcpip...
+
+If the names are anything different from those in this list, then likely Winsock2 is corrupted and needs to be repaired.
+If you have any 3rd party software installed, the name MSAFD may be changed.
+There should be no fewer than 10 sections.
+
+To repair Winsock2
+
+Run Regedit
+Delete the following two registry keys:
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Winsock
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Winsock2
+
+Restart the computer
+Go to Network Connections
+Right click and select Properties
+Click on the Install button
+Select Protocol
+Click on the Add button
+Click on the Have Disk button
+Browse to the \Windows\inf directory
+Click on the Open button
+Click on the OK button
+Highlight Internet Protocol (TCP/IP)
+Click on the OK button
+Reboot
+
+punk.gif

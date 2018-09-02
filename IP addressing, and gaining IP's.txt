@@ -1,0 +1,312 @@
+
+Date: Wed, 12 Nov 86 21:59:15 pst
+From: wally%net1.ucsd.edu@flash.bellcore.com (Wally Linstruth) (tty00)
+
+        To: tcpgroup
+        Regarding: IP addressing
+
+
+             The  intent  of  this paper is to  document  the  background 
+        behind the current IP address assignments which I have offered to 
+        coordinate.   The proposed scheme has been reviewed by Phil Karn, 
+        Bdale Garbee and (verbally with) Mike Chepponis, all of whom have 
+        encouraged that it be used.
+
+             Phil's  code  does  NOT  currently  support  the  subnetwork 
+        aspects of the scheme but will do so in the future.   There is no 
+        real  reason  for  any national coordination of  these  addresses 
+        until  actual  networks or at  least  geographically  coordinated 
+        groups of experimenters are formed.
+
+             I  have offered to issue and keep track of SUBNET  addresses 
+        and  their  "owners"  who are  presumably  responsible  *NETWORK* 
+        implementors and managers.
+
+             The  basic premise behind the proposed plan is that  amateur 
+        radio  networks will be politically defined.   The plan is  based 
+        upon  the  presumption  that current voice networks  serve  as  a 
+        proper  analog by which to predict general characteristics of the 
+        as yet unconstructed digital networks.   Political entities  will 
+        build networks; funded, controlled, maintained and used primarily 
+        by their own members and guests.
+
+             Each  of these separately managed networks should be  viewed 
+        as  a  subnetwork  of AMPRNET (with the  idea  being  to  somehow 
+        rationally  partition the 044.xxx.xxx.xxx AMPRNET address space).  
+        Each  subnetwork within AMPRNET will maintain routing tables  for 
+        its  own  constituents.   Each will provide its own hosts  (TACs, 
+        Gateways, i.e. the mechanism by which users with simple terminals 
+        and AX25 level 2 boxes will access network resources),  switches, 
+        rules  (network  administration),  security  measures  and  quite 
+        possibly its own link level protocols.
+
+             The  natural  limitations on span of control  will  probably 
+        limit  the  service  area of each of  these  networks.   This  is 
+        another factor leading to the partitioning of the AMPRNET address 
+        space with respect to separate subnetworks.
+
+             This  partitioning  of  the  address space  will  allow  for 
+        much  simplified  routing tables in each  host.   Internetworking 
+        gateways will connect these independently controlled subnetworks. 
+        Each  gateway will maintain routing tables only for  local  hosts 
+        and for gateways to other networks.  Hosts and  relay switches on 
+        a   given  subnet  will  need  to  maintain  routing  information 
+        regarding  only  members  of that subnet and  gateways  to  other 
+        networks.   The  required routing tables should prove to be  very 
+        manageable  and make any kind of geographically  based  hueristic 
+        addressing schemes such as ZIP codes, area codes etc. moot.
+
+
+
+
+                                        1
+
+
+
+
+             I  would  also  like to propose that we  coordinate  logical 
+        network  names and their corresponding addresses based  on  these 
+        political   network  subdivisions.    The  concept  of  a  naming 
+        convention  which maps directly into an IP address is purely  for 
+        the  convenience  of  network developers and  is  not  considered 
+        necessary.  There is,  however, some good reasoning behind making 
+        network and host names hierarchical and meaningful to end  users.  
+        It  will  considerably aid in bootstrapping the initial  networks 
+        and in being comprehensible to the non-network folks who will  be 
+        the  primary  users  of these networks.   The  naming  convention 
+        proposed   is  of  the   form   USERID@HOST.SUBNET[.AMPRNET.RES].  
+        WESTNET,  SBARCnet  (Santa  Barbara ARC) and  GFRN-net  represent 
+        three  hypothetical  networks  with which this  writer  could  be 
+        involved, perhaps as a provider of gateway and/or host services.
+
+             Each  of  these  subnetwork entities could have  a  distinct 
+        address  and  perhaps several internally  administered  host/user 
+        addresses.
+
+             [NOTE:  Throughout this paper,  Host or Host/User represents 
+             any  host  or any user running IP protocols that has  direct 
+             network  access.  Also,  for the purposes of  the  following 
+             example,   WA6JPR  is  not  a  network  address,  rather  it 
+             represents  a user-id on a local host.   It is the  writer's 
+             opinion that the majority of packet users for the forseeable 
+             future  will  be using simple TNCs connected  to  hosts  via 
+             AX.25 level 2 protocols.]
+
+             WA6JPR  may  be "a user" on hosts on more than  one  network 
+        such  that  a station in Washington D.C.,logged onto  an  AMPRNET 
+        host,    may    send    internet    traffic    successfully    to 
+        WA6JPR@JPRHOST.WESTNET  (this traffic would be routed to  Westnet 
+        via various AMPRNET gateways and subnetwork level relays and then 
+        to  a  Santa  Barbara  host known internally  by  Westnet  to  be 
+        reachable  via  the  W6AMT-2  switch).   Traffic  could  also  be 
+        directed  to  Wally@SBARC   (presuming  that  the  Santa  Barbara 
+        Amateur  Radio Club maintains a message server host gatewayed  to 
+        the AMPRNET catenet).
+
+             Based  upon  the  presumption  of  the   AMPRNET/SUBNET/HOST 
+        hierarchy,  it  would  seem  that we could easily decide  how  to 
+        allocate  the 044.xxx.xxx.xxx 24 bit IP address field  such  that 
+        there  are bits allocated for a sufficient number of individually 
+        managed  subnetworks  while leaving  a  correspondingly  adequate 
+        number  of  assignable bits for the internal addressing needs  of 
+        each individual subnetwork.
+
+             Accordingly,   the  following  is  proposed  as  an  initial 
+        addressing  scheme and methodology for address assignment.   [Bit 
+        numbering is per RFC-960 Pg.2]
+
+
+
+
+
+
+
+                                        2
+
+
+
+
+        Bit  8  to  be 0 for USA stations and  1  for  non-USA  stations.  
+        [Note.   This  is  not  meant  to imply a  geographic  basis  for 
+        assignments.   It  is  meant to provide a very  quick  means  for 
+        segregating FCC controlled participants from non-FCC stations.]
+
+        Bits  9 - 18 to represent politically separate subnetworks within 
+        AMPRNET.   These  bits  are to be assigned in an  inverse  binary 
+        sequence   (see   example   below)  beginning  with   the   *MOST 
+        SIGNIFICANT* bit first.
+
+        Bits 19 - 23 to be unassigned and reserved for future  allocation 
+        as  network addresses,  to network administrations for internally 
+        assigned  host  and/or user addresses,  to a combination  of  the 
+        above or to a completely new intermediate class of addresses.
+
+        Bits  24  - 31  to be used within  politically  separate  AMPRNET 
+        subnetworks for individual hosts,  switches, workstations etc. as 
+        determined  by  local  network  administration.    It  would   be 
+        recommended  that these bits be assigned in binary sequence  with 
+        the *LEAST SIGNIFICANT* bits being assigned first.
+
+             The  resulting  network  addresses would be as follows:
+
+        AMPRNET
+        ||
+        || SUBNET----+
+        || |         |
+        || |         | HOST--+
+        || |         | |     |
+        44:0...127:000:0...255------- 32,768 addresses assignable
+        44:0...127:001:0...255--+
+                    |           +- 1,015,808 addresses reserved
+        44:0...127:031:0...255--+
+        44:0...127:032:0...255------- 32,768 addresses assignable
+        44:0...127:033:0...255--+
+                    |           +- 1,015,808 addresses reserved
+        44:0...127:063:0...255--+
+        44:0...127:064:0...255------- 32,768 addresses assignable
+        44:0...127:065:0...255--+
+                    |           +- 1,015,808 addresses reserved
+        44:0...127:095:0...255--+
+        44:0...127:096:0...255------- 32,768 addresses assignable
+        44:0...127:097:0...255--+
+                    |           +- 1,015,808 addresses reserved
+        44:0...127:127:0...255--+
+        44:0...127:128:0...255------- 32,768 addresses assignable
+        44:0...127:129:0...255--+
+                    |           +- 1,015,808 addresses reserved
+        44:0...127:159:0...255--+
+        44:0...127:160:0...255------- 32,768 addresses assignable
+        44:0...127:161:0...255--+
+                    |           +- 1,015,808 addresses reserved
+        44:0...127:191:0...255--+
+        44:0...127:192:0...255------- 32,768 addresses assignable
+
+
+
+                                        3
+
+
+
+
+        44:0...127:193:0...255--+
+                    |           +- 1,015,808 addresses reserved
+        44:0...127:223:0...255--+
+        44:0...127:224:0...255------- 32,768 addresses assignable
+        44:0...127:225:0...255--+
+                    |           +- 1,015,808 addresses reserved
+        44:0...127:255:0...255--+
+
+        44:128:xxx:xxx----------+
+            |                   +- 8,388,608 addresses assignable (non USA)
+        44:255:xxx:xxx----------+
+
+
+             The  above  allocation and assignment scheme allows  network 
+        (subnet)  and  intranet  (host/user) addresses  to  begin  to  be 
+        immediately assigned to experimenters while retaining the largest 
+        possible  contiguous  block of unassigned bits whose  assignments 
+        can  be  defined  in  the future with  little  or  no  impact  on 
+        previously   allocated   addresses.    The  USER  @  HOSTNAME   . 
+        SUBNET/ADMINISTRATION  naming scheme represents a  human-friendly 
+        network  naming  convention  which  maps  easily  into  numerical 
+        network  addresses.   I  believe that the above  approach  is  in 
+        general  conformance with the requirements of RFC-950,  "Internet 
+        Standard Subnetting Procedure."
+
+             The  numbering scheme as initially proposed allows for up to 
+        1024  AMPRNET  subnetworks  of up to 256 hosts in the  USA  while 
+        retaining  five  bits  for  future  expansion.    That's  262,144 
+        individual AMPRNET addressable entities.   If the proposed method 
+        of  address  assignment is followed and we run out  of  Host/User 
+        addresses before we run out of network addresses,  we can  simply 
+        pick  up  the  least  significant reserved bit  and  assign  more 
+        Host/User addresses.   Conversely,  if network addresses are more 
+        popular  we  could easily expand by taking the  most  significant 
+        reserved  bit and allocating it for network  addressing.
+
+        If it should become clear that every user on a network needs  his 
+        or her own IP address, each network could allocate user blocks in 
+        256  user  increments from the least significant  reserved  bits.  
+        Possible  combinations  are  1024 networks each with up  to  8192 
+        individually  addressable units or 2048 networks each  with  4096 
+        hosts/users (8,388,608 individually addressable entities).
+
+             The  writer presumes that 8 million plus addresses ought  to 
+        last the US amateur population for some time to come. All we need 
+        to  do to avoid painting ourselves in a corner is to assign  them 
+        in a logical sequence rather than randomly.
+
+
+
+
+
+
+
+
+
+
+                                        4
+
+
+
+
+             The  following table serves as an example of the  "high  bit 
+        first"  network  address  assignment table and  some  actual  and 
+        requested initial networking assignments.
+
+             "this"         44.000.000.xxx      ;special case
+             KARNnet        44.064.000.xxx      ;network admin: KA9Q
+             BDALEnet       44.032.000.xxx      ;network admin: N3EUA
+             DCnet1         44.096.000.xxx      ;network admin: WB6RQN
+             SOCALnet1      44.016.000.xxx      ;network admin: WB5EKU
+             DCnet2         44.080.000.xxx      ;network admin: WB6RQN
+             SOCALnet2      44.048.000.xxx      ;network admin: WA6JPR
+             PITTNET        44.112.000.xxx      ;network admin: N3CVL
+             next           44.008.000.xxx
+             next           44.072.000.xxx
+                                .
+                                .
+                                .
+             last           44.063.000.xxx
+             "all"          44.127.000.xxx      ;special case
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        5
+
+

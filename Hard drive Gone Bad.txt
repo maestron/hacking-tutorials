@@ -1,0 +1,111 @@
+Hard drive gone bad
+
+The most common problems originate
+from corruption of the master boot record, FAT, or directory.
+Those are soft problems which can usually be taken care of
+with a combination of tools like Fdisk /mbr to refresh the
+master boot record followed by a reboot and Norton disk doctor
+or Spinneret.
+
+The most common hardware problems are a bad controller, a bad
+drive motor, or a bad head mechanism.
+
+1. Can the BIOS see and identify the hard drive correctly? If
+it can't, then the hard drives onboard controller is bad.
+
+2. Does the drive spin and maintain a constant velocity? If it
+does, that's good news. The motor is functioning.
+
+3. If the drive surges and dies, the most likely cause is a
+bad controller (assuming the drive is cool). A gate allowing
+the current to drive the motor may not be staying open. The
+drive needs a new controller.
+
+4. Do you hear a lot of head clatter when the machine is
+turned on and initialized (but before the system attempts to
+access the hard drive). Head clatter would indicate that the
+spindle bearings are sloppy or worn badly. Maybe even lose and
+flopping around inside.
+
+5. There is always the possibility that the controller you are
+using in the machine has gone south.
+
+1. If the drive spins, try booting to the A> prompt, run Fdisk
+and check to see if Fdisk can see a partition on the hard
+drive. If Fdisk can see the partition, that means that it can
+access the drive and that the controller electronics are
+functioning correctly. If there is no head clatter, it may be
+just a matter of disk corruption which commonly occurs when a
+surge hits you machine and overwhelms the power supply voltage
+regulator. It commonly over whelms the system electronics
+allowing an EM pulse to wipe out the master boot record, file
+allocations table, and primary directory. Fdisk can fix the
+master boot record and Norton Disk Doctor can restore the FAT
+and Directory from the secondaries.
+2. The drive spins but Fdisk can't see it. Try the drive in
+another system and repeat the test to confirm that Fdisk can't
+read through the drives onboard controller. If it sees it in
+another system, then your machines hard drive interface is
+bad. You can try an upgraded or replacement controller card
+like a Promise or CMD Technologies (there are others) in you
+machine after disabling the integrated controller in the BIOS,
+but if the integrated controller went south, it may just be
+symptomatic of further failures and you'd be wise to replace
+the motherboard. Trying the drive in another machine also
+eliminates the variable that your machines 12 volt power
+output being bad
+
+3. If you get head clatter but a constant velocity on the
+drive motor (no surging), you might try sticking the hard
+drive in the freezer for about 12 hours. This is an old trick
+from back in the days of the MFM/ESDI driver era. This can
+cause the drive components to shrink enough to make the track
+marker align with the tracks. We don't see that kind of
+platter spindle wear much anymore, but back in the old days,
+the balancing and bearings weren't as good. Still, under the
+right circumstances, it might help. It would depend on how old
+the drive is and how many hours of wear have occurred. You
+have to be quick to get your info off the drive when it works.
+Back then, the drives were much smaller, so there wasn't so
+much to copy. So, go after the important data first.
+
+4. The drive doesn't spin. Either the onboard controller is
+bad or the motor is bad (assuming you did try the drive in
+another machine). It's time to hit the net and local
+independent shops to see if you can locate another drive of
+the same make and model that's good. Since the drive is
+probably an older drive and no longer in distribution, your
+best bet is to find an identical used drive. If you know
+someone with the same make and model, you might be wise to try
+and persuade them to sell you their drive with an offer of
+providing them with a free upgraded drive. If you can locate
+an identical drive, start with the controller replacement ...
+this is the simplest and least invasive. If swapping the
+controller doesn't produce the desire result, you can tear
+into the drive and swap the motors. While you have both drive
+opened up to accomplish this, scrutinize the platters, heads
+and armatures. You might even hook the drive up and power it
+from a system with both drives attached. This way, you could
+see anything that deviates between the actions of both drives
+when they are initialized. Swapping patters is unlikely to
+produce any positive result. They are a balanced system like
+the tires on your car and I suspect that the balance will be
+different for each drive as will other variables.
+
+5. There's always Ontrack Corp. who will attempt to recoup
+your info starting at $500 and going up from there. They don't
+fix and return the drive either.
+
+If the info is all that important to you, I would seek some
+professional and experience technician in your locality who
+makes his living from servicing and building computer systems
+... not just selling them. If you have had much experience
+salvaging information from bad hard drives, your likelihood of
+success is low. In the case of soft corruption, all utilities
+have their eccentricities. Often times, Norton Disk Doctor
+will go too far (if you let it). It's wise to just let those
+utilities small steps and then have a look at the drive and
+see if you can copy it off. Norton will go so far as to rename
+directories and files, and even delete them or break them up
+into fragments which are useless.
+_________________

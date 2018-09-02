@@ -1,0 +1,709 @@
+The ICQ Security Tutorial / Written by R a v e N (blacksun.box.sk)
+<===================================================================> 13/7/2000, version 1.9
+Author's notes: I'm getting tired of repeating myself*, so please read my previous tutorials (located at http://blacksun.box.sk). Otherwise, you might not understand some of the terminology.
+* Until recently, I had to repeat concepts and terminology that I already explained about in previous tutorials so people who are just reading my first tutorial won't have any difficulties understanding it. Well, I'm kinda tired of doing so, and I'd rather spend my precious time on writing the actual content, so please read my previous tutorials first.
+Oh, by the way, I just want you to understand that I am writing this tutorial in order to teach people how to protect themselves. Also, I am not responsible for anything you do, but I do recommend that you won't start stealing everyone's passwords and flooding people etc'. Use this information in order to protect yourself.If you want to impress someone, the best way is to protect him, not to attack him. This will show your true power.   ;-)
+Anyway, have fun!
+
+Oh, by the way, if you're having trouble reading some parts of this tutorial, it's because some was written on a Linux box, and Windows cannot read Unix/Linux "end of line" characters properly, so you'll have to view this tutorial in a browser or an advanced editor such as Microsoft Word.
+
+(Send comments or questions to barakirs@netvision.net.il, or post them on our message board at blacksun.box.sk)
+the files mentioned in the decryption are included with 'Wang Hack FAQ volume 6' from http://www.wangproducts.co.uk 
+
+What's new in this version:
+---------------------------
+Version 1.2: added the "what's new" section.Also added appendixes A and B.
+Version 1.3: added appendix C.
+Version 1.4: added appendix D.
+Version 1.5: added appendices E and F.
+Version 1.6: added appendix G.
+Version 1.7: added appendix H.
+Version 1.8: added appendix I.
+Version 1.9: added appendix J.
+
+Table of Contents
+<===============>
+What is ICQ?
+* What does ICQ do?
+* What is it good for?
+* Where can I get it?
+* Before reading this tutorial.
+
+Why is ICQ so insecure?
+* Client-side operations.
+* Sloppy programming and beta testing.
+* Other instant messangers.
+
+The cracks
+* What are cracks?
+* What can ICQ cracks do for me?
+* How do they work, and why are such things possible?
+* Where do I get them?
+* Unhiding IPs without the cracks
+
+Flooding
+* Various types of floods.
+* How do those programs really work?
+* What to do when you are being flooded.
+
+Spoofing
+* What is spoofing anyway?
+* How can I spoof ICQ events?
+* How do those programs really work?
+* Using spoofing to play pranks on people
+* Using spoofing to corrupt a person's DB.
+* Protecting yourself against DB corruptions.
+
+ICQ homepage flaws
+* What is the ICQ homepage?
+* How can I crash a person's ICQ client using flaws in the ICQ homepage feature?
+* How can I gain read access to a person's HD using flaws in the ICQ homepage feature?
+* On which versions will this work?
+
+Tricking ICQ's file transfer feature
+* How can I send someone a picture, a text file etc' that is actually a program?
+* Why does this happen?
+
+Unhiding invisible users
+* The web-aware option.
+* Various creative tricks.
+
+Stealing passwords
+* Stealing the DB.
+* Exploiting the forgotten passwords feature in ICQ's homepage.
+* Guessing the password.
+
+Final notes
+* To use or not to use?
+* Why did AOL buy Mirabilis for so much money?
+* Running ICQ under Linux.
+* Some rant about ICQ chain letters.
+
+Appendix A: Getting that little port by yourself
+* How do you do it?
+* Why is it better to do this by yourself?
+
+Appendix B: The advantages of Unix ICQ clones
+* Killing the "you were added" notice.
+* Getting the IP and port from the client with no need for any patches.
+* Built-in message spoofers.
+
+Appendix C: IP ==> UIN convertion by yourself
+* Why would I wanna do this?
+* How can I do this?
+
+Appendix D: More fun with contact lists
+* How can I easily delete someone's contact list without using a spoofer?
+* How can I evade this vicious trick?
+
+Appendix E: Incredible tricks with the ICQ protocol
+* What cool tricks can I do once I learn the ICQ protocol?
+* Where can I learn the ICQ protocol?
+ 
+Appendix F: Reading someone's contacts and history log 
+* How can I read someone's contacts and history log? 
+* Can I also get his ICQ password that way? 
+
+Appendix G: WebIcq.com
+* What is WebIcq.com?
+* What's so interesting about it?
+
+Appendix H: Cracking the ICQ Password By Yourself
+* How can I crack the ICQ password all by myself, without the use of a program, once I have the DB files?
+
+Appendix I: 00.00.00.00?? / 0.0.0.0??
+* Why do I sometimes get false IPs such as 0.0.0.0?
+* How can I overcome this?
+
+Appendix J: Newer ICQ Holes
+* ICQ Guestbook holes.
+* ICQmail hole.
+
+Other tutorials by BSRF
+* FTP Security.
+* Sendmail Security.
+* Overclocking.
+* Ad and Spam Blocking.
+* Anonymity.
+* Info-Gathering.
+* Phreaking.
+* Advanced Phreaking.
+* More Phreaking.
+* IRC Warfare.
+* Proxies, Wingates and SOCKS Firewalls.
+* RM Networks.
+* The Windows Registry.
+* Cracking, part I and II (III coming soon).
+* Mailing List Security.
+* HTML.
+* IP Masquerading.
+* Cool info about computer hardware.
+* The #2,000 "bug" in IRC.
+* The "javasCript" bug in Hotmail.
+* Basic Local/Remote Unix Security.
+
+What is ICQ?
+===========
+ICQ stands for "I Seek You" (witty little wordgame). It is an innovative program that was invented by Mirabilis (a software company, which was later sold to AOL for about 400 million U.S dollars in 1998). ICQ allows you to see whenever your best friends are online, and to communicate with them. You can send text messages, URLs, chat requests (you may have an ICQ chat with more than two users), transfer files, send greeting cards, send voice messages etc' etc' etc'. Such a program is called an "Instant Messanger".
+IMHO (In My Humble Opinion) ICQ is the best instant messanger out there. It beats the hell out of other instant messangers, such as AIM (AOL Instant Messanger), Yahoo Instant Messanger, MSN Instant Messanger, Gooey (which let's you talk to other people who are on the same website as you are) etc'. ICQ also has the highest amount of users (I lost count, but you can get the current amount of users at www.icq.com).
+You can download ICQ from www.icq.com or www.mirabilis.com (both domains point to the exact same server).
+ICQ is available for all versions of Windows and Mac. For running ICQ under Linux, see the final notes chapter.
+NOTE: if you are new to ICQ, please get used to it before you start reading this tutorial. Otherwise, you might not understand everything and get frustrated. Anyway, play around with it and see what you can do.
+
+Why is ICQ so insecure?
+=======================
+ICQ, being the wonderfully innovative and useful program it is, is also quite insecure. This is because:
+
+A) Too many operations are done by the client (client-side operations).
+B) The people at Mirabilis are sloppy programmers.
+Here, let me explain.
+First of all, client-side operations make ICQ more vulnerable to attacks because of several reasons. Take message spoofing for example. It is possible to spoof messages (send fake messages that will appear to be sent from a different user. Don't worry, we'll get to that later) on ICQ, because ICQ will receive messages from every IP. You see, some people choose to tell their client to send their messages, while other prefer to send their messages through the server, so ICQ will simply receive messages from anyone, not only the server. If all messages were sent through the server, ICQ wouldn't have agreed to receive messages from anyone else but the server, and it would have made spoofing messages and other ICQ events (such as URLs, file transfers etc') much harder.
+Another example: the next chapter discussed about cracks for ICQ. Please read it and then return back to this part (but please read the rest of this chapter first). Done already? Wow, you're quick! Have you taken any special courses or anything? Nevermind, forget it. Stupid joke...   ;-)
+So anyway, I don't know much about software cracking, but I know that some of these cracks weren't possible to make if all the operations were done by the ICQ servers.
+Take the IP unhider crack for example. Your ICQ needs other people's IP addresses in order to send them events. If sending events was possible only through the server, your ICQ client would have had to contact the server and tell it to send an event to this or that UIN, without even knowing this UIN's IP. The server, on the other hand, knows everyone's IPs, so he does the delivery for you. That way, the only way to reveal a person's IP is to have access to the server, which would certainly be much more difficult than downloading a crack and running it...   ;-)
+Second of all, the guys at Mirabilis are quite sloppy with their programming. Don't get me wrong, I'm not saying that I'm a better programmer than them. In fact, I suck at programming. My code (in case you know nothing about programming, a source code is all that stuff programmers write all day long while sitting in front of their computer monitors. Code is a programmers' slang for source code) always looks messy and I keep forgetting what I did five minutes ago. On the other hand, I'm not saying that the people at Mirabilis are gods. Everyone makes mistakes, and I believe most of their mistakes are done because of poor beta testing (to do beta testing: the act of testing a program before it's final release to the public).
+Just in case you're wondering, ICQ is not the only instant messanger out there that is vulnerable to various security holes. In fact, the least secure instant messanger is the MSN (Microsoft Network) instant messanger (shock, shock!). To learn about it's amazingly-idiotic and easily-exploitable security holes, head off to our homepage (http://blacksun.box.sk), find the Byte Me page and read about MSN instant messanger's security holes.
+
+The cracks
+==========
+First of all, a crack is a small executable file that changes something in a certain program. For example: turns shareware programs (software that may be freely distributed, but has some of the most important features disabled, or stops operating after a number of days, unless you register the program using a serial number) into registered programs, gives you options you're not supposed to have etc'.
+The ICQ cracks allow you to:
+
+A) View someone's IP address, even if he turned "don't show my IP" on in his preferences menu.
+B) Add someone to your contact list without authorization.
+C) Run more than one ICQ at the same time (in order to use multiple UINs at the same time).
+D) Add yourself to your own contact list (this becomes quite useful in protecting yourself from DB corruptions. See the spoofing chapter for more information).
+
+If you've already read the previous chapter (why is ICQ so insecure), you should know by now why these cracks work. But if your question is how... well, I'm not exactly a "cracking guru"... I know very little about cracking (relatively, of course. I don't wanna show off, but I do know how these cracks are made, and how to operate cracking software such as SoftIce, procdump, various unpackers etc'), so I don't want to provide you with any false information. If you want cracking tutorials, I suggest going to neworder.box.sk and entering the cracking section.
+
+However, you can find the IP by yourself, in a much cooler way than just downloading a crack.
+Send a message to someone. Make sure it doesn't go through the server. If it has to, then start a chat session or a file transfer, which never go through the webserver, and then open a DOS window and type:
+netstat -a
+This displays all active connections. One of them should be to the guy you're messaging, and it should have his IP address.
+The best way to determine which one is the guy you're messaging is to run netstat -a, then send the message and then run netstat -a again to see what has changed.
+
+Ok, moving on. The best crack-pack for ICQ is, IMHO, IsoaQ. You can get it at http://thor.prohosting.com/~bornic. Using it is quite simple. If you have any problems with it, read the FAQ that is attached to the package (I recommend reading it anyway. It contains some interesting information).
+
+Flooding
+========
+Flooding menas, of course, flooding someone else with tons of messages or any other events. There are several ways to flood someone's ICQ:
+
+A) The first way is, of course, double-clicking someone's name in your contact list, writing a message, copying it, sending it, and then double-clicking on his name again, pressing paste, sending, double-clicking again, pressing paste, sending... as you can see, this is quite frustrating and ineffective.
+B) Using a "canned" flooder (these kinds of programs are often called "canned" programs, because they come like food in a can - all you have to do is to open the can and eat. Of course, the food you cook by yourself tastes much better, and gives you much more satisfaction. Well, unless you're a bad cook...   ;-) ).
+These flooders have been programmed by either people who learned the ICQ protocol by themselves by "eavasdropping" ICQ or setting up a fake server on their computers and listening to what ICQ does, or by other people who read some articles and tutorials and ran off to make a flooder. Also, some flooders will do much more damage. They will send as many messages as you tell them to, but instead of sending them all from one UIN, they will send them one by one, each one from a fake UIN. That way, the victim will suddently see his contact list filling with people he doesn't even know and fake UINs, and be amazed to see that each one has sent him a single identical message.
+You can get a good flooder at www.warforge.com. It's a site maintained by script kiddies and for script kiddies. A script kiddie, in case you don't know yet, is a person that thinks he's a "hacker" because he uses other people's software, often without even knowing how they work.
+Anyway, I personally don't advise you to start flooding people. This will only make you look like either a lamer, a total jerk or both.
+Oh, by the way, you'll need the ICQ port in order to operate such a flooder. The ICQ port is a port that ICQ opens and listens to. They are always somewhere between 1024 to 2000. All you need is to scan this range with a regular portscanner and put a relatively high timeout (one or two seconds).
+Since these flooders and many other ICQ "utilities" require the ICQ port to operate, you could open several ports in that range in order to confuse lamers who try to flood you. You can do this by either programming such a thing by yourself, playing around with /etc/inetd.conf or other files if you're using Unix, using Netcat (the network administrator's swiss army knife. Can be found, together with full documentation, of course, at www.l0pht.org) or use some canned tool (again, www.warforge.com).
+C) ICQ also has a feature called Email Express. Let's suppose your UIN is 5917057 (just to make things clear, it's not your UIN. Actually, it's my UIN...  ;-) ). If someone sends a message to 5917057@icq.com, you will receive it as an Email Express message straight into your ICQ client. Now, what happens if you run some canned mailbomber and flood this Email address? That's right, this person will get flooded as well.
+To protect yourself from such things, you can disable Email Express from the preferences menu in ICQ. Also, I don't advise you to do such things, not only because flooding is lame and idiotic, but also because the victim will be able to see your Email address and your IP (to learn how to fake Emails and the IPs in their headers, read my Sendmail tutorial).
+If you've been flooded, there are programs out there that will ask you to close your ICQ client and will then simply erase every unread message (make sure you didn't get any important messages while you were flooded). Again, such a program can be found at www.warforge.com.
+
+Spoofing
+========
+First of all, spoofing is faking. For example: spoofing messages - faking messages, spoofing your IP - faking your IP, etc'. Consider the word spoofing an alias to the word faking.
+Again, spoofing messages and other events or making programs that do this is possible by learning the ICQ protocol. The best spoofer is called Lame Toy, and again, you can get it at www.warforge.com.
+You can play lots of fun and amusing pranks on people using spoofers. For example: you can send people messages from themselves, pretending to be their own computer or something, or you could send someone a break-up letter from his beloved one (but you won't do THAT, now would you?  ;-) ). Lame Toy is also capable of spoofing other events, such as URLs, file transfer requests, chat requests etc'.
+Also, if you send someone a message from himself and he adds himself to his contact list, the next time he will start his ICQ client he will lose his entire contact list. This is called a DB corruption. DB stands for DataBase. Your ICQ DB contains your entire contact list and all of your private information and settings. It is stored in a subdirectory in ICQ's directory which will either be called DB (in versions older than ICQ99a), NewDB (in ICQ99a) or DB99b (in ICQ99b).
+If the victim has already added himself to his contact list and you want to see immediate results, you could always DoS him so he'll have to reconnect to the net and restart ICQ.
+Anyway, such an action is cruel and quite illegal, so I suggest not doing so. If you merely want to protect yourself, get a crack for ICQ that allows you to add yourself to your own contact list (see the cracks chapter).
+Also, I recommend backing up your contact list once a week.
+
+ICQ homepage flaws
+==================
+ICQ homepage is a feature that all ICQ versions since ICQ99a build #1700 have. It allows you to open a small webserver on your own computer and put a nice little website on it without any special knowledge. You will even have a nice counter, and be alerted on ICQ whenever someone hits your webpage (unless you disable this feature, of course). You could also serve numerous files from your own computer. Of course, this website is up only when you are online, but since some people have either LAN connections, DSL connections or other frame-relay connections which keep them online 24 hours a day, 7 days a week, this feature could come to be quite useful.
+Now, let's move to the interesting part - how secure is this little webserver?The ICQ homepage webserver that comes with ICQ99a builds #1700 and #1701 is vulnerable to two enormously stupid attacks.
+
+A) When you connect to it manually (with either telnet, Netcat or any other program) and enter a non-standard webserver command, it simply crashes and takes the victim's ICQ client together with it. For example: the command get, combined with a parameter, simply gets a certain file. For example: if you want the file http://blacksun.box.sk/poop/shit.jpg (just for your information, there isn't such a file on our server), you simply connect to blacksun.box.sk on port 80 and type in "get /poop/shit.jpg" (without the quotes).
+Now, if you connect to an ICQ homepage webserver and simply type get without any parameters the webserver crashes together with ICQ and you'll get a "connection lost" message.
+On newer versions of ICQ you will get a connection lost message as well, but this time it's because the webserver simply closed the connection, not because it crashed or anything.
+B) The ICQ webserver's directory is c:\program files\icq\homepage\ by default. Anything on this directory can be read by any web browser (or telnet application, if you choose to surf with telnet for some blurred and strange reason). But what if you had the option to climb up in this field? You know, get to c:\program files\icq\, or even to c:\ and it's subdirectories?This can be done with the ICQ webserver that comes with ICQ99a buils #1700 and #1701. For example: if you want to read someone's system.ini file, which is located at c:\windows\system.ini, you will need to climb up three times to get from c:\program files\icq\homepage to c:\, and then climb down once to get from c:\ to c:\windows. This can be done by accessing the following URL on the victim's webserver: "/..../windows/system.ini" (without the quotes). Here, let me explain.
+One dot means "current directory". Two dots mean one directory up. Three mean two up, and four, in our case, mean three directories up. Once we climbed three directories up and got to c:\, we climb down to c:\windows and then get to c:\windows\win.ini. This rule is universal, which means it works on every OS (or at least every OS I know), including Windows, which is the OS the ICQ webserver runs on.
+Now, wait a second... we type in this URL, but we got a 304 (forbidden) error. Oh, wait, I know why... this webserver only allows us to access .html pages, .jpg files, .gif files and other files that can be found on usual websites. It is very simple to trick this stupid webserver. Simply type in this URL (again, without the quotes): "/..../.html/windows/system.ini". Isn't this stupid or what?!You could also download the victim's DB files and use them later to retrieve his password (see the password stealing chapter). Hell, you could even use a download manager such as GetRight, Go!Zilla, ReGet etc' to download it, 'cause the ICQ webserver supports resuming!Note: newer versions of the ICQ homepage are not vulnerable to this hole anymore.
+
+Note: /../../../ is the same as .... (going up three times).
+
+Tricking ICQ's file transfer feature
+====================================
+When you receive a file transfer request from someone else, you can see the filename in a small text box inside the request dialog box. But what happens if the filename is too long to be displayed?Let's make an experiment. Take an executable file called "file.exe" (without the quotes), and change it's name into "file.jpg                       .exe" (again, without the quotes. I'm getting tired of saying that...). Now, send this file to someone on ICQ.
+Since the filename is too long to display, the little text box will only show as much as it can, thus hiding the "     .exe" part from the victim's eyes. The victim will receive the file without thinking twice (I mean, it's just an innocent little .jpg image. OR IS IT?!! MWHAHAHAHAHAHAHA!!), run it and get infected with a virus or whatever you want to put in that executable file.
+You can go even further if you'd like to. Make an executable file called "sex-story.txt                       .exe" and give it the icon of a simple .txt file.So the next time you receive a file from another user on ICQ, think twice before you run it...   ;-)
+
+Unhiding invisible users
+========================
+ICQ has a feature in it called an "invisible list". Everyone on this list won't be able to see whether you are online or offline, even if he has you on his contact list.
+If someone put you on invisible and you want to know whether he is online or offline, simply do the following:
+(a) Find his UIN (suppose it's my UIN, 5917057).
+(b) Go to www.icq.com/5917057
+(c) Look for a little image that says whether he is online or offline.
+What is this thing, you ask? Well, it's an option called web-aware. It allows people who don't have ICQ to see whether you are online or offline. It is also necessary for ICQ web pagers (some HTML code that, when placed into an HTML document, let's people send you a message or see whether you are online or offline without the need for having ICQ or the hassle of finding you on ICQ).
+Web-aware can be turned off using the preferences menu. If you turn web-aware off, people who will go to www.icq.com/your-uin will see an image saying "disabled" instead of "online" or "offline".
+Even if your victim turns web-aware off, you could still manage to detect his online presence.
+For example: immature people will react if you curse them or say bad things about them.
+Also, you could register another ICQ user (takes about 3-4 minutes), in addition to your regular one, and then switch to it and add this person. Do not communicate with this person while you're using this new account. He will probably forget about you in time, and won't bother putting you on invisible or anything. That way, you could simply switch to this new user whenever you want and see if your victim is online or not.
+
+Stealing passwords
+==================
+If you somehow manage to get a hold of someone's DB files, you could easily steal his password. The passwords are stored in clear text (unencrypted) inside the .dat files. They are always placed in the end of the iUserSound line.
+If you can't find the password, you could always download progenic.com's local password retriever and get the password out of the .dat files.
+Also, some people write fake Email addresses in their info, such as fuck-off@hotmail.com, fake@not.real.com etc'. In the first case (fuck-off@hotmail.com), you could try to see if fuck-off@hotmail.com belongs to someone. If not, register it, and then go to www.icq.com and look for the "forgot your password?" link. Enter the victim's UIN, and the password will be sent to "his" Email address (fuck-off@hotmail.com). Then, login to your hotmail account and wait for the password to show up in your inbox...   ;-)
+Here's another example: the victim puts fake@pentagon.com as his Email address. Too bad he didn't write pentagon.gov, because pentagon.com are giving free Email addresses AFAIK (As Far As I Know). Simply register fake@pentagon.com and get his password.
+If your victim wrote something like this: fake@not.real.com, you could always try to register real.com for 70$, register the subdomain not.real.com, put a POP3 mail server there, register the account "fake", and walla! You now own fake@not.real.com. Okay, I know, most people won't go into so much trouble just to get someone's ICQ password... but what the heck.
+Also, you could always try to guess someone's password, but that should take some time.
+Oh, by the way, have you noticed that the maximum length of an ICQ password is 8 chars? So what's so interesting about it?Once upon a time, years ago (back in 1997, to be exact. Please correct me if I'm wrong), you were able to use Linux clones for ICQ (Mirabilis don't have an official release of ICQ for Linux, so the only way to use ICQ under Linux is to use an ICQ "clone", which is a program that uses the ICQ protocol and uses ICQ's features, but is not an official release by Mirabilis) to get into people's ICQ accounts without the need for a password. How?
+Some ICQ clones for Linux didn't force the user to have a password that was more than 8 chars long. But if you tried to login as someone else and entered a password that is longer than 8 chars, a buffer overflow would have occur and the password verification part would have simply got "skipped over".
+In short, a buffer overflow happens when the program is assigned a certain buffer size for certain actions and exceeds that buffer. Buffer overflows can cause all sorts of "embarrassing situations", and in this case, they simply caused the program to skip the password verification phase.
+Anyway, this little flaw doesn't exist anymore. Too bad...   ;-)
+
+Final notes
+===========
+To use or not to use?
+---------------------
+I know many people who do not use ICQ nor any other instant messanger because of security reasons. You could also refuse to use Email in fear of being mailbombed or receiving "hostile applications" by mail, refuse to use the web in fear of getting into a hostile page, refuse to use IRC in fear of getting DoSsed or hacked by someone etc'. I personally do not believe that the solution is to simply give up. If you face a security problem, learn it and do your best to fix it.
+I hope that you will use the knowledge you have learned while reading through this tutorial to do your best to secure yourself from ICQ and it's security issues and flaws, instead of just giving up.
+
+Why did AOL buy Mirabilis for so much money?
+--------------------------------------------
+Those of you who read the introduction (you're saying you didn't read it? Naughty naughty!), or those of you who heard about it in the news, know that Mirabilis was bought by AOL for 400 million U.S. dollars in 1998. But why would AOL buy Mirabilis for so much money?
+The answer is - Email addresses. ICQ has hundreds of millions of users, and hundreds of thousands of more people are registering more ICQ accounts every day. Most of those people will have an Email address, and put it somewhere in their info. My guess is that AOL are selling some of these Email addresses to spammers (not too many and not in one time, in order not to scandalize the net) for money (and lot's of it. I was once offered 90$ by some firm for every 1,000 Email addresses I sell to them).
+
+Running ICQ under Linux
+-----------------------
+ICQ for Windows 3.11, ICQ for Windows 9x, ICQ for Windows NT, ICQ for Mac, ICQ for Java... what? No ICQ for Linux?
+You must be wondering why Mirabilis didn't release ICQ for Linux. Well, let me tell you a little story. The Cyber God, a member of BSRF, signed up for some mailing list he found at Mirabilis's homepage. It said that members of this mailing list will be notified when a Linux version of ICQ goes out. He waited and waited but nothing happened. After a while, he decided to go back to Mirabilis's homepage and look for the page where he signed up. He searched and he searched, all with no luck - this mailing list disappeared without a trace.
+Conclusion: ???
+Did Mirabilis fail to port ICQ to Linux (to port: to make a version of a certain program for another OS)? Did the project lose it's budget? Nobody knows...
+Anyway, if you really want to run ICQ on Linux, you could either:
+
+A) Download ICQ for Java, and get a Java Virtual Machine for Linux. Start your JVM and run ICQ for Java on it.
+B) Go to www.linuxberg.com, go to their software page, find the ICQ page and you will get a nice list of ICQ clones for Linux.
+
+Some rant about ICQ chain letters
+---------------------------------
+Probably the most annoying thing about ICQ is not it's poor security, but it's never-ending flow of chain letters. Forward this or Mirabilis will start charging money for the use of ICQ!! Forward this and your ICQ will change colors!! Forward this and your crush will kiss you!! Forward this to everyone - there is a virus in the new release of ICQ!! Forward this to everyone - do not add 5917057 (or any other UIN), he is sending viruses!! Forward this to 1-5 people and your crush will kiss you, forward this to 6-10 people and you will win the lottery etc' etc'...!! Forward this or your monitor will melt down!!
+People, people, be reasonable! I never forwarded any of this crap, and Mirabilis didn't charge a penny from me, I didn't get runned over by 49 Budist monks, I didn't get my computer infected with any viruses nor hacked etc' etc' (although my monitor did melt... kidding!).
+Please don't forward any of this crap. I promise you that nothing bad will happen if you won't forward these letters (I mean, everybody knows that the only chain mail that brings you bad luck if you don't send it comes by real mail...   ;-) ).
+Also, if you want a good laugh at someone who forwards you a chain letter, send him this message:
+
+This is an ICQ chain letter. Please do not stop the chain!
+Cindy from Sydney forwarded this letter to 49 million people and became the queen of Zaire!!
+Masha from Russia forwarded this letter to 23.7 million people and became an astronaut and got to fly to the moon!!
+Gil from Brasil didn't forward this letter to anyone and was turned into a frog!!
+Chan from Japan forwarded this letter to 107 thousand people and became the world's Pokemon and PacMan champion!!
+If you forward this letter to 1-5 people: 1-5 people will be pissed at you for forwarding them a stupid chain letter!
+If you forward this letter to 6-10 people: 6-10 people will be pissed at you for forwarding them a stupid chain letter!
+If you forward this letter to 11-15 people: 11-15 people will be pissed at you for forwarding them a stupid chain letter!
+If you forward this letter to 16-20 people: 16-20 people will be pissed at you for forwarding them a stupid chain letter!
+
+Funny, huh? I wrote it myself... *grin*
+
+Appendix A: Getting that little port by yourself
+================================================
+Yes. You can get that little ICQ port by yourself, faster than any stupid "ICQ Portscanning 3l33t k-rad h4x0r1ng proggie" and flood, spoof or just plain annoy people like hell!! WHEEEEEEEE!!!
+How? Simple. Remember when I told you about "the cool way" to get IPs on ICQ? Well, getting the port is almost the same. You see, once you find the IP you will also see the port nearby. Connections in netstat are displayed by their IP, the local port and the remote port, so all you have to do is find the remote IP of your target. This is what you'll see: his-IP:the-port. So simply look after the : and you'll see the port.
+Also, there is an even easier way to do this. Read appendix B to find out more.
+Thanks to Zero Alpha for the idea behind this trick.
+
+Appendix B: The advantages of Unix ICQ clones
+=============================================
+Although ICQ clones always have less features than official releases of ICQ itself, they sometimes have some neat features, such as a menu option that updates all of your contact list's info, a button that tries to connect to the next server out of a large list of servers if you fail connecting etc'.
+Also, most ICQ will display the target's IP and ICQ port within a new field in the info page, as well as let you add people without authorization nor without notifying them (although you could choose to notify someone he's been added).
+Hell, some ICQ clones will even have a built-in message spoofer! Hehe...
+
+Appendix C: IP ==> UIN convertion by yourself
+=============================================
+Suppose someone just tried to nuke you. Your firewall stopped the DoS attempt. You wanna chat with the idiot and tell him how stupid he is, but alas - you only have his IP address. No problemo! If this user has ICQ, you can get his UIN quite easily.
+There are infinite reasons for why you would wanna know how to convert IPs to UINs. I'm sure you could think of at least five in about a minute and a half, so instead, let's just get on with it, shall we?
+This little trick is quite simple. First of all, grab a simple message spoofer. Then, feed it with the target's IP, and send a spoofed message that comes from your UIN. For example: if your UIN is 5917057 (that's MY UIN, actually...  :-) ), you should spoof a message from that UIN (spoof messages from my UIN and I'll kill you!!  :-) ). So grab a simple message spoofer and send a "spoofed" message to your target's IP. Now, in this message, you need to include something that will surely get replied to. It could be something offensive, something interesting or appealing (sending a "Wanna learn how to hack Hotmail" to the usual script kiddie would surely get replied. Also try "Hey, I have a surprise for you...". In other words, anything that will surely get replied to) etc'. Now, suppose the target replies to your message. Where do you think the reply goes to? You, of course! It's your UIN, after all! Since you've sent this message from your UIN, this is where the reply will go to.
+Now, that you received an ICQ message from your target, you will also have his/her UIN
+
+Appendix D: More fun with contact lists
+=======================================
+As I've already said, if you make someone add himself, he will lose his contact list unless he has the patch against it. I've already gone through the process of using message spoofers to make someone add himself. Now, here's another cool way to do this.
+First thing's first, you need to have this person in your contact list. Then, change his name on your contact list, and send him himself as a contact. It will appear to him that the contact you're sending him is another person's contact, and he will add this person, which is actually himself!
+If you want to protect yourself against such things, simply install the patch that let's you add yourself to your own contact list (we've already discussed about where u can get this patch), or simply make sure you don't add yourself.  :-)
+
+BTW the cool person who came up with this trick is Dr. Virus (another member of BSRF. He's the one that made the flash intro and menu).
+
+Appendix E: Incredible tricks with the ICQ protocol
+===================================================
+Imagine that you could hijack someone's session with another person and eavasdrop their conversation. Imagine being able to get the IP, port and a lot of information about a certain user within a couple of seconds. Imagine having more power over the system that you can think of.
+You can get this power by learning the ICQ protocol. The problem is that other people can learn it as well, and use this knowledge in order to maliciously harm you. Don't get caught with your pants down.  :-)
+Learn the ICQ protocol here: http://www.student.nada.kth.se/~d95-mih/icq/
+Get some canned programs to see what can be done using this knowledge and learn more about the ICQ protocol from the source (please do not abuse these programs!): http://www.hackology.com/~ewitness/
+
+Thanks to Eyewitness for the URLs.
+
+Appendix F: Reading someone's contacts and history log 
+====================================================== 
+If you manage to get someone's DB (stands for database) files, located at the appropriate DB directory under his ICQ directory (for example: the DB files in icq99a should be under db99a or something of that sort), you can place them in your DB directory and then start ICQ as another account with that person's contact list, history log etc'. 
+Just remember that if the other person has an older version of ICQ, you might have to use the DB converter to convert his DB files to fit with your new version of ICQ, and if the other user has a newer version, than you have to get his version to fit. 
+Oh, and you can also get his ICQ password. It's usually located in the line that starts with IUserSound (or maybe it was I_UserSound or something of that sort. You should experiment with your own DB files), or just get an automated ICQ password recovery tool from the net (there are thousands of these in every script-kiddie archive). 
+
+Appendix G: WebIcq.com
+======================
+www.webicq.com is a service that enables you to access your ICQ account from anywhere in the world. But what's so interesting about it?
+Well, first, as for the moment, it enables you to add people to your contact list without their authorization. Groovy!
+But that's not all. If you're having any difficulties with the crack that enables you to run multiple instances of ICQ at the same time, or cannot find a crack for your version of ICQ, relax! You can always use webicq.com as a second ICQ window. Have fun, and play nice.      ;-)
+
+Appendix H: Decrypting The ICQ Password
+=======================================
+The following is taken with permission from www.wangproducts.co.uk:
+
+Decrypting the ICQ99b password
+------------------------------
+
+Last volume we talked about playing around with ICQ and we briefly mentioned the ICQ password. Here is what I said:
+
+Versions before ICQ99b store the ICQ password in plain text (i.e. not encrypted) in their DB file (I believe they are now encrypted? - email me if I am wrong). The DB file is located in the following different places depending on your version:
+
+Version lower that ICQ99a = \ICQ\DB\ 
+
+ICQ99a = \ICQ\NewDB\
+
+ICQ99b = \ICQ\DB99b\
+
+Simply look through the file for the password - it usually appears on the line beginning "iUserSound". You could also use the web-server exploit detailed earlier to get the DB file.
+
+Well, I have been doing some research on the ICQ99b password - and yes, it is still in the DB file...but encrypted. The DB files are two files which are called:
+
+<your UIN>.dat
+<your UIN>.idx
+
+In order to decrypt the ICQ password, you will need 3 pieces of information:
+
+
+Your UIN 
+
+Your CryptIV value 
+
+The encrypted password
+
+Your ICQ99b password is encrypted in the .dat file, in the folder \ICQ\DB99b\ and it appears after the text:
+
+Password
+
+I bet you couldn't have guessed that one! Right, the actual encrypted password is the text 4 chars on from the word 'password'. Here is an example:
+
+Password k§ af799034f6bb402e837f
+
+So, 4 chars after the word 'Password' makes the encrypted password:
+
+af799034f6bb402e837f
+
+Some of you may have noticed that the encrypted password is actually made up of hex. Now what we do is make the encrypted password a bit more friendly - by putting spaces in and making it uppercase!
+
+AF 79 90 34 F6 BB 40 2E 83 7F
+
+This is just so you will be able to read each hex number easily later on - you don't have to worry about this if you don't want to.
+
+**Note**
+
+For the people familiar with hex, this obviously represents:
+
+0xAF
+0x79
+0x90
+0x34
+0xF6
+0xBB
+0x40
+0x2E
+0x83
+0x7F
+
+**Note**
+
+Now to get the other important item - your CryptIV value! This will appear in the .dat file - after the text:
+
+99BCryptIV 
+
+which is just before the word 'password'. The CryptIV value is used in generating the decryption key.
+
+Search the .dat file for "99BCryptIV", and then once you have found it, skip past the null terminator and character 'h'. In the other words - ignore the first 2 characters after the word "99BCryptIV". The next 4 characters are your CryptIV value. They will probably look like strange ascii characters. Here is an example of what you could find:
+
+99BCryptIV h]ß~t
+
+In the case above, the CryptIV value would be:
+
+]ß~t
+
+Now we need to work out the ascii values of each character, like so:
+
+] = 93
+ß = 223
+~ = 152
+t = 116
+
+For all you newbies, the Ascii value of something is its numerical value. Every single character on the keyboard has a special number associated with it called the Ascii value.
+
+Now the fun bit!
+
+Once you have your 4 character long CryptIV value converted to ascii, we need to perform this calculation with it:
+
+( 1st + 2nd * 256 + 3rd * 65536 + 4th * 16777216 ) = CryptIV
+
+The 1st, 2nd, 3rd, and 4th bits represent the ascii value of each character of the 99BCryptIV. So, for our example, we would do:
+
+(93 + 223 * 256 + 152 * 65536 + 116 * 16777216) = 1956175709
+
+The final step is to convert the result into hex. Yes, im afraid it has to be done. The easiest way is to go into a programming language and make it convert it. For example, to convert the result above using Visual Basic, the code would be:
+
+msgbox hex(1956175709)
+
+That simple! The code above will make it display a message box showing the hex value. In delphi that code would be:
+
+showmessage(inttohex(1956175709,1));
+
+After converting to hex, you should get the value:
+
+7498DF5D
+
+This can be properly represented as 0x7498DF5D or 7498DF5Dh depending on how your inclined.
+
+Ok, lastly - your UIN. Suprisingly, this is the easiest piece of information to get!! Your UIN is your ICQ number. My UIN was: 16831675
+
+Now we have all the information we need:
+
+UIN : 16831675
+
+CryptIV : 7498DF5D
+
+Encrypted password: AF 79 90 34 F6 BB 40 2E 83 7F
+
+Now we need to use the above information to generate a decryption key (or an XOR key). This is quite complicated, and it would not be feasible for us to do it manually here - but you can use the program I compiled quickly for this volume. It should be along with this file, and its called "ICQ99b.exe". 
+
+Actually, all we need to generate the decryption key is the UIN and the CryptIV - but we will need the Encrypted password soon. Go into the program and enter the UIN and the CryptIV and click "Generate Key". Keep a note of the key it generates for you.
+
+**Note**
+
+Although the XOR key generating process is too complex to do here manually, I have included the source to it with this volume. It is called "XorKeyGn.pas" and it is written in pascal. The compiled program "ICQ99b.exe" is merely a port of this source code into delphi to make it easier for newbies to generate the XOR key. The XorKeyGn.pas source was written entirely by CovertD - who is a very talented coder and deserves all the credit for this decryption, he has helped me to understand this decryption and create this tutorial for you.
+
+**Note**
+
+Ok! once you have the decryption key - the real decryption can begin. The decryption will require you to be familiar with XOR - if you are not familiar with this...I have included the visual basic and delphi source code to decrypt it.
+
+The hands-on approach:
+
+What we now need to do is XOR the encrypted password character-by-character with the decryption key (or XOR key as it should be known).
+
+Using the above example, my program generated the decryption key as:
+
+A7 79 F8 55-95 D0 26 4F-F2 7F 2C
+
+**Note**
+
+Remember this is in hex too, so it really means:
+
+0xA7 0x79 0xF8 0x55 etc.
+
+**Note**
+
+Ok, now the odd bit...remove the first two hex values of both the XOR key and the encrypted password. Why this is needed is explained a bit later. So, for my example we would end up with:
+
+ENCRYPTED PASS = 90 34 F6 BB 40 2E 83 7F
+
+XOR KEY = F8 55-95 D0 26 4F-F2 7F 2C
+
+So looking back at the encrypted password, we will actually be XOR'ing:
+
+0x90 xor 0xF8
+
+0x34 xor 0x55
+
+0xF6 xor 0x95
+
+0xBB xor 0xD0
+
+etc.
+
+and just to do a quick example XOR:
+
+[ 0x90 xor 0xF8 ]
+
+0x90 = 144
+
+0xF8 = 248
+
+010010000
+011111000
+----------------
+001101000
+
+= 104
+
+XOR all of the encrypted password like this and write all of the results down (so for our example, the first result would be 104). Now convert the results to their Ascii symbols, so 104 would become: h
+
+The easier approach:
+
+Ok, if all the talk of XOR scares you, here is the easier way. Below is the code for both visual basic and delphi to perform the XOR calculations above. The visual basic code to do this (using the example) would be:
+
+Dim Key, Encrypted As Variant
+Dim Decrypted As String
+Dim x As Integer
+
+'If you are doing this for your own password and not the example,
+'remember to replace the values with your own.
+Key = Array(&HF8, &H55, &H95, &HD0, &H26, &H4F, &HF2, &H7F, &H2C)
+Encrypted = Array(&H90, &H34, &HF6, &HBB, &H40, &H2E, &H83, &H7F)
+
+'Begin XOR'ing the encrypted text with the key, and converting them to ascii chars.
+For x = 0 To 7
+Decrypted = Decrypted & " " & Chr(Key(x) Xor Encrypted(x))
+Next
+
+'Show a message with the decryption text.
+MsgBox Decrypted
+
+Write down all of the results that are stated in the message box. Here is the delphi code:
+
+Var
+Decrypted : String;
+x : Integer;
+
+Const
+//If you are doing this for your own password and not the example,
+//remember to replace the values with your own.
+Key : Array[0..8] of Integer = ($F8, $55, $95, $D0, $26, $4F, $F2, $7F, $2C);
+Encrypted : Array[0..7] of Integer = ($90, $34, $F6, $BB, $40, $2E, $83, $7F);
+
+begin
+
+//Begin XOR'ing the encrypted text with the key, and converting them to ascii chars.
+For x := 0 To 7 do
+begin
+Decrypted := Decrypted + ' ' + Chr(Key[x] Xor Encrypted[x]);
+end;
+
+//Show a message with the decryption text.
+ShowMessage(Decrypted);
+
+end;
+
+The conclusion:
+
+Now lets look at what you have ended up with (whether you used the manual approach or the code above). You should have something in the format of this:
+
+< The password! > < maybe 1 more useless character >
+
+And yes, the password should have decrypted as 'hackfaq'.
+
+If you were wondering what the 3 useless characters actually mean, then here it is:
+
+The first character is a length word and is a hex value (therefore you shouldn't really convert it to it's ascii value) - the hex value should be equal to the length of the decrypted password. To cut a long story short, the first character holds the length of the password.
+
+The second character is rubbish - I believe? or it might be part of the length...who knows.
+
+The last useless character is simply a null terminator - i.e. zip, nothing, 0
+
+I am really really sorry if I lost anyone during this topic! It is probably the most complex topic we have covered, and is quite difficult to explain - although I felt I should include this as we covered ICQ last volume...and as no-one else has explained it well :)
+
+If it really was a bit much and you are completely lost - then you can download the new program off my web site called "ICQ Decrypt". It will do everything mentioned above for you - just point it in the direction of your ICQ99b dat file and it will show you the password. Get it here
+
+Actually, I would be interested to hear some comments about what people thought of this topic. Mail me
+
+And lastly, many many thanks go to CovertD for the brilliantly coded xorkeygn.pas - which is the heart of the decryption. Keep it up CovertD!!!
+
+Appendix I: 00.00.00.00?? / 0.0.0.0??
+=====================================
+Sometimes (this happens VERY rarely, though), when you try to determine someone's IP, you hit 00.00.00.00 or 0.0.0.0. This is impossible, right? Noone can be coming from 0.0.0.0!!
+You'd bet your sorry ass it's impossible. Then why does this happen?
+Simple. Incompatibility. This only happens when VERY, VEEERY old icq clones for Unix/Linux or version of ICQ for Windows, or old version of Java ICQ collide with the most modern versions of ICQ. People have first seen these cases in ICQ 99b, and it continues on to ICQ 2000 (all versions and beyond).
+So if such a thing happens, you're gonna have to use the netstat -a technique (described above, in the cracks chapter, at the end, where it tells you how to do this by yourself).
+
+Thanks to Morix for this tip!
+
+Appendix J: Newer ICQ Holes
+===========================
+These were copied from various sources around the net.
+
+Guestbook.cgi
+-------------
+ Submissions to this guestbook are handled by a script called guestbook.cgi. This
+ guestbook CGI contains a security vulnerability that allows remote attackers to cause
+ the ICQ client to crash. 
+
+  Vulnerable systems are ICQ Version 99b Beta v.3.19 Build #2569
+
+ When an external visitor requests the URL:
+ http://icqstation.example.com/guestbook.cgi 
+
+ They will get a Forbidden HTTP reply.
+ However, if the URL is:
+ http:// icqstation.example.com/guestbook.cgi?
+
+ (With a ? at the end), ICQ will crash with a GPF. (Note added by me: General Protection Fault. It's a UAE - Unrecoverable Application Error)
+
+-----
+
+ICQ's Guest book CGI long name buffer overflow
+ Jun, 06 2000 - 16:54
+ Web front is a simple HTTP server that comes with ICQ. It allows users to host a home page on their own computer. This personal web server suffers from a number of
+ security vulnerabilities that we described in the past, but this new vulnerability enables attackers to execute code on the client machine. 
+ When passing a long 'name' to ICQ's guest book CGI, the ICQ client may crash, possibly executing arbitrary code. 
+
+ Vulnerable systems: 
+ ICQ 2000a 
+ ICQ 99b 
+ ICQ 99a 
+
+ It is possible to cause the ICQ client to crash by sending it a specially crafted URL, which will cause a buffer overflow in the ICQ program possibly causing it to execute
+ arbitrary code. 
+
+ Example: 
+ http://host.example.com/guestbook.cgi?name=01234567890012345678901234567890 
+
+ provided by: Meliksah Ozoral. 
+ mailto:meliksah@MELIKSAH.NET
+
+ICQmail
+-------
+ICQ2000A ICQmail temporary Internet link vulnerability
+ Jul, 05 2000 - 09:16
+ When reading or sending an email using the ICQmailclient ( http://www.icqmail.com ) with ICQ2000A ( http://www.icq.com ) a temporary Internet link is created in the
+ default temp directory, containing the user ID and encrypted password. This temporary Internet link is never deleted, not even when signing off from ICQwebmail,
+ disconnecting from ICQ or closing ICQ altogether. When opening the temporary Internet link, any user is able to login to the ICQmail web account, and read, write and
+ change any email messages or preferences. 
+
+ Exploit: 
+ Any user using a shared computer can open the temporary Internet link located in the default TEMP directory and use the ICQwebmail to read, write email and change
+ preferences 
+
+ Example: 
+ Name=icq91.url 
+ Location=C:\TEMP 
+
+ An example of the temporary Internet link looks like this: 
+
+ [InternetShortcut] 
+ URL=http://cf.icq.com/cgi-bin/icqmail/write.pl5?uname=gertfokkema&pwd=12345678 
+
+ Temporary solution: 
+ Automatically or manually delete all items in the users default TEMP directory after logging out of the computer. 
+
+ provided by: Gert Fokkema. 
+ mailto:gert@FOKKEMA.8K.COM
+
+Other tutorials by BSRF
+-----------------------
+* FTP Security.
+* Sendmail Security.
+* Overclocking.
+* Ad and Spam Blocking.
+* Anonymity.
+* Info-Gathering.
+* Phreaking.
+* Advanced Phreaking.
+* More Phreaking.
+* IRC Warfare.
+* Proxies, Wingates and SOCKS Firewalls.
+* RM Networks.
+* The Windows Registry.
+* Cracking, part I and II (III coming soon).
+* Mailing List Security.
+* HTML.
+* IP Masquerading.
+* Cool info about computer hardware.
+* The #2,000 "bug" in IRC.
+* The "javasCript" bug in Hotmail.
+* Basic Local/Remote Unix Security

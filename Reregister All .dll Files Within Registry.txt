@@ -1,0 +1,33 @@
+I ran across this the other day on another site and I thought that a couple people might find it helpful, so here we go:
+
+
+1) First go Start/Run, and type in 'cmd' to bring up the Command Prompt.
+
+2) Type 'CD \' and hit enter.
+
+3) Type 'DIR *.dll /s /b > regdll.bat' and hit enter.
+
+4) Type 'Notepad regdll.bat' and hit enter.
+
+Now Notepad is going to bring up a list of your .dll files, nevermind that for a moment.
+
+---
+
+5) Now type 'Path' and hit enter to see your current path. It will bring up something like: Path=c:\Windows;c:\windows\Command
+
+6) (supplement your Windows Version, ex: C:\WINNT, or C:\Windows) Now type: 'Path=c:\windows;c:\windows\Command;c:\Windows\Prog
+ram~\Accessories' and hit enter.
+
+7) Verify again by typing 'Path' and hitting enter, and then type: 'C:\WINNT\System32\Regsvr32.exe /s C:\' and hit enter again.
+
+8) Now, go back to Notepad and if you have Win98 use the replace feature in Wordpad (CTRL + H) or notepad to search for 'C:\' and replace it with this: 'C:\Windows\System\Regsvr32.exe /s C:\'
+
+If you have Win2000, etc. use the replace command in note pad to search for 'C:\' and replace it with this: 'C:\WINNT\System32\Regsvr32.exe /s C:\'
+
+*Be sure to type the replace string exactly like above or it won't work*
+
+9) Use "Replace All" to make the changes to the entire file.
+
+10) When it finishes, save it, exit notepad or wordpad, and return to the Command Prompt.
+
+11) Type 'regdll' and press enter. If you followed the above steps correctly it will now go through and re-register all your .dll files.

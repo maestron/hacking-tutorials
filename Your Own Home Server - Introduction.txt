@@ -1,0 +1,117 @@
+Your Own Home Server - Introduction
+
+An Introduction
+
+In this tutorial you will learn how to step up your own server. This server will be comprised of Apache 1.3.5, PHP 4.2.0, and MySQL 3.23.49. This tutorial will address the basic setup of a server on your own computer. This means the removal of hassles of dealing with the company that is running a remote web server. It will be easy to modify. You can add any thing you want to it, be it CGI/Perl, Zope, Roxen, etc, all by your self. You will have unlimited disk space, well at least as big as your hard drive is =) Now that you know the advantages, it is time that I tell you what i used, and what you will need.
+
+What I used
+* Windows 2000 - NOTE that if you are using 2k you WILL NEED Administrative Privileges. If you don't then get them somehow =) If you are on 95, 98, NT, XP, ME, I
+* Apache 1.3.6 - I tried to use 2.0 but I could not get it work. I also feel that 1.3.6 is tried and true, so why mess with greatness.
+* Mysql 3.23.49 - The newest version of MySQL when I set up my server. MySQL also the is the best PHP supported Database, and well love PHP don't we.
+* PHP 4.2.1 - The latest and greatest PHP release. -nt
+
+What you will need
+* Apache 2 - Link: h**p://www.apache.org/dist/
+* Mysql 3.23.49 - Link: h**p://www.mysql.com/downloads/mysql-3.23.html
+* PHP 4.2.0 - Link: h**p://www.php.net/downloads.php
+* Windows - This tutorial is ONLY written for new versions of Windows.
+
+Once you have downloaded all the programs you are ready to continue.
+
+1. Installing Apache
+
+Installing Apache
+
+The first step is to download Apache for Windows. Before you install it make sure that any other server software is removed. Remove it all via the control panel.On
+
+Once you have clicked on the executable, a screen should com up that looks like this. Go ahead and click on next
+
+user posted image
+
+Of course you plan to abide be the license agreement, so click on I accept.... and click on next.
+
+user posted image
+
+You really don't need to read this, but if you want you can. Read it if you want feel informed. When you are ready click on next.
+
+user posted image
+
+Here is where the actual setup of Apache begins. For Network Domain put in localhost as for Server Name You want these both to be localhost because the server is running locally, on your computer. It doesn't matter what is in email field, just put in yours. No one will no it because it's just you.
+
+user posted image
+
+For the sake of this tutorial it is better to just leave it as it is because, later in the tutorial I will show you how to start the server with one click of the mouse, and for the sake of ease, it will be easier for you to follow along. You can change it if you want, but you will have to realize where to substitute it. For me the root drive is E: but for you will probably be C:
+
+user posted image
+
+Once you have all the jazz set up, it is time to install the server. If you are on w2k or XP be sure that you have Administrative permissions or you will get an error about half way through the install saving cannot access msvrt32.dll or something. If you get that error run it again when you have admin privileges. Once you are ready click on install.
+
+user posted image
+
+If all went well you just see a screen similar to this. Now it is time to test the install of apache. Click on Start > Program Files > Apache HTTP Server and look for start Start Apache in Console. Click it. Once it says Apache XXXXX running, press Windows Key + R and type -http://localhost/. If the install works you should see a page saying that it works. If all is set and done, continue to the next step.
+
+user posted image
+______________________________________________________________________
+2. Installing PHP
+Once you have clicked on the executable, a screen should come up that looks like this. Go ahead and click on next.
+
+user posted image
+
+Of course you plan to abide be the license agreement, so click on I accept.... and click on next.
+
+user posted image
+
+For this information, we will want the simple standard install. Chances are you if you are reading this tutorial, you will probably not even want to talk about advanced =)
+
+user posted image
+
+This is the mail setup, just enter localhost, and me@localhost.com. These are not important, because you, the admin, are the only person that will use the server, and you will be the one handling errors.
+
+user posted image
+
+We are going to want this install to work is Apache, so click on Apache, and move on.
+
+user posted image
+
+Once you have all the jazz set up, it is time to install the server. If you are on w2k or XP be sure that you have Administrative permission or you will get an error about half way through the install saving cannot access msvrt32.dll or something. If you get that error run it again when you have admin privileges. Once you are ready click on install.
+
+user posted image
+
+After the install is done you should get something that says you will have to manually configure apache to use php. Assuming you have a working Apache server installed, make sure that it is not running. Navigate to C:\Program Files\Apache Group\Apache\conf\ open the httpd.conf file. Note that you can also get to the http.conf from the start menu. Start > Program File > Apache HTTP Server > Configure Apache Server > Edit the Apache httpd.conf Configuration File and the window will open up in notepad. Now hit Ctrl + End if you see something like what follows, you can skip this step. If you do not see that code, copy it. This code will only work if you used the default install folder when you installed php. If you did, copy that code and paste it into the end of the file. Select the code to right, and hit crtl + c , then go into the httpd.conf file and hit ctrl + v and save the file.
+
+ScriptAlias /php/ "c:/php/"
+
+AddType application/x-httpd-php .php .phtml
+
+Action application/x-httpd-php "/php/php.exe"
+
+Now that we have php installed, it is time to test it. Open up notepad and type the code to the right. Save it as phpinfo.php. Remember to set it as all files in the drop down menu, or the file will be a text file. Save in the Directory: C:\Program Files\Apache Group\Apache\htdocs. htdocs is the directory where all the files go. You can create endless dir's and browse them. For Example E:\Program Files\Apache Group\Apache\htdocs\mydir\myfile.php could be accessed as http://localhost/mydir/myfile.php. Once you have that file saved. You will need to start the Server. Click: Start > Program File > Apache HTTP Server >; and look for something like Start Apache in Console. After you have found it, launch it. You should get a window saying that Apache is running. Now go to Start > Run > and type in -http://localhost/phpinfo.php. If you don't see anything, php is not installed correctly. If php is installed correctly, you will see a few large tables, displaying php's configuration. Now Your are 1/2 done!
+______________________________________________________________________
+3. Installing MySQL
+Once you have clicked on the executable, a screen should com up that looks like this. Go ahead and click on next.
+
+user posted image
+
+Of course you plan to abide be the license agreement, so click on I accept.... and click on next.
+
+Just like before you should leave the default dir alone, so you will be able to follow along with me when I show you how to start and stop all the aspects of the server.
+
+Stay with the typical installation. Just like before, if you don't have admin privileges, the install will be faulty. After you click next, the install will begin. After the install has finished, move on to the next step.
+
+Now you have to set up the root account. The root account is the absolute admin of the system, the highest possible. Click on Start > Run and type cmd to open up the command prompt. You are going to have to navigate to where MySQL is installed. Type C: > Enter > cd mysql > Enter > cd bin > Enter. Now you have to tell setup the root settings. Type mysqladmin -uroot password InsertYourPasswordHere then hit enter.
+
+To see an image of the screen, -h**p://www.webmasterstop.com/tutorials/images/doscreen1.gif
+
+What is the point of having a database if you can't easily administer it! That is where phpMyAdmin comes into play. phpMyAdmin is a free piece of software written in php that makes the administration of a mysql or many other types of databases easy. You will want to download (h**p://prdownloads.sourceforge.net/phpmyadmin/phpMyAdmin-2.2.6-php.zip?downloadrelease_id=85832)the latest version. Save it in the htdocs folder. Once it is done downloading it, right click on it and select Extract > To Here. When it is done you should end up with a directory in the htdocs folder called phpMyAdmin-2.2.6 To make it easier to access, rename it to phpMyAdmin. After you have renamed it, click on it and look for a file called config.inc Open it. This is where you set the configuration of phpMyAdmin. When you open it up, it should look similar to the image to your side. On yours there should be a few things missing. The $cfgPmaAbsoulteUrl and $cfgservers[$i]['password']. You will need to fill those in between the quotes. for the $cfgPmaAbsoulteUrl enter -http://localhost/phpMyAdmin/ if you followed my instructions to the letter. If you did not rename it or extracted to a different directory, put that in there. For the $cfgservers[$i]['password'] enter the password you entered when you were setting MySQL in the set above. You can refer to the image for help. After you have put the right things in save the file.
+
+To see an image of the screen, -h**p://www.webmasterstop.com/tutorials/images/phpmyadminscreen1.gif
+
+Now we want to test the install of mysql, php, phpmyadmin, and apache all at once. Start apache in console like we did before. Now, you are going to need to start mysql. For myself I made a file that would start mysql for me. Open notepad and type: start c:\mysql\bin\mysqld-nt.exe --standalone and save that as Start MySQL.bat. Once you have saved it, click it. A window should open and then close. Mysql is now running on your computer. After mysql and apache are started go to run again and type -http://localhost/phpMyAdmin/index.php and if everything is installed correctly phpmyadmin should so up. You are almost done! Now we have the easy part =)
+
+4. Finishing it all up
+
+Wow! We mad it through the whole process. Now we want to simplify the whole process of controlling the server. I made a toolbar with all the things I needed. I made a new folder on my desktop and called it Server Folder and put all the stuff there. I made a new shortcut and gave it a value of -http://localhost/ made a shortcut to the PHP Documentation page. Another shortcut to my php editor, which is now unavailable. The phpMyAdmin shortcut is set to -http://localhost/phpMyAdmin/index.php. I made another shortcut htdocs. I moved the Start Apache in Console program that was in the start menu folder and moved it to the server folder. You can take the Start Mysql file you made in the last page and move it to the new folder. After you have put all the desired things into that folder, right click on a blank space in stat menu task bar (where the program boxes lie) and select Toolbars > New Toolbar and navigate to the folder. Voila!
+
+Now all you have to do is click Start Apache in Console , Start Mysql, and Lauch browser biggrin.gif
+
+Here You Are Guys 

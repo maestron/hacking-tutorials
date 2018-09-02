@@ -1,0 +1,13 @@
+i was recently playing games and this nasty windos logo key keep annoying me , cause i often accidently clicked it , and i start to search a solution to solve my problem, and found the following article in microsfot website, and it did work, hope this helps, thanks!
+
+CODE
+http://support.microsoft.com/?kbid=181348
+
+
+or in other articles, u can copy the following messages into ur notepad and save as *.reg, and use it..
+
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,00,00,5b,e0,00,00,5c,e0,\
+00,00,00,00

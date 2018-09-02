@@ -1,0 +1,26 @@
+Windows uses 20% of your bandwidth Here's how to Get it back
+
+A nice little tweak for XP. Microsoft reserve 20% of your available bandwidth for their own purposes (suspect for updates and interrogating your machine etc..)
+
+Here's how to get it back:
+
+Click Start-->Run-->type "gpedit.msc" without the "
+
+This opens the group policy editor. Then go to:
+
+
+Local Computer Policy-->Computer Configuration-->Administrative Templates-->Network-->QOS Packet Scheduler-->Limit Reservable Bandwidth
+
+
+Double click on Limit Reservable bandwidth. It will say it is not configured, but the truth is under the 'Explain' tab :
+
+"By default, the Packet Scheduler limits the system to 20 percent of the bandwidth of a connection, but you can use this setting to override the default."
+
+So the trick is to ENABLE reservable bandwidth, then set it to ZERO.
+
+This will allow the system to reserve nothing, rather than the default 20%.
+
+I have tested on XP Pro, and 2000
+other o/s not tested.
+
+Please give me feedback about your results

@@ -1,0 +1,40 @@
+ How to modify *.exe files
+
+learn how to change *.exe files, in 5 easy steps:
+
+1) Don't try to modify a prog by editing his source in a dissasembler.Why?
+Cause that's for programmers and assembly experts only.
+
+try to view it in hex you'll only get tons of crap you don't understand.
+First off, you need Resource Hacker(last version). It's a resource editor-
+very easy to use, You can download it at h**p://www.users.on.net/johnson/resourcehacker/
+
+2) Unzip the archive, and run ResHacker.exe. You can check out the help file too
+
+
+3) You will see that the interface is simple and clean. Go to the menu FileOpen or press Ctrl+O to open a file. Browse your way to the file you would like to edit. You can edit *.exe, *.dll, *.ocx, *.scr and *.cpl files, but this tutorial is to teach you how to edit *.exe files, so open one.
+
+4) In the left side of the screen a list of sections will appear.
+The most common sections are
+-String table;
+-RCData;
+-Dialog;
+-Cursor group;
+-Bitmap;
+-WAV.
+*Icon: You can wiew and change the icon(s) of the program by double-clicking the icon section,chossing the icon, right-clicking on it an pressing "replace resource". After that you can choose the icon you want to replace the original with.
+*String table: a bunch of crap, useful sometimes, basic programming knowladge needed.
+*RCData: Here the real hacking begins. Modify window titles, buttons, text, and lots more!
+*Dialog:Here you can modify the messages or dialogs that appear in a program. Don't forget to press "Compile" when you're done!
+*Cursor group: Change the mouse cursors used in the program just like you would change the icon.
+*Bitmap: View or change images in the programs easy!
+*WAV:Change the sounds in the prog. with your own.
+
+
+5) In the RCData,Dialog,Menu and String table sections you can do a lot of changes. You can modify or translate the text change links, change buttons, etc.
+
+
+TIP: To change a window title, search for something like: CAPTION "edit this".
+TIP: After all operations press the "Compile Script" button, and when you're done editing save, your work @ FileSave(Save as).
+TIP: When you save a file,the original file will be backed up by default and renamed to Name_original and the saved file will have the normal name of the changed prog.
+TIP: Sometimes you may get a message like: "This program has a non-standard resource layout... it has probably been compressed with an .EXE compressor." That means that Resource Hacker can't modify it because of it's structure.

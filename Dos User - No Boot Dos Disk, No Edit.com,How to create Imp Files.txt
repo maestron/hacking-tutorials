@@ -1,0 +1,26 @@
+ Hello Dos friends
+This is a simple but most forgotton command to create
+files like config.sys and autoexec.bat files, well heres it...
+Even if u dont have a dos boot disk u can work ur way
+to some extent.
+********************************************
+At c:\ prompt
+type
+copy con config.sys
+devicehigh=c:\dos\himem.sys
+device=c:\dos\setver.exe
+devicehigh=c:\dos\emm386.exe ram
+dos=high,umb
+last drive=z
+then press CTRL + z
+press enter
+Config.sys file will be created.
+********************************************
+Similarly u can create autoexec.bat
+@echo off
+prompt=$P$G
+path=c:\dos;c:\
+lh mouse
+lh doskey
+Press CTRL + Z
+**********************************************

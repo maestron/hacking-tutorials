@@ -1,0 +1,271 @@
+
+                                  ++++++++++++++++++++++++++++++
+                                  + Stopping the Scriptkiddies +
+                                  ++++++++++++++++++++++++++++++
+                                           + by POOL +
+                                           +++++++++++
+
+
+                                        --"My terminal is
+                                             My soul"
+
+
+
+
+Version 1.00 (Wed Aug 29 20:17:58 CEST 2001)
+===================================================================================================
+
+Contents
+========
+
+0x00 Disclaimer
+0x01 Introduction
+0x02 First things first
+0x03 Remote security
+0x04 Local security
+0x05 Common backdoors
+0x06 Windows
+0x07 Patches
+0x08 Conclusion
+0x09 Final words
+0x10 Copyright
+
+
+
+0x00 Disclaimer
+===============
+
+I am NOT responsible for actions or damage caused by this document, if you get into trouble: blame yourself, not me.
+
+0x01 Introduction
+=================
+
+In the past few months I noticed there were a lot of defacements (actually, too many), and a lot of hosts/networks were the target of DoS-attacks. I don't understand why so many network-administrators don't take the time to have a look at their security, it isn't very hard to install at least a few patches and stop running services they don't need. Yes, I know this won't stop attackers which are dedicated trying to hack you, but stupid scriptkiddies (like the most of them are) will give up and try another box. I will focus on linux security, but most topics in this paper will also apply to other UNIX-variants. You'll find some words about windows too. This paper won't make you a security-expert, a good system-administrator neither, it only provides basic knowledge needed to stop Scriptkiddies defacing sites and shutting down complete networks. Oh, and please don't mind my sloppy English (I'm Dutch)..
+
+Have fun 8)
+
+--POOL [systm@exploder.nl]
+
+0x02 First things first
+=======================
+
+I recommend you to start securing your box(es) after a clean install, because it could be possible someone allready compromised you and placed one or more backdoors. So I suggest you backup all important data and reinstall the Operating System (if this is possible). Keep in mind your system will be more secure with the least comprehensive installation, for example: don't install a web-browser if you don't need it. Just install all the standard stuff, and only install software which you're sure about that you'll use it. Always check if the software is vulnerable or contains bugs. Only upgrade the installed software for security reasons.
+
+0x03 Remote security
+====================
+
+Most compromises occur due to vulnerable daemons (like wu-ftpd or lpd). In this section I will show you how to close daemons which aren't directly in need, and how to build a firewall rule-set.
+
+First, portscan yourself: nmap -sT -sU -e eth0 -p 1-65535 localhost
+(in this example I use nmap (network mapper), which you can grab from www.insecure.org/nmap)
+
+     -sT = TCP connect() scan
+     -sU = UDP scan
+     -p  = specify portrange
+     -e  = specify interface
+
+It's important to note that you should scan each interface.
+
+[*] Closing unneeded daemons
+
+Have a look at your /etc/inetd.conf file, in this config-file you can specify which daemons are started by inetd (type "man 8 inetd" (without the quotes) for more information). To close a daemon just comment the line (put a "#" (without the quotes) at the beginning of the line). Oh, and don't comment telnet out if you're connected to the box via telnet (could be very frustrating).. ;-)
+
+Here's an example:
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+change
+
+ftp	stream	tcp	nowait	root	/usr/sbin/tcpd	wu.ftpd -a
+
+to
+
+#ftp    stream	tcp	nowait	root	/usr/sbin/tcpd	wu.ftpd -a
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+Apply this to all daemons you don't need. To let the changes have effect restart inetd:
+
+/sbin/init.d/inetd restart [I use linux SuSE 7.0 and SuSE 7.1, in other distro's inetd may be located in /etc/init.d]
+
+or by hand:
+
+kill -HUP <pid>
+
+To obtain the pid (Process ID) of inetd just do as root a "ps -aux" (wihout the quotes) and look at the inetd-line.
+Portscan yourself again (or simply do a "netstat -an"), and check if it's OK :-)
+Note: Some daemons should be closed in another config-file. To find these config files just type this command:
+
+locate *.conf
+
+and
+
+locate *.cf
+
+If you want to keep a daemon running and for some reason you don't want people from the internet be able to connect to it (For example, you have a ftpd on your gateway, and you want only boxes from your network to use this ftpd, but not people from the internet), read the next section very carefully.
+
+[*] Ipfwadm, ipchains and iptables
+
+Linux comes with a firewall (read: packetfilter) called ipfwadm in the 2.0 kernel series. The 2.2 kernel series comes with ipchains, and 2.4 with iptables. Since most systems are running 2.2.x I will shortly discuss ipchains (please refer to the manpages for more information), just type "man ipfwadm" or "man iptables" (without the quotes) to view the manpages for ipfwadm or iptables.
+
+I will demonstrate step for step how to build a firewall-rule with ipchains.
+
+First flush all rules:
+
+/sbin/ipchains -F
+
+You'll have to choose a so called "chain" (input or output) with the -A option.
+
+/sbin/ipchains -A input
+
+With the -s option you can specify the source address (to block any address use 0.0.0.0/0) and with the -d option you can specify the destination address (your box). After this you place the port.
+
+/sbin/ipchains -A input -s 0.0.0.0/0 -d x.x.x.x/24 21
+
+Next, specify with the -p option the transport protocol (e.g. TCP, UDP or ICMP), and with -j the action (e.g. ACCEPT, DENY, REJECT, MASQ). You may be wondering what the difference between DENY and REJECT is. Well, REJECT sends an ICMP packet back with the message "Destination unreachable", and DENY just discards it without sending an ICMP packet back. MASQ is used for masquerading, maybe I will explain this in some networking related paper later.
+
+/sbin/ipchains -A input -s 0.0.0.0/0 -d x.x.x.x/24 21 -p TCP -j DENY
+
+Replace x.x.x.x with your IP, and you have created a rule which DENY's traffic from anywhere with destination address your box and destination port 21/tcp (ftp). Let's do the same for a tftpd (tftp = trivial file transfer protocol), which runs at 69/udp. But now we block this IP: 195.195.195.195
+
+/sbin/ipchains -A input -s 195.195.195.195 -d x.x.x.x/24 69 -p UDP -j DENY
+
+Well, very easy.. Just replace the port number, and the transport-protocol. This way you should be able to create yourself a rule-set.
+
+Note: NEVER EVER think like: "oh, I don't have to close these daemons, I just filter all the trafic going to these daemons with a packetfilter/firewall"..! Always close all daemons, except those which are in need for users (on the internet, or on your LAN/WAN)!
+
+You can put these commands in a file, e.g. /sbin/nfw (nfw = Network FireWall), and do a "chmod +x" on it. Then put "/sbin/nfw" in the "rc" files (if your system crashes, or needs a reboot for some reason, /sbin/nfw will be executed on system-boot and you don't have to worry about it).
+
+[*] Most exploited daemons
+
+Here is a short list of a few daemons which are widely exploited by scriptkiddies:
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+. name     - service             .
+. ============================== .
+.                                .
+. wu-ftpd  - ftp                 .
+. proftpd  - ftp                 .
+. sendmail - smtp                .
+. Qpop     - pop3                .
+. Lpd      - Line Printer Daemon .
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+These are just the ones which come to my mind, but there are lots of more vulnerable daemons. So you should check if the daemons you run are vulnerable, and if they are up to date (it isn't very smart to run an old version).
+
+[*] CGI-scripts
+
+If you install a webserver (e.g. apache), it usually comes standard with some cgi-scripts. These cgi's are usually not needed, and they're a security-risk. Delete them if they aren't in need for you, otherwise check if they are vulnerable. www.cgisecurity.com is a good site with more information about security related to cgi-scripts. By the way, php scripts are also very common holes in webservers.
+
+[*] Telnet vs. SSH vs. Console
+
+A lot of administrators use telnet to config/access their box(es) remotely, but telnet sends data (containing usernames and passwords) in plain text. In many papers, advisories and (security)guides they are advised to use SSH instead. SSH stands for Secure SHell, and sends data in encrypted form over the wire. If you really need to config/access your box(es) remotely it's advisable to use SSH, but while there was a few months ago a vulnerability in OpenSSH, I suggest you only access your box(es) on the console. If this isn't possible, install the most recent version of OpenSSH (www.openssh.org). Note that it's recommended to use blowfish encryption instead of DES, Triple-DES or MD5.
+
+[*] Nessus
+
+Nessus is a very good security scanner. It probes your network/host for vulnerabilities. If the system is vulnerable, nessus displays information about the vulnerability and also the URL where a patch is available. To use nessus, first you'll have to setup a nessusd (only available for linux), and with a nessus-client (available for windows too) you can connect to the nessusd and scan your box(es) for vulnerabilities. A very good feature of nessus is that is supports plug-ins, so you can download plug-ins to let nessus check for new vulnerabilities. Refer to www.nessus.org for a download of nessus and more information.
+
+0x04 Local security
+===================
+
+Securing your box(es) locally is especially important if you provide shell accounts, but even if you don't it's essential. Why? Because someone might exploit a (unknown) vulnerability in a daemon you're running, and gains a shell with at least normal user privileges. Then he would try to exploit your local security to gain higher (root) privileges.
+
+[*] Buffer overflows
+
+Lots of local-exploits just use a classic buffer overflow to gain a root-shell. Well, there are a lot of papers on the internet describing buffer overflows exactly. But let me give you a short summary of how a buffer overflow exploit actually works:
+
+When a program let's the user input data (e.g. a name or address), it usually stores the input in a buffer. Lots of programmers forget to check the bounds, which causes an overflow if the user inputs for example 80 bytes of data, while the buffer can hold only 75 bytes. Using this overflow the return address can be overwritten, to change the execution flow of the program. When the program is executed it returns to the return address, which points to an address on the stack with evil-code (this code usually spawns a shell).
+
+These buffer overflows can be exploited locally, as well remotely (in a daemon). To protect yourself from attackers exploiting (unknown) buffer overflow vulnerabilities, you should always remove the SUID-bit from applications/daemons so an attacker won't gain a rootshell but a non-privileged-user shell.
+
+[*] Tripwire
+
+Tripwire is a powerfull tool, used to detect modifications in files/binaries. Tripwire makes a "fingerprint" of your system. Each time something is changed on the system Tripwire gives you a warning. This could be very annoying: each time you add a new account or create a new file, you'll get a warning. But if you run tripwire on a dedicated webserver, you can easily detect if someone tampered with critical files or placed backdoors. For more information about tripwire refer to www.tripwire.org.
+
+[*] Kernel Patch
+
+For extra security, it is possible to re-compile the kernel with a special patch. This patch gives you the possibility to set some security-options. Check www.openwall.com/linux for a download of a linux kernel patch.
+
+0x05 Common backdoors
+=====================
+
+[*] /etc/passwd -> This one is classic, you should check your /etc/passwd file for (root)accounts which you didn't create.       Note: attackers usually put these accounts in the middle of your /etc/passwd, and give them names like Sym, sadmin,          comp, pass, command, shell or something similar to make it look normal and only noticeable by an experienced system-         administrator. Note: you can filter root-accounts from large passwd files with "cat /etc/passwd | grep :0:".
+
+[*] suid root-shell(s) -> This one is very popular, but only used if the attacker has local access to the system. He just        makes a copy of /bin/sh and makes it suid-root. To fool the system-administrator he gives it a name like "fping" or          "nettrace" or something similar. To find such suid-root files type this command:
+    find / -perm -4000 -print > $home/suid.files, then check suid.files in your home-directory.
+
+[*] cronjobs -> Crond is a very powerfull daemon for administrating the system. It allows the administrator to execute           commands (which are called cronjobs) on a hourly, daily, weekly or monthly base (e.g. each Sunday at 23:00 there's made a     backup of all home-directories). An attacker could for example make crond create a root-account each day at 01:00 AM and     delete it at 02:00 AM so the attacker has for 1 hour root-access to the box.
+
+[*] trojaned binnaries -> This one is used if the attacker has local access to the system. He replaces for example               /bin/ls with a trojaned version which operates exactly like the normal /bin/ls, but gives a root-shell if the                attacker uses a special parameter (for example ls -e).
+
+[*] login-trojan -> This one is old, but I think it's still used. When the attacker connects to your machine via telnet and       gives a special password he'll be dropped in a root-shell. This is caused due a trojaned version of "/bin/login".
+
+[*] /etc/services and /etc/inetd.conf -> An attacker could use these files to add a new service (or use an existing one)
+    and use it to spawn a shell. It's very easy to discover such a backdoor.
+
+[*] bindshell.c -> This is C source-code used to bind a (root)shell to a port, usually attackers use a very high port so it      won't show up on portscans (wich aren't always from 0 to 65535). It's easy to check for this backdoor, just do a             "netstat -an", and check suspicious open ports. Or even better: do a full portscan (Because the attacker could have          replaced netstat with a trojaned version).
+
+[*] lkm's -> Loadable Kernel Modules are (like the name says) pieces of code (modules) which could be loaded in the kernel,      usually they're very advanced and sometimes (allmost) completely stealth, so they're hard to detect. I suggest you read      Pragmatic's excellent paper on Loadable Kernel Modules, available at www.thehackerschoice.com.
+
+[*] rootkits -> These are complete packages with usually trojans, sniffers, lkm's, log-cleaners, etc. etc.
+
+Note: there are much more backdooring-techniques. To cover them all it would take me to write a whole new paper, so I just discussed the most commonly used.
+
+0x06 Windows
+============
+
+More than 80% of the defacements are due the lack of security on windows-systems. In the past there was the RDS-vulnerability which caused lots of compromises. Now the Unicode-bug is one of the favourites of scriptkiddies. Also an overflow in the ISAPI-extensions on win2k/IIS 5.0, is widely being exploited (the exploit-code is called jill.c). Another VERY good example:  the 'code red' worm which was spreading around the internet via the .ida overflow (For more information refer to http://neworder.box.sk/ and http://www.securityfocus.com/). These vulnerabilities caused a lot of damage and defacements :-(. I suggest you subscribe to NTBugTraq, which is a very good mailinglist with discussions, vulnerabilities (including exploit-code, if released), papers, etc. etc. related to windows-security.
+
+Please read the next section VERY carefull. The magic word to secure your windows-box(es) is: PATCHING.
+
+0x07 Patches
+============
+
+It's really really important you patch your systems, the trouble the 'code red' worm caused is due (lazy) system-administrators who didn't patched their systems and this way didn't only brought theirselves in trouble, but they also made it possible for the worm to spread itself and infect other systems. Now, is it really so hard to check on sites like securityfocus.com, neworder.box.sk, and on (NT)BugTraq or another security-related mailinglist, if your system is (possibly) affected for a new vulnerability and download a patch?! If a website under your responsibility gets defaced, you'll need to take more time to restore everything, than patching the system and don't give those damn scriptkiddies a chance to screw up your website!
+
+linux:
+If there's a vulnerability found in a daemon, application, driver, cgi-script, etc. etc. usually the vendor releases a patch as soon as possible. Just check the (ftp)site of the product-vendor or your linux-distribution for information and a patch/fix. It's also common that an exploit comes with a solution/work-a-round.
+
+Note: In SuSE linux you can easily update packages with YaST (Yet another Setup Tool). YaST compares the installed version of a package with the version on the ftp-server and if they don't match it downloads the newest version [Thanks to DataWizard for pointing this out].
+
+0x08 Conclusion
+===============
+
+I know this paper doesn't covers everything to stop attackers. But I think that a System-administrator who read this paper won't be "hacked" by clueless scriptkiddies scanning the internet for vulnerable boxes. It isn't very hard to stop scriptkiddies, just take the time to secure and patch(!!) your system(s). Subscribe yourself to (NT)BugTraq, and always be up to date (install the newest versions of daemons, aplications etc.). I'm satisfied when this paper makes system-administrators prevent scriptkiddies from intruding their systems and defacing their websites. Don't see securing a system as a pain in the ass, it's realy interesting and fun!
+
+0x09 Final words
+================
+
+I hope you enjoyed this paper, if not, delete it :-)
+For further questions, comments or critism please send me a mail: systm@exploder.nl (or shaolin123@hotmail.com), or catch me on IRC:
+#p00rt @ nederwiet.wox.org/iznogood.wox.org.
+
+Some security-related sites:
+
+http://neworder.box.sk/                [News, Exploits, papers and tools archive]
+http://blacksun.box.sk/                [Tutorials related to hacking/security/programming]
+http://www.securityfocus.com/          [BugTraq mailinglist, great exploits and papers archive]
+http://www.packetstormsecurity.org/    [Exploits, papers and tools archive]
+http://www.thehackerschoice.com/       [Good (papers) archive]
+http://www.nessus.org/                 [Nessus security scanner]
+http://www.tripwire.org/               [Tripwire]
+http://www.microsoft.com/security/     [Search for Patches, Security Bulletins and more info related to Microsoft products]
+
+Greets to: DataWizard, NederWiet, KD, Reflex, DarkWhite, IzNoGood, Vetjuh, ssuzeJJ, div3rt3r, BBM, Syndr0me and all the others (you know who you are). I also want to greet the box.sk staff and all the members of the Blacksun Research Facility Team. ;-)
+
+Special thanks to DataWizard, Reflex and Syndr0me for checking and correcting mistakes in the BETA versions.
+
+Finally I want to say #wasrek sucks, those guys are too lame to understand the difference between a computer and a chair..
+
+--"The net is my playground"
+
+0x10 Copyright
+==============
+
+You may distribute this paper as much as you like, but please DO NOT change, add or remove anything without my permission. Feel free to mail me about this subject.
+
+And Remember: KNOWLEDGE IS POWER!!
+
+================================================================================================================
+Stopping the Scriptkiddies v1.00 - Release date: 29.08.2001 - (C)opyright by POOL 2001 - systm@exploder.nl
+
+
+

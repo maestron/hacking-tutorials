@@ -1,0 +1,145 @@
+The tutorial is all about getting your site listed on top in Search Engines i.e Search Engine Optimization
+
+First thing you need to do is find the keywords you want to optimize for.
+
+There is great tool by Overture (/http://inventory.overture.com/d/sea...ory/suggestion/)
+
+But I would suggest using this free tool called GoodKeywords (/http://www.goodkeywords.com/products/gkw/)
+
+This one does the same job as Overture does but it also supports other Search Engines (Lycos and Teoma etc..)
+
+For example if you want to optimize for the keyword "tech news", just search for the keyword in any of the tools specified above... It would show you keywords related to that and not of the searches..
+
+Pick the keywords which are related to your site.
+
+For example when you search for "Tech News" you'll see the following results:
+
+Count Search Term
+11770 tech news
+351 itt news tech
+191 high tech news
+60 news tech texas
+49 computer tech news
+42 bio news tech
+34 in itt news tech
+30 news tech virginia
+29 asia news tech
+25 hi tech news
+25 sci tech news
+
+Now see what other terms are related to your keyword technology news
+
+Do couple of searches like that and note down around 15-20 keywords.
+Then, keep the keywords which are searched most on the top.
+
+Now you need Title Tag for the page.
+
+Title tag should include top 3 keywords, like for "tech news" it can be like :
+
+"Latest Tech News, Information Technology News and Other computer raleted news here."
+
+Remember that characters should not be more than 95 and should not have more than 3 "," commas - some search engines might cosider more than 3 commas as spam
+
+Now move on to Meta Tags
+
+You need following Meta Tags in web page
+
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="keywords" content="keyword1,keyword2,keyword3">
+<META name="description" content="brief description about the site">
+<META name="robots" Content="Index,Follow">
+
+
+No need to have other meta tags like abstract, re-visit and all, most people dont read it.
+
+Now...
+
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+This tag is tells content type is html and character set used it iso-8859-1 there are other character sets also but this is the one mosty used..
+
+<META name="keywords" content="keyword1,keyword2,keyword3">
+
+This one should have all your keywords inside starting from keyword with most counts...
+
+keyword tag for our example would be something like :
+
+<META name="keywords" content="tech news,technology news, computer technology news,information technology,software news">
+
+Remember to put around 15-20 keywords max not more than that. Dont repeat keywords or dont put keywords like, "tech news", "info tech news", "latest tech news" and so on...
+
+<META name="description" content="brief description about the site">
+
+Provide short decription about your site and include all the keywords mentioned in the title tag.
+
+Decription tag should be:
+
+<META name="description" content="One Stop for Latest Tech News, Information Technology News, Computer Related and Software news.">
+
+It can be upto 255 characters and avoid using more than 3 "," commas
+
+<META name="robots" Content="Index,Follow">
+
+This is used for search robots..following explanation will help you :
+
+index,follow = index the page as well as follow the links
+noindex,follow = dont index the page but follow the links
+index,nofollow = index the page but dont follow the links
+noindex,nofollow = dont index page, dont follow the links
+all = same as index,follow
+none = same as noindex,nofollow
+
+Now move on to body part of the page
+
+Include all top 3 keywords here,
+I would suggest to break the keyword and use it...
+
+For example
+
+YourSiteName.com one stop for all kind of Latest Tech News and Computer Related information and reviews.................
+
+Include main keywords in <h#> tags <h1><h2> etc..
+and start with <h1> and then move to <h2> <h3> etc..
+
+<h1> tag will be too big but CSS can help you there, define small font size in css for H1,H2,... tags
+
+When done with page copy, then you need to provide title and alt tags for images and links.
+
+Use some keywords in the tags but dont add all the keywords and if not neccessary then dont use keywords in it, basically it should explain what is image all about.
+
+Remember to add Top keyword atleast 4 times in the body and other 2 keywords thrice and twice respectively.
+
+Now move on to Footer Part
+Try to include top keywords here and see the effect, use site keywords as links i.e.
+
+<a href="news.php">Tech News</a> <a href="software-news.php">Software News</a> etc..
+
+Now finally, you need to read some more stuff..may be you can all it as bottom lines...
+
+Site Map - This is page where you need to put all the links present in your site, this is will help Search Engines to find the links easily and also provide link for site map in footer, as search engines start scanning the page from bottom.
+
+Robots.txt - This file contains address of directories which should not be scanned by search engines.. more info can be found here : /http://www.robotstxt.org/wc/exclusion.html search engines line google, yahoo ask for robots.txt file.
+
+Valid HTML - Your code should have valid html and doc type, Its kind of diffucult to follow all the standards but you can atleast open and close all the tags properly, you can check your page's html online here : /http://validator.w3.org/ or you can use this free software called HTML Tidy : /http://tidy.sourceforge.net/
+
+All done now, you just need to check your site with this script, its called SEO Doctor : /http://www.instantposition.com/seo_doctor.cfm
+
+It'll show you the report of your site with solution.
+
+Now, correct the errors and start submitting the site :
+
+Start with google : /http://google.com/addurl.html
+then yahoo : /http://submit.search.yahoo.com/free/request
+then move to altavista,alltheweb and other search engies..
+
+Also submit your site to direcories like /http://dmoz.org , /http://jayde.com etc...
+Dmoz is must, as google, yahoo and may more search engines uses same directory
+
+And remember, dont try to SPAM with keywords in these directories, dmoz is handled by Human Editors
+
+Submitted the sites, but still i cant see you site on top?
+
+Wait for sometime may be a month or so but keep an eye on your search term, use /http://GoogleAlert.com - this will show whenever google updates for your keywords, it will mail you the new results.
+
+And also check whether your site is listed on google..
+use this tool called Google Monitor, it can be downloaded for free from : /http://www.cleverstat.com/google-monitor.htm

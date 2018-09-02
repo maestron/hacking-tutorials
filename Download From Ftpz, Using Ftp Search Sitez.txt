@@ -1,0 +1,130 @@
+Download From Ftpz, Using Ftp Search Sitez
+
+Downloading From Ftpz & Using Ftp Search Sitez
+
+A Tutorial By: DeadKid
+
+Toolz Needed:
+SmartFTP [ smartftp.com ]
+NAPALM FTP Search Site [ search.ftphost.net ]
+vcdquality.com Release Nfo Site
+DAMN NFO Viewer or just notepad [www.damn.to ]
+
+This tutorial is so i can stop answering tha same NewB questionz everyday
+in this tutorial I'll xplain how to use search sites like NAPALM effectively.
+basically better search results and a quality release.
+we are gunna use a movie as tha example so here we go...
+first thing I do is try and figure who all released it & if any were nuked and why
+most of tha time you can find tha NFO at tha sites below
+www.theisonews.com - www.nforce.nl - www.vcdquality.com
+we are gunna use vcdquality to find out NFO on Tomb Raider: The Cradle Of Life
+h**p://www.vcdquality.com/index.php?imdbid=0325703
+ok say you chose tha copy Centropy released
+here is tha link to tha nfo file (( You May Wanna Get DAMN NFO Viewer B.T.W. ))
+h**p://www.vcdquality.com/nfo.php/ctp-tr2.nfo?id=16662&show=text&save=1
+if you read it you see a section that sayz Archives [56/56*15]
+ok so now ya know your looking for 2 CD'z & that are Split Rar files @ 15mb each
+also you will see this (( passwd is "drudgereportdotcom" )) im sure that will help later
+so now to go find tha file names by do'n a search here are some sites you can use
+NAPALM - RELIZ - AMUN - FTPSpider
+im gunna use NAPALM for tha example do an un-filtered search for "tomb raider centropy" without tha quotes
+but I wouldn't recommend alwayz searching as above b/c
+tha Name of tha Movie/App/Game/ReleaseGroup isnt alwayz gunna be in file name or url
+so results could be limited but it helps on getting correct file namez
+you should notice the file name seems to be in this format ctp-tr1.r54 & ctp-tr2.r54
+"ctp-tr1.r54" be'n a file from CD1 and "ctp-tr2.r54" be'n a file from CD2
+ok so now we know tha file names, so search for ctp-tr2.r54 and you will have more streamline results
+b4 we had over 100 results from each ftp that had this movie one result per file @ over 50 files per cd
+that would take way to long to go through page by page till you get to each FTP site
+but now that we have tha search narrowed down by a single file name each result is a different ftp site
+notice also that I searched for a high # file from cd 2 the reason for this is b/c
+it is more likely that it has been fully uploaded and not missing any files b/c most people start uploading
+from cd1 and in order of first split file .rar .r00 .r01 NOT from cd2 and backwards .r50 .r49 .r48
+ok that wuz ez enough but now we get to tha hopefully not slow part DOWNLOADING tha filez
+normally you can get better speeds from an anonymous server b/c you can use multiple connections at once
+say tha server only gives ya 4k down you may be able to connect 50 times at once and get more like 200k down
+but a FTP tha needs a Password and user name normally isnt that EZ
+reason why is normally only 1 connection per IP is allowed
+and amount of users at one time is limited to about 15 or less
+so alwayz long line of peepz waiting to get in
+basically even if could have more than one connection per IP
+if it took 9 hrz to get access you would need to wait that long for each connection or thread
+by tha time another thread connected you would have prob already finished downloading tha file anyway
+NAPALM search site has nice search filter/option that will only show anonymous serverz in the results page
+now open up SmartFTP and there are a few options we wanna be sure and change
+Tools > Settings > General::
+Set Default Download Path to whatever you want
+Tools > Settings > Connection ::
+Set Max Retries to -1 (( -1 = unlimited ))
+Set Retry Delay to @ least 40 sec.*
+*(( b/c some ftp'z will ban if you hammer/try and login to often ))
+*(( read welcome messages on tha ftp log/status window for possible hammer rulez ))
+Tools > Settings > Connection > Keep Alive ::
+Make sure Keepalive is checked
+Set interval to about 40
+(( if set to low will be anoying & to high may not be effective on some sitez ))
+Highlight NOOP in tha list and push Remove
+Now type LIST into tha box and push tha Add
+(( This is the command that keepalive uses to pretend your not idle ))
+(( some ftps will kick you out if you are idle to long ))
+(( and some still do with tha NOOP command we so have changed it to LIST
+(( if you want you can change it to something better all i know is this works for me ))
+(( nobody wants to sit 9hrz waiting to get in then get kicked out ))
+
+SmartFTP also has Clipboard monitoring so all you need to do is have smart ftp open/running
+go Back to NAPALM right click a link and select "Copy Shortcut" from tha menu and smartFtp will
+popup and say FTP URL in clipboard detected if you wanna open that site Just cick yes EZ enough i think
+but it can be even more simple than that if you want...
+
+Tools > Settings > Display > Prompts ::
+Uncheck: On URL Catch
+(( Now it will just open tha FTP without any prompt ))
+
+When you are conecting to ftpz you need to watch tha log/status window
+For possibe crap links (( dead links and/or ratio sites ))
+These are tha most common errorz to look for:
+
+530 Account Disabled.
+
+No connection could be made because the target machine actively refused it.
+
+A connection attempt failed because the connected party did not properly respond after a period of time,
+or established connection failed because connected host has failed to respond.
+
+550 Permission denied. - while try'n to download a file
+(( this is probably a ratio site if it has everything you ever wanted and more & looks to good to be true ))
+(( it probably is and id just move on to tha next site ))
+
+Another problem you may find on anonymous ftpz is that tha filez or folders are not there
+2 reasonz for that is they were either deleted or just moved
+if they were moved this could be a problem most people uploading to anonymous ftpz
+make a huge maze of locked folders to hide their filez and that makes for an endless task
+tryn to find the filez unless you have an app that can spider the ftp
+and has tha capability to get through locked folders if so then should take only a few min
+to have a list of every file on the ftp I dont know of any public app i can recommend with that capability
+but they do exist... this app can get through locked folders and may kinda help seemz like a crap program
+but best i could find on google in about 5 min worth of searching
+PubView.zip - www.jtpfxp.net has nfo about dir locking & breaking dirs
+
+K now ill go over some basic instructions on downloading from Anonymous and NonAnonymous Sitez
+or maybe i should say sites That allow more than one connection per IP and ones that Dont
+we will start with anonymous or multiple thread capable FTPz
+once you have tha ftp open and you see tha files you want just drag and drop them into
+the Global Queue tab on tha transfers window and then just push the start button
+should have tha in speed @ bottom right status bar if its not going fast enough
+you can adjust tha amount of connections/threads you have running
+keep adding threads until your bandwidth is maxed or until your total In speed doesnt get any faster
+another thing you may wanna keep in mind is that you can connect to more than one ftp
+downloading CD1 from one site and CD2 from the other etc. for a combined speed
+now we go onto NonAnonymous Sitez.... You cant use Global Queue b/c you cant have multiple threads
+so just right click tha file or folder you want and select Download > Direct > Select Folder
+most of these sites will be slow and could take hrz maybe dayz to get into
+so what i do is just open every single result in NAPALM at tha same time
+I figure i have a better chance waiting on 10 sitez then 1
+so when you have them all open just close out tha ones that have tha errors mentioned above
+then you can walk away and check every so often to see if you have gotten in one yet
+this is where tha keepalive option helps out and of course if you happen to get into more than one @ a time
+just go for tha combined speed method if going slow
+
+thats about it, all simple stuff but seems to be tha best process i have found
+hope this helpz happy hunting

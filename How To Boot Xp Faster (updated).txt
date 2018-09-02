@@ -1,0 +1,15 @@
+First of all, this tweak only apply to those who only have one HDD on their primary IDE channel (nothing else on device 0 or 1) and a CD-ROM and/or DVD-ROM on the secondary IDE channel. Each time you boot Windows XP, there's an updated file called NTOSBOOT-*.pf who appears in your prefetch directory (%SystemRoot%Prefetch) and there's no need to erease any other files as the new prefetch option in XP really improves loading time of installed programs. We only want WindowsXP to boot faster and not decrease its performance. Thanks to Rod Cahoon (for the prefetch automation process...with a minor change of mine) and Zeb for the IDE Channel tweak as those two tricks, coupled together with a little modification, result in an EXTREMELY fast bootup:
+
+1. Open notepad.exe, type "del c:windowsprefetch tosboot-*.* /q" (without the quotes) & save as "ntosboot.bat" in c:
+2. From the Start menu, select "Run..." & type "gpedit.msc".
+3. Double click "Windows Settings" under "Computer Configuration" and double click again on "Shutdown" in the right window.
+4. In the new window, click "add", "Browse", locate your "ntosboot.bat" file & click "Open".
+5. Click "OK", "Apply" & "OK" once again to exit.
+6. From the Start menu, select "Run..." & type "devmgmt.msc".
+7. Double click on "IDE ATA/ATAPI controllers"
+8. Right click on "Primary IDE Channel" and select "Properties".
+9. Select the "Advanced Settings" tab then on the device 0 or 1 that doesn't have 'device type' greyed out select 'none' instead of 'autodetect' & click "OK".
+10. Right click on "Secondary IDE channel", select "Properties" and repeat step 9.
+11. Reboot your computer.
+
+WindowsXP should now boot REALLY faster. 

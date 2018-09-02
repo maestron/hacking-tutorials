@@ -1,0 +1,57 @@
+Boot Block Recovery For Free
+
+You don't need to pay a measly sum of dollars just to recover from a boot block mode. Here it is folks:
+
+AWARD Bootblock recovery:
+
+That shorting trick should work if the boot block code is not corrupted, and it should not be if /sb switch is used when flashing the bios (instead of /wb switch).
+
+The 2 pins to short to force a checksum error varies from chip to chip. But these are usually the highest-numbered address pins (A10 and above).
+
+These are the pins used by the system to read the System BIOS (original.bin for award v6), calculate the ROM checksum and see if it's valid before decompressing it into memory, and subsequently allow Bootblock POST to pass control over to the System BIOS.
+
+You just have to fool the system into believing that the System BIOS is corrupt. This you do by giving your system a hard time reading the System BIOS by shorting the 2 high address pins. And when it could not read the System BIOS properly, ROM Checksum Error is detected "so to speak" and Bootblock recovery is activated.
+
+Sometimes, any combination of the high address pins won't work to force a checksum error in some chips, like my Winbond W49F002U. But shorting the #WE pin with the highest-numbered address pin (A17) worked for this chip. You just have to be experimentative if you're not comfortable with "hot flashing" or "replacement BIOS".
+
+But to avoid further damage to your chip if you're not sure which are the correct pins to short, measure the potential between the 2 pins by a voltmeter while the system is on. If the voltage reading is zero (or no potential at all), it is safe to short these pins.
+
+But do not short the pins while the system is on. Instead, power down then do the short, then power up while still shorting. And as soon as you hear 3 beeps (1 long, 2 short), remove the short at once so that automatic reflashing from Drive A can proceed without errors (assuming you had autoexec.bat in it).
+
+About how to do the shorting, the tip of a screwdriver would do. But with such minute pins on the PLCC chip, I'm pretty comfortable doing it with the tip of my multi-tester or voltmeter probe. Short the pins at the point where they come out of the chip.
+
+
+
+AMIBIOS Recovery bootblock:
+1. Copy a known working BIOS image for your board to a floppy and rename it to AMIBOOT.ROM.
+2. Insert the floppy in your system's floppydrive.
+3. Power on the system while holding CTRL+Home keys. Release the keys when you hear a beep and/or see the floppy light coming on.
+4 . Just wait until you hear 4 beeps. When 4 beeps are heard the reprogramming of the System Block BIOS went succesfull, so then you may restart your system.
+
+Some alternative keys that can be used to force BIOS update (only the System Block will be updated so it's quite safe):
+CTRL+Home= restore missing code into system block and clear CMOS when programming went ok.
+CTRL+Page Up= restore missing code into system block and clear CMOS or DMI when programming went ok.
+CTRL+Page Down= restore missing code into system block and do not clear CMOS and DMI area when programming went ok
+Btw: the alternative keys work only with AMIBIOS 7 or higher (so for example an AMI 6.26 BIOS can be only recovered by using CTRL+Home keys).
+Boot Block Recovery for FREE
+
+************************************************
+BLACKOUT Flashing
+*************************************************
+
+Recovering a Corrupt AMI BIOS chip
+With motherboards that use BOOT BLOCK BIOS it is possible to recover a corrupted BIOS because the BOOT BLOCK section of the BIOS, which is responsible for booting the computer remains unmodified. When an AMI BIOS becomes corrupt the system will appear to start, but nothing will appear on the screen, the floppy drive light will come on and the system will access the floppy drive repeatedly. If your motherboard has an ISA slot and you have an old ISA video card lying around, put the ISA video card in your system and connect the monitor. The BOOT BLOCK section of the BIOS only supports ISA video cards, so if you do not have an ISA video card or your motherboard does not have ISA slots, you will have to restore your BIOS blind, with no monitor to show you what’s going on.
+
+AMI has integrated a recovery routine into the BOOT BLOCK of the BIOS, which in the event the BIOS becomes corrupt can be used to restore the BIOS to a working state. The routine is called when the SYSTEM BLOCK of the BIOS is empty. The restore routine will access the floppy drive looking for a BIOS file names AMIBOOT.ROM, this is why the floppy drive light comes on and the drive spins. If the file is found it is loaded into the SYSTEM BLOCK of the BIOS to replace the missing information. To restore your BIOS simply copy a working BIOS file to a floppy diskette and rename it AMIBOOT.ROM, then insert it into the computer while the power is on. The diskette does not need to be bootable or contain a flash utility. After about four minutes the system will beep four times. Remove the floppy diskette from the drive and reboot the computer. The BIOS should now be restored.
+
+Recovering a Corrupt AWARD BIOS
+With AWARD BIOS the process is similar but still a bit different. To recover an AWARD BIOS you will need to create a floppy diskette with a working BIOS file in .BIN format, an AWARD flash utility and an AUTOEXEC.BAT file. AWARD BIOS will not automatically restore the BIOS information to the SYSTEM BLOCK for this reason you will need to add the commands necessary to flash the BIOS in the AUTOEXEC.BAT file. The system will run the AUTOEXE.BAT file, which will in turn flash the BIOS. This is fairly easy. Here are the steps you need to take.
+
+· Create a bootable floppy diskette
+· Copy the BIOS file and flash utility to the diskette
+· Create an text file with any standard text editor and add the following lines
+
+@ECHO OFF
+FLASH763 BIOSFILE.BIN /py
+
+In the above example I am assuming that you are using the FLASH763.EXE flash utility. You will need to replace the FLASH763 with the name of whatever flash utility you are using, and replace the BIOSFILE.BIN with the name of the BIOS file you are using. You will also need to change the ‘/py’ to whatever the command is for your flash utility to automatically program the BIOS without user intervention. If you do not know the command to automatically flash your BIOS type the name of the flash utility with a space and then /? to display the utility’s help screen. The help screen should pecify the command switch to automatically flash your BIOS. If you are using the FLASH763.EXE utility then the switch to automatically flash your BIOS is ‘/py’.

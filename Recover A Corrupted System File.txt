@@ -1,0 +1,6 @@
+ Recover a Corrupted System File
+
+
+If an essential Windows file gets whacked by a virus or otherwise corrupted, restore it from the Windows CD. Search the CD for the filename, replacing the last character with an underscore; for example, Notepad.ex_. If it's found, open a command prompt and enter the command EXPAND, followed by the full pathname of the file and of the desired destination: EXPAND D:\SETUP\NOTEPAD.EX_ C:\Windows\NOTEPAD.EXE. If either pathname contains any spaces, surround it with double quotes.
+
+If the file isn't found, search on the unmodified filename. It will probably be inside a CAB file, which Win XP treats as a folder. Simply right-drag and copy the file to the desired location. In other Windows platforms, search for a file matching *.cab that contains the filename. When the search is done, open a command prompt and enter EXTRACT /L followed by the desired location, the full pathname of the CAB file, and the desired filename; for example: EXTRACT /L C:\Windows D:\I386\Driver.cab Notepad.exe. Again, if the destination or CAB file pathname contains spaces, surround it with double quotes.

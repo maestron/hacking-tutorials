@@ -1,0 +1,455 @@
+A Web Standards Checklist, How to make a proper website
+
+A web standards checklist
+
+The term web standards can mean different things to different people. For some, it is 'table-free sites', for others it is 'using valid code'. However, web standards are much broader than that. A site built to web standards should adhere to standards (HTML, XHTML, XML, CSS, XSLT, DOM, MathML, SVG etc) and pursue best practices (valid code, accessible code, semantically correct code, user-friendly URLs etc).
+
+In other words, a site built to web standards should ideally be lean, clean, CSS-based, accessible, usable and search engine friendly.
+
+About the checklist
+
+This is not an uber-checklist. There are probably many items that could be added. More importantly, it should not be seen as a list of items that must be addressed on every site that you develop. It is simply a guide that can be used:
+
+* to show the breadth of web standards
+* as a handy tool for developers during the production phase of websites
+* as an aid for developers who are interested in moving towards web standards
+
+The checklist
+
+1.Quality of code
+1. Does the site use a correct Doctype?
+2. Does the site use a Character set?
+3. Does the site use Valid (X)HTML?
+4. Does the site use Valid CSS?
+5. Does the site use any CSS hacks?
+6. Does the site use unnecessary classes or ids?
+7. Is the code well structured?
+8. Does the site have any broken links?
+9. How does the site perform in terms of speed/page size?
+10. Does the site have JavaScript errors?
+
+2. Degree of separation between content and presentation
+1. Does the site use CSS for all presentation aspects (fonts, colour, padding, borders etc)?
+2. Are all decorative images in the CSS, or do they appear in the (X)HTML?
+
+3. Accessibility for users
+1. Are "alt" attributes used for all descriptive images?
+2. Does the site use relative units rather than absolute units for text size?
+3. Do any aspects of the layout break if font size is increased?
+4. Does the site use visible skip menus?
+5. Does the site use accessible forms?
+6. Does the site use accessible tables?
+7. Is there sufficient colour brightness/contrasts?
+8. Is colour alone used for critical information?
+9. Is there delayed responsiveness for dropdown menus (for users with reduced motor skills)?
+10. Are all links descriptive (for blind users)?
+
+4. Accessibility for devices
+1. Does the site work acceptably across modern and older browsers?
+2. Is the content accessible with CSS switched off or not supported?
+3. Is the content accessible with images switched off or not supported?
+4. Does the site work in text browsers such as Lynx?
+5. Does the site work well when printed?
+6. Does the site work well in Hand Held devices?
+7. Does the site include detailed metadata?
+8. Does the site work well in a range of browser window sizes?
+
+5. Basic Usability
+1. Is there a clear visual hierarchy?
+2. Are heading levels easy to distinguish?
+3. Does the site have easy to understand navigation?
+4. Does the site use consistent navigation?
+5. Are links underlined?
+6. Does the site use consistent and appropriate language?
+7. Do you have a sitemap page and contact page? Are they easy to find?
+8. For large sites, is there a search tool?
+9. Is there a link to the home page on every page in the site?
+10. Are visited links clearly defined with a unique colour?
+
+6. Site management
+1. Does the site have a meaningful and helpful 404 error page that works from any depth in the site?
+2. Does the site use friendly URLs?
+3. Do your URLs work without "www"?
+4. Does the site have a favicon?
+
+1. Quality of code
+
+1.1 Does the site use a correct Doctype?
+A doctype (short for 'document type declaration') informs the validator which version of (X)HTML you're using, and must appear at the very top of every web page. Doctypes are a key component of compliant web pages: your markup and CSS won't validate without them.
+CODE
+http://www.alistapart.com/articles/doctype/
+
+
+More:
+CODE
+http://www.w3.org/QA/2002/04/valid-dtd-list.html
+
+CODE
+http://css.maxdesign.com.au/listamatic/about-boxmodel.htm
+
+CODE
+http://gutfeldt.ch/matthias/articles/doctypeswitch.html
+
+
+1.2 Does the site use a Character set?
+If a user agent (eg. a browser) is unable to detect the character encoding used in a Web document, the user may be presented with unreadable text. This information is particularly important for those maintaining and extending a multilingual site, but declaring the character encoding of the document is important for anyone producing XHTML/HTML or CSS.
+CODE
+http://www.w3.org/International/tutorials/tutorial-char-enc/
+
+
+More:
+CODE
+http://www.w3.org/International/O-charset.html
+
+
+1.3 Does the site use Valid (X)HTML?
+Valid code will render faster than code with errors. Valid code will render better than invalid code. Browsers are becoming more standards compliant, and it is becoming increasingly necessary to write valid and standards compliant HTML.
+CODE
+http://www.maxdesign.com.au/presentation/sit2003/06.htm
+
+
+More:
+CODE
+http://validator.w3.org/
+
+
+1.4 Does the site use Valid CSS?
+You need to make sure that there aren't any errors in either your HTML or your CSS, since mistakes in either place can result in botched document appearance.
+CODE
+http://www.meyerweb.com/eric/articles/webrev/199904.html
+
+
+More:
+CODE
+http://jigsaw.w3.org/css-validator/
+
+
+1.5 Does the site use any CSS hacks?
+Basically, hacks come down to personal choice, the amount of knowledge you have of workarounds, the specific design you are trying to achieve.
+CODE
+http://www.mail-archive.com/wsg@webstandardsgroup.org/msg05823.html
+
+
+More:
+CODE
+http://css-discuss.incutio.com/?page=CssHack
+
+CODE
+http://css-discuss.incutio.com/?page=ToHackOrNotToHack
+
+CODE
+http://centricle.com/ref/css/filters/
+
+
+1.6 Does the site use unnecessary classes or ids?
+I've noticed that developers learning new skills often end up with good CSS but poor XHTML. Specifically, the HTML code tends to be full of unnecessary divs and ids. This results in fairly meaningless HTML and bloated style sheets.
+CODE
+http://www.clagnut.com/blog/228/
+
+
+1.7 Is the code well structured?
+Semantically correct markup uses html elements for their given purpose. Well structured HTML has semantic meaning for a wide range of user agents (browsers without style sheets, text browsers, PDAs, search engines etc.)
+CODE
+http://www.maxdesign.com.au/presentation/benefits/index04.htm
+
+
+More:
+CODE
+http://www.w3.org/2003/12/semantic-extractor.html
+
+
+1.8 Does the site have any broken links?
+Broken links can frustrate users and potentially drive customers away. Broken links can also keep search engines from properly indexing your site.
+
+More:
+CODE
+http://validator.w3.org/checklink
+
+
+1.9 How does the site perform in terms of speed/page size?
+Don't make me wait... That's the message users give us in survey after survey. Even broadband users can suffer the slow-loading blues.
+CODE
+http://www.websiteoptimization.com/speed/
+
+
+1.10 Does the site have JavaScript errors?
+Internet Explore for Windows allows you to turn on a debugger that will pop up a new window and let you know there are javascript errors on your site. This is available under 'Internet Options' on the Advanced tab. Uncheck 'Disable script debugging'.
+
+2. Degree of separation between content and presentation
+
+2.1 Does the site use CSS for all presentation aspects (fonts, colour, padding, borders etc)?
+Use style sheets to control layout and presentation.
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-style-sheets
+
+
+2.2 Are all decorative images in the CSS, or do they appear in the (X)HTML?
+The aim for web developers is to remove all presentation from the html code, leaving it clean and semantically correct.
+CODE
+http://www.maxdesign.com.au/presentation/benefits/index07.htm
+
+
+3. Accessibility for users
+
+3.1 Are "alt" attributes used for all descriptive images?
+Provide a text equivalent for every non-text element
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-text-equivalent
+
+
+3.2 Does the site use relative units rather than absolute units for text size?
+Use relative rather than absolute units in markup language attribute values and style sheet property values'.
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-relative-units
+
+
+More:
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-relative-units
+
+CODE
+http://www.clagnut.com/blog/348/
+
+
+3.3 Do any aspects of the layout break if font size is increased?
+Try this simple test. Look at your website in a browser that supports easy incrementation of font size. Now increase your browser's font size. And again. And again... Look at your site. Does the page layout still hold together? It is dangerous for developers to assume that everyone browses using default font sizes.
+3.4 Does the site use visible skip menus?
+
+A method shall be provided that permits users to skip repetitive navigation links.
+CODE
+http://www.section508.gov/index.cfm?FuseAction=Content&ID=12
+
+
+Group related links, identify the group (for user agents), and, until user agents do so, provide a way to bypass the group.
+CODE
+http://www.w3.org/TR/WCAG10-TECHS/#tech-group-links
+
+
+...blind visitors are not the only ones inconvenienced by too many links in a navigation area. Recall that a mobility-impaired person with poor adaptive technology might be stuck tabbing through that morass.
+CODE
+http://joeclark.org/book/sashay/serialization/Chapter08.html#h4-2020
+
+
+More:
+CODE
+http://www.niehs.nih.gov/websmith/508/o.htm
+
+
+3.5 Does the site use accessible forms?
+Forms aren't the easiest of things to use for people with disabilities. Navigating around a page with written content is one thing, hopping between form fields and inputting information is another.
+CODE
+http://www.htmldog.com/guides/htmladvanced/forms/
+
+
+More:
+CODE
+http://www.webstandards.org/learn/tutorials/accessible-forms/01-accessible-forms.html
+
+CODE
+http://www.accessify.com/tools-and-wizards/accessible-form-builder.asp
+
+CODE
+http://accessify.com/tutorials/better-accessible-forms.asp
+
+
+3.6 Does the site use accessible tables?
+For data tables, identify row and column headers... For data tables that have two or more logical levels of row or column headers, use markup to associate data cells and header cells.
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-table-headers
+
+
+More:
+CODE
+http://www.bcc.ctc.edu/webpublishing/ada/resources/tables.asp
+
+CODE
+http://www.accessify.com/tools-and-wizards/accessible-table-builder_step1.asp
+
+CODE
+http://www.webaim.org/techniques/tables/
+
+
+3.7 Is there sufficient colour brightness/contrasts?
+Ensure that foreground and background colour combinations provide sufficient contrast when viewed by someone having colour deficits.
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-colour-contrast
+
+
+More:
+CODE
+http://www.juicystudio.com/services/colourcontrast.asp
+
+
+3.8 Is colour alone used for critical information?
+Ensure that all information conveyed with colour is also available without colour, for example from context or markup.
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-colour-convey
+
+
+There are basically three types of colour deficiency; Deuteranope (a form of red/green colour deficit), Protanope (another form of red/green colour deficit) and Tritanope (a blue/yellow deficit- very rare).
+
+More:
+CODE
+http://colourfilter.wickline.org/
+
+CODE
+http://www.toledo-bend.com/colourblind/Ishihara.html
+
+CODE
+http://www.vischeck.com/vischeck/vischeckURL.php
+
+
+3.9 Is there delayed responsiveness for dropdown menus?
+Users with reduced motor skills may find dropdown menus hard to use if responsiveness is set too fast.
+
+3.10 Are all links descriptive?
+Link text should be meaningful enough to make sense when read out of context - either on its own or as part of a sequence of links. Link text should also be terse.
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-meaningful-links
+
+
+4. Accessibility for devices.
+
+4.1 Does the site work acceptably across modern and older browsers?
+
+Before starting to build a CSS-based layout, you should decide which browsers to support and to what level you intend to support them.
+CODE
+http://www.maxdesign.com.au/presentation/process/index_step01.cfm
+
+
+
+4.2 Is the content accessible with CSS switched off or not supported?
+Some people may visit your site with either a browser that does not support CSS or a browser with CSS switched off. In content is structured well, this will not be an issue.
+
+4.3 Is the content accessible with images switched off or not supported?
+Some people browse websites with images switched off - especially people on very slow connections. Content should still be accessible for these people.
+
+4.4 Does the site work in text browsers such as Lynx?
+This is like a combination of images and CSS switched off. A text-based browser will rely on well structured content to provide meaning.
+
+More:
+CODE
+http://www.delorie.com/web/lynxview
+
+
+4.5 Does the site work well when printed?
+You can take any (X)HTML document and simply style it for print, without having to touch the markup.
+CODE
+http://www.alistapart.com/articles/goingtoprint/
+
+
+More:
+CODE
+http://www.d.umn.edu/itss/support/Training/Online/webdesign/css.html#print
+
+
+4.6 Does the site work well in Hand Held devices?
+This is a hard one to deal with until hand held devices consistently support their correct media type. However, some layouts work better in current hand-held devices. The importance of supporting hand held devices will depend on target audiences.
+
+4.7 Does the site include detailed metadata?
+Metadata is machine understandable information for the web
+CODE
+http://www.w3.org/Metadata/
+
+
+Metadata is structured information that is created specifically to describe another resource. In other words, metadata is 'data about data'.
+
+
+4.8 Does the site work well in a range of browser window sizes?
+It is a common assumption amongst developers that average screen sizes are increasing. Some developers assume that the average screen size is now 1024px wide. But what about users with smaller screens and users with hand held devices? Are they part of your target audience and are they being disadvantaged?
+
+5. Basic Usability
+5.1 Is there a clear visual hierarchy?
+Organise and prioritise the contents of a page by using size, prominence and content relationships.
+CODE
+http://www.great-web-design-tips.com/web-site-design/165.html
+
+
+5.2 Are heading levels easy to distinguish?
+Use header elements to convey document structure and use them according to specification.
+CODE
+http://www.w3.org/TR/WCAG10/wai-pageauth.html#tech-logical-headings
+
+
+5.3 Is the site's navigation easy to understand?
+Your navigation system should give your visitor a clue as to what page of the site they are currently on and where they can go next.
+CODE
+http://www.1stsitefree.com/design_nav.htm
+
+
+5.4 Is the site's navigation consistent?
+If each page on your site has a consistent style of presentation, visitors will find it easier to navigate between pages and find information
+CODE
+http://www.juicystudio.com/tutorial/accessibility/navigation.asp
+
+
+5.5 Does the site use consistent and appropriate language?
+The use of clear and simple language promotes effective communication. Trying to come across as articulate can be as difficult to read as poorly written grammar, especially if the language used isn't the visitor's primary language.
+CODE
+http://www.juicystudio.com/tutorial/accessibility/clear.asp
+
+
+5.6 Does the site have a sitemap page and contact page? Are they easy to find?
+Most site maps fail to convey multiple levels of the site's information architecture. In usability tests, users often overlook site maps or can't find them. Complexity is also a problem: a map should be a map, not a navigational challenge of its own.
+CODE
+http://www.useit.com/alertbox/20020106.html
+
+
+5.7 For large sites, is there a search tool?
+While search tools are not needed on smaller sites, and some people will not ever use them, site-specific search tools allow users a choice of navigation options.
+
+5.8 Is there a link to the home page on every page in the site?
+Some users like to go back to a site's home page after navigating to content within a site. The home page becomes a base camp for these users, allowing them to regroup before exploring new content.
+
+5.9 Are links underlined?
+To maximise the perceived affordance of clickability, colour and underline the link text. Users shouldn't have to guess or scrub the page to find out where they can click.
+CODE
+http://www.useit.com/alertbox/20040510.html
+
+
+5.10 Are visited links clearly defined?
+Most important, knowing which pages they've already visited frees users from unintentionally revisiting the same pages over and over again.
+CODE
+http://www.useit.com/alertbox/20040503.html
+
+
+6. Site management
+
+6.1 Does the site have a meaningful and helpful 404 error page that works from any depth in the site?
+You've requested a page - either by typing a URL directly into the address bar or clicking on an out-of-date link and you've found yourself in the middle of cyberspace nowhere. A user-friendly website will give you a helping hand while many others will simply do nothing, relying on the browser's built-in ability to explain what the problem is.
+CODE
+http://www.alistapart.com/articles/perfect404/
+
+
+6.2 Does the site use friendly URLs?
+Most search engines (with a few exceptions - namely Google) will not index any pages that have a question mark or other character (like an ampersand or equals sign) in the URL... what good is a site if no one can find it?
+CODE
+http://www.sitepoint.com/article/search-engine-friendly-urls
+
+
+One of the worst elements of the web from a user interface standpoint is the URL. However, if they're short, logical, and self-correcting, URLs can be acceptably usable
+CODE
+http://www.merges.net/theory/20010305.html
+
+
+More:
+CODE
+http://www.sitepoint.com/article/search-engine-friendly-urls
+
+CODE
+http://www.websitegoodies.com/article/32
+
+CODE
+http://www.merges.net/theory/20010305.html
+
+
+6.3 Does the site's URL work without "www"?
+While this is not critical, and in some cases is not even possible, it is always good to give people the choice of both options. If a user types your domain name without the www and gets no site, this could disadvantage both the user and you.
+6.4 Does the site have a favicon?
+
+A Favicon is a multi-resolution image included on nearly all professionally developed sites. The Favicon allows the webmaster to further promote their site, and to create a more customized appearance within a visitor's browser.
+CODE
+http://www.favicon.com/
+
+
+Favicons are definitely not critical. However, if they are not present, they can cause 404 errors in your logs (site statistics). Browsers like IE will request them from the server when a site is bookmarked. If a favicon isn't available, a 404 error may be generated. Therefore, having a favicon could cut down on favicon specific 404 errors. The same is true of a 'robots.txt' file.

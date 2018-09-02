@@ -1,0 +1,5 @@
+Create A Huge File
+
+You can create a file of any size using nothing more than what's supplied with Windows. Start by converting the desired file size into hexadecimal notation. You can use the Windows Calculator in Scientific mode do to this. Suppose you want a file of 1 million bytes. Enter 1000000 in the calculator and click on the Hex option to convert it (1 million in hex is F4240.) Pad the result with zeroes at the left until the file size reaches eight digits—000F4240.
+
+Now open a command prompt window. In Windows 95, 98, or Me, you can do this by entering COMMAND in the Start menu's Run dialog; in Windows NT 4.0, 2000, or XP enter CMD instead. Enter the command DEBUG BIGFILE.DAT and ignore the File not found message. Type RCX and press Enter. Debug will display a colon prompt. Enter the last four digits of the hexadecimal number you calculated (4240, in our example). Type RBX and press Enter, then enter the first four digits of the hexadecimal size (000F, in our example). Enter W for Write and Q for Quit. You've just created a 1-million-byte file using Debug. Of course you can create a file of any desired size using the same technique.

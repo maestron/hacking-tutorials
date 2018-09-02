@@ -1,0 +1,243 @@
+                     Hacking IRC - The Definitive Guide
+
+Copyright 1996 klider@panix.com Welcome to Hacking IRC- The Definitive
+Guide. The purpose of this page if you have not already guessed is to
+provide what I consider optimal methodology for hacking IRC channels. In
+addition, I provide some of the better channels to hack as well as fun
+things to do while "owning a channel."
+
+Contents
+
+   * Section 1-- Why Hack IRC?
+
+   * Section 2--Requisite Tools
+
+   * Section 3--What It Takes To Gain Control
+
+   * Section 4--Link Looker(LL)
+
+   * Section 5--Bots and Scripts
+
+   * Section 6--Multi-Collide-Bot(MCB)
+
+   * Section 7--Pre-Takeover Preparation
+
+   * Section 8--Thing To Do ONce You "Own" the Channel
+
+   * Section 9--Best Channels to Hack
+
+[Image]  See me if you dare.
+
+Section 1-Why Hack IRC?
+
+I have often asked myself this question and the answers are varied and
+numerous. One of the primary reasons for hacking IRC channels is due to
+shear boredom. However a multitude of secondary reasons exist. Foremost
+among these is the "that asshole op i nsulted me and/or kicked me and/or
+banned me from the channel and I WANT REVENGE! This is a perfectly valid
+excuse and boredom is not a necessary condition for implementing a takeover
+of an IRC channel. Nor is it a necessary condition that the reason yo u
+were insulted and/or kicked and/or banned was because in fact you are an
+asshole. All that is necessary is the will, the desire, a bit of skill, and
+of course the tools, which convieniently brings me to my next section.
+
+Section 2-Requisite Tools
+
+Any decent craftsmen needs a good set of tools and IRC hackers are no
+exception. Without the proper tools you are dead in the water. All of the
+tools I describe below are available on public ftp sites. Before I launch
+into a discussion of what you wil l need, it is important to point out that
+if you are reading this document from your ppp/slip account you might
+consider geeting a shell account if you are serious about hackin. Hacking
+IRC from a slip/ppp is much more complicated than doing so from a sh ell
+account. There are those who will debate this but my experience has shown
+that mIRC or any of the other shareware IRC programs for the PC are no
+match for the speed and ease of use that an IRC shell script allows for.
+Thus the first tool required fo r hacking is an excellent irc shell script.
+If you have already used IRC via a shell account and are still reading this
+document you probably already have a script, which means you are well on
+your way! As far as IRC shell scripts go, my personal favor ite is Lice -
+again available publically via ftpFTP. Other scripts exist but the richness
+and power of the LICE commands I believe is second to none. Now while it is
+possible to stop here and hack ops with just a script, you would
+effectively be putting yourself needlessly at a handicap. Therefore I
+reccommend these additional two tools: 1)Multi-Collide-Bot(MCB) and 2)LInk
+Looker(LL). These two C programs are your infantry and intellige nce
+respectively. Again both are available via FTP and both are C programs and
+therefore need to be compiled.
+
+What It Takes To Gain Control
+
+Without going into much detail clearly in order to effectively gain control
+of an IRC channel you must be the only op on your channel. If you are still
+clueless at this point, that is to say..You should be the only guy/gal with
+the @ in front of your nic k. Once you have accomplished this, the channel
+is YOURS. Of course, that is until it is taken back or you decide to cease
+hacking the channel. There are a number of ways to effectively gain ops on
+a channel and I will start with the simplest, then mov e to the
+increasingly more complex and finesse laden methods. By far and away the
+easiet method of gaining ops on a channel is to ask. You laugh eh? Well
+don't. Clearly as hackers grow more prevelant on IRC the asking method
+becomes more and more unlikely to succeed. This is especially true of the
+bigger and well established channels that have cultures onto themselves
+such as #Netsex, #Teensex, #Windows95, #Bawel, #BDSM, #Blaklife, #Texas,
+#Hack, and any of the #Warez channels and a whole host of others. To gain
+ops in these channels you must become a channel re gular (i.e. one that
+hangs there freqently and becomes a known and trusted member of the
+channel). Since you have neither the time nor the desire to make friends on
+the channel you ultimately want to hack ops on, the asking method is the
+last thing you want to do on all but the smaller more ethereal channels,
+where you obviously stand a better although still slim chance of gaining
+ops through a request.. One important exception to the ask method is
+through the use of anonirc which can be used on any ch annel but has severe
+limitations..more on this later. But of course you didn't come this far to
+be taught how to ask for ops..so lets proceed with the next lesson. Aside
+from asking there are essentially two other ways of gaining ops. The first
+is through splits and the second is through anonirc. The following
+discussion mostly relates to splits but I will touch on anonirc briefly at
+the end. What is a split? A split occurs when the IRC server you are
+communicating on detaches from the rest of the net. If you are in a channel
+and by chance the only one on a particular server that splits away, you
+will not only find yourself alone on the channel, but will now ha ve the
+opportunity to gain ops. In order to do this you need to leave and rejoin
+the channel in which case you will now find yourself with the little @ in
+front of your nick. When your server rejoins you will have ops on the
+channel. Now you say, "Wow, thats easy enough". Wrong. More likely than
+not, especially on a bigger channel a number of things are likely to occur
+that will remove your op status. Remember now the goal here is to keep ops
+so you can "Have Your Way". Also and more importantly, if you go into a
+channel and wait around hoping the server you are on splits, you might grow
+old and die first. Therefore, what is a wannbe IRC hacker to do? Link
+Looker is your answer.
+
+Link Looker
+
+Link Looker is a lovely little program that acts as your intelligence
+officer. Without getting into the complexities or its mechanics, what it
+effectively does is to give your a message anyti me a particular server
+detaches from the net and a message when it rejoins. Is the methodology
+becoming clearer now? Yes! Thats right! When LL tells you that a server is
+split ,you connect to that server and join the channel you seek to hack ops
+on and h ope nobody else split from the channel on that server(if this
+occurs you will not get ops).. If you find yourself alone, you will have
+ops and a fighting chance to gain control of the channel. It is important
+to realize that on many channels, just getti ng ops via a split and waiting
+for a rejoin is sufficient for gaining control of a channel. This is
+particularly true of small to medium sized channels as well as channels
+that are not organized or do not have Bots (more on this later), You simply
+wait for the server to rejoin and once the channel is full you execute your
+mass deop command (this is on your script and the key element in getting
+rid of any other ops) and you will be the only op left. The channel is
+yours and go do your thing! On bigger more organized channels, things won't
+be so easy due to the presense of Bots as well as the presense of scripts
+used by existing human ops.
+
+Bots and Scripts
+
+Bigger more organized channels inevitably have a Bot(Robot) or multiple
+Bots. Bots are essentially suped up scripts that attempt to maintain ops on
+a channel by their continuous presensce on channel. Additionally Bots
+provide a number of channel mainten ance tasks such as opping known members
+of the channel (either automatically or through password requests),
+providing notes, and other information. Bots however are primarlly used for
+keeping ops on channel and depending on the type of Bot, defending aga inst
+IRC hackers. Bots come in many varieties and types but the best of them do
+a good job of deoping spliters(thats you silly..you are opped on a split
+and when you rejoin the bot will deop you). Not only will Bots deop
+you..many of the human ops have scripts (such as LIce) that depending on
+the settings employed will deop you as well. Now with the prevalance of
+powerful scripts on IRC a recent phenomona is the occurse of the desynch.
+This is a nasty event that takes place when you rejoin from a spli t and
+your script deops the existing ops and the existing ops deop you at the
+same time. What this does is confuse the shit out of the servers and cause
+them to desynchronize from one another. This is to be avoided at all costs.
+When this happens you w ill effectively become desynched from a large
+portion of the net and most the channel, (depending on what server you rode
+in on). What's worse is that you will think you have ops( which you will
+for that server) but in reality you won't and you will be w asting your
+time. So how with the prevalence of super Bots and Human ops with scripts
+do you take the channel? Using MCB of course!
+
+Multi-Collide-Bot(MCB)
+
+Multi-Collide-Bot (MCB) is a powerful tool and your best friend. MCB is an
+even lovelier program that creates a clone of a nick you want to kill
+(almsot always an op on the channel you are tr ying to hack) on a server
+that has split(yes the one Link Looker informed you of). Basically you feed
+MCB the name or names of the nick you want to kill and tell it what split
+server to establish those clones and upon rejoin.BAM/SMACK/KIILL!! Yes
+thats r ight, the target is thrown out of the channel(losing ops) and must
+re-establish a connection with a server to get back onto IRC and into the
+channel. So yes, you have figured it out. If you kill all of the ops on a
+channel and you ride in on a split you will be the only op in the channel.
+Let me assure you there is nothing like seeing the nick kill messages of
+the ops you have targeted as you ride in on the split.
+
+Pre-Takeover Preparation
+
+There are a number of things you can do before you attempt to take over an
+IRC Channel to make things easier and be as well prepared as you can
+possibly be. 1)Pre-Attack Observation. Plain and simple you must know who
+you are attacking. One of the most important things you can do as you sit
+and observe the channel is to determine which bots and/or human ops are
+deopping on rejoins. These are the nicks you want to target first. You will
+fail if you don't kill these nicks and rejoin because you are lik ely to
+cause a desynch(discussed above). However, it is essential to make sure you
+kill all of the ops. Leaving just one op alive means you have lost that
+battle and must now regroup and wait for another split. It is important to
+watch out for ops chan ging their nicks if they detect a split. If they do
+this, the mcb you tagged with their nick will be useless to you. The way I
+prevent this is to be on both sides of the split. That is to be opped in
+the channel on the split server and have a clone in the channel on the
+other side of the split monitoring the goings on, telling you if ops change
+nicks or new people are opped (in which case you create a new mcb with
+their name on it).
+
+Things To Do Once You "Own" the Channel
+
+Once you own the channel, the decision is clearly yours on how you want to
+proceed and needless to say the number of things you can do is endless.
+However, let me share with you a number of time tested ideas that are sure
+to give you a thrill not to ment ion totally piss of the channel you have
+now hacked. The first thing you can do is to taunt the former ops of the
+channel. That is to say, they will probably be cursing you and telling you
+what a loser you are for hacking the channel. They will say thi ngs like
+"get a life, do something more productive". Remember don't take it
+personally. You have to keep in mind that it is the formers ops who in fact
+are the ones who need to get a life, considering the only power they have
+or make that had (if you su ccessfully hacked the channel) was to have ops
+in the first place. So you can continue to taunt and if they get relay
+billegerent you can kick them off the channel. They will undoubtedly come
+back within a second or two and then you can say something li ke, "Now, now
+I am in control of the channel and I will not tolerate such language and
+behavior. If you are unable to control yourself I will be forced to ban
+you." Now this is sure to get some violent response from the former op in
+which case you subse quently kick and ban them and move onto the next
+person. Another thing I like to do is to word ban. This is particularly
+easy if you have LICE. What you do is pick a word that if typed onto the
+screen by any of the channel members, will automatically r esult in you
+kicking them off the channel with the reason that word is banned. This
+method is particularly good in channels like #teensex where people are
+always saying the word sex, male, female, teen, age, etc. All you do is ban
+those words and watch the kicks begin to fly. Another thing I like to do is
+moderate the channel. What this does with the /mode +m command is to make
+it such that nobody on channel can speak. This is a particularly good thing
+to do when many of the channel members are getti ng out of hand and you
+want to make some sort of statement without anybody interrupting you. Yes
+all eyes will be trained on you. If you want to be really mean, when you
+are finished hacking the channel, you can leave it moderated in which case
+nobody w ill be able to speak and the channel is effectively shut down.
+Other things to do which are nasty as well are to kick everybody out of the
+channel and make it invite only, effectively shutting it down as well.
+Think of your own creative things to do. I would love to hear about
+them..email me..if they are particularly interesting I will include them in
+this page with an attribution if you like.
+
+Best Channels to Hack
+
+#limbaugh
+#rush
+#lamerz
+#newbies
+
+email klider@panix.com

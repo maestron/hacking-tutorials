@@ -1,0 +1,361 @@
+How to set up a server with Apache , PHP , MySQL , Perl , phpMyAdmin
+
+=====
+
+Let's start by installing apache (http server) . you can download the
+apache installer on www.apache.org . download the verion you like ,
+even thought , in win systems i recomand verion 2 (this tutorials is
+for apache 2) . here is a link for it :
+
+Code:
+http://apache.mirror.nedlinux.nl/dist/httpd/binaries/win32/apache_2.0.52-win32-x86-no_ssl.msi
+
+
+for a faster mirror , visit http://httpd.apache.org/download.cgi .
+
+After downloading the file (.msi installer) , run it . The installation wizard
+is a next , next , finish 'work' ... The installer will ask you some details like
+your server name , your server adress and the admin's mail adress . if
+you have a domain name or a hostname , enter the info's like this :
+
+Code:
+Server Name : your_domain.org
+
+Server Adress : www.your-domain.org
+
+Admin Email : admin@yourdomain.org
+
+
+if you don't have one , you should get on e free at :
+
+Code:
+http://www.no-ip.org/
+
+
+Check the 'Run as a service for all users on port 8080' option and click
+next , finish to fiinish the instllation . Advice : Install it in c: (he creates
+a folder for it , don't worry) to make sure you configure it easyer .
+If you are finished , open up a browser and write in the adress bar :
+
+Code:
+http://localhost/
+
+
+If you will see a 'Test Page for Apache Installation' , everything works .
+
+=====
+
+Let's install PHP . download the archives from www.php.net . Here is a
+direct link for verion 4.3.9 :
+
+Code:
+http://nl.php.net/get/php-4.3.9-Win32.zip/from/this/mirror
+
+
+Make sure you download the archive and not the installer . Ok! after
+downloading it , extract the archive in c:/php (this is to simplify paths) .
+Now , open up c:/apache/conf/httpd.conf and search for this line :
+
+Code:
+#LoadModule ssl_module modules/mod_ssl.so
+
+
+under that line , add this :
+
+Code:
+LoadModule rewrite_module modules/mod_rewrite.so
+
+LoadModule php4_module "c:/php/sapi/php4apache2.dll"
+AddType application/x-httpd-php .php
+AddType application/x-httpd-php .php3
+AddType application/x-httpd-php .php4
+
+
+Now search for this line :
+
+Code:
+<Directory "C:/Apache2/htdocs">
+
+
+Change :
+
+Code:
+Options Indexes FollowSymLinks
+
+#
+# AllowOverride controls what directives may be placed in .htaccess files.
+# It can be "All", "None", or any combination of the keywords:
+#   Options FileInfo AuthConfig Limit
+#
+    AllowOverride None
+
+
+into :
+
+Code:
+Options Indexes Includes FollowSymLinks MultiViews ExecCGI
+
+#
+# AllowOverride controls what directives may be placed in .htaccess files.
+# It can be "All", "None", or any combination of the keywords:
+#   Options FileInfo AuthConfig Limit
+#
+    AllowOverride All
+
+
+This will allow .htaccess support on your server and make sure you can
+see the content of a folder without getting a 403 forbidden error .
+
+Now search for :
+
+Code:
+DirectoryIndex index.html index.var.html
+
+
+and change it into :
+
+Code:
+DirectoryIndex index.html index.php
+
+
+Save the file and restart apache . (you can restart it by pressing the
+Restart apache server shortcut in the start menu or by writing :
+
+Code:
+net apache restart
+
+
+in a command prompt window . Ok!
+
+you have php working for your server icon_wink.gif . Now let's configure php and
+make sure it really works ! Open up c:/php/php.ini (php.ini-dist renamed)
+and search for this paragraph :
+
+Code:
+max_execution_time = 60    ; Maximum execution time of each script, in seconds
+max_input_time = 60   ; Maximum amount of time each script may spend parsing request data
+memory_limit = 5M      ; Maximum amount of memory a script may consume (8MB)
+
+
+you should change this to whatever you want . here is an option i use :
+
+Code:
+max_execution_time = 300    ; Maximum execution time of each script, in seconds
+max_input_time = 300   ; Maximum amount of time each script may spend parsing request data
+memory_limit = 5M      ; Maximum amount of memory a script may consume (8MB)
+
+
+Now search for :
+
+Code:
+register_globals = Off
+
+
+and change it into :
+
+Code:
+register_globals = On
+
+
+Search for :
+
+Code:
+extension_dir = ".\"
+
+
+and change it into :
+
+Code:
+extension_dir = "c:/php/extensions"
+
+
+assuming you have installed php in c: ...
+
+Search for :
+
+Code:
+;Windows Extensions
+;Note that MySQL and ODBC support is now built in, so no dll is needed for it.
+
+
+and uncomment (delete the ; in the front) the following modules :
+
+Code:
+extension=php_bz2.dll
+extension=php_db.dll
+extension=php_gd2.dll
+extension=php_java.dll
+extension=php_msql.dll
+extension=php_pdf.dll
+extension=php_pgsql.dll
+extension=php_sockets.dll
+
+
+Ok! now let's change the smtp settings (this is good icon_smile.gif for you mail()
+function . you need this !!!) Search for :
+
+Code:
+[mail function]
+; For Win32 only.
+SMTP =
+smtp_port = 25
+
+; For Win32 only.
+;sendmail_from =
+
+
+and change to :
+
+Code:
+[mail function]
+; For Win32 only.
+SMTP = mail.isp.org
+smtp_port = 25
+
+; For Win32 only.
+sendmail_from = mail@your_domain.org
+
+if you don't have a mail server or :
+
+Code:
+[mail function]
+; For Win32 only.
+SMTP = localhost
+smtp_port = 25
+
+; For Win32 only.
+sendmail_from = mail@your_domain.org
+
+if you have a mail server ...
+
+Save the files . Now let's finalize the php installation . copy all the dll's
+from c:/php/dlls into c:/windows/system32 . copy c:/php/php4ts.dll into
+c:/windows/system32/ and copy php.ini from your folder php into
+windows and system32 folder . restart apache . open up notepad and
+add this into the file :
+
+Code:
+<?php
+   phpinfo();
+?>
+
+
+save this file in your htdocs folder (c:/apache/htdocs) as info.php and
+open up a browser . in the adress bar write :
+
+Code:
+http://localhost/info.php
+
+
+you should see php's configuration in a table . a looong file icon_smile.gif
+you can optionaly install zend optimizer . i am using it ... it doesn't
+needs a tutorial . to install the PEAR modules for php , just run the
+go-pear batch from the php folder and 2click the reg file to finish the
+instllation .
+
+=====
+
+let's install mysql . download mysql from http://www.mysql.com/ .
+this tutorial applyes to verion 4.0.* ... i don't recomand using mysql
+4.1 . here is a direct link :
+
+Code:
+http://dev.mysql.com/get/Downloads/MySQL-4.0/mysql-4.0.22-win.zip/from/http://mysql.proserve.nl/
+
+
+after downloading , extract the arhive somewhere and run the setup.exe .
+install mysql in c:/mysql and complete the installation . open up command
+prompt and write this :
+
+Code:
+cd mysql
+cd bin
+mysqld-max-nt --install
+
+
+this will install mysql as a service . recomended . now you would probably
+consider downloading mysql control center . a gui tool to administrate the
+server in a graphical mode . here is a link :
+
+Code:
+http://dev.mysql.com/get/Downloads/MySQLCC/mysqlcc-0.9.4-win32.zip/from/http://mysql.proserve.nl/
+
+
+install it like any other program and run the shortcut in the desktop . a
+window will pop-up . it will ask you to add a new connection . here are the
+info's you need to fill in :
+
+Code:
+name : localhost or main or whatever :)
+host : localhost
+user : root
+pass :
+
+
+click add , expand the databases menu and delete databse text . now
+expand the users menu and delete all users except root@localhost . right
+click it and select edit user . change it's password to whatever you want icon_smile.gif
+now right click the server and select edit . change the password to the
+pass you chosed for user root . as easy as that . mysql is installed !
+
+=====
+
+phpMyADmin . you can download it from http://www.phpmyadmin.net/ .
+i recommend using verion 2.5.1 pl1 . the last verion is still bugy icon_smile.gif
+download , unzip the contecnt into a folder in htdocs (phpMyAdmin) and
+open up config.inc.php with a text editor .
+
+search for :
+
+Code:
+$cfg['PmaAbsoluteUri'] = '';
+
+
+change it to your phpmyadmin url . eg. :
+
+Code:
+$cfg['PmaAbsoluteUri'] = http://www.your_domain.org/phpMyAdmin/';
+
+
+now search for :
+
+Code:
+$cfg['blowfish_secret'] = '';
+
+
+and change it to your mysql root password like this :
+
+Code:
+$cfg['blowfish_secret'] = 'password';
+
+
+now search for :
+
+Code:
+$cfg['Servers'][$i]['auth_type']     = 'config';
+
+
+and change it to :
+
+Code:
+$cfg['Servers'][$i]['auth_type']     = 'cookie';
+
+
+save and exit . that's it ! phpMyAdmin works icon_wink.gif
+
+=====
+
+Perl . Optioanl for your server , very usefull . i recomend you to install
+it . you can download it from http://www.activestate.com/ . here is a
+direct link :
+
+Code:
+http://downloads.activestate.com/ActivePerl/Windows/5.8/ActivePerl-5.8.4.810-MSWin32-x86.msi
+
+
+download , install and you are ready . put your perl scripts in the /cgi-bin/
+folder (c:/apache/cgi-bin) .
+
+=====
+
+Hope this helped , you're welcome . No , you don't need to pay 

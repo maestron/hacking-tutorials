@@ -1,0 +1,39 @@
+Tips
+
+Speed up the Boot Menu (#1)
+
+Tired of waiting thirty seconds to boot Windows 2000 if you don't select from the boot menu? Speed up the booting process by only showing the available operating systems for just a couple of seconds.
+
+Right-click "My Computer" on the desktop and choose "Properties". On the "System Properties" multi-tabbed dialog box that follows, click "Advanced". Click the "Startup and Recovery..." button. Then, on the "Startup and Recovery" dialog box that follows, next to "Display list of operating systems for ... seconds", select the number of seconds that you want the computer to wait before continuing with the default OS. When you're done, press "OK" to close the dialog box.
+
+Desktop Disappearing? (#2)
+
+Although Windows 2000 is more stable than previous versions of NT, in some situations, strange things can happen. If, for example, Explorer crashes, most of your desktop, including the "Start" button, disappears. To bring back Explorer without rebooting your machine, press CONTROL-ALT-DELETE. When the "Windows Security" dialog box appears, click the "Task Manager" button. If the "Windows Task Manager' dialog box appears as it should, select the "File" menu and then "New Task (Run)". When the "Create New Task" dialog box appears, just type in "Explorer" and press the "OK" button. Windows Explorer should then reappear, complete with the "Start" button.
+
+Change Process Priority (#3)
+
+Is a particular program or process running too fast or too slow? Is a program or process taking too much of your CPU time or can you allow a process or program to take more of your computing power? To change these settings for a particular process, just right-click on an empty area of your taskbar and choose "Task Manager..." On the "Windows Task Manager" dialog box that follows, select a process and right-click it. On the popup menu that appears, select "Set Priority" and choose one of the following priorities: "Realtime", "High", "Above Normal", "Normal", "Below Normal", or "Low". The lower the priority is on the popup menu, the lower percentage of CPU time will be delegated to said priority.
+
+Note that depending on the process and your administrative rights to your machine, you may not be able to change a particular process's priority.
+
+Put the Desktop in your Taskbar (#4)
+
+Do you frequently multitask? If so, all of the windows created by running applications can quickly cover your desktop. If you'd like, you can make the desktop icons immediately accessible from your taskbar. Just right-click an empty area of your taskbar, choose "Toolbars", and check "Desktop". Your desktop icons will then be immediately accessible without having to minimize your current windows. If you have a lot of desktop icons, click on the two greater-than arrows (">>") to the right of your desktop icons and a popup menu will appear allowing you to select from any of the available desktop icons not immediately visible on your taskbar.
+
+Changing DOS Window Titles (#5)
+
+If you use DOS a lot, you may frequently have more than one DOS window open at once. Perhaps you'll have one a window for FTP, one for debugging a batch file, one for doing basic tasks such as displaying directories, etc. If so, it can get very confusing navigating between the different DOS windows since each of their titles just say "Command Prompt". If you'd like, you can change the titles of a DOS window so you can easily see what tasks you are performing in each window.
+
+To change the title of a Windows 2000 command prompt window, just enter in the TITLE command, followed by your desired window title. For example, to name a DOS window "Debugging Window", just enter the following command at a DOS prompt:
+
+TITLE Debugging Window
+
+Save the Current Directory Name (#6)
+
+Windows 2000 lets you temporarily store the name of the current directory that you are in, letting you recall the directory name later after you are doing other processing. This may be useful if you are jumping around DOS directories a lot, either manually or through a batch file.
+
+To store the name of the current directory, or rather, to PUSH the name of the current directory onto the stack, enter the PUSHD command followed by the name of a directory that you would like to access next. For example, if you are in the "C:\Program Files" directory and want to push that directory name onto the stack, jumping to the C:\WINNT" directory, enter:
+
+PUSHD C:\WINNT
+
+After you are done working in the "C:\WINNT" directory and ready to go back to the "C:\Program Files" directory, don't type in "CD C:\Program Files", just POP the old directory from the stack by entering:

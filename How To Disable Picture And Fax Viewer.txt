@@ -1,0 +1,16 @@
+We all know that WinXP likes to keep itself held together, and how it doesnt like you uninstalling certain components. Well The Picture and Fax Viewer, is one of these programs which can cause problems if removed incorrectly. It can be disabled safely as follows:
+
+[Start] [Run] type regedit and click [OK]
+
+Navigate to :
+
+HKEY_CLASSES_ROOT/ SystemFileAssociations/ image/ ShellEx/ ContextMenuHandlers
+
+then delete the Folder ShellImagePreview under ContextMenuHandlers
+
+Note: If you want to restore the Picture and Fax Viewer :
+
+Create the ShellImagePreview folder and create the String Value (Default)
+Assign it the value {e84fda7c-1d6a-45f6-b725-cb260c236066}
+
+NOTE: This tweak doesnt uninstall the program. It removes the association and therefore it cannot be run.

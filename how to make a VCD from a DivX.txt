@@ -1,0 +1,87 @@
+ Tools required: Latest Virtual dub, TMPGEnc and Nero ( and the DivX codecs.)
+
+
+Preparing:
+Download all tools, Be sure to install DivX 3.11 DivX4 and the latest DivX5 codecs.
+
+Extracting the audio : Start Virtualdub. Open your video File->Open video file.(if you get any warnings just ignore them because you won't edit the video just extract the audio)
+Select File->File Information and note the fps as the video source fps because you will need it later.
+Select under Audio->Full processing mode.
+Select Audio->Compression and select <No compression (PCM)>
+Select Audio->Conversion.
+Change the the Sampling rate to 44100Hz if you are going to make VCD or SVCD MPEGs.
+Save the wav by clicking on File->Save WAV...the wav will be a huge audio uncompressed video file(about 10 MB/minute.
+Encoding:
+Start TMPEnc. Press cancel if the Project Wizard comes.
+Press Browse… and select the DivX file as Video source input.
+Now you press the Browse button for choosing the Audio source input and use the saved wav file.
+Press load and load the file which in the Template directory of TMPGenc.
+If the video source fps is 29,970 load VideoCD (NTSC).mcf
+If the video source fps is 23,970 load VideoCD (NTSCFilm).mcf
+If the video source fps is 25,000 load VideoCD (PAL).mcf
+If the video source fps is anything else else just load NTSC if you live in US or Japan and PAL if you live anywhere else.
+Note if you live in US or Japan and get problem playing PAL, often causing black and white TV playback problems, then first check if you can change to PAL on your TV or DVD Player if not then instead convert it to NTSC by loading the VideoCD(NTSC) template.
+Note if you live Europe and the rest of the world and get problem playing NTSC or NTSCFilm, often causing black and white TV playback problems, then first check if you can change to PAL on your TV or DVD Player if not convert it to PAL by loading the VideoCD(Pal) template.
+
+Press Settings and choose Advanced.
+Select Full screen (keep aspect ratio) under Video arrange method to keep the same aspect ratio(widescreen,fullscreen) as the video source(if you have a widescreen movie and you want it to be in fullscreen select No margin(keep aspect ratio).
+Select Source range and double-click on it with the mouse.
+
+In the next dialog you can choose the source range. This process depends on the DivX file. If the DivX file is less than 80min (for a 80min/700mb CDR) then you do not have to split the file to two CDs. Also if the DivX file is already in two parts you have just to convert the first file and then the second. But if there should be the case that the movie is in one file over 80minutes long then it is necessary to select the source range. In this new dialog you put the horizontal scrollbar to the middle of the selection so that you will get the same length on the first CD as on the second. After you selected the middle do you have press Set end frame. A new value should be under End Frame. This value you should notice somewhere for the encoding of the second part. Of course the start frame must be 0.
+
+
+
+After pressing ok, you only have to select the output file name. I prefer the movie name with the CD number (e.g. Ghost in the Shell CD1) for the burning.
+Now encode the file by pressing the Start-Button.
+While encoding you can select File->Preview(it won't effect the encoding) to see how the output will be, it it looks wrong(widescreen or fullscreen) you can stop the encoding and start over and change especially the Settings->Advanced->Video arange method.)
+If you only want to burn the movie on one CD jump to the burning guide else follow the next points.
+
+Repeat the third, forth and fifth point. In the source range dialog you now use as Start frame the noticed value and move with the horizontal scrollbar to the end of the movie.
+After pressing Set end frame, press two times OK.
+
+Now select the output filename for the second file. (e.g. Ghost in the Shell CD2) and encode it.
+After the encoding is done and you did all right, you should have for every CD a file.
+
+Burning:
+Launch Nero.Close the Wizard. Select File->New.
+1. Select VideoCD
+2. Select PAL or NTSC depending what format your source MPEG is in.
+3. And hit New.
+
+1. Locate your .mpg and drag it(see picture below). Remember that you can add several .mpgs also, each mpg will be a own track on the VCD and you can add data files also, just drag them to any folder.
+2. Check the time. It should be the same as in the movie.
+
+3. Rename the CD to anything you like by clicking F2 on NEW.
+
+4. Select File->Write CD.
+
+
+don't know about everyone else.. but the only options i choose on tmpgenc to make mpeg-1 files are either NTSC film 23.976, or NTSC video 29.97 fps..
+
+i also live in the u.s. so i do all of mine accordingly.. why do you save the wave file with virtual dub.. or should i say, why do you even process the divx file with vdub.. yeah if it is your last resort and the divx for some reason doesn't open in tmpgenc.. i've got 180+ Divx movies, some downloaded mostly ripped, never had a problem encoding them with tmpgenc plus.
+
+just seems like you are going from your a$$ to your elbow to do this.
+
+1. take divx movie (120 minutes long for example).. open with vdub.. find a keyframe about halfway through the film, preferrably at a scene change.
+
+choose "SET SELECTION START" from the EDIT menu.. scroll all the way to the end of the film, choose "SET SELECTION END"... hit DELETE or choose "DELETE SELECTION", all from the EDIT menu
+
+2. Now you have 1 half of your movie. under the VIDEO menu, choose "DIRECT STREAM COPY", also make sure that under AUDIO is going to generate a "DIRECT STREAAM COPY". Then go to FILE and choose "SAVE as AVI..."
+
+on a newer computer this will take less than 2 minutes..
+
+3. When it is complete, the quickest way to proceed is to just click on FILE / "OPEN VIDEO FILE". at the beginning of the clip, choose "SET SELECTION START" again, snap back to the keyframe (half way through the film) which you cut half the film off at and choose "SET SELECTION END". DELETE... FILE / "SAVE AS AVI..." save as the other half of film..
+
+once again, will usually take less than 2 minutes...
+
+4. choose option accordingly, this next part can be important.. (i'm going to give the rest of the instructions as if you were making ntsc movie)
+
+since you want to make a standard mpeg-1 file, choose NTSC FILM or NTSC VIDEO.. BROWSE for your file, then hit NEXT, then it OTHER SETTINGS / ADVANCED tab ... now there is an option that says "VIDEO ARRANGE METHOD".. if you are making a fullscreen movie, lleave on FULLSCREEN.. if you are encoding a widescreen movie, choose "FULL SCREEN (KEEP ASPECT RATIO).. OK / NEXT / NEXT (you get the point)
+
+basically takes 1 step out of the tutorial above.. the instructions for nero appear to be correct.. but here's another tip..
+
+dvd burners are becoming more and more popular and even i got one now, like many of you do. tired of old vcd's or wanna encode a VCD standard DVD with nearly 9 hours of video (but same quality as normal 80 minute VCD),
+
+if this is the case, make sure you encode your DivX files as "NTSC VIDEO 29.97 FPS".. even if source is 23 fps... and once you have 3 or 4 movies, get yourself a proggy called TMPGENC DVD AUTHOR.. make a track for each movie.. and you got yourself a dvd with 3 or 4 average length movies on 1 dvd (with menus if you like) that is WAY MORE COMPATIBLE than a VCD..
+
+do a search for the keyword VCD-DVD and i posted a more descriptive tutorial on how to do this.. 

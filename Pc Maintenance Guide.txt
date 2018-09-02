@@ -1,0 +1,87 @@
+PC Maintenance Guide
+
+"Take good care of your PC, and it will take good care of you."
+
+It's a nice sentiment, but reality is more like "Take good care of your PC, and it won't crash, lose your data, and cost you your job--probably." Follow these steps to stop PC problems before they stop you.
+
+Your PC's two mortal enemies are heat and moisture. Excess heat accelerates the deterioration of the delicate circuits in your system. The most common causes of overheating are dust and dirt: Clogged vents and CPU cooling fans can keep heat-dissipating air from moving through the case, and even a thin coating of dust or dirt can raise the temperature of your machine's components.
+
+Any grime, but especially the residue of cigarette smoke, can corrode exposed metal contacts. That's why it pays to keep your system clean, inside and out.
+
+If your PC resides in a relatively clean, climate-controlled environment, an annual cleaning should be sufficient. But in most real-world locations, such as dusty offices or shop floors, your system may need a cleaning every few months.
+
+All you need are lint-free wipes, a can of compressed air, a few drops of a mild cleaning solution such as Formula 409 or Simple Green in a bowl of water, and an antistatic wrist strap to protect your system when you clean inside the case.
+
+Think Outside the Box
+
+Before you get started cleaning, check around your PC for anything nearby that could raise its temperature (such as a heating duct or sunshine coming through a window). Also clear away anything that might fall on it or make it dirty, such as a bookcase or houseplants.
+
+Always turn off and unplug the system before you clean any of its components. Never apply any liquid directly to a component. Spray or pour the liquid on a lint-free cloth, and wipe the PC with the cloth.
+
+Clean the case: Wipe the case and clear its ventilation ports of any obstructions. Compressed air is great for this, but don't blow dust into the PC or its optical and floppy drives. Keep all cables firmly attached to their connectors on the case.
+
+Maintain your mechanical mouse: When a nonoptical mouse gets dirty, the pointer moves erratically. Unscrew the ring on the bottom of the unit and remove the ball. Then scrape the accumulated gunk off the two plastic rollers that are set 90 degrees apart inside the ball's housing.
+
+Keep a neat keyboard: Turn the keyboard upside down and shake it to clear the crumbs from between the keys. If that doesn't suffice, blast it (briefly) with compressed air. If your keys stick or your keyboard is really dirty, pry the keys off for easier cleaning. Computer shops have special tools for removing keys, but you can also pop them off by using two pencils with broken tips as jumbo tweezers--just be sure to use a soft touch.
+
+Make your monitor sparkle: Wipe the monitor case and clear its vents of obstructions, without pushing dust into the unit. Clean the screen with a standard glass cleaner and a lint-free cloth. If your monitor has a degauss button (look for a small magnet icon), push it to clear magnetic interference. Many LCDs can be cleaned with isopropyl alcohol; check with your LCD manufacturer. Wipe your LCD lightly: The underlying glass is fragile.
+
+Check your power protection: Reseat the cables plugged into your surge protector. Check the unit's warning indicator, if it has one. Surge protectors may power your PC even after being compromised by a voltage spike (making your system susceptible to a second spike). If your power protector doesn't have a warning indicator and your area suffers frequent power outages, replace it with one that has such an indicator and is UL 1449 certified.
+
+Swipe your CD and DVD media: Gently wipe each disc with a moistened, soft cloth. Use a motion that starts at the center of the disc and then moves outward toward the edge. Never wipe a disc in a circular motion.
+
+Inside the Box
+
+Before cracking open the case, turn off the power and unplug your PC. Ground yourself before you touch anything inside to avoid destroying your circuitry with a static charge. If you don't have a grounding wrist strap, you can ground yourself by touching any of various household objects, such as a water pipe, a lamp, or another grounded electrical device. Be sure to unplug the power cord before you open the case.
+
+Use antistatic wipes to remove dust from inside the case. Avoid touching any circuit-board surfaces. Pay close attention to the power-supply fan, as well as to the case and to CPU fans, if you have them. Spray these components with a blast of compressed air to loosen dust; but to remove the dust rather than rearrange it, you should use a small vacuum.
+
+If your PC is more than four years old, or if the expansion cards plugged into its motherboard are exceptionally dirty, remove each card, clean its contacts with isopropyl alcohol, and reseat it. If your system is less than a couple years old, however, just make sure each card is firmly seated by pressing gently downward on its top edge while not touching its face. Likewise, check your power connectors, EIDE connectors, and other internal cables for a snug fit.
+
+While you have the case open, familiarize yourself with the CMOS battery on the motherboard. For its location, check the motherboard manual. If your PC is more than four or five years old, the CMOS battery may need to be replaced. (A system clock that loses time is one indicator of a dying CMOS battery.)
+
+Look for Trouble
+
+Give your PC a periodic checkup with a good hardware diagnostic utility. Two excellent choices are Sandra Standard from SiSoftware and #1-TuffTest-Lite from #1-PC Diagnostics. Download the free version of Sandra (the full version of the application costs $35) or to download #1-TuffTest-Lite (the fully functional version is $10).
+
+Sandra Standard:
+CODE
+http://www.pcworld.com/downloads/file_description/0,fid,4005,tk,ur,00.asp
+
+
+#1-TuffTest-Lite:
+CODE
+http://www.pcworld.com/downloads/file_description/0,fid,7725,tk,ur,00.asp
+
+
+Adding and removing system components leaves orphaned entries in the Windows Registry. This can increase the time your PC takes to boot and can slow system performance. Many shareware utilities are designed to clean the Registry.
+
+Windows stores files on a hard drive in rows of contiguous segments, but over time the disk fills and segments become scattered, so they take longer to access. To keep your drive shipshape, run Windows' Disk Defragmenter utility. Click Start, Programs (All Programs in XP), Accessories, System Tools, Disk Defragmenter. If your drive is heavily fragmented, you could boost performance. Defragging may take hours, however. Disable your screen saver and other automatic programs beforehand to keep the defrag from restarting every few minutes.
+
+Disk Defragmenter won't defragment the file on your hard drive that holds overflow data from system memory (also known as the swap file). Since the swap file is frequently accessed, defragmenting it can give your PC more pep. You can defragment your swap file by using a utility such as the SpeedDisk program included with Norton SystemWorks 2004, but there's a way to reset it in Windows.
+
+In Windows XP, right-click My Computer and choose Properties. Click Advanced, and then choose the Settings button under Performance. Click Advanced again and the Change button under Virtual Memory. Select another drive or partition, set your swap file size, and click OK.
+
+If you have only one partition and no way to create a second one, and you have at least 256MB of RAM, disable the swap file rather than moving it: Select "No paging file" in the Virtual Memory settings. If you have trouble booting, start Windows in Safe Mode and re-enable this option.
+
+Hard-Drive Checkup
+Windows XP offers a rudimentary evaluation of your hard disk's health with its error-checking utility: Right-click the drive's icon in Windows Explorer and select Properties, Tools, Check Now. (Windows can fix errors and recover bad sectors automatically if you wish.) If the check discovers a few file errors, don't worry, but if it comes up with hundreds of errors, the drive could be in trouble.
+
+To conduct a more thorough examination, download Panterasoft's free HDD Health utility, which monitors hard-drive performance and warns of impending disaster:
+CODE
+http://www.pcworld.com/downloads/file_description/0,fid,22945,tk,ur,00.asp
+
+
+The program works only with drives that support S.M.A.R.T technology, but nearly all drives released since 2000 are S.M.A.R.T.-compliant.
+
+Many hardware and software designers humbly assume you want their program running on your PC all the time, so they tell Windows to load the application at startup (hence, the ever-growing string of icons in your system tray). These programs eat up system resources and make hardware conflicts and compatibility problems more likely. To prevent them from launching, just click Start, Run, type "msconfig" and press Enter. The programs listed under the Startup tab are set to start along with Windows. Uncheck the box at the left of each undesirable program to prevent it from starting automatically.
+
+Four Tips for Longer PC Life
+
+1. Keep your PC in a smoke-free environment. Tobacco smoke can damage delicate contacts and circuits.
+
+2. Leave your PC running. Powering up from a cold state is one of the most stressful things you can do to your system's components. If you don't want to leave your PC running all the time, use Windows' Power Management settings to put your machine into hibernation rather than completely shutting down. In Windows XP, right-click the desktop and select Properties. Click the Screen Saver tab and select the Power button. Choose the Hibernate tab to ensure that hibernation is enabled, and then select a time beneath "System hibernates" under the Power Schemes tab. (Note that this option is not available on all PCs.) Computers running older versions of Windows may or may not provide similar power-management features. Look under the Power Management icon (Power Options in Windows 2000) in Control Panel to evaluate your machine's capabilities.
+
+3. Don't leave your monitor running. The best way to extend your display's life is to shut it off when it's not in use.
+
+4. Avoid jostling the PC. Whenever you move your system, even if it's just across the desktop, make sure the machine is shut down and unplugged.

@@ -1,0 +1,20 @@
+Flashget Broadband Tweak
+
+Just double-click on the FlashGetRegTweak.reg file to enter the tweak into the registry. This tweak will allow up to 100 simultaneous file downloads, each split into a max of 30 parts. Previous defaults were 8 & 10 respectively.
+
+Note:
+
+      1. Works for dialup but not really advantageous.
+      2. Restart your computer to feel the full advantage of this tweak.
+
+Download:
+here it is
+just copy to notepad
+rename to Iwillsinglehandedlykillallthebandwidthfromtheserversidownloadfrom.reg
+
+
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\JetCar\JetCar\General]
+"Max Parallel Num"="100"
+"MaxSimJobs"="100"

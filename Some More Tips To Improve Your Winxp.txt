@@ -1,0 +1,286 @@
+How to Install the Netbeui Protocol on a Windows XP-Based Computer
+This article describes how to install the NetBEUI protocol on a Windows XP-based computer. This may be useful because the NetBEUI protocol is not included in the list of installable protocols in Windows XP even though the files that are needed to install the protocol are included with the installation CD-ROM. It is important to note that the NetBEUI protocol is not supported on Windows XP.
+The Netnbf.inf and Nbf.sys files are the files that are needed to install the NetBEUI protocol. To install the NetBEUI protocol:
+Click Start, click Control Panel, and then double-click Network Connections.
+Right-click the adapter you want to add NetBEUI to, and then click Properties.
+On the General tab, click Install.
+Click Protocol, and then click Add.
+Click Have Disk, insert your Windows XP CD-ROM, open the Valueadd\msft\net\netbeui folder, click the Netnbf.inf file, and then click Open.
+Click OK, and then click OK to complete the installation.
+
+
+Change Out Your Pointer Scheme
+Tired of seeing your pointer as an arrow or an hourglass all the time? Windows XP offers a number of alternative pointer schemes, such as Dinosaur, Ocean and Sports.
+Open the Control Panel, double-click Mouse, and select the Pointers tab. (If you start in Category view, select Appearance and Themes, then click Mouse Pointers under "See Also.") Next to Schemes, click the down arrow and select a scheme to preview its pointers. Click OK to apply the scheme to your desktop. Simple as that.
+
+
+Know your rights
+Windows XP comes bundled with Windows Media Player 8.0. While Media Player plays just about any digital media file format--it supports 35, including MP3, it records music only in the Windows Media Audio, or WMA, format. The reason? Content protection.
+When recording, or ripping, music from CDs, Media Player allows you to make protected recordings so that no one will be able to copy the recording from one computer to another. You can turn copy protection on or off on the Copy Music tab by checking or unchecking the box that says Protect Content.
+
+
+Protect your identity
+Like many other audio players, Windows Media Player rushes out to the Internet to find information for you when you play a CD. Some of this information, such as song titles and album art, is useful, but Media Player also identifies your copy of Media Player to the site where it's getting data. Why? According to the help file, "The server uses this unique identifier to monitor your connection. By monitoring your connection, the server can make adjustments to increase the playback quality and to alert you about events that occur when receiving streams over the Internet."
+If you're disturbed by this exchange of information, here's how to stop it. In Windows Media Player, click Tools > Options and go to the Player tab. Notice the option that says "Allow Internet sites to uniquely identify your player?" Turn it off.
+
+
+Reduce Temporary Internet File Space
+The temporary internet files clutter your hard drive with copies of each page visited. These can build up over time and take up disk space. Even more bothersome is that instead of getting new pages each time IE often takes the page out the temp internet files. This can be a problem if you are viewing a website that is updated all the time. If you are on a slow connection such as a 56K or lower then this can be good but if you are on a fast broadband connection, like me, then you can get away with decreasing the size of your temp internet files to just one meg without any performance decrease
+
+
+Turn Off System Recovery
+Right click on My Computer and choose Properties. Click on the System Restore tab and check the box Turn off System Restore. (This will increase Windows performance & save disk space)
+
+
+Win XP Won’t Completely Shutdown
+Goto Control Panel, then goto Power Options.
+Click on the APM Tab, then check the "Enable Advanced Power Management support."
+Shut down your PC. It should now successfully complete the Shut Down process
+
+
+Disable error reporting
+Open Control Panel
+Click on Performance and Maintenance.
+Click on System.
+Then click on the Advanced tab
+Click on the error-reporting button on the bottom of the windows.
+Select Disable error reporting.
+Click OK
+Click OK
+
+
+
+Close Multiple Windows : Note works in all versions of Windows
+If you just opened a number of separate, related windows (a folder inside a folder, and so on), there's an easier way to close them all than one-at-a-time. Hold down the Shift key as you click the X caption button in the upper-right corner of the last window opened. Doing so closes that window and all windows that came before it.
+
+
+
+Remove shortcut arrow from desktop icons
+Here's how you can remove those shortcut arrows from your desktop icons in Windows XP.
+Start regedit.
+Navigate to HKEY_CLASSES_ROOTlnkfile
+Delete the IsShortcut registry value.
+You may need to restart Windows XP.
+
+
+Remove Shared Documents
+Open Regedit(Start- Run- Regedit) and navigate to HKEY_LOCAL_MACHINE SOFTWARE Microsoft Windows CurrentVersion Explorer My Computer NameSpace DelegateFolders There will see a sub-key named {59031a47-3f72-44a7-89c5-5595fe6b30ee}. By Deleting this you can remove the 'Other Files stored on This Computer' group.
+
+
+Turn of CD Auto Play
+Open My Computer
+Right click on your CD ROM and choose Properties
+Click on the Auto Play tab
+In the drop down box you can choose the Action for each choice shown in the drop down box
+Or
+Go to Start->Run->gpedit.msc
+Computer Config -> Administrative Template -> System
+Double click Turn off Autoplay
+Enable it.
+
+
+
+Getting MP3 ripping to work in Windows Media Player 8 in XP
+Enter the following in the registry : [HKEY_LOCAL_MACHINESOFTWARE
+MicrosoftMediaPlayerSettingsMP3Encoding] "LowRate"=dword:0000dac0 "MediumRate"=dword:0000fa00 "MediumHighRate"=dword:0001f400 "HighRate"=dword:0002ee00 This corresponds to 56, 64, 128 and 192 Kbps. You can change this to your liking using the following dword hex values : 320 Kbps = dword:0004e200 256 Kbps = dword:0003e800 224 Kbps = dword:00036b00 192 Kbps = dword:0002ee00 160 Kbps = dword:00027100 128 Kbps = dword:0001f400 112 Kbps = dword:0001b580 64 Kbps = dword:0000fa00 56 Kbps = dword:0000dac0
+
+
+Increase BROADBAND
+This is for broad band connections. I didn’t try it on dial up but might work for dial up.
+make sure your logged on as actually "Administrator". do not log on with any account that just has administrator privileges.
+start - run - type gpedit.msc
+expand the "local computer policy" branch
+expand the "administrative templates" branch
+expand the "network branch"
+Highlight the "QoS Packet Scheduler" in left window
+in right window double click the "limit reservable bandwidth" setting
+on setting tab check the "enabled" item
+where it says "Bandwidth limit %" change it to read 0
+Effect is immediate on some systems, some need to re-boot. This is more of a "counter what XP does" thing. In other words, programs can request up to 20% of the bandwidth be reserved for them, even with QoS disabled, this is no big deal and most programs do not request it. So, although QOS has caused a big stink because people think it reserves 20% of their bandwidth, you can still disable it, just to be sure, hehe.
+
+
+
+Increase your cable modem or DSL speed in XP
+This tweak is for broad band cable connections on stand alone machines with winXP professional version - might work on Home version also. It will probably work with networked machines as well but I haven't tried it in that configuration. This is for windows XP only, it does not work on win2000.
+I use 3 Com cards so I don't know how it works on others at this point. It does not involve editing the registry. This tweak assumes that you have let winXP create a connection on install for your cable modem/NIC combination and that your connection has tcp/ip - QoS - file and print sharing - and client for microsoft networks , only, installed. It also assumes that winxp will detect your NIC and has in-box drivers for it. If it doesn't do not try this.
+In the "My Network Places" properties (right click on the desktop icon and choose properties), highlight the connection then at the menu bar choose "Advanced" then "Advanced Settings". Uncheck the two boxes in the lower half for the bindings for File and Printer sharing and Client for MS networks. Click OK
+
+From the windows XP cd in the support directory from the support cab, extract the file netcap.exe and place it in a directory on your hard drive or even in the root of your C:\ drive.
+next, open up a command prompt window and change directories to where you put netcap.exe. then type "netcap/?". It will list some commands that are available for netcap and a netmon driver will be installed. At the bottom you will see your adapters. You should see two of them if using a 3Com card. One will be for LAN and the other will be for WAN something or other.
+Next type "netcap/Remove". This will remove the netmon driver.
+Open up control panel / system / dev man and look at your network adapters. You should now see two of them and one will have a yellow ! on it. Right click on the one without the yellow ! and choose uninstall. YES! you are uninstalling your network adapter, continue with the uninstall. Do not restart yet.
+Check your connection properties to make sure that no connection exists. If you get a wizard just cancel out of it.
+Now re-start the machine.
+After re-start go to your connection properties again and you should have a new connection called "Local area connection 2". highlight the connection then at the menu bar choose "Advanced" then "Advanced Settings". Uncheck the two boxes in the lower half for the bindings for File and Printer sharing and Client for MS networks. Click OK.
+Choose connection properties and uncheck the "QOS" box
+Re-start the machine
+after restart enjoy the increased responsivness of IE, faster page loading, and a connection speed boost.
+Why it works, it seems that windows XP, in its zeal to make sure every base is covered installs two seperate versions of the NIC card. One you do not normally see in any properties. Remember the "netcap/?" command above showing two different adapters? The LAN one is the one you see. The invisible one loads everything down and its like your running two separate cards together, sharing a connection among two cards, this method breaks this "bond" and allows the NIC to run un-hindered.
+
+
+
+Add a Map Drive Button to the Toolbar
+Do you want to quickly map a drive, but can’t find the toolbar button? If you map drives often, use one of these options to add a Map Drive button to the folder toolbar.
+Option One (Long Term Fix)
+Click Start, click My Computer, right-click the toolbar, then unlock the toolbars, if necessary.
+Right-click the toolbar again, and then click Customize.
+Under Available toolbar buttons, locate Map Drive, and drag it into the position you want on the right under Current toolbar buttons.
+Click Close, click OK, and then click OK again.
+You now have drive mapping buttons on your toolbar, so you can map drives from any folder window. To unmap drives, follow the above procedure, selecting Disconnect under Available toolbar buttons. To quickly map a drive, try this option.
+Option Two (Quick Fix)
+Click Start, and right-click My Computer.
+Click Map Network Drive.
+If you place your My Computer icon directly on the desktop, you can make this move in only two clicks!
+
+
+Do Not Highlight Newly Installed Programs
+Tired of that annoying little window that pops up to tell you that new software is installed? If it gets in the way when you’re logging off, turn it off completely.
+
+To do this Click Start, right-click at the top of the Start menu where your name is displayed, and then click Properties.
+In the Taskbar and Start Menu Properties dialog box, on the Start Menu tab, click Customize.
+Click the Advanced tab, and then clear the Highlight newly installed programs check box.
+Click OK, and then click OK again.
+Now that message won’t be popping up when you least want to see it.
+
+
+
+Speed up the Start Menu
+You can use this tip to speed up the Start Menu in Windows XP release candidate 1. You can customize the speed of the Start Menu by editing a Registry Key.
+Click Start, and then click Run.
+Type Regedit in the box, and then click OK.
+Expand the menu in the left panel and select the HKEY_CURRENT_USER\Control Panel\Desktop folder.
+Scroll down in the right panel and double click on the MenuShowDelay file.
+In the Value Data box, change to default value for the menu speed from 400 to a lesser number, such as 1.
+Click OK.
+Caution: Incorrectly editing the registry may severely damage your system. Before making changes to the registry, you should back up any valued data on your computer.
+
+
+Stop Password Expiration
+After you have run Windows XP for a while, you may receive this message when you log on: "Your password will expire in 14 days.....".
+By default, Windows XP is set up with passwords which will expire after 42 days. 14 days in advance, Windows will start warning you of this fact. If you do not want your passwords to expire:
+Go to Start > Run and in the Open: box type control userpasswords2
+Select the Advanced tab in the User Accounts window
+Press the Advanced button below the Advanced user management header
+Select Users in the Local Users and Groups
+In the right pane, right-click the user name for which you want to change the setting, and select Properties
+On the General tab, check Password never expires
+Click Apply and OK (all the way out)
+
+
+
+Hide yourself what?
+Once you've created a user account, password-protect it to keep other users from viewing your files, Favorites, and cookies. Why? You may not want your child to see the note that you're sending to his or her teacher, or you may be planning someone's surprise party. (Note: Anyone with an Administrator account can still see them.)
+Worried about remembering your password? Create a hint to help you when you initially create it by following the prompts during setup. XP stores the password hints in the Registry at Hkey_local_machine\Software\Microsoft\Windows\Current Version\Hints.
+What if the hint doesn't help? Any user or Administrator can create a password reset disk, which you can use to log on and create a new password. Go to Control Panel > User Accounts and select "Prevent a forgotten password" in the Related Tasks box on the left. Follow the wizard's instructions. After creating the disk, find a safe place for it. Don't forget the password or where you put the disk. Someone else could use it to change your password without you knowing it.
+
+
+
+Not A Tweak, But A Double XP Surprise!
+Neither Win2K nor WinME has the ability to create a simple, basic, DOS- based boot floppy (a "startup disk") unless you jump through hoops or do things in nonstandard ways. Because XP is the fusion of Win2K and Win9x/ME, I assumed it would follow the same "no boot floppy" tack. But instead, I was surprised to poke around in XP and see that the format option there does indeed offer a "Create MS-DOS Startup Disk."
+As an experiment, I created a startup disk, and all went smoothly. I was able to use the disk to boot my PC without any problems. But when it started up, I got the second surprise. The DOS boot message showed "Microsoft Windows Millennium." To confirm this, I typed "Ver" to see what version of DOS was running, and the screen showed: Windows Millennium [Version 4.90.300]
+Although it's very strange to see the WinME startup message on an XP-created floppy, all this means is that Microsoft cribbed a few essential DOS boot files from WinME, and made it so XP can drop them onto a freshly- formatted floppy for you. I'm glad they did: It's a very good thing that Microsoft restored the ability to make a simple boot disk.
+
+
+
+Automatically defrag drives with a new context menu item
+Create a new Registry import file named context_defrag.inf in Notepad (be sure to save with it with the Save as type set to All Files and not Text Documents) and place the following text inside:
+; context_defrag.INF
+; Adds Defrag to the right click context menu in Windows XP
+[version]
+signature="$CHICAGO$"
+[DefaultInstall]
+AddReg=AddMe
+[AddMe]
+HKCR,"Drive\Shell\Defrag\command",,,"DEFRAG.EXE %1"
+Then, right-click and choose Install. This will add a context menu to XP that allows you to automatically defrag drives, using the command line version of the built-in defragmentation utility. To use it, navigate to a drive in My Computer, right-click, and choose Defrag. A command line window will appear, and that drive will be defragged. When it's complete, the window just disappears.
+
+
+
+Create a Password Reset Disk
+Microsoft has enhanced security features in XP including the the ability to create a floppy diskette to recover your password incase it is forgotten.
+
+Click Start
+Click Control Panel
+Click User Accounts
+Click on the account which you want to create a password disk
+Click Prevent a forgotten password which starts the Forgotten Password Wizard . This is found under Related Tasks
+Insert a blank, formatted disk into drive A, and click Next
+Enter the password in the Current user account password box
+To use the recovery disk, at the Welcome screen
+
+Click the user name whose password is on the recovery disk
+Click the question mark button
+This causes the Did you forget your password message to appear.
+Click use your password reset disk
+This will start the Password Reset Wizard.
+From this point, just follow the wizard's instructions and you will be able to set a new password. It is different if you are part of a domain, see next tip.
+
+
+
+How to Create a Password Reset Disk for computers that are part of a domain
+Note that this procedure requires one blank, formatted floppy disk.
+To create a password reset disk for your local user account:
+Press CTRL+ALT+DELETE. The Windows Security dialog box appears.
+Click Change Password . The Change Password dialog box appears.
+In the Log on to box, click the local computer. For example, click Computer (this computer) .
+Click Backup . The Forgotten Password Wizard starts.
+On the "Welcome to the Forgotten Password Wizard" page, click Next .
+Insert a blank, formatted disk in drive A, and then click Next .
+In the Current user account password box, type your password, and then click Next . The Forgotten Password Wizard creates the disk.
+When the progress bar reaches 100 percent complete, click Next , and then click Finish . The Forgotten Password Wizard quits and you return to the Change Password dialog box.
+Remove, and then label the password reset disk. Store the disk in a safe place.
+In the Change Password dialog box, click Cancel .
+In the Windows Security dialog box, click Cancel.
+If you forget your password, you can log on to the computer with a new password that you create by using the Password Reset Wizard and your password reset disk.
+To gain access to your local user account on a computer that is a member of a domain, or has been disconnected from a domain:
+In the Welcome to Windows dialog box, press CTRL+ALT+DELETE.
+In the Log On to Windows dialog box, type an incorrect password in the Password box, and then click OK .
+In the Logon Failed dialog box that appears, click Reset . The Password Reset Wizard starts. The Password Reset Wizard lets you create a new password for your local user account.
+On the "Welcome to the Password Reset Wizard" page, click Next .
+Insert the password reset disk in drive A, and then click Next .
+On the "Reset the User Account Password" page, type a new password in the Type a new password box.
+Type the same password in the Type the password again to confirm box.
+In the Type a new password hint box, type a hint that will help you remember the password if you forget it. NOTE : This hint is visible to anyone who attempts to log on to the computer by using your user account.
+Click Next , and then click Finish . The Password Reset Wizard quits and you return to the Log On to Windows dialog box. The password reset disk is automatically updated with the new password information. You do not have to create a new password reset disk.
+In the Log On to Windows dialog box, type your new password in the Password box.
+In the Log on to box, click the local computer. For example, click Computer (this computer) , and then click OK . You are logged on to the local computer with your local account information.
+
+
+
+CD-R Drive or CD-RW Drive Is Not Recognized As a Recordable Device. (Q316529)
+When you attempt to record (burn) data to a compact disc recordable (CD-R) drive or compact disc rewritable (CD-RW) drive, you may not have the option to send data to the CD-ROM drive.
+When you view the properties of the CD-R drive or CD-RW drive, you may notice that the Recording tab is not displayed in the CD Drive ( drive_letter :) Properties dialog box, where drive_letter is the letter of the CD-R drive or CD-RW drive.
+NOTE : To view the CD Drive ( drive_letter :) Properties dialog box, click Start , click My Computer , right-click the CD-R drive or CD-RW drive that you want, and then click Properties on the shortcut menu that appears.
+
+
+
+One-Click Shutdown
+If you have Clean Sweep Deluxe, Mike recommends that you disable it before proceeding. Follow these directions to create a one-click shutdown shortcut:
+
+Navigate to your desktop.
+On the desktop, right-click and go to New, then to Shortcut (in other words, create a new shortcut).
+You should now see a pop-up window instructing you to enter a command line path.
+Enter one of these as the path:
+Use this path if your operating system is Windows 95, 98, or Me:
+C:\windows\rundll.exe user.exe,exitwindows
+Use this path if your operating system is XP:
+SHUTDOWN -s -t 01
+If the C: drive is not your local hard drive, then replace "C" with the correct letter of the hard drive.
+Click the "Next" button.
+Name the shortcut and click the "Finish" button.
+Now whenever you want to shut down, just click on this shortcut and you're done. Also, if you want to make life better and faster, you can right-click the new shortcut you just made, go to Properties, and type in X (or whatever letter) in the Shortcut Key box.
+
+
+
+Microsoft Windows XP System Restore
+The System Restore feature of Microsoft Windows XP (the operating system previously known as Microsoft Whistler) enables administrators to restore their PCs, in the event of a problem, to a previous state without losing personal data files (such as Word documents, drawings, or e-mail). System Restore actively monitors system file changes and some application file changes to record or store previous versions before the changes occurred. With System Restore, users never have to think about taking system snapshots as it automatically creates easily identifiable restore points, which allow users to revert the system back to a previous time. Restore points are created at the time of significant system events (such as application or driver install) and periodically (every day). Additionally, users can create and name their own restore points in Windows XP at any time. System Restore has an automatic restore point space-management feature that purges the oldest restore points to make room for new ones, so that a rolling safety net is always kept under the user, enabling the user to recover from recent undesirable changes.
+System Restore is enabled by default and will run upon the successful completion of either the Windows XP Professional or Personal x86 version installation. It requires a minimum of 200 MB of space available on the system partition. If there are not 200 MBs available, System Restore will install disabled and will enable itself automatically once the required disk space is created.
+
+
+
+Winamp Causes an Error Message in Windows XP (Q321857)
+When you attempt to drag MP3 files into the playlist in the Nullsoft Winamp program, your computer may become unstable, or you may receive the following error message:
+Crash caused in ntdll.dll!! Winamp.exe has encountered a problem and must be shut down. We apologize for the inconvenience.
+If the error message is still displayed and you want to see the data that the error report contains, click the click here link at the bottom of the message box. You then see error signature information that may be similar to the following:
+App Name App Version Module Name Module Version Offset
+punk.gif

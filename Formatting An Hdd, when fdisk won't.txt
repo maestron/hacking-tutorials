@@ -1,0 +1,32 @@
+ This was originally posted by andro11meda in Hardware and Networking Support. It worked so well for me on a problem-computer that I was working on that I had to post it in tutorials. Thanks andro11meda!!
+
+
+***
+This is my favorite way to wipe it clean:
+
+CAUTION: This debug script is for advanced users only. Its Purpose is to remove all formatting and partitioning information from your hard disk when FDISK is unable to do so. THIS WILL REMOVE ALL DATA AND PROGRAMS FORM THE DRIVE.
+
+1. Create a MSDOS bood disk with Debug
+
+2. At DOS command prompt type the following: Debug[Enter] (Where enter is to press the enter key once)
+
+NOTE: Type the following bolded text only. You will recieve an error if you type anything other than the bold text. The non-bolded text represents what will appear on you screen once you press [Enter] after each command.
+
+-F 200 L1000 0 [Enter]
+-A CS:100 [Enter]
+xxxx:0100 MOV AX,301 [Enter]
+xxxx:0103 MOV BX,200 [Enter]
+xxxx:0106 MOV CX,1 [Enter]
+xxxx:0109 MOV DX,80 [Enter]
+
+NOTE: ( --- "80" for hd0, "81" for hd1)
+
+xxxx:010c INT 13 [Enter]
+xxxx: 010e INT 20 [Enter]
+xxxx: 0110 [Enter]
+
+-G [Enter]
+"Program terminated normally"
+
+3. Turn off the computer. On the next startup the hard drive will need to be partitioned and formatted.
+***

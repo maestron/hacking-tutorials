@@ -1,0 +1,16 @@
+Cluster is an allocation unit. If you create file lets say 1 byte in size, at least one cluster should be allocated on FAT file system. On NTFS if file is small enough, it can be stored in MFT record itself without using additional clusters. When file grows beyond the cluster boundary, another cluster is allocated. It means that the bigger the cluster size, the more disk space is wasted, however, the performance is better.
+
+So if you have a large hard drive & dont mind wasteing some space, format it with a larger cluster size to gain added performance.
+
+The following table shows the default values that Windows NT/2000/XP uses for NTFS formatting:
+
+Drive size
+(logical volume) Cluster size Sectors
+----------------------------------------------------------
+512 MB or less 512 bytes 1
+513 MB - 1,024 MB (1 GB) 1,024 bytes (1 KB) 2
+1,025 MB - 2,048 MB (2 GB) 2,048 bytes (2 KB) 4
+2,049 MB and larger 4,096 bytes (4 KB) 8
+However, when you format the partition manually, you can specify cluster size 512 bytes, 1 KB, 2 KB, 4 KB, 8 KB, 16 KB, 32 KB, 64 KB in the format dialog box or as a parameter to the command line FORMAT utility.
+
+The performance comes thew the bursts from the hard drive. by having a larger cluster size you affectivly have a larger chunk of data sent to ram rather than having to read multiple smaller chunks of the same data.

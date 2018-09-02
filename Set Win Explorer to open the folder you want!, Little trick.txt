@@ -1,0 +1,5 @@
+ired of "Windows Explorer" always opening up with My Documents?
+
+You can customize it by changing the properties for the "Windows Explorer" icon and replacing the Target field with:
+
+%SystemRoot%\explorer.exe /n, /e, c:\yourfolder

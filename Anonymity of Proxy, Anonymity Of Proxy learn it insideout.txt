@@ -1,0 +1,94 @@
+Anonymity of Proxy
+
+The exchange of information in Internet is made by the "client - server" model. A client sends a request (what files he needs) and a server sends a reply (required files). For close cooperation (full understanding) between a client and a server the client sends additional information about itself: a version and a name of an operating system, configuration of a browser (including its name and version) etc. This information can be necessary for the server in order to know which web-page should be given (open) to the client. There are different variants of web-pages for different configurations of browsers. However, as long as web-pages do not usually depend on browsers, it makes sense to hide this information from the web-server.
+
+What your browser transmits to a web-server:
+a name and a version of an operating system
+a name and a version of a browser
+configuration of a browser (display resolution, color depth, java / javascript support, ...)
+IP-address of a client
+Other information
+
+The most important part of such information (and absolutely needless for a web-server) is information about IP-address. Using your IP it is possible to know about you the following:
+a country where you are from
+a city
+your provider?s name and e-mail
+your physical address
+
+Information, transmitted by a client to a server is available (accessible) for a server as environment variables. Every information unit is a value of some variable. If any information unit is not transmitted, then corresponding variable will be empty (its value will be undetermined).
+
+These are some environment variables:
+
+REMOTE_ADDR ? IP address of a client
+
+HTTP_VIA ? if it is not empty, then a proxy is used. Value is an address (or several addresses) of a proxy server, this variable is added by a proxy server itself if you use one.
+
+HTTP_X_FORWARDED_FOR ? if it is not empty, then a proxy is used. Value is a real IP address of a client (your IP), this variable is also added by a proxy server if you use one.
+
+HTTP_ACCEPT_LANGUAGE ? what language is used in browser (what language a page should be displayed in)
+
+HTTP_USER_AGENT ? so called "a user?s agent". For all browsers this is Mozilla. Furthermore, browser?s name and version (e.g. MSIE 5.5) and an operating system (e.g. Windows 98) is also mentioned here.
+
+HTTP_HOST ? is a web server?s name
+
+This is a small part of environment variables. In fact there are much more of them (DOCUMENT_ROOT, HTTP_ACCEPT_ENCODING, HTTP_CACHE_CONTROL, HTTP_CONNECTION, SERVER_ADDR, SERVER_SOFTWARE, SERVER_PROTOCOL, ...). Their quantity can depend on settings of both a server and a client.
+
+These are examples of variable values:
+
+REMOTE_ADDR = 194.85.1.1
+HTTP_ACCEPT_LANGUAGE = ru
+HTTP_USER_AGENT = Mozilla/4.0 (compatible; MSIE 5.0; Windows 98)
+HTTP_HOST = www.webserver.ru
+HTTP_VIA = 194.85.1.1 (Squid/2.4.STABLE7)
+HTTP_X_FORWARDED_FOR = 194.115.5.5
+
+Anonymity at work in Internet is determined by what environment variables "hide" from a web-server.
+
+If a proxy server is not used, then environment variables look in the following way:
+
+REMOTE_ADDR = your IP
+HTTP_VIA = not determined
+HTTP_X_FORWARDED_FOR = not determined
+
+According to how environment variables "hided" by proxy servers, there are several types of proxies
+Transparent Proxies
+
+They do not hide information about your IP address:
+
+REMOTE_ADDR = proxy IP
+HTTP_VIA = proxy IP
+HTTP_X_FORWARDED_FOR = your IP
+
+The function of such proxy servers is not the improvement of your anonymity in Internet. Their purpose is information cashing, organization of joint access to Internet of several computers, etc.
+Anonymous Proxies
+
+All proxy servers, that hide a client?s IP address in any way are called anonymous proxies
+
+Simple Anonymous Proxies
+
+These proxy servers do not hide a fact that a proxy is used, however they replace your IP with its own:
+REMOTE_ADDR = proxy IP
+HTTP_VIA = proxy IP
+HTTP_X_FORWARDED_FOR = proxy IP
+
+These proxies are the most widespread among other anonymous proxy servers.
+
+Distorting Proxies
+
+As well as simple anonymous proxy servers these proxies do not hide the fact that a proxy server is used. However a client?s IP address (your IP address) is replaced with another (arbitrary, random) IP:
+
+REMOTE_ADDR = proxy IP
+HTTP_VIA = proxy IP
+HTTP_X_FORWARDED_FOR = random IP address
+High Anonymity Proxies
+
+These proxy servers are also called "high anonymity proxy". In contrast to other types of anonymity proxy servers they hide a fact of using a proxy:
+
+REMOTE_ADDR = proxy IP
+HTTP_VIA = not determined
+HTTP_X_FORWARDED_FOR = not determined
+
+That means that values of variables are the same as if proxy is not used, with the exception of one very important thing ? proxy IP is used instead of your IP address.
+Summary
+
+Depending on purposes there are transparent and anonymity proxies. However, remember, using proxy servers you hide only your IP from a web-server, but other information (about browser configuration) is accessible!

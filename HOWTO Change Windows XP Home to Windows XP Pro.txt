@@ -1,0 +1,35 @@
+ HOWTO Change Windows XP Home to Windows XP Pro
+
+We can’t vouch for this hack, because we are too lazy to try it (and we never, ever violate copyrights or EULAs), but kind reader Martin explains the process for turning an Windows XP Home install disc to a Windows XP Pro disc after the jump.
+
+It sounds pretty simple to do (just some registry changes), but you can’t install Service Pack 2, so you might try to slipstream in the changes to your modified install disc (if that’s even possible).
+
+Alternately, buy XP Pro, or get a Mac.
+
+
+Code:
+    yes indeed, you can’t change an installed Windows but only your Installation CD (or even a recovery CD in case the manufacturer had not left out important parts)
+
+    Here’s the detailed breakdown you asked for.
+
+    1. Copy the root directory and the i386 directory of the WindowsXP CD
+    to your harddisk
+    2. Extract the Bootsector of your WindowsXP CD
+    3. Change 2 Bytes in i386\Setupreg.hiv :
+    a) Open Regedit
+    b) Highlight HKEY_LOCAL_MACHINE
+    c) Menu: File -> Load Structure -> i386\Setupreg.hiv
+    d) Assign an arbitrary name to the imported structure e.g. “Homekey”
+    e) Goto HKEY_LOCAL_MACHINE\Homekey\ControlSet001\Services\setupdd
+    f) edit the binary key “default” and change “01” to “00” and “02” to
+    “00”
+    g) Highlight “Homekey” and select menu: File -> unload structure
+    4. Burn your new XP Pro CD
+    5. Install WindowsXP as usual. Your XP Home Key will work.
+
+    Note: You cannot apply SP2 to such a WindowsXP Pro, so step 1.b)
+    might be to integrate SP2 in your Installation CD
+
+    Please check the menu-entries as I don’t owe an English copy of
+    XP and have to guess them.
+

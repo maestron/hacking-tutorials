@@ -1,0 +1,15 @@
+If you wanna make a autorun file for that CD you are ready to burn just read this...
+
+1) You open notepad
+
+2) now you writ: [autorun]
+OPEN=INSTALL\Setup_filename.EXE
+ICON=INSTALL\Setup_filename.EXE
+
+Now save it but not as a .txt file but as a .inf file.
+
+But remember! The "Setup_filename.EXE" MUST be replaced with the name of the setup file. And you also need to rember that it is not all of the setup files there are called '.exe but some are called '.msi
+
+3) Now burn your CD with the autorun .inf file included.
+
+4) Now set the CD in you CD drive and wait for the autorun to begin or if nothing happens just double-click on the CD drive in "This Computer"

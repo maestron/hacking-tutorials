@@ -1,0 +1,32 @@
+Running A Board forum From Your Own Pc
+
+If you wish to install php and mysql to run a phpBB installation on your computer, first you will need installers. Most of you have windows, so I recommend FoxServ. This is a great program that installs php, mysql, and more on your windows machine in under a minute, excluding download time.
+
+Download foxserv 3.0 from http://www.foxserv.net/
+
+Run the foxserv install program, it is pretty self explanatory, just do what it says.
+
+After you get everything installed, run the foxserv control panel and click the install buttons for everything.
+
+Open winmysql ADMIN. Create a new username and pass at start-up, and then create a new database, the one you will be using for your phpBB installation.
+
+Now download phpBB 2.0.x from phpbb.com, or download phpBBplus from http://www.phpbb2.de/phpbb2plus/phpBB2_plus_1.2.zip.
+
+Unzip the phpBB2 folder into C:\Foxserv\www\
+
+After you have done such, visit http://localhost/phpBB2/ to view your install page. enter the correct information.
+database name: the name of the database you created.
+database username: username you created
+database password: password you created
+
+then enter your email information and everything else as it should be. Now delete the install and contrib directories from the phpBB2 folder on your computer.
+
+Voila! All set up. If you want to have other people view your site, then you need a forwarding service. I have a dynamic IP, so I use http://www.dynu.com. Register an account there and follow all of their instructions if you have a dynamic IP. Now you should visit http://yoursite.dynu.com/ to make sure everything worked.
+
+Also, windows xp users BE SURE TO INSTALL SERVICE PACK 1. SP1 fixes critical incompatibility issues with the apache 2.x server that prevents it from using php correctly. If you do not have service pack one, php pages will load incorrectly or not at all on your webserver.
+
+I posted this because I was fed up with trying to find a host that supports php and mysql and doesnt have any ads on it.
+
+NOTE: You wont get any HOST that will allows you WAREZ, then you can use your own pc as your own HOST
+
+another program that works well is phpdev5 i have used it for a long time. and another site to register a dns name is http://dyndns.org it gives you better names, for example mine is http://shag.kicks-*ss.net.

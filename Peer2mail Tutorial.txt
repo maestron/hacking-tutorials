@@ -1,0 +1,132 @@
+Introduction
+
+
+Peer2Mail is the first software that let you store and share files on any web-mail account. If you have a web mail account with large storage space, you can use P2M to store files on it. Web-mail providers such as Gmail (Google Mail), Walla!, Yahoo and more, provide storage space that ranges from 100MB to 2GB.
+P2M splits the file you want to share/store zips and encrypts it. P2M then sends the file segments one by one to your account. Once P2M uploaded all file segments, you can download them and use P2M to merge the segments back to the original file.
+
+
+u can get the software from here
+
+
+http://www.peer2mail.com/P2MSetup.exe
+
+
+and for any info u can log to there website
+
+http://www.peer2mail.com
+
+
+
+How to upload a file to ur e-mail account ?
+
+
+In order to send a file to an email account, Peer2Mail needs to split it into segments. Web-mail providers limit the size of an email attachment usually to a nominal 10Megs
+
+There are 3 ways u can send ur files to the e-mail:
+
+    *  Direct Send - P2M has a built in SMTP component that sends the segments directly to the web-mail providers. You don't need to enter your ISP details in order to use P2M. If you are using this feature please make sure you enter a value in the 'From Email Address' because some web-mail providers reject email messages where there is no 'From' address. You can even enter a fake mail address.
+    * Send Via MAPI - P2M can send the segments using MAPI (Usually your outlook client). When you use this option P2M will split the files and move the sending responsibility to Outlook. Note that it will use your ISP SMTP server and details to send the files. You may enter as many recipients as you wish when using this option.
+    * Send Via SMTP Server - Send the segments using your ISP SMTP Server. If you are using this feature please make sure you enter a value in the 'From Email Address' because some web-mail providers reject email messages where there is no 'From' address. You can even enter a fake mail address. You may enter as many recipients as you wish when using this option.
+
+
+Ill explain the direct send wich i find it very easy to use.
+
+normally when u open ur peer2mail program u receive an image like this u click the split/send tab as shown in the image
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m1.jpg
+
+
+after that u click the folder icon wich is choose a file to send as shown in the picture
+
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m2.jpg
+
+
+u will see an image like this u click browse and choose the file u want to upload in this case ill choose the movie white chicks wich is 700+ mb after that in mail to i type the e-mail account i want to upload the file to either is gmail yahoo walla or any other email account. in the optional encrypted password leave it blank.
+
+also u will find the segment size wich will be how u want ur file to be divided into files of 10 mb that means if u have a movie of 700 mb it will be splitted into 70 files that means u will be receiving in ur inbox 70 e-mails.
+
+after u choose the size wich normally is set to 10 mb u will see the send method here u leave it as direct send wich means u wont need an e-mail to send it this program automatically send it. then there is From Email Address - This is the source address of the mail. This address doesn't have to be valid.
+
+Once you are done, click on the Ok button. here is an image of what ive been talking now:
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m3.jpg
+
+
+when u click ok u will find ur file u wanna upload splitted as u can see it doesnt really use ure harddrive.. You can now choose if you want P2M to send all the segments or only specific few by checking/un-checking the checkboxes. Once you are ready, click on the Send button. It may take a few hours to complete the operation depending on the file size and your internet connection. the send button is showed in uthe image below wich is the second icon:
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m4.jpg
+
+
+
+after u done that u can log to ur e-mail in ur browser and find the files there in ur inbox.
+
+
+now we finished uploading so we wanna share our files without giving our original password!!!
+
+
+Account Password Encryption/Decryption
+
+If you wish to share your web-mail account with your friends and don't want to give them the real password, you can encrypt the real password and share the encrypted password with your friends. Only P2M will know to decrypt the password and your friends can use it to gain restricted access to the web-mail account without knowing the real password. If a user logged in to either Walla, Gmail or Yahoo with an encrypted password, Peer2Mail limits his permissions on the account. This is done so he wont be able to delete files, change the password or any other settings on the account.
+To encrypt a password click on the browser tab and click on the orange key button. as shown in the image below.
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m5.jpg
+
+
+when u do that a box will appear saying password u type ur original password in this case i putted sexyjoanna (and no dont waste ur time trying to think thats my password lol is just an example :P ) when u do that click on encrypt and ur encrypted password will be seen as shown in the image bellow.
+
+To insure higher security for your encrypted password, Peer2Mail can use a different encryption key for servers that support SSL (Gmail, Yahoo). This way the password will only work on secured servers. SSL servers encrypt the transportation of data between your computer and the server, so it will be impossible to intercept the password while its being transmitted to the server. To create a secured encrypted password (that will work only with SSL servers) check the "Encrypt password for SSL Servers" checkbox.
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m6.jpg
+
+
+so that means if u gonna log into my account to download the files what u do is u go to gmail in this case as an example in ur peer2mail browser tab there u type my e-mail lets say joanna@gmail.com and as password u use the encrypted password wich in this case is |\srXSyaOn3tm9rA==|/ and u will be logged.
+
+so we uploaded the files we encrypted the password now how to download them?
+
+now thats the easy part lol
+
+
+P2M includes a built in browser so you can easily log into your web-mail account. Before you can merge the segments you need to download them. It is important that you will save all the segments into the same folder. The first segment name ends with the P2M extension and the rest follow with a serial number 001...00x.
+
+u can log to ur browser and download the files one by one but it will take u alot  of time!!!  so  Peer2Mail can automatically list and download files from web-mail accounts. Currently P2M supports auto-download from Gmail, Walla, Yahoo, Spymac, Unitedemailsystems, Xasamail and Omnilect.
+
+
+so what we do is we click in the browse tab then u click the home icon and u will see the different email accounts available for autodownload as shown in the picture below. after that click the e-mail service u gonna log to type the e-mail and encrypted password( the encrypted password wont work in ur normal explorer or firefox browser)
+
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m7.jpg
+
+
+
+when u log into an account wich contains files in it in this case i am into an account of a movie called superbabies or baby geniouses 2 as u can see there are 76 e-maills
+
+now u can download one by one but that will take ages so what u do is u click in the download segment icon wich is the autodownload wich is faster to use. it is the folder icon as shown in the image below
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m8.jpg
+
+
+when u click it u will see a window appear P2M will then list the segments (may take a few minutes) and at any time you can tell P2M what segment to download by clicking on the checkboxes that appear next to them. as u can see there is an auto merge checkbox u can merge them directly after download if u check it or u can do it later. if u added a decryption password when uploading u will need to type it if u didnt then leave it blank. see the image below
+
+http://img.photobucket.com/albums/v178/joannaj/p2m9.jpg
+
+
+after u choose the files u wanna send u just click download then a window will appear and choose in what folder u wanna save the file. after that the download will start.
+
+
+now concerning merging the files after instead of after downloading what u do is u click the merge segment tab when u do that u will find underneath ur folders choose where u want the files to be merged or in other word unzipped lets say i downloaded the movie in a folder called p2m but i want to unzip them or merge them in my movies folder so what i do i choose my movies folder so it will be saved there after that i click in the first icon wich is merge the segments in the selected folder when i do that a window will appear there where it says p2m file i click browse and i go to my in this example my p2m folder where i downloaded my movie there i look for the file wich extension is P2m and choose it after that i just click the merge button and wait till the file gets unzipped.
+check the image below
+
+
+http://img.photobucket.com/albums/v178/joannaj/p2m10.jpg
+
+
+any questions plz post here as a reply hope my tutorial is easy to understand and i apologize for any mistypping i know my english is HORRIBLE lol

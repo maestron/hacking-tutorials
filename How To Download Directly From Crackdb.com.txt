@@ -1,0 +1,42 @@
+Some of you may not know this, others may already knew it, however, because
+of Sod rules which do no not allow indirect crack links, and because CrackDB
+is a very good resource for cracks, i will show how to post links that lead
+to a direct download from CrackDB.
+
+The CrackDB server sends the archive of a crack as an attachment to the respond
+for an HTTP request made by your browser, this means you (and your browser)
+will never know the real location of the file, because of this you can't post a direct
+link to the crack in your topic.
+
+Using the Referer variable we can overcome this problem, but what referer to
+use? if you used the domain name http://www.crackdb.com/
+you will get nothing but a useless image file.
+
+The correct refere is shown on your browser address bar. For example, if you
+want the crack for IsoBuster Pro v1.6 you just type the name in the search box
+and press Enter, the next page displays a list of items that match or nearly
+match your search keywords, click on IsoBuster Pro v1.6 from the list and
+you are now in the download page, the hyperlink named "Download" is the
+link that initiates the request to the server to download the file, which looks
+like this:
+
+http://www.crackdb.com/x.php?id=12356
+
+
+The referer is now displayed on your browser address bar, which looks like this:
+
+http://www.crackdb.com/get.php?id=12356
+
+
+Now, you use both links to refer to a direct crack download from CrackDB, like this
+Fix:
+
+http://www.crackdb.com/x.php?id=12356
+Use this referer:
+http://www.crackdb.com/get.php?id=12356
+
+
+Any member now can copy & paste the links into his/her download manager and
+start downloading immediatley.
+
+I hope you find something usefull here. Thanx for reading this.

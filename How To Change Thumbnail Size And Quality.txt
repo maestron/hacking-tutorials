@@ -1,0 +1,21 @@
+If any of you out there like to use the thumbnail view, especially for browsing through photos and images, it can become a bit of a drain on your system. It is possible to lower the thumbnail size and quality by editing the following registry keys.
+
+Open the registry and navigate to :
+
+HKEY_CURRENT_USER\ Software\ Microsoft \ Windows\ CurrentVersion\ Explorer
+
+Create a new DWORD value called ThumbnailSize, and set the value between 32 and 256.
+
+And/or create another DWORD value called ThumbnailQuality, and set the value between 50 and 100.
+
+Key Details :
+
+USER Key: [HKEY_CURRENT_USER\ Software\ Microsoft \ Windows\ CurrentVersion\ Explorer]
+Value Name: ThumbnailSize
+Data Type: REG_DWORD (DWORD Value)
+Data Value: 32 - 256
+
+USER Key: [HKEY_CURRENT_USER\ Software\ Microsoft \ Windows\ CurrentVersion\ Explorer]
+Value Name: ThumbnailQuality
+Data Type: REG_DWORD (DWORD Value)
+Data Value: 50 - 100

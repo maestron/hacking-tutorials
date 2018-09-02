@@ -1,0 +1,21 @@
+My problem was a 1 min login delay due the aktiveds.dll that loads at startup (thanks to NicTech Networks Inc.). The following advice worked for me so I guess it works for any .dll made by NicTech since they all use the same registry folder....
+
+Open up regedit.exe and find THIS folder. Navigate to it by clicking the +'s to expand
+things like you would in Windows explorer:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\Guardian
+
+
+Right click over "Guardian" in the left pane.
+Left click on "Permissions"
+Left click "SYSTEM" once to highlight it.
+Check "deny" in all boxes that you can at the bottom (Probably only 2)
+Left click Apply
+Left Click OK
+
+Say "OK" to any warnings about permissions
+**Reboot** the system
+
+then problems solved
+
+I got this information from another forum. I had this problem for about six weeks and was just about ready to reformat my hard drive. Worked great for me, hope this helps out somebody else.

@@ -1,0 +1,508 @@
+		   
+		    :::::::::   ::::::::  :::::::::  :::::::::: 
+                    :+:    :+: :+:    :+: :+:    :+: :+:        
+                    +:+    +:+ +:+        +:+    +:+ +:+        
+                    +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                    +#+    +#+        +#+ +#+    +#+ +#+        
+                    #+#    #+# #+#    #+# #+#    #+# #+#        
+                    #########   ########  ###    ### ###  
+                         
+              	         http://blacksun.box.sk
+                           ____________________
+    ______________________I      Topic:        I_____________________
+   \                      I   Search Engines   I                    /
+    \     E-mail:         I    Ripped Apart    I   Written by:     /
+    >                     I                    I                  < 
+   / rammal81@hotmail.com I____________________I    Mikkkeee       \
+  /___________________________>           <_________________________\
+   			    
+OverView
+\***************/
+1-Search Engines
+     A--How do they work?
+     B--Subject Trees
+2-Information Retrieval Concepts
+3-Fuzzy Queries
+4-Using Logical Expressions, Boolean Operators
+5-More Signal and Less Noise, Deeper into Boolean expressions.
+6-Meta Search Engines
+7-Advanced Search Features (not for the jumpy people)
+8-Date meta tags
+9-Building a search engine in PHP
+10-Final Note
+\***************/
+
+
+Okay before we start I think you probably know how to use a browser and have some knowledge on how the Internet works.  This text file is not something that will make you very smart or "elite," but will show you how search engines work and how to get full advantage by using faster and clearer queries.
+
+Lets start, there are two major tools for locating information on the web:  Subject trees, and Search engines.  Now I am positive you know and have seen some of these thingies, but you sit there and you try to search for something simple and all of a sudden you get 1739739 results if your searching for the word, "Hacking."  Now do you have time to sit and browse through all those sites or are you going to give up? I think your going to start picking random sites thus wasting your precious time, but if you like wasting time STOP READING THIS FILE.  Well since we don't like to waste time I'll show you easier ways to sharpen your browsing activities and to make your exploration more productive and exercise some self-discipline in order to keep your time online focused.  
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+
+1-Search Engines:
+
+For all of us online we are always looking for stuff to browse and waste time looking at, but most of the time we waste time just trying to find those good sites.  For many people, searching the web is synonymous with using a search engine. Search engines are similar to your online card catalog to locate a book in a library, even though search engines give you many search options and search features, the ones that have keyword search systems work best when you can tell them exactly what your looking for.  Many of you think, ohh man those just suck, but believe it or not, they are powerful tools that can locate resources you might never find in any other way.
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+A-So how do they work?
+
+Search engines are based on software programs called "spiders," which scan the web periodically, collecting (Uniform  Resource locators) urls. Spiders usually start with a list of "seed" urls, these programs watch for hyperlinks to other urls and add any new urls not seen in their master list of urls.  After doing this, each url is then visited in order to scan it for more urls, and you know they just keep visiting and visiting.  Spiders collect web pages for search engines, and the search engines send spiders out onto the web to remain current, so after doing this each page found is indexed for keyword retrieval.  Then the results are added to massive databases of Web Page indices from which you can get a very fast response when you run a keyword search.
+	To start using a search engine, you must first construct a "search query."  Many or most engines work by matching keywords in the query against a database of web page indices.  This stuff just means you write a topic in the search box and you get results.  Search engines are generally incapable of finding the best possible document for any given query, so they are designed to retrieve a number of possible documents in order to increase your chance of finding at least one good site.  So each document or site returned after you construct a query search is called a "hit," and at many times usually every time engines will return thousands of hits for a single query.  When people receive stuff irrelevant to their search these results are called "false hits," which is really nothing more than a hit that doesn't address the keyword your trying to search for.  It is impossible to eliminate all false hits in a keyword search so the term, "noise" is used to describe the rate of these false hits.  So our goal today is to try to increase the signal and reduce the noise when conducting a keyword web search.
+
+B-Subject Trees:
+
+One other search strategy is to use a subject tree, or a directory. A subject tree is a hierarchically organized collection and subcategorizes that can be browsed to locate information.  Subject trees are really just browsing aids because they require some exploration, but they are designed to get you where you need to go, ie. www.yahoo.com .  Almost every engine I have seen actually the large ones have a subject tree for many topics.  When using a subject tree, always start from the root to the branch, which you will do after selecting options, which fit your keyword.  If you don't like to visit many pages and see crapy web art and pictures then subject trees are your friends. A good subject tree will make it easy for you to get where you want to go without having to go back and look at other topics.  These trees have a good advantage.  You see they only index documents that have been checked by reviewers and accepted as legitimate sources of information.  So this means the stuff they got is some good shit.  These trees won't cover every topic or every site but will aid you in finding something.  Well lets look at the bad side. A difficulty with subject trees is that storing everything that is relevant to a single topic under a single location is often impossible. Lets look at an example, lets say you have to find some stuff on "hacking texts," you will have to look under computers, Internet, programming, and the list goes on.  So this way might work but usually it won't cover very large or broad topics.
+
+Which is better:
+
+Okay I have constructed a table which will show you which will fit your needs.
+
+--------------------------------------------------------
+|            	|  Search Engines  |   Subject Trees   | 
+--------------------------------------------------------
+|Quality of urls| No real control  | Human reviewers   |
+----------------|------------------|-------------------|  
+|Amount of Noise| A huge Problem   |  No problem       |
+----------------|------------------|-------------------|                   
+|Dead Links     | Many Many        |  Very Few or none |
+----------------|------------------|-------------------|          
+|Coverage       | Spiders find     |    Few Gaps       | 
+|               | everything       |(for broad topics) |
+----------------|------------------|-------------------|                 
+|Which is easy  | Need to study    | No need for study |
+|               |advanced features |                   |
+----------------|------------------|-------------------|                 
+|Stability of   | Very unstable    |    Very Stable    |
+|results        |                  |                   |
+--------------------------------------------------------
+
++++++++++++++++++
+Newbie Cool Note|
++++++++++++++++++
+Well if you still don't have an idea of what and how to 
+look for stuff, well I found a good little tool.
+The WebCrawler search engine has set up a page 
+that displays the keywords of 28 random searches being
+submitted to WebCrawler by real users in real time. 
+The display is automatically updated every 15 seconds, or
+you can update it by pressing the refresh or reload button, 
+depending on your browser. 
+the url is http://webcrawler.com/cgi-bin/SearchTicker
+++++++++++++++++++++++++++++
+2-Information Retrieval Concepts
+
+Lets start learning ways to find what we are looking for in a simple/easy manner.  So now we are trying to find sharper queries but first we need to know how these really work.  
+	Information Retrieval (IR) is a branch of computer science that deals with finding information in large text databases. This branch of computer science has been around for many years, but became popular once the web became a popular attraction.  A web search engine is an IR  system dressed up in a user friendly interface. So under this nice/clean interface is a computer program that doesn't understand natural language and has no ability to comprehend your information needs.  IR systems work by checking out keywords in your input query and then they try to locate documents that contain those exact keywords.  So its your job to construct a good search query if your going to hope for the best.  Well you go doing so, but you still see crap sites showing up in your query, then you say, Mikkkee this bullshit doesn't work why these lame sites keep showing up? I am guessing you don't know anything about HTML so let me explain.
+	The method of ranking sites by the engines tries to put all relevant documents that have that key word query in the very top of the list.  When you happen to see the engine coming back with url's for "cooking," when you were searching for "hacking" this error was not the engines fault or your fault, but it was due to the fact that the engine was responding to hidden text on the web page.  HTML documents can contain text that is not displayed by web browsers but is nevertheless used by search engines.  In particular, a document may contain a list of keywords for retrieval purposes that are never displayed by the web browsers. This method can also be used by a search engine when it describes the document in its hit list. Document keywords and document descriptions are created with the <META> tag in HTML, as shown in this example I have set up.
+
+<!--META_START-->
+<meta http-equiv="title" content="BLAH, BLAH, BLAH.">
+<meta name="resource-type" content="document">
+<meta name="classification" content="Public Domain">
+<meta name="description" content="BLAH, BLAH, BLAH.">
+<meta name="keywords"content="OKAY THIS IS WHERE YOU OR THE WEBMASTER PUTS ALL THE KEYWORDS TO MAKE THE ENGINE RESPOND IN YOUR HIT LIST.">
+<meta name="distribution" content="global">
+<meta name="copyright" content="Copyright © BLAH">
+<meta name="author" content="BLAH , BLAH">
+<meta name="robots" content="All">
+<meta name="rating" content="General">
+<!--META_END-->
+
+(Note, if you want to learn more about HTML feel free to read the tutorials on HTML at http://blacksun.box.sk)
+
+:*~*:._.:*~*:._.
+3-Fuzzy Queries
+:*~*:._.:*~*:._.
+Pkay, the most popular engines, like altavista offer a "simple query option," whereby users can type full sentences describing what they are looking for. Many people think ohh the sentence should be in good English, well not really.  You can enter ungrammatical sentences, incomplete sentence fragments, disjoint phrases, or just plain nonsense, and the engine won't know the difference(remember what I said about RH programs!).  The engine will only see a bunch of words, now it will try to remove from the query any ignored words either done by the user or the engine. By doing so, the hit list will be dramatically decreased.
+	It is very good to start searching by constructing a fuzzy query, since it will show you how big your returned hit list will be. If your returns are in the thousands or hundreds then you  have an idea of what's going to be your task. 
+
+Okay let me construct a fuzzy query and give you an idea of what will be returned.
+
+lets pretend this is the search box.
+
+		"I need a recipe for dark chocolate for my family"
+
+I press search and I get 30,000 hits.(I rounded)
+
+Now I don't have time to look at every one of those sites so lets try to make our return list smaller.
+
+lets pretend this is the search box.
+
+		"I need a +recipe for +dark +chocolate for my family"
+
+I press search and I get 3,000 hits.(I rounded)
+
+		+"recipe" +"Dark chocolate" -"White chocolate"
+
+I press search and I get 600 hits.(I rounded)
+
+		+"recipe" AND +"Dark chocolate"
+
+I press search and I get 30 hits.(I rounded)
+
+Now your saying okay cool can I try this for other queries, the answer is yes. All I did was improve the hits at the top of the document rankings by  adding a (+)which means required terms and (-) meaning prohibited terms.  Most search engines that allow you to construct fuzzy queries let you mark term as required or prohibited.  When a search engine sees these tags, it reduces its hit list by deleting all documents that contain any prohibited terms as well as all documents that fail to contain all the required terms.
+
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+Note: Not all engines allow you to add (+) (-) they will do but it might conflict if they already do it by default.  For example to enter a fuzzy query for HotBot, change the default setting "all of the words" to "any of the words."
+:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+4-Using Logical Expressions, Boolean Operators
+:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+Almost every search engine that I have seen gives you an opportunity to enter a query in the form of a logical expressions.  A "Boolean query" is a query that combines keywords and key phrases in logical relations.  The logical connectives used to combine terms are called "Boolean Operators."  The most commonly used Boolean Operators are AND, NOT and OR, which can be used to narrow or broaden queries. Look at the last search I did, I used the AND operator to  make my hits smaller. So how does AND/OR work?
+
+AND ---->  blah1 AND blah2 ==== both blah1/blah2 have to be included and the 
+				AND operator narrows the search
+
+OR  ---->  blah1 OR blah2 ==== both blah1/blah2 have to be included and the 
+				OR operator thus broadening the search
+
+NOT ---->  blah1 AND NOT blah2 ==== blah1 must be present and 
+				    blah2 must not be present.
+
+Boolean queries are not hard to understand but the difficulty comes when you have to select the right term.  Some people I have talked to say by using Boolean queries the best search results can be reached.  There are many variations in using Boolean queries, but the thing you should keep in mind is if a Boolean query contains more than three terms, it is probably tooo complicated so keep it simple!
+
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+Newbie Note:  Where can I Enter a Boolean Query?
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+Where should I enter a Boolean query? Now you need to know where to enter/do what.  If you enter a Boolean expression where the search engine isn't expecting it, the interface will probably not object. It will do the search, but it won't interpret the Boolean operators as you might have intended. So to conduct a valid Boolean query I am going to use the HotBot engine.  Change the default setting from "all of the words " to "the Boolean expression."  If you happen to be using the altavista engine, you must select the "Advanced Search" option in order to be able to enter a Boolean query. Well if you use the InfoSeek engine just forget about it, it doesn't support Boolean searches, it might but didn't when I last checked.
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+5-More Signal and Less Noise, Deeper into Boolean expressions.
+
+This should be short, well lets say your searching for some educational site, or info and you keep on getting sites that deal with business or some advertisements that only piss you off and make your life miserable.  Well you can filter those pages out.  Okay lets say your searching for computer parts.(your looking for texts which explain how each parts of the computer work) So your searching and you keep getting sites which are selling computers and you get nothing that deals with knowledge on computer parts. So you start by constructing a fuzzy query, mainly +"computer parts" AND +"explanation" you get a good amount of sites but you still see many sites that are selling computers those are called commercial sites and only have ads that are of no use to us. So lets filter them out.
+	Three of the most popular engines support DOMAIN SEARCH  that makes it possible to remove commercial pages from the hit list. A domain search is much like the title search used in the example I explained before. When you preface a term with a domain tab, that term will be matched against the host name of a document's url. Most commercial sites end with a .com domain, so all we have to do is remove any hits that contain ".com" in their domain names.  Since I am going to explain only the 3 most popular engines, if your favorite engine is not covered in this file then just consult their help file.
+Altavista, HotBot and InfoSeek each use their own tag type for domain names, but they all do the same shit.
+
+Host: (for altavista)
+domain: (for hotbot)
+site: ( for Infoseek)
+
+So now you use a domain tag as a preface to the name of a web server's host name or a portion of a web server's host name.  In the example, the hit list will exclude the web pages on the basis of web page host names your going to direct:
+
+   -host:.com     +computer explanation (for altavista)
+
+   -site:.com           " " " " " " "   (for InfoSeek)
+
+   -domain:com         " " " " " " "    ( for HotBot )
+
+ohh note hotbot doesn't need a .com just com.
+
+So by combining a domain tag with a prohibited marker (-), you can take out all the web pages that come from .com sites 
+
+Even though I am showing you ways to decrease search engine "noise," if you start filtering out .com addresses you might be missing out on some good stuff, so use but know what your doing first.
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+A simple nice trick!
+
+Okay lets say that your using all the stuff I am telling you about and your Boolean operators narrow your search to about 30 hits, and your just too lazy but still want to narrow it a little more, so you beg and I answer. heh
+okay lets say your looking for info about Winzip because your having some problems, like your mouse won't work with it, okay the example is lame but I can't think of anything better right now, so you can call tech support or you can search, lets search!
+so you type:
+
+	host:winzip.com AND +"Microshit Intellimouse" AND  zip*
+
+The host: tag narrows the search to only the urls with the winzip.com domain name.  Please notice that this example is fake so there might not be any results if your searching for info on the Miroshit intellimouse and winzip, heh.  Now you might look carefully and you notice i put a (*) at the end what does that mean? On many search engines, the asterisk allows  you to pick up matches on any terms that begin with the chosen word "zip." So "zip" will match "ziped," "zips" and other words similar to zip. So I am looking for the words dealing with zip  so I can see what do I have to do in order to fix up my problem with my mouse.  So by doing this, your returned hits will be extremely narrow thus saving you a whole lot of time.
+
+:*~*:._.:*~*:._.:*~*:
+6-Meta Search Engines
+:*~*:._.:*~*:._.:*~*:
+Lets say your trying your best but the engine your searching from isn't giving you what you want, so what do you do? One life saver is meta search engines.  Since tapping multiple search engines is very tedious and repetitive, the task might take forever, but hail the meta search engine.  With a meta search  engine, you can type in your query once and press enter.  The query is then sent by the meta search engine to a number of other popular and well known search engines. So instead of searching one engine after another you can exploit this tool for your advantage. By using Boolean operators your with the meta engines you will have done one task in a short period of time, instead of wasting hours, you'll have results in seconds.
+So how meta engines work?  A meta search engine collects the top hits from each of its search engines and decides how to present them to you.  It may try to interleave them in a single ranked list, or it my let you view them in blocks, one engine at a time.  Even though this sounds like heaven, you still need know hell still exists, so not all queries will be answered in a narrow fashion.
+
+Lets look at an example of a meta search engine.
+
+I have chosen Dogpile, found at www.dogpile.com
+
+Dogpile accesses the following 14 engines for the web, including some engines that are only restricted to subject trees:
+
+	HotBot 				Magellan
+	Excite Guide  			AltaVista
+	World WideWeb Worm  		Excite
+	Lycos  				Web Crawler
+	What u Seek  			PlanetSearch
+	Yahoo      			Lycos A2Z
+	Info Seek   			WWW Yellow Pages
+
+DogPile while searching tries to reduce bandwidth consumption and CPU cycles. It tries three engines at a time and moves on to the next three only if you request more hits.  First it starts with the narrower databases, which are subject trees) and then it moves to the larger engines.  Even though its queries are limited to a particular syntactic format, check out their online documentation for a complete list, i don't have time to do that for you, hehe.  So when you enter a query, dogpile will show the exact query submitted to each engine and it then tells you how many hits were found by each engine it tried.  Remember i said it tries the first six so it will first try out, Yahoo, Excite Guide, Lycos, Lycos A2Z, WWW yellow Pages and the World Wide Worm.  So because these engines have small data bases, don't be discouraged, try the others.  Dogpile first looks to see if  at least ten hits have been collected, if not, it automatically moves on to the next three engines. Otherwise dogpile stops and waits for instructions from the user.  The only disadvantage to using meta engines, is that it will have to massage your query to comply with every engine. So whenever possible, it generates a Boolean query by inserting AND between each pair of terms.  So lets say some engines don't support Boolean operators, or quoted phrases, like infoseek so that certain engine won't respond with any hits.  Other problems arise when we want to do domain constraints, the ones that i told you about -host:.com well a meta search engine is no place for those, because most engines don't support domain constraints, and the ones that do require different tags for the constraining terms.  
+Another Meta search engine you can play with is www.metacrawler.com
+
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+7-Advanced Search Features (not for the jumpy people)
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+The following descriptions of advanced search features are taken from the online documentation of each of the engines I will list.  I am going to describe features from AltaVista, InfoSeek, and HotBot.  Some of the engines can incorporate an interface in which you can enter optional search constraints, like the domain name feature.  Search engines are usually upgraded and updated daily so if some of these features won't work check their online documentation.
+
+Constraining Features found in the Altavista Engine:
+
+title:"Black Sun Research Facility" 
+This matches pages with the phrase Black Sun Research Facility in the title, which in HTML is <title>blah</title> 
+
+anchor:Trojans
+This matches pages with the phrase trojans in the text of a hyperlink.
+
+Text:Netbus
+This matches pages that contain the word Netbus in any part of the visible text of a page.  Visible means that its not hidden in meta tags, a link or an image.(make the written tags in lowercase)
+
+object:Marquee
+This will match pages containing the name of the ActiveX object found in an object tag, here its marquee.
+
+applet:Dancing
+This matches pages containing the name of the Java applet class found in an applet tag. 
+
+link:blacksun.box.sk
+This matches pages containing a link to a page with blacksun.box.sk in its urls.
+
+image:Flower.jpg
+This matches pages with flower.jpg in an image tag, best used when you claim a domain to search in.
+
+url:index.html
+will match words with index and html together in a page's url.
+
+host:hotmail.com
+will match pages with the phrase hotmail.com in the host name portion of the url.
+
+domain:sk
+Will match pages from the domain of sk(slovakia), you can also try .com or .edu with a .fr after the .com.
+
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+Constraining Features found in the Infoseek Engine:
+
+Just follow what I stated above, the field name should be in lowercase, and immediately followed by a colon.  There should also be no spaces after the colon and before the search terms. (some tags may be similar)
+
+title:"Blacksun Research Facility"
+Will find pages with the phrase Blacksun Research Facility in the title portion of the document. So the webmaster would have written <title>Blacksun Research Facility</title> while building the webpage.
+
+site:blah.com
+This will find pages or the website blah.com, it will also find subdomains. So if i was looking at microsoft.com this tag will also find blah.microsoft.com but it will not find any domains what don't finish in .com like microshit.box.sk (no it will never exist,hehe)
+
+url:movies
+Will give you pages with the word movies anywhere in the url
+like this url:  http:www.e-online.com/movies (the url is probably fake but this is how this tag works.
+
+link:infoseek.com
+This tag will match pages that contain a link to a page with infoseek.com in its url.  like if you want you can do this +link:blacksun.box.sk -url :blacksun.box.sk, which will show you how many external links point to bsrf.
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
+
+HotBot
+The hotbot engine allows a user who might be a little advanced to use its non-text search features from the main box.  A meta word is a keyword:value pair, which is separated by a colon(no spaces between them). So like the rest of the engines, hotbot lets you have greater control over your searches.  It is very important to know that Hotbot treats Meta words as words, not as commands that effect the whole search. So if i wrote title:blacksun hacking, it will return documents with the word blacksun in the title and hacking in the body of the document.
+you can also try this.
+
+   -feature:image +title:blacksun hacking
+
+this will tell the engine not to return pages that contain images, but do have blacksun in the title and hacking in the body.
+
+Here are some more:
+
+depth:[number] 
+This tag will restrict the depth of pages retrieved
+
+title:[word]
+Already explained like a million times!
+
+scriptlanguage:[language]
+This will search for pages containing scripts written in javascript or other script languages.
+
+linktext:[extension]
+This will restrict to pages containing embedded files with a certain extension like .ra which will find pages containing real audio filz.
+
+feature:[name]
+This is very cool, can also be available under the media type panel
+examples will be 
+
+feature:audio           <--- detects audio formats, like .wav, .au
+feature:flash           <--- detects flash plugins, which are kewl!
+feature:script          <--- detects scripts in a page, like javascripts
+feature:table           <--- detects tables in the page
+feature:shockwave       <--- detects shockwave filz
+feature:ActiveX         <--- detects ActiveX controls
+feature:applet          <--- detects java applets in a page
+
+:*~*:._.:*~*:
+8-Date meta tags
+:*~*:._.:*~*:
+This feature might not work on many engines but try it out, its very powerful and will narrow your hits dramatically!
+
+Upon using date meta tags, your search will be restricted to specified pages that comply with your dates specified.  Currently, special cases in the search engine and only when used correctly within a Boolean operator, with out any pluses or minuses will the user get good results. Here is an example:
+We are looking for (+hacking -cracking) AND  within:2/months (this is okay) This ways is wrong--->+hacking -cracking AND +within:2/months (you cant add a + or - after the Boolean operator. 
+
+Here are some more tags:
+
+Within:number/unit
+I explained this already, the unit part can be years, months, days.
+
+before:day/month/year
+restricts to the specified date. like it i wrote before:3/7/91 then nothing after that date SHOULD appear in my hit list.
+
+after:day/month/year
+something just after that specified date.
+.:*~*:._.:*~*:._.:*~*
+Advanced Nerdy Feature
+For you guys who just love to learn more, chk out the view source option in your browser to examine the query comment near the top of the results page. This will show you the query specified with the engines form which has been mapped and achieved by meta words.
+.:*~*:._.:*~*:._.:*~*
+Another advanced fun feature
+A fun thing you can play with most search engine is to search for keywords like "0:0" and "root:". If the engine allows such searches u can collect password files from misconfigured web servers. So that's a fun idea. Another fun feature  which usually brings up nice results is "url:.htpasswd" and "url:.htaccess" if u know what you are doing then the first one will bring up the location of password filz, where the restricted directories are. The second one "url:.htaccess" will bring up a username and an encrypted password. If you manage to get the password file then u will be able to crack the file from the many available cracking tools.  Other fun searches are url:etc and link:passwd . I tried those on altavista and didn't see great results so search on those if u really got time. Try your luck on old engines that are small or some of the big ones like dogpile and altavista. If worked out correctly your searches can bring up vital results.
+
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:
+9-Building a Search Engine in PHP
+.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:
+This is taken from spidermans tutorial found at http://spiderman.datablocks.net/
+
+This short mini tut will show you how to create a search engine that you can use for your very own site or some other project that you may be working on. 
+
+Before we begin I'll show you the table I'll be using  in the examples:
+_______________________________________
+|First_Name  |Middle_Name |  last lame |  
+|--------------------------------------
+|Dana	     |Johnson	  |Smith       |		
+|--------------------------------------
+| Jill       |Angel       |Petersburg  |
+|--------------------------------------
+|Jack	     |Coner       |Mitchel     |
+|--------------------------------------
+
+
+Before we actually make the search engine we need  to create a basic webpage that will have a input field where the user  can enter his or her search query. I'm going to keep mine simple, feel  free to make an elaborate one with lots of bells and whistles. The code for my page is below:
+<html>
+<head>
+<title>Simple Search Engine version 1.0</title>
+</head>
+<body>
+<center>
+Enter the first, last, or middle name of the person you are looking    for:
+<form action="search.php" method="post">
+<input type="text" name="search_query" maxlength="25" size="15"><br>
+<input type="reset" name="reset" value="Reset"> <input type="text" name="submit" value="Submit">
+</form>
+</center>
+</body>
+</html>
+   That's a pretty basic page so I'm not going to explain alot of it. Basically the user will enter the first, middle, or last name of the person they are looking for and hit enter. The contents of the input field will be passed to a php script named search.php and that will handle the rest.
+Now that the page is out of the way let's create the actual script. First we want to actually connect to the database using mysql_connect( ) and select the table using mysql_select_db( ), then we want to parse the value passed to the script to see if it contains any invalid input, such as numbers and funky characters like #&*^. You  should always validate input, don't rely on things like JavaScript to do it for you because once the user disables JavaScript all that fancy validation goes down the toilet. Now to check the input we are going to use a regular expression, they are a bit confusing and will be explained in a later tutorial. For now all you need to know is that it will check to see if value passed is a string of characters. All right enough chatter, here is the first part of the script:
+
+<?php
+           mysql_connect("host", 
+          "username", "password") 
+          or die("Can't connect!");
+           mysql_select_db("Names") 
+          or die("Can't select database!"); 
+         
+           if (!eregi("[[:alpha:]]", 
+          $search_query))
+           {
+                echo 
+          "Error: you have entered an invalid query, 
+          you can only use                 characters!<br>";
+           }
+               echo 
+          "Error: you have entered an invalid query, 
+          you can only use                 characters!<br>";
+           }
+   Now that we've done that we will form the search query.
+$query= mysql_query("SELECT 
+          * FROM some_table WHERE First_Name= '$search_query' OR Middle_Name= 
+          '$search_query' OR Last_Name= '$search_query' ORDER BY Last_Name");
+Look confusing? I'll explain, what is pretty much happening 
+        is we are asking MySQL to search all the rows in First_Name, Middle_Name, and Last_Name for a match to the query entered by the user, after it has found some results we then ask MySQL to alphabetize the results by Last_Name. The rest of the coding from now on is a breeze. We         will get the results from the query using mysql_fetch_array( ) and check 
+to see if there is a match using mysql_numrows( ). If there is a match, 
+or matches, we will output it along with the number of matches found; 
+if there isn't we will report to the user that we couldn't find anything.
+
+$result= mysql_numrows($query);
+if ($result == 0)
+{
+    echo "Sorry, 
+          I couldn't find any user that matches your query ($search_query)";
+    exit;
+}
+else if ($result == 1)
+{
+    echo "I've 
+          found <b>1</b> match!<br>";
+}
+else {
+    echo "I've 
+          found <b>$result</b> matches! <br>";
+    while ($row= mysql_fetch_array($query))
+    {
+        $first_name= $row["First_Name"];
+        $middle_name = $row["Middle_Name"];
+        $last_name = $row["Last_Name"];
+        echo "The 
+          first name of the user is: $first_name.<br>";
+        echo "The 
+          middle name of the user is: $middle_name.<br>";
+        echo "The 
+          last name of the user is: $last_name. <br>";
+    }
+}
+?>
+
+  I added that extra if statement so that when we report how many users we've found it's output will be in proper English. If I we don't the script will echo "I've found 1 matches" which obviously isn't good grammar : P The rest of the script basically loops through the results and prints them to a webpage. That's all, we've finished the script! The entire script is included below:
+
+<html>
+<head>
+<title>Simple Search Engine version 1.0 - Results </title>
+</head>
+<body>
+<?php
+           mysql_connect("host", 
+          "username", "password") 
+          or die("Can't connect!");
+           mysql_select_db("Names") 
+          or die("Can't select database!"); 
+          if (!eregi("[[:alpha:]]", 
+          $search_query))
+           {
+                echo 
+          "Error: you have entered an invalid query, 
+          you can only use                 characters!<br>";
+           }
+        $query= 
+          mysql_query("SELECT * FROM some_table 
+          WHERE First_Name=           '$search_query' 
+          OR Middle_Name= '$search_query' OR Last_Name=           '$search_query' 
+          ORDER BY Last_Name");
+           $result= 
+          mysql_numrows($query);
+           if 
+          ($result == 0)
+           {
+               echo 
+          "Sorry, I couldn't find any user that matches 
+          your query                ($search_query)";
+               exit; 
+             //No 
+          results found, why bother executing the rest of the script?
+           }
+           else 
+          if ($result == 1)
+           {
+                echo 
+          "I've found <b>1</b> match!<br>";
+           }
+           else {
+               echo 
+          "I've found <b>$result</b> matches! 
+          <br>";
+              while ($row= mysql_fetch_array($query))
+              {
+                  $first_name= 
+          $row["First_Name"];
+                  $middle_name 
+          = $row["Middle_Name"];
+                  $last_name 
+          = $row["Last_Name"];
+                 echo 
+          "The first name of the user is: $first_name.<br>";
+                 echo 
+          "The middle name of the user is: $middle_name.<br>";
+                 echo 
+          "The last name of the user is: $last_name. 
+          <br>";
+            }
+   }
+?>
+</body>
+</html>
+
+If you try copy the same page and u run into errors, it might be because of formatting errors, which can give errors in the code. If this happens check spiderman's site for further aid.
+.:*~*:._.:*~*:
+9-Final Note  |
+.:*~*:._.:*~*:
+Many people think that one certain engine has all the pages indexed in it, well friends this belief is far from true.  Currently, there are thought to be about 150 million documents on the Web, although an exact count is very very difficult.  While writing this file, I talked with a friend and he said the largest search engine indexes at most 55 million documents, which is only a small portion of the web pages on the web.  So if you don't find what your looking for don't complain to me, I can help but if that certain engine doesn't have that page your looking for then try another.  If your still having problems concerning this topic, email me and i'll try my best to help you out.
+\***************/
+If you want simple texts which can teach you everything you want to learn in the computer field, come to blacksun.box.sk and have a look at the tutorials section.
+\***************/

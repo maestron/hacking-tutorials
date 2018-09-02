@@ -1,0 +1,55 @@
+Remote Desktop Through Company Firewall
+
+Dont wanna take any credit for this as i got this from another forum thought of it as quite informative so pastin it here
+
+Note this tutorial is collection of tips I gathered from searching the internet and some credit is due to the original authors. None of which I know.
+
+A lot of people I know love using the Windows Remote Desktop feature at work, however are prevented from connecting to their home computer because of the company firewall. This is because most corporate firewalls block port 3389 which Remote Desktop uses. Most just switch to VNC, however most find it slower than Remote Desktop.
+
+This quick tutorial shows how (from a fire walled network that blocks port 3389) you can access your home computer using MS Remote Desktop.
+
+*This tutorial assumes you have or know how to setup and dynamic DNS client if you need one
+
+*Assumes you know how to setup port forwarding if you need to.
+
+Because Remote Desktop is using port 3389 by default, it is not possible to go through a firewall. So you can use port 443. Because this port is always open on your companies firewall to allow https. (One would assume )
+
+At your home PC:
+
+1) Configure Your pc to allow Remote Connections in your System Properties (windows - Break) tab Remote. Check 'Allow users to connect remote to this computer.
+
+2) (add users if needed)
+
+3) According to
+CODE
+http://support.microsoft.com/default.aspx?scid=kb;en-us;306759]
+
+In the registry change
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TerminalServer\WinStations\RDP-Tcp\PortNumber to 443 (click Decimal radio button first)
+
+*Configure your firewall to allow traffic through port 443 (If you need to)
+
+*Configure your route to forward port 443 to your computer (If you need to)
+
+If you have IIS running you have to change the port number of https. because it is already listening on this port.
+C:\WINDOWS\system32\cscript.exe c:\inetpub\adminscripts\adsutil.vbs SET w3svc/1/
+SecureBindings ":444:"
+
+Or just disable IIS Service
+
+
+For your PC at work:
+
+According to
+CODE
+http://support.microsoft.com/default.aspx?scid=kb;en-us;304304
+
+you can just type the port after the IP-Address of your home PC.
+
+*Or if you have a Dynamic DNS Client such as No-IP or DynDNS you can type in that address.
+
+Alternatively
+You can add the following to the rdp file. (which you can get to click on Save As on the tab General of Remote Desktop Connection)
+server port:i:443
+
+Extra tip: to have access to your clients hard disk on your remote desktop, check Disk Drives on the tab Local Resources of Remote Desktop Connection

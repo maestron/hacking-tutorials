@@ -1,0 +1,709 @@
+ BASIC C Socket Programming In Unix For Newbies
+<=================================================>
+
+Written by: BracaMan
+E-mail    : BracaMan@clix.pt
+ICQ       : 41476410
+URL	  : http://www.BracaMan.net
+
+
+For more tutorials: http://code.box.sk
+		    http://blacksun.box.sk
+
+
+For comments, errors or just to say hello: <BracaMan@clix.pt>
+
+
+
+CONTENTS
+=======================================
+
+1. Introduction
+2. Different types of Internet Sockets
+3. Structures
+4. Conversions
+5. IP Addresses
+6. Important Functions
+
+   6.1. socket()
+   6.2. bind()
+   6.3. connect()
+   6.4. listen()
+   6.5. accept()
+   6.6. send()
+   6.7. recv()
+   6.8. sendto()
+   6.9. recvfrom()
+   6.10. close()
+   6.11. shutdown()
+   6.12. gethostname()
+
+7. Some words about DNS
+
+8. A Stream Server Example
+
+9. A Stream Client Example
+
+10. Last Words
+
+11. Copyright
+
+
+
+1. INTRODUCTION
+=======================================
+
+Are you trying to learn c socket programming? Or do you think that it's hard stuff?
+Well, then you must read this basic tutorial to get basic ideas and concepts and to start
+to work with sockets. Don't expect to be a "socket programming master" after reading this 
+tutorial. You'll only be that if you practice and read a lot.
+
+
+
+2. DIFFERENT TYPES OF INTERNET SOCKETS
+=======================================
+
+In the first place I must explain what a socket is. In a very simple way, a socket is a way
+to talk to other computer. To be more precise, it's a way to talk to other computers using 
+standard Unix file descriptors. In Unix, every I/O actions are done by writing or reading
+to a file descriptor. A file descriptor is just an integer associated with an open file and it
+can be a network connection, a terminal, or something else.
+
+About the different types of internet sockets, there are many types but I'll just describe two 
+of them - Stream Sockets (SOCK_STREAM) and Datagram Sockets (SOCK_DGRAM). 
+
+"And what are the differences between this two types?" you may ask. Here's the answer:
+
+        Stream Sockets - they're error free; if you send through the stream socket three
+			 items "A,B,C", they will arrive in the same order - "A,B,C" ;
+			 they use TCP ("Transmission Control Protocol") - this protocol
+			 assures the items' order.
+      
+      Datagram Sockets - they use UDP ("User Datagram Protocol"); they're connectionless
+			 because you don't need to have an open connection as in Stream 
+			 Sockets - you build a packet with the destination information and
+			 send it out.
+
+A lot more could be explained here about this two kind of sockets, but I think this is enough
+to get the basic concept of socket. Understanding what a socket is and this two types of 
+internet sockets is a good start, but you need to learn how to "work" with them. You'll learn
+it in the next sections.
+
+
+3. STRUCTURES
+=======================================
+
+The purpose of this section is not to teach you structures but to tell you how are they
+used in C socket programming. If you don't know what a structure is, my advice is to read 
+a C Tutorial and learn it. For the moment, let's just say that a structure is a data type 
+that is an aggregate, that is, it contains other data types, which are grouped together into
+a single user-defined type.
+
+Structures are used in socket programming to hold information about the address.
+
+
+The first structure is struct sockaddr that holds socket information.
+
+
+
+	struct sockaddr{
+		unsigned short  sa_family;    /* address family */
+		char	        sa_data[14];  /* 14 bytes of protocol address */
+	};
+
+
+
+But, there's another structure (struct sockaddr_in) that help you to reference to the socket's 
+elements.
+
+
+
+	struct sockaddr_in {
+		short int	     sin_family;  /* Address family */
+		unsigned short int   sin_port;	  /* Port */
+		struct in_addr	     sin_addr;	  /* Internet Address */
+		unsigned char	     sin_zero[8]; /* Same size as struct sockaddr */
+	};
+
+
+
+Note: sin_zero is set to all zeros with memset() or bzero() (See examples bellow).
+
+
+
+The next structure is not very used but it is defined as an union.
+
+As you can see in both examples bellow (Stream Client and Server Client) , when I declare for 
+example "client" to be of type sockaddr_in then I do client.sin_addr = (...)
+
+Here's the structure anyway:
+
+
+	struct in_addr {
+		unsigned long s_addr;
+	};
+
+
+
+Finally, I think it's better talk about struct hostent. In the Stream Client Example, you can
+see that I use this structure. This structure is used to get remote host information. 
+
+Here it is:
+
+
+	struct hostent
+	{
+	  char *h_name;                 /* Official name of host.  */
+	  char **h_aliases;             /* Alias list.  */
+	  int h_addrtype;               /* Host address type.  */
+	  int h_length;                 /* Length of address.  */
+	  char **h_addr_list;           /* List of addresses from name server.  */
+	#define h_addr  h_addr_list[0]  /* Address, for backward compatibility.  */
+	};
+
+This structure is defined in header file netdb.h.
+
+
+In the beginning, this structures will confuse you a lot, but after you start to write some
+lines, and after seeing the examples, it will be easier for you understanding them. To see
+how you can use them check the examples (section 8 and 9).
+
+
+
+4. CONVERSIONS
+=======================================
+
+There are two types of byte ordering: most significant byte and least significant byte. 
+This former is called "Network Byte Order" and some machines store their numbers internally 
+in Network Byte Order.
+
+There are two types you can convert: short and long. 
+Imagine you want to convert a long from Host Byte Order to Network Byte Order. What would you
+do? There's a function called htonl() that would convert it =) The following functions are
+used to convert :
+
+	htons() -> "Host to Network Short" 
+	htonl()	-> "Host to Network Long"
+	ntohs()	-> "Network to Host Short"
+	ntohl() -> "Network to Host Long"
+
+You must be thinking why do you need this. Well, when you finish reading this document, it will
+all seems easier =) All you need is to read and a lot of practice =)
+
+An important thing, is that sin_addr and sin_port (from struct sockaddr_in) must be in Network
+Byte Order (you'll see in the examples the functions described here to convert and you'll start
+to understand it).
+
+5. IP ADRESSES
+=======================================
+
+In C, there are some functions that will help you manipulating IP addresses. We'll talk about
+inet_addr() and inet_ntoa() functions.
+
+
+	inet_addr() converts an IP address into an unsigned long. An example:
+	
+	(...)
+
+	dest.sin_addr.s_addr = inet_addr("195.65.36.12"); 
+
+	(...)
+
+	/*Remember that this is if you've a struct dest of type sockaddr_in*/
+
+
+
+	inet_ntoa() converts string IP addresses to long. An example:
+
+	(...)
+
+	char *IP;
+
+	ip=inet_ntoa(dest.sin_addr);
+
+	printf("Address is: %s\n",ip);
+
+	(...)
+
+Remember that inet_addr() returns the address in Network Byte Order - so you don't need to 
+call htonl().
+
+
+6. IMPORTANT FUNCTIONS
+=======================================
+
+In this section I'll put the function' syntax, the header files you must include to call it,
+and little comments. Besides the functions mentioned in this document, there are more, but 
+I decided to put only these ones here. Maybe I'll put them in a future version of this 
+document =) To see examples of these functions, you can check the stream client and stream 
+server source code (Sections 8 and 9)
+
+
+  6.1. socket()
+  =============
+	
+	#include <sys/types.h>
+	#include <sys/socket.h>
+
+	int socket(int domain,int type,int protocol);
+
+
+	Let's see the arguments:
+
+		domain   -> you can set "AF_INET" (set AF_INET to use ARPA internet protocols)
+			    or "AF_UNIX" if you want to create sockets for inside comunication.
+			    Those two are the most used, but don't think that there are just 
+	  		    those. There are more I just don't mention them. 
+		type     -> here you put the kind of socket you want (Stream or Datagram)
+			      If you want Stream Socket the type must be SOCK_STREAM
+			      If you want Datagram Socket the type must be SOCK_DGRAM
+		protocol -> you can just set protocol to 0
+
+
+	socket() gives you a socket descriptor that you can use in later system calls or
+	it gives you -1 on error (this is usefull for error checking routines).
+
+
+  6.2. bind()
+  ===========
+
+	#include <sys/types.h>
+	#include <sys/socket.h>
+
+	int bind(int fd, struct sockaddr *my_addr,int addrlen);
+
+	
+	Let's see the arguments:
+
+		fd  -> is the socket file descriptor returned by socket() call
+		my_addr -> is a pointer to struct sockaddr
+		addrlen -> set it to sizeof(struct sockaddr)
+
+	bind() is used when you care about your local port (usually when you use listen() ) 
+	and its function is to associate a socket with a port (on your machine). It returns 
+	-1 on error.
+
+	You can put your IP address and your port automatically:
+
+		server.sin_port = 0;  		      /* bind() will choose a random port*/
+		server.sin_addr.s_addr = INADDR_ANY;  /* puts server's IP automatically */
+
+
+	An important aspect about ports and bind() is that all ports bellow 1024 are reserved.
+	You can set a  port above 1024 and bellow 65535 (unless the ones being used by other
+	programs).
+
+
+  6.3. connect()
+  ==============
+
+	#include <sys/types.h>
+	#include <sys/socket.h>
+
+	int connect(int fd, struct sockaddr *serv_addr, int addrlen);
+
+	Let's see the arguments:
+
+		fd    -> is the socket file descriptor returned by socket() call
+		serv_addr -> is a pointer to struct sockaddr that contains destination IP 
+			     address and port
+		addrlen   -> set it to sizeof(struct sockaddr)
+
+	connect() is used to connect to an IP address on a defined port. It returns -1 on 
+	error.
+
+
+  6.4. listen()
+  =============
+
+	#include <sys/types.h>
+	#include <sys/socket.h>
+
+	int listen(int fd,int backlog);
+
+	Let's see the arguments:
+
+		fd  -> is the socket file descriptor returned by socket() call
+		backlog -> is the number of allowed connections
+
+	listen() is used if you're waiting for incoming connections, this is, if you want
+	someone to connect to your machine. Before calling listen(), you must call bind()
+	or you'll be listening on a random port =) After calling listen() you must call
+	accept() in order to accept incoming connection. Resuming, the sequence of system calls
+	is:
+
+		1. socket()
+		2. bind()
+		3. listen()
+		4. accept() /* In the next section I'll explain how to use accept() */
+
+	As all functions above described, listen() returns -1 on error.
+
+
+  6.5. accept()
+  =============
+
+	#include <sys/socket.h>
+
+	int accept(int fd, void *addr, int *addrlen);
+
+	Let's see the arguments:
+
+		fd  -> is the socket file descriptor returned by listen() call
+		addr    -> is a pointer to struct sockaddr_in where you can determine which host 
+			   is calling you from which port
+		addrlen -> set it to sizeof(struct sockaddr_in) before its address is passed 
+			   to accept()
+
+	
+	When someone is trying to connect to your computer, you must use accept() to get the
+	connection. It's very simple to understand: you just get a connection if you accept =)
+	
+
+	Next, I'll give you a little example of accept() use because it's a little different 
+	from other functions.
+
+	(...)
+
+	  sin_size=sizeof(struct sockaddr_in);
+	  if ((fd2 = accept(fd,(struct sockaddr *)&client,&sin_size))==-1){ /* calls accept() */
+	    printf("accept() error\n");
+	    exit(-1);
+	  }
+
+	(...)
+
+	From now on, fd2 will be used for add send() and recv() calls.
+
+
+  6.6. send()
+  ===========
+
+	
+	int send(int fd,const void *msg,int len,int flags);
+
+	Let's see the arguments:
+
+		fd -> is the socket descriptor where you want to send data to
+		msg    -> is a pointer to the data you want to send
+		len    -> is the length of the data you want to send (in bytes)
+		flags  -> set it to 0
+
+
+	This function is used to send data over stream sockets or CONNECTED datagram sockets.
+	If you want to send data over UNCONNECTED datagram sockets you must use sendto().
+	
+	send() returns the number of bytes sent out and it will return -1 on error.
+
+
+  6.7. recv()
+  ===========
+
+
+	int recv(int fd, void *buf, int len, unsigned int flags);
+
+	Let's see the arguments:
+
+		fd  -> is the socket descriptor to read from
+		buf	-> is the buffer to read the information into
+		len 	-> is the maximum length of the buffer
+		flags 	-> set it to 0
+
+
+	As I said above about send(), this function is used to send data over stream sockets or 
+	CONNECTED datagram sockets. If you want to send data over UNCONNECTED datagram sockets
+	you must use recvfrom().
+
+	recv() returns the number of bytes read into the buffer and it'll return -1 on error.
+
+
+  6.8. sendto()
+  =============
+
+	int sendto(int fd,const void *msg, int len, unsigned int flags,
+		   const struct sockaddr *to, int tolen);
+
+	Let's see the arguments:
+
+		fd  -> the same as send()
+		msg     -> the same as send()
+		len	-> the same as send()
+		flags	-> the same as send()
+		to	-> is a pointer to struct sockaddr
+		tolen	-> set it to sizeof(struct sockaddr)
+
+	As you can see, sendto() is just like send(). It has only two more arguments : "to" 
+	and "tolen" =) 
+
+	sendto() is used for UNCONNECTED datagram sockets and it returns the number of bytes 
+	sent out and it will return -1 on error.
+
+
+  6.9. recvfrom()
+  ===============
+
+	int recvfrom(int fd,void *buf, int len, unsigned int flags
+		     struct sockaddr *from, int *fromlen);
+
+	Let's see the arguments:
+
+		fd	-> the same as recv()
+		buf	-> the same as recv()
+		len	-> the same as recv()
+		flags	-> the same as recv()
+		from	-> is a pointer to struct sockaddr
+		fromlen	-> is a pointer to a local int that should be initialised 
+			   to sizeof(struct sockaddr)
+
+	recvfrom() returns the number of bytes received and it'll return -1 on error.
+
+
+  6.10. close()
+  =============
+
+	close(fd);
+
+	close() is used to close the connection on your socket descriptor. If you call close(),
+	it won't be no more writes or reads and if someone tries to read/write will receive an 
+	error.
+
+
+  6.11. shutdown()
+  ================
+
+	int shutdown(int fd, int how);
+
+	Let's see the arguments:
+
+		fd	-> is the socket file descriptor you want to shutdown
+		how	-> you put one of those numbers:
+				
+					0 -> receives disallowed
+					1 -> sends disallowed
+					2 -> sends and receives disallowed
+
+	When how is set to 2, it's the same thing as close().
+
+	shutdown() returns 0 on success and -1 on error.
+
+
+  6.12. gethostname()
+  ===================
+
+	#include <unistd.h>
+
+	int gethostname(char *hostname, size_t size);
+
+	Let's see the arguments:
+
+		hostname  -> is a pointer to an array that contains hostname
+		size 	  -> length of the hostname array (in bytes)
+
+	
+	gethostname() is used to get the name of the local machine.
+
+
+
+7. SOME WORDS ABOUT DNS
+=======================================
+
+I created this section, because I think you should know what DNS is. DNS stands for "Domain
+Name Service" and basically, it's used to get IP addresses. For example, I need to know the
+IP address of queima.ptlink.net and through DNS I'll get 212.13.37.13 . 
+
+This is important, because functions we saw above (like bind() and connect()) work with IP
+addresses.
+
+To see you how you can get queima.ptlink.net IP address on c, I made a little example:
+
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+#include <stdio.h>
+#include <netdb.h>   /* This is the header file needed for gethostbyname() */
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+
+int main(int argc, char *argv[])
+{
+  struct hostent *he;
+
+  if (argc!=2){
+     printf("Usage: %s <hostname>\n",argv[0]);
+     exit(-1);
+  }
+
+  if ((he=gethostbyname(argv[1]))==NULL){
+     printf("gethostbyname() error\n");
+     exit(-1);
+  }
+
+  printf("Hostname : %s\n",he->h_name);  /* prints the hostname */
+  printf("IP Address: %s\n",inet_ntoa(*((struct in_addr *)he->h_addr))); /* prints IP address */
+}
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+8. A STREAM SERVER EXAMPLE
+=======================================
+
+In this section, I'll show you a nice example of a stream server. The source code is all
+commented so that you ain't no possible doubts =)
+
+Let's start:
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+#include <stdio.h>          /* These are the usual header files */
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+
+#define PORT 3550   /* Port that will be opened */ 
+#define BACKLOG 2   /* Number of allowed connections */
+
+main()
+{
+ 
+  int fd, fd2; /* file descriptors */
+
+  struct sockaddr_in server; /* server's address information */
+  struct sockaddr_in client; /* client's address information */
+
+  int sin_size;
+
+
+  if ((fd=socket(AF_INET, SOCK_STREAM, 0)) == -1 ){  /* calls socket() */
+    printf("socket() error\n");
+    exit(-1);
+  }
+
+  server.sin_family = AF_INET;         
+  server.sin_port = htons(PORT);   /* Remember htons() from "Conversions" section? =) */
+  server.sin_addr.s_addr = INADDR_ANY;  /* INADDR_ANY puts your IP address automatically */   
+  bzero(&(server.sin_zero),8); /* zero the rest of the structure */
+
+  
+  if(bind(fd,(struct sockaddr*)&server,sizeof(struct sockaddr))==-1){ /* calls bind() */
+      printf("bind() error\n");
+      exit(-1);
+  }     
+
+  if(listen(fd,BACKLOG) == -1){  /* calls listen() */
+      printf("listen() error\n");
+      exit(-1);
+  }
+
+while(1){
+  sin_size=sizeof(struct sockaddr_in);
+  if ((fd2 = accept(fd,(struct sockaddr *)&client,&sin_size))==-1){ /* calls accept() */
+    printf("accept() error\n");
+    exit(-1);
+  }
+  
+  printf("You got a connection from %s\n",inet_ntoa(client.sin_addr) ); /* prints client's IP */
+  
+  send(fd2,"Welcome to my server.\n",22,0); /* send to the client welcome message */
+  
+  close(fd2); /*  close fd2 */
+}
+}
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+9. A STREAM CLIENT EXAMPLE
+=======================================
+
+/* <---- SOURCE CODE STARTS HERE ----> */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>        /* netbd.h is needed for struct hostent =) */
+
+#define PORT 3550	  /* Open Port on Remote Host */
+#define MAXDATASIZE 100   /* Max number of bytes of data */
+
+int main(int argc, char *argv[])
+{
+  int fd, numbytes;	  /* files descriptors */
+  char buf[MAXDATASIZE];  /* buf will store received text */
+  
+  struct hostent *he;         /* structure that will get information about remote host */
+  struct sockaddr_in server;  /* server's address information */
+
+  if (argc !=2) {	      /* this is used because our program will need one argument (IP) */
+    printf("Usage: %s <IP Address>\n",argv[0]);
+    exit(-1);
+  }
+
+  if ((he=gethostbyname(argv[1]))==NULL){	/* calls gethostbyname() */
+    printf("gethostbyname() error\n");
+    exit(-1);
+  }
+
+  if ((fd=socket(AF_INET, SOCK_STREAM, 0))==-1){  /* calls socket() */
+    printf("socket() error\n");
+    exit(-1);
+  }
+
+  server.sin_family = AF_INET;
+  server.sin_port = htons(PORT); /* htons() is needed again */
+  server.sin_addr = *((struct in_addr *)he->h_addr);  /*he->h_addr passes "*he"'s info to "h_addr" */
+  bzero(&(server.sin_zero),8);
+
+  if(connect(fd, (struct sockaddr *)&server,sizeof(struct sockaddr))==-1){ /* calls connect() */
+    printf("connect() error\n");
+    exit(-1);
+  }
+
+  if ((numbytes=recv(fd,buf,MAXDATASIZE,0)) == -1){  /* calls recv() */
+    printf("recv() error\n");
+    exit(-1);
+  }
+
+      buf[numbytes]='\0';
+
+      printf("Server Message: %s\n",buf); /* it prints server's welcome message =) */
+
+      close(fd);   /* close fd =) */
+}
+
+/* <---- SOURCE CODE ENDS HERE ----> */
+
+
+
+10. LAST WORDS
+=======================================
+
+
+As I'm just a simple human, it's almost certain that there are some errors on this document.
+When I say errors I mean English errors (because my language is not the English) but also
+technical errors. Please email me if you detect any error =)
+
+But you must understand that this is the first version of this document, so , it's natural not 
+to be very complete (as matter of fact I think it is ) and it's also very natural to have 
+stupid errors. However, I can be sure that source code presented in this document works fine.
+
+
+If you need help concerning this subject you can email me at <BracaMan@clix.pt>
+
+
+SPECIAL THANKS TO: Ghost_Rider (my good old mate), Raven (for letting me write this tutorial) 
+		   and all my friends =)
+
+
+
+11. COPYRIGHT
+=======================================
+
+All copyrights are reserved. You can distribute this tutorial freely, as long you don't change
+any name or URL. You can't change a line or two, or add another lines, and then claim that this
+tutorial is yours. If you want to change something, please email me at <BracaMan@clix.pt>.

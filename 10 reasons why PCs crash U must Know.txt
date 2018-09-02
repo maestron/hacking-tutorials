@@ -1,0 +1,149 @@
+10 reasons why PCs crash U must Know
+
+Fatal error: the system has become unstable or is busy," it says. "Enter to return to Windows or press Control-Alt-Delete to restart your computer. If you do this you will lose any unsaved information in all open applications."
+
+You have just been struck by the Blue Screen of Death. Anyone who uses Mcft Windows will be familiar with this. What can you do? More importantly, how can you prevent it happening?
+
+1 Hardware conflict
+
+The number one reason why Windows crashes is hardware conflict. Each hardware device communicates to other devices through an interrupt request channel (IRQ). These are supposed to be unique for each device.
+
+For example, a printer usually connects internally on IRQ 7. The keyboard usually uses IRQ 1 and the floppy disk drive IRQ 6. Each device will try to hog a single IRQ for itself.
+
+If there are a lot of devices, or if they are not installed properly, two of them may end up sharing the same IRQ number. When the user tries to use both devices at the same time, a crash can happen. The way to check if your computer has a hardware conflict is through the following route:
+
+* Start-Settings-Control Panel-System-Device Manager.
+
+Often if a device has a problem a yellow '!' appears next to its description in the Device Manager. Highlight Computer (in the Device Manager) and press Properties to see the IRQ numbers used by your computer. If the IRQ number appears twice, two devices may be using it.
+
+Sometimes a device might share an IRQ with something described as 'IRQ holder for PCI steering'. This can be ignored. The best way to fix this problem is to remove the problem device and reinstall it.
+
+Sometimes you may have to find more recent drivers on the internet to make the device function properly. A good resource is www.driverguide.com. If the device is a soundcard, or a modem, it can often be fixed by moving it to a different slot on the motherboard (be careful about opening your computer, as you may void the warranty).
+
+When working inside a computer you should switch it off, unplug the mains lead and touch an unpainted metal surface to discharge any static electricity.
+
+To be fair to Mcft, the problem with IRQ numbers is not of its making. It is a legacy problem going back to the first PC designs using the IBM 8086 chip. Initially there were only eight IRQs. Today there are 16 IRQs in a PC. It is easy to run out of them. There are plans to increase the number of IRQs in future designs.
+
+2 Bad Ram
+
+Ram (random-access memory) problems might bring on the blue screen of death with a message saying Fatal Exception Error. A fatal error indicates a serious hardware problem. Sometimes it may mean a part is damaged and will need replacing.
+
+But a fatal error caused by Ram might be caused by a mismatch of chips. For example, mixing 70-nanosecond (70ns) Ram with 60ns Ram will usually force the computer to run all the Ram at the slower speed. This will often crash the machine if the Ram is overworked.
+
+One way around this problem is to enter the BIOS settings and increase the wait state of the Ram. This can make it more stable. Another way to troubleshoot a suspected Ram problem is to rearrange the Ram chips on the motherboard, or take some of them out. Then try to repeat the circumstances that caused the crash. When handling Ram try not to touch the gold connections, as they can be easily damaged.
+
+Parity error messages also refer to Ram. Modern Ram chips are either parity (ECC) or non parity (non-ECC). It is best not to mix the two types, as this can be a cause of trouble.
+
+EMM386 error messages refer to memory problems but may not be connected to bad Ram. This may be due to free memory problems often linked to old Dos-based programmes.
+
+3 BIOS settings
+
+Every motherboard is supplied with a range of chipset settings that are decided in the factory. A common way to access these settings is to press the F2 or delete button during the first few seconds of a boot-up.
+
+Once inside the BIOS, great care should be taken. It is a good idea to write down on a piece of paper all the settings that appear on the screen. That way, if you change something and the computer becomes more unstable, you will know what settings to revert to.
+
+A common BIOS error concerns the CAS latency. This refers to the Ram. Older EDO (extended data out) Ram has a CAS latency of 3. Newer SDRam has a CAS latency of 2. Setting the wrong figure can cause the Ram to lock up and freeze the computer's display.
+
+Mcft Windows is better at allocating IRQ numbers than any BIOS. If possible set the IRQ numbers to Auto in the BIOS. This will allow Windows to allocate the IRQ numbers (make sure the BIOS setting for Plug and Play OS is switched to 'yes' to allow Windows to do this.).
+
+4 Hard disk drives
+
+After a few weeks, the information on a hard disk drive starts to become piecemeal or fragmented. It is a good idea to defragment the hard disk every week or so, to prevent the disk from causing a screen freeze. Go to
+
+* Start-Programs-Accessories-System Tools-Disk Defragmenter
+
+This will start the procedure. You will be unable to write data to the hard drive (to save it) while the disk is defragmenting, so it is a good idea to schedule the procedure for a period of inactivity using the Task Scheduler.
+
+The Task Scheduler should be one of the small icons on the bottom right of the Windows opening page (the desktop).
+
+Some lockups and screen freezes caused by hard disk problems can be solved by reducing the read-ahead optimisation. This can be adjusted by going to
+
+* Start-Settings-Control Panel-System Icon-Performance-File System-Hard Disk.
+
+Hard disks will slow down and crash if they are too full. Do some housekeeping on your hard drive every few months and free some space on it. Open the Windows folder on the C drive and find the Temporary Internet Files folder. Deleting the contents (not the folder) can free a lot of space.
+
+Empty the Recycle Bin every week to free more space. Hard disk drives should be scanned every week for errors or bad sectors. Go to
+
+* Start-Programs-Accessories-System Tools-ScanDisk
+
+Otherwise assign the Task Scheduler to perform this operation at night when the computer is not in use.
+
+5 Fatal OE exceptions and VXD errors
+
+Fatal OE exception errors and VXD errors are often caused by video card problems.
+
+These can often be resolved easily by reducing the resolution of the video display. Go to
+
+* Start-Settings-Control Panel-Display-Settings
+
+Here you should slide the screen area bar to the left. Take a look at the colour settings on the left of that window. For most desktops, high colour 16-bit depth is adequate.
+
+If the screen freezes or you experience system lockups it might be due to the video card. Make sure it does not have a hardware conflict. Go to
+
+* Start-Settings-Control Panel-System-Device Manager
+
+Here, select the + beside Display Adapter. A line of text describing your video card should appear. Select it (make it blue) and press properties. Then select Resources and select each line in the window. Look for a message that says No Conflicts.
+
+If you have video card hardware conflict, you will see it here. Be careful at this point and make a note of everything you do in case you make things worse.
+
+The way to resolve a hardware conflict is to uncheck the Use Automatic Settings box and hit the Change Settings button. You are searching for a setting that will display a No Conflicts message.
+
+Another useful way to resolve video problems is to go to
+
+* Start-Settings-Control Panel-System-Performance-Graphics
+
+Here you should move the Hardware Acceleration slider to the left. As ever, the most common cause of problems relating to graphics cards is old or faulty drivers (a driver is a small piece of software used by a computer to communicate with a device).
+
+Look up your video card's manufacturer on the internet and search for the most recent drivers for it.
+
+6 Viruses
+
+Often the first sign of a virus infection is instability. Some viruses erase the boot sector of a hard drive, making it impossible to start. This is why it is a good idea to create a Windows start-up disk. Go to
+
+* Start-Settings-Control Panel-Add/Remove Programs
+
+Here, look for the Start Up Disk tab. Virus protection requires constant vigilance.
+
+A virus scanner requires a list of virus signatures in order to be able to identify viruses. These signatures are stored in a DAT file. DAT files should be updated weekly from the website of your antivirus software manufacturer.
+
+An excellent antivirus programme is McAfee VirusScan by Network Associates ( www.nai.com). Another is Norton AntiVirus 2000, made by Symantec ( www.symantec.com).
+
+7 Printers
+
+The action of sending a document to print creates a bigger file, often called a postscript file.
+
+Printers have only a small amount of memory, called a buffer. This can be easily overloaded. Printing a document also uses a considerable amount of CPU power. This will also slow down the computer's performance.
+
+If the printer is trying to print unusual characters, these might not be recognised, and can crash the computer. Sometimes printers will not recover from a crash because of confusion in the buffer. A good way to clear the buffer is to unplug the printer for ten seconds. Booting up from a powerless state, also called a cold boot, will restore the printer's default settings and you may be able to carry on.
+
+8 Software
+
+A common cause of computer crash is faulty or badly-installed software. Often the problem can be cured by uninstalling the software and then reinstalling it. Use Norton Uninstall or Uninstall Shield to remove an application from your system properly. This will also remove references to the programme in the System Registry and leaves the way clear for a completely fresh copy.
+
+The System Registry can be corrupted by old references to obsolete software that you thought was uninstalled. Use Reg Cleaner by Jouni Vuorio to clean up the System Registry and remove obsolete entries. It works on Windows 95, Windows 98, Windows 98 SE (Second Edition), Windows Millennium Edition (ME), NT4 and Windows 2000.
+
+Read the instructions and use it carefully so you don't do permanent damage to the Registry. If the Registry is damaged you will have to reinstall your operating system. Reg Cleaner can be obtained from www.jv16.org
+
+Often a Windows problem can be resolved by entering Safe Mode. This can be done during start-up. When you see the message "Starting Windows" press F4. This should take you into Safe Mode.
+
+Safe Mode loads a minimum of drivers. It allows you to find and fix problems that prevent Windows from loading properly.
+
+Sometimes installing Windows is difficult because of unsuitable BIOS settings. If you keep getting SUWIN error messages (Windows setup) during the Windows installation, then try entering the BIOS and disabling the CPU internal cache. Try to disable the Level 2 (L2) cache if that doesn't work.
+
+Remember to restore all the BIOS settings back to their former settings following installation.
+
+9 Overheating
+
+Central processing units (CPUs) are usually equipped with fans to keep them cool. If the fan fails or if the CPU gets old it may start to overheat and generate a particular kind of error called a kernel error. This is a common problem in chips that have been overclocked to operate at higher speeds than they are supposed to.
+
+One remedy is to get a bigger better fan and install it on top of the CPU. Specialist cooling fans/heatsinks are available from www.computernerd.com or www.coolit.com
+
+CPU problems can often be fixed by disabling the CPU internal cache in the BIOS. This will make the machine run more slowly, but it should also be more stable.
+
+10 Power supply problems
+
+With all the new construction going on around the country the steady supply of electricity has become disrupted. A power surge or spike can crash a computer as easily as a power cut.
+
+If this has become a nuisance for you then consider buying a uninterrupted power supply (UPS). This will give you a clean power supply when there is electricity, and it will give you a few minutes to perform a controlled shutdown in case of a power cut.
+
+It is a good investment if your data are critical, because a power cut will cause any unsaved data to be lost.

@@ -1,0 +1,836 @@
+                   :::::::::   ::::::::  :::::::::  :::::::::: 
+                   :+:    :+: :+:    :+: :+:    :+: :+:        
+                   +:+    +:+ +:+        +:+    +:+ +:+        
+                   +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                   +#+    +#+        +#+ +#+    +#+ +#+        
+                   #+#    #+# #+#    #+# #+#    #+# #+#        
+                   #########   ########  ###    ### ###  
+
+			   http://blacksun.box.sk
+  			  
+  			  Linux Networking Tutorial
+			      By: Ghost_Rider
+			 (ghostrider@boxnetwork.net) 
+
+======
+Index 
+======
+
+.Index
+.Intro
+.Basics for networking:
+
+- - Ethernet card
+  - What should I read?
+  - Detection
+  - Configuration
+  - Making Startup Script
+
+- - LAN
+  - What should I read?
+  - Setting up LAN
+  - Making some configs
+
+- - IP masquerading: 
+   - What should I read?
+   - What is that?
+   - How does it work?
+   - Configuration  
+   - Security 
+   
+.Things you should also know: 
+
+- - Remote Port Fowarding
+  - What should I read?
+  - Why do I want this?
+  - Configuration
+  - Security
+
+- - Transparent Proxy:
+   - What should I read?
+   - What is it?
+   - How can I support it?
+   - Configuration
+
+- - NFS
+  - What should I read?
+  - What is it?
+  - Is it really usefull?
+  - Configuration
+  - Security 
+
+.Final notes
+
+Intro
+=====
+
+ Hello, here I am again, after sometime of inactivity I'm back to the article writing life, this time I'll talk about Linux Networking. This is the tutorial that was promissed when I was setting up a lecture about the same topic. The index you've just read was my plan file for that lecture, with some little alterations. In this tutorial my goals are to explain better, with examples, and giving places to get more information about each topic, so in a way we can say that each one, the lecture and the tutorial are standalone but still both can complete each other. Besides, due to 
+problems of time constraints, the lecture was kinda cut off short. I didn't have the time to talk anything about Transparent Proxy and the NFS topic which had to be described in about 7-10 lines. Here you'll find more indepth information on those two topics. I think it's enough of intro and we should just start getting our reading.  Good reading...
+ 
+      								Ghost_Rider
+								
+								
+								
+.Basics for Networking
+
+ 
+
+Ethernet Cards
+==============
+
+
+ What should I read?
+ -------------------
+ 
+ 
+   Setting up ethernet cards won't give you much problems, unless the NIC's
+chip isn't supported. In this topic I advice you to read:
+
+    . Ethernet HOWTO  - if you installed the HOWTOs check /usr/doc/
+                        otherwise go to
+                   http://www.linuxdoc.org/HOWTO/Ethernet-HOWTO.html
+
+
+ Detection
+ ---------
+ 
+  To be perfectly honest with you, all the ethernet cards I've used 
+got detected, and if you get a ethernet card not-detected I really
+dunnow what to do, the only thoughts about that kind of problem is that
+your card isn't supported, check section 5 at the ethernet-howto, still I
+might be wrong. 
+  But here is the way to see if your card is really detected:
+
+
+   . If your card is ISA as root type isapnp > ./dump (make sure there's no
+file ./dump) now just go inspect the dump file, and check for the string
+that defines your ethernet card like "Accton EN1666..."  or you can just
+check by card number. On boot-up right after the RAM check the ISA cards are detected by BIOS and you'll see something:
+
+   CARD 1 something
+   CARD 2 ethernet card bla bla bla
+   
+   So you just have to check if card 2 is listen on isapnp.
+   If your ethernet card is listed by your isapnp kernel detected it.
+   
+    . If you card is pci as root type cat /proc/pci > ./pci (once more make
+sure there's no ./pci) and inspect the ./pci file looking for your ethernet
+card. It should show up something like Ethernet Controller: ...
+
+     Remember even if your card is detected it doesn't mean that is
+supported. We now know that our ethernet card is detected. Next step...
+     
+
+...Configuration
+-----------------
+       
+   To configure your card you have to know what kernel module supports your
+ethernet card, the best way to know what module supports your card is by
+knowing what chip it uses. Checking the documentation that comes with your
+ethernet card might help. Otherwise, if no documentation is available or it
+isn't documentated what kind of chip it uses, you can check section 5. of
+the ethernet howto or read the help of each ethernet card kernel module they tell the major chips they support.
+   If it's ISA all this work might be reduced, since all ISA cards are
+NE2000 compatible so you can just install the kernel modules for it and load ne.o module. On the otherhand PCI cards are not that regular, still if 
+you stick to cards from 3com, SMC (old accton) or realteak you'll be making
+you kernel module selection much easier. If you are still thinking in buying your NICs (network interface cards, the ethernet card) I advice you to give a look at the ethernet howto and check for the supported cards.
+   I just have messed with actton cards. I have 2 ISA EN1666 which I had any problems at all setting them up and one EN2242 on my laptop which is PCI and uses DECchip, now the kernel module for DECchip support doesn't act well with this card so you have to download a newer version of that module and compile it. At the time I'm writting this article kernel 2.4.x (right now on 2.4.1) doesn't have the driver that supports it. (Search on google for EN2242 with linux if you need the module, you'll find a page that talks
+about how to setup linux on a Omini HP laptop they have their the module
+version that supports it).
+
+   So you finally found out that you module is that nice xpto module xpto.o
+   What you have to do is just load the module using modprobe.
+   
+   root@ExampleBox: ~# /sbin/modprobe xpto
+   root@ExampleBox: ~# /sbin/lsmod
+   Module   Size   Used  By
+   xpto     xxxx    1
+   
+   Your NIC's module is loaded so you now have a new interface the eth0, you can make sure of it doing
+
+   root@ExampleBox: ~# /sbin/ifconfig
+   
+      lo: (...)
+      
+      eth0: (...)
+      
+   Or if you just checking the /proc directly doing
+   
+   root@ExampleBox: ~# cat /proc/net/dev
+   
+   And it also has to be listed the eth0 interface besides the lo. 
+   But it's better to use ifconfig in my opinion, because you can check
+card's status. To make sure your NIC is active check for a line like
+
+   UP BROADCAST RUNNING MULTICAST
+   or
+   BROADCAST MULTICAST
+   
+   Now if your case is the 1st one there is no problem, the card is already
+active, but if 2nd you have to start the card to do this you use once more
+ifconfig giving the command
+
+     root@ExampleBox: ~# /sbin/ifconfig eth0 up
+     
+   We now have a 100% working card, but we aren't, yet, able to send or
+receive data from a LAN. This is because we still didn't gave an IP address
+to the ethernet card. Since we are talking about a LAN@home we can use the
+reserved IPs for LANs those are:
+
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/24
+    
+    These address are unrouted from the internet, they are for intranet use
+only. 
+
+- ------SIDE NOTE------
+You already should know this but since I'm talking about IPs I'll also
+talk about what are those /number after each ip. Well to understand it you just have to know 2 simple things, there are mainly 3 types of IP address: 
+    - Class A which are IPs XXX.abc.abc.abc 
+    - Class B which are IPs XXX.YYY.abc.abc 
+    - Class C which are IPs XXX.YYY.ZZZ.abc 
+  Where: 
+  the upper case letters are the ones that represent the network they are called the NETWORK ID.
+  the lower case letters are the ones that define the host, they are called the HOST ID.
+  
+  This means that in the same network all hosts will have the same network ID.  Now if you realized in a IP X.X.X.X  0 < X < 255, and the higher value
+that 1byte can store is, yes, 255. So each X is 1byte. Since 1 byte = 8 bits the /X number tells you how many bits are fixed that way you can know what network Class we are talking about without having it's netmask. 
+   8 bits = 1 byte so the 1st octect if fixed the other 3 changes Class A
+  16 bits = 2 bytes so the 1st and the 2nd octect are fixed the other 2
+changes Class B  24 bits = 3 bytes so the all octects are fixed except the last one Class C   32 bits = all octects are fixed, so this means we are talking about a single IP, no network now.
+  12 bits = 1bytes + 4bits this as no special Class name it's a type of
+Class B it means that the 2nd octect can be between 16 and 32
+- ---------------
+
+ Since we are talking about a simple LAN@home we gonna setup a Class C
+address this will allow us to set hosts up to 253 hosts. More than enough.
+So let's say we want to give the IP 192.168.0.1 to one of our boxes, once
+more we would use ifconfig.
+  
+  root@ExampleBox: ~/# /sbin/ifconfig eth0 192.168.0.1 netmask 255.255.255.0
+  
+  After you type that command you'll probably have another routing entry on
+your route table, still it's better to check
+
+  root@ExampleBox: ~/# /sbin/route -n 
+  Kernel IP routing table
+  Destination     Gateway     Genmask        Flags    Metric  Ref   Use  Iface
+  192.168.0.0     0.0.0.0     255.255.255.0  U        0       0     0    eth0
+  127.0.0.0       0.0.0.0     255.0.0.0      U        0       0     0    lo
+  
+  If the 192.168.0.0 entry wasn't automatically added you have to add it. 
+  
+  root@ExampleBox: ~# /sbin/route add 192.168.0.0 netmask 255.255.255.0 dev 
+eth0
+
+  And there you go, you have a fully configured ethernet card you can now
+test your LAN. (will take care of this in the next topic LAN)
+ 
+ 
+ 
+ Startup Script
+ --------------
+ 
+ 
+ #!/bin/sh
+ # Simple Startup Script
+ # for linux networking tutorial
+ # by Ghost_Rider
+ # NOTE: if you wanna use this script change MODULE to your NIC's module
+ #       and IP to the NIC's IP.
+ 
+ echo "Starting up Ethernet Interface"
+ /sbin/modprobe MODULE
+ /sbin/ifconfig eth0 IP netmask 255.255.255.0 
+ 
+ 
+ 
+ LAN
+ ===
+ 
+   What Should I read?
+   -------------------
+   
+       . Networking HOWTO
+          If howtos were installed check /usr/doc/ and look for the howto dir  or go to http://www.linuxdoc.org/HOWTO/Net-HOWTO/index.html
+	  
+	  
+   Setting up the LAN
+   ------------------
+   
+    You now have the computers configured each one with it's one 192.168.0.x IP and the route entry for 192.168.0.0 it's now time to connect the computers and see if everything is working. I'm assuming that you are using RJ-45 connectors (those ISDN plugs)instead of BNC (connectors like the ones from your TV cable).
+
+     Example 1:
+          
+       Host1 eth0 (192.168.0.1) <---> eth0 Host2 (192.168.0.2)
+       
+       Now this is a direct ethernet to ethernet connection. In this case
+you'll have to use a crossover cable instead of a CAT3 or CAT5 cable. Why?
+ 
+       RJ-45 uses 2 wire pares. Check the following diagram to understand
+why you have to use crossover
+     Connectors of each card:
+     ------ +       + -------   Where - and + are the polarity of each  
+     ------ -       - -------   connector now since you can't connect + with + 
+     ------ +       + -------   or - with - you'll have to make a crossover to
+     ------ -       - -------   make + connect to - so the signal could be
+                                sent throught the line(this is
+                                electricity/electronic).
+     
+    Ok so you got the cable you connect both computers. Now try to ping the
+other computer. Does it work? Good you now have a working LAN. 
+    If it doesn't check if you haven't a firewall messing with the connection to make clear that the problem isn't from the firewall allow everything from eth0 interface:
+
+   root@ExampleBox: ~# /sbin/ipchains -A input -i eth0 -j ACCEPT
+   
+   If it wasn't that, make sure you are using a crossover cable and make sure you ethernet card is really working (ping the ethernet interface from
+the same host lo interface). 
+
+
+  Now let's say that instead of just 2 hosts you want to make an LAN with 3
+or 4, you can connect them directly to each computer, well actually you can
+if you had NICs to make different interface so they can comunicate 2 by 2
+but not even someone completly insane would do that. So you buy a HUB or a
+Switch, the main difference between both is that HUB works under broadcast
+and Switch doesn't. HUB are less expensive and they work fine in home LANs.
+  So now your network should be something like
+  
+    
+        Host 1 eth0 <--> HUB  <--> eth0 Host 2
+    (192.168.0.1)         |              (192.168.0.2)
+			  |
+			 eth0
+			Host 3 (192.168.0.3) 
+			
+			
+  Using HUBs you don't need to use crossover cables, instead you use CAT 3
+or CAT 5 depending of your LAN speed. CAT 3 works at 10mbit/s CAT 5 works
+at 10/100 mbit/s. If you are having problems do what was sayed about testing on the ethernet to ethernet connection example. (For the ones that are wondering what CAT stands for, it's not cat the animal, it's a category).
+  
+  Congradulations you now have a working LAN!!!
+
+
+Making some configs
+- -------------------
+
+   Ok now let's say you ping the the IP 192.168.0.2 from host 192.168.0.1
+ everything goes just fine, but what about if you ping using 192.168.0.1
+hostname? Unknown Host, right?. Well since we don't have any DNS server on our network ping can't resolve the hostname. So what we do is editing /etc/hosts this is the alias file so you can put something like
+
+192.168.0.2  Hostname2
+192.168.0.3  Hostname3
+
+  As mikestevens pointed on the lecture is better to list and before
+the hostname the FQDN (Fully Qualified Domain Name) since we don't really
+have a domain we'll call it local.
+  So our entries would now look like
+  
+  192.168.0.2  Hostname2.local Hostname2
+  192.168.0.3  Hostname3.local Hostname3
+  
+  Still I don't use FQDN on my LAN and never had problems. But some software might like to have the FQDN, well it's up to you. If you don't put the FQDN just remember that if you are having problems with some software might be it.
+  Now after editing you can now give the alias Hostname2 and it will be
+resolved into 192.168.0.2. 
+  Same thing can be done to your network address (192.168.0.0) you just have to edit /etc/networks and add an entry like 
+  
+ 192.168.0.0  MYLAN
+
+ 
+ IP masquerading
+ ===============
+ 
+   What should I read?
+   -------------------
+   
+   .IP masquerading howto 
+   As usual /usr/doc dir or
+   http://www.linuxdoc.org/HOWTO/IP-Masquerade-HOWTO.html
+   
+   .ipchains howto
+   /usr/doc or
+   http://www.linuxdoc.org/HOWTO/IPCHAINS-HOWTO.html
+   
+   .ipchains man page
+    man ipchains
+   
+   What is that?
+   -------------
+   
+    IP masquerading is a NAT (Network Address Translation) system. But let's start from the beginning. When we were configuring the IP addresses I told you that we were using private ones if you set a package on the Internet to those IPs the routers won't know what to do, because those address are UNROUTABLE on the Internet. 
+     Let's imagine that one of you boxes has dial-up access to the Internet, but you want all the the LAN to have it, IP masquerade is your saviour. The IP masquerading will operate like a router pretending to be the host that is requesting the data from the internet and when it gets the data it routes the packages to the internal IP address of our LAN box.
+
+
+  How does it work?
+  -----------------
+  
+    Well basically a connection using IP masquerading is something like the
+diagram below
+
+
+
+   INTERNET HOST  <--ppp0--> masquerading host <--- eth0---> masqueraded host
+   (204.12.41.42)        (195.35.12.33)  (192.168.0.1)        (192.168.0.3)
+                              
+   We'll get to the configuration of this baby soon, but first I want you to know how this really works. 
+   The masqueraded host for example telnets to the INTERNET HOST, 204.12.41.42, since it's configure to have the masquerading host has it's gateway it sends the package to him expecting that he knows how to route it. The masquerading host receives a datagram like:
+
+       Source IP: 192.168.0.3
+       Destination IP: 204.12.41.42
+       Source Port: 1034
+       Destination Port: 23
+       rest of data
+       
+       So what it does is opening a new connection to the Destination IP
+using as new source port an Higher port like 33567. It now changes the
+datagram so it may be read:
+
+       Source IP: 195.35.12.33
+       Destination IP: 204.12.41.42
+       Source Port: 33567
+       Destination Port: 23
+       rest of data
+       
+       At the same time the masquerading host stores in a table, called the
+masquerading table (in other words a database) the masqueraded host IP it's
+source port and the new connection source port. So when he receives a
+datagram on port 33567 that will look like:
+
+       Source IP: 204.12.41.42
+       Destination IP: 195.35.12.33
+       Source Port: 23
+       Destination Port: 33567
+       rest of data
+       
+       The masquerading host will check it's database and will see that for
+his local port 33567 he has the masqueraded host 192.168.0.3 and port 1034
+so once more the masquerading host changes the datagram to look like:
+
+      Source IP: 204.12.41.42
+      Destination IP: 192.168.0.3
+      Source Port: 23
+      Destination Port: 1034
+      rest of data
+      
+      And sends it to the masqueraded host which will receive the data
+thinking that he was contacting directly with 204.12.41.42.
+      This is the principle of masquerading. 
+      You are now thinking on services like ftp that a new connection is 
+originated from the remote host, well yes, that can give you troubles 
+with masquerading, afterall it had to have some problems. But the good thing is that there are already kernel modules to support such services. FTP, IRC DCC, Real Audio and some other services. The ones mentioned I managed to make them work. The others I never tried.
+
+
+Configuration
+--------------
+
+   .On the box that will be masquerading:
+   
+   You have to re-compile your kernel with IP masquerading support and also
+with firewall support.
+   
+   Networking options -->
+    
+    (...)
+    [*] IP: firewalling
+    [*] IP: Masquerading
+    --- Protocol-specific masquerading support will be built as modules.
+    [*] IP: ICMP masquerading
+    --- Protocol-specific masquerading support will be built as modules
+    (...)
+    
+    Now you compile, if you never re-compiled it's better to check the
+Kernel HOWTO (http:// ) and  bootup with the new kernel. After this there 
+is just one more thing is to set the ipchains rule to masquerade packages 
+coming from your LAN that are going to internet hosts.
+    
+    root@ExampleBox: ~# /sbin/ipchains -A forward -s 192.168.0.0/24 -d !
+192.168.0.0./24 -j MASQ
+
+    If you already have a firewall script just add that line to you script,
+otherwise check the firewall script example on the security section, or just do as in the example type on your console.
+    Just one more thing, IP forwarding is disabled by default so all this
+work you have to echo "1" > /proc/sys/net/ipv4/ip_forward.
+ 
+   .On the masqueraded hosts
+   
+   You have to add a default route using masquerading host as gateway
+   Beeing 192.168.0.1 the IP masquerading host you would type:
+   
+   root@ExampleBox: ~# /sbin/route add default gateway 192.168.0.1
+   
+   Besides of this you need to add the following entries to the file
+/etc/resolv.conf
+
+   search ISP.com
+   nameserver IP 
+   
+   where:
+   ISP.com is your ISP domain, like telepac.pt, freeisp.com, teleweb.au...
+   IP is the ip of your ISP DNS server
+   
+
+ And your done with configuration. You now can test IP masquerading on your
+network. Do the following tests from a masqueraded host:
+
+   . ping masquerading host internal IP
+   . ping masquerading host external IP
+   . ping an external IP
+   . ping the same host but using hostname
+   . browse to a site
+   
+   If it fails on the 1st you don't even have the network set correctly
+check the LAN section, if it doesn't ping external IPs check if you really
+add a default route if you get an error message like IP: No route to host
+the default route wasn't set or it's misconfigured, re-check this section. 
+If it pings external IPs but doesn't work with hostnames you didn't set
+your DNS server at /etc/resolv.conf re-check this section.
+
+
+  Congradulations you now have IP masquerading working on your LAN!!!
+  
+  
+  Security
+  --------
+  
+   Even having your internal LAN protected by NAT, it's always good to
+implement a good security policy on your internet gateway, ipchains, or the
+new iptables for kernel 2.4.x will help you with this. Besides you already
+needed to use it since you need to set the masquerading. This is by any
+means a section about ipchains if you wanna learn about ipchains check it's
+howto and man page.
+   Script follows
+   
+   #!/bin/sh
+   # Example ipchains Script
+   # By Ghost_Rider
+   # For linux networking tutorial
+
+   IPCHAINS="/sbin/ipchains"
+   DNSSERVER="PUT UR DNS SERVER HERE"
+   
+   # flush rules
+   
+   $IPCHAINS -F input
+   $IPCHAINS -F output
+   $IPCHAINS -F forward
+   
+   # Set policies
+ 
+   $IPCHAINS -P input DENY
+   $IPCHAINS -P output accept
+   $IPCHAINS -P forward DENY
+   
+   # Accept all local traffic
+    
+   $IPCHAINS -A input -i lo -j ACCEPT
+   $IPCHAINS -A input -i eth0 -j ACCEPT
+   
+   # Deny private address comming from ppp0
+   # Attemps of spoof to use our host to masquerade
+   
+   $IPCHAINS -A input -i ppp0 -s 10.0.0.0/8 -j DENY
+   $IPCHAINS -A input -i ppp0 -s 172.16.0.0/12 -j DENY
+   $IPCHAINS -A input -i ppp0 -s 192.168.0.0/24 -j DENY
+   
+   # Let's set IP Masquerading
+   
+   echo "1" > /proc/sys/net/ipv4/ip_forward
+   $IPCHAINS -A forward -s 192.168.0.0/24 -d ! 192.168.0.0/24 -j MASQ
+   
+   #  Allow DNS
+   
+   $IPCHAINS -A input -i ppp0 -p tcp -s $DNSSERVER --sport 53 -j ACCEPT
+   $IPCHAINS -A input -i ppp0 -p udp -s $DNSSERVER --sport 53 -j ACCEPT
+   
+   # Reject auth so you don't have to wait till timeout when sending mails
+   
+   $IPCHAINS -A input -i ppp0 -p tcp --dport 113 -j REJECT
+   
+   # Allowing ICMPs necessary
+   # 0 = echo reply
+   # 3 = Destination unreachable
+   # 11 = time exceeded
+   
+   $IPCHAINS -A input -i ppp0 -p icmp --dport 0 -j ACCEPT
+   $IPCHAINS -A input -i ppp0 -p icmp --dport 3 -j ACCEPT
+   $IPCHAINS -A input -i ppp0 -p icmp --dport 11 -j ACCEPT
+   
+   # Log everything else..
+   # Let's see what is on the next door
+   
+   $IPCHAINS -A input -i ppp0 -j DENY -l
+
+
+ Remote Port Forwarding
+ ======================
+ 
+  What should I read?
+  -------------------
+  
+      .ipmasqadm man page
+       
+  
+  Why do I want this?
+  ------------------- 
+   
+    If you want to allow people to access some services inside your LAN like
+webservice or shell, instead of setting services on the firewall, you
+redirect the connection to an inside host. 
+    Why not to run services on the firewall? Well because running services
+on the firewall will expose it, so you redirect the traffic to inside your
+network. Ok, right now you are thinking that I'm stupid, I'm concerned
+about the firewall but I'm routing data to inside the network which is
+a greater risk. Well it's now time to introduce to you the concept of DMZ.
+    DMZ stands for De-Militarized Zone, a fancy term that started being used from the gulf war if I'm not wrong, but it also got ported to the networking language. DMZ is a subnet that has un-trusted hosts and has no contact to the trusted subnet. So right now our LAN will start having 2 subnets, both of them are being NAT, but one is still invisible and the other subnet will be acessible by the internet. 
+    Since this is not the kind of network topology we set at our home, we
+are probably talking about more than one registered internet IP, no more
+dial-up but a set of IPs that are payed to be used, in this case the DMZ
+won't need to be behind masquerading but will be assign public IPs. But we
+will get to both network typologies the one where DMZ is also masquerade and
+when DMZ isn't.
+
+
+Configurations
+- --------------
+
+ To support remote port forwarding you have to download an application
+called IP masquerading additional modules administration (aka ipmasqadm)
+written by Juan Ciarlante. For this application work you have to compile
+kernel with masquerading special module support. 
+
+   Network options -->
+   
+   [*] IP: firewalling
+   [*] IP: masquerading
+   --- Protocol-specific masquerading support will be built as modules
+   [*] IP: ICMP masquerading
+   --- Protocol-specific masquerading support will be built as modules
+   [*] IP: masquerading special modules support
+   <M> IP: ipautofw masq support (EXPERIMENTAL)
+   <M> IP: ipportfw masq support (EXPERIMENTAL)
+   <M> IP: ip fwmarkk masq-forwarding support (EXPERIMENTAL)
+   
+   If you don't see the option IP: masquerading special modules support
+remember to see if you have selected to be prompted for code in development
+since this feature is still experimental. To check this go enable:
+
+  Code maturity level options -->
+      
+  [*] Prompt for development and/or incomplete code/drivers
+  
+  When you enable this options the all the options listed will be shown.
+  
+  After compiling, rebooting the new kernel and loading just ipportfw or
+all the 3 modules (for what we are talking just ipportfw is required). 
+  Now you can just nicelly type 
+  
+  root@ExampleBox: ~# ipmasqadm portfw -a -P tcp -L ppp-ip 80 -R 192.168.1.3
+80
+  
+  And then redirection will start to be done.
+  
+  
+ Security
+ --------
+ 
+   Now how it was said starting to run services inside your LAN can expose
+to much your LAN. So it's time to start thinking in DMZ. Check the two
+diagrams bellow.
+
+
+ Example 1:
+                                           ------ (eth0) ---- DMZ   
+                                          | 192.168.0.0/16 network
+ Internet --- ppp0 --- Router/Firewall ---
+                                          |
+		                           ------ (eth1) ----- Trusted LAN 
+					   192.168.1.0/16 network
+					   
+ In this case our Router/Firewall will have 3 IPs, the internet IP, then the IP for the eth0 interface and the IP for eth1 interface. Now as you can both subnets are behind a masquerading host. The firewall will run ipmasqadm fowarding traffic like web service to our DMZ. This way even if a script kiddie roots one of those boxes he's inside the DMZ and since the trusted LAN  is invisible from the DMZ (you have to deny everything from 192.168.0.0/16 to 192.168.1.0/16) the trusted LAN isn't in direct risk, of course you'll have to implement strong loggging and IDS (Intrusion Detectiong System) on the DMZ.
+ This kind of network topology is called 2 legs network. 
+ 
+ 
+ Example 2:
+ 
+ Internet -- ppp0 -- Router/Firewall --- DMZ with registered static IPs 
+                                                     | (eth0)
+					      Masquerading Host
+						     | (eth1)
+						 Trusted LAN
+ 
+ In this case the Router/Firewall host will be a normal routing host since
+the DMZ will have static IPs registered from Internic, inside this DMZ
+you'll have a box running no services the which will be the Masquerading
+Host hidden behind this host there will be a trusted LAN, completly
+invisible to  the outside as always.
+
+
+ Transparent Proxy
+ =================
+  
+   Since I actually never messed with Transparent Proxy I'll be short in
+this section still giving the main topics to set things up, besides squid.
+
+   What should I read?
+   -------------------
+   
+      .Transparent Proxy Mini howto
+      /usr/doc and look for the mini howto directory
+      or http://www.linuxdoc.org/HOWTO/mini/TransparentProxy.html
+      
+   
+   What is it?
+   -----------
+    
+   Transparent Proxy is away that proxies connections without client
+noticing. This means that if you browse to www.yahoo.com when this request
+reachs your gateway it will be re-directed to another port where a proxy
+service like squid will be active. The client thinks that it's exchanging
+data with remote host but in the reality it's just exchanging data with the
+gateway. 
+
+ 
+  How can I support it?
+  ---------------------
+  
+   To support Transparent Proxy once more you'll have to re-compile your
+kernel this time the main features to support are:
+
+   Networking Options -->
+   
+   (...)
+   [*] IP: firewalling
+   [*] IP: Transparent Proxy support 
+   (...)
+   
+   Of course you'll probably enable mascarade on your host, to know which
+options have to be enabled check the IP masquerade section.
+  
+   Configuring
+   -----------
+   
+   Finally to make Transparent Proxy work you have to add a redirection
+action on ipchains just simply giving the command:
+
+   root@ExampleBox: ~# /sbin/ipchains -A input -p TCP --dport 80 -s
+192.168.0.0/24 -j REDIRECT 8080
+
+  Then you just have to configure squid, honestly I never messed with it so
+I really don't know what to tell you, but I've seen squid.conf file it's
+full of information, read it and it will help configuring. Also look at the
+transparent proxy mini howto.
+
+NFS
+===
+
+   What should I read?
+   -------------------
+   
+    . NFS HOWTO 
+      /usr/doc
+      or http://www.linuxdoc.org/HOWTO/NFS-HOWTO/index.html
+
+    . rpc.portmap man page
+   
+    . rpc.mountd man page
+    
+    . rpc.nfsd man page
+     
+    . exports man page
+    
+   What is it?
+   -----------
+   
+   NFS stands for Network File System. Like I said in the lecture, once I
+read a really simple definitition of NFS "it's like windows file sharing but better" and indeed it's a way of sharing HDs (totally or partially) inside a network. NFS is widelly used on networks where we have diskless boxes, or like in Beowulfs. Still you can just setup NFS on your local NFS to share some files between your computer, or like just have one /home directory and every single box of your LAN mounts that partition.  
+
+
+   Is it really usefull?
+   ---------------------
+   
+   Well... If you are in a small LAN like the ones we set at home, and each
+box you still want to have each computer working without any essential OS
+part like /var or /home mounted from one single host, it might not be really usefull. If you are thinking in just setting up NFS to share some files you have and you want to copy them from box to box I tell that it's better to use FTP because of 2 main reasons speed and security. Actually NFS is slow as hell, and well security it's not it's best also. I know about a couple of worms that use vunerabilities in the portmap to spread. Of course if you start running NFS on your LAN the daemons used will be the latest ones...still we know that the code is buggy as hell. 
+
+
+    Configuration
+    -------------
+    
+    You have to compile your kernel with NFS support to add NFS support to
+your kernel enable the option
+
+  Filesystems -->
+     Network File Systems -->
+       <*> NFS filesystem support
+       (...)
+   
+   Compile and you are ready for playing with nfs.
+   There are 3 main files that allow you to configure NFS at your will:
+    
+     /etc/hosts.allow
+     /etc/hosts.deny
+     /etc/exports
+     
+     . hosts.allow 
+        This file holds which IPs have access to the portmap services.
+	This file has the syntax SERVICE : ALLOWED IPs
+	So in our case we would read in the /etc/hosts.allow something like
+	
+	rpc.portmap : 192.168.0.0/24
+	rpc.nfsd    : 192.168.0.0/24
+	rpc.mountd  : 192.168.0.0/24
+	
+      . hosts.deny
+         This file holds which IPs don't have access to the portmap services. When portmap is queried, it grabs the IP, first it checks
+hosts.allow if it's there it accepts, if it isn't check hosts.deny file if
+it's there it will deny it, otherwise if not listed in both it will accept
+the connection. The syntax it's the same as hosts.allow, so since we don't wanna accept any IP that is not listed on hosts.allow we can just add a single entry to host.deny were we read
+
+        ALL : ALL
+	
+	This will deny everything that didn't match on the hosts.allow file.
+	
+      . exports
+        Finally we have the exports file, this file holds which directories
+can be exported and to where and with what options.
+        The syntax of this file is:
+	   directory     IP(options)
+         
+	 Where options can be:
+	    
+	    noaccess: just the dir listed will be mounted the subdirs won't
+	    rw: will give read and write permissions when mounted
+	    ro: will give read only permission when mounted
+	    root_squash: users with UID and GID iqual to 0 will be mapped
+                         for the anonymous UID and GID
+	    insecure: the source port can be any of the 65536
+	    secure: the source port have to be a reserved port (<1024)
+	    
+        This is not by any means a complete list of options still I think
+they are the most used. To have an exaustive list of available options check exports man page. 	    
+
+
+   Security
+   --------
+   
+   As I told you NFS services are buggy and you are making your LAN vulnerable when using this kind of services, so make sure your firewall is blocking the portmap port (111) tpc and udp. And remember to allow just your LANs hosts and deny all the rest on those hosts.allow and hosts.deny.
+   As a last advice, if you  don't really need NFS don't use it.
+   
+   
+  Final notes
+  ===========
+  
+  Well this is the end, I hope you enjoyed it and learned something. Remember to set secure firewall policies, logging and never forget to be paranoid :) If you are planning on installing linux right now, go get tripwire it will also help you a lot. Don't install tripwire after you have exposed your lan to the Internet, because of the chance of compromise, which would render tripwire useless. Also the most important thing, have fun while setting all this up.  See you soon, I got some ideas to write about.
+  
+      	  	      	   	    	  		       Ghost_Rider
+  
+  root@ExampleBox: ~# shutdown -h now
+  (...)
+  Power Down
+  
+  Now it's time to say *PUF*
+
+EOF
+
+
+

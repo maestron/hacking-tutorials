@@ -1,0 +1,34 @@
+ If you want to use Norton Ghost 2003 to create an image of a PC's primary partition you will find it has 2 serious limitations:
+1- The USB support driver they use (from Iomega) can only be installed in USB1 or USB2 mode (not both), and it is not universal - it didn't recognize my external USB IBM mobile HD .
+2- You can't create a Ghost bootable CD - only a floppy. How can you clone a newly bought laptop, most of which don't have a floppy anymore?
+Here's How to:
+1- create a Ghost floppy with USB support (1 or 2 - it won't matter later)
+2- download 2 files kxlrw40an.exe and mhairu.zip
+CODE
+
+http://panasonic.co.jp/pcc/products/drive/cdrrw/kxlrw40an/driver/kxlrw40an.exe
+
+
+CODE
+
+http://www.stefan2000.com/darkehorse/PC/DOS/Drivers/USB/mhairu.zip
+
+
+From the first file (Panasonic driver for a USB CDRW) you will need the file usbaspi.sys found under "F2H" sub directory after extraction of the downloaded archive. From the second archive you need di1000dd.sys
+3- Copy these 2 files to the USB folder on the Ghost floppy, and delete any other files in that folder. Also delete the file guest.exe from the floppy's root.
+4- And finaly:
+edit the AUTOEXEC.BAT file - delete the line: guest.exe
+and edit CONFIG.SYS - delete all entries and enter:
+device=usb\USBASPI.SYS /v /e /o /u
+device=usb\Di1000dd.SYS
+LASTDRIVE = Z
+
+That's it. You can now boot with this floppy and have full USB support so you can create the image on an external USB drive.
+
+If you want to create a bootable CD you can use Nero:
+Choose to create a "CD-ROM (boot)" from the wizard, under Boot tab leave the default "bootable logical drive: as A:\ . Insert your Ghost floppy to the drive, drag all the files from the floppy to "New compilation" and burn. You now have a bootable Ghost CD that even Symantec doesn't have..
+
+PS if you need Norton Ghost 2003 get the full retail here:
+CODE
+
+http://soft.zmdinfo.ha.cn/system/Norton.Ghost.2003%E6%AD%A3%E5%BC%8F%E9%9B%B6%E5%94%AE%E7%89%88.iso.rar

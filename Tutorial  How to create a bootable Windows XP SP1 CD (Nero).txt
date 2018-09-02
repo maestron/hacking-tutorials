@@ -1,0 +1,101 @@
+Tutorial : How to create a bootable Windows XP SP1 CD (Nero)
+
+How to create a bootable Windows XP SP1 CD (Nero):
+Step 1
+
+Create 3 folders - C:\WINXPSP1, C:\SP1106 and C:\XPBOOT
+
+Step 2
+
+Copy the entire Windows XP CD into folder C:\WINXPSP1
+
+Step 3
+
+You will have to download the SP1 Update, which is 133MB.
+Rename the Service Pack file to XP-SP1.EXE
+Extract the Service Pack from the Run Dialog using the command:
+C:\XP-SP1.EXE -U -X:C:\SP1106
+
+Step 4
+
+Open Start/Run... and type the command:
+C:\SP1106\update\update.exe -s:C:\WINXPSP1
+
+Click OK
+
+Folder C:\WINXPSP1 contains: Windows XP SP1
+
+
+
+How to Create a Windows XP SP1 CD Bootable
+
+Step 1
+
+Download xpboot.zip
+http://thro.port5.com/xpboot.zip
+
+( no download manager !! )
+
+Extract xpboot.zip file (xpboot.bin) in to the folder C:\XPBOOT
+
+Step 2
+
+Start Nero - Burning Rom.
+Select File > New... from the menu.
+1.) Select CD-ROM (Boot)
+2.) Select Image file from Source of boot image data
+3.) Set Kind of emulation: to No Emulation
+4.) Set Load segment of sectors (hex!): to 07C0
+5.) Set Number of loaded sectors: to 4
+6.) Press the Browse... button
+
+
+
+Step 3
+
+Select All Files (*.*) from File of type:
+Locate boot.bin in the folder C:\XPBOOT
+
+Step 4
+
+Click ISO tab
+Set File-/Directory length to ISO Level 1 (Max. of 11 = 8 + 3 chars)
+Set Format to Mode 1
+Set Character Set to ISO 9660
+Check all Relax ISO Restrictions
+
+
+
+
+Step 5
+
+Click Label Tab
+Select ISO9660 from the drop down box.
+Enter the Volume Label as WB2PFRE_EN
+Enter the System Identifier as WB2PFRE_EN
+Enter the Volume Set as WB2PFRE_EN
+Enter the Publisher as MICROSOFT CORPORATION
+Enter the Data Preparer as MICROSOFT CORPORATION
+Enter the Application as WB2PFRE_EN
+
+* For Windows XP Professional OEM substitute WB2PFRE_EN with WXPOEM_EN
+* For Windows XP Home OEM substitute WB2PFRE_EN with WXHOEM_EN
+
+Step 6
+
+Click Burn tab
+Check Write
+Check Finalize CD (No further writing possible!)
+Set Write Method to Disk-At-Once
+
+Press New button
+
+Step 7
+
+Locate the folder C:\WINXPSP1
+Select everything in the folder and drag it to the ISO compilation panel.
+Click the Write CD Dialog button.
+
+Press Write
+
+You're done.

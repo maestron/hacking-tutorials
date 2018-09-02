@@ -1,0 +1,21 @@
+ OK, so now you realize that you've got some spyware junk on your system.
+
+Before you go headlong into deleting suspected files or editing the registry, try this simple disabling technique.
+
+First, see if you can determine what the offending files are. You can do this by running "msinfo32" if you're using Win98. I only have experience with Win98, so I don't know the corresponding run command for this "Microsoft System Information" utility in WinXP. Go to the "Software Enviroment" section and poke around to see if you can locate an offensive or out-of-place file that looks like it doesn't belong. Make a note of the filename and location.
+
+Then fire up Windows Explorer and navigate to the "no-goodnick" file. Now, and this is important, rename the file to something you can remember later. I like to use the same filename, but tack on the letters (in caps) "OLDXXX", where "XXX" are my initials. So, for example:
+
+twaintec.dll
+
+is renamed to
+
+twaintecOLDXXX.dll
+
+This effectively disables the offensive file, so that whatever piece of spyware junk is looking for it, it can't find it, and thus can't glop up you system. If you've made a mistake and the file is essential to your system, you can easily correct it by reversing the renaming procedure. This is much easier than restoring a deleted file, especially if you have emptied your recycle bin in the meantime!
+
+Some bogus files can't be renamed while Windows is running, so then you have to use brute force and reboot in DOS-only mode, and use DOS commands to locate and rename the file. You may have to dig out your old DOS reference books for this like I did.
+
+I have used this technique several times to disable offending junk until I can find a permanent way of getting rid of it.
+
+It's a great trouble-shooting technique.

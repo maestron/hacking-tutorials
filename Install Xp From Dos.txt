@@ -1,0 +1,23 @@
+Install Xp From Dos
+
+If XP will not install from the CD or if you have a new drive with no operating system on
+it yet try these:
+
+Install Windows XP from the hard drive with Windows 98 already installed:
+
+Boot Windows 98
+Insert the XP CD into your CD reader
+Explore Windows XP through My Computer
+Copy i386 folder to C:\
+Go into C:\i386 folder and double click on winnt32.exe to launch the setup from the hard drive
+
+Install Windows XP from DOS (ie. no OS on a new hard drive):
+
+Boot with a Windows 98 Start Up disk
+Insert the Windows 98 CD into the CD reader
+Run smartdrv.exe from the Win98 directory on the windows 98 CD (file caching)
+Type cd.. to back up to the root directory
+Insert Windows XP CD into the CD reader
+Copy the i386 folder to C:\
+Go into C:\i386 folder on C: and type winnt.exe to launch the setup from the hard drive.
+

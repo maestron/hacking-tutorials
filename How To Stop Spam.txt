@@ -1,0 +1,173 @@
+How To Stop Spam 
+
+Change Mcft to microsoft
+
+HOW TO STOP SPAM VIA WINDOWS MESSENGER SERVICE
+Below you'll find many ways (sorted in the most successful ratio first) to stop the Windows Messenger service, depending on your system environment, some may require more than one process. This service is available only on NT, 2K, XP & Server 2003. Administrator Login is REQUIRED
+
+About The Messenger Service
+
+
+* Messenger is a Windows Service that runs in the background
+* Messenger is not the same as MSN Messenger or any other Instant Messaging Program
+* Messenger does not facilitate two-way chatting
+* Many Windows Programs, Firewalls, UPS and Antiviruses require the Messenger Service
+* Antivirus and UPS software, among others, may not work if Messenger is disabled
+* The Messenger Service is usually turned on by default in most Windows NT, 2K and XP systems
+
+
+1. Manually
+
+1. Example 1
+
+1. Click Start, Run and enter the following command:
+RunDll32 advpack.dll,LaunchINFSection %windir%\inf\msmsgs.inf,BLC.Remove
+NOTE: This will prevent a long delay when opening Outlook Express if you have the Contacts pane enabled
+2. To prevent this, click Start, Run and enter {REGEDIT} Go to:
+HKEY_LOCAL_MACHINE\Software\Mcft\Outlook Express
+3. Right click in the right pane and select New, Dword value
+4. Give it the name Hide Messenger Double click this new entry and set the value to 2
+5. End result should look EXACTLY like this:
+System Key: [HKEY_LOCAL_MACHINE\SOFTWARE\Mcft\Outlook Express]
+Value Name: Hide Messenger
+Data Type: REG_DWORD (DWORD Value)
+Value Data: (2 = remove messenger)
+
+2. Example 2
+
+1. Copy and paste the following to Run Command Bar in the Start Menu:
+RunDll32.exe advpack.dll,LaunchINFSection
+%windir%\inf\msmsgs.inf,BLC.Remove
+
+3. Example 3
+
+1. If Example 5 didn't work, then try this - Many users miss or don't know of it
+2. Click on Start then go to RUN and type:
+C:\WINDOWS\inf\sysoc.inf
+3. Change:
+msmsgs=msgrocm.dll,OcEntry,msmsgs.inf,hide,7
+4. To:
+msmsgs=msgrocm.dll,OcEntry,msmsgs.inf,7
+5. Then use Add/Remove Windows Components to remove Messenger
+NOTE: You can also prevent access to Windows Messenger using Group Policy or the Set Program Access and Defaults utility added by default in Windows XP SP1 and Windows 2000 SP3
+
+4. Example 4
+
+1. Open Windows Messenger
+2. From the menu, select "Tools" then "Options" then "Preferences" tab
+3. Uncheck "Run this program when Windows starts"
+4. Open Outlook Express
+5. From the menu, select "Tools" then "Options" then "General" tab
+6. Uncheck the option to "Automatically log on", if it's there
+7. Also in Outlook Express, select "View" then "Layout"
+8. Uncheck the option to "display Contacts" - The program will open a connection and display a list of all Contacts on line if you do not
+9. In "Startup Folder" make sure there is no entry there for Messenger
+10. Open Norton Anti-Virus if you have it installed
+11. Click "Options" then "Instant Messenger"
+12. Unckeck "Windows Messenger (recommended"
+NOTE: This list ought to work in disassociate MSN from Outlook Express, so that it'll only start up if you really want it to
+
+5. Example 5
+
+1. 2000
+
+* Click Start-> Settings-> Control Panel-> Administrative Tools->Services
+* Scroll down and highlight "Messenger"
+* Right-click the highlighted line and choose Properties
+* Click the STOP button
+* Select Disable in the Startup Type scroll bar
+* Click OK
+
+2. XP Home
+
+* Click Start->Settings ->Control Panel
+* Click Performance and Maintenance
+* Click Administrative Tools
+* Double click Services
+* Scroll down and highlight "Messenger"
+* Right-click the highlighted line and choose Properties
+* Click the STOP button
+* Select Disable in the Startup Type scroll bar
+* Click OK
+
+3. XP Professional
+
+* Click Start->Settings ->Control Panel
+* Click Administrative Tools
+* Click Services
+* Double click Services
+* Scroll down and highlight "Messenger"
+* Right-click the highlighted line and choose Properties.
+* Click the STOP button.
+* Select Disable in the Startup Type scroll bar
+* Click OK
+
+4. Windows NT
+
+* Click Start ->Control Panel
+* Double Click Administrative Tools
+* Select Services-> Double-click on Messenger
+* In the Messenger Properties window, select Stop
+* Then choose Disable as the Startup Type
+* Click OK
+NOTE: If you stop the service and don’t adjust the startup type, the Messenger service will start automatically the next time you reboot. Keep in mind that when you disable the Messenger service, you'll no longer receive messages about an attached UPS, and you won’t be notified of print job completion, performance alerts, or antivirus activity (from Windows) not the program you're using for those purposes.
+
+6. Example 6
+
+1. To disable receipt of messenger pop-ups, verify that your firewall disables inbound traffic on UDP ports 135, 137, and 138, and TCP ports 135 and 139. On a system connected directly to the Internet, you should also disable inbound traffic on TCP port 445. If the system you want to protect is part of a Win2K-based network with Active Directory (AD), don't block incoming traffic on port 445 - Mcft Knowledge Base Article - 330904
+Code:
+http://support.Mcft.com/default.aspx?scid=kb;en-us;330904
+
+NOTE: You can use the firewall approach only if your system doesn't communicate with legacy systems that rely on NetBIOS name resolution to locate machines and shared resources. If, for example, you let users running Windows 9x share your printer or scanner, when you disable inbound NetBIOS traffic, users won't be able to connect to these shared resources. Regardless of the method you choose, you can stop messenger spam
+
+2. Program
+
+1. Example 1
+
+NOTE: On Oct 15, 2003, Mcft releases Critical Security Bulletin MS03-043 warning users that the Windows Messenger Service running and exposed by default in all versions of Windows NT, 2000 and XP, contains a "Remote Code Execution" vulnerability that allows any not otherwise secured and protected Windows machine to be taken over and remotely compromised over the Internet
+1. Shoot the Messenger
+Code:
+http://grc.com/files/shootthemessenger.exe
+
+
+2. Example 2
+
+1. Messenger Disable
+Code:
+http://www.dougknox.com/xp/utils/MessengerDisable.zip
+
+NOTE: If you choose to uninstall Windows Messenger on a system with SP1 installed, you will receive an error message about "un-registering" an OCX file. This is normal, and doest not affect the removal process. Windows Messenger will still be removed
+
+3. TEST
+
+1. Example 1
+
+1. Right-click "My Computer"
+2. Select "Manage"
+3. Under "System Tools" right-click on "Shared Folders"
+4. Choose "All Tasks" and select "Send Console Message..."
+5. If you recieve the following error message then the service has been disabled, otherwise confirm that you have disabled it or try another example
+"The following error occured while reading the list of sessions from Windows clients:
+Error 2114: The Server service is not started."
+
+2. Example 2
+
+1. Click Start then "Run"
+2. Type in {cmd.exe}
+3. Type in net send 127.0.0.1 hi
+4. If you get a popup "hi" message, then confirm that you have disabled it or try another example
+
+4. IF YOU INSIST
+
+1. If you insist on keeping Windows Messenger, then I'd recommend Messenger Manager - "Allows you to keep your messenger service running, as is intended and needed by Windows. This ensures that vital system errors and notifications may be sent informing you of Important System Events"
+Code:
+http://www.sellertools.com/default.asp?i=MessageManager3.htm
+
+2. However, as a replacement to Windows Messenger remote control feature, I'd recommend this free tool Virtual Network Computing - "It is a remote control software which allows you to view and interact with one computer (the "server") using a simple program (the "viewer") on another computer anywhere on the Internet. The two computers don't even have to be the same type, so for example you can use VNC to view an office Linux machine on your Windows PC at home"
+Code:
+http://www.realvnc.com/download.html
+
+
+
+RESULTS WILL VARY
+No matter how good your systems may be, they're only as effective as what you put into them.

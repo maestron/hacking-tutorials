@@ -1,0 +1,50 @@
+
+2600 Hertz Single Tone Generator  Schematic
+-------------------------------------------
+
+
+Parts:  555 timer I.C.
+        8 ohm speaker                          |
+        9 volt battery & connector           --+--  =  connection
+        Pushbutton switch                      |
+        5k potentiometer
+        1k ohm resistor                        |
+        4.7 micro-farad capacitor            -----  =  no connection
+        3.3 micro-farad capacitor              |
+
+
+                   +----+-------------------------------+
+                   |    |                               |
+                   |    V      1k                       |
+                   |  /\/\/-+-/\/\/-+---------------+   |
+          +--------+   5k   |       |               |   |
+          |     ---|--------|-------|--------|---   |   |
+pshbtn  | o     |  8        7       6        5  |   |   |
+switch -+       |                               |   |   |
+        | o     |||           5 5 5             |   |   |
+          |     |||           TIMER             |   |   |
+          |     |                               |   |   |
+  (+)-----+     |  1        2       3        4  |   |   |
+9 volts         ---|--------|-------|--------|---   |   |
+  (-)--------------+        |       |        |      |   |
+                   |        +-----------------------+   |
+                   |  3.3uF         |        |          |
+                   +--->|--------------------+----------+
+                   |                |
+           4.7uF  \_/               |
+                  ---               |
+                   |(+)             |
+                   |     ______     |
+                   +----| 8ohm |----+
+                       /__SPKR__\
+
+
+To calibrate:
+
+Play next to a pure 2600hz source and adjust the 5k potentiometer until the two
+sounds are the same. As you get closer you will hear a beat tone form and get
+slower and slower. When it stops, the two frequencies are equal. This takes a
+little practice.
+
+
+

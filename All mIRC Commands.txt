@@ -1,0 +1,101 @@
+ All mIRC Commands
+
+/ Recalls the previous command entered in the current window.
+/! Recalls the last command typed in any window.
+/action {action text} Sends the specifed action to the active channel or query window.
+/add [-apuce] {filename.ini} Loads aliases, popups, users, commands, and events.
+/ame {action text} Sends the specifed action to all channels which you are currently on.
+/amsg {text} Sends the specifed message to all channels which you are currently on.
+/auser {level} {nick|address} Adds a user with the specified access level to the remote users
+list.
+/auto [on|off|nickname|address] Toggles auto-opping of a nick or address or sets it on or off
+totally.
+/away {away message} Sets you away leave a message explaining that you are not currently paying
+attention to IRC.
+/away Sets you being back.
+/ban [#channel] {nickname} [type] Bans the specified nick from the curent or given channel.
+/beep {number} {delay} Locally beeps 'number' times with 'delay' in between the beeps. /channel
+Pops up the channel central window (only works in a channel).
+/clear Clears the entire scrollback buffer of the current window.
+/ctcp {nickname} {ping|finger|version|time|userinfo|clientinfo} Does the given ctcp request on
+nickname.
+/closemsg {nickname} Closes the query window you have open to the specified nick.
+/creq [ask | auto | ignore] Sets your DCC 'On Chat request' settings in DCC/Options.
+/dcc send {nickname} {file1} {file2} {file3} ... {fileN} Sends the specified files to nick.
+/dcc chat {nickname} Opens a dcc window and sends a dcc chat request to nickname.
+/describe {#channel} {action text} Sends the specifed action to the specified channel window.
+/dde [-r] {service} {topic} {item} [data] Allows DDE control between mIRC and other
+applications.
+/ddeserver [on [service name] | off] To turn on the DDE server mode, eventually with a given
+service name.
+/disable {#groupname} De-activates a group of commands or events.
+/disconnect Forces a hard and immediate disconnect from your IRC server. Use it with care.
+/dlevel {level} Changes the default user level in the remote section.
+/dns {nickname | IP address | IP name} Uses your providers DNS to resolve an IP address.
+/echo [nickname|#channel|status] {text} Displays the given text only to YOU on the given place
+in color N.
+/enable {#groupname} Activates a group of commands or events.
+/events [on|off] Shows the remote events status or sets it to listening or not.
+/exit Forces mIRC to closedown and exit.
+/finger Does a finger on a users address.
+/flood [{numberoflines} {seconds} {pausetime}] Sets a crude flood control method.
+/fsend [on|off] Shows fsends status and allows you to turn dcc fast send on or off.
+/fserve {nickname} {maxgets} {homedirectory} [welcome text file] Opens a fileserver.
+/guser {level} {nick} [type] Adds the user to the user list with the specified level and
+address type.
+/help {keyword} Brings up the Basic IRC Commands section in the mIRC help file.
+/ignore [on|off|nickname|address] Toggles ignoring of a nick or address or sets it on or off
+totally.
+/invite {nickname} {#channel} Invites another user to a channel.
+/join {#channel} Makes you join the specified channel.
+/kick {#channel} {nickname} Kicks nickname off a given channel.
+/list [#string] [-min #] [-max #] Lists all currently available channels, evt. filtering for
+parameters.
+/log [on|off] Shows the logging status or sets it on or off for the current window.
+/me {action text} Sends the specifed action to the active channel or query window.
+/mode {#channel|nickname} [[+|-]modechars [parameters]] Sets channel or user modes.
+/msg {nickname} {message} Send a private message to this user without opening a query window.
+/names {#channel} Shows the nicks of all people on the given channel.
+/nick {new nickname} Changes your nickname to whatever you like.
+/notice {nick} {message} Send the specified notice message to the nick.
+/notify [on|off|nickname] Toggles notifying you of a nick on IRC or sets it on or off totally.
+/onotice [#channel] {message} Send the specified notice message to all channel ops.
+/omsg [#channel] {message} Send the specified message to all ops on a channel.
+/part {#channel} Makes you leave the specified channel.
+/partall Makes you leave all channels you are on.
+/ping {server address} Pings the given server. NOT a nickname.
+/play [-c] {filename} [delay] Allows you to send text files to a window.
+/pop {delay} [#channel] {nickname} Performs a randomly delayed +o on a not already opped nick.
+/protect [on|off|nickname|address] Toggles protection of a nick or address or sets it on or off
+totally.
+/query {nickname} {message} Open a query window to this user and send them the private message.
+/quit [reason] Disconnect you from IRC with the optional byebye message.
+/raw {raw command} Sends any raw command you supply directly to the server. Use it with care!!
+/remote [on|off] Shows the remote commands status or sets it to listening or not.
+/rlevel {access level} Removes all users from the remote users list with the specified access
+level.
+/run {c:\path\program.exe} [parameters] Runs the specified program, evt. with parameters.
+/ruser {nick[!]|address} [type] Removes the user from the remote users list.
+/save {filename.ini} Saves remote sections into a specified INI file.
+/say {text} Says whatever you want to the active window.
+/server [server address [port] [password]] Reconnects to the previous server or a newly
+specified one.
+/sound [nickname|#channel] {filename.wav} {action text} Sends an action and a fitting sound.
+/speak {text} Uses the external text to speech program Monologue to speak up the text.
+/sreq [ask | auto | ignore] Sets your DCC 'On Send request' settings in DCC/Options.
+/time Tells you the time on the server you use.
+/timer[N] {repetitions} {interval in seconds} {command} [| {more commands}] Activates a timer.
+/topic {#channel} {newtopic} Changes the topic for the specified channel.
+/ulist [{|}]{level} Lists all users in the remote list with the specified access levels.
+/url [-d] Opens the URL windows that allows you to surf the www parallel to IRC.
+/uwho [nick] Pops up the user central with information about the specified user.
+/who {#channel} Shows the nicks of all people on the given channel.
+/who {*address.string*} Shows all people on IRC with a matching address.
+/whois {nickname} Shows information about someone in the status window.
+/whowas {nickname} Shows information about someone who -just- left IRC.
+/wavplay {c:\path\sound.wav} Locally plays the specified wave file.
+/write [-cidl] {filename} [text] To write the specified text to a .txt file.
+
+MoViEBoT #xdcc-help /server irc.atomic-irc.net
+
+We strive to make IRC easier for you!

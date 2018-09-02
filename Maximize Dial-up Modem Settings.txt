@@ -1,0 +1,23 @@
+Maximize Dial-up Modem Settings
+
+Did you know that by changing a few settings you can make your dial-up modem run better? That's right—you might have a fast modem and a good connection, but you're not getting the best performance. With a few adjustments, you can get faster connection speeds.
+
+NOTE: Since every PC configuration is different, these adjustments might not work for everyone.
+
+With Windows 95, 98 & ME you'll need to open your Control Panel ( Start / Control Panel ). Click "System" then choose "Device Manager". Open up "Ports", highlight your modem port (should be COM2), and choose "Properties" near the bottom. When you click "Port Settings", you will see the modem speed listed under "Bits per second".
+
+With Win XP , just hold down the Alt key and double-click "My Computer" to bring up System Properties. Click the "Hardware" tab, then choose the "Device Manager" button. Scroll down to "Modems" and click the little (—) to show your modem, then double click it.
+
+Selecting the "Modem" tab will allow you to adjust the port speed.
+
+
+Usually, the Maximum Port Speed is on the highest setting (115,000 bps), but sometimes you will find it on a slower default of 9600 bps. If you have a 56k modem, you can crank it up to the maximum setting without any trouble (in most cases). If you live in a cave and have a 28k modem, then the fastest you can do is 57,600 bps.
+
+Win 9x users should also adjust the "Flow Control" near the bottom. The default for this is usually Xon/Xoff which is the software control—change this to "Hardware" if you want to get the most from your modem. Next, click the "Advanced" button to adjust the Receiver Buffer to its highest setting (all the way to the right). If you run into any problems, just turn this one back to the 2/3 setting.
+
+To check/adjust the Receive-Transmit buffers in XP, click the "Advanced" tab of your modem properties then choose the "Advanced Port Settings" button. Make sure that both are set to their highest settings.
+
+There are many more tweaks that can be done in the registry, but the potential for disaster is too high for the average user. Some folks install dial-up accelerators, which basically tweak these registry settings for you and perform other routines to optimize performance.
+
+Just by changing these few settings, though, you should see better performance.
+

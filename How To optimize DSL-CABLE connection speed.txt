@@ -1,0 +1,4 @@
+How To optimize DSL-CABLE connection speed
+
+First, u need to goto Start, then run. Type in regedit in the box. Next, goto the folder HKEY_LOCAL_MACHINE\System\CurrentControlSet\VxD\MSTCP
+Now, find the string DefaultRcvWindow . Now, edit the number to 64240 then restart your computer. There you go. High speed cable modem now with out dloading a program. Original value is 373360

@@ -1,0 +1,191 @@
+Beep Code Manual, Better Than Gold Techies, American Megatrends Int. & Phoenix
+
+(I'm IT, I use these codes to trouble shoot hardware issues at my job. Enjoy) cold.gif
+
+BIOS Beep Codes
+
+When a computer is first turned on, or rebooted, its BIOS performs a power-on self test (POST) to test the system's hardware, checking to make sure that all of the system's hardware components are working properly. Under normal circumstances, the POST will display an error message; however, if the BIOS detects an error before it can access the video card, or if there is a problem with the video card, it will produce a series of beeps, and the pattern of the beeps indicates what kind of problem the BIOS has detected.
+Because there are many brands of BIOS, there are no standard beep codes for every BIOS.
+
+The two most-used brands are AMI (American Megatrends International) and Phoenix.
+
+Below are listed the beep codes for AMI systems, and here are the beep codes for Phoenix systems.
+
+
+AMI Beep Codes
+
+Beep Code Meaning
+1 beep DRAM refresh failure. There is a problem in the system memory or the motherboard.
+2 beeps Memory parity error. The parity circuit is not working properly.
+3 beeps Base 64K RAM failure. There is a problem with the first 64K of system memory.
+4 beeps System timer not operational. There is problem with the timer(s) that control functions on the motherboard.
+5 beeps Processor failure. The system CPU has failed.
+6 beeps Gate A20/keyboard controller failure. The keyboard IC controller has failed, preventing gate A20 from switching the processor to protect mode.
+7 beeps Virtual mode exception error.
+8 beeps Video memory error. The BIOS cannot write to the frame buffer memory on the video card.
+9 beeps ROM checksum error. The BIOS ROM chip on the motherboard is likely faulty.
+10 beeps CMOS checksum error. Something on the motherboard is causing an error when trying to interact with the CMOS.
+11 beeps Bad cache memory. An error in the level 2 cache memory.
+1 long beep, 2 short Failure in the video system.
+1 long beep, 3 short A failure has been detected in memory above 64K.
+1 long beep, 8 short Display test failure.
+Continuous beeping A problem with the memory or video.
+BIOS Beep Codes
+
+
+Phoenix Beep Codes
+
+Phoenix uses sequences of beeps to indicate problems. The "-" between each number below indicates a pause between each beep sequence. For example, 1-2-3 indicates one beep, followed by a pause and two beeps, followed by a pause and three beeps. Phoenix version before 4.x use 3-beep codes, while Phoenix versions starting with 4.x use 4-beep codes. Click here for AMI BIOS beep codes.
+4-Beep Codes
+Beep Code Meaning
+1-1-1-3 Faulty CPU/motherboard. Verify real mode.
+1-1-2-1 Faulty CPU/motherboard.
+1-1-2-3 Faulty motherboard or one of its components.
+1-1-3-1 Faulty motherboard or one of its components. Initialize chipset registers with initial POST values.
+1-1-3-2 Faulty motherboard or one of its components.
+1-1-3-3 Faulty motherboard or one of its components. Initialize CPU registers.
+1-1-3-2
+1-1-3-3
+1-1-3-4 Failure in the first 64K of memory.
+1-1-4-1 Level 2 cache error.
+1-1-4-3 I/O port error.
+1-2-1-1 Power management error.
+1-2-1-2
+1-2-1-3 Faulty motherboard or one of its components.
+1-2-2-1 Keyboard controller failure.
+1-2-2-3 BIOS ROM error.
+1-2-3-1 System timer error.
+1-2-3-3 DMA error.
+1-2-4-1 IRQ controller error.
+1-3-1-1 DRAM refresh error.
+1-3-1-3 A20 gate failure.
+1-3-2-1 Faulty motherboard or one of its components.
+1-3-3-1 Extended memory error.
+1-3-3-3
+1-3-4-1
+1-3-4-3 Error in first 1MB of system memory.
+1-4-1-3
+1-4-2-4 CPU error.
+1-4-3-1
+2-1-4-1 BIOS ROM shadow error.
+1-4-3-2
+1-4-3-3 Level 2 cache error.
+1-4-4-1
+1-4-4-2
+2-1-1-1 Faulty motherboard or one of its components.
+2-1-1-3
+2-1-2-1 IRQ failure.
+2-1-2-3 BIOS ROM error.
+2-1-2-4
+2-1-3-2 I/O port failure.
+2-1-3-1
+2-1-3-3 Video system failure.
+2-1-1-3
+2-1-2-1 IRQ failure.
+2-1-2-3 BIOS ROM error.
+2-1-2-4 I/O port failure.
+2-1-4-3
+2-2-1-1 Video card failure.
+2-2-1-3
+2-2-2-1
+2-2-2-3 Keyboard controller failure.
+2-2-3-1 IRQ error.
+2-2-4-1 Error in first 1MB of system memory.
+2-3-1-1
+2-3-3-3 Extended memory failure.
+2-3-2-1 Faulty motherboard or one of its components.
+2-3-2-3
+2-3-3-1 Level 2 cache error.
+2-3-4-1
+2-3-4-3 Motherboard or video card failure.
+2-3-4-1
+2-3-4-3
+2-4-1-1 Motherboard or video card failure.
+2-4-1-3 Faulty motherboard or one of its components.
+2-4-2-1 RTC error.
+2-4-2-3 Keyboard controller error.
+2-4-4-1 IRQ error.
+3-1-1-1
+3-1-1-3
+3-1-2-1
+3-1-2-3 I/O port error.
+3-1-3-1
+3-1-3-3 Faulty motherboard or one of its components.
+3-1-4-1
+3-2-1-1
+3-2-1-2 Floppy drive or hard drive failure.
+3-2-1-3 Faulty motherboard or one of its components.
+3-2-2-1 Keyboard controller error.
+3-2-2-3
+3-2-3-1
+3-2-4-1 Faulty motherboard or one of its components.
+3-2-4-3 IRQ error.
+3-3-1-1 RTC error.
+3-3-1-3 Key lock error.
+3-3-3-3 Faulty motherboard or one of its components.
+3-3-3-3
+3-3-4-1
+3-3-4-3
+3-4-1-1
+3-4-1-3
+3-4-2-1
+3-4-2-3
+3-4-3-1
+3-4-4-1
+3-4-4-4 Faulty motherboard or one of its components.
+4-1-1-1 Floppy drive or hard drive failure.
+4-2-1-1
+4-2-1-3
+4-2-2-1 IRQ failure.
+4-2-2-3
+4-2-3-1
+4-2-3-3
+4-2-4-1 Faulty motherboard or one of its components.
+4-2-4-3 Keyboard controller error.
+4-3-1-3
+4-3-1-4
+4-3-2-1
+4-3-2-2
+4-3-3-1
+4-3-4-1
+4-3-4-3 Faulty motherboard or one of its components.
+4-3-3-2
+4-3-3-4 IRQ failure.
+4-3-3-3
+4-3-4-2 Floppy drive or hard drive failure.
+3-Beep Codes
+Beep Code Meaning
+1-1-2 Faulty CPU/motherboard.
+1-1-3 Faulty motherboard/CMOS read-write failure.
+1-1-4 Faulty BIOS/BIOS ROM checksum error.
+1-2-1 System timer not operational. There is a problem with the timer(s) that control functions on the motherboard.
+1-2-2
+1-2-3 Faulty motherboard/DMA failure.
+1-3-1 Memory refresh failure.
+1-3-2
+1-3-3
+1-3-4 Failure in the first 64K of memory.
+1-4-1 Address line failure.
+1-4-2 Parity RAM failure.
+1-4-3 Timer failure.
+1-4-4 NMI port failure.
+2-_-_ Any combination of beeps after 2 indicates a failure in the first 64K of memory.
+3-1-1 Master DMA failure.
+3-1-2 Slave DMA failure.
+3-1-3
+3-1-4 Interrupt controller failure.
+3-2-4 Keyboard controller failure.
+3-3-1
+3-3-2 CMOS error.
+3-3-4 Video card failure.
+3-4-1 Video card failure.
+4-2-1 Timer failure.
+4-2-2 CMOS shutdown failure.
+4-2-3 Gate A20 failure.
+4-2-4 Unexpected interrupt in protected mode.
+4-3-1 RAM test failure.
+4-3-3 Timer failure.
+4-3-4 Time of day clock failure.
+4-4-1 Serial port failure.
+4-4-2 Parallel port failure.
+4-4-3 Math coprocessor.

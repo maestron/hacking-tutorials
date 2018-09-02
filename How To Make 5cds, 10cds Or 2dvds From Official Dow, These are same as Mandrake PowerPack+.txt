@@ -1,0 +1,38 @@
+ Download the full official tree. It comes in at over 5 gig. The full tree includes the usual mandrake, 3 gig of extra apps under contrib and 330meg of java apps under contrib/jpackage.
+
+After downloading I have successfully created 4 versions including the Hard Drive Installation.
+
+1) Hard Drive/Network/FTP Install (same thing)
+2) 10 CD version including everything
+3) 5 CD Version (use to be 4 CDs. This will eventually be the ISO download)
+4) 2 DVD Version which includes everything int the 10 CD Version.
+
+Additionally I have discovered that Mandrake is stressing everyone for no apparent reason. The much talked about 8 meg boot.iso file that is needed to be able to boot and chose your method of installation, is no different from the regular boot files that come on CD1 of any version.
+
+The only thing you have to do is to edit the file "isolinux.cfg" in the isolinux folder. Inside the file, remove all instances of "automatic=method:cdrom" and save the file. Then create the images for whichever "version" of mdk10 that you choose. To create the different versions that I have listed above you have to do 2 things first:
+
+1) edit the "hdlist" file in the "Mandrake/base" folder. In this file you will find a list of all the hdlist.cz files needed to build a particular version. Remove the 3 lines for "SRPM" files. Now depending on which version you want to create, the 10CD and the DVD versions will have 3 lines.
+a) hdlist.cz Mandrake/RPMS Installation CD
+hdlist2.cz Mandrake/RPMS2 Contrib CD
+c) hdlist3.cz Mandrake/RPMS3 Jpackage.org
+take note of the paths above. if you downloaded the whole tree like I did, you will have these folders. The RPMS folder is the standard 4 or 5 CD download version. The RPMS2 and RPMS3 folders added to the RPMS folder make the 10CD and DVD version. So to make the 5CD version, remove the last two lines. Dont forget to backup the original "hdlists" file.
+
+2) To make the 10 CD or 2 DVD version, use the "mkcd"command below. Use 716800000 discsize for the 10CD version and 4000000000 for the 2 DVD version. When the command finishes, the images will be in the directory you specified after the -t option.
+
+To make the 5CD version, move the folders "RPMS2" and RPMS3" someplace safe and don't forget to remove the last two lines in the "hdlists" file as described above. The RPMS2 and RPMS3 folders are only links so it should take no time at all to move them. Then use 716800000 discsize and run the "mkcd" command. Don't forget to move the RPMS2 and RPMS3 folders back to their original location when you finish your 5CD images.
+
+Also rememeber that you will need plenty of disc space if you wantto keep all the images for all version on your hard drive. I have the 10CD, 5CD, 2 DVD and the HD install files all on my hard rive and they take up 23GIG.
+
+mkcd --discsize 716800000 -t ./5CD-Version -a -s ./hdinstall
+
+--discsize is the size of the image you want to make in bytes. the above figure is for a 700M CD. I used 4000000000 (9 zeroes) to make 2 DVDs.
+
+-t <path to where yu want to make the images>
+
+-a means automatic creation based on the hdlist files and the downloaded directory structure. It keeps you from having to use many other ugly options on the command line.
+
+-s <source directory of mdk10> this is the top fodler not thr RPM folder. This top folder will have the "Mandrake" folder in it.
+
+original Link
+CODE
+http://linuxiso.org/forums/viewtopic.php?t=18140

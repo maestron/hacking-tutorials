@@ -1,0 +1,23 @@
+"Single-click to open an item" IF the Folder Options is grayed out... beer.gif
+
+
+When you open Folder Options, the entry Single-click to open an item (point to select) is dimmed. This happens if classic shell is enforced. The option Show Common tasks in folders will also grayed out. This may be a network policy setting. If your system is in a Domain, the best option is to contact your network admin. For standalone PCs, try the setting given below.
+
+
+RESOLUTION
+
+Open Registry Editor (Regedit.exe) and navigate to:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+-and-
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Backup the registry (export the branch) before modifying the values. Read this document for more information
+
+In the right-pane, set ClassicShell to 0. Restart for the changes to take effect. The "Single click" folder option should now be restored.
+
+If the problem persist and if you are using Windows XP Professional Edition, load the Group Policy Editor (GPEDIT.MSC) and go to:
+
+User Configuration | Windows components | Windows Explorer
+Double-click the entry "Turn on classic shell" and set it to "Not Configured
